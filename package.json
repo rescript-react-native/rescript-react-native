@@ -1,0 +1,25 @@
+{
+	"name": "renative",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"start": "node node_modules/react-native/local-cli/cli.js start",
+		"bsb:watch": "bsb -clean-world -make-world -w",
+		"test": "jest"
+	},
+	"dependencies": {
+		"bs-platform": "^1.5.2",
+		"react": "~15.4.1",
+		"react-native": "0.42.3",
+		"reason-react": "^0.0.2"
+	},
+	"devDependencies": {
+		"babel-jest": "19.0.0",
+		"babel-preset-react-native": "1.9.1",
+		"jest": "19.0.2",
+		"react-test-renderer": "~15.4.1"
+	},
+	"jest": {
+		"preset": "react-native"
+	}
+}

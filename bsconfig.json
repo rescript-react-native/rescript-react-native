@@ -1,0 +1,10 @@
+{
+    "name": "reason-react-example",
+    "reason": {
+        "react-jsx": true
+    },
+    "bs-dependencies": ["reason-react", "reason-js"],
+    "sources": [{
+        "dir": "src"
+    }]
+}
