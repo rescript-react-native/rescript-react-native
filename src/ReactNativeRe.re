@@ -35,6 +35,7 @@ external style :
     | `flexEnd [@bs.as "flex-end"]
     | `center | `stretch | `baseline] [@bs.string])? =>
   aspectRation::float? =>
+  backgroundColor:: string? =>
   borderBottomWidth::int? =>
   borderLeftWidth::int? =>
   borderRightWidth::int? =>
@@ -42,6 +43,7 @@ external style :
   borderWidth::int? =>
   bottom::int? =>
   bottomPct::string? =>
+  color:: string? =>
   flex::int? =>
   flexBasis::int? =>
   flexDirection::([
@@ -200,11 +202,34 @@ module View = {
   external view : ReactRe.reactClass = "View" [@@bs.module "react-native"];
   let createElement
       accessible::(accessible: option bool)=?
-      onClick::(onClick: option (ReactRe.event => unit))=? =>
+      onClick::(onClick: option (ReactRe.event => unit))=?
+      style::(style: option style)=? 
+       =>
     ReactRe.wrapPropsShamelessly
       view
       {
         "accessible": Js.Undefined.from_opt (optionMap Js.Boolean.to_js_boolean accessible),
-        "onClick": Js.Undefined.from_opt onClick
+        "onClick": Js.Undefined.from_opt onClick,
+        /*"onClick": (x) => (),*/
+        "style": Js.Undefined.from_opt style
+      };
+};
+
+module Button = {
+  external button : ReactRe.reactClass = "Button" [@@bs.module "react-native"];
+  let createElement
+      accessible::(accessible: option bool)=?
+      onPress::(onPress: option (ReactRe.event => unit))=?
+      style::(style: option style)=? 
+      title::(title: option string)=?
+       =>
+    ReactRe.wrapPropsShamelessly
+      button
+      {
+        "accessible": Js.Undefined.from_opt (optionMap Js.Boolean.to_js_boolean accessible),
+        "onPress": Js.Undefined.from_opt onPress,
+        /*"onPress": Js.log "container",*/
+        "style": Js.Undefined.from_opt style,
+        "title": Js.Undefined.from_opt title
       };
 };
