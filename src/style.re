@@ -3,6 +3,7 @@ type t;
 let combine (a: Js.t t) (b: Js.t t) :Js.t t =>
   Obj.magic (Js.Obj.assign (Obj.magic a) (Obj.magic b));
 
+let a = {"width": 5, "height": 4};
 external style :
   alignContent::[
     | `flexStart [@bs.as "flex-start"]
@@ -91,6 +92,7 @@ external style :
   width::int? =>
   widthString::string? =>
   zIndex::int? =>
+  /* text */
   fontFamiliy::string? =>
   fontSize::int? =>
   fontStyle::[ | `normal | `italic] [@bs.string]? =>
@@ -104,6 +106,30 @@ external style :
   | `_700 [@bs.as "700"]
   | `_800 [@bs.as "800"]
   | `_900 [@bs.as "900"] ] [@bs.string]? =>
+  lineHeight::int? =>
+  textAlign::([ | `auto | `left | `right | `center | `justify ] [@bs.string])? =>
+  textDecorationLine::([
+    | `none
+    | `underline
+    | `lineThrough [@bs.as "line-through"]
+    | `underlineLineThrough [@bs.as "underline line-through"]
+  ] [@bs.string])? =>
+  textShadowColor::string? =>
+  textShadowOffset::(Js.t {. height: int, width: int} )? =>
+  textShadowRadius::int=>
+  includeFontPadding::Js.boolean =>
+  textAlign::([ | `auto | `top | `bottom | `center ] [@bs.string])? =>
+  fontVariant::(array ([
+    | `smallCaps [@bs.as "small-caps"]
+    | `oldstyleNums [@bs.as "oldstyle-nums"]
+    | `liningNums [@bs.as "lining-nums"]
+    | `tabularNums [@bs.as "tabular-nums"]
+    | `proportionalNums [@bs.as "proportional-nums"]
+    ] [@bs.string]))? =>
+  letterSpacing::float? =>
+  textDecorationColor::string? =>
+  textDecorationStyle::([ | `solid | `double | `dotted | `dashed] [@bs.string])? =>
+  writingDirection::([ | `auto | `ltr | `rtl ] [@bs.string])? =>
   unit =>
   t =
   "" [@@bs.obj];
