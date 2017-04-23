@@ -2,6 +2,8 @@
 
 **WIP**
 
+Contributions of Components and APIs are very welcomed!
+
 ## Status
 
 **Components**
