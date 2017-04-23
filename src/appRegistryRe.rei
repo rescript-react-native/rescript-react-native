@@ -1,0 +1,1 @@
+let registerComponent: string => (unit => ReactRe.reactClass) => unit;
