@@ -119,13 +119,13 @@ external style :
   textShadowRadius::int=>
   includeFontPadding::Js.boolean =>
   textAlign::([ | `auto | `top | `bottom | `center ] [@bs.string])? =>
-  fontVariant::(array ([
+  /*fontVariant::(array ([
     | `smallCaps [@bs.as "small-caps"]
     | `oldstyleNums [@bs.as "oldstyle-nums"]
     | `liningNums [@bs.as "lining-nums"]
     | `tabularNums [@bs.as "tabular-nums"]
     | `proportionalNums [@bs.as "proportional-nums"]
-    ] [@bs.string]))? =>
+    ] [@bs.string]))? =>*/
   letterSpacing::float? =>
   textDecorationColor::string? =>
   textDecorationStyle::([ | `solid | `double | `dotted | `dashed] [@bs.string])? =>
