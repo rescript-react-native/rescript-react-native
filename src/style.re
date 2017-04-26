@@ -15,7 +15,7 @@ external style :
     ] [@bs.string]? =>
   alignItems::[ | `flexStart [@bs.as "flex-start"] | `flexEnd [@bs.as "flex-end"] | `center | `stretch | `baseline] [@bs.string]? =>
   alignSelf::[ | `auto | `flexStart [@bs.as "flex-start"]  | `flexEnd [@bs.as "flex-end"] | `center | `stretch | `baseline] [@bs.string]? =>
-  aspectRation::float? =>
+  aspectRatio::float? =>
   backgroundColor::string? =>
   borderBottomWidth::int? =>
   borderLeftWidth::int? =>
@@ -23,7 +23,7 @@ external style :
   borderTopWidth::int? =>
   borderWidth::int? =>
   bottom::int? =>
-  bottomString::string? =>
+  /*bottomString::string? =>*/
   color::string? =>
   flex::int? =>
   flexBasis::int? =>
@@ -37,7 +37,7 @@ external style :
   flexShrink::int? =>
   flexWrap::[ | `wrap | `nowrap] [@bs.string]? =>
   height::int? =>
-  heightString::string? =>
+  /*heightString::string? =>*/
   justifyContent::[
     | `flexStart [@bs.as "flex-start"]
     | `flexEnd [@bs.as "flex-end"]
@@ -46,54 +46,54 @@ external style :
     | `spaceAround  [@bs.as "space-around"]
     ][@bs.string]? =>
   left::int? =>
-  leftString::string? =>
+  /*leftString::string? =>*/
   margin::int? =>
-  marginString::string? =>
+  /*marginString::string? =>*/
   marginBottom::int? =>
-  marginBottomString::string? =>
+  /*marginBottomString::string? =>*/
   marginHorizontal::int? =>
-  marginHorizontalString::string? =>
+  /*marginHorizontalString::string? =>*/
   marginLeft::int? =>
-  marginLeftString::string? =>
+  /*marginLeftString::string? =>*/
   marginRight::int? =>
-  marginRightString::string? =>
+  /*marginRightString::string? => */
   marginTop::int? =>
-  marginTopString::string? =>
+  /*marginTopString::string? =>*/
   marginVertical::int? =>
-  marginVerticalString::string? =>
+  /*marginVerticalString::string? =>*/
   maxHeight::int? =>
-  maxHeightString::string? =>
+  /*maxHeightString::string? =>*/
   maxWidth::int? =>
-  maxWidthString::string? =>
+  /*maxWidthString::string? =>*/
   minHeight::int? =>
-  minHeightString::string? =>
+  /*minHeightString::string? =>*/
   minWidth::int? =>
-  minWidthString::string? =>
+  /*minWidthString::string? =>*/
   overflow::[ | `visible | `hidden | `scroll] [@bs.string]? =>
   padding::int? =>
-  paddingString::string? =>
+  /*paddingString::string? =>*/
   paddingBottom::int? =>
-  paddingBottomString::string? =>
+  /*paddingBottomString::string? =>*/
   paddingHorizontal::int? =>
-  paddingHorizontalString::string? =>
+  /*paddingHorizontalString::string? =>*/
   paddingLeft::int? =>
-  paddingLeftString::string? =>
+  /*paddingLeftString::string? =>*/
   paddingRight::int? =>
-  paddingRightString::string? =>
+  /*paddingRightString::string? =>*/
   paddingTop::int? =>
-  paddingTopString::string? =>
+  /*paddingTopString::string? =>*/
   paddingVertical::int? =>
-  paddingVerticalString::string? =>
+  /*paddingVerticalString::string? =>*/
   position::[ | `absolute | `relative] [@bs.string]? =>
   right::int? =>
-  rightString::string? =>
+  /*rightString::string? =>*/
   top::int? =>
-  topString::string? =>
+  /*topString::string? =>*/
   width::int? =>
-  widthString::string? =>
+  /*widthString::string? =>*/
   zIndex::int? =>
   /* text */
-  fontFamiliy::string? =>
+  /*fontFamiliy::string? =>*/
   fontSize::int? =>
   fontStyle::[ | `normal | `italic] [@bs.string]? =>
   fontWeight::[ | `normal | `bold 
