@@ -116,8 +116,8 @@ external style :
   ] [@bs.string])? =>
   textShadowColor::string? =>
   textShadowOffset::(Js.t {. height: int, width: int} )? =>
-  textShadowRadius::int=>
-  includeFontPadding::Js.boolean =>
+  textShadowRadius::int? =>
+  includeFontPadding::Js.boolean? =>
   textAlign::([ | `auto | `top | `bottom | `center ] [@bs.string])? =>
   fontVariant::(array string)? =>
   letterSpacing::float? =>
