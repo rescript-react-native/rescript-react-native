@@ -13,7 +13,7 @@ external style :
     | `spaceAround [@bs.as "space-around"]
     | `spaceBetween  [@bs.as "space-between"]
     ] [@bs.string]? =>
-  alignItem::[ | `flexStart [@bs.as "flex-start"] | `flexEnd [@bs.as "flex-end"] | `center | `stretch | `baseline] [@bs.string]? =>
+  alignItems::[ | `flexStart [@bs.as "flex-start"] | `flexEnd [@bs.as "flex-end"] | `center | `stretch | `baseline] [@bs.string]? =>
   alignSelf::[ | `auto | `flexStart [@bs.as "flex-start"]  | `flexEnd [@bs.as "flex-end"] | `center | `stretch | `baseline] [@bs.string]? =>
   aspectRation::float? =>
   backgroundColor::string? =>
