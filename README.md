@@ -24,7 +24,7 @@ Contributions of Components and APIs are very welcomed!
 - [ ] ProgressBarAndroid
 - [ ] ProgressViewIOS
 - [ ] RefreshControl
-- [ ] ScrollView
+- [x] ScrollView
 - [ ] SectionList
 - [ ] SegmentedControlIOS
 - [ ] Slider
