@@ -36,10 +36,10 @@ Contributions of Components and APIs are very welcomed!
 - [x] Text
 - [ ] TextInput
 - [ ] ToolbarAndroid
-- [ ] TouchableHighlight
+- [x] TouchableHighlight
 - [ ] TouchableNativeFeedback
-- [ ] TouchableOpacity
-- [ ] TouchableWithoutFeedback
+- [x] TouchableOpacity
+- [x] TouchableWithoutFeedback
 - [x] View
 - [ ] ViewPagerAndroid
 - [ ] VirtualizedList
