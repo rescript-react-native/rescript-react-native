@@ -1,5 +1,3 @@
-type pressRetentionOffset = { top: int, left: int, bottom: int, right: int};
-
 let createElement:
   accessible::bool? =>
   allowFontScaling::bool? =>
@@ -8,12 +6,12 @@ let createElement:
   onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
   onLongPress::(unit => unit)? =>
   onPress::(unit => unit)? =>
-  pressRetentionOffset::pressRetentionOffset? =>
+  pressRetentionOffset::Js.t {. left : int, right : int, top : int, bottom : int}? =>
   selectable::bool? =>
   style::Style.t? =>
   testID::string? =>
   selectionColor::string? =>
-  textBreakStrategy::[ | `simple | `highQuality | `balanced ]? =>
+  textBreakStrategy::[ | `simple | `highQuality | `balanced]? =>
   adjustsFontSizeToFit::bool? =>
   minimumFontScale::float? =>
   suppressHighlighting::bool? =>

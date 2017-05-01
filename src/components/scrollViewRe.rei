@@ -1,14 +1,13 @@
-type inset = {left: int, right: int, top: int, bottom: int};
-
 type point = {x: float, y: float};
 
 let scrollTo: ReactRe.reactRef => x::int => y::int => animated::bool => unit;
+
 let scrollToEnd: ReactRe.reactRef => animated::bool => unit;
 
 let createElement:
   accessibleLeft::ReactRe.reactElement? =>
   accessible::bool? =>
-  hitSlop::inset? =>
+  hitSlop::Js.t {. left : int, right : int, top : int, bottom : int}? =>
   onAccessibilityTap::(unit => unit)? =>
   onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
   onMagicTap::(unit => unit)? =>
@@ -74,7 +73,7 @@ let createElement:
   bounces::bool? =>
   canCancelContentTouches::bool? =>
   centerContent::bool? =>
-  contentInset::inset? =>
+  contentInset::Js.t {. left : int, right : int, top : int, bottom : int}? =>
   contentOffset::point? =>
   decelerationRate::[ | `fast | `normal]? =>
   directionalLockEnabled::bool? =>
@@ -83,7 +82,7 @@ let createElement:
   mimimumZoomScale::float? =>
   onScrollAnimationEnd::(unit => unit)? =>
   scrollEventThrottle::int? =>
-  scrollIndicatorInsets::inset? =>
+  scrollIndicatorInsets::Js.t {. left : int, right : int, top : int, bottom : int}? =>
   scrollsToTop::bool? =>
   snapToAlignment::[ | `center | `start | `end_]? =>
   zoomScale::float? =>

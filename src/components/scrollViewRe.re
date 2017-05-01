@@ -2,14 +2,17 @@ open Utils;
 
 external view : ReactRe.reactClass = "ScrollView" [@@bs.module "react-native"];
 
-type inset = {left: int, right: int, top: int, bottom: int};
-
 type point = {x: float, y: float};
 
-external _scrollTo: ReactRe.reactRef => Js.t {. x: int, y: int, animated: bool } => unit = "scrollTo" [@@bs.send];
-external _scrollToEnd: ReactRe.reactRef => Js.t {. animated: bool } => unit = "scrollToEnd" [@@bs.send];
-let scrollTo ref ::x ::y ::animated => _scrollTo ref { "x": x, "y": y, "animated": animated};
-let scrollToEnd ref ::animated => _scrollToEnd ref { "animated": animated};
+external _scrollTo : ReactRe.reactRef => Js.t {. x : int, y : int, animated : bool} => unit =
+  "scrollTo" [@@bs.send];
+
+external _scrollToEnd : ReactRe.reactRef => Js.t {. animated : bool} => unit =
+  "scrollToEnd" [@@bs.send];
+
+let scrollTo ref ::x ::y ::animated => _scrollTo ref {"x": x, "y": y, "animated": animated};
+
+let scrollToEnd ref ::animated => _scrollToEnd ref {"animated": animated};
 
 let createElement
     ::accessibleLeft=?
@@ -79,19 +82,7 @@ let createElement
     {
       "accessibleLeft": from_opt accessibleLeft,
       "accessible": from_opt (option_map to_js_boolean accessible),
-      "hitSlop":
-        from_opt (
-          option_map
-            (
-              fun {left, right, top, bottom} => {
-                "left": left,
-                "right": right,
-                "top": top,
-                "bottom": bottom
-              }
-            )
-            hitSlop
-        ),
+      "hitSlop": from_opt hitSlop,
       "onAccessibilityTap": from_opt onAccessibilityTap,
       "onLayout": from_opt onLayout,
       "onMagicTap": from_opt onMagicTap,
@@ -262,19 +253,7 @@ let createElement
       "bounces": from_opt (option_map to_js_boolean bounces),
       "canCancelContentTouches": from_opt (option_map to_js_boolean canCancelContentTouches),
       "centerContent": from_opt (option_map to_js_boolean centerContent),
-      "contentInset":
-        from_opt (
-          option_map
-            (
-              fun {left, right, top, bottom} => {
-                "left": left,
-                "right": right,
-                "top": top,
-                "bottom": bottom
-              }
-            )
-            contentInset
-        ),
+      "contentInset": from_opt contentInset,
       "contentOffset": from_opt (option_map (fun {x, y} => {"x": x, "y": y}) contentOffset),
       "decelerationRate":
         from_opt (
@@ -306,19 +285,7 @@ let createElement
       "mimimumZoomScale": from_opt mimimumZoomScale,
       "onScrollAnimationEnd": from_opt onScrollAnimationEnd,
       "scrollEventThrottle": from_opt scrollEventThrottle,
-      "scrollIndicatorInsets":
-        from_opt (
-          option_map
-            (
-              fun {left, right, top, bottom} => {
-                "left": left,
-                "right": right,
-                "top": top,
-                "bottom": bottom
-              }
-            )
-            scrollIndicatorInsets
-        ),
+      "scrollIndicatorInsets": from_opt scrollIndicatorInsets,
       "scrollsToTop": from_opt (option_map to_js_boolean scrollsToTop),
       "snapToAlignment":
         from_opt (

@@ -1,7 +1,5 @@
 open Utils;
 
-type pressRetentionOffset = {top: int, left: int, bottom: int, right: int};
-
 external text : ReactRe.reactClass = "Text" [@@bs.module "react-native"];
 
 let createElement
@@ -42,19 +40,7 @@ let createElement
       "onLayout": from_opt onLayout,
       "onLongPress": from_opt onLongPress,
       "onPress": from_opt onPress,
-      "pressRetentionOffset":
-        from_opt (
-          option_map
-            (
-              fun {top, left, bottom, right} => {
-                "top": top,
-                "left": left,
-                "bottom": bottom,
-                "right": right
-              }
-            )
-            pressRetentionOffset
-        ),
+      "pressRetentionOffset": from_opt pressRetentionOffset,
       "selectable": from_opt (option_map to_js_boolean selectable),
       "style": from_opt style,
       "testID": from_opt testID,

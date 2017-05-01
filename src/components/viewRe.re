@@ -2,8 +2,6 @@ open Utils;
 
 external view : ReactRe.reactClass = "View" [@@bs.module "react-native"];
 
-type inset = {left: int, right: int, top: int, bottom: int};
-
 let createElement
     ::accessibleLeft=?
     ::accessible=?
@@ -39,19 +37,7 @@ let createElement
     {
       "accessibleLeft": from_opt accessibleLeft,
       "accessible": from_opt (option_map to_js_boolean accessible),
-      "hitSlop":
-        from_opt (
-          option_map
-            (
-              fun {left, right, top, bottom} => {
-                "left": left,
-                "right": right,
-                "top": top,
-                "bottom": bottom
-              }
-            )
-            hitSlop
-        ),
+      "hitSlop": from_opt hitSlop,
       "onAccessibilityTap": from_opt onAccessibilityTap,
       "onLayout": from_opt onLayout,
       "onMagicTap": from_opt onMagicTap,
