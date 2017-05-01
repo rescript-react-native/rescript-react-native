@@ -1,129 +1,461 @@
 type t;
 
-let combine (a: Js.t t) (b: Js.t t) :Js.t t =>
-  Obj.magic (Js.Obj.assign (Obj.magic a) (Obj.magic b));
+external to_style : Js.Dict.t Js.Json.t => t = "%identity";
 
-let a = {"width": 5, "height": 4};
-external style :
-  alignContent::[
-    | `flexStart [@bs.as "flex-start"]
-    | `flexEnd [@bs.as "flex-end"]
-    | `center
-    | `stretch
-    | `spaceAround [@bs.as "space-around"]
-    | `spaceBetween  [@bs.as "space-between"]
-    ] [@bs.string]? =>
-  alignItems::[ | `flexStart [@bs.as "flex-start"] | `flexEnd [@bs.as "flex-end"] | `center | `stretch | `baseline] [@bs.string]? =>
-  alignSelf::[ | `auto | `flexStart [@bs.as "flex-start"]  | `flexEnd [@bs.as "flex-end"] | `center | `stretch | `baseline] [@bs.string]? =>
-  aspectRatio::float? =>
-  backgroundColor::string? =>
-  borderBottomWidth::int? =>
-  borderLeftWidth::int? =>
-  borderRightWidth::int? =>
-  borderTopWidth::int? =>
-  borderWidth::int? =>
-  bottom::int? =>
-  /*bottomString::string? =>*/
-  color::string? =>
-  flex::int? =>
-  flexBasis::int? =>
-  flexDirection::[
-    | `row
-    | `rowReverse [@bs.as "row-reverse"]
-    | `column
-    | `columnReverse [@bs.as "column-reverse"]
-    ] [@bs.string]? =>
-  flexGrow::int? =>
-  flexShrink::int? =>
-  flexWrap::[ | `wrap | `nowrap] [@bs.string]? =>
-  height::int? =>
-  /*heightString::string? =>*/
-  justifyContent::[
-    | `flexStart [@bs.as "flex-start"]
-    | `flexEnd [@bs.as "flex-end"]
-    | `center
-    | `spaceBetween [@bs.as "space-between"]
-    | `spaceAround  [@bs.as "space-around"]
-    ][@bs.string]? =>
-  left::int? =>
-  /*leftString::string? =>*/
-  margin::int? =>
-  /*marginString::string? =>*/
-  marginBottom::int? =>
-  /*marginBottomString::string? =>*/
-  marginHorizontal::int? =>
-  /*marginHorizontalString::string? =>*/
-  marginLeft::int? =>
-  /*marginLeftString::string? =>*/
-  marginRight::int? =>
-  /*marginRightString::string? => */
-  marginTop::int? =>
-  /*marginTopString::string? =>*/
-  marginVertical::int? =>
-  /*marginVerticalString::string? =>*/
-  maxHeight::int? =>
-  /*maxHeightString::string? =>*/
-  maxWidth::int? =>
-  /*maxWidthString::string? =>*/
-  minHeight::int? =>
-  /*minHeightString::string? =>*/
-  minWidth::int? =>
-  /*minWidthString::string? =>*/
-  overflow::[ | `visible | `hidden | `scroll] [@bs.string]? =>
-  padding::int? =>
-  /*paddingString::string? =>*/
-  paddingBottom::int? =>
-  /*paddingBottomString::string? =>*/
-  paddingHorizontal::int? =>
-  /*paddingHorizontalString::string? =>*/
-  paddingLeft::int? =>
-  /*paddingLeftString::string? =>*/
-  paddingRight::int? =>
-  /*paddingRightString::string? =>*/
-  paddingTop::int? =>
-  /*paddingTopString::string? =>*/
-  paddingVertical::int? =>
-  /*paddingVerticalString::string? =>*/
-  position::[ | `absolute | `relative] [@bs.string]? =>
-  right::int? =>
-  /*rightString::string? =>*/
-  top::int? =>
-  /*topString::string? =>*/
-  width::int? =>
-  /*widthString::string? =>*/
-  zIndex::int? =>
-  /* text */
-  /*fontFamiliy::string? =>*/
-  fontSize::int? =>
-  fontStyle::[ | `normal | `italic] [@bs.string]? =>
-  fontWeight::[ | `normal | `bold 
-  | `_100 [@bs.as "100"]
-  | `_200 [@bs.as "200"]
-  | `_300 [@bs.as "300"]
-  | `_400 [@bs.as "400"]
-  | `_500 [@bs.as "500"]
-  | `_600 [@bs.as "600"]
-  | `_700 [@bs.as "700"]
-  | `_800 [@bs.as "800"]
-  | `_900 [@bs.as "900"] ] [@bs.string]? =>
-  lineHeight::int? =>
-  textAlign::([ | `auto | `left | `right | `center | `justify ] [@bs.string])? =>
-  textDecorationLine::([
-    | `none
-    | `underline
-    | `lineThrough [@bs.as "line-through"]
-    | `underlineLineThrough [@bs.as "underline line-through"]
-  ] [@bs.string])? =>
-  textShadowColor::string? =>
-  textShadowOffset::(Js.t {. height: int, width: int} )? =>
-  textShadowRadius::int? =>
-  includeFontPadding::Js.boolean? =>
-  textAlign::([ | `auto | `top | `bottom | `center ] [@bs.string])? =>
-  fontVariant::(array string)? =>
-  letterSpacing::float? =>
-  textDecorationColor::string? =>
-  textDecorationStyle::([ | `solid | `double | `dotted | `dashed] [@bs.string])? =>
-  writingDirection::([ | `auto | `ltr | `rtl ] [@bs.string])? =>
-  unit =>
-  t =
-  "" [@@bs.obj];
+external style_to_dict : t => Js.Dict.t Js.Json.t = "%identity";
+
+type style =
+  | ArrayStyle string (array Js.Json.t)
+  | BooleanStyle string bool
+  | StringStyle string string
+  | IntStyle string int
+  | FloatStyle string float
+  | ObjectStyle string (Js.Dict.t Js.Json.t);
+
+let combine a b => {
+  let entries =
+    Array.append (Utils.dictEntries (style_to_dict a)) (Utils.dictEntries (style_to_dict b));
+  Utils.dictFromArray entries |> to_style
+};
+
+let arrayStyle key value => ArrayStyle key value;
+
+let booleanStyle key value => BooleanStyle key value;
+
+let stringStyle key value => StringStyle key value;
+
+let intStyle key value => IntStyle key value;
+
+let floatStyle key value => FloatStyle key value;
+
+let objectStyle key value => ObjectStyle key value;
+
+let encodeStyle =
+  fun
+  | ArrayStyle key value => (key, Utils.Encode.array value)
+  | BooleanStyle key value => (key, Utils.Encode.boolean (Js.Boolean.to_js_boolean value))
+  | IntStyle key value => (key, Utils.Encode.int value)
+  | FloatStyle key value => (key, Utils.Encode.float value)
+  | StringStyle key value => (key, Utils.Encode.string value)
+  | ObjectStyle key value => (key, Utils.Encode.object_ value);
+
+let style sarr => sarr |> List.map encodeStyle |> Utils.dictFromList |> to_style;
+
+
+/**
+ * Layout Props
+ */
+let alignContent v =>
+  stringStyle
+    "alignContent"
+    (
+      switch v {
+      | `flexStart => "flex-start"
+      | `flexEnd => "flex-end"
+      | `center => "center"
+      | `stretch => "stretch"
+      | `spaceAround => "space-around"
+      | `spaceBetween => "space-between"
+      }
+    );
+
+let alignItems v =>
+  stringStyle
+    "alignItems"
+    (
+      switch v {
+      | `flexStart => "flex-start"
+      | `flexEnd => "flex-end"
+      | `center => "center"
+      | `stretch => "stretch"
+      | `baseline => "baseline"
+      }
+    );
+
+let alignSelf v =>
+  stringStyle
+    "alignSelf"
+    (
+      switch v {
+      | `flexStart => "flex-start"
+      | `flexEnd => "flex-end"
+      | `center => "center"
+      | `stretch => "stretch"
+      | `baseline => "baseline"
+      }
+    );
+
+let aspectRatio = floatStyle "aspectRatio";
+
+let borderBottomWidth = intStyle "borderBottomWidth";
+
+let borderLeftWidth = intStyle "borderLeftWidth";
+
+let borderRightWidth = intStyle "borderRightWidth";
+
+let borderTopWidth = intStyle "borderTopWidth";
+
+let borderWidth = intStyle "borderWidth";
+
+let bottom = intStyle "bottom";
+
+let display v =>
+  stringStyle
+    "display"
+    (
+      switch v {
+      | `flex => "flex"
+      | `none => "none"
+      }
+    );
+
+let flex = floatStyle "flex";
+
+let flexBasis = intStyle "flexBasis";
+
+let flexDirection v =>
+  stringStyle
+    "flexDirection"
+    (
+      switch v {
+      | `row => "row"
+      | `rowReverse => "row-reverse"
+      | `column => "column"
+      | `columnReverse => "column-reverse"
+      }
+    );
+
+let flexGrow = floatStyle "flexGrow";
+
+let flexShrink = floatStyle "flexShrink";
+
+let flexWrap v =>
+  stringStyle
+    "flexWrap"
+    (
+      switch v {
+      | `wrap => "wrap"
+      | `nowrap => "nowrap"
+      }
+    );
+
+let height = intStyle "height";
+
+let justifyContent v =>
+  stringStyle
+    "justifyContent"
+    (
+      switch v {
+      | `flexStart => "flex-start"
+      | `flexEnd => "flex-end"
+      | `center => "center"
+      | `stretch => "stretch"
+      | `spaceAround => "space-around"
+      | `spaceBetween => "space-between"
+      }
+    );
+
+let left = intStyle "left";
+
+let margin = intStyle "margin";
+
+let marginBottom = intStyle "marginBottom";
+
+let marginHorizontal = intStyle "marginHorizontal";
+
+let marginLeft = intStyle "marginLeft";
+
+let marginRight = intStyle "marginRight";
+
+let marginTop = intStyle "marginTop";
+
+let marginVertical = intStyle "marginVertical";
+
+let maxHeight = intStyle "maxHeight";
+
+let maxWidth = intStyle "maxHeight";
+
+let minHeight = intStyle "maxHeight";
+
+let minWidth = intStyle "maxWidth";
+
+let overflow v =>
+  stringStyle
+    "overflow"
+    (
+      switch v {
+      | `visible => "visible"
+      | `hidden => "hidden"
+      | `scroll => "scroll"
+      }
+    );
+
+let padding = intStyle "padding";
+
+let paddingBottom = intStyle "paddingBottom";
+
+let paddingHorizontal = intStyle "paddingHorizontal";
+
+let paddingLeft = intStyle "paddingLeft";
+
+let paddingRight = intStyle "paddingRight";
+
+let paddingTop = intStyle "paddingTop";
+
+let paddingVertical = intStyle "paddingVertical";
+
+let position v =>
+  stringStyle
+    "position"
+    (
+      switch v {
+      | `absolute => "absolute"
+      | `relative => "relative"
+      }
+    );
+
+let right = intStyle "right";
+
+let top = intStyle "top";
+
+let width = intStyle "width";
+
+let zIndex = intStyle "zIndex";
+
+let direction v =>
+  stringStyle
+    "direction"
+    (
+      switch v {
+      | `_inherit => "inherit"
+      | `ltr => "ltr"
+      | `rtl => "rtl"
+      }
+    );
+
+
+/**
+ * Shadow Props
+ */
+let shadowColor = stringStyle "shadowColor";
+
+let shadowOffset ::height ::width =>
+  Utils.dictFromArray [|("height", Utils.Encode.int height), ("width", Utils.Encode.int width)|] |>
+  objectStyle "shadowOffset";
+
+let shadowOpacity = floatStyle "shadowOpacity";
+
+let shadowRadius = intStyle "shadowRadius";
+
+
+/**
+ * Transform Props
+ */
+let transform
+    ::perspective=?
+    ::rotate=?
+    ::rotateX=?
+    ::rotateY=?
+    ::rotateZ=?
+    ::scaleX=?
+    ::scaleY=?
+    ::translateX=?
+    ::translateY=?
+    ::skewX=?
+    ::skewY=?
+    () => {
+  let opt_values = [
+    ("perspective", Utils.option_map Utils.Encode.float perspective),
+    ("rotate", Utils.option_map Utils.Encode.string rotate),
+    ("rotateX", Utils.option_map Utils.Encode.string rotateX),
+    ("rotateY", Utils.option_map Utils.Encode.string rotateY),
+    ("rotateZ", Utils.option_map Utils.Encode.string rotateZ),
+    ("scaleX", Utils.option_map Utils.Encode.float scaleX),
+    ("scaleY", Utils.option_map Utils.Encode.float scaleY),
+    ("translateX", Utils.option_map Utils.Encode.float translateX),
+    ("translateY", Utils.option_map Utils.Encode.float translateY),
+    ("skewX", Utils.option_map Utils.Encode.float skewX),
+    ("skewY", Utils.option_map Utils.Encode.float skewY)
+  ];
+  let values =
+    List.fold_right
+      (
+        fun x acc =>
+          switch x {
+          | (key, Some value) =>
+            let val_ = Utils.dictFromArray [|(key, value)|] |> Utils.Encode.object_;
+            [val_, ...acc]
+          | _ => acc
+          }
+      )
+      opt_values
+      [];
+  Array.of_list values |> arrayStyle "transform"
+};
+
+
+/**
+ * View Props
+ */
+let backfaceVisibility v =>
+  stringStyle
+    "backfaceVisibility"
+    (
+      switch v {
+      | `visible => "visible"
+      | `hidden => "hidden"
+      }
+    );
+
+let backgroundColor = stringStyle "backgroundColor";
+
+let borderColor = stringStyle "borderColor";
+
+let borderTopColor = stringStyle "borderTopColor";
+
+let borderRightColor = stringStyle "borderRightColor";
+
+let borderBottomColor = stringStyle "borderBottomColor";
+
+let borderLeftColor = stringStyle "borderLeftColor";
+
+let borderRadius = intStyle "borderRadius";
+
+let borderTopLeftRadius = intStyle "borderTopLeftRadius";
+
+let borderTopRightRadius = intStyle "borderTopRightRadius";
+
+let borderBottomLeftRadius = intStyle "borderBottomLeftRadius";
+
+let borderBottomRightRadius = intStyle "borderBottomRightRadius";
+
+let borderStyle v =>
+  stringStyle
+    "borderStyle"
+    (
+      switch v {
+      | `solid => "solid"
+      | `dotted => "dotted"
+      | `dashed => "dashed"
+      }
+    );
+
+let opacity = floatStyle "opacity";
+
+let elevation = floatStyle "elevation";
+
+
+/**
+ * Text Props
+ */
+let color = stringStyle "color";
+
+let fontSize = intStyle "fontSize";
+
+let fontStyle v =>
+  stringStyle
+    "fontStyle"
+    (
+      switch v {
+      | `normal => "normal"
+      | `italic => "italic"
+      }
+    );
+
+let fontWeight v =>
+  stringStyle
+    "fontWeight"
+    (
+      switch v {
+      | `normal => "normal"
+      | `bold => "bold"
+      | `_100 => "100"
+      | `_200 => "200"
+      | `_300 => "300"
+      | `_400 => "400"
+      | `_500 => "500"
+      | `_600 => "600"
+      | `_700 => "700"
+      | `_800 => "800"
+      | `_900 => "900"
+      }
+    );
+
+let lineHeight = intStyle "lineHeight";
+
+let textAlign v =>
+  stringStyle
+    "textAlign"
+    (
+      switch v {
+      | `auto => "auto"
+      | `left => "left"
+      | `right => "right"
+      | `center => "center"
+      | `justify => "justify"
+      }
+    );
+
+let textDecorationLine v =>
+  stringStyle
+    "textDecorationLine"
+    (
+      switch v {
+      | `none => "none"
+      | `underline => "underline"
+      | `lineThrough => "line-through"
+      | `underlineLineThrough => "underline line-through"
+      }
+    );
+
+let textShadowColor = stringStyle "string";
+
+let textShadowOffset ::height ::width =>
+  Utils.dictFromArray [|("height", Utils.Encode.int height), ("width", Utils.Encode.int width)|] |>
+  objectStyle "textShadowOffset";
+
+let textShadowRadius = intStyle "textShadowRadius";
+
+let includeFontPadding = booleanStyle "includeFontPadding";
+
+let textAlignVertical v =>
+  stringStyle
+    "textAlignVertical"
+    (
+      switch v {
+      | `auto => "auto"
+      | `top => "top"
+      | `bottom => "bottom"
+      | `center => "center"
+      }
+    );
+
+let fontVariant fontVariants =>
+  fontVariants |> Array.of_list |> Array.map Utils.Encode.string |> arrayStyle "fontVariant";
+
+let letterSpacing = floatStyle "letterSpacing";
+
+let textDecorationColor = stringStyle "textDecorationColor";
+
+let textDecorationStyle v =>
+  stringStyle
+    "textDecorationStyle"
+    (
+      switch v {
+      | `solid => "solid"
+      | `double => "double"
+      | `dotted => "dotted"
+      | `dashed => "dashed"
+      }
+    );
+
+let writingDirection v =>
+  stringStyle
+    "writingDirection"
+    (
+      switch v {
+      | `auto => "auto"
+      | `ltr => "ltr"
+      | `rtl => "rtl"
+      }
+    );
