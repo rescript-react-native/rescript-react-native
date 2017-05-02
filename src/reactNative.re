@@ -4,6 +4,7 @@ let style = Style.style;
 
 module Button = ButtonRe;
 module Modal = ModalRe;
+module ScrollView = ScrollViewRe;
 module Text = TextRe;
 module TouchableHighlight = TouchableHighlightRe;
 module TouchableOpacity = TouchableOpacityRe;
