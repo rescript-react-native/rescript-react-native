@@ -3,6 +3,7 @@ let style = Style.style;
 /* Components */
 
 module Button = ButtonRe;
+module FlatList = FlatListRe;
 module Modal = ModalRe;
 module ScrollView = ScrollViewRe;
 module Text = TextRe;
