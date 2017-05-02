@@ -11,6 +11,7 @@ module TouchableHighlight = TouchableHighlightRe;
 module TouchableOpacity = TouchableOpacityRe;
 module TouchableWithoutFeedback = TouchableWithoutFeedbackRe;
 module View = ViewRe;
+module Image = ImageRe;
 
 /* APIs */
 module AppRegistry = AppRegistryRe;

@@ -12,7 +12,7 @@ Contributions of Components and APIs are very welcomed!
 - [ ] DatePickerIOS
 - [ ] DrawerLayoutAndroid
 - [x] FlatList
-- [ ] Image
+- [x] Image
 - [ ] KeyboardAvoidingView
 - [ ] ListView
 - [ ] MapView
