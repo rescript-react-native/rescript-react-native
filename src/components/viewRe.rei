@@ -1,7 +1,7 @@
 let createElement:
   accessibleLeft::ReactRe.reactElement? =>
   accessible::bool? =>
-  hitSlop::Js.t {. left : int, right : int, top : int, bottom : int}? =>
+  hitSlop::Types.insets? =>
   onAccessibilityTap::(unit => unit)? =>
   onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
   onMagicTap::(unit => unit)? =>
