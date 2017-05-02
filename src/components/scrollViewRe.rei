@@ -7,7 +7,7 @@ let scrollToEnd: ReactRe.reactRef => animated::bool => unit;
 let createElement:
   accessibleLeft::ReactRe.reactElement? =>
   accessible::bool? =>
-  hitSlop::Js.t {. left : int, right : int, top : int, bottom : int}? =>
+  hitSlop::Types.insets? =>
   onAccessibilityTap::(unit => unit)? =>
   onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
   onMagicTap::(unit => unit)? =>
@@ -73,7 +73,7 @@ let createElement:
   bounces::bool? =>
   canCancelContentTouches::bool? =>
   centerContent::bool? =>
-  contentInset::Js.t {. left : int, right : int, top : int, bottom : int}? =>
+  contentInset::Types.insets? =>
   contentOffset::point? =>
   decelerationRate::[ | `fast | `normal]? =>
   directionalLockEnabled::bool? =>
@@ -82,7 +82,7 @@ let createElement:
   mimimumZoomScale::float? =>
   onScrollAnimationEnd::(unit => unit)? =>
   scrollEventThrottle::int? =>
-  scrollIndicatorInsets::Js.t {. left : int, right : int, top : int, bottom : int}? =>
+  scrollIndicatorInsets::Types.insets? =>
   scrollsToTop::bool? =>
   snapToAlignment::[ | `center | `start | `end_]? =>
   zoomScale::float? =>

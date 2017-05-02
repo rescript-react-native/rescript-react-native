@@ -27,12 +27,12 @@ let createElement:
   delayPressIn::int? =>
   delayPressOut::int? =>
   disabled::bool? =>
-  hitSlop::Js.t {. left : int, right : int, top : int, bottom : int}? =>
+  hitSlop::Types.insets? =>
   onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
   onPress::(unit => unit)? =>
   onPressIn::(unit => unit)? =>
   onPressOut::(unit => unit)? =>
-  pressRetentionOffset::Js.t {. left : int, right : int, top : int, bottom : int}? =>
+  pressRetentionOffset::Types.insets? =>
   activeOpacity::float? =>
   focusedOpacity::float? =>
   tvParallaxProperties::Js.t {.}? =>

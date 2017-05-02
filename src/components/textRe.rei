@@ -6,7 +6,7 @@ let createElement:
   onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
   onLongPress::(unit => unit)? =>
   onPress::(unit => unit)? =>
-  pressRetentionOffset::Js.t {. left : int, right : int, top : int, bottom : int}? =>
+  pressRetentionOffset::Types.insets? =>
   selectable::bool? =>
   style::Style.t? =>
   testID::string? =>
