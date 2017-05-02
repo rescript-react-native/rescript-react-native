@@ -1,3 +1,6 @@
+
+module Packager = PackagerRe;
+
 /* Components */
 
 module Button = ButtonRe;

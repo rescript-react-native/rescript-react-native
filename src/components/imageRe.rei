@@ -1,6 +1,6 @@
 type imageURISource;
 
-let imageURISource :
+let imageURISource:
   uri::string =>
   bundle::string? =>
   method::string? =>
@@ -13,24 +13,21 @@ let imageURISource :
   unit =>
   imageURISource;
 
-type imageSource 'a =
+type imageSource =
   | URI imageURISource
-  | Require 'a
+  | Required PackagerRe.required
   | Multiple (list imageURISource);
 
 type defaultURISource;
 
-let defaultURISource :
-  uri::string => scale::float? => width::float => height::float => defaultURISource ;
+let defaultURISource:
+  uri::string => scale::float? => width::float => height::float => defaultURISource;
 
-type defaultSource 'a =
+type defaultSource =
   | URI defaultURISource
-  | Require 'a;
+  | Required PackagerRe.required;
 
-module Event: {
-  type error;
-  type progress = {loaded: float, total: float};
-};
+module Event: {type error; type progress = {loaded: float, total: float};};
 
 let createElement:
   onError::(Event.error => unit)? =>
@@ -39,7 +36,7 @@ let createElement:
   onLoadEnd::(unit => unit)? =>
   onLoadStart::(unit => unit)? =>
   resizeMode::[< | `center | `contain | `cover | `repeat | `stretch]? =>
-  source::imageSource 'a? =>
+  source::imageSource? =>
   style::Style.t? =>
   testID::string? =>
   resizeMethod::[< | `auto | `resize | `scale]? =>
@@ -47,7 +44,7 @@ let createElement:
   accessible::bool? =>
   blurRadius::float? =>
   capInsets::Types.insets? =>
-  defaultSource::defaultSource 'a? =>
+  defaultSource::defaultSource? =>
   onPartialLoad::(unit => unit)? =>
   onProgress::(Event.progress => unit)? =>
   children::list ReactRe.reactElement =>

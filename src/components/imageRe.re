@@ -18,9 +18,9 @@ external imageURISource :
   imageURISource =
   "" [@@bs.obj];
 
-type imageSource 'a =
+type imageSource =
   | URI imageURISource
-  | Require 'a
+  | Required PackagerRe.required
   | Multiple (list imageURISource);
 
 type defaultURISource;
@@ -29,9 +29,9 @@ external defaultURISource :
   uri::string => scale::float? => width::float => height::float => defaultURISource =
   "" [@@bs.obj];
 
-type defaultSource 'a =
+type defaultSource =
   | URI defaultURISource
-  | Require 'a;
+  | Required PackagerRe.required;
 
 type rawImageSourceJS;
 
@@ -91,10 +91,10 @@ let createElement
         from_opt (
           option_map
             (
-              fun (x: imageSource 'a) =>
+              fun (x: imageSource) =>
                 switch x {
                 | URI x => rawImageSourceJS x
-                | Require x => rawImageSourceJS x
+                | Required x => rawImageSourceJS x
                 | Multiple x => rawImageSourceJS (Array.of_list x)
                 }
             )
@@ -123,10 +123,10 @@ let createElement
         from_opt (
           option_map
             (
-              fun (x: defaultSource 'a) =>
+              fun (x: defaultSource) =>
                 switch x {
                 | URI x => rawImageSourceJS x
-                | Require x => rawImageSourceJS x
+                | Required x => rawImageSourceJS x
                 }
             )
             defaultSource
