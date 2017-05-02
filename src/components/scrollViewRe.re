@@ -4,15 +4,15 @@ external view : ReactRe.reactClass = "ScrollView" [@@bs.module "react-native"];
 
 type point = {x: float, y: float};
 
-external _scrollTo : ReactRe.reactRef => Js.t {. x : int, y : int, animated : bool} => unit =
+external _scrollTo : ReactRe.reactRef => Js.t {. x : int, y : int, animated : Js.boolean} => unit =
   "scrollTo" [@@bs.send];
 
-external _scrollToEnd : ReactRe.reactRef => Js.t {. animated : bool} => unit =
+external _scrollToEnd : ReactRe.reactRef => Js.t {. animated : Js.boolean} => unit =
   "scrollToEnd" [@@bs.send];
 
-let scrollTo ref ::x ::y ::animated => _scrollTo ref {"x": x, "y": y, "animated": animated};
+let scrollTo ref ::x ::y ::animated => _scrollTo ref {"x": x, "y": y, "animated": to_js_boolean animated};
 
-let scrollToEnd ref ::animated => _scrollToEnd ref {"animated": animated};
+let scrollToEnd ref ::animated => _scrollToEnd ref {"animated": to_js_boolean animated};
 
 let createElement
     ::accessibleLeft=?
