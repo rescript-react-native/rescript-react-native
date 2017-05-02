@@ -7,6 +7,7 @@ module FlatList = FlatListRe;
 module Modal = ModalRe;
 module ScrollView = ScrollViewRe;
 module Text = TextRe;
+module TextInput = TextInputRe;
 module TouchableHighlight = TouchableHighlightRe;
 module TouchableOpacity = TouchableOpacityRe;
 module TouchableWithoutFeedback = TouchableWithoutFeedbackRe;

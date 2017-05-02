@@ -34,7 +34,7 @@ Contributions of Components and APIs are very welcomed!
 - [ ] TabBarIOS
 - [ ] TabBarIOS.Item
 - [x] Text
-- [ ] TextInput
+- [x] TextInput
 - [ ] ToolbarAndroid
 - [x] TouchableHighlight
 - [ ] TouchableNativeFeedback
