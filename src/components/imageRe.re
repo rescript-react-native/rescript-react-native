@@ -40,8 +40,10 @@ external rawImageSourceJS : 'a => rawImageSourceJS = "";
 module Event = {
   type t;
   type error;
+  type _progress = Js.t {. loaded : float, total : float};
+  external _progress : t => _progress = "nativeEvent" [@@bs.get];
   type progress = {loaded: float, total: float};
-  external progress : t => progress = "nativeEvent" [@@bs.get];
+  let progress (x: _progress) => {loaded: x##loaded, total: x##total};
 };
 
 let createElement
