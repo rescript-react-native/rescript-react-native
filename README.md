@@ -53,7 +53,7 @@ Contributions of Components and APIs are very welcomed!
 - [ ] Alert
 - [ ] AlertIOS
 - [ ] Animated
-- [ ] AppRegistry
+- [x] AppRegistry
 - [ ] AppState
 - [ ] AsyncStorage
 - [ ] BackAndroid
