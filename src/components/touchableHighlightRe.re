@@ -22,8 +22,7 @@ let createElement
     ::style=?
     ::underlayColor=?
     ::hasTVPreferredFocus=?
-    ::tvParallaxProperties=?
-    =>
+    ::tvParallaxProperties=? =>
   ReactRe.wrapPropsShamelessly
     view
     {
@@ -81,11 +80,11 @@ let createElement
             )
             accessibilityTraits
         ),
-        "activeOpacity": from_opt activeOpacity,
-        "onHideUnderlay": from_opt onHideUnderlay,
-        "onShowUnderlay": from_opt onShowUnderlay,
-        "style": from_opt style,
-        "underlayColor": from_opt underlayColor,
-        "hasTVPreferredFocus": from_opt (option_map to_js_boolean hasTVPreferredFocus),
-        "tvParallaxProperties": from_opt tvParallaxProperties,
+      "activeOpacity": from_opt activeOpacity,
+      "onHideUnderlay": from_opt onHideUnderlay,
+      "onShowUnderlay": from_opt onShowUnderlay,
+      "style": from_opt style,
+      "underlayColor": from_opt underlayColor,
+      "hasTVPreferredFocus": from_opt (option_map to_js_boolean hasTVPreferredFocus),
+      "tvParallaxProperties": from_opt tvParallaxProperties
     };
