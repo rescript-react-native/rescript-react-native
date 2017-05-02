@@ -98,3 +98,12 @@ npm install
 ```
 
 Then build with `npm start`.
+
+## Development
+
+### Generate Interface files
+
+You can generate an interface file (`.rei`) with
+```sh
+./node_modules/bs-platform/bin/bsc.exe -pp 'refmt --print binary' -i -I /path/to/lib -impl /path/to/file.re
+```
