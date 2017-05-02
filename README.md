@@ -11,12 +11,12 @@ Contributions of Components and APIs are very welcomed!
 - [x] Button
 - [ ] DatePickerIOS
 - [ ] DrawerLayoutAndroid
-- [ ] FlatList
+- [x] FlatList
 - [ ] Image
 - [ ] KeyboardAvoidingView
 - [ ] ListView
 - [ ] MapView
-- [ ] Modal
+- [x] Modal
 - [ ] Navigator
 - [ ] NavigatorIOS
 - [ ] Picker
