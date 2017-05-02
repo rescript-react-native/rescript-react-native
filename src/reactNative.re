@@ -1,5 +1,3 @@
-let style = Style.style;
-
 /* Components */
 
 module Button = ButtonRe;
