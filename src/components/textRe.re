@@ -1,25 +1,49 @@
-external text : ReactRe.reactClass = "Text" [@@bs.module "react-native"];
+module type TextComponent = {
+  let createElement:
+    accessible::bool? =>
+    allowFontScaling::bool? =>
+    ellipsizeMode::[ | `clip | `head | `middle | `tail]? =>
+    numberOfLines::int? =>
+    onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
+    onLongPress::(unit => unit)? =>
+    onPress::(unit => unit)? =>
+    pressRetentionOffset::Types.insets? =>
+    selectable::bool? =>
+    style::Style.t? =>
+    testID::string? =>
+    selectionColor::string? =>
+    textBreakStrategy::[ | `simple | `highQuality | `balanced]? =>
+    adjustsFontSizeToFit::bool? =>
+    minimumFontScale::float? =>
+    suppressHighlighting::bool? =>
+    children::list ReactRe.reactElement =>
+    ref::(ReactRe.reactRef => unit)? =>
+    key::string? =>
+    unit =>
+    ReactRe.reactElement;
+};
 
-let createElement
-    ::accessible=?
-    ::allowFontScaling=?
-    ::ellipsizeMode=?
-    ::numberOfLines=?
-    ::onLayout=?
-    ::onLongPress=?
-    ::onPress=?
-    ::pressRetentionOffset=?
-    ::selectable=?
-    ::style=?
-    ::testID=?
-    ::selectionColor=?
-    ::textBreakStrategy=?
-    ::adjustsFontSizeToFit=?
-    ::minimumFontScale=?
-    ::suppressHighlighting=? =>
-  ReactRe.wrapPropsShamelessly
-    text
-    Js.Undefined.(
+module CreateComponent (Impl: ViewRe.Impl) :TextComponent => {
+  let createElement
+      ::accessible=?
+      ::allowFontScaling=?
+      ::ellipsizeMode=?
+      ::numberOfLines=?
+      ::onLayout=?
+      ::onLongPress=?
+      ::onPress=?
+      ::pressRetentionOffset=?
+      ::selectable=?
+      ::style=?
+      ::testID=?
+      ::selectionColor=?
+      ::textBreakStrategy=?
+      ::adjustsFontSizeToFit=?
+      ::minimumFontScale=?
+      ::suppressHighlighting=? =>
+    ReactRe.wrapPropsShamelessly
+      Impl.view
+      Js.Undefined.(
       {
         "accessible": from_opt (Utils.optBoolToOptJsBoolean accessible),
         "allowFontScaling": from_opt (Utils.optBoolToOptJsBoolean allowFontScaling),
@@ -60,3 +84,9 @@ let createElement
         "suppressHighlighting": from_opt (Utils.optBoolToOptJsBoolean suppressHighlighting)
       }
     );
+};
+
+module Text =
+  CreateComponent {
+    external view : ReactRe.reactClass = "Text" [@@bs.module "react-native"];
+  };
