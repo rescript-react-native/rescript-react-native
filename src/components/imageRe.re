@@ -12,14 +12,14 @@ module type ImageComponent = {
     height::float =>
     unit =>
     imageURISource;
-  type imageSource 'a =
+  type imageSource =
     | URI imageURISource
     | Required PackagerRe.required
     | Multiple (list imageURISource);
   type defaultURISource;
   let defaultURISource:
     uri::string => scale::float? => width::float => height::float => defaultURISource;
-  type defaultSource 'a =
+  type defaultSource =
     | URI defaultURISource
     | Required PackagerRe.required;
   module Event: {type error; type progress = {loaded: float, total: float};};
@@ -63,17 +63,17 @@ module CreateComponent (Impl: ViewRe.Impl) :ImageComponent => {
     unit =>
     imageURISource =
     "" [@@bs.obj];
-  type imageSource 'a =
+  type imageSource =
     | URI imageURISource
-    | Require 'a
+    | Required PackagerRe.required
     | Multiple (list imageURISource);
   type defaultURISource;
   external defaultURISource :
     uri::string => scale::float? => width::float => height::float => defaultURISource =
     "" [@@bs.obj];
-  type defaultSource 'a =
+  type defaultSource =
     | URI defaultURISource
-    | Require 'a;
+    | Required PackagerRe.required;
   type rawImageSourceJS;
   external rawImageSourceJS : 'a => rawImageSourceJS = "";
   module Event = {
