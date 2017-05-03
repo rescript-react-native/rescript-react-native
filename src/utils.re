@@ -1,16 +1,15 @@
-let from_opt = Js.Undefined.from_opt;
-
-let to_js_boolean = Js.Boolean.to_js_boolean;
-
 let option_map fn opt_value =>
   switch opt_value {
   | None => None
   | Some value => Some (fn value)
   };
 
+let optBoolToOptJsBoolean =
+  fun
+  | None => None
+  | Some v => Some (Js.Boolean.to_js_boolean v);
+
 let (<<) f g x => f (g x);
-
-
 /**
  * The following is taken from bs-json (https://github.com/BuckleTypes/bs-json) converted to reason syntax
  */

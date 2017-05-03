@@ -1,5 +1,3 @@
-open Utils;
-
 external image : ReactRe.reactClass = "Image" [@@bs.module "react-native"];
 
 type imageURISource;
@@ -66,7 +64,7 @@ let createElement
     ::onProgress=? =>
   ReactRe.wrapPropsShamelessly
     image
-    {
+     Js.Undefined.({
       "onLayout": from_opt onLayout,
       "onError": from_opt onError,
       "onLoad": from_opt onLoad,
@@ -74,7 +72,7 @@ let createElement
       "onLoadStart": from_opt onLoadStart,
       "resizeMode":
         from_opt (
-          option_map
+          Utils.option_map
             (
               fun x =>
                 switch x {
@@ -89,7 +87,7 @@ let createElement
         ),
       "source":
         from_opt (
-          option_map
+          Utils.option_map
             (
               fun (x: imageSource) =>
                 switch x {
@@ -104,7 +102,7 @@ let createElement
       "testID": from_opt testID,
       "resizeMethod":
         from_opt (
-          option_map
+          Utils.option_map
             (
               fun x =>
                 switch x {
@@ -116,12 +114,12 @@ let createElement
             resizeMethod
         ),
       "accessibilityLabel": from_opt accessibilityLabel,
-      "accessible": from_opt (option_map to_js_boolean accessible),
+      "accessible": from_opt (Utils.optBoolToOptJsBoolean accessible),
       "blurRadius": from_opt blurRadius,
       "capInsets": from_opt capInsets,
       "defaultSource":
         from_opt (
-          option_map
+          Utils.option_map
             (
               fun (x: defaultSource) =>
                 switch x {
@@ -132,5 +130,5 @@ let createElement
             defaultSource
         ),
       "onPartialLoad": from_opt onPartialLoad,
-      "onProgress": from_opt (option_map (fun x y => x (Event.progress y)) onProgress)
-    };
+      "onProgress": from_opt (Utils.option_map (fun x y => x (Event.progress y)) onProgress)
+    });

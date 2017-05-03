@@ -1,5 +1,3 @@
-open Utils;
-
 external modal : ReactRe.reactClass = "Modal" [@@bs.module "react-native"];
 let createElement
     ::animationType=?
@@ -12,10 +10,10 @@ let createElement
     ::supportedOrientations=? =>
   ReactRe.wrapPropsShamelessly
     modal
-    {
+    Js.Undefined.({
       "animationType":
         from_opt (
-          option_map
+          Utils.option_map
             (
               fun x =>
                 switch x {
@@ -27,14 +25,14 @@ let createElement
             animationType
         ),
       "onShow": from_opt onShow,
-      "transparent": from_opt (option_map to_js_boolean transparent),
-      "visible": from_opt (option_map to_js_boolean visible),
-      "hardwareAccelerated": from_opt (option_map to_js_boolean hardwareAccelerated),
+      "transparent": from_opt (Utils.optBoolToOptJsBoolean transparent),
+      "visible": from_opt (Utils.optBoolToOptJsBoolean visible),
+      "hardwareAccelerated": from_opt (Utils.optBoolToOptJsBoolean hardwareAccelerated),
       "onRequestClose": from_opt onRequestClose,
       "onOrientationChange": from_opt onOrientationChange,
       "supportedOrientations":
         from_opt (
-          option_map
+          Utils.option_map
             (
               fun x =>
                 switch x {
@@ -47,4 +45,4 @@ let createElement
             )
             supportedOrientations
         )
-    };
+    });

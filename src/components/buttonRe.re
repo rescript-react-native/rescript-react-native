@@ -1,15 +1,13 @@
-open Utils;
-
 external button : ReactRe.reactClass = "Button" [@@bs.module "react-native"];
 
 let createElement ::accessibilityLabel=? ::color=? ::disabled=? ::onPress=? ::testID=? ::title=? =>
   ReactRe.wrapPropsShamelessly
     button
-    {
+    Js.Undefined.({
       "accessibilityLabel": from_opt accessibilityLabel,
       "color": from_opt color,
-      "disabled": from_opt (option_map to_js_boolean disabled),
+      "disabled": from_opt (Utils.optBoolToOptJsBoolean disabled),
       "onPress": from_opt onPress,
       "testID": from_opt testID,
       "title": from_opt title
-    };
+    });

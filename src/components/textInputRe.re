@@ -1,9 +1,6 @@
-open Utils;
-
 external view : ReactRe.reactClass = "TextInput" [@@bs.module "react-native"];
-
 external _isFocused: ReactRe.reactRef => Js.boolean = "" [@@bs.send];
-let isFocused = Js.to_bool << _isFocused;
+let isFocused = Utils.(Js.to_bool << _isFocused);
 
 external clear: ReactRe.reactRef => unit = "" [@@bs.send];
 
@@ -81,17 +78,17 @@ let createElement
     ::spellCheck=? =>
   ReactRe.wrapPropsShamelessly
     view
-    {
+     Js.Undefined.({
       "accessibleLeft": from_opt accessibleLeft,
-      "accessible": from_opt (option_map to_js_boolean accessible),
+      "accessible": from_opt (Utils.optBoolToOptJsBoolean accessible),
       "hitSlop": from_opt hitSlop,
       "onAccessibilityTap": from_opt onAccessibilityTap,
       "onLayout": from_opt onLayout,
       "onMagicTap": from_opt onMagicTap,
       "onMoveShouldSetResponder":
-        from_opt (option_map ((<<) to_js_boolean) onMoveShouldSetResponder),
+        from_opt (Utils.option_map (fun g x => (Js.Boolean.to_js_boolean (g x))) onMoveShouldSetResponder),
       "onMoveShouldSetResponderCapture":
-        from_opt (option_map ((<<) to_js_boolean) onMoveShouldSetResponderCapture),
+        from_opt (Utils.option_map (fun g x => (Js.Boolean.to_js_boolean (g x))) onMoveShouldSetResponderCapture),
       "onResponderGrant": from_opt onResponderGrant,
       "onResponderMove": from_opt onResponderMove,
       "onResponderReject": from_opt onResponderReject,
@@ -99,13 +96,13 @@ let createElement
       "onResponderTerminate": from_opt onResponderTerminate,
       "onResponderTerminationRequest": from_opt onResponderTerminationRequest,
       "onStartShouldSetResponder":
-        from_opt (option_map ((<<) to_js_boolean) onStartShouldSetResponder),
+        from_opt (Utils.option_map (fun g x => (Js.Boolean.to_js_boolean (g x))) onStartShouldSetResponder),
       "onStartShouldSetResponderCapture":
-        from_opt (option_map ((<<) to_js_boolean) onStartShouldSetResponderCapture),
-      "removeClippedSubviews": from_opt (option_map to_js_boolean removeClippedSubviews),
+        from_opt (Utils.option_map (fun g x => (Js.Boolean.to_js_boolean (g x))) onStartShouldSetResponderCapture),
+      "removeClippedSubviews": from_opt (Utils.optBoolToOptJsBoolean removeClippedSubviews),
       "pointerEvents":
         from_opt (
-          option_map
+          Utils.option_map
             (
               fun x =>
                 switch x {
@@ -121,7 +118,7 @@ let createElement
       "testID": from_opt testID,
       "accessibilityComponentType":
         from_opt (
-          option_map
+          Utils.option_map
             (
               fun x =>
                 switch x {
@@ -135,7 +132,7 @@ let createElement
         ),
       "accessibilityLiveRegion":
         from_opt (
-          option_map
+          Utils.option_map
             (
               fun x =>
                 switch x {
@@ -146,10 +143,10 @@ let createElement
             )
             accessibilityLiveRegion
         ),
-      "collapsable": from_opt (option_map to_js_boolean collapsable),
+      "collapsable": from_opt (Utils.optBoolToOptJsBoolean collapsable),
       "importantForAccessibility":
         from_opt (
-          option_map
+          Utils.option_map
             (
               fun prop =>
                 switch prop {
@@ -162,12 +159,12 @@ let createElement
             importantForAccessibility
         ),
       "needsOffscreenAlphaCompositing":
-        from_opt (option_map to_js_boolean needsOffscreenAlphaCompositing),
+        from_opt (Utils.optBoolToOptJsBoolean needsOffscreenAlphaCompositing),
       "renderToHardwareTextureAndroid":
-        from_opt (option_map to_js_boolean renderToHardwareTextureAndroid),
+        from_opt (Utils.optBoolToOptJsBoolean renderToHardwareTextureAndroid),
       "accessibilityTraits":
         from_opt (
-          option_map
+          Utils.option_map
             (
               fun traits => {
                 let to_string =
@@ -194,11 +191,11 @@ let createElement
             )
             accessibilityTraits
         ),
-      "accessibilityViewIsModal": from_opt (option_map to_js_boolean accessibilityViewIsModal),
-      "shouldRasterizeIOS": from_opt (option_map to_js_boolean shouldRasterizeIOS),
+      "accessibilityViewIsModal": from_opt (Utils.optBoolToOptJsBoolean accessibilityViewIsModal),
+      "shouldRasterizeIOS": from_opt (Utils.optBoolToOptJsBoolean shouldRasterizeIOS),
       "autoCapitalize":
         from_opt (
-          option_map
+          Utils.option_map
             (
               fun x =>
                 switch x {
@@ -210,15 +207,15 @@ let createElement
             )
             autoCapitalize
         ),
-      "autoCorrect": from_opt (option_map to_js_boolean autoCorrect),
-      "autoFocus": from_opt (option_map to_js_boolean autoFocus),
-      "blurOnSubmit": from_opt (option_map to_js_boolean blurOnSubmit),
-      "caretHidden": from_opt (option_map to_js_boolean caretHidden),
+      "autoCorrect": from_opt (Utils.optBoolToOptJsBoolean autoCorrect),
+      "autoFocus": from_opt (Utils.optBoolToOptJsBoolean autoFocus),
+      "blurOnSubmit": from_opt (Utils.optBoolToOptJsBoolean blurOnSubmit),
+      "caretHidden": from_opt (Utils.optBoolToOptJsBoolean caretHidden),
       "defaultValue": from_opt defaultValue,
-      "editable": from_opt (option_map to_js_boolean editable),
+      "editable": from_opt (Utils.optBoolToOptJsBoolean editable),
       "keyboardType":
         from_opt (
-          option_map
+          Utils.option_map
             (
               fun x =>
                 switch x {
@@ -239,7 +236,7 @@ let createElement
             keyboardType
         ),
       "maxLength": from_opt maxLength,
-      "multiline": from_opt (option_map to_js_boolean multiline),
+      "multiline": from_opt (Utils.optBoolToOptJsBoolean multiline),
       "onBlur": from_opt onBlur,
       "onChange": from_opt onChange,
       "onChangeText": from_opt onChangeText,
@@ -253,7 +250,7 @@ let createElement
       "placeholderTextColor": from_opt placeholderTextColor,
       "returnKeyType":
         from_opt (
-          option_map
+          Utils.option_map
             (
               fun x =>
                 switch x {
@@ -274,12 +271,12 @@ let createElement
             )
             returnKeyType
         ),
-      "secureTextEntry": from_opt (option_map to_js_boolean secureTextEntry),
-      "selectTextOnFocus": from_opt (option_map to_js_boolean selectTextOnFocus),
+      "secureTextEntry": from_opt (Utils.optBoolToOptJsBoolean secureTextEntry),
+      "selectTextOnFocus": from_opt (Utils.optBoolToOptJsBoolean selectTextOnFocus),
       "selection": from_opt selection,
       "selectionColor": from_opt selectionColor,
       "value": from_opt value,
-      "disableFullscreenUI": from_opt (option_map to_js_boolean disableFullscreenUI),
+      "disableFullscreenUI": from_opt (Utils.optBoolToOptJsBoolean disableFullscreenUI),
       /* TODO */
       "inlineImageLeft": from_opt inlineImageLeft,
       "inlineImagePadding": from_opt inlineImagePadding,
@@ -287,7 +284,7 @@ let createElement
       "returnKeyLabel": from_opt returnKeyLabel,
       "textBreakStrategy":
         from_opt (
-          option_map
+          Utils.option_map
             (
               fun x =>
                 switch x {
@@ -301,7 +298,7 @@ let createElement
       "underlineColorAndroid": from_opt underlineColorAndroid,
       "clearButtonMode":
         from_opt (
-          option_map
+          Utils.option_map
             (
               fun x =>
                 switch x {
@@ -313,10 +310,10 @@ let createElement
             )
             clearButtonMode
         ),
-      "clearTextOnFocus": from_opt (option_map to_js_boolean clearTextOnFocus),
+      "clearTextOnFocus": from_opt (Utils.optBoolToOptJsBoolean clearTextOnFocus),
       "dataDetectorTypes":
         from_opt (
-          option_map
+          Utils.option_map
             (
               Array.map (
                 fun x =>
@@ -332,10 +329,10 @@ let createElement
             dataDetectorTypes
         ),
       "enablesReturnKeyAutomatically":
-        from_opt (option_map to_js_boolean enablesReturnKeyAutomatically),
+        from_opt (Utils.optBoolToOptJsBoolean enablesReturnKeyAutomatically),
       "keyboardAppearance":
         from_opt (
-          option_map
+          Utils.option_map
             (
               fun x =>
                 switch x {
@@ -348,5 +345,5 @@ let createElement
         ),
       "onKeyPress": from_opt onKeyPress,
       "selectionState": from_opt selectionState,
-      "spellCheck": from_opt (option_map to_js_boolean spellCheck)
-    };
+      "spellCheck": from_opt (Utils.optBoolToOptJsBoolean spellCheck)
+    });
