@@ -6,10 +6,10 @@ let style: list style => t;
 
 let combine: t => t => t;
 
+
 /**
  * Layout Props
  */
-
 let alignContent:
   [ | `flexStart | `flexEnd | `center | `stretch | `spaceAround | `spaceBetween] => style;
 
@@ -37,6 +37,8 @@ let flex: float => style;
 
 let flexBasis: int => style;
 
+let flexBasisPct: float => style;
+
 let flexDirection: [ | `row | `rowReverse | `column | `columnReverse] => style;
 
 let flexGrow: float => style;
@@ -46,6 +48,8 @@ let flexShrink: float => style;
 let flexWrap: [ | `wrap | `nowrap] => style;
 
 let height: int => style;
+
+let heightPct: float => style;
 
 let justifyContent:
   [ | `flexStart | `flexEnd | `center | `stretch | `spaceAround | `spaceBetween] => style;
@@ -68,11 +72,19 @@ let marginVertical: int => style;
 
 let maxHeight: int => style;
 
+let maxHeightPct: float => style;
+
 let maxWidth: int => style;
+
+let maxWidthPct: float => style;
 
 let minHeight: int => style;
 
+let minHeightPct: float => style;
+
 let minWidth: int => style;
+
+let minWidthPct: float => style;
 
 let overflow: [ | `visible | `hidden | `scroll] => style;
 
@@ -97,6 +109,8 @@ let right: int => style;
 let top: int => style;
 
 let width: int => style;
+
+let widthPct: float => style;
 
 let zIndex: int => style;
 

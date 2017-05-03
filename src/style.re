@@ -28,6 +28,8 @@ let intStyle key value => IntStyle key value;
 
 let floatStyle key value => FloatStyle key value;
 
+let pctStyle key value => StringStyle key (string_of_float value ^ "%");
+
 let objectStyle key value => ObjectStyle key value;
 
 let encodeStyle =
@@ -113,6 +115,8 @@ let flex = floatStyle "flex";
 
 let flexBasis = intStyle "flexBasis";
 
+let flexBasisPct = pctStyle "flexBasis";
+
 let flexDirection v =>
   stringStyle
     "flexDirection"
@@ -140,6 +144,8 @@ let flexWrap v =>
     );
 
 let height = intStyle "height";
+
+let heightPct = pctStyle "height";
 
 let justifyContent v =>
   stringStyle
@@ -173,11 +179,19 @@ let marginVertical = intStyle "marginVertical";
 
 let maxHeight = intStyle "maxHeight";
 
+let maxHeightPct = pctStyle "maxHeight";
+
 let maxWidth = intStyle "maxHeight";
 
-let minHeight = intStyle "maxHeight";
+let maxWidthPct = pctStyle "maxHeight";
 
-let minWidth = intStyle "maxWidth";
+let minHeight = intStyle "minHeight";
+
+let minHeightPct = pctStyle "minHeight";
+
+let minWidth = intStyle "minWidth";
+
+let minWidthPct = pctStyle "minWidth";
 
 let overflow v =>
   stringStyle
@@ -219,6 +233,8 @@ let right = intStyle "right";
 let top = intStyle "top";
 
 let width = intStyle "width";
+
+let widthPct = pctStyle "width";
 
 let zIndex = intStyle "zIndex";
 
