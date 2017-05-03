@@ -2,6 +2,8 @@
 
 **WIP**
 
+The bindings are targeted to React Native 0.44.
+
 Contributions of Components and APIs are very welcomed!
 
 ## Status
