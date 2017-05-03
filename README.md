@@ -55,7 +55,7 @@ Contributions of Components and APIs are very welcomed!
 - [ ] Animated
 - [x] AppRegistry
 - [ ] AppState
-- [ ] AsyncStorage
+- [x] AsyncStorage
 - [ ] BackAndroid
 - [ ] CameraRoll
 - [ ] Clipboard
