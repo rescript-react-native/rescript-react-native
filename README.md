@@ -56,7 +56,7 @@ Contributions of Components and APIs are very welcomed!
 - [x] AppRegistry
 - [x] AppState
 - [x] AsyncStorage
-- [ ] BackAndroid
+- [x] BackHandler
 - [ ] CameraRoll
 - [ ] Clipboard
 - [ ] DatePickerAndroid

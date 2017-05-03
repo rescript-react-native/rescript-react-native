@@ -19,6 +19,7 @@ module Image = ImageRe;
 module AppRegistry = AppRegistryRe;
 module AppState = AppStateRe;
 module AsyncStorage = AsyncStorageRe;
+module BackHandler = BackHandlerRe;
 module StyleSheet = StyleSheetRe;
 
 
