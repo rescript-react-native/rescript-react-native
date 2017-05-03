@@ -54,7 +54,7 @@ Contributions of Components and APIs are very welcomed!
 - [ ] AlertIOS
 - [ ] Animated
 - [x] AppRegistry
-- [ ] AppState
+- [x] AppState
 - [x] AsyncStorage
 - [ ] BackAndroid
 - [ ] CameraRoll

@@ -17,6 +17,7 @@ module Image = ImageRe;
 
 /* APIs */
 module AppRegistry = AppRegistryRe;
+module AppState = AppStateRe;
 module AsyncStorage = AsyncStorageRe;
 module StyleSheet = StyleSheetRe;
 
