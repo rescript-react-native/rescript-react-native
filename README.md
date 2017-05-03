@@ -85,8 +85,8 @@ Contributions of Components and APIs are very welcomed!
 - [ ] ToastAndroid
 - [ ] Vibration
 - [ ] VibrationIOS
-- [ ] Layout Props
-- [ ] Shadow Props
+- [x] Layout Props
+- [x] Shadow Props
 
 
 
