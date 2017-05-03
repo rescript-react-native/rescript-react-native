@@ -2,3 +2,4 @@ node_modules
 lib/
 .merlin
 .vscode
+yarn.lock
