@@ -53,7 +53,7 @@ Contributions of Components and APIs are very welcomed!
 - [ ] ActionSheetIOS
 - [ ] AdSupportIOS
 - [x] Alert
-- [ ] AlertIOS
+- [x] AlertIOS
 - [ ] Animated
 - [x] AppRegistry
 - [x] AppState
