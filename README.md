@@ -54,7 +54,7 @@ Contributions of Components and APIs are very welcomed!
 - [ ] AdSupportIOS
 - [x] Alert
 - [x] AlertIOS
-- [ ] Animated
+- [x] Animated
 - [x] AppRegistry
 - [x] AppState
 - [x] AsyncStorage
