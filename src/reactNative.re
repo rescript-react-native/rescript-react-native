@@ -16,6 +16,7 @@ module View = ViewRe;
 module Image = ImageRe;
 
 /* APIs */
+module Alert = AlertRe;
 module AppRegistry = AppRegistryRe;
 module AppState = AppStateRe;
 module AsyncStorage = AsyncStorageRe;

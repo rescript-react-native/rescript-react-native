@@ -52,7 +52,7 @@ Contributions of Components and APIs are very welcomed!
 - [ ] AccessibilityInfo
 - [ ] ActionSheetIOS
 - [ ] AdSupportIOS
-- [ ] Alert
+- [x] Alert
 - [ ] AlertIOS
 - [ ] Animated
 - [x] AppRegistry
