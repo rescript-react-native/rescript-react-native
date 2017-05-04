@@ -77,6 +77,7 @@ Contributions of Components and APIs are very welcomed!
 - [ ] PanResponder
 - [ ] PermissionsAndroid
 - [ ] PixelRatio
+- [x] Platform
 - [ ] PushNotificationIOS
 - [ ] Settings
 - [ ] Share

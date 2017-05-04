@@ -23,6 +23,7 @@ module AppRegistry = AppRegistryRe;
 module AppState = AppStateRe;
 module AsyncStorage = AsyncStorageRe;
 module BackHandler = BackHandlerRe;
+module Platform = PlatformRe;
 module StyleSheet = StyleSheetRe;
 
 
