@@ -1,4 +1,9 @@
 let createElement:
+  animating::bool? =>
+  color::string? =>
+  size::[ | `large | `small]? =>
+  sizeNumber::int? =>
+  hidesWhenStopped::bool? =>
   accessibleLeft::ReactRe.reactElement? =>
   accessible::bool? =>
   hitSlop::Types.insets? =>
@@ -47,11 +52,6 @@ let createElement:
     ]? =>
   accessibilityViewIsModal::bool? =>
   shouldRasterizeIOS::bool? =>
-  animating::bool? =>
-  color::string? =>
-  size::[ | `large | `small]? =>
-  sizeNumber::int? =>
-  hidesWhenStopped::bool? =>
   children::list ReactRe.reactElement =>
   ref::(ReactRe.reactRef => unit)? =>
   key::string? =>

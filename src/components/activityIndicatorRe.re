@@ -1,6 +1,11 @@
 external view : ReactRe.reactClass = "ActivityIndicator" [@@bs.module "react-native"];
 
 let createElement
+    ::animating=?
+    ::color=?
+    ::size=?
+    ::sizeNumber=?
+    ::hidesWhenStopped=?
     ::accessibleLeft=?
     ::accessible=?
     ::hitSlop=?
@@ -29,12 +34,7 @@ let createElement
     ::renderToHardwareTextureAndroid=?
     ::accessibilityTraits=?
     ::accessibilityViewIsModal=?
-    ::shouldRasterizeIOS=?
-    ::animating=?
-    ::color=?
-    ::size=?
-    ::sizeNumber=?
-    ::hidesWhenStopped=? =>
+    ::shouldRasterizeIOS=? =>
   ReactRe.wrapPropsShamelessly
     view
     (
