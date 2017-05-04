@@ -1,4 +1,14 @@
-module type ViewComponent = {
+module View: ViewRe.ViewComponent;
+
+module Image: ImageRe.ImageComponent;
+
+module Text: TextRe.TextComponent;
+
+module ScrollView: {
+  let onScrollUpdater: x::'a? => y::'b? => native::bool? => unit => unit;
+  type point = {x: float, y: float};
+  let scrollTo: ReactRe.reactRef => x::int => y::int => animated::bool => unit;
+  let scrollToEnd: ReactRe.reactRef => animated::bool => unit;
   let createElement:
     accessibleLeft::ReactRe.reactElement? =>
     accessible::bool? =>
@@ -49,15 +59,42 @@ module type ViewComponent = {
       ]? =>
     accessibilityViewIsModal::bool? =>
     shouldRasterizeIOS::bool? =>
+    contentContainerStyle::Style.t? =>
+    horizontal::bool? =>
+    keyboardDismissMode::[ | `interactive | `none | `onDrag]? =>
+    keyboardShouldPersistTaps::[ | `always | `handled | `never]? =>
+    onContentSizeChange::((float, float) => unit)? =>
+    onScroll::(unit => unit)? =>
+    pagingEnabled::bool? =>
+    refreshControl::ReactRe.reactElement? =>
+    scrollEnabled::bool? =>
+    showsHorizontalScrollIndicator::bool? =>
+    showsVerticalScrollIndicator::bool? =>
+    stickyHeaderIndices::list int? =>
+    overScrollMode::[ | `always | `auto | `never]? =>
+    scrollPerfTag::string? =>
+    alwaysBounceHorizontal::bool? =>
+    alwaysBounceVertical::bool? =>
+    automaticallyAdjustContentInsets::bool? =>
+    bounces::bool? =>
+    canCancelContentTouches::bool? =>
+    centerContent::bool? =>
+    contentInset::Types.insets? =>
+    contentOffset::point? =>
+    decelerationRate::[ | `fast | `normal]? =>
+    directionalLockEnabled::bool? =>
+    indicatorStyle::[ | `black | `default | `white]? =>
+    maximumZoomScale::float? =>
+    mimimumZoomScale::float? =>
+    onScrollAnimationEnd::(unit => unit)? =>
+    scrollEventThrottle::int? =>
+    scrollIndicatorInsets::Types.insets? =>
+    scrollsToTop::bool? =>
+    snapToAlignment::[ | `center | `end_ | `start]? =>
+    zoomScale::float? =>
     children::list ReactRe.reactElement =>
     ref::(ReactRe.reactRef => unit)? =>
     key::string? =>
     unit =>
     ReactRe.reactElement;
 };
-
-module type Impl = {let view: ReactRe.reactClass;};
-
-module CreateComponent: (Impl: Impl) => ViewComponent;
-
-module View: ViewComponent;

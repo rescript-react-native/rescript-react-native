@@ -1,10 +1,27 @@
-external view : ReactRe.reactClass = "ActivityIndicator" [@@bs.module "react-native"];
+external view : ReactRe.reactClass = "Picker" [@@bs.module "react-native"];
+
+module Item = {
+  external item : ReactRe.reactClass = "Item" [@@bs.scope "Picker"] [@@bs.module "react-native"];
+  let createElement ::color=? ::label=? ::value=? ::testID=? =>
+    ReactRe.wrapPropsShamelessly
+      item
+      Js.Undefined.(
+        {
+          "label": from_opt label,
+          "value": from_opt value,
+          "color": from_opt color,
+          "testID": from_opt testID
+        }
+      );
+};
 
 let createElement
-    ::animating=?
-    ::color=?
-    ::size=?
-    ::hidesWhenStopped=?
+    ::onValueChange=?
+    ::selectedValue=?
+    ::enabled=?
+    ::mode=?
+    ::prompt=?
+    ::itemStyle=?
     ::accessibleLeft=?
     ::accessible=?
     ::hitSlop=?
@@ -40,22 +57,23 @@ let createElement
       Props.extendView
         Js.Undefined.(
           {
-            "animating": from_opt (Utils.optBoolToOptJsBoolean animating),
-            "color": from_opt color,
-            "size":
+            "enabled": from_opt (Utils.optBoolToOptJsBoolean enabled),
+            "onValueChange": from_opt onValueChange,
+            "selectedValue": from_opt selectedValue,
+            "itemStyle": from_opt itemStyle,
+            "prompt": from_opt prompt,
+            "mode":
               from_opt (
                 Utils.option_map
                   (
-                    fun size =>
-                      switch size {
-                      | `small => Encode.string "small"
-                      | `large => Encode.string "large"
-                      | `exact x => Encode.int x
+                    fun x =>
+                      switch x {
+                      | `dialog => "dialog"
+                      | `dropdown => "dropdown"
                       }
                   )
-                  size
-              ),
-            "hidesWhenStopped": from_opt (Utils.optBoolToOptJsBoolean hidesWhenStopped)
+                  mode
+              )
           }
         )
         ::accessibleLeft

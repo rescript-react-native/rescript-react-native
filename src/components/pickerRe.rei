@@ -1,8 +1,26 @@
+
+module Item: {
+  let createElement:
+    color::string? =>
+    label::string? =>
+    value::'value? =>
+    testID::string? =>
+    children::list ReactRe.reactElement =>
+    ref::(ReactRe.reactRef => unit)? =>
+    key::string? =>
+    unit =>
+    ReactRe.reactElement;
+};
+
+
+
 let createElement:
-  animating::bool? =>
-  color::string? =>
-  size::[ | `large | `small | `exact int]? =>
-  hidesWhenStopped::bool? =>
+  onValueChange::('value => unit)? =>
+  selectedValue::'value? =>
+  enabled::bool? =>
+  mode::[ | `dialog | `dropdown]? =>
+  prompt::string? =>
+  itemStyle::Style.t? =>
   accessibleLeft::ReactRe.reactElement? =>
   accessible::bool? =>
   hitSlop::Types.insets? =>
