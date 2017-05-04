@@ -59,71 +59,72 @@ module type ViewComponent = {
 module type Impl = {let view: ReactRe.reactClass;};
 
 module CreateComponent (Impl: Impl) :ViewComponent => {
-let createElement
-::accessibleLeft=?
-::accessible=?
-::hitSlop=?
-::onAccessibilityTap=?
-::onLayout=?
-::onMagicTap=?
-::onMoveShouldSetResponder=?
-::onMoveShouldSetResponderCapture=?
-::onResponderGrant=?
-::onResponderMove=?
-::onResponderReject=?
-::onResponderRelease=?
-::onResponderTerminate=?
-::onResponderTerminationRequest=?
-::onStartShouldSetResponder=?
-::onStartShouldSetResponderCapture=?
-::pointerEvents=?
-::removeClippedSubviews=?
-::style=?
-::testID=?
-::accessibilityComponentType=?
-::accessibilityLiveRegion=?
-::collapsable=?
-::importantForAccessibility=?
-::needsOffscreenAlphaCompositing=?
-::renderToHardwareTextureAndroid=?
-::accessibilityTraits=?
-::accessibilityViewIsModal=?
-::shouldRasterizeIOS=? =>
-ReactRe.wrapPropsShamelessly
-Impl.view
-(
-Props.extendView
-::accessibleLeft
-::accessible
-::hitSlop
-::onAccessibilityTap
-::onLayout
-::onMagicTap
-::onMoveShouldSetResponder
-::onMoveShouldSetResponderCapture
-::onResponderGrant
-::onResponderMove
-::onResponderReject
-::onResponderRelease
-::onResponderTerminate
-::onResponderTerminationRequest
-::onStartShouldSetResponder
-::onStartShouldSetResponderCapture
-::pointerEvents
-::removeClippedSubviews
-::style
-::testID
-::accessibilityComponentType
-::accessibilityLiveRegion
-::collapsable
-::importantForAccessibility
-::needsOffscreenAlphaCompositing
-::renderToHardwareTextureAndroid
-::accessibilityTraits
-::accessibilityViewIsModal
-::shouldRasterizeIOS
-(Js.Obj.empty ())
-);};
+  let createElement
+      ::accessibleLeft=?
+      ::accessible=?
+      ::hitSlop=?
+      ::onAccessibilityTap=?
+      ::onLayout=?
+      ::onMagicTap=?
+      ::onMoveShouldSetResponder=?
+      ::onMoveShouldSetResponderCapture=?
+      ::onResponderGrant=?
+      ::onResponderMove=?
+      ::onResponderReject=?
+      ::onResponderRelease=?
+      ::onResponderTerminate=?
+      ::onResponderTerminationRequest=?
+      ::onStartShouldSetResponder=?
+      ::onStartShouldSetResponderCapture=?
+      ::pointerEvents=?
+      ::removeClippedSubviews=?
+      ::style=?
+      ::testID=?
+      ::accessibilityComponentType=?
+      ::accessibilityLiveRegion=?
+      ::collapsable=?
+      ::importantForAccessibility=?
+      ::needsOffscreenAlphaCompositing=?
+      ::renderToHardwareTextureAndroid=?
+      ::accessibilityTraits=?
+      ::accessibilityViewIsModal=?
+      ::shouldRasterizeIOS=? =>
+    ReactRe.wrapPropsShamelessly
+      Impl.view
+      (
+        Props.extendView
+          ::accessibleLeft
+          ::accessible
+          ::hitSlop
+          ::onAccessibilityTap
+          ::onLayout
+          ::onMagicTap
+          ::onMoveShouldSetResponder
+          ::onMoveShouldSetResponderCapture
+          ::onResponderGrant
+          ::onResponderMove
+          ::onResponderReject
+          ::onResponderRelease
+          ::onResponderTerminate
+          ::onResponderTerminationRequest
+          ::onStartShouldSetResponder
+          ::onStartShouldSetResponderCapture
+          ::pointerEvents
+          ::removeClippedSubviews
+          ::style
+          ::testID
+          ::accessibilityComponentType
+          ::accessibilityLiveRegion
+          ::collapsable
+          ::importantForAccessibility
+          ::needsOffscreenAlphaCompositing
+          ::renderToHardwareTextureAndroid
+          ::accessibilityTraits
+          ::accessibilityViewIsModal
+          ::shouldRasterizeIOS
+          (Js.Obj.empty ())
+      );
+};
 
 module View =
   CreateComponent {

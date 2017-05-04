@@ -35,8 +35,8 @@ module Decay (Val: Value) => {
       {
         "velocity": velocity,
         "deceleration": from_opt deceleration,
-        "isInteraction": from_opt (Utils.option_map Js.Boolean.to_js_boolean isInteraction),
-        "useNativeDriver": from_opt (Utils.option_map Js.Boolean.to_js_boolean useNativeDriver),
+        "isInteraction": from_opt (Utils.optBoolToOptJsBoolean isInteraction),
+        "useNativeDriver": from_opt (Utils.optBoolToOptJsBoolean useNativeDriver),
         "onComplete": from_opt onComplete,
         "iterations": from_opt iterations
       }
@@ -197,10 +197,10 @@ module Interpolation = {
       | `string (x: list string) => outputRangeCreate (Array.of_list x)
       | `float (x: list float) => outputRangeCreate (Array.of_list x)
       },
-    "easing": Utils.from_opt easing,
-    "extrapolate": Utils.from_opt (Utils.option_map extrapolateString extrapolate),
-    "extrapolateRight": Utils.from_opt (Utils.option_map extrapolateString extrapolateRight),
-    "extrapolateLeft": Utils.from_opt (Utils.option_map extrapolateString extrapolateLeft)
+    "easing": Js.Undefined.from_opt easing,
+    "extrapolate": Js.Undefined.from_opt (Utils.option_map extrapolateString extrapolate),
+    "extrapolateRight": Js.Undefined.from_opt (Utils.option_map extrapolateString extrapolateRight),
+    "extrapolateLeft": Js.Undefined.from_opt (Utils.option_map extrapolateString extrapolateLeft)
   };
   external interpolate : t => config => t = "interpolate" [@@bs.send];
 };

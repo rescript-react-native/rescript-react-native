@@ -102,74 +102,76 @@ module CreateComponent (Impl: ViewRe.Impl) :ImageComponent => {
       ::onProgress=? =>
     ReactRe.wrapPropsShamelessly
       Impl.view
-      Js.Undefined.({
-        "onLayout": from_opt onLayout,
-        "onError": from_opt onError,
-        "onLoad": from_opt onLoad,
-        "onLoadEnd": from_opt onLoadEnd,
-        "onLoadStart": from_opt onLoadStart,
-        "resizeMode":
-          from_opt (
-            Utils.option_map
-              (
-                fun x =>
-                  switch x {
-                  | `cover => "cover"
-                  | `contain => "contain"
-                  | `stretch => "stretch"
-                  | `repeat => "repeat"
-                  | `center => "center"
-                  }
-              )
-              resizeMode
-          ),
-        "source":
-          from_opt (
-            Utils.option_map
-              (
-                fun (x: imageSource) =>
-                  switch x {
-                  | URI x => rawImageSourceJS x
-                  | Required x => rawImageSourceJS x
-                  | Multiple x => rawImageSourceJS (Array.of_list x)
-                  }
-              )
-              source
-          ),
-        "style": from_opt style,
-        "testID": from_opt testID,
-        "resizeMethod":
-          from_opt (
-            Utils.option_map
-              (
-                fun x =>
-                  switch x {
-                  | `auto => "auto"
-                  | `resize => "resize"
-                  | `scale => "scale"
-                  }
-              )
-              resizeMethod
-          ),
-        "accessibilityLabel": from_opt accessibilityLabel,
-        "accessible": from_opt (Utils.optBoolToOptJsBoolean accessible),
-        "blurRadius": from_opt blurRadius,
-        "capInsets": from_opt capInsets,
-        "defaultSource":
-          from_opt (
-            Utils.option_map
-              (
-                fun (x: defaultSource) =>
-                  switch x {
-                  | URI x => rawImageSourceJS x
-                  | Required x => rawImageSourceJS x
-                  }
-              )
-              defaultSource
-          ),
-        "onPartialLoad": from_opt onPartialLoad,
-        "onProgress": from_opt (Utils.option_map (fun x y => x (Event.progress y)) onProgress)
-      });
+      Js.Undefined.(
+        {
+          "onLayout": from_opt onLayout,
+          "onError": from_opt onError,
+          "onLoad": from_opt onLoad,
+          "onLoadEnd": from_opt onLoadEnd,
+          "onLoadStart": from_opt onLoadStart,
+          "resizeMode":
+            from_opt (
+              Utils.option_map
+                (
+                  fun x =>
+                    switch x {
+                    | `cover => "cover"
+                    | `contain => "contain"
+                    | `stretch => "stretch"
+                    | `repeat => "repeat"
+                    | `center => "center"
+                    }
+                )
+                resizeMode
+            ),
+          "source":
+            from_opt (
+              Utils.option_map
+                (
+                  fun (x: imageSource) =>
+                    switch x {
+                    | URI x => rawImageSourceJS x
+                    | Required x => rawImageSourceJS x
+                    | Multiple x => rawImageSourceJS (Array.of_list x)
+                    }
+                )
+                source
+            ),
+          "style": from_opt style,
+          "testID": from_opt testID,
+          "resizeMethod":
+            from_opt (
+              Utils.option_map
+                (
+                  fun x =>
+                    switch x {
+                    | `auto => "auto"
+                    | `resize => "resize"
+                    | `scale => "scale"
+                    }
+                )
+                resizeMethod
+            ),
+          "accessibilityLabel": from_opt accessibilityLabel,
+          "accessible": from_opt (Utils.optBoolToOptJsBoolean accessible),
+          "blurRadius": from_opt blurRadius,
+          "capInsets": from_opt capInsets,
+          "defaultSource":
+            from_opt (
+              Utils.option_map
+                (
+                  fun (x: defaultSource) =>
+                    switch x {
+                    | URI x => rawImageSourceJS x
+                    | Required x => rawImageSourceJS x
+                    }
+                )
+                defaultSource
+            ),
+          "onPartialLoad": from_opt onPartialLoad,
+          "onProgress": from_opt (Utils.option_map (fun x y => x (Event.progress y)) onProgress)
+        }
+      );
 };
 
 module Image =
