@@ -10,7 +10,8 @@ type style =
   | StringStyle string string
   | IntStyle string int
   | FloatStyle string float
-  | ObjectStyle string (Js.Dict.t Js.Json.t);
+  | ObjectStyle string (Js.Dict.t Js.Json.t)
+  | AnimatedStyle string AnimatedRe.Value.t;
 
 let combine a b => {
   let entries =
@@ -32,6 +33,8 @@ let pctStyle key value => StringStyle key (string_of_float value ^ "%");
 
 let objectStyle key value => ObjectStyle key value;
 
+let animatedStyle key value => AnimatedStyle key value;
+
 let encodeStyle =
   fun
   | ArrayStyle key value => (key, Utils.Encode.array value)
@@ -39,7 +42,8 @@ let encodeStyle =
   | IntStyle key value => (key, Utils.Encode.int value)
   | FloatStyle key value => (key, Utils.Encode.float value)
   | StringStyle key value => (key, Utils.Encode.string value)
-  | ObjectStyle key value => (key, Utils.Encode.object_ value);
+  | ObjectStyle key value => (key, Utils.Encode.object_ value)
+  | AnimatedStyle key value => (key, Utils.Encode.animatedValue value);
 
 let style sarr => sarr |> List.map encodeStyle |> Utils.dictFromList |> to_style;
 
@@ -147,6 +151,8 @@ let height = intStyle "height";
 
 let heightPct = pctStyle "height";
 
+let heightAnimated = animatedStyle "height"; 
+
 let justifyContent v =>
   stringStyle
     "justifyContent"
@@ -235,6 +241,8 @@ let top = intStyle "top";
 let width = intStyle "width";
 
 let widthPct = pctStyle "width";
+
+let widthAnimated = animatedStyle "width";
 
 let zIndex = intStyle "zIndex";
 

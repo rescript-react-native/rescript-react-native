@@ -83,4 +83,5 @@ module Encode = {
       " [object_ dict] makes a JSON objet of the [Js.Dict.t] [dict] "
     ]; /* [object_ dict] makes a JSON objet of the [Js.Dict.t] [dict] */
   external array : array Js.Json.t => Js.Json.t = "%identity";
+  external animatedValue : AnimatedRe.Value.t => Js.Json.t = "%identity";
 };
