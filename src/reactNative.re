@@ -15,6 +15,7 @@ module TouchableOpacity = TouchableOpacityRe;
 module TouchableWithoutFeedback = TouchableWithoutFeedbackRe;
 module View = ViewRe;
 module Image = ImageRe;
+module Animated = AnimatedRe;
 
 /* APIs */
 module Alert = AlertRe;
