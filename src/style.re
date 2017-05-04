@@ -10,7 +10,8 @@ type style =
   | StringStyle string string
   | IntStyle string int
   | FloatStyle string float
-  | ObjectStyle string (Js.Dict.t Js.Json.t);
+  | ObjectStyle string (Js.Dict.t Js.Json.t)
+  | AnimatedStyle string AnimatedRe.Value.t;
 
 let combine a b => {
   let entries =
@@ -32,14 +33,17 @@ let pctStyle key value => StringStyle key (string_of_float value ^ "%");
 
 let objectStyle key value => ObjectStyle key value;
 
+let animatedStyle key value => AnimatedStyle key value;
+
 let encodeStyle =
   fun
-  | ArrayStyle key value => (key, Utils.Encode.array value)
-  | BooleanStyle key value => (key, Utils.Encode.boolean (Js.Boolean.to_js_boolean value))
-  | IntStyle key value => (key, Utils.Encode.int value)
-  | FloatStyle key value => (key, Utils.Encode.float value)
-  | StringStyle key value => (key, Utils.Encode.string value)
-  | ObjectStyle key value => (key, Utils.Encode.object_ value);
+  | ArrayStyle key value => (key, Encode.array value)
+  | BooleanStyle key value => (key, Encode.boolean (Js.Boolean.to_js_boolean value))
+  | IntStyle key value => (key, Encode.int value)
+  | FloatStyle key value => (key, Encode.float value)
+  | StringStyle key value => (key, Encode.string value)
+  | ObjectStyle key value => (key, Encode.object_ value)
+  | AnimatedStyle key value => (key, Encode.animatedValue value);
 
 let style sarr => sarr |> List.map encodeStyle |> Utils.dictFromList |> to_style;
 
@@ -147,6 +151,8 @@ let height = intStyle "height";
 
 let heightPct = pctStyle "height";
 
+let heightAnimated = animatedStyle "height"; 
+
 let justifyContent v =>
   stringStyle
     "justifyContent"
@@ -236,6 +242,8 @@ let width = intStyle "width";
 
 let widthPct = pctStyle "width";
 
+let widthAnimated = animatedStyle "width";
+
 let zIndex = intStyle "zIndex";
 
 let direction v =>
@@ -256,7 +264,7 @@ let direction v =>
 let shadowColor = stringStyle "shadowColor";
 
 let shadowOffset ::height ::width =>
-  Utils.dictFromArray [|("height", Utils.Encode.int height), ("width", Utils.Encode.int width)|] |>
+  Utils.dictFromArray [|("height", Encode.int height), ("width", Encode.int width)|] |>
   objectStyle "shadowOffset";
 
 let shadowOpacity = floatStyle "shadowOpacity";
@@ -281,17 +289,17 @@ let transform
     ::skewY=?
     () => {
   let opt_values = [
-    ("perspective", Utils.option_map Utils.Encode.float perspective),
-    ("rotate", Utils.option_map Utils.Encode.string rotate),
-    ("rotateX", Utils.option_map Utils.Encode.string rotateX),
-    ("rotateY", Utils.option_map Utils.Encode.string rotateY),
-    ("rotateZ", Utils.option_map Utils.Encode.string rotateZ),
-    ("scaleX", Utils.option_map Utils.Encode.float scaleX),
-    ("scaleY", Utils.option_map Utils.Encode.float scaleY),
-    ("translateX", Utils.option_map Utils.Encode.float translateX),
-    ("translateY", Utils.option_map Utils.Encode.float translateY),
-    ("skewX", Utils.option_map Utils.Encode.float skewX),
-    ("skewY", Utils.option_map Utils.Encode.float skewY)
+    ("perspective", Utils.option_map Encode.float perspective),
+    ("rotate", Utils.option_map Encode.string rotate),
+    ("rotateX", Utils.option_map Encode.string rotateX),
+    ("rotateY", Utils.option_map Encode.string rotateY),
+    ("rotateZ", Utils.option_map Encode.string rotateZ),
+    ("scaleX", Utils.option_map Encode.float scaleX),
+    ("scaleY", Utils.option_map Encode.float scaleY),
+    ("translateX", Utils.option_map Encode.float translateX),
+    ("translateY", Utils.option_map Encode.float translateY),
+    ("skewX", Utils.option_map Encode.float skewX),
+    ("skewY", Utils.option_map Encode.float skewY)
   ];
   let values =
     List.fold_right
@@ -299,7 +307,7 @@ let transform
         fun x acc =>
           switch x {
           | (key, Some value) =>
-            let val_ = Utils.dictFromArray [|(key, value)|] |> Utils.Encode.object_;
+            let val_ = Utils.dictFromArray [|(key, value)|] |> Encode.object_;
             [val_, ...acc]
           | _ => acc
           }
@@ -427,7 +435,7 @@ let textDecorationLine v =>
 let textShadowColor = stringStyle "string";
 
 let textShadowOffset ::height ::width =>
-  Utils.dictFromArray [|("height", Utils.Encode.int height), ("width", Utils.Encode.int width)|] |>
+  Utils.dictFromArray [|("height", Encode.int height), ("width", Encode.int width)|] |>
   objectStyle "textShadowOffset";
 
 let textShadowRadius = intStyle "textShadowRadius";
@@ -447,7 +455,7 @@ let textAlignVertical v =>
     );
 
 let fontVariant fontVariants =>
-  fontVariants |> Array.of_list |> Array.map Utils.Encode.string |> arrayStyle "fontVariant";
+  fontVariants |> Array.of_list |> Array.map Encode.string |> arrayStyle "fontVariant";
 
 let letterSpacing = floatStyle "letterSpacing";
 
