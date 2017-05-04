@@ -75,7 +75,7 @@ module CreateComponent (Impl: ViewRe.Impl) :ImageComponent => {
     | URI defaultURISource
     | Required PackagerRe.required;
   type rawImageSourceJS;
-  external rawImageSourceJS : 'a => rawImageSourceJS = "";
+  external rawImageSourceJS : 'a => rawImageSourceJS = "%identity";
   module Event = {
     type t;
     type error;
