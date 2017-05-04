@@ -57,4 +57,3 @@ let createElement:
   key::string? =>
   unit =>
   ReactRe.reactElement;
-
