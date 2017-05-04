@@ -9,7 +9,7 @@ Contributions of Components and APIs are very welcomed!
 ## Status
 
 **Components**
-- [ ] ActivityIndicator
+- [x] ActivityIndicator
 - [x] Button
 - [ ] DatePickerIOS
 - [ ] DrawerLayoutAndroid

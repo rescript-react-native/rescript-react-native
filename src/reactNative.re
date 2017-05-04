@@ -2,7 +2,7 @@
 module Packager = PackagerRe;
 
 /* Components */
-
+module ActivityIndicator = ActivityIndicatorRe;
 module Button = ButtonRe;
 module FlatList = FlatListRe;
 module Modal = ModalRe;
