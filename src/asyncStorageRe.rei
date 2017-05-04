@@ -1,29 +1,37 @@
-let getItem: string => Js.Promise.t (option string);
+type error;
 
-external setItem : string => Js.Promise.t unit =
-  "" [@@bs.scope "AsyncStorage"] [@@bs.module "react-native"];
+let getItem:
+  string =>
+  callback::(option error => option string => unit)? =>
+  unit =>
+  Js.Promise.t (option string);
 
-external removeItem : string => Js.Promise.t unit =
-  "" [@@bs.scope "AsyncStorage"] [@@bs.module "react-native"];
+let setItem: string => string => callback::(option error => unit)? => unit => Js.Promise.t unit;
 
-external mergeItem : string => string => Js.Promise.t unit =
-  "" [@@bs.scope "AsyncStorage"] [@@bs.module "react-native"];
+let removeItem: string => callback::(option error => unit)? => unit => Js.Promise.t unit;
 
-let getAllKeys: unit => Js.Promise.t (option (array string));
+let mergeItem: string => string => callback::(option error => unit)? => unit => Js.Promise.t unit;
 
-external clear : unit => Js.Promise.t unit =
-  "" [@@bs.scope "AsyncStorage"] [@@bs.module "react-native"];
+let clear: callback::(option error => unit)? => unit => Js.Promise.t unit;
 
-external flushGetRequests : unit => unit =
-  "" [@@bs.scope "AsyncStorage"] [@@bs.module "react-native"];
+let getAllKeys:
+  callback::(option error => option (array string) => unit)? =>
+  unit =>
+  Js.Promise.t (option (array string));
 
-let multiGet: array string => Js.Promise.t (option (array (array string)));
+external flushGetRequests : unit => unit = "" "BS-EXTERNAL";
 
-external multiSet : array string => Js.Promise.t unit =
-  "" [@@bs.scope "AsyncStorage"] [@@bs.module "react-native"];
+let multiGet:
+  array string =>
+  callback::(option (array error) => option (array (array string)) => unit)? =>
+  unit =>
+  Js.Promise.t (option (array (array string)));
 
-external multiRemove : array string => Js.Promise.t unit =
-  "" [@@bs.scope "AsyncStorage"] [@@bs.module "react-native"];
+let multiSet:
+  array (string, string) => callback::(option (array error) => unit)? => unit => Js.Promise.t unit;
 
-external multiMerge : array (array string) => Js.Promise.t unit =
-  "" [@@bs.scope "AsyncStorage"] [@@bs.module "react-native"];
+let multiRemove:
+  array string => callback::(option (array error) => unit)? => unit => Js.Promise.t unit;
+
+let multiMerge:
+  array (string, string) => callback::(option (array error) => unit)? => unit => Js.Promise.t unit;
