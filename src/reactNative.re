@@ -16,6 +16,10 @@ module TouchableWithoutFeedback = TouchableWithoutFeedbackRe;
 module View = ViewRe;
 module Image = ImageRe;
 module Animated = AnimatedRe;
+module AnimatedView = AnimatedComponentsRe.View;
+module AnimatedText = AnimatedComponentsRe.Text;
+module AnimatedScrollView = AnimatedComponentsRe.ScrollView;
+module AnimatedImage = AnimatedComponentsRe.Image;
 
 /* APIs */
 module Alert = AlertRe;

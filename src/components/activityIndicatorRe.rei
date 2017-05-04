@@ -1,8 +1,7 @@
 let createElement:
   animating::bool? =>
   color::string? =>
-  size::[ | `large | `small]? =>
-  sizeNumber::int? =>
+  size::[ | `large | `small | `exact int]? =>
   hidesWhenStopped::bool? =>
   accessibleLeft::ReactRe.reactElement? =>
   accessible::bool? =>

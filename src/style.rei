@@ -51,6 +51,8 @@ let height: int => style;
 
 let heightPct: float => style;
 
+let heightAnimated: AnimatedRe.Value.t => style;
+
 let justifyContent:
   [ | `flexStart | `flexEnd | `center | `stretch | `spaceAround | `spaceBetween] => style;
 
@@ -111,6 +113,8 @@ let top: int => style;
 let width: int => style;
 
 let widthPct: float => style;
+
+let widthAnimated: AnimatedRe.Value.t => style;
 
 let zIndex: int => style;
 

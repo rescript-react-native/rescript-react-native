@@ -8,9 +8,9 @@ module type Value = {type t; type rawJsType;};
 
 module CompositeAnimation = {
   type t;
-  external start : t => Animation.endCallback => unit = "" [@@bs.send];
+  external start : t => Js.undefined Animation.endCallback => unit = "" [@@bs.send];
   external stop : t => unit = "" [@@bs.send];
-  external start : t => unit = "" [@@bs.send];
+  external reset : t => unit = "" [@@bs.send];
 };
 
 module Animations = {
@@ -186,27 +186,31 @@ module Interpolation = {
       extrapolateLeft : Js.undefined string,
       extrapolateRight : Js.undefined string
     };
-  let config
-      ::inputRange
-      ::outputRange
+  external _interpolate : t => config => t = "interpolate" [@@bs.send];
+  let interpolate
+      ::value
       ::easing=?
       ::extrapolate=?
       ::extrapolateLeft=?
       ::extrapolateRight=?
-      ()
-      :config => {
-    "inputRange": Array.of_list inputRange,
-    "outputRange":
-      switch outputRange {
-      | `string (x: list string) => outputRangeCreate (Array.of_list x)
-      | `float (x: list float) => outputRangeCreate (Array.of_list x)
-      },
-    "easing": Js.Undefined.from_opt easing,
-    "extrapolate": Js.Undefined.from_opt (Utils.option_map extrapolateString extrapolate),
-    "extrapolateRight": Js.Undefined.from_opt (Utils.option_map extrapolateString extrapolateRight),
-    "extrapolateLeft": Js.Undefined.from_opt (Utils.option_map extrapolateString extrapolateLeft)
-  };
-  external interpolate : t => config => t = "interpolate" [@@bs.send];
+      ::inputRange
+      ::outputRange =>
+    _interpolate
+      value
+      {
+        "inputRange": Array.of_list inputRange,
+        "outputRange":
+          switch outputRange {
+          | `string (x: list string) => outputRangeCreate (Array.of_list x)
+          | `float (x: list float) => outputRangeCreate (Array.of_list x)
+          },
+        "easing": Js.Undefined.from_opt easing,
+        "extrapolate": Js.Undefined.from_opt (Utils.option_map extrapolateString extrapolate),
+        "extrapolateRight":
+          Js.Undefined.from_opt (Utils.option_map extrapolateString extrapolateRight),
+        "extrapolateLeft":
+          Js.Undefined.from_opt (Utils.option_map extrapolateString extrapolateLeft)
+      };
 };
 
 module Value = {
@@ -223,7 +227,32 @@ module Value = {
   external removeAllListeners : t => unit = "removeAllListeners" [@@bs.send];
   external resetAnimation : t => option callback => unit = "resetAnimation" [@@bs.send];
   external stopAnimation : t => option callback => unit = "stopAnimation" [@@bs.send];
-  external interpolate : t => Interpolation.config => Interpolation.t = "interpolate" [@@bs.send];
+  external _interpolate : t => Interpolation.config => Interpolation.t = "interpolate" [@@bs.send];
+  let interpolate
+      value
+      ::easing=?
+      ::extrapolate=?
+      ::extrapolateLeft=?
+      ::extrapolateRight=?
+      ::inputRange
+      ::outputRange =>
+    _interpolate
+      value
+      {
+        "inputRange": Array.of_list inputRange,
+        "outputRange":
+          switch outputRange {
+          | `string (x: list string) => Interpolation.outputRangeCreate (Array.of_list x)
+          | `float (x: list float) => Interpolation.outputRangeCreate (Array.of_list x)
+          },
+        "easing": Js.Undefined.from_opt easing,
+        "extrapolate":
+          Js.Undefined.from_opt (Utils.option_map Interpolation.extrapolateString extrapolate),
+        "extrapolateRight":
+          Js.Undefined.from_opt (Utils.option_map Interpolation.extrapolateString extrapolateRight),
+        "extrapolateLeft":
+          Js.Undefined.from_opt (Utils.option_map Interpolation.extrapolateString extrapolateLeft)
+      };
   external animate : t => Animation.t => Animation.endCallback => unit = "animate" [@@bs.send];
   external stopTracking : t => unit = "stopTracking" [@@bs.send];
   external track : t => unit = "track" [@@bs.send];
@@ -268,49 +297,6 @@ module ValueXY = {
     };
 };
 
-module View =
-  ViewRe.CreateComponent {
-    external view : ReactRe.reactClass =
-      "View" [@@bs.module "react-native"] [@@bs.scope "Animated"];
-    let view = view;
-  };
-
-module Image =
-  ImageRe.CreateComponent {
-    external view : ReactRe.reactClass =
-      "Image" [@@bs.module "react-native"] [@@bs.scope "Animated"];
-    let view = view;
-  };
-
-module Text =
-  TextRe.CreateComponent {
-    external view : ReactRe.reactClass =
-      "Text" [@@bs.module "react-native"] [@@bs.scope "Animated"];
-    let view = view;
-  };
-
-external event : 'a => 'b => unit => unit =
-  "" [@@bs.module "react-native"] [@@bs.scope "Animated"];
-
-module ScrollView = {
-  let onScrollUpdater ::x=? ::y=? ::native=false =>
-    event
-      [
-        {
-          "nativeEvent": {
-            "contentOffset": {"x": Js_undefined.from_opt x, "y": Js_undefined.from_opt y}
-          }
-        }
-      ]
-      {"useNativeDriver": Js.Boolean.to_js_boolean native};
-  include
-    ScrollViewRe.CreateComponent {
-      external view : ReactRe.reactClass =
-        "ScrollView" [@@bs.module "react-native"] [@@bs.scope "Animated"];
-      let view = view;
-    };
-};
-
 external delay : float => CompositeAnimation.t =
   "" [@@bs.module "react-native"] [@@bs.scope "Animated"];
 
@@ -327,6 +313,9 @@ external stagger : float => array CompositeAnimation.t => CompositeAnimation.t =
 external _loop : CompositeAnimation.t => Js.t {. iterations : int} => CompositeAnimation.t =
   "" [@@bs.module "react-native"] [@@bs.scope "Animated"];
 
+external event : 'a => 'b => unit => unit =
+  "" [@@bs.module "react-native"] [@@bs.scope "Animated"];
+
 let loop ::iterations=(-1) ::animation => _loop animation {"iterations": iterations};
 
 module Timing = Value.Timing;
@@ -340,3 +329,4 @@ module SpringXY = ValueXY.Spring;
 module Decay = Value.Decay;
 
 module DecayXY = ValueXY.Decay;
+
