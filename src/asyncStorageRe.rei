@@ -19,7 +19,8 @@ let getAllKeys:
   unit =>
   Js.Promise.t (option (array string));
 
-external flushGetRequests : unit => unit = "" "BS-EXTERNAL";
+external flushGetRequests : unit => unit =
+  "" [@@bs.scope "AsyncStorage"] [@@bs.module "react-native"];
 
 let multiGet:
   array string =>
