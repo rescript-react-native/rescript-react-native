@@ -56,8 +56,10 @@ module Value: {
   let multiply : value => value => value;
   module Timing: {
     type toValue;
-    type config;
-    let config:
+    let toValue : float => toValue;
+    let toValueAnimated : value => toValue;
+    let animate:
+      value::value =>
       easing::(float => float)? =>
       duration::float? =>
       delay::float? =>
@@ -66,15 +68,15 @@ module Value: {
       onComplete::Animation.endCallback? =>
       iterations::int? =>
       toValue::toValue =>
-      config;
-    let toValueFloat : float => toValue;
-    let toValueAnimated : value => toValue;
-    let timing: value::value => config::config => CompositeAnimation.t;
+      CompositeAnimation.t;
   };
   module Spring: {
     type toValue;
     type config;
-    let config:
+    let toValue : float => toValue;
+    let toValueAnimated : value => toValue;
+    let animate:
+      value::value =>
       restDisplacementThreshold::float? =>
       overshootClamping::Js.boolean? =>
       restSpeedThreshold::float? =>
@@ -88,30 +90,18 @@ module Value: {
       onComplete::Animation.endCallback? =>
       iterations::int? =>
       toValue::toValue =>
-      config;
-    let toValueFloat : float => toValue;
-    let toValueAnimated : value => toValue;
-    let spring: value::value => config::config => CompositeAnimation.t;
+      CompositeAnimation.t;
   };
   module Decay: {
-    type config;
-    let config:
-      deceleration::'a? =>
+    let animate:
+      value::value =>
+      deceleration::float? =>
       isInteraction::bool? =>
       useNativeDriver::bool? =>
-      onComplete::'b? =>
-      iterations::'c? =>
-      velocity::'d =>
-      Js.t {
-        .
-        deceleration : Js.Undefined.t 'a,
-        isInteraction : Js.Undefined.t Js.boolean,
-        iterations : Js.Undefined.t 'c,
-        onComplete : Js.Undefined.t 'b,
-        useNativeDriver : Js.Undefined.t Js.boolean,
-        velocity : 'd
-      };
-    let decay: value::value => config::config => CompositeAnimation.t;
+      onComplete::Animation.endCallback? =>
+      iterations::int? =>
+      velocity::float =>
+      CompositeAnimation.t;
   };
 };
 
@@ -139,8 +129,10 @@ module ValueXY: {
   let multiply : value => value => value;
   module Timing: {
     type toValue;
-    type config;
-    let config:
+    let toValue : jsValue => toValue;
+    let toValueAnimated : value => toValue;
+    let animate:
+      value::value =>
       easing::(float => float)? =>
       duration::float? =>
       delay::float? =>
@@ -149,15 +141,14 @@ module ValueXY: {
       onComplete::Animation.endCallback? =>
       iterations::int? =>
       toValue::toValue =>
-      config;
-    let toValueFloat : jsValue => toValue;
-    let toValueAnimated : value => toValue;
-    let timing: value::value => config::config => CompositeAnimation.t;
+      CompositeAnimation.t;
   };
   module Spring: {
     type toValue;
-    type config;
-    let config:
+    let toValueFloat : jsValue => toValue;
+    let toValueAnimated : value => toValue;
+    let animate:
+      value::value =>
       restDisplacementThreshold::float? =>
       overshootClamping::Js.boolean? =>
       restSpeedThreshold::float? =>
@@ -171,30 +162,18 @@ module ValueXY: {
       onComplete::Animation.endCallback? =>
       iterations::int? =>
       toValue::toValue =>
-      config;
-    let toValueFloat : jsValue => toValue;
-    let toValueAnimated : value => toValue;
-    let spring: value::value => config::config => CompositeAnimation.t;
+      CompositeAnimation.t;
   };
   module Decay: {
-    type config;
-    let config:
-      deceleration::'a? =>
+    let animate:
+      value::value =>
+      deceleration::float? =>
       isInteraction::bool? =>
       useNativeDriver::bool? =>
-      onComplete::'b? =>
-      iterations::'c? =>
-      velocity::'d =>
-      Js.t {
-        .
-        deceleration : Js.Undefined.t 'a,
-        isInteraction : Js.Undefined.t Js.boolean,
-        iterations : Js.Undefined.t 'c,
-        onComplete : Js.Undefined.t 'b,
-        useNativeDriver : Js.Undefined.t Js.boolean,
-        velocity : 'd
-      };
-    let decay: value::value => config::config => CompositeAnimation.t;
+      onComplete::Animation.endCallback? =>
+      iterations::int? =>
+      velocity::jsValue =>
+      CompositeAnimation.t;
   };
 };
 
@@ -311,3 +290,16 @@ let parallel :
 let stagger : float => array CompositeAnimation.t => CompositeAnimation.t;
 
 let loop: iterations::int? => animation::CompositeAnimation.t => CompositeAnimation.t;
+
+module Timing = Value.Timing;
+
+module TimingXY = ValueXY.Timing;
+
+module Spring = Value.Spring;
+
+module SpringXY = ValueXY.Spring;
+
+module Decay = Value.Decay;
+
+module DecayXY = ValueXY.Decay;
+

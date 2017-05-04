@@ -13,138 +13,142 @@ module CompositeAnimation = {
   external start : t => unit = "" [@@bs.send];
 };
 
-module Decay (Val: Value) => {
-  type config =
-    Js.t {
-      .
-      velocity : Val.rawJsType,
-      deceleration : Js.undefined float,
-      isInteraction : Js.undefined Js.boolean,
-      useNativeDriver : Js.undefined Js.boolean,
-      onComplete : Js.undefined Animation.endCallback,
-      iterations : Js.undefined int
-    };
-  let config
-      ::deceleration=?
-      ::isInteraction=?
-      ::useNativeDriver=?
-      ::onComplete=?
-      ::iterations=?
-      ::velocity =>
-    Js.Undefined.(
-      {
-        "velocity": velocity,
-        "deceleration": from_opt deceleration,
-        "isInteraction": from_opt (Utils.optBoolToOptJsBoolean isInteraction),
-        "useNativeDriver": from_opt (Utils.optBoolToOptJsBoolean useNativeDriver),
-        "onComplete": from_opt onComplete,
-        "iterations": from_opt iterations
-      }
-    );
-  external _decay : Val.t => config => CompositeAnimation.t =
-    "decay" [@@bs.module "react-native"] [@@bs.scope "Animated"];
-  let decay ::value ::config => _decay value config;
-};
-
-module Spring (Val: Value) => {
-  type toValue;
-  type config =
-    Js.t {
-      .
-      toValue : toValue,
-      restDisplacementThreshold : Js.undefined float,
-      overshootClamping : Js.undefined Js.boolean,
-      restSpeedThreshold : Js.undefined float,
-      velocity : Js.undefined Val.rawJsType,
-      bounciness : Js.undefined float,
-      speed : Js.undefined float,
-      tension : Js.undefined float,
-      friction : Js.undefined float,
-      isInteraction : Js.undefined Js.boolean,
-      useNativeDriver : Js.undefined Js.boolean,
-      onComplete : Js.undefined Animation.endCallback,
-      iterations : Js.undefined int
-    };
-  let config
-      ::restDisplacementThreshold=?
-      ::overshootClamping=?
-      ::restSpeedThreshold=?
-      ::velocity=?
-      ::bounciness=?
-      ::speed=?
-      ::tension=?
-      ::friction=?
-      ::isInteraction=?
-      ::useNativeDriver=?
-      ::onComplete=?
-      ::iterations=?
-      ::toValue
-      :config =>
-    Js.Undefined.(
-      {
-        "toValue": toValue,
-        "restDisplacementThreshold": from_opt restDisplacementThreshold,
-        "overshootClamping": from_opt overshootClamping,
-        "restSpeedThreshold": from_opt restSpeedThreshold,
-        "velocity": from_opt velocity,
-        "bounciness": from_opt bounciness,
-        "speed": from_opt speed,
-        "tension": from_opt tension,
-        "friction": from_opt friction,
-        "isInteraction": from_opt isInteraction,
-        "useNativeDriver": from_opt useNativeDriver,
-        "onComplete": from_opt onComplete,
-        "iterations": from_opt iterations
-      }
-    );
-  external toValueFloat : Val.rawJsType => toValue = "%identity";
-  external toValueAnimated : Val.t => toValue = "%identity";
-  external _spring : Val.t => config => CompositeAnimation.t =
-    "spring" [@@bs.module "react-native"] [@@bs.scope "Animated"];
-  let spring ::value ::config => _spring value config;
-};
-
-module Timing (Val: Value) => {
-  type toValue;
-  type config =
-    Js.t {
-      .
-        toValue: toValue,
-      easing: Js.undefined (float => float),
-      duration: Js.undefined float,
-      delay: Js.undefined float,
-      isInteraction : Js.undefined Js.boolean,
-      useNativeDriver : Js.undefined Js.boolean,
-      onComplete : Js.undefined Animation.endCallback,
-      iterations : Js.undefined int
-    };
-  let config
-      ::easing=?
-      ::duration=?
-      ::delay=?
-      ::isInteraction=?
-      ::useNativeDriver=?
-      ::onComplete=?
-      ::iterations=?
-      ::toValue
-      :config =>
-    Js.Undefined.(
-      {
-        "toValue": toValue,
-        "easing": from_opt easing,
-        "duration": from_opt duration,
-        "delay": from_opt delay,
-        "isInteraction": from_opt isInteraction,
-        "useNativeDriver": from_opt useNativeDriver,
-        "onComplete": from_opt onComplete,
-        "iterations": from_opt iterations
-      }
-    );
-  external toValueFloat : Val.rawJsType => toValue = "%identity";
-  external toValueAnimated : Val.t => toValue = "%identity";
-  external _timing : Val.t => config => CompositeAnimation.t =
-    "timing" [@@bs.module "react-native"] [@@bs.scope "Animated"];
-  let timing ::value ::config => _timing value config;
+module Animations = {
+  module Decay (Val: Value) => {
+    type config =
+      Js.t {
+        .
+        velocity : Val.rawJsType,
+        deceleration : Js.undefined float,
+        isInteraction : Js.undefined Js.boolean,
+        useNativeDriver : Js.undefined Js.boolean,
+        onComplete : Js.undefined Animation.endCallback,
+        iterations : Js.undefined int
+      };
+    external _decay : Val.t => config => CompositeAnimation.t =
+      "decay" [@@bs.module "react-native"] [@@bs.scope "Animated"];
+    let animate
+        ::value
+        ::deceleration=?
+        ::isInteraction=?
+        ::useNativeDriver=?
+        ::onComplete=?
+        ::iterations=?
+        ::velocity =>
+      _decay
+        value
+        Js.Undefined.(
+          {
+            "velocity": velocity,
+            "deceleration": from_opt deceleration,
+            "isInteraction": from_opt (Utils.optBoolToOptJsBoolean isInteraction),
+            "useNativeDriver": from_opt (Utils.optBoolToOptJsBoolean useNativeDriver),
+            "onComplete": from_opt onComplete,
+            "iterations": from_opt iterations
+          }
+        );
+  };
+  module Spring (Val: Value) => {
+    type toValue;
+    type config =
+      Js.t {
+        .
+        toValue : toValue,
+        restDisplacementThreshold : Js.undefined float,
+        overshootClamping : Js.undefined Js.boolean,
+        restSpeedThreshold : Js.undefined float,
+        velocity : Js.undefined Val.rawJsType,
+        bounciness : Js.undefined float,
+        speed : Js.undefined float,
+        tension : Js.undefined float,
+        friction : Js.undefined float,
+        isInteraction : Js.undefined Js.boolean,
+        useNativeDriver : Js.undefined Js.boolean,
+        onComplete : Js.undefined Animation.endCallback,
+        iterations : Js.undefined int
+      };
+    external toValue : Val.rawJsType => toValue = "%identity";
+    external toValueAnimated : Val.t => toValue = "%identity";
+    external _spring : Val.t => config => CompositeAnimation.t =
+      "spring" [@@bs.module "react-native"] [@@bs.scope "Animated"];
+    let animate
+        ::value
+        ::restDisplacementThreshold=?
+        ::overshootClamping=?
+        ::restSpeedThreshold=?
+        ::velocity=?
+        ::bounciness=?
+        ::speed=?
+        ::tension=?
+        ::friction=?
+        ::isInteraction=?
+        ::useNativeDriver=?
+        ::onComplete=?
+        ::iterations=?
+        ::toValue =>
+      _spring
+        value
+        Js.Undefined.(
+          {
+            "toValue": toValue,
+            "restDisplacementThreshold": from_opt restDisplacementThreshold,
+            "overshootClamping": from_opt overshootClamping,
+            "restSpeedThreshold": from_opt restSpeedThreshold,
+            "velocity": from_opt velocity,
+            "bounciness": from_opt bounciness,
+            "speed": from_opt speed,
+            "tension": from_opt tension,
+            "friction": from_opt friction,
+            "isInteraction": from_opt isInteraction,
+            "useNativeDriver": from_opt useNativeDriver,
+            "onComplete": from_opt onComplete,
+            "iterations": from_opt iterations
+          }
+        );
+  };
+  module Timing (Val: Value) => {
+    type toValue;
+    type config =
+      Js.t {
+        .
+        toValue : toValue,
+        easing : Js.undefined (float => float),
+        duration : Js.undefined float,
+        delay : Js.undefined float,
+        isInteraction : Js.undefined Js.boolean,
+        useNativeDriver : Js.undefined Js.boolean,
+        onComplete : Js.undefined Animation.endCallback,
+        iterations : Js.undefined int
+      };
+    external toValue : Val.rawJsType => toValue = "%identity";
+    external toValueAnimated : Val.t => toValue = "%identity";
+    external _timing : Val.t => config => CompositeAnimation.t =
+      "timing" [@@bs.module "react-native"] [@@bs.scope "Animated"];
+    let animate
+        ::value
+        ::easing=?
+        ::duration=?
+        ::delay=?
+        ::isInteraction=?
+        ::useNativeDriver=?
+        ::onComplete=?
+        ::iterations=?
+        ::toValue =>
+      _timing
+        value
+        Js.Undefined.(
+          {
+            "toValue": toValue,
+            "easing": from_opt easing,
+            "duration": from_opt duration,
+            "delay": from_opt delay,
+            "isInteraction": from_opt isInteraction,
+            "useNativeDriver": from_opt useNativeDriver,
+            "onComplete": from_opt onComplete,
+            "iterations": from_opt iterations
+          }
+        );
+  };
 };
 
 module ValueOperations (Val: Value) => {
@@ -153,9 +157,9 @@ module ValueOperations (Val: Value) => {
     "" [@@bs.module "react-native"] [@@bs.scope "Animated"];
   external multiply : Val.t => Val.t => Val.t =
     "" [@@bs.module "react-native"] [@@bs.scope "Animated"];
-  module Timing = Timing Val;
-  module Spring = Spring Val;
-  module Decay = Decay Val;
+  module Timing = Animations.Timing Val;
+  module Spring = Animations.Spring Val;
+  module Decay = Animations.Decay Val;
 };
 
 module Interpolation = {
@@ -182,7 +186,7 @@ module Interpolation = {
       extrapolateLeft : Js.undefined string,
       extrapolateRight : Js.undefined string
     };
-  let createConfig
+  let config
       ::inputRange
       ::outputRange
       ::easing=?
@@ -324,3 +328,15 @@ external _loop : CompositeAnimation.t => Js.t {. iterations : int} => CompositeA
   "" [@@bs.module "react-native"] [@@bs.scope "Animated"];
 
 let loop ::iterations=(-1) ::animation => _loop animation {"iterations": iterations};
+
+module Timing = Value.Timing;
+
+module TimingXY = ValueXY.Timing;
+
+module Spring = Value.Spring;
+
+module SpringXY = ValueXY.Spring;
+
+module Decay = Value.Decay;
+
+module DecayXY = ValueXY.Decay;
