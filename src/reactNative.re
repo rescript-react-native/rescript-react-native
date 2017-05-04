@@ -4,6 +4,7 @@ module Packager = PackagerRe;
 /* Components */
 module ActivityIndicator = ActivityIndicatorRe;
 module Button = ButtonRe;
+module DatePickerIOS = DatePickerIOSRe;
 module FlatList = FlatListRe;
 module Modal = ModalRe;
 module ScrollView = ScrollViewRe;

@@ -11,7 +11,7 @@ Contributions of Components and APIs are very welcomed!
 **Components**
 - [x] ActivityIndicator
 - [x] Button
-- [ ] DatePickerIOS
+- [x] DatePickerIOS
 - [ ] DrawerLayoutAndroid
 - [x] FlatList
 - [x] Image
