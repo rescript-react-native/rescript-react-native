@@ -31,7 +31,7 @@ Contributions of Components and APIs are very welcomed!
 - [ ] SegmentedControlIOS
 - [ ] Slider
 - [ ] SnapshotViewIOS
-- [ ] StatusBar
+- [x] StatusBar
 - [ ] Switch
 - [ ] TabBarIOS
 - [ ] TabBarIOS.Item
