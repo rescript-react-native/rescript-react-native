@@ -6,6 +6,33 @@ The bindings are targeted to React Native 0.44.
 
 Contributions of Components and APIs are very welcomed!
 
+## Style
+Since we have a proper type system we can make styles **typesafe**! Therefore styles are a little bit different declared than in JavaScript:
+```reason
+open ReactNative;
+
+/* inline styles */
+<View
+  style=(
+          Style.style [
+            Style.flexDirection `column,
+            Style.backgroundColor "#6698FF",
+            Style.marginTop 5
+          ]
+        )
+/>;
+
+/* inline styles with a local open */
+<View style=Style.(style [flexDirection `column, backgroundColor "#6698FF", marginTop 5]) />;
+
+/* StyleSheets with a local open */
+let styles =
+  StyleSheet.create
+    Style.({"wrapper": style [flexDirection `column, backgroundColor "#6698FF", marginTop 5]});
+
+<View style=styles##wrapper />;
+```
+
 ## Status
 
 **Components**
