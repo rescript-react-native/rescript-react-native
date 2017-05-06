@@ -315,7 +315,8 @@ external stagger : float => array CompositeAnimation.t => CompositeAnimation.t =
 external _loop : CompositeAnimation.t => Js.t {. iterations : int} => CompositeAnimation.t =
   "" [@@bs.module "react-native"] [@@bs.scope "Animated"];
 
-external event : 'a => 'b => unit => unit =
+type animatedEvent;
+external event : array 'a => 'b => animatedEvent =
   "" [@@bs.module "react-native"] [@@bs.scope "Animated"];
 
 let loop ::iterations=(-1) ::animation => _loop animation {"iterations": iterations};

@@ -182,7 +182,8 @@ module ValueXY: {
   };
 };
 
-let event: 'a => 'b => unit => unit;
+type animatedEvent;
+let event: array 'a => 'b => animatedEvent;
 
 let delay: float => CompositeAnimation.t;
 

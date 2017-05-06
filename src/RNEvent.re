@@ -10,6 +10,7 @@ module NativeEvent = {
   external pageY : t => int = "" [@@bs.get];
   external target : t => Js.t {..} = "" [@@bs.get];
   external touches : t => array (Js.t {..}) = "" [@@bs.get];
+  external timestamp : t => float = "" [@@bs.get];
 };
 
 module NativeLayoutEvent = {
