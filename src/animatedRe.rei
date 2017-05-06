@@ -19,12 +19,13 @@ module Interpolation: {
     | Identity;
   let interpolate:
     value::t =>
+    inputRange::list float =>
+    outputRange::[< | `float (list float) | `string (list string)] =>
     easing::(float => float)? =>
     extrapolate::extrapolate? =>
     extrapolateLeft::extrapolate? =>
     extrapolateRight::extrapolate? =>
-    inputRange::list float =>
-    outputRange::[< | `float (list float) | `string (list string)] =>
+    unit =>
     t;
 };
 
@@ -43,12 +44,13 @@ module Value: {
   let stopAnimation: t => option callback => unit;
   let interpolate:
     t =>
+    inputRange::list float =>
+    outputRange::[< | `float (list float) | `string (list string)] =>
     easing::(float => float)? =>
     extrapolate::Interpolation.extrapolate? =>
     extrapolateLeft::Interpolation.extrapolate? =>
     extrapolateRight::Interpolation.extrapolate? =>
-    inputRange::list float =>
-    outputRange::[< | `float (list float) | `string (list string)] =>
+    unit =>
     Interpolation.t;
   let animate: t => Animation.t => Animation.endCallback => unit;
   let stopTracking: t => unit;
@@ -65,6 +67,7 @@ module Value: {
     let toValueAnimated: value => toValue;
     let animate:
       value::value =>
+      toValue::toValue =>
       easing::(float => float)? =>
       duration::float? =>
       delay::float? =>
@@ -72,7 +75,7 @@ module Value: {
       useNativeDriver::Js.boolean? =>
       onComplete::Animation.endCallback? =>
       iterations::int? =>
-      toValue::toValue =>
+      unit =>
       CompositeAnimation.t;
   };
   module Spring: {
@@ -82,6 +85,7 @@ module Value: {
     let toValueAnimated: value => toValue;
     let animate:
       value::value =>
+      toValue::toValue =>
       restDisplacementThreshold::float? =>
       overshootClamping::Js.boolean? =>
       restSpeedThreshold::float? =>
@@ -94,18 +98,19 @@ module Value: {
       useNativeDriver::Js.boolean? =>
       onComplete::Animation.endCallback? =>
       iterations::int? =>
-      toValue::toValue =>
+      unit =>
       CompositeAnimation.t;
   };
   module Decay: {
     let animate:
       value::value =>
+      velocity::float =>
       deceleration::float? =>
       isInteraction::bool? =>
       useNativeDriver::bool? =>
       onComplete::Animation.endCallback? =>
       iterations::int? =>
-      velocity::float =>
+      unit =>
       CompositeAnimation.t;
   };
 };
@@ -140,6 +145,7 @@ module ValueXY: {
     let toValueAnimated: value => toValue;
     let animate:
       value::value =>
+      toValue::toValue =>
       easing::(float => float)? =>
       duration::float? =>
       delay::float? =>
@@ -147,7 +153,7 @@ module ValueXY: {
       useNativeDriver::Js.boolean? =>
       onComplete::Animation.endCallback? =>
       iterations::int? =>
-      toValue::toValue =>
+      unit =>
       CompositeAnimation.t;
   };
   module Spring: {
@@ -156,6 +162,7 @@ module ValueXY: {
     let toValueAnimated: value => toValue;
     let animate:
       value::value =>
+      toValue::toValue =>
       restDisplacementThreshold::float? =>
       overshootClamping::Js.boolean? =>
       restSpeedThreshold::float? =>
@@ -168,18 +175,19 @@ module ValueXY: {
       useNativeDriver::Js.boolean? =>
       onComplete::Animation.endCallback? =>
       iterations::int? =>
-      toValue::toValue =>
+      unit =>
       CompositeAnimation.t;
   };
   module Decay: {
     let animate:
       value::value =>
+      velocity::jsValue =>
       deceleration::float? =>
       isInteraction::bool? =>
       useNativeDriver::bool? =>
       onComplete::Animation.endCallback? =>
       iterations::int? =>
-      velocity::jsValue =>
+      unit =>
       CompositeAnimation.t;
   };
 };

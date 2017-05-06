@@ -29,12 +29,14 @@ module Animations = {
       "decay" [@@bs.module "react-native"] [@@bs.scope "Animated"];
     let animate
         ::value
+        ::velocity
         ::deceleration=?
         ::isInteraction=?
         ::useNativeDriver=?
         ::onComplete=?
         ::iterations=?
-        ::velocity =>
+        ()
+ =>
       _decay
         value
         Js.Undefined.(
@@ -73,6 +75,7 @@ module Animations = {
       "spring" [@@bs.module "react-native"] [@@bs.scope "Animated"];
     let animate
         ::value
+        ::toValue
         ::restDisplacementThreshold=?
         ::overshootClamping=?
         ::restSpeedThreshold=?
@@ -85,7 +88,8 @@ module Animations = {
         ::useNativeDriver=?
         ::onComplete=?
         ::iterations=?
-        ::toValue =>
+        ()
+ =>
       _spring
         value
         Js.Undefined.(
@@ -126,6 +130,7 @@ module Animations = {
       "timing" [@@bs.module "react-native"] [@@bs.scope "Animated"];
     let animate
         ::value
+        ::toValue
         ::easing=?
         ::duration=?
         ::delay=?
@@ -133,7 +138,8 @@ module Animations = {
         ::useNativeDriver=?
         ::onComplete=?
         ::iterations=?
-        ::toValue =>
+        ()
+         =>
       _timing
         value
         Js.Undefined.(
@@ -189,12 +195,13 @@ module Interpolation = {
   external _interpolate : t => config => t = "interpolate" [@@bs.send];
   let interpolate
       ::value
+      ::inputRange
+      ::outputRange
       ::easing=?
       ::extrapolate=?
       ::extrapolateLeft=?
       ::extrapolateRight=?
-      ::inputRange
-      ::outputRange =>
+      () =>
     _interpolate
       value
       {
@@ -230,12 +237,13 @@ module Value = {
   external _interpolate : t => Interpolation.config => Interpolation.t = "interpolate" [@@bs.send];
   let interpolate
       value
+      ::inputRange
+      ::outputRange
       ::easing=?
       ::extrapolate=?
       ::extrapolateLeft=?
       ::extrapolateRight=?
-      ::inputRange
-      ::outputRange =>
+      () =>
     _interpolate
       value
       {
