@@ -289,6 +289,8 @@ module ValueXY = {
   external removeAllListeners : t => unit = "removeAllListeners" [@@bs.send];
   external getLayout : t => translateTransform = "getLayout" [@@bs.send];
   external getTranslateTransform : t => translateTransform = "getTranslateTransform" [@@bs.send];
+  external getX : t => Value.t = "x" [@@bs.val];
+  external getY : t => Value.t = "y" [@@bs.val];
   type value = t;
   include
     ValueOperations {
