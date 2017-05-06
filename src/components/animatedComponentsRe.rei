@@ -5,7 +5,7 @@ module Image: ImageRe.ImageComponent;
 module Text: TextRe.TextComponent;
 
 module ScrollView: {
-  let onScrollUpdater: x::'a? => y::'b? => native::bool? => unit => unit;
+  let onScrollUpdater: x::'a? => y::'b? => native::bool? => unit => RNEvent.NativeEvent.t => unit;
   type point = {x: float, y: float};
   let scrollTo: ReactRe.reactRef => x::int => y::int => animated::bool => unit;
   let scrollToEnd: ReactRe.reactRef => animated::bool => unit;
@@ -64,7 +64,7 @@ module ScrollView: {
     keyboardDismissMode::[ | `interactive | `none | `onDrag]? =>
     keyboardShouldPersistTaps::[ | `always | `handled | `never]? =>
     onContentSizeChange::((float, float) => unit)? =>
-    onScroll::(unit => unit)? =>
+    onScroll::(RNEvent.NativeEvent.t => unit)? =>
     pagingEnabled::bool? =>
     refreshControl::ReactRe.reactElement? =>
     scrollEnabled::bool? =>

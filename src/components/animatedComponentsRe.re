@@ -20,16 +20,22 @@ module Text =
   };
 
 module ScrollView = {
-  let onScrollUpdater ::x=? ::y=? ::native=false =>
-    AnimatedRe.event
-      [
-        {
-          "nativeEvent": {
-            "contentOffset": {"x": Js_undefined.from_opt x, "y": Js_undefined.from_opt y}
-          }
-        }
-      ]
-      {"useNativeDriver": Js.Boolean.to_js_boolean native};
+  type callback = RNEvent.NativeEvent.t => unit;
+  external wrapUpdaterShamelessly : AnimatedRe.animatedEvent => callback = "%identity";
+  let onScrollUpdater ::x=? ::y=? ::native=false () =>
+    wrapUpdaterShamelessly (
+      AnimatedRe.event
+        (
+          Array.of_list [
+            {
+              "nativeEvent": {
+                "contentOffset": {"x": Js.Undefined.from_opt x, "y": Js.Undefined.from_opt y}
+              }
+            }
+          ]
+        )
+        {"useNativeDriver": Js.Boolean.to_js_boolean native}
+    );
   include
     ScrollViewRe.CreateComponent {
       external view : ReactRe.reactClass =
