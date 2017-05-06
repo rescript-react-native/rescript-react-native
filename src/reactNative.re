@@ -38,6 +38,7 @@ module BackHandler = BackHandlerRe;
 module Dimensions = DimensionsRe;
 module Platform = PlatformRe;
 module StyleSheet = StyleSheetRe;
+module PanResponder = PanResponderRe;
 
 /**
  * New Modules due to Reason

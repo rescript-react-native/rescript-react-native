@@ -128,10 +128,12 @@ module ValueXY: {
   let removeAllListeners: t => unit;
   let getLayout: t => translateTransform;
   let getTranslateTransform: t => translateTransform;
+  let add: t => t => t;
+  let divide: t => t => t;
+  let multiply: t => t => t;
+  let getX: t => Value.t;
+  let getY: t => Value.t;
   type value = t;
-  let add: value => value => value;
-  let divide: value => value => value;
-  let multiply: value => value => value;
   module Timing: {
     type toValue;
     let toValue: jsValue => toValue;

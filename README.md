@@ -101,7 +101,7 @@ let styles =
 - [ ] Linking
 - [ ] NativeMethodsMixin
 - [ ] NetInfo
-- [ ] PanResponder
+- [x] PanResponder
 - [ ] PermissionsAndroid
 - [ ] PixelRatio
 - [x] Platform

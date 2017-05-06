@@ -27,17 +27,3 @@ module NativeLayoutEvent = {
 external nativeEvent : t => NativeEvent.t = "" [@@bs.get];
 
 external nativeLayoutEvent : t => NativeLayoutEvent.t = "nativeEvent" [@@bs.get];
-/*type nativeEv 'a =
-    Js.t {
-      .
-      identifier : int,
-      locationX : int,
-      locationY : int,
-      pageX : int,
-      pageY : int,
-      target : Js.t 'a
-      /*changedTouches : array (Js.t {..}),*/
-      /*touches : array (Js.t {..})*/
-    };
-
-  external nativeEvent : t => nativeEv = "" [@@bs.get];*/
