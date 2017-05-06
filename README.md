@@ -62,7 +62,7 @@ Contributions of Components and APIs are very welcomed!
 - [ ] CameraRoll
 - [ ] Clipboard
 - [ ] DatePickerAndroid
-- [ ] Dimensions
+- [x] Dimensions
 - [ ] Easing
 - [ ] Geolocation
 - [ ] ImageEditor

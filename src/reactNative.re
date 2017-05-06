@@ -31,6 +31,7 @@ module AppRegistry = AppRegistryRe;
 module AppState = AppStateRe;
 module AsyncStorage = AsyncStorageRe;
 module BackHandler = BackHandlerRe;
+module Dimensions = DimensionsRe;
 module Platform = PlatformRe;
 module StyleSheet = StyleSheetRe;
 
