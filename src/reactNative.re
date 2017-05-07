@@ -9,6 +9,7 @@ module FlatList = FlatListRe;
 module Modal = ModalRe;
 module Picker = PickerRe;
 module ScrollView = ScrollViewRe.ScrollView;
+module SectionList = SectionListRe;
 module StatusBar = StatusBarRe;
 module Text = TextRe.Text;
 module TextInput = TextInputRe;

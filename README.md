@@ -54,7 +54,7 @@ let styles =
 - [ ] ProgressViewIOS
 - [ ] RefreshControl
 - [x] ScrollView
-- [ ] SectionList
+- [x] SectionList
 - [ ] SegmentedControlIOS
 - [ ] Slider
 - [ ] SnapshotViewIOS

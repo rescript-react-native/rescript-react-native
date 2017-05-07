@@ -17,11 +17,12 @@ let scrollToOffset: ReactRe.reactRef => offset::int? => animated::Js.boolean? =>
 external recordInteraction : ReactRe.reactRef => unit = "" [@@bs.send];
 
 let createElement:
+  data::array 'item =>
+  renderItem::(Js.t {. item : 'item, index : int} => ReactRe.reactElement) =>
   itemSeparatorComponent::ReactRe.reactClass? =>
   listFooterComponent::ReactRe.reactElement? =>
   listHeaderComponent::ReactRe.reactElement? =>
   columnWrapperStyle::StyleRe.t? =>
-  data::array 'item? =>
   extraData::'any? =>
   getItemLayout::(option (array 'item) => int => Js.t {. length : int, offset : int, index : int})? =>
   horizontal::bool? =>
@@ -39,7 +40,7 @@ let createElement:
         array (
           Js.t {
             .
-            item : Js.t {.},
+            item : 'item,
             key : string,
             index : Js.undefined int,
             isViewable : Js.boolean,
@@ -50,7 +51,7 @@ let createElement:
         array (
           Js.t {
             .
-            item : Js.t {.},
+            item : 'item,
             key : string,
             index : Js.undefined int,
             isViewable : Js.boolean,

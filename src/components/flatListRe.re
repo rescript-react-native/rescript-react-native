@@ -54,11 +54,12 @@ let scrollToOffset ref ::offset=? ::animated=? () =>
 external recordInteraction : ReactRe.reactRef => unit = "" [@@bs.send];
 
 let createElement
+    ::data
+    ::renderItem
     ::itemSeparatorComponent=?
     ::listFooterComponent=?
     ::listHeaderComponent=?
     ::columnWrapperStyle=?
-    ::data=?
     ::extraData=?
     ::getItemLayout=?
     ::horizontal=?
@@ -81,7 +82,7 @@ let createElement
         "listFooterComponent": from_opt listFooterComponent,
         "listHeaderComponent": from_opt listHeaderComponent,
         "columnWrapperStyle": from_opt columnWrapperStyle,
-        "data": from_opt data,
+        "data": data,
         "extraData": from_opt extraData,
         "getItemLayout":
           from_opt (
@@ -97,6 +98,7 @@ let createElement
         "onRefresh": from_opt onRefresh,
         "onViewableItemsChanged": from_opt onViewableItemsChanged,
         "refreshing": from_opt (Utils.optBoolToOptJsBoolean refreshing),
+        "renderItem": renderItem,
         "removeClippedSubviews": from_opt (Utils.optBoolToOptJsBoolean removeClippedSubviews),
         "viewabilityConfig": from_opt viewabilityConfig
       }
