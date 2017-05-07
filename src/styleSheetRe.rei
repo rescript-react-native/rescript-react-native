@@ -6,8 +6,8 @@ let create: Js.t 'a => Js.t 'a;
 
 let hairlineWidth: int;
 
-let absoluteFill: Style.t;
+let absoluteFill: StyleRe.t;
 
-let absoluteFillObject: Style.t;
+let absoluteFillObject: StyleRe.t;
 
-let flatten: list Style.t => Style.t;
+let flatten: list StyleRe.t => StyleRe.t;

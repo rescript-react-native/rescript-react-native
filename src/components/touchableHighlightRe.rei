@@ -34,7 +34,7 @@ let createElement:
   activeOpacity::float? =>
   onHideUnderlay::(unit => unit)? =>
   onShowUnderlay::(unit => unit)? =>
-  style::Style.t? =>
+  style::StyleRe.t? =>
   underlayColor::string? =>
   hasTVPreferredFocus::bool? =>
   tvParallaxProperties::(Js.t {.})? =>

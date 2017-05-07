@@ -20,7 +20,7 @@ let createElement:
   itemSeparatorComponent::ReactRe.reactClass? =>
   listFooterComponent::ReactRe.reactElement? =>
   listHeaderComponent::ReactRe.reactElement? =>
-  columnWrapperStyle::Style.t? =>
+  columnWrapperStyle::StyleRe.t? =>
   data::array 'item? =>
   extraData::'any? =>
   getItemLayout::(option (array 'item) => int => Js.t {. length : int, offset : int, index : int})? =>

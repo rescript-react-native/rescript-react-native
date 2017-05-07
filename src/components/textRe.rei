@@ -9,7 +9,7 @@ module type TextComponent = {
     onPress::(unit => unit)? =>
     pressRetentionOffset::Types.insets? =>
     selectable::bool? =>
-    style::Style.t? =>
+    style::StyleRe.t? =>
     testID::string? =>
     selectionColor::string? =>
     textBreakStrategy::[ | `balanced | `highQuality | `simple]? =>

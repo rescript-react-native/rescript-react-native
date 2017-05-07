@@ -31,7 +31,7 @@ module type ImageComponent = {
     onLoadStart::(unit => unit)? =>
     resizeMode::[< | `center | `contain | `cover | `repeat | `stretch]? =>
     source::imageSource? =>
-    style::Style.t? =>
+    style::StyleRe.t? =>
     testID::string? =>
     resizeMethod::[< | `auto | `resize | `scale]? =>
     accessibilityLabel::string? =>

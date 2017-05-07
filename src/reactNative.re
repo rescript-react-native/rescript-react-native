@@ -1,7 +1,7 @@
+/**
+ * Components
+ */
 
-module Packager = PackagerRe;
-
-/* Components */
 module ActivityIndicator = ActivityIndicatorRe;
 module Button = ButtonRe;
 module DatePickerIOS = DatePickerIOSRe;
@@ -24,7 +24,10 @@ module Animated = {
     module Image = AnimatedComponentsRe.Image;
 };
 
-/* APIs */
+/**
+ *  APIs
+ */
+
 module Alert = AlertRe;
 module AlertIOS = AlertIOSRe;
 module AppRegistry = AppRegistryRe;
@@ -35,4 +38,9 @@ module Dimensions = DimensionsRe;
 module Platform = PlatformRe;
 module StyleSheet = StyleSheetRe;
 
+/**
+ * New Modules due to Reason
+ */
 
+module Packager = PackagerRe;
+module Style = StyleRe;

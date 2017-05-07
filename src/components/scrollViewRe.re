@@ -21,7 +21,7 @@ module type ScrollViewComponent = {
     onStartShouldSetResponderCapture::(RNEvent.NativeEvent.t => bool)? =>
     pointerEvents::[ | `auto | `none | `boxNone | `boxOnly]? =>
     removeClippedSubviews::bool? =>
-    style::Style.t? =>
+    style::StyleRe.t? =>
     testID::string? =>
     accessibilityComponentType::
       [ | `none | `button | `radiobutton_checked | `radiobutton_unchecked]? =>
@@ -52,7 +52,7 @@ module type ScrollViewComponent = {
       ]? =>
     accessibilityViewIsModal::bool? =>
     shouldRasterizeIOS::bool? =>
-    contentContainerStyle::Style.t? =>
+    contentContainerStyle::StyleRe.t? =>
     horizontal::bool? =>
     keyboardDismissMode::[ | `none | `interactive | `onDrag]? =>
     keyboardShouldPersistTaps::[ | `always | `never | `handled]? =>

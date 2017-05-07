@@ -18,7 +18,7 @@ module type ViewComponent = {
     onStartShouldSetResponderCapture::(RNEvent.NativeEvent.t => bool)? =>
     pointerEvents::[ | `auto | `boxNone | `boxOnly | `none]? =>
     removeClippedSubviews::bool? =>
-    style::Style.t? =>
+    style::StyleRe.t? =>
     testID::string? =>
     accessibilityComponentType::
       [ | `button | `none | `radiobutton_checked | `radiobutton_unchecked]? =>
