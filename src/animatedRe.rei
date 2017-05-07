@@ -7,7 +7,7 @@ module Animation: {
 module CompositeAnimation: {
   type t;
   let stop: t => unit;
-  let start: t => Js.undefined Animation.endCallback => unit;
+  let start: t => callback::Animation.endCallback? => unit => unit;
   let reset: t => unit;
 };
 
@@ -62,12 +62,10 @@ module Value: {
   let divide: value => value => value;
   let multiply: value => value => value;
   module Timing: {
-    type toValue;
-    let toValue: float => toValue;
-    let toValueAnimated: value => toValue;
+    type config;
     let animate:
       value::value =>
-      toValue::toValue =>
+      toValue::[ `raw float | `animated value] =>
       easing::(float => float)? =>
       duration::float? =>
       delay::float? =>
@@ -79,13 +77,10 @@ module Value: {
       CompositeAnimation.t;
   };
   module Spring: {
-    type toValue;
     type config;
-    let toValue: float => toValue;
-    let toValueAnimated: value => toValue;
     let animate:
       value::value =>
-      toValue::toValue =>
+      toValue::[ `raw float | `animated value] =>
       restDisplacementThreshold::float? =>
       overshootClamping::Js.boolean? =>
       restSpeedThreshold::float? =>
@@ -102,6 +97,7 @@ module Value: {
       CompositeAnimation.t;
   };
   module Decay: {
+    type config;
     let animate:
       value::value =>
       velocity::float =>
@@ -140,12 +136,10 @@ module ValueXY: {
   let getY: t => Value.t;
   type value = t;
   module Timing: {
-    type toValue;
-    let toValue: jsValue => toValue;
-    let toValueAnimated: value => toValue;
+    type config;
     let animate:
       value::value =>
-      toValue::toValue =>
+      toValue::[ `raw jsValue | `animated value] =>
       easing::(float => float)? =>
       duration::float? =>
       delay::float? =>
@@ -157,12 +151,10 @@ module ValueXY: {
       CompositeAnimation.t;
   };
   module Spring: {
-    type toValue;
-    let toValue: jsValue => toValue;
-    let toValueAnimated: value => toValue;
+    type config;
     let animate:
       value::value =>
-      toValue::toValue =>
+      toValue::[ `raw jsValue | `animated value] =>
       restDisplacementThreshold::float? =>
       overshootClamping::Js.boolean? =>
       restSpeedThreshold::float? =>
@@ -179,6 +171,7 @@ module ValueXY: {
       CompositeAnimation.t;
   };
   module Decay: {
+    type config;
     let animate:
       value::value =>
       velocity::jsValue =>

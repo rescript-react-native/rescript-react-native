@@ -8,7 +8,8 @@ module type Value = {type t; type rawJsType;};
 
 module CompositeAnimation = {
   type t;
-  external start : t => Js.undefined Animation.endCallback => unit = "" [@@bs.send];
+  external _start : t => Js.undefined Animation.endCallback => unit = "start" [@@bs.send];
+  let start t ::callback=? () => _start t (Js.Undefined.from_opt callback);
   external stop : t => unit = "" [@@bs.send];
   external reset : t => unit = "" [@@bs.send];
 };
@@ -69,7 +70,7 @@ module Animations = {
         onComplete : Js.undefined Animation.endCallback,
         iterations : Js.undefined int
       };
-    external toValue : Val.rawJsType => toValue = "%identity";
+    external toValueRaw : Val.rawJsType => toValue = "%identity";
     external toValueAnimated : Val.t => toValue = "%identity";
     external _spring : Val.t => config => CompositeAnimation.t =
       "spring" [@@bs.module "react-native"] [@@bs.scope "Animated"];
@@ -94,7 +95,10 @@ module Animations = {
         value
         Js.Undefined.(
           {
-            "toValue": toValue,
+            "toValue": switch toValue {
+              | `raw x => toValueRaw x
+              | `animated x => toValueAnimated x
+            },
             "restDisplacementThreshold": from_opt restDisplacementThreshold,
             "overshootClamping": from_opt overshootClamping,
             "restSpeedThreshold": from_opt restSpeedThreshold,
@@ -124,7 +128,7 @@ module Animations = {
         onComplete : Js.undefined Animation.endCallback,
         iterations : Js.undefined int
       };
-    external toValue : Val.rawJsType => toValue = "%identity";
+    external toValueRaw : Val.rawJsType => toValue = "%identity";
     external toValueAnimated : Val.t => toValue = "%identity";
     external _timing : Val.t => config => CompositeAnimation.t =
       "timing" [@@bs.module "react-native"] [@@bs.scope "Animated"];
@@ -144,7 +148,10 @@ module Animations = {
         value
         Js.Undefined.(
           {
-            "toValue": toValue,
+            "toValue": switch toValue {
+              | `raw x => toValueRaw x
+              | `animated x => toValueAnimated x
+            },
             "easing": from_opt easing,
             "duration": from_opt duration,
             "delay": from_opt delay,
