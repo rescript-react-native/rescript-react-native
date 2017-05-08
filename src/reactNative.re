@@ -24,7 +24,8 @@ module Image = ImageRe.Image;
 module Animated = {
     include AnimatedRe;
     module Text = AnimatedComponentsRe.Text;
-    module View = AnimatedComponentsRe.ScrollView;
+    module ScrollView = AnimatedComponentsRe.ScrollView;
+    module View = AnimatedComponentsRe.View;
     module Image = AnimatedComponentsRe.Image;
 };
 
