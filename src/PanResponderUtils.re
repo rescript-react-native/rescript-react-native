@@ -2,7 +2,6 @@ external _panHandlers : PanResponderRe.t => Js.t 'a = "panHandlers" [@@bs.get];
 
 let panHandlers t: Props.touchResponderHandlers => {
   let jsHandlers = _panHandlers t;
-  Js.log jsHandlers;
   {
     onMoveShouldSetResponder: Js.Undefined.to_opt jsHandlers##onMoveShouldSetResponder,
     onMoveShouldSetResponderCapture: Js.Undefined.to_opt jsHandlers##onMoveShouldSetResponderCapture,
