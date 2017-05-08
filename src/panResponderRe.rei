@@ -33,9 +33,6 @@ let create:
       | `update (
           list [< | `X AnimatedRe.Value.t | `XY AnimatedRe.ValueXY.t | `Y AnimatedRe.Value.t]
         )
-      | `updateNative (
-          list [< | `X AnimatedRe.Value.t | `XY AnimatedRe.ValueXY.t | `Y AnimatedRe.Value.t]
-        )
     ]? =>
   onPanResponderTerminate::callback unit? =>
   onPanResponderTerminationRequest::callback bool? =>

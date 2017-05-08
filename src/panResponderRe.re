@@ -20,7 +20,7 @@ external _create : 'a => t = "create" [@@bs.scope "PanResponder"] [@@bs.module "
 
 external shamelesslyWrapCallback : 'a => callback unit = "%identity";
 
-let animatedEvent l b => {
+let animatedEvent l => {
   let config =
     List.fold_left
       (
@@ -28,13 +28,13 @@ let animatedEvent l b => {
           switch y {
           | `X (value: AnimatedRe.Value.t) => Js.Obj.assign x {"dx": value}
           | `Y (value: AnimatedRe.Value.t) => Js.Obj.assign x {"dy": value}
-          | `XY value => Js.Obj.assign x {"dx": AnimatedRe.ValueXY.getX value}
+          | `XY value => Js.Obj.assign x AnimatedRe.ValueXY.({"dx": getX value, "dy": getY value})
           }
       )
       (Js.Obj.empty ())
       l;
   shamelesslyWrapCallback (
-    AnimatedRe.event (Array.of_list [Js.null, Js.Null.return config]) {"useNativeDriver": Js.Boolean.to_js_boolean b}
+    AnimatedRe.event (Array.of_list [Js.null, Js.Null.return config]) {"useNativeDriver": Js.false_}
   )
 };
 
@@ -88,8 +88,7 @@ let create
           | None => Js.undefined
           | Some x =>
             switch x {
-            | `update l => Js.Undefined.return (animatedEvent l false)
-            | `updateNative l => Js.Undefined.return (animatedEvent l true)
+            | `update l => Js.Undefined.return (animatedEvent l)
             | `callback (x: callback unit) => Js.Undefined.return x
             }
           },
