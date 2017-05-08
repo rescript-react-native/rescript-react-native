@@ -38,6 +38,9 @@ and viewToken 'item =
     section : section 'item
   };
 
+let section:
+  data::array 'item => key::string? => renderItem::renderItem 'item? => unit => section 'item;
+
 let createElement:
   sections::array (section 'item) =>
   renderItem::renderItem 'item =>
@@ -55,8 +58,8 @@ let createElement:
     Js.t {. viewableItems : array (viewToken 'item), changed : array (viewToken 'item)}? =>
   onRefresh::(unit => unit)? =>
   refreshing::bool? =>
-  renderSectionHeader::(Js.t {. section: section 'item} => ReactRe.reactElement)? =>
-  renderSectionFooter::(Js.t {. section: section 'item} => ReactRe.reactElement)? =>
+  renderSectionHeader::(Js.t {. section : section 'item} => ReactRe.reactElement)? =>
+  renderSectionFooter::(Js.t {. section : section 'item} => ReactRe.reactElement)? =>
   stickySectionHeadersEnabled::bool? =>
   children::list ReactRe.reactElement =>
   ref::(ReactRe.reactRef => unit)? =>
