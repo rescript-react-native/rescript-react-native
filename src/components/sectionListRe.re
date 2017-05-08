@@ -39,6 +39,13 @@ and viewToken 'item =
     isViewable : Js.boolean,
     section : section 'item
   };
+
+let section ::data ::key=? ::renderItem=? () => {
+  "data": data,
+  "key": Js.Undefined.from_opt key,
+  "renderItem": Js.Undefined.from_opt renderItem
+};
+
 let createElement
     ::sections
     ::renderItem
