@@ -31,3 +31,4 @@ external object_ : Js_dict.t Js.Json.t => Js.Json.t =
 external array : array Js.Json.t => Js.Json.t = "%identity";
 
 external animatedValue : AnimatedRe.Value.t => Js.Json.t = "%identity";
+external interpolatedValue : AnimatedRe.Interpolation.t => Js.Json.t = "%identity";

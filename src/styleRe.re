@@ -11,7 +11,8 @@ type style =
   | IntStyle string int
   | FloatStyle string float
   | ObjectStyle string (Js.Dict.t Js.Json.t)
-  | AnimatedStyle string AnimatedRe.Value.t;
+  | AnimatedStyle
+      string [ | `value AnimatedRe.Value.t | `interpolation AnimatedRe.Interpolation.t];
 
 let combine a b => {
   let entries =
@@ -33,7 +34,9 @@ let pctStyle key value => StringStyle key (string_of_float value ^ "%");
 
 let objectStyle key value => ObjectStyle key value;
 
-let animatedStyle key value => AnimatedStyle key value;
+let animatedStyle key value => AnimatedStyle key (`value value);
+
+let interpolatedStyle key value => AnimatedStyle key (`interpolation value);
 
 let encodeStyle =
   fun
@@ -43,7 +46,13 @@ let encodeStyle =
   | FloatStyle key value => (key, Encode.float value)
   | StringStyle key value => (key, Encode.string value)
   | ObjectStyle key value => (key, Encode.object_ value)
-  | AnimatedStyle key value => (key, Encode.animatedValue value);
+  | AnimatedStyle key value => (
+      key,
+      switch value {
+      | `value x => Encode.animatedValue x
+      | `interpolation x => Encode.interpolatedValue x
+      }
+    );
 
 let style sarr => sarr |> List.map encodeStyle |> Utils.dictFromList |> to_style;
 
@@ -107,6 +116,8 @@ let bottom = intStyle "bottom";
 
 let bottomAnimated = animatedStyle "bottom";
 
+let bottomInterpolated = interpolatedStyle "bottom";
+
 let display v =>
   stringStyle
     "display"
@@ -155,6 +166,8 @@ let heightPct = pctStyle "height";
 
 let heightAnimated = animatedStyle "height";
 
+let heightInterpolated = interpolatedStyle "height";
+
 let justifyContent v =>
   stringStyle
     "justifyContent"
@@ -172,6 +185,8 @@ let justifyContent v =>
 let left = intStyle "left";
 
 let leftAnimated = animatedStyle "left";
+
+let leftInterpolated = interpolatedStyle "left";
 
 let margin = intStyle "margin";
 
@@ -242,15 +257,21 @@ let right = intStyle "right";
 
 let rightAnimated = animatedStyle "right";
 
+let rightInterpolated = interpolatedStyle "right";
+
 let top = intStyle "top";
 
 let topAnimated = animatedStyle "top";
+
+let topInterpolated = interpolatedStyle "top";
 
 let width = intStyle "width";
 
 let widthPct = pctStyle "width";
 
 let widthAnimated = animatedStyle "width";
+
+let widthInterpolated = interpolatedStyle "width";
 
 let zIndex = intStyle "zIndex";
 

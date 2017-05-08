@@ -33,6 +33,8 @@ let bottom: int => style;
 
 let bottomAnimated: AnimatedRe.Value.t => style;
 
+let bottomInterpolated: AnimatedRe.Interpolation.t => style;
+
 let display: [ | `flex | `none] => style;
 
 let flex: float => style;
@@ -55,12 +57,16 @@ let heightPct: float => style;
 
 let heightAnimated: AnimatedRe.Value.t => style;
 
+let heightInterpolated: AnimatedRe.Interpolation.t => style;
+
 let justifyContent:
   [ | `flexStart | `flexEnd | `center | `stretch | `spaceAround | `spaceBetween] => style;
 
 let left: int => style;
 
 let leftAnimated: AnimatedRe.Value.t => style;
+
+let leftInterpolated: AnimatedRe.Interpolation.t => style;
 
 let margin: int => style;
 
@@ -114,15 +120,21 @@ let right: int => style;
 
 let rightAnimated: AnimatedRe.Value.t => style;
 
+let rightInterpolated: AnimatedRe.Interpolation.t => style;
+
 let top: int => style;
 
 let topAnimated: AnimatedRe.Value.t => style;
+
+let topInterpolated: AnimatedRe.Interpolation.t => style;
 
 let width: int => style;
 
 let widthPct: float => style;
 
 let widthAnimated: AnimatedRe.Value.t => style;
+
+let widthInterpolated: AnimatedRe.Interpolation.t => style;
 
 let zIndex: int => style;
 
