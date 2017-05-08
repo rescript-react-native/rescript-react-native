@@ -1,8 +1,7 @@
 type t;
 
 external to_style : Js.Dict.t Js.Json.t => t = "%identity";
-
-external style_to_dict : t => Js.Dict.t Js.Json.t = "%identity";
+external array_to_style : array t => t = "%identity";
 
 type style =
   | ArrayStyle string (array Js.Json.t)
@@ -15,9 +14,8 @@ type style =
       string [ | `value AnimatedRe.Value.t | `interpolation AnimatedRe.Interpolation.t];
 
 let combine a b => {
-  let entries =
-    Array.append (Utils.dictEntries (style_to_dict a)) (Utils.dictEntries (style_to_dict b));
-  Utils.dictFromArray entries |> to_style
+  let entries = Array.of_list [a, b];
+  array_to_style entries;
 };
 
 let arrayStyle key value => ArrayStyle key value;
