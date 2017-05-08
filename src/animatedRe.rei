@@ -127,7 +127,7 @@ module ValueXY: {
   let addListener: t => callback => string;
   let removeListener: t => string => unit;
   let removeAllListeners: t => unit;
-  let getLayout: t => translateTransform;
+  let getLayout: t => layout;
   let getTranslateTransform: t => translateTransform;
   let add: t => t => t;
   let divide: t => t => t;

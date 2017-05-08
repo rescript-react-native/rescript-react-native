@@ -302,10 +302,10 @@ module ValueXY = {
   external addListener : t => callback => string = "addListener" [@@bs.send];
   external removeListener : t => string => unit = "removeListener" [@@bs.send];
   external removeAllListeners : t => unit = "removeAllListeners" [@@bs.send];
-  external getLayout : t => translateTransform = "getLayout" [@@bs.send];
+  external getLayout : t => layout = "getLayout" [@@bs.send];
   external getTranslateTransform : t => translateTransform = "getTranslateTransform" [@@bs.send];
-  external getX : t => Value.t = "x" [@@bs.val];
-  external getY : t => Value.t = "y" [@@bs.val];
+  external getX : t => Value.t = "x" [@@bs.get];
+  external getY : t => Value.t = "y" [@@bs.get];
   type value = t;
   include
     ValueOperations {
