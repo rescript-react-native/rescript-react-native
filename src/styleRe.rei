@@ -31,6 +31,8 @@ let borderWidth: int => style;
 
 let bottom: int => style;
 
+let bottomAnimated: AnimatedRe.Value.t => style;
+
 let display: [ | `flex | `none] => style;
 
 let flex: float => style;
@@ -57,6 +59,8 @@ let justifyContent:
   [ | `flexStart | `flexEnd | `center | `stretch | `spaceAround | `spaceBetween] => style;
 
 let left: int => style;
+
+let leftAnimated: AnimatedRe.Value.t => style;
 
 let margin: int => style;
 
@@ -108,7 +112,11 @@ let position: [ | `absolute | `relative] => style;
 
 let right: int => style;
 
+let rightAnimated: AnimatedRe.Value.t => style;
+
 let top: int => style;
+
+let topAnimated: AnimatedRe.Value.t => style;
 
 let width: int => style;
 

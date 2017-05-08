@@ -105,6 +105,8 @@ let borderWidth = intStyle "borderWidth";
 
 let bottom = intStyle "bottom";
 
+let bottomAnimated = animatedStyle "bottom";
+
 let display v =>
   stringStyle
     "display"
@@ -151,7 +153,7 @@ let height = intStyle "height";
 
 let heightPct = pctStyle "height";
 
-let heightAnimated = animatedStyle "height"; 
+let heightAnimated = animatedStyle "height";
 
 let justifyContent v =>
   stringStyle
@@ -168,6 +170,8 @@ let justifyContent v =>
     );
 
 let left = intStyle "left";
+
+let leftAnimated = animatedStyle "left";
 
 let margin = intStyle "margin";
 
@@ -236,7 +240,11 @@ let position v =>
 
 let right = intStyle "right";
 
+let rightAnimated = animatedStyle "right";
+
 let top = intStyle "top";
+
+let topAnimated = animatedStyle "top";
 
 let width = intStyle "width";
 
