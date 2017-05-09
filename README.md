@@ -1,10 +1,10 @@
-# bs-react-native - [BuckleScript](https://github.com/bloomberg/bucklescript) bindings for [React Native](https://github.com/facebook/react-native)
+# [BuckleScript](https://github.com/bloomberg/bucklescript) bindings for [React Native](https://github.com/facebook/react-native)
 
-**WIP**
+### Disclaimer
+
+This is **work in progress**. There are many missing APIs and the existing ones are not guaranteed to work. Contributions of Components and APIs are very welcome!
 
 The bindings are targeted to React Native 0.44.
-
-Contributions of Components and APIs are very welcomed!
 
 ## Style
 Since we have a proper type system we can make styles **typesafe**! Therefore styles are a little bit different declared than in JavaScript:
