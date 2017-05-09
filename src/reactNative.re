@@ -16,12 +16,16 @@ module TextInput = TextInputRe;
 module TouchableHighlight = TouchableHighlightRe;
 module TouchableOpacity = TouchableOpacityRe;
 module TouchableWithoutFeedback = TouchableWithoutFeedbackRe;
-module View = ViewRe.View;
+module View = {
+  include ViewRe.View;
+  include ResponderUtils;
+};
 module Image = ImageRe.Image;
 module Animated = {
     include AnimatedRe;
     module Text = AnimatedComponentsRe.Text;
-    module View = AnimatedComponentsRe.ScrollView;
+    module ScrollView = AnimatedComponentsRe.ScrollView;
+    module View = AnimatedComponentsRe.View;
     module Image = AnimatedComponentsRe.Image;
 };
 
@@ -38,6 +42,10 @@ module BackHandler = BackHandlerRe;
 module Dimensions = DimensionsRe;
 module Platform = PlatformRe;
 module StyleSheet = StyleSheetRe;
+module PanResponder = {
+  include PanResponderRe;
+  include PanResponderUtils;
+};
 
 /**
  * New Modules due to Reason

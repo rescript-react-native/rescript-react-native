@@ -14,16 +14,7 @@ let createElement
     ::onAccessibilityTap=?
     ::onLayout=?
     ::onMagicTap=?
-    ::onMoveShouldSetResponder=?
-    ::onMoveShouldSetResponderCapture=?
-    ::onResponderGrant=?
-    ::onResponderMove=?
-    ::onResponderReject=?
-    ::onResponderRelease=?
-    ::onResponderTerminate=?
-    ::onResponderTerminationRequest=?
-    ::onStartShouldSetResponder=?
-    ::onStartShouldSetResponderCapture=?
+    ::responderHandlers=?
     ::pointerEvents=?
     ::removeClippedSubviews=?
     ::style=?
@@ -69,16 +60,7 @@ let createElement
         ::onAccessibilityTap
         ::onLayout
         ::onMagicTap
-        ::onMoveShouldSetResponder
-        ::onMoveShouldSetResponderCapture
-        ::onResponderGrant
-        ::onResponderMove
-        ::onResponderReject
-        ::onResponderRelease
-        ::onResponderTerminate
-        ::onResponderTerminationRequest
-        ::onStartShouldSetResponder
-        ::onStartShouldSetResponderCapture
+        ::responderHandlers
         ::pointerEvents
         ::removeClippedSubviews
         ::style

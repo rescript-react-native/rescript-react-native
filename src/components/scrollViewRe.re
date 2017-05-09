@@ -9,16 +9,7 @@ module type ScrollViewComponent = {
     onAccessibilityTap::(unit => unit)? =>
     onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
     onMagicTap::(unit => unit)? =>
-    onMoveShouldSetResponder::(RNEvent.NativeEvent.t => bool)? =>
-    onMoveShouldSetResponderCapture::(RNEvent.NativeEvent.t => bool)? =>
-    onResponderGrant::(RNEvent.NativeEvent.t => unit)? =>
-    onResponderMove::(RNEvent.NativeEvent.t => unit)? =>
-    onResponderReject::(RNEvent.NativeEvent.t => unit)? =>
-    onResponderRelease::(RNEvent.NativeEvent.t => unit)? =>
-    onResponderTerminate::(RNEvent.NativeEvent.t => unit)? =>
-    onResponderTerminationRequest::(RNEvent.NativeEvent.t => unit)? =>
-    onStartShouldSetResponder::(RNEvent.NativeEvent.t => bool)? =>
-    onStartShouldSetResponderCapture::(RNEvent.NativeEvent.t => bool)? =>
+    responderHandlers::Props.touchResponderHandlers? =>
     pointerEvents::[ | `auto | `none | `boxNone | `boxOnly]? =>
     removeClippedSubviews::bool? =>
     style::StyleRe.t? =>
@@ -57,7 +48,7 @@ module type ScrollViewComponent = {
     keyboardDismissMode::[ | `none | `interactive | `onDrag]? =>
     keyboardShouldPersistTaps::[ | `always | `never | `handled]? =>
     onContentSizeChange::((float, float) => unit)? =>
-    onScroll::(unit => unit)? =>
+    onScroll::(RNEvent.NativeEvent.t => unit)? =>
     pagingEnabled::bool? =>
     refreshControl::ReactRe.reactElement? =>
     scrollEnabled::bool? =>
@@ -109,16 +100,7 @@ module CreateComponent (Impl: ViewRe.Impl) :ScrollViewComponent => {
       ::onAccessibilityTap=?
       ::onLayout=?
       ::onMagicTap=?
-      ::onMoveShouldSetResponder=?
-      ::onMoveShouldSetResponderCapture=?
-      ::onResponderGrant=?
-      ::onResponderMove=?
-      ::onResponderReject=?
-      ::onResponderRelease=?
-      ::onResponderTerminate=?
-      ::onResponderTerminationRequest=?
-      ::onStartShouldSetResponder=?
-      ::onStartShouldSetResponderCapture=?
+      ::responderHandlers=?
       ::pointerEvents=?
       ::removeClippedSubviews=?
       ::style=?
@@ -290,16 +272,7 @@ module CreateComponent (Impl: ViewRe.Impl) :ScrollViewComponent => {
           ::onAccessibilityTap
           ::onLayout
           ::onMagicTap
-          ::onMoveShouldSetResponder
-          ::onMoveShouldSetResponderCapture
-          ::onResponderGrant
-          ::onResponderMove
-          ::onResponderReject
-          ::onResponderRelease
-          ::onResponderTerminate
-          ::onResponderTerminationRequest
-          ::onStartShouldSetResponder
-          ::onStartShouldSetResponderCapture
+          ::responderHandlers
           ::pointerEvents
           ::removeClippedSubviews
           ::style

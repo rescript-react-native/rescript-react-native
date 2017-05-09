@@ -1,8 +1,8 @@
 type t;
 
 external to_style : Js.Dict.t Js.Json.t => t = "%identity";
-
 external style_to_dict : t => Js.Dict.t Js.Json.t = "%identity";
+external array_to_style : array t => t = "%identity";
 
 type style =
   | ArrayStyle string (array Js.Json.t)
@@ -11,13 +11,15 @@ type style =
   | IntStyle string int
   | FloatStyle string float
   | ObjectStyle string (Js.Dict.t Js.Json.t)
-  | AnimatedStyle string AnimatedRe.Value.t;
+  | AnimatedStyle
+      string [ | `value AnimatedRe.Value.t | `interpolation AnimatedRe.Interpolation.t];
 
 let combine a b => {
   let entries =
     Array.append (Utils.dictEntries (style_to_dict a)) (Utils.dictEntries (style_to_dict b));
   Utils.dictFromArray entries |> to_style
 };
+let concat styles => array_to_style (Array.of_list styles);
 
 let arrayStyle key value => ArrayStyle key value;
 
@@ -33,7 +35,9 @@ let pctStyle key value => StringStyle key (string_of_float value ^ "%");
 
 let objectStyle key value => ObjectStyle key value;
 
-let animatedStyle key value => AnimatedStyle key value;
+let animatedStyle key value => AnimatedStyle key (`value value);
+
+let interpolatedStyle key value => AnimatedStyle key (`interpolation value);
 
 let encodeStyle =
   fun
@@ -43,7 +47,13 @@ let encodeStyle =
   | FloatStyle key value => (key, Encode.float value)
   | StringStyle key value => (key, Encode.string value)
   | ObjectStyle key value => (key, Encode.object_ value)
-  | AnimatedStyle key value => (key, Encode.animatedValue value);
+  | AnimatedStyle key value => (
+      key,
+      switch value {
+      | `value x => Encode.animatedValue x
+      | `interpolation x => Encode.interpolatedValue x
+      }
+    );
 
 let style sarr => sarr |> List.map encodeStyle |> Utils.dictFromList |> to_style;
 
@@ -105,6 +115,10 @@ let borderWidth = intStyle "borderWidth";
 
 let bottom = intStyle "bottom";
 
+let bottomAnimated = animatedStyle "bottom";
+
+let bottomInterpolated = interpolatedStyle "bottom";
+
 let display v =>
   stringStyle
     "display"
@@ -151,7 +165,9 @@ let height = intStyle "height";
 
 let heightPct = pctStyle "height";
 
-let heightAnimated = animatedStyle "height"; 
+let heightAnimated = animatedStyle "height";
+
+let heightInterpolated = interpolatedStyle "height";
 
 let justifyContent v =>
   stringStyle
@@ -168,6 +184,10 @@ let justifyContent v =>
     );
 
 let left = intStyle "left";
+
+let leftAnimated = animatedStyle "left";
+
+let leftInterpolated = interpolatedStyle "left";
 
 let margin = intStyle "margin";
 
@@ -236,13 +256,23 @@ let position v =>
 
 let right = intStyle "right";
 
+let rightAnimated = animatedStyle "right";
+
+let rightInterpolated = interpolatedStyle "right";
+
 let top = intStyle "top";
+
+let topAnimated = animatedStyle "top";
+
+let topInterpolated = interpolatedStyle "top";
 
 let width = intStyle "width";
 
 let widthPct = pctStyle "width";
 
 let widthAnimated = animatedStyle "width";
+
+let widthInterpolated = interpolatedStyle "width";
 
 let zIndex = intStyle "zIndex";
 

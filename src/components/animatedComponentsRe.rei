@@ -5,7 +5,7 @@ module Image: ImageRe.ImageComponent;
 module Text: TextRe.TextComponent;
 
 module ScrollView: {
-  let onScrollUpdater: x::'a? => y::'b? => native::bool? => unit => unit;
+  let onScrollUpdater: x::'a? => y::'b? => native::bool? => unit => RNEvent.NativeEvent.t => unit;
   type point = {x: float, y: float};
   let scrollTo: ReactRe.reactRef => x::int => y::int => animated::bool => unit;
   let scrollToEnd: ReactRe.reactRef => animated::bool => unit;
@@ -16,16 +16,7 @@ module ScrollView: {
     onAccessibilityTap::(unit => unit)? =>
     onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
     onMagicTap::(unit => unit)? =>
-    onMoveShouldSetResponder::(RNEvent.NativeEvent.t => bool)? =>
-    onMoveShouldSetResponderCapture::(RNEvent.NativeEvent.t => bool)? =>
-    onResponderGrant::(RNEvent.NativeEvent.t => unit)? =>
-    onResponderMove::(RNEvent.NativeEvent.t => unit)? =>
-    onResponderReject::(RNEvent.NativeEvent.t => unit)? =>
-    onResponderRelease::(RNEvent.NativeEvent.t => unit)? =>
-    onResponderTerminate::(RNEvent.NativeEvent.t => unit)? =>
-    onResponderTerminationRequest::(RNEvent.NativeEvent.t => unit)? =>
-    onStartShouldSetResponder::(RNEvent.NativeEvent.t => bool)? =>
-    onStartShouldSetResponderCapture::(RNEvent.NativeEvent.t => bool)? =>
+    responderHandlers::Props.touchResponderHandlers? =>
     pointerEvents::[ | `auto | `boxNone | `boxOnly | `none]? =>
     removeClippedSubviews::bool? =>
     style::StyleRe.t? =>
@@ -64,7 +55,7 @@ module ScrollView: {
     keyboardDismissMode::[ | `interactive | `none | `onDrag]? =>
     keyboardShouldPersistTaps::[ | `always | `handled | `never]? =>
     onContentSizeChange::((float, float) => unit)? =>
-    onScroll::(unit => unit)? =>
+    onScroll::(RNEvent.NativeEvent.t => unit)? =>
     pagingEnabled::bool? =>
     refreshControl::ReactRe.reactElement? =>
     scrollEnabled::bool? =>

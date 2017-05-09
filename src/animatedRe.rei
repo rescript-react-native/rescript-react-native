@@ -7,7 +7,7 @@ module Animation: {
 module CompositeAnimation: {
   type t;
   let stop: t => unit;
-  let start: t => Js.undefined Animation.endCallback => unit;
+  let start: t => callback::Animation.endCallback? => unit => unit;
   let reset: t => unit;
 };
 
@@ -19,12 +19,13 @@ module Interpolation: {
     | Identity;
   let interpolate:
     value::t =>
+    inputRange::list float =>
+    outputRange::[< | `float (list float) | `string (list string)] =>
     easing::(float => float)? =>
     extrapolate::extrapolate? =>
     extrapolateLeft::extrapolate? =>
     extrapolateRight::extrapolate? =>
-    inputRange::list float =>
-    outputRange::[< | `float (list float) | `string (list string)] =>
+    unit =>
     t;
 };
 
@@ -43,12 +44,13 @@ module Value: {
   let stopAnimation: t => option callback => unit;
   let interpolate:
     t =>
+    inputRange::list float =>
+    outputRange::[< | `float (list float) | `string (list string)] =>
     easing::(float => float)? =>
     extrapolate::Interpolation.extrapolate? =>
     extrapolateLeft::Interpolation.extrapolate? =>
     extrapolateRight::Interpolation.extrapolate? =>
-    inputRange::list float =>
-    outputRange::[< | `float (list float) | `string (list string)] =>
+    unit =>
     Interpolation.t;
   let animate: t => Animation.t => Animation.endCallback => unit;
   let stopTracking: t => unit;
@@ -60,11 +62,10 @@ module Value: {
   let divide: value => value => value;
   let multiply: value => value => value;
   module Timing: {
-    type toValue;
-    let toValue: float => toValue;
-    let toValueAnimated: value => toValue;
+    type config;
     let animate:
       value::value =>
+      toValue::[ `raw float | `animated value] =>
       easing::(float => float)? =>
       duration::float? =>
       delay::float? =>
@@ -72,16 +73,14 @@ module Value: {
       useNativeDriver::Js.boolean? =>
       onComplete::Animation.endCallback? =>
       iterations::int? =>
-      toValue::toValue =>
+      unit =>
       CompositeAnimation.t;
   };
   module Spring: {
-    type toValue;
     type config;
-    let toValue: float => toValue;
-    let toValueAnimated: value => toValue;
     let animate:
       value::value =>
+      toValue::[ `raw float | `animated value] =>
       restDisplacementThreshold::float? =>
       overshootClamping::Js.boolean? =>
       restSpeedThreshold::float? =>
@@ -94,18 +93,20 @@ module Value: {
       useNativeDriver::Js.boolean? =>
       onComplete::Animation.endCallback? =>
       iterations::int? =>
-      toValue::toValue =>
+      unit =>
       CompositeAnimation.t;
   };
   module Decay: {
+    type config;
     let animate:
       value::value =>
+      velocity::float =>
       deceleration::float? =>
       isInteraction::bool? =>
       useNativeDriver::bool? =>
       onComplete::Animation.endCallback? =>
       iterations::int? =>
-      velocity::float =>
+      unit =>
       CompositeAnimation.t;
   };
 };
@@ -126,18 +127,19 @@ module ValueXY: {
   let addListener: t => callback => string;
   let removeListener: t => string => unit;
   let removeAllListeners: t => unit;
-  let getLayout: t => translateTransform;
+  let getLayout: t => layout;
   let getTranslateTransform: t => translateTransform;
+  let add: t => t => t;
+  let divide: t => t => t;
+  let multiply: t => t => t;
+  let getX: t => Value.t;
+  let getY: t => Value.t;
   type value = t;
-  let add: value => value => value;
-  let divide: value => value => value;
-  let multiply: value => value => value;
   module Timing: {
-    type toValue;
-    let toValue: jsValue => toValue;
-    let toValueAnimated: value => toValue;
+    type config;
     let animate:
       value::value =>
+      toValue::[ `raw jsValue | `animated value] =>
       easing::(float => float)? =>
       duration::float? =>
       delay::float? =>
@@ -145,15 +147,14 @@ module ValueXY: {
       useNativeDriver::Js.boolean? =>
       onComplete::Animation.endCallback? =>
       iterations::int? =>
-      toValue::toValue =>
+      unit =>
       CompositeAnimation.t;
   };
   module Spring: {
-    type toValue;
-    let toValue: jsValue => toValue;
-    let toValueAnimated: value => toValue;
+    type config;
     let animate:
       value::value =>
+      toValue::[ `raw jsValue | `animated value] =>
       restDisplacementThreshold::float? =>
       overshootClamping::Js.boolean? =>
       restSpeedThreshold::float? =>
@@ -166,23 +167,26 @@ module ValueXY: {
       useNativeDriver::Js.boolean? =>
       onComplete::Animation.endCallback? =>
       iterations::int? =>
-      toValue::toValue =>
+      unit =>
       CompositeAnimation.t;
   };
   module Decay: {
+    type config;
     let animate:
       value::value =>
+      velocity::jsValue =>
       deceleration::float? =>
       isInteraction::bool? =>
       useNativeDriver::bool? =>
       onComplete::Animation.endCallback? =>
       iterations::int? =>
-      velocity::jsValue =>
+      unit =>
       CompositeAnimation.t;
   };
 };
 
-let event: 'a => 'b => unit => unit;
+type animatedEvent;
+let event: array 'a => 'b => animatedEvent;
 
 let delay: float => CompositeAnimation.t;
 
