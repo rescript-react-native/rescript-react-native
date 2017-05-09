@@ -6,6 +6,8 @@ let style: list style => t;
 
 let combine: t => t => t;
 
+let concat: list t => t;
+/** Equivalent to [style_a, style_b] in js */
 
 /**
  * Layout Props
