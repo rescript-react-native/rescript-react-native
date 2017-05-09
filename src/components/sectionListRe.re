@@ -112,27 +112,30 @@ module CreateComponent (Item: {type item;}) => {
                   sections,
               "renderItem": renderItemFromJS renderItem,
               "keyExtractor": keyExtractor,
-              "itemSeparatorComponent":
+              "ItemSeparatorComponent":
                 from_opt (
                   Utils.option_map
                     (
-                      fun itemSeparatorComponent jsItems =>
-                        itemSeparatorComponent (
-                          createSeparatorProps
-                            highlighted::jsItems##highlighted
-                            leadingItem::jsItems##leadingItem
-                            leadingSection::jsItems##leadingSection
-                            section::jsItems##section
-                            trailingItem::jsItems##trailingItem
-                            trailingSection::jsItems##trailingSection
-                        )
+                      fun itemSeparatorComponent => {
+                        let comp jsItems =>
+                          itemSeparatorComponent (
+                            createSeparatorProps
+                              highlighted::(Js.to_bool jsItems##highlighted)
+                              leadingItem::jsItems##leadingItem
+                              leadingSection::jsItems##leadingSection
+                              section::jsItems##section
+                              trailingItem::jsItems##trailingItem
+                              trailingSection::jsItems##trailingSection
+                          );
+                        comp
+                      }
                     )
                     itemSeparatorComponent
                 ),
-              "listEmptyComponent": from_opt listEmptyComponent,
-              "listFooterComponent": from_opt listFooterComponent,
-              "listHeaderComponent": from_opt listHeaderComponent,
-              "sectionSeparatorComponent": from_opt sectionSeparatorComponent,
+              "ListEmptyComponent": from_opt listEmptyComponent,
+              "ListFooterComponent": from_opt listFooterComponent,
+              "ListHeaderComponent": from_opt listHeaderComponent,
+              "SectionSeparatorComponent": from_opt sectionSeparatorComponent,
               "extraData": from_opt extraData,
               "initialNumToRender": from_opt initialNumToRender,
               "onEndReached": from_opt onEndReached,
