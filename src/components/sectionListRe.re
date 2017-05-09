@@ -1,23 +1,17 @@
 external view : ReactRe.reactClass = "SectionList" [@@bs.module "react-native"];
 
-module Make (Item: {type item;}) => {
-  type section =
-    Js.t {
-      .
-      data : array Item.item,
-      key : Js.Undefined.t string,
-      renderItem :
-        Js.Undefined.t (
-          Js.t {
-            .
-            item : Item.item,
-            index : int,
-            section : section,
-            separators : Js.t {. highlight : unit => unit, unhighlight : unit => unit}
-          } =>
-          ReactRe.reactElement
-        )
-    };
+module CreateComponent (Item: {type item;}) => {
+  type renderBag = {
+    item: Item.item,
+    index: int,
+    section,
+    separators: Js.t {. highlight : unit => unit, unhighlight : unit => unit}
+  }
+  and section = {
+    data: array Item.item,
+    key: option string,
+    renderItem: option (renderBag => ReactRe.reactElement)
+  };
   type viewToken =
     Js.t {
       .
@@ -27,12 +21,6 @@ module Make (Item: {type item;}) => {
       isViewable : Js.boolean,
       section : section
     };
-  type renderBag = {
-    item: Item.item,
-    index: int,
-    section,
-    separators: Js.t {. highlight : unit => unit, unhighlight : unit => unit}
-  };
   type separatorProps = {
     highlighted: bool,
     leadingItem: option Item.item,
@@ -57,8 +45,15 @@ module Make (Item: {type item;}) => {
     trailingSection
   };
   module SectionList = {
-    let section ::data ::key=? ::renderItem=? () =>
-      Js.Undefined.({"data": data, "key": from_opt key, "renderItem": from_opt renderItem});
+    let renderItemFromJS renderItem jsItems =>
+      renderItem (
+        createRenderBag
+          item::jsItems##item
+          index::jsItems##index
+          section::jsItems##section
+          separators::jsItems##separators
+      );
+    let section ::data ::key=? ::renderItem=? () => {data, key, renderItem};
     let createElement:
       sections::array section =>
       renderItem::(renderBag => ReactRe.reactElement) =>
@@ -105,15 +100,17 @@ module Make (Item: {type item;}) => {
           view
           Js.Undefined.(
             {
-              "sections": sections,
-              "renderItem": fun jsItems =>
-                renderItem (
-                  createRenderBag
-                    item::jsItems##item
-                    index::jsItems##index
-                    section::jsItems##section
-                    separators::jsItems##separators
-                ),
+              "sections":
+                Array.map
+                  (
+                    fun {data, key, renderItem} => {
+                      "data": data,
+                      "key": from_opt key,
+                      "renderItem": from_opt (Utils.option_map renderItemFromJS renderItem)
+                    }
+                  )
+                  sections,
+              "renderItem": renderItemFromJS renderItem,
               "keyExtractor": keyExtractor,
               "itemSeparatorComponent":
                 from_opt (

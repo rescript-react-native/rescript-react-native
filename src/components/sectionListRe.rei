@@ -1,23 +1,17 @@
-module Make:
+module CreateComponent:
   (Item: {type item;}) =>
   {
-    type section =
-      Js.t {
-        .
-        data : array Item.item,
-        key : Js.Undefined.t string,
-        renderItem :
-          Js.Undefined.t (
-            Js.t {
-              .
-              index : int,
-              item : Item.item,
-              section : section,
-              separators : Js.t {. highlight : unit => unit, unhighlight : unit => unit}
-            } =>
-            ReactRe.reactElement
-          )
-      };
+    type renderBag = {
+      item: Item.item,
+      index: int,
+      section,
+      separators: Js.t {. highlight : unit => unit, unhighlight : unit => unit}
+    }
+    and section = {
+      data: array Item.item,
+      key: option string,
+      renderItem: option (renderBag => ReactRe.reactElement)
+    };
     type viewToken =
       Js.t {
         .
@@ -27,12 +21,6 @@ module Make:
         key : string,
         section : section
       };
-    type renderBag = {
-      item: Item.item,
-      index: int,
-      section,
-      separators: Js.t {. highlight : unit => unit, unhighlight : unit => unit}
-    };
     type separatorProps = {
       highlighted: bool,
       leadingItem: option Item.item,
@@ -43,11 +31,11 @@ module Make:
     };
     module SectionList: {
       let section:
-        data::'a =>
-        key::'b? =>
-        renderItem::'c? =>
+        data::array Item.item =>
+        key::string? =>
+        renderItem::(renderBag => ReactRe.reactElement)? =>
         unit =>
-        Js.t {. data : 'a, key : Js.Undefined.t 'b, renderItem : Js.Undefined.t 'c};
+        section;
       let createElement:
         sections::array section =>
         renderItem::(renderBag => ReactRe.reactElement) =>
