@@ -17,6 +17,7 @@ Before running the app, make sure you ran:
 Mac OS and Xcode are required.
 
 - Start the packager with `npm start` **[important]**
+- `cd ..` and start Bucklescript with `npm start` **[important]**
 - Open `RNTester/RNTester.xcodeproj` in Xcode
 - Hit the Run button
 
@@ -29,6 +30,7 @@ You'll need to have all the [prerequisites](https://github.com/facebook/react-na
 Start an Android emulator ([Genymotion](https://www.genymotion.com) is recommended).
 
 - Start the packager with `npm start` **[important]**
+- `cd ..` and start Bucklescript with `npm start` **[important]**
 - `./gradlew :RNTester:android:app:installDebug`
 `
 _Note: Building for the first time can take a while._
