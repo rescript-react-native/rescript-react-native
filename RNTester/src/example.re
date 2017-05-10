@@ -1,0 +1,1 @@
+type t = {title: string, description: option string, render: unit => ReactRe.reactElement};
