@@ -2,23 +2,23 @@ type t;
 
 module NativeEvent: {
   type t;
-  external changedTouches : t => array (Js.t {..}) = "" [@@bs.get];
-  external identifier : t => int = "" [@@bs.get];
-  external locationX : t => int = "" [@@bs.get];
-  external locationY : t => int = "" [@@bs.get];
-  external pageX : t => int = "" [@@bs.get];
-  external pageY : t => int = "" [@@bs.get];
-  external target : t => Js.t {..} = "" [@@bs.get];
-  external touches : t => array (Js.t {..}) = "" [@@bs.get];
-  let timestamp: t => float;
+  let changedTouches : t => array (Js.t {..});
+  let identifier : t => int;
+  let locationX : t => float;
+  let locationY : t => float;
+  let pageX : t => float;
+  let pageY : t => float;
+  let target : t => Js.t {..};
+  let touches : t => array (Js.t {..});
+  let timestamp: t => int;
 };
 
 module NativeLayoutEvent: {
   type t;
-  type layout = {x: int, y: int, width: int, height: int};
+  type layout = {x: float, y: float, width: float, height: float};
   let layout: t => layout;
 };
 
-external nativeEvent : t => NativeEvent.t = "" [@@bs.get];
+let nativeEvent : t => NativeEvent.t;
 
-external nativeLayoutEvent : t => NativeLayoutEvent.t = "nativeEvent" [@@bs.get];
+let nativeLayoutEvent : t => NativeLayoutEvent.t;
