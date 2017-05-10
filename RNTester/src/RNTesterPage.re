@@ -10,9 +10,9 @@ let styles =
       }
     );
 
-module UIEXplorerPage = {
+module RNTesterPage = {
   include ReactRe.Component;
-  let name = "UIExplorerPage";
+  let name = "RNTesterPage";
   type props = {
     noScroll: bool,
     noSpacer: bool,
@@ -40,7 +40,7 @@ module UIEXplorerPage = {
   let render {props} => {
     let title =
       switch props.title {
-      | Some title => <UIExplorerTitle key="title" title />
+      | Some title => <RNTesterTitle key="title" title />
       | None => ReactRe.nullElement
       };
     let spacer =
@@ -55,7 +55,7 @@ module UIEXplorerPage = {
   };
 };
 
-include ReactRe.CreateComponent UIEXplorerPage;
+include ReactRe.CreateComponent RNTesterPage;
 
 let createElement ::title=? ::noScroll=? ::noSpacer=? ::children =>
   wrapProps

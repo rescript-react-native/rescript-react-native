@@ -32,9 +32,9 @@ let styles =
       }
     );
 
-module UIExplorerBlock = {
+module RNTesterBlock = {
   include ReactRe.Component;
-  let name = "UIExplorerBlock";
+  let name = "RNTesterBlock";
   type props = {description: option string, title: string, children: list ReactRe.reactElement};
   let render {props} =>
     <View style=styles##container>
@@ -52,7 +52,7 @@ module UIExplorerBlock = {
     </View>;
 };
 
-include ReactRe.CreateComponent UIExplorerBlock;
+include ReactRe.CreateComponent RNTesterBlock;
 
 let createElement ::description ::title ::children =>
   wrapProps {description, title, children} ::children;

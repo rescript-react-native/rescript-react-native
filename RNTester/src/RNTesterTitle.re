@@ -19,9 +19,9 @@ let styles =
       }
     ); 
 
-module UIExplorerTitle = {
+module RNTesterTitle = {
   include ReactRe.Component;
-  let name = "UIExplorerTitle";
+  let name = "RNTesterTitle";
   type props = {title: string};
   let render {props} =>
     <View style=styles##container>
@@ -29,6 +29,6 @@ module UIExplorerTitle = {
     </View>;
 };
 
-include ReactRe.CreateComponent UIExplorerTitle;
+include ReactRe.CreateComponent RNTesterTitle;
 
 let createElement ::title => wrapProps {title: title};

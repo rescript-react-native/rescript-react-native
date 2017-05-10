@@ -4,7 +4,7 @@
  * @flow
  */
 
-import { comp as App } from "../lib/js/RNTester/src/uIExplorerApp.js";
+import { comp as App } from "../lib/js/RNTester/src/rNTesterApp.js";
 import React from "react";
 import {
   AppRegistry

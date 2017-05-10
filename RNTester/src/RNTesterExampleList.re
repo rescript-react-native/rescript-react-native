@@ -21,14 +21,14 @@ let styles =
       }
     );
 
-module UIExplorerExampleList = {
+module RNTesterExampleList = {
   include ReactRe.Component;
   include
     SectionList.CreateComponent {
       type item = ExampleList.item;
     };
   type props = {onPress: ExampleList.item => unit, components: array ExampleList.item};
-  let name = "UIExplorerExampleList";
+  let name = "RNTesterExampleList";
   let renderItem onPress {item} =>
     <TouchableHighlight onPress=(fun () => onPress item)>
       <View style=styles##row>
@@ -57,6 +57,6 @@ module UIExplorerExampleList = {
     </View>;
 };
 
-include ReactRe.CreateComponent UIExplorerExampleList;
+include ReactRe.CreateComponent RNTesterExampleList;
 
 let createElement ::components ::onPress => wrapProps {components, onPress};

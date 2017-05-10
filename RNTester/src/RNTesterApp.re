@@ -34,9 +34,9 @@ let header ::onBack=? ::title () =>
     )
   </View>;
 
-module UIExplorerApp = {
+module RNTesterApp = {
   include ReactRe.Component.Stateful.JsProps;
-  let name = "UIExplorerApp";
+  let name = "RNTesterApp";
   type props = unit;
   type state = {currentExample: option ExampleList.item};
   let getInitialState () => {currentExample: None};
@@ -53,18 +53,18 @@ module UIExplorerApp = {
     switch state.currentExample {
     | None =>
       <View style=styles##exampleContainer>
-        (header title::"ReasonUIExplorer" ())
-        <UIExplorerExampleList components onPress=(updater onPress) />
+        (header title::"ReasonRNTester" ())
+        <RNTesterExampleList components onPress=(updater onPress) />
       </View>
     | Some example =>
       <View style=styles##exampleContainer>
         (header title::example.title onBack::(updater onBack) ())
-        <UIExplorerExampleContainer example />
+        <RNTesterExampleContainer example />
       </View>
     }
   };
 };
 
-include ReactRe.CreateComponent UIExplorerApp;
+include ReactRe.CreateComponent RNTesterApp;
 
 let createElement = wrapProps ();
