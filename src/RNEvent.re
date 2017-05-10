@@ -3,14 +3,14 @@ type t;
 module NativeEvent = {
   type t;
   external changedTouches : t => array (Js.t {..}) = "" [@@bs.get];
-  external identifier : t => float = "" [@@bs.get];
+  external identifier : t => int = "" [@@bs.get];
   external locationX : t => float = "" [@@bs.get];
   external locationY : t => float = "" [@@bs.get];
   external pageX : t => float = "" [@@bs.get];
   external pageY : t => float = "" [@@bs.get];
   external target : t => Js.t {..} = "" [@@bs.get];
   external touches : t => array (Js.t {..}) = "" [@@bs.get];
-  external timestamp : t => float = "" [@@bs.get];
+  external timestamp : t => int = "" [@@bs.get];
 };
 
 module NativeLayoutEvent = {
