@@ -41,7 +41,7 @@ let animatedEvent l => {
 let convertCallback x =>
   switch x {
     | None => Js.undefined;
-    | Some x => Js.Undefined.return (fun event state => x event {
+    | Some x => Js.Undefined.return (fun event state => x event##nativeEvent {
         dx: state##dx,
         dy: state##dy,
         moveX: state##moveX,
