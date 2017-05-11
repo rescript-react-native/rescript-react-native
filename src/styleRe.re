@@ -113,7 +113,7 @@ let borderTopWidth = intStyle "borderTopWidth";
 
 let borderWidth = intStyle "borderWidth";
 
-let bottom = intStyle "bottom";
+let bottom = floatStyle "bottom";
 
 let bottomAnimated = animatedStyle "bottom";
 
@@ -161,7 +161,7 @@ let flexWrap v =>
       }
     );
 
-let height = intStyle "height";
+let height = floatStyle "height";
 
 let heightPct = pctStyle "height";
 
@@ -183,7 +183,7 @@ let justifyContent v =>
       }
     );
 
-let left = intStyle "left";
+let left = floatStyle "left";
 
 let leftAnimated = animatedStyle "left";
 
@@ -254,19 +254,19 @@ let position v =>
       }
     );
 
-let right = intStyle "right";
+let right = floatStyle "right";
 
 let rightAnimated = animatedStyle "right";
 
 let rightInterpolated = interpolatedStyle "right";
 
-let top = intStyle "top";
+let top = floatStyle "top";
 
 let topAnimated = animatedStyle "top";
 
 let topInterpolated = interpolatedStyle "top";
 
-let width = intStyle "width";
+let width = floatStyle "width";
 
 let widthPct = pctStyle "width";
 
