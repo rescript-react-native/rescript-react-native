@@ -33,6 +33,8 @@ let borderWidth: float => style;
 
 let bottom: float => style;
 
+let bottomPct: float => style;
+
 let bottomAnimated: AnimatedRe.Value.t => style;
 
 let bottomInterpolated: AnimatedRe.Interpolation.t => style;
@@ -65,6 +67,8 @@ let justifyContent:
   [ | `flexStart | `flexEnd | `center | `stretch | `spaceAround | `spaceBetween] => style;
 
 let left: float => style;
+
+let leftPct: float => style;
 
 let leftAnimated: AnimatedRe.Value.t => style;
 
@@ -120,11 +124,15 @@ let position: [ | `absolute | `relative] => style;
 
 let right: float => style;
 
+let rightPct: float => style;
+
 let rightAnimated: AnimatedRe.Value.t => style;
 
 let rightInterpolated: AnimatedRe.Interpolation.t => style;
 
 let top: float => style;
+
+let topPct: float => style;
 
 let topAnimated: AnimatedRe.Value.t => style;
 
@@ -204,6 +212,10 @@ let borderBottomRightRadius: float => style;
 let borderStyle: [ | `solid | `dotted | `dashed] => style;
 
 let opacity: float => style;
+
+let opacityAnimated: AnimatedRe.Value.t => style;
+
+let opacityInterpolated: AnimatedRe.Interpolation.t => style;
 
 let elevation: float => style;
 

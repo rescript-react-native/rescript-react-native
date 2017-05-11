@@ -115,6 +115,8 @@ let borderWidth = floatStyle "borderWidth";
 
 let bottom = floatStyle "bottom";
 
+let bottomPct = pctStyle "bottom";
+
 let bottomAnimated = animatedStyle "bottom";
 
 let bottomInterpolated = interpolatedStyle "bottom";
@@ -184,6 +186,8 @@ let justifyContent v =>
     );
 
 let left = floatStyle "left";
+
+let leftPct = pctStyle "left";
 
 let leftAnimated = animatedStyle "left";
 
@@ -256,11 +260,15 @@ let position v =>
 
 let right = floatStyle "right";
 
+let rightPct = pctStyle "right";
+
 let rightAnimated = animatedStyle "right";
 
 let rightInterpolated = interpolatedStyle "right";
 
 let top = floatStyle "top";
+
+let topPct = pctStyle "top";
 
 let topAnimated = animatedStyle "top";
 
@@ -395,6 +403,10 @@ let borderStyle v =>
     );
 
 let opacity = floatStyle "opacity";
+
+let opacityInterpolated = interpolatedStyle "opacity";
+
+let opacityAnimated = animatedStyle "opacity";
 
 let elevation = floatStyle "elevation";
 
