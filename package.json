@@ -5,6 +5,10 @@
 	"scripts": {
 		"start": "bsb -clean-world -make-world -w"
 	},
+	"files": [
+		"src",
+		"bsconfig.json"
+	],
 	"dependencies": {
 		"reason-react": "^0.1.1"
 	},
