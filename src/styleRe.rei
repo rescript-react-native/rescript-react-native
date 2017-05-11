@@ -21,17 +21,17 @@ let alignSelf: [ | `flexStart | `flexEnd | `center | `stretch | `baseline] => st
 
 let aspectRatio: float => style;
 
-let borderBottomWidth: int => style;
+let borderBottomWidth: float => style;
 
-let borderLeftWidth: int => style;
+let borderLeftWidth: float => style;
 
-let borderRightWidth: int => style;
+let borderRightWidth: float => style;
 
-let borderTopWidth: int => style;
+let borderTopWidth: float => style;
 
-let borderWidth: int => style;
+let borderWidth: float => style;
 
-let bottom: int => style;
+let bottom: float => style;
 
 let bottomAnimated: AnimatedRe.Value.t => style;
 
@@ -41,7 +41,7 @@ let display: [ | `flex | `none] => style;
 
 let flex: float => style;
 
-let flexBasis: int => style;
+let flexBasis: float => style;
 
 let flexBasisPct: float => style;
 
@@ -53,7 +53,7 @@ let flexShrink: float => style;
 
 let flexWrap: [ | `wrap | `nowrap] => style;
 
-let height: int => style;
+let height: float => style;
 
 let heightPct: float => style;
 
@@ -64,73 +64,73 @@ let heightInterpolated: AnimatedRe.Interpolation.t => style;
 let justifyContent:
   [ | `flexStart | `flexEnd | `center | `stretch | `spaceAround | `spaceBetween] => style;
 
-let left: int => style;
+let left: float => style;
 
 let leftAnimated: AnimatedRe.Value.t => style;
 
 let leftInterpolated: AnimatedRe.Interpolation.t => style;
 
-let margin: int => style;
+let margin: float => style;
 
-let marginBottom: int => style;
+let marginBottom: float => style;
 
-let marginHorizontal: int => style;
+let marginHorizontal: float => style;
 
-let marginLeft: int => style;
+let marginLeft: float => style;
 
-let marginRight: int => style;
+let marginRight: float => style;
 
-let marginTop: int => style;
+let marginTop: float => style;
 
-let marginVertical: int => style;
+let marginVertical: float => style;
 
-let maxHeight: int => style;
+let maxHeight: float => style;
 
 let maxHeightPct: float => style;
 
-let maxWidth: int => style;
+let maxWidth: float => style;
 
 let maxWidthPct: float => style;
 
-let minHeight: int => style;
+let minHeight: float => style;
 
 let minHeightPct: float => style;
 
-let minWidth: int => style;
+let minWidth: float => style;
 
 let minWidthPct: float => style;
 
 let overflow: [ | `visible | `hidden | `scroll] => style;
 
-let padding: int => style;
+let padding: float => style;
 
-let paddingBottom: int => style;
+let paddingBottom: float => style;
 
-let paddingHorizontal: int => style;
+let paddingHorizontal: float => style;
 
-let paddingLeft: int => style;
+let paddingLeft: float => style;
 
-let paddingRight: int => style;
+let paddingRight: float => style;
 
-let paddingTop: int => style;
+let paddingTop: float => style;
 
-let paddingVertical: int => style;
+let paddingVertical: float => style;
 
 let position: [ | `absolute | `relative] => style;
 
-let right: int => style;
+let right: float => style;
 
 let rightAnimated: AnimatedRe.Value.t => style;
 
 let rightInterpolated: AnimatedRe.Interpolation.t => style;
 
-let top: int => style;
+let top: float => style;
 
 let topAnimated: AnimatedRe.Value.t => style;
 
 let topInterpolated: AnimatedRe.Interpolation.t => style;
 
-let width: int => style;
+let width: float => style;
 
 let widthPct: float => style;
 
@@ -148,11 +148,11 @@ let direction: [ | `_inherit | `ltr | `rtl] => style;
  */
 let shadowColor: string => style;
 
-let shadowOffset: height::int => width::int => style;
+let shadowOffset: height::float => width::float => style;
 
 let shadowOpacity: float => style;
 
-let shadowRadius: int => style;
+let shadowRadius: float => style;
 
 
 /**
@@ -191,15 +191,15 @@ let borderBottomColor: string => style;
 
 let borderLeftColor: string => style;
 
-let borderRadius: int => style;
+let borderRadius: float => style;
 
-let borderTopLeftRadius: int => style;
+let borderTopLeftRadius: float => style;
 
-let borderTopRightRadius: int => style;
+let borderTopRightRadius: float => style;
 
-let borderBottomLeftRadius: int => style;
+let borderBottomLeftRadius: float => style;
 
-let borderBottomRightRadius: int => style;
+let borderBottomRightRadius: float => style;
 
 let borderStyle: [ | `solid | `dotted | `dashed] => style;
 
@@ -213,7 +213,7 @@ let elevation: float => style;
  */
 let color: string => style;
 
-let fontSize: int => style;
+let fontSize: float => style;
 
 let fontStyle: [ | `normal | `italic] => style;
 
@@ -221,7 +221,7 @@ let fontWeight:
   [ | `normal | `bold | `_100 | `_200 | `_300 | `_400 | `_500 | `_600 | `_700 | `_800 | `_900] =>
   style;
 
-let lineHeight: int => style;
+let lineHeight: float => style;
 
 let textAlign: [ | `auto | `left | `right | `center | `justify] => style;
 
@@ -229,9 +229,9 @@ let textDecorationLine: [ | `none | `underline | `lineThrough | `underlineLineTh
 
 let textShadowColor: string => style;
 
-let textShadowOffset: height::int => width::int => style;
+let textShadowOffset: height::float => width::float => style;
 
-let textShadowRadius: int => style;
+let textShadowRadius: float => style;
 
 let includeFontPadding: bool => style;
 
