@@ -31,7 +31,7 @@ let borderTopWidth: int => style;
 
 let borderWidth: int => style;
 
-let bottom: float => style;
+let bottom: int => style;
 
 let bottomPct: float => style;
 
@@ -55,7 +55,7 @@ let flexShrink: float => style;
 
 let flexWrap: [ | `wrap | `nowrap] => style;
 
-let height: float => style;
+let height: int => style;
 
 let heightPct: float => style;
 
@@ -66,7 +66,7 @@ let heightInterpolated: AnimatedRe.Interpolation.t => style;
 let justifyContent:
   [ | `flexStart | `flexEnd | `center | `stretch | `spaceAround | `spaceBetween] => style;
 
-let left: float => style;
+let left: int => style;
 
 let leftPct: float => style;
 
@@ -122,7 +122,7 @@ let paddingVertical: int => style;
 
 let position: [ | `absolute | `relative] => style;
 
-let right: float => style;
+let right: int => style;
 
 let rightPct: float => style;
 
@@ -130,7 +130,7 @@ let rightAnimated: AnimatedRe.Value.t => style;
 
 let rightInterpolated: AnimatedRe.Interpolation.t => style;
 
-let top: float => style;
+let top: int => style;
 
 let topPct: float => style;
 
@@ -138,7 +138,7 @@ let topAnimated: AnimatedRe.Value.t => style;
 
 let topInterpolated: AnimatedRe.Interpolation.t => style;
 
-let width: float => style;
+let width: int => style;
 
 let widthPct: float => style;
 
