@@ -9,5 +9,12 @@
         "subdirs": {
             "dir": "components"
         }
+    }, {
+        "dir": "RNTester",
+        "subdirs": {
+            "dir": "src",
+            "subdirs": "examples"
+        },
+        "type": "dev"
     }]
 }
