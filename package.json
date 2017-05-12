@@ -17,6 +17,6 @@
 		"react": "16.0.0-alpha.6"
 	},
 	"peerDependencies": {
-		"react-native": "0.44.0
+		"react-native": "0.44.0"
 	}
 }
