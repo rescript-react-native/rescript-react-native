@@ -40,8 +40,8 @@ module Value: {
   let addListener: t => callback => string;
   let removeListener: t => string => unit;
   let removeAllListeners: t => unit;
-  let resetAnimation: t => option callback => unit;
-  let stopAnimation: t => option callback => unit;
+  let resetAnimation: t => callback::(callback)? => unit => unit;
+  let stopAnimation: t => callback::(callback)? => unit => unit;
   let interpolate:
     t =>
     inputRange::list float =>

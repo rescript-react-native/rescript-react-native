@@ -239,8 +239,14 @@ module Value = {
   external addListener : t => callback => string = "addListener" [@@bs.send];
   external removeListener : t => string => unit = "removeListener" [@@bs.send];
   external removeAllListeners : t => unit = "removeAllListeners" [@@bs.send];
-  external resetAnimation : t => option callback => unit = "resetAnimation" [@@bs.send];
-  external stopAnimation : t => option callback => unit = "stopAnimation" [@@bs.send];
+  external _resetAnimation : t => Js.Undefined.t callback => unit = "resetAnimation" [@@bs.send];
+  external _stopAnimation : t => Js.Undefined.t callback => unit = "stopAnimation" [@@bs.send];
+  let resetAnimation value ::callback=? () => {
+    _resetAnimation value (Js.Undefined.from_opt callback);
+  };
+  let stopAnimation value ::callback=? () => {
+    _stopAnimation value (Js.Undefined.from_opt callback);
+  };
   external _interpolate : t => Interpolation.config => Interpolation.t = "interpolate" [@@bs.send];
   let interpolate
       value
