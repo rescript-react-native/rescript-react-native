@@ -6,29 +6,29 @@ let styles =
       {
         "container":
           style [
-            borderRadius 3,
-            borderWidth 1,
+            borderRadius 3.,
+            borderWidth 1.,
             borderColor "#d6d7da",
             backgroundColor "#ffffff",
-            margin 10,
-            marginVertical 5,
+            margin 10.,
+            marginVertical 5.,
             overflow `hidden
           ],
         "titleContainer":
           style [
-            borderBottomWidth 1,
-            borderTopLeftRadius 3,
-            borderTopRightRadius 3,
+            borderBottomWidth 1.,
+            borderTopLeftRadius 3.,
+            borderTopRightRadius 3.,
             borderBottomColor "#d6d7da",
             backgroundColor "#f6f7f8",
-            paddingHorizontal 10,
-            paddingVertical 5
+            paddingHorizontal 10.,
+            paddingVertical 5.
           ],
-        "titleText": style [fontSize 14, fontWeight `_500],
-        "descriptionText": style [fontSize 14],
-        "disclosure": style [position `absolute, top 0, right 0, padding 10],
-        "disclosureIcon": style [width 12, height 8],
-        "children": style [margin 10]
+        "titleText": style [fontSize 14., fontWeight `_500],
+        "descriptionText": style [fontSize 14.],
+        "disclosure": style [position `absolute, top 0., right 0., padding 10.],
+        "disclosureIcon": style [width 12., height 8.],
+        "children": style [margin 10.]
       }
     );
 

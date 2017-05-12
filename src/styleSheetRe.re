@@ -6,7 +6,7 @@ external _create : t => Js.t 'a => Js.t 'a = "create" [@@bs.send];
 
 let create: Js.t 'a => Js.t 'a = fun a => _create t a;
 
-external _hairlineWidth : t => int = "hairlineWidth" [@@bs.get];
+external _hairlineWidth : t => float = "hairlineWidth" [@@bs.get];
 
 let hairlineWidth = _hairlineWidth t;
 

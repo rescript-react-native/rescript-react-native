@@ -4,8 +4,8 @@ let styles =
   StyleSheet.create
     Style.(
       {
-        "box": style [backgroundColor "#527FE4", borderColor "#000033", borderWidth 1],
-        "zIndex": style [justifyContent `spaceAround, width 100, height 50, marginTop (-10)]
+        "box": style [backgroundColor "#527FE4", borderColor "#000033", borderWidth 1.],
+        "zIndex": style [justifyContent `spaceAround, width 100., height 50., marginTop (-10.)]
       }
     );
 
@@ -24,7 +24,7 @@ module ViewBorderStyleExample = {
             <View
               style=(
                       style [
-                        borderWidth 1,
+                        borderWidth 1.,
                         borderStyle (
                           if state.showBorder {
                             `dashed
@@ -32,19 +32,19 @@ module ViewBorderStyleExample = {
                             `solid
                           }
                         ),
-                        padding 5
+                        padding 5.
                       ]
                     )>
-              <Text style=(style [fontSize 11])>
+              <Text style=(style [fontSize 11.])>
                 (ReactRe.stringToElement "Dashed border style")
               </Text>
             </View>
             <View
               style=(
                       style [
-                        marginTop 5,
-                        borderWidth 1,
-                        borderRadius 5,
+                        marginTop 5.,
+                        borderWidth 1.,
+                        borderRadius 5.,
                         borderStyle (
                           if state.showBorder {
                             `dotted
@@ -52,10 +52,10 @@ module ViewBorderStyleExample = {
                             `solid
                           }
                         ),
-                        padding 5
+                        padding 5.
                       ]
                     )>
-              <Text style=(style [fontSize 11])>
+              <Text style=(style [fontSize 11.])>
                 (ReactRe.stringToElement "Dotted border style")
               </Text>
             </View>
@@ -86,7 +86,7 @@ module ZIndexExample = {
       let zIndexStr i => "ZIndex " ^ string_of_int (Array.unsafe_get indices i);
       <TouchableWithoutFeedback onPress=(updater handlePress)>
         <View>
-          <Text style=(style [paddingBottom 10])>
+          <Text style=(style [paddingBottom 10.])>
             (ReactRe.stringToElement "Tap to flip sorting order")
           </Text>
           <View
@@ -94,7 +94,7 @@ module ZIndexExample = {
                     concat [
                       styles##zIndex,
                       style [
-                        marginTop 0,
+                        marginTop 0.,
                         backgroundColor "#E57373",
                         zIndex (Array.unsafe_get indices 0)
                       ]
@@ -107,7 +107,7 @@ module ZIndexExample = {
                     concat [
                       styles##zIndex,
                       style [
-                        marginLeft 50,
+                        marginLeft 50.,
                         backgroundColor "#FFF176",
                         zIndex (Array.unsafe_get indices 1)
                       ]
@@ -120,7 +120,7 @@ module ZIndexExample = {
                     concat [
                       styles##zIndex,
                       style [
-                        marginLeft 100,
+                        marginLeft 100.,
                         backgroundColor "#81C784",
                         zIndex (Array.unsafe_get indices 2)
                       ]
@@ -133,7 +133,7 @@ module ZIndexExample = {
                     concat [
                       styles##zIndex,
                       style [
-                        marginLeft 150,
+                        marginLeft 150.,
                         backgroundColor "#64B5F6",
                         zIndex (Array.unsafe_get indices 3)
                       ]
@@ -161,34 +161,34 @@ let examples: list Example.t =
       title: "Background Color",
       description: None,
       render: fun () =>
-        <View style=(style [backgroundColor "#527FE4", padding 5])>
-          <Text style=(style [fontSize 11])> (ReactRe.stringToElement "Blue background") </Text>
+        <View style=(style [backgroundColor "#527FE4", padding 5.])>
+          <Text style=(style [fontSize 11.])> (ReactRe.stringToElement "Blue background") </Text>
         </View>
     },
     {
       title: "Border",
       description: None,
       render: fun () =>
-        <View style=(style [borderColor "#527FE4", borderWidth 5, padding 10])>
-          <Text style=(style [fontSize 11])> (ReactRe.stringToElement "5px blue border") </Text>
+        <View style=(style [borderColor "#527FE4", borderWidth 5., padding 10.])>
+          <Text style=(style [fontSize 11.])> (ReactRe.stringToElement "5px blue border") </Text>
         </View>
     },
     {
       title: "Padding/Margin",
       description: None,
       render: fun () =>
-        <View style=(style [borderColor "#bb0000", borderWidth 1])>
-          <View style=(concat [styles##box, style [padding 5]])>
-            <Text style=(style [fontSize 11])> (ReactRe.stringToElement "5px padding") </Text>
+        <View style=(style [borderColor "#bb0000", borderWidth 1.])>
+          <View style=(concat [styles##box, style [padding 5.]])>
+            <Text style=(style [fontSize 11.])> (ReactRe.stringToElement "5px padding") </Text>
           </View>
-          <View style=(concat [styles##box, style [margin 5]])>
-            <Text style=(style [fontSize 11])> (ReactRe.stringToElement "5px margin") </Text>
+          <View style=(concat [styles##box, style [margin 5.]])>
+            <Text style=(style [fontSize 11.])> (ReactRe.stringToElement "5px margin") </Text>
           </View>
-          <View style=(concat [styles##box, style [margin 5, padding 5, alignSelf `flexStart]])>
-            <Text style=(style [fontSize 11])>
+          <View style=(concat [styles##box, style [margin 5., padding 5., alignSelf `flexStart]])>
+            <Text style=(style [fontSize 11.])>
               (ReactRe.stringToElement "5px margin and padding,")
             </Text>
-            <Text style=(style [fontSize 11])>
+            <Text style=(style [fontSize 11.])>
               (ReactRe.stringToElement "widthAutonomous=true")
             </Text>
           </View>
@@ -198,8 +198,8 @@ let examples: list Example.t =
       title: "Border Radius",
       description: None,
       render: fun () =>
-        <View style=(style [borderWidth 1, borderRadius 5, padding 5])>
-          <Text style=(style [fontSize 11])>
+        <View style=(style [borderWidth 1., borderRadius 5., padding 5.])>
+          <Text style=(style [fontSize 11.])>
             (
               ReactRe.stringToElement "Too much use of `borderRadius` (especially large radii) on\nanything which is scrolling may result in dropped frames.\nUse sparingly."
             )
@@ -211,7 +211,7 @@ let examples: list Example.t =
       title: "Circle with Border Radius",
       description: None,
       render: fun () =>
-        <View style=(style [borderRadius 10, borderWidth 1, width 20, height 20]) />
+        <View style=(style [borderRadius 10., borderWidth 1., width 20., height 20.]) />
     },
     {
       title: "Overflow",
@@ -221,28 +221,28 @@ let examples: list Example.t =
           <View
             style=(
                     style [
-                      width 95,
-                      height 10,
-                      marginRight 10,
-                      marginBottom 5,
+                      width 95.,
+                      height 10.,
+                      marginRight 10.,
+                      marginBottom 5.,
                       overflow `hidden,
                       borderWidth StyleSheet.hairlineWidth
                     ]
                   )>
-            <View style=(style [width 200, height 20])>
+            <View style=(style [width 200., height 20.])>
               <Text> (ReactRe.stringToElement "Overflow hidden") </Text>
             </View>
           </View>
           <View
             style=(
                     style [
-                      width 95,
-                      height 10,
-                      marginBottom 5,
+                      width 95.,
+                      height 10.,
+                      marginBottom 5.,
                       borderWidth StyleSheet.hairlineWidth
                     ]
                   )>
-            <View style=(style [width 200, height 20])>
+            <View style=(style [width 200., height 20.])>
               <Text> (ReactRe.stringToElement "Overflow visible") </Text>
             </View>
           </View>

@@ -6,16 +6,16 @@ let styles =
       {
         "header":
           style [
-            height 60,
+            height 60.,
             borderBottomWidth StyleSheet.hairlineWidth,
             borderBottomColor "#96969A",
             backgroundColor "#F5F5F6",
             flexDirection `row,
-            paddingTop 20
+            paddingTop 20.
           ],
         "headerLeft": style [],
-        "headerCenter": style [flex 1.0, position `absolute, top 27, left 0, right 0],
-        "title": style [fontSize 19, fontWeight `_600, textAlign `center],
+        "headerCenter": style [flex 1.0, position `absolute, top 27., left 0., right 0.],
+        "title": style [fontSize 19., fontWeight `_600, textAlign `center],
         "exampleContainer": style [flex 1.0]
       }
     );

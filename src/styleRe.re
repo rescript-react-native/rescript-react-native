@@ -103,17 +103,19 @@ let alignSelf v =>
 
 let aspectRatio = floatStyle "aspectRatio";
 
-let borderBottomWidth = intStyle "borderBottomWidth";
+let borderBottomWidth = floatStyle "borderBottomWidth";
 
-let borderLeftWidth = intStyle "borderLeftWidth";
+let borderLeftWidth = floatStyle "borderLeftWidth";
 
-let borderRightWidth = intStyle "borderRightWidth";
+let borderRightWidth = floatStyle "borderRightWidth";
 
-let borderTopWidth = intStyle "borderTopWidth";
+let borderTopWidth = floatStyle "borderTopWidth";
 
-let borderWidth = intStyle "borderWidth";
+let borderWidth = floatStyle "borderWidth";
 
-let bottom = intStyle "bottom";
+let bottom = floatStyle "bottom";
+
+let bottomPct = pctStyle "bottom";
 
 let bottomAnimated = animatedStyle "bottom";
 
@@ -131,7 +133,7 @@ let display v =>
 
 let flex = floatStyle "flex";
 
-let flexBasis = intStyle "flexBasis";
+let flexBasis = floatStyle "flexBasis";
 
 let flexBasisPct = pctStyle "flexBasis";
 
@@ -161,7 +163,7 @@ let flexWrap v =>
       }
     );
 
-let height = intStyle "height";
+let height = floatStyle "height";
 
 let heightPct = pctStyle "height";
 
@@ -183,39 +185,41 @@ let justifyContent v =>
       }
     );
 
-let left = intStyle "left";
+let left = floatStyle "left";
+
+let leftPct = pctStyle "left";
 
 let leftAnimated = animatedStyle "left";
 
 let leftInterpolated = interpolatedStyle "left";
 
-let margin = intStyle "margin";
+let margin = floatStyle "margin";
 
-let marginBottom = intStyle "marginBottom";
+let marginBottom = floatStyle "marginBottom";
 
-let marginHorizontal = intStyle "marginHorizontal";
+let marginHorizontal = floatStyle "marginHorizontal";
 
-let marginLeft = intStyle "marginLeft";
+let marginLeft = floatStyle "marginLeft";
 
-let marginRight = intStyle "marginRight";
+let marginRight = floatStyle "marginRight";
 
-let marginTop = intStyle "marginTop";
+let marginTop = floatStyle "marginTop";
 
-let marginVertical = intStyle "marginVertical";
+let marginVertical = floatStyle "marginVertical";
 
-let maxHeight = intStyle "maxHeight";
+let maxHeight = floatStyle "maxHeight";
 
 let maxHeightPct = pctStyle "maxHeight";
 
-let maxWidth = intStyle "maxHeight";
+let maxWidth = floatStyle "maxHeight";
 
 let maxWidthPct = pctStyle "maxHeight";
 
-let minHeight = intStyle "minHeight";
+let minHeight = floatStyle "minHeight";
 
 let minHeightPct = pctStyle "minHeight";
 
-let minWidth = intStyle "minWidth";
+let minWidth = floatStyle "minWidth";
 
 let minWidthPct = pctStyle "minWidth";
 
@@ -230,19 +234,19 @@ let overflow v =>
       }
     );
 
-let padding = intStyle "padding";
+let padding = floatStyle "padding";
 
-let paddingBottom = intStyle "paddingBottom";
+let paddingBottom = floatStyle "paddingBottom";
 
-let paddingHorizontal = intStyle "paddingHorizontal";
+let paddingHorizontal = floatStyle "paddingHorizontal";
 
-let paddingLeft = intStyle "paddingLeft";
+let paddingLeft = floatStyle "paddingLeft";
 
-let paddingRight = intStyle "paddingRight";
+let paddingRight = floatStyle "paddingRight";
 
-let paddingTop = intStyle "paddingTop";
+let paddingTop = floatStyle "paddingTop";
 
-let paddingVertical = intStyle "paddingVertical";
+let paddingVertical = floatStyle "paddingVertical";
 
 let position v =>
   stringStyle
@@ -254,19 +258,23 @@ let position v =>
       }
     );
 
-let right = intStyle "right";
+let right = floatStyle "right";
+
+let rightPct = pctStyle "right";
 
 let rightAnimated = animatedStyle "right";
 
 let rightInterpolated = interpolatedStyle "right";
 
-let top = intStyle "top";
+let top = floatStyle "top";
+
+let topPct = pctStyle "top";
 
 let topAnimated = animatedStyle "top";
 
 let topInterpolated = interpolatedStyle "top";
 
-let width = intStyle "width";
+let width = floatStyle "width";
 
 let widthPct = pctStyle "width";
 
@@ -294,12 +302,12 @@ let direction v =>
 let shadowColor = stringStyle "shadowColor";
 
 let shadowOffset ::height ::width =>
-  Utils.dictFromArray [|("height", Encode.int height), ("width", Encode.int width)|] |>
+  Utils.dictFromArray [|("height", Encode.float height), ("width", Encode.float width)|] |>
   objectStyle "shadowOffset";
 
 let shadowOpacity = floatStyle "shadowOpacity";
 
-let shadowRadius = intStyle "shadowRadius";
+let shadowRadius = floatStyle "shadowRadius";
 
 
 /**
@@ -373,15 +381,15 @@ let borderBottomColor = stringStyle "borderBottomColor";
 
 let borderLeftColor = stringStyle "borderLeftColor";
 
-let borderRadius = intStyle "borderRadius";
+let borderRadius = floatStyle "borderRadius";
 
-let borderTopLeftRadius = intStyle "borderTopLeftRadius";
+let borderTopLeftRadius = floatStyle "borderTopLeftRadius";
 
-let borderTopRightRadius = intStyle "borderTopRightRadius";
+let borderTopRightRadius = floatStyle "borderTopRightRadius";
 
-let borderBottomLeftRadius = intStyle "borderBottomLeftRadius";
+let borderBottomLeftRadius = floatStyle "borderBottomLeftRadius";
 
-let borderBottomRightRadius = intStyle "borderBottomRightRadius";
+let borderBottomRightRadius = floatStyle "borderBottomRightRadius";
 
 let borderStyle v =>
   stringStyle
@@ -396,6 +404,10 @@ let borderStyle v =>
 
 let opacity = floatStyle "opacity";
 
+let opacityInterpolated = interpolatedStyle "opacity";
+
+let opacityAnimated = animatedStyle "opacity";
+
 let elevation = floatStyle "elevation";
 
 
@@ -404,7 +416,7 @@ let elevation = floatStyle "elevation";
  */
 let color = stringStyle "color";
 
-let fontSize = intStyle "fontSize";
+let fontSize = floatStyle "fontSize";
 
 let fontStyle v =>
   stringStyle
@@ -435,7 +447,7 @@ let fontWeight v =>
       }
     );
 
-let lineHeight = intStyle "lineHeight";
+let lineHeight = floatStyle "lineHeight";
 
 let textAlign v =>
   stringStyle
@@ -465,10 +477,10 @@ let textDecorationLine v =>
 let textShadowColor = stringStyle "string";
 
 let textShadowOffset ::height ::width =>
-  Utils.dictFromArray [|("height", Encode.int height), ("width", Encode.int width)|] |>
+  Utils.dictFromArray [|("height", Encode.float height), ("width", Encode.float width)|] |>
   objectStyle "textShadowOffset";
 
-let textShadowRadius = intStyle "textShadowRadius";
+let textShadowRadius = floatStyle "textShadowRadius";
 
 let includeFontPadding = booleanStyle "includeFontPadding";
 

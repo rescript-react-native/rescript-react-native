@@ -6,16 +6,16 @@ let styles =
       {
         "container":
           style [
-            borderRadius 4,
-            borderWidth 1,
+            borderRadius 4.,
+            borderWidth 1.,
             borderColor "#d6d7da",
-            margin 10,
-            marginBottom 0,
-            height 45,
-            padding 10,
+            margin 10.,
+            marginBottom 0.,
+            height 45.,
+            padding 10.,
             backgroundColor "white"
           ],
-        "text": style [fontSize 19, fontWeight `_500]
+        "text": style [fontSize 19., fontWeight `_500]
       }
     ); 
 
