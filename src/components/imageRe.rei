@@ -18,7 +18,7 @@ module type ImageComponent = {
     | Multiple (list imageURISource);
   type defaultURISource;
   let defaultURISource:
-    uri::string => scale::float? => width::float => height::float => defaultURISource;
+    uri::string => scale::float? => width::float => height::float => unit => defaultURISource;
   type defaultSource =
     | URI defaultURISource
     | Required PackagerRe.required;

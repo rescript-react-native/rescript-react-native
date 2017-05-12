@@ -18,7 +18,7 @@ module type ImageComponent = {
     | Multiple (list imageURISource);
   type defaultURISource;
   let defaultURISource:
-    uri::string => scale::float? => width::float => height::float => defaultURISource;
+    uri::string => scale::float? => width::float => height::float => unit => defaultURISource;
   type defaultSource =
     | URI defaultURISource
     | Required PackagerRe.required;
@@ -69,7 +69,7 @@ module CreateComponent (Impl: ViewRe.Impl) :ImageComponent => {
     | Multiple (list imageURISource);
   type defaultURISource;
   external defaultURISource :
-    uri::string => scale::float? => width::float => height::float => defaultURISource =
+    uri::string => scale::float? => width::float => height::float => unit => defaultURISource =
     "" [@@bs.obj];
   type defaultSource =
     | URI defaultURISource
