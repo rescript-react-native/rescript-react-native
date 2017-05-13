@@ -334,13 +334,13 @@ external stagger : float => array CompositeAnimation.t => CompositeAnimation.t =
   "" [@@bs.module "react-native"] [@@bs.scope "Animated"];
 
 external _loop : CompositeAnimation.t => Js.t {. iterations : int} => CompositeAnimation.t =
-  "" [@@bs.module "react-native"] [@@bs.scope "Animated"];
+  "loop" [@@bs.module "react-native"] [@@bs.scope "Animated"];
 
 type animatedEvent;
 external event : array 'a => 'b => animatedEvent =
   "" [@@bs.module "react-native"] [@@bs.scope "Animated"];
 
-let loop ::iterations=(-1) ::animation => _loop animation {"iterations": iterations};
+let loop ::iterations=(-1) ::animation () => _loop animation {"iterations": iterations};
 
 module Timing = Value.Timing;
 
