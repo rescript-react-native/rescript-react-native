@@ -1,7 +1,9 @@
 type t;
 
 external to_style : Js.Dict.t Js.Json.t => t = "%identity";
+
 external style_to_dict : t => Js.Dict.t Js.Json.t = "%identity";
+
 external array_to_style : array t => t = "%identity";
 
 type style =
@@ -19,6 +21,7 @@ let combine a b => {
     Array.append (Utils.dictEntries (style_to_dict a)) (Utils.dictEntries (style_to_dict b));
   Utils.dictFromArray entries |> to_style
 };
+
 let concat styles => array_to_style (Array.of_list styles);
 
 let arrayStyle key value => ArrayStyle key value;
@@ -313,31 +316,30 @@ let shadowRadius = floatStyle "shadowRadius";
 /**
  * Transform Props
  */
-let transform
-    ::perspective=?
-    ::rotate=?
-    ::rotateX=?
-    ::rotateY=?
-    ::rotateZ=?
-    ::scaleX=?
-    ::scaleY=?
-    ::translateX=?
-    ::translateY=?
-    ::skewX=?
-    ::skewY=?
-    () => {
+let createTransformObject
+    perspective
+    rotate
+    rotateX
+    rotateY
+    rotateZ
+    scaleX
+    scaleY
+    translateX
+    translateY
+    skewX
+    skewY => {
   let opt_values = [
-    ("perspective", Utils.option_map Encode.float perspective),
-    ("rotate", Utils.option_map Encode.string rotate),
-    ("rotateX", Utils.option_map Encode.string rotateX),
-    ("rotateY", Utils.option_map Encode.string rotateY),
-    ("rotateZ", Utils.option_map Encode.string rotateZ),
-    ("scaleX", Utils.option_map Encode.float scaleX),
-    ("scaleY", Utils.option_map Encode.float scaleY),
-    ("translateX", Utils.option_map Encode.float translateX),
-    ("translateY", Utils.option_map Encode.float translateY),
-    ("skewX", Utils.option_map Encode.float skewX),
-    ("skewY", Utils.option_map Encode.float skewY)
+    ("perspective", perspective),
+    ("rotate", rotate),
+    ("rotateX", rotateX),
+    ("rotateY", rotateY),
+    ("rotateZ", rotateZ),
+    ("scaleX", scaleX),
+    ("scaleY", scaleY),
+    ("translateX", translateX),
+    ("translateY", translateY),
+    ("skewX", skewX),
+    ("skewY", skewY)
   ];
   let values =
     List.fold_right
@@ -354,6 +356,84 @@ let transform
       [];
   Array.of_list values |> arrayStyle "transform"
 };
+
+let transform
+    ::perspective=?
+    ::rotate=?
+    ::rotateX=?
+    ::rotateY=?
+    ::rotateZ=?
+    ::scaleX=?
+    ::scaleY=?
+    ::translateX=?
+    ::translateY=?
+    ::skewX=?
+    ::skewY=?
+    () =>
+  createTransformObject
+    (Utils.option_map Encode.float perspective)
+    (Utils.option_map Encode.string rotate)
+    (Utils.option_map Encode.string rotateX)
+    (Utils.option_map Encode.string rotateY)
+    (Utils.option_map Encode.string rotateZ)
+    (Utils.option_map Encode.float scaleX)
+    (Utils.option_map Encode.float scaleY)
+    (Utils.option_map Encode.float translateX)
+    (Utils.option_map Encode.float translateY)
+    (Utils.option_map Encode.float skewX)
+    (Utils.option_map Encode.float skewY);
+
+let transformAnimated
+    ::perspective=?
+    ::rotate=?
+    ::rotateX=?
+    ::rotateY=?
+    ::rotateZ=?
+    ::scaleX=?
+    ::scaleY=?
+    ::translateX=?
+    ::translateY=?
+    ::skewX=?
+    ::skewY=?
+    () =>
+  createTransformObject
+    (Utils.option_map Encode.animatedValue perspective)
+    (Utils.option_map Encode.animatedValue rotate)
+    (Utils.option_map Encode.animatedValue rotateX)
+    (Utils.option_map Encode.animatedValue rotateY)
+    (Utils.option_map Encode.animatedValue rotateZ)
+    (Utils.option_map Encode.animatedValue scaleX)
+    (Utils.option_map Encode.animatedValue scaleY)
+    (Utils.option_map Encode.animatedValue translateX)
+    (Utils.option_map Encode.animatedValue translateY)
+    (Utils.option_map Encode.animatedValue skewX)
+    (Utils.option_map Encode.animatedValue skewY);
+
+let transformInterpolated
+    ::perspective=?
+    ::rotate=?
+    ::rotateX=?
+    ::rotateY=?
+    ::rotateZ=?
+    ::scaleX=?
+    ::scaleY=?
+    ::translateX=?
+    ::translateY=?
+    ::skewX=?
+    ::skewY=?
+    () =>
+  createTransformObject
+    (Utils.option_map Encode.interpolatedValue perspective)
+    (Utils.option_map Encode.interpolatedValue rotate)
+    (Utils.option_map Encode.interpolatedValue rotateX)
+    (Utils.option_map Encode.interpolatedValue rotateY)
+    (Utils.option_map Encode.interpolatedValue rotateZ)
+    (Utils.option_map Encode.interpolatedValue scaleX)
+    (Utils.option_map Encode.interpolatedValue scaleY)
+    (Utils.option_map Encode.interpolatedValue translateX)
+    (Utils.option_map Encode.interpolatedValue translateY)
+    (Utils.option_map Encode.interpolatedValue skewX)
+    (Utils.option_map Encode.interpolatedValue skewY);
 
 
 /**
