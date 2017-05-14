@@ -197,7 +197,7 @@ let parallel:
 
 let stagger: float => array CompositeAnimation.t => CompositeAnimation.t;
 
-let loop: iterations::int? => animation::CompositeAnimation.t => CompositeAnimation.t;
+let loop: iterations::int? => animation::CompositeAnimation.t => unit => CompositeAnimation.t;
 
 module Timing = Value.Timing;
 

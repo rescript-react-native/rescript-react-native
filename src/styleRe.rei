@@ -181,6 +181,35 @@ let transform:
   unit =>
   style;
 
+let transformAnimated:
+  perspective::AnimatedRe.Value.t? =>
+  rotate::AnimatedRe.Value.t? =>
+  rotateX::AnimatedRe.Value.t? =>
+  rotateY::AnimatedRe.Value.t? =>
+  rotateZ::AnimatedRe.Value.t? =>
+  scaleX::AnimatedRe.Value.t? =>
+  scaleY::AnimatedRe.Value.t? =>
+  translateX::AnimatedRe.Value.t? =>
+  translateY::AnimatedRe.Value.t? =>
+  skewX::AnimatedRe.Value.t? =>
+  skewY::AnimatedRe.Value.t? =>
+  unit =>
+  style;
+
+let transformInterpolated:
+  perspective::AnimatedRe.Interpolation.t? =>
+  rotate::AnimatedRe.Interpolation.t? =>
+  rotateX::AnimatedRe.Interpolation.t? =>
+  rotateY::AnimatedRe.Interpolation.t? =>
+  rotateZ::AnimatedRe.Interpolation.t? =>
+  scaleX::AnimatedRe.Interpolation.t? =>
+  scaleY::AnimatedRe.Interpolation.t? =>
+  translateX::AnimatedRe.Interpolation.t? =>
+  translateY::AnimatedRe.Interpolation.t? =>
+  skewX::AnimatedRe.Interpolation.t? =>
+  skewY::AnimatedRe.Interpolation.t? =>
+  unit =>
+  style;
 
 /**
  * View Props
