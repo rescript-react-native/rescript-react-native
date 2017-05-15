@@ -16,6 +16,7 @@ module type TextComponent = {
     adjustsFontSizeToFit::bool? =>
     minimumFontScale::float? =>
     suppressHighlighting::bool? =>
+    value::string? =>
     children::list ReactRe.reactElement =>
     ref::(ReactRe.reactRef => unit)? =>
     key::string? =>

@@ -16,6 +16,7 @@ module type TextComponent = {
     adjustsFontSizeToFit::bool? =>
     minimumFontScale::float? =>
     suppressHighlighting::bool? =>
+    value::string? =>
     children::list ReactRe.reactElement =>
     ref::(ReactRe.reactRef => unit)? =>
     key::string? =>
@@ -40,7 +41,9 @@ module CreateComponent (Impl: ViewRe.Impl) :TextComponent => {
       ::textBreakStrategy=?
       ::adjustsFontSizeToFit=?
       ::minimumFontScale=?
-      ::suppressHighlighting=? =>
+      ::suppressHighlighting=?
+      ::value=?
+      ::children =>
     ReactRe.wrapPropsShamelessly
       Impl.view
       Js.Undefined.(
@@ -82,6 +85,12 @@ module CreateComponent (Impl: ViewRe.Impl) :TextComponent => {
           "adjustsFontSizeToFit": from_opt (Utils.optBoolToOptJsBoolean adjustsFontSizeToFit),
           "minimumFontScale": from_opt minimumFontScale,
           "suppressHighlighting": from_opt (Utils.optBoolToOptJsBoolean suppressHighlighting)
+        }
+      )
+      children::(
+        switch value {
+        | Some string => [ReactRe.stringToElement string, ...children]
+        | None => children
         }
       );
 };
