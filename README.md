@@ -1,5 +1,110 @@
 # [BuckleScript](https://github.com/bloomberg/bucklescript) bindings for [React Native](https://github.com/facebook/react-native)
 
+## Getting started
+
+Great that you want to use Reason with React Native! To get everything running are just a couple of steps.
+Let's assume that you already have a React Native project. Otherwise follow the React Native [instructions](http://facebook.github.io/react-native/docs/getting-started.html) until you have your app running.
+
+1. Install [Bucklescript](https://github.com/bloomberg/bucklescript) (the Reason -> JS compiler), [Reason-React](https://github.com/reasonml/reason-react) and `bs-react-native`:
+```sh
+# substitute yarn with npm if you prefer
+yarn add bs-platform reason-react https://github.com/BuckleTypes/bs-react-native.git
+```
+
+2. Create a `re` folder (there will be your Reason code)
+3. Create a `bsconfig.json` with the following content file in your project root
+```json
+{
+    "name": "my-awesome-app",
+    "reason": {
+        "react-jsx": true
+    },
+    "bs-dependencies": ["bs-react-native", "reason-react"],
+    "sources": [{
+        "dir": "re"
+    }]
+}
+```
+4. You are nearly done, the last configuration before we get to the fun stuff. In your `package.json` add to the `"scripts"` section two scripts:
+
+```json
+"scripts": {
+  ...
+  "build": "bsb -make-world -clean-world",
+  "watch": "bsb -make-world -clean-world -w"
+}
+```
+Now you can build all your (so far nonexsisting) Reason code with `yarn run build` or enter the watch mode with `yarn run watch`.
+
+5. Start the watcher with `yarn run watch`.
+6. Now we come to the fun stuff! We will rebuild the default app component with Reason. Create a new file `re/app.re` and make it look like this:
+```reason
+open ReactNative;
+
+let styles =
+  StyleSheet.create
+    Style.(
+      {
+        "container":
+          style [flex 1., justifyContent `center, alignItems `center, backgroundColor "#F5FCFF"],
+        "welcome": style [fontSize 20., textAlign `center, margin 10.],
+        "instructions": style [textAlign `center, color "#333333", marginBottom 5.]
+      }
+    );
+
+module MyAwesomeReasonProject = {
+  include ReactRe.Component.JsProps;
+  let name = "MyAwesomeReasonProject";
+  type props = unit;
+  type jsProps = option (unit => unit);
+  let jsPropsToReasonProps = Some (fun _ => ());
+  let render _ =>
+    <View style=styles##container>
+      <Text style=styles##welcome>
+        (ReactRe.stringToElement "Welcome to React Native with Reason!")
+      </Text>
+      <Text style=styles##instructions>
+        (ReactRe.stringToElement "To get started, edit re/app.re")
+      </Text>
+      <Text style=styles##instructions>
+        (ReactRe.stringToElement "Press Cmd+R to reload,\nCmd+D or shake for dev menu")
+      </Text>
+    </View>;
+};
+
+include ReactRe.CreateComponent MyAwesomeReasonProject;
+
+let createElement = wrapProps ();
+```
+7. We are nearly done! We now have to adopt the `index.ios.js` / `index.android.js` to look like this
+```js
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
+
+// Bucklescript creates the build output in the lib/js folder in your project.
+import { comp as App } from "./lib/js/re/app.js";
+import React from "react";
+import {
+  AppRegistry
+} from 'react-native';
+
+AppRegistry.registerComponent('MyAwesomeProject', () => App);
+```
+**Note:** Make sure that the first argument to `AppRegistry.registerComponent` is **your** correct project name.
+
+8. Now go to a new tab and start your app with `react-native run-ios` or `react-native run-android`.
+
+9. Great you are all set up! Check the source of `bs-react-native` to find out more about the implemented APIs and Components. If you get stuck just ask on our [Discord Server](https://discord.gg/reasonml)! Happy Hacking!
+
+
+Here are some more things which will be proabbyl useful for you:
+- [Reason-React Documentation](https://github.com/reasonml/reason-react/blob/master/documentation.md)
+- [Bucklescript Manual](http://bloomberg.github.io/bucklescript/Manual.html)
+- [Bindings to `react-navigation`](https://github.com/saschatimme/bs-react-navigation)
+
 ### Disclaimer
 
 This is **work in progress**. There are many missing APIs and the existing ones are not guaranteed to work. Contributions of Components and APIs are very welcome!
