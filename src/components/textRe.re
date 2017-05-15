@@ -7,7 +7,7 @@ module type TextComponent = {
     onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
     onLongPress::(unit => unit)? =>
     onPress::(unit => unit)? =>
-    pressRetentionOffset::Types.insets? =>
+    pressRetentionOffset::TypesRN.insets? =>
     selectable::bool? =>
     style::StyleRe.t? =>
     testID::string? =>
@@ -48,11 +48,11 @@ module CreateComponent (Impl: ViewRe.Impl) :TextComponent => {
       Impl.view
       Js.Undefined.(
         {
-          "accessible": from_opt (Utils.optBoolToOptJsBoolean accessible),
-          "allowFontScaling": from_opt (Utils.optBoolToOptJsBoolean allowFontScaling),
+          "accessible": from_opt (UtilsRN.optBoolToOptJsBoolean accessible),
+          "allowFontScaling": from_opt (UtilsRN.optBoolToOptJsBoolean allowFontScaling),
           "ellipsizeMode":
             from_opt (
-              Utils.option_map
+              UtilsRN.option_map
                 (
                   fun
                   | `head => "head"
@@ -67,13 +67,13 @@ module CreateComponent (Impl: ViewRe.Impl) :TextComponent => {
           "onLongPress": from_opt onLongPress,
           "onPress": from_opt onPress,
           "pressRetentionOffset": from_opt pressRetentionOffset,
-          "selectable": from_opt (Utils.optBoolToOptJsBoolean selectable),
+          "selectable": from_opt (UtilsRN.optBoolToOptJsBoolean selectable),
           "style": from_opt style,
           "testID": from_opt testID,
           "selectionColor": from_opt selectionColor,
           "textBreakStrategy":
             from_opt (
-              Utils.option_map
+              UtilsRN.option_map
                 (
                   fun
                   | `simple => "simple"
@@ -82,9 +82,9 @@ module CreateComponent (Impl: ViewRe.Impl) :TextComponent => {
                 )
                 textBreakStrategy
             ),
-          "adjustsFontSizeToFit": from_opt (Utils.optBoolToOptJsBoolean adjustsFontSizeToFit),
+          "adjustsFontSizeToFit": from_opt (UtilsRN.optBoolToOptJsBoolean adjustsFontSizeToFit),
           "minimumFontScale": from_opt minimumFontScale,
-          "suppressHighlighting": from_opt (Utils.optBoolToOptJsBoolean suppressHighlighting)
+          "suppressHighlighting": from_opt (UtilsRN.optBoolToOptJsBoolean suppressHighlighting)
         }
       )
       children::(

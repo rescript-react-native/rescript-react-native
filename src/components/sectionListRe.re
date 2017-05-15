@@ -106,7 +106,7 @@ module CreateComponent (Item: {type item;}) => {
                     fun {data, key, renderItem} => {
                       "data": data,
                       "key": from_opt key,
-                      "renderItem": from_opt (Utils.option_map renderItemFromJS renderItem)
+                      "renderItem": from_opt (UtilsRN.option_map renderItemFromJS renderItem)
                     }
                   )
                   sections,
@@ -114,7 +114,7 @@ module CreateComponent (Item: {type item;}) => {
               "keyExtractor": keyExtractor,
               "ItemSeparatorComponent":
                 from_opt (
-                  Utils.option_map
+                  UtilsRN.option_map
                     (
                       fun itemSeparatorComponent => {
                         let comp jsItems =>
@@ -142,11 +142,11 @@ module CreateComponent (Item: {type item;}) => {
               "onEndReachedThreshold": from_opt onEndReachedThreshold,
               "onRefresh": from_opt onRefresh,
               "onViewableItemsChanged": from_opt onViewableItemsChanged,
-              "refreshing": from_opt (Utils.optBoolToOptJsBoolean refreshing),
+              "refreshing": from_opt (UtilsRN.optBoolToOptJsBoolean refreshing),
               "renderSectionHeader": from_opt renderSectionHeader,
               "renderSectionFooter": from_opt renderSectionFooter,
               "stickySectionHeadersEnabled":
-                from_opt (Utils.optBoolToOptJsBoolean stickySectionHeadersEnabled)
+                from_opt (UtilsRN.optBoolToOptJsBoolean stickySectionHeadersEnabled)
             }
           );
   };

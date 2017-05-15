@@ -48,14 +48,14 @@ let createElement
       Props.extendView
         Js.Undefined.(
           {
-            "enabled": from_opt (Utils.optBoolToOptJsBoolean enabled),
+            "enabled": from_opt (UtilsRN.optBoolToOptJsBoolean enabled),
             "onValueChange": from_opt onValueChange,
             "selectedValue": from_opt selectedValue,
             "itemStyle": from_opt itemStyle,
             "prompt": from_opt prompt,
             "mode":
               from_opt (
-                Utils.option_map
+                UtilsRN.option_map
                   (
                     fun x =>
                       switch x {

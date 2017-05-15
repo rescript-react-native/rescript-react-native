@@ -18,8 +18,8 @@ type style =
 
 let combine a b => {
   let entries =
-    Array.append (Utils.dictEntries (style_to_dict a)) (Utils.dictEntries (style_to_dict b));
-  Utils.dictFromArray entries |> to_style
+    Array.append (UtilsRN.dictEntries (style_to_dict a)) (UtilsRN.dictEntries (style_to_dict b));
+  UtilsRN.dictFromArray entries |> to_style
 };
 
 let concat styles => array_to_style (Array.of_list styles);
@@ -58,7 +58,7 @@ let encodeStyle =
       }
     );
 
-let style sarr => sarr |> List.map encodeStyle |> Utils.dictFromList |> to_style;
+let style sarr => sarr |> List.map encodeStyle |> UtilsRN.dictFromList |> to_style;
 
 
 /**
@@ -305,7 +305,7 @@ let direction v =>
 let shadowColor = stringStyle "shadowColor";
 
 let shadowOffset ::height ::width =>
-  Utils.dictFromArray [|("height", Encode.float height), ("width", Encode.float width)|] |>
+  UtilsRN.dictFromArray [|("height", Encode.float height), ("width", Encode.float width)|] |>
   objectStyle "shadowOffset";
 
 let shadowOpacity = floatStyle "shadowOpacity";
@@ -347,7 +347,7 @@ let createTransformObject
         fun x acc =>
           switch x {
           | (key, Some value) =>
-            let val_ = Utils.dictFromArray [|(key, value)|] |> Encode.object_;
+            let val_ = UtilsRN.dictFromArray [|(key, value)|] |> Encode.object_;
             [val_, ...acc]
           | _ => acc
           }
@@ -371,17 +371,17 @@ let transform
     ::skewY=?
     () =>
   createTransformObject
-    (Utils.option_map Encode.float perspective)
-    (Utils.option_map Encode.string rotate)
-    (Utils.option_map Encode.string rotateX)
-    (Utils.option_map Encode.string rotateY)
-    (Utils.option_map Encode.string rotateZ)
-    (Utils.option_map Encode.float scaleX)
-    (Utils.option_map Encode.float scaleY)
-    (Utils.option_map Encode.float translateX)
-    (Utils.option_map Encode.float translateY)
-    (Utils.option_map Encode.float skewX)
-    (Utils.option_map Encode.float skewY);
+    (UtilsRN.option_map Encode.float perspective)
+    (UtilsRN.option_map Encode.string rotate)
+    (UtilsRN.option_map Encode.string rotateX)
+    (UtilsRN.option_map Encode.string rotateY)
+    (UtilsRN.option_map Encode.string rotateZ)
+    (UtilsRN.option_map Encode.float scaleX)
+    (UtilsRN.option_map Encode.float scaleY)
+    (UtilsRN.option_map Encode.float translateX)
+    (UtilsRN.option_map Encode.float translateY)
+    (UtilsRN.option_map Encode.float skewX)
+    (UtilsRN.option_map Encode.float skewY);
 
 let transformAnimated
     ::perspective=?
@@ -397,17 +397,17 @@ let transformAnimated
     ::skewY=?
     () =>
   createTransformObject
-    (Utils.option_map Encode.animatedValue perspective)
-    (Utils.option_map Encode.animatedValue rotate)
-    (Utils.option_map Encode.animatedValue rotateX)
-    (Utils.option_map Encode.animatedValue rotateY)
-    (Utils.option_map Encode.animatedValue rotateZ)
-    (Utils.option_map Encode.animatedValue scaleX)
-    (Utils.option_map Encode.animatedValue scaleY)
-    (Utils.option_map Encode.animatedValue translateX)
-    (Utils.option_map Encode.animatedValue translateY)
-    (Utils.option_map Encode.animatedValue skewX)
-    (Utils.option_map Encode.animatedValue skewY);
+    (UtilsRN.option_map Encode.animatedValue perspective)
+    (UtilsRN.option_map Encode.animatedValue rotate)
+    (UtilsRN.option_map Encode.animatedValue rotateX)
+    (UtilsRN.option_map Encode.animatedValue rotateY)
+    (UtilsRN.option_map Encode.animatedValue rotateZ)
+    (UtilsRN.option_map Encode.animatedValue scaleX)
+    (UtilsRN.option_map Encode.animatedValue scaleY)
+    (UtilsRN.option_map Encode.animatedValue translateX)
+    (UtilsRN.option_map Encode.animatedValue translateY)
+    (UtilsRN.option_map Encode.animatedValue skewX)
+    (UtilsRN.option_map Encode.animatedValue skewY);
 
 let transformInterpolated
     ::perspective=?
@@ -423,17 +423,17 @@ let transformInterpolated
     ::skewY=?
     () =>
   createTransformObject
-    (Utils.option_map Encode.interpolatedValue perspective)
-    (Utils.option_map Encode.interpolatedValue rotate)
-    (Utils.option_map Encode.interpolatedValue rotateX)
-    (Utils.option_map Encode.interpolatedValue rotateY)
-    (Utils.option_map Encode.interpolatedValue rotateZ)
-    (Utils.option_map Encode.interpolatedValue scaleX)
-    (Utils.option_map Encode.interpolatedValue scaleY)
-    (Utils.option_map Encode.interpolatedValue translateX)
-    (Utils.option_map Encode.interpolatedValue translateY)
-    (Utils.option_map Encode.interpolatedValue skewX)
-    (Utils.option_map Encode.interpolatedValue skewY);
+    (UtilsRN.option_map Encode.interpolatedValue perspective)
+    (UtilsRN.option_map Encode.interpolatedValue rotate)
+    (UtilsRN.option_map Encode.interpolatedValue rotateX)
+    (UtilsRN.option_map Encode.interpolatedValue rotateY)
+    (UtilsRN.option_map Encode.interpolatedValue rotateZ)
+    (UtilsRN.option_map Encode.interpolatedValue scaleX)
+    (UtilsRN.option_map Encode.interpolatedValue scaleY)
+    (UtilsRN.option_map Encode.interpolatedValue translateX)
+    (UtilsRN.option_map Encode.interpolatedValue translateY)
+    (UtilsRN.option_map Encode.interpolatedValue skewX)
+    (UtilsRN.option_map Encode.interpolatedValue skewY);
 
 
 /**
@@ -557,7 +557,7 @@ let textDecorationLine v =>
 let textShadowColor = stringStyle "string";
 
 let textShadowOffset ::height ::width =>
-  Utils.dictFromArray [|("height", Encode.float height), ("width", Encode.float width)|] |>
+  UtilsRN.dictFromArray [|("height", Encode.float height), ("width", Encode.float width)|] |>
   objectStyle "textShadowOffset";
 
 let textShadowRadius = floatStyle "textShadowRadius";

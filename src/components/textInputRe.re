@@ -2,7 +2,7 @@ external view : ReactRe.reactClass = "TextInput" [@@bs.module "react-native"];
 
 external _isFocused : ReactRe.reactRef => Js.boolean = "" [@@bs.send];
 
-let isFocused = Utils.(Js.to_bool << _isFocused);
+let isFocused = UtilsRN.(Js.to_bool << _isFocused);
 
 external clear : ReactRe.reactRef => unit = "" [@@bs.send];
 
@@ -77,7 +77,7 @@ let createElement
           {
             "autoCapitalize":
               from_opt (
-                Utils.option_map
+                UtilsRN.option_map
                   (
                     fun x =>
                       switch x {
@@ -89,15 +89,15 @@ let createElement
                   )
                   autoCapitalize
               ),
-            "autoCorrect": from_opt (Utils.optBoolToOptJsBoolean autoCorrect),
-            "autoFocus": from_opt (Utils.optBoolToOptJsBoolean autoFocus),
-            "blurOnSubmit": from_opt (Utils.optBoolToOptJsBoolean blurOnSubmit),
-            "caretHidden": from_opt (Utils.optBoolToOptJsBoolean caretHidden),
+            "autoCorrect": from_opt (UtilsRN.optBoolToOptJsBoolean autoCorrect),
+            "autoFocus": from_opt (UtilsRN.optBoolToOptJsBoolean autoFocus),
+            "blurOnSubmit": from_opt (UtilsRN.optBoolToOptJsBoolean blurOnSubmit),
+            "caretHidden": from_opt (UtilsRN.optBoolToOptJsBoolean caretHidden),
             "defaultValue": from_opt defaultValue,
-            "editable": from_opt (Utils.optBoolToOptJsBoolean editable),
+            "editable": from_opt (UtilsRN.optBoolToOptJsBoolean editable),
             "keyboardType":
               from_opt (
-                Utils.option_map
+                UtilsRN.option_map
                   (
                     fun x =>
                       switch x {
@@ -118,7 +118,7 @@ let createElement
                   keyboardType
               ),
             "maxLength": from_opt maxLength,
-            "multiline": from_opt (Utils.optBoolToOptJsBoolean multiline),
+            "multiline": from_opt (UtilsRN.optBoolToOptJsBoolean multiline),
             "onBlur": from_opt onBlur,
             "onChange": from_opt onChange,
             "onChangeText": from_opt onChangeText,
@@ -132,7 +132,7 @@ let createElement
             "placeholderTextColor": from_opt placeholderTextColor,
             "returnKeyType":
               from_opt (
-                Utils.option_map
+                UtilsRN.option_map
                   (
                     fun x =>
                       switch x {
@@ -153,12 +153,12 @@ let createElement
                   )
                   returnKeyType
               ),
-            "secureTextEntry": from_opt (Utils.optBoolToOptJsBoolean secureTextEntry),
-            "selectTextOnFocus": from_opt (Utils.optBoolToOptJsBoolean selectTextOnFocus),
+            "secureTextEntry": from_opt (UtilsRN.optBoolToOptJsBoolean secureTextEntry),
+            "selectTextOnFocus": from_opt (UtilsRN.optBoolToOptJsBoolean selectTextOnFocus),
             "selection": from_opt selection,
             "selectionColor": from_opt selectionColor,
             "value": from_opt value,
-            "disableFullscreenUI": from_opt (Utils.optBoolToOptJsBoolean disableFullscreenUI),
+            "disableFullscreenUI": from_opt (UtilsRN.optBoolToOptJsBoolean disableFullscreenUI),
             /* TODO */
             "inlineImageLeft": from_opt inlineImageLeft,
             "inlineImagePadding": from_opt inlineImagePadding,
@@ -166,7 +166,7 @@ let createElement
             "returnKeyLabel": from_opt returnKeyLabel,
             "textBreakStrategy":
               from_opt (
-                Utils.option_map
+                UtilsRN.option_map
                   (
                     fun x =>
                       switch x {
@@ -180,7 +180,7 @@ let createElement
             "underlineColorAndroid": from_opt underlineColorAndroid,
             "clearButtonMode":
               from_opt (
-                Utils.option_map
+                UtilsRN.option_map
                   (
                     fun x =>
                       switch x {
@@ -192,10 +192,10 @@ let createElement
                   )
                   clearButtonMode
               ),
-            "clearTextOnFocus": from_opt (Utils.optBoolToOptJsBoolean clearTextOnFocus),
+            "clearTextOnFocus": from_opt (UtilsRN.optBoolToOptJsBoolean clearTextOnFocus),
             "dataDetectorTypes":
               from_opt (
-                Utils.option_map
+                UtilsRN.option_map
                   (
                     Array.map (
                       fun x =>
@@ -211,10 +211,10 @@ let createElement
                   dataDetectorTypes
               ),
             "enablesReturnKeyAutomatically":
-              from_opt (Utils.optBoolToOptJsBoolean enablesReturnKeyAutomatically),
+              from_opt (UtilsRN.optBoolToOptJsBoolean enablesReturnKeyAutomatically),
             "keyboardAppearance":
               from_opt (
-                Utils.option_map
+                UtilsRN.option_map
                   (
                     fun x =>
                       switch x {
@@ -227,7 +227,7 @@ let createElement
               ),
             "onKeyPress": from_opt onKeyPress,
             "selectionState": from_opt selectionState,
-            "spellCheck": from_opt (Utils.optBoolToOptJsBoolean spellCheck)
+            "spellCheck": from_opt (UtilsRN.optBoolToOptJsBoolean spellCheck)
           }
         )
         ::accessibleLeft

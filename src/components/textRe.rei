@@ -7,7 +7,7 @@ module type TextComponent = {
     onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
     onLongPress::(unit => unit)? =>
     onPress::(unit => unit)? =>
-    pressRetentionOffset::Types.insets? =>
+    pressRetentionOffset::TypesRN.insets? =>
     selectable::bool? =>
     style::StyleRe.t? =>
     testID::string? =>

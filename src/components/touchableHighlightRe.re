@@ -25,11 +25,11 @@ let createElement
     view
     Js.Undefined.(
       {
-        "accessible": from_opt (Utils.optBoolToOptJsBoolean accessible),
+        "accessible": from_opt (UtilsRN.optBoolToOptJsBoolean accessible),
         "delayLongPress": from_opt delayLongPress,
         "delayPressIn": from_opt delayPressIn,
         "delayPressOut": from_opt delayPressOut,
-        "disabled": from_opt (Utils.optBoolToOptJsBoolean disabled),
+        "disabled": from_opt (UtilsRN.optBoolToOptJsBoolean disabled),
         "hitSlop": from_opt hitSlop,
         "onLayout": from_opt onLayout,
         "onPress": from_opt onPress,
@@ -38,7 +38,7 @@ let createElement
         "pressRetentionOffset": from_opt pressRetentionOffset,
         "accessibilityComponentType":
           from_opt (
-            Utils.option_map
+            UtilsRN.option_map
               (
                 fun x =>
                   switch x {
@@ -52,7 +52,7 @@ let createElement
           ),
         "accessibilityTraits":
           from_opt (
-            Utils.option_map
+            UtilsRN.option_map
               (
                 fun traits => {
                   let to_string =
@@ -84,7 +84,7 @@ let createElement
         "onShowUnderlay": from_opt onShowUnderlay,
         "style": from_opt style,
         "underlayColor": from_opt underlayColor,
-        "hasTVPreferredFocus": from_opt (Utils.optBoolToOptJsBoolean hasTVPreferredFocus),
+        "hasTVPreferredFocus": from_opt (UtilsRN.optBoolToOptJsBoolean hasTVPreferredFocus),
         "tvParallaxProperties": from_opt tvParallaxProperties
       }
     );

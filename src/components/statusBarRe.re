@@ -14,7 +14,7 @@ let setHidden hidden ::animation=? () =>
     (Js.Boolean.to_js_boolean hidden)
     (
       Js.Undefined.from_opt (
-        Utils.option_map
+        UtilsRN.option_map
           (
             fun x =>
               switch x {
@@ -39,7 +39,7 @@ let setBarStyle style ::animated=? () =>
       | `darkContent => "dark-content"
       }
     )
-    (Js.Undefined.from_opt (Utils.optBoolToOptJsBoolean animated));
+    (Js.Undefined.from_opt (UtilsRN.optBoolToOptJsBoolean animated));
 
 external _setNetworkActivityIndicatorVisible : Js.boolean => unit =
   "setNetworkActivityIndicatorVisible" [@@bs.scope "StatusBar"] [@@bs.module "react-native"];
@@ -51,7 +51,7 @@ external _setBackgroundColor : string => Js.Undefined.t Js.boolean => unit =
   "setBackgroundColor" [@@bs.scope "StatusBar"] [@@bs.module "react-native"];
 
 let setBackgroundColor color ::animated=? () =>
-  _setBackgroundColor color (Js.Undefined.from_opt (Utils.optBoolToOptJsBoolean animated));
+  _setBackgroundColor color (Js.Undefined.from_opt (UtilsRN.optBoolToOptJsBoolean animated));
 
 external _setTranslucent : Js.boolean => unit =
   "setTranslucent" [@@bs.scope "StatusBar"] [@@bs.module "react-native"];
@@ -71,10 +71,10 @@ let createElement
     statusBar
     Js.Undefined.(
       {
-        "animated": from_opt (Utils.optBoolToOptJsBoolean animated),
+        "animated": from_opt (UtilsRN.optBoolToOptJsBoolean animated),
         "barStyle":
           from_opt (
-            Utils.option_map
+            UtilsRN.option_map
               (
                 fun x =>
                   switch x {
@@ -86,13 +86,13 @@ let createElement
               barStyle
           ),
         "backgroundColor": from_opt backgroundColor,
-        "hidden": from_opt (Utils.optBoolToOptJsBoolean hidden),
-        "translucent": from_opt (Utils.optBoolToOptJsBoolean translucent),
+        "hidden": from_opt (UtilsRN.optBoolToOptJsBoolean hidden),
+        "translucent": from_opt (UtilsRN.optBoolToOptJsBoolean translucent),
         "networkActivityIndicatorVisible":
-          from_opt (Utils.optBoolToOptJsBoolean networkActivityIndicatorVisible),
+          from_opt (UtilsRN.optBoolToOptJsBoolean networkActivityIndicatorVisible),
         "showHideTransition":
           from_opt (
-            Utils.option_map
+            UtilsRN.option_map
               (
                 fun x =>
                   switch x {

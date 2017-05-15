@@ -37,7 +37,7 @@ module type ImageComponent = {
     accessibilityLabel::string? =>
     accessible::bool? =>
     blurRadius::float? =>
-    capInsets::Types.insets? =>
+    capInsets::TypesRN.insets? =>
     defaultSource::defaultSource? =>
     onPartialLoad::(unit => unit)? =>
     onProgress::(Event.progress => unit)? =>

@@ -86,9 +86,9 @@ let createElement
         "extraData": from_opt extraData,
         "getItemLayout":
           from_opt (
-            Utils.option_map (fun f data index => f (Js.Undefined.to_opt data) index) getItemLayout
+            UtilsRN.option_map (fun f data index => f (Js.Undefined.to_opt data) index) getItemLayout
           ),
-        "horizontal": from_opt (Utils.optBoolToOptJsBoolean horizontal),
+        "horizontal": from_opt (UtilsRN.optBoolToOptJsBoolean horizontal),
         "initialNumToRender": from_opt initialNumToRender,
         "initialScrollIndex": from_opt initialScrollIndex,
         "keyExtractor": from_opt keyExtractor,
@@ -97,9 +97,9 @@ let createElement
         "onEndReachedThreshold": from_opt onEndReachedThreshold,
         "onRefresh": from_opt onRefresh,
         "onViewableItemsChanged": from_opt onViewableItemsChanged,
-        "refreshing": from_opt (Utils.optBoolToOptJsBoolean refreshing),
+        "refreshing": from_opt (UtilsRN.optBoolToOptJsBoolean refreshing),
         "renderItem": renderItem,
-        "removeClippedSubviews": from_opt (Utils.optBoolToOptJsBoolean removeClippedSubviews),
+        "removeClippedSubviews": from_opt (UtilsRN.optBoolToOptJsBoolean removeClippedSubviews),
         "viewabilityConfig": from_opt viewabilityConfig
       }
     );

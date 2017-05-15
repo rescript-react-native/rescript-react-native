@@ -44,8 +44,8 @@ module Animations = {
           {
             "velocity": velocity,
             "deceleration": from_opt deceleration,
-            "isInteraction": from_opt (Utils.optBoolToOptJsBoolean isInteraction),
-            "useNativeDriver": from_opt (Utils.optBoolToOptJsBoolean useNativeDriver),
+            "isInteraction": from_opt (UtilsRN.optBoolToOptJsBoolean isInteraction),
+            "useNativeDriver": from_opt (UtilsRN.optBoolToOptJsBoolean useNativeDriver),
             "onComplete": from_opt onComplete,
             "iterations": from_opt iterations
           }
@@ -219,11 +219,11 @@ module Interpolation = {
           | `float (x: list float) => outputRangeCreate (Array.of_list x)
           },
         "easing": Js.Undefined.from_opt easing,
-        "extrapolate": Js.Undefined.from_opt (Utils.option_map extrapolateString extrapolate),
+        "extrapolate": Js.Undefined.from_opt (UtilsRN.option_map extrapolateString extrapolate),
         "extrapolateRight":
-          Js.Undefined.from_opt (Utils.option_map extrapolateString extrapolateRight),
+          Js.Undefined.from_opt (UtilsRN.option_map extrapolateString extrapolateRight),
         "extrapolateLeft":
-          Js.Undefined.from_opt (Utils.option_map extrapolateString extrapolateLeft)
+          Js.Undefined.from_opt (UtilsRN.option_map extrapolateString extrapolateLeft)
       };
 };
 
@@ -268,11 +268,11 @@ module Value = {
           },
         "easing": Js.Undefined.from_opt easing,
         "extrapolate":
-          Js.Undefined.from_opt (Utils.option_map Interpolation.extrapolateString extrapolate),
+          Js.Undefined.from_opt (UtilsRN.option_map Interpolation.extrapolateString extrapolate),
         "extrapolateRight":
-          Js.Undefined.from_opt (Utils.option_map Interpolation.extrapolateString extrapolateRight),
+          Js.Undefined.from_opt (UtilsRN.option_map Interpolation.extrapolateString extrapolateRight),
         "extrapolateLeft":
-          Js.Undefined.from_opt (Utils.option_map Interpolation.extrapolateString extrapolateLeft)
+          Js.Undefined.from_opt (UtilsRN.option_map Interpolation.extrapolateString extrapolateLeft)
       };
   external animate : t => Animation.t => Animation.endCallback => unit = "animate" [@@bs.send];
   external stopTracking : t => unit = "stopTracking" [@@bs.send];

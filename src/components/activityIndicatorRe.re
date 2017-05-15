@@ -31,11 +31,11 @@ let createElement
       Props.extendView
         Js.Undefined.(
           {
-            "animating": from_opt (Utils.optBoolToOptJsBoolean animating),
+            "animating": from_opt (UtilsRN.optBoolToOptJsBoolean animating),
             "color": from_opt color,
             "size":
               from_opt (
-                Utils.option_map
+                UtilsRN.option_map
                   (
                     fun size =>
                       switch size {
@@ -46,7 +46,7 @@ let createElement
                   )
                   size
               ),
-            "hidesWhenStopped": from_opt (Utils.optBoolToOptJsBoolean hidesWhenStopped)
+            "hidesWhenStopped": from_opt (UtilsRN.optBoolToOptJsBoolean hidesWhenStopped)
           }
         )
         ::accessibleLeft
