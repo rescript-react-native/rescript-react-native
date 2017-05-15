@@ -605,3 +605,22 @@ let writingDirection v =>
       | `rtl => "rtl"
       }
     );
+
+
+/** Image props */
+let resizeMode v =>
+  stringStyle
+    "resizeMode"
+    (
+      switch v {
+      | `cover => "cover"
+      | `contain => "contain"
+      | `stretch => "stretch"
+      | `repeat => "repeat"
+      | `center => "center"
+      }
+    );
+
+let tintColor = stringStyle "tintColor";
+
+let overlayColor = stringStyle "overlayColor";
