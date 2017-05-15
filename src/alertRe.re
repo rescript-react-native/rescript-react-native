@@ -39,7 +39,7 @@ let alert ::title ::message=? ::buttons=? ::options=? ::type_=? () => {
         "onPress": from_opt onPress,
         "style":
           from_opt (
-            Utils.option_map
+            UtilsRN.option_map
               (
                 fun x =>
                   switch x {
@@ -52,13 +52,13 @@ let alert ::title ::message=? ::buttons=? ::options=? ::type_=? () => {
           )
       }
     );
-  let bts = from_opt (Utils.option_map transformButtons buttons);
+  let bts = from_opt (UtilsRN.option_map transformButtons buttons);
   let opts =
     from_opt (
-      Utils.option_map
+      UtilsRN.option_map
         (
           fun {cancelable, onDismiss} => {
-            "cancelable": from_opt (Utils.optBoolToOptJsBoolean cancelable),
+            "cancelable": from_opt (UtilsRN.optBoolToOptJsBoolean cancelable),
             "onDismiss": from_opt onDismiss
           }
         )
@@ -66,7 +66,7 @@ let alert ::title ::message=? ::buttons=? ::options=? ::type_=? () => {
     );
   let t_ =
     from_opt (
-      Utils.option_map
+      UtilsRN.option_map
         (
           fun x =>
             switch x {

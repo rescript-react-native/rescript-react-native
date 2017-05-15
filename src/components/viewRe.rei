@@ -2,7 +2,7 @@ module type ViewComponent = {
   let createElement:
     accessibleLeft::ReactRe.reactElement? =>
     accessible::bool? =>
-    hitSlop::Types.insets? =>
+    hitSlop::TypesRN.insets? =>
     onAccessibilityTap::(unit => unit)? =>
     onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
     onMagicTap::(unit => unit)? =>

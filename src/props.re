@@ -19,12 +19,12 @@ let serialize (handlers: option touchResponderHandlers) =>
       {
         "onMoveShouldSetResponder":
           from_opt (
-            Utils.option_map
+            UtilsRN.option_map
               (fun g x => Js.Boolean.to_js_boolean (g x)) handlers.onMoveShouldSetResponder
           ),
         "onMoveShouldSetResponderCapture":
           from_opt (
-            Utils.option_map
+            UtilsRN.option_map
               (fun g x => Js.Boolean.to_js_boolean (g x)) handlers.onMoveShouldSetResponderCapture
           ),
         "onResponderGrant": from_opt handlers.onResponderGrant,
@@ -35,12 +35,12 @@ let serialize (handlers: option touchResponderHandlers) =>
         "onResponderTerminationRequest": from_opt handlers.onResponderTerminationRequest,
         "onStartShouldSetResponder":
           from_opt (
-            Utils.option_map
+            UtilsRN.option_map
               (fun g x => Js.Boolean.to_js_boolean (g x)) handlers.onStartShouldSetResponder
           ),
         "onStartShouldSetResponderCapture":
           from_opt (
-            Utils.option_map
+            UtilsRN.option_map
               (fun g x => Js.Boolean.to_js_boolean (g x)) handlers.onStartShouldSetResponderCapture
           )
       }
@@ -75,15 +75,15 @@ let extendView
         Js.Undefined.(
           {
             "accessibleLeft": from_opt accessibleLeft,
-            "accessible": from_opt (Utils.optBoolToOptJsBoolean accessible),
+            "accessible": from_opt (UtilsRN.optBoolToOptJsBoolean accessible),
             "hitSlop": from_opt hitSlop,
             "onAccessibilityTap": from_opt onAccessibilityTap,
             "onLayout": from_opt onLayout,
             "onMagicTap": from_opt onMagicTap,
-            "removeClippedSubviews": from_opt (Utils.optBoolToOptJsBoolean removeClippedSubviews),
+            "removeClippedSubviews": from_opt (UtilsRN.optBoolToOptJsBoolean removeClippedSubviews),
             "pointerEvents":
               from_opt (
-                Utils.option_map
+                UtilsRN.option_map
                   (
                     fun x =>
                       switch x {
@@ -99,7 +99,7 @@ let extendView
             "testID": from_opt testID,
             "accessibilityComponentType":
               from_opt (
-                Utils.option_map
+                UtilsRN.option_map
                   (
                     fun x =>
                       switch x {
@@ -113,7 +113,7 @@ let extendView
               ),
             "accessibilityLiveRegion":
               from_opt (
-                Utils.option_map
+                UtilsRN.option_map
                   (
                     fun x =>
                       switch x {
@@ -124,10 +124,10 @@ let extendView
                   )
                   accessibilityLiveRegion
               ),
-            "collapsable": from_opt (Utils.optBoolToOptJsBoolean collapsable),
+            "collapsable": from_opt (UtilsRN.optBoolToOptJsBoolean collapsable),
             "importantForAccessibility":
               from_opt (
-                Utils.option_map
+                UtilsRN.option_map
                   (
                     fun prop =>
                       switch prop {
@@ -140,12 +140,12 @@ let extendView
                   importantForAccessibility
               ),
             "needsOffscreenAlphaCompositing":
-              from_opt (Utils.optBoolToOptJsBoolean needsOffscreenAlphaCompositing),
+              from_opt (UtilsRN.optBoolToOptJsBoolean needsOffscreenAlphaCompositing),
             "renderToHardwareTextureAndroid":
-              from_opt (Utils.optBoolToOptJsBoolean renderToHardwareTextureAndroid),
+              from_opt (UtilsRN.optBoolToOptJsBoolean renderToHardwareTextureAndroid),
             "accessibilityTraits":
               from_opt (
-                Utils.option_map
+                UtilsRN.option_map
                   (
                     fun traits => {
                       let to_string =
@@ -173,8 +173,8 @@ let extendView
                   accessibilityTraits
               ),
             "accessibilityViewIsModal":
-              from_opt (Utils.optBoolToOptJsBoolean accessibilityViewIsModal),
-            "shouldRasterizeIOS": from_opt (Utils.optBoolToOptJsBoolean shouldRasterizeIOS)
+              from_opt (UtilsRN.optBoolToOptJsBoolean accessibilityViewIsModal),
+            "shouldRasterizeIOS": from_opt (UtilsRN.optBoolToOptJsBoolean shouldRasterizeIOS)
           }
         )
         moreProps

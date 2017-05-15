@@ -39,7 +39,7 @@ let createElement
             "maximumDate": from_opt maximumDate,
             "minimumDate": from_opt minimumDate,
             "mode": from_opt (
-                  Utils.option_map
+                  UtilsRN.option_map
                     (
                       fun prop =>
                         switch prop {

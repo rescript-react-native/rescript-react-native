@@ -13,7 +13,7 @@ let createElement
     Js.Undefined.({
       "animationType":
         from_opt (
-          Utils.option_map
+          UtilsRN.option_map
             (
               fun x =>
                 switch x {
@@ -25,14 +25,14 @@ let createElement
             animationType
         ),
       "onShow": from_opt onShow,
-      "transparent": from_opt (Utils.optBoolToOptJsBoolean transparent),
-      "visible": from_opt (Utils.optBoolToOptJsBoolean visible),
-      "hardwareAccelerated": from_opt (Utils.optBoolToOptJsBoolean hardwareAccelerated),
+      "transparent": from_opt (UtilsRN.optBoolToOptJsBoolean transparent),
+      "visible": from_opt (UtilsRN.optBoolToOptJsBoolean visible),
+      "hardwareAccelerated": from_opt (UtilsRN.optBoolToOptJsBoolean hardwareAccelerated),
       "onRequestClose": from_opt onRequestClose,
       "onOrientationChange": from_opt onOrientationChange,
       "supportedOrientations":
         from_opt (
-          Utils.option_map
+          UtilsRN.option_map
             (
               fun x =>
                 switch x {

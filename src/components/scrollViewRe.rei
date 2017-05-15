@@ -5,7 +5,7 @@ module type ScrollViewComponent = {
   let createElement:
     accessibleLeft::ReactRe.reactElement? =>
     accessible::bool? =>
-    hitSlop::Types.insets? =>
+    hitSlop::TypesRN.insets? =>
     onAccessibilityTap::(unit => unit)? =>
     onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
     onMagicTap::(unit => unit)? =>
@@ -63,7 +63,7 @@ module type ScrollViewComponent = {
     bounces::bool? =>
     canCancelContentTouches::bool? =>
     centerContent::bool? =>
-    contentInset::Types.insets? =>
+    contentInset::TypesRN.insets? =>
     contentOffset::point? =>
     decelerationRate::[ | `fast | `normal]? =>
     directionalLockEnabled::bool? =>
@@ -72,7 +72,7 @@ module type ScrollViewComponent = {
     mimimumZoomScale::float? =>
     onScrollAnimationEnd::(unit => unit)? =>
     scrollEventThrottle::int? =>
-    scrollIndicatorInsets::Types.insets? =>
+    scrollIndicatorInsets::TypesRN.insets? =>
     scrollsToTop::bool? =>
     snapToAlignment::[ | `center | `end_ | `start]? =>
     zoomScale::float? =>

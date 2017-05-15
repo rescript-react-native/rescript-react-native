@@ -37,7 +37,7 @@ module type ImageComponent = {
     accessibilityLabel::string? =>
     accessible::bool? =>
     blurRadius::float? =>
-    capInsets::Types.insets? =>
+    capInsets::TypesRN.insets? =>
     defaultSource::defaultSource? =>
     onPartialLoad::(unit => unit)? =>
     onProgress::(Event.progress => unit)? =>
@@ -111,7 +111,7 @@ module CreateComponent (Impl: ViewRe.Impl) :ImageComponent => {
           "onLoadStart": from_opt onLoadStart,
           "resizeMode":
             from_opt (
-              Utils.option_map
+              UtilsRN.option_map
                 (
                   fun x =>
                     switch x {
@@ -126,7 +126,7 @@ module CreateComponent (Impl: ViewRe.Impl) :ImageComponent => {
             ),
           "source":
             from_opt (
-              Utils.option_map
+              UtilsRN.option_map
                 (
                   fun (x: imageSource) =>
                     switch x {
@@ -141,7 +141,7 @@ module CreateComponent (Impl: ViewRe.Impl) :ImageComponent => {
           "testID": from_opt testID,
           "resizeMethod":
             from_opt (
-              Utils.option_map
+              UtilsRN.option_map
                 (
                   fun x =>
                     switch x {
@@ -153,12 +153,12 @@ module CreateComponent (Impl: ViewRe.Impl) :ImageComponent => {
                 resizeMethod
             ),
           "accessibilityLabel": from_opt accessibilityLabel,
-          "accessible": from_opt (Utils.optBoolToOptJsBoolean accessible),
+          "accessible": from_opt (UtilsRN.optBoolToOptJsBoolean accessible),
           "blurRadius": from_opt blurRadius,
           "capInsets": from_opt capInsets,
           "defaultSource":
             from_opt (
-              Utils.option_map
+              UtilsRN.option_map
                 (
                   fun (x: defaultSource) =>
                     switch x {
@@ -169,7 +169,7 @@ module CreateComponent (Impl: ViewRe.Impl) :ImageComponent => {
                 defaultSource
             ),
           "onPartialLoad": from_opt onPartialLoad,
-          "onProgress": from_opt (Utils.option_map (fun x y => x (Event.progress y)) onProgress)
+          "onProgress": from_opt (UtilsRN.option_map (fun x y => x (Event.progress y)) onProgress)
         }
       );
 };

@@ -2,7 +2,9 @@ type os =
   | IOS
   | Android;
 
-let os: unit => os;
+let os: os;
+
+let equals: os => bool;
 
 external version : int = "Version" [@@bs.scope "Platform"] [@@bs.module "react-native"];
 

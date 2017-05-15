@@ -25,12 +25,12 @@ let createElement:
   delayPressIn::int? =>
   delayPressOut::int? =>
   disabled::bool? =>
-  hitSlop::Types.insets? =>
+  hitSlop::TypesRN.insets? =>
   onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
   onPress::(unit => unit)? =>
   onPressIn::(unit => unit)? =>
   onPressOut::(unit => unit)? =>
-  pressRetentionOffset::Types.insets? =>
+  pressRetentionOffset::TypesRN.insets? =>
   activeOpacity::float? =>
   onHideUnderlay::(unit => unit)? =>
   onShowUnderlay::(unit => unit)? =>

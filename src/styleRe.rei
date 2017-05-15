@@ -7,6 +7,8 @@ let style: list style => t;
 let combine: t => t => t;
 
 let concat: list t => t;
+
+
 /** Equivalent to [style_a, style_b] in js */
 
 /**
@@ -211,6 +213,7 @@ let transformInterpolated:
   unit =>
   style;
 
+
 /**
  * View Props
  */
@@ -287,3 +290,9 @@ let textDecorationColor: string => style;
 let textDecorationStyle: [ | `solid | `double | `dotted | `dashed] => style;
 
 let writingDirection: [ | `auto | `ltr | `rtl] => style;
+
+let resizeMode: [ | `center | `contain | `cover | `repeat | `stretch] => style;
+
+let tintColor: string => style;
+
+let overlayColor: string => style;
