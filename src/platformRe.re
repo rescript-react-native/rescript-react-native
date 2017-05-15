@@ -4,10 +4,18 @@ type os =
 
 external _os : string = "OS" [@@bs.scope "Platform"] [@@bs.module "react-native"];
 
-let os () =>
+let os =
   switch _os {
   | "ios" => IOS
   | _ => Android
+  };
+
+let equals targetOs =>
+  switch (os, targetOs) {
+  | (IOS, IOS) => true
+  | (Android, Android) => true
+  | (IOS, Android) => false
+  | (Android, IOS) => false
   };
 
 external version : int = "Version" [@@bs.scope "Platform"] [@@bs.module "react-native"];
