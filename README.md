@@ -34,64 +34,28 @@ yarn add bs-platform reason-react https://github.com/BuckleTypes/bs-react-native
   "watch": "bsb -make-world -clean-world -w"
 }
 ```
-Now you can build all your (so far nonexsisting) Reason code with `yarn run build` or enter the watch mode with `yarn run watch`.
 
-5. Start the watcher with `yarn run watch`.
+5. Now you can build all your (so far nonexsisting) Reason in two modes:
+  - `yarn run build` performs a single build
+  - `yarn run watch` enters the watch mode
 6. Now we come to the fun stuff! We will rebuild the default app component with Reason. Create a new file `re/app.re` and make it look like this:
 ```reason
 open ReactNative;
 
-let styles =
-  StyleSheet.create
-    Style.(
-      {
-        "container":
-          style [flex 1., justifyContent `center, alignItems `center, backgroundColor "#F5FCFF"],
-        "welcome": style [fontSize 20., textAlign `center, margin 10.],
-        "instructions": style [textAlign `center, color "#333333", marginBottom 5.]
-      }
-    );
-
-module MyAwesomeReasonProject = {
-  include ReactRe.Component.JsProps;
-  let name = "MyAwesomeReasonProject";
-  type props = unit;
-  type jsProps = option (unit => unit);
-  let jsPropsToReasonProps = Some (fun _ => ());
-  let render _ =>
-    <View style=styles##container>
-      <Text style=styles##welcome>
-        (ReactRe.stringToElement "Welcome to React Native with Reason!")
-      </Text>
-      <Text style=styles##instructions>
-        (ReactRe.stringToElement "To get started, edit re/app.re")
-      </Text>
-      <Text style=styles##instructions>
-        (ReactRe.stringToElement "Press Cmd+R to reload,\nCmd+D or shake for dev menu")
-      </Text>
-    </View>;
-};
-
-include ReactRe.CreateComponent MyAwesomeReasonProject;
-
-let createElement = wrapProps ();
+let app () => 
+  <View style=Style.(style [flex 1., justifyContent `center, alignItems `center])>
+    <Text value="Reason is awesome!" />
+  </View>;
 ```
 7. We are nearly done! We now have to adopt the `index.ios.js` / `index.android.js` to look like this
 ```js
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
-// Bucklescript creates the build output in the lib/js folder in your project.
-import { comp as App } from "./lib/js/re/app.js";
+import { app } from "./lib/js/re/app.js";
 import React from "react";
 import {
   AppRegistry
 } from 'react-native';
 
-AppRegistry.registerComponent('MyAwesomeProject', () => App);
+AppRegistry.registerComponent('MyAwesomeProject', () => app);
 ```
 **Note:** Make sure that the first argument to `AppRegistry.registerComponent` is **your** correct project name.
 
