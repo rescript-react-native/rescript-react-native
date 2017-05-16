@@ -99,7 +99,9 @@ let styles =
 - [ ] Keyboard
 - [ ] LayoutAnimation
 - [ ] Linking
+- [x] NativeEventEmitter
 - [ ] NativeMethodsMixin
+- [x] NativeModules
 - [ ] NetInfo
 - [x] PanResponder
 - [ ] PermissionsAndroid
