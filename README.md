@@ -123,7 +123,7 @@ let styles =
 - [ ] PickerIOS
 - [ ] ProgressBarAndroid
 - [ ] ProgressViewIOS
-- [ ] RefreshControl
+- [x] RefreshControl
 - [x] ScrollView
 - [x] SectionList
 - [ ] SegmentedControlIOS
