@@ -130,7 +130,7 @@ let styles =
 - [ ] Slider
 - [ ] SnapshotViewIOS
 - [x] StatusBar
-- [ ] Switch
+- [x] Switch
 - [ ] TabBarIOS
 - [ ] TabBarIOS.Item
 - [x] Text
