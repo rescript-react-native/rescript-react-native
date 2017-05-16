@@ -38,7 +38,7 @@ yarn add bs-platform reason-react https://github.com/BuckleTypes/bs-react-native
 5. Now you can build all your (so far nonexsisting) Reason in two modes:
   - `yarn run build` performs a single build
   - `yarn run watch` enters the watch mode
-6. Now we come to the fun stuff! We will rebuild the default app component with Reason. Create a new file `re/app.re` and make it look like this:
+6. Now we come to the fun stuff! Create a new file `re/app.re` and make it look like this:
 ```reason
 open ReactNative;
 
@@ -47,6 +47,8 @@ let app () =>
     <Text value="Reason is awesome!" />
   </View>;
 ```
+and start the watcher with `yarn run watch` if you haven't done it yet.
+
 7. We are nearly done! We now have to adopt the `index.ios.js` / `index.android.js` to look like this
 ```js
 import { app } from "./lib/js/re/app.js";
