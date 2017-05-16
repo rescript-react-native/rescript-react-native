@@ -127,7 +127,7 @@ let styles =
 - [x] ScrollView
 - [x] SectionList
 - [ ] SegmentedControlIOS
-- [ ] Slider
+- [x] Slider
 - [ ] SnapshotViewIOS
 - [x] StatusBar
 - [ ] Switch
