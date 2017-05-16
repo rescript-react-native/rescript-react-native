@@ -1,2 +1,3 @@
 type t;
-let get : Js.Dict.key => t;
+
+let get: string => t;
