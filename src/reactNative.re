@@ -51,6 +51,7 @@ module PanResponder = {
   include PanResponderRe;
   include PanResponderUtils;
 };
+module Vibration = VibrationRe;
 
 /**
  * New Modules due to Reason

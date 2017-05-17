@@ -186,8 +186,7 @@ let styles =
 - [ ] Systrace
 - [ ] TimePickerAndroid
 - [ ] ToastAndroid
-- [ ] Vibration
-- [ ] VibrationIOS
+- [x] Vibration
 - [x] Layout Props
 - [x] Shadow Props
 
