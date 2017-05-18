@@ -2,10 +2,10 @@ type t;
 
 type emitterSubscription;
 
-external create : NativeModules.t => t =
+external create : NativeModules.t 'a => t =
   "NativeEventEmitter" [@@bs.new] [@@bs.module "react-native"];
 
-external addListener : t => string => (Js.Dict.t 'a => unit) => emitterSubscription = "" [@@bs.send];
+external addListener : t => string => ('a => unit) => emitterSubscription = "" [@@bs.send];
 
 external removeAllListeners : t => string => unit = "" [@@bs.send];
 
