@@ -1,3 +1,2 @@
-type t;
-
-let get: string => t;
+type t 'a = Js.t 'a;
+let get: string => t 'a;

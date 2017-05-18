@@ -2,9 +2,9 @@ type t;
 
 type emitterSubscription;
 
-let create: NativeModules.t => t;
+let create: NativeModules.t 'a => t;
 
-let addListener: t => string => (Js.Dict.t 'a => unit) => emitterSubscription;
+let addListener: t => string => ('a => unit) => emitterSubscription;
 
 let removeAllListeners: t => string => unit;
 
