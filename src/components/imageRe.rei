@@ -4,12 +4,12 @@ module type ImageComponent = {
     uri::string =>
     bundle::string? =>
     method::string? =>
-    headers::list (string, string)? =>
+    headers::Js.t 'a? =>
     body::string? =>
-    cache::string? =>
+    cache::[ `default | `reload | `forceCache | `onlyIfCached ]? =>
     scale::float? =>
-    width::float =>
-    height::float =>
+    width::float? =>
+    height::float? =>
     unit =>
     imageURISource;
   type imageSource =
@@ -18,7 +18,7 @@ module type ImageComponent = {
     | Multiple (list imageURISource);
   type defaultURISource;
   let defaultURISource:
-    uri::string => scale::float? => width::float => height::float => unit => defaultURISource;
+    uri::string => scale::float? => width::float? => height::float? => unit => defaultURISource;
   type defaultSource =
     | URI defaultURISource
     | Required PackagerRe.required;
