@@ -4,12 +4,12 @@ module type ImageComponent = {
     uri::string =>
     bundle::string? =>
     method::string? =>
-    headers::list (string, string)? =>
+    headers::Js.t 'a? =>
     body::string? =>
-    cache::string? =>
+    cache::[ `default | `reload | `forceCache | `onlyIfCached ] ? =>
     scale::float? =>
-    width::float =>
-    height::float =>
+    width::float? =>
+    height::float? =>
     unit =>
     imageURISource;
   type imageSource =
@@ -18,7 +18,7 @@ module type ImageComponent = {
     | Multiple (list imageURISource);
   type defaultURISource;
   let defaultURISource:
-    uri::string => scale::float? => width::float => height::float => unit => defaultURISource;
+    uri::string => scale::float? => width::float? => height::float? => unit => defaultURISource;
   type defaultSource =
     | URI defaultURISource
     | Required PackagerRe.required;
@@ -54,12 +54,22 @@ module CreateComponent (Impl: ViewRe.Impl) :ImageComponent => {
     uri::string =>
     bundle::string? =>
     method::string? =>
-    headers::list (string, string)? =>
+    headers::Js.t 'a? =>
     body::string? =>
-    cache::string? =>
+    /* 
+     * Be careful not to refmt this away !!!
+     * https://github.com/facebook/reason/issues/821 (resolved, not released yet)
+     */
+    cache::(
+      [ 
+      `default 
+      | `reload 
+      | `forceCache [@bs.as "force-cache"] 
+      | `onlyIfCached [@bs.as "only-if-cached"]
+      ] [@bs.string])? =>
     scale::float? =>
-    width::float =>
-    height::float =>
+    width::float? =>
+    height::float? =>
     unit =>
     imageURISource =
     "" [@@bs.obj];
@@ -69,7 +79,7 @@ module CreateComponent (Impl: ViewRe.Impl) :ImageComponent => {
     | Multiple (list imageURISource);
   type defaultURISource;
   external defaultURISource :
-    uri::string => scale::float? => width::float => height::float => unit => defaultURISource =
+    uri::string => scale::float? => width::float? => height::float? => unit => defaultURISource =
     "" [@@bs.obj];
   type defaultSource =
     | URI defaultURISource
