@@ -7,6 +7,11 @@
     "sources": [{
         "dir": "src",
         "subdirs": {
+            "dir": "examples"
+        }
+    }, {
+        "dir": "react-native",
+        "subdirs": {
             "dir": "components"
         }
     }]
