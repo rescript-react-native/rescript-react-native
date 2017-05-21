@@ -8,12 +8,13 @@ Before running the app, make sure you ran:
 
     # in this folder
     npm install
+    # start Bucklescript compiler in watch mode
+    npm run watch
 
 ### Running on iOS
 
 Mac OS and Xcode are required.
 
-- Open a new tab in your terminal and start the bucklescript watcher with `npm run watch`
 - Open `RNTester/RNTester.xcodeproj` in Xcode
 - Hit the Run button
 
@@ -25,7 +26,6 @@ You'll need to have all the [prerequisites](https://github.com/facebook/react-na
 
 Start an Android emulator ([Genymotion](https://www.genymotion.com) is recommended).
 
-- Open a new tab in your terminal and start the bucklescript watcher with `npm run watch`
 - `./gradlew :RNTester:android:app:installDebug`
 `
 _Note: Building for the first time can take a while._
