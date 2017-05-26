@@ -107,6 +107,7 @@ let styles =
 ## Status
 
 **Components**
+- [ ] ART
 - [x] ActivityIndicator
 - [x] Button
 - [x] DatePickerIOS
