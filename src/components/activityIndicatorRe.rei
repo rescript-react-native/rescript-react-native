@@ -1,9 +1,9 @@
-let createElement:
+let make:
   animating::bool? =>
   color::string? =>
   size::[ | `large | `small | `exact int]? =>
   hidesWhenStopped::bool? =>
-  accessibleLeft::ReactRe.reactElement? =>
+  accessibleLeft::ReasonReact.reactElement? =>
   accessible::bool? =>
   hitSlop::TypesRN.insets? =>
   onAccessibilityTap::(unit => unit)? =>
@@ -42,8 +42,5 @@ let createElement:
     ]? =>
   accessibilityViewIsModal::bool? =>
   shouldRasterizeIOS::bool? =>
-  children::list ReactRe.reactElement =>
-  ref::(ReactRe.reactRef => unit)? =>
-  key::string? =>
-  unit =>
-  ReactRe.reactElement;
+  array ReasonReact.reactElement =>
+  ReasonReact.component ReasonReact.stateless;

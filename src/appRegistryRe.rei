@@ -1,1 +1,1 @@
-let registerComponent: string => (unit => ReactRe.reactClass) => unit;
+let registerComponent: string => (unit => ReasonReact.reactClass) => unit;

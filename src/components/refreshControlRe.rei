@@ -1,4 +1,4 @@
-let createElement:
+let make:
   onRefresh::(unit => unit)? =>
   refreshing::bool? =>
   colors::array string? =>
@@ -8,7 +8,7 @@ let createElement:
   tintColor::string? =>
   title::string? =>
   titleColor::string? =>
-  accessibleLeft::ReactRe.reactElement? =>
+  accessibleLeft::ReasonReact.reactElement? =>
   accessible::bool? =>
   hitSlop::TypesRN.insets? =>
   onAccessibilityTap::(unit => unit)? =>
@@ -47,8 +47,5 @@ let createElement:
     ]? =>
   accessibilityViewIsModal::bool? =>
   shouldRasterizeIOS::bool? =>
-  children::list ReactRe.reactElement =>
-  ref::(ReactRe.reactRef => unit)? =>
-  key::string? =>
-  unit =>
-  ReactRe.reactElement;
+  array ReasonReact.reactElement =>
+  ReasonReact.component ReasonReact.stateless;

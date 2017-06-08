@@ -1,11 +1,11 @@
-let createElement:
+let make:
   disabled::bool? =>
   onTintColor::string? =>
   onValueChange::(bool => unit)? =>
   thumbTintColor::string? =>
   tintColor::string? =>
   value::bool? =>
-  accessibleLeft::ReactRe.reactElement? =>
+  accessibleLeft::ReasonReact.reactElement? =>
   accessible::bool? =>
   hitSlop::TypesRN.insets? =>
   onAccessibilityTap::(unit => unit)? =>
@@ -44,8 +44,5 @@ let createElement:
     ]? =>
   accessibilityViewIsModal::bool? =>
   shouldRasterizeIOS::bool? =>
-  children::list ReactRe.reactElement =>
-  ref::(ReactRe.reactRef => unit)? =>
-  key::string? =>
-  unit =>
-  ReactRe.reactElement;
+  array ReasonReact.reactElement =>
+  ReasonReact.component ReasonReact.stateless;

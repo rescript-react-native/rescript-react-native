@@ -1,6 +1,6 @@
 module type ViewComponent = {
-  let createElement:
-    accessibleLeft::ReactRe.reactElement? =>
+  let make:
+    accessibleLeft::ReasonReact.reactElement? =>
     accessible::bool? =>
     hitSlop::TypesRN.insets? =>
     onAccessibilityTap::(unit => unit)? =>
@@ -40,14 +40,11 @@ module type ViewComponent = {
       ]? =>
     accessibilityViewIsModal::bool? =>
     shouldRasterizeIOS::bool? =>
-    children::list ReactRe.reactElement =>
-    ref::(ReactRe.reactRef => unit)? =>
-    key::string? =>
-    unit =>
-    ReactRe.reactElement;
+    array ReasonReact.reactElement =>
+    ReasonReact.component ReasonReact.stateless;
 };
 
-module type Impl = {let view: ReactRe.reactClass;};
+module type Impl = {let view: ReasonReact.reactClass;};
 
 module CreateComponent: (Impl: Impl) => ViewComponent;
 

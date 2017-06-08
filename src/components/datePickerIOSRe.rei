@@ -1,4 +1,4 @@
-let createElement:
+let make:
   date::Js.Date.t? =>
   onDateChange::(Js.Date.t => unit)? =>
   maximumDate::Js.Date.t? =>
@@ -6,7 +6,7 @@ let createElement:
   mode::[ | `date | `datetime | `time]? =>
   minuteInterval::int? =>
   timeZoneOffsetInMinutes::int? =>
-  accessibleLeft::ReactRe.reactElement? =>
+  accessibleLeft::ReasonReact.reactElement? =>
   accessible::bool? =>
   hitSlop::TypesRN.insets? =>
   onAccessibilityTap::(unit => unit)? =>
@@ -45,8 +45,5 @@ let createElement:
     ]? =>
   accessibilityViewIsModal::bool? =>
   shouldRasterizeIOS::bool? =>
-  children::list ReactRe.reactElement =>
-  ref::(ReactRe.reactRef => unit)? =>
-  key::string? =>
-  unit =>
-  ReactRe.reactElement;
+  array ReasonReact.reactElement =>
+  ReasonReact.component ReasonReact.stateless;

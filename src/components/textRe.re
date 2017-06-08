@@ -1,5 +1,5 @@
 module type TextComponent = {
-  let createElement:
+  let make:
     accessible::bool? =>
     allowFontScaling::bool? =>
     ellipsizeMode::[ | `clip | `head | `middle | `tail]? =>
@@ -17,15 +17,12 @@ module type TextComponent = {
     minimumFontScale::float? =>
     suppressHighlighting::bool? =>
     value::string? =>
-    children::list ReactRe.reactElement =>
-    ref::(ReactRe.reactRef => unit)? =>
-    key::string? =>
-    unit =>
-    ReactRe.reactElement;
+    array ReasonReact.reactElement =>
+    ReasonReact.component ReasonReact.stateless;
 };
 
 module CreateComponent (Impl: ViewRe.Impl) :TextComponent => {
-  let createElement
+  let make
       ::accessible=?
       ::allowFontScaling=?
       ::ellipsizeMode=?
@@ -43,53 +40,54 @@ module CreateComponent (Impl: ViewRe.Impl) :TextComponent => {
       ::minimumFontScale=?
       ::suppressHighlighting=?
       ::value=?
-      ::children =>
-    ReactRe.wrapPropsShamelessly
-      Impl.view
-      Js.Undefined.(
-        {
-          "accessible": from_opt (UtilsRN.optBoolToOptJsBoolean accessible),
-          "allowFontScaling": from_opt (UtilsRN.optBoolToOptJsBoolean allowFontScaling),
-          "ellipsizeMode":
-            from_opt (
-              UtilsRN.option_map
-                (
-                  fun
-                  | `head => "head"
-                  | `middle => "middle"
-                  | `tail => "tail"
-                  | `clip => "clip"
-                )
-                ellipsizeMode
-            ),
-          "numberOfLines": from_opt numberOfLines,
-          "onLayout": from_opt onLayout,
-          "onLongPress": from_opt onLongPress,
-          "onPress": from_opt onPress,
-          "pressRetentionOffset": from_opt pressRetentionOffset,
-          "selectable": from_opt (UtilsRN.optBoolToOptJsBoolean selectable),
-          "style": from_opt style,
-          "testID": from_opt testID,
-          "selectionColor": from_opt selectionColor,
-          "textBreakStrategy":
-            from_opt (
-              UtilsRN.option_map
-                (
-                  fun
-                  | `simple => "simple"
-                  | `highQuality => "highQuality"
-                  | `balanced => "balanced"
-                )
-                textBreakStrategy
-            ),
-          "adjustsFontSizeToFit": from_opt (UtilsRN.optBoolToOptJsBoolean adjustsFontSizeToFit),
-          "minimumFontScale": from_opt minimumFontScale,
-          "suppressHighlighting": from_opt (UtilsRN.optBoolToOptJsBoolean suppressHighlighting)
-        }
-      )
-      children::(
+      children =>
+    ReasonReact.wrapJsForReason
+      reactClass::Impl.view
+      props::
+        Js.Undefined.(
+          {
+            "accessible": from_opt (UtilsRN.optBoolToOptJsBoolean accessible),
+            "allowFontScaling": from_opt (UtilsRN.optBoolToOptJsBoolean allowFontScaling),
+            "ellipsizeMode":
+              from_opt (
+                UtilsRN.option_map
+                  (
+                    fun
+                    | `head => "head"
+                    | `middle => "middle"
+                    | `tail => "tail"
+                    | `clip => "clip"
+                  )
+                  ellipsizeMode
+              ),
+            "numberOfLines": from_opt numberOfLines,
+            "onLayout": from_opt onLayout,
+            "onLongPress": from_opt onLongPress,
+            "onPress": from_opt onPress,
+            "pressRetentionOffset": from_opt pressRetentionOffset,
+            "selectable": from_opt (UtilsRN.optBoolToOptJsBoolean selectable),
+            "style": from_opt style,
+            "testID": from_opt testID,
+            "selectionColor": from_opt selectionColor,
+            "textBreakStrategy":
+              from_opt (
+                UtilsRN.option_map
+                  (
+                    fun
+                    | `simple => "simple"
+                    | `highQuality => "highQuality"
+                    | `balanced => "balanced"
+                  )
+                  textBreakStrategy
+              ),
+            "adjustsFontSizeToFit": from_opt (UtilsRN.optBoolToOptJsBoolean adjustsFontSizeToFit),
+            "minimumFontScale": from_opt minimumFontScale,
+            "suppressHighlighting": from_opt (UtilsRN.optBoolToOptJsBoolean suppressHighlighting)
+          }
+        )
+      (
         switch value {
-        | Some string => [ReactRe.stringToElement string, ...children]
+        | Some string => Array.append [|ReasonReact.stringToElement string|] children
         | None => children
         }
       );
@@ -97,5 +95,5 @@ module CreateComponent (Impl: ViewRe.Impl) :TextComponent => {
 
 module Text =
   CreateComponent {
-    external view : ReactRe.reactClass = "Text" [@@bs.module "react-native"];
+    external view : ReasonReact.reactClass = "Text" [@@bs.module "react-native"];
   };

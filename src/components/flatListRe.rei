@@ -1,7 +1,7 @@
-let scrollToEnd: ReactRe.reactRef => animated::bool => unit;
+let scrollToEnd: ReasonReact.reactRef => animated::bool => unit;
 
 let scrollToIndex:
-  ReactRe.reactRef =>
+  ReasonReact.reactRef =>
   index::int =>
   animated::Js.boolean? =>
   viewOffset::int? =>
@@ -10,18 +10,23 @@ let scrollToIndex:
   unit;
 
 let scrollToItem:
-  ReactRe.reactRef => item::'item => animated::Js.boolean? => viewPosition::int? => unit => unit;
+  ReasonReact.reactRef =>
+  item::'item =>
+  animated::Js.boolean? =>
+  viewPosition::int? =>
+  unit =>
+  unit;
 
-let scrollToOffset: ReactRe.reactRef => offset::int? => animated::Js.boolean? => unit => unit;
+let scrollToOffset: ReasonReact.reactRef => offset::int? => animated::Js.boolean? => unit => unit;
 
-external recordInteraction : ReactRe.reactRef => unit = "" [@@bs.send];
+external recordInteraction : ReasonReact.reactRef => unit = "" [@@bs.send];
 
-let createElement:
+let make:
   data::array 'item =>
-  renderItem::(Js.t {. item : 'item, index : int} => ReactRe.reactElement) =>
-  itemSeparatorComponent::ReactRe.reactClass? =>
-  listFooterComponent::ReactRe.reactElement? =>
-  listHeaderComponent::ReactRe.reactElement? =>
+  renderItem::(Js.t {. item : 'item, index : int} => ReasonReact.reactElement) =>
+  itemSeparatorComponent::ReasonReact.reactClass? =>
+  listFooterComponent::ReasonReact.reactElement? =>
+  listHeaderComponent::ReasonReact.reactElement? =>
   columnWrapperStyle::StyleRe.t? =>
   extraData::'any? =>
   getItemLayout::(option (array 'item) => int => Js.t {. length : int, offset : int, index : int})? =>
@@ -62,8 +67,5 @@ let createElement:
   refreshing::bool? =>
   removeClippedSubviews::bool? =>
   viewabilityConfig::Js.t {.}? =>
-  children::list ReactRe.reactElement =>
-  ref::(ReactRe.reactRef => unit)? =>
-  key::string? =>
-  unit =>
-  ReactRe.reactElement;
+  array ReasonReact.reactElement =>
+  ReasonReact.component ReasonReact.stateless;

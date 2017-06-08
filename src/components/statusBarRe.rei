@@ -8,7 +8,7 @@ let setBackgroundColor: string => animated::bool? => unit => unit;
 
 let setTranslucent: bool => unit;
 
-let createElement:
+let make:
   animated::bool? =>
   barStyle::[ | `darkContent | `default | `lightContent]? =>
   hidden::bool? =>
@@ -16,8 +16,5 @@ let createElement:
   translucent::bool? =>
   networkActivityIndicatorVisible::bool? =>
   showHideTransition::[ | `fade | `none | `slide]? =>
-  children::list ReactRe.reactElement =>
-  ref::(ReactRe.reactRef => unit)? =>
-  key::string? =>
-  unit =>
-  ReactRe.reactElement;
+  array ReasonReact.reactElement =>
+  ReasonReact.component ReasonReact.stateless;

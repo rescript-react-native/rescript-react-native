@@ -7,10 +7,10 @@ module Text: TextRe.TextComponent;
 module ScrollView: {
   let onScrollUpdater: x::'a? => y::'b? => native::bool? => unit => RNEvent.NativeEvent.t => unit;
   type point = {x: float, y: float};
-  let scrollTo: ReactRe.reactRef => x::int => y::int => animated::bool => unit;
-  let scrollToEnd: ReactRe.reactRef => animated::bool => unit;
-  let createElement:
-    accessibleLeft::ReactRe.reactElement? =>
+  let scrollTo: ReasonReact.reactRef => x::int => y::int => animated::bool => unit;
+  let scrollToEnd: ReasonReact.reactRef => animated::bool => unit;
+  let make:
+    accessibleLeft::ReasonReact.reactElement? =>
     accessible::bool? =>
     hitSlop::TypesRN.insets? =>
     onAccessibilityTap::(unit => unit)? =>
@@ -57,7 +57,7 @@ module ScrollView: {
     onContentSizeChange::((float, float) => unit)? =>
     onScroll::(RNEvent.NativeEvent.t => unit)? =>
     pagingEnabled::bool? =>
-    refreshControl::ReactRe.reactElement? =>
+    refreshControl::ReasonReact.reactElement? =>
     scrollEnabled::bool? =>
     showsHorizontalScrollIndicator::bool? =>
     showsVerticalScrollIndicator::bool? =>
@@ -83,9 +83,6 @@ module ScrollView: {
     scrollsToTop::bool? =>
     snapToAlignment::[ | `center | `end_ | `start]? =>
     zoomScale::float? =>
-    children::list ReactRe.reactElement =>
-    ref::(ReactRe.reactRef => unit)? =>
-    key::string? =>
-    unit =>
-    ReactRe.reactElement;
+    array ReasonReact.reactElement =>
+    ReasonReact.component ReasonReact.stateless;
 };

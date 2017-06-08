@@ -1,4 +1,4 @@
-let createElement:
+let make:
   animationType::[ | `fade | `none | `slide]? =>
   onShow::(unit => unit)? =>
   transparent::bool? =>
@@ -8,8 +8,5 @@ let createElement:
   onOrientationChange::(unit => unit)? =>
   supportedOrientations::
     [ | `landscape | `landscapeLeft | `landscapeRight | `portrait | `portraitUpsideDown]? =>
-  children::list ReactRe.reactElement =>
-  ref::(ReactRe.reactRef => unit)? =>
-  key::string? =>
-  unit =>
-  ReactRe.reactElement;
+  array ReasonReact.reactElement =>
+  ReasonReact.component ReasonReact.stateless;

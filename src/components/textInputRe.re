@@ -1,12 +1,12 @@
-external view : ReactRe.reactClass = "TextInput" [@@bs.module "react-native"];
+external view : ReasonReact.reactClass = "TextInput" [@@bs.module "react-native"];
 
-external _isFocused : ReactRe.reactRef => Js.boolean = "" [@@bs.send];
+external _isFocused : ReasonReact.reactRef => Js.boolean = "" [@@bs.send];
 
 let isFocused = UtilsRN.(Js.to_bool << _isFocused);
 
-external clear : ReactRe.reactRef => unit = "" [@@bs.send];
+external clear : ReasonReact.reactRef => unit = "" [@@bs.send];
 
-let createElement
+let make
     ::accessibleLeft=?
     ::accessible=?
     ::hitSlop=?
@@ -69,9 +69,9 @@ let createElement
     ::onKeyPress=?
     ::selectionState=?
     ::spellCheck=? =>
-  ReactRe.wrapPropsShamelessly
-    view
-    (
+  ReasonReact.wrapJsForReason
+    reactClass::view
+    props::(
       Props.extendView
         Js.Undefined.(
           {

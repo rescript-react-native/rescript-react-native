@@ -6,7 +6,7 @@ module type ImageComponent = {
     method::string? =>
     headers::Js.t 'a? =>
     body::string? =>
-    cache::[ `default | `reload | `forceCache | `onlyIfCached ] ? =>
+    cache::[ | `default | `reload | `forceCache | `onlyIfCached]? =>
     scale::float? =>
     width::float? =>
     height::float? =>
@@ -23,7 +23,7 @@ module type ImageComponent = {
     | URI defaultURISource
     | Required PackagerRe.required;
   module Event: {type error; type progress = {loaded: float, total: float};};
-  let createElement:
+  let make:
     onError::(Event.error => unit)? =>
     onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
     onLoad::(unit => unit)? =>
@@ -41,11 +41,8 @@ module type ImageComponent = {
     defaultSource::defaultSource? =>
     onPartialLoad::(unit => unit)? =>
     onProgress::(Event.progress => unit)? =>
-    children::list ReactRe.reactElement =>
-    ref::(ReactRe.reactRef => unit)? =>
-    key::string? =>
-    unit =>
-    ReactRe.reactElement;
+    array ReasonReact.reactElement =>
+    ReasonReact.component ReasonReact.stateless;
 };
 
 module CreateComponent (Impl: ViewRe.Impl) :ImageComponent => {
@@ -56,17 +53,11 @@ module CreateComponent (Impl: ViewRe.Impl) :ImageComponent => {
     method::string? =>
     headers::Js.t 'a? =>
     body::string? =>
-    /* 
+    /*
      * Be careful not to refmt this away !!!
      * https://github.com/facebook/reason/issues/821 (resolved, not released yet)
      */
-    cache::(
-      [ 
-      `default 
-      | `reload 
-      | `forceCache [@bs.as "force-cache"] 
-      | `onlyIfCached [@bs.as "only-if-cached"]
-      ] [@bs.string])? =>
+    cache::[ | `default | `reload | `forceCache | `onlyIfCached] [@bs.string]? =>
     scale::float? =>
     width::float? =>
     height::float? =>
@@ -92,7 +83,7 @@ module CreateComponent (Impl: ViewRe.Impl) :ImageComponent => {
     type progress = {loaded: float, total: float};
     external progress : t => progress = "nativeEvent" [@@bs.get];
   };
-  let createElement
+  let make
       ::onError=?
       ::onLayout=?
       ::onLoad=?
@@ -110,81 +101,83 @@ module CreateComponent (Impl: ViewRe.Impl) :ImageComponent => {
       ::defaultSource=?
       ::onPartialLoad=?
       ::onProgress=? =>
-    ReactRe.wrapPropsShamelessly
-      Impl.view
-      Js.Undefined.(
-        {
-          "onLayout": from_opt onLayout,
-          "onError": from_opt onError,
-          "onLoad": from_opt onLoad,
-          "onLoadEnd": from_opt onLoadEnd,
-          "onLoadStart": from_opt onLoadStart,
-          "resizeMode":
-            from_opt (
-              UtilsRN.option_map
-                (
-                  fun x =>
-                    switch x {
-                    | `cover => "cover"
-                    | `contain => "contain"
-                    | `stretch => "stretch"
-                    | `repeat => "repeat"
-                    | `center => "center"
-                    }
-                )
-                resizeMode
-            ),
-          "source":
-            from_opt (
-              UtilsRN.option_map
-                (
-                  fun (x: imageSource) =>
-                    switch x {
-                    | URI x => rawImageSourceJS x
-                    | Required x => rawImageSourceJS x
-                    | Multiple x => rawImageSourceJS (Array.of_list x)
-                    }
-                )
-                source
-            ),
-          "style": from_opt style,
-          "testID": from_opt testID,
-          "resizeMethod":
-            from_opt (
-              UtilsRN.option_map
-                (
-                  fun x =>
-                    switch x {
-                    | `auto => "auto"
-                    | `resize => "resize"
-                    | `scale => "scale"
-                    }
-                )
-                resizeMethod
-            ),
-          "accessibilityLabel": from_opt accessibilityLabel,
-          "accessible": from_opt (UtilsRN.optBoolToOptJsBoolean accessible),
-          "blurRadius": from_opt blurRadius,
-          "capInsets": from_opt capInsets,
-          "defaultSource":
-            from_opt (
-              UtilsRN.option_map
-                (
-                  fun (x: defaultSource) =>
-                    switch x {
-                    | URI x => rawImageSourceJS x
-                    | Required x => rawImageSourceJS x
-                    }
-                )
-                defaultSource
-            ),
-          "onPartialLoad": from_opt onPartialLoad,
-          "onProgress": from_opt (UtilsRN.option_map (fun x y => x (Event.progress y)) onProgress)
-        }
-      );
+    ReasonReact.wrapJsForReason
+      reactClass::Impl.view
+      props::
+        Js.Undefined.(
+          {
+            "onLayout": from_opt onLayout,
+            "onError": from_opt onError,
+            "onLoad": from_opt onLoad,
+            "onLoadEnd": from_opt onLoadEnd,
+            "onLoadStart": from_opt onLoadStart,
+            "resizeMode":
+              from_opt (
+                UtilsRN.option_map
+                  (
+                    fun x =>
+                      switch x {
+                      | `cover => "cover"
+                      | `contain => "contain"
+                      | `stretch => "stretch"
+                      | `repeat => "repeat"
+                      | `center => "center"
+                      }
+                  )
+                  resizeMode
+              ),
+            "source":
+              from_opt (
+                UtilsRN.option_map
+                  (
+                    fun (x: imageSource) =>
+                      switch x {
+                      | URI x => rawImageSourceJS x
+                      | Required x => rawImageSourceJS x
+                      | Multiple x => rawImageSourceJS (Array.of_list x)
+                      }
+                  )
+                  source
+              ),
+            "style": from_opt style,
+            "testID": from_opt testID,
+            "resizeMethod":
+              from_opt (
+                UtilsRN.option_map
+                  (
+                    fun x =>
+                      switch x {
+                      | `auto => "auto"
+                      | `resize => "resize"
+                      | `scale => "scale"
+                      }
+                  )
+                  resizeMethod
+              ),
+            "accessibilityLabel": from_opt accessibilityLabel,
+            "accessible": from_opt (UtilsRN.optBoolToOptJsBoolean accessible),
+            "blurRadius": from_opt blurRadius,
+            "capInsets": from_opt capInsets,
+            "defaultSource":
+              from_opt (
+                UtilsRN.option_map
+                  (
+                    fun (x: defaultSource) =>
+                      switch x {
+                      | URI x => rawImageSourceJS x
+                      | Required x => rawImageSourceJS x
+                      }
+                  )
+                  defaultSource
+              ),
+            "onPartialLoad": from_opt onPartialLoad,
+            "onProgress":
+              from_opt (UtilsRN.option_map (fun x y => x (Event.progress y)) onProgress)
+          }
+        );
 };
 
 module Image =
   CreateComponent {
-    external view : ReactRe.reactClass = "Image" [@@bs.module "react-native"];
+    external view : ReasonReact.reactClass = "Image" [@@bs.module "react-native"];
   };

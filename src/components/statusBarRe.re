@@ -1,4 +1,4 @@
-external statusBar : ReactRe.reactClass = "StatusBar" [@@bs.module "react-native"];
+external statusBar : ReasonReact.reactClass = "StatusBar" [@@bs.module "react-native"];
 
 /*barStyle::[ | `darkContent | `default | `lightContent]? =>
   hidden::bool? =>
@@ -56,10 +56,9 @@ let setBackgroundColor color ::animated=? () =>
 external _setTranslucent : Js.boolean => unit =
   "setTranslucent" [@@bs.scope "StatusBar"] [@@bs.module "react-native"];
 
-let setTranslucent translucent =>
-  _setTranslucent (Js.Boolean.to_js_boolean translucent);
+let setTranslucent translucent => _setTranslucent (Js.Boolean.to_js_boolean translucent);
 
-let createElement
+let make
     ::animated=?
     ::barStyle=?
     ::hidden=?
@@ -67,41 +66,42 @@ let createElement
     ::translucent=?
     ::networkActivityIndicatorVisible=?
     ::showHideTransition=? =>
-  ReactRe.wrapPropsShamelessly
-    statusBar
-    Js.Undefined.(
-      {
-        "animated": from_opt (UtilsRN.optBoolToOptJsBoolean animated),
-        "barStyle":
-          from_opt (
-            UtilsRN.option_map
-              (
-                fun x =>
-                  switch x {
-                  | `default => "default"
-                  | `lightContent => "light-content"
-                  | `darkContent => "dark-content"
-                  }
-              )
-              barStyle
-          ),
-        "backgroundColor": from_opt backgroundColor,
-        "hidden": from_opt (UtilsRN.optBoolToOptJsBoolean hidden),
-        "translucent": from_opt (UtilsRN.optBoolToOptJsBoolean translucent),
-        "networkActivityIndicatorVisible":
-          from_opt (UtilsRN.optBoolToOptJsBoolean networkActivityIndicatorVisible),
-        "showHideTransition":
-          from_opt (
-            UtilsRN.option_map
-              (
-                fun x =>
-                  switch x {
-                  | `none => "none"
-                  | `fade => "fade"
-                  | `slide => "slide"
-                  }
-              )
-              showHideTransition
-          )
-      }
-    );
+  ReasonReact.wrapJsForReason
+    reactClass::statusBar
+    props::
+      Js.Undefined.(
+        {
+          "animated": from_opt (UtilsRN.optBoolToOptJsBoolean animated),
+          "barStyle":
+            from_opt (
+              UtilsRN.option_map
+                (
+                  fun x =>
+                    switch x {
+                    | `default => "default"
+                    | `lightContent => "light-content"
+                    | `darkContent => "dark-content"
+                    }
+                )
+                barStyle
+            ),
+          "backgroundColor": from_opt backgroundColor,
+          "hidden": from_opt (UtilsRN.optBoolToOptJsBoolean hidden),
+          "translucent": from_opt (UtilsRN.optBoolToOptJsBoolean translucent),
+          "networkActivityIndicatorVisible":
+            from_opt (UtilsRN.optBoolToOptJsBoolean networkActivityIndicatorVisible),
+          "showHideTransition":
+            from_opt (
+              UtilsRN.option_map
+                (
+                  fun x =>
+                    switch x {
+                    | `none => "none"
+                    | `fade => "fade"
+                    | `slide => "slide"
+                    }
+                )
+                showHideTransition
+            )
+        }
+      );

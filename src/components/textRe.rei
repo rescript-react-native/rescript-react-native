@@ -1,5 +1,5 @@
 module type TextComponent = {
-  let createElement:
+  let make:
     accessible::bool? =>
     allowFontScaling::bool? =>
     ellipsizeMode::[ | `clip | `head | `middle | `tail]? =>
@@ -17,11 +17,8 @@ module type TextComponent = {
     minimumFontScale::float? =>
     suppressHighlighting::bool? =>
     value::string? =>
-    children::list ReactRe.reactElement =>
-    ref::(ReactRe.reactRef => unit)? =>
-    key::string? =>
-    unit =>
-    ReactRe.reactElement;
+    array ReasonReact.reactElement =>
+    ReasonReact.component ReasonReact.stateless;
 };
 
 module CreateComponent: (Impl: ViewRe.Impl) => TextComponent;
