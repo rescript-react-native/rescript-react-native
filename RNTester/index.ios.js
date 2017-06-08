@@ -4,10 +4,10 @@
  * @flow
  */
 
-import { comp as App } from "./lib/js/src/rNTesterApp.js";
+import { reactClass } from "./lib/js/src/rNTesterApp.js";
 import React from "react";
 import {
   AppRegistry
 } from 'react-native';
 
-AppRegistry.registerComponent('RNTester', () => App);
+AppRegistry.registerComponent('RNTester', () => reactClass);

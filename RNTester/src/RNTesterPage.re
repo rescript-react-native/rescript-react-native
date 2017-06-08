@@ -10,67 +10,45 @@ let styles =
       }
     );
 
-module RNTesterPage = {
-  include ReactRe.Component;
-  let name = "RNTesterPage";
-  type props = {
-    noScroll: bool,
-    noSpacer: bool,
-    children: list ReactRe.reactElement,
-    title: option string
-  };
-  let contentWrapper props children =>
-    if props.noScroll {
-      <View key="wrapper" style=styles##wrapper> (ReactRe.listToElement children) </View>
+let component = ReasonReact.statelessComponent "RNTesterPage";
+
+let make ::title=? ::noScroll=false ::noSpacer=false children => {
+  let contentWrapper (children_: array ReasonReact.reactElement) =>
+    if noScroll {
+      <View key="wrapper" style=styles##wrapper> (ReasonReact.arrayToElement children_) </View>
     } else {
       let automaticallyAdjustContentInsets =
-        switch props.title {
+        switch title {
         | Some _ => true
         | None => false
         };
       <ScrollView
-      key="wrapper" 
+        key="wrapper"
         automaticallyAdjustContentInsets
         keyboardShouldPersistTaps=`handled
         keyboardDismissMode=`interactive
         style=styles##wrapper>
-        (ReactRe.listToElement children)
-      </ScrollView> 
+        (ReasonReact.arrayToElement children_)
+      </ScrollView>
     };
-  let render {props} => {
-    let title =
-      switch props.title {
-      | Some title => <RNTesterTitle key="title" title />
-      | None => ReactRe.nullElement
-      };
-    let spacer =
-      if props.noSpacer {
-        ReactRe.nullElement
-      } else {
-        <View key="spacer" style=styles##spacer />
-      };
-    <View style=styles##container>
-      (ReactRe.listToElement [title, contentWrapper props (props.children @ [spacer])])
-    </View>
-  };
-};
-
-include ReactRe.CreateComponent RNTesterPage;
-
-let createElement ::title=? ::noScroll=? ::noSpacer=? ::children =>
-  wrapProps
-    {
-      title,
-      noScroll:
-        switch noScroll {
-        | Some noScroll => noScroll
-        | None => false
-        },
-      noSpacer:
-        switch noSpacer {
-        | Some noSpacer => noSpacer
-        | None => false
-        },
-      children
+  {
+    ...component,
+    render: fun _state _self => {
+      let title =
+        switch title {
+        | Some title => <RNTesterTitle key="title" title />
+        | None => ReasonReact.nullElement
+        };
+      let spacer =
+        if noSpacer {
+          ReasonReact.nullElement
+        } else {
+          <View key="spacer" style=styles##spacer />
+        };
+      <View style=styles##container>
+        title
+        (contentWrapper (Array.append children [|spacer|]))
+      </View>
     }
-    ::children;
+  }
+};

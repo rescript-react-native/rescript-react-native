@@ -17,18 +17,14 @@ let styles =
           ],
         "text": style [fontSize 19., fontWeight `_500]
       }
-    ); 
+    );
 
-module RNTesterTitle = {
-  include ReactRe.Component;
-  let name = "RNTesterTitle";
-  type props = {title: string};
-  let render {props} =>
+let component = ReasonReact.statelessComponent "RNTesterTitle";
+
+let make ::title _children => {
+  ...component,
+  render: fun _state _self =>
     <View style=styles##container>
-      <Text style=styles##text> (ReactRe.stringToElement props.title) </Text>
-    </View>;
+      <Text style=styles##text> (ReasonReact.stringToElement title) </Text>
+    </View>
 };
-
-include ReactRe.CreateComponent RNTesterTitle;
-
-let createElement ::title => wrapProps {title: title};

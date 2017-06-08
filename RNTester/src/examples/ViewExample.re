@@ -10,16 +10,15 @@ let styles =
     );
 
 module ViewBorderStyleExample = {
-  module Comp = {
-    include ReactRe.Component.Stateful;
-    let name = "ViewBorderStyleExample";
-    type props = unit;
-    type state = {showBorder: bool};
-    let getInitialState _ => {showBorder: false};
-    let handlePress {state} _ => Some {showBorder: not state.showBorder};
-    let render {state, updater} =>
+  type state = {showBorder: bool};
+  let component = ReasonReact.statefulComponent "ViewBorderStyleExample";
+  let handlePress () state _self => ReasonReact.Update {showBorder: not state.showBorder};
+  let make _children => {
+    ...component,
+    initialState: fun () => {showBorder: false},
+    render: fun state self =>
       Style.(
-        <TouchableWithoutFeedback onPress=(updater handlePress)>
+        <TouchableWithoutFeedback onPress=(self.update handlePress)>
           <View>
             <View
               style=(
@@ -36,7 +35,7 @@ module ViewBorderStyleExample = {
                       ]
                     )>
               <Text style=(style [fontSize 11.])>
-                (ReactRe.stringToElement "Dashed border style")
+                (ReasonReact.stringToElement "Dashed border style")
               </Text>
             </View>
             <View
@@ -56,26 +55,23 @@ module ViewBorderStyleExample = {
                       ]
                     )>
               <Text style=(style [fontSize 11.])>
-                (ReactRe.stringToElement "Dotted border style")
+                (ReasonReact.stringToElement "Dotted border style")
               </Text>
             </View>
           </View>
         </TouchableWithoutFeedback>
-      );
+      )
   };
-  include ReactRe.CreateComponent Comp;
-  let createElement = wrapProps ();
 };
 
 module ZIndexExample = {
-  module Comp = {
-    include ReactRe.Component.Stateful;
-    let name = "ZIndexExample";
-    type props = unit;
-    type state = {flipped: bool};
-    let getInitialState _ => {flipped: false};
-    let handlePress {state} () => Some {flipped: not state.flipped};
-    let render {state, updater} => {
+  type state = {flipped: bool};
+  let component = ReasonReact.statefulComponent "ZIndexExample";
+  let handlePress () state _self => ReasonReact.Update {flipped: not state.flipped};
+  let make _children => {
+    ...component,
+    initialState: fun () => {flipped: false},
+    render: fun state self => {
       open Style;
       let indices =
         if state.flipped {
@@ -84,10 +80,10 @@ module ZIndexExample = {
           [|2, 1, 0, (-1)|]
         };
       let zIndexStr i => "ZIndex " ^ string_of_int (Array.unsafe_get indices i);
-      <TouchableWithoutFeedback onPress=(updater handlePress)>
+      <TouchableWithoutFeedback onPress=(self.update handlePress)>
         <View>
           <Text style=(style [paddingBottom 10.])>
-            (ReactRe.stringToElement "Tap to flip sorting order")
+            (ReasonReact.stringToElement "Tap to flip sorting order")
           </Text>
           <View
             style=(
@@ -100,7 +96,7 @@ module ZIndexExample = {
                       ]
                     ]
                   )>
-            <Text> (ReactRe.stringToElement (zIndexStr 0)) </Text>
+            <Text> (ReasonReact.stringToElement (zIndexStr 0)) </Text>
           </View>
           <View
             style=(
@@ -113,7 +109,7 @@ module ZIndexExample = {
                       ]
                     ]
                   )>
-            <Text> (ReactRe.stringToElement (zIndexStr 1)) </Text>
+            <Text> (ReasonReact.stringToElement (zIndexStr 1)) </Text>
           </View>
           <View
             style=(
@@ -126,7 +122,7 @@ module ZIndexExample = {
                       ]
                     ]
                   )>
-            <Text> (ReactRe.stringToElement (zIndexStr 2)) </Text>
+            <Text> (ReasonReact.stringToElement (zIndexStr 2)) </Text>
           </View>
           <View
             style=(
@@ -139,14 +135,12 @@ module ZIndexExample = {
                       ]
                     ]
                   )>
-            <Text> (ReactRe.stringToElement (zIndexStr 3)) </Text>
+            <Text> (ReasonReact.stringToElement (zIndexStr 3)) </Text>
           </View>
         </View>
       </TouchableWithoutFeedback>
-    };
+    }
   };
-  include ReactRe.CreateComponent Comp;
-  let createElement = wrapProps ();
 };
 
 let title = "<View>";
@@ -155,14 +149,16 @@ let description = "Basic building block of all UI, examples that demonstrate som
 
 let displayName = "ViewExample";
 
-let examples: list Example.t =
-  Style.[
+let examples: array Example.t =
+  Style.[|
     {
       title: "Background Color",
       description: None,
       render: fun () =>
         <View style=(style [backgroundColor "#527FE4", padding 5.])>
-          <Text style=(style [fontSize 11.])> (ReactRe.stringToElement "Blue background") </Text>
+          <Text style=(style [fontSize 11.])>
+            (ReasonReact.stringToElement "Blue background")
+          </Text>
         </View>
     },
     {
@@ -170,7 +166,9 @@ let examples: list Example.t =
       description: None,
       render: fun () =>
         <View style=(style [borderColor "#527FE4", borderWidth 5., padding 10.])>
-          <Text style=(style [fontSize 11.])> (ReactRe.stringToElement "5px blue border") </Text>
+          <Text style=(style [fontSize 11.])>
+            (ReasonReact.stringToElement "5px blue border")
+          </Text>
         </View>
     },
     {
@@ -179,17 +177,17 @@ let examples: list Example.t =
       render: fun () =>
         <View style=(style [borderColor "#bb0000", borderWidth 1.])>
           <View style=(concat [styles##box, style [padding 5.]])>
-            <Text style=(style [fontSize 11.])> (ReactRe.stringToElement "5px padding") </Text>
+            <Text style=(style [fontSize 11.])> (ReasonReact.stringToElement "5px padding") </Text>
           </View>
           <View style=(concat [styles##box, style [margin 5.]])>
-            <Text style=(style [fontSize 11.])> (ReactRe.stringToElement "5px margin") </Text>
+            <Text style=(style [fontSize 11.])> (ReasonReact.stringToElement "5px margin") </Text>
           </View>
           <View style=(concat [styles##box, style [margin 5., padding 5., alignSelf `flexStart]])>
             <Text style=(style [fontSize 11.])>
-              (ReactRe.stringToElement "5px margin and padding,")
+              (ReasonReact.stringToElement "5px margin and padding,")
             </Text>
             <Text style=(style [fontSize 11.])>
-              (ReactRe.stringToElement "widthAutonomous=true")
+              (ReasonReact.stringToElement "widthAutonomous=true")
             </Text>
           </View>
         </View>
@@ -201,7 +199,7 @@ let examples: list Example.t =
         <View style=(style [borderWidth 1., borderRadius 5., padding 5.])>
           <Text style=(style [fontSize 11.])>
             (
-              ReactRe.stringToElement "Too much use of `borderRadius` (especially large radii) on\nanything which is scrolling may result in dropped frames.\nUse sparingly."
+              ReasonReact.stringToElement "Too much use of `borderRadius` (especially large radii) on\nanything which is scrolling may result in dropped frames.\nUse sparingly."
             )
           </Text>
         </View>
@@ -230,7 +228,7 @@ let examples: list Example.t =
                     ]
                   )>
             <View style=(style [width 200., height 20.])>
-              <Text> (ReactRe.stringToElement "Overflow hidden") </Text>
+              <Text> (ReasonReact.stringToElement "Overflow hidden") </Text>
             </View>
           </View>
           <View
@@ -243,7 +241,7 @@ let examples: list Example.t =
                     ]
                   )>
             <View style=(style [width 200., height 20.])>
-              <Text> (ReactRe.stringToElement "Overflow visible") </Text>
+              <Text> (ReasonReact.stringToElement "Overflow visible") </Text>
             </View>
           </View>
         </View>
@@ -254,27 +252,27 @@ let examples: list Example.t =
       render: fun () =>
         <View>
           <View style=(style [opacity 0.0])>
-            <Text> (ReactRe.stringToElement "Opacity 0") </Text>
+            <Text> (ReasonReact.stringToElement "Opacity 0") </Text>
           </View>
           <View style=(style [opacity 0.1])>
-            <Text> (ReactRe.stringToElement "Opacity 0.1") </Text>
+            <Text> (ReasonReact.stringToElement "Opacity 0.1") </Text>
           </View>
           <View style=(style [opacity 0.3])>
-            <Text> (ReactRe.stringToElement "Opacity 0.3") </Text>
+            <Text> (ReasonReact.stringToElement "Opacity 0.3") </Text>
           </View>
           <View style=(style [opacity 0.5])>
-            <Text> (ReactRe.stringToElement "Opacity 0.5") </Text>
+            <Text> (ReasonReact.stringToElement "Opacity 0.5") </Text>
           </View>
           <View style=(style [opacity 0.7])>
-            <Text> (ReactRe.stringToElement "Opacity 0.7") </Text>
+            <Text> (ReasonReact.stringToElement "Opacity 0.7") </Text>
           </View>
           <View style=(style [opacity 0.9])>
-            <Text> (ReactRe.stringToElement "Opacity 0.9") </Text>
+            <Text> (ReasonReact.stringToElement "Opacity 0.9") </Text>
           </View>
           <View style=(style [opacity 1.0])>
-            <Text> (ReactRe.stringToElement "Opacity 1") </Text>
+            <Text> (ReasonReact.stringToElement "Opacity 1") </Text>
           </View>
         </View>
     },
     {title: "ZIndex", description: None, render: fun () => <ZIndexExample />}
-  ];
+  |];

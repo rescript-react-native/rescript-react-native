@@ -23,48 +23,47 @@ let styles =
 let header ::onBack=? ::title () =>
   <View style=styles##header>
     <View style=styles##headerCenter>
-      <Text style=styles##title> (ReactRe.stringToElement title) </Text>
+      <Text style=styles##title> (ReasonReact.stringToElement title) </Text>
     </View>
     (
       switch onBack {
-      | None => ReactRe.nullElement
+      | None => ReasonReact.nullElement
       | Some onBack =>
         <View style=styles##headerLeft> <Button title="Back" onPress=onBack /> </View>
       }
     )
   </View>;
 
-module RNTesterApp = {
-  include ReactRe.Component.Stateful.JsProps;
-  let name = "RNTesterApp";
-  type props = unit;
-  type state = {currentExample: option ExampleList.item};
-  let getInitialState () => {currentExample: None};
-  type jsProps = option (unit => unit);
-  let jsPropsToReasonProps = Some (fun _ => ());
-  let onPress {state} item =>
+type state = {currentExample: option ExampleList.item};
+
+let component = ReasonReact.statefulComponent "RNTesterApp";
+
+let make _children => {
+  let onPress item state _self =>
     switch state.currentExample {
-    | None => Some {currentExample: Some item}
-    | Some _ => Some {currentExample: None}
+    | None => ReasonReact.Update {currentExample: Some item}
+    | Some _ => ReasonReact.Update {currentExample: None}
     };
-  let onBack _ () => Some {currentExample: None};
-  let render {state, updater} => {
-    let components = ExampleList.components;
-    switch state.currentExample {
-    | None =>
-      <View style=styles##exampleContainer>
-        (header title::"ReasonRNTester" ())
-        <RNTesterExampleList components onPress=(updater onPress) />
-      </View>
-    | Some example =>
-      <View style=styles##exampleContainer>
-        (header title::example.title onBack::(updater onBack) ())
-        <RNTesterExampleContainer example />
-      </View>
+  let onBack () _state _self => ReasonReact.Update {currentExample: None};
+  {
+    ...component,
+    initialState: fun () => {currentExample: None},
+    render: fun state self => {
+      let components = ExampleList.components;
+      switch state.currentExample {
+      | None =>
+        <View style=styles##exampleContainer>
+          (header title::"ReasonRNTester" ())
+          <RNTesterExampleList components onPress=(self.update onPress) />
+        </View>
+      | Some example =>
+        <View style=styles##exampleContainer>
+          (header title::example.title onBack::(self.update onBack) ())
+          <RNTesterExampleContainer example />
+        </View>
+      }
     }
-  };
+  }
 };
 
-include ReactRe.CreateComponent RNTesterApp;
-
-let createElement = wrapProps ();
+let reactClass = ReasonReact.wrapReasonForJs ::component (fun _jsProps => make [||]);
