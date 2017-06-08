@@ -57,7 +57,7 @@ module CreateComponent (Impl: ViewRe.Impl) :ImageComponent => {
      * Be careful not to refmt this away !!!
      * https://github.com/facebook/reason/issues/821 (resolved, not released yet)
      */
-    cache::[ | `default | `reload | `forceCache | `onlyIfCached] [@bs.string]? =>
+    cache::[ | `default | `reload | `forceCache [@bs.as "force-cache"] | `onlyIfCached  [@bs.as "only-if-cached"]] [@bs.string]? =>
     scale::float? =>
     width::float? =>
     height::float? =>
