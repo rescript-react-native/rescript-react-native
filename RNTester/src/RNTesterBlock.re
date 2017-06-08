@@ -48,14 +48,6 @@ let make ::description ::title children => {
           }
         )
       </View>
-      <View style=styles##children>
-        (
-          if (Array.length children == 1) {
-            children.(0)
-          } else {
-            ReasonReact.arrayToElement children
-          }
-        )
-      </View>
+      (View.make style::styles##children children |> ReasonReact.element)
     </View>
 };
