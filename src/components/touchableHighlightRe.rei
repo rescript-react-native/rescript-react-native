@@ -1,4 +1,4 @@
-let createElement:
+let make:
   accessible::bool? =>
   accessibilityComponentType::[ | `none | `button | `radiobutton_checked | `radiobutton_unchecked]? =>
   accessibilityTraits::
@@ -37,9 +37,6 @@ let createElement:
   style::StyleRe.t? =>
   underlayColor::string? =>
   hasTVPreferredFocus::bool? =>
-  tvParallaxProperties::(Js.t {.})? =>
-  children::list ReactRe.reactElement =>
-  ref::(ReactRe.reactRef => unit)? =>
-  key::string? =>
-  unit =>
-  ReactRe.reactElement;
+  tvParallaxProperties::Js.t {.}? =>
+  array ReasonReact.reactElement =>
+  ReasonReact.component ReasonReact.stateless;

@@ -1,6 +1,6 @@
-external view : ReactRe.reactClass = "Switch" [@@bs.module "react-native"];
+external view : ReasonReact.reactClass = "Switch" [@@bs.module "react-native"];
 
-let createElement
+let make
     disabled::(disabled: option bool)=?
     onTintColor::(onTintColor: option string)=?
     onValueChange::(onValueChange: option (bool => unit))=?
@@ -27,9 +27,9 @@ let createElement
     ::accessibilityTraits=?
     ::accessibilityViewIsModal=?
     ::shouldRasterizeIOS=? =>
-  ReactRe.wrapPropsShamelessly
-    view
-    (
+  ReasonReact.wrapJsForReason
+    reactClass::view
+    props::(
       Props.extendView
         Js.Undefined.(
           {

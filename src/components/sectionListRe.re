@@ -1,4 +1,4 @@
-external view : ReactRe.reactClass = "SectionList" [@@bs.module "react-native"];
+external view : ReasonReact.reactClass = "SectionList" [@@bs.module "react-native"];
 
 module CreateComponent (Item: {type item;}) => {
   type renderBag = {
@@ -10,7 +10,7 @@ module CreateComponent (Item: {type item;}) => {
   and section = {
     data: array Item.item,
     key: option string,
-    renderItem: option (renderBag => ReactRe.reactElement)
+    renderItem: option (renderBag => ReasonReact.reactElement)
   };
   type viewToken =
     Js.t {
@@ -54,15 +54,15 @@ module CreateComponent (Item: {type item;}) => {
           separators::jsItems##separators
       );
     let section ::data ::key=? ::renderItem=? () => {data, key, renderItem};
-    let createElement:
+    let make:
       sections::array section =>
-      renderItem::(renderBag => ReactRe.reactElement) =>
+      renderItem::(renderBag => ReasonReact.reactElement) =>
       keyExtractor::(Item.item => int => string) =>
-      itemSeparatorComponent::(separatorProps => ReactRe.reactElement)? =>
-      listEmptyComponent::(unit => ReactRe.reactElement)? =>
-      listFooterComponent::ReactRe.reactElement? =>
-      listHeaderComponent::ReactRe.reactElement? =>
-      sectionSeparatorComponent::(separatorProps => ReactRe.reactElement)? =>
+      itemSeparatorComponent::(separatorProps => ReasonReact.reactElement)? =>
+      listEmptyComponent::(unit => ReasonReact.reactElement)? =>
+      listFooterComponent::ReasonReact.reactElement? =>
+      listHeaderComponent::ReasonReact.reactElement? =>
+      sectionSeparatorComponent::(separatorProps => ReasonReact.reactElement)? =>
       extraData::'extraData? =>
       initialNumToRender::int? =>
       onEndReached::Js.t {. distanceFromEnd : float}? =>
@@ -70,14 +70,11 @@ module CreateComponent (Item: {type item;}) => {
       onViewableItemsChanged::Js.t {. viewableItems : array viewToken, changed : array viewToken}? =>
       onRefresh::(unit => unit)? =>
       refreshing::bool? =>
-      renderSectionHeader::(Js.t {. section : section} => ReactRe.reactElement)? =>
-      renderSectionFooter::(Js.t {. section : section} => ReactRe.reactElement)? =>
+      renderSectionHeader::(Js.t {. section : section} => ReasonReact.reactElement)? =>
+      renderSectionFooter::(Js.t {. section : section} => ReasonReact.reactElement)? =>
       stickySectionHeadersEnabled::bool? =>
-      children::list ReactRe.reactElement =>
-      ref::(ReactRe.reactRef => unit)? =>
-      key::string? =>
-      unit =>
-      ReactRe.reactElement =
+      array ReasonReact.reactElement =>
+      ReasonReact.component ReasonReact.stateless =
       fun ::sections
           ::renderItem
           ::keyExtractor
@@ -96,58 +93,59 @@ module CreateComponent (Item: {type item;}) => {
           ::renderSectionHeader=?
           ::renderSectionFooter=?
           ::stickySectionHeadersEnabled=? =>
-        ReactRe.wrapPropsShamelessly
-          view
-          Js.Undefined.(
-            {
-              "sections":
-                Array.map
-                  (
-                    fun {data, key, renderItem} => {
-                      "data": data,
-                      "key": from_opt key,
-                      "renderItem": from_opt (UtilsRN.option_map renderItemFromJS renderItem)
-                    }
-                  )
-                  sections,
-              "renderItem": renderItemFromJS renderItem,
-              "keyExtractor": keyExtractor,
-              "ItemSeparatorComponent":
-                from_opt (
-                  UtilsRN.option_map
+        ReasonReact.wrapJsForReason
+          reactClass::view
+          props::
+            Js.Undefined.(
+              {
+                "sections":
+                  Array.map
                     (
-                      fun itemSeparatorComponent => {
-                        let comp jsItems =>
-                          itemSeparatorComponent (
-                            createSeparatorProps
-                              highlighted::(Js.to_bool jsItems##highlighted)
-                              leadingItem::jsItems##leadingItem
-                              leadingSection::jsItems##leadingSection
-                              section::jsItems##section
-                              trailingItem::jsItems##trailingItem
-                              trailingSection::jsItems##trailingSection
-                          );
-                        comp
+                      fun {data, key, renderItem} => {
+                        "data": data,
+                        "key": from_opt key,
+                        "renderItem": from_opt (UtilsRN.option_map renderItemFromJS renderItem)
                       }
                     )
-                    itemSeparatorComponent
-                ),
-              "ListEmptyComponent": from_opt listEmptyComponent,
-              "ListFooterComponent": from_opt listFooterComponent,
-              "ListHeaderComponent": from_opt listHeaderComponent,
-              "SectionSeparatorComponent": from_opt sectionSeparatorComponent,
-              "extraData": from_opt extraData,
-              "initialNumToRender": from_opt initialNumToRender,
-              "onEndReached": from_opt onEndReached,
-              "onEndReachedThreshold": from_opt onEndReachedThreshold,
-              "onRefresh": from_opt onRefresh,
-              "onViewableItemsChanged": from_opt onViewableItemsChanged,
-              "refreshing": from_opt (UtilsRN.optBoolToOptJsBoolean refreshing),
-              "renderSectionHeader": from_opt renderSectionHeader,
-              "renderSectionFooter": from_opt renderSectionFooter,
-              "stickySectionHeadersEnabled":
-                from_opt (UtilsRN.optBoolToOptJsBoolean stickySectionHeadersEnabled)
-            }
-          );
+                    sections,
+                "renderItem": renderItemFromJS renderItem,
+                "keyExtractor": keyExtractor,
+                "ItemSeparatorComponent":
+                  from_opt (
+                    UtilsRN.option_map
+                      (
+                        fun itemSeparatorComponent => {
+                          let comp jsItems =>
+                            itemSeparatorComponent (
+                              createSeparatorProps
+                                highlighted::(Js.to_bool jsItems##highlighted)
+                                leadingItem::jsItems##leadingItem
+                                leadingSection::jsItems##leadingSection
+                                section::jsItems##section
+                                trailingItem::jsItems##trailingItem
+                                trailingSection::jsItems##trailingSection
+                            );
+                          comp
+                        }
+                      )
+                      itemSeparatorComponent
+                  ),
+                "ListEmptyComponent": from_opt listEmptyComponent,
+                "ListFooterComponent": from_opt listFooterComponent,
+                "ListHeaderComponent": from_opt listHeaderComponent,
+                "SectionSeparatorComponent": from_opt sectionSeparatorComponent,
+                "extraData": from_opt extraData,
+                "initialNumToRender": from_opt initialNumToRender,
+                "onEndReached": from_opt onEndReached,
+                "onEndReachedThreshold": from_opt onEndReachedThreshold,
+                "onRefresh": from_opt onRefresh,
+                "onViewableItemsChanged": from_opt onViewableItemsChanged,
+                "refreshing": from_opt (UtilsRN.optBoolToOptJsBoolean refreshing),
+                "renderSectionHeader": from_opt renderSectionHeader,
+                "renderSectionFooter": from_opt renderSectionFooter,
+                "stickySectionHeadersEnabled":
+                  from_opt (UtilsRN.optBoolToOptJsBoolean stickySectionHeadersEnabled)
+              }
+            );
   };
 };

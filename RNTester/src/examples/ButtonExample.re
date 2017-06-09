@@ -8,7 +8,7 @@ let title = "<Button>";
 
 let description = "Simple React Native button component.";
 
-let examples: list Example.t = [
+let examples: array Example.t = [|
   {
     title: "Simple Button",
     description:
@@ -64,4 +64,4 @@ let examples: list Example.t = [
         accessibilityLabel="See an informative alert"
       />
   }
-];
+|];

@@ -32,27 +32,22 @@ let styles =
       }
     );
 
-module RNTesterBlock = {
-  include ReactRe.Component;
-  let name = "RNTesterBlock";
-  type props = {description: option string, title: string, children: list ReactRe.reactElement};
-  let render {props} =>
+let comp = ReasonReact.statelessComponent "RNTesterBlock";
+
+let make ::description ::title children => {
+  ...comp,
+  render: fun _state _self =>
     <View style=styles##container>
       <View style=styles##titleContainer>
-        <Text style=styles##titleText> (ReactRe.stringToElement props.title) </Text>
+        <Text style=styles##titleText> (ReasonReact.stringToElement title) </Text>
         (
-          switch props.description {
+          switch description {
           | Some description =>
-            <Text style=styles##descriptionText> (ReactRe.stringToElement description) </Text>
-          | None => ReactRe.nullElement
+            <Text style=styles##descriptionText> (ReasonReact.stringToElement description) </Text>
+          | None => ReasonReact.nullElement
           }
         )
       </View>
-      <View style=styles##children> (ReactRe.listToElement props.children) </View>
-    </View>;
+      (View.make style::styles##children children |> ReasonReact.element)
+    </View>
 };
-
-include ReactRe.CreateComponent RNTesterBlock;
-
-let createElement ::description ::title ::children =>
-  wrapProps {description, title, children} ::children;

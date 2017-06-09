@@ -1,6 +1,6 @@
 module type ViewComponent = {
-  let createElement:
-    accessibleLeft::ReactRe.reactElement? =>
+  let make:
+    accessibleLeft::ReasonReact.reactElement? =>
     accessible::bool? =>
     hitSlop::TypesRN.insets? =>
     onAccessibilityTap::(unit => unit)? =>
@@ -40,17 +40,14 @@ module type ViewComponent = {
       ]? =>
     accessibilityViewIsModal::bool? =>
     shouldRasterizeIOS::bool? =>
-    children::list ReactRe.reactElement =>
-    ref::(ReactRe.reactRef => unit)? =>
-    key::string? =>
-    unit =>
-    ReactRe.reactElement;
+    array ReasonReact.reactElement =>
+    ReasonReact.component ReasonReact.stateless;
 };
 
-module type Impl = {let view: ReactRe.reactClass;};
+module type Impl = {let view: ReasonReact.reactClass;};
 
 module CreateComponent (Impl: Impl) :ViewComponent => {
-  let createElement
+  let make
       ::accessibleLeft=?
       ::accessible=?
       ::hitSlop=?
@@ -71,9 +68,9 @@ module CreateComponent (Impl: Impl) :ViewComponent => {
       ::accessibilityTraits=?
       ::accessibilityViewIsModal=?
       ::shouldRasterizeIOS=? =>
-    ReactRe.wrapPropsShamelessly
-      Impl.view
-      (
+    ReasonReact.wrapJsForReason
+      reactClass::Impl.view
+      props::(
         Props.extendView
           ::accessibleLeft
           ::accessible
@@ -101,5 +98,5 @@ module CreateComponent (Impl: Impl) :ViewComponent => {
 
 module View =
   CreateComponent {
-    external view : ReactRe.reactClass = "View" [@@bs.module "react-native"];
+    external view : ReasonReact.reactClass = "View" [@@bs.module "react-native"];
   };

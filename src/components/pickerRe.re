@@ -1,21 +1,23 @@
-external view : ReactRe.reactClass = "Picker" [@@bs.module "react-native"];
+external view : ReasonReact.reactClass = "Picker" [@@bs.module "react-native"];
 
 module Item = {
-  external item : ReactRe.reactClass = "Item" [@@bs.scope "Picker"] [@@bs.module "react-native"];
-  let createElement ::color=? ::label=? ::value=? ::testID=? =>
-    ReactRe.wrapPropsShamelessly
-      item
-      Js.Undefined.(
-        {
-          "label": from_opt label,
-          "value": from_opt value,
-          "color": from_opt color,
-          "testID": from_opt testID
-        }
-      );
+  external item : ReasonReact.reactClass =
+    "Item" [@@bs.scope "Picker"] [@@bs.module "react-native"];
+  let make ::color=? ::label=? ::value=? ::testID=? =>
+    ReasonReact.wrapJsForReason
+      reactClass::item
+      props::
+        Js.Undefined.(
+          {
+            "label": from_opt label,
+            "value": from_opt value,
+            "color": from_opt color,
+            "testID": from_opt testID
+          }
+        );
 };
 
-let createElement
+let make
     ::onValueChange=?
     ::selectedValue=?
     ::enabled=?
@@ -42,9 +44,9 @@ let createElement
     ::accessibilityTraits=?
     ::accessibilityViewIsModal=?
     ::shouldRasterizeIOS=? =>
-  ReactRe.wrapPropsShamelessly
-    view
-    (
+  ReasonReact.wrapJsForReason
+    reactClass::view
+    props::(
       Props.extendView
         Js.Undefined.(
           {

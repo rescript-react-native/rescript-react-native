@@ -1,27 +1,21 @@
-
 module Item: {
-  let createElement:
+  let make:
     color::string? =>
     label::string? =>
     value::'value? =>
     testID::string? =>
-    children::list ReactRe.reactElement =>
-    ref::(ReactRe.reactRef => unit)? =>
-    key::string? =>
-    unit =>
-    ReactRe.reactElement;
+    array ReasonReact.reactElement =>
+    ReasonReact.component ReasonReact.stateless;
 };
 
-
-
-let createElement:
+let make:
   onValueChange::('value => unit)? =>
   selectedValue::'value? =>
   enabled::bool? =>
   mode::[ | `dialog | `dropdown]? =>
   prompt::string? =>
   itemStyle::StyleRe.t? =>
-  accessibleLeft::ReactRe.reactElement? =>
+  accessibleLeft::ReasonReact.reactElement? =>
   accessible::bool? =>
   hitSlop::TypesRN.insets? =>
   onAccessibilityTap::(unit => unit)? =>
@@ -60,8 +54,5 @@ let createElement:
     ]? =>
   accessibilityViewIsModal::bool? =>
   shouldRasterizeIOS::bool? =>
-  children::list ReactRe.reactElement =>
-  ref::(ReactRe.reactRef => unit)? =>
-  key::string? =>
-  unit =>
-  ReactRe.reactElement;
+  array ReasonReact.reactElement =>
+  ReasonReact.component ReasonReact.stateless;

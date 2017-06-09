@@ -1,9 +1,9 @@
-let isFocused: ReactRe.reactRef => bool;
+let isFocused: ReasonReact.reactRef => bool;
 
-let clear: ReactRe.reactRef => unit;
+let clear: ReasonReact.reactRef => unit;
 
-let createElement:
-  accessibleLeft::ReactRe.reactElement? =>
+let make:
+  accessibleLeft::ReasonReact.reactElement? =>
   accessible::bool? =>
   hitSlop::Js.t {. left : int, right : int, top : int, bottom : int}? =>
   onAccessibilityTap::(unit => unit)? =>
@@ -114,8 +114,5 @@ let createElement:
   onKeyPress::Js.t {. nativeEvent : Js.t {. key : string}}? =>
   selectionState::'documentSelectionState? =>
   spellCheck::bool? =>
-  children::list ReactRe.reactElement =>
-  ref::(ReactRe.reactRef => unit)? =>
-  key::string? =>
-  unit =>
-  ReactRe.reactElement;
+  array ReasonReact.reactElement =>
+  ReasonReact.component ReasonReact.stateless;

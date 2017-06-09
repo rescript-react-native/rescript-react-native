@@ -1,4 +1,4 @@
-external view : ReactRe.reactClass = "Slider" [@@bs.module "react-native"];
+external view : ReasonReact.reactClass = "Slider" [@@bs.module "react-native"];
 
 type rawImageSourceJS;
 
@@ -11,7 +11,7 @@ let convertImageSource src =>
   | ImageRe.Image.Required x => rawImageSourceJS x
   };
 
-let createElement
+let make
     disabled::(disabled: option bool)=?
     maximumTrackTintColor::(maximumTrackTintColor: option string)=?
     maximumValue::(maximumValue: option string)=?
@@ -46,9 +46,9 @@ let createElement
     ::accessibilityTraits=?
     ::accessibilityViewIsModal=?
     ::shouldRasterizeIOS=? =>
-  ReactRe.wrapPropsShamelessly
-    view
-    (
+  ReasonReact.wrapJsForReason
+    reactClass::view
+    props::(
       Props.extendView
         Js.Undefined.(
           {
@@ -65,7 +65,7 @@ let createElement
             "maximumTrackImage": from_opt (UtilsRN.option_map convertImageSource maximumTrackImage),
             "minimumTrackImage": from_opt (UtilsRN.option_map convertImageSource minimumTrackImage),
             "thumbImage": from_opt (UtilsRN.option_map convertImageSource thumbImage),
-            "trackImage": from_opt (UtilsRN.option_map convertImageSource trackImage),
+            "trackImage": from_opt (UtilsRN.option_map convertImageSource trackImage)
           }
         )
         ::accessibleLeft

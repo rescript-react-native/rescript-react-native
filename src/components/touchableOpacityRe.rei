@@ -1,6 +1,6 @@
-external setOpacityTo : ReactRe.reactRef => float => int => unit = "scrollTo" [@@bs.send];
+external setOpacityTo : ReasonReact.reactRef => float => int => unit = "scrollTo" [@@bs.send];
 
-let createElement:
+let make:
   accessible::bool? =>
   accessibilityComponentType::[ | `none | `button | `radiobutton_checked | `radiobutton_unchecked]? =>
   accessibilityTraits::
@@ -36,8 +36,5 @@ let createElement:
   activeOpacity::float? =>
   focusedOpacity::float? =>
   tvParallaxProperties::Js.t {.}? =>
-  children::list ReactRe.reactElement =>
-  ref::(ReactRe.reactRef => unit)? =>
-  key::string? =>
-  unit =>
-  ReactRe.reactElement;
+  array ReasonReact.reactElement =>
+  ReasonReact.component ReasonReact.stateless;

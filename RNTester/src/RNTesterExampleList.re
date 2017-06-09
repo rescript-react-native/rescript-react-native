@@ -21,19 +21,19 @@ let styles =
       }
     );
 
-module RNTesterExampleList = {
-  include ReactRe.Component;
-  include
-    SectionList.CreateComponent {
-      type item = ExampleList.item;
-    };
-  type props = {onPress: ExampleList.item => unit, components: array ExampleList.item};
-  let name = "RNTesterExampleList";
+include
+  SectionList.CreateComponent {
+    type item = ExampleList.item;
+  };
+
+let component = ReasonReact.statelessComponent "RNTesterExampleList";
+
+let make = {
   let renderItem onPress {item} =>
     <TouchableHighlight onPress=(fun () => onPress item)>
       <View style=styles##row>
-        <Text style=styles##rowTitleText> (ReactRe.stringToElement item.title) </Text>
-        <Text style=styles##rowDetailText> (ReactRe.stringToElement item.description) </Text>
+        <Text style=styles##rowTitleText> (ReasonReact.stringToElement item.title) </Text>
+        <Text style=styles##rowDetailText> (ReasonReact.stringToElement item.description) </Text>
       </View>
     </TouchableHighlight>;
   let itemSeparatorComponent {highlighted} =>
@@ -46,17 +46,16 @@ module RNTesterExampleList = {
               }
             )
     />;
-  let render {props} =>
-    <View style=styles##listContainer>
-      <SectionList
-        sections=[|SectionList.section data::props.components key::"components" ()|]
-        renderItem=(renderItem props.onPress)
-        keyExtractor=(fun item _ => item.key)
-        itemSeparatorComponent
-      />
-    </View>;
+  fun ::components ::onPress _children => {
+    ...component,
+    render: fun _state _self =>
+      <View style=styles##listContainer>
+        <SectionList
+          sections=[|SectionList.section data::components key::"components" ()|]
+          renderItem=(renderItem onPress)
+          keyExtractor=(fun item _ => item.key)
+          itemSeparatorComponent
+        />
+      </View>
+  }
 };
-
-include ReactRe.CreateComponent RNTesterExampleList;
-
-let createElement ::components ::onPress => wrapProps {components, onPress};

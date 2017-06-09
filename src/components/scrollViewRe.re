@@ -1,9 +1,9 @@
 module type ScrollViewComponent = {
   type point = {x: float, y: float};
-  let scrollTo: ReactRe.reactRef => x::int => y::int => animated::bool => unit;
-  let scrollToEnd: ReactRe.reactRef => animated::bool => unit;
-  let createElement:
-    accessibleLeft::ReactRe.reactElement? =>
+  let scrollTo: ReasonReact.reactRef => x::int => y::int => animated::bool => unit;
+  let scrollToEnd: ReasonReact.reactRef => animated::bool => unit;
+  let make:
+    accessibleLeft::ReasonReact.reactElement? =>
     accessible::bool? =>
     hitSlop::TypesRN.insets? =>
     onAccessibilityTap::(unit => unit)? =>
@@ -50,7 +50,7 @@ module type ScrollViewComponent = {
     onContentSizeChange::((float, float) => unit)? =>
     onScroll::(RNEvent.NativeEvent.t => unit)? =>
     pagingEnabled::bool? =>
-    refreshControl::ReactRe.reactElement? =>
+    refreshControl::ReasonReact.reactElement? =>
     scrollEnabled::bool? =>
     showsHorizontalScrollIndicator::bool? =>
     showsVerticalScrollIndicator::bool? =>
@@ -76,24 +76,22 @@ module type ScrollViewComponent = {
     scrollsToTop::bool? =>
     snapToAlignment::[ | `center | `start | `end_]? =>
     zoomScale::float? =>
-    children::list ReactRe.reactElement =>
-    ref::(ReactRe.reactRef => unit)? =>
-    key::string? =>
-    unit =>
-    ReactRe.reactElement;
+    array ReasonReact.reactElement =>
+    ReasonReact.component ReasonReact.stateless;
 };
 
 module CreateComponent (Impl: ViewRe.Impl) :ScrollViewComponent => {
   type point = {x: float, y: float};
-  external _scrollTo : ReactRe.reactRef => Js.t {. x : int, y : int, animated : Js.boolean} => unit =
+  external _scrollTo :
+    ReasonReact.reactRef => Js.t {. x : int, y : int, animated : Js.boolean} => unit =
     "scrollTo" [@@bs.send];
-  external _scrollToEnd : ReactRe.reactRef => Js.t {. animated : Js.boolean} => unit =
+  external _scrollToEnd : ReasonReact.reactRef => Js.t {. animated : Js.boolean} => unit =
     "scrollToEnd" [@@bs.send];
   let scrollTo ref ::x ::y ::animated =>
     _scrollTo ref {"x": x, "y": y, "animated": Js.Boolean.to_js_boolean animated};
   let scrollToEnd ref ::animated =>
     _scrollToEnd ref {"animated": Js.Boolean.to_js_boolean animated};
-  let createElement
+  let make
       ::accessibleLeft=?
       ::accessible=?
       ::hitSlop=?
@@ -147,9 +145,9 @@ module CreateComponent (Impl: ViewRe.Impl) :ScrollViewComponent => {
       ::scrollsToTop=?
       ::snapToAlignment=?
       ::zoomScale=? =>
-    ReactRe.wrapPropsShamelessly
-      Impl.view
-      (
+    ReasonReact.wrapJsForReason
+      reactClass::Impl.view
+      props::(
         Props.extendView
           Js.Undefined.(
             {
@@ -190,7 +188,8 @@ module CreateComponent (Impl: ViewRe.Impl) :ScrollViewComponent => {
                 from_opt (UtilsRN.optBoolToOptJsBoolean showsHorizontalScrollIndicator),
               "showsVerticalScrollIndicator":
                 from_opt (UtilsRN.optBoolToOptJsBoolean showsVerticalScrollIndicator),
-              "stickyHeaderIndices": from_opt (UtilsRN.option_map Array.of_list stickyHeaderIndices),
+              "stickyHeaderIndices":
+                from_opt (UtilsRN.option_map Array.of_list stickyHeaderIndices),
               "overScrollMode":
                 from_opt (
                   UtilsRN.option_map
@@ -291,5 +290,5 @@ module CreateComponent (Impl: ViewRe.Impl) :ScrollViewComponent => {
 
 module ScrollView =
   CreateComponent {
-    external view : ReactRe.reactClass = "ScrollView" [@@bs.module "react-native"];
+    external view : ReasonReact.reactClass = "ScrollView" [@@bs.module "react-native"];
   };

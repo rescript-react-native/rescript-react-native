@@ -3,14 +3,14 @@ type item = {
   displayName: string,
   title: string,
   description: string,
-  examples: list Example.t
+  examples: array Example.t
 };
 
 module type ExampleT = {
   let displayName: string;
   let title: string;
   let description: string;
-  let examples: list Example.t;
+  let examples: array Example.t;
 };
 
 module MakeExample (Example: ExampleT) => {
@@ -24,6 +24,7 @@ module MakeExample (Example: ExampleT) => {
 };
 
 module Button = MakeExample ButtonExample;
+
 module View = MakeExample ViewExample;
 
-let components: array item = [|Button.item "ButtonExample", View.item "ViewExample" |];
+let components: array item = [|Button.item "ButtonExample", View.item "ViewExample"|];

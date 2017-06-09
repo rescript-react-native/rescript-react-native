@@ -6,7 +6,7 @@ module type ImageComponent = {
     method::string? =>
     headers::Js.t 'a? =>
     body::string? =>
-    cache::[ `default | `reload | `forceCache | `onlyIfCached ]? =>
+    cache::[ | `default | `reload | `forceCache | `onlyIfCached]? =>
     scale::float? =>
     width::float? =>
     height::float? =>
@@ -23,7 +23,7 @@ module type ImageComponent = {
     | URI defaultURISource
     | Required PackagerRe.required;
   module Event: {type error; type progress = {loaded: float, total: float};};
-  let createElement:
+  let make:
     onError::(Event.error => unit)? =>
     onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
     onLoad::(unit => unit)? =>
@@ -41,11 +41,8 @@ module type ImageComponent = {
     defaultSource::defaultSource? =>
     onPartialLoad::(unit => unit)? =>
     onProgress::(Event.progress => unit)? =>
-    children::list ReactRe.reactElement =>
-    ref::(ReactRe.reactRef => unit)? =>
-    key::string? =>
-    unit =>
-    ReactRe.reactElement;
+    array ReasonReact.reactElement =>
+    ReasonReact.component ReasonReact.stateless;
 };
 
 module CreateComponent: (Impl: ViewRe.Impl) => ImageComponent;

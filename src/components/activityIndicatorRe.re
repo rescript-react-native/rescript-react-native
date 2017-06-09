@@ -1,6 +1,6 @@
-external view : ReactRe.reactClass = "ActivityIndicator" [@@bs.module "react-native"];
+external view : ReasonReact.reactClass = "ActivityIndicator" [@@bs.module "react-native"];
 
-let createElement
+let make
     ::animating=?
     ::color=?
     ::size=?
@@ -25,9 +25,9 @@ let createElement
     ::accessibilityTraits=?
     ::accessibilityViewIsModal=?
     ::shouldRasterizeIOS=? =>
-  ReactRe.wrapPropsShamelessly
-    view
-    (
+  ReasonReact.wrapJsForReason
+    reactClass::view
+    props::(
       Props.extendView
         Js.Undefined.(
           {

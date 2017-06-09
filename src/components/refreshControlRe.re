@@ -1,6 +1,6 @@
-external view : ReactRe.reactClass = "RefreshControl" [@@bs.module "react-native"];
+external view : ReasonReact.reactClass = "RefreshControl" [@@bs.module "react-native"];
 
-let createElement
+let make
     onRefresh::(onRefresh: option (unit => unit))=?
     refreshing::(refreshing: option bool)=?
     colors::(colors: option (array string))=?
@@ -30,9 +30,9 @@ let createElement
     ::accessibilityTraits=?
     ::accessibilityViewIsModal=?
     ::shouldRasterizeIOS=? =>
-  ReactRe.wrapPropsShamelessly
-    view
-    (
+  ReasonReact.wrapJsForReason
+    reactClass::view
+    props::(
       Props.extendView
         Js.Undefined.(
           {

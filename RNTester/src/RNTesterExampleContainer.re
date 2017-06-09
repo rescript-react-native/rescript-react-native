@@ -1,16 +1,12 @@
 let renderExample i ({title, description, render}: Example.t) =>
   <RNTesterBlock key=(string_of_int i) title description> (render ()) </RNTesterBlock>;
 
-module RNTesterExampleContainer = {
-  include ReactRe.Component;
-  let name = "RNTesterExampleContainer";
-  type props = {example: ExampleList.item};
-  let render {props} =>
-    <RNTesterPage title=props.example.title>
-      (ReactRe.listToElement (List.mapi renderExample props.example.examples))
-    </RNTesterPage>;
+let component = ReasonReact.statelessComponent "RNTesterExampleContainer";
+
+let make example::(example: ExampleList.item) _children => {
+  ...component,
+  render: fun _state _self =>
+    <RNTesterPage title=example.title>
+      (ReasonReact.arrayToElement (Array.mapi renderExample example.examples))
+    </RNTesterPage>
 };
-
-include ReactRe.CreateComponent RNTesterExampleContainer;
-
-let createElement ::example => wrapProps {example: example};
