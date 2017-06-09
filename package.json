@@ -10,13 +10,13 @@
 		"bsconfig.json"
 	],
 	"dependencies": {
-		"reason-react": "SanderSpies/react-on-reason"
+		"reason-react": "SanderSpies/react-on-reason",
+		"bs-platform": "bloomberg/bucklescript"
 	},
 	"devDependencies": {
 		"react": "16.0.0-alpha.6"
 	},
 	"peerDependencies": {
-		"bs-platform": "^1.7.5",
 		"react-native": "0.44.0"
 	}
 }
