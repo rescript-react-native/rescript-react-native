@@ -17,7 +17,7 @@ yarn add bs-platform reason-react https://github.com/BuckleTypes/bs-react-native
 {
     "name": "my-awesome-app",
     "reason": {
-        "react-jsx": true
+        "react-jsx": 2
     },
     "bs-dependencies": ["bs-react-native", "reason-react"],
     "sources": [{
