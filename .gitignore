@@ -3,3 +3,4 @@ lib/
 .merlin
 .vscode
 yarn.lock
+package-lock.json
