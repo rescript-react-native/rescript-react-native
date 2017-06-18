@@ -30,7 +30,7 @@ let make
     ::onAccessibilityTap=?
     ::onLayout=?
     ::onMagicTap=?
-    ::responderHandlers
+    ::responderHandlers=?
     ::pointerEvents=?
     ::removeClippedSubviews=?
     ::style=?

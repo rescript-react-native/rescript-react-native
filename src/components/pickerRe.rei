@@ -21,7 +21,7 @@ let make:
   onAccessibilityTap::(unit => unit)? =>
   onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
   onMagicTap::(unit => unit)? =>
-  responderHandlers::option Props.touchResponderHandlers =>
+  responderHandlers::Props.touchResponderHandlers? =>
   pointerEvents::[ | `auto | `none | `boxNone | `boxOnly]? =>
   removeClippedSubviews::bool? =>
   style::StyleRe.t? =>
