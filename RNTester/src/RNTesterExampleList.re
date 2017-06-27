@@ -21,37 +21,36 @@ let styles =
       }
     );
 
-include
-  SectionList.CreateComponent {
-    type item = ExampleList.item;
-  };
-
 let component = ReasonReact.statelessComponent "RNTesterExampleList";
 
-let make = {
-  let renderItem onPress {item} =>
-    <TouchableHighlight onPress=(fun () => onPress item)>
-      <View style=styles##row>
-        <Text style=styles##rowTitleText> (ReasonReact.stringToElement item.title) </Text>
-        <Text style=styles##rowDetailText> (ReasonReact.stringToElement item.description) </Text>
-      </View>
-    </TouchableHighlight>;
-  let itemSeparatorComponent {highlighted} =>
-    <View
-      style=(
-              if highlighted {
-                styles##separatorHighlighted
-              } else {
-                styles##separator
-              }
-            )
-    />;
-  fun ::components ::onPress _children => {
+let renderItem onPress =>
+  SectionList.renderItem (
+    fun {item} =>
+      <TouchableHighlight onPress=(fun () => onPress item)>
+        <View style=styles##row>
+          <Text style=styles##rowTitleText>
+            (ReasonReact.stringToElement item.ExampleList.title)
+          </Text>
+          <Text style=styles##rowDetailText> (ReasonReact.stringToElement item.description) </Text>
+        </View>
+      </TouchableHighlight>
+  );
+
+let itemSeparatorComponent =
+  SectionList.separatorComponent (
+    fun {highlighted} =>
+      <View style=(highlighted ? styles##separatorHighlighted : styles##separator) />
+  );
+
+let make ::components ::onPress _children => {
+  let sections =
+    SectionList.sections [|SectionList.section data::components key::"components" ()|];
+  {
     ...component,
     render: fun _state _self =>
       <View style=styles##listContainer>
         <SectionList
-          sections=[|SectionList.section data::components key::"components" ()|]
+          sections
           renderItem=(renderItem onPress)
           keyExtractor=(fun item _ => item.key)
           itemSeparatorComponent
