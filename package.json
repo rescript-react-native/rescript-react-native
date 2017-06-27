@@ -5,16 +5,21 @@
 	"scripts": {
 		"start": "bsb -clean-world -make-world -w"
 	},
+	"license": "MIT",
 	"files": [
 		"src",
 		"bsconfig.json"
 	],
+	"author": "",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/BuckleTypes/bs-react-native.git"
+	},
 	"dependencies": {
-		"reason-react": "^0.1.4",
+		"reason-react": "^0.1.5",
 		"bs-platform": "^1.8.0"
 	},
 	"peerDependencies": {
-		"react": "^16.0.0-alpha.6",
 		"react-native": "^0.44.0"
 	}
 }
