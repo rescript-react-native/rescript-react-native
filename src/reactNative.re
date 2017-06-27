@@ -43,6 +43,7 @@ module AppState = AppStateRe;
 module AsyncStorage = AsyncStorageRe;
 module BackHandler = BackHandlerRe;
 module Dimensions = DimensionsRe;
+module Linking = LinkingRe;
 module NativeModules = NativeModulesRe;
 module NativeEventEmitter = NativeEventEmitterRe;
 module Platform = PlatformRe;
