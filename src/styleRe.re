@@ -16,6 +16,12 @@ type style =
   | AnimatedStyle
       string [ | `value AnimatedRe.Value.t | `interpolation AnimatedRe.Interpolation.t];
 
+type lengthOrAnimated _ =
+  | Pt :lengthOrAnimated float
+  | Pct :lengthOrAnimated float
+  | Animated :lengthOrAnimated AnimatedRe.Value.t
+  | Interpolated :lengthOrAnimated AnimatedRe.Interpolation.t;
+
 let combine a b => {
   let entries =
     Array.append (UtilsRN.dictEntries (style_to_dict a)) (UtilsRN.dictEntries (style_to_dict b));
@@ -116,13 +122,14 @@ let borderTopWidth = floatStyle "borderTopWidth";
 
 let borderWidth = floatStyle "borderWidth";
 
-let bottom = floatStyle "bottom";
-
-let bottomPct = pctStyle "bottom";
-
-let bottomAnimated = animatedStyle "bottom";
-
-let bottomInterpolated = interpolatedStyle "bottom";
+let bottom: type a. lengthOrAnimated a => a => style =
+  fun unit =>
+    switch unit {
+    | Pt => floatStyle "bottom"
+    | Pct => pctStyle "bottom"
+    | Animated => animatedStyle "bottom"
+    | Interpolated => interpolatedStyle "bottom"
+    };
 
 let display v =>
   stringStyle

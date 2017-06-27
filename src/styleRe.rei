@@ -8,6 +8,11 @@ let combine: t => t => t;
 
 let concat: list t => t;
 
+type lengthOrAnimated _ =
+  | Pt :lengthOrAnimated float
+  | Pct :lengthOrAnimated float
+  | Animated :lengthOrAnimated AnimatedRe.Value.t
+  | Interpolated :lengthOrAnimated AnimatedRe.Interpolation.t;
 
 /** Equivalent to [style_a, style_b] in js */
 
@@ -33,14 +38,13 @@ let borderTopWidth: float => style;
 
 let borderWidth: float => style;
 
-let bottom: float => style;
+let bottom: lengthOrAnimated 'a => 'a => style;
 
-let bottomPct: float => style;
+/*let bottomPct: float => style;
 
-let bottomAnimated: AnimatedRe.Value.t => style;
+  let bottomAnimated: AnimatedRe.Value.t => style;
 
-let bottomInterpolated: AnimatedRe.Interpolation.t => style;
-
+  let bottomInterpolated: AnimatedRe.Interpolation.t => style;*/
 let display: [ | `flex | `none] => style;
 
 let flex: float => style;
