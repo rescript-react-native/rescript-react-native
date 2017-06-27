@@ -25,15 +25,13 @@ module ScrollView = {
   let onScrollUpdater ::x=? ::y=? ::native=false () =>
     wrapUpdaterShamelessly (
       AnimatedRe.event
-        (
-          Array.of_list [
-            {
-              "nativeEvent": {
-                "contentOffset": {"x": Js.Undefined.from_opt x, "y": Js.Undefined.from_opt y}
-              }
+        [|
+          {
+            "nativeEvent": {
+              "contentOffset": {"x": Js.Undefined.from_opt x, "y": Js.Undefined.from_opt y}
             }
-          ]
-        )
+          }
+        |]
         {"useNativeDriver": Js.Boolean.to_js_boolean native}
     );
   include

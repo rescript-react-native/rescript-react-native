@@ -1,5 +1,21 @@
 external modal : ReasonReact.reactClass = "Modal" [@@bs.module "react-native"];
 
+let encodeAnimationType x =>
+  switch x {
+  | `none => "none"
+  | `slide => "slide"
+  | `fade => "fade"
+  };
+
+let encodeSupportedOrientations x =>
+  switch x {
+  | `portrait => "portrait"
+  | `portraitUpsideDown => "portrait-upside-down"
+  | `landscape => "landscape"
+  | `landscapeLeft => "landscape-left"
+  | `landscapeRight => "landscape-right"
+  };
+
 let make
     ::animationType=?
     ::onShow=?
@@ -14,19 +30,7 @@ let make
     props::
       Js.Undefined.(
         {
-          "animationType":
-            from_opt (
-              UtilsRN.option_map
-                (
-                  fun x =>
-                    switch x {
-                    | `none => "none"
-                    | `slide => "slide"
-                    | `fade => "fade"
-                    }
-                )
-                animationType
-            ),
+          "animationType": from_opt (UtilsRN.option_map encodeAnimationType animationType),
           "onShow": from_opt onShow,
           "transparent": from_opt (UtilsRN.optBoolToOptJsBoolean transparent),
           "visible": from_opt (UtilsRN.optBoolToOptJsBoolean visible),
@@ -34,19 +38,6 @@ let make
           "onRequestClose": from_opt onRequestClose,
           "onOrientationChange": from_opt onOrientationChange,
           "supportedOrientations":
-            from_opt (
-              UtilsRN.option_map
-                (
-                  fun x =>
-                    switch x {
-                    | `portrait => "portrait"
-                    | `portraitUpsideDown => "portrait-upside-down"
-                    | `landscape => "landscape"
-                    | `landscapeLeft => "landscape-left"
-                    | `landscapeRight => "landscape-right"
-                    }
-                )
-                supportedOrientations
-            )
+            from_opt (UtilsRN.option_map encodeSupportedOrientations supportedOrientations)
         }
       );

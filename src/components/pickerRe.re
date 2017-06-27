@@ -17,6 +17,12 @@ module Item = {
         );
 };
 
+let encodeMode x =>
+  switch x {
+  | `dialog => "dialog"
+  | `dropdown => "dropdown"
+  };
+
 let make
     ::onValueChange=?
     ::selectedValue=?
@@ -55,18 +61,7 @@ let make
             "selectedValue": from_opt selectedValue,
             "itemStyle": from_opt itemStyle,
             "prompt": from_opt prompt,
-            "mode":
-              from_opt (
-                UtilsRN.option_map
-                  (
-                    fun x =>
-                      switch x {
-                      | `dialog => "dialog"
-                      | `dropdown => "dropdown"
-                      }
-                  )
-                  mode
-              )
+            "mode": from_opt (UtilsRN.option_map encodeMode mode)
           }
         )
         ::?accessibleLeft
