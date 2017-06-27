@@ -21,10 +21,24 @@ let scrollToOffset: ReasonReact.reactRef => offset::int? => animated::Js.boolean
 
 external recordInteraction : ReasonReact.reactRef => unit = "" [@@bs.send];
 
+type renderBag 'item = {item: 'item, index: int};
+
+type renderItem 'item;
+
+let renderItem: (renderBag 'item => ReasonReact.reactElement) => renderItem 'item;
+
+type separatorComponent 'item;
+
+type separatorProps 'item = {highlighted: bool, leadingItem: option 'item};
+
+let separatorComponent:
+  (separatorProps 'item => ReasonReact.reactElement) => separatorComponent 'item;
+
 let make:
   data::array 'item =>
-  renderItem::(Js.t {. item : 'item, index : int} => ReasonReact.reactElement) =>
-  itemSeparatorComponent::ReasonReact.reactClass? =>
+  renderItem::renderItem 'item =>
+  keyExtractor::('item => int => string) =>
+  itemSeparatorComponent::separatorComponent 'item? =>
   listFooterComponent::ReasonReact.reactElement? =>
   listHeaderComponent::ReasonReact.reactElement? =>
   columnWrapperStyle::StyleRe.t? =>
@@ -33,7 +47,6 @@ let make:
   horizontal::bool? =>
   initialNumToRender::int? =>
   initialScrollIndex::int? =>
-  keyExtractor::('item => int => string)? =>
   numColumns::'int? =>
   onEndReached::Js.t {. distanceFromEnd : float}? =>
   onEndReachedThreshold::float? =>
