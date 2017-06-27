@@ -1,5 +1,12 @@
 external view : ReasonReact.reactClass = "ActivityIndicator" [@@bs.module "react-native"];
 
+let encodeSize size =>
+  switch size {
+  | `small => Encode.string "small"
+  | `large => Encode.string "large"
+  | `exact x => Encode.int x
+  };
+
 let make
     ::animating=?
     ::color=?
@@ -33,40 +40,28 @@ let make
           {
             "animating": from_opt (UtilsRN.optBoolToOptJsBoolean animating),
             "color": from_opt color,
-            "size":
-              from_opt (
-                UtilsRN.option_map
-                  (
-                    fun size =>
-                      switch size {
-                      | `small => Encode.string "small"
-                      | `large => Encode.string "large"
-                      | `exact x => Encode.int x
-                      }
-                  )
-                  size
-              ),
+            "size": from_opt (UtilsRN.option_map encodeSize size),
             "hidesWhenStopped": from_opt (UtilsRN.optBoolToOptJsBoolean hidesWhenStopped)
           }
         )
-        ::accessibleLeft
-        ::accessible
-        ::hitSlop
-        ::onAccessibilityTap
-        ::onLayout
-        ::onMagicTap
-        ::responderHandlers
-        ::pointerEvents
-        ::removeClippedSubviews
-        ::style
-        ::testID
-        ::accessibilityComponentType
-        ::accessibilityLiveRegion
-        ::collapsable
-        ::importantForAccessibility
-        ::needsOffscreenAlphaCompositing
-        ::renderToHardwareTextureAndroid
-        ::accessibilityTraits
-        ::accessibilityViewIsModal
-        ::shouldRasterizeIOS
+        ::?accessibleLeft
+        ::?accessible
+        ::?hitSlop
+        ::?onAccessibilityTap
+        ::?onLayout
+        ::?onMagicTap
+        ::?responderHandlers
+        ::?pointerEvents
+        ::?removeClippedSubviews
+        ::?style
+        ::?testID
+        ::?accessibilityComponentType
+        ::?accessibilityLiveRegion
+        ::?collapsable
+        ::?importantForAccessibility
+        ::?needsOffscreenAlphaCompositing
+        ::?renderToHardwareTextureAndroid
+        ::?accessibilityTraits
+        ::?accessibilityViewIsModal
+        ::?shouldRasterizeIOS
     );

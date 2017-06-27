@@ -9,6 +9,9 @@ let optBoolToOptJsBoolean =
   | None => None
   | Some v => Some (Js.Boolean.to_js_boolean v);
 
+external objAssign2 : Js.t {..} => Js.t {..} => Js.t {..} => Js.t {..} = "Object.assign" [@@bs.val];
+
+
 let (<<) f g x => f (g x);
 /**
  * The following is taken from bs-json (https://github.com/BuckleTypes/bs-json) converted to reason syntax

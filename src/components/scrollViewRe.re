@@ -265,26 +265,26 @@ module CreateComponent (Impl: ViewRe.Impl) :ScrollViewComponent => {
               "zoomScale": from_opt zoomScale
             }
           )
-          ::accessibleLeft
-          ::accessible
-          ::hitSlop
-          ::onAccessibilityTap
-          ::onLayout
-          ::onMagicTap
-          ::responderHandlers
-          ::pointerEvents
-          ::removeClippedSubviews
-          ::style
-          ::testID
-          ::accessibilityComponentType
-          ::accessibilityLiveRegion
-          ::collapsable
-          ::importantForAccessibility
-          ::needsOffscreenAlphaCompositing
-          ::renderToHardwareTextureAndroid
-          ::accessibilityTraits
-          ::accessibilityViewIsModal
-          ::shouldRasterizeIOS
+          ::?accessibleLeft
+          ::?accessible
+          ::?hitSlop
+          ::?onAccessibilityTap
+          ::?onLayout
+          ::?onMagicTap
+          ::?responderHandlers
+          ::?pointerEvents
+          ::?removeClippedSubviews
+          ::?style
+          ::?testID
+          ::?accessibilityComponentType
+          ::?accessibilityLiveRegion
+          ::?collapsable
+          ::?importantForAccessibility
+          ::?needsOffscreenAlphaCompositing
+          ::?renderToHardwareTextureAndroid
+          ::?accessibilityTraits
+          ::?accessibilityViewIsModal
+          ::?shouldRasterizeIOS
       );
 };
 

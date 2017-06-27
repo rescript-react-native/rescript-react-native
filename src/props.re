@@ -48,135 +48,132 @@ let serialize (handlers: option touchResponderHandlers) =>
   };
 
 let extendView
-    ::accessibleLeft
-    ::accessible
-    ::hitSlop
-    ::onAccessibilityTap
-    ::onLayout
-    ::onMagicTap
-    ::responderHandlers
-    ::pointerEvents
-    ::removeClippedSubviews
-    ::style
-    ::testID
-    ::accessibilityComponentType
-    ::accessibilityLiveRegion
-    ::collapsable
-    ::importantForAccessibility
-    ::needsOffscreenAlphaCompositing
-    ::renderToHardwareTextureAndroid
-    ::accessibilityTraits
-    ::accessibilityViewIsModal
-    ::shouldRasterizeIOS
+    ::accessibleLeft=?
+    ::accessible=?
+    ::hitSlop=?
+    ::onAccessibilityTap=?
+    ::onLayout=?
+    ::onMagicTap=?
+    ::responderHandlers=?
+    ::pointerEvents=?
+    ::removeClippedSubviews=?
+    ::style=?
+    ::testID=?
+    ::accessibilityComponentType=?
+    ::accessibilityLiveRegion=?
+    ::collapsable=?
+    ::importantForAccessibility=?
+    ::needsOffscreenAlphaCompositing=?
+    ::renderToHardwareTextureAndroid=?
+    ::accessibilityTraits=?
+    ::accessibilityViewIsModal=?
+    ::shouldRasterizeIOS=?
     moreProps =>
-  Js.Obj.assign
-    (
-      Js.Obj.assign
-        Js.Undefined.(
-          {
-            "accessibleLeft": from_opt accessibleLeft,
-            "accessible": from_opt (UtilsRN.optBoolToOptJsBoolean accessible),
-            "hitSlop": from_opt hitSlop,
-            "onAccessibilityTap": from_opt onAccessibilityTap,
-            "onLayout": from_opt onLayout,
-            "onMagicTap": from_opt onMagicTap,
-            "removeClippedSubviews": from_opt (UtilsRN.optBoolToOptJsBoolean removeClippedSubviews),
-            "pointerEvents":
-              from_opt (
-                UtilsRN.option_map
-                  (
-                    fun x =>
-                      switch x {
-                      | `auto => "auto"
-                      | `none => "none"
-                      | `boxNone => "box-none"
-                      | `boxOnly => "box-only"
-                      }
-                  )
-                  pointerEvents
-              ),
-            "style": from_opt style,
-            "testID": from_opt testID,
-            "accessibilityComponentType":
-              from_opt (
-                UtilsRN.option_map
-                  (
-                    fun x =>
-                      switch x {
-                      | `none => "none"
-                      | `button => "button"
-                      | `radiobutton_checked => "radiobutton_checked-none"
-                      | `radiobutton_unchecked => "radiobutton_unchecked"
-                      }
-                  )
-                  accessibilityComponentType
-              ),
-            "accessibilityLiveRegion":
-              from_opt (
-                UtilsRN.option_map
-                  (
-                    fun x =>
-                      switch x {
-                      | `polite => "polite"
-                      | `none => "none"
-                      | `assertive => "assertive"
-                      }
-                  )
-                  accessibilityLiveRegion
-              ),
-            "collapsable": from_opt (UtilsRN.optBoolToOptJsBoolean collapsable),
-            "importantForAccessibility":
-              from_opt (
-                UtilsRN.option_map
-                  (
-                    fun prop =>
-                      switch prop {
-                      | `auto => "auto"
-                      | `yes => "yes"
-                      | `no => "no"
-                      | `noHideDescendants => "noHideDescendants"
-                      }
-                  )
-                  importantForAccessibility
-              ),
-            "needsOffscreenAlphaCompositing":
-              from_opt (UtilsRN.optBoolToOptJsBoolean needsOffscreenAlphaCompositing),
-            "renderToHardwareTextureAndroid":
-              from_opt (UtilsRN.optBoolToOptJsBoolean renderToHardwareTextureAndroid),
-            "accessibilityTraits":
-              from_opt (
-                UtilsRN.option_map
-                  (
-                    fun traits => {
-                      let to_string =
-                        fun
-                        | `none => "none"
-                        | `button => "button"
-                        | `link => "link"
-                        | `header => "header"
-                        | `search => "search"
-                        | `image => "image"
-                        | `selected => "selected"
-                        | `plays => "plays"
-                        | `key => "key"
-                        | `text => "text"
-                        | `summary => "summary"
-                        | `disabled => "disabled"
-                        | `frequentUpdates => "frequentUpdates"
-                        | `startsMedia => "startsMedia"
-                        | `adjustable => "adjustable"
-                        | `allowsDirectInteraction => "allowsDirectInteraction"
-                        | `pageTurn => "pageTurn";
-                      traits |> List.map to_string |> Array.of_list
-                    }
-                  )
-                  accessibilityTraits
-              ),
-            "accessibilityViewIsModal":
-              from_opt (UtilsRN.optBoolToOptJsBoolean accessibilityViewIsModal),
-            "shouldRasterizeIOS": from_opt (UtilsRN.optBoolToOptJsBoolean shouldRasterizeIOS)
-          }
-        )
-        moreProps
+  UtilsRN.objAssign2
+    Js.Undefined.(
+      {
+        "accessibleLeft": from_opt accessibleLeft,
+        "accessible": from_opt (UtilsRN.optBoolToOptJsBoolean accessible),
+        "hitSlop": from_opt hitSlop,
+        "onAccessibilityTap": from_opt onAccessibilityTap,
+        "onLayout": from_opt onLayout,
+        "onMagicTap": from_opt onMagicTap,
+        "removeClippedSubviews": from_opt (UtilsRN.optBoolToOptJsBoolean removeClippedSubviews),
+        "pointerEvents":
+          from_opt (
+            UtilsRN.option_map
+              (
+                fun x =>
+                  switch x {
+                  | `auto => "auto"
+                  | `none => "none"
+                  | `boxNone => "box-none"
+                  | `boxOnly => "box-only"
+                  }
+              )
+              pointerEvents
+          ),
+        "style": from_opt style,
+        "testID": from_opt testID,
+        "accessibilityComponentType":
+          from_opt (
+            UtilsRN.option_map
+              (
+                fun x =>
+                  switch x {
+                  | `none => "none"
+                  | `button => "button"
+                  | `radiobutton_checked => "radiobutton_checked-none"
+                  | `radiobutton_unchecked => "radiobutton_unchecked"
+                  }
+              )
+              accessibilityComponentType
+          ),
+        "accessibilityLiveRegion":
+          from_opt (
+            UtilsRN.option_map
+              (
+                fun x =>
+                  switch x {
+                  | `polite => "polite"
+                  | `none => "none"
+                  | `assertive => "assertive"
+                  }
+              )
+              accessibilityLiveRegion
+          ),
+        "collapsable": from_opt (UtilsRN.optBoolToOptJsBoolean collapsable),
+        "importantForAccessibility":
+          from_opt (
+            UtilsRN.option_map
+              (
+                fun prop =>
+                  switch prop {
+                  | `auto => "auto"
+                  | `yes => "yes"
+                  | `no => "no"
+                  | `noHideDescendants => "noHideDescendants"
+                  }
+              )
+              importantForAccessibility
+          ),
+        "needsOffscreenAlphaCompositing":
+          from_opt (UtilsRN.optBoolToOptJsBoolean needsOffscreenAlphaCompositing),
+        "renderToHardwareTextureAndroid":
+          from_opt (UtilsRN.optBoolToOptJsBoolean renderToHardwareTextureAndroid),
+        "accessibilityTraits":
+          from_opt (
+            UtilsRN.option_map
+              (
+                fun traits => {
+                  let to_string =
+                    fun
+                    | `none => "none"
+                    | `button => "button"
+                    | `link => "link"
+                    | `header => "header"
+                    | `search => "search"
+                    | `image => "image"
+                    | `selected => "selected"
+                    | `plays => "plays"
+                    | `key => "key"
+                    | `text => "text"
+                    | `summary => "summary"
+                    | `disabled => "disabled"
+                    | `frequentUpdates => "frequentUpdates"
+                    | `startsMedia => "startsMedia"
+                    | `adjustable => "adjustable"
+                    | `allowsDirectInteraction => "allowsDirectInteraction"
+                    | `pageTurn => "pageTurn";
+                  traits |> List.map to_string |> Array.of_list
+                }
+              )
+              accessibilityTraits
+          ),
+        "accessibilityViewIsModal":
+          from_opt (UtilsRN.optBoolToOptJsBoolean accessibilityViewIsModal),
+        "shouldRasterizeIOS": from_opt (UtilsRN.optBoolToOptJsBoolean shouldRasterizeIOS)
+      }
     )
+    moreProps
     (serialize responderHandlers);

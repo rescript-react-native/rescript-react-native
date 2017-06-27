@@ -230,24 +230,24 @@ let make
             "spellCheck": from_opt (UtilsRN.optBoolToOptJsBoolean spellCheck)
           }
         )
-        ::accessibleLeft
-        ::accessible
-        ::hitSlop
-        ::onAccessibilityTap
-        ::onLayout
-        ::onMagicTap
-        ::pointerEvents
-        ::removeClippedSubviews
-        ::style
-        ::testID
-        ::accessibilityComponentType
-        ::accessibilityLiveRegion
-        ::collapsable
-        ::importantForAccessibility
-        ::needsOffscreenAlphaCompositing
-        ::renderToHardwareTextureAndroid
-        ::accessibilityTraits
-        ::accessibilityViewIsModal
-        ::shouldRasterizeIOS
-        ::responderHandlers
+        ::?accessibleLeft
+        ::?accessible
+        ::?hitSlop
+        ::?onAccessibilityTap
+        ::?onLayout
+        ::?onMagicTap
+        ::?responderHandlers
+        ::?pointerEvents
+        ::?removeClippedSubviews
+        ::?style
+        ::?testID
+        ::?accessibilityComponentType
+        ::?accessibilityLiveRegion
+        ::?collapsable
+        ::?importantForAccessibility
+        ::?needsOffscreenAlphaCompositing
+        ::?renderToHardwareTextureAndroid
+        ::?accessibilityTraits
+        ::?accessibilityViewIsModal
+        ::?shouldRasterizeIOS
     );

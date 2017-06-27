@@ -47,24 +47,24 @@ let make
             "titleColor": from_opt titleColor
           }
         )
-        ::accessibleLeft
-        ::accessible
-        ::hitSlop
-        ::onAccessibilityTap
-        ::onLayout
-        ::onMagicTap
-        ::responderHandlers
-        ::pointerEvents
-        ::removeClippedSubviews
-        ::style
-        ::testID
-        ::accessibilityComponentType
-        ::accessibilityLiveRegion
-        ::collapsable
-        ::importantForAccessibility
-        ::needsOffscreenAlphaCompositing
-        ::renderToHardwareTextureAndroid
-        ::accessibilityTraits
-        ::accessibilityViewIsModal
-        ::shouldRasterizeIOS
+        ::?accessibleLeft
+        ::?accessible
+        ::?hitSlop
+        ::?onAccessibilityTap
+        ::?onLayout
+        ::?onMagicTap
+        ::?responderHandlers
+        ::?pointerEvents
+        ::?removeClippedSubviews
+        ::?style
+        ::?testID
+        ::?accessibilityComponentType
+        ::?accessibilityLiveRegion
+        ::?collapsable
+        ::?importantForAccessibility
+        ::?needsOffscreenAlphaCompositing
+        ::?renderToHardwareTextureAndroid
+        ::?accessibilityTraits
+        ::?accessibilityViewIsModal
+        ::?shouldRasterizeIOS
     );

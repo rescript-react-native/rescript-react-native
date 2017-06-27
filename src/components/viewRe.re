@@ -72,26 +72,26 @@ module CreateComponent (Impl: Impl) :ViewComponent => {
       reactClass::Impl.view
       props::(
         Props.extendView
-          ::accessibleLeft
-          ::accessible
-          ::hitSlop
-          ::onAccessibilityTap
-          ::onLayout
-          ::onMagicTap
-          ::responderHandlers
-          ::pointerEvents
-          ::removeClippedSubviews
-          ::style
-          ::testID
-          ::accessibilityComponentType
-          ::accessibilityLiveRegion
-          ::collapsable
-          ::importantForAccessibility
-          ::needsOffscreenAlphaCompositing
-          ::renderToHardwareTextureAndroid
-          ::accessibilityTraits
-          ::accessibilityViewIsModal
-          ::shouldRasterizeIOS
+          ::?accessibleLeft
+          ::?accessible
+          ::?hitSlop
+          ::?onAccessibilityTap
+          ::?onLayout
+          ::?onMagicTap
+          ::?responderHandlers
+          ::?pointerEvents
+          ::?removeClippedSubviews
+          ::?style
+          ::?testID
+          ::?accessibilityComponentType
+          ::?accessibilityLiveRegion
+          ::?collapsable
+          ::?importantForAccessibility
+          ::?needsOffscreenAlphaCompositing
+          ::?renderToHardwareTextureAndroid
+          ::?accessibilityTraits
+          ::?accessibilityViewIsModal
+          ::?shouldRasterizeIOS
           (Js.Obj.empty ())
       );
 };
