@@ -14,7 +14,7 @@
     "react": "16.0.0-alpha.6",
     "react-native": "0.44.0",
     "reason-react": "^0.1.4",
-    "bs-platform": "^1.7.5"
+    "bs-platform": "^1.8.0"
   },
   "devDependencies": {
     "babel-jest": "20.0.0",

@@ -11,7 +11,7 @@
 	],
 	"dependencies": {
 		"reason-react": "^0.1.4",
-		"bs-platform": "^1.7.5"
+		"bs-platform": "^1.8.0"
 	},
 	"peerDependencies": {
 		"react": "^16.0.0-alpha.6",
