@@ -1,6 +1,6 @@
 # Contributing guide
 Great that you consider to contribute to the Bucklescript bindings for React Native. **Every contribution is greatly appreciated!**
-There are many ways to contribute, besides implementing new features and fixing bus, you can give advice in issues, create and improve documentation, etc. 
+There are many ways to contribute, besides implementing new features and fixing bugs, you can give advice in issues, create and improve documentation, etc. 
 
 You can find an overview of the implemented components and APIs [here](STATUS.md).
 
@@ -13,7 +13,7 @@ To add component (or API) you should do the following steps:
 * Add your new component to `reactNative.re` following the existing components / APIs.
 
 Some things to keep in mind:
-* We strive for more heavy bindings, i.e. we try to hide things like `Js.t` objects. Sometimes this is not possible 
+* We strive for more heavy bindings, i.e. we try to hide things like `Js.t` objects, but sometimes this is not possible.
 * String enums, which are an argument to a function, are represented through polymorphic variants.
 * You should format your code with `refmt`.
 
