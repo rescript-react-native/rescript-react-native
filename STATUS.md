@@ -1,0 +1,86 @@
+
+# Status
+
+## Components
+- [ ] ART
+- [x] ActivityIndicator
+- [x] Button
+- [x] DatePickerIOS
+- [ ] DrawerLayoutAndroid
+- [x] FlatList
+- [x] Image
+- [ ] KeyboardAvoidingView
+- [ ] ListView
+- [ ] MapView
+- [x] Modal
+- [x] Picker
+- [ ] PickerIOS
+- [ ] ProgressBarAndroid
+- [ ] ProgressViewIOS
+- [x] RefreshControl
+- [x] ScrollView
+- [x] SectionList
+- [ ] SegmentedControlIOS
+- [x] Slider
+- [ ] SnapshotViewIOS
+- [x] StatusBar
+- [x] Switch
+- [ ] TabBarIOS
+- [ ] TabBarIOS.Item
+- [x] Text
+- [x] TextInput
+- [ ] ToolbarAndroid
+- [x] TouchableHighlight
+- [ ] TouchableNativeFeedback
+- [x] TouchableOpacity
+- [x] TouchableWithoutFeedback
+- [x] View
+- [ ] ViewPagerAndroid
+- [ ] VirtualizedList
+- [ ] WebView
+
+
+## APIs
+- [ ] AccessibilityInfo
+- [ ] ActionSheetIOS
+- [ ] AdSupportIOS
+- [x] Alert
+- [x] AlertIOS
+- [x] Animated
+- [x] AppRegistry
+- [x] AppState
+- [x] AsyncStorage
+- [x] BackHandler
+- [ ] CameraRoll
+- [ ] Clipboard
+- [ ] DatePickerAndroid
+- [x] Dimensions
+- [ ] Easing
+- [ ] Geolocation
+- [ ] ImageEditor
+- [ ] ImagePickerIOS
+- [ ] ImageStore
+- [ ] InteractionManager
+- [ ] Keyboard
+- [ ] LayoutAnimation
+- [ ] Linking
+- [x] NativeEventEmitter
+- [ ] NativeMethodsMixin
+- [x] NativeModules
+- [ ] NetInfo
+- [x] PanResponder
+- [ ] PermissionsAndroid
+- [ ] PixelRatio
+- [x] Platform
+- [ ] PushNotificationIOS
+- [ ] Settings
+- [ ] Share
+- [ ] StatusBarIOS
+- [x] StyleSheet
+- [ ] Systrace
+- [ ] TimePickerAndroid
+- [ ] ToastAndroid
+- [x] Vibration
+- [x] Layout Props
+- [x] Shadow Props
+
