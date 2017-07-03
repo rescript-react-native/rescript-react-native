@@ -11,6 +11,7 @@ let make
     ::delayPressOut=?
     ::disabled=?
     ::hitSlop=?
+    ::style=?
     ::onLayout=?
     ::onPress=?
     ::onPressIn=?
@@ -30,6 +31,7 @@ let make
           "delayPressOut": from_opt delayPressOut,
           "disabled": from_opt (UtilsRN.optBoolToOptJsBoolean disabled),
           "hitSlop": from_opt hitSlop,
+          "style": from_opt style,
           "onLayout": from_opt onLayout,
           "onPress": from_opt onPress,
           "onPressIn": from_opt onPressIn,
