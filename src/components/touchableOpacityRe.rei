@@ -28,6 +28,7 @@ let make:
   delayPressOut::int? =>
   disabled::bool? =>
   hitSlop::TypesRN.insets? =>
+  style::StyleRe.t? =>
   onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
   onPress::(unit => unit)? =>
   onPressIn::(unit => unit)? =>
