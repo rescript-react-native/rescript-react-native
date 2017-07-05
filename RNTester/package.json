@@ -6,15 +6,15 @@
     "postinstall": "node scripts/copy.js",
     "build": "node scripts/copy.js && bsb -clean-world -make-world",
     "packager:start": "node node_modules/react-native/local-cli/cli.js start",
-    "watch": "node scripts/copy.js && bsb -clean-world -make-world -w",
+    "watch": "node scripts/copy.js && bsb -make-world -w",
     "start": "npm run build && npm run packager:start",
     "test": "jest"
   },
   "dependencies": {
-    "react": "16.0.0-alpha.6",
-    "react-native": "0.44.0",
-    "reason-react": "^0.1.4",
-    "bs-platform": "^1.8.0"
+    "bs-platform": "^1.8.0",
+    "react": "^16.0.0-alpha.12",
+    "react-native": "^0.46.0",
+    "reason-react": "^0.1.4"
   },
   "devDependencies": {
     "babel-jest": "20.0.0",
