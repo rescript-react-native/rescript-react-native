@@ -18,6 +18,6 @@ external _absoluteFillObject : t => StyleRe.t = "absoluteFillObject" [@@bs.get];
 
 let absoluteFillObject = _absoluteFillObject t;
 
-external _flatten : t => array StyleRe.t => StyleRe.t = "flatted" [@@bs.send];
+external _flatten : t => array StyleRe.t => StyleRe.t = "flatten" [@@bs.send];
 
 let flatten styles => _flatten t (Array.of_list styles);
