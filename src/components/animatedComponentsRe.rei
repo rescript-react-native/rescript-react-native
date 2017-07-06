@@ -10,7 +10,7 @@ module ScrollView: {
   let scrollTo: ReasonReact.reactRef => x::int => y::int => animated::bool => unit;
   let scrollToEnd: ReasonReact.reactRef => animated::bool => unit;
   let make:
-    accessibleLeft::ReasonReact.reactElement? =>
+    accessibilityLabel::ReasonReact.reactElement? =>
     accessible::bool? =>
     hitSlop::TypesRN.insets? =>
     onAccessibilityTap::(unit => unit)? =>

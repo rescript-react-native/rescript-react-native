@@ -1,6 +1,6 @@
 module type ViewComponent = {
   let make:
-    accessibleLeft::ReasonReact.reactElement? =>
+    accessibilityLabel::ReasonReact.reactElement? =>
     accessible::bool? =>
     hitSlop::TypesRN.insets? =>
     onAccessibilityTap::(unit => unit)? =>

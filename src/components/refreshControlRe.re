@@ -10,7 +10,7 @@ let make
     tintColor::(tintColor: option string)=?
     title::(title: option string)=?
     titleColor::(titleColor: option string)=?
-    ::accessibleLeft=?
+    ::accessibilityLabel=?
     ::accessible=?
     ::hitSlop=?
     ::onAccessibilityTap=?
@@ -47,7 +47,7 @@ let make
             "titleColor": from_opt titleColor
           }
         )
-        ::?accessibleLeft
+        ::?accessibilityLabel
         ::?accessible
         ::?hitSlop
         ::?onAccessibilityTap

@@ -8,7 +8,7 @@ let make:
   tintColor::string? =>
   title::string? =>
   titleColor::string? =>
-  accessibleLeft::ReasonReact.reactElement? =>
+  accessibilityLabel::ReasonReact.reactElement? =>
   accessible::bool? =>
   hitSlop::TypesRN.insets? =>
   onAccessibilityTap::(unit => unit)? =>

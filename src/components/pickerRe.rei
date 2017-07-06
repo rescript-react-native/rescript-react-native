@@ -15,7 +15,7 @@ let make:
   mode::[ | `dialog | `dropdown]? =>
   prompt::string? =>
   itemStyle::StyleRe.t? =>
-  accessibleLeft::ReasonReact.reactElement? =>
+  accessibilityLabel::ReasonReact.reactElement? =>
   accessible::bool? =>
   hitSlop::TypesRN.insets? =>
   onAccessibilityTap::(unit => unit)? =>

@@ -7,7 +7,7 @@ let isFocused = UtilsRN.(Js.to_bool << _isFocused);
 external clear : ReasonReact.reactRef => unit = "" [@@bs.send];
 
 let make
-    ::accessibleLeft=?
+    ::accessibilityLabel=?
     ::accessible=?
     ::hitSlop=?
     ::onAccessibilityTap=?
@@ -230,7 +230,7 @@ let make
             "spellCheck": from_opt (UtilsRN.optBoolToOptJsBoolean spellCheck)
           }
         )
-        ::?accessibleLeft
+        ::?accessibilityLabel
         ::?accessible
         ::?hitSlop
         ::?onAccessibilityTap

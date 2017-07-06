@@ -3,7 +3,7 @@ let isFocused: ReasonReact.reactRef => bool;
 let clear: ReasonReact.reactRef => unit;
 
 let make:
-  accessibleLeft::ReasonReact.reactElement? =>
+  accessibilityLabel::ReasonReact.reactElement? =>
   accessible::bool? =>
   hitSlop::Js.t {. left : int, right : int, top : int, bottom : int}? =>
   onAccessibilityTap::(unit => unit)? =>

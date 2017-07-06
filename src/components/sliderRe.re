@@ -26,7 +26,7 @@ let make
     minimumTrackImage::(minimumTrackImage: option ImageRe.Image.imageSource)=?
     thumbImage::(thumbImage: option ImageRe.Image.imageSource)=?
     trackImage::(trackImage: option ImageRe.Image.imageSource)=?
-    ::accessibleLeft=?
+    ::accessibilityLabel=?
     ::accessible=?
     ::hitSlop=?
     ::onAccessibilityTap=?
@@ -68,7 +68,7 @@ let make
             "trackImage": from_opt (UtilsRN.option_map convertImageSource trackImage)
           }
         )
-        ::?accessibleLeft
+        ::?accessibilityLabel
         ::?accessible
         ::?hitSlop
         ::?onAccessibilityTap

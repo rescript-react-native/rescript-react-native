@@ -12,7 +12,7 @@ let make
     ::color=?
     ::size=?
     ::hidesWhenStopped=?
-    ::accessibleLeft=?
+    ::accessibilityLabel=?
     ::accessible=?
     ::hitSlop=?
     ::onAccessibilityTap=?
@@ -44,7 +44,7 @@ let make
             "hidesWhenStopped": from_opt (UtilsRN.optBoolToOptJsBoolean hidesWhenStopped)
           }
         )
-        ::?accessibleLeft
+        ::?accessibilityLabel
         ::?accessible
         ::?hitSlop
         ::?onAccessibilityTap

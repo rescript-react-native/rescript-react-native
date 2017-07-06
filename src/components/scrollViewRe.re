@@ -3,7 +3,7 @@ module type ScrollViewComponent = {
   let scrollTo: ReasonReact.reactRef => x::int => y::int => animated::bool => unit;
   let scrollToEnd: ReasonReact.reactRef => animated::bool => unit;
   let make:
-    accessibleLeft::ReasonReact.reactElement? =>
+    accessibilityLabel::ReasonReact.reactElement? =>
     accessible::bool? =>
     hitSlop::TypesRN.insets? =>
     onAccessibilityTap::(unit => unit)? =>
@@ -92,7 +92,7 @@ module CreateComponent (Impl: ViewRe.Impl) :ScrollViewComponent => {
   let scrollToEnd ref ::animated =>
     _scrollToEnd ref {"animated": Js.Boolean.to_js_boolean animated};
   let make
-      ::accessibleLeft=?
+      ::accessibilityLabel=?
       ::accessible=?
       ::hitSlop=?
       ::onAccessibilityTap=?
@@ -265,7 +265,7 @@ module CreateComponent (Impl: ViewRe.Impl) :ScrollViewComponent => {
               "zoomScale": from_opt zoomScale
             }
           )
-          ::?accessibleLeft
+          ::?accessibilityLabel
           ::?accessible
           ::?hitSlop
           ::?onAccessibilityTap

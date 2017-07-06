@@ -3,7 +3,7 @@ let make:
   color::string? =>
   size::[ | `large | `small | `exact int]? =>
   hidesWhenStopped::bool? =>
-  accessibleLeft::ReasonReact.reactElement? =>
+  accessibilityLabel::ReasonReact.reactElement? =>
   accessible::bool? =>
   hitSlop::TypesRN.insets? =>
   onAccessibilityTap::(unit => unit)? =>
