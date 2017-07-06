@@ -23,7 +23,7 @@ let component = ReasonReact.statelessComponent "RNTesterTitle";
 
 let make ::title _children => {
   ...component,
-  render: fun _state _self =>
+  render: fun _self =>
     <View style=styles##container>
       <Text style=styles##text> (ReasonReact.stringToElement title) </Text>
     </View>

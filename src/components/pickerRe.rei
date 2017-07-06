@@ -5,7 +5,7 @@ module Item: {
     value::'value? =>
     testID::string? =>
     array ReasonReact.reactElement =>
-    ReasonReact.component ReasonReact.stateless;
+    ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps;
 };
 
 let make:
@@ -55,4 +55,4 @@ let make:
   accessibilityViewIsModal::bool? =>
   shouldRasterizeIOS::bool? =>
   array ReasonReact.reactElement =>
-  ReasonReact.component ReasonReact.stateless;
+  ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps;

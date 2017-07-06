@@ -77,7 +77,7 @@ module type ScrollViewComponent = {
     snapToAlignment::[ | `center | `start | `end_]? =>
     zoomScale::float? =>
     array ReasonReact.reactElement =>
-    ReasonReact.component ReasonReact.stateless;
+    ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps;
 };
 
 module CreateComponent (Impl: ViewRe.Impl) :ScrollViewComponent => {

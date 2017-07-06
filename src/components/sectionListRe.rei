@@ -70,4 +70,4 @@ let make:
   renderSectionFooter::(Js.t {. section : section 'item} => ReasonReact.reactElement)? =>
   stickySectionHeadersEnabled::bool? =>
   array ReasonReact.reactElement =>
-  ReasonReact.component ReasonReact.stateless;
+  ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps;

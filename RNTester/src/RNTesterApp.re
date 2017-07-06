@@ -39,26 +39,26 @@ type state = {currentExample: option ExampleList.item};
 let component = ReasonReact.statefulComponent "RNTesterApp";
 
 let make _children => {
-  let onPress item state _self =>
+  let onPress item {ReasonReact.state} =>
     switch state.currentExample {
     | None => ReasonReact.Update {currentExample: Some item}
     | Some _ => ReasonReact.Update {currentExample: None}
     };
-  let onBack () _state _self => ReasonReact.Update {currentExample: None};
+  let onBack () _self => ReasonReact.Update {currentExample: None};
   {
     ...component,
     initialState: fun () => {currentExample: None},
-    render: fun state self => {
+    render: fun {state, update} => {
       let components = ExampleList.components;
       switch state.currentExample {
       | None =>
         <View style=styles##exampleContainer>
           (header title::"ReasonRNTester" ())
-          <RNTesterExampleList components onPress=(self.update onPress) />
+          <RNTesterExampleList components onPress=(update onPress) />
         </View>
       | Some example =>
         <View style=styles##exampleContainer>
-          (header title::example.title onBack::(self.update onBack) ())
+          (header title::example.title onBack::(update onBack) ())
           <RNTesterExampleContainer example />
         </View>
       }

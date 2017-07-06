@@ -36,7 +36,7 @@ let comp = ReasonReact.statelessComponent "RNTesterBlock";
 
 let make ::description ::title children => {
   ...comp,
-  render: fun _state _self =>
+  render: fun _self =>
     <View style=styles##container>
       <View style=styles##titleContainer>
         <Text style=styles##titleText> (ReasonReact.stringToElement title) </Text>

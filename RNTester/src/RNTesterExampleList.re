@@ -47,7 +47,7 @@ let make ::components ::onPress _children => {
     SectionList.sections [|SectionList.section data::components key::"components" ()|];
   {
     ...component,
-    render: fun _state _self =>
+    render: fun _self =>
       <View style=styles##listContainer>
         <SectionList
           sections

@@ -68,4 +68,4 @@ let make:
   removeClippedSubviews::bool? =>
   viewabilityConfig::Js.t {.}? =>
   array ReasonReact.reactElement =>
-  ReasonReact.component ReasonReact.stateless;
+  ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps;

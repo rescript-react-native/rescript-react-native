@@ -41,7 +41,7 @@ module type ViewComponent = {
     accessibilityViewIsModal::bool? =>
     shouldRasterizeIOS::bool? =>
     array ReasonReact.reactElement =>
-    ReasonReact.component ReasonReact.stateless;
+    ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps;
 };
 
 module type Impl = {let view: ReasonReact.reactClass;};
