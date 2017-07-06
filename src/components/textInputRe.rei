@@ -115,4 +115,4 @@ let make:
   selectionState::'documentSelectionState? =>
   spellCheck::bool? =>
   array ReasonReact.reactElement =>
-  ReasonReact.component ReasonReact.stateless;
+  ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps;

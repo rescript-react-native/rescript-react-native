@@ -12,13 +12,13 @@ let styles =
 module ViewBorderStyleExample = {
   type state = {showBorder: bool};
   let component = ReasonReact.statefulComponent "ViewBorderStyleExample";
-  let handlePress () state _self => ReasonReact.Update {showBorder: not state.showBorder};
+  let handlePress () {ReasonReact.state} => ReasonReact.Update {showBorder: not state.showBorder};
   let make _children => {
     ...component,
     initialState: fun () => {showBorder: false},
-    render: fun state self =>
+    render: fun {state, update} =>
       Style.(
-        <TouchableWithoutFeedback onPress=(self.update handlePress)>
+        <TouchableWithoutFeedback onPress=(update handlePress)>
           <View>
             <View
               style=(
@@ -67,11 +67,11 @@ module ViewBorderStyleExample = {
 module ZIndexExample = {
   type state = {flipped: bool};
   let component = ReasonReact.statefulComponent "ZIndexExample";
-  let handlePress () state _self => ReasonReact.Update {flipped: not state.flipped};
+  let handlePress () {ReasonReact.state} => ReasonReact.Update {flipped: not state.flipped};
   let make _children => {
     ...component,
     initialState: fun () => {flipped: false},
-    render: fun state self => {
+    render: fun {state, update} => {
       open Style;
       let indices =
         if state.flipped {
@@ -80,7 +80,7 @@ module ZIndexExample = {
           [|2, 1, 0, (-1)|]
         };
       let zIndexStr i => "ZIndex " ^ string_of_int (Array.unsafe_get indices i);
-      <TouchableWithoutFeedback onPress=(self.update handlePress)>
+      <TouchableWithoutFeedback onPress=(update handlePress)>
         <View>
           <Text style=(style [paddingBottom 10.])>
             (ReasonReact.stringToElement "Tap to flip sorting order")

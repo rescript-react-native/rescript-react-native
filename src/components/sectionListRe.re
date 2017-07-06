@@ -131,7 +131,7 @@ let make:
   renderSectionFooter::(Js.t {. section : section 'item} => ReasonReact.reactElement)? =>
   stickySectionHeadersEnabled::bool? =>
   array ReasonReact.reactElement =>
-  ReasonReact.component ReasonReact.stateless =
+  ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps =
   fun ::sections
       ::renderItem
       ::keyExtractor
@@ -149,7 +149,8 @@ let make:
       ::refreshing=?
       ::renderSectionHeader=?
       ::renderSectionFooter=?
-      ::stickySectionHeadersEnabled=? =>
+      ::stickySectionHeadersEnabled=?
+      _children =>
     ReasonReact.wrapJsForReason
       reactClass::view
       props::
@@ -175,4 +176,5 @@ let make:
             "stickySectionHeadersEnabled":
               from_opt (UtilsRN.optBoolToOptJsBoolean stickySectionHeadersEnabled)
           }
-        );
+        )
+      _children;

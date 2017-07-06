@@ -42,7 +42,7 @@ module type ImageComponent = {
     onPartialLoad::(unit => unit)? =>
     onProgress::(Event.progress => unit)? =>
     array ReasonReact.reactElement =>
-    ReasonReact.component ReasonReact.stateless;
+    ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps;
 };
 
 module CreateComponent (Impl: ViewRe.Impl) :ImageComponent => {

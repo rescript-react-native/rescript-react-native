@@ -5,7 +5,7 @@ let component = ReasonReact.statelessComponent "RNTesterExampleContainer";
 
 let make example::(example: ExampleList.item) _children => {
   ...component,
-  render: fun _state _self =>
+  render: fun _self =>
     <RNTesterPage title=example.title>
       (ReasonReact.arrayToElement (Array.mapi renderExample example.examples))
     </RNTesterPage>

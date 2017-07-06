@@ -33,7 +33,7 @@ let make ::title=? ::noScroll=false ::noSpacer=false children => {
     };
   {
     ...component,
-    render: fun _state _self => {
+    render: fun _self => {
       let title =
         switch title {
         | Some title => <RNTesterTitle key="title" title />
