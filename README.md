@@ -75,7 +75,7 @@ Here are some more things which will be proabbyl useful for you:
 
 This is **work in progress**. There are many missing APIs and the existing ones are not guaranteed to work. Contributions of Components and APIs are very welcome!
 
-The bindings are targeted to React Native 0.44+.
+The bindings are targeted to React Native **0.46+**.
 
 ## Style
 Since we have a proper type system we can make styles **typesafe**! Therefore styles are a little bit different declared than in JavaScript:
