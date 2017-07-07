@@ -16,56 +16,15 @@ type iOSLoadRequestEvent =
     url : string
   };
 
-type webViewContentInsets;
+type contentInsets;
 
-let webViewContentInsets:
-  top::int? => left::int? => bottom::int? => right::int? => unit => webViewContentInsets;
+let contentInsets: top::int? => left::int? => bottom::int? => right::int? => unit => contentInsets;
 
 let make:
-  accessibilityLabel::ReasonReact.reactElement? =>
-  accessible::bool? =>
-  hitSlop::TypesRN.insets? =>
-  onAccessibilityTap::(unit => unit)? =>
-  onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
-  onMagicTap::(unit => unit)? =>
-  responderHandlers::Props.touchResponderHandlers? =>
-  pointerEvents::[ | `auto | `none | `boxNone | `boxOnly]? =>
-  removeClippedSubviews::bool? =>
+  source::source? =>
   style::StyleRe.t? =>
-  testID::string? =>
-  accessibilityComponentType::[ | `none | `button | `radiobutton_checked | `radiobutton_unchecked]? =>
-  accessibilityLiveRegion::[ | `none | `polite | `assertive]? =>
-  collapsable::bool? =>
-  importantForAccessibility::[ | `auto | `yes | `no | `noHideDescendants]? =>
-  needsOffscreenAlphaCompositing::bool? =>
-  renderToHardwareTextureAndroid::bool? =>
-  accessibilityTraits::
-    list [
-      | `none
-      | `button
-      | `link
-      | `header
-      | `search
-      | `image
-      | `selected
-      | `plays
-      | `key
-      | `text
-      | `summary
-      | `disabled
-      | `frequentUpdates
-      | `startsMedia
-      | `adjustable
-      | `allowsDirectInteraction
-      | `pageTurn
-    ]? =>
-  accessibilityViewIsModal::bool? =>
-  shouldRasterizeIOS::bool? =>
-  automaticallyAdjustContentInsets::bool? =>
-  contentInsets::webViewContentInsets? =>
-  injectJavaScript::(string => unit)? =>
-  injectedJavaScript::string? =>
-  mediaPlaybackRequiresUserAction::bool? =>
+  renderError::(unit => ReasonReact.reactElement)? =>
+  renderLoading::(unit => ReasonReact.reactElement)? =>
   onError::
     (
       Js.t {
@@ -114,6 +73,49 @@ let make:
       } =>
       unit
     )? =>
+  automaticallyAdjustContentInsets::bool? =>
+  contentInsets::contentInsets? =>
+  accessibilityLabel::ReasonReact.reactElement? =>
+  accessible::bool? =>
+  hitSlop::TypesRN.insets? =>
+  onAccessibilityTap::(unit => unit)? =>
+  onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
+  onMagicTap::(unit => unit)? =>
+  responderHandlers::Props.touchResponderHandlers? =>
+  pointerEvents::[ | `auto | `none | `boxNone | `boxOnly]? =>
+  removeClippedSubviews::bool? =>
+  testID::string? =>
+  accessibilityComponentType::[ | `none | `button | `radiobutton_checked | `radiobutton_unchecked]? =>
+  accessibilityLiveRegion::[ | `none | `polite | `assertive]? =>
+  collapsable::bool? =>
+  importantForAccessibility::[ | `auto | `yes | `no | `noHideDescendants]? =>
+  needsOffscreenAlphaCompositing::bool? =>
+  renderToHardwareTextureAndroid::bool? =>
+  accessibilityTraits::
+    list [
+      | `none
+      | `button
+      | `link
+      | `header
+      | `search
+      | `image
+      | `selected
+      | `plays
+      | `key
+      | `text
+      | `summary
+      | `disabled
+      | `frequentUpdates
+      | `startsMedia
+      | `adjustable
+      | `allowsDirectInteraction
+      | `pageTurn
+    ]? =>
+  accessibilityViewIsModal::bool? =>
+  shouldRasterizeIOS::bool? =>
+  injectJavaScript::(string => unit)? =>
+  injectedJavaScript::string? =>
+  mediaPlaybackRequiresUserAction::bool? =>
   onMessage::(RNEvent.NativeEvent.t => unit)? =>
   onNavigationStateChange::
     (
@@ -127,10 +129,7 @@ let make:
       } =>
       unit
     )? =>
-  renderError::(unit => ReasonReact.reactElement)? =>
-  renderLoading::(unit => ReasonReact.reactElement)? =>
   scalesPageToFit::bool? =>
-  source::source? =>
   startInLoadingState::bool? =>
   domStorageEnabled::bool? =>
   javaScriptEnabled::bool? =>

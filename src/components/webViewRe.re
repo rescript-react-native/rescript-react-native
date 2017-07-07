@@ -1,5 +1,18 @@
 external view : ReasonReact.reactClass = "WebView" [@@bs.module "react-native"];
 
+type iOSLoadRequestEvent =
+  Js.t {
+    .
+    target : int,
+    canGoBack : bool,
+    lockIdentifier : int,
+    loading : bool,
+    title : string,
+    canGoForward : bool,
+    navigationType : string,
+    url : string
+  };
+
 type source;
 
 external source :
@@ -13,6 +26,16 @@ external contentInsets :
   "" [@@bs.obj];
 
 let make
+    ::source=?
+    ::style=?
+    ::renderError=?
+    ::renderLoading=?
+    ::onError=?
+    ::onLoad=?
+    ::onLoadEnd=?
+    ::onLoadStart=?
+    ::automaticallyAdjustContentInsets=?
+    ::contentInsets=?
     ::accessibilityLabel=?
     ::accessible=?
     ::hitSlop=?
@@ -22,7 +45,6 @@ let make
     ::responderHandlers=?
     ::pointerEvents=?
     ::removeClippedSubviews=?
-    ::style=?
     ::testID=?
     ::accessibilityComponentType=?
     ::accessibilityLiveRegion=?
@@ -33,21 +55,12 @@ let make
     ::accessibilityTraits=?
     ::accessibilityViewIsModal=?
     ::shouldRasterizeIOS=?
-    ::automaticallyAdjustContentInsets=?
-    ::contentInsets=?
     ::injectJavaScript=?
     ::injectedJavaScript=?
     ::mediaPlaybackRequiresUserAction=?
-    ::onError=?
-    ::onLoad=?
-    ::onLoadEnd=?
-    ::onLoadStart=?
     ::onMessage=?
     ::onNavigationStateChange=?
-    ::renderError=?
-    ::renderLoading=?
     ::scalesPageToFit=?
-    ::source=?
     ::startInLoadingState=?
     ::domStorageEnabled=?
     ::javaScriptEnabled=?
