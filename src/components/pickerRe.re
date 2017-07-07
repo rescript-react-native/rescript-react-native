@@ -24,7 +24,7 @@ let make
     ::mode=?
     ::prompt=?
     ::itemStyle=?
-    ::accessibleLeft=?
+    ::accessibilityLabel=?
     ::accessible=?
     ::hitSlop=?
     ::onAccessibilityTap=?
@@ -69,7 +69,7 @@ let make
               )
           }
         )
-        ::?accessibleLeft
+        ::?accessibilityLabel
         ::?accessible
         ::?hitSlop
         ::?onAccessibilityTap

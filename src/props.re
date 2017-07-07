@@ -48,7 +48,7 @@ let serialize (handlers: option touchResponderHandlers) =>
   };
 
 let extendView
-    ::accessibleLeft=?
+    ::accessibilityLabel=?
     ::accessible=?
     ::hitSlop=?
     ::onAccessibilityTap=?
@@ -72,7 +72,7 @@ let extendView
   UtilsRN.objAssign2
     Js.Undefined.(
       {
-        "accessibleLeft": from_opt accessibleLeft,
+        "accessibilityLabel": from_opt accessibilityLabel,
         "accessible": from_opt (UtilsRN.optBoolToOptJsBoolean accessible),
         "hitSlop": from_opt hitSlop,
         "onAccessibilityTap": from_opt onAccessibilityTap,

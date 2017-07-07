@@ -13,7 +13,7 @@ let make:
   minimumTrackImage::ImageRe.Image.imageSource? =>
   thumbImage::ImageRe.Image.imageSource? =>
   trackImage::ImageRe.Image.imageSource? =>
-  accessibleLeft::ReasonReact.reactElement? =>
+  accessibilityLabel::ReasonReact.reactElement? =>
   accessible::bool? =>
   hitSlop::TypesRN.insets? =>
   onAccessibilityTap::(unit => unit)? =>

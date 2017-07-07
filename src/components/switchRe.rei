@@ -5,7 +5,7 @@ let make:
   thumbTintColor::string? =>
   tintColor::string? =>
   value::bool? =>
-  accessibleLeft::ReasonReact.reactElement? =>
+  accessibilityLabel::ReasonReact.reactElement? =>
   accessible::bool? =>
   hitSlop::TypesRN.insets? =>
   onAccessibilityTap::(unit => unit)? =>

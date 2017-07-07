@@ -8,7 +8,7 @@ let make
     ::mode=?
     ::minuteInterval=?
     ::timeZoneOffsetInMinutes=?
-    ::accessibleLeft=?
+    ::accessibilityLabel=?
     ::accessible=?
     ::hitSlop=?
     ::onAccessibilityTap=?
@@ -55,7 +55,7 @@ let make
             "timeZoneOffsetInMinutes": from_opt timeZoneOffsetInMinutes
           }
         )
-        ::?accessibleLeft
+        ::?accessibilityLabel
         ::?accessible
         ::?hitSlop
         ::?onAccessibilityTap

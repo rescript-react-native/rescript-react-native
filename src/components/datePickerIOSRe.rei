@@ -6,7 +6,7 @@ let make:
   mode::[ | `date | `datetime | `time]? =>
   minuteInterval::int? =>
   timeZoneOffsetInMinutes::int? =>
-  accessibleLeft::ReasonReact.reactElement? =>
+  accessibilityLabel::ReasonReact.reactElement? =>
   accessible::bool? =>
   hitSlop::TypesRN.insets? =>
   onAccessibilityTap::(unit => unit)? =>

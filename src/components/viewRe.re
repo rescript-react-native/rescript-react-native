@@ -1,6 +1,6 @@
 module type ViewComponent = {
   let make:
-    accessibleLeft::ReasonReact.reactElement? =>
+    accessibilityLabel::ReasonReact.reactElement? =>
     accessible::bool? =>
     hitSlop::TypesRN.insets? =>
     onAccessibilityTap::(unit => unit)? =>
@@ -48,7 +48,7 @@ module type Impl = {let view: ReasonReact.reactClass;};
 
 module CreateComponent (Impl: Impl) :ViewComponent => {
   let make
-      ::accessibleLeft=?
+      ::accessibilityLabel=?
       ::accessible=?
       ::hitSlop=?
       ::onAccessibilityTap=?
@@ -72,7 +72,7 @@ module CreateComponent (Impl: Impl) :ViewComponent => {
       reactClass::Impl.view
       props::(
         Props.extendView
-          ::?accessibleLeft
+          ::?accessibilityLabel
           ::?accessible
           ::?hitSlop
           ::?onAccessibilityTap

@@ -7,7 +7,7 @@ let make
     thumbTintColor::(thumbTintColor: option string)=?
     tintColor::(tintColor: option string)=?
     value::(value: option bool)=?
-    ::accessibleLeft=?
+    ::accessibilityLabel=?
     ::accessible=?
     ::hitSlop=?
     ::onAccessibilityTap=?
@@ -41,7 +41,7 @@ let make
             "tintColor": from_opt tintColor
           }
         )
-        ::?accessibleLeft
+        ::?accessibilityLabel
         ::?accessible
         ::?hitSlop
         ::?onAccessibilityTap
