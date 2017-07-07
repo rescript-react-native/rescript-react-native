@@ -11,6 +11,7 @@ module NativeEvent: {
   let target : t => Js.t {..};
   let touches : t => array (Js.t {..});
   let timestamp: t => int;
+  let data: t => string;
 };
 
 module NativeLayoutEvent: {
