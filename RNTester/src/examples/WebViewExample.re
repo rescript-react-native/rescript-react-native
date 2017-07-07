@@ -13,7 +13,7 @@ let examples: array Example.t =
         title: "Example.com",
         description: None,
         render: fun () => {
-          let source = WebView.webViewSource uri::"https://example.com" ();
+          let source = WebView.source uri::"https://example.com" ();
           <View style=(style [backgroundColor "#527FE4", padding 5.])>
             <WebView style=(style [height 400.]) source />
           </View>
