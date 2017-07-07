@@ -19,6 +19,7 @@ module TextInput = TextInputRe;
 module TouchableHighlight = TouchableHighlightRe;
 module TouchableOpacity = TouchableOpacityRe;
 module TouchableWithoutFeedback = TouchableWithoutFeedbackRe;
+module WebView = WebViewRe;
 module View = {
   include ViewRe.View;
   include ResponderUtils;

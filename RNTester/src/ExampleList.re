@@ -27,4 +27,10 @@ module Button = MakeExample ButtonExample;
 
 module View = MakeExample ViewExample;
 
-let components: array item = [|Button.item "ButtonExample", View.item "ViewExample"|];
+module WebView = MakeExample WebViewExample;
+
+let components: array item = [|
+  Button.item "ButtonExample",
+  View.item "ViewExample",
+  WebView.item "WebViewExample"
+|];

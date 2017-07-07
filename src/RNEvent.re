@@ -11,6 +11,7 @@ module NativeEvent = {
   external target : t => Js.t {..} = "" [@@bs.get];
   external touches : t => array (Js.t {..}) = "" [@@bs.get];
   external timestamp : t => int = "" [@@bs.get];
+  external data : t => string = "" [@@bs.get];
 };
 
 module NativeLayoutEvent = {
