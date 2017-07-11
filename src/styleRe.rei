@@ -257,6 +257,8 @@ let elevation: float => style;
  */
 let color: string => style;
 
+let fontFamily: string => style;
+
 let fontSize: float => style;
 
 let fontStyle: [ | `normal | `italic] => style;
