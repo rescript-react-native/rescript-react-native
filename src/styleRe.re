@@ -496,6 +496,8 @@ let elevation = floatStyle "elevation";
  */
 let color = stringStyle "color";
 
+let fontFamily = stringStyle "fontFamily";
+
 let fontSize = floatStyle "fontSize";
 
 let fontStyle v =>
