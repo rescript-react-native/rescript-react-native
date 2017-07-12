@@ -169,5 +169,5 @@ let prompt
         )
         keyboardType
     );
-  _prompt title msg bts opts t_ def_ keyboardT;
+  _prompt title msg bts opts t_ def_ keyboardT
 };

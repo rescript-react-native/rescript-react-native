@@ -1,5 +1,12 @@
 external view : ReasonReact.reactClass = "DatePickerIOS" [@@bs.module "react-native"];
 
+let encodeMode prop =>
+  switch prop {
+  | `date => "date"
+  | `time => "time"
+  | `datetime => "datetime"
+  };
+
 let make
     ::date=?
     ::onDateChange=?
@@ -38,19 +45,7 @@ let make
             "onDateChange": from_opt onDateChange,
             "maximumDate": from_opt maximumDate,
             "minimumDate": from_opt minimumDate,
-            "mode":
-              from_opt (
-                UtilsRN.option_map
-                  (
-                    fun prop =>
-                      switch prop {
-                      | `date => "date"
-                      | `time => "time"
-                      | `datetime => "datetime"
-                      }
-                  )
-                  mode
-              ),
+            "mode": from_opt (UtilsRN.option_map encodeMode mode),
             "minuteInterval": from_opt minuteInterval,
             "timeZoneOffsetInMinutes": from_opt timeZoneOffsetInMinutes
           }

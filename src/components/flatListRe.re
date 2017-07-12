@@ -53,10 +53,37 @@ let scrollToOffset ref ::offset=? ::animated=? () =>
 
 external recordInteraction : ReasonReact.reactRef => unit = "" [@@bs.send];
 
+type jsRenderBag 'item = Js.t {. item : 'item, index : int};
+
+type renderBag 'item = {item: 'item, index: int};
+
+type renderItem 'item = jsRenderBag 'item => ReasonReact.reactElement;
+
+let renderItem (reRenderItem: renderBag 'item => ReasonReact.reactElement) :renderItem 'item =>
+  fun (jsRenderBag: jsRenderBag 'item) =>
+    reRenderItem {item: jsRenderBag##item, index: jsRenderBag##index};
+
+type jsSeparatorProps 'item =
+  Js.t {. highlighted : Js.boolean, leadingItem : Js.Undefined.t 'item};
+
+type separatorProps 'item = {highlighted: bool, leadingItem: option 'item};
+
+type separatorComponent 'item = jsSeparatorProps 'item => ReasonReact.reactElement;
+
+let separatorComponent
+    (reSeparatorComponent: separatorProps 'item => ReasonReact.reactElement)
+    :separatorComponent 'item =>
+  fun (jsSeparatorProps: jsSeparatorProps 'item) =>
+    reSeparatorComponent {
+      highlighted: Js.to_bool jsSeparatorProps##highlighted,
+      leadingItem: Js.Undefined.to_opt jsSeparatorProps##leadingItem
+    };
+
 let make
-    ::data
-    ::renderItem
-    ::itemSeparatorComponent=?
+    data::(data: array 'item)
+    renderItem::(renderItem: renderItem 'item)
+    keyExtractor::(keyExtractor: 'item => int => string)
+    itemSeparatorComponent::(itemSeparatorComponent: option (separatorComponent 'item))=?
     ::listFooterComponent=?
     ::listHeaderComponent=?
     ::columnWrapperStyle=?
@@ -65,7 +92,6 @@ let make
     ::horizontal=?
     ::initialNumToRender=?
     ::initialScrollIndex=?
-    ::keyExtractor=?
     ::numColumns=?
     ::onEndReached=?
     ::onEndReachedThreshold=?
@@ -93,7 +119,7 @@ let make
           "horizontal": from_opt (UtilsRN.optBoolToOptJsBoolean horizontal),
           "initialNumToRender": from_opt initialNumToRender,
           "initialScrollIndex": from_opt initialScrollIndex,
-          "keyExtractor": from_opt keyExtractor,
+          "keyExtractor": keyExtractor,
           "numColumns": from_opt numColumns,
           "onEndReached": from_opt onEndReached,
           "onEndReachedThreshold": from_opt onEndReachedThreshold,

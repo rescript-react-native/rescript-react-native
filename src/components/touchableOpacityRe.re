@@ -1,6 +1,6 @@
 external view : ReasonReact.reactClass = "TouchableOpacity" [@@bs.module "react-native"];
 
-external setOpacityTo : ReasonReact.reactRef => float => int => unit = "scrollTo" [@@bs.send];
+external setOpacityTo : ReasonReact.reactRef => float => int => unit = "setOpacityTo" [@@bs.send];
 
 let make
     ::accessible=?

@@ -1,21 +1,21 @@
 type t;
 
-type gestureState =
-   {
-    stateID : float,
-    moveX : float,
-    moveY : float,
-    x0 : float,
-    y0 : float,
-    dx : float,
-    dy : float,
-    vx : float,
-    vy : float,
-    numberActiveTouches : int
-  };
+type gestureState = {
+  stateID: float,
+  moveX: float,
+  moveY: float,
+  x0: float,
+  y0: float,
+  dx: float,
+  dy: float,
+  vx: float,
+  vy: float,
+  numberActiveTouches: int
+};
 
+type callback 'a;
 
-type callback 'a = RNEvent.NativeEvent.t => gestureState => 'a;
+let callback: (RNEvent.NativeEvent.t => gestureState => 'a) => callback 'a;
 
 let create:
   onMoveShouldSetPanResponder::callback bool? =>
@@ -28,10 +28,10 @@ let create:
   onPanResponderEnd::callback unit? =>
   onPanResponderRelease::callback unit? =>
   onPanResponderMove::
-    [<
+    [
       | `callback (callback unit)
       | `update (
-          list [< | `X AnimatedRe.Value.t | `XY AnimatedRe.ValueXY.t | `Y AnimatedRe.Value.t]
+          list [ | `X AnimatedRe.Value.t | `XY AnimatedRe.ValueXY.t | `Y AnimatedRe.Value.t]
         )
     ]? =>
   onPanResponderTerminate::callback unit? =>

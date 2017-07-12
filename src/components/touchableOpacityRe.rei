@@ -1,4 +1,4 @@
-external setOpacityTo : ReasonReact.reactRef => float => int => unit = "scrollTo" [@@bs.send];
+external setOpacityTo : ReasonReact.reactRef => float => int => unit = "setOpacityTo" [@@bs.send];
 
 let make:
   accessible::bool? =>

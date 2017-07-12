@@ -1,11 +1,5 @@
 external statusBar : ReasonReact.reactClass = "StatusBar" [@@bs.module "react-native"];
 
-/*barStyle::[ | `darkContent | `default | `lightContent]? =>
-  hidden::bool? =>
-  backgroundColor::string? =>
-  translucent::bool? =>
-  networkActivityIndicatorVisible::bool? =>
-  showHideTransition::[ | `fade | `none | `slide]*/
 external _setHidden : Js.boolean => Js.Undefined.t string => unit =
   "setHidden" [@@bs.scope "StatusBar"] [@@bs.module "react-native"];
 
