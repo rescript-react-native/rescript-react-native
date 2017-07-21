@@ -2,8 +2,8 @@ external tabBarItemIOS : ReasonReact.reactClass =
   "Item" [@@bs.scope "TabBarIOS"] [@@bs.module "react-native"];
 
 let make
-    ::title=?
-    ::badgeColor=?
+    title::(title: option string)=?
+    badgeColor::(badgeColor: option string)=?
     ::badge=?
     ::icon=?
     ::onPress=?
