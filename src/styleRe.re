@@ -1,5 +1,7 @@
 type t;
 
+external flatten : array t => t = "%identity";
+
 external to_style : Js.Dict.t Js.Json.t => t = "%identity";
 
 external style_to_dict : t => Js.Dict.t Js.Json.t = "%identity";

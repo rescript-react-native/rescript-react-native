@@ -1,5 +1,14 @@
 type t;
 
+/** Coerces an array of styles to a single style.
+ * This is equivalent:
+ * // js
+ * <View style={[styleA, styleB]} />
+ * // reason
+ * <View style=(Style.flatten [|styleA, styleB|]) />
+*/
+let flatten: array t => t;
+
 type style;
 
 let style: list style => t;
