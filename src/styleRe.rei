@@ -1,5 +1,14 @@
 type t;
 
+/** Generates a style out of an array of styles.
+ * This is equivalent:
+ * // js
+ * <View style={[styleA, styleB]} />
+ * // reason
+ * <View style=(Style.flatten [|styleA, styleB|]) />
+*/
+let flatten: array t => t;
+
 type style;
 
 let style: list style => t;
@@ -8,8 +17,6 @@ let combine: t => t => t;
 
 let concat: list t => t;
 
-
-/** Equivalent to [style_a, style_b] in js */
 
 /**
  * Layout Props
