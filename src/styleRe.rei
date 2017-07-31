@@ -1,6 +1,6 @@
 type t;
 
-/** Coerces an array of styles to a single style.
+/** Generates a style out of an array of styles.
  * This is equivalent:
  * // js
  * <View style={[styleA, styleB]} />
@@ -17,8 +17,6 @@ let combine: t => t => t;
 
 let concat: list t => t;
 
-
-/** Equivalent to [style_a, style_b] in js */
 
 /**
  * Layout Props
