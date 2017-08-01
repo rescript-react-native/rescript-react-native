@@ -1,13 +1,13 @@
 let make:
   title::string? =>
   badgeColor::string? =>
-  badge::'a? =>
-  icon::'b? =>
+  badge::string? =>
+  icon::ImageRe.Image.imageSource? =>
   onPress::'c? =>
   renderAsOriginal::bool? =>
-  style::'d? =>
+  style::StyleRe.t? =>
   selected::bool? =>
-  selectedIcon::'e? =>
+  selectedIcon::ImageRe.Image.imageSource? =>
   isTVSelectable::bool? =>
   array ReasonReact.reactElement =>
   ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps;

@@ -1,10 +1,10 @@
 let make:
-  barTintColor::'a? =>
-  itemPositioning::'b? =>
-  style::'c? =>
-  tintColor::'d? =>
+  barTintColor::string? =>
+  itemPositioning::[ | `fill | `center | `auto]? =>
+  style::StyleRe.t? =>
+  tintColor::string? =>
   translucent::bool? =>
-  unselectedItemTintColor::'e? =>
-  unselectedTintColor::'f? =>
+  unselectedItemTintColor::string? =>
+  unselectedTintColor::string? =>
   array ReasonReact.reactElement =>
   ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps;
