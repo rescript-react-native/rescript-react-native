@@ -25,8 +25,8 @@
 - [ ] SnapshotViewIOS
 - [x] StatusBar
 - [x] Switch
-- [ ] TabBarIOS
-- [ ] TabBarIOS.Item
+- [x] TabBarIOS
+- [x] TabBarIOS.Item
 - [x] Text
 - [x] TextInput
 - [ ] ToolbarAndroid
