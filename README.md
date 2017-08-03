@@ -105,4 +105,4 @@ let styles =
 ```
 
 ## Status
-You can find an overview of the implemented components and APIs [here](STATUS.md)
+You can find an overview of the implemented components and APIs [here](STATUS.md).
