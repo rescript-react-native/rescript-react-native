@@ -70,7 +70,6 @@ AppRegistry.registerComponent('MyAwesomeProject', () => app);
 Here are some more things which will be proabbyl useful for you:
 - [Reason-React Documentation](https://reasonml.github.io/reason-react/)
 - [Bucklescript Manual](http://bucklescript.github.io/bucklescript/Manual.html)
-- [Bindings to `react-navigation`](https://github.com/saschatimme/bs-react-navigation)
 
 ### Disclaimer
 
