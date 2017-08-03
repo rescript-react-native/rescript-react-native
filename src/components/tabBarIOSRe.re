@@ -20,9 +20,9 @@ let make
                 (
                   fun x =>
                     switch x {
-                    | `default => "default"
-                    | `lightContent => "light-content"
-                    | `darkContent => "dark-content"
+                    | `fill => "fill"
+                    | `center => "center"
+                    | `auto => "auto"
                     }
                 )
                 itemPositioning
