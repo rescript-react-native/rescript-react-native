@@ -3,7 +3,8 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"start": "bsb -clean-world -make-world -w"
+		"start": "bsb -clean-world -make-world -w",
+		"build": "bsb -make-world"
 	},
 	"license": "MIT",
 	"files": [
