@@ -10,7 +10,7 @@
 	"author": "",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/BuckleTypes/bs-react-native.git"
+		"url": "https://github.com/reasonml-community/bs-react-native.git"
 	},
 	"devDependencies": {
 		"bs-platform": "^1.8.2"
