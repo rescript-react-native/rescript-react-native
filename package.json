@@ -1,16 +1,12 @@
 {
 	"name": "bs-react-native",
 	"version": "0.1.0",
-	"private": true,
 	"scripts": {
 		"start": "bsb -clean-world -make-world -w",
 		"build": "bsb -make-world"
 	},
 	"license": "MIT",
-	"files": [
-		"src",
-		"bsconfig.json"
-	],
+	"keywords": ["reason", "reasonml","bucklescript", "react-native"],
 	"author": "",
 	"repository": {
 		"type": "git",

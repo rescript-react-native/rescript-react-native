@@ -9,7 +9,7 @@ Let's assume that you already have a React Native project. Otherwise follow the 
 1. Install [Bucklescript](https://github.com/bloomberg/bucklescript) (the Reason -> JS compiler), [Reason-React](https://github.com/reasonml/reason-react) and `bs-react-native`:
 ```sh
 # substitute yarn with npm if you prefer
-yarn add bs-platform reason-react https://github.com/BuckleTypes/bs-react-native.git
+yarn add bs-platform reason-react bs-react-native
 ```
 
 2. Create a `re` folder (there will be your Reason code)
