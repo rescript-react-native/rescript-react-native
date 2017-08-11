@@ -67,9 +67,12 @@ AppRegistry.registerComponent('MyAwesomeProject', () => app);
 9. Great you are all set up! Check the source of `bs-react-native` to find out more about the implemented APIs and Components. If you get stuck just ask on our [Discord Server](https://discord.gg/reasonml)! Happy Hacking!
 
 
-Here are some more things which will be proabbyl useful for you:
+Here are some more things which will be probably useful for you:
 - [Reason-React Documentation](https://reasonml.github.io/reason-react/)
 - [Bucklescript Manual](http://bucklescript.github.io/bucklescript/Manual.html)
+
+## Can I really build my React Native app with Reason?
+Yes! Check out the [Seattle JS Conf App](https://github.com/FormidableLabs/seattlejsconf-app)for a real world App written with Reason.
 
 ### Disclaimer
 
