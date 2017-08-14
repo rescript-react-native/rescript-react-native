@@ -7,7 +7,7 @@ external _canOpenURL : string => Js.Promise.t Js.boolean =
 let canOpenURL url =>
   _canOpenURL url |> Js.Promise.then_ (fun bool => Js.Promise.resolve (Js.to_bool bool));
 
-external getInitialURL : unit => Js.Promise.t string =
+external getInitialURL : unit => Js.Promise.t (Js.Null.t string) =
   "getInitialURL" [@@bs.scope "Linking"] [@@bs.module "react-native"];
 
 external addEventListener : string => (Js.t {. url : string} => unit) => unit =
