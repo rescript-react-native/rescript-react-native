@@ -558,7 +558,7 @@ let textDecorationLine v =>
       }
     );
 
-let textShadowColor = stringStyle "string";
+let textShadowColor = stringStyle "textShadowColor";
 
 let textShadowOffset ::height ::width =>
   UtilsRN.dictFromArray [|("height", Encode.float height), ("width", Encode.float width)|] |>
