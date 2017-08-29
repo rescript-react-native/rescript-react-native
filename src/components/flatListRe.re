@@ -55,7 +55,10 @@ external recordInteraction : ReasonReact.reactRef => unit = "" [@@bs.send];
 
 type jsRenderBag 'item = Js.t {. item : 'item, index : int};
 
-type renderBag 'item = {item: 'item, index: int};
+type renderBag 'item = {
+  item: 'item,
+  index: int
+};
 
 type renderItem 'item = jsRenderBag 'item => ReasonReact.reactElement;
 
@@ -66,7 +69,10 @@ let renderItem (reRenderItem: renderBag 'item => ReasonReact.reactElement) :rend
 type jsSeparatorProps 'item =
   Js.t {. highlighted : Js.boolean, leadingItem : Js.Undefined.t 'item};
 
-type separatorProps 'item = {highlighted: bool, leadingItem: option 'item};
+type separatorProps 'item = {
+  highlighted: bool,
+  leadingItem: option 'item
+};
 
 type separatorComponent 'item = jsSeparatorProps 'item => ReasonReact.reactElement;
 
@@ -105,9 +111,9 @@ let make
     props::
       Js.Undefined.(
         {
-          "itemSeparatorComponent": from_opt itemSeparatorComponent,
-          "listFooterComponent": from_opt listFooterComponent,
-          "listHeaderComponent": from_opt listHeaderComponent,
+          "ItemSeparatorComponent": from_opt itemSeparatorComponent,
+          "ListFooterComponent": from_opt listFooterComponent,
+          "ListHeaderComponent": from_opt listHeaderComponent,
           "columnWrapperStyle": from_opt columnWrapperStyle,
           "data": data,
           "extraData": from_opt extraData,
