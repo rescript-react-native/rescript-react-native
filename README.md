@@ -1,4 +1,5 @@
 # [BuckleScript](https://github.com/bloomberg/bucklescript) bindings for [React Native](https://github.com/facebook/react-native)
+[![Build Status](https://travis-ci.org/reasonml-community/bs-react-native.svg?branch=master)](https://travis-ci.org/reasonml-community/bs-react-native)
 
 ## Getting started
 
@@ -8,7 +9,7 @@ Let's assume that you already have a React Native project. Otherwise follow the 
 1. Install [Bucklescript](https://github.com/bloomberg/bucklescript) (the Reason -> JS compiler), [Reason-React](https://github.com/reasonml/reason-react) and `bs-react-native`:
 ```sh
 # substitute yarn with npm if you prefer
-yarn add bs-platform reason-react https://github.com/BuckleTypes/bs-react-native.git
+yarn add bs-platform reason-react bs-react-native
 ```
 
 2. Create a `re` folder (there will be your Reason code)
@@ -66,16 +67,16 @@ AppRegistry.registerComponent('MyAwesomeProject', () => app);
 9. Great you are all set up! Check the source of `bs-react-native` to find out more about the implemented APIs and Components. If you get stuck just ask on our [Discord Server](https://discord.gg/reasonml)! Happy Hacking!
 
 
-Here are some more things which will be proabbyl useful for you:
+Here are some more things which will be probably useful for you:
 - [Reason-React Documentation](https://reasonml.github.io/reason-react/)
 - [Bucklescript Manual](http://bucklescript.github.io/bucklescript/Manual.html)
-- [Bindings to `react-navigation`](https://github.com/saschatimme/bs-react-navigation)
+
+## Can I really build my React Native app with Reason?
+Yes! Check out the [Seattle JS Conf App](https://github.com/FormidableLabs/seattlejsconf-app)for a real world App written with Reason.
 
 ### Disclaimer
 
-This is **work in progress**. There are many missing APIs and the existing ones are not guaranteed to work. Contributions of Components and APIs are very welcome!
-
-The bindings are targeted to React Native **0.46+**.
+There are some components and APIs missing. You can find an overview of the implemented components and APIs [here](STATUS.md). Contributions of Components and APIs are very welcome! The bindings are targeted to React Native **0.46+**.
 
 ## Style
 Since we have a proper type system we can make styles **typesafe**! Therefore styles are a little bit different declared than in JavaScript:
@@ -103,6 +104,3 @@ let styles =
 
 <View style=styles##wrapper />;
 ```
-
-## Status
-You can find an overview of the implemented components and APIs [here](STATUS.md)

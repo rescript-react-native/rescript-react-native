@@ -1,13 +1,14 @@
 {
-    "name": "bs-react-native",
-    "reason": {
-        "react-jsx": 2
-    },
-    "bs-dependencies": ["reason-react"],
-    "sources": [{
-        "dir": "src",
-        "subdirs": {
-            "dir": "components"
-        }
-    }]
+  "name": "bs-react-native",
+  "bsc-flags": ["-bs-super-errors"],
+  "reason": {"react-jsx": 2},
+  "bs-dependencies": ["reason-react"],
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": {
+        "dir": "components"
+      }
+    }
+  ]
 }

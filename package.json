@@ -1,22 +1,21 @@
 {
 	"name": "bs-react-native",
 	"version": "0.1.0",
-	"private": true,
 	"scripts": {
-		"start": "bsb -clean-world -make-world -w"
+    "build": "bsb -make-world",
+    "start": "bsb -make-world -w",
+    "clean": "bsb -clean-world",
+    "test": "exit 0"
 	},
 	"license": "MIT",
-	"files": [
-		"src",
-		"bsconfig.json"
-	],
+	"keywords": ["reason", "reasonml","bucklescript", "react-native"],
 	"author": "",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/BuckleTypes/bs-react-native.git"
+		"url": "https://github.com/reasonml-community/bs-react-native.git"
 	},
 	"devDependencies": {
-		"bs-platform": "^1.8.2"
+		"bs-platform": "^1.9.0"
 	},
 	"dependencies": {
 		"reason-react": "^0.2.3"

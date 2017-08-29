@@ -1,8 +1,7 @@
-external exitApp : unit => unit =
+external exitApp : unit => unit = "" [@@bs.scope "BackHandler"] [@@bs.module "react-native"];
+
+external addEventListener : string => (unit => bool) => unit =
   "" [@@bs.scope "BackHandler"] [@@bs.module "react-native"];
 
-external addEventListener : string => (unit => unit) => unit =
-  "" [@@bs.scope "BackHandler"] [@@bs.module "react-native"];
-
-external removeEventListener : string => (unit => unit) => unit =
+external removeEventListener : string => (unit => bool) => unit =
   "" [@@bs.scope "BackHandler"] [@@bs.module "react-native"];
