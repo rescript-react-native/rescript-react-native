@@ -91,6 +91,8 @@ module PanResponder = {
 
 module Vibration = VibrationRe;
 
+module SegmentedControllOS = SegmentedControllOSRe;
+
 
 /**
  * New Modules due to Reason
