@@ -20,7 +20,7 @@
 - [x] RefreshControl
 - [x] ScrollView
 - [x] SectionList
-- [ ] SegmentedControlIOS
+- [x] SegmentedControlIOS
 - [x] Slider
 - [ ] SnapshotViewIOS
 - [x] StatusBar
