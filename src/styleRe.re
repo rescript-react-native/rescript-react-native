@@ -216,7 +216,7 @@ let maxHeight = floatStyle "maxHeight";
 
 let maxHeightPct = pctStyle "maxHeight";
 
-let maxWidth = floatStyle "maxHeight";
+let maxWidth = floatStyle "maxWidth";
 
 let maxWidthPct = pctStyle "maxHeight";
 
