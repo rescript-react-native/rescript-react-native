@@ -6,7 +6,10 @@ module Text: TextRe.TextComponent;
 
 module ScrollView: {
   let onScrollUpdater: x::'a? => y::'b? => native::bool? => unit => RNEvent.NativeEvent.t => unit;
-  type point = {x: float, y: float};
+  type point = {
+    x: float,
+    y: float
+  };
   let scrollTo: ReasonReact.reactRef => x::int => y::int => animated::bool => unit;
   let scrollToEnd: ReasonReact.reactRef => animated::bool => unit;
   let make:
@@ -84,5 +87,5 @@ module ScrollView: {
     snapToAlignment::[ | `center | `end_ | `start]? =>
     zoomScale::float? =>
     array ReasonReact.reactElement =>
-    ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps;
+    ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps unit;
 };
