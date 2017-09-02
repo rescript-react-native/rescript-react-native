@@ -17,4 +17,4 @@ let make:
   networkActivityIndicatorVisible::bool? =>
   showHideTransition::[ | `fade | `none | `slide]? =>
   array ReasonReact.reactElement =>
-  ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps;
+  ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps unit;

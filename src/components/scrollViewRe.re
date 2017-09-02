@@ -1,5 +1,8 @@
 module type ScrollViewComponent = {
-  type point = {x: float, y: float};
+  type point = {
+    x: float,
+    y: float
+  };
   let scrollTo: ReasonReact.reactRef => x::int => y::int => animated::bool => unit;
   let scrollToEnd: ReasonReact.reactRef => animated::bool => unit;
   let make:
@@ -77,11 +80,14 @@ module type ScrollViewComponent = {
     snapToAlignment::[ | `center | `start | `end_]? =>
     zoomScale::float? =>
     array ReasonReact.reactElement =>
-    ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps;
+    ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps unit;
 };
 
 module CreateComponent (Impl: ViewRe.Impl) :ScrollViewComponent => {
-  type point = {x: float, y: float};
+  type point = {
+    x: float,
+    y: float
+  };
   external _scrollTo :
     ReasonReact.reactRef => Js.t {. x : int, y : int, animated : Js.boolean} => unit =
     "scrollTo" [@@bs.send];

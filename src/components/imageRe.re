@@ -22,7 +22,13 @@ module type ImageComponent = {
   type defaultSource =
     | URI defaultURISource
     | Required PackagerRe.required;
-  module Event: {type error; type progress = {loaded: float, total: float};};
+  module Event: {
+    type error;
+    type progress = {
+      loaded: float,
+      total: float
+    };
+  };
   let make:
     onError::(Event.error => unit)? =>
     onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
@@ -42,7 +48,7 @@ module type ImageComponent = {
     onPartialLoad::(unit => unit)? =>
     onProgress::(Event.progress => unit)? =>
     array ReasonReact.reactElement =>
-    ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps;
+    ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps unit;
 };
 
 module CreateComponent (Impl: ViewRe.Impl) :ImageComponent => {
@@ -56,11 +62,18 @@ module CreateComponent (Impl: ViewRe.Impl) :ImageComponent => {
     /*
      * Be careful not to refmt this away !!!
      * https://github.com/facebook/reason/issues/821 (resolved, not released yet)
-     * 
+     *
      * This is hot it should look (or to copy it in again ^^)
      *  cache::[ | `default | `reload | `forceCache [@bs.as "force-cache"] | `onlyIfCached  [@bs.as "only-if-cached"]] [@bs.string]? =>
      */
-    cache::[ | `default | `reload | `forceCache [@bs.as "force-cache"] | `onlyIfCached  [@bs.as "only-if-cached"]] [@bs.string]? =>
+    cache::
+      [
+        | `default
+        | `reload
+        | `forceCache [@bs.as "force-cache"]
+        | `onlyIfCached [@bs.as "only-if-cached"]
+      ]
+      [@bs.string]? =>
     scale::float? =>
     width::float? =>
     height::float? =>
@@ -83,7 +96,10 @@ module CreateComponent (Impl: ViewRe.Impl) :ImageComponent => {
   module Event = {
     type t;
     type error;
-    type progress = {loaded: float, total: float};
+    type progress = {
+      loaded: float,
+      total: float
+    };
     external progress : t => progress = "nativeEvent" [@@bs.get];
   };
   let encodeResizeMode x =>
@@ -105,8 +121,7 @@ module CreateComponent (Impl: ViewRe.Impl) :ImageComponent => {
     | `auto => "auto"
     | `resize => "resize"
     | `scale => "scale"
-  };
-  
+    };
   let encodeDefaultSource (x: defaultSource) =>
     switch x {
     | URI x => rawImageSourceJS x
@@ -149,7 +164,7 @@ module CreateComponent (Impl: ViewRe.Impl) :ImageComponent => {
             "accessible": from_opt (UtilsRN.optBoolToOptJsBoolean accessible),
             "blurRadius": from_opt blurRadius,
             "capInsets": from_opt capInsets,
-            "defaultSource":from_opt (UtilsRN.option_map encodeDefaultSource defaultSource),
+            "defaultSource": from_opt (UtilsRN.option_map encodeDefaultSource defaultSource),
             "onPartialLoad": from_opt onPartialLoad,
             "onProgress":
               from_opt (UtilsRN.option_map (fun x y => x (Event.progress y)) onProgress)

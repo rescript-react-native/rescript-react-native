@@ -9,4 +9,4 @@ let make:
   supportedOrientations::
     [ | `landscape | `landscapeLeft | `landscapeRight | `portrait | `portraitUpsideDown]? =>
   array ReasonReact.reactElement =>
-  ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps;
+  ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps unit;

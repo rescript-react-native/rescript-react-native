@@ -38,4 +38,4 @@ let make:
   focusedOpacity::float? =>
   tvParallaxProperties::Js.t {.}? =>
   array ReasonReact.reactElement =>
-  ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps;
+  ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps unit;

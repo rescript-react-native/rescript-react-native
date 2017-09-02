@@ -18,7 +18,7 @@ module type TextComponent = {
     suppressHighlighting::bool? =>
     value::string? =>
     array ReasonReact.reactElement =>
-    ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps;
+    ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps unit;
 };
 
 module CreateComponent: (Impl: ViewRe.Impl) => TextComponent;
