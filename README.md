@@ -20,6 +20,7 @@ yarn add bs-platform reason-react bs-react-native
     "reason": {
         "react-jsx": 2
     },
+    "bsc-flags": ["-bs-super-errors"],
     "bs-dependencies": ["bs-react-native", "reason-react"],
     "sources": [{
         "dir": "re"
