@@ -14,11 +14,12 @@ Style.(
       description: None,
       render: fun () => {
         <ImageBackground
-        style=(style [height 400., width 250.])
+        style=(style [flex 1.,height 400., width 250., borderColor "green", borderWidth 2.])
+        imageStyle=(style [flex 1., borderColor "red", borderWidth 2.])
         source=(URI ImageBackground.(
           imageURISource
             uri::(
-              "http://via.placeholder.com/250x400.jpg"
+              "http://lorempixel.com/output/abstract-h-c-250-400-8.jpg"
             )
             ()
         ))
