@@ -29,8 +29,11 @@ module View = MakeExample ViewExample;
 
 module WebView = MakeExample WebViewExample;
 
+module ImageBackground = MakeExample ImageBackgroundExample;
+
 let components: array item = [|
   Button.item "ButtonExample",
   View.item "ViewExample",
-  WebView.item "WebViewExample"
+  WebView.item "WebViewExample",
+  ImageBackground.item "ImageBackground"
 |];
