@@ -38,6 +38,7 @@ module type ImageBackgroundComponent = {
       resizeMode::[< | `center | `contain | `cover | `repeat | `stretch]? =>
       source::imageSource? =>
       style::StyleRe.t? =>
+      imageStyle::StyleRe.t? =>
       testID::string? =>
       resizeMethod::[< | `auto | `resize | `scale]? =>
       accessibilityLabel::string? =>
@@ -136,6 +137,7 @@ module type ImageBackgroundComponent = {
         ::resizeMode=?
         ::source=?
         ::style=?
+        ::imageStyle=?
         ::testID=?
         ::resizeMethod=?
         ::accessibilityLabel=?
@@ -158,6 +160,7 @@ module type ImageBackgroundComponent = {
               "resizeMode": from_opt (UtilsRN.option_map encodeResizeMode resizeMode),
               "source": from_opt (UtilsRN.option_map encodeSource source),
               "style": from_opt style,
+              "imageStyle": from_opt imageStyle,
               "testID": from_opt testID,
               "resizeMethod": from_opt (UtilsRN.option_map encodeResizeMethod resizeMethod),
               "accessibilityLabel": from_opt accessibilityLabel,

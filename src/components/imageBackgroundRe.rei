@@ -38,6 +38,7 @@ module type ImageBackgroundComponent = {
       resizeMode::[< | `center | `contain | `cover | `repeat | `stretch]? =>
       source::imageSource? =>
       style::StyleRe.t? =>
+      imageStyle::StyleRe.t? =>
       testID::string? =>
       resizeMethod::[< | `auto | `resize | `scale]? =>
       accessibilityLabel::string? =>
