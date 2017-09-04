@@ -48,4 +48,4 @@ let make:
   accessibilityViewIsModal::bool? =>
   shouldRasterizeIOS::bool? =>
   array ReasonReact.reactElement =>
-  ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps;
+  ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps unit;

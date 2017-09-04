@@ -22,7 +22,13 @@ module type ImageComponent = {
   type defaultSource =
     | URI defaultURISource
     | Required PackagerRe.required;
-  module Event: {type error; type progress = {loaded: float, total: float};};
+  module Event: {
+    type error;
+    type progress = {
+      loaded: float,
+      total: float
+    };
+  };
   let make:
     onError::(Event.error => unit)? =>
     onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
@@ -42,7 +48,7 @@ module type ImageComponent = {
     onPartialLoad::(unit => unit)? =>
     onProgress::(Event.progress => unit)? =>
     array ReasonReact.reactElement =>
-    ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps;
+    ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps unit;
 };
 
 module CreateComponent: (Impl: ViewRe.Impl) => ImageComponent;

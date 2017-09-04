@@ -1,11 +1,11 @@
 let make:
-  date::Js.Date.t? =>
-  onDateChange::(Js.Date.t => unit)? =>
-  maximumDate::Js.Date.t? =>
-  minimumDate::Js.Date.t? =>
-  mode::[ | `date | `datetime | `time]? =>
-  minuteInterval::int? =>
-  timeZoneOffsetInMinutes::int? =>
+  values::list string =>
+  selectedIndex::int? =>
+  onChange::(RNEvent.t => unit)? =>
+  enabled::bool? =>
+  momentary::bool? =>
+  tintColor::string? =>
+  onValueChange::(string => unit)? =>
   accessibilityLabel::ReasonReact.reactElement? =>
   accessible::bool? =>
   hitSlop::TypesRN.insets? =>

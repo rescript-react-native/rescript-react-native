@@ -91,13 +91,13 @@ let separatorComponent
       highlighted: Js.to_bool jsSeparatorProps##highlighted,
       leadingItem: Js.Undefined.to_opt jsSeparatorProps##leadingItem,
       leadingSection:
-        Js.Undefined.to_opt jsSeparatorProps##leadingSection |>
-        UtilsRN.option_map jsSectionToSection,
+        Js.Undefined.to_opt jsSeparatorProps##leadingSection
+        |> UtilsRN.option_map jsSectionToSection,
       section: jsSectionToSection jsSeparatorProps##section,
       trailingItem: Js.Undefined.to_opt jsSeparatorProps##trailingItem,
       trailingSection:
-        Js.Undefined.to_opt jsSeparatorProps##trailingSection |>
-        UtilsRN.option_map jsSectionToSection
+        Js.Undefined.to_opt jsSeparatorProps##trailingSection
+        |> UtilsRN.option_map jsSectionToSection
     };
 
 type viewToken 'item =
@@ -131,7 +131,7 @@ let make:
   renderSectionFooter::(Js.t {. section : section 'item} => ReasonReact.reactElement)? =>
   stickySectionHeadersEnabled::bool? =>
   array ReasonReact.reactElement =>
-  ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps =
+  ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps unit =
   fun ::sections
       ::renderItem
       ::keyExtractor

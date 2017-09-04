@@ -21,7 +21,10 @@ let scrollToOffset: ReasonReact.reactRef => offset::int? => animated::Js.boolean
 
 external recordInteraction : ReasonReact.reactRef => unit = "" [@@bs.send];
 
-type renderBag 'item = {item: 'item, index: int};
+type renderBag 'item = {
+  item: 'item,
+  index: int
+};
 
 type renderItem 'item;
 
@@ -29,7 +32,10 @@ let renderItem: (renderBag 'item => ReasonReact.reactElement) => renderItem 'ite
 
 type separatorComponent 'item;
 
-type separatorProps 'item = {highlighted: bool, leadingItem: option 'item};
+type separatorProps 'item = {
+  highlighted: bool,
+  leadingItem: option 'item
+};
 
 let separatorComponent:
   (separatorProps 'item => ReasonReact.reactElement) => separatorComponent 'item;
@@ -81,4 +87,4 @@ let make:
   removeClippedSubviews::bool? =>
   viewabilityConfig::Js.t {.}? =>
   array ReasonReact.reactElement =>
-  ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps;
+  ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps unit;
