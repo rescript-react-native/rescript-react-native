@@ -25,7 +25,7 @@ let examples: array Example.t =
                   )
             )>
             <View style=(style [backgroundColor "#FFFFFF", padding 5.])>
-              <Text> (ReasonReact.stringToElement "Much image such background!") </Text>
+              <Text> (ReasonReact.stringToElement "Nested text") </Text>
             </View>
           </ImageBackground>
       }
