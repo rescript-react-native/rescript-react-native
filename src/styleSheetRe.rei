@@ -11,3 +11,5 @@ let absoluteFill: StyleRe.t;
 let absoluteFillObject: StyleRe.t;
 
 let flatten: list StyleRe.t => StyleRe.t;
+
+let processColor: [ | `String string | `Number int] => string;
