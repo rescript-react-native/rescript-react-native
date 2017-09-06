@@ -2,22 +2,29 @@ type t;
 
 external t : t = "StyleSheet" [@@bs.module "react-native"];
 
-external _create : t => Js.t 'a => Js.t 'a = "create" [@@bs.send];
+external create : t => Js.t 'a => Js.t 'a = "create" [@@bs.send];
 
-let create: Js.t 'a => Js.t 'a = fun a => _create t a;
+let create: Js.t 'a => Js.t 'a = fun a => create t a;
 
-external _hairlineWidth : t => float = "hairlineWidth" [@@bs.get];
+external hairlineWidth : t => float = "hairlineWidth" [@@bs.get];
 
-let hairlineWidth = _hairlineWidth t;
+let hairlineWidth = hairlineWidth t;
 
-external _absoluteFill : t => StyleRe.t = "absoluteFill" [@@bs.get];
+external absoluteFill : t => StyleRe.t = "absoluteFill" [@@bs.get];
 
-let absoluteFill = _absoluteFill t;
+let absoluteFill = absoluteFill t;
 
-external _absoluteFillObject : t => StyleRe.t = "absoluteFillObject" [@@bs.get];
+external absoluteFillObject : t => StyleRe.t = "absoluteFillObject" [@@bs.get];
 
-let absoluteFillObject = _absoluteFillObject t;
+let absoluteFillObject = absoluteFillObject t;
 
-external _flatten : t => array StyleRe.t => StyleRe.t = "flatten" [@@bs.send];
+external flatten : t => array StyleRe.t => StyleRe.t = "flatten" [@@bs.send];
 
-let flatten styles => _flatten t (Array.of_list styles);
+let flatten styles => flatten t (Array.of_list styles);
+
+/* It really returns an int but we
+ * abuse externals because we use
+ * colors as strings everywhere
+ */
+external processColor : [ | `String string | `Number int] [@bs.unwrap] => string =
+  "processColor" [@@bs.module];
