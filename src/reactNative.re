@@ -84,6 +84,8 @@ module NativeEventEmitter = NativeEventEmitterRe;
 
 module Platform = PlatformRe;
 
+module PixelRatio = PixelRatioRe;
+
 module StyleSheet = StyleSheetRe;
 
 module PanResponder = {
