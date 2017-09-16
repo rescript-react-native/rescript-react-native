@@ -6,9 +6,7 @@
   "sources": [
     {
       "dir": "src",
-      "subdirs": {
-        "dir": "components"
-      }
+      "subdirs": true,
     }
   ]
 }
