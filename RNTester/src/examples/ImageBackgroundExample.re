@@ -19,7 +19,7 @@ let examples: array Example.t =
             )
             imageStyle=(style [flex 1.])
             source=(
-              URI ImageBackground.(
+              URI Image.(
                     imageURISource
                       uri::"https://lorempixel.com/output/abstract-h-c-250-400-8.jpg" ()
                   )
