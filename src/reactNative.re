@@ -48,7 +48,7 @@ module View = {
 
 module Image = ImageRe.Image;
 
-module ImageBackground = ImageBackgroundRe.ImageBackground;
+module ImageBackground = ImageBackgroundRe;
 
 module Animated = {
   include AnimatedRe;
