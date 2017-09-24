@@ -1,1 +1,7 @@
-external get : unit => int = "get" [@@bs.scope "PixelRatio"] [@@bs.module "react-native"];
+external get : unit => float = "get" [@@bs.scope "PixelRatio"] [@@bs.module "react-native"];
+
+external getFontScale : unit => float = "getFontScale" [@@bs.scope "PixelRatio"] [@@bs.module "react-native"];
+
+external getPixelSizeForLayoutSize : int => int = "getPixelSizeForLayoutSize" [@@bs.scope "PixelRatio"] [@@bs.module "react-native"];
+
+external roundToNearestPixel : float => float = "roundToNearestPixel" [@@bs.scope "PixelRatio"] [@@bs.module "react-native"];
