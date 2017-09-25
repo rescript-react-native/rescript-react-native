@@ -51,7 +51,7 @@ module type ScrollViewComponent = {
     keyboardDismissMode::[ | `interactive | `none | `onDrag]? =>
     keyboardShouldPersistTaps::[ | `always | `handled | `never]? =>
     onContentSizeChange::((float, float) => unit)? =>
-    onScroll::(RNEvent.NativeEvent.t => unit)? =>
+    onScroll::(RNEvent.NativeScrollEvent.t => unit)? =>
     pagingEnabled::bool? =>
     refreshControl::ReasonReact.reactElement? =>
     scrollEnabled::bool? =>
