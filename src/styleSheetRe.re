@@ -27,4 +27,4 @@ let flatten styles => flatten t (Array.of_list styles);
  * colors as strings everywhere
  */
 external processColor : [ | `String string | `Number int] [@bs.unwrap] => string =
-  "processColor" [@@bs.module];
+  "processColor" [@@bs.module "react-native"];
