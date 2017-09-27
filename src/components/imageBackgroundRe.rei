@@ -8,6 +8,11 @@ module Event: {
   };
 };
 
+type imageSource =
+  | URI Image.imageURISource
+  | Required PackagerRe.required
+  | Multiple (list Image.imageURISource);
+
 let make:
   onError::(Event.error => unit)? =>
   onLayout::(RNEvent.NativeLayoutEvent.t => unit)? =>
@@ -15,7 +20,7 @@ let make:
   onLoadEnd::(unit => unit)? =>
   onLoadStart::(unit => unit)? =>
   resizeMode::[< | `center | `contain | `cover | `repeat | `stretch]? =>
-  source::Image.imageSource? =>
+  source::imageSource? =>
   style::StyleRe.t? =>
   imageStyle::StyleRe.t? =>
   testID::string? =>

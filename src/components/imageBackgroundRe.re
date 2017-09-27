@@ -1,4 +1,5 @@
 open ImageRe;
+
 external view : ReasonReact.reactClass = "ImageBackground" [@@bs.module "react-native"];
 
 module Event = {
@@ -11,9 +12,16 @@ module Event = {
   external progress : t => progress = "nativeEvent" [@@bs.get];
 };
 
+type imageSource =
+  | URI Image.imageURISource
+  | Required PackagerRe.required
+  | Multiple (list Image.imageURISource);
+
 type rawImageSourceJS;
+
 external rawImageSourceJS : 'a => rawImageSourceJS = "%identity";
-  let make
+
+let make
     ::onError=?
     ::onLayout=?
     ::onLoad=?
@@ -42,47 +50,67 @@ external rawImageSourceJS : 'a => rawImageSourceJS = "%identity";
           "onLoad": from_opt onLoad,
           "onLoadEnd": from_opt onLoadEnd,
           "onLoadStart": from_opt onLoadStart,
-          "resizeMode": from_opt (UtilsRN.option_map (
-            fun x => switch x {
-              | `cover => "cover"
-              | `contain => "contain"
-              | `stretch => "stretch"
-              | `repeat => "repeat"
-              | `center => "center"
-              }
-            ) resizeMode),
-          "source": from_opt (UtilsRN.option_map (
-            fun (x: Image.imageSource) =>
-              switch x {
-              | URI x => rawImageSourceJS x
-              | Required x => rawImageSourceJS x
-              | Multiple x => rawImageSourceJS (Array.of_list x)
-            }
-          ) source),
+          "resizeMode":
+            from_opt (
+              UtilsRN.option_map
+                (
+                  fun x =>
+                    switch x {
+                    | `cover => "cover"
+                    | `contain => "contain"
+                    | `stretch => "stretch"
+                    | `repeat => "repeat"
+                    | `center => "center"
+                    }
+                )
+                resizeMode
+            ),
+          "source":
+            from_opt (
+              UtilsRN.option_map
+                (
+                  fun (x: imageSource) =>
+                    switch x {
+                    | URI x => rawImageSourceJS x
+                    | Required x => rawImageSourceJS x
+                    | Multiple x => rawImageSourceJS (Array.of_list x)
+                    }
+                )
+                source
+            ),
           "style": from_opt style,
           "imageStyle": from_opt imageStyle,
           "testID": from_opt testID,
-          "resizeMethod": from_opt (UtilsRN.option_map (
-              fun x =>
-                switch x {
-                | `auto => "auto"
-                | `resize => "resize"
-                | `scale => "scale"
-              }
-          ) resizeMethod),
+          "resizeMethod":
+            from_opt (
+              UtilsRN.option_map
+                (
+                  fun x =>
+                    switch x {
+                    | `auto => "auto"
+                    | `resize => "resize"
+                    | `scale => "scale"
+                    }
+                )
+                resizeMethod
+            ),
           "accessibilityLabel": from_opt accessibilityLabel,
           "accessible": from_opt (UtilsRN.optBoolToOptJsBoolean accessible),
           "blurRadius": from_opt blurRadius,
           "capInsets": from_opt capInsets,
-          "defaultSource": from_opt (UtilsRN.option_map (
-            fun (x: Image.defaultSource) =>
-              switch x {
-              | URI x => rawImageSourceJS x
-              | Required x => rawImageSourceJS x
-            }
-          ) defaultSource),
+          "defaultSource":
+            from_opt (
+              UtilsRN.option_map
+                (
+                  fun (x: Image.defaultSource) =>
+                    switch x {
+                    | URI x => rawImageSourceJS x
+                    | Required x => rawImageSourceJS x
+                    }
+                )
+                defaultSource
+            ),
           "onPartialLoad": from_opt onPartialLoad,
-          "onProgress":
-            from_opt (UtilsRN.option_map (fun x y => x (Event.progress y)) onProgress)
+          "onProgress": from_opt (UtilsRN.option_map (fun x y => x (Event.progress y)) onProgress)
         }
       );
