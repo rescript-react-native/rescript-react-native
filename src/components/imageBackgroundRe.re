@@ -12,11 +12,6 @@ module Event = {
   external progress : t => progress = "nativeEvent" [@@bs.get];
 };
 
-type imageSource =
-  | URI Image.imageURISource
-  | Required PackagerRe.required
-  | Multiple (list Image.imageURISource);
-
 type rawImageSourceJS;
 
 external rawImageSourceJS : 'a => rawImageSourceJS = "%identity";
@@ -69,7 +64,7 @@ let make
             from_opt (
               UtilsRN.option_map
                 (
-                  fun (x: imageSource) =>
+                  fun (x: Image.imageSource) =>
                     switch x {
                     | URI x => rawImageSourceJS x
                     | Required x => rawImageSourceJS x
