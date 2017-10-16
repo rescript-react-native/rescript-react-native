@@ -14,9 +14,9 @@ let convertImageSource src =>
 let make
     disabled::(disabled: option bool)=?
     maximumTrackTintColor::(maximumTrackTintColor: option string)=?
-    maximumValue::(maximumValue: option string)=?
+    maximumValue::(maximumValue: option float)=?
     minimumTrackTintColor::(minimumTrackTintColor: option string)=?
-    minimumValue::(minimumValue: option string)=?
+    minimumValue::(minimumValue: option float)=?
     onSlidingComplete::(onSlidingComplete: option (float => unit))=?
     onValueChange::(onValueChange: option (float => unit))=?
     step::(step: option float)=?
