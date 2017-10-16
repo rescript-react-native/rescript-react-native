@@ -20,7 +20,7 @@ module Text =
   };
 
 module ScrollView = {
-  type callback = RNEvent.NativeEvent.t => unit;
+  type callback = RNEvent.NativeScrollEvent.t => unit;
   external wrapUpdaterShamelessly : AnimatedRe.animatedEvent => callback = "%identity";
   let onScrollUpdater ::x=? ::y=? ::native=false () =>
     wrapUpdaterShamelessly (

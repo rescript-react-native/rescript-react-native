@@ -5,7 +5,8 @@ module Image: ImageRe.ImageComponent;
 module Text: TextRe.TextComponent;
 
 module ScrollView: {
-  let onScrollUpdater: x::'a? => y::'b? => native::bool? => unit => RNEvent.NativeEvent.t => unit;
+  let onScrollUpdater:
+    x::'a? => y::'b? => native::bool? => unit => RNEvent.NativeScrollEvent.t => unit;
   type point = {
     x: float,
     y: float
