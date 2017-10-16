@@ -1,9 +1,9 @@
 let make:
   disabled::bool? =>
   maximumTrackTintColor::string? =>
-  maximumValue::string? =>
+  maximumValue::float? =>
   minimumTrackTintColor::string? =>
-  minimumValue::string? =>
+  minimumValue::float? =>
   onSlidingComplete::(float => unit)? =>
   onValueChange::(float => unit)? =>
   step::float? =>
