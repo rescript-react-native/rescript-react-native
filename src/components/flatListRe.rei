@@ -45,6 +45,7 @@ let make:
   renderItem::renderItem 'item =>
   keyExtractor::('item => int => string) =>
   itemSeparatorComponent::separatorComponent 'item? =>
+  bounces::bool? =>
   listFooterComponent::ReasonReact.reactElement? =>
   listHeaderComponent::ReasonReact.reactElement? =>
   columnWrapperStyle::StyleRe.t? =>
@@ -83,8 +84,13 @@ let make:
           }
         )
     }? =>
+  overScrollMode::[ | `auto | `always | `never]? =>
+  pagingEnabled::bool? =>
   refreshing::bool? =>
   removeClippedSubviews::bool? =>
+  scrollEnabled::bool? =>
+  showsHorizontalScrollIndicator::bool? =>
+  showsVerticalScrollIndicator::bool? =>
   viewabilityConfig::Js.t {.}? =>
   array ReasonReact.reactElement =>
   ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps unit;

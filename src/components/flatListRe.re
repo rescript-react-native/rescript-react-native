@@ -90,6 +90,7 @@ let make
     renderItem::(renderItem: renderItem 'item)
     keyExtractor::(keyExtractor: 'item => int => string)
     itemSeparatorComponent::(itemSeparatorComponent: option (separatorComponent 'item))=?
+    ::bounces=?
     ::listFooterComponent=?
     ::listHeaderComponent=?
     ::columnWrapperStyle=?
@@ -103,14 +104,20 @@ let make
     ::onEndReachedThreshold=?
     ::onRefresh=?
     ::onViewableItemsChanged=?
+    ::overScrollMode=?
+    ::pagingEnabled=?
     ::refreshing=?
     ::removeClippedSubviews=?
+    ::scrollEnabled=?
+    ::showsHorizontalScrollIndicator=?
+    ::showsVerticalScrollIndicator=?
     ::viewabilityConfig=? =>
   ReasonReact.wrapJsForReason
     reactClass::view
     props::
       Js.Undefined.(
         {
+          "bounces": from_opt (UtilsRN.optBoolToOptJsBoolean bounces),
           "ItemSeparatorComponent": from_opt itemSeparatorComponent,
           "ListFooterComponent": from_opt listFooterComponent,
           "ListHeaderComponent": from_opt listHeaderComponent,
@@ -131,9 +138,28 @@ let make
           "onEndReachedThreshold": from_opt onEndReachedThreshold,
           "onRefresh": from_opt onRefresh,
           "onViewableItemsChanged": from_opt onViewableItemsChanged,
+          "overScrollMode":
+            from_opt (
+              UtilsRN.option_map
+                (
+                  fun x =>
+                    switch x {
+                    | `auto => "auto"
+                    | `always => "always"
+                    | `never => "never"
+                    }
+                )
+                overScrollMode
+            ),
+          "pagingEnabled": from_opt (UtilsRN.optBoolToOptJsBoolean pagingEnabled),
           "refreshing": from_opt (UtilsRN.optBoolToOptJsBoolean refreshing),
           "renderItem": renderItem,
           "removeClippedSubviews": from_opt (UtilsRN.optBoolToOptJsBoolean removeClippedSubviews),
+          "scrollEnabled": from_opt (UtilsRN.optBoolToOptJsBoolean scrollEnabled),
+          "showsHorizontalScrollIndicator":
+            from_opt (UtilsRN.optBoolToOptJsBoolean showsHorizontalScrollIndicator),
+          "showsVerticalScrollIndicator":
+            from_opt (UtilsRN.optBoolToOptJsBoolean showsVerticalScrollIndicator),
           "viewabilityConfig": from_opt viewabilityConfig
         }
       );
