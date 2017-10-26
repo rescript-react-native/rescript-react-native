@@ -27,8 +27,6 @@ module Switch = SwitchRe;
 
 module TabBarIOS = TabBarIOSRe;
 
-module TabBarItemIOS = TabBarItemIOSRe;
-
 module Text = TextRe.Text;
 
 module TextInput = TextInputRe;
