@@ -1,5 +1,5 @@
 {
-	"name": "bs-react-native",
+	"name": "@reasonml-community/react-native",
 	"version": "0.3.0",
 	"scripts": {
 		"build": "bsb -make-world",
