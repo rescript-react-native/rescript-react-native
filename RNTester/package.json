@@ -11,7 +11,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "bs-platform": "^1.8.0",
+    "bs-platform": "^2.0.0",
     "react": "^16.0.0-alpha.12",
     "react-native": "^0.46.0",
     "reason-react": "^0.2.3"

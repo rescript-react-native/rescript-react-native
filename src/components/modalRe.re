@@ -1,13 +1,13 @@
-external modal : ReasonReact.reactClass = "Modal" [@@bs.module "react-native"];
+[@bs.module "react-native"] external modal : ReasonReact.reactClass = "Modal";
 
-let encodeAnimationType x =>
+let encodeAnimationType = (x) =>
   switch x {
   | `none => "none"
   | `slide => "slide"
   | `fade => "fade"
   };
 
-let encodeSupportedOrientations x =>
+let encodeSupportedOrientations = (x) =>
   switch x {
   | `portrait => "portrait"
   | `portraitUpsideDown => "portrait-upside-down"
@@ -16,28 +16,31 @@ let encodeSupportedOrientations x =>
   | `landscapeRight => "landscape-right"
   };
 
-let make
-    ::animationType=?
-    ::onShow=?
-    ::transparent=?
-    ::visible=?
-    ::hardwareAccelerated=?
-    ::onRequestClose=?
-    ::onOrientationChange=?
-    ::supportedOrientations=? =>
-  ReasonReact.wrapJsForReason
-    reactClass::modal
-    props::
+let make =
+    (
+      ~animationType=?,
+      ~onShow=?,
+      ~transparent=?,
+      ~visible=?,
+      ~hardwareAccelerated=?,
+      ~onRequestClose=?,
+      ~onOrientationChange=?,
+      ~supportedOrientations=?
+    ) =>
+  ReasonReact.wrapJsForReason(
+    ~reactClass=modal,
+    ~props=
       Js.Undefined.(
         {
-          "animationType": from_opt (UtilsRN.option_map encodeAnimationType animationType),
-          "onShow": from_opt onShow,
-          "transparent": from_opt (UtilsRN.optBoolToOptJsBoolean transparent),
-          "visible": from_opt (UtilsRN.optBoolToOptJsBoolean visible),
-          "hardwareAccelerated": from_opt (UtilsRN.optBoolToOptJsBoolean hardwareAccelerated),
-          "onRequestClose": from_opt onRequestClose,
-          "onOrientationChange": from_opt onOrientationChange,
+          "animationType": from_opt(UtilsRN.option_map(encodeAnimationType, animationType)),
+          "onShow": from_opt(onShow),
+          "transparent": from_opt(UtilsRN.optBoolToOptJsBoolean(transparent)),
+          "visible": from_opt(UtilsRN.optBoolToOptJsBoolean(visible)),
+          "hardwareAccelerated": from_opt(UtilsRN.optBoolToOptJsBoolean(hardwareAccelerated)),
+          "onRequestClose": from_opt(onRequestClose),
+          "onOrientationChange": from_opt(onOrientationChange),
           "supportedOrientations":
-            from_opt (UtilsRN.option_map encodeSupportedOrientations supportedOrientations)
+            from_opt(UtilsRN.option_map(encodeSupportedOrientations, supportedOrientations))
         }
-      );
+      )
+  );

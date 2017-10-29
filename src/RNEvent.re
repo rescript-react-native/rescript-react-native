@@ -2,16 +2,16 @@ type t;
 
 module NativeEvent = {
   type t;
-  external changedTouches : t => array (Js.t {..}) = "" [@@bs.get];
-  external identifier : t => int = "" [@@bs.get];
-  external locationX : t => float = "" [@@bs.get];
-  external locationY : t => float = "" [@@bs.get];
-  external pageX : t => float = "" [@@bs.get];
-  external pageY : t => float = "" [@@bs.get];
-  external target : t => Js.t {..} = "" [@@bs.get];
-  external touches : t => array (Js.t {..}) = "" [@@bs.get];
-  external timestamp : t => int = "" [@@bs.get];
-  external data : t => string = "" [@@bs.get];
+  [@bs.get] external changedTouches : t => array(Js.t({..})) = "";
+  [@bs.get] external identifier : t => int = "";
+  [@bs.get] external locationX : t => float = "";
+  [@bs.get] external locationY : t => float = "";
+  [@bs.get] external pageX : t => float = "";
+  [@bs.get] external pageY : t => float = "";
+  [@bs.get] external target : t => Js.t({..}) = "";
+  [@bs.get] external touches : t => array(Js.t({..})) = "";
+  [@bs.get] external timestamp : t => int = "";
+  [@bs.get] external data : t => string = "";
 };
 
 module NativeLayoutEvent = {
@@ -22,9 +22,9 @@ module NativeLayoutEvent = {
     width: float,
     height: float
   };
-  external _layout : t => Js.t 'a = "nativeEvent" [@@bs.get];
-  let layout (t: t) => {
-    let l = (_layout t)##layout;
+  [@bs.get] external _layout : t => Js.t('a) = "nativeEvent";
+  let layout = (t: t) => {
+    let l = _layout(t)##layout;
     {x: l##x, y: l##y, width: l##width, height: l##height}
   };
 };
@@ -45,27 +45,27 @@ module NativeScrollEvent = {
     left: float,
     right: float
   };
-  external _nativeEvent : t => Js.t 'a = "nativeEvent" [@@bs.get];
-  let contentOffset (t: t) => {
-    let co = (_nativeEvent t)##contentOffset;
+  [@bs.get] external _nativeEvent : t => Js.t('a) = "nativeEvent";
+  let contentOffset = (t: t) => {
+    let co = _nativeEvent(t)##contentOffset;
     {x: co##x, y: co##y}
   };
-  let contentSize (t: t) => {
-    let cs = (_nativeEvent t)##contentSize;
+  let contentSize = (t: t) => {
+    let cs = _nativeEvent(t)##contentSize;
     {width: cs##width, height: cs##height}
   };
-  let layoutMeasurement (t: t) => {
-    let lm = (_nativeEvent t)##layoutMeasurement;
+  let layoutMeasurement = (t: t) => {
+    let lm = _nativeEvent(t)##layoutMeasurement;
     {width: lm##width, height: lm##height}
   };
-  let contentInset (t: t) => {
-    let ci = (_nativeEvent t)##contentInset;
+  let contentInset = (t: t) => {
+    let ci = _nativeEvent(t)##contentInset;
     {bottom: ci##bottom, top: ci##top, left: ci##left, right: ci##right}
   };
 };
 
-external nativeEvent : t => NativeEvent.t = "" [@@bs.get];
+[@bs.get] external nativeEvent : t => NativeEvent.t = "";
 
-external nativeLayoutEvent : t => NativeLayoutEvent.t = "nativeEvent" [@@bs.get];
+[@bs.get] external nativeLayoutEvent : t => NativeLayoutEvent.t = "nativeEvent";
 
-external nativeScrollEvent : t => NativeScrollEvent.t = "nativeEvent" [@@bs.get];
+[@bs.get] external nativeScrollEvent : t => NativeScrollEvent.t = "nativeEvent";

@@ -20,7 +20,7 @@
 		"url": "https://github.com/reasonml-community/bs-react-native.git"
 	},
 	"devDependencies": {
-		"bs-platform": "^1.10.0"
+		"bs-platform": "^2.0.0"
 	},
 	"dependencies": {
 		"reason-react": "^0.2.4"

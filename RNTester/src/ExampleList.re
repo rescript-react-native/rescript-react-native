@@ -3,18 +3,18 @@ type item = {
   displayName: string,
   title: string,
   description: string,
-  examples: array Example.t
+  examples: array(Example.t)
 };
 
 module type ExampleT = {
   let displayName: string;
   let title: string;
   let description: string;
-  let examples: array Example.t;
+  let examples: array(Example.t);
 };
 
-module MakeExample (Example: ExampleT) => {
-  let item key => {
+module MakeExample = (Example: ExampleT) => {
+  let item = (key) => {
     key,
     displayName: Example.displayName,
     title: Example.title,
@@ -23,17 +23,17 @@ module MakeExample (Example: ExampleT) => {
   };
 };
 
-module Button = MakeExample ButtonExample;
+module Button = MakeExample(ButtonExample);
 
-module View = MakeExample ViewExample;
+module View = MakeExample(ViewExample);
 
-module WebView = MakeExample WebViewExample;
+module WebView = MakeExample(WebViewExample);
 
-module ImageBackground = MakeExample ImageBackgroundExample;
+module ImageBackground = MakeExample(ImageBackgroundExample);
 
-let components: array item = [|
-  Button.item "ButtonExample",
-  View.item "ViewExample",
-  WebView.item "WebViewExample",
-  ImageBackground.item "ImageBackground"
+let components: array(item) = [|
+  Button.item("ButtonExample"),
+  View.item("ViewExample"),
+  WebView.item("WebViewExample"),
+  ImageBackground.item("ImageBackground")
 |];

@@ -1,25 +1,26 @@
 open ReactNative;
 
 let styles =
-  StyleSheet.create
+  StyleSheet.create(
     Style.(
       {
-        "container": style [backgroundColor "#e9eaed", flex 1.0],
-        "spacer": style [height 270.],
-        "wrapper": style [flex 1.0, paddingTop 10.]
+        "container": style([backgroundColor("#e9eaed"), flex(1.0)]),
+        "spacer": style([height(270.)]),
+        "wrapper": style([flex(1.0), paddingTop(10.)])
       }
-    );
+    )
+  );
 
-let component = ReasonReact.statelessComponent "RNTesterPage";
+let component = ReasonReact.statelessComponent("RNTesterPage");
 
-let make ::title=? ::noScroll=false ::noSpacer=false children => {
-  let contentWrapper (children_: array ReasonReact.reactElement) =>
-    if noScroll {
-      <View key="wrapper" style=styles##wrapper> (ReasonReact.arrayToElement children_) </View>
+let make = (~title=?, ~noScroll=false, ~noSpacer=false, children) => {
+  let contentWrapper = (children_: array(ReasonReact.reactElement)) =>
+    if (noScroll) {
+      <View key="wrapper" style=styles##wrapper> (ReasonReact.arrayToElement(children_)) </View>
     } else {
       let automaticallyAdjustContentInsets =
         switch title {
-        | Some _ => true
+        | Some(_) => true
         | None => false
         };
       <ScrollView
@@ -28,26 +29,26 @@ let make ::title=? ::noScroll=false ::noSpacer=false children => {
         keyboardShouldPersistTaps=`handled
         keyboardDismissMode=`interactive
         style=styles##wrapper>
-        (ReasonReact.arrayToElement children_)
+        (ReasonReact.arrayToElement(children_))
       </ScrollView>
     };
   {
     ...component,
-    render: fun _self => {
+    render: (_self) => {
       let title =
         switch title {
-        | Some title => <RNTesterTitle key="title" title />
+        | Some(title) => <RNTesterTitle key="title" title />
         | None => ReasonReact.nullElement
         };
       let spacer =
-        if noSpacer {
+        if (noSpacer) {
           ReasonReact.nullElement
         } else {
           <View key="spacer" style=styles##spacer />
         };
       <View style=styles##container>
         title
-        (contentWrapper (Array.append children [|spacer|]))
+        (contentWrapper(Array.append(children, [|spacer|])))
       </View>
     }
   }

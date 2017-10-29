@@ -6,6 +6,6 @@ let os: os;
 
 let equals: os => bool;
 
-external version : int = "Version" [@@bs.scope "Platform"] [@@bs.module "react-native"];
+[@bs.scope "Platform"] [@bs.module "react-native"] external version : int = "Version";
 
-let select: ios::'a => android::'a => 'a;
+let select: (~ios: 'a, ~android: 'a) => 'a;

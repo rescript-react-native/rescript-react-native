@@ -2,12 +2,12 @@ type t;
 
 type emitterSubscription;
 
-let create: NativeModulesRe.t 'a => t;
+let create: NativeModulesRe.t('a) => t;
 
-let addListener: t => string => ('a => unit) => emitterSubscription;
+let addListener: (t, string, 'a => unit) => emitterSubscription;
 
-let removeAllListeners: t => string => unit;
+let removeAllListeners: (t, string) => unit;
 
-let removeSubscription: t => emitterSubscription => unit;
+let removeSubscription: (t, emitterSubscription) => unit;
 
-module Subscription: {let remove: emitterSubscription => unit => unit;};
+module Subscription: {let remove: (emitterSubscription, unit) => unit;};

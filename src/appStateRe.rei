@@ -5,8 +5,10 @@ type state =
 
 let currentState: unit => state;
 
-external addEventListener : string => (unit => unit) => unit =
-  "" [@@bs.scope "AppState"] [@@bs.module "react-native"];
+[@bs.scope "AppState"] [@bs.module "react-native"]
+external addEventListener : (string, unit => unit) => unit =
+  "";
 
-external removeEventListener : string => (unit => unit) => unit =
-  "" [@@bs.scope "AppState"] [@@bs.module "react-native"];
+[@bs.scope "AppState"] [@bs.module "react-native"]
+external removeEventListener : (string, unit => unit) => unit =
+  "";
