@@ -22,10 +22,8 @@
 	"devDependencies": {
 		"bs-platform": "^2.0.0"
 	},
-	"dependencies": {
-		"reason-react": "^0.2.4"
-	},
 	"peerDependencies": {
+		"reason-react": "^0.2.4",
 		"react-native": "^0.46.0"
 	}
 }
