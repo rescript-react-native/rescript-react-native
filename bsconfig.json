@@ -1,8 +1,10 @@
 {
-  "name": "bs-react-native",
+  "name": "react-native",
   "bsc-flags": ["-bs-super-errors"],
   "reason": {"react-jsx": 2},
+  "refmt": 3,
   "bs-dependencies": ["reason-react"],
+  "namespaces": true,
   "sources": [
     {
       "dir": "src",
