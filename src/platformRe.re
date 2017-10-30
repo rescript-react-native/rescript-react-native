@@ -2,7 +2,7 @@ type os =
   | IOS
   | Android;
 
-external _os : string = "OS" [@@bs.scope "Platform"] [@@bs.module "react-native"];
+[@bs.scope "Platform"] [@bs.module "react-native"] external _os : string = "OS";
 
 let os =
   switch _os {
@@ -10,7 +10,7 @@ let os =
   | _ => Android
   };
 
-let equals targetOs =>
+let equals = (targetOs) =>
   switch (os, targetOs) {
   | (IOS, IOS) => true
   | (Android, Android) => true
@@ -18,9 +18,10 @@ let equals targetOs =>
   | (Android, IOS) => false
   };
 
-external version : int = "Version" [@@bs.scope "Platform"] [@@bs.module "react-native"];
+[@bs.scope "Platform"] [@bs.module "react-native"] external version : int = "Version";
 
-external _select : Js.t {. ios : 'a, android : 'a} => 'a =
-  "select" [@@bs.scope "Platform"] [@@bs.module "react-native"];
+[@bs.scope "Platform"] [@bs.module "react-native"]
+external _select : {. "ios": 'a, "android": 'a} => 'a =
+  "select";
 
-let select ::ios ::android => _select {"ios": ios, "android": android};
+let select = (~ios, ~android) => _select({"ios": ios, "android": android});

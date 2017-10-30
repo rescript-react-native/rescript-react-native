@@ -1,24 +1,25 @@
 type t;
 
-/** Generates a style out of an array of styles.
- * This is equivalent:
- * // js
- * <View style={[styleA, styleB]} />
- * // reason
- * <View style=(Style.flatten [|styleA, styleB|]) />
-*/
-let flatten: array t => t;
+
+/*** Generates a style out of an array of styles.
+  * This is equivalent:
+  * // js
+  * <View style={[styleA, styleB]} />
+  * // reason
+  * <View style=(Style.flatten [|styleA, styleB|]) />
+ */
+let flatten: array(t) => t;
 
 type style;
 
-let style: list style => t;
+let style: list(style) => t;
 
-let combine: t => t => t;
+let combine: (t, t) => t;
 
-let concat: list t => t;
+let concat: list(t) => t;
 
 
-/**
+/***
  * Layout Props
  */
 let alignContent:
@@ -160,68 +161,74 @@ let zIndex: int => style;
 let direction: [ | `_inherit | `ltr | `rtl] => style;
 
 
-/**
+/***
  * Shadow Props
  */
 let shadowColor: string => style;
 
-let shadowOffset: height::float => width::float => style;
+let shadowOffset: (~height: float, ~width: float) => style;
 
 let shadowOpacity: float => style;
 
 let shadowRadius: float => style;
 
 
-/**
+/***
  * Transform Props
  */
 let transform:
-  perspective::float? =>
-  rotate::string? =>
-  rotateX::string? =>
-  rotateY::string? =>
-  rotateZ::string? =>
-  scaleX::float? =>
-  scaleY::float? =>
-  translateX::float? =>
-  translateY::float? =>
-  skewX::float? =>
-  skewY::float? =>
-  unit =>
+  (
+    ~perspective: float=?,
+    ~rotate: string=?,
+    ~rotateX: string=?,
+    ~rotateY: string=?,
+    ~rotateZ: string=?,
+    ~scaleX: float=?,
+    ~scaleY: float=?,
+    ~translateX: float=?,
+    ~translateY: float=?,
+    ~skewX: float=?,
+    ~skewY: float=?,
+    unit
+  ) =>
   style;
 
 let transformAnimated:
-  perspective::AnimatedRe.Value.t? =>
-  rotate::AnimatedRe.Value.t? =>
-  rotateX::AnimatedRe.Value.t? =>
-  rotateY::AnimatedRe.Value.t? =>
-  rotateZ::AnimatedRe.Value.t? =>
-  scaleX::AnimatedRe.Value.t? =>
-  scaleY::AnimatedRe.Value.t? =>
-  translateX::AnimatedRe.Value.t? =>
-  translateY::AnimatedRe.Value.t? =>
-  skewX::AnimatedRe.Value.t? =>
-  skewY::AnimatedRe.Value.t? =>
-  unit =>
+  (
+    ~perspective: AnimatedRe.Value.t=?,
+    ~rotate: AnimatedRe.Value.t=?,
+    ~rotateX: AnimatedRe.Value.t=?,
+    ~rotateY: AnimatedRe.Value.t=?,
+    ~rotateZ: AnimatedRe.Value.t=?,
+    ~scaleX: AnimatedRe.Value.t=?,
+    ~scaleY: AnimatedRe.Value.t=?,
+    ~translateX: AnimatedRe.Value.t=?,
+    ~translateY: AnimatedRe.Value.t=?,
+    ~skewX: AnimatedRe.Value.t=?,
+    ~skewY: AnimatedRe.Value.t=?,
+    unit
+  ) =>
   style;
 
 let transformInterpolated:
-  perspective::AnimatedRe.Interpolation.t? =>
-  rotate::AnimatedRe.Interpolation.t? =>
-  rotateX::AnimatedRe.Interpolation.t? =>
-  rotateY::AnimatedRe.Interpolation.t? =>
-  rotateZ::AnimatedRe.Interpolation.t? =>
-  scaleX::AnimatedRe.Interpolation.t? =>
-  scaleY::AnimatedRe.Interpolation.t? =>
-  translateX::AnimatedRe.Interpolation.t? =>
-  translateY::AnimatedRe.Interpolation.t? =>
-  skewX::AnimatedRe.Interpolation.t? =>
-  skewY::AnimatedRe.Interpolation.t? =>
-  unit =>
+  (
+    ~perspective: AnimatedRe.Interpolation.t=?,
+    ~rotate: AnimatedRe.Interpolation.t=?,
+    ~rotateX: AnimatedRe.Interpolation.t=?,
+    ~rotateY: AnimatedRe.Interpolation.t=?,
+    ~rotateZ: AnimatedRe.Interpolation.t=?,
+    ~scaleX: AnimatedRe.Interpolation.t=?,
+    ~scaleY: AnimatedRe.Interpolation.t=?,
+    ~translateX: AnimatedRe.Interpolation.t=?,
+    ~translateY: AnimatedRe.Interpolation.t=?,
+    ~skewX: AnimatedRe.Interpolation.t=?,
+    ~skewY: AnimatedRe.Interpolation.t=?,
+    unit
+  ) =>
   style;
 
 
-/**
+/***
  * View Props
  */
 let backfaceVisibility: [ | `visible | `hidden] => style;
@@ -259,7 +266,7 @@ let opacityInterpolated: AnimatedRe.Interpolation.t => style;
 let elevation: float => style;
 
 
-/**
+/***
  *  Text Props
  */
 let color: string => style;
@@ -282,7 +289,7 @@ let textDecorationLine: [ | `none | `underline | `lineThrough | `underlineLineTh
 
 let textShadowColor: string => style;
 
-let textShadowOffset: height::float => width::float => style;
+let textShadowOffset: (~height: float, ~width: float) => style;
 
 let textShadowRadius: float => style;
 
@@ -290,7 +297,7 @@ let includeFontPadding: bool => style;
 
 let textAlignVertical: [ | `auto | `top | `bottom | `center] => style;
 
-let fontVariant: list string => style;
+let fontVariant: list(string) => style;
 
 let letterSpacing: float => style;
 

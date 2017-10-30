@@ -1,3 +1,3 @@
 type required;
 
-external require: string => required = "require" [@@bs.val];
+[@bs.val] external require : string => required = "require";

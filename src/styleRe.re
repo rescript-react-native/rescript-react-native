@@ -1,335 +1,329 @@
 type t;
 
-external flatten : array t => t = "%identity";
+external flatten : array(t) => t = "%identity";
 
-external to_style : Js.Dict.t Js.Json.t => t = "%identity";
+external to_style : Js.Dict.t(Js.Json.t) => t = "%identity";
 
-external style_to_dict : t => Js.Dict.t Js.Json.t = "%identity";
+external style_to_dict : t => Js.Dict.t(Js.Json.t) = "%identity";
 
-external array_to_style : array t => t = "%identity";
+external array_to_style : array(t) => t = "%identity";
 
 type style =
-  | ArrayStyle string (array Js.Json.t)
-  | BooleanStyle string bool
-  | StringStyle string string
-  | IntStyle string int
-  | FloatStyle string float
-  | ObjectStyle string (Js.Dict.t Js.Json.t)
-  | AnimatedStyle
-      string [ | `value AnimatedRe.Value.t | `interpolation AnimatedRe.Interpolation.t];
+  | ArrayStyle(string, array(Js.Json.t))
+  | BooleanStyle(string, bool)
+  | StringStyle(string, string)
+  | IntStyle(string, int)
+  | FloatStyle(string, float)
+  | ObjectStyle(string, Js.Dict.t(Js.Json.t))
+  | AnimatedStyle(
+      string,
+      [ | `value(AnimatedRe.Value.t) | `interpolation(AnimatedRe.Interpolation.t)]
+    );
 
-let combine a b => {
+let combine = (a, b) => {
   let entries =
-    Array.append (UtilsRN.dictEntries (style_to_dict a)) (UtilsRN.dictEntries (style_to_dict b));
-  UtilsRN.dictFromArray entries |> to_style
+    Array.append(UtilsRN.dictEntries(style_to_dict(a)), UtilsRN.dictEntries(style_to_dict(b)));
+  UtilsRN.dictFromArray(entries) |> to_style
 };
 
-let concat styles => array_to_style (Array.of_list styles);
+let concat = (styles) => array_to_style(Array.of_list(styles));
 
-let arrayStyle key value => ArrayStyle key value;
+let arrayStyle = (key, value) => ArrayStyle(key, value);
 
-let booleanStyle key value => BooleanStyle key value;
+let booleanStyle = (key, value) => BooleanStyle(key, value);
 
-let stringStyle key value => StringStyle key value;
+let stringStyle = (key, value) => StringStyle(key, value);
 
-let intStyle key value => IntStyle key value;
+let intStyle = (key, value) => IntStyle(key, value);
 
-let floatStyle key value => FloatStyle key value;
+let floatStyle = (key, value) => FloatStyle(key, value);
 
-let pctStyle key value => StringStyle key (string_of_float value ^ "%");
+let pctStyle = (key, value) => StringStyle(key, string_of_float(value) ++ "%");
 
-let objectStyle key value => ObjectStyle key value;
+let objectStyle = (key, value) => ObjectStyle(key, value);
 
-let animatedStyle key value => AnimatedStyle key (`value value);
+let animatedStyle = (key, value) => AnimatedStyle(key, `value(value));
 
-let interpolatedStyle key value => AnimatedStyle key (`interpolation value);
+let interpolatedStyle = (key, value) => AnimatedStyle(key, `interpolation(value));
 
 let encodeStyle =
   fun
-  | ArrayStyle key value => (key, Encode.array value)
-  | BooleanStyle key value => (key, Encode.boolean (Js.Boolean.to_js_boolean value))
-  | IntStyle key value => (key, Encode.int value)
-  | FloatStyle key value => (key, Encode.float value)
-  | StringStyle key value => (key, Encode.string value)
-  | ObjectStyle key value => (key, Encode.object_ value)
-  | AnimatedStyle key value => (
+  | ArrayStyle(key, value) => (key, Encode.array(value))
+  | BooleanStyle(key, value) => (key, Encode.boolean(Js.Boolean.to_js_boolean(value)))
+  | IntStyle(key, value) => (key, Encode.int(value))
+  | FloatStyle(key, value) => (key, Encode.float(value))
+  | StringStyle(key, value) => (key, Encode.string(value))
+  | ObjectStyle(key, value) => (key, Encode.object_(value))
+  | AnimatedStyle(key, value) => (
       key,
       switch value {
-      | `value x => Encode.animatedValue x
-      | `interpolation x => Encode.interpolatedValue x
+      | `value(x) => Encode.animatedValue(x)
+      | `interpolation(x) => Encode.interpolatedValue(x)
       }
     );
 
-let style sarr => sarr |> List.map encodeStyle |> UtilsRN.dictFromList |> to_style;
+let style = (sarr) => sarr |> List.map(encodeStyle) |> UtilsRN.dictFromList |> to_style;
 
 
-/**
+/***
  * Layout Props
  */
-let alignContent v =>
-  stringStyle
-    "alignContent"
-    (
-      switch v {
-      | `flexStart => "flex-start"
-      | `flexEnd => "flex-end"
-      | `center => "center"
-      | `stretch => "stretch"
-      | `spaceAround => "space-around"
-      | `spaceBetween => "space-between"
-      }
-    );
-
-let alignItems v =>
-  stringStyle
-    "alignItems"
-    (
-      switch v {
-      | `flexStart => "flex-start"
-      | `flexEnd => "flex-end"
-      | `center => "center"
-      | `stretch => "stretch"
-      | `baseline => "baseline"
-      }
-    );
-
-let alignSelf v =>
-  stringStyle
-    "alignSelf"
-    (
-      switch v {
-      | `flexStart => "flex-start"
-      | `flexEnd => "flex-end"
-      | `center => "center"
-      | `stretch => "stretch"
-      | `baseline => "baseline"
-      }
-    );
-
-let aspectRatio = floatStyle "aspectRatio";
-
-let borderBottomWidth = floatStyle "borderBottomWidth";
-
-let borderLeftWidth = floatStyle "borderLeftWidth";
-
-let borderRightWidth = floatStyle "borderRightWidth";
+let alignContent = (v) =>
+  stringStyle(
+    "alignContent",
+    switch v {
+    | `flexStart => "flex-start"
+    | `flexEnd => "flex-end"
+    | `center => "center"
+    | `stretch => "stretch"
+    | `spaceAround => "space-around"
+    | `spaceBetween => "space-between"
+    }
+  );
+
+let alignItems = (v) =>
+  stringStyle(
+    "alignItems",
+    switch v {
+    | `flexStart => "flex-start"
+    | `flexEnd => "flex-end"
+    | `center => "center"
+    | `stretch => "stretch"
+    | `baseline => "baseline"
+    }
+  );
+
+let alignSelf = (v) =>
+  stringStyle(
+    "alignSelf",
+    switch v {
+    | `flexStart => "flex-start"
+    | `flexEnd => "flex-end"
+    | `center => "center"
+    | `stretch => "stretch"
+    | `baseline => "baseline"
+    }
+  );
 
-let borderTopWidth = floatStyle "borderTopWidth";
+let aspectRatio = floatStyle("aspectRatio");
 
-let borderWidth = floatStyle "borderWidth";
+let borderBottomWidth = floatStyle("borderBottomWidth");
 
-let bottom = floatStyle "bottom";
+let borderLeftWidth = floatStyle("borderLeftWidth");
 
-let bottomPct = pctStyle "bottom";
+let borderRightWidth = floatStyle("borderRightWidth");
 
-let bottomAnimated = animatedStyle "bottom";
+let borderTopWidth = floatStyle("borderTopWidth");
 
-let bottomInterpolated = interpolatedStyle "bottom";
+let borderWidth = floatStyle("borderWidth");
 
-let display v =>
-  stringStyle
-    "display"
-    (
-      switch v {
-      | `flex => "flex"
-      | `none => "none"
-      }
-    );
+let bottom = floatStyle("bottom");
 
-let flex = floatStyle "flex";
+let bottomPct = pctStyle("bottom");
 
-let flexBasis = floatStyle "flexBasis";
+let bottomAnimated = animatedStyle("bottom");
 
-let flexBasisPct = pctStyle "flexBasis";
+let bottomInterpolated = interpolatedStyle("bottom");
 
-let flexDirection v =>
-  stringStyle
-    "flexDirection"
-    (
-      switch v {
-      | `row => "row"
-      | `rowReverse => "row-reverse"
-      | `column => "column"
-      | `columnReverse => "column-reverse"
-      }
-    );
+let display = (v) =>
+  stringStyle(
+    "display",
+    switch v {
+    | `flex => "flex"
+    | `none => "none"
+    }
+  );
 
-let flexGrow = floatStyle "flexGrow";
+let flex = floatStyle("flex");
 
-let flexShrink = floatStyle "flexShrink";
+let flexBasis = floatStyle("flexBasis");
 
-let flexWrap v =>
-  stringStyle
-    "flexWrap"
-    (
-      switch v {
-      | `wrap => "wrap"
-      | `nowrap => "nowrap"
-      }
-    );
+let flexBasisPct = pctStyle("flexBasis");
 
-let height = floatStyle "height";
+let flexDirection = (v) =>
+  stringStyle(
+    "flexDirection",
+    switch v {
+    | `row => "row"
+    | `rowReverse => "row-reverse"
+    | `column => "column"
+    | `columnReverse => "column-reverse"
+    }
+  );
 
-let heightPct = pctStyle "height";
+let flexGrow = floatStyle("flexGrow");
 
-let heightAnimated = animatedStyle "height";
+let flexShrink = floatStyle("flexShrink");
 
-let heightInterpolated = interpolatedStyle "height";
+let flexWrap = (v) =>
+  stringStyle(
+    "flexWrap",
+    switch v {
+    | `wrap => "wrap"
+    | `nowrap => "nowrap"
+    }
+  );
 
-let justifyContent v =>
-  stringStyle
-    "justifyContent"
-    (
-      switch v {
-      | `flexStart => "flex-start"
-      | `flexEnd => "flex-end"
-      | `center => "center"
-      | `stretch => "stretch"
-      | `spaceAround => "space-around"
-      | `spaceBetween => "space-between"
-      }
-    );
+let height = floatStyle("height");
 
-let left = floatStyle "left";
+let heightPct = pctStyle("height");
 
-let leftPct = pctStyle "left";
+let heightAnimated = animatedStyle("height");
 
-let leftAnimated = animatedStyle "left";
+let heightInterpolated = interpolatedStyle("height");
 
-let leftInterpolated = interpolatedStyle "left";
+let justifyContent = (v) =>
+  stringStyle(
+    "justifyContent",
+    switch v {
+    | `flexStart => "flex-start"
+    | `flexEnd => "flex-end"
+    | `center => "center"
+    | `stretch => "stretch"
+    | `spaceAround => "space-around"
+    | `spaceBetween => "space-between"
+    }
+  );
 
-let margin = floatStyle "margin";
+let left = floatStyle("left");
 
-let marginBottom = floatStyle "marginBottom";
+let leftPct = pctStyle("left");
 
-let marginHorizontal = floatStyle "marginHorizontal";
+let leftAnimated = animatedStyle("left");
 
-let marginLeft = floatStyle "marginLeft";
+let leftInterpolated = interpolatedStyle("left");
 
-let marginRight = floatStyle "marginRight";
+let margin = floatStyle("margin");
 
-let marginTop = floatStyle "marginTop";
+let marginBottom = floatStyle("marginBottom");
 
-let marginVertical = floatStyle "marginVertical";
+let marginHorizontal = floatStyle("marginHorizontal");
 
-let maxHeight = floatStyle "maxHeight";
+let marginLeft = floatStyle("marginLeft");
 
-let maxHeightPct = pctStyle "maxHeight";
+let marginRight = floatStyle("marginRight");
 
-let maxWidth = floatStyle "maxWidth";
+let marginTop = floatStyle("marginTop");
 
-let maxWidthPct = pctStyle "maxHeight";
+let marginVertical = floatStyle("marginVertical");
 
-let minHeight = floatStyle "minHeight";
+let maxHeight = floatStyle("maxHeight");
 
-let minHeightPct = pctStyle "minHeight";
+let maxHeightPct = pctStyle("maxHeight");
 
-let minWidth = floatStyle "minWidth";
+let maxWidth = floatStyle("maxWidth");
 
-let minWidthPct = pctStyle "minWidth";
+let maxWidthPct = pctStyle("maxHeight");
 
-let overflow v =>
-  stringStyle
-    "overflow"
-    (
-      switch v {
-      | `visible => "visible"
-      | `hidden => "hidden"
-      | `scroll => "scroll"
-      }
-    );
+let minHeight = floatStyle("minHeight");
 
-let padding = floatStyle "padding";
+let minHeightPct = pctStyle("minHeight");
 
-let paddingBottom = floatStyle "paddingBottom";
+let minWidth = floatStyle("minWidth");
 
-let paddingHorizontal = floatStyle "paddingHorizontal";
+let minWidthPct = pctStyle("minWidth");
 
-let paddingLeft = floatStyle "paddingLeft";
+let overflow = (v) =>
+  stringStyle(
+    "overflow",
+    switch v {
+    | `visible => "visible"
+    | `hidden => "hidden"
+    | `scroll => "scroll"
+    }
+  );
 
-let paddingRight = floatStyle "paddingRight";
+let padding = floatStyle("padding");
 
-let paddingTop = floatStyle "paddingTop";
+let paddingBottom = floatStyle("paddingBottom");
 
-let paddingVertical = floatStyle "paddingVertical";
+let paddingHorizontal = floatStyle("paddingHorizontal");
 
-let position v =>
-  stringStyle
-    "position"
-    (
-      switch v {
-      | `absolute => "absolute"
-      | `relative => "relative"
-      }
-    );
+let paddingLeft = floatStyle("paddingLeft");
 
-let right = floatStyle "right";
+let paddingRight = floatStyle("paddingRight");
 
-let rightPct = pctStyle "right";
+let paddingTop = floatStyle("paddingTop");
 
-let rightAnimated = animatedStyle "right";
+let paddingVertical = floatStyle("paddingVertical");
 
-let rightInterpolated = interpolatedStyle "right";
+let position = (v) =>
+  stringStyle(
+    "position",
+    switch v {
+    | `absolute => "absolute"
+    | `relative => "relative"
+    }
+  );
 
-let top = floatStyle "top";
+let right = floatStyle("right");
 
-let topPct = pctStyle "top";
+let rightPct = pctStyle("right");
 
-let topAnimated = animatedStyle "top";
+let rightAnimated = animatedStyle("right");
 
-let topInterpolated = interpolatedStyle "top";
+let rightInterpolated = interpolatedStyle("right");
 
-let width = floatStyle "width";
+let top = floatStyle("top");
 
-let widthPct = pctStyle "width";
+let topPct = pctStyle("top");
 
-let widthAnimated = animatedStyle "width";
+let topAnimated = animatedStyle("top");
 
-let widthInterpolated = interpolatedStyle "width";
+let topInterpolated = interpolatedStyle("top");
 
-let zIndex = intStyle "zIndex";
+let width = floatStyle("width");
 
-let direction v =>
-  stringStyle
-    "direction"
-    (
-      switch v {
-      | `_inherit => "inherit"
-      | `ltr => "ltr"
-      | `rtl => "rtl"
-      }
-    );
+let widthPct = pctStyle("width");
 
+let widthAnimated = animatedStyle("width");
 
-/**
+let widthInterpolated = interpolatedStyle("width");
+
+let zIndex = intStyle("zIndex");
+
+let direction = (v) =>
+  stringStyle(
+    "direction",
+    switch v {
+    | `_inherit => "inherit"
+    | `ltr => "ltr"
+    | `rtl => "rtl"
+    }
+  );
+
+
+/***
  * Shadow Props
  */
-let shadowColor = stringStyle "shadowColor";
+let shadowColor = stringStyle("shadowColor");
 
-let shadowOffset ::height ::width =>
-  UtilsRN.dictFromArray [|("height", Encode.float height), ("width", Encode.float width)|] |>
-  objectStyle "shadowOffset";
+let shadowOffset = (~height, ~width) =>
+  UtilsRN.dictFromArray([|("height", Encode.float(height)), ("width", Encode.float(width))|])
+  |> objectStyle("shadowOffset");
 
-let shadowOpacity = floatStyle "shadowOpacity";
+let shadowOpacity = floatStyle("shadowOpacity");
 
-let shadowRadius = floatStyle "shadowRadius";
+let shadowRadius = floatStyle("shadowRadius");
 
 
-/**
+/***
  * Transform Props
  */
-let createTransformObject
-    perspective
-    rotate
-    rotateX
-    rotateY
-    rotateZ
-    scaleX
-    scaleY
-    translateX
-    translateY
-    skewX
-    skewY => {
+let createTransformObject =
+    (
+      perspective,
+      rotate,
+      rotateX,
+      rotateY,
+      rotateZ,
+      scaleX,
+      scaleY,
+      translateX,
+      translateY,
+      skewX,
+      skewY
+    ) => {
   let opt_values = [
     ("perspective", perspective),
     ("rotate", rotate),
@@ -344,287 +338,285 @@ let createTransformObject
     ("skewY", skewY)
   ];
   let values =
-    List.fold_right
-      (
-        fun x acc =>
-          switch x {
-          | (key, Some value) =>
-            let val_ = UtilsRN.dictFromArray [|(key, value)|] |> Encode.object_;
-            [val_, ...acc]
-          | _ => acc
-          }
-      )
-      opt_values
-      [];
-  Array.of_list values |> arrayStyle "transform"
+    List.fold_right(
+      (x, acc) =>
+        switch x {
+        | (key, Some(value)) =>
+          let val_ = UtilsRN.dictFromArray([|(key, value)|]) |> Encode.object_;
+          [val_, ...acc]
+        | _ => acc
+        },
+      opt_values,
+      []
+    );
+  Array.of_list(values) |> arrayStyle("transform")
 };
 
-let transform
-    ::perspective=?
-    ::rotate=?
-    ::rotateX=?
-    ::rotateY=?
-    ::rotateZ=?
-    ::scaleX=?
-    ::scaleY=?
-    ::translateX=?
-    ::translateY=?
-    ::skewX=?
-    ::skewY=?
-    () =>
-  createTransformObject
-    (UtilsRN.option_map Encode.float perspective)
-    (UtilsRN.option_map Encode.string rotate)
-    (UtilsRN.option_map Encode.string rotateX)
-    (UtilsRN.option_map Encode.string rotateY)
-    (UtilsRN.option_map Encode.string rotateZ)
-    (UtilsRN.option_map Encode.float scaleX)
-    (UtilsRN.option_map Encode.float scaleY)
-    (UtilsRN.option_map Encode.float translateX)
-    (UtilsRN.option_map Encode.float translateY)
-    (UtilsRN.option_map Encode.float skewX)
-    (UtilsRN.option_map Encode.float skewY);
+let transform =
+    (
+      ~perspective=?,
+      ~rotate=?,
+      ~rotateX=?,
+      ~rotateY=?,
+      ~rotateZ=?,
+      ~scaleX=?,
+      ~scaleY=?,
+      ~translateX=?,
+      ~translateY=?,
+      ~skewX=?,
+      ~skewY=?,
+      ()
+    ) =>
+  createTransformObject(
+    UtilsRN.option_map(Encode.float, perspective),
+    UtilsRN.option_map(Encode.string, rotate),
+    UtilsRN.option_map(Encode.string, rotateX),
+    UtilsRN.option_map(Encode.string, rotateY),
+    UtilsRN.option_map(Encode.string, rotateZ),
+    UtilsRN.option_map(Encode.float, scaleX),
+    UtilsRN.option_map(Encode.float, scaleY),
+    UtilsRN.option_map(Encode.float, translateX),
+    UtilsRN.option_map(Encode.float, translateY),
+    UtilsRN.option_map(Encode.float, skewX),
+    UtilsRN.option_map(Encode.float, skewY)
+  );
 
-let transformAnimated
-    ::perspective=?
-    ::rotate=?
-    ::rotateX=?
-    ::rotateY=?
-    ::rotateZ=?
-    ::scaleX=?
-    ::scaleY=?
-    ::translateX=?
-    ::translateY=?
-    ::skewX=?
-    ::skewY=?
-    () =>
-  createTransformObject
-    (UtilsRN.option_map Encode.animatedValue perspective)
-    (UtilsRN.option_map Encode.animatedValue rotate)
-    (UtilsRN.option_map Encode.animatedValue rotateX)
-    (UtilsRN.option_map Encode.animatedValue rotateY)
-    (UtilsRN.option_map Encode.animatedValue rotateZ)
-    (UtilsRN.option_map Encode.animatedValue scaleX)
-    (UtilsRN.option_map Encode.animatedValue scaleY)
-    (UtilsRN.option_map Encode.animatedValue translateX)
-    (UtilsRN.option_map Encode.animatedValue translateY)
-    (UtilsRN.option_map Encode.animatedValue skewX)
-    (UtilsRN.option_map Encode.animatedValue skewY);
+let transformAnimated =
+    (
+      ~perspective=?,
+      ~rotate=?,
+      ~rotateX=?,
+      ~rotateY=?,
+      ~rotateZ=?,
+      ~scaleX=?,
+      ~scaleY=?,
+      ~translateX=?,
+      ~translateY=?,
+      ~skewX=?,
+      ~skewY=?,
+      ()
+    ) =>
+  createTransformObject(
+    UtilsRN.option_map(Encode.animatedValue, perspective),
+    UtilsRN.option_map(Encode.animatedValue, rotate),
+    UtilsRN.option_map(Encode.animatedValue, rotateX),
+    UtilsRN.option_map(Encode.animatedValue, rotateY),
+    UtilsRN.option_map(Encode.animatedValue, rotateZ),
+    UtilsRN.option_map(Encode.animatedValue, scaleX),
+    UtilsRN.option_map(Encode.animatedValue, scaleY),
+    UtilsRN.option_map(Encode.animatedValue, translateX),
+    UtilsRN.option_map(Encode.animatedValue, translateY),
+    UtilsRN.option_map(Encode.animatedValue, skewX),
+    UtilsRN.option_map(Encode.animatedValue, skewY)
+  );
 
-let transformInterpolated
-    ::perspective=?
-    ::rotate=?
-    ::rotateX=?
-    ::rotateY=?
-    ::rotateZ=?
-    ::scaleX=?
-    ::scaleY=?
-    ::translateX=?
-    ::translateY=?
-    ::skewX=?
-    ::skewY=?
-    () =>
-  createTransformObject
-    (UtilsRN.option_map Encode.interpolatedValue perspective)
-    (UtilsRN.option_map Encode.interpolatedValue rotate)
-    (UtilsRN.option_map Encode.interpolatedValue rotateX)
-    (UtilsRN.option_map Encode.interpolatedValue rotateY)
-    (UtilsRN.option_map Encode.interpolatedValue rotateZ)
-    (UtilsRN.option_map Encode.interpolatedValue scaleX)
-    (UtilsRN.option_map Encode.interpolatedValue scaleY)
-    (UtilsRN.option_map Encode.interpolatedValue translateX)
-    (UtilsRN.option_map Encode.interpolatedValue translateY)
-    (UtilsRN.option_map Encode.interpolatedValue skewX)
-    (UtilsRN.option_map Encode.interpolatedValue skewY);
+let transformInterpolated =
+    (
+      ~perspective=?,
+      ~rotate=?,
+      ~rotateX=?,
+      ~rotateY=?,
+      ~rotateZ=?,
+      ~scaleX=?,
+      ~scaleY=?,
+      ~translateX=?,
+      ~translateY=?,
+      ~skewX=?,
+      ~skewY=?,
+      ()
+    ) =>
+  createTransformObject(
+    UtilsRN.option_map(Encode.interpolatedValue, perspective),
+    UtilsRN.option_map(Encode.interpolatedValue, rotate),
+    UtilsRN.option_map(Encode.interpolatedValue, rotateX),
+    UtilsRN.option_map(Encode.interpolatedValue, rotateY),
+    UtilsRN.option_map(Encode.interpolatedValue, rotateZ),
+    UtilsRN.option_map(Encode.interpolatedValue, scaleX),
+    UtilsRN.option_map(Encode.interpolatedValue, scaleY),
+    UtilsRN.option_map(Encode.interpolatedValue, translateX),
+    UtilsRN.option_map(Encode.interpolatedValue, translateY),
+    UtilsRN.option_map(Encode.interpolatedValue, skewX),
+    UtilsRN.option_map(Encode.interpolatedValue, skewY)
+  );
 
 
-/**
+/***
  * View Props
  */
-let backfaceVisibility v =>
-  stringStyle
-    "backfaceVisibility"
-    (
-      switch v {
-      | `visible => "visible"
-      | `hidden => "hidden"
-      }
-    );
+let backfaceVisibility = (v) =>
+  stringStyle(
+    "backfaceVisibility",
+    switch v {
+    | `visible => "visible"
+    | `hidden => "hidden"
+    }
+  );
 
-let backgroundColor = stringStyle "backgroundColor";
+let backgroundColor = stringStyle("backgroundColor");
 
-let borderColor = stringStyle "borderColor";
+let borderColor = stringStyle("borderColor");
 
-let borderTopColor = stringStyle "borderTopColor";
+let borderTopColor = stringStyle("borderTopColor");
 
-let borderRightColor = stringStyle "borderRightColor";
+let borderRightColor = stringStyle("borderRightColor");
 
-let borderBottomColor = stringStyle "borderBottomColor";
+let borderBottomColor = stringStyle("borderBottomColor");
 
-let borderLeftColor = stringStyle "borderLeftColor";
+let borderLeftColor = stringStyle("borderLeftColor");
 
-let borderRadius = floatStyle "borderRadius";
+let borderRadius = floatStyle("borderRadius");
 
-let borderTopLeftRadius = floatStyle "borderTopLeftRadius";
+let borderTopLeftRadius = floatStyle("borderTopLeftRadius");
 
-let borderTopRightRadius = floatStyle "borderTopRightRadius";
+let borderTopRightRadius = floatStyle("borderTopRightRadius");
 
-let borderBottomLeftRadius = floatStyle "borderBottomLeftRadius";
+let borderBottomLeftRadius = floatStyle("borderBottomLeftRadius");
 
-let borderBottomRightRadius = floatStyle "borderBottomRightRadius";
+let borderBottomRightRadius = floatStyle("borderBottomRightRadius");
 
-let borderStyle v =>
-  stringStyle
-    "borderStyle"
-    (
-      switch v {
-      | `solid => "solid"
-      | `dotted => "dotted"
-      | `dashed => "dashed"
-      }
-    );
+let borderStyle = (v) =>
+  stringStyle(
+    "borderStyle",
+    switch v {
+    | `solid => "solid"
+    | `dotted => "dotted"
+    | `dashed => "dashed"
+    }
+  );
 
-let opacity = floatStyle "opacity";
+let opacity = floatStyle("opacity");
 
-let opacityInterpolated = interpolatedStyle "opacity";
+let opacityInterpolated = interpolatedStyle("opacity");
 
-let opacityAnimated = animatedStyle "opacity";
+let opacityAnimated = animatedStyle("opacity");
 
-let elevation = floatStyle "elevation";
+let elevation = floatStyle("elevation");
 
 
-/**
+/***
  * Text Props
  */
-let color = stringStyle "color";
+let color = stringStyle("color");
 
-let fontFamily = stringStyle "fontFamily";
+let fontFamily = stringStyle("fontFamily");
 
-let fontSize = floatStyle "fontSize";
+let fontSize = floatStyle("fontSize");
 
-let fontStyle v =>
-  stringStyle
-    "fontStyle"
-    (
-      switch v {
-      | `normal => "normal"
-      | `italic => "italic"
-      }
-    );
+let fontStyle = (v) =>
+  stringStyle(
+    "fontStyle",
+    switch v {
+    | `normal => "normal"
+    | `italic => "italic"
+    }
+  );
 
-let fontWeight v =>
-  stringStyle
-    "fontWeight"
-    (
-      switch v {
-      | `normal => "normal"
-      | `bold => "bold"
-      | `_100 => "100"
-      | `_200 => "200"
-      | `_300 => "300"
-      | `_400 => "400"
-      | `_500 => "500"
-      | `_600 => "600"
-      | `_700 => "700"
-      | `_800 => "800"
-      | `_900 => "900"
-      }
-    );
+let fontWeight = (v) =>
+  stringStyle(
+    "fontWeight",
+    switch v {
+    | `normal => "normal"
+    | `bold => "bold"
+    | `_100 => "100"
+    | `_200 => "200"
+    | `_300 => "300"
+    | `_400 => "400"
+    | `_500 => "500"
+    | `_600 => "600"
+    | `_700 => "700"
+    | `_800 => "800"
+    | `_900 => "900"
+    }
+  );
 
-let lineHeight = floatStyle "lineHeight";
+let lineHeight = floatStyle("lineHeight");
 
-let textAlign v =>
-  stringStyle
-    "textAlign"
-    (
-      switch v {
-      | `auto => "auto"
-      | `left => "left"
-      | `right => "right"
-      | `center => "center"
-      | `justify => "justify"
-      }
-    );
+let textAlign = (v) =>
+  stringStyle(
+    "textAlign",
+    switch v {
+    | `auto => "auto"
+    | `left => "left"
+    | `right => "right"
+    | `center => "center"
+    | `justify => "justify"
+    }
+  );
 
-let textDecorationLine v =>
-  stringStyle
-    "textDecorationLine"
-    (
-      switch v {
-      | `none => "none"
-      | `underline => "underline"
-      | `lineThrough => "line-through"
-      | `underlineLineThrough => "underline line-through"
-      }
-    );
+let textDecorationLine = (v) =>
+  stringStyle(
+    "textDecorationLine",
+    switch v {
+    | `none => "none"
+    | `underline => "underline"
+    | `lineThrough => "line-through"
+    | `underlineLineThrough => "underline line-through"
+    }
+  );
 
-let textShadowColor = stringStyle "textShadowColor";
+let textShadowColor = stringStyle("textShadowColor");
 
-let textShadowOffset ::height ::width =>
-  UtilsRN.dictFromArray [|("height", Encode.float height), ("width", Encode.float width)|] |>
-  objectStyle "textShadowOffset";
+let textShadowOffset = (~height, ~width) =>
+  UtilsRN.dictFromArray([|("height", Encode.float(height)), ("width", Encode.float(width))|])
+  |> objectStyle("textShadowOffset");
 
-let textShadowRadius = floatStyle "textShadowRadius";
+let textShadowRadius = floatStyle("textShadowRadius");
 
-let includeFontPadding = booleanStyle "includeFontPadding";
+let includeFontPadding = booleanStyle("includeFontPadding");
 
-let textAlignVertical v =>
-  stringStyle
-    "textAlignVertical"
-    (
-      switch v {
-      | `auto => "auto"
-      | `top => "top"
-      | `bottom => "bottom"
-      | `center => "center"
-      }
-    );
+let textAlignVertical = (v) =>
+  stringStyle(
+    "textAlignVertical",
+    switch v {
+    | `auto => "auto"
+    | `top => "top"
+    | `bottom => "bottom"
+    | `center => "center"
+    }
+  );
 
-let fontVariant fontVariants =>
-  fontVariants |> Array.of_list |> Array.map Encode.string |> arrayStyle "fontVariant";
+let fontVariant = (fontVariants) =>
+  fontVariants |> Array.of_list |> Array.map(Encode.string) |> arrayStyle("fontVariant");
 
-let letterSpacing = floatStyle "letterSpacing";
+let letterSpacing = floatStyle("letterSpacing");
 
-let textDecorationColor = stringStyle "textDecorationColor";
+let textDecorationColor = stringStyle("textDecorationColor");
 
-let textDecorationStyle v =>
-  stringStyle
-    "textDecorationStyle"
-    (
-      switch v {
-      | `solid => "solid"
-      | `double => "double"
-      | `dotted => "dotted"
-      | `dashed => "dashed"
-      }
-    );
+let textDecorationStyle = (v) =>
+  stringStyle(
+    "textDecorationStyle",
+    switch v {
+    | `solid => "solid"
+    | `double => "double"
+    | `dotted => "dotted"
+    | `dashed => "dashed"
+    }
+  );
 
-let writingDirection v =>
-  stringStyle
-    "writingDirection"
-    (
-      switch v {
-      | `auto => "auto"
-      | `ltr => "ltr"
-      | `rtl => "rtl"
-      }
-    );
+let writingDirection = (v) =>
+  stringStyle(
+    "writingDirection",
+    switch v {
+    | `auto => "auto"
+    | `ltr => "ltr"
+    | `rtl => "rtl"
+    }
+  );
 
 
-/** Image props */
-let resizeMode v =>
-  stringStyle
-    "resizeMode"
-    (
-      switch v {
-      | `cover => "cover"
-      | `contain => "contain"
-      | `stretch => "stretch"
-      | `repeat => "repeat"
-      | `center => "center"
-      }
-    );
+/*** Image props */
+let resizeMode = (v) =>
+  stringStyle(
+    "resizeMode",
+    switch v {
+    | `cover => "cover"
+    | `contain => "contain"
+    | `stretch => "stretch"
+    | `repeat => "repeat"
+    | `center => "center"
+    }
+  );
 
-let tintColor = stringStyle "tintColor";
+let tintColor = stringStyle("tintColor");
 
-let overlayColor = stringStyle "overlayColor";
+let overlayColor = stringStyle("overlayColor");

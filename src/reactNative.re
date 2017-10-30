@@ -1,4 +1,4 @@
-/**
+/***
  * Components
  */
 module ActivityIndicator = ActivityIndicatorRe;
@@ -57,7 +57,7 @@ module Animated = {
 };
 
 
-/**
+/***
  *  APIs
  */
 module Alert = AlertRe;
@@ -96,7 +96,7 @@ module Vibration = VibrationRe;
 module SegmentedControllOS = SegmentedControllOSRe;
 
 
-/**
+/***
  * New Modules due to Reason
  */
 module Packager = PackagerRe;

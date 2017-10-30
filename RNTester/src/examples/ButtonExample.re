@@ -1,6 +1,6 @@
 open ReactNative;
 
-let onButtonPress () => Alert.alert title::"Button has been pressed!" ();
+let onButtonPress = () => Alert.alert(~title="Button has been pressed!", ());
 
 let displayName = "ButtonExample";
 
@@ -8,12 +8,14 @@ let title = "<Button>";
 
 let description = "Simple React Native button component.";
 
-let examples: array Example.t = [|
+let examples: array(Example.t) = [|
   {
     title: "Simple Button",
     description:
-      Some "The title and onPress handler are required. It is recommended to set accessibilityLabel to help make your app usable by everyone.",
-    render: fun () =>
+      Some(
+        "The title and onPress handler are required. It is recommended to set accessibilityLabel to help make your app usable by everyone."
+      ),
+    render: () =>
       <Button
         onPress=onButtonPress
         title="Press Me"
@@ -23,11 +25,14 @@ let examples: array Example.t = [|
   {
     title: "Adjusted color",
     description:
-      Some (
-        "Adjusts the color in a way that looks standard on each " ^
-        "platform. On iOS, the color prop controls the color of the text. On " ^ "Android, the color adjusts the background color of the button."
+      Some(
+        "Adjusts the color in a way that looks standard on each "
+        ++ (
+          "platform. On iOS, the color prop controls the color of the text. On "
+          ++ "Android, the color adjusts the background color of the button."
+        )
       ),
-    render: fun () =>
+    render: () =>
       <Button
         onPress=onButtonPress
         title="Press Purple"
@@ -37,9 +42,9 @@ let examples: array Example.t = [|
   },
   {
     title: "Fit to text layout",
-    description: Some ("This layout strategy lets the title define the width of " ^ "the button"),
-    render: fun () =>
-      <View style=Style.(style [flexDirection `row, justifyContent `spaceBetween])>
+    description: Some("This layout strategy lets the title define the width of " ++ "the button"),
+    render: () =>
+      <View style=Style.(style([flexDirection(`row), justifyContent(`spaceBetween)]))>
         <Button
           onPress=onButtonPress
           title="This looks great!"
@@ -55,8 +60,8 @@ let examples: array Example.t = [|
   },
   {
     title: "Disabled Button",
-    description: Some "All interactions for the component are disabled.",
-    render: fun () =>
+    description: Some("All interactions for the component are disabled."),
+    render: () =>
       <Button
         disabled=true
         onPress=onButtonPress
