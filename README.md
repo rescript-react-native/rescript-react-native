@@ -73,7 +73,7 @@ Here are some more things which will be probably useful for you:
 - [Bucklescript Manual](http://bucklescript.github.io/bucklescript/Manual.html)
 
 ## Can I really build my React Native app with Reason?
-Yes! Check out the [Seattle JS Conf App](https://github.com/FormidableLabs/seattlejsconf-app)for a real world App written with Reason.
+Yes! Check out the [Seattle JS Conf App](https://github.com/FormidableLabs/seattlejsconf-app) for a real world App written with Reason.
 
 ### Disclaimer
 
