@@ -24,7 +24,8 @@ yarn add bs-platform reason-react bs-react-native
     "bs-dependencies": ["bs-react-native", "reason-react"],
     "sources": [{
         "dir": "re"
-    }]
+    }],
+    "refmt": 3
 }
 ```
 4. You are nearly done, the last configuration before we get to the fun stuff. In your `package.json` add to the `"scripts"` section two scripts:
