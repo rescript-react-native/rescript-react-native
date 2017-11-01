@@ -8,7 +8,16 @@
   "sources": [
     {
       "dir": "src",
-      "subdirs": true,
+      "subdirs": [
+        {
+          "dir": "components",
+          "subdirs": [{"dir": "private", "public": []}],
+        },
+        {
+          "dir": "private",
+          "public": [],
+        },
+      ],
     }
   ]
 }
