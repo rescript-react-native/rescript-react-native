@@ -4,11 +4,20 @@
   "reason": {"react-jsx": 2},
   "refmt": 3,
   "bs-dependencies": ["reason-react"],
-  "namespaces": true,
+  "namespace": true,
   "sources": [
     {
       "dir": "src",
-      "subdirs": true,
+      "subdirs": [
+        {
+          "dir": "components",
+          "subdirs": [{"dir": "private", "public": []}],
+        },
+        {
+          "dir": "private",
+          "public": [],
+        },
+      ],
     }
   ]
 }
