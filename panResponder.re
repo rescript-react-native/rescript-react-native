@@ -1,3 +1,0 @@
-include PanResponderRe;
-
-include PanResponderUtils;

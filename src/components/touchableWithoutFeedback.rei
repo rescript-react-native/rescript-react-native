@@ -40,6 +40,7 @@ let make:
     ~onPressIn: unit => unit=?,
     ~onPressOut: unit => unit=?,
     ~pressRetentionOffset: TypesRN.insets=?,
+    ~style: Style.t=?,
     array(ReasonReact.reactElement)
   ) =>
   ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);

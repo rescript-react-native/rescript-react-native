@@ -14,7 +14,8 @@ let make =
       ~onPress=?,
       ~onPressIn=?,
       ~onPressOut=?,
-      ~pressRetentionOffset=?
+      ~pressRetentionOffset=?,
+      ~style=?
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
@@ -32,6 +33,7 @@ let make =
           "onPressIn": from_opt(onPressIn),
           "onPressOut": from_opt(onPressOut),
           "pressRetentionOffset": from_opt(pressRetentionOffset),
+          "style": from_opt(style),
           "accessibilityComponentType":
             from_opt(
               UtilsRN.option_map(
