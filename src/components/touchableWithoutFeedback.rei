@@ -36,6 +36,7 @@ let make:
     ~disabled: bool=?,
     ~hitSlop: TypesRN.insets=?,
     ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
+    ~onLongPress: unit => unit=?,
     ~onPress: unit => unit=?,
     ~onPressIn: unit => unit=?,
     ~onPressOut: unit => unit=?,
