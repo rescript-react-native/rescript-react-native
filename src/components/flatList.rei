@@ -56,7 +56,7 @@ let make:
     ~onEndReached: {. "distanceFromEnd": float}=?,
     ~onEndReachedThreshold: float=?,
     ~onRefresh: unit => unit=?,
-    ~onViewReableItemsChanged: {
+    ~onViewableItemsChanged: {
                                .
                                "viewableItems":
                                  array(
@@ -65,7 +65,7 @@ let make:
                                      "item": 'item,
                                      "key": string,
                                      "index": Js.undefined(int),
-                                     "isViewReable": Js.boolean,
+                                     "isViewable": Js.boolean,
                                      "section": Js.t({.})
                                    }
                                  ),
@@ -76,7 +76,7 @@ let make:
                                      "item": 'item,
                                      "key": string,
                                      "index": Js.undefined(int),
-                                     "isViewReable": Js.boolean,
+                                     "isViewable": Js.boolean,
                                      "section": Js.t({.})
                                    }
                                  )

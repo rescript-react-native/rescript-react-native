@@ -1,4 +1,4 @@
-[@bs.module "react-native"] external view : ReasonReact.reactClass = "WebViewRe";
+[@bs.module "react-native"] external view : ReasonReact.reactClass = "WebView";
 
 type iOSLoadRequestEvent = {
   .

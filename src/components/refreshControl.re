@@ -7,7 +7,7 @@ let make =
       ~colors: option(array(string))=?,
       ~enabled: option(bool)=?,
       ~progressBackgroundColor: option(string)=?,
-      ~progressViewReOffset: option(float)=?,
+      ~progressViewOffset: option(float)=?,
       ~tintColor: option(string)=?,
       ~title: option(string)=?,
       ~titleColor: option(string)=?,
@@ -43,7 +43,7 @@ let make =
             "colors": from_opt(colors),
             "enabled": from_opt(UtilsRN.optBoolToOptJsBoolean(enabled)),
             "progressBackgroundColor": from_opt(progressBackgroundColor),
-            "progressViewReOffset": from_opt(progressViewReOffset),
+            "progressViewOffset": from_opt(progressViewOffset),
             "tintColor": from_opt(tintColor),
             "title": from_opt(title),
             "titleColor": from_opt(titleColor)

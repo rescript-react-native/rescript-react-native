@@ -23,7 +23,7 @@ module type TextComponent = {
     ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
 };
 
-module CreateComponent = (Impl: ViewRe.Impl) : TextComponent => {
+module CreateComponent = (Impl: View.Impl) : TextComponent => {
   let make =
       (
         ~accessible=?,
@@ -94,7 +94,7 @@ module CreateComponent = (Impl: ViewRe.Impl) : TextComponent => {
     );
 };
 
-module Text =
+include
   CreateComponent(
     {
       [@bs.module "react-native"] external view : ReasonReact.reactClass = "Text";

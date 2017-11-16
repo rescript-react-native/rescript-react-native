@@ -5,7 +5,7 @@ let make:
     ~colors: array(string)=?,
     ~enabled: bool=?,
     ~progressBackgroundColor: string=?,
-    ~progressViewReOffset: float=?,
+    ~progressViewOffset: float=?,
     ~tintColor: string=?,
     ~title: string=?,
     ~titleColor: string=?,

@@ -1,5 +1,5 @@
 module View =
-  ViewRe.CreateComponent(
+  View.CreateComponent(
     {
       [@bs.module "react-native"] [@bs.scope "AnimatedRe"] external view : ReasonReact.reactClass =
         "ViewRe";

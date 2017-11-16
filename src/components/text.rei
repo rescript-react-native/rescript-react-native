@@ -23,6 +23,6 @@ module type TextComponent = {
     ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
 };
 
-module CreateComponent: (Impl: ViewRe.Impl) => TextComponent;
+module CreateComponent: (Impl: View.Impl) => TextComponent;
 
-module Text: TextComponent;
+include TextComponent;

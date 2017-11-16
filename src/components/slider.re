@@ -6,9 +6,9 @@ external rawImageSourceJS : 'a => rawImageSourceJS = "%identity";
 
 let convertImageSource = (src) =>
   switch src {
-  | Image.Image.Multiple(x) => rawImageSourceJS(Array.of_list(x))
-  | Image.Image.URI(x) => rawImageSourceJS(x)
-  | Image.Image.Required(x) => rawImageSourceJS(x)
+  | Image.Multiple(x) => rawImageSourceJS(Array.of_list(x))
+  | Image.URI(x) => rawImageSourceJS(x)
+  | Image.Required(x) => rawImageSourceJS(x)
   };
 
 let make =
@@ -23,10 +23,10 @@ let make =
       ~step: option(float)=?,
       ~value: option(float)=?,
       ~thumbTintColor: option(string)=?,
-      ~maximumTrackImage: option(Image.Image.imageSource)=?,
-      ~minimumTrackImage: option(Image.Image.imageSource)=?,
-      ~thumbImage: option(Image.Image.imageSource)=?,
-      ~trackImage: option(Image.Image.imageSource)=?,
+      ~maximumTrackImage: option(Image.imageSource)=?,
+      ~minimumTrackImage: option(Image.imageSource)=?,
+      ~thumbImage: option(Image.imageSource)=?,
+      ~trackImage: option(Image.imageSource)=?,
       ~accessibilityLabel=?,
       ~accessible=?,
       ~hitSlop=?,
