@@ -57,4 +57,4 @@ module type Impl = {let view: ReasonReact.reactClass;};
 
 module CreateComponent: (Impl: Impl) => ViewComponent;
 
-module View: ViewComponent;
+include ViewComponent;

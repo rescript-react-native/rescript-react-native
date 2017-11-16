@@ -55,6 +55,6 @@ module type ImageComponent = {
     ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
 };
 
-module CreateComponent: (Impl: ViewRe.Impl) => ImageComponent;
+module CreateComponent: (Impl: View.Impl) => ImageComponent;
 
-module Image: ImageComponent;
+include ImageComponent;

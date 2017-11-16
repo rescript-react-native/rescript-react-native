@@ -92,6 +92,6 @@ module type ScrollViewComponent = {
     ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
 };
 
-module CreateComponent: (Impl: ViewRe.Impl) => ScrollViewComponent;
+module CreateComponent: (Impl: View.Impl) => ScrollViewComponent;
 
-module ScrollView: ScrollViewComponent;
+include ScrollViewComponent;

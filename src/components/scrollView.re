@@ -92,7 +92,7 @@ module type ScrollViewComponent = {
     ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
 };
 
-module CreateComponent = (Impl: ViewRe.Impl) : ScrollViewComponent => {
+module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
   type point = {
     x: float,
     y: float
@@ -301,7 +301,7 @@ module CreateComponent = (Impl: ViewRe.Impl) : ScrollViewComponent => {
     );
 };
 
-module ScrollView =
+include
   CreateComponent(
     {
       [@bs.module "react-native"] external view : ReasonReact.reactClass = "ScrollView";

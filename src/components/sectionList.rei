@@ -44,7 +44,7 @@ let separatorComponent:
 type viewToken('item) = {
   .
   "index": Js.undefined(int),
-  "isViewReable": Js.boolean,
+  "isViewable": Js.boolean,
   "item": 'item,
   "key": string,
   "section": section('item)
@@ -64,7 +64,7 @@ let make:
     ~initialNumToRender: int=?,
     ~onEndReached: {. "distanceFromEnd": float}=?,
     ~onEndReachedThreshold: float=?,
-    ~onViewReableItemsChanged: {
+    ~onViewableItemsChanged: {
                                .
                                "changed": array(viewToken('item)),
                                "viewableItems": array(viewToken('item))

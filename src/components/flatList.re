@@ -115,7 +115,7 @@ let make =
       ~onEndReached=?,
       ~onEndReachedThreshold=?,
       ~onRefresh=?,
-      ~onViewReableItemsChanged=?,
+      ~onViewableItemsChanged=?,
       ~overScrollMode=?,
       ~pagingEnabled=?,
       ~refreshing=?,
@@ -154,7 +154,7 @@ let make =
           "onEndReached": from_opt(onEndReached),
           "onEndReachedThreshold": from_opt(onEndReachedThreshold),
           "onRefresh": from_opt(onRefresh),
-          "onViewReableItemsChanged": from_opt(onViewReableItemsChanged),
+          "onViewableItemsChanged": from_opt(onViewableItemsChanged),
           "overScrollMode":
             from_opt(
               UtilsRN.option_map(

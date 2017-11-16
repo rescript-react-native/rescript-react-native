@@ -101,7 +101,7 @@ type viewToken('item) = {
   "item": 'item,
   "key": string,
   "index": Js.undefined(int),
-  "isViewReable": Js.boolean,
+  "isViewable": Js.boolean,
   "section": section('item)
 };
 
@@ -119,7 +119,7 @@ let make:
     ~initialNumToRender: int=?,
     ~onEndReached: {. "distanceFromEnd": float}=?,
     ~onEndReachedThreshold: float=?,
-    ~onViewReableItemsChanged: {
+    ~onViewableItemsChanged: {
                                .
                                "viewableItems": array(viewToken('item)),
                                "changed": array(viewToken('item))
@@ -146,7 +146,7 @@ let make:
     ~initialNumToRender=?,
     ~onEndReached=?,
     ~onEndReachedThreshold=?,
-    ~onViewReableItemsChanged=?,
+    ~onViewableItemsChanged=?,
     ~onRefresh=?,
     ~refreshing=?,
     ~renderSectionHeader=?,
@@ -172,7 +172,7 @@ let make:
             "onEndReached": from_opt(onEndReached),
             "onEndReachedThreshold": from_opt(onEndReachedThreshold),
             "onRefresh": from_opt(onRefresh),
-            "onViewReableItemsChanged": from_opt(onViewReableItemsChanged),
+            "onViewableItemsChanged": from_opt(onViewableItemsChanged),
             "refreshing": from_opt(UtilsRN.optBoolToOptJsBoolean(refreshing)),
             "renderSectionHeader": from_opt(renderSectionHeader),
             "renderSectionFooter": from_opt(renderSectionFooter),

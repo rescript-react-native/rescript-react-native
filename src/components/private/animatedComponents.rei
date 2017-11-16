@@ -1,4 +1,4 @@
-module View: ViewRe.ViewComponent;
+module View: View.ViewComponent;
 
 module Image: Image.ImageComponent;
 

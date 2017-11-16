@@ -55,7 +55,7 @@ module type ImageComponent = {
     ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
 };
 
-module CreateComponent = (Impl: ViewRe.Impl) : ImageComponent => {
+module CreateComponent = (Impl: View.Impl) : ImageComponent => {
   type imageURISource;
   [@bs.obj]
   external imageURISource :
@@ -182,7 +182,7 @@ module CreateComponent = (Impl: ViewRe.Impl) : ImageComponent => {
     );
 };
 
-module Image =
+include
   CreateComponent(
     {
       [@bs.module "react-native"] external view : ReasonReact.reactClass = "Image";

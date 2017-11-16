@@ -1,5 +1,3 @@
-open Image;
-
 module Event: {
   type error;
   type progress = {
