@@ -9,6 +9,7 @@
 - [ ] DrawerLayoutAndroid
 - [x] FlatList
 - [x] Image
+- [x] Image Background
 - [ ] KeyboardAvoidingView
 - [ ] ListView
 - [ ] MapView
@@ -70,7 +71,7 @@
 - [ ] NetInfo
 - [x] PanResponder
 - [ ] PermissionsAndroid
-- [ ] PixelRatio
+- [x] PixelRatio
 - [x] Platform
 - [ ] PushNotificationIOS
 - [ ] Settings
