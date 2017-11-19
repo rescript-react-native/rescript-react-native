@@ -107,3 +107,23 @@ let styles =
 
 <View style=styles##wrapper />;
 ```
+
+## Toubleshooting
+
+### `Native module cannot be null` with create-react-native-app
+
+Currently BuckleScript can generate `import * as ReactNative from 'react-native'`, which breaks
+create-react-native-app. To get around this you can force BuckleScript to generate CommonJS
+modules instead of ES Modules using:
+
+```json
+/* bsconfig.json */
+{
+  /* ... */
+  "package-specs": [
+    {
+      "module": "commonjs"
+    }
+  ]
+}
+```
