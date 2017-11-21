@@ -125,7 +125,9 @@ let make =
       ~showsVerticalScrollIndicator=?,
       ~windowSize=?,
       ~maxToRenderPerBatch=?,
-      ~viewabilityConfig=?
+      ~viewabilityConfig=?,
+      ~onScroll=?,
+      ~style=?
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
@@ -178,7 +180,9 @@ let make =
             from_opt(UtilsRN.optBoolToOptJsBoolean(showsVerticalScrollIndicator)),
           "windowSize": from_opt(windowSize),
           "maxToRenderPerBatch": from_opt(maxToRenderPerBatch),
-          "viewabilityConfig": from_opt(viewabilityConfig)
+          "viewabilityConfig": from_opt(viewabilityConfig),
+          "onScroll": from_opt(onScroll),
+          "style": from_opt(style)
         }
       )
   );

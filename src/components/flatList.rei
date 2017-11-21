@@ -92,6 +92,8 @@ let make:
     ~windowSize: int=?,
     ~maxToRenderPerBatch: int=?,
     ~viewabilityConfig: Js.t({.})=?,
+    ~onScroll: RNEvent.NativeScrollEvent.t => unit=?,
+    ~style: Style.t=?,
     array(ReasonReact.reactElement)
   ) =>
   ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);

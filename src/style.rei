@@ -45,7 +45,7 @@ let bottom: float => style;
 
 let bottomPct: float => style;
 
-let bottomAnimatedRe: AnimatedRe.Value.t => style;
+let bottomAnimated: AnimatedRe.Value.t => style;
 
 let bottomInterpolated: AnimatedRe.Interpolation.t => style;
 
@@ -69,7 +69,7 @@ let height: float => style;
 
 let heightPct: float => style;
 
-let heightAnimatedRe: AnimatedRe.Value.t => style;
+let heightAnimated: AnimatedRe.Value.t => style;
 
 let heightInterpolated: AnimatedRe.Interpolation.t => style;
 
@@ -80,7 +80,7 @@ let left: float => style;
 
 let leftPct: float => style;
 
-let leftAnimatedRe: AnimatedRe.Value.t => style;
+let leftAnimated: AnimatedRe.Value.t => style;
 
 let leftInterpolated: AnimatedRe.Interpolation.t => style;
 
@@ -136,7 +136,7 @@ let right: float => style;
 
 let rightPct: float => style;
 
-let rightAnimatedRe: AnimatedRe.Value.t => style;
+let rightAnimated: AnimatedRe.Value.t => style;
 
 let rightInterpolated: AnimatedRe.Interpolation.t => style;
 
@@ -144,7 +144,7 @@ let top: float => style;
 
 let topPct: float => style;
 
-let topAnimatedRe: AnimatedRe.Value.t => style;
+let topAnimated: AnimatedRe.Value.t => style;
 
 let topInterpolated: AnimatedRe.Interpolation.t => style;
 
@@ -152,7 +152,7 @@ let width: float => style;
 
 let widthPct: float => style;
 
-let widthAnimatedRe: AnimatedRe.Value.t => style;
+let widthAnimated: AnimatedRe.Value.t => style;
 
 let widthInterpolated: AnimatedRe.Interpolation.t => style;
 
@@ -193,7 +193,7 @@ let transform:
   ) =>
   style;
 
-let transformAnimatedRe:
+let transformAnimated:
   (
     ~perspective: AnimatedRe.Value.t=?,
     ~rotate: AnimatedRe.Value.t=?,
@@ -259,7 +259,7 @@ let borderStyle: [ | `solid | `dotted | `dashed] => style;
 
 let opacity: float => style;
 
-let opacityAnimatedRe: AnimatedRe.Value.t => style;
+let opacityAnimated: AnimatedRe.Value.t => style;
 
 let opacityInterpolated: AnimatedRe.Interpolation.t => style;
 

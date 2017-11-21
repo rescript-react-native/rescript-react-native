@@ -1,5 +1,5 @@
 {
-  "name": "react-native",
+  "name": "bs-react-native",
   "bsc-flags": ["-bs-super-errors"],
   "reason": {"react-jsx": 2},
   "refmt": 3,
@@ -11,7 +11,6 @@
       "subdirs": [
         {
           "dir": "components",
-          "subdirs": [{"dir": "private", "public": []}],
         },
         {
           "dir": "private",

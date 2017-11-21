@@ -1,8 +1,8 @@
 module View =
   View.CreateComponent(
     {
-      [@bs.module "react-native"] [@bs.scope "AnimatedRe"] external view : ReasonReact.reactClass =
-        "ViewRe";
+      [@bs.module "react-native"] [@bs.scope "Animated"] external view : ReasonReact.reactClass =
+        "View";
       let view = view;
     }
   );
@@ -10,7 +10,7 @@ module View =
 module Image =
   Image.CreateComponent(
     {
-      [@bs.module "react-native"] [@bs.scope "AnimatedRe"] external view : ReasonReact.reactClass =
+      [@bs.module "react-native"] [@bs.scope "Animated"] external view : ReasonReact.reactClass =
         "Image";
       let view = view;
     }
@@ -19,7 +19,7 @@ module Image =
 module Text =
   Text.CreateComponent(
     {
-      [@bs.module "react-native"] [@bs.scope "AnimatedRe"] external view : ReasonReact.reactClass =
+      [@bs.module "react-native"] [@bs.scope "Animated"] external view : ReasonReact.reactClass =
         "Text";
       let view = view;
     }
@@ -44,7 +44,7 @@ module ScrollView = {
   include
     ScrollView.CreateComponent(
       {
-        [@bs.module "react-native"] [@bs.scope "AnimatedRe"] external view : ReasonReact.reactClass =
+        [@bs.module "react-native"] [@bs.scope "Animated"] external view : ReasonReact.reactClass =
           "ScrollView";
         let view = view;
       }

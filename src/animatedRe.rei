@@ -216,6 +216,8 @@ let stagger: (float, array(CompositeAnimation.t)) => CompositeAnimation.t;
 
 let loop: (~iterations: int=?, ~animation: CompositeAnimation.t, unit) => CompositeAnimation.t;
 
+let createAnimatedComponent : ReasonReact.reactClass => ReasonReact.reactClass;
+
 module Timing = Value.Timing;
 
 module TimingXY = ValueXY.Timing;

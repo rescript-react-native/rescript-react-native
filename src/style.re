@@ -15,7 +15,7 @@ type style =
   | IntStyle(string, int)
   | FloatStyle(string, float)
   | ObjectStyle(string, Js.Dict.t(Js.Json.t))
-  | AnimatedReStyle(
+  | AnimatedStyle(
       string,
       [ | `value(AnimatedRe.Value.t) | `interpolation(AnimatedRe.Interpolation.t)]
     );
@@ -42,9 +42,9 @@ let pctStyle = (key, value) => StringStyle(key, string_of_float(value) ++ "%");
 
 let objectStyle = (key, value) => ObjectStyle(key, value);
 
-let animatedStyle = (key, value) => AnimatedReStyle(key, `value(value));
+let animatedStyle = (key, value) => AnimatedStyle(key, `value(value));
 
-let interpolatedStyle = (key, value) => AnimatedReStyle(key, `interpolation(value));
+let interpolatedStyle = (key, value) => AnimatedStyle(key, `interpolation(value));
 
 let encodeStyle =
   fun
@@ -54,7 +54,7 @@ let encodeStyle =
   | FloatStyle(key, value) => (key, Encode.float(value))
   | StringStyle(key, value) => (key, Encode.string(value))
   | ObjectStyle(key, value) => (key, Encode.object_(value))
-  | AnimatedReStyle(key, value) => (
+  | AnimatedStyle(key, value) => (
       key,
       switch value {
       | `value(x) => Encode.animatedValue(x)
@@ -121,7 +121,7 @@ let bottom = floatStyle("bottom");
 
 let bottomPct = pctStyle("bottom");
 
-let bottomAnimatedRe = animatedStyle("bottom");
+let bottomAnimated = animatedStyle("bottom");
 
 let bottomInterpolated = interpolatedStyle("bottom");
 
@@ -168,7 +168,7 @@ let height = floatStyle("height");
 
 let heightPct = pctStyle("height");
 
-let heightAnimatedRe = animatedStyle("height");
+let heightAnimated = animatedStyle("height");
 
 let heightInterpolated = interpolatedStyle("height");
 
@@ -189,7 +189,7 @@ let left = floatStyle("left");
 
 let leftPct = pctStyle("left");
 
-let leftAnimatedRe = animatedStyle("left");
+let leftAnimated = animatedStyle("left");
 
 let leftInterpolated = interpolatedStyle("left");
 
@@ -260,7 +260,7 @@ let right = floatStyle("right");
 
 let rightPct = pctStyle("right");
 
-let rightAnimatedRe = animatedStyle("right");
+let rightAnimated = animatedStyle("right");
 
 let rightInterpolated = interpolatedStyle("right");
 
@@ -268,7 +268,7 @@ let top = floatStyle("top");
 
 let topPct = pctStyle("top");
 
-let topAnimatedRe = animatedStyle("top");
+let topAnimated = animatedStyle("top");
 
 let topInterpolated = interpolatedStyle("top");
 
@@ -276,7 +276,7 @@ let width = floatStyle("width");
 
 let widthPct = pctStyle("width");
 
-let widthAnimatedRe = animatedStyle("width");
+let widthAnimated = animatedStyle("width");
 
 let widthInterpolated = interpolatedStyle("width");
 
@@ -381,7 +381,7 @@ let transform =
     UtilsRN.option_map(Encode.float, skewY)
   );
 
-let transformAnimatedRe =
+let transformAnimated =
     (
       ~perspective=?,
       ~rotate=?,
@@ -488,7 +488,7 @@ let opacity = floatStyle("opacity");
 
 let opacityInterpolated = interpolatedStyle("opacity");
 
-let opacityAnimatedRe = animatedStyle("opacity");
+let opacityAnimated = animatedStyle("opacity");
 
 let elevation = floatStyle("elevation");
 
