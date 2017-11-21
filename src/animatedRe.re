@@ -366,6 +366,10 @@ external event : (array('a), 'b) => animatedEvent =
 
 let loop = (~iterations=(-1), ~animation, ()) => _loop(animation, {"iterations": iterations});
 
+[@bs.module "react-native"] [@bs.scope "Animated"]
+external createAnimatedComponent : ReasonReact.reactClass => ReasonReact.reactClass =
+  "";
+
 module Timing = Value.Timing;
 
 module TimingXY = ValueXY.Timing;

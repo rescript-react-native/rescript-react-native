@@ -1,14 +1,22 @@
 {
-  "name": "react-native",
+  "name": "bs-react-native",
   "bsc-flags": ["-bs-super-errors"],
   "reason": {"react-jsx": 2},
   "refmt": 3,
   "bs-dependencies": ["reason-react"],
-  "namespaces": true,
+  "namespace": true,
   "sources": [
     {
       "dir": "src",
-      "subdirs": true,
+      "subdirs": [
+        {
+          "dir": "components",
+        },
+        {
+          "dir": "private",
+          "public": [],
+        },
+      ],
     }
   ]
 }
