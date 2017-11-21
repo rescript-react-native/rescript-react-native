@@ -74,7 +74,7 @@ module Animations = {
       "iterations": Js.undefined(int)
     };
     external toValueRaw : Val.rawJsType => toValue = "%identity";
-    external toValueAnimatedRe : Val.t => toValue = "%identity";
+    external toValueAnimated : Val.t => toValue = "%identity";
     [@bs.module "react-native"] [@bs.scope "Animated"]
     external _spring : (Val.t, config) => CompositeAnimation.t =
       "spring";
@@ -103,7 +103,7 @@ module Animations = {
             "toValue":
               switch toValue {
               | `raw(x) => toValueRaw(x)
-              | `animated(x) => toValueAnimatedRe(x)
+              | `animated(x) => toValueAnimated(x)
               },
             "restDisplacementThreshold": from_opt(restDisplacementThreshold),
             "overshootClamping": from_opt(overshootClamping),
@@ -139,7 +139,7 @@ module Animations = {
       config =
       "";
     external toValueRaw : Val.rawJsType => toValue = "%identity";
-    external toValueAnimatedRe : Val.t => toValue = "%identity";
+    external toValueAnimated : Val.t => toValue = "%identity";
     [@bs.module "react-native"] [@bs.scope "Animated"]
     external _timing : (Val.t, config) => CompositeAnimation.t =
       "timing";
@@ -162,7 +162,7 @@ module Animations = {
           ~toValue=
             switch toValue {
             | `raw(x) => toValueRaw(x)
-            | `animated(x) => toValueAnimatedRe(x)
+            | `animated(x) => toValueAnimated(x)
             },
           ~easing?,
           ~duration?,

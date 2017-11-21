@@ -4,9 +4,9 @@ type t;
 /*** Generates a style out of an array of styles.
   * This is equivalent:
   * // js
-  * <ViewRe style={[styleA, styleB]} />
+  * <View style={[styleA, styleB]} />
   * // reason
-  * <ViewRe style=(Style.flatten [|styleA, styleB|]) />
+  * <View style=(Style.flatten [|styleA, styleB|]) />
  */
 let flatten: array(t) => t;
 
@@ -229,7 +229,7 @@ let transformInterpolated:
 
 
 /***
- * ViewRe Props
+ * View Props
  */
 let backfaceVisibility: [ | `visible | `hidden] => style;
 

@@ -75,11 +75,11 @@ let create =
       ~onMoveShouldSetPanResponderCapture: option(callback(bool))=?,
       ~onStartShouldSetPanResponder: option(callback(bool))=?,
       ~onStartShouldSetPanResponderCapture: option(callback(bool))=?,
-      ~onPanResponderject: option(callback(unit))=?,
+      ~onPanResponderReject: option(callback(unit))=?,
       ~onPanResponderGrant: option(callback(unit))=?,
       ~onPanResponderStart: option(callback(unit))=?,
       ~onPanResponderEnd: option(callback(unit))=?,
-      ~onPanResponderlease: option(callback(unit))=?,
+      ~onPanResponderRelease: option(callback(unit))=?,
       ~onPanResponderMove=?,
       ~onPanResponderTerminate: option(callback(unit))=?,
       ~onPanResponderTerminationRequest: option(callback(bool))=?,
@@ -92,11 +92,11 @@ let create =
     "onStartShouldSetPanResponder": Js.Undefined.from_opt(onStartShouldSetPanResponder),
     "onStartShouldSetPanResponderCapture":
       Js.Undefined.from_opt(onStartShouldSetPanResponderCapture),
-    "onPanResponderject": Js.Undefined.from_opt(onPanResponderject),
+    "onPanResponderReject": Js.Undefined.from_opt(onPanResponderReject),
     "onPanResponderGrant": Js.Undefined.from_opt(onPanResponderGrant),
     "onPanResponderStart": Js.Undefined.from_opt(onPanResponderStart),
     "onPanResponderEnd": Js.Undefined.from_opt(onPanResponderEnd),
-    "onPanResponderlease": Js.Undefined.from_opt(onPanResponderlease),
+    "onPanResponderRelease": Js.Undefined.from_opt(onPanResponderRelease),
     "onPanResponderMove":
       switch onPanResponderMove {
       | None => Js.undefined

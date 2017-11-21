@@ -175,7 +175,7 @@ let extendView =
               accessibilityTraits
             )
           ),
-        "accessibilityViewReIsModal":
+        "accessibilityViewIsModal":
           from_opt(UtilsRN.optBoolToOptJsBoolean(accessibilityViewIsModal)),
         "shouldRasterizeIOS": from_opt(UtilsRN.optBoolToOptJsBoolean(shouldRasterizeIOS))
       }

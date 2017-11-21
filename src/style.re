@@ -441,7 +441,7 @@ let transformInterpolated =
 
 
 /***
- * ViewRe Props
+ * View Props
  */
 let backfaceVisibility = (v) =>
   stringStyle(

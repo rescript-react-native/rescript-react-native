@@ -23,11 +23,11 @@ let create:
     ~onMoveShouldSetPanResponderCapture: callback(bool)=?,
     ~onStartShouldSetPanResponder: callback(bool)=?,
     ~onStartShouldSetPanResponderCapture: callback(bool)=?,
-    ~onPanResponderject: callback(unit)=?,
+    ~onPanResponderReject: callback(unit)=?,
     ~onPanResponderGrant: callback(unit)=?,
     ~onPanResponderStart: callback(unit)=?,
     ~onPanResponderEnd: callback(unit)=?,
-    ~onPanResponderlease: callback(unit)=?,
+    ~onPanResponderRelease: callback(unit)=?,
     ~onPanResponderMove: [
                            | `callback(callback(unit))
                            | `update(
