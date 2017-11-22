@@ -72,12 +72,12 @@ let alignContent = (v) =>
   stringStyle(
     "alignContent",
     switch v {
-    | `flexStart => "flex-start"
-    | `flexEnd => "flex-end"
-    | `center => "center"
-    | `stretch => "stretch"
-    | `spaceAround => "space-around"
-    | `spaceBetween => "space-between"
+    | `FlexStart => "flex-start"
+    | `FlexEnd => "flex-end"
+    | `Center => "center"
+    | `Stretch => "stretch"
+    | `SpaceAround => "space-around"
+    | `SpaceBetween => "space-between"
     }
   );
 
@@ -85,11 +85,11 @@ let alignItems = (v) =>
   stringStyle(
     "alignItems",
     switch v {
-    | `flexStart => "flex-start"
-    | `flexEnd => "flex-end"
-    | `center => "center"
-    | `stretch => "stretch"
-    | `baseline => "baseline"
+    | `FlexStart => "flex-start"
+    | `FlexEnd => "flex-end"
+    | `Center => "center"
+    | `Stretch => "stretch"
+    | `Baseline => "baseline"
     }
   );
 
@@ -97,11 +97,11 @@ let alignSelf = (v) =>
   stringStyle(
     "alignSelf",
     switch v {
-    | `flexStart => "flex-start"
-    | `flexEnd => "flex-end"
-    | `center => "center"
-    | `stretch => "stretch"
-    | `baseline => "baseline"
+    | `FlexStart => "flex-start"
+    | `FlexEnd => "flex-end"
+    | `Center => "center"
+    | `Stretch => "stretch"
+    | `Baseline => "baseline"
     }
   );
 
@@ -129,8 +129,8 @@ let display = (v) =>
   stringStyle(
     "display",
     switch v {
-    | `flex => "flex"
-    | `none => "none"
+    | `Flex => "flex"
+    | `None => "none"
     }
   );
 
@@ -144,10 +144,10 @@ let flexDirection = (v) =>
   stringStyle(
     "flexDirection",
     switch v {
-    | `row => "row"
-    | `rowReverse => "row-reverse"
-    | `column => "column"
-    | `columnReverse => "column-reverse"
+    | `Row => "row"
+    | `RowReverse => "row-reverse"
+    | `Column => "column"
+    | `ColumnReverse => "column-reverse"
     }
   );
 
@@ -159,8 +159,8 @@ let flexWrap = (v) =>
   stringStyle(
     "flexWrap",
     switch v {
-    | `wrap => "wrap"
-    | `nowrap => "nowrap"
+    | `Wrap => "wrap"
+    | `Nowrap => "nowrap"
     }
   );
 
@@ -176,12 +176,12 @@ let justifyContent = (v) =>
   stringStyle(
     "justifyContent",
     switch v {
-    | `flexStart => "flex-start"
-    | `flexEnd => "flex-end"
-    | `center => "center"
-    | `stretch => "stretch"
-    | `spaceAround => "space-around"
-    | `spaceBetween => "space-between"
+    | `FlexStart => "flex-start"
+    | `FlexEnd => "flex-end"
+    | `Center => "center"
+    | `Stretch => "stretch"
+    | `SpaceAround => "space-around"
+    | `SpaceBetween => "space-between"
     }
   );
 
@@ -227,9 +227,9 @@ let overflow = (v) =>
   stringStyle(
     "overflow",
     switch v {
-    | `visible => "visible"
-    | `hidden => "hidden"
-    | `scroll => "scroll"
+    | `Visible => "visible"
+    | `Hidden => "hidden"
+    | `Scroll => "scroll"
     }
   );
 
@@ -251,8 +251,8 @@ let position = (v) =>
   stringStyle(
     "position",
     switch v {
-    | `absolute => "absolute"
-    | `relative => "relative"
+    | `Absolute => "absolute"
+    | `Relative => "relative"
     }
   );
 
@@ -286,9 +286,9 @@ let direction = (v) =>
   stringStyle(
     "direction",
     switch v {
-    | `_inherit => "inherit"
-    | `ltr => "ltr"
-    | `rtl => "rtl"
+    | `Inherit => "inherit"
+    | `Ltr => "ltr"
+    | `Rtl => "rtl"
     }
   );
 
@@ -447,8 +447,8 @@ let backfaceVisibility = (v) =>
   stringStyle(
     "backfaceVisibility",
     switch v {
-    | `visible => "visible"
-    | `hidden => "hidden"
+    | `Visible => "visible"
+    | `Hidden => "hidden"
     }
   );
 
@@ -478,9 +478,9 @@ let borderStyle = (v) =>
   stringStyle(
     "borderStyle",
     switch v {
-    | `solid => "solid"
-    | `dotted => "dotted"
-    | `dashed => "dashed"
+    | `Solid => "solid"
+    | `Dotted => "dotted"
+    | `Dashed => "dashed"
     }
   );
 
@@ -506,8 +506,8 @@ let fontStyle = (v) =>
   stringStyle(
     "fontStyle",
     switch v {
-    | `normal => "normal"
-    | `italic => "italic"
+    | `Normal => "normal"
+    | `Italic => "italic"
     }
   );
 
@@ -515,8 +515,8 @@ let fontWeight = (v) =>
   stringStyle(
     "fontWeight",
     switch v {
-    | `normal => "normal"
-    | `bold => "bold"
+    | `Normal => "normal"
+    | `Bold => "bold"
     | `_100 => "100"
     | `_200 => "200"
     | `_300 => "300"
@@ -535,11 +535,11 @@ let textAlign = (v) =>
   stringStyle(
     "textAlign",
     switch v {
-    | `auto => "auto"
-    | `left => "left"
-    | `right => "right"
-    | `center => "center"
-    | `justify => "justify"
+    | `Auto => "auto"
+    | `Left => "left"
+    | `Right => "right"
+    | `Center => "center"
+    | `Justify => "justify"
     }
   );
 
@@ -547,10 +547,10 @@ let textDecorationLine = (v) =>
   stringStyle(
     "textDecorationLine",
     switch v {
-    | `none => "none"
-    | `underline => "underline"
-    | `lineThrough => "line-through"
-    | `underlineLineThrough => "underline line-through"
+    | `None => "none"
+    | `Underline => "underline"
+    | `LineThrough => "line-through"
+    | `UnderlineLineThrough => "underline line-through"
     }
   );
 
@@ -568,10 +568,10 @@ let textAlignVertical = (v) =>
   stringStyle(
     "textAlignVertical",
     switch v {
-    | `auto => "auto"
-    | `top => "top"
-    | `bottom => "bottom"
-    | `center => "center"
+    | `Auto => "auto"
+    | `Top => "top"
+    | `Bottom => "bottom"
+    | `Center => "center"
     }
   );
 
@@ -586,10 +586,10 @@ let textDecorationStyle = (v) =>
   stringStyle(
     "textDecorationStyle",
     switch v {
-    | `solid => "solid"
-    | `double => "double"
-    | `dotted => "dotted"
-    | `dashed => "dashed"
+    | `Solid => "solid"
+    | `Double => "double"
+    | `Dotted => "dotted"
+    | `Dashed => "dashed"
     }
   );
 
@@ -597,9 +597,9 @@ let writingDirection = (v) =>
   stringStyle(
     "writingDirection",
     switch v {
-    | `auto => "auto"
-    | `ltr => "ltr"
-    | `rtl => "rtl"
+    | `Auto => "auto"
+    | `Ltr => "ltr"
+    | `Rtl => "rtl"
     }
   );
 
@@ -609,11 +609,11 @@ let resizeMode = (v) =>
   stringStyle(
     "resizeMode",
     switch v {
-    | `cover => "cover"
-    | `contain => "contain"
-    | `stretch => "stretch"
-    | `repeat => "repeat"
-    | `center => "center"
+    | `Cover => "cover"
+    | `Contain => "contain"
+    | `Stretch => "stretch"
+    | `Repeat => "repeat"
+    | `Center => "center"
     }
   );
 
