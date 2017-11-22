@@ -20,3 +20,5 @@ external array : array(Js.Json.t) => Js.Json.t = "%identity";
 external animatedValue : AnimatedRe.Value.t => Js.Json.t = "%identity";
 
 external interpolatedValue : AnimatedRe.Interpolation.t => Js.Json.t = "%identity";
+
+let pct = (pct) => string(string_of_float(pct) ++ "%");
