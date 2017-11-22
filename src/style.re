@@ -276,12 +276,68 @@ let shadowOpacity = floatStyle("shadowOpacity");
 
 let shadowRadius = floatStyle("shadowRadius");
 
-
-/***
- * Transform Props
- */
-let createTransformObject =
-    (
+module Transform = {
+  let create_ =
+      (
+        encoder,
+        rotationEncoder,
+        perspective,
+        rotate,
+        rotateX,
+        rotateY,
+        rotateZ,
+        scaleX,
+        scaleY,
+        translateX,
+        translateY,
+        skewX,
+        skewY
+      ) => {
+    let opt_values = [
+      ("perspective", encoder(perspective)),
+      ("rotate", rotationEncoder(rotate)),
+      ("rotateX", rotationEncoder(rotateX)),
+      ("rotateY", rotationEncoder(rotateY)),
+      ("rotateZ", rotationEncoder(rotateZ)),
+      ("scaleX", encoder(scaleX)),
+      ("scaleY", encoder(scaleY)),
+      ("translateX", encoder(translateX)),
+      ("translateY", encoder(translateY)),
+      ("skewX", encoder(skewX)),
+      ("skewY", encoder(skewY))
+    ];
+    let values =
+      List.fold_right(
+        (x, acc) =>
+          switch x {
+          | (key, Some(value)) =>
+            let val_ = UtilsRN.dictFromArray([|(key, value)|]) |> Encode.object_;
+            [val_, ...acc]
+          | _ => acc
+          },
+        opt_values,
+        []
+      );
+    Array.of_list(values) |> arrayStyle("transform")
+  };
+  let make =
+      (
+        ~perspective=?,
+        ~rotate=?,
+        ~rotateX=?,
+        ~rotateY=?,
+        ~rotateZ=?,
+        ~scaleX=?,
+        ~scaleY=?,
+        ~translateX=?,
+        ~translateY=?,
+        ~skewX=?,
+        ~skewY=?,
+        ()
+      ) =>
+    create_(
+      (value) => UtilsRN.option_map(Encode.float, value),
+      (value) => UtilsRN.option_map(Encode.string, value),
       perspective,
       rotate,
       rotateX,
@@ -293,121 +349,68 @@ let createTransformObject =
       translateY,
       skewX,
       skewY
-    ) => {
-  let opt_values = [
-    ("perspective", perspective),
-    ("rotate", rotate),
-    ("rotateX", rotateX),
-    ("rotateY", rotateY),
-    ("rotateZ", rotateZ),
-    ("scaleX", scaleX),
-    ("scaleY", scaleY),
-    ("translateX", translateX),
-    ("translateY", translateY),
-    ("skewX", skewX),
-    ("skewY", skewY)
-  ];
-  let values =
-    List.fold_right(
-      (x, acc) =>
-        switch x {
-        | (key, Some(value)) =>
-          let val_ = UtilsRN.dictFromArray([|(key, value)|]) |> Encode.object_;
-          [val_, ...acc]
-        | _ => acc
-        },
-      opt_values,
-      []
     );
-  Array.of_list(values) |> arrayStyle("transform")
+  let makeAnimated =
+      (
+        ~perspective=?,
+        ~rotate=?,
+        ~rotateX=?,
+        ~rotateY=?,
+        ~rotateZ=?,
+        ~scaleX=?,
+        ~scaleY=?,
+        ~translateX=?,
+        ~translateY=?,
+        ~skewX=?,
+        ~skewY=?,
+        ()
+      ) =>
+    create_(
+      (value) => UtilsRN.option_map(Encode.animatedValue, value),
+      (value) => UtilsRN.option_map(Encode.animatedValue, value),
+      perspective,
+      rotate,
+      rotateX,
+      rotateY,
+      rotateZ,
+      scaleX,
+      scaleY,
+      translateX,
+      translateY,
+      skewX,
+      skewY
+    );
+  let makeInterpolated =
+      (
+        ~perspective=?,
+        ~rotate=?,
+        ~rotateX=?,
+        ~rotateY=?,
+        ~rotateZ=?,
+        ~scaleX=?,
+        ~scaleY=?,
+        ~translateX=?,
+        ~translateY=?,
+        ~skewX=?,
+        ~skewY=?,
+        ()
+      ) =>
+    create_(
+      (value) => UtilsRN.option_map(Encode.interpolatedValue, value),
+      (value) => UtilsRN.option_map(Encode.interpolatedValue, value),
+      perspective,
+      rotate,
+      rotateX,
+      rotateY,
+      rotateZ,
+      scaleX,
+      scaleY,
+      translateX,
+      translateY,
+      skewX,
+      skewY
+    );
 };
-
-let transform =
-    (
-      ~perspective=?,
-      ~rotate=?,
-      ~rotateX=?,
-      ~rotateY=?,
-      ~rotateZ=?,
-      ~scaleX=?,
-      ~scaleY=?,
-      ~translateX=?,
-      ~translateY=?,
-      ~skewX=?,
-      ~skewY=?,
-      ()
-    ) =>
-  createTransformObject(
-    UtilsRN.option_map(Encode.float, perspective),
-    UtilsRN.option_map(Encode.string, rotate),
-    UtilsRN.option_map(Encode.string, rotateX),
-    UtilsRN.option_map(Encode.string, rotateY),
-    UtilsRN.option_map(Encode.string, rotateZ),
-    UtilsRN.option_map(Encode.float, scaleX),
-    UtilsRN.option_map(Encode.float, scaleY),
-    UtilsRN.option_map(Encode.float, translateX),
-    UtilsRN.option_map(Encode.float, translateY),
-    UtilsRN.option_map(Encode.float, skewX),
-    UtilsRN.option_map(Encode.float, skewY)
-  );
-
-let transformAnimated =
-    (
-      ~perspective=?,
-      ~rotate=?,
-      ~rotateX=?,
-      ~rotateY=?,
-      ~rotateZ=?,
-      ~scaleX=?,
-      ~scaleY=?,
-      ~translateX=?,
-      ~translateY=?,
-      ~skewX=?,
-      ~skewY=?,
-      ()
-    ) =>
-  createTransformObject(
-    UtilsRN.option_map(Encode.animatedValue, perspective),
-    UtilsRN.option_map(Encode.animatedValue, rotate),
-    UtilsRN.option_map(Encode.animatedValue, rotateX),
-    UtilsRN.option_map(Encode.animatedValue, rotateY),
-    UtilsRN.option_map(Encode.animatedValue, rotateZ),
-    UtilsRN.option_map(Encode.animatedValue, scaleX),
-    UtilsRN.option_map(Encode.animatedValue, scaleY),
-    UtilsRN.option_map(Encode.animatedValue, translateX),
-    UtilsRN.option_map(Encode.animatedValue, translateY),
-    UtilsRN.option_map(Encode.animatedValue, skewX),
-    UtilsRN.option_map(Encode.animatedValue, skewY)
-  );
-
-let transformInterpolated =
-    (
-      ~perspective=?,
-      ~rotate=?,
-      ~rotateX=?,
-      ~rotateY=?,
-      ~rotateZ=?,
-      ~scaleX=?,
-      ~scaleY=?,
-      ~translateX=?,
-      ~translateY=?,
-      ~skewX=?,
-      ~skewY=?,
-      ()
-    ) =>
-  createTransformObject(
-    UtilsRN.option_map(Encode.interpolatedValue, perspective),
-    UtilsRN.option_map(Encode.interpolatedValue, rotate),
-    UtilsRN.option_map(Encode.interpolatedValue, rotateX),
-    UtilsRN.option_map(Encode.interpolatedValue, rotateY),
-    UtilsRN.option_map(Encode.interpolatedValue, rotateZ),
-    UtilsRN.option_map(Encode.interpolatedValue, scaleX),
-    UtilsRN.option_map(Encode.interpolatedValue, scaleY),
-    UtilsRN.option_map(Encode.interpolatedValue, translateX),
-    UtilsRN.option_map(Encode.interpolatedValue, translateY),
-    UtilsRN.option_map(Encode.interpolatedValue, skewX),
-    UtilsRN.option_map(Encode.interpolatedValue, skewY)
-  );
 
 
 /***
