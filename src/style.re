@@ -293,7 +293,7 @@ module Transform = {
         skewX,
         skewY
       ) => {
-    let opt_values = [
+    let opt_values = [|
       ("perspective", [@bs] encoder(perspective) ),
       ("rotate", [@bs] rotationEncoder(rotate)),
       ("rotateX", [@bs] rotationEncoder(rotateX)),
@@ -305,9 +305,9 @@ module Transform = {
       ("translateY", [@bs] encoder(translateY)),
       ("skewX", [@bs] encoder(skewX)),
       ("skewY", [@bs] encoder(skewY))
-    ];
+    |];
     let values =
-      List.fold_right(
+      Array.fold_right(
         (x, acc) =>
           switch x {
           | (key, Some(value)) =>
