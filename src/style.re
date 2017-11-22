@@ -294,17 +294,17 @@ module Transform = {
         skewY
       ) => {
     let opt_values = [
-      ("perspective", encoder(perspective)),
-      ("rotate", rotationEncoder(rotate)),
-      ("rotateX", rotationEncoder(rotateX)),
-      ("rotateY", rotationEncoder(rotateY)),
-      ("rotateZ", rotationEncoder(rotateZ)),
-      ("scaleX", encoder(scaleX)),
-      ("scaleY", encoder(scaleY)),
-      ("translateX", encoder(translateX)),
-      ("translateY", encoder(translateY)),
-      ("skewX", encoder(skewX)),
-      ("skewY", encoder(skewY))
+      ("perspective", [@bs] encoder(perspective) ),
+      ("rotate", [@bs] rotationEncoder(rotate)),
+      ("rotateX", [@bs] rotationEncoder(rotateX)),
+      ("rotateY", [@bs] rotationEncoder(rotateY)),
+      ("rotateZ", [@bs] rotationEncoder(rotateZ)),
+      ("scaleX", [@bs] encoder(scaleX)),
+      ("scaleY", [@bs] encoder(scaleY)),
+      ("translateX", [@bs] encoder(translateX)),
+      ("translateY", [@bs] encoder(translateY)),
+      ("skewX", [@bs] encoder(skewX)),
+      ("skewY", [@bs] encoder(skewY))
     ];
     let values =
       List.fold_right(
@@ -336,8 +336,8 @@ module Transform = {
         ()
       ) =>
     create_(
-      (value) => UtilsRN.option_map(Encode.float, value),
-      (value) => UtilsRN.option_map(Encode.string, value),
+      [@bs] (value) => UtilsRN.option_map(Encode.float, value) ,
+      [@bs] (value) => UtilsRN.option_map(Encode.string, value),
       perspective,
       rotate,
       rotateX,
@@ -366,8 +366,8 @@ module Transform = {
         ()
       ) =>
     create_(
-      (value) => UtilsRN.option_map(Encode.animatedValue, value),
-      (value) => UtilsRN.option_map(Encode.animatedValue, value),
+      [@bs] (value) => UtilsRN.option_map(Encode.animatedValue, value),
+      [@bs] (value) => UtilsRN.option_map(Encode.animatedValue, value),
       perspective,
       rotate,
       rotateX,
@@ -396,8 +396,8 @@ module Transform = {
         ()
       ) =>
     create_(
-      (value) => UtilsRN.option_map(Encode.interpolatedValue, value),
-      (value) => UtilsRN.option_map(Encode.interpolatedValue, value),
+      [@bs] (value) => UtilsRN.option_map(Encode.interpolatedValue, value),
+      [@bs] (value) => UtilsRN.option_map(Encode.interpolatedValue, value),
       perspective,
       rotate,
       rotateX,
