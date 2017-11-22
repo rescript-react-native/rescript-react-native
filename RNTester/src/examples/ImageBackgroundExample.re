@@ -1,4 +1,4 @@
-open ReactNative;
+open BsReactNative;
 
 let title = "<ImageBackground>";
 
@@ -17,10 +17,10 @@ let examples: array(Example.t) =
             style=(
               style([
                 flex(1.),
-                justifyContent(`center),
-                alignItems(`center),
-                height(400.),
-                width(300.)
+                justifyContent(`Center),
+                alignItems(`Center),
+                height(Px(400.)),
+                width(Px(300.))
               ])
             )
             imageStyle=(style([flex(1.)]))
@@ -34,7 +34,7 @@ let examples: array(Example.t) =
                 )
               )
             )>
-            <View style=(style([backgroundColor("#FFFFFF"), padding(5.)]))>
+            <View style=(style([backgroundColor("#FFFFFF"), padding(Px(5.))]))>
               <Text> (ReasonReact.stringToElement("Nested text")) </Text>
             </View>
           </ImageBackground>

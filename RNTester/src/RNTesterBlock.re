@@ -1,4 +1,4 @@
-open ReactNative;
+open BsReactNative;
 
 let styles =
   StyleSheet.create(
@@ -10,9 +10,9 @@ let styles =
             borderWidth(1.),
             borderColor("#d6d7da"),
             backgroundColor("#ffffff"),
-            margin(10.),
-            marginVertical(5.),
-            overflow(`hidden)
+            margin(Px(10.)),
+            marginVertical(Px(5.)),
+            overflow(`Hidden)
           ]),
         "titleContainer":
           style([
@@ -21,14 +21,15 @@ let styles =
             borderTopRightRadius(3.),
             borderBottomColor("#d6d7da"),
             backgroundColor("#f6f7f8"),
-            paddingHorizontal(10.),
-            paddingVertical(5.)
+            paddingHorizontal(Px(10.)),
+            paddingVertical(Px(5.))
           ]),
         "titleText": style([fontSize(14.), fontWeight(`_500)]),
         "descriptionText": style([fontSize(14.)]),
-        "disclosure": style([position(`absolute), top(0.), right(0.), padding(10.)]),
-        "disclosureIcon": style([width(12.), height(8.)]),
-        "children": style([margin(10.)])
+        "disclosure":
+          style([position(`Absolute), top(Px(0.)), right(Px(0.)), padding(Px(10.))]),
+        "disclosureIcon": style([width(Px(12.)), height(Px(8.))]),
+        "children": style([margin(Px(10.))])
       }
     )
   );
@@ -44,7 +45,9 @@ let make = (~description, ~title, children) => {
         (
           switch description {
           | Some(description) =>
-            <Text style=styles##descriptionText> (ReasonReact.stringToElement(description)) </Text>
+            <Text style=styles##descriptionText>
+              (ReasonReact.stringToElement(description))
+            </Text>
           | None => ReasonReact.nullElement
           }
         )

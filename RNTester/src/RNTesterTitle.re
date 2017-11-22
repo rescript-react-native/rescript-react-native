@@ -1,4 +1,4 @@
-open ReactNative;
+open BsReactNative;
 
 let styles =
   StyleSheet.create(
@@ -9,10 +9,10 @@ let styles =
             borderRadius(4.),
             borderWidth(1.),
             borderColor("#d6d7da"),
-            margin(10.),
-            marginBottom(0.),
-            height(45.),
-            padding(10.),
+            margin(Px(10.)),
+            marginBottom(Px(0.)),
+            height(Px(45.)),
+            padding(Px(10.)),
             backgroundColor("white")
           ]),
         "text": style([fontSize(19.), fontWeight(`_500)])
