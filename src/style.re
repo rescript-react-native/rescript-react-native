@@ -54,18 +54,6 @@ external style_to_dict : t => Js.Dict.t(Js.Json.t) = "%identity";
 
 external array_to_style : array(t) => t = "%identity";
 
-type style =
-  | ArrayStyle(string, array(Js.Json.t))
-  | BooleanStyle(string, bool)
-  | StringStyle(string, string)
-  | IntStyle(string, int)
-  | FloatStyle(string, float)
-  | ObjectStyle(string, Js.Dict.t(Js.Json.t))
-  | AnimatedStyle(
-      string,
-      [ | `value(AnimatedRe.Value.t) | `interpolation(AnimatedRe.Interpolation.t)]
-    );
-
 let combine = (a, b) => {
   let entries =
     Array.append(
@@ -77,49 +65,23 @@ let combine = (a, b) => {
 
 let concat = (styles) => array_to_style(Array.of_list(styles));
 
-let arrayStyle = (key, value) => ArrayStyle(key, value);
+let floatStyle = (key, value) => (key, Encode.float(value));
 
-let booleanStyle = (key, value) => BooleanStyle(key, value);
+let stringStyle = (key, value) => (key, Encode.string(value));
 
-let stringStyle = (key, value) => StringStyle(key, value);
+let objectStyle = (key, value) => (key, Encode.object_(value));
 
-let intStyle = (key, value) => IntStyle(key, value);
+let arrayStyle = (key, value) => (key, Encode.array(value));
 
-let floatStyle = (key, value) => FloatStyle(key, value);
-
-let pctStyle = (key, value) => StringStyle(key, string_of_float(value) ++ "%");
-
-let objectStyle = (key, value) => ObjectStyle(key, value);
-
-let animatedStyle = (key, value) => AnimatedStyle(key, `value(value));
-
-let interpolatedStyle = (key, value) => AnimatedStyle(key, `interpolation(value));
-
-let encodeStyle =
-  fun
-  | ArrayStyle(key, value) => (key, Encode.array(value))
-  | BooleanStyle(key, value) => (key, Encode.boolean(Js.Boolean.to_js_boolean(value)))
-  | IntStyle(key, value) => (key, Encode.int(value))
-  | FloatStyle(key, value) => (key, Encode.float(value))
-  | StringStyle(key, value) => (key, Encode.string(value))
-  | ObjectStyle(key, value) => (key, Encode.object_(value))
-  | AnimatedStyle(key, value) => (
-      key,
-      switch value {
-      | `value(x) => Encode.animatedValue(x)
-      | `interpolation(x) => Encode.interpolatedValue(x)
-      }
-    );
-
-let style = (sarr) => sarr |> List.map(encodeStyle) |> UtilsRN.dictFromList |> to_style;
+let style = (sarr) => sarr |> UtilsRN.dictFromList |> to_style;
 
 
 /***
  * Layout Props
  */
-let alignContent = (v) =>
-  stringStyle(
-    "alignContent",
+let alignContent = (v) => (
+  "alignContent",
+  Encode.string(
     switch v {
     | `FlexStart => "flex-start"
     | `FlexEnd => "flex-end"
@@ -128,7 +90,8 @@ let alignContent = (v) =>
     | `SpaceAround => "space-around"
     | `SpaceBetween => "space-between"
     }
-  );
+  )
+);
 
 let alignItems = (v) =>
   stringStyle(
@@ -165,7 +128,6 @@ let borderRightWidth = floatStyle("borderRightWidth");
 let borderTopWidth = floatStyle("borderTopWidth");
 
 let borderWidth = floatStyle("borderWidth");
-
 
 let display = (v) =>
   stringStyle(
@@ -284,7 +246,7 @@ let height = (value) => ("height", encode_px_pct_animated_interpolated(value));
 
 let width = (value) => ("width", encode_px_pct_animated_interpolated(value));
 
-let zIndex = intStyle("zIndex");
+let zIndex = (value) => ("zIndex", Encode.int(value));
 
 let direction = (v) =>
   stringStyle(
@@ -303,7 +265,10 @@ let direction = (v) =>
 let shadowColor = stringStyle("shadowColor");
 
 let shadowOffset = (~height, ~width) =>
-  UtilsRN.dictFromArray([|("height", Encode.float(height)), ("width", Encode.float(width))|])
+  UtilsRN.dictFromArray([|
+    ("height", Encode.float(height)),
+    ("width", Encode.float(width))
+  |])
   |> objectStyle("shadowOffset");
 
 let shadowOpacity = floatStyle("shadowOpacity");
@@ -565,7 +530,10 @@ let textShadowOffset = (~height, ~width) =>
 
 let textShadowRadius = floatStyle("textShadowRadius");
 
-let includeFontPadding = booleanStyle("includeFontPadding");
+let includeFontPadding = (value) => (
+  "includeFontPadding",
+  Encode.boolean(Js.Boolean.to_js_boolean(value))
+);
 
 let textAlignVertical = (v) =>
   stringStyle(
