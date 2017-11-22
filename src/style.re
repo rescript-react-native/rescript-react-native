@@ -1,5 +1,7 @@
 type t;
 
+type styleElement = (string, Js.Json.t);
+
 type px_pct =
   | Px(float)
   | Pct(float);
@@ -79,9 +81,9 @@ let style = (sarr) => sarr |> UtilsRN.dictFromList |> to_style;
 /***
  * Layout Props
  */
-let alignContent = (v) => (
-  "alignContent",
-  Encode.string(
+let alignContent = (v) =>
+  stringStyle(
+    "alignContent",
     switch v {
     | `FlexStart => "flex-start"
     | `FlexEnd => "flex-end"
@@ -90,8 +92,7 @@ let alignContent = (v) => (
     | `SpaceAround => "space-around"
     | `SpaceBetween => "space-between"
     }
-  )
-);
+  );
 
 let alignItems = (v) =>
   stringStyle(
@@ -211,19 +212,19 @@ let overflow = (v) =>
     }
   );
 
-let padding = floatStyle("padding");
+let padding = (value) => ("padding", encode_px_pct(value));
 
-let paddingBottom = floatStyle("paddingBottom");
+let paddingBottom = (value) => ("paddingBottom", encode_px_pct(value));
 
-let paddingHorizontal = floatStyle("paddingHorizontal");
+let paddingHorizontal = (value) => ("paddingHorizontal", encode_px_pct(value));
 
-let paddingLeft = floatStyle("paddingLeft");
+let paddingLeft = (value) => ("paddingLeft", encode_px_pct(value));
 
-let paddingRight = floatStyle("paddingRight");
+let paddingRight = (value) => ("paddingRight", encode_px_pct(value));
 
-let paddingTop = floatStyle("paddingTop");
+let paddingTop = (value) => ("paddingTop", encode_px_pct(value));
 
-let paddingVertical = floatStyle("paddingVertical");
+let paddingVertical = (value) => ("paddingVertical", encode_px_pct(value));
 
 let position = (v) =>
   stringStyle(
