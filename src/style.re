@@ -1,5 +1,51 @@
 type t;
 
+type px_pct =
+  | Px(float)
+  | Pct(float);
+
+let encode_px_pct = (value) =>
+  switch value {
+  | Px(px) => Encode.float(px)
+  | Pct(pct) => Encode.pct(pct)
+  };
+
+type px_auto =
+  | Px(float)
+  | Auto;
+
+let encode_px_auto = (value) =>
+  switch value {
+  | Px(value) => Encode.float(value)
+  | Auto => Encode.string("auto")
+  };
+
+type px_pct_animated_interpolated =
+  | Px(float)
+  | Pct(float)
+  | Animated(AnimatedRe.Value.t)
+  | Interpolated(AnimatedRe.Interpolation.t);
+
+let encode_px_pct_animated_interpolated = (value: px_pct_animated_interpolated) =>
+  switch value {
+  | Px(px) => Encode.float(px)
+  | Pct(pct) => Encode.pct(pct)
+  | Animated(value) => Encode.animatedValue(value)
+  | Interpolated(value) => Encode.interpolatedValue(value)
+  };
+
+type float_interpolated_animated =
+  | Float(float)
+  | Animated(AnimatedRe.Value.t)
+  | Interpolated(AnimatedRe.Interpolation.t);
+
+let encode_float_interpolated_animated = (value) =>
+  switch value {
+  | Float(value) => Encode.float(value)
+  | Animated(value) => Encode.animatedValue(value)
+  | Interpolated(value) => Encode.interpolatedValue(value)
+  };
+
 external flatten : array(t) => t = "%identity";
 
 external to_style : Js.Dict.t(Js.Json.t) => t = "%identity";
@@ -22,7 +68,10 @@ type style =
 
 let combine = (a, b) => {
   let entries =
-    Array.append(UtilsRN.dictEntries(style_to_dict(a)), UtilsRN.dictEntries(style_to_dict(b)));
+    Array.append(
+      UtilsRN.dictEntries(style_to_dict(a)),
+      UtilsRN.dictEntries(style_to_dict(b))
+    );
   UtilsRN.dictFromArray(entries) |> to_style
 };
 
@@ -117,13 +166,6 @@ let borderTopWidth = floatStyle("borderTopWidth");
 
 let borderWidth = floatStyle("borderWidth");
 
-let bottom = floatStyle("bottom");
-
-let bottomPct = pctStyle("bottom");
-
-let bottomAnimated = animatedStyle("bottom");
-
-let bottomInterpolated = interpolatedStyle("bottom");
 
 let display = (v) =>
   stringStyle(
@@ -136,9 +178,7 @@ let display = (v) =>
 
 let flex = floatStyle("flex");
 
-let flexBasis = floatStyle("flexBasis");
-
-let flexBasisPct = pctStyle("flexBasis");
+let flexBasis = (value) => ("flexBasis", encode_px_pct(value));
 
 let flexDirection = (v) =>
   stringStyle(
@@ -164,14 +204,6 @@ let flexWrap = (v) =>
     }
   );
 
-let height = floatStyle("height");
-
-let heightPct = pctStyle("height");
-
-let heightAnimated = animatedStyle("height");
-
-let heightInterpolated = interpolatedStyle("height");
-
 let justifyContent = (v) =>
   stringStyle(
     "justifyContent",
@@ -185,43 +217,27 @@ let justifyContent = (v) =>
     }
   );
 
-let left = floatStyle("left");
+let margin = (value) => ("margin", encode_px_auto(value));
 
-let leftPct = pctStyle("left");
+let marginBottom = (value) => ("marginBottom", encode_px_auto(value));
 
-let leftAnimated = animatedStyle("left");
+let marginHorizontal = (value) => ("marginHorizontal", encode_px_auto(value));
 
-let leftInterpolated = interpolatedStyle("left");
+let marginLeft = (value) => ("marginLeft", encode_px_auto(value));
 
-let margin = floatStyle("margin");
+let marginRight = (value) => ("marginRight", encode_px_auto(value));
 
-let marginBottom = floatStyle("marginBottom");
+let marginTop = (value) => ("marginTop", encode_px_auto(value));
 
-let marginHorizontal = floatStyle("marginHorizontal");
+let marginVertical = (value) => ("marginVertical", encode_px_auto(value));
 
-let marginLeft = floatStyle("marginLeft");
+let maxHeight = (value) => ("maxHeight", encode_px_pct(value));
 
-let marginRight = floatStyle("marginRight");
+let maxWidth = (value) => ("maxWidth", encode_px_pct(value));
 
-let marginTop = floatStyle("marginTop");
+let minHeight = (value) => ("minHeight", encode_px_pct(value));
 
-let marginVertical = floatStyle("marginVertical");
-
-let maxHeight = floatStyle("maxHeight");
-
-let maxHeightPct = pctStyle("maxHeight");
-
-let maxWidth = floatStyle("maxWidth");
-
-let maxWidthPct = pctStyle("maxHeight");
-
-let minHeight = floatStyle("minHeight");
-
-let minHeightPct = pctStyle("minHeight");
-
-let minWidth = floatStyle("minWidth");
-
-let minWidthPct = pctStyle("minWidth");
+let minWidth = (value) => ("minWidth", encode_px_pct(value));
 
 let overflow = (v) =>
   stringStyle(
@@ -256,29 +272,17 @@ let position = (v) =>
     }
   );
 
-let right = floatStyle("right");
+let top = (value) => ("top", encode_px_pct_animated_interpolated(value));
 
-let rightPct = pctStyle("right");
+let left = (value) => ("left", encode_px_pct_animated_interpolated(value));
 
-let rightAnimated = animatedStyle("right");
+let right = (value) => ("right", encode_px_pct_animated_interpolated(value));
 
-let rightInterpolated = interpolatedStyle("right");
+let bottom = (value) => ("bottom", encode_px_pct_animated_interpolated(value));
 
-let top = floatStyle("top");
+let height = (value) => ("height", encode_px_pct_animated_interpolated(value));
 
-let topPct = pctStyle("top");
-
-let topAnimated = animatedStyle("top");
-
-let topInterpolated = interpolatedStyle("top");
-
-let width = floatStyle("width");
-
-let widthPct = pctStyle("width");
-
-let widthAnimated = animatedStyle("width");
-
-let widthInterpolated = interpolatedStyle("width");
+let width = (value) => ("width", encode_px_pct_animated_interpolated(value));
 
 let zIndex = intStyle("zIndex");
 
@@ -484,11 +488,7 @@ let borderStyle = (v) =>
     }
   );
 
-let opacity = floatStyle("opacity");
-
-let opacityInterpolated = interpolatedStyle("opacity");
-
-let opacityAnimated = animatedStyle("opacity");
+let opacity = (value) => ("opacity", encode_float_interpolated_animated(value));
 
 let elevation = floatStyle("elevation");
 
@@ -557,7 +557,10 @@ let textDecorationLine = (v) =>
 let textShadowColor = stringStyle("textShadowColor");
 
 let textShadowOffset = (~height, ~width) =>
-  UtilsRN.dictFromArray([|("height", Encode.float(height)), ("width", Encode.float(width))|])
+  UtilsRN.dictFromArray([|
+    ("height", Encode.float(height)),
+    ("width", Encode.float(width))
+  |])
   |> objectStyle("textShadowOffset");
 
 let textShadowRadius = floatStyle("textShadowRadius");
