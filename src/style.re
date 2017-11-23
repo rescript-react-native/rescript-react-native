@@ -502,9 +502,9 @@ let fontFamily = stringStyle("fontFamily");
 
 let fontSize = floatStyle("fontSize");
 
-let fontSizeAnimated = animatedStyle "fontSize";
+let fontSizeAnimated = animatedStyle("fontSize");
 
-let fontSizeInterpolated = interpolatedStyle "fontSize";
+let fontSizeInterpolated = interpolatedStyle("fontSize");
 
 let fontStyle = (v) =>
   stringStyle(
