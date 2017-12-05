@@ -72,8 +72,8 @@ let make:
                                =?,
     ~onRefresh: unit => unit=?,
     ~refreshing: bool=?,
-    ~renderSectionHeader: {. "section": section('item)} => ReasonReact.reactElement=?,
-    ~renderSectionFooter: {. "section": section('item)} => ReasonReact.reactElement=?,
+    ~renderSectionHeader: section('item) => ReasonReact.reactElement=?,
+    ~renderSectionFooter: section('item) => ReasonReact.reactElement=?,
     ~stickySectionHeadersEnabled: bool=?,
     array(ReasonReact.reactElement)
   ) =>
