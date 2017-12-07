@@ -2,35 +2,35 @@ type t;
 
 type styleElement = (string, Js.Json.t);
 
-type px_pct =
-  | Px(float)
+type pt_pct =
+  | Pt(float)
   | Pct(float);
 
-let encode_px_pct = (value) =>
+let encode_pt_pct = (value) =>
   switch value {
-  | Px(px) => Encode.float(px)
+  | Pt(px) => Encode.float(px)
   | Pct(pct) => Encode.pct(pct)
   };
 
-type px_auto =
-  | Px(float)
+type pt_auto =
+  | Pt(float)
   | Auto;
 
-let encode_px_auto = (value) =>
+let encode_pt_auto = (value) =>
   switch value {
-  | Px(value) => Encode.float(value)
+  | Pt(value) => Encode.float(value)
   | Auto => Encode.string("auto")
   };
 
-type px_pct_animated_interpolated =
-  | Px(float)
+type pt_pct_animated_interpolated =
+  | Pt(float)
   | Pct(float)
   | Animated(AnimatedRe.Value.t)
   | Interpolated(AnimatedRe.Interpolation.t);
 
-let encode_px_pct_animated_interpolated = (value: px_pct_animated_interpolated) =>
+let encode_pt_pct_animated_interpolated = (value: pt_pct_animated_interpolated) =>
   switch value {
-  | Px(px) => Encode.float(px)
+  | Pt(px) => Encode.float(px)
   | Pct(pct) => Encode.pct(pct)
   | Animated(value) => Encode.animatedValue(value)
   | Interpolated(value) => Encode.interpolatedValue(value)
@@ -141,7 +141,7 @@ let display = (v) =>
 
 let flex = floatStyle("flex");
 
-let flexBasis = (value) => ("flexBasis", encode_px_pct(value));
+let flexBasis = (value) => ("flexBasis", encode_pt_pct(value));
 
 let flexDirection = (v) =>
   stringStyle(
@@ -180,27 +180,27 @@ let justifyContent = (v) =>
     }
   );
 
-let margin = (value) => ("margin", encode_px_auto(value));
+let margin = (value) => ("margin", encode_pt_auto(value));
 
-let marginBottom = (value) => ("marginBottom", encode_px_auto(value));
+let marginBottom = (value) => ("marginBottom", encode_pt_auto(value));
 
-let marginHorizontal = (value) => ("marginHorizontal", encode_px_auto(value));
+let marginHorizontal = (value) => ("marginHorizontal", encode_pt_auto(value));
 
-let marginLeft = (value) => ("marginLeft", encode_px_auto(value));
+let marginLeft = (value) => ("marginLeft", encode_pt_auto(value));
 
-let marginRight = (value) => ("marginRight", encode_px_auto(value));
+let marginRight = (value) => ("marginRight", encode_pt_auto(value));
 
-let marginTop = (value) => ("marginTop", encode_px_auto(value));
+let marginTop = (value) => ("marginTop", encode_pt_auto(value));
 
-let marginVertical = (value) => ("marginVertical", encode_px_auto(value));
+let marginVertical = (value) => ("marginVertical", encode_pt_auto(value));
 
-let maxHeight = (value) => ("maxHeight", encode_px_pct(value));
+let maxHeight = (value) => ("maxHeight", encode_pt_pct(value));
 
-let maxWidth = (value) => ("maxWidth", encode_px_pct(value));
+let maxWidth = (value) => ("maxWidth", encode_pt_pct(value));
 
-let minHeight = (value) => ("minHeight", encode_px_pct(value));
+let minHeight = (value) => ("minHeight", encode_pt_pct(value));
 
-let minWidth = (value) => ("minWidth", encode_px_pct(value));
+let minWidth = (value) => ("minWidth", encode_pt_pct(value));
 
 let overflow = (v) =>
   stringStyle(
@@ -212,19 +212,19 @@ let overflow = (v) =>
     }
   );
 
-let padding = (value) => ("padding", encode_px_pct(value));
+let padding = (value) => ("padding", encode_pt_pct(value));
 
-let paddingBottom = (value) => ("paddingBottom", encode_px_pct(value));
+let paddingBottom = (value) => ("paddingBottom", encode_pt_pct(value));
 
-let paddingHorizontal = (value) => ("paddingHorizontal", encode_px_pct(value));
+let paddingHorizontal = (value) => ("paddingHorizontal", encode_pt_pct(value));
 
-let paddingLeft = (value) => ("paddingLeft", encode_px_pct(value));
+let paddingLeft = (value) => ("paddingLeft", encode_pt_pct(value));
 
-let paddingRight = (value) => ("paddingRight", encode_px_pct(value));
+let paddingRight = (value) => ("paddingRight", encode_pt_pct(value));
 
-let paddingTop = (value) => ("paddingTop", encode_px_pct(value));
+let paddingTop = (value) => ("paddingTop", encode_pt_pct(value));
 
-let paddingVertical = (value) => ("paddingVertical", encode_px_pct(value));
+let paddingVertical = (value) => ("paddingVertical", encode_pt_pct(value));
 
 let position = (v) =>
   stringStyle(
@@ -235,17 +235,17 @@ let position = (v) =>
     }
   );
 
-let top = (value) => ("top", encode_px_pct_animated_interpolated(value));
+let top = (value) => ("top", encode_pt_pct_animated_interpolated(value));
 
-let left = (value) => ("left", encode_px_pct_animated_interpolated(value));
+let left = (value) => ("left", encode_pt_pct_animated_interpolated(value));
 
-let right = (value) => ("right", encode_px_pct_animated_interpolated(value));
+let right = (value) => ("right", encode_pt_pct_animated_interpolated(value));
 
-let bottom = (value) => ("bottom", encode_px_pct_animated_interpolated(value));
+let bottom = (value) => ("bottom", encode_pt_pct_animated_interpolated(value));
 
-let height = (value) => ("height", encode_px_pct_animated_interpolated(value));
+let height = (value) => ("height", encode_pt_pct_animated_interpolated(value));
 
-let width = (value) => ("width", encode_px_pct_animated_interpolated(value));
+let width = (value) => ("width", encode_pt_pct_animated_interpolated(value));
 
 let zIndex = (value) => ("zIndex", Encode.int(value));
 

@@ -2,16 +2,16 @@ type t;
 
 type styleElement;
 
-type px_pct =
-  | Px(float)
+type pt_pct =
+  | Pt(float)
   | Pct(float);
 
-type px_auto =
-  | Px(float)
+type pt_auto =
+  | Pt(float)
   | Auto;
 
-type px_pct_animated_interpolated =
-  | Px(float)
+type pt_pct_animated_interpolated =
+  | Pt(float)
   | Pct(float)
   | Animated(AnimatedRe.Value.t)
   | Interpolated(AnimatedRe.Interpolation.t);
@@ -67,7 +67,7 @@ let flex: float => styleElement;
 
 let display: [ | `Flex | `None] => styleElement;
 
-let flexBasis: px_pct => styleElement;
+let flexBasis: pt_pct => styleElement;
 
 let flexGrow: float => styleElement;
 
@@ -81,57 +81,57 @@ let justifyContent:
   [ | `FlexStart | `FlexEnd | `Center | `Stretch | `SpaceAround | `SpaceBetween] =>
   styleElement;
 
-let margin: px_auto => styleElement;
+let margin: pt_auto => styleElement;
 
-let marginBottom: px_auto => styleElement;
+let marginBottom: pt_auto => styleElement;
 
-let marginHorizontal: px_auto => styleElement;
+let marginHorizontal: pt_auto => styleElement;
 
-let marginLeft: px_auto => styleElement;
+let marginLeft: pt_auto => styleElement;
 
-let marginRight: px_auto => styleElement;
+let marginRight: pt_auto => styleElement;
 
-let marginTop: px_auto => styleElement;
+let marginTop: pt_auto => styleElement;
 
-let marginVertical: px_auto => styleElement;
+let marginVertical: pt_auto => styleElement;
 
-let maxHeight: px_pct => styleElement;
+let maxHeight: pt_pct => styleElement;
 
-let maxWidth: px_pct => styleElement;
+let maxWidth: pt_pct => styleElement;
 
-let minHeight: px_pct => styleElement;
+let minHeight: pt_pct => styleElement;
 
-let minWidth: px_pct => styleElement;
+let minWidth: pt_pct => styleElement;
 
 let overflow: [ | `Visible | `Hidden | `Scroll] => styleElement;
 
-let padding: px_pct => styleElement;
+let padding: pt_pct => styleElement;
 
-let paddingBottom: px_pct => styleElement;
+let paddingBottom: pt_pct => styleElement;
 
-let paddingHorizontal: px_pct => styleElement;
+let paddingHorizontal: pt_pct => styleElement;
 
-let paddingLeft: px_pct => styleElement;
+let paddingLeft: pt_pct => styleElement;
 
-let paddingRight: px_pct => styleElement;
+let paddingRight: pt_pct => styleElement;
 
-let paddingTop: px_pct => styleElement;
+let paddingTop: pt_pct => styleElement;
 
-let paddingVertical: px_pct => styleElement;
+let paddingVertical: pt_pct => styleElement;
 
 let position: [ | `Absolute | `Relative] => styleElement;
 
-let top: px_pct_animated_interpolated => styleElement;
+let top: pt_pct_animated_interpolated => styleElement;
 
-let left: px_pct_animated_interpolated => styleElement;
+let left: pt_pct_animated_interpolated => styleElement;
 
-let right: px_pct_animated_interpolated => styleElement;
+let right: pt_pct_animated_interpolated => styleElement;
 
-let bottom: px_pct_animated_interpolated => styleElement;
+let bottom: pt_pct_animated_interpolated => styleElement;
 
-let height: px_pct_animated_interpolated => styleElement;
+let height: pt_pct_animated_interpolated => styleElement;
 
-let width: px_pct_animated_interpolated => styleElement;
+let width: pt_pct_animated_interpolated => styleElement;
 
 let zIndex: int => styleElement;
 

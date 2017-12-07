@@ -5,8 +5,8 @@ let styles =
     Style.(
       {
         "container": style([backgroundColor("#e9eaed"), flex(1.0)]),
-        "spacer": style([height(Px(270.))]),
-        "wrapper": style([flex(1.0), paddingTop(Px(10.))])
+        "spacer": style([height(Pt(270.))]),
+        "wrapper": style([flex(1.0), paddingTop(Pt(10.))])
       }
     )
   );

@@ -9,10 +9,10 @@ let styles =
             borderRadius(4.),
             borderWidth(1.),
             borderColor("#d6d7da"),
-            margin(Px(10.)),
-            marginBottom(Px(0.)),
-            height(Px(45.)),
-            padding(Px(10.)),
+            margin(Pt(10.)),
+            marginBottom(Pt(0.)),
+            height(Pt(45.)),
+            padding(Pt(10.)),
             backgroundColor("white")
           ]),
         "text": style([fontSize(19.), fontWeight(`_500)])

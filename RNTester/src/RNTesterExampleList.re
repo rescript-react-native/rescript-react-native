@@ -9,20 +9,20 @@ let styles =
           style([
             backgroundColor("white"),
             justifyContent(`Center),
-            paddingHorizontal(Px(15.)),
-            paddingVertical(Px(8.))
+            paddingHorizontal(Pt(15.)),
+            paddingVertical(Pt(8.))
           ]),
         "rowTitleText": style([fontSize(17.), fontWeight(`_500)]),
         "rowDetailText": style([fontSize(15.), color("#888888"), lineHeight(20.)]),
         "separator":
           style([
-            height(Px(StyleSheet.hairlineWidth)),
+            height(Pt(StyleSheet.hairlineWidth)),
             backgroundColor("#bbbbbb"),
-            marginLeft(Px(15.))
+            marginLeft(Pt(15.))
           ]),
         "separatorHighlighted":
           style([
-            height(Px(StyleSheet.hairlineWidth)),
+            height(Pt(StyleSheet.hairlineWidth)),
             backgroundColor("rgb(217, 217, 217)")
           ])
       }

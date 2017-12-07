@@ -6,21 +6,21 @@ let styles =
       {
         "header":
           style([
-            height(Px(60.)),
+            height(Pt(60.)),
             borderBottomWidth(StyleSheet.hairlineWidth),
             borderBottomColor("#96969A"),
             backgroundColor("#F5F5F6"),
             flexDirection(`Row),
-            paddingTop(Px(20.))
+            paddingTop(Pt(20.))
           ]),
         "headerLeft": style([]),
         "headerCenter":
           style([
             flex(1.0),
             position(`Absolute),
-            top(Px(27.)),
-            left(Px(0.)),
-            right(Px(0.))
+            top(Pt(27.)),
+            left(Pt(0.)),
+            right(Pt(0.))
           ]),
         "title": style([fontSize(19.), fontWeight(`_600), textAlign(`Center)]),
         "exampleContainer": style([flex(1.0)])

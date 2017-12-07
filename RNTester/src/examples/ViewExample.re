@@ -9,9 +9,9 @@ let styles =
         "zIndex":
           style([
             justifyContent(`SpaceAround),
-            width(Px(100.)),
-            height(Px(50.)),
-            marginTop(Px((-10.)))
+            width(Pt(100.)),
+            height(Pt(50.)),
+            marginTop(Pt((-10.)))
           ])
       }
     )
@@ -40,7 +40,7 @@ module ViewBorderStyleExample = {
                       `Solid
                     }
                   ),
-                  padding(Px(5.))
+                  padding(Pt(5.))
                 ])
               )>
               <Text style=(style([fontSize(11.)]))>
@@ -50,7 +50,7 @@ module ViewBorderStyleExample = {
             <View
               style=(
                 style([
-                  marginTop(Px(5.)),
+                  marginTop(Pt(5.)),
                   borderWidth(1.),
                   borderRadius(5.),
                   borderStyle(
@@ -60,7 +60,7 @@ module ViewBorderStyleExample = {
                       `Solid
                     }
                   ),
-                  padding(Px(5.))
+                  padding(Pt(5.))
                 ])
               )>
               <Text style=(style([fontSize(11.)]))>
@@ -92,7 +92,7 @@ module ZIndexExample = {
       let zIndexStr = (i) => "ZIndex " ++ string_of_int(Array.unsafe_get(indices, i));
       <TouchableWithoutFeedback onPress=(update(handlePress))>
         <View>
-          <Text style=(style([paddingBottom(Px(10.))]))>
+          <Text style=(style([paddingBottom(Pt(10.))]))>
             (ReasonReact.stringToElement("Tap to flip sorting order"))
           </Text>
           <View
@@ -100,7 +100,7 @@ module ZIndexExample = {
               concat([
                 styles##zIndex,
                 style([
-                  marginTop(Px(0.)),
+                  marginTop(Pt(0.)),
                   backgroundColor("#E57373"),
                   zIndex(Array.unsafe_get(indices, 0))
                 ])
@@ -113,7 +113,7 @@ module ZIndexExample = {
               concat([
                 styles##zIndex,
                 style([
-                  marginLeft(Px(50.)),
+                  marginLeft(Pt(50.)),
                   backgroundColor("#FFF176"),
                   zIndex(Array.unsafe_get(indices, 1))
                 ])
@@ -126,7 +126,7 @@ module ZIndexExample = {
               concat([
                 styles##zIndex,
                 style([
-                  marginLeft(Px(100.)),
+                  marginLeft(Pt(100.)),
                   backgroundColor("#81C784"),
                   zIndex(Array.unsafe_get(indices, 2))
                 ])
@@ -139,7 +139,7 @@ module ZIndexExample = {
               concat([
                 styles##zIndex,
                 style([
-                  marginLeft(Px(150.)),
+                  marginLeft(Pt(150.)),
                   backgroundColor("#64B5F6"),
                   zIndex(Array.unsafe_get(indices, 3))
                 ])
@@ -166,7 +166,7 @@ let examples: array(Example.t) =
         title: "Background Color",
         description: None,
         render: () =>
-          <View style=(style([backgroundColor("#527FE4"), padding(Px(5.))]))>
+          <View style=(style([backgroundColor("#527FE4"), padding(Pt(5.))]))>
             <Text style=(style([fontSize(11.)]))>
               (ReasonReact.stringToElement("Blue background"))
             </Text>
@@ -177,7 +177,7 @@ let examples: array(Example.t) =
         description: None,
         render: () =>
           <View
-            style=(style([borderColor("#527FE4"), borderWidth(5.), padding(Px(10.))]))>
+            style=(style([borderColor("#527FE4"), borderWidth(5.), padding(Pt(10.))]))>
             <Text style=(style([fontSize(11.)]))>
               (ReasonReact.stringToElement("5px blue border"))
             </Text>
@@ -188,12 +188,12 @@ let examples: array(Example.t) =
         description: None,
         render: () =>
           <View style=(style([borderColor("#bb0000"), borderWidth(1.)]))>
-            <View style=(concat([styles##box, style([padding(Px(5.))])]))>
+            <View style=(concat([styles##box, style([padding(Pt(5.))])]))>
               <Text style=(style([fontSize(11.)]))>
                 (ReasonReact.stringToElement("5px padding"))
               </Text>
             </View>
-            <View style=(concat([styles##box, style([margin(Px(5.))])]))>
+            <View style=(concat([styles##box, style([margin(Pt(5.))])]))>
               <Text style=(style([fontSize(11.)]))>
                 (ReasonReact.stringToElement("5px margin"))
               </Text>
@@ -202,7 +202,7 @@ let examples: array(Example.t) =
               style=(
                 concat([
                   styles##box,
-                  style([margin(Px(5.)), padding(Px(5.)), alignSelf(`FlexStart)])
+                  style([margin(Pt(5.)), padding(Pt(5.)), alignSelf(`FlexStart)])
                 ])
               )>
               <Text style=(style([fontSize(11.)]))>
@@ -218,7 +218,7 @@ let examples: array(Example.t) =
         title: "Border Radius",
         description: None,
         render: () =>
-          <View style=(style([borderWidth(1.), borderRadius(5.), padding(Px(5.))]))>
+          <View style=(style([borderWidth(1.), borderRadius(5.), padding(Pt(5.))]))>
             <Text style=(style([fontSize(11.)]))>
               (
                 ReasonReact.stringToElement(
@@ -242,8 +242,8 @@ let examples: array(Example.t) =
               style([
                 borderRadius(10.),
                 borderWidth(1.),
-                width(Px(20.)),
-                height(Px(20.))
+                width(Pt(20.)),
+                height(Pt(20.))
               ])
             )
           />
@@ -256,28 +256,28 @@ let examples: array(Example.t) =
             <View
               style=(
                 style([
-                  width(Px(95.)),
-                  height(Px(10.)),
-                  marginRight(Px(10.)),
-                  marginBottom(Px(5.)),
+                  width(Pt(95.)),
+                  height(Pt(10.)),
+                  marginRight(Pt(10.)),
+                  marginBottom(Pt(5.)),
                   overflow(`Hidden),
                   borderWidth(StyleSheet.hairlineWidth)
                 ])
               )>
-              <View style=(style([width(Px(200.)), height(Px(20.))]))>
+              <View style=(style([width(Pt(200.)), height(Pt(20.))]))>
                 <Text> (ReasonReact.stringToElement("Overflow hidden")) </Text>
               </View>
             </View>
             <View
               style=(
                 style([
-                  width(Px(95.)),
-                  height(Px(10.)),
-                  marginBottom(Px(5.)),
+                  width(Pt(95.)),
+                  height(Pt(10.)),
+                  marginBottom(Pt(5.)),
                   borderWidth(StyleSheet.hairlineWidth)
                 ])
               )>
-              <View style=(style([width(Px(200.)), height(Px(20.))]))>
+              <View style=(style([width(Pt(200.)), height(Pt(20.))]))>
                 <Text> (ReasonReact.stringToElement("Overflow visible")) </Text>
               </View>
             </View>

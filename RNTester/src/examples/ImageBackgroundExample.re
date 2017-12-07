@@ -19,8 +19,8 @@ let examples: array(Example.t) =
                 flex(1.),
                 justifyContent(`Center),
                 alignItems(`Center),
-                height(Px(400.)),
-                width(Px(300.))
+                height(Pt(400.)),
+                width(Pt(300.))
               ])
             )
             imageStyle=(style([flex(1.)]))
@@ -34,7 +34,7 @@ let examples: array(Example.t) =
                 )
               )
             )>
-            <View style=(style([backgroundColor("#FFFFFF"), padding(Px(5.))]))>
+            <View style=(style([backgroundColor("#FFFFFF"), padding(Pt(5.))]))>
               <Text> (ReasonReact.stringToElement("Nested text")) </Text>
             </View>
           </ImageBackground>

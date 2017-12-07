@@ -10,8 +10,8 @@ let styles =
             borderWidth(1.),
             borderColor("#d6d7da"),
             backgroundColor("#ffffff"),
-            margin(Px(10.)),
-            marginVertical(Px(5.)),
+            margin(Pt(10.)),
+            marginVertical(Pt(5.)),
             overflow(`Hidden)
           ]),
         "titleContainer":
@@ -21,15 +21,15 @@ let styles =
             borderTopRightRadius(3.),
             borderBottomColor("#d6d7da"),
             backgroundColor("#f6f7f8"),
-            paddingHorizontal(Px(10.)),
-            paddingVertical(Px(5.))
+            paddingHorizontal(Pt(10.)),
+            paddingVertical(Pt(5.))
           ]),
         "titleText": style([fontSize(14.), fontWeight(`_500)]),
         "descriptionText": style([fontSize(14.)]),
         "disclosure":
-          style([position(`Absolute), top(Px(0.)), right(Px(0.)), padding(Px(10.))]),
-        "disclosureIcon": style([width(Px(12.)), height(Px(8.))]),
-        "children": style([margin(Px(10.))])
+          style([position(`Absolute), top(Pt(0.)), right(Pt(0.)), padding(Pt(10.))]),
+        "disclosureIcon": style([width(Pt(12.)), height(Pt(8.))]),
+        "children": style([margin(Pt(10.))])
       }
     )
   );
