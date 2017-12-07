@@ -58,10 +58,7 @@ external array_to_style : array(t) => t = "%identity";
 
 let combine = (a, b) => {
   let entries =
-    Array.append(
-      UtilsRN.dictEntries(style_to_dict(a)),
-      UtilsRN.dictEntries(style_to_dict(b))
-    );
+    Array.append(UtilsRN.dictEntries(style_to_dict(a)), UtilsRN.dictEntries(style_to_dict(b)));
   UtilsRN.dictFromArray(entries) |> to_style
 };
 
@@ -81,40 +78,62 @@ let style = (sarr) => sarr |> UtilsRN.dictFromList |> to_style;
 /***
  * Layout Props
  */
+type alignContent =
+  | FlexStart
+  | FlexEnd
+  | Center
+  | Stretch
+  | SpaceAround
+  | SpaceBetween;
+
 let alignContent = (v) =>
   stringStyle(
     "alignContent",
     switch v {
-    | `FlexStart => "flex-start"
-    | `FlexEnd => "flex-end"
-    | `Center => "center"
-    | `Stretch => "stretch"
-    | `SpaceAround => "space-around"
-    | `SpaceBetween => "space-between"
+    | FlexStart => "flex-start"
+    | FlexEnd => "flex-end"
+    | Center => "center"
+    | Stretch => "stretch"
+    | SpaceAround => "space-around"
+    | SpaceBetween => "space-between"
     }
   );
+
+type alignItems =
+  | FlexStart
+  | FlexEnd
+  | Center
+  | Stretch
+  | Baseline;
 
 let alignItems = (v) =>
   stringStyle(
     "alignItems",
     switch v {
-    | `FlexStart => "flex-start"
-    | `FlexEnd => "flex-end"
-    | `Center => "center"
-    | `Stretch => "stretch"
-    | `Baseline => "baseline"
+    | FlexStart => "flex-start"
+    | FlexEnd => "flex-end"
+    | Center => "center"
+    | Stretch => "stretch"
+    | Baseline => "baseline"
     }
   );
+
+type alignSelf =
+  | FlexStart
+  | FlexEnd
+  | Center
+  | Stretch
+  | Baseline;
 
 let alignSelf = (v) =>
   stringStyle(
     "alignSelf",
     switch v {
-    | `FlexStart => "flex-start"
-    | `FlexEnd => "flex-end"
-    | `Center => "center"
-    | `Stretch => "stretch"
-    | `Baseline => "baseline"
+    | FlexStart => "flex-start"
+    | FlexEnd => "flex-end"
+    | Center => "center"
+    | Stretch => "stretch"
+    | Baseline => "baseline"
     }
   );
 
@@ -130,12 +149,16 @@ let borderTopWidth = floatStyle("borderTopWidth");
 
 let borderWidth = floatStyle("borderWidth");
 
+type display =
+  | Flex
+  | None;
+
 let display = (v) =>
   stringStyle(
     "display",
     switch v {
-    | `Flex => "flex"
-    | `None => "none"
+    | Flex => "flex"
+    | None => "none"
     }
   );
 
@@ -143,14 +166,20 @@ let flex = floatStyle("flex");
 
 let flexBasis = (value) => ("flexBasis", encode_pt_pct(value));
 
+type flexDirection =
+  | Row
+  | RowReverse
+  | Column
+  | ColumnReverse;
+
 let flexDirection = (v) =>
   stringStyle(
     "flexDirection",
     switch v {
-    | `Row => "row"
-    | `RowReverse => "row-reverse"
-    | `Column => "column"
-    | `ColumnReverse => "column-reverse"
+    | Row => "row"
+    | RowReverse => "row-reverse"
+    | Column => "column"
+    | ColumnReverse => "column-reverse"
     }
   );
 
@@ -158,25 +187,37 @@ let flexGrow = floatStyle("flexGrow");
 
 let flexShrink = floatStyle("flexShrink");
 
+type flexWrap =
+  | Wrap
+  | Nowrap;
+
 let flexWrap = (v) =>
   stringStyle(
     "flexWrap",
     switch v {
-    | `Wrap => "wrap"
-    | `Nowrap => "nowrap"
+    | Wrap => "wrap"
+    | Nowrap => "nowrap"
     }
   );
+
+type justifyContent =
+  | FlexStart
+  | FlexEnd
+  | Center
+  | Stretch
+  | SpaceAround
+  | SpaceBetween;
 
 let justifyContent = (v) =>
   stringStyle(
     "justifyContent",
     switch v {
-    | `FlexStart => "flex-start"
-    | `FlexEnd => "flex-end"
-    | `Center => "center"
-    | `Stretch => "stretch"
-    | `SpaceAround => "space-around"
-    | `SpaceBetween => "space-between"
+    | FlexStart => "flex-start"
+    | FlexEnd => "flex-end"
+    | Center => "center"
+    | Stretch => "stretch"
+    | SpaceAround => "space-around"
+    | SpaceBetween => "space-between"
     }
   );
 
@@ -202,13 +243,18 @@ let minHeight = (value) => ("minHeight", encode_pt_pct(value));
 
 let minWidth = (value) => ("minWidth", encode_pt_pct(value));
 
+type overflow =
+  | Visible
+  | Hidden
+  | Scroll;
+
 let overflow = (v) =>
   stringStyle(
     "overflow",
     switch v {
-    | `Visible => "visible"
-    | `Hidden => "hidden"
-    | `Scroll => "scroll"
+    | Visible => "visible"
+    | Hidden => "hidden"
+    | Scroll => "scroll"
     }
   );
 
@@ -226,12 +272,16 @@ let paddingTop = (value) => ("paddingTop", encode_pt_pct(value));
 
 let paddingVertical = (value) => ("paddingVertical", encode_pt_pct(value));
 
+type position =
+  | Absolute
+  | Relative;
+
 let position = (v) =>
   stringStyle(
     "position",
     switch v {
-    | `Absolute => "absolute"
-    | `Relative => "relative"
+    | Absolute => "absolute"
+    | Relative => "relative"
     }
   );
 
@@ -249,13 +299,18 @@ let width = (value) => ("width", encode_pt_pct_animated_interpolated(value));
 
 let zIndex = (value) => ("zIndex", Encode.int(value));
 
+type direction =
+  | Inherit
+  | Ltr
+  | Rtl;
+
 let direction = (v) =>
   stringStyle(
     "direction",
     switch v {
-    | `Inherit => "inherit"
-    | `Ltr => "ltr"
-    | `Rtl => "rtl"
+    | Inherit => "inherit"
+    | Ltr => "ltr"
+    | Rtl => "rtl"
     }
   );
 
@@ -266,10 +321,7 @@ let direction = (v) =>
 let shadowColor = stringStyle("shadowColor");
 
 let shadowOffset = (~height, ~width) =>
-  UtilsRN.dictFromArray([|
-    ("height", Encode.float(height)),
-    ("width", Encode.float(width))
-  |])
+  UtilsRN.dictFromArray([|("height", Encode.float(height)), ("width", Encode.float(width))|])
   |> objectStyle("shadowOffset");
 
 let shadowOpacity = floatStyle("shadowOpacity");
@@ -294,7 +346,7 @@ module Transform = {
         skewY
       ) => {
     let opt_values = [|
-      ("perspective", [@bs] encoder(perspective) ),
+      ("perspective", [@bs] encoder(perspective)),
       ("rotate", [@bs] rotationEncoder(rotate)),
       ("rotateX", [@bs] rotationEncoder(rotateX)),
       ("rotateY", [@bs] rotationEncoder(rotateY)),
@@ -336,8 +388,8 @@ module Transform = {
         ()
       ) =>
     create_(
-      [@bs] (value) => UtilsRN.option_map(Encode.float, value) ,
-      [@bs] (value) => UtilsRN.option_map(Encode.string, value),
+      [@bs] ((value) => UtilsRN.option_map(Encode.float, value)),
+      [@bs] ((value) => UtilsRN.option_map(Encode.string, value)),
       perspective,
       rotate,
       rotateX,
@@ -366,8 +418,8 @@ module Transform = {
         ()
       ) =>
     create_(
-      [@bs] (value) => UtilsRN.option_map(Encode.animatedValue, value),
-      [@bs] (value) => UtilsRN.option_map(Encode.animatedValue, value),
+      [@bs] ((value) => UtilsRN.option_map(Encode.animatedValue, value)),
+      [@bs] ((value) => UtilsRN.option_map(Encode.animatedValue, value)),
       perspective,
       rotate,
       rotateX,
@@ -396,8 +448,8 @@ module Transform = {
         ()
       ) =>
     create_(
-      [@bs] (value) => UtilsRN.option_map(Encode.interpolatedValue, value),
-      [@bs] (value) => UtilsRN.option_map(Encode.interpolatedValue, value),
+      [@bs] ((value) => UtilsRN.option_map(Encode.interpolatedValue, value)),
+      [@bs] ((value) => UtilsRN.option_map(Encode.interpolatedValue, value)),
       perspective,
       rotate,
       rotateX,
@@ -416,12 +468,16 @@ module Transform = {
 /***
  * View Props
  */
+type backfaceVisibility =
+  | Visible
+  | Hidden;
+
 let backfaceVisibility = (v) =>
   stringStyle(
     "backfaceVisibility",
     switch v {
-    | `Visible => "visible"
-    | `Hidden => "hidden"
+    | Visible => "visible"
+    | Hidden => "hidden"
     }
   );
 
@@ -447,13 +503,18 @@ let borderBottomLeftRadius = floatStyle("borderBottomLeftRadius");
 
 let borderBottomRightRadius = floatStyle("borderBottomRightRadius");
 
+type borderStyle =
+  | Solid
+  | Dotted
+  | Dashed;
+
 let borderStyle = (v) =>
   stringStyle(
     "borderStyle",
     switch v {
-    | `Solid => "solid"
-    | `Dotted => "dotted"
-    | `Dashed => "dashed"
+    | Solid => "solid"
+    | Dotted => "dotted"
+    | Dashed => "dashed"
     }
   );
 
@@ -471,12 +532,16 @@ let fontFamily = stringStyle("fontFamily");
 
 let fontSize = floatStyle("fontSize");
 
+type fontStyle =
+  | Normal
+  | Italic;
+
 let fontStyle = (v) =>
   stringStyle(
     "fontStyle",
     switch v {
-    | `Normal => "normal"
-    | `Italic => "italic"
+    | Normal => "normal"
+    | Italic => "italic"
     }
   );
 
@@ -500,36 +565,46 @@ let fontWeight = (v) =>
 
 let lineHeight = floatStyle("lineHeight");
 
+type textAlign =
+  | Auto
+  | Left
+  | Right
+  | Center
+  | Justify;
+
 let textAlign = (v) =>
   stringStyle(
     "textAlign",
     switch v {
-    | `Auto => "auto"
-    | `Left => "left"
-    | `Right => "right"
-    | `Center => "center"
-    | `Justify => "justify"
+    | Auto => "auto"
+    | Left => "left"
+    | Right => "right"
+    | Center => "center"
+    | Justify => "justify"
     }
   );
+
+type textDecorationLine =
+  | None
+  | Underline
+  | LineThrough
+  | UnderlineLineThrough;
 
 let textDecorationLine = (v) =>
   stringStyle(
     "textDecorationLine",
     switch v {
-    | `None => "none"
-    | `Underline => "underline"
-    | `LineThrough => "line-through"
-    | `UnderlineLineThrough => "underline line-through"
+    | None => "none"
+    | Underline => "underline"
+    | LineThrough => "line-through"
+    | UnderlineLineThrough => "underline line-through"
     }
   );
 
 let textShadowColor = stringStyle("textShadowColor");
 
 let textShadowOffset = (~height, ~width) =>
-  UtilsRN.dictFromArray([|
-    ("height", Encode.float(height)),
-    ("width", Encode.float(width))
-  |])
+  UtilsRN.dictFromArray([|("height", Encode.float(height)), ("width", Encode.float(width))|])
   |> objectStyle("textShadowOffset");
 
 let textShadowRadius = floatStyle("textShadowRadius");
@@ -539,14 +614,20 @@ let includeFontPadding = (value) => (
   Encode.boolean(Js.Boolean.to_js_boolean(value))
 );
 
+type textAlignVertical =
+  | Auto
+  | Top
+  | Bottom
+  | Center;
+
 let textAlignVertical = (v) =>
   stringStyle(
     "textAlignVertical",
     switch v {
-    | `Auto => "auto"
-    | `Top => "top"
-    | `Bottom => "bottom"
-    | `Center => "center"
+    | Auto => "auto"
+    | Top => "top"
+    | Bottom => "bottom"
+    | Center => "center"
     }
   );
 
@@ -557,26 +638,44 @@ let letterSpacing = floatStyle("letterSpacing");
 
 let textDecorationColor = stringStyle("textDecorationColor");
 
+type textDecorationStyle =
+  | Solid
+  | Double
+  | Dotted
+  | Dashed;
+
 let textDecorationStyle = (v) =>
   stringStyle(
     "textDecorationStyle",
     switch v {
-    | `Solid => "solid"
-    | `Double => "double"
-    | `Dotted => "dotted"
-    | `Dashed => "dashed"
+    | Solid => "solid"
+    | Double => "double"
+    | Dotted => "dotted"
+    | Dashed => "dashed"
     }
   );
+
+type writingDirection =
+  | Auto
+  | Ltr
+  | Rtl;
 
 let writingDirection = (v) =>
   stringStyle(
     "writingDirection",
     switch v {
-    | `Auto => "auto"
-    | `Ltr => "ltr"
-    | `Rtl => "rtl"
+    | Auto => "auto"
+    | Ltr => "ltr"
+    | Rtl => "rtl"
     }
   );
+
+type resizeMode =
+  | Cover
+  | Contain
+  | Stretch
+  | Repeat
+  | Center;
 
 
 /*** Image props */
@@ -584,11 +683,11 @@ let resizeMode = (v) =>
   stringStyle(
     "resizeMode",
     switch v {
-    | `Cover => "cover"
-    | `Contain => "contain"
-    | `Stretch => "stretch"
-    | `Repeat => "repeat"
-    | `Center => "center"
+    | Cover => "cover"
+    | Contain => "contain"
+    | Stretch => "stretch"
+    | Repeat => "repeat"
+    | Center => "center"
     }
   );
 

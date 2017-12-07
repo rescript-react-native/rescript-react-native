@@ -41,15 +41,33 @@ let concat: list(t) => t;
 /***
  * Layout Props
  */
-let alignContent:
-  [ | `FlexStart | `FlexEnd | `Center | `Stretch | `SpaceAround | `SpaceBetween] =>
-  styleElement;
+type alignContent =
+  | FlexStart
+  | FlexEnd
+  | Center
+  | Stretch
+  | SpaceAround
+  | SpaceBetween;
 
-let alignItems:
-  [ | `FlexStart | `FlexEnd | `Center | `Stretch | `Baseline] => styleElement;
+let alignContent: alignContent => styleElement;
 
-let alignSelf:
-  [ | `FlexStart | `FlexEnd | `Center | `Stretch | `Baseline] => styleElement;
+type alignItems =
+  | FlexStart
+  | FlexEnd
+  | Center
+  | Stretch
+  | Baseline;
+
+let alignItems: alignItems => styleElement;
+
+type alignSelf =
+  | FlexStart
+  | FlexEnd
+  | Center
+  | Stretch
+  | Baseline;
+
+let alignSelf: alignSelf => styleElement;
 
 let aspectRatio: float => styleElement;
 
@@ -65,21 +83,41 @@ let borderWidth: float => styleElement;
 
 let flex: float => styleElement;
 
-let display: [ | `Flex | `None] => styleElement;
+type display =
+  | Flex
+  | None;
+
+let display: display => styleElement;
 
 let flexBasis: pt_pct => styleElement;
 
 let flexGrow: float => styleElement;
 
-let flexDirection: [ | `Row | `RowReverse | `Column | `ColumnReverse] => styleElement;
+type flexDirection =
+  | Row
+  | RowReverse
+  | Column
+  | ColumnReverse;
+
+let flexDirection: flexDirection => styleElement;
 
 let flexShrink: float => styleElement;
 
-let flexWrap: [ | `Wrap | `Nowrap] => styleElement;
+type flexWrap =
+  | Wrap
+  | Nowrap;
 
-let justifyContent:
-  [ | `FlexStart | `FlexEnd | `Center | `Stretch | `SpaceAround | `SpaceBetween] =>
-  styleElement;
+let flexWrap: flexWrap => styleElement;
+
+type justifyContent =
+  | FlexStart
+  | FlexEnd
+  | Center
+  | Stretch
+  | SpaceAround
+  | SpaceBetween;
+
+let justifyContent: justifyContent => styleElement;
 
 let margin: pt_auto => styleElement;
 
@@ -103,7 +141,12 @@ let minHeight: pt_pct => styleElement;
 
 let minWidth: pt_pct => styleElement;
 
-let overflow: [ | `Visible | `Hidden | `Scroll] => styleElement;
+type overflow =
+  | Visible
+  | Hidden
+  | Scroll;
+
+let overflow: overflow => styleElement;
 
 let padding: pt_pct => styleElement;
 
@@ -119,7 +162,11 @@ let paddingTop: pt_pct => styleElement;
 
 let paddingVertical: pt_pct => styleElement;
 
-let position: [ | `Absolute | `Relative] => styleElement;
+type position =
+  | Absolute
+  | Relative;
+
+let position: position => styleElement;
 
 let top: pt_pct_animated_interpolated => styleElement;
 
@@ -135,7 +182,12 @@ let width: pt_pct_animated_interpolated => styleElement;
 
 let zIndex: int => styleElement;
 
-let direction: [ | `Inherit | `Ltr | `Rtl] => styleElement;
+type direction =
+  | Inherit
+  | Ltr
+  | Rtl;
+
+let direction: direction => styleElement;
 
 
 /***
@@ -204,7 +256,11 @@ module Transform: {
 /***
  * View Props
  */
-let backfaceVisibility: [ | `Visible | `Hidden] => styleElement;
+type backfaceVisibility =
+  | Visible
+  | Hidden;
+
+let backfaceVisibility: backfaceVisibility => styleElement;
 
 let backgroundColor: string => styleElement;
 
@@ -224,7 +280,12 @@ let borderTopLeftRadius: float => styleElement;
 
 let borderTopRightRadius: float => styleElement;
 
-let borderStyle: [ | `Solid | `Dotted | `Dashed] => styleElement;
+type borderStyle =
+  | Solid
+  | Dotted
+  | Dashed;
+
+let borderStyle: borderStyle => styleElement;
 
 let borderBottomLeftRadius: float => styleElement;
 
@@ -244,30 +305,34 @@ let fontFamily: string => styleElement;
 
 let fontSize: float => styleElement;
 
-let fontStyle: [ | `Normal | `Italic] => styleElement;
+type fontStyle =
+  | Normal
+  | Italic;
+
+let fontStyle: fontStyle => styleElement;
 
 let fontWeight:
-  [
-    | `Normal
-    | `Bold
-    | `_100
-    | `_200
-    | `_300
-    | `_400
-    | `_500
-    | `_600
-    | `_700
-    | `_800
-    | `_900
-  ] =>
+  [ | `Normal | `Bold | `_100 | `_200 | `_300 | `_400 | `_500 | `_600 | `_700 | `_800 | `_900] =>
   styleElement;
 
 let lineHeight: float => styleElement;
 
-let textAlign: [ | `Auto | `Left | `Right | `Center | `Justify] => styleElement;
+type textAlign =
+  | Auto
+  | Left
+  | Right
+  | Center
+  | Justify;
 
-let textDecorationLine:
-  [ | `None | `Underline | `LineThrough | `UnderlineLineThrough] => styleElement;
+let textAlign: textAlign => styleElement;
+
+type textDecorationLine =
+  | None
+  | Underline
+  | LineThrough
+  | UnderlineLineThrough;
+
+let textDecorationLine: textDecorationLine => styleElement;
 
 let textShadowColor: string => styleElement;
 
@@ -277,7 +342,13 @@ let textShadowRadius: float => styleElement;
 
 let includeFontPadding: bool => styleElement;
 
-let textAlignVertical: [ | `Auto | `Top | `Bottom | `Center] => styleElement;
+type textAlignVertical =
+  | Auto
+  | Top
+  | Bottom
+  | Center;
+
+let textAlignVertical: textAlignVertical => styleElement;
 
 let fontVariant: list(string) => styleElement;
 
@@ -285,11 +356,29 @@ let letterSpacing: float => styleElement;
 
 let textDecorationColor: string => styleElement;
 
-let textDecorationStyle: [ | `Solid | `Double | `Dotted | `Dashed] => styleElement;
+type textDecorationStyle =
+  | Solid
+  | Double
+  | Dotted
+  | Dashed;
 
-let writingDirection: [ | `Auto | `Ltr | `Rtl] => styleElement;
+let textDecorationStyle: textDecorationStyle => styleElement;
 
-let resizeMode: [ | `Center | `Contain | `Cover | `Repeat | `Stretch] => styleElement;
+type writingDirection =
+  | Auto
+  | Ltr
+  | Rtl;
+
+let writingDirection: writingDirection => styleElement;
+
+type resizeMode =
+  | Cover
+  | Contain
+  | Stretch
+  | Repeat
+  | Center;
+
+let resizeMode: resizeMode => styleElement;
 
 let tintColor: string => styleElement;
 
