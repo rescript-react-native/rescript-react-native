@@ -218,15 +218,22 @@ let outputPrinter =
   | _ => "refmt"
   };
 
-Array.sub(Sys.argv, 1, Array.length(Sys.argv) - 1)
-|> Array.iter(
-     (file) =>
-       if (Sys.command(inputPrinter ++ " " ++ file ++ " -p binary > temp") == 0) {
-         Ast_mapper.apply(~source="temp", ~target="temp_processed", mapper);
-         if (0 != Sys.command(outputPrinter ++ " --parse=binary -p re temp_processed > " ++ file)) {
-           print_endline("Could not print output file")
+if (Sys.file_exists("temp") || Sys.file_exists("temp_processed")) {
+  print_endline(
+    "temp and/or temp_processed files are presesnt in the current directory. Move or remove them to continue."
+  )
+} else {
+  Array.sub(Sys.argv, 1, Array.length(Sys.argv) - 1)
+  |> Array.iter(
+       (file) =>
+         if (Sys.command(inputPrinter ++ " " ++ file ++ " -p binary > temp") == 0) {
+           Ast_mapper.apply(~source="temp", ~target="temp_processed", mapper);
+           if (0 != Sys.command(outputPrinter ++ " --parse=binary -p re temp_processed > " ++ file)) {
+             print_endline("Could not print output file")
+           }
+         } else {
+           print_endline("Could not parse the input file named: " ++ file)
          }
-       } else {
-         print_endline("Could not parse the input file named: " ++ file)
-       }
-   );
+     )
+  |> (() => ignore(Sys.command("rm temp; rm temp_processed")))
+};
