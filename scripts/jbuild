@@ -1,2 +1,0 @@
-(executable 
- ((name styles_v1_to_v2) (libraries (compiler-libs.common))))
