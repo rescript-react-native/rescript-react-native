@@ -21,4 +21,4 @@ external animatedValue : AnimatedRe.Value.t => Js.Json.t = "%identity";
 
 external interpolatedValue : AnimatedRe.Interpolation.t => Js.Json.t = "%identity";
 
-let pct = (pct) => string(string_of_float(pct) ++ "%");
+let pct = (pct) => string(Printf.sprintf("%.2f%%", pct));
