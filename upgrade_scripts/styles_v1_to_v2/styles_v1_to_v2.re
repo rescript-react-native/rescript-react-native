@@ -87,6 +87,9 @@ module Replacements = {
     ((item, basicItem)) => Hashtbl.add(styleFuncTable, item, (basicItem, "Interpolated")),
     suffix_interpolated
   );
+  Hashtbl.add(styleFuncTable, "opacity", ("opacity", "Float"));
+  Hashtbl.add(styleFuncTable, "opacityInterpolated", ("opacity", "Interpolated"));
+  Hashtbl.add(styleFuncTable, "opacityAnimated", ("opacity", "Animated"));
   let variantReplacementsTable = Hashtbl.create(List.length(variantReplacements));
   List.iter(
     ((item, replacement)) => Hashtbl.add(variantReplacementsTable, item, replacement),
