@@ -239,6 +239,36 @@ let outputPrinter =
   | _ => "refmt"
   };
 
+let executeCommand = (cmd) => {
+  let channel = Unix.open_process_in(cmd);
+  let lines = ref([]);
+  try {
+    while (true) {
+      lines := [input_line(channel), ...lines.contents]
+    };
+    []
+  } {
+  | End_of_file => List.rev(lines.contents)
+  }
+};
+
+let trimFirstTwoLines =
+  fun
+  | [_, _, ...rest] => rest
+  | l => l;
+
+let rec toString =
+  fun
+  | [] => ""
+  | [h] => h
+  | [h, ...t] => h ++ "\n" ++ toString(t);
+
+let writeToFile = (~filename, str) => {
+  let outputChannel = open_out(filename);
+  Printf.fprintf(outputChannel, "%s", str);
+  close_out(outputChannel)
+};
+
 if (Sys.file_exists("temp") || Sys.file_exists("temp_processed")) {
   print_endline(
     "temp and/or temp_processed files are presesnt in the current directory. Move or remove them to continue."
@@ -246,20 +276,22 @@ if (Sys.file_exists("temp") || Sys.file_exists("temp_processed")) {
 } else {
   Array.sub(Sys.argv, 1, Array.length(Sys.argv) - 1)
   |> Array.iter(
-       (file) =>
-         if (Sys.command(inputPrinter ++ " " ++ file ++ " -p binary > temp") == 0) {
-           Ast_mapper.apply(~source="temp", ~target="temp_processed", mapper);
-           if (0
-               != Sys.command(
-                    outputPrinter ++ " --parse=binary -p re temp_processed | tail -n +3 > " ++ file
-                  )) {
-             print_endline("Could not print output file")
-           } else {
-             ()
-           }
-         } else {
-           print_endline("Could not parse the input file named: " ++ file)
-         }
+       (file) => {
+         executeCommand(inputPrinter ++ " " ++ file ++ " -p binary")
+         |> toString
+         |> writeToFile(~filename="temp");
+         Ast_mapper.apply(~source="temp", ~target="temp_processed", mapper);
+         executeCommand(outputPrinter ++ " --parse=binary -p re temp_processed")
+         |> trimFirstTwoLines
+         |> toString
+         |> writeToFile(~filename=file);
+         ()
+       }
      )
-  |> (() => ignore(Sys.command("rm temp; rm temp_processed")))
+  |> (
+    () => {
+      Sys.remove("temp");
+      Sys.remove("temp_processed")
+    }
+  )
 };
