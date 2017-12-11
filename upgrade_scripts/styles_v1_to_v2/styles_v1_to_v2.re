@@ -109,11 +109,15 @@ open Parsetree;
 open Ast_mapper;
 
 let replaceLastIdentPart = (ident, replacement) =>
-  switch (List.rev(Longident.flatten(ident))) {
-  | [] => Longident.Lident("")
-  | [_] => Longident.parse(replacement)
-  | [_, x, ...leading] =>
-    Longident.parse(String.concat(".", List.rev([x, ...leading])) ++ "." ++ replacement)
+  Asttypes.{
+    ...ident,
+    txt:
+      switch (List.rev(Longident.flatten(ident.txt))) {
+      | [] => Longident.Lident("")
+      | [_] => Longident.parse(replacement)
+      | [_, x, ...leading] =>
+        Longident.parse(String.concat(".", List.rev([x, ...leading])) ++ "." ++ replacement)
+      }
   };
 
 let try_ = (expr) =>
@@ -121,12 +125,27 @@ let try_ = (expr) =>
   | _ => `None
   };
 
-let funcReplacement = (ident) =>
-  try (`StyleFunc(Hashtbl.find(Replacements.styleFuncTable, ident))) {
-  | _ =>
-    try (`TransformFunc(Hashtbl.find(Replacements.transformReplacementsTable, ident))) {
-    | _ => `None
+let funcReplacement = (funcExpression) =>
+  switch funcExpression.pexp_desc {
+  | Pexp_ident(funcDescription) =>
+    let ident = Longident.last(funcDescription.Location.txt);
+    try {
+      let (newFuncName, typ) = Hashtbl.find(Replacements.styleFuncTable, ident);
+      `StyleFunc((replaceLastIdentPart(funcDescription, newFuncName), typ))
+    } {
+    | _ =>
+      try (
+        `TransformFunc(
+          replaceLastIdentPart(
+            funcDescription,
+            Hashtbl.find(Replacements.transformReplacementsTable, ident)
+          )
+        )
+      ) {
+      | _ => `None
+      }
     }
+  | _ => `None
   };
 
 let variantReplacement = (ident) =>
@@ -134,56 +153,55 @@ let variantReplacement = (ident) =>
   | _ => None
   };
 
+let mapFunctionCall = (~func, ~args) =>
+  switch (funcReplacement(func), args) {
+  | (`TransformFunc(mappedFunc), args) => Some((Pexp_ident(mappedFunc), args))
+  | (`StyleFunc(mappedFunc, typ), [(_label, arg)]) =>
+    Some((
+      Pexp_ident(mappedFunc),
+      [("", {...arg, pexp_desc: Pexp_construct({...mappedFunc, txt: Lident(typ)}, Some(arg))})]
+    ))
+  | _ => None
+  };
+
+let detectApplicationExpression = (~funcDesc, ~args) =>
+  switch (funcDesc, args) {
+  | ({pexp_desc: Pexp_ident({txt: Lident("@@")})}, [("", funcExpression), arg]) =>
+    `OperatorApplication((`AtAt, funcExpression, arg))
+  | ({pexp_desc: Pexp_ident({txt: Lident("|>")})}, [arg, ("", funcExpression)]) =>
+    `OperatorApplication((`Pipe, funcExpression, arg))
+  | (funcDesc, args) => `OrdinaryApplication((funcDesc, args))
+  };
+
+let mapApplicationExpression = (~funcDesc, ~args) =>
+  switch (detectApplicationExpression(~funcDesc, ~args)) {
+  | `OperatorApplication(operator, funcExpression, arg) =>
+    switch (mapFunctionCall(~func=funcExpression, ~args=[arg])) {
+    | Some((mappedFunc, args)) =>
+      switch operator {
+      | `AtAt => Some((funcDesc, [("", {...funcDesc, pexp_desc: mappedFunc}), ...args]))
+      | `Pipe => Some((funcDesc, List.append(args, [("", {...funcDesc, pexp_desc: mappedFunc})])))
+      }
+    | None => None
+    }
+  | `OrdinaryApplication(funcDesc, args) =>
+    switch (mapFunctionCall(~func=funcDesc, ~args)) {
+    | Some((mappedFunc, args)) => Some(({...funcDesc, pexp_desc: mappedFunc}, args))
+    | None => None
+    }
+  };
+
 let mapper = {
   ...Ast_mapper.default_mapper,
   expr: (mapper, expr) =>
     switch expr {
-    | {pexp_desc: Pexp_apply(description, args)} =>
-      switch description.pexp_desc {
-      | Pexp_ident(funcDescription) =>
-        switch (args, funcReplacement(Longident.last(funcDescription.txt))) {
-        | (args, `TransformFunc(newIdentifier)) =>
-          let txt = replaceLastIdentPart(funcDescription.txt, newIdentifier);
-          {
-            ...expr,
-            pexp_desc:
-              Pexp_apply({...description, pexp_desc: Pexp_ident({...funcDescription, txt})}, args)
-          }
-        | ([(_, arg)], `StyleFunc(newIdentifier, typ)) =>
-          let txt = replaceLastIdentPart(funcDescription.txt, newIdentifier);
-          {
-            ...expr,
-            pexp_desc:
-              Pexp_apply(
-                {...description, pexp_desc: Pexp_ident({...funcDescription, txt})},
-                [
-                  (
-                    "",
-                    {
-                      ...expr,
-                      pexp_desc: Pexp_construct({...funcDescription, txt: Lident(typ)}, Some(arg))
-                    }
-                  )
-                ]
-              )
-          }
-        | _ => {
-            ...expr,
-            pexp_desc:
-              Pexp_apply(
-                description,
-                List.map(((lbl, expr)) => (lbl, mapper.expr(mapper, expr)), args)
-              )
-          }
-        }
-      | _ => {
+    | {pexp_desc: Pexp_apply(funcDesc, args)} =>
+      switch (mapApplicationExpression(~funcDesc, ~args)) {
+      | Some((mappedFuncDesc, mappedArgs)) => {
           ...expr,
-          pexp_desc:
-            Pexp_apply(
-              description,
-              List.map(((lbl, expr)) => (lbl, mapper.expr(mapper, expr)), args)
-            )
+          pexp_desc: Pexp_apply(mappedFuncDesc, mappedArgs)
         }
+      | None => /* Map children expressions */ default_mapper.expr(mapper, expr)
       }
     | {pexp_desc: Pexp_variant(txt, arg)} =>
       switch (variantReplacement(txt)) {
@@ -195,7 +213,7 @@ let mapper = {
       }
     | expr => default_mapper.expr(mapper, expr)
     },
-  open_description: (mapper, desc) =>
+  open_description: (_mapper, desc) =>
     switch (Longident.flatten(desc.popen_lid.txt)) {
     | [hd, ...tl] when String.compare(hd, "ReactNative") == 0 => {
         ...desc,
