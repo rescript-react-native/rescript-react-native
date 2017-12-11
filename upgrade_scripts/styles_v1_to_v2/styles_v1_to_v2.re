@@ -249,8 +249,13 @@ if (Sys.file_exists("temp") || Sys.file_exists("temp_processed")) {
        (file) =>
          if (Sys.command(inputPrinter ++ " " ++ file ++ " -p binary > temp") == 0) {
            Ast_mapper.apply(~source="temp", ~target="temp_processed", mapper);
-           if (0 != Sys.command(outputPrinter ++ " --parse=binary -p re temp_processed > " ++ file)) {
+           if (0
+               != Sys.command(
+                    outputPrinter ++ " --parse=binary -p re temp_processed | tail -n +3 > " ++ file
+                  )) {
              print_endline("Could not print output file")
+           } else {
+             ()
            }
          } else {
            print_endline("Could not parse the input file named: " ++ file)
