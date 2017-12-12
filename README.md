@@ -64,6 +64,13 @@ AppRegistry.registerComponent('MyAwesomeProject', () => app);
 ```
 **Note:** Make sure that the first argument to `AppRegistry.registerComponent` is **your** correct project name.
 
+If you are using `react-native-scripts`, then you will need to modify `App.js` to be like this
+```js
+import { app } from "./lib/js/re/app.js";
+
+export default app;
+```
+
 8. Now go to a new tab and start your app with `react-native run-ios` or `react-native run-android`.
 
 9. Great you are all set up! Check the source of `bs-react-native` to find out more about the implemented APIs and Components. If you get stuck just ask on our [Discord Server](https://discord.gg/reasonml)! Happy Hacking!
