@@ -10,19 +10,13 @@ let styles =
             borderBottomWidth(StyleSheet.hairlineWidth),
             borderBottomColor("#96969A"),
             backgroundColor("#F5F5F6"),
-            flexDirection(`Row),
+            flexDirection(Row),
             paddingTop(Pt(20.))
           ]),
         "headerLeft": style([]),
         "headerCenter":
-          style([
-            flex(1.0),
-            position(`Absolute),
-            top(Pt(27.)),
-            left(Pt(0.)),
-            right(Pt(0.))
-          ]),
-        "title": style([fontSize(19.), fontWeight(`_600), textAlign(`Center)]),
+          style([flex(1.0), position(Absolute), top(Pt(27.)), left(Pt(0.)), right(Pt(0.))]),
+        "title": style([fontSize(19.), fontWeight(`_600), textAlign(Center)]),
         "exampleContainer": style([flex(1.0)])
       }
     )

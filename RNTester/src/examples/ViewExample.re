@@ -5,10 +5,14 @@ let styles =
     Style.(
       {
         "box":
-          style([backgroundColor("#527FE4"), borderColor("#000033"), borderWidth(1.)]),
+          style([
+            backgroundColor("#527FE4"),
+            borderColor("#000033"),
+            borderWidth(1.)
+          ]),
         "zIndex":
           style([
-            justifyContent(`SpaceAround),
+            justifyContent(SpaceAround),
             width(Pt(100.)),
             height(Pt(50.)),
             marginTop(Pt((-10.)))
@@ -35,9 +39,9 @@ module ViewBorderStyleExample = {
                   borderWidth(1.),
                   borderStyle(
                     if (state.showBorder) {
-                      `Dashed
+                      Dashed
                     } else {
-                      `Solid
+                      Solid
                     }
                   ),
                   padding(Pt(5.))
@@ -55,9 +59,9 @@ module ViewBorderStyleExample = {
                   borderRadius(5.),
                   borderStyle(
                     if (state.showBorder) {
-                      `Dotted
+                      Dotted
                     } else {
-                      `Solid
+                      Solid
                     }
                   ),
                   padding(Pt(5.))
@@ -89,7 +93,8 @@ module ZIndexExample = {
         } else {
           [|2, 1, 0, (-1)|]
         };
-      let zIndexStr = (i) => "ZIndex " ++ string_of_int(Array.unsafe_get(indices, i));
+      let zIndexStr = (i) =>
+        "ZIndex " ++ string_of_int(Array.unsafe_get(indices, i));
       <TouchableWithoutFeedback onPress=(update(handlePress))>
         <View>
           <Text style=(style([paddingBottom(Pt(10.))]))>
@@ -177,7 +182,13 @@ let examples: array(Example.t) =
         description: None,
         render: () =>
           <View
-            style=(style([borderColor("#527FE4"), borderWidth(5.), padding(Pt(10.))]))>
+            style=(
+              style([
+                borderColor("#527FE4"),
+                borderWidth(5.),
+                padding(Pt(10.))
+              ])
+            )>
             <Text style=(style([fontSize(11.)]))>
               (ReasonReact.stringToElement("5px blue border"))
             </Text>
@@ -202,7 +213,11 @@ let examples: array(Example.t) =
               style=(
                 concat([
                   styles##box,
-                  style([margin(Pt(5.)), padding(Pt(5.)), alignSelf(`FlexStart)])
+                  style([
+                    margin(Pt(5.)),
+                    padding(Pt(5.)),
+                    alignSelf(FlexStart)
+                  ])
                 ])
               )>
               <Text style=(style([fontSize(11.)]))>
@@ -218,7 +233,8 @@ let examples: array(Example.t) =
         title: "Border Radius",
         description: None,
         render: () =>
-          <View style=(style([borderWidth(1.), borderRadius(5.), padding(Pt(5.))]))>
+          <View
+            style=(style([borderWidth(1.), borderRadius(5.), padding(Pt(5.))]))>
             <Text style=(style([fontSize(11.)]))>
               (
                 ReasonReact.stringToElement(
@@ -252,7 +268,7 @@ let examples: array(Example.t) =
         title: "Overflow",
         description: None,
         render: () =>
-          <View style=(style([flexDirection(`Row)]))>
+          <View style=(style([flexDirection(Row)]))>
             <View
               style=(
                 style([
@@ -260,7 +276,7 @@ let examples: array(Example.t) =
                   height(Pt(10.)),
                   marginRight(Pt(10.)),
                   marginBottom(Pt(5.)),
-                  overflow(`Hidden),
+                  overflow(Hidden),
                   borderWidth(StyleSheet.hairlineWidth)
                 ])
               )>
@@ -278,7 +294,9 @@ let examples: array(Example.t) =
                 ])
               )>
               <View style=(style([width(Pt(200.)), height(Pt(20.))]))>
-                <Text> (ReasonReact.stringToElement("Overflow visible")) </Text>
+                <Text>
+                  (ReasonReact.stringToElement("Overflow visible"))
+                </Text>
               </View>
             </View>
           </View>

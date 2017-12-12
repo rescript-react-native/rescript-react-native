@@ -16,9 +16,7 @@ let component = ReasonReact.statelessComponent("RNTesterPage");
 let make = (~title=?, ~noScroll=false, ~noSpacer=false, children) => {
   let contentWrapper = (children_: array(ReasonReact.reactElement)) =>
     if (noScroll) {
-      <View key="wrapper" style=styles##wrapper>
-        (ReasonReact.arrayToElement(children_))
-      </View>
+      <View key="wrapper" style=styles##wrapper> (ReasonReact.arrayToElement(children_)) </View>
     } else {
       let automaticallyAdjustContentInsets =
         switch title {

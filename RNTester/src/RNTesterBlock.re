@@ -12,7 +12,7 @@ let styles =
             backgroundColor("#ffffff"),
             margin(Pt(10.)),
             marginVertical(Pt(5.)),
-            overflow(`Hidden)
+            overflow(Hidden)
           ]),
         "titleContainer":
           style([
@@ -26,8 +26,7 @@ let styles =
           ]),
         "titleText": style([fontSize(14.), fontWeight(`_500)]),
         "descriptionText": style([fontSize(14.)]),
-        "disclosure":
-          style([position(`Absolute), top(Pt(0.)), right(Pt(0.)), padding(Pt(10.))]),
+        "disclosure": style([position(Absolute), top(Pt(0.)), right(Pt(0.)), padding(Pt(10.))]),
         "disclosureIcon": style([width(Pt(12.)), height(Pt(8.))]),
         "children": style([margin(Pt(10.))])
       }
@@ -45,9 +44,7 @@ let make = (~description, ~title, children) => {
         (
           switch description {
           | Some(description) =>
-            <Text style=styles##descriptionText>
-              (ReasonReact.stringToElement(description))
-            </Text>
+            <Text style=styles##descriptionText> (ReasonReact.stringToElement(description)) </Text>
           | None => ReasonReact.nullElement
           }
         )

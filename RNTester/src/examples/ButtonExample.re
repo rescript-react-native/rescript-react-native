@@ -42,9 +42,14 @@ let examples: array(Example.t) = [|
   },
   {
     title: "Fit to text layout",
-    description: Some("This layout strategy lets the title define the width of " ++ "the button"),
+    description:
+      Some(
+        "This layout strategy lets the title define the width of "
+        ++ "the button"
+      ),
     render: () =>
-      <View style=Style.(style([flexDirection(`Row), justifyContent(`SpaceBetween)]))>
+      <View
+        style=Style.(style([flexDirection(Row), justifyContent(SpaceBetween)]))>
         <Button
           onPress=onButtonPress
           title="This looks great!"

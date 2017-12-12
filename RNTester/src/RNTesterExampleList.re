@@ -8,7 +8,7 @@ let styles =
         "row":
           style([
             backgroundColor("white"),
-            justifyContent(`Center),
+            justifyContent(Center),
             paddingHorizontal(Pt(15.)),
             paddingVertical(Pt(8.))
           ]),
@@ -21,10 +21,7 @@ let styles =
             marginLeft(Pt(15.))
           ]),
         "separatorHighlighted":
-          style([
-            height(Pt(StyleSheet.hairlineWidth)),
-            backgroundColor("rgb(217, 217, 217)")
-          ])
+          style([height(Pt(StyleSheet.hairlineWidth)), backgroundColor("rgb(217, 217, 217)")])
       }
     )
   );
@@ -54,9 +51,7 @@ let itemSeparatorComponent =
 
 let make = (~components, ~onPress, _children) => {
   let sections =
-    SectionList.sections([|
-      SectionList.section(~data=components, ~key="components", ())
-    |]);
+    SectionList.sections([|SectionList.section(~data=components, ~key="components", ())|]);
   {
     ...component,
     render: (_self) =>

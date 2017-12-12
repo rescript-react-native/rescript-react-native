@@ -17,8 +17,8 @@ let examples: array(Example.t) =
             style=(
               style([
                 flex(1.),
-                justifyContent(`Center),
-                alignItems(`Center),
+                justifyContent(Center),
+                alignItems(Center),
                 height(Pt(400.)),
                 width(Pt(300.))
               ])
