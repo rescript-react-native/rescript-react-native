@@ -1,4 +1,4 @@
-open ReactNative;
+open BsReactNative;
 
 let styles =
   StyleSheet.create(
@@ -8,16 +8,20 @@ let styles =
         "row":
           style([
             backgroundColor("white"),
-            justifyContent(`center),
-            paddingHorizontal(15.),
-            paddingVertical(8.)
+            justifyContent(Center),
+            paddingHorizontal(Pt(15.)),
+            paddingVertical(Pt(8.))
           ]),
         "rowTitleText": style([fontSize(17.), fontWeight(`_500)]),
         "rowDetailText": style([fontSize(15.), color("#888888"), lineHeight(20.)]),
         "separator":
-          style([height(StyleSheet.hairlineWidth), backgroundColor("#bbbbbb"), marginLeft(15.)]),
+          style([
+            height(Pt(StyleSheet.hairlineWidth)),
+            backgroundColor("#bbbbbb"),
+            marginLeft(Pt(15.))
+          ]),
         "separatorHighlighted":
-          style([height(StyleSheet.hairlineWidth), backgroundColor("rgb(217, 217, 217)")])
+          style([height(Pt(StyleSheet.hairlineWidth)), backgroundColor("rgb(217, 217, 217)")])
       }
     )
   );

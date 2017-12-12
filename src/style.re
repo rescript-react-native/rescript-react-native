@@ -1,5 +1,55 @@
 type t;
 
+type styleElement = (string, Js.Json.t);
+
+type pt_pct =
+  | Pt(float)
+  | Pct(float);
+
+let encode_pt_pct = (value) =>
+  switch value {
+  | Pt(px) => Encode.float(px)
+  | Pct(pct) => Encode.pct(pct)
+  };
+
+type pt_pct_auto =
+  | Pt(float)
+  | Pct(float)
+  | Auto;
+
+let encode_pt_pct_auto = (value) =>
+  switch value {
+  | Pt(pt) => Encode.float(pt)
+  | Pct(pct) => Encode.pct(pct)
+  | Auto => Encode.string("auto")
+  };
+
+type pt_pct_animated_interpolated =
+  | Pt(float)
+  | Pct(float)
+  | Animated(AnimatedRe.Value.t)
+  | Interpolated(AnimatedRe.Interpolation.t);
+
+let encode_pt_pct_animated_interpolated = (value: pt_pct_animated_interpolated) =>
+  switch value {
+  | Pt(px) => Encode.float(px)
+  | Pct(pct) => Encode.pct(pct)
+  | Animated(value) => Encode.animatedValue(value)
+  | Interpolated(value) => Encode.interpolatedValue(value)
+  };
+
+type float_interpolated_animated =
+  | Float(float)
+  | Animated(AnimatedRe.Value.t)
+  | Interpolated(AnimatedRe.Interpolation.t);
+
+let encode_float_interpolated_animated = (value) =>
+  switch value {
+  | Float(value) => Encode.float(value)
+  | Animated(value) => Encode.animatedValue(value)
+  | Interpolated(value) => Encode.interpolatedValue(value)
+  };
+
 external flatten : array(t) => t = "%identity";
 
 external to_style : Js.Dict.t(Js.Json.t) => t = "%identity";
@@ -7,18 +57,6 @@ external to_style : Js.Dict.t(Js.Json.t) => t = "%identity";
 external style_to_dict : t => Js.Dict.t(Js.Json.t) = "%identity";
 
 external array_to_style : array(t) => t = "%identity";
-
-type style =
-  | ArrayStyle(string, array(Js.Json.t))
-  | BooleanStyle(string, bool)
-  | StringStyle(string, string)
-  | IntStyle(string, int)
-  | FloatStyle(string, float)
-  | ObjectStyle(string, Js.Dict.t(Js.Json.t))
-  | AnimatedStyle(
-      string,
-      [ | `value(AnimatedRe.Value.t) | `interpolation(AnimatedRe.Interpolation.t)]
-    );
 
 let combine = (a, b) => {
   let entries =
@@ -28,80 +66,76 @@ let combine = (a, b) => {
 
 let concat = (styles) => array_to_style(Array.of_list(styles));
 
-let arrayStyle = (key, value) => ArrayStyle(key, value);
+let floatStyle = (key, value) => (key, Encode.float(value));
 
-let booleanStyle = (key, value) => BooleanStyle(key, value);
+let stringStyle = (key, value) => (key, Encode.string(value));
 
-let stringStyle = (key, value) => StringStyle(key, value);
+let objectStyle = (key, value) => (key, Encode.object_(value));
 
-let intStyle = (key, value) => IntStyle(key, value);
+let arrayStyle = (key, value) => (key, Encode.array(value));
 
-let floatStyle = (key, value) => FloatStyle(key, value);
-
-let pctStyle = (key, value) => StringStyle(key, string_of_float(value) ++ "%");
-
-let objectStyle = (key, value) => ObjectStyle(key, value);
-
-let animatedStyle = (key, value) => AnimatedStyle(key, `value(value));
-
-let interpolatedStyle = (key, value) => AnimatedStyle(key, `interpolation(value));
-
-let encodeStyle =
-  fun
-  | ArrayStyle(key, value) => (key, Encode.array(value))
-  | BooleanStyle(key, value) => (key, Encode.boolean(Js.Boolean.to_js_boolean(value)))
-  | IntStyle(key, value) => (key, Encode.int(value))
-  | FloatStyle(key, value) => (key, Encode.float(value))
-  | StringStyle(key, value) => (key, Encode.string(value))
-  | ObjectStyle(key, value) => (key, Encode.object_(value))
-  | AnimatedStyle(key, value) => (
-      key,
-      switch value {
-      | `value(x) => Encode.animatedValue(x)
-      | `interpolation(x) => Encode.interpolatedValue(x)
-      }
-    );
-
-let style = (sarr) => sarr |> List.map(encodeStyle) |> UtilsRN.dictFromList |> to_style;
+let style = (sarr) => sarr |> UtilsRN.dictFromList |> to_style;
 
 
 /***
  * Layout Props
  */
+type alignContent =
+  | FlexStart
+  | FlexEnd
+  | Center
+  | Stretch
+  | SpaceAround
+  | SpaceBetween;
+
 let alignContent = (v) =>
   stringStyle(
     "alignContent",
     switch v {
-    | `flexStart => "flex-start"
-    | `flexEnd => "flex-end"
-    | `center => "center"
-    | `stretch => "stretch"
-    | `spaceAround => "space-around"
-    | `spaceBetween => "space-between"
+    | FlexStart => "flex-start"
+    | FlexEnd => "flex-end"
+    | Center => "center"
+    | Stretch => "stretch"
+    | SpaceAround => "space-around"
+    | SpaceBetween => "space-between"
     }
   );
+
+type alignItems =
+  | FlexStart
+  | FlexEnd
+  | Center
+  | Stretch
+  | Baseline;
 
 let alignItems = (v) =>
   stringStyle(
     "alignItems",
     switch v {
-    | `flexStart => "flex-start"
-    | `flexEnd => "flex-end"
-    | `center => "center"
-    | `stretch => "stretch"
-    | `baseline => "baseline"
+    | FlexStart => "flex-start"
+    | FlexEnd => "flex-end"
+    | Center => "center"
+    | Stretch => "stretch"
+    | Baseline => "baseline"
     }
   );
+
+type alignSelf =
+  | FlexStart
+  | FlexEnd
+  | Center
+  | Stretch
+  | Baseline;
 
 let alignSelf = (v) =>
   stringStyle(
     "alignSelf",
     switch v {
-    | `flexStart => "flex-start"
-    | `flexEnd => "flex-end"
-    | `center => "center"
-    | `stretch => "stretch"
-    | `baseline => "baseline"
+    | FlexStart => "flex-start"
+    | FlexEnd => "flex-end"
+    | Center => "center"
+    | Stretch => "stretch"
+    | Baseline => "baseline"
     }
   );
 
@@ -117,37 +151,37 @@ let borderTopWidth = floatStyle("borderTopWidth");
 
 let borderWidth = floatStyle("borderWidth");
 
-let bottom = floatStyle("bottom");
-
-let bottomPct = pctStyle("bottom");
-
-let bottomAnimated = animatedStyle("bottom");
-
-let bottomInterpolated = interpolatedStyle("bottom");
+type display =
+  | Flex
+  | None;
 
 let display = (v) =>
   stringStyle(
     "display",
     switch v {
-    | `flex => "flex"
-    | `none => "none"
+    | Flex => "flex"
+    | None => "none"
     }
   );
 
 let flex = floatStyle("flex");
 
-let flexBasis = floatStyle("flexBasis");
+let flexBasis = (value) => ("flexBasis", encode_pt_pct(value));
 
-let flexBasisPct = pctStyle("flexBasis");
+type flexDirection =
+  | Row
+  | RowReverse
+  | Column
+  | ColumnReverse;
 
 let flexDirection = (v) =>
   stringStyle(
     "flexDirection",
     switch v {
-    | `row => "row"
-    | `rowReverse => "row-reverse"
-    | `column => "column"
-    | `columnReverse => "column-reverse"
+    | Row => "row"
+    | RowReverse => "row-reverse"
+    | Column => "column"
+    | ColumnReverse => "column-reverse"
     }
   );
 
@@ -155,140 +189,130 @@ let flexGrow = floatStyle("flexGrow");
 
 let flexShrink = floatStyle("flexShrink");
 
+type flexWrap =
+  | Wrap
+  | Nowrap;
+
 let flexWrap = (v) =>
   stringStyle(
     "flexWrap",
     switch v {
-    | `wrap => "wrap"
-    | `nowrap => "nowrap"
+    | Wrap => "wrap"
+    | Nowrap => "nowrap"
     }
   );
 
-let height = floatStyle("height");
-
-let heightPct = pctStyle("height");
-
-let heightAnimated = animatedStyle("height");
-
-let heightInterpolated = interpolatedStyle("height");
+type justifyContent =
+  | FlexStart
+  | FlexEnd
+  | Center
+  | Stretch
+  | SpaceAround
+  | SpaceBetween;
 
 let justifyContent = (v) =>
   stringStyle(
     "justifyContent",
     switch v {
-    | `flexStart => "flex-start"
-    | `flexEnd => "flex-end"
-    | `center => "center"
-    | `stretch => "stretch"
-    | `spaceAround => "space-around"
-    | `spaceBetween => "space-between"
+    | FlexStart => "flex-start"
+    | FlexEnd => "flex-end"
+    | Center => "center"
+    | Stretch => "stretch"
+    | SpaceAround => "space-around"
+    | SpaceBetween => "space-between"
     }
   );
 
-let left = floatStyle("left");
+let margin = (value) => ("margin", encode_pt_pct_auto(value));
 
-let leftPct = pctStyle("left");
+let marginBottom = (value) => ("marginBottom", encode_pt_pct_auto(value));
 
-let leftAnimated = animatedStyle("left");
+let marginHorizontal = (value) => ("marginHorizontal", encode_pt_pct_auto(value));
 
-let leftInterpolated = interpolatedStyle("left");
+let marginLeft = (value) => ("marginLeft", encode_pt_pct_auto(value));
 
-let margin = floatStyle("margin");
+let marginRight = (value) => ("marginRight", encode_pt_pct_auto(value));
 
-let marginBottom = floatStyle("marginBottom");
+let marginTop = (value) => ("marginTop", encode_pt_pct_auto(value));
 
-let marginHorizontal = floatStyle("marginHorizontal");
+let marginVertical = (value) => ("marginVertical", encode_pt_pct_auto(value));
 
-let marginLeft = floatStyle("marginLeft");
+let maxHeight = (value) => ("maxHeight", encode_pt_pct(value));
 
-let marginRight = floatStyle("marginRight");
+let maxWidth = (value) => ("maxWidth", encode_pt_pct(value));
 
-let marginTop = floatStyle("marginTop");
+let minHeight = (value) => ("minHeight", encode_pt_pct(value));
 
-let marginVertical = floatStyle("marginVertical");
+let minWidth = (value) => ("minWidth", encode_pt_pct(value));
 
-let maxHeight = floatStyle("maxHeight");
-
-let maxHeightPct = pctStyle("maxHeight");
-
-let maxWidth = floatStyle("maxWidth");
-
-let maxWidthPct = pctStyle("maxHeight");
-
-let minHeight = floatStyle("minHeight");
-
-let minHeightPct = pctStyle("minHeight");
-
-let minWidth = floatStyle("minWidth");
-
-let minWidthPct = pctStyle("minWidth");
+type overflow =
+  | Visible
+  | Hidden
+  | Scroll;
 
 let overflow = (v) =>
   stringStyle(
     "overflow",
     switch v {
-    | `visible => "visible"
-    | `hidden => "hidden"
-    | `scroll => "scroll"
+    | Visible => "visible"
+    | Hidden => "hidden"
+    | Scroll => "scroll"
     }
   );
 
-let padding = floatStyle("padding");
+let padding = (value) => ("padding", encode_pt_pct(value));
 
-let paddingBottom = floatStyle("paddingBottom");
+let paddingBottom = (value) => ("paddingBottom", encode_pt_pct(value));
 
-let paddingHorizontal = floatStyle("paddingHorizontal");
+let paddingHorizontal = (value) => ("paddingHorizontal", encode_pt_pct(value));
 
-let paddingLeft = floatStyle("paddingLeft");
+let paddingLeft = (value) => ("paddingLeft", encode_pt_pct(value));
 
-let paddingRight = floatStyle("paddingRight");
+let paddingRight = (value) => ("paddingRight", encode_pt_pct(value));
 
-let paddingTop = floatStyle("paddingTop");
+let paddingTop = (value) => ("paddingTop", encode_pt_pct(value));
 
-let paddingVertical = floatStyle("paddingVertical");
+let paddingVertical = (value) => ("paddingVertical", encode_pt_pct(value));
+
+type position =
+  | Absolute
+  | Relative;
 
 let position = (v) =>
   stringStyle(
     "position",
     switch v {
-    | `absolute => "absolute"
-    | `relative => "relative"
+    | Absolute => "absolute"
+    | Relative => "relative"
     }
   );
 
-let right = floatStyle("right");
+let top = (value) => ("top", encode_pt_pct_animated_interpolated(value));
 
-let rightPct = pctStyle("right");
+let left = (value) => ("left", encode_pt_pct_animated_interpolated(value));
 
-let rightAnimated = animatedStyle("right");
+let right = (value) => ("right", encode_pt_pct_animated_interpolated(value));
 
-let rightInterpolated = interpolatedStyle("right");
+let bottom = (value) => ("bottom", encode_pt_pct_animated_interpolated(value));
 
-let top = floatStyle("top");
+let height = (value) => ("height", encode_pt_pct_animated_interpolated(value));
 
-let topPct = pctStyle("top");
+let width = (value) => ("width", encode_pt_pct_animated_interpolated(value));
 
-let topAnimated = animatedStyle("top");
+let zIndex = (value) => ("zIndex", Encode.int(value));
 
-let topInterpolated = interpolatedStyle("top");
-
-let width = floatStyle("width");
-
-let widthPct = pctStyle("width");
-
-let widthAnimated = animatedStyle("width");
-
-let widthInterpolated = interpolatedStyle("width");
-
-let zIndex = intStyle("zIndex");
+type direction =
+  | Inherit
+  | Ltr
+  | Rtl;
 
 let direction = (v) =>
   stringStyle(
     "direction",
     switch v {
-    | `_inherit => "inherit"
-    | `ltr => "ltr"
-    | `rtl => "rtl"
+    | Inherit => "inherit"
+    | Ltr => "ltr"
+    | Rtl => "rtl"
     }
   );
 
@@ -306,12 +330,68 @@ let shadowOpacity = floatStyle("shadowOpacity");
 
 let shadowRadius = floatStyle("shadowRadius");
 
-
-/***
- * Transform Props
- */
-let createTransformObject =
-    (
+module Transform = {
+  let create_ =
+      (
+        encoder,
+        rotationEncoder,
+        perspective,
+        rotate,
+        rotateX,
+        rotateY,
+        rotateZ,
+        scaleX,
+        scaleY,
+        translateX,
+        translateY,
+        skewX,
+        skewY
+      ) => {
+    let opt_values = [|
+      ("perspective", [@bs] encoder(perspective)),
+      ("rotate", [@bs] rotationEncoder(rotate)),
+      ("rotateX", [@bs] rotationEncoder(rotateX)),
+      ("rotateY", [@bs] rotationEncoder(rotateY)),
+      ("rotateZ", [@bs] rotationEncoder(rotateZ)),
+      ("scaleX", [@bs] encoder(scaleX)),
+      ("scaleY", [@bs] encoder(scaleY)),
+      ("translateX", [@bs] encoder(translateX)),
+      ("translateY", [@bs] encoder(translateY)),
+      ("skewX", [@bs] encoder(skewX)),
+      ("skewY", [@bs] encoder(skewY))
+    |];
+    let values =
+      Array.fold_right(
+        (x, acc) =>
+          switch x {
+          | (key, Some(value)) =>
+            let val_ = UtilsRN.dictFromArray([|(key, value)|]) |> Encode.object_;
+            [val_, ...acc]
+          | _ => acc
+          },
+        opt_values,
+        []
+      );
+    Array.of_list(values) |> arrayStyle("transform")
+  };
+  let make =
+      (
+        ~perspective=?,
+        ~rotate=?,
+        ~rotateX=?,
+        ~rotateY=?,
+        ~rotateZ=?,
+        ~scaleX=?,
+        ~scaleY=?,
+        ~translateX=?,
+        ~translateY=?,
+        ~skewX=?,
+        ~skewY=?,
+        ()
+      ) =>
+    create_(
+      [@bs] ((value) => UtilsRN.option_map(Encode.float, value)),
+      [@bs] ((value) => UtilsRN.option_map(Encode.string, value)),
       perspective,
       rotate,
       rotateX,
@@ -323,132 +403,83 @@ let createTransformObject =
       translateY,
       skewX,
       skewY
-    ) => {
-  let opt_values = [
-    ("perspective", perspective),
-    ("rotate", rotate),
-    ("rotateX", rotateX),
-    ("rotateY", rotateY),
-    ("rotateZ", rotateZ),
-    ("scaleX", scaleX),
-    ("scaleY", scaleY),
-    ("translateX", translateX),
-    ("translateY", translateY),
-    ("skewX", skewX),
-    ("skewY", skewY)
-  ];
-  let values =
-    List.fold_right(
-      (x, acc) =>
-        switch x {
-        | (key, Some(value)) =>
-          let val_ = UtilsRN.dictFromArray([|(key, value)|]) |> Encode.object_;
-          [val_, ...acc]
-        | _ => acc
-        },
-      opt_values,
-      []
     );
-  Array.of_list(values) |> arrayStyle("transform")
+  let makeAnimated =
+      (
+        ~perspective=?,
+        ~rotate=?,
+        ~rotateX=?,
+        ~rotateY=?,
+        ~rotateZ=?,
+        ~scaleX=?,
+        ~scaleY=?,
+        ~translateX=?,
+        ~translateY=?,
+        ~skewX=?,
+        ~skewY=?,
+        ()
+      ) =>
+    create_(
+      [@bs] ((value) => UtilsRN.option_map(Encode.animatedValue, value)),
+      [@bs] ((value) => UtilsRN.option_map(Encode.animatedValue, value)),
+      perspective,
+      rotate,
+      rotateX,
+      rotateY,
+      rotateZ,
+      scaleX,
+      scaleY,
+      translateX,
+      translateY,
+      skewX,
+      skewY
+    );
+  let makeInterpolated =
+      (
+        ~perspective=?,
+        ~rotate=?,
+        ~rotateX=?,
+        ~rotateY=?,
+        ~rotateZ=?,
+        ~scaleX=?,
+        ~scaleY=?,
+        ~translateX=?,
+        ~translateY=?,
+        ~skewX=?,
+        ~skewY=?,
+        ()
+      ) =>
+    create_(
+      [@bs] ((value) => UtilsRN.option_map(Encode.interpolatedValue, value)),
+      [@bs] ((value) => UtilsRN.option_map(Encode.interpolatedValue, value)),
+      perspective,
+      rotate,
+      rotateX,
+      rotateY,
+      rotateZ,
+      scaleX,
+      scaleY,
+      translateX,
+      translateY,
+      skewX,
+      skewY
+    );
 };
-
-let transform =
-    (
-      ~perspective=?,
-      ~rotate=?,
-      ~rotateX=?,
-      ~rotateY=?,
-      ~rotateZ=?,
-      ~scaleX=?,
-      ~scaleY=?,
-      ~translateX=?,
-      ~translateY=?,
-      ~skewX=?,
-      ~skewY=?,
-      ()
-    ) =>
-  createTransformObject(
-    UtilsRN.option_map(Encode.float, perspective),
-    UtilsRN.option_map(Encode.string, rotate),
-    UtilsRN.option_map(Encode.string, rotateX),
-    UtilsRN.option_map(Encode.string, rotateY),
-    UtilsRN.option_map(Encode.string, rotateZ),
-    UtilsRN.option_map(Encode.float, scaleX),
-    UtilsRN.option_map(Encode.float, scaleY),
-    UtilsRN.option_map(Encode.float, translateX),
-    UtilsRN.option_map(Encode.float, translateY),
-    UtilsRN.option_map(Encode.float, skewX),
-    UtilsRN.option_map(Encode.float, skewY)
-  );
-
-let transformAnimated =
-    (
-      ~perspective=?,
-      ~rotate=?,
-      ~rotateX=?,
-      ~rotateY=?,
-      ~rotateZ=?,
-      ~scaleX=?,
-      ~scaleY=?,
-      ~translateX=?,
-      ~translateY=?,
-      ~skewX=?,
-      ~skewY=?,
-      ()
-    ) =>
-  createTransformObject(
-    UtilsRN.option_map(Encode.animatedValue, perspective),
-    UtilsRN.option_map(Encode.animatedValue, rotate),
-    UtilsRN.option_map(Encode.animatedValue, rotateX),
-    UtilsRN.option_map(Encode.animatedValue, rotateY),
-    UtilsRN.option_map(Encode.animatedValue, rotateZ),
-    UtilsRN.option_map(Encode.animatedValue, scaleX),
-    UtilsRN.option_map(Encode.animatedValue, scaleY),
-    UtilsRN.option_map(Encode.animatedValue, translateX),
-    UtilsRN.option_map(Encode.animatedValue, translateY),
-    UtilsRN.option_map(Encode.animatedValue, skewX),
-    UtilsRN.option_map(Encode.animatedValue, skewY)
-  );
-
-let transformInterpolated =
-    (
-      ~perspective=?,
-      ~rotate=?,
-      ~rotateX=?,
-      ~rotateY=?,
-      ~rotateZ=?,
-      ~scaleX=?,
-      ~scaleY=?,
-      ~translateX=?,
-      ~translateY=?,
-      ~skewX=?,
-      ~skewY=?,
-      ()
-    ) =>
-  createTransformObject(
-    UtilsRN.option_map(Encode.interpolatedValue, perspective),
-    UtilsRN.option_map(Encode.interpolatedValue, rotate),
-    UtilsRN.option_map(Encode.interpolatedValue, rotateX),
-    UtilsRN.option_map(Encode.interpolatedValue, rotateY),
-    UtilsRN.option_map(Encode.interpolatedValue, rotateZ),
-    UtilsRN.option_map(Encode.interpolatedValue, scaleX),
-    UtilsRN.option_map(Encode.interpolatedValue, scaleY),
-    UtilsRN.option_map(Encode.interpolatedValue, translateX),
-    UtilsRN.option_map(Encode.interpolatedValue, translateY),
-    UtilsRN.option_map(Encode.interpolatedValue, skewX),
-    UtilsRN.option_map(Encode.interpolatedValue, skewY)
-  );
 
 
 /***
  * View Props
  */
+type backfaceVisibility =
+  | Visible
+  | Hidden;
+
 let backfaceVisibility = (v) =>
   stringStyle(
     "backfaceVisibility",
     switch v {
-    | `visible => "visible"
-    | `hidden => "hidden"
+    | Visible => "visible"
+    | Hidden => "hidden"
     }
   );
 
@@ -474,21 +505,22 @@ let borderBottomLeftRadius = floatStyle("borderBottomLeftRadius");
 
 let borderBottomRightRadius = floatStyle("borderBottomRightRadius");
 
+type borderStyle =
+  | Solid
+  | Dotted
+  | Dashed;
+
 let borderStyle = (v) =>
   stringStyle(
     "borderStyle",
     switch v {
-    | `solid => "solid"
-    | `dotted => "dotted"
-    | `dashed => "dashed"
+    | Solid => "solid"
+    | Dotted => "dotted"
+    | Dashed => "dashed"
     }
   );
 
-let opacity = floatStyle("opacity");
-
-let opacityInterpolated = interpolatedStyle("opacity");
-
-let opacityAnimated = animatedStyle("opacity");
+let opacity = (value) => ("opacity", encode_float_interpolated_animated(value));
 
 let elevation = floatStyle("elevation");
 
@@ -502,12 +534,16 @@ let fontFamily = stringStyle("fontFamily");
 
 let fontSize = floatStyle("fontSize");
 
+type fontStyle =
+  | Normal
+  | Italic;
+
 let fontStyle = (v) =>
   stringStyle(
     "fontStyle",
     switch v {
-    | `normal => "normal"
-    | `italic => "italic"
+    | Normal => "normal"
+    | Italic => "italic"
     }
   );
 
@@ -515,8 +551,8 @@ let fontWeight = (v) =>
   stringStyle(
     "fontWeight",
     switch v {
-    | `normal => "normal"
-    | `bold => "bold"
+    | `Normal => "normal"
+    | `Bold => "bold"
     | `_100 => "100"
     | `_200 => "200"
     | `_300 => "300"
@@ -531,26 +567,39 @@ let fontWeight = (v) =>
 
 let lineHeight = floatStyle("lineHeight");
 
+type textAlign =
+  | Auto
+  | Left
+  | Right
+  | Center
+  | Justify;
+
 let textAlign = (v) =>
   stringStyle(
     "textAlign",
     switch v {
-    | `auto => "auto"
-    | `left => "left"
-    | `right => "right"
-    | `center => "center"
-    | `justify => "justify"
+    | Auto => "auto"
+    | Left => "left"
+    | Right => "right"
+    | Center => "center"
+    | Justify => "justify"
     }
   );
+
+type textDecorationLine =
+  | None
+  | Underline
+  | LineThrough
+  | UnderlineLineThrough;
 
 let textDecorationLine = (v) =>
   stringStyle(
     "textDecorationLine",
     switch v {
-    | `none => "none"
-    | `underline => "underline"
-    | `lineThrough => "line-through"
-    | `underlineLineThrough => "underline line-through"
+    | None => "none"
+    | Underline => "underline"
+    | LineThrough => "line-through"
+    | UnderlineLineThrough => "underline line-through"
     }
   );
 
@@ -562,16 +611,25 @@ let textShadowOffset = (~height, ~width) =>
 
 let textShadowRadius = floatStyle("textShadowRadius");
 
-let includeFontPadding = booleanStyle("includeFontPadding");
+let includeFontPadding = (value) => (
+  "includeFontPadding",
+  Encode.boolean(Js.Boolean.to_js_boolean(value))
+);
+
+type textAlignVertical =
+  | Auto
+  | Top
+  | Bottom
+  | Center;
 
 let textAlignVertical = (v) =>
   stringStyle(
     "textAlignVertical",
     switch v {
-    | `auto => "auto"
-    | `top => "top"
-    | `bottom => "bottom"
-    | `center => "center"
+    | Auto => "auto"
+    | Top => "top"
+    | Bottom => "bottom"
+    | Center => "center"
     }
   );
 
@@ -582,26 +640,44 @@ let letterSpacing = floatStyle("letterSpacing");
 
 let textDecorationColor = stringStyle("textDecorationColor");
 
+type textDecorationStyle =
+  | Solid
+  | Double
+  | Dotted
+  | Dashed;
+
 let textDecorationStyle = (v) =>
   stringStyle(
     "textDecorationStyle",
     switch v {
-    | `solid => "solid"
-    | `double => "double"
-    | `dotted => "dotted"
-    | `dashed => "dashed"
+    | Solid => "solid"
+    | Double => "double"
+    | Dotted => "dotted"
+    | Dashed => "dashed"
     }
   );
+
+type writingDirection =
+  | Auto
+  | Ltr
+  | Rtl;
 
 let writingDirection = (v) =>
   stringStyle(
     "writingDirection",
     switch v {
-    | `auto => "auto"
-    | `ltr => "ltr"
-    | `rtl => "rtl"
+    | Auto => "auto"
+    | Ltr => "ltr"
+    | Rtl => "rtl"
     }
   );
+
+type resizeMode =
+  | Cover
+  | Contain
+  | Stretch
+  | Repeat
+  | Center;
 
 
 /*** Image props */
@@ -609,11 +685,11 @@ let resizeMode = (v) =>
   stringStyle(
     "resizeMode",
     switch v {
-    | `cover => "cover"
-    | `contain => "contain"
-    | `stretch => "stretch"
-    | `repeat => "repeat"
-    | `center => "center"
+    | Cover => "cover"
+    | Contain => "contain"
+    | Stretch => "stretch"
+    | Repeat => "repeat"
+    | Center => "center"
     }
   );
 

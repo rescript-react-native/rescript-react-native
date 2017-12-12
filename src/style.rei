@@ -1,5 +1,29 @@
 type t;
 
+type styleElement;
+
+type pt_pct =
+  | Pt(float)
+  | Pct(float);
+
+type pt_pct_auto =
+  | Pt(float)
+  | Pct(float)
+  | Auto;
+
+type pt_pct_animated_interpolated =
+  | Pt(float)
+  | Pct(float)
+  | Animated(AnimatedRe.Value.t)
+  | Interpolated(AnimatedRe.Interpolation.t);
+
+type float_interpolated_animated =
+  | Float(float)
+  | Animated(AnimatedRe.Value.t)
+  | Interpolated(AnimatedRe.Interpolation.t);
+
+let style: list(styleElement) => t;
+
 
 /*** Generates a style out of an array of styles.
   * This is equivalent:
@@ -10,10 +34,6 @@ type t;
  */
 let flatten: array(t) => t;
 
-type style;
-
-let style: list(style) => t;
-
 let combine: (t, t) => t;
 
 let concat: list(t) => t;
@@ -22,293 +42,345 @@ let concat: list(t) => t;
 /***
  * Layout Props
  */
-let alignContent:
-  [ | `flexStart | `flexEnd | `center | `stretch | `spaceAround | `spaceBetween] => style;
+type alignContent =
+  | FlexStart
+  | FlexEnd
+  | Center
+  | Stretch
+  | SpaceAround
+  | SpaceBetween;
 
-let alignItems: [ | `flexStart | `flexEnd | `center | `stretch | `baseline] => style;
+let alignContent: alignContent => styleElement;
 
-let alignSelf: [ | `flexStart | `flexEnd | `center | `stretch | `baseline] => style;
+type alignItems =
+  | FlexStart
+  | FlexEnd
+  | Center
+  | Stretch
+  | Baseline;
 
-let aspectRatio: float => style;
+let alignItems: alignItems => styleElement;
 
-let borderBottomWidth: float => style;
+type alignSelf =
+  | FlexStart
+  | FlexEnd
+  | Center
+  | Stretch
+  | Baseline;
 
-let borderLeftWidth: float => style;
+let alignSelf: alignSelf => styleElement;
 
-let borderRightWidth: float => style;
+let aspectRatio: float => styleElement;
 
-let borderTopWidth: float => style;
+let borderBottomWidth: float => styleElement;
 
-let borderWidth: float => style;
+let borderLeftWidth: float => styleElement;
 
-let bottom: float => style;
+let borderRightWidth: float => styleElement;
 
-let bottomPct: float => style;
+let borderTopWidth: float => styleElement;
 
-let bottomAnimated: AnimatedRe.Value.t => style;
+let borderWidth: float => styleElement;
 
-let bottomInterpolated: AnimatedRe.Interpolation.t => style;
+let flex: float => styleElement;
 
-let display: [ | `flex | `none] => style;
+type display =
+  | Flex
+  | None;
 
-let flex: float => style;
+let display: display => styleElement;
 
-let flexBasis: float => style;
+let flexBasis: pt_pct => styleElement;
 
-let flexBasisPct: float => style;
+let flexGrow: float => styleElement;
 
-let flexDirection: [ | `row | `rowReverse | `column | `columnReverse] => style;
+type flexDirection =
+  | Row
+  | RowReverse
+  | Column
+  | ColumnReverse;
 
-let flexGrow: float => style;
+let flexDirection: flexDirection => styleElement;
 
-let flexShrink: float => style;
+let flexShrink: float => styleElement;
 
-let flexWrap: [ | `wrap | `nowrap] => style;
+type flexWrap =
+  | Wrap
+  | Nowrap;
 
-let height: float => style;
+let flexWrap: flexWrap => styleElement;
 
-let heightPct: float => style;
+type justifyContent =
+  | FlexStart
+  | FlexEnd
+  | Center
+  | Stretch
+  | SpaceAround
+  | SpaceBetween;
 
-let heightAnimated: AnimatedRe.Value.t => style;
+let justifyContent: justifyContent => styleElement;
 
-let heightInterpolated: AnimatedRe.Interpolation.t => style;
+let margin: pt_pct_auto => styleElement;
 
-let justifyContent:
-  [ | `flexStart | `flexEnd | `center | `stretch | `spaceAround | `spaceBetween] => style;
+let marginBottom: pt_pct_auto => styleElement;
 
-let left: float => style;
+let marginHorizontal: pt_pct_auto => styleElement;
 
-let leftPct: float => style;
+let marginLeft: pt_pct_auto => styleElement;
 
-let leftAnimated: AnimatedRe.Value.t => style;
+let marginRight: pt_pct_auto => styleElement;
 
-let leftInterpolated: AnimatedRe.Interpolation.t => style;
+let marginTop: pt_pct_auto => styleElement;
 
-let margin: float => style;
+let marginVertical: pt_pct_auto => styleElement;
 
-let marginBottom: float => style;
+let maxHeight: pt_pct => styleElement;
 
-let marginHorizontal: float => style;
+let maxWidth: pt_pct => styleElement;
 
-let marginLeft: float => style;
+let minHeight: pt_pct => styleElement;
 
-let marginRight: float => style;
+let minWidth: pt_pct => styleElement;
 
-let marginTop: float => style;
+type overflow =
+  | Visible
+  | Hidden
+  | Scroll;
 
-let marginVertical: float => style;
+let overflow: overflow => styleElement;
 
-let maxHeight: float => style;
+let padding: pt_pct => styleElement;
 
-let maxHeightPct: float => style;
+let paddingBottom: pt_pct => styleElement;
 
-let maxWidth: float => style;
+let paddingHorizontal: pt_pct => styleElement;
 
-let maxWidthPct: float => style;
+let paddingLeft: pt_pct => styleElement;
 
-let minHeight: float => style;
+let paddingRight: pt_pct => styleElement;
 
-let minHeightPct: float => style;
+let paddingTop: pt_pct => styleElement;
 
-let minWidth: float => style;
+let paddingVertical: pt_pct => styleElement;
 
-let minWidthPct: float => style;
+type position =
+  | Absolute
+  | Relative;
 
-let overflow: [ | `visible | `hidden | `scroll] => style;
+let position: position => styleElement;
 
-let padding: float => style;
+let top: pt_pct_animated_interpolated => styleElement;
 
-let paddingBottom: float => style;
+let left: pt_pct_animated_interpolated => styleElement;
 
-let paddingHorizontal: float => style;
+let right: pt_pct_animated_interpolated => styleElement;
 
-let paddingLeft: float => style;
+let bottom: pt_pct_animated_interpolated => styleElement;
 
-let paddingRight: float => style;
+let height: pt_pct_animated_interpolated => styleElement;
 
-let paddingTop: float => style;
+let width: pt_pct_animated_interpolated => styleElement;
 
-let paddingVertical: float => style;
+let zIndex: int => styleElement;
 
-let position: [ | `absolute | `relative] => style;
+type direction =
+  | Inherit
+  | Ltr
+  | Rtl;
 
-let right: float => style;
-
-let rightPct: float => style;
-
-let rightAnimated: AnimatedRe.Value.t => style;
-
-let rightInterpolated: AnimatedRe.Interpolation.t => style;
-
-let top: float => style;
-
-let topPct: float => style;
-
-let topAnimated: AnimatedRe.Value.t => style;
-
-let topInterpolated: AnimatedRe.Interpolation.t => style;
-
-let width: float => style;
-
-let widthPct: float => style;
-
-let widthAnimated: AnimatedRe.Value.t => style;
-
-let widthInterpolated: AnimatedRe.Interpolation.t => style;
-
-let zIndex: int => style;
-
-let direction: [ | `_inherit | `ltr | `rtl] => style;
+let direction: direction => styleElement;
 
 
 /***
  * Shadow Props
  */
-let shadowColor: string => style;
+let shadowColor: string => styleElement;
 
-let shadowOffset: (~height: float, ~width: float) => style;
+let shadowOffset: (~height: float, ~width: float) => styleElement;
 
-let shadowOpacity: float => style;
+let shadowOpacity: float => styleElement;
 
-let shadowRadius: float => style;
+let shadowRadius: float => styleElement;
 
-
-/***
- * Transform Props
- */
-let transform:
-  (
-    ~perspective: float=?,
-    ~rotate: string=?,
-    ~rotateX: string=?,
-    ~rotateY: string=?,
-    ~rotateZ: string=?,
-    ~scaleX: float=?,
-    ~scaleY: float=?,
-    ~translateX: float=?,
-    ~translateY: float=?,
-    ~skewX: float=?,
-    ~skewY: float=?,
-    unit
-  ) =>
-  style;
-
-let transformAnimated:
-  (
-    ~perspective: AnimatedRe.Value.t=?,
-    ~rotate: AnimatedRe.Value.t=?,
-    ~rotateX: AnimatedRe.Value.t=?,
-    ~rotateY: AnimatedRe.Value.t=?,
-    ~rotateZ: AnimatedRe.Value.t=?,
-    ~scaleX: AnimatedRe.Value.t=?,
-    ~scaleY: AnimatedRe.Value.t=?,
-    ~translateX: AnimatedRe.Value.t=?,
-    ~translateY: AnimatedRe.Value.t=?,
-    ~skewX: AnimatedRe.Value.t=?,
-    ~skewY: AnimatedRe.Value.t=?,
-    unit
-  ) =>
-  style;
-
-let transformInterpolated:
-  (
-    ~perspective: AnimatedRe.Interpolation.t=?,
-    ~rotate: AnimatedRe.Interpolation.t=?,
-    ~rotateX: AnimatedRe.Interpolation.t=?,
-    ~rotateY: AnimatedRe.Interpolation.t=?,
-    ~rotateZ: AnimatedRe.Interpolation.t=?,
-    ~scaleX: AnimatedRe.Interpolation.t=?,
-    ~scaleY: AnimatedRe.Interpolation.t=?,
-    ~translateX: AnimatedRe.Interpolation.t=?,
-    ~translateY: AnimatedRe.Interpolation.t=?,
-    ~skewX: AnimatedRe.Interpolation.t=?,
-    ~skewY: AnimatedRe.Interpolation.t=?,
-    unit
-  ) =>
-  style;
+module Transform: {
+  let make:
+    (
+      ~perspective: float=?,
+      ~rotate: string=?,
+      ~rotateX: string=?,
+      ~rotateY: string=?,
+      ~rotateZ: string=?,
+      ~scaleX: float=?,
+      ~scaleY: float=?,
+      ~translateX: float=?,
+      ~translateY: float=?,
+      ~skewX: float=?,
+      ~skewY: float=?,
+      unit
+    ) =>
+    styleElement;
+  let makeAnimated:
+    (
+      ~perspective: AnimatedRe.Value.t=?,
+      ~rotate: AnimatedRe.Value.t=?,
+      ~rotateX: AnimatedRe.Value.t=?,
+      ~rotateY: AnimatedRe.Value.t=?,
+      ~rotateZ: AnimatedRe.Value.t=?,
+      ~scaleX: AnimatedRe.Value.t=?,
+      ~scaleY: AnimatedRe.Value.t=?,
+      ~translateX: AnimatedRe.Value.t=?,
+      ~translateY: AnimatedRe.Value.t=?,
+      ~skewX: AnimatedRe.Value.t=?,
+      ~skewY: AnimatedRe.Value.t=?,
+      unit
+    ) =>
+    styleElement;
+  let makeInterpolated:
+    (
+      ~perspective: AnimatedRe.Interpolation.t=?,
+      ~rotate: AnimatedRe.Interpolation.t=?,
+      ~rotateX: AnimatedRe.Interpolation.t=?,
+      ~rotateY: AnimatedRe.Interpolation.t=?,
+      ~rotateZ: AnimatedRe.Interpolation.t=?,
+      ~scaleX: AnimatedRe.Interpolation.t=?,
+      ~scaleY: AnimatedRe.Interpolation.t=?,
+      ~translateX: AnimatedRe.Interpolation.t=?,
+      ~translateY: AnimatedRe.Interpolation.t=?,
+      ~skewX: AnimatedRe.Interpolation.t=?,
+      ~skewY: AnimatedRe.Interpolation.t=?,
+      unit
+    ) =>
+    styleElement;
+};
 
 
 /***
  * View Props
  */
-let backfaceVisibility: [ | `visible | `hidden] => style;
+type backfaceVisibility =
+  | Visible
+  | Hidden;
 
-let backgroundColor: string => style;
+let backfaceVisibility: backfaceVisibility => styleElement;
 
-let borderColor: string => style;
+let backgroundColor: string => styleElement;
 
-let borderTopColor: string => style;
+let borderColor: string => styleElement;
 
-let borderRightColor: string => style;
+let borderTopColor: string => styleElement;
 
-let borderBottomColor: string => style;
+let borderRightColor: string => styleElement;
 
-let borderLeftColor: string => style;
+let borderBottomColor: string => styleElement;
 
-let borderRadius: float => style;
+let borderLeftColor: string => styleElement;
 
-let borderTopLeftRadius: float => style;
+let borderRadius: float => styleElement;
 
-let borderTopRightRadius: float => style;
+let borderTopLeftRadius: float => styleElement;
 
-let borderBottomLeftRadius: float => style;
+let borderTopRightRadius: float => styleElement;
 
-let borderBottomRightRadius: float => style;
+type borderStyle =
+  | Solid
+  | Dotted
+  | Dashed;
 
-let borderStyle: [ | `solid | `dotted | `dashed] => style;
+let borderStyle: borderStyle => styleElement;
 
-let opacity: float => style;
+let borderBottomLeftRadius: float => styleElement;
 
-let opacityAnimated: AnimatedRe.Value.t => style;
+let borderBottomRightRadius: float => styleElement;
 
-let opacityInterpolated: AnimatedRe.Interpolation.t => style;
+let opacity: float_interpolated_animated => styleElement;
 
-let elevation: float => style;
+let elevation: float => styleElement;
 
 
 /***
  *  Text Props
  */
-let color: string => style;
+let color: string => styleElement;
 
-let fontFamily: string => style;
+let fontFamily: string => styleElement;
 
-let fontSize: float => style;
+let fontSize: float => styleElement;
 
-let fontStyle: [ | `normal | `italic] => style;
+type fontStyle =
+  | Normal
+  | Italic;
+
+let fontStyle: fontStyle => styleElement;
 
 let fontWeight:
-  [ | `normal | `bold | `_100 | `_200 | `_300 | `_400 | `_500 | `_600 | `_700 | `_800 | `_900] =>
-  style;
+  [ | `Normal | `Bold | `_100 | `_200 | `_300 | `_400 | `_500 | `_600 | `_700 | `_800 | `_900] =>
+  styleElement;
 
-let lineHeight: float => style;
+let lineHeight: float => styleElement;
 
-let textAlign: [ | `auto | `left | `right | `center | `justify] => style;
+type textAlign =
+  | Auto
+  | Left
+  | Right
+  | Center
+  | Justify;
 
-let textDecorationLine: [ | `none | `underline | `lineThrough | `underlineLineThrough] => style;
+let textAlign: textAlign => styleElement;
 
-let textShadowColor: string => style;
+type textDecorationLine =
+  | None
+  | Underline
+  | LineThrough
+  | UnderlineLineThrough;
 
-let textShadowOffset: (~height: float, ~width: float) => style;
+let textDecorationLine: textDecorationLine => styleElement;
 
-let textShadowRadius: float => style;
+let textShadowColor: string => styleElement;
 
-let includeFontPadding: bool => style;
+let textShadowOffset: (~height: float, ~width: float) => styleElement;
 
-let textAlignVertical: [ | `auto | `top | `bottom | `center] => style;
+let textShadowRadius: float => styleElement;
 
-let fontVariant: list(string) => style;
+let includeFontPadding: bool => styleElement;
 
-let letterSpacing: float => style;
+type textAlignVertical =
+  | Auto
+  | Top
+  | Bottom
+  | Center;
 
-let textDecorationColor: string => style;
+let textAlignVertical: textAlignVertical => styleElement;
 
-let textDecorationStyle: [ | `solid | `double | `dotted | `dashed] => style;
+let fontVariant: list(string) => styleElement;
 
-let writingDirection: [ | `auto | `ltr | `rtl] => style;
+let letterSpacing: float => styleElement;
 
-let resizeMode: [ | `center | `contain | `cover | `repeat | `stretch] => style;
+let textDecorationColor: string => styleElement;
 
-let tintColor: string => style;
+type textDecorationStyle =
+  | Solid
+  | Double
+  | Dotted
+  | Dashed;
 
-let overlayColor: string => style;
+let textDecorationStyle: textDecorationStyle => styleElement;
+
+type writingDirection =
+  | Auto
+  | Ltr
+  | Rtl;
+
+let writingDirection: writingDirection => styleElement;
+
+type resizeMode =
+  | Cover
+  | Contain
+  | Stretch
+  | Repeat
+  | Center;
+
+let resizeMode: resizeMode => styleElement;
+
+let tintColor: string => styleElement;
+
+let overlayColor: string => styleElement;

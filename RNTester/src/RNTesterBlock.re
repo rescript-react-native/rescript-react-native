@@ -1,4 +1,4 @@
-open ReactNative;
+open BsReactNative;
 
 let styles =
   StyleSheet.create(
@@ -10,9 +10,9 @@ let styles =
             borderWidth(1.),
             borderColor("#d6d7da"),
             backgroundColor("#ffffff"),
-            margin(10.),
-            marginVertical(5.),
-            overflow(`hidden)
+            margin(Pt(10.)),
+            marginVertical(Pt(5.)),
+            overflow(Hidden)
           ]),
         "titleContainer":
           style([
@@ -21,14 +21,14 @@ let styles =
             borderTopRightRadius(3.),
             borderBottomColor("#d6d7da"),
             backgroundColor("#f6f7f8"),
-            paddingHorizontal(10.),
-            paddingVertical(5.)
+            paddingHorizontal(Pt(10.)),
+            paddingVertical(Pt(5.))
           ]),
         "titleText": style([fontSize(14.), fontWeight(`_500)]),
         "descriptionText": style([fontSize(14.)]),
-        "disclosure": style([position(`absolute), top(0.), right(0.), padding(10.)]),
-        "disclosureIcon": style([width(12.), height(8.)]),
-        "children": style([margin(10.)])
+        "disclosure": style([position(Absolute), top(Pt(0.)), right(Pt(0.)), padding(Pt(10.))]),
+        "disclosureIcon": style([width(Pt(12.)), height(Pt(8.))]),
+        "children": style([margin(Pt(10.))])
       }
     )
   );

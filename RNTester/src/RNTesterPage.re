@@ -1,12 +1,12 @@
-open ReactNative;
+open BsReactNative;
 
 let styles =
   StyleSheet.create(
     Style.(
       {
         "container": style([backgroundColor("#e9eaed"), flex(1.0)]),
-        "spacer": style([height(270.)]),
-        "wrapper": style([flex(1.0), paddingTop(10.)])
+        "spacer": style([height(Pt(270.))]),
+        "wrapper": style([flex(1.0), paddingTop(Pt(10.))])
       }
     )
   );

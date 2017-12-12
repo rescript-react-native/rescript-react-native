@@ -1,4 +1,4 @@
-open ReactNative;
+open BsReactNative;
 
 let title = "<WebView>";
 
@@ -14,8 +14,8 @@ let examples: array(Example.t) =
         description: None,
         render: () => {
           let source = WebView.source(~uri="https://example.com", ());
-          <View style=(style([backgroundColor("#527FE4"), padding(5.)]))>
-            <WebView style=(style([height(400.)])) source />
+          <View style=(style([backgroundColor("#527FE4"), padding(Pt(5.))]))>
+            <WebView style=(style([height(Pt(400.))])) source />
           </View>
         }
       }

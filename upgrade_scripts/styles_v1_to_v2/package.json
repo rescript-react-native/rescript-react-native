@@ -1,0 +1,18 @@
+{
+  "name": "styles_v1_v2_upgrade",
+  "version": "0.0.1",
+  "esy": {
+    "build": ["jbuilder build"],
+    "buildsInSource": "_build",
+    "release": {
+      "releasedBinaries": [
+        "styles_v1_v2_upgrade"
+      ]
+   }
+  },
+  "dependencies": {
+    "@opam/jbuilder": "^1.0.0-beta14",
+    "@opam/reason": "^3.0.0",
+    "ocaml": "~4.2.3000"
+  }
+}
