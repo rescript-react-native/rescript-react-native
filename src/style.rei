@@ -6,8 +6,9 @@ type pt_pct =
   | Pt(float)
   | Pct(float);
 
-type pt_auto =
+type pt_pct_auto =
   | Pt(float)
+  | Pct(float)
   | Auto;
 
 type pt_pct_animated_interpolated =
@@ -119,19 +120,19 @@ type justifyContent =
 
 let justifyContent: justifyContent => styleElement;
 
-let margin: pt_auto => styleElement;
+let margin: pt_pct_auto => styleElement;
 
-let marginBottom: pt_auto => styleElement;
+let marginBottom: pt_pct_auto => styleElement;
 
-let marginHorizontal: pt_auto => styleElement;
+let marginHorizontal: pt_pct_auto => styleElement;
 
-let marginLeft: pt_auto => styleElement;
+let marginLeft: pt_pct_auto => styleElement;
 
-let marginRight: pt_auto => styleElement;
+let marginRight: pt_pct_auto => styleElement;
 
-let marginTop: pt_auto => styleElement;
+let marginTop: pt_pct_auto => styleElement;
 
-let marginVertical: pt_auto => styleElement;
+let marginVertical: pt_pct_auto => styleElement;
 
 let maxHeight: pt_pct => styleElement;
 

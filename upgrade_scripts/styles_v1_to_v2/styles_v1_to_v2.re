@@ -10,7 +10,7 @@ module Replacements = {
       ("padding", ["", "Horizontal", "Vertical", "Left", "Right", "Bottom", "Top"])
     ]);
   let pt_pct_animated_interpolated = ["height", "width", "top", "bottom", "left", "right"];
-  let pt_auto =
+  let pt_pct_auto =
     combine([("margin", ["", "Bottom", "Top", "Right", "Left", "Horizontal", "Vertical"])]);
   let variantReplacements = [
     ("flexStart", "FlexStart"),
@@ -57,7 +57,7 @@ module Replacements = {
     ("nowrap", "Nowrap")
   ];
   let suffix_pt =
-    pt_auto @ pt_pct @ pt_pct_animated_interpolated |> List.map((prefix) => (prefix, prefix));
+    pt_pct_auto @ pt_pct @ pt_pct_animated_interpolated |> List.map((prefix) => (prefix, prefix));
   let suffix_pct =
     pt_pct @ pt_pct_animated_interpolated |> List.map((prefix) => (prefix ++ "Pct", prefix));
   let suffix_animated =

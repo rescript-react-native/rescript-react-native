@@ -12,13 +12,15 @@ let encode_pt_pct = (value) =>
   | Pct(pct) => Encode.pct(pct)
   };
 
-type pt_auto =
+type pt_pct_auto =
   | Pt(float)
+  | Pct(float)
   | Auto;
 
-let encode_pt_auto = (value) =>
+let encode_pt_pct_auto = (value) =>
   switch value {
-  | Pt(value) => Encode.float(value)
+  | Pt(pt) => Encode.float(pt)
+  | Pct(pct) => Encode.pct(pct)
   | Auto => Encode.string("auto")
   };
 
@@ -221,19 +223,19 @@ let justifyContent = (v) =>
     }
   );
 
-let margin = (value) => ("margin", encode_pt_auto(value));
+let margin = (value) => ("margin", encode_pt_pct_auto(value));
 
-let marginBottom = (value) => ("marginBottom", encode_pt_auto(value));
+let marginBottom = (value) => ("marginBottom", encode_pt_pct_auto(value));
 
-let marginHorizontal = (value) => ("marginHorizontal", encode_pt_auto(value));
+let marginHorizontal = (value) => ("marginHorizontal", encode_pt_pct_auto(value));
 
-let marginLeft = (value) => ("marginLeft", encode_pt_auto(value));
+let marginLeft = (value) => ("marginLeft", encode_pt_pct_auto(value));
 
-let marginRight = (value) => ("marginRight", encode_pt_auto(value));
+let marginRight = (value) => ("marginRight", encode_pt_pct_auto(value));
 
-let marginTop = (value) => ("marginTop", encode_pt_auto(value));
+let marginTop = (value) => ("marginTop", encode_pt_pct_auto(value));
 
-let marginVertical = (value) => ("marginVertical", encode_pt_auto(value));
+let marginVertical = (value) => ("marginVertical", encode_pt_pct_auto(value));
 
 let maxHeight = (value) => ("maxHeight", encode_pt_pct(value));
 
