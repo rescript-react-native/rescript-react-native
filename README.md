@@ -43,7 +43,7 @@ yarn add bs-platform reason-react bs-react-native
   - `yarn run watch` enters the watch mode
 6. Now we come to the fun stuff! Create a new file `re/app.re` and make it look like this:
 ```reason
-open ReactNative;
+open BsReactNative;
 
 let app = () =>
   <View style=Style.(style([flex(1.), justifyContent(`center), alignItems(`center)]))>
@@ -90,7 +90,7 @@ There are some components and APIs missing. You can find an overview of the impl
 ## Style
 Since we have a proper type system we can make styles **typesafe**! Therefore styles are a little bit different declared than in JavaScript:
 ```reason
-open ReactNative;
+open BsReactNative;
 
 /* inline styles */
 <View
