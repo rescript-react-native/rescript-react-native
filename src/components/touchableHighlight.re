@@ -3,6 +3,7 @@
 let make =
     (
       ~accessible=?,
+      ~accessibilityLabel=?,
       ~accessibilityComponentType=?,
       ~accessibilityTraits=?,
       ~delayLongPress=?,
@@ -29,6 +30,7 @@ let make =
       Js.Undefined.(
         {
           "accessible": from_opt(UtilsRN.optBoolToOptJsBoolean(accessible)),
+          "accessibilityLabel": from_opt(accessibilityLabel),
           "delayLongPress": from_opt(delayLongPress),
           "delayPressIn": from_opt(delayPressIn),
           "delayPressOut": from_opt(delayPressOut),

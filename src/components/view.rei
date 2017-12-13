@@ -1,7 +1,7 @@
 module type ViewComponent = {
   let make:
     (
-      ~accessibilityLabel: ReasonReact.reactElement=?,
+      ~accessibilityLabel: string=?,
       ~accessible: bool=?,
       ~hitSlop: TypesRN.insets=?,
       ~onAccessibilityTap: unit => unit=?,
