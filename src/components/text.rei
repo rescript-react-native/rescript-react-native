@@ -2,6 +2,7 @@ module type TextComponent = {
   let make:
     (
       ~accessible: bool=?,
+      ~accessibilityLabel: string=?,
       ~allowFontScaling: bool=?,
       ~ellipsizeMode: [ | `clip | `head | `middle | `tail]=?,
       ~numberOfLines: int=?,
