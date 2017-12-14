@@ -304,7 +304,7 @@ let color: string => styleElement;
 
 let fontFamily: string => styleElement;
 
-let fontSize: float => styleElement;
+let fontSize: float_interpolated_animated => styleElement;
 
 type fontStyle =
   | Normal

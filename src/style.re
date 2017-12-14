@@ -532,7 +532,7 @@ let color = stringStyle("color");
 
 let fontFamily = stringStyle("fontFamily");
 
-let fontSize = floatStyle("fontSize");
+let fontSize = (value) => ("fontSize", encode_float_interpolated_animated(value));
 
 type fontStyle =
   | Normal
