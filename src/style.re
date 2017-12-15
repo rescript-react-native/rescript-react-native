@@ -92,12 +92,12 @@ let alignContent = (v) =>
   stringStyle(
     "alignContent",
     switch v {
-    | FlexStart => "flex-start"
-    | FlexEnd => "flex-end"
+    | FlexStart => "flexStart"
+    | FlexEnd => "flexEnd"
     | Center => "center"
     | Stretch => "stretch"
-    | SpaceAround => "space-around"
-    | SpaceBetween => "space-between"
+    | SpaceAround => "spaceAround"
+    | SpaceBetween => "spaceBetween"
     }
   );
 
@@ -112,8 +112,8 @@ let alignItems = (v) =>
   stringStyle(
     "alignItems",
     switch v {
-    | FlexStart => "flex-start"
-    | FlexEnd => "flex-end"
+    | FlexStart => "flexStart"
+    | FlexEnd => "flexEnd"
     | Center => "center"
     | Stretch => "stretch"
     | Baseline => "baseline"
