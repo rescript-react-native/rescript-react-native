@@ -46,7 +46,7 @@ yarn add bs-platform reason-react bs-react-native
 open BsReactNative;
 
 let app = () =>
-  <View style=Style.(style([flex(1.), justifyContent(`center), alignItems(`center)]))>
+  <View style=Style.(style([flex(1.), justifyContent(Center), alignItems(Center)]))>
     <Text value="Reason is awesome!" />
   </View>;
 ```
@@ -96,20 +96,20 @@ open BsReactNative;
 <View
   style=(
     Style.style([
-      Style.flexDirection(`column),
+      Style.flexDirection(Column),
       Style.backgroundColor("#6698FF"),
-      Style.marginTop(5)
+      Style.marginTop(Pt(5))
     ])
   )
 />;
 
 /* inline styles with a local open */
-<View style=Style.(style([flexDirection(`column), backgroundColor("#6698FF"), marginTop(5)])) />;
+<View style=Style.(style([flexDirection(Column), backgroundColor("#6698FF"), marginTop(Pt(5))])) />;
 
 /* StyleSheets with a local open */
 let styles =
   StyleSheet.create(
-    Style.({"wrapper": style([flexDirection(`column), backgroundColor("#6698FF"), marginTop(5)])})
+    Style.({"wrapper": style([flexDirection(Column), backgroundColor("#6698FF"), marginTop(Pt(5))])})
   );
 
 <View style=styles##wrapper />;
