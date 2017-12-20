@@ -1,7 +1,3 @@
-let dateSet: string;
-
-let dismissed: string;
-
 type response = {
   year: int,
   month: int,
