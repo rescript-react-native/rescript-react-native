@@ -67,12 +67,6 @@ let renderItem = (reRenderItem: renderBag('item) => ReasonReact.reactElement) : 
 
 let section = (~data, ~key=?, ~renderItem=?, ()) => {data, key, renderItem};
 
-let renderSectionAffix =
-  fun
-  | None => None
-  | Some(f) =>
-    Some(((data: {. "section": jsSection('item)}) => data##section |> jsSectionToSection |> f));
-
 let sections = (reSections) : sections('item) =>
   Array.map(
     (reSection) => {
@@ -111,6 +105,12 @@ type viewToken('item) = {
   "section": section('item)
 };
 
+type renderAccessoryView('item) =
+  [@bs] (jsSection('item) => ReasonReact.reactElement);
+
+let renderAccessoryView = (renderer) =>
+  [@bs] ((section) => [@bs] renderer(jsSectionToSection(section)));
+
 let make:
   (
     ~sections: sections('item),
@@ -133,8 +133,8 @@ let make:
                                =?,
     ~onRefresh: unit => unit=?,
     ~refreshing: bool=?,
-    ~renderSectionHeader: section('item) => ReasonReact.reactElement=?,
-    ~renderSectionFooter: section('item) => ReasonReact.reactElement=?,
+    ~renderSectionHeader: renderAccessoryView('item)=?,
+    ~renderSectionFooter: renderAccessoryView('item)=?,
     ~stickySectionHeadersEnabled: bool=?,
     array(ReasonReact.reactElement)
   ) =>
@@ -180,8 +180,8 @@ let make:
             "onRefresh": from_opt(onRefresh),
             "onViewableItemsChanged": from_opt(onViewableItemsChanged),
             "refreshing": from_opt(UtilsRN.optBoolToOptJsBoolean(refreshing)),
-            "renderSectionHeader": from_opt(renderSectionHeader |> renderSectionAffix),
-            "renderSectionFooter": from_opt(renderSectionFooter |> renderSectionAffix),
+            "renderSectionHeader": from_opt(renderSectionHeader),
+            "renderSectionFooter": from_opt(renderSectionFooter),
             "stickySectionHeadersEnabled":
               from_opt(UtilsRN.optBoolToOptJsBoolean(stickySectionHeadersEnabled))
           }
