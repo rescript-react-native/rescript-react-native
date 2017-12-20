@@ -4,6 +4,5 @@ lib/bs
 lib/ocaml
 .merlin
 .vscode
-yarn.lock
 package-lock.json
 npm-debug.log
