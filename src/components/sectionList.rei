@@ -41,6 +41,12 @@ type separatorComponent('item);
 let separatorComponent:
   (separatorProps('item) => ReasonReact.reactElement) => separatorComponent('item);
 
+type renderAccessoryView('item);
+
+let renderAccessoryView:
+  ([@bs] (section('item) => ReasonReact.reactElement)) =>
+  renderAccessoryView('item);
+
 type viewToken('item) = {
   .
   "index": Js.undefined(int),
@@ -72,8 +78,8 @@ let make:
                                =?,
     ~onRefresh: unit => unit=?,
     ~refreshing: bool=?,
-    ~renderSectionHeader: {. "section": section('item)} => ReasonReact.reactElement=?,
-    ~renderSectionFooter: {. "section": section('item)} => ReasonReact.reactElement=?,
+    ~renderSectionHeader: renderAccessoryView('item)=?,
+    ~renderSectionFooter: renderAccessoryView('item)=?,
     ~stickySectionHeadersEnabled: bool=?,
     array(ReasonReact.reactElement)
   ) =>

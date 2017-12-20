@@ -105,6 +105,12 @@ type viewToken('item) = {
   "section": section('item)
 };
 
+type renderAccessoryView('item) =
+  [@bs] (jsSection('item) => ReasonReact.reactElement);
+
+let renderAccessoryView = (renderer) =>
+  [@bs] ((section) => [@bs] renderer(jsSectionToSection(section)));
+
 let make:
   (
     ~sections: sections('item),
@@ -127,8 +133,8 @@ let make:
                                =?,
     ~onRefresh: unit => unit=?,
     ~refreshing: bool=?,
-    ~renderSectionHeader: {. "section": section('item)} => ReasonReact.reactElement=?,
-    ~renderSectionFooter: {. "section": section('item)} => ReasonReact.reactElement=?,
+    ~renderSectionHeader: renderAccessoryView('item)=?,
+    ~renderSectionFooter: renderAccessoryView('item)=?,
     ~stickySectionHeadersEnabled: bool=?,
     array(ReasonReact.reactElement)
   ) =>
