@@ -54,7 +54,7 @@
 - [x] BackHandler
 - [ ] CameraRoll
 - [ ] Clipboard
-- [ ] DatePickerAndroid
+- [x] DatePickerAndroid
 - [x] Dimensions
 - [ ] Easing
 - [ ] Geolocation
