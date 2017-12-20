@@ -16,7 +16,7 @@ let styles =
         "headerLeft": style([]),
         "headerCenter":
           style([flex(1.0), position(Absolute), top(Pt(27.)), left(Pt(0.)), right(Pt(0.))]),
-        "title": style([fontSize(19.), fontWeight(`_600), textAlign(Center)]),
+        "title": style([fontSize(Float(19.)), fontWeight(`_600), textAlign(Center)]),
         "exampleContainer": style([flex(1.0)])
       }
     )

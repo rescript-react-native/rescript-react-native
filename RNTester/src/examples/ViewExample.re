@@ -47,7 +47,7 @@ module ViewBorderStyleExample = {
                   padding(Pt(5.))
                 ])
               )>
-              <Text style=(style([fontSize(11.)]))>
+              <Text style=(style([fontSize(Float(11.))]))>
                 (ReasonReact.stringToElement("Dashed border style"))
               </Text>
             </View>
@@ -67,7 +67,7 @@ module ViewBorderStyleExample = {
                   padding(Pt(5.))
                 ])
               )>
-              <Text style=(style([fontSize(11.)]))>
+              <Text style=(style([fontSize(Float(11.))]))>
                 (ReasonReact.stringToElement("Dotted border style"))
               </Text>
             </View>
@@ -172,7 +172,7 @@ let examples: array(Example.t) =
         description: None,
         render: () =>
           <View style=(style([backgroundColor("#527FE4"), padding(Pt(5.))]))>
-            <Text style=(style([fontSize(11.)]))>
+            <Text style=(style([fontSize(Float(11.))]))>
               (ReasonReact.stringToElement("Blue background"))
             </Text>
           </View>
@@ -189,7 +189,7 @@ let examples: array(Example.t) =
                 padding(Pt(10.))
               ])
             )>
-            <Text style=(style([fontSize(11.)]))>
+            <Text style=(style([fontSize(Float(11.))]))>
               (ReasonReact.stringToElement("5px blue border"))
             </Text>
           </View>
@@ -200,12 +200,12 @@ let examples: array(Example.t) =
         render: () =>
           <View style=(style([borderColor("#bb0000"), borderWidth(1.)]))>
             <View style=(concat([styles##box, style([padding(Pt(5.))])]))>
-              <Text style=(style([fontSize(11.)]))>
+              <Text style=(style([fontSize(Float(11.))]))>
                 (ReasonReact.stringToElement("5px padding"))
               </Text>
             </View>
             <View style=(concat([styles##box, style([margin(Pt(5.))])]))>
-              <Text style=(style([fontSize(11.)]))>
+              <Text style=(style([fontSize(Float(11.))]))>
                 (ReasonReact.stringToElement("5px margin"))
               </Text>
             </View>
@@ -220,10 +220,10 @@ let examples: array(Example.t) =
                   ])
                 ])
               )>
-              <Text style=(style([fontSize(11.)]))>
+              <Text style=(style([fontSize(Float(11.))]))>
                 (ReasonReact.stringToElement("5px margin and padding,"))
               </Text>
-              <Text style=(style([fontSize(11.)]))>
+              <Text style=(style([fontSize(Float(11.))]))>
                 (ReasonReact.stringToElement("widthAutonomous=true"))
               </Text>
             </View>
@@ -235,7 +235,7 @@ let examples: array(Example.t) =
         render: () =>
           <View
             style=(style([borderWidth(1.), borderRadius(5.), padding(Pt(5.))]))>
-            <Text style=(style([fontSize(11.)]))>
+            <Text style=(style([fontSize(Float(11.))]))>
               (
                 ReasonReact.stringToElement(
                   "Too much use of `borderRadius` (especially large radii) on\nanything which is scrolling may result in dropped frames.\nUse sparingly."

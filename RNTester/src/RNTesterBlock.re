@@ -24,8 +24,8 @@ let styles =
             paddingHorizontal(Pt(10.)),
             paddingVertical(Pt(5.))
           ]),
-        "titleText": style([fontSize(14.), fontWeight(`_500)]),
-        "descriptionText": style([fontSize(14.)]),
+        "titleText": style([fontSize(Float(14.)), fontWeight(`_500)]),
+        "descriptionText": style([fontSize(Float(14.))]),
         "disclosure": style([position(Absolute), top(Pt(0.)), right(Pt(0.)), padding(Pt(10.))]),
         "disclosureIcon": style([width(Pt(12.)), height(Pt(8.))]),
         "children": style([margin(Pt(10.))])

@@ -15,7 +15,7 @@ let styles =
             padding(Pt(10.)),
             backgroundColor("white")
           ]),
-        "text": style([fontSize(19.), fontWeight(`_500)])
+        "text": style([fontSize(Float(19.)), fontWeight(`_500)])
       }
     )
   );

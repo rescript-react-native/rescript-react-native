@@ -12,8 +12,8 @@ let styles =
             paddingHorizontal(Pt(15.)),
             paddingVertical(Pt(8.))
           ]),
-        "rowTitleText": style([fontSize(17.), fontWeight(`_500)]),
-        "rowDetailText": style([fontSize(15.), color("#888888"), lineHeight(20.)]),
+        "rowTitleText": style([fontSize(Float(17.)), fontWeight(`_500)]),
+        "rowDetailText": style([fontSize(Float(15.)), color("#888888"), lineHeight(20.)]),
         "separator":
           style([
             height(Pt(StyleSheet.hairlineWidth)),
