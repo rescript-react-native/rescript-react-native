@@ -20,8 +20,15 @@ type action =
   | Set(response);
 
 let action = (resp) =>
-  resp##action == dateSet ?
-    Set({year: resp##year, month: resp##month, day: resp##day}) : Dismissed;
+  if (resp##action == dateSet) {
+    Set({year: resp##year, month: resp##month, day: resp##day})
+  } else if (resp##action == dismissed) {
+    Dismissed
+  } else {
+    failwith(
+      "Unknown action received from DatePickerAndroid. Please report this in the bs-react-native repository"
+    )
+  };
 
 type responseJs = {. "action": string, "year": int, "month": int, "day": int};
 
