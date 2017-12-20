@@ -4,6 +4,7 @@ node_js:
 
 script:
   - npm run clean-build
+  - cd RNTester; npm run build
 
 cache:
   directories:
