@@ -1,11 +1,25 @@
+type iosIdiom =
+  | Phone
+  | Pad
+  | TV;
+
 type os =
-  | IOS
+  | IOS(iosIdiom)
   | Android;
 
-let os: os;
+exception UnknownPlatform(string);
+
+/**
+ Raises UnknownPlatform for non-standard platforms such as "web"
+ from react-native-web
+ */
+let os: unit => os;
 
 let equals: os => bool;
 
-[@bs.scope "Platform"] [@bs.module "react-native"] external version : int = "Version";
+exception UnknownVersion;
 
-let select: (~ios: 'a, ~android: 'a) => 'a;
+/**
+ Raises UnknownVersion if version is undefined, i.e. in react-native-web
+ */
+let version: unit => int;

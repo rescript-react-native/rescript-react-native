@@ -1,27 +1,53 @@
+type iosIdiom =
+  | Phone
+  | Pad
+  | TV;
+
+[@bs.module "react-native"] [@bs.scope "Platform"]
+external _ios_isPad : bool = "isPad";
+
+[@bs.module "react-native"] [@bs.scope "Platform"]
+external _ios_isTVOS : bool = "isTVOS";
+
 type os =
-  | IOS
+  | IOS(iosIdiom)
   | Android;
 
-[@bs.scope "Platform"] [@bs.module "react-native"] external _os : string = "OS";
+[@bs.module "react-native"] [@bs.scope "Platform"]
+external _os : string = "OS";
 
-let os =
+exception UnknownPlatform(string);
+
+let os = () =>
   switch _os {
-  | "ios" => IOS
-  | _ => Android
+  | "ios" =>
+    switch _ios_isPad {
+    | true => IOS(Pad)
+    | _ =>
+      switch _ios_isTVOS {
+      | true => IOS(TV)
+      | _ => IOS(Phone)
+      }
+    }
+  | "android" => Android
+  | x => raise(UnknownPlatform(x))
   };
 
-let equals = (targetOs) =>
-  switch (os, targetOs) {
-  | (IOS, IOS) => true
+let equals = targetOs =>
+  switch (os(), targetOs) {
+  | (IOS(_), IOS(_)) => true
   | (Android, Android) => true
-  | (IOS, Android) => false
-  | (Android, IOS) => false
+  | exception (UnknownPlatform(_)) => false
+  | _ => false
   };
 
-[@bs.scope "Platform"] [@bs.module "react-native"] external version : int = "Version";
+[@bs.module "react-native"] [@bs.scope "Platform"]
+external _version : Js.undefined(int) = "Version";
 
-[@bs.scope "Platform"] [@bs.module "react-native"]
-external _select : {. "ios": 'a, "android": 'a} => 'a =
-  "select";
+exception UnknownVersion;
 
-let select = (~ios, ~android) => _select({"ios": ios, "android": android});
+let version = () =>
+  switch (Js.Undefined.to_opt(_version)) {
+  | Some(v) => v
+  | None => raise(UnknownVersion)
+  };
