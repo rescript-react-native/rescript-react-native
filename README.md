@@ -115,7 +115,8 @@ let styles =
 <View style=styles##wrapper />;
 ```
 
-For animations:
+### Animations
+
 ```reason
 open BsReactNative;
 
