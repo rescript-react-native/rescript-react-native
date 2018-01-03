@@ -115,7 +115,39 @@ let styles =
 <View style=styles##wrapper />;
 ```
 
-## Toubleshooting
+### Animations
+
+```reason
+open BsReactNative;
+
+[...]
+type state = {animatedValue: Animated.Value.t};
+let component = ReasonReact.reducerComponent("Example");
+
+initialState: () => {animatedValue: Animated.Value.create((-100.))},
+
+/* Start animation in method */
+Animated.CompositeAnimation.start(
+  Animated.Timing.animate(
+    ~value=state.animatedValue,
+    ~toValue=`raw(0.),
+    ()
+  ),
+  ()
+);
+[...]
+
+/* Styles with an animated value */
+
+<Animated.View
+  style=Style.(style([flexDirection(Column), backgroundColor("#6698FF"), top(Animated(state.animatedValue))]))
+  )
+/>;
+
+```
+
+
+## Troubleshooting
 
 ### `Native module cannot be null` with create-react-native-app
 
