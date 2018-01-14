@@ -47,3 +47,5 @@ let create:
     unit
   ) =>
   t;
+
+let panHandlers: t => Props.touchResponderHandlers;
