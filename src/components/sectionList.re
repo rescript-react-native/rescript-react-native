@@ -12,7 +12,8 @@ and jsRenderBag('item) = {
   "index": int,
   "section": jsSection('item),
   "separators": {. "highlight": unit => unit, "unhighlight": unit => unit}
-};
+}
+and jsRenderAccessory('item) = {. "section": jsSection('item)};
 
 type jsSeparatorProps('item) = {
   .
@@ -105,11 +106,15 @@ type viewToken('item) = {
   "section": section('item)
 };
 
-type renderAccessoryView('item) =
-  [@bs] (jsSection('item) => ReasonReact.reactElement);
+type renderAccessory('item) = {section: section('item)};
 
-let renderAccessoryView = (renderer) =>
-  [@bs] ((section) => [@bs] renderer(jsSectionToSection(section)));
+type renderAccessoryView('item) = jsRenderAccessory('item) => ReasonReact.reactElement;
+
+let renderAccessoryView =
+    (reRenderAccessory: renderAccessory('item) => ReasonReact.reactElement)
+    : renderAccessoryView('item) =>
+  (jsRenderAccessory: jsRenderAccessory('item)) =>
+    reRenderAccessory({section: jsSectionToSection(jsRenderAccessory##section)});
 
 let make:
   (
