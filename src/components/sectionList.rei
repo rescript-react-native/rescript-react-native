@@ -8,9 +8,6 @@ and section('item) = {
   data: array('item),
   key: option(string),
   renderItem: option((renderBag('item) => ReasonReact.reactElement))
-}
-and renderAccessory('item) = {
-  section: section('item)
 };
 
 let section:
@@ -43,6 +40,8 @@ type separatorComponent('item);
 
 let separatorComponent:
   (separatorProps('item) => ReasonReact.reactElement) => separatorComponent('item);
+
+type renderAccessory('item) = {section: section('item)};
 
 type renderAccessoryView('item);
 

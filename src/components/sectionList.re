@@ -12,8 +12,7 @@ and jsRenderBag('item) = {
   "index": int,
   "section": jsSection('item),
   "separators": {. "highlight": unit => unit, "unhighlight": unit => unit}
-}
-and jsRenderAccessory('item) = {. "section": jsSection('item)};
+};
 
 type jsSeparatorProps('item) = {
   .
@@ -105,6 +104,8 @@ type viewToken('item) = {
   "isViewable": Js.boolean,
   "section": section('item)
 };
+
+type jsRenderAccessory('item) = {. "section": jsSection('item)};
 
 type renderAccessory('item) = {section: section('item)};
 
