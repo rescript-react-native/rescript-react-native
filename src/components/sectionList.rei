@@ -41,11 +41,12 @@ type separatorComponent('item);
 let separatorComponent:
   (separatorProps('item) => ReasonReact.reactElement) => separatorComponent('item);
 
+type renderAccessory('item) = {section: section('item)};
+
 type renderAccessoryView('item);
 
 let renderAccessoryView:
-  ([@bs] (section('item) => ReasonReact.reactElement)) =>
-  renderAccessoryView('item);
+  (renderAccessory('item) => ReasonReact.reactElement) => renderAccessoryView('item);
 
 type viewToken('item) = {
   .
