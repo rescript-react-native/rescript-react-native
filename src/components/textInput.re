@@ -135,7 +135,7 @@ let make =
                 UtilsRN.option_map(
                   (x) =>
                     switch x {
-                    | `done_ => "done_"
+                    | `done_ => "done"
                     | `go => "go"
                     | `next => "next"
                     | `search => "search"
