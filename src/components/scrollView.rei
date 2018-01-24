@@ -80,7 +80,7 @@ module type ScrollViewComponent = {
       ~directionalLockEnabled: bool=?,
       ~indicatorStyle: [ | `black | `default | `white]=?,
       ~maximumZoomScale: float=?,
-      ~mimimumZoomScale: float=?,
+      ~minimumZoomScale: float=?,
       ~onScrollAnimationEnd: unit => unit=?,
       ~scrollEventThrottle: int=?,
       ~scrollIndicatorInsets: TypesRN.insets=?,
