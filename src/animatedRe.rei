@@ -33,7 +33,8 @@ module Interpolation: {
 
 module Value: {
   type t;
-  type callback = float => unit;
+  type jsValue = {. "value": float};
+  type callback = jsValue => unit;
   let create: float => t;
   let setValue: (t, float) => unit;
   let setOffset: (t, float) => unit;
