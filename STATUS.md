@@ -53,7 +53,7 @@
 - [x] AsyncStorage
 - [x] BackHandler
 - [ ] CameraRoll
-- [ ] Clipboard
+- [x] Clipboard
 - [x] DatePickerAndroid
 - [x] Dimensions
 - [ ] Easing
