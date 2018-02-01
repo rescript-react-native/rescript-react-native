@@ -30,30 +30,20 @@ constraint 'a =
     } as 'b
   );
 
-type keyboardEvent = [
-  | `keyboardDidChangeFrame
-  | `keyboardDidHide
-  | `keyboardDidShow
-  | `keyboardWillChangeFrame
-  | `keyboardWillHide
-  | `keyboardWillShow
-];
+type keyboardEvent =
+  | KeyboardWillShow
+  | KeyboardDidShow
+  | KeyboardWillHide
+  | KeyboardDidHide
+  | KeyboardWillChangeFrame
+  | KeyboardDidChangeFrame;
 
 [@bs.module "react-native"] [@bs.scope "Keyboard"]
 external dismiss : unit => unit = "";
 
-let remove: (unit, subscription) => unit;
-
 let addListener:
   (
-    [<
-      | `keyboardDidChangeFrame
-      | `keyboardDidHide
-      | `keyboardDidShow
-      | `keyboardWillChangeFrame
-      | `keyboardWillHide
-      | `keyboardWillShow
-    ],
+    keyboardEvent,
     listener(
       {
         ..
@@ -69,27 +59,11 @@ let addListener:
   ) =>
   subscription;
 
-let removeAllListeners:
-  [<
-    | `keyboardDidChangeFrame
-    | `keyboardDidHide
-    | `keyboardDidShow
-    | `keyboardWillChangeFrame
-    | `keyboardWillHide
-    | `keyboardWillShow
-  ] =>
-  unit;
+let removeAllListeners: keyboardEvent => unit;
 
 let removeListener:
   (
-    [<
-      | `keyboardDidChangeFrame
-      | `keyboardDidHide
-      | `keyboardDidShow
-      | `keyboardWillChangeFrame
-      | `keyboardWillHide
-      | `keyboardWillShow
-    ],
+    keyboardEvent,
     listener(
       {
         ..
@@ -104,3 +78,5 @@ let removeListener:
     )
   ) =>
   unit;
+
+module Subscription: {let remove: subscription => unit;};
