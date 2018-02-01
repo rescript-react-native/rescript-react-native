@@ -52,7 +52,7 @@
 - [x] AppState
 - [x] AsyncStorage
 - [x] BackHandler
-- [ ] CameraRoll
+- [x] CameraRoll
 - [ ] Clipboard
 - [x] DatePickerAndroid
 - [x] Dimensions
