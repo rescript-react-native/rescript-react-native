@@ -14,23 +14,22 @@ type event('a) =
 
 type listener('a) = event('a) => unit;
 
-type keyboardEvent = [
-  | `keyboardWillShow
-  | `keyboardDidShow
-  | `keyboardWillHide
-  | `keyboardDidHide
-  | `keyboardWillChangeFrame
-  | `keyboardDidChangeFrame
-];
+type keyboardEvent =
+  | KeyboardWillShow
+  | KeyboardDidShow
+  | KeyboardWillHide
+  | KeyboardDidHide
+  | KeyboardWillChangeFrame
+  | KeyboardDidChangeFrame;
 
 let mapKeyboardEvent = keyboardEvent =>
   switch keyboardEvent {
-  | `keyboardWillShow => "keyboardWillShow"
-  | `keyboardDidShow => "keyboardDidShow"
-  | `keyboardWillHide => "keyboardWillHide"
-  | `keyboardDidHide => "keyboardDidHide"
-  | `keyboardWillChangeFrame => "keyboardWillChangeFrame"
-  | `keyboardDidChangeFrame => "keyboardDidChangeFrame"
+  | KeyboardWillShow => "keyboardWillShow"
+  | KeyboardDidShow => "keyboardDidShow"
+  | KeyboardWillHide => "keyboardWillHide"
+  | KeyboardDidHide => "keyboardDidHide"
+  | KeyboardWillChangeFrame => "keyboardWillChangeFrame"
+  | KeyboardDidChangeFrame => "keyboardDidChangeFrame"
   };
 
 [@bs.module "react-native"] [@bs.scope "Keyboard"]
