@@ -62,7 +62,7 @@
 - [ ] ImagePickerIOS
 - [ ] ImageStore
 - [ ] InteractionManager
-- [ ] Keyboard
+- [x] Keyboard
 - [ ] LayoutAnimation
 - [ ] Linking
 - [x] NativeEventEmitter
@@ -84,4 +84,3 @@
 - [x] Vibration
 - [x] Layout Props
 - [x] Shadow Props
-
