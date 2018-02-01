@@ -1,5 +1,13 @@
 type actionSheetConfig;
 
+type shareActionSheetConfig;
+
+type error;
+
+type failureCallback = error => unit;
+
+type successCallback = (bool, string) => unit;
+
 [@bs.obj]
 external makeActionSheetConfig :
   (
@@ -13,9 +21,25 @@ external makeActionSheetConfig :
   actionSheetConfig =
   "";
 
+[@bs.obj]
+external makeShareActionSheetConfig :
+  (
+    ~message: string=?,
+    ~url: string=?,
+    ~subject: string=?,
+    ~excludedActivityTypes: array(string)=?
+  ) =>
+  shareActionSheetConfig =
+  "";
+
 [@bs.module "react-native"] [@bs.scope "ActionSheetIOS"]
 external _showActionSheetWithOptions : (actionSheetConfig, int => unit) => unit =
   "showActionSheetWithOptions";
+
+[@bs.module "react-native"] [@bs.scope "ActionSheetIOS"]
+external _showShareActionSheetWithOptions :
+  (shareActionSheetConfig, failureCallback, successCallback) => unit =
+  "showShareActionSheetWithOptions";
 
 let showActionSheetWithOptions =
     (
@@ -38,4 +62,25 @@ let showActionSheetWithOptions =
       ~tintColor?
     ),
     callback
+  );
+
+let showShareActionSheetWithOptions =
+    (
+      ~message=?,
+      ~url=?,
+      ~subject=?,
+      ~excludedActivityTypes=?,
+      failureCallback,
+      successCallback,
+      ()
+    ) =>
+  _showShareActionSheetWithOptions(
+    makeShareActionSheetConfig(
+      ~message?,
+      ~url?,
+      ~subject?,
+      ~excludedActivityTypes?
+    ),
+    failureCallback,
+    successCallback
   );
