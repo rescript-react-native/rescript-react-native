@@ -44,8 +44,6 @@ external _removeAllListeners : string => unit = "removeAllListeners";
 [@bs.module "react-native"] [@bs.scope "Keyboard"]
 external _removeListener : (string, listener('a)) => unit = "removeListener";
 
-[@bs.send.pipe : subscription] external remove : unit => unit = "";
-
 let addListener = (keyboardEvent, listener) =>
   _addListener(mapKeyboardEvent(keyboardEvent), listener);
 
@@ -54,3 +52,7 @@ let removeAllListeners = keyboardEvent =>
 
 let removeListener = (keyboardEvent, listener) =>
   _removeListener(mapKeyboardEvent(keyboardEvent), listener);
+
+module Subscription = {
+  [@bs.send.pipe : subscription] external remove : unit = "";
+};
