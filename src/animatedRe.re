@@ -245,7 +245,8 @@ module Interpolation = {
 
 module Value = {
   type t;
-  type callback = float => unit;
+  type jsValue = {. "value": float};
+  type callback = jsValue => unit;
   [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"] external create : float => t =
     "Value";
   [@bs.send] external setValue : (t, float) => unit = "setValue";
