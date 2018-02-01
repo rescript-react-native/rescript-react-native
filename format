@@ -1,0 +1,2 @@
+refmt --in-place --print-width 80 RNTester/src/**/*.re
+refmt --in-place --print-width 80 src/**/*.re
