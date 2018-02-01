@@ -26,7 +26,7 @@ type node = {
 
 type result = {
   .
-  "edges": array(node),
+  "edges": array({. "node": node}),
   "page_info": {
     .
     "has_next_page": bool,
