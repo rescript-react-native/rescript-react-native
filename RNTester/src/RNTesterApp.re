@@ -15,8 +15,15 @@ let styles =
           ]),
         "headerLeft": style([]),
         "headerCenter":
-          style([flex(1.0), position(Absolute), top(Pt(27.)), left(Pt(0.)), right(Pt(0.))]),
-        "title": style([fontSize(Float(19.)), fontWeight(`_600), textAlign(Center)]),
+          style([
+            flex(1.0),
+            position(Absolute),
+            top(Pt(27.)),
+            left(Pt(0.)),
+            right(Pt(0.))
+          ]),
+        "title":
+          style([fontSize(Float(19.)), fontWeight(`_600), textAlign(Center)]),
         "exampleContainer": style([flex(1.0)])
       }
     )
@@ -31,41 +38,52 @@ let header = (~onBack=?, ~title, ()) =>
       switch onBack {
       | None => ReasonReact.nullElement
       | Some(onBack) =>
-        <View style=styles##headerLeft> <Button title="Back" onPress=onBack /> </View>
+        <View style=styles##headerLeft>
+          <Button title="Back" onPress=onBack />
+        </View>
       }
     )
   </View>;
 
+type action =
+  | ChangeCurrentExample(option(ExampleList.item));
+
 type state = {currentExample: option(ExampleList.item)};
 
-let component = ReasonReact.statefulComponent("RNTesterApp");
+let component = ReasonReact.reducerComponent("RNTesterApp");
 
-let make = (_children) => {
-  let onPress = (item, {ReasonReact.state}) =>
+let make = _children => {
+  let onPress = (item, {ReasonReact.state, ReasonReact.send}) =>
     switch state.currentExample {
-    | None => ReasonReact.Update({currentExample: Some(item)})
-    | Some(_) => ReasonReact.Update({currentExample: None})
+    | None => send(ChangeCurrentExample(Some(item)))
+    | Some(_) => send(ChangeCurrentExample(None))
     };
-  let onBack = ((), _self) => ReasonReact.Update({currentExample: None});
+  let onBack = (_event, {ReasonReact.send}) =>
+    send(ChangeCurrentExample(None));
   {
     ...component,
     initialState: () => {currentExample: None},
-    render: ({state, update}) => {
+    reducer: (action, _state) =>
+      switch action {
+      | ChangeCurrentExample(example) => Update({currentExample: example})
+      },
+    render: ({state, handle}) => {
       let components = ExampleList.components;
       switch state.currentExample {
       | None =>
         <View style=styles##exampleContainer>
           (header(~title="ReasonRNTester", ()))
-          <RNTesterExampleList components onPress=(update(onPress)) />
+          <RNTesterExampleList components onPress=(handle(onPress)) />
         </View>
       | Some(example) =>
         <View style=styles##exampleContainer>
-          (header(~title=example.title, ~onBack=update(onBack), ()))
+          (header(~title=example.title, ~onBack=handle(onBack), ()))
           <RNTesterExampleContainer example />
         </View>
-      }
+      };
     }
-  }
+  };
 };
 
-let reactClass = ReasonReact.wrapReasonForJs(~component, (_jsProps) => make([||]));
+let reactClass =
+  ReasonReact.wrapReasonForJs(~component, _jsProps => make([||]));
