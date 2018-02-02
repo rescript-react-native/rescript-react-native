@@ -11,13 +11,12 @@
     "test": "jest"
   },
   "dependencies": {
-    "bs-platform": "^2.0.0",
-    "react": "^16.0.0-alpha.12",
-    "react-native": "^0.46.0",
-    "reason-react": "^0.3.0"
+    "react": "^16.2.0",
+    "react-native": "^0.52.2"
   },
   "devDependencies": {
     "babel-jest": "20.0.0",
+    "babel-plugin-module-resolver": "^3.0.0",
     "babel-preset-react-native": "1.9.1",
     "fs-extra": "^3.0.1"
   },
