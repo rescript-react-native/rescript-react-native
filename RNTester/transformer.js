@@ -30,6 +30,6 @@ const transform = ({ src, filename }) => {
   }
 }
 
-module.exports = ({
+module.exports = {
   transform,
-})
+}
