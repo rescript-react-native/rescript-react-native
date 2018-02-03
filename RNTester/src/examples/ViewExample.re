@@ -15,23 +15,28 @@ let styles =
             justifyContent(SpaceAround),
             width(Pt(100.)),
             height(Pt(50.)),
-            marginTop(Pt((-10.)))
+            marginTop(Pt(-10.))
           ])
       }
     )
   );
 
 module ViewBorderStyleExample = {
+  type action =
+    | UpdateBorderState(bool);
   type state = {showBorder: bool};
-  let component = ReasonReact.statefulComponent("ViewBorderStyleExample");
-  let handlePress = ((), {ReasonReact.state}) =>
-    ReasonReact.Update({showBorder: ! state.showBorder});
-  let make = (_children) => {
+  let component = ReasonReact.reducerComponent("ViewBorderStyleExample");
+  let make = _children => {
     ...component,
     initialState: () => {showBorder: false},
-    render: ({state, update}) =>
+    reducer: (action, _state) =>
+      switch action {
+      | UpdateBorderState(showBorder) => Update({showBorder: showBorder})
+      },
+    render: ({state, send}) =>
       Style.(
-        <TouchableWithoutFeedback onPress=(update(handlePress))>
+        <TouchableWithoutFeedback
+          onPress=(_event => send(UpdateBorderState(! state.showBorder)))>
           <View>
             <View
               style=(
@@ -39,9 +44,9 @@ module ViewBorderStyleExample = {
                   borderWidth(1.),
                   borderStyle(
                     if (state.showBorder) {
-                      Dashed
+                      Dashed;
                     } else {
-                      Solid
+                      Solid;
                     }
                   ),
                   padding(Pt(5.))
@@ -59,9 +64,9 @@ module ViewBorderStyleExample = {
                   borderRadius(5.),
                   borderStyle(
                     if (state.showBorder) {
-                      Dotted
+                      Dotted;
                     } else {
-                      Solid
+                      Solid;
                     }
                   ),
                   padding(Pt(5.))
@@ -78,24 +83,29 @@ module ViewBorderStyleExample = {
 };
 
 module ZIndexExample = {
+  type action =
+    | UpdateFlippedState(bool);
   type state = {flipped: bool};
-  let component = ReasonReact.statefulComponent("ZIndexExample");
-  let handlePress = ((), {ReasonReact.state}) =>
-    ReasonReact.Update({flipped: ! state.flipped});
-  let make = (_children) => {
+  let component = ReasonReact.reducerComponent("ZIndexExample");
+  let make = _children => {
     ...component,
     initialState: () => {flipped: false},
-    render: ({state, update}) => {
+    reducer: (action, _state) =>
+      switch action {
+      | UpdateFlippedState(flipped) => Update({flipped: flipped})
+      },
+    render: ({state, send}) => {
       open Style;
       let indices =
         if (state.flipped) {
-          [|(-1), 0, 1, 2|]
+          [|(-1), 0, 1, 2|];
         } else {
-          [|2, 1, 0, (-1)|]
+          [|2, 1, 0, (-1)|];
         };
-      let zIndexStr = (i) =>
+      let zIndexStr = i =>
         "ZIndex " ++ string_of_int(Array.unsafe_get(indices, i));
-      <TouchableWithoutFeedback onPress=(update(handlePress))>
+      <TouchableWithoutFeedback
+        onPress=(_event => send(UpdateFlippedState(! state.flipped)))>
         <View>
           <Text style=(style([paddingBottom(Pt(10.))]))>
             (ReasonReact.stringToElement("Tap to flip sorting order"))
@@ -153,7 +163,7 @@ module ZIndexExample = {
             <Text> (ReasonReact.stringToElement(zIndexStr(3))) </Text>
           </View>
         </View>
-      </TouchableWithoutFeedback>
+      </TouchableWithoutFeedback>;
     }
   };
 };

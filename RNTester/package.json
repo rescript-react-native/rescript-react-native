@@ -3,18 +3,15 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "postinstall": "node scripts/copy.js",
-    "build": "node scripts/copy.js && bsb -clean-world -make-world",
+    "build": "bsb -clean-world -make-world",
     "packager:start": "node node_modules/react-native/local-cli/cli.js start",
-    "watch": "node scripts/copy.js && bsb -make-world -w",
+    "watch": "bsb -make-world -w",
     "start": "npm run build && npm run packager:start",
     "test": "jest"
   },
   "dependencies": {
-    "bs-platform": "^2.0.0",
-    "react": "^16.0.0-alpha.12",
-    "react-native": "^0.46.0",
-    "reason-react": "^0.3.0"
+    "react": "^16.2.0",
+    "react-native": "^0.52.2"
   },
   "devDependencies": {
     "babel-jest": "20.0.0",

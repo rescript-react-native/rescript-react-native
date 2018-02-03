@@ -10,6 +10,8 @@ Before running the app, make sure you ran:
     npm install
     # start Bucklescript compiler in watch mode
     npm run watch
+    # start Metro packager
+    npm run packager:start
 
 ### Running on iOS
 
@@ -17,6 +19,7 @@ Mac OS and Xcode are required.
 
 - Open `RNTester/RNTester.xcodeproj` in Xcode
 - Hit the Run button
+- Alternatively you may run `react-native run-ios` in the terminal
 
 See [Running on device](https://facebook.github.io/react-native/docs/running-on-device.html) if you want to use a physical device.
 
@@ -26,7 +29,7 @@ You'll need to have all the [prerequisites](https://github.com/facebook/react-na
 
 Start an Android emulator ([Genymotion](https://www.genymotion.com) is recommended).
 
-- `./gradlew :RNTester:android:app:installDebug`
+- `react-native run-android`
 `
 _Note: Building for the first time can take a while._
 

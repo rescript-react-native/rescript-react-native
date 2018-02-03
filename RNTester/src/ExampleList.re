@@ -14,7 +14,7 @@ module type ExampleT = {
 };
 
 module MakeExample = (Example: ExampleT) => {
-  let item = (key) => {
+  let item = key => {
     key,
     displayName: Example.displayName,
     title: Example.title,
