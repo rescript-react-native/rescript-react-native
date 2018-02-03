@@ -24,7 +24,7 @@ type node = {
   "timestamp": float
 };
 
-type result = {
+type assets = {
   .
   "edges": array({. "node": node}),
   "page_info": {
@@ -66,4 +66,4 @@ let getPhotos:
     ~mimeTypes: string=?,
     unit
   ) =>
-  Js.Promise.t(result);
+  Js.Promise.t(assets);
