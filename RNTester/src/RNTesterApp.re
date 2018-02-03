@@ -53,36 +53,42 @@ type state = {currentExample: option(ExampleList.item)};
 let component = ReasonReact.reducerComponent("RNTesterApp");
 
 let make = _children => {
-  let onPress = (item, {ReasonReact.state, ReasonReact.send}) =>
+  ...component,
+  initialState: () => {currentExample: None},
+  reducer: (action, _state) =>
+    switch action {
+    | ChangeCurrentExample(example) => Update({currentExample: example})
+    },
+  render: ({state, send}) => {
+    let components = ExampleList.components;
     switch state.currentExample {
-    | None => send(ChangeCurrentExample(Some(item)))
-    | Some(_) => send(ChangeCurrentExample(None))
+    | None =>
+      <View style=styles##exampleContainer>
+        (header(~title="ReasonRNTester", ()))
+        <RNTesterExampleList
+          components
+          onPress=(
+            item =>
+              switch state.currentExample {
+              | None => send(ChangeCurrentExample(Some(item)))
+              | Some(_) => send(ChangeCurrentExample(None))
+              }
+          )
+        />
+      </View>
+    | Some(example) =>
+      <View style=styles##exampleContainer>
+        (
+          header(
+            ~title=example.title,
+            ~onBack=_event => send(ChangeCurrentExample(None)),
+            ()
+          )
+        )
+        <RNTesterExampleContainer example />
+      </View>
     };
-  let onBack = (_event, {ReasonReact.send}) =>
-    send(ChangeCurrentExample(None));
-  {
-    ...component,
-    initialState: () => {currentExample: None},
-    reducer: (action, _state) =>
-      switch action {
-      | ChangeCurrentExample(example) => Update({currentExample: example})
-      },
-    render: ({state, handle}) => {
-      let components = ExampleList.components;
-      switch state.currentExample {
-      | None =>
-        <View style=styles##exampleContainer>
-          (header(~title="ReasonRNTester", ()))
-          <RNTesterExampleList components onPress=(handle(onPress)) />
-        </View>
-      | Some(example) =>
-        <View style=styles##exampleContainer>
-          (header(~title=example.title, ~onBack=handle(onBack), ()))
-          <RNTesterExampleContainer example />
-        </View>
-      };
-    }
-  };
+  }
 };
 
 let reactClass =

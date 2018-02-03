@@ -26,8 +26,6 @@ module ViewBorderStyleExample = {
     | UpdateBorderState(bool);
   type state = {showBorder: bool};
   let component = ReasonReact.reducerComponent("ViewBorderStyleExample");
-  let handlePress = (_event, {ReasonReact.send, ReasonReact.state}) =>
-    send(UpdateBorderState(! state.showBorder));
   let make = _children => {
     ...component,
     initialState: () => {showBorder: false},
@@ -35,16 +33,17 @@ module ViewBorderStyleExample = {
       switch action {
       | UpdateBorderState(showBorder) => Update({showBorder: showBorder})
       },
-    render: self =>
+    render: ({state, send}) =>
       Style.(
-        <TouchableWithoutFeedback onPress=(self.handle(handlePress))>
+        <TouchableWithoutFeedback
+          onPress=(_event => send(UpdateBorderState(! state.showBorder)))>
           <View>
             <View
               style=(
                 style([
                   borderWidth(1.),
                   borderStyle(
-                    if (self.state.showBorder) {
+                    if (state.showBorder) {
                       Dashed;
                     } else {
                       Solid;
@@ -64,7 +63,7 @@ module ViewBorderStyleExample = {
                   borderWidth(1.),
                   borderRadius(5.),
                   borderStyle(
-                    if (self.state.showBorder) {
+                    if (state.showBorder) {
                       Dotted;
                     } else {
                       Solid;
@@ -88,8 +87,6 @@ module ZIndexExample = {
     | UpdateFlippedState(bool);
   type state = {flipped: bool};
   let component = ReasonReact.reducerComponent("ZIndexExample");
-  let handlePress = (_event, {ReasonReact.send, ReasonReact.state}) =>
-    send(UpdateFlippedState(! state.flipped));
   let make = _children => {
     ...component,
     initialState: () => {flipped: false},
@@ -97,7 +94,7 @@ module ZIndexExample = {
       switch action {
       | UpdateFlippedState(flipped) => Update({flipped: flipped})
       },
-    render: ({state, handle}) => {
+    render: ({state, send}) => {
       open Style;
       let indices =
         if (state.flipped) {
@@ -107,7 +104,8 @@ module ZIndexExample = {
         };
       let zIndexStr = i =>
         "ZIndex " ++ string_of_int(Array.unsafe_get(indices, i));
-      <TouchableWithoutFeedback onPress=(handle(handlePress))>
+      <TouchableWithoutFeedback
+        onPress=(_event => send(UpdateFlippedState(! state.flipped)))>
         <View>
           <Text style=(style([paddingBottom(Pt(10.))]))>
             (ReasonReact.stringToElement("Tap to flip sorting order"))
