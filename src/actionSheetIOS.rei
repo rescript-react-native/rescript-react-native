@@ -1,9 +1,5 @@
 type error;
 
-type failureCallback = error => unit;
-
-type successCallback = (bool, string) => unit;
-
 let showActionSheetWithOptions:
   (
     ~options: array(string),
@@ -23,8 +19,8 @@ let showShareActionSheetWithOptions:
     ~url: string=?,
     ~subject: string=?,
     ~excludedActivityTypes: array(string)=?,
-    failureCallback,
-    successCallback,
+    error => unit,
+    (bool, string) => unit,
     unit
   ) =>
   unit;

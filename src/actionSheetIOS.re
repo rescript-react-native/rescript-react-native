@@ -4,10 +4,6 @@ type shareActionSheetConfig;
 
 type error;
 
-type failureCallback = error => unit;
-
-type successCallback = (bool, string) => unit;
-
 [@bs.obj]
 external makeActionSheetConfig :
   (
@@ -38,7 +34,7 @@ external _showActionSheetWithOptions : (actionSheetConfig, int => unit) => unit 
 
 [@bs.module "react-native"] [@bs.scope "ActionSheetIOS"]
 external _showShareActionSheetWithOptions :
-  (shareActionSheetConfig, failureCallback, successCallback) => unit =
+  (shareActionSheetConfig, error => unit, (bool, string) => unit) => unit =
   "showShareActionSheetWithOptions";
 
 let showActionSheetWithOptions =
