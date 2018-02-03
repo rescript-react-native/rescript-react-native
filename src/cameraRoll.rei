@@ -54,7 +54,8 @@ type assetType =
   | Photos;
 
 let saveToCameraRoll:
-  (~uri: string, ~type_: fileType=?, unit) => Js.Promise.t(string);
+  (~uri: string, ~type_: fileType=?, unit) =>
+  Js.Promise.t(Js.Result.t(string, Js.Promise.error));
 
 let getPhotos:
   (
