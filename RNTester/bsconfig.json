@@ -5,7 +5,7 @@
   },
   "refmt": 3,
   "bs-dependencies": [
-    "../../node_modules/reason-react",
+    "reason-react",
     "../../"
   ],
   "sources": [
