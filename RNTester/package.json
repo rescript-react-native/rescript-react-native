@@ -15,7 +15,6 @@
   },
   "devDependencies": {
     "babel-jest": "20.0.0",
-    "babel-plugin-module-resolver": "^3.0.0",
     "babel-preset-react-native": "1.9.1",
     "fs-extra": "^3.0.1"
   },
