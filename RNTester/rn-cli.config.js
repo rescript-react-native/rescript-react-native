@@ -7,9 +7,6 @@ const config = {
       __dirname,
     ]
   },
-  getTransformModulePath() {
-    return path.resolve(__dirname, 'transformer.js')
-  },
 }
 
 module.exports = config
