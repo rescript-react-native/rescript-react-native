@@ -43,7 +43,7 @@
 
 ## APIs
 - [ ] AccessibilityInfo
-- [ ] ActionSheetIOS
+- [x] ActionSheetIOS
 - [ ] AdSupportIOS
 - [x] Alert
 - [x] AlertIOS
@@ -53,7 +53,7 @@
 - [x] AsyncStorage
 - [x] BackHandler
 - [x] CameraRoll
-- [ ] Clipboard
+- [x] Clipboard
 - [x] DatePickerAndroid
 - [x] Dimensions
 - [ ] Easing
