@@ -1,3 +1,5 @@
+type cursor;
+
 type node = {
   .
   "_type": string,
@@ -27,9 +29,9 @@ type result = {
   "edges": array({. "node": node}),
   "page_info": {
     .
-    "end_cursor": bool,
+    "end_cursor": cursor,
     "has_next_page": bool,
-    "start_cursor": bool
+    "start_cursor": cursor
   }
 };
 
@@ -57,7 +59,7 @@ let saveToCameraRoll:
 let getPhotos:
   (
     ~first: int,
-    ~after: string=?,
+    ~after: cursor=?,
     ~groupTypes: groupType=?,
     ~groupName: string=?,
     ~assetType: assetType=?,

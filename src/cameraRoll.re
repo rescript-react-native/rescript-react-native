@@ -1,5 +1,7 @@
 type config;
 
+type cursor;
+
 type node = {
   .
   "_type": string,
@@ -30,8 +32,8 @@ type result = {
   "page_info": {
     .
     "has_next_page": bool,
-    "start_cursor": bool,
-    "end_cursor": bool
+    "start_cursor": cursor,
+    "end_cursor": cursor
   }
 };
 
@@ -81,7 +83,7 @@ let mapAssetType = (assetType: assetType) =>
 external makeConfig :
   (
     ~first: int,
-    ~after: string=?,
+    ~after: cursor=?,
     ~groupTypes: string,
     ~groupName: string=?,
     ~assetType: string,
