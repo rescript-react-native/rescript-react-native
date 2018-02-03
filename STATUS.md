@@ -43,7 +43,7 @@
 
 ## APIs
 - [ ] AccessibilityInfo
-- [ ] ActionSheetIOS
+- [x] ActionSheetIOS
 - [ ] AdSupportIOS
 - [x] Alert
 - [x] AlertIOS
