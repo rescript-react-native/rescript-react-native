@@ -31,9 +31,12 @@ module WebView = MakeExample(WebViewExample);
 
 module ImageBackground = MakeExample(ImageBackgroundExample);
 
+module NetInfo = MakeExample(NetInfoExample);
+
 let components: array(item) = [|
   Button.item("ButtonExample"),
   View.item("ViewExample"),
   WebView.item("WebViewExample"),
-  ImageBackground.item("ImageBackground")
+  ImageBackground.item("ImageBackground"),
+  NetInfo.item("NetInfo")
 |];
