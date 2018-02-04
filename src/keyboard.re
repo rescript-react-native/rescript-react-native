@@ -12,7 +12,7 @@ type event('a) =
     }
   } as 'a;
 
-type listener('a) = event('a) => uni;
+type listener('a) = event('a) => unit;
 
 type keyboardEvent =
   | KeyboardWillShow
