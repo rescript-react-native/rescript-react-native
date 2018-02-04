@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "build": "bsb -make-world",
-    "clean-build": "bsb -clean-world -make-world",
+    "build": "node ../node_modules/.bin/bsb -make-world",
+    "clean-build": "node ../node_modules/.bin/bsb -clean-world -make-world",
     "packager:start": "node node_modules/react-native/local-cli/cli.js start",
-    "watch": "bsb -make-world -w",
+    "watch": "node ../node_modules/.bin/bsb -make-world -w",
     "start": "npm run build && npm run packager:start",
     "test": "jest"
   },
