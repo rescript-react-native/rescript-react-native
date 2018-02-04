@@ -11,3 +11,4 @@ script:
 cache:
   directories:
     - node_modules
+    - $TEST_DIR/node_modules
