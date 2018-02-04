@@ -9,4 +9,5 @@ script:
   - cd $TEST_DIR && yarn && yarn run clean-build
 
 cache:
-  yarn: true
+  directories:
+    - node_modules
