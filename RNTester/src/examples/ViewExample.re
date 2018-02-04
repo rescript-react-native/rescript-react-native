@@ -31,7 +31,7 @@ module ViewBorderStyleExample = {
     initialState: () => {showBorder: false},
     reducer: (action, _state) =>
       switch action {
-      | UpdateBorderState(showBorder) => Update({showBorder: showBorder})
+      | UpdateBorderStat(showBorder) => Update({showBorder: showBorder})
       },
     render: ({state, send}) =>
       Style.(
