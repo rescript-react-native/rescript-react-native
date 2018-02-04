@@ -2,9 +2,13 @@ language: node_js
 node_js:
   - "7"
 
+env:
+  - TEST_DIR=RNTester
+  - TEST_DIR=.
+
 script:
-  - npm run clean-build
+  - cd $TEST_DIR && npm install && npm run clean-build
 
 cache:
   directories:
-      - node_modules
+      - $TEST_DIR/node_modules
