@@ -56,7 +56,7 @@
 - [x] Clipboard
 - [x] DatePickerAndroid
 - [x] Dimensions
-- [ ] Easing
+- [x] Easing
 - [ ] Geolocation
 - [ ] ImageEditor
 - [ ] ImagePickerIOS
