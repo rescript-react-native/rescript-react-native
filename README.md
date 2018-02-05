@@ -98,18 +98,18 @@ open BsReactNative;
     Style.style([
       Style.flexDirection(Column),
       Style.backgroundColor("#6698FF"),
-      Style.marginTop(Pt(5))
+      Style.marginTop(Pt(5.))
     ])
   )
 />;
 
 /* inline styles with a local open */
-<View style=Style.(style([flexDirection(Column), backgroundColor("#6698FF"), marginTop(Pt(5))])) />;
+<View style=Style.(style([flexDirection(Column), backgroundColor("#6698FF"), marginTop(Pt(5.))])) />;
 
 /* StyleSheets with a local open */
 let styles =
   StyleSheet.create(
-    Style.({"wrapper": style([flexDirection(Column), backgroundColor("#6698FF"), marginTop(Pt(5))])})
+    Style.({"wrapper": style([flexDirection(Column), backgroundColor("#6698FF"), marginTop(Pt(5.))])})
   );
 
 <View style=styles##wrapper />;
