@@ -68,7 +68,7 @@
 - [x] NativeEventEmitter
 - [ ] NativeMethodsMixin
 - [x] NativeModules
-- [ ] NetInfo
+- [x] NetInfo
 - [x] PanResponder
 - [ ] PermissionsAndroid
 - [x] PixelRatio
