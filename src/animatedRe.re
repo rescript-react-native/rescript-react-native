@@ -14,6 +14,31 @@ module CompositeAnimation = {
   [@bs.send] external reset : t => unit = "";
 };
 
+module Easing = {
+  type t = float => float;
+  [@bs.module "react-native"] [@bs.scope "Easing"] external bounce : t = "";
+  [@bs.module "react-native"] [@bs.scope "Easing"] external circle : t = "";
+  [@bs.module "react-native"] [@bs.scope "Easing"] external cubic : t = "";
+  [@bs.module "react-native"] [@bs.scope "Easing"] external ease : t = "";
+  [@bs.module "react-native"] [@bs.scope "Easing"] external exp : t = "";
+  [@bs.module "react-native"] [@bs.scope "Easing"] external linear : t = "";
+  [@bs.module "react-native"] [@bs.scope "Easing"] external poly : t = "";
+  [@bs.module "react-native"] [@bs.scope "Easing"] external quad : t = "";
+  [@bs.module "react-native"] [@bs.scope "Easing"] external sin : t = "";
+  [@bs.module "react-native"] [@bs.scope "Easing"] external step0 : t = "";
+  [@bs.module "react-native"] [@bs.scope "Easing"] external step1 : t = "";
+  [@bs.module "react-native"] [@bs.scope "Easing"]
+  external back : float => t = "";
+  [@bs.module "react-native"] [@bs.scope "Easing"]
+  external elastic : float => t = "";
+  [@bs.module "react-native"] [@bs.scope "Easing"] external in_ : t => t = "";
+  [@bs.module "react-native"] [@bs.scope "Easing"]
+  external inOut : t => t = "";
+  [@bs.module "react-native"] [@bs.scope "Easing"] external out : t => t = "";
+  [@bs.module "react-native"] [@bs.scope "Easing"]
+  external bezier : (float, float, float, float) => t = "";
+};
+
 module Animations = {
   module Decay = (Val: Value) => {
     type config;
@@ -128,7 +153,7 @@ module Animations = {
     external makeConfig :
       (
         ~toValue: toValue,
-        ~easing: float => float=?,
+        ~easing: Easing.t=?,
         ~duration: float=?,
         ~delay: float=?,
         ~isInteraction: Js.boolean=?,
@@ -207,7 +232,7 @@ module Interpolation = {
     (
       ~inputRange: array(float),
       ~outputRange: outputRange,
-      ~easing: float => float=?,
+      ~easing: Easing.t=?,
       ~extrapolate: string=?,
       ~extrapolateLeft: string=?,
       ~extrapolateRight: string=?

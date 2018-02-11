@@ -11,6 +11,27 @@ module CompositeAnimation: {
   let reset: t => unit;
 };
 
+module Easing: {
+  type t = float => float;
+  let bounce: t;
+  let circle: t;
+  let cubic: t;
+  let ease: t;
+  let exp: t;
+  let linear: t;
+  let poly: t;
+  let quad: t;
+  let sin: t;
+  let step0: t;
+  let step1: t;
+  let back: float => t;
+  let elastic: float => t;
+  let in_: t => t;
+  let inOut: t => t;
+  let out: t => t;
+  let bezier: (float, float, float, float) => t;
+};
+
 module Interpolation: {
   type t;
   type extrapolate =
@@ -22,7 +43,7 @@ module Interpolation: {
       ~value: t,
       ~inputRange: list(float),
       ~outputRange: [< | `float(list(float)) | `string(list(string))],
-      ~easing: float => float=?,
+      ~easing: Easing.t=?,
       ~extrapolate: extrapolate=?,
       ~extrapolateLeft: extrapolate=?,
       ~extrapolateRight: extrapolate=?,
@@ -50,7 +71,7 @@ module Value: {
       t,
       ~inputRange: list(float),
       ~outputRange: [< | `float(list(float)) | `string(list(string))],
-      ~easing: float => float=?,
+      ~easing: Easing.t=?,
       ~extrapolate: Interpolation.extrapolate=?,
       ~extrapolateLeft: Interpolation.extrapolate=?,
       ~extrapolateRight: Interpolation.extrapolate=?,
@@ -72,7 +93,7 @@ module Value: {
       (
         ~value: value,
         ~toValue: [ | `raw(float) | `animated(value)],
-        ~easing: float => float=?,
+        ~easing: Easing.t=?,
         ~duration: float=?,
         ~delay: float=?,
         ~isInteraction: Js.boolean=?,
@@ -152,7 +173,7 @@ module ValueXY: {
       (
         ~value: value,
         ~toValue: [ | `raw(jsValue) | `animated(value)],
-        ~easing: float => float=?,
+        ~easing: Easing.t=?,
         ~duration: float=?,
         ~delay: float=?,
         ~isInteraction: Js.boolean=?,
