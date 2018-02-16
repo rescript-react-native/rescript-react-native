@@ -171,6 +171,14 @@ let make:
     ~keyboardShouldPersistTaps: keyboardShouldPersistTaps=?,
     ~showsHorizontalScrollIndicator: bool=?,
     ~showsVerticalScrollIndicator: bool=?,
+    ~getItemLayout: (option(array('item)), int) =>
+                    {
+                      .
+                      "length": int,
+                      "offset": int,
+                      "index": int,
+                    }
+                      =?,
     array(ReasonReact.reactElement)
   ) =>
   ReasonReact.component(
@@ -201,6 +209,7 @@ let make:
     ~keyboardShouldPersistTaps=?,
     ~showsHorizontalScrollIndicator=?,
     ~showsVerticalScrollIndicator=?,
+    ~getItemLayout=?,
     _children,
   ) =>
     ReasonReact.wrapJsForReason(
@@ -248,6 +257,13 @@ let make:
             "showsVerticalScrollIndicator":
               from_opt(
                 UtilsRN.optBoolToOptJsBoolean(showsVerticalScrollIndicator),
+              ),
+            "getItemLayout":
+              from_opt(
+                UtilsRN.option_map(
+                  (f, data, index) => f(Js.Undefined.to_opt(data), index),
+                  getItemLayout,
+                ),
               ),
           }
         ),
