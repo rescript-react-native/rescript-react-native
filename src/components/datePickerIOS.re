@@ -1,6 +1,7 @@
-[@bs.module "react-native"] external view : ReasonReact.reactClass = "DatePickerIOS";
+[@bs.module "react-native"]
+external view : ReasonReact.reactClass = "DatePickerIOS";
 
-let encodeMode = (prop) =>
+let encodeMode = prop =>
   switch prop {
   | `date => "date"
   | `time => "time"
@@ -43,13 +44,13 @@ let make =
       Props.extendView(
         Js.Undefined.(
           {
-            "date": from_opt(date),
-            "onDateChange": from_opt(onDateChange),
-            "maximumDate": from_opt(maximumDate),
-            "minimumDate": from_opt(minimumDate),
-            "mode": from_opt(UtilsRN.option_map(encodeMode, mode)),
-            "minuteInterval": from_opt(minuteInterval),
-            "timeZoneOffsetInMinutes": from_opt(timeZoneOffsetInMinutes)
+            "date": fromOption(date),
+            "onDateChange": fromOption(onDateChange),
+            "maximumDate": fromOption(maximumDate),
+            "minimumDate": fromOption(minimumDate),
+            "mode": fromOption(UtilsRN.option_map(encodeMode, mode)),
+            "minuteInterval": fromOption(minuteInterval),
+            "timeZoneOffsetInMinutes": fromOption(timeZoneOffsetInMinutes)
           }
         ),
         ~accessibilityLabel?,

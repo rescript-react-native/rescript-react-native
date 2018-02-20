@@ -1,6 +1,7 @@
-[@bs.module "react-native"] external view : ReasonReact.reactClass = "ActivityIndicator";
+[@bs.module "react-native"]
+external view : ReasonReact.reactClass = "ActivityIndicator";
 
-let encodeSize = (size) =>
+let encodeSize = size =>
   switch size {
   | `small => Encode.string("small")
   | `large => Encode.string("large")
@@ -40,10 +41,11 @@ let make =
       Props.extendView(
         Js.Undefined.(
           {
-            "animating": from_opt(UtilsRN.optBoolToOptJsBoolean(animating)),
-            "color": from_opt(color),
-            "size": from_opt(UtilsRN.option_map(encodeSize, size)),
-            "hidesWhenStopped": from_opt(UtilsRN.optBoolToOptJsBoolean(hidesWhenStopped))
+            "animating": fromOption(UtilsRN.optBoolToOptJsBoolean(animating)),
+            "color": fromOption(color),
+            "size": fromOption(UtilsRN.option_map(encodeSize, size)),
+            "hidesWhenStopped":
+              fromOption(UtilsRN.optBoolToOptJsBoolean(hidesWhenStopped))
           }
         ),
         ~accessibilityLabel?,

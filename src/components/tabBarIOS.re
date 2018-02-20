@@ -1,7 +1,6 @@
 module Item = {
   [@bs.scope "TabBarIOS"] [@bs.module "react-native"]
-  external tabBarItemIOS : ReasonReact.reactClass =
-    "Item";
+  external tabBarItemIOS : ReasonReact.reactClass = "Item";
   let make =
       (
         ~title: option(string)=?,
@@ -40,16 +39,18 @@ module Item = {
         Props.extendView(
           Js.Undefined.(
             {
-              "badgeColor": from_opt(badgeColor),
-              "title": from_opt(title),
-              "badge": from_opt(badge),
-              "icon": from_opt(icon),
-              "onPress": from_opt(onPress),
-              "renderAsOriginal": from_opt(UtilsRN.optBoolToOptJsBoolean(renderAsOriginal)),
-              "selected": from_opt(UtilsRN.optBoolToOptJsBoolean(selected)),
-              "selectedIcon": from_opt(selectedIcon),
-              "style": from_opt(style),
-              "isTVSelectable": from_opt(UtilsRN.optBoolToOptJsBoolean(isTVSelectable))
+              "badgeColor": fromOption(badgeColor),
+              "title": fromOption(title),
+              "badge": fromOption(badge),
+              "icon": fromOption(icon),
+              "onPress": fromOption(onPress),
+              "renderAsOriginal":
+                fromOption(UtilsRN.optBoolToOptJsBoolean(renderAsOriginal)),
+              "selected": fromOption(UtilsRN.optBoolToOptJsBoolean(selected)),
+              "selectedIcon": fromOption(selectedIcon),
+              "style": fromOption(style),
+              "isTVSelectable":
+                fromOption(UtilsRN.optBoolToOptJsBoolean(isTVSelectable))
             }
           ),
           ~accessibilityLabel?,
@@ -76,7 +77,8 @@ module Item = {
     );
 };
 
-[@bs.module "react-native"] external tabBarIOS : ReasonReact.reactClass = "TabBarIOS";
+[@bs.module "react-native"]
+external tabBarIOS : ReasonReact.reactClass = "TabBarIOS";
 
 let make =
     (
@@ -113,11 +115,11 @@ let make =
       Props.extendView(
         Js.Undefined.(
           {
-            "barTintColor": from_opt(barTintColor),
+            "barTintColor": fromOption(barTintColor),
             "itemPositioning":
-              from_opt(
+              fromOption(
                 UtilsRN.option_map(
-                  (x) =>
+                  x =>
                     switch x {
                     | `fill => "fill"
                     | `center => "center"
@@ -126,10 +128,11 @@ let make =
                   itemPositioning
                 )
               ),
-            "tintColor": from_opt(tintColor),
-            "translucent": from_opt(UtilsRN.optBoolToOptJsBoolean(translucent)),
-            "unselectedItemTintColor": from_opt(unselectedItemTintColor),
-            "unselectedTintColor": from_opt(unselectedTintColor)
+            "tintColor": fromOption(tintColor),
+            "translucent":
+              fromOption(UtilsRN.optBoolToOptJsBoolean(translucent)),
+            "unselectedItemTintColor": fromOption(unselectedItemTintColor),
+            "unselectedTintColor": fromOption(unselectedTintColor)
           }
         ),
         ~accessibilityLabel?,

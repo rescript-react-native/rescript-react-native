@@ -1,4 +1,5 @@
-[@bs.module "react-native"] external view : ReasonReact.reactClass = "TouchableWithoutFeedback";
+[@bs.module "react-native"]
+external view : ReasonReact.reactClass = "TouchableWithoutFeedback";
 
 let make =
     (
@@ -24,24 +25,24 @@ let make =
     ~props=
       Js.Undefined.(
         {
-          "accessible": from_opt(UtilsRN.optBoolToOptJsBoolean(accessible)),
-          "accessibilityLabel": from_opt(accessibilityLabel),
-          "delayLongPress": from_opt(delayLongPress),
-          "delayPressIn": from_opt(delayPressIn),
-          "delayPressOut": from_opt(delayPressOut),
-          "disabled": from_opt(UtilsRN.optBoolToOptJsBoolean(disabled)),
-          "hitSlop": from_opt(hitSlop),
-          "onLayout": from_opt(onLayout),
-          "onLongPress": from_opt(onLongPress),
-          "onPress": from_opt(onPress),
-          "onPressIn": from_opt(onPressIn),
-          "onPressOut": from_opt(onPressOut),
-          "pressRetentionOffset": from_opt(pressRetentionOffset),
-          "style": from_opt(style),
+          "accessible": fromOption(UtilsRN.optBoolToOptJsBoolean(accessible)),
+          "accessibilityLabel": fromOption(accessibilityLabel),
+          "delayLongPress": fromOption(delayLongPress),
+          "delayPressIn": fromOption(delayPressIn),
+          "delayPressOut": fromOption(delayPressOut),
+          "disabled": fromOption(UtilsRN.optBoolToOptJsBoolean(disabled)),
+          "hitSlop": fromOption(hitSlop),
+          "onLayout": fromOption(onLayout),
+          "onLongPress": fromOption(onLongPress),
+          "onPress": fromOption(onPress),
+          "onPressIn": fromOption(onPressIn),
+          "onPressOut": fromOption(onPressOut),
+          "pressRetentionOffset": fromOption(pressRetentionOffset),
+          "style": fromOption(style),
           "accessibilityComponentType":
-            from_opt(
+            fromOption(
               UtilsRN.option_map(
-                (x) =>
+                x =>
                   switch x {
                   | `none => "none"
                   | `button => "button"
@@ -52,9 +53,9 @@ let make =
               )
             ),
           "accessibilityTraits":
-            from_opt(
+            fromOption(
               UtilsRN.option_map(
-                (traits) => {
+                traits => {
                   let to_string =
                     fun
                     | `none => "none"
@@ -74,7 +75,7 @@ let make =
                     | `adjustable => "adjustable"
                     | `allowsDirectInteraction => "allowsDirectInteraction"
                     | `pageTurn => "pageTurn";
-                  traits |> List.map(to_string) |> Array.of_list
+                  traits |> List.map(to_string) |> Array.of_list;
                 },
                 accessibilityTraits
               )

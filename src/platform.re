@@ -47,7 +47,7 @@ external _version : Js.undefined(int) = "Version";
 exception UnknownVersion;
 
 let version = () =>
-  switch (Js.Undefined.to_opt(_version)) {
+  switch (Js.Undefined.toOption(_version)) {
   | Some(v) => v
   | None => raise(UnknownVersion)
   };
