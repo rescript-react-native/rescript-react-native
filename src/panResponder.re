@@ -13,7 +13,8 @@ type gestureState = {
   numberActiveTouches: int
 };
 
-[@bs.scope "PanResponder"] [@bs.module "react-native"] external _create : 'a => t = "create";
+[@bs.scope "PanResponder"] [@bs.module "react-native"]
+external _create : 'a => t = "create";
 
 type jsGestureState = {
   .
@@ -29,7 +30,8 @@ type jsGestureState = {
   "numberActiveTouches": int
 };
 
-type callback('a) = ({. "nativeEvent": RNEvent.NativeEvent.t}, jsGestureState) => 'a;
+type callback('a) =
+  ({. "nativeEvent": RNEvent.NativeEvent.t}, jsGestureState) => 'a;
 
 let callback = (x: (RNEvent.NativeEvent.t, gestureState) => 'a) : callback('a) =>
   (event, state) =>
@@ -51,7 +53,7 @@ let callback = (x: (RNEvent.NativeEvent.t, gestureState) => 'a) : callback('a) =
 
 external shamelesslyWrapCallback : 'a => callback(unit) = "%identity";
 
-let animatedEvent = (l) => {
+let animatedEvent = l => {
   let config =
     List.fold_left(
       (x, y) =>
@@ -59,14 +61,20 @@ let animatedEvent = (l) => {
         | `X((value: AnimatedRe.Value.t)) => Js.Obj.assign(x, {"dx": value})
         | `Y((value: AnimatedRe.Value.t)) => Js.Obj.assign(x, {"dy": value})
         | `XY(value) =>
-          Js.Obj.assign(x, AnimatedRe.ValueXY.({"dx": getX(value), "dy": getY(value)}))
+          Js.Obj.assign(
+            x,
+            AnimatedRe.ValueXY.({"dx": getX(value), "dy": getY(value)})
+          )
         },
       Js.Obj.empty(),
       l
     );
   shamelesslyWrapCallback(
-    AnimatedRe.event([|Js.null, Js.Null.return(config)|], {"useNativeDriver": Js.false_})
-  )
+    AnimatedRe.event(
+      [|Js.null, Js.Null.return(config)|],
+      {"useNativeDriver": Js.false_}
+    )
+  );
 };
 
 let create =
@@ -87,16 +95,19 @@ let create =
       ()
     ) =>
   _create({
-    "onMoveShouldSetPanResponder": Js.Undefined.from_opt(onMoveShouldSetPanResponder),
-    "onMoveShouldSetPanResponderCapture": Js.Undefined.from_opt(onMoveShouldSetPanResponderCapture),
-    "onStartShouldSetPanResponder": Js.Undefined.from_opt(onStartShouldSetPanResponder),
+    "onMoveShouldSetPanResponder":
+      Js.Undefined.fromOption(onMoveShouldSetPanResponder),
+    "onMoveShouldSetPanResponderCapture":
+      Js.Undefined.fromOption(onMoveShouldSetPanResponderCapture),
+    "onStartShouldSetPanResponder":
+      Js.Undefined.fromOption(onStartShouldSetPanResponder),
     "onStartShouldSetPanResponderCapture":
-      Js.Undefined.from_opt(onStartShouldSetPanResponderCapture),
-    "onPanResponderReject": Js.Undefined.from_opt(onPanResponderReject),
-    "onPanResponderGrant": Js.Undefined.from_opt(onPanResponderGrant),
-    "onPanResponderStart": Js.Undefined.from_opt(onPanResponderStart),
-    "onPanResponderEnd": Js.Undefined.from_opt(onPanResponderEnd),
-    "onPanResponderRelease": Js.Undefined.from_opt(onPanResponderRelease),
+      Js.Undefined.fromOption(onStartShouldSetPanResponderCapture),
+    "onPanResponderReject": Js.Undefined.fromOption(onPanResponderReject),
+    "onPanResponderGrant": Js.Undefined.fromOption(onPanResponderGrant),
+    "onPanResponderStart": Js.Undefined.fromOption(onPanResponderStart),
+    "onPanResponderEnd": Js.Undefined.fromOption(onPanResponderEnd),
+    "onPanResponderRelease": Js.Undefined.fromOption(onPanResponderRelease),
     "onPanResponderMove":
       switch onPanResponderMove {
       | None => Js.undefined
@@ -106,27 +117,33 @@ let create =
         | `callback((x: callback(unit))) => Js.Undefined.return(x)
         }
       },
-    "onPanResponderTerminate": Js.Undefined.from_opt(onPanResponderTerminate),
-    "onPanResponderTerminationRequest": Js.Undefined.from_opt(onPanResponderTerminationRequest),
-    "onShouldBlockNativeResponder": Js.Undefined.from_opt(onShouldBlockNativeResponder)
+    "onPanResponderTerminate": Js.Undefined.fromOption(onPanResponderTerminate),
+    "onPanResponderTerminationRequest":
+      Js.Undefined.fromOption(onPanResponderTerminationRequest),
+    "onShouldBlockNativeResponder":
+      Js.Undefined.fromOption(onShouldBlockNativeResponder)
   });
 
 [@bs.get] external _panHandlers : t => Js.t('a) = "panHandlers";
 
-let panHandlers = (t) : Props.touchResponderHandlers => {
+let panHandlers = t : Props.touchResponderHandlers => {
   let jsHandlers = _panHandlers(t);
   {
-    onMoveShouldSetResponder: Js.Undefined.to_opt(jsHandlers##onMoveShouldSetResponder),
+    onMoveShouldSetResponder:
+      Js.Undefined.toOption(jsHandlers##onMoveShouldSetResponder),
     onMoveShouldSetResponderCapture:
-      Js.Undefined.to_opt(jsHandlers##onMoveShouldSetResponderCapture),
-    onResponderGrant: Js.Undefined.to_opt(jsHandlers##onResponderGrant),
-    onResponderMove: Js.Undefined.to_opt(jsHandlers##onResponderMove),
-    onResponderReject: Js.Undefined.to_opt(jsHandlers##onResponderReject),
-    onResponderRelease: Js.Undefined.to_opt(jsHandlers##onResponderRelease),
-    onResponderTerminate: Js.Undefined.to_opt(jsHandlers##onResponderTerminate),
-    onResponderTerminationRequest: Js.Undefined.to_opt(jsHandlers##onResponderTerminationRequest),
-    onStartShouldSetResponder: Js.Undefined.to_opt(jsHandlers##onStartShouldSetResponder),
+      Js.Undefined.toOption(jsHandlers##onMoveShouldSetResponderCapture),
+    onResponderGrant: Js.Undefined.toOption(jsHandlers##onResponderGrant),
+    onResponderMove: Js.Undefined.toOption(jsHandlers##onResponderMove),
+    onResponderReject: Js.Undefined.toOption(jsHandlers##onResponderReject),
+    onResponderRelease: Js.Undefined.toOption(jsHandlers##onResponderRelease),
+    onResponderTerminate:
+      Js.Undefined.toOption(jsHandlers##onResponderTerminate),
+    onResponderTerminationRequest:
+      Js.Undefined.toOption(jsHandlers##onResponderTerminationRequest),
+    onStartShouldSetResponder:
+      Js.Undefined.toOption(jsHandlers##onStartShouldSetResponder),
     onStartShouldSetResponderCapture:
-      Js.Undefined.to_opt(jsHandlers##onStartShouldSetResponderCapture)
-  }
+      Js.Undefined.toOption(jsHandlers##onStartShouldSetResponderCapture)
+  };
 };

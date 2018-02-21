@@ -4,7 +4,7 @@ type rawImageSourceJS;
 
 external rawImageSourceJS : 'a => rawImageSourceJS = "%identity";
 
-let convertImageSource = (src) =>
+let convertImageSource = src =>
   switch src {
   | Image.Multiple(x) => rawImageSourceJS(Array.of_list(x))
   | Image.URI(x) => rawImageSourceJS(x)
@@ -18,8 +18,8 @@ let make =
       ~maximumValue: option(float)=?,
       ~minimumTrackTintColor: option(string)=?,
       ~minimumValue: option(float)=?,
-      ~onSlidingComplete: option((float => unit))=?,
-      ~onValueChange: option((float => unit))=?,
+      ~onSlidingComplete: option(float => unit)=?,
+      ~onValueChange: option(float => unit)=?,
       ~step: option(float)=?,
       ~value: option(float)=?,
       ~thumbTintColor: option(string)=?,
@@ -54,22 +54,28 @@ let make =
       Props.extendView(
         Js.Undefined.(
           {
-            "disabled": from_opt(UtilsRN.optBoolToOptJsBoolean(disabled)),
-            "maximumTrackTintColor": from_opt(maximumTrackTintColor),
-            "maximumValue": from_opt(maximumValue),
-            "minimumTrackTintColor": from_opt(minimumTrackTintColor),
-            "minimumValue": from_opt(minimumValue),
-            "onSlidingComplete": from_opt(onSlidingComplete),
-            "onValueChange": from_opt(onValueChange),
-            "step": from_opt(step),
-            "value": from_opt(value),
-            "thumbTintColor": from_opt(thumbTintColor),
+            "disabled": fromOption(UtilsRN.optBoolToOptJsBoolean(disabled)),
+            "maximumTrackTintColor": fromOption(maximumTrackTintColor),
+            "maximumValue": fromOption(maximumValue),
+            "minimumTrackTintColor": fromOption(minimumTrackTintColor),
+            "minimumValue": fromOption(minimumValue),
+            "onSlidingComplete": fromOption(onSlidingComplete),
+            "onValueChange": fromOption(onValueChange),
+            "step": fromOption(step),
+            "value": fromOption(value),
+            "thumbTintColor": fromOption(thumbTintColor),
             "maximumTrackImage":
-              from_opt(UtilsRN.option_map(convertImageSource, maximumTrackImage)),
+              fromOption(
+                UtilsRN.option_map(convertImageSource, maximumTrackImage)
+              ),
             "minimumTrackImage":
-              from_opt(UtilsRN.option_map(convertImageSource, minimumTrackImage)),
-            "thumbImage": from_opt(UtilsRN.option_map(convertImageSource, thumbImage)),
-            "trackImage": from_opt(UtilsRN.option_map(convertImageSource, trackImage))
+              fromOption(
+                UtilsRN.option_map(convertImageSource, minimumTrackImage)
+              ),
+            "thumbImage":
+              fromOption(UtilsRN.option_map(convertImageSource, thumbImage)),
+            "trackImage":
+              fromOption(UtilsRN.option_map(convertImageSource, trackImage))
           }
         ),
         ~accessibilityLabel?,

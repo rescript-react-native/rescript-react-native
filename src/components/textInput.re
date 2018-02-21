@@ -1,4 +1,5 @@
-[@bs.module "react-native"] external view : ReasonReact.reactClass = "TextInput";
+[@bs.module "react-native"]
+external view : ReasonReact.reactClass = "TextInput";
 
 [@bs.send] external _isFocused : ReasonReact.reactRef => Js.boolean = "";
 
@@ -78,9 +79,9 @@ let make =
         Js.Undefined.(
           {
             "autoCapitalize":
-              from_opt(
+              fromOption(
                 UtilsRN.option_map(
-                  (x) =>
+                  x =>
                     switch x {
                     | `none => "none"
                     | `sentences => "sentences"
@@ -90,16 +91,19 @@ let make =
                   autoCapitalize
                 )
               ),
-            "autoCorrect": from_opt(UtilsRN.optBoolToOptJsBoolean(autoCorrect)),
-            "autoFocus": from_opt(UtilsRN.optBoolToOptJsBoolean(autoFocus)),
-            "blurOnSubmit": from_opt(UtilsRN.optBoolToOptJsBoolean(blurOnSubmit)),
-            "caretHidden": from_opt(UtilsRN.optBoolToOptJsBoolean(caretHidden)),
-            "defaultValue": from_opt(defaultValue),
-            "editable": from_opt(UtilsRN.optBoolToOptJsBoolean(editable)),
+            "autoCorrect":
+              fromOption(UtilsRN.optBoolToOptJsBoolean(autoCorrect)),
+            "autoFocus": fromOption(UtilsRN.optBoolToOptJsBoolean(autoFocus)),
+            "blurOnSubmit":
+              fromOption(UtilsRN.optBoolToOptJsBoolean(blurOnSubmit)),
+            "caretHidden":
+              fromOption(UtilsRN.optBoolToOptJsBoolean(caretHidden)),
+            "defaultValue": fromOption(defaultValue),
+            "editable": fromOption(UtilsRN.optBoolToOptJsBoolean(editable)),
             "keyboardType":
-              from_opt(
+              fromOption(
                 UtilsRN.option_map(
-                  (x) =>
+                  x =>
                     switch x {
                     | `default => "default"
                     | `emailAddress => "email-address"
@@ -117,23 +121,23 @@ let make =
                   keyboardType
                 )
               ),
-            "maxLength": from_opt(maxLength),
-            "multiline": from_opt(UtilsRN.optBoolToOptJsBoolean(multiline)),
-            "onBlur": from_opt(onBlur),
-            "onChange": from_opt(onChange),
-            "onChangeText": from_opt(onChangeText),
-            "onContentSizeChange": from_opt(onContentSizeChange),
-            "onEndEditing": from_opt(onEndEditing),
-            "onFocus": from_opt(onFocus),
-            "onScroll": from_opt(onScroll),
-            "onSelectionChange": from_opt(onSelectionChange),
-            "onSubmitEditing": from_opt(onSubmitEditing),
-            "placeholder": from_opt(placeholder),
-            "placeholderTextColor": from_opt(placeholderTextColor),
+            "maxLength": fromOption(maxLength),
+            "multiline": fromOption(UtilsRN.optBoolToOptJsBoolean(multiline)),
+            "onBlur": fromOption(onBlur),
+            "onChange": fromOption(onChange),
+            "onChangeText": fromOption(onChangeText),
+            "onContentSizeChange": fromOption(onContentSizeChange),
+            "onEndEditing": fromOption(onEndEditing),
+            "onFocus": fromOption(onFocus),
+            "onScroll": fromOption(onScroll),
+            "onSelectionChange": fromOption(onSelectionChange),
+            "onSubmitEditing": fromOption(onSubmitEditing),
+            "placeholder": fromOption(placeholder),
+            "placeholderTextColor": fromOption(placeholderTextColor),
             "returnKeyType":
-              from_opt(
+              fromOption(
                 UtilsRN.option_map(
-                  (x) =>
+                  x =>
                     switch x {
                     | `done_ => "done"
                     | `go => "go"
@@ -152,21 +156,24 @@ let make =
                   returnKeyType
                 )
               ),
-            "secureTextEntry": from_opt(UtilsRN.optBoolToOptJsBoolean(secureTextEntry)),
-            "selectTextOnFocus": from_opt(UtilsRN.optBoolToOptJsBoolean(selectTextOnFocus)),
-            "selection": from_opt(selection),
-            "selectionColor": from_opt(selectionColor),
-            "value": from_opt(value),
-            "disableFullscreenUI": from_opt(UtilsRN.optBoolToOptJsBoolean(disableFullscreenUI)),
+            "secureTextEntry":
+              fromOption(UtilsRN.optBoolToOptJsBoolean(secureTextEntry)),
+            "selectTextOnFocus":
+              fromOption(UtilsRN.optBoolToOptJsBoolean(selectTextOnFocus)),
+            "selection": fromOption(selection),
+            "selectionColor": fromOption(selectionColor),
+            "value": fromOption(value),
+            "disableFullscreenUI":
+              fromOption(UtilsRN.optBoolToOptJsBoolean(disableFullscreenUI)),
             /* TODO */
-            "inlineImageLeft": from_opt(inlineImageLeft),
-            "inlineImagePadding": from_opt(inlineImagePadding),
-            "numberOfLines": from_opt(numberOfLines),
-            "returnKeyLabel": from_opt(returnKeyLabel),
+            "inlineImageLeft": fromOption(inlineImageLeft),
+            "inlineImagePadding": fromOption(inlineImagePadding),
+            "numberOfLines": fromOption(numberOfLines),
+            "returnKeyLabel": fromOption(returnKeyLabel),
             "textBreakStrategy":
-              from_opt(
+              fromOption(
                 UtilsRN.option_map(
-                  (x) =>
+                  x =>
                     switch x {
                     | `simple => "simple"
                     | `highQuality => "highQuality"
@@ -175,11 +182,11 @@ let make =
                   textBreakStrategy
                 )
               ),
-            "underlineColorAndroid": from_opt(underlineColorAndroid),
+            "underlineColorAndroid": fromOption(underlineColorAndroid),
             "clearButtonMode":
-              from_opt(
+              fromOption(
                 UtilsRN.option_map(
-                  (x) =>
+                  x =>
                     switch x {
                     | `never => "never"
                     | `whileEditing => "whileEditing"
@@ -189,29 +196,31 @@ let make =
                   clearButtonMode
                 )
               ),
-            "clearTextOnFocus": from_opt(UtilsRN.optBoolToOptJsBoolean(clearTextOnFocus)),
+            "clearTextOnFocus":
+              fromOption(UtilsRN.optBoolToOptJsBoolean(clearTextOnFocus)),
             "dataDetectorTypes":
-              from_opt(
+              fromOption(
                 UtilsRN.option_map(
-                  Array.map(
-                    (x) =>
-                      switch x {
-                      | `phoneNumber => "phoneNumber"
-                      | `link => "link"
-                      | `calendarEvent => "calendarEvent"
-                      | `none => "none"
-                      | `all => "all"
-                      }
+                  Array.map(x =>
+                    switch x {
+                    | `phoneNumber => "phoneNumber"
+                    | `link => "link"
+                    | `calendarEvent => "calendarEvent"
+                    | `none => "none"
+                    | `all => "all"
+                    }
                   ),
                   dataDetectorTypes
                 )
               ),
             "enablesReturnKeyAutomatically":
-              from_opt(UtilsRN.optBoolToOptJsBoolean(enablesReturnKeyAutomatically)),
+              fromOption(
+                UtilsRN.optBoolToOptJsBoolean(enablesReturnKeyAutomatically)
+              ),
             "keyboardAppearance":
-              from_opt(
+              fromOption(
                 UtilsRN.option_map(
-                  (x) =>
+                  x =>
                     switch x {
                     | `default => "never"
                     | `light => "light"
@@ -220,9 +229,9 @@ let make =
                   keyboardAppearance
                 )
               ),
-            "onKeyPress": from_opt(onKeyPress),
-            "selectionState": from_opt(selectionState),
-            "spellCheck": from_opt(UtilsRN.optBoolToOptJsBoolean(spellCheck))
+            "onKeyPress": fromOption(onKeyPress),
+            "selectionState": fromOption(selectionState),
+            "spellCheck": fromOption(UtilsRN.optBoolToOptJsBoolean(spellCheck))
           }
         ),
         ~accessibilityLabel?,

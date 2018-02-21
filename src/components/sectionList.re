@@ -1,17 +1,22 @@
-[@bs.module "react-native"] external view : ReasonReact.reactClass = "SectionList";
+[@bs.module "react-native"]
+external view : ReasonReact.reactClass = "SectionList";
 
 type jsSection('item) = {
   .
   "data": array('item),
   "key": Js.Undefined.t(string),
-  "renderItem": Js.Undefined.t((jsRenderBag('item) => ReasonReact.reactElement))
+  "renderItem": Js.Undefined.t(jsRenderBag('item) => ReasonReact.reactElement)
 }
 and jsRenderBag('item) = {
   .
   "item": 'item,
   "index": int,
   "section": jsSection('item),
-  "separators": {. "highlight": unit => unit, "unhighlight": unit => unit}
+  "separators": {
+    .
+    "highlight": unit => unit,
+    "unhighlight": unit => unit
+  }
 };
 
 type jsSeparatorProps('item) = {
@@ -28,12 +33,16 @@ type renderBag('item) = {
   item: 'item,
   index: int,
   section: section('item),
-  separators: {. "highlight": unit => unit, "unhighlight": unit => unit}
+  separators: {
+    .
+    "highlight": unit => unit,
+    "unhighlight": unit => unit
+  }
 }
 and section('item) = {
   data: array('item),
   key: option(string),
-  renderItem: option((renderBag('item) => ReasonReact.reactElement))
+  renderItem: option(renderBag('item) => ReasonReact.reactElement)
 };
 
 type separatorProps('item) = {
@@ -47,16 +56,18 @@ type separatorProps('item) = {
 
 type renderItem('item) = jsRenderBag('item) => ReasonReact.reactElement;
 
-let jsSectionToSection = (jsSection) => {
+let jsSectionToSection = jsSection => {
   data: jsSection##data,
-  key: Js.Undefined.to_opt(jsSection##key),
+  key: Js.Undefined.toOption(jsSection##key),
   /*** We set renderItem to None to avoid an infinite conversion loop */
   renderItem: None
 };
 
 type sections('item) = array(jsSection('item));
 
-let renderItem = (reRenderItem: renderBag('item) => ReasonReact.reactElement) : renderItem('item) =>
+let renderItem =
+    (reRenderItem: renderBag('item) => ReasonReact.reactElement)
+    : renderItem('item) =>
   (jsRenderBag: jsRenderBag('item)) =>
     reRenderItem({
       item: jsRenderBag##item,
@@ -67,17 +78,21 @@ let renderItem = (reRenderItem: renderBag('item) => ReasonReact.reactElement) : 
 
 let section = (~data, ~key=?, ~renderItem=?, ()) => {data, key, renderItem};
 
-let sections = (reSections) : sections('item) =>
+let sections = reSections : sections('item) =>
   Array.map(
-    (reSection) => {
+    reSection => {
       "data": reSection.data,
-      "key": Js.Undefined.from_opt(reSection.key),
-      "renderItem": Js.Undefined.from_opt(UtilsRN.option_map(renderItem, reSection.renderItem))
+      "key": Js.Undefined.fromOption(reSection.key),
+      "renderItem":
+        Js.Undefined.fromOption(
+          UtilsRN.option_map(renderItem, reSection.renderItem)
+        )
     },
     reSections
   );
 
-type separatorComponent('item) = jsSeparatorProps('item) => ReasonReact.reactElement;
+type separatorComponent('item) =
+  jsSeparatorProps('item) => ReasonReact.reactElement;
 
 let separatorComponent =
     (reSeparatorComponent: separatorProps('item) => ReasonReact.reactElement)
@@ -85,14 +100,14 @@ let separatorComponent =
   (jsSeparatorProps: jsSeparatorProps('item)) =>
     reSeparatorComponent({
       highlighted: Js.to_bool(jsSeparatorProps##highlighted),
-      leadingItem: Js.Undefined.to_opt(jsSeparatorProps##leadingItem),
+      leadingItem: Js.Undefined.toOption(jsSeparatorProps##leadingItem),
       leadingSection:
-        Js.Undefined.to_opt(jsSeparatorProps##leadingSection)
+        Js.Undefined.toOption(jsSeparatorProps##leadingSection)
         |> UtilsRN.option_map(jsSectionToSection),
       section: jsSectionToSection(jsSeparatorProps##section),
-      trailingItem: Js.Undefined.to_opt(jsSeparatorProps##trailingItem),
+      trailingItem: Js.Undefined.toOption(jsSeparatorProps##trailingItem),
       trailingSection:
-        Js.Undefined.to_opt(jsSeparatorProps##trailingSection)
+        Js.Undefined.toOption(jsSeparatorProps##trailingSection)
         |> UtilsRN.option_map(jsSectionToSection)
     });
 
@@ -109,13 +124,16 @@ type jsRenderAccessory('item) = {. "section": jsSection('item)};
 
 type renderAccessory('item) = {section: section('item)};
 
-type renderAccessoryView('item) = jsRenderAccessory('item) => ReasonReact.reactElement;
+type renderAccessoryView('item) =
+  jsRenderAccessory('item) => ReasonReact.reactElement;
 
 let renderAccessoryView =
     (reRenderAccessory: renderAccessory('item) => ReasonReact.reactElement)
     : renderAccessoryView('item) =>
   (jsRenderAccessory: jsRenderAccessory('item)) =>
-    reRenderAccessory({section: jsSectionToSection(jsRenderAccessory##section)});
+    reRenderAccessory({
+      section: jsSectionToSection(jsRenderAccessory##section)
+    });
 
 let make:
   (
@@ -144,7 +162,11 @@ let make:
     ~stickySectionHeadersEnabled: bool=?,
     array(ReasonReact.reactElement)
   ) =>
-  ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit) =
+  ReasonReact.component(
+    ReasonReact.stateless,
+    ReasonReact.noRetainedProps,
+    unit
+  ) =
   (
     ~sections,
     ~renderItem,
@@ -174,22 +196,24 @@ let make:
             "sections": sections,
             "renderItem": renderItem,
             "keyExtractor": keyExtractor,
-            "ItemSeparatorComponent": from_opt(itemSeparatorComponent),
-            "ListEmptyComponent": from_opt(listEmptyComponent),
-            "ListFooterComponent": from_opt(listFooterComponent),
-            "ListHeaderComponent": from_opt(listHeaderComponent),
-            "SectionSeparatorComponent": from_opt(sectionSeparatorComponent),
-            "extraData": from_opt(extraData),
-            "initialNumToRender": from_opt(initialNumToRender),
-            "onEndReached": from_opt(onEndReached),
-            "onEndReachedThreshold": from_opt(onEndReachedThreshold),
-            "onRefresh": from_opt(onRefresh),
-            "onViewableItemsChanged": from_opt(onViewableItemsChanged),
-            "refreshing": from_opt(UtilsRN.optBoolToOptJsBoolean(refreshing)),
-            "renderSectionHeader": from_opt(renderSectionHeader),
-            "renderSectionFooter": from_opt(renderSectionFooter),
+            "ItemSeparatorComponent": fromOption(itemSeparatorComponent),
+            "ListEmptyComponent": fromOption(listEmptyComponent),
+            "ListFooterComponent": fromOption(listFooterComponent),
+            "ListHeaderComponent": fromOption(listHeaderComponent),
+            "SectionSeparatorComponent": fromOption(sectionSeparatorComponent),
+            "extraData": fromOption(extraData),
+            "initialNumToRender": fromOption(initialNumToRender),
+            "onEndReached": fromOption(onEndReached),
+            "onEndReachedThreshold": fromOption(onEndReachedThreshold),
+            "onRefresh": fromOption(onRefresh),
+            "onViewableItemsChanged": fromOption(onViewableItemsChanged),
+            "refreshing": fromOption(UtilsRN.optBoolToOptJsBoolean(refreshing)),
+            "renderSectionHeader": fromOption(renderSectionHeader),
+            "renderSectionFooter": fromOption(renderSectionFooter),
             "stickySectionHeadersEnabled":
-              from_opt(UtilsRN.optBoolToOptJsBoolean(stickySectionHeadersEnabled))
+              fromOption(
+                UtilsRN.optBoolToOptJsBoolean(stickySectionHeadersEnabled)
+              )
           }
         ),
       _children

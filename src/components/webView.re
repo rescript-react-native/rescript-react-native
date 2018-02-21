@@ -16,14 +16,22 @@ type source;
 
 [@bs.obj]
 external source :
-  (~uri: string=?, ~method: string=?, ~headers: Js.t('a)=?, ~body: string=?, unit) => source =
+  (
+    ~uri: string=?,
+    ~method: string=?,
+    ~headers: Js.t('a)=?,
+    ~body: string=?,
+    unit
+  ) =>
+  source =
   "";
 
 type contentInsets;
 
 [@bs.obj]
 external contentInsets :
-  (~top: int=?, ~left: int=?, ~bottom: int=?, ~right: int=?, unit) => contentInsets =
+  (~top: int=?, ~left: int=?, ~bottom: int=?, ~right: int=?, unit) =>
+  contentInsets =
   "";
 
 let make =
@@ -102,47 +110,49 @@ let make =
           ~accessibilityViewIsModal?,
           ~shouldRasterizeIOS?,
           {
-            "source": from_opt(source),
-            "style": from_opt(style),
-            "automaticallyAdjustContentInsets": from_opt(automaticallyAdjustContentInsets),
-            "contentInsets": from_opt(contentInsets),
-            "injectJavaScript": from_opt(injectJavaScript),
-            "injectedJavaScript": from_opt(injectedJavaScript),
-            "mediaPlaybackRequiresUserAction": from_opt(mediaPlaybackRequiresUserAction),
-            "onError": from_opt(onError),
-            "onLoad": from_opt(onLoad),
-            "onLoadEnd": from_opt(onLoadEnd),
-            "onLoadStart": from_opt(onLoadStart),
-            "onMessage": from_opt(onMessage),
-            "onNavigationStateChange": from_opt(onNavigationStateChange),
-            "renderError": from_opt(renderError),
-            "renderLoading": from_opt(renderLoading),
-            "scalesPageToFit": from_opt(scalesPageToFit),
-            "startInLoadingState": from_opt(startInLoadingState),
-            "domStorageEnabled": from_opt(domStorageEnabled),
-            "javaScriptEnabled": from_opt(javaScriptEnabled),
+            "source": fromOption(source),
+            "style": fromOption(style),
+            "automaticallyAdjustContentInsets":
+              fromOption(automaticallyAdjustContentInsets),
+            "contentInsets": fromOption(contentInsets),
+            "injectJavaScript": fromOption(injectJavaScript),
+            "injectedJavaScript": fromOption(injectedJavaScript),
+            "mediaPlaybackRequiresUserAction":
+              fromOption(mediaPlaybackRequiresUserAction),
+            "onError": fromOption(onError),
+            "onLoad": fromOption(onLoad),
+            "onLoadEnd": fromOption(onLoadEnd),
+            "onLoadStart": fromOption(onLoadStart),
+            "onMessage": fromOption(onMessage),
+            "onNavigationStateChange": fromOption(onNavigationStateChange),
+            "renderError": fromOption(renderError),
+            "renderLoading": fromOption(renderLoading),
+            "scalesPageToFit": fromOption(scalesPageToFit),
+            "startInLoadingState": fromOption(startInLoadingState),
+            "domStorageEnabled": fromOption(domStorageEnabled),
+            "javaScriptEnabled": fromOption(javaScriptEnabled),
             "mixedContentMode":
-              from_opt(
+              fromOption(
                 UtilsRN.option_map(
-                  (contentMode) => {
+                  contentMode => {
                     let to_string =
                       fun
                       | `never => "never"
                       | `always => "always"
                       | `compatibility => "compatibility";
-                    contentMode |> List.map(to_string) |> Array.of_list
+                    contentMode |> List.map(to_string) |> Array.of_list;
                   },
                   mixedContentMode
                 )
               ),
-            "thirdPartyCookiesEnabled": from_opt(thirdPartyCookiesEnabled),
-            "userAgent": from_opt(userAgent),
-            "allowsInlineMediaPlayback": from_opt(allowsInlineMediaPlayback),
-            "bounces": from_opt(bounces),
+            "thirdPartyCookiesEnabled": fromOption(thirdPartyCookiesEnabled),
+            "userAgent": fromOption(userAgent),
+            "allowsInlineMediaPlayback": fromOption(allowsInlineMediaPlayback),
+            "bounces": fromOption(bounces),
             "dataDetectorTypes":
-              from_opt(
+              fromOption(
                 UtilsRN.option_map(
-                  (dataDetectorType) => {
+                  dataDetectorType => {
                     let to_string =
                       fun
                       | `phoneNumber => "phoneNumber"
@@ -151,27 +161,28 @@ let make =
                       | `calendarEvent => "calendarEvent"
                       | `none => "none"
                       | `all => "all";
-                    dataDetectorType |> List.map(to_string) |> Array.of_list
+                    dataDetectorType |> List.map(to_string) |> Array.of_list;
                   },
                   dataDetectorTypes
                 )
               ),
             "decelerationRate":
-              from_opt(
+              fromOption(
                 UtilsRN.option_map(
-                  (rate) => {
+                  rate => {
                     let to_float =
                       fun
                       | `normal => 0.998
                       | `fast => 0.99
                       | `value(f) => f;
-                    rate |> List.map(to_float) |> Array.of_list
+                    rate |> List.map(to_float) |> Array.of_list;
                   },
                   decelerationRate
                 )
               ),
-            "onShouldStartLoadWithRequest": from_opt(onShouldStartLoadWithRequest),
-            "scrollEnabled": from_opt(scrollEnabled)
+            "onShouldStartLoadWithRequest":
+              fromOption(onShouldStartLoadWithRequest),
+            "scrollEnabled": fromOption(scrollEnabled)
           }
         )
       )

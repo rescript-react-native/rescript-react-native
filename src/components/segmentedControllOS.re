@@ -1,4 +1,5 @@
-[@bs.module "react-native"] external view : ReasonReact.reactClass = "SegmentedControlIOS";
+[@bs.module "react-native"]
+external view : ReasonReact.reactClass = "SegmentedControlIOS";
 
 let make =
     (
@@ -36,13 +37,13 @@ let make =
       Props.extendView(
         Js.Undefined.(
           {
-            "enabled": from_opt @@ UtilsRN.optBoolToOptJsBoolean(enabled),
-            "momentary": from_opt @@ UtilsRN.optBoolToOptJsBoolean(momentary),
-            "tintColor": from_opt(tintColor),
+            "enabled": fromOption @@ UtilsRN.optBoolToOptJsBoolean(enabled),
+            "momentary": fromOption @@ UtilsRN.optBoolToOptJsBoolean(momentary),
+            "tintColor": fromOption(tintColor),
             "values": Array.of_list(values),
-            "selectedIndex": from_opt(selectedIndex),
-            "onChange": from_opt(onChange),
-            "onValueChange": from_opt(onValueChange)
+            "selectedIndex": fromOption(selectedIndex),
+            "onChange": fromOption(onChange),
+            "onValueChange": fromOption(onValueChange)
           }
         ),
         ~accessibilityLabel?,

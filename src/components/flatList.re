@@ -1,6 +1,9 @@
-[@bs.module "react-native"] external view : ReasonReact.reactClass = "FlatList";
+[@bs.module "react-native"]
+external view : ReasonReact.reactClass = "FlatList";
 
-[@bs.send] external _scrollToEnd : (ReasonReact.reactRef, {. "animated": Js.boolean}) => unit =
+[@bs.send]
+external _scrollToEnd :
+  (ReasonReact.reactRef, {. "animated": Js.boolean}) => unit =
   "scrollToEnd";
 
 let scrollToEnd = (ref, ~animated) =>
@@ -21,15 +24,16 @@ external _scrollToIndex :
   unit =
   "_scrollToIndex";
 
-let scrollToIndex = (ref, ~index, ~animated=?, ~viewOffset=?, ~viewPosition=?, ()) =>
+let scrollToIndex =
+    (ref, ~index, ~animated=?, ~viewOffset=?, ~viewPosition=?, ()) =>
   _scrollToIndex(
     ref,
     Js.Undefined.(
       {
         "index": index,
-        "viewOffset": from_opt(viewOffset),
-        "viewPosition": from_opt(viewPosition),
-        "animated": from_opt(animated)
+        "viewOffset": fromOption(viewOffset),
+        "viewPosition": fromOption(viewPosition),
+        "animated": fromOption(animated)
       }
     )
   );
@@ -38,7 +42,12 @@ let scrollToIndex = (ref, ~index, ~animated=?, ~viewOffset=?, ~viewPosition=?, (
 external _scrollToItem :
   (
     ReasonReact.reactRef,
-    {. "item": 'item, "viewPosition": Js.undefined(int), "animated": Js.undefined(Js.boolean)}
+    {
+      .
+      "item": 'item,
+      "viewPosition": Js.undefined(int),
+      "animated": Js.undefined(Js.boolean)
+    }
   ) =>
   unit =
   "_scrollToIndex";
@@ -47,25 +56,42 @@ let scrollToItem = (ref, ~item, ~animated=?, ~viewPosition=?, ()) =>
   _scrollToItem(
     ref,
     Js.Undefined.(
-      {"item": item, "viewPosition": from_opt(viewPosition), "animated": from_opt(animated)}
+      {
+        "item": item,
+        "viewPosition": fromOption(viewPosition),
+        "animated": fromOption(animated)
+      }
     )
   );
 
 [@bs.send]
 external _scrollToOffset :
-  (ReasonReact.reactRef, {. "offset": Js.undefined(int), "animated": Js.undefined(Js.boolean)}) =>
+  (
+    ReasonReact.reactRef,
+    {
+      .
+      "offset": Js.undefined(int),
+      "animated": Js.undefined(Js.boolean)
+    }
+  ) =>
   unit =
   "_scrollToIndex";
 
 let scrollToOffset = (ref, ~offset=?, ~animated=?, ()) =>
   _scrollToOffset(
     ref,
-    Js.Undefined.({"offset": from_opt(offset), "animated": from_opt(animated)})
+    Js.Undefined.(
+      {"offset": fromOption(offset), "animated": fromOption(animated)}
+    )
   );
 
 [@bs.send] external recordInteraction : ReasonReact.reactRef => unit = "";
 
-type jsRenderBag('item) = {. "item": 'item, "index": int};
+type jsRenderBag('item) = {
+  .
+  "item": 'item,
+  "index": int
+};
 
 type renderBag('item) = {
   item: 'item,
@@ -74,18 +100,25 @@ type renderBag('item) = {
 
 type renderItem('item) = jsRenderBag('item) => ReasonReact.reactElement;
 
-let renderItem = (reRenderItem: renderBag('item) => ReasonReact.reactElement) : renderItem('item) =>
+let renderItem =
+    (reRenderItem: renderBag('item) => ReasonReact.reactElement)
+    : renderItem('item) =>
   (jsRenderBag: jsRenderBag('item)) =>
     reRenderItem({item: jsRenderBag##item, index: jsRenderBag##index});
 
-type jsSeparatorProps('item) = {. "highlighted": Js.boolean, "leadingItem": Js.Undefined.t('item)};
+type jsSeparatorProps('item) = {
+  .
+  "highlighted": Js.boolean,
+  "leadingItem": Js.Undefined.t('item)
+};
 
 type separatorProps('item) = {
   highlighted: bool,
   leadingItem: option('item)
 };
 
-type separatorComponent('item) = jsSeparatorProps('item) => ReasonReact.reactElement;
+type separatorComponent('item) =
+  jsSeparatorProps('item) => ReasonReact.reactElement;
 
 let separatorComponent =
     (reSeparatorComponent: separatorProps('item) => ReasonReact.reactElement)
@@ -93,7 +126,7 @@ let separatorComponent =
   (jsSeparatorProps: jsSeparatorProps('item)) =>
     reSeparatorComponent({
       highlighted: Js.to_bool(jsSeparatorProps##highlighted),
-      leadingItem: Js.Undefined.to_opt(jsSeparatorProps##leadingItem)
+      leadingItem: Js.Undefined.toOption(jsSeparatorProps##leadingItem)
     });
 
 let make =
@@ -134,33 +167,33 @@ let make =
     ~props=
       Js.Undefined.(
         {
-          "bounces": from_opt(UtilsRN.optBoolToOptJsBoolean(bounces)),
-          "ItemSeparatorComponent": from_opt(itemSeparatorComponent),
-          "ListFooterComponent": from_opt(listFooterComponent),
-          "ListHeaderComponent": from_opt(listHeaderComponent),
-          "columnWrapperStyle": from_opt(columnWrapperStyle),
+          "bounces": fromOption(UtilsRN.optBoolToOptJsBoolean(bounces)),
+          "ItemSeparatorComponent": fromOption(itemSeparatorComponent),
+          "ListFooterComponent": fromOption(listFooterComponent),
+          "ListHeaderComponent": fromOption(listHeaderComponent),
+          "columnWrapperStyle": fromOption(columnWrapperStyle),
           "data": data,
-          "extraData": from_opt(extraData),
+          "extraData": fromOption(extraData),
           "getItemLayout":
-            from_opt(
+            fromOption(
               UtilsRN.option_map(
-                (f, data, index) => f(Js.Undefined.to_opt(data), index),
+                (f, data, index) => f(Js.Undefined.toOption(data), index),
                 getItemLayout
               )
             ),
-          "horizontal": from_opt(UtilsRN.optBoolToOptJsBoolean(horizontal)),
-          "initialNumToRender": from_opt(initialNumToRender),
-          "initialScrollIndex": from_opt(initialScrollIndex),
+          "horizontal": fromOption(UtilsRN.optBoolToOptJsBoolean(horizontal)),
+          "initialNumToRender": fromOption(initialNumToRender),
+          "initialScrollIndex": fromOption(initialScrollIndex),
           "keyExtractor": keyExtractor,
-          "numColumns": from_opt(numColumns),
-          "onEndReached": from_opt(onEndReached),
-          "onEndReachedThreshold": from_opt(onEndReachedThreshold),
-          "onRefresh": from_opt(onRefresh),
-          "onViewableItemsChanged": from_opt(onViewableItemsChanged),
+          "numColumns": fromOption(numColumns),
+          "onEndReached": fromOption(onEndReached),
+          "onEndReachedThreshold": fromOption(onEndReachedThreshold),
+          "onRefresh": fromOption(onRefresh),
+          "onViewableItemsChanged": fromOption(onViewableItemsChanged),
           "overScrollMode":
-            from_opt(
+            fromOption(
               UtilsRN.option_map(
-                (x) =>
+                x =>
                   switch x {
                   | `auto => "auto"
                   | `always => "always"
@@ -169,20 +202,27 @@ let make =
                 overScrollMode
               )
             ),
-          "pagingEnabled": from_opt(UtilsRN.optBoolToOptJsBoolean(pagingEnabled)),
-          "refreshing": from_opt(UtilsRN.optBoolToOptJsBoolean(refreshing)),
+          "pagingEnabled":
+            fromOption(UtilsRN.optBoolToOptJsBoolean(pagingEnabled)),
+          "refreshing": fromOption(UtilsRN.optBoolToOptJsBoolean(refreshing)),
           "renderItem": renderItem,
-          "removeClippedSubviews": from_opt(UtilsRN.optBoolToOptJsBoolean(removeClippedSubviews)),
-          "scrollEnabled": from_opt(UtilsRN.optBoolToOptJsBoolean(scrollEnabled)),
+          "removeClippedSubviews":
+            fromOption(UtilsRN.optBoolToOptJsBoolean(removeClippedSubviews)),
+          "scrollEnabled":
+            fromOption(UtilsRN.optBoolToOptJsBoolean(scrollEnabled)),
           "showsHorizontalScrollIndicator":
-            from_opt(UtilsRN.optBoolToOptJsBoolean(showsHorizontalScrollIndicator)),
+            fromOption(
+              UtilsRN.optBoolToOptJsBoolean(showsHorizontalScrollIndicator)
+            ),
           "showsVerticalScrollIndicator":
-            from_opt(UtilsRN.optBoolToOptJsBoolean(showsVerticalScrollIndicator)),
-          "windowSize": from_opt(windowSize),
-          "maxToRenderPerBatch": from_opt(maxToRenderPerBatch),
-          "viewabilityConfig": from_opt(viewabilityConfig),
-          "onScroll": from_opt(onScroll),
-          "style": from_opt(style)
+            fromOption(
+              UtilsRN.optBoolToOptJsBoolean(showsVerticalScrollIndicator)
+            ),
+          "windowSize": fromOption(windowSize),
+          "maxToRenderPerBatch": fromOption(maxToRenderPerBatch),
+          "viewabilityConfig": fromOption(viewabilityConfig),
+          "onScroll": fromOption(onScroll),
+          "style": fromOption(style)
         }
       )
   );

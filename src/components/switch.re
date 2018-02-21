@@ -4,7 +4,7 @@ let make =
     (
       ~disabled: option(bool)=?,
       ~onTintColor: option(string)=?,
-      ~onValueChange: option((bool => unit))=?,
+      ~onValueChange: option(bool => unit)=?,
       ~thumbTintColor: option(string)=?,
       ~tintColor: option(string)=?,
       ~value: option(bool)=?,
@@ -35,12 +35,12 @@ let make =
       Props.extendView(
         Js.Undefined.(
           {
-            "value": from_opt(UtilsRN.optBoolToOptJsBoolean(value)),
-            "disabled": from_opt(UtilsRN.optBoolToOptJsBoolean(disabled)),
-            "onValueChange": from_opt(onValueChange),
-            "onTintColor": from_opt(onTintColor),
-            "thumbTintColor": from_opt(thumbTintColor),
-            "tintColor": from_opt(tintColor)
+            "value": fromOption(UtilsRN.optBoolToOptJsBoolean(value)),
+            "disabled": fromOption(UtilsRN.optBoolToOptJsBoolean(disabled)),
+            "onValueChange": fromOption(onValueChange),
+            "onTintColor": fromOption(onTintColor),
+            "thumbTintColor": fromOption(thumbTintColor),
+            "tintColor": fromOption(tintColor)
           }
         ),
         ~accessibilityLabel?,

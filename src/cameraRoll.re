@@ -101,7 +101,8 @@ external _saveToCameraRoll :
 external _getPhotos : config => Js.Promise.t(assets) = "getPhotos";
 
 let saveToCameraRoll = (~uri, ~type_=?, ()) => {
-  let fileType = Js.Undefined.from_opt(UtilsRN.option_map(mapFileType, type_));
+  let fileType =
+    Js.Undefined.fromOption(UtilsRN.option_map(mapFileType, type_));
   _saveToCameraRoll(uri, fileType)
   |> Js.Promise.then_(uri => Js.Promise.resolve(Js.Result.Ok(uri)))
   |> Js.Promise.catch(error => Js.Promise.resolve(Js.Result.Error(error)));

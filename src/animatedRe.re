@@ -8,8 +8,10 @@ module type Value = {type t; type rawJsType;};
 
 module CompositeAnimation = {
   type t;
-  [@bs.send] external _start : (t, Js.undefined(Animation.endCallback)) => unit = "start";
-  let start = (t, ~callback=?, ()) => _start(t, Js.Undefined.from_opt(callback));
+  [@bs.send]
+  external _start : (t, Js.undefined(Animation.endCallback)) => unit = "start";
+  let start = (t, ~callback=?, ()) =>
+    _start(t, Js.Undefined.fromOption(callback));
   [@bs.send] external stop : t => unit = "";
   [@bs.send] external reset : t => unit = "";
 };
@@ -55,8 +57,7 @@ module Animations = {
       config =
       "";
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external _decay : (Val.t, config) => CompositeAnimation.t =
-      "decay";
+    external _decay : (Val.t, config) => CompositeAnimation.t = "decay";
     let animate =
         (
           ~value,
@@ -101,8 +102,7 @@ module Animations = {
     external toValueRaw : Val.rawJsType => toValue = "%identity";
     external toValueAnimated : Val.t => toValue = "%identity";
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external _spring : (Val.t, config) => CompositeAnimation.t =
-      "spring";
+    external _spring : (Val.t, config) => CompositeAnimation.t = "spring";
     let animate =
         (
           ~value,
@@ -130,18 +130,18 @@ module Animations = {
               | `raw(x) => toValueRaw(x)
               | `animated(x) => toValueAnimated(x)
               },
-            "restDisplacementThreshold": from_opt(restDisplacementThreshold),
-            "overshootClamping": from_opt(overshootClamping),
-            "restSpeedThreshold": from_opt(restSpeedThreshold),
-            "velocity": from_opt(velocity),
-            "bounciness": from_opt(bounciness),
-            "speed": from_opt(speed),
-            "tension": from_opt(tension),
-            "friction": from_opt(friction),
-            "isInteraction": from_opt(isInteraction),
-            "useNativeDriver": from_opt(useNativeDriver),
-            "onComplete": from_opt(onComplete),
-            "iterations": from_opt(iterations)
+            "restDisplacementThreshold": fromOption(restDisplacementThreshold),
+            "overshootClamping": fromOption(overshootClamping),
+            "restSpeedThreshold": fromOption(restSpeedThreshold),
+            "velocity": fromOption(velocity),
+            "bounciness": fromOption(bounciness),
+            "speed": fromOption(speed),
+            "tension": fromOption(tension),
+            "friction": fromOption(friction),
+            "isInteraction": fromOption(isInteraction),
+            "useNativeDriver": fromOption(useNativeDriver),
+            "onComplete": fromOption(onComplete),
+            "iterations": fromOption(iterations)
           }
         )
       );
@@ -166,8 +166,7 @@ module Animations = {
     external toValueRaw : Val.rawJsType => toValue = "%identity";
     external toValueAnimated : Val.t => toValue = "%identity";
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external _timing : (Val.t, config) => CompositeAnimation.t =
-      "timing";
+    external _timing : (Val.t, config) => CompositeAnimation.t = "timing";
     let animate =
         (
           ~value,
@@ -202,11 +201,12 @@ module Animations = {
 };
 
 module ValueOperations = (Val: Value) => {
-  [@bs.module "react-native"] [@bs.scope "Animated"] external add : (Val.t, Val.t) => Val.t = "";
-  [@bs.module "react-native"] [@bs.scope "Animated"] external divide : (Val.t, Val.t) => Val.t =
-    "";
-  [@bs.module "react-native"] [@bs.scope "Animated"] external multiply : (Val.t, Val.t) => Val.t =
-    "";
+  [@bs.module "react-native"] [@bs.scope "Animated"]
+  external add : (Val.t, Val.t) => Val.t = "";
+  [@bs.module "react-native"] [@bs.scope "Animated"]
+  external divide : (Val.t, Val.t) => Val.t = "";
+  [@bs.module "react-native"] [@bs.scope "Animated"]
+  external multiply : (Val.t, Val.t) => Val.t = "";
   module Timing = Animations.Timing(Val);
   module Spring = Animations.Spring(Val);
   module Decay = Animations.Decay(Val);
@@ -220,7 +220,7 @@ module Interpolation = {
     | Extend
     | Clamp
     | Identity;
-  let extrapolateString = (x) =>
+  let extrapolateString = x =>
     switch x {
     | Extend => "extend"
     | Clamp => "clamp"
@@ -262,8 +262,10 @@ module Interpolation = {
           },
         ~easing?,
         ~extrapolate=?UtilsRN.option_map(extrapolateString, extrapolate),
-        ~extrapolateRight=?UtilsRN.option_map(extrapolateString, extrapolateRight),
-        ~extrapolateLeft=?UtilsRN.option_map(extrapolateString, extrapolateLeft)
+        ~extrapolateRight=?
+          UtilsRN.option_map(extrapolateString, extrapolateRight),
+        ~extrapolateLeft=?
+          UtilsRN.option_map(extrapolateString, extrapolateLeft)
       )
     );
 };
@@ -272,8 +274,8 @@ module Value = {
   type t;
   type jsValue = {. "value": float};
   type callback = jsValue => unit;
-  [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"] external create : float => t =
-    "Value";
+  [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
+  external create : float => t = "Value";
   [@bs.send] external setValue : (t, float) => unit = "setValue";
   [@bs.send] external setOffset : (t, float) => unit = "setOffset";
   [@bs.send] external flattenOffset : t => unit = "flattenOffset";
@@ -281,13 +283,19 @@ module Value = {
   [@bs.send] external addListener : (t, callback) => string = "addListener";
   [@bs.send] external removeListener : (t, string) => unit = "removeListener";
   [@bs.send] external removeAllListeners : t => unit = "removeAllListeners";
-  [@bs.send] external _resetAnimation : (t, Js.Undefined.t(callback)) => unit = "resetAnimation";
-  [@bs.send] external _stopAnimation : (t, Js.Undefined.t(callback)) => unit = "stopAnimation";
+  [@bs.send]
+  external _resetAnimation : (t, Js.Undefined.t(callback)) => unit =
+    "resetAnimation";
+  [@bs.send]
+  external _stopAnimation : (t, Js.Undefined.t(callback)) => unit =
+    "stopAnimation";
   let resetAnimation = (value, ~callback=?, ()) =>
-    _resetAnimation(value, Js.Undefined.from_opt(callback));
+    _resetAnimation(value, Js.Undefined.fromOption(callback));
   let stopAnimation = (value, ~callback=?, ()) =>
-    _stopAnimation(value, Js.Undefined.from_opt(callback));
-  [@bs.send] external _interpolate : (t, Interpolation.config) => Interpolation.t = "interpolate";
+    _stopAnimation(value, Js.Undefined.fromOption(callback));
+  [@bs.send]
+  external _interpolate : (t, Interpolation.config) => Interpolation.t =
+    "interpolate";
   let interpolate =
       (
         value,
@@ -305,21 +313,29 @@ module Value = {
         ~inputRange=Array.of_list(inputRange),
         ~outputRange=
           switch outputRange {
-          | `string((x: list(string))) => Interpolation.outputRangeCreate(Array.of_list(x))
-          | `float((x: list(float))) => Interpolation.outputRangeCreate(Array.of_list(x))
+          | `string((x: list(string))) =>
+            Interpolation.outputRangeCreate(Array.of_list(x))
+          | `float((x: list(float))) =>
+            Interpolation.outputRangeCreate(Array.of_list(x))
           },
         ~easing?,
-        ~extrapolate=?UtilsRN.option_map(Interpolation.extrapolateString, extrapolate),
-        ~extrapolateLeft=?UtilsRN.option_map(Interpolation.extrapolateString, extrapolateLeft),
-        ~extrapolateRight=?UtilsRN.option_map(Interpolation.extrapolateString, extrapolateRight)
+        ~extrapolate=?
+          UtilsRN.option_map(Interpolation.extrapolateString, extrapolate),
+        ~extrapolateLeft=?
+          UtilsRN.option_map(Interpolation.extrapolateString, extrapolateLeft),
+        ~extrapolateRight=?
+          UtilsRN.option_map(Interpolation.extrapolateString, extrapolateRight)
       )
     );
-  [@bs.send] external animate : (t, Animation.t, Animation.endCallback) => unit = "animate";
+  [@bs.send]
+  external animate : (t, Animation.t, Animation.endCallback) => unit =
+    "animate";
   [@bs.send] external stopTracking : t => unit = "stopTracking";
   [@bs.send] external track : t => unit = "track";
-  [@bs.module "react-native"] [@bs.scope "Animated"] external modulo : (t, float) => t = "";
-  [@bs.module "react-native"] [@bs.scope "Animated"] external diffClamp : (t, float, float) => t =
-    "";
+  [@bs.module "react-native"] [@bs.scope "Animated"]
+  external modulo : (t, float) => t = "";
+  [@bs.module "react-native"] [@bs.scope "Animated"]
+  external diffClamp : (t, float, float) => t = "";
   type value = t;
   include
     ValueOperations(
@@ -332,12 +348,24 @@ module Value = {
 
 module ValueXY = {
   type t;
-  type jsValue = {. "x": float, "y": float};
+  type jsValue = {
+    .
+    "x": float,
+    "y": float
+  };
   type callback = jsValue => unit;
-  type translateTransform = {. "translateX": Value.t, "translateY": Value.t};
-  type layout = {. "left": Value.t, "top": Value.t};
-  [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"] external _create : jsValue => t =
-    "ValueXY";
+  type translateTransform = {
+    .
+    "translateX": Value.t,
+    "translateY": Value.t
+  };
+  type layout = {
+    .
+    "left": Value.t,
+    "top": Value.t
+  };
+  [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
+  external _create : jsValue => t = "ValueXY";
   let create = (~x, ~y) => _create({"x": x, "y": y});
   [@bs.send] external _setValue : (t, jsValue) => unit = "setValue";
   let setValue = (t, ~x, ~y) => _setValue(t, {"x": x, "y": y});
@@ -345,13 +373,17 @@ module ValueXY = {
   let setOffset = (t, ~x, ~y) => _setOffset(t, {"x": x, "y": y});
   [@bs.send] external flattenOffset : t => unit = "flattenOffset";
   [@bs.send] external extractOffset : t => unit = "extractOffset";
-  [@bs.send] external resetAnimation : (t, option(callback)) => unit = "resetAnimation";
-  [@bs.send] external stopAnimation : (t, option(callback)) => unit = "stopAnimation";
+  [@bs.send]
+  external resetAnimation : (t, option(callback)) => unit = "resetAnimation";
+  [@bs.send]
+  external stopAnimation : (t, option(callback)) => unit = "stopAnimation";
   [@bs.send] external addListener : (t, callback) => string = "addListener";
   [@bs.send] external removeListener : (t, string) => unit = "removeListener";
   [@bs.send] external removeAllListeners : t => unit = "removeAllListeners";
   [@bs.send] external getLayout : t => layout = "getLayout";
-  [@bs.send] external getTranslateTransform : t => translateTransform = "getTranslateTransform";
+  [@bs.send]
+  external getTranslateTransform : t => translateTransform =
+    "getTranslateTransform";
   [@bs.get] external getX : t => Value.t = "x";
   [@bs.get] external getY : t => Value.t = "y";
   type value = t;
@@ -364,16 +396,16 @@ module ValueXY = {
     );
 };
 
-[@bs.module "react-native"] [@bs.scope "Animated"] external delay : float => CompositeAnimation.t =
-  "";
+[@bs.module "react-native"] [@bs.scope "Animated"]
+external delay : float => CompositeAnimation.t = "";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external sequence : array(CompositeAnimation.t) => CompositeAnimation.t =
-  "";
+external sequence : array(CompositeAnimation.t) => CompositeAnimation.t = "";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
 external parallel :
-  (array(CompositeAnimation.t), {. "stopTogether": Js.boolean}) => CompositeAnimation.t =
+  (array(CompositeAnimation.t), {. "stopTogether": Js.boolean}) =>
+  CompositeAnimation.t =
   "";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
@@ -381,19 +413,21 @@ external stagger : (float, array(CompositeAnimation.t)) => CompositeAnimation.t 
   "";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external _loop : (CompositeAnimation.t, {. "iterations": int}) => CompositeAnimation.t =
+external _loop :
+  (CompositeAnimation.t, {. "iterations": int}) => CompositeAnimation.t =
   "loop";
 
 type animatedEvent;
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external event : (array('a), 'b) => animatedEvent =
-  "";
+external event : (array('a), 'b) => animatedEvent = "";
 
-let loop = (~iterations=(-1), ~animation, ()) => _loop(animation, {"iterations": iterations});
+let loop = (~iterations=(-1), ~animation, ()) =>
+  _loop(animation, {"iterations": iterations});
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external createAnimatedComponent : ReasonReact.reactClass => ReasonReact.reactClass =
+external createAnimatedComponent :
+  ReasonReact.reactClass => ReasonReact.reactClass =
   "";
 
 module Timing = Value.Timing;

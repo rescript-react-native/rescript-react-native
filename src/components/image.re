@@ -20,7 +20,8 @@ module type ImageComponent = {
     | Multiple(list(imageURISource));
   type defaultURISource;
   let defaultURISource:
-    (~uri: string, ~scale: float=?, ~width: float=?, ~height: float=?, unit) => defaultURISource;
+    (~uri: string, ~scale: float=?, ~width: float=?, ~height: float=?, unit) =>
+    defaultURISource;
   type defaultSource =
     | URI(defaultURISource)
     | Required(Packager.required);
@@ -52,7 +53,11 @@ module type ImageComponent = {
       ~onProgress: Event.progress => unit=?,
       array(ReasonReact.reactElement)
     ) =>
-    ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
+    ReasonReact.component(
+      ReasonReact.stateless,
+      ReasonReact.noRetainedProps,
+      unit
+    );
 };
 
 module CreateComponent = (Impl: View.Impl) : ImageComponent => {
@@ -76,8 +81,8 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
               [
                 | `default
                 | `reload
-                [@bs.as "force-cache"] | `forceCache
-                [@bs.as "only-if-cached"] | `onlyIfCached
+                | [@bs.as "force-cache"] `forceCache
+                | [@bs.as "only-if-cached"] `onlyIfCached
               ]
                 =?,
       ~scale: float=?,
@@ -94,7 +99,8 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
   type defaultURISource;
   [@bs.obj]
   external defaultURISource :
-    (~uri: string, ~scale: float=?, ~width: float=?, ~height: float=?, unit) => defaultURISource =
+    (~uri: string, ~scale: float=?, ~width: float=?, ~height: float=?, unit) =>
+    defaultURISource =
     "";
   type defaultSource =
     | URI(defaultURISource)
@@ -110,7 +116,7 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
     };
     [@bs.get] external progress : t => progress = "nativeEvent";
   };
-  let encodeResizeMode = (x) =>
+  let encodeResizeMode = x =>
     switch x {
     | `cover => "cover"
     | `contain => "contain"
@@ -124,7 +130,7 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
     | Required(x) => rawImageSourceJS(x)
     | Multiple(x) => rawImageSourceJS(Array.of_list(x))
     };
-  let encodeResizeMethod = (x) =>
+  let encodeResizeMethod = x =>
     switch x {
     | `auto => "auto"
     | `resize => "resize"
@@ -160,23 +166,31 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
       ~props=
         Js.Undefined.(
           {
-            "onLayout": from_opt(onLayout),
-            "onError": from_opt(onError),
-            "onLoad": from_opt(onLoad),
-            "onLoadEnd": from_opt(onLoadEnd),
-            "onLoadStart": from_opt(onLoadStart),
-            "resizeMode": from_opt(UtilsRN.option_map(encodeResizeMode, resizeMode)),
-            "source": from_opt(UtilsRN.option_map(encodeSource, source)),
-            "style": from_opt(style),
-            "testID": from_opt(testID),
-            "resizeMethod": from_opt(UtilsRN.option_map(encodeResizeMethod, resizeMethod)),
-            "accessibilityLabel": from_opt(accessibilityLabel),
-            "accessible": from_opt(UtilsRN.optBoolToOptJsBoolean(accessible)),
-            "blurRadius": from_opt(blurRadius),
-            "capInsets": from_opt(capInsets),
-            "defaultSource": from_opt(UtilsRN.option_map(encodeDefaultSource, defaultSource)),
-            "onPartialLoad": from_opt(onPartialLoad),
-            "onProgress": from_opt(UtilsRN.option_map((x, y) => x(Event.progress(y)), onProgress))
+            "onLayout": fromOption(onLayout),
+            "onError": fromOption(onError),
+            "onLoad": fromOption(onLoad),
+            "onLoadEnd": fromOption(onLoadEnd),
+            "onLoadStart": fromOption(onLoadStart),
+            "resizeMode":
+              fromOption(UtilsRN.option_map(encodeResizeMode, resizeMode)),
+            "source": fromOption(UtilsRN.option_map(encodeSource, source)),
+            "style": fromOption(style),
+            "testID": fromOption(testID),
+            "resizeMethod":
+              fromOption(UtilsRN.option_map(encodeResizeMethod, resizeMethod)),
+            "accessibilityLabel": fromOption(accessibilityLabel),
+            "accessible": fromOption(UtilsRN.optBoolToOptJsBoolean(accessible)),
+            "blurRadius": fromOption(blurRadius),
+            "capInsets": fromOption(capInsets),
+            "defaultSource":
+              fromOption(
+                UtilsRN.option_map(encodeDefaultSource, defaultSource)
+              ),
+            "onPartialLoad": fromOption(onPartialLoad),
+            "onProgress":
+              fromOption(
+                UtilsRN.option_map((x, y) => x(Event.progress(y)), onProgress)
+              )
           }
         )
     );
@@ -185,6 +199,7 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
 include
   CreateComponent(
     {
-      [@bs.module "react-native"] external view : ReasonReact.reactClass = "Image";
+      [@bs.module "react-native"]
+      external view : ReasonReact.reactClass = "Image";
     }
   );
