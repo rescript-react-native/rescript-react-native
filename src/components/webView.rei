@@ -1,7 +1,14 @@
 type source;
 
 let source:
-  (~uri: string=?, ~method: string=?, ~headers: Js.t('a)=?, ~body: string=?, unit) => source;
+  (
+    ~uri: string=?,
+    ~method: string=?,
+    ~headers: Js.t('a)=?,
+    ~body: string=?,
+    unit
+  ) =>
+  source;
 
 type iOSLoadRequestEvent = {
   .
@@ -18,7 +25,8 @@ type iOSLoadRequestEvent = {
 type contentInsets;
 
 let contentInsets:
-  (~top: int=?, ~left: int=?, ~bottom: int=?, ~right: int=?, unit) => contentInsets;
+  (~top: int=?, ~left: int=?, ~bottom: int=?, ~right: int=?, unit) =>
+  contentInsets;
 
 let make:
   (
@@ -28,41 +36,41 @@ let make:
     ~renderLoading: unit => ReasonReact.reactElement=?,
     ~onError: {
                 .
-                "url": option(string),
-                "title": option(string),
-                "loading": option(bool),
-                "canGoBack": option(bool),
-                "canGoForward": option(bool)
+                "url": Js.nullable(string),
+                "title": Js.nullable(string),
+                "loading": Js.nullable(bool),
+                "canGoBack": Js.nullable(bool),
+                "canGoForward": Js.nullable(bool)
               } =>
               unit
                 =?,
     ~onLoad: {
                .
-               "url": option(string),
-               "title": option(string),
-               "loading": option(bool),
-               "canGoBack": option(bool),
-               "canGoForward": option(bool)
+               "url": Js.nullable(string),
+               "title": Js.nullable(string),
+               "loading": Js.nullable(bool),
+               "canGoBack": Js.nullable(bool),
+               "canGoForward": Js.nullable(bool)
              } =>
              unit
                =?,
     ~onLoadEnd: {
                   .
-                  "url": option(string),
-                  "title": option(string),
-                  "loading": option(bool),
-                  "canGoBack": option(bool),
-                  "canGoForward": option(bool)
+                  "url": Js.nullable(string),
+                  "title": Js.nullable(string),
+                  "loading": Js.nullable(bool),
+                  "canGoBack": Js.nullable(bool),
+                  "canGoForward": Js.nullable(bool)
                 } =>
                 unit
                   =?,
     ~onLoadStart: {
                     .
-                    "url": option(string),
-                    "title": option(string),
-                    "loading": option(bool),
-                    "canGoBack": option(bool),
-                    "canGoForward": option(bool)
+                    "url": Js.nullable(string),
+                    "title": Js.nullable(string),
+                    "loading": Js.nullable(bool),
+                    "canGoBack": Js.nullable(bool),
+                    "canGoForward": Js.nullable(bool)
                   } =>
                   unit
                     =?,
@@ -120,11 +128,11 @@ let make:
     ~onMessage: RNEvent.NativeEvent.t => unit=?,
     ~onNavigationStateChange: {
                                 .
-                                "url": option(string),
-                                "title": option(string),
-                                "loading": option(bool),
-                                "canGoBack": option(bool),
-                                "canGoForward": option(bool)
+                                "url": Js.nullable(string),
+                                "title": Js.nullable(string),
+                                "loading": Js.nullable(bool),
+                                "canGoBack": Js.nullable(bool),
+                                "canGoForward": Js.nullable(bool)
                               } =>
                               unit
                                 =?,
@@ -137,11 +145,24 @@ let make:
     ~userAgent: string=?,
     ~allowsInlineMediaPlayback: bool=?,
     ~bounces: bool=?,
-    ~dataDetectorTypes: list([ | `phoneNumber | `link | `address | `calendarEvent | `none | `all])
+    ~dataDetectorTypes: list(
+                          [
+                            | `phoneNumber
+                            | `link
+                            | `address
+                            | `calendarEvent
+                            | `none
+                            | `all
+                          ]
+                        )
                           =?,
     ~decelerationRate: list([ | `normal | `fast | `value(float)])=?,
     ~onShouldStartLoadWithRequest: iOSLoadRequestEvent => bool=?,
     ~scrollEnabled: bool=?,
     array(ReasonReact.reactElement)
   ) =>
-  ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
+  ReasonReact.component(
+    ReasonReact.stateless,
+    ReasonReact.noRetainedProps,
+    unit
+  );
