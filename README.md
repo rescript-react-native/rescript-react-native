@@ -114,6 +114,25 @@ let styles =
 
 <View style=styles##wrapper />;
 ```
+### Optional `style` prop:
+
+```reason
+let make = (~label, ~style) => {
+  ...component,
+  render: _self =>
+    <View style=styles##container>
+      <Text
+        style=(
+          switch style {
+          | None => styles##label
+          | Some(style) => Style.concat([style, styles##label])
+          }
+        )>
+        (ReasonReact.stringToElement(label))
+      </Text>
+    </View>
+};
+```
 
 ### Animations
 
