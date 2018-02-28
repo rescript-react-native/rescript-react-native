@@ -35,13 +35,13 @@ let make:
     ~delayPressIn: int=?,
     ~delayPressOut: int=?,
     ~disabled: bool=?,
-    ~hitSlop: TypesRN.insets=?,
+    ~hitSlop: Types.insets=?,
     ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
     ~onLongPress: unit => unit=?,
     ~onPress: unit => unit=?,
     ~onPressIn: unit => unit=?,
     ~onPressOut: unit => unit=?,
-    ~pressRetentionOffset: TypesRN.insets=?,
+    ~pressRetentionOffset: Types.insets=?,
     ~style: Style.t=?,
     array(ReasonReact.reactElement)
   ) =>

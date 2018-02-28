@@ -1,4 +1,4 @@
-let serialize = (handlers: option(TypesRN.touchResponderHandlers)) =>
+let serialize = (handlers: option(Types.touchResponderHandlers)) =>
   switch handlers {
   | None => Js.Obj.empty()
   | Some(handlers) =>

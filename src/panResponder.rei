@@ -48,4 +48,4 @@ let create:
   ) =>
   t;
 
-let panHandlers: t => TypesRN.touchResponderHandlers;
+let panHandlers: t => Types.touchResponderHandlers;
