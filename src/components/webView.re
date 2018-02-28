@@ -119,12 +119,62 @@ let make =
             "injectedJavaScript": fromOption(injectedJavaScript),
             "mediaPlaybackRequiresUserAction":
               fromOption(mediaPlaybackRequiresUserAction),
-            "onError": fromOption(onError),
-            "onLoad": fromOption(onLoad),
-            "onLoadEnd": fromOption(onLoadEnd),
-            "onLoadStart": fromOption(onLoadStart),
+            "onError": fromOption(UtilsRN.option_map((callback) => {
+              (params) => {
+                callback({
+                  "url": params##url |> Js.toOption,
+                  "title": params##title |> Js.toOption,
+                  "loading": params##loading |> Js.toOption,
+                  "canGoBack": params##canGoBack |> Js.toOption,
+                  "canGoForward": params##canGoForward |> Js.toOption
+                });
+              }
+            }, onError)),
+            "onLoad": fromOption(UtilsRN.option_map((callback) => {
+              (params) => {
+                callback({
+                  "url": params##url |> Js.toOption,
+                  "title": params##title |> Js.toOption,
+                  "loading": params##loading |> Js.toOption,
+                  "canGoBack": params##canGoBack |> Js.toOption,
+                  "canGoForward": params##canGoForward |> Js.toOption
+                });
+              }
+            }, onLoad)),
+            "onLoadEnd": fromOption(UtilsRN.option_map((callback) => {
+              (params) => {
+                callback({
+                  "url": params##url |> Js.toOption,
+                  "title": params##title |> Js.toOption,
+                  "loading": params##loading |> Js.toOption,
+                  "canGoBack": params##canGoBack |> Js.toOption,
+                  "canGoForward": params##canGoForward |> Js.toOption
+                });
+              }
+            }, onLoadEnd)),
+            "onLoadStart": fromOption(UtilsRN.option_map((callback) => {
+              (params) => {
+                callback({
+                  "url": params##url |> Js.toOption,
+                  "title": params##title |> Js.toOption,
+                  "loading": params##loading |> Js.toOption,
+                  "canGoBack": params##canGoBack |> Js.toOption,
+                  "canGoForward": params##canGoForward |> Js.toOption
+                });
+              }
+            }, onLoadStart)),
             "onMessage": fromOption(onMessage),
-            "onNavigationStateChange": fromOption(onNavigationStateChange),
+            "onNavigationStateChange": fromOption(UtilsRN.option_map((callback) => {
+              (params) => {
+                callback({
+                  "url": params##url |> Js.toOption,
+                  "title": params##title |> Js.toOption,
+                  "loading": params##loading |> Js.toOption,
+                  "canGoBack": params##canGoBack |> Js.toOption,
+                  "canGoForward": params##canGoForward |> Js.toOption
+                });
+              }
+            }, onNavigationStateChange)),
             "renderError": fromOption(renderError),
             "renderLoading": fromOption(renderLoading),
             "scalesPageToFit": fromOption(scalesPageToFit),
