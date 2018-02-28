@@ -126,7 +126,7 @@ let create =
 
 [@bs.get] external _panHandlers : t => Js.t('a) = "panHandlers";
 
-let panHandlers = t : Props.touchResponderHandlers => {
+let panHandlers = t : TypesRN.touchResponderHandlers => {
   let jsHandlers = _panHandlers(t);
   {
     onMoveShouldSetResponder:

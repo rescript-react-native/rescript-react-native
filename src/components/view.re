@@ -7,7 +7,7 @@ module type ViewComponent = {
       ~onAccessibilityTap: unit => unit=?,
       ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
       ~onMagicTap: unit => unit=?,
-      ~responderHandlers: Props.touchResponderHandlers=?,
+      ~responderHandlers: TypesRN.touchResponderHandlers=?,
       ~pointerEvents: [ | `auto | `none | `boxNone | `boxOnly]=?,
       ~removeClippedSubviews: bool=?,
       ~style: Style.t=?,
