@@ -47,7 +47,7 @@ module type ImageComponent = {
       ~accessibilityLabel: string=?,
       ~accessible: bool=?,
       ~blurRadius: float=?,
-      ~capInsets: TypesRN.insets=?,
+      ~capInsets: Types.insets=?,
       ~defaultSource: defaultSource=?,
       ~onPartialLoad: unit => unit=?,
       ~onProgress: Event.progress => unit=?,

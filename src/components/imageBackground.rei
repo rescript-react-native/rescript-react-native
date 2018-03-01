@@ -22,7 +22,7 @@ let make:
     ~accessibilityLabel: string=?,
     ~accessible: bool=?,
     ~blurRadius: float=?,
-    ~capInsets: TypesRN.insets=?,
+    ~capInsets: Types.insets=?,
     ~defaultSource: Image.defaultSource=?,
     ~onPartialLoad: unit => unit=?,
     ~onProgress: Event.progress => unit=?,

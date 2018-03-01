@@ -3,11 +3,11 @@ module type ViewComponent = {
     (
       ~accessibilityLabel: string=?,
       ~accessible: bool=?,
-      ~hitSlop: TypesRN.insets=?,
+      ~hitSlop: Types.insets=?,
       ~onAccessibilityTap: unit => unit=?,
       ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
       ~onMagicTap: unit => unit=?,
-      ~responderHandlers: Props.touchResponderHandlers=?,
+      ~responderHandlers: Types.touchResponderHandlers=?,
       ~pointerEvents: [ | `auto | `boxNone | `boxOnly | `none]=?,
       ~removeClippedSubviews: bool=?,
       ~style: Style.t=?,

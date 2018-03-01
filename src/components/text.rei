@@ -8,7 +8,7 @@ module type TextComponent = {
       ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
       ~onLongPress: unit => unit=?,
       ~onPress: unit => unit=?,
-      ~pressRetentionOffset: TypesRN.insets=?,
+      ~pressRetentionOffset: Types.insets=?,
       ~selectable: bool=?,
       ~style: Style.t=?,
       ~testID: string=?,

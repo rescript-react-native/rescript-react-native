@@ -1,17 +1,4 @@
-type touchResponderHandlers = {
-  onMoveShouldSetResponder: option(RNEvent.NativeEvent.t => bool),
-  onMoveShouldSetResponderCapture: option(RNEvent.NativeEvent.t => bool),
-  onResponderGrant: option(RNEvent.NativeEvent.t => unit),
-  onResponderMove: option(RNEvent.NativeEvent.t => unit),
-  onResponderReject: option(RNEvent.NativeEvent.t => unit),
-  onResponderRelease: option(RNEvent.NativeEvent.t => unit),
-  onResponderTerminate: option(RNEvent.NativeEvent.t => unit),
-  onResponderTerminationRequest: option(RNEvent.NativeEvent.t => unit),
-  onStartShouldSetResponder: option(RNEvent.NativeEvent.t => bool),
-  onStartShouldSetResponderCapture: option(RNEvent.NativeEvent.t => bool)
-};
-
-let serialize = (handlers: option(touchResponderHandlers)) =>
+let serialize = (handlers: option(Types.touchResponderHandlers)) =>
   switch handlers {
   | None => Js.Obj.empty()
   | Some(handlers) =>

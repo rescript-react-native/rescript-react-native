@@ -48,4 +48,4 @@ let create:
   ) =>
   t;
 
-let panHandlers: t => Props.touchResponderHandlers;
+let panHandlers: t => Types.touchResponderHandlers;
