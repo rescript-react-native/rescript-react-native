@@ -15,6 +15,15 @@ type iOSLoadRequestEvent = {
   "url": string
 };
 
+type callbackParams = Js.t({
+  .
+  url: option(string),
+  title: option(string),
+  loading: option(bool),
+  canGoBack: option(bool),
+  canGoForward: option(bool),
+});
+
 type contentInsets;
 
 let contentInsets:
@@ -26,46 +35,10 @@ let make:
     ~style: Style.t=?,
     ~renderError: unit => ReasonReact.reactElement=?,
     ~renderLoading: unit => ReasonReact.reactElement=?,
-    ~onError: {
-                .
-                "url": option(string),
-                "title": option(string),
-                "loading": option(bool),
-                "canGoBack": option(bool),
-                "canGoForward": option(bool)
-              } =>
-              unit
-                =?,
-    ~onLoad: {
-               .
-               "url": option(string),
-               "title": option(string),
-               "loading": option(bool),
-               "canGoBack": option(bool),
-               "canGoForward": option(bool)
-             } =>
-             unit
-               =?,
-    ~onLoadEnd: {
-                  .
-                  "url": option(string),
-                  "title": option(string),
-                  "loading": option(bool),
-                  "canGoBack": option(bool),
-                  "canGoForward": option(bool)
-                } =>
-                unit
-                  =?,
-    ~onLoadStart: {
-                    .
-                    "url": option(string),
-                    "title": option(string),
-                    "loading": option(bool),
-                    "canGoBack": option(bool),
-                    "canGoForward": option(bool)
-                  } =>
-                  unit
-                    =?,
+    ~onError: callbackParams => unit=?,
+    ~onLoad: callbackParams => unit=?,
+    ~onLoadEnd: callbackParams => unit=?,
+    ~onLoadStart: callbackParams => unit=?,
     ~automaticallyAdjustContentInsets: bool=?,
     ~contentInsets: contentInsets=?,
     ~accessibilityLabel: ReasonReact.reactElement=?,
@@ -118,16 +91,7 @@ let make:
     ~injectedJavaScript: string=?,
     ~mediaPlaybackRequiresUserAction: bool=?,
     ~onMessage: RNEvent.NativeEvent.t => unit=?,
-    ~onNavigationStateChange: {
-                                .
-                                "url": option(string),
-                                "title": option(string),
-                                "loading": option(bool),
-                                "canGoBack": option(bool),
-                                "canGoForward": option(bool)
-                              } =>
-                              unit
-                                =?,
+    ~onNavigationStateChange: callbackParams => unit=?,
     ~scalesPageToFit: bool=?,
     ~startInLoadingState: bool=?,
     ~domStorageEnabled: bool=?,
