@@ -69,7 +69,7 @@ let make:
     ~sectionSeparatorComponent: separatorComponent('item)=?,
     ~extraData: 'extraData=?,
     ~initialNumToRender: int=?,
-    ~onEndReached: {. "distanceFromEnd": float}=?,
+    ~onEndReached: {. "distanceFromEnd": float} => unit=?,
     ~onEndReachedThreshold: float=?,
     ~onViewableItemsChanged: {
                                .

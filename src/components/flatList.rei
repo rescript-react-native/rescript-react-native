@@ -53,7 +53,7 @@ let make:
     ~initialNumToRender: int=?,
     ~initialScrollIndex: int=?,
     ~numColumns: 'int=?,
-    ~onEndReached: {. "distanceFromEnd": float}=?,
+    ~onEndReached: {. "distanceFromEnd": float} => unit=?,
     ~onEndReachedThreshold: float=?,
     ~onRefresh: unit => unit=?,
     ~onViewableItemsChanged: {
