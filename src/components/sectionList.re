@@ -1,5 +1,4 @@
-[@bs.module "react-native"]
-external view : ReasonReact.reactClass = "SectionList";
+[@bs.module "react-native"] external view : ReasonReact.reactClass = "SectionList";
 
 type jsSection('item) = {
   .
@@ -65,9 +64,7 @@ let jsSectionToSection = jsSection => {
 
 type sections('item) = array(jsSection('item));
 
-let renderItem =
-    (reRenderItem: renderBag('item) => ReasonReact.reactElement)
-    : renderItem('item) =>
+let renderItem = (reRenderItem: renderBag('item) => ReasonReact.reactElement) : renderItem('item) =>
   (jsRenderBag: jsRenderBag('item)) =>
     reRenderItem({
       item: jsRenderBag##item,
@@ -83,16 +80,12 @@ let sections = reSections : sections('item) =>
     reSection => {
       "data": reSection.data,
       "key": Js.Undefined.fromOption(reSection.key),
-      "renderItem":
-        Js.Undefined.fromOption(
-          UtilsRN.option_map(renderItem, reSection.renderItem)
-        )
+      "renderItem": Js.Undefined.fromOption(UtilsRN.option_map(renderItem, reSection.renderItem))
     },
     reSections
   );
 
-type separatorComponent('item) =
-  jsSeparatorProps('item) => ReasonReact.reactElement;
+type separatorComponent('item) = jsSeparatorProps('item) => ReasonReact.reactElement;
 
 let separatorComponent =
     (reSeparatorComponent: separatorProps('item) => ReasonReact.reactElement)
@@ -101,14 +94,11 @@ let separatorComponent =
     reSeparatorComponent({
       highlighted: Js.to_bool(jsSeparatorProps##highlighted),
       leadingItem: Js.Undefined.toOption(jsSeparatorProps##leadingItem),
-      leadingSection:
-        Js.Undefined.toOption(jsSeparatorProps##leadingSection)
-        |> UtilsRN.option_map(jsSectionToSection),
+      leadingSection: Js.Undefined.toOption(jsSeparatorProps##leadingSection) |> UtilsRN.option_map(jsSectionToSection),
       section: jsSectionToSection(jsSeparatorProps##section),
       trailingItem: Js.Undefined.toOption(jsSeparatorProps##trailingItem),
       trailingSection:
-        Js.Undefined.toOption(jsSeparatorProps##trailingSection)
-        |> UtilsRN.option_map(jsSectionToSection)
+        Js.Undefined.toOption(jsSeparatorProps##trailingSection) |> UtilsRN.option_map(jsSectionToSection)
     });
 
 type viewToken('item) = {
@@ -124,16 +114,13 @@ type jsRenderAccessory('item) = {. "section": jsSection('item)};
 
 type renderAccessory('item) = {section: section('item)};
 
-type renderAccessoryView('item) =
-  jsRenderAccessory('item) => ReasonReact.reactElement;
+type renderAccessoryView('item) = jsRenderAccessory('item) => ReasonReact.reactElement;
 
 let renderAccessoryView =
     (reRenderAccessory: renderAccessory('item) => ReasonReact.reactElement)
     : renderAccessoryView('item) =>
   (jsRenderAccessory: jsRenderAccessory('item)) =>
-    reRenderAccessory({
-      section: jsSectionToSection(jsRenderAccessory##section)
-    });
+    reRenderAccessory({section: jsSectionToSection(jsRenderAccessory##section)});
 
 let make:
   (
@@ -147,7 +134,7 @@ let make:
     ~sectionSeparatorComponent: separatorComponent('item)=?,
     ~extraData: 'extraData=?,
     ~initialNumToRender: int=?,
-    ~onEndReached: {. "distanceFromEnd": float}=?,
+    ~onEndReached: {. "distanceFromEnd": float} => unit=?,
     ~onEndReachedThreshold: float=?,
     ~onViewableItemsChanged: {
                                .
@@ -162,11 +149,7 @@ let make:
     ~stickySectionHeadersEnabled: bool=?,
     array(ReasonReact.reactElement)
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    unit
-  ) =
+  ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit) =
   (
     ~sections,
     ~renderItem,
@@ -210,10 +193,7 @@ let make:
             "refreshing": fromOption(UtilsRN.optBoolToOptJsBoolean(refreshing)),
             "renderSectionHeader": fromOption(renderSectionHeader),
             "renderSectionFooter": fromOption(renderSectionFooter),
-            "stickySectionHeadersEnabled":
-              fromOption(
-                UtilsRN.optBoolToOptJsBoolean(stickySectionHeadersEnabled)
-              )
+            "stickySectionHeadersEnabled": fromOption(UtilsRN.optBoolToOptJsBoolean(stickySectionHeadersEnabled))
           }
         ),
       _children

@@ -2,12 +2,16 @@ type renderBag('item) = {
   item: 'item,
   index: int,
   section: section('item),
-  separators: {. "highlight": unit => unit, "unhighlight": unit => unit}
+  separators: {
+    .
+    "highlight": unit => unit,
+    "unhighlight": unit => unit
+  }
 }
 and section('item) = {
   data: array('item),
   key: option(string),
-  renderItem: option((renderBag('item) => ReasonReact.reactElement))
+  renderItem: option(renderBag('item) => ReasonReact.reactElement)
 };
 
 let section:
@@ -34,19 +38,22 @@ let sections: array(section('item)) => sections('item);
 
 type renderItem('item);
 
-let renderItem: (renderBag('item) => ReasonReact.reactElement) => renderItem('item);
+let renderItem:
+  (renderBag('item) => ReasonReact.reactElement) => renderItem('item);
 
 type separatorComponent('item);
 
 let separatorComponent:
-  (separatorProps('item) => ReasonReact.reactElement) => separatorComponent('item);
+  (separatorProps('item) => ReasonReact.reactElement) =>
+  separatorComponent('item);
 
 type renderAccessory('item) = {section: section('item)};
 
 type renderAccessoryView('item);
 
 let renderAccessoryView:
-  (renderAccessory('item) => ReasonReact.reactElement) => renderAccessoryView('item);
+  (renderAccessory('item) => ReasonReact.reactElement) =>
+  renderAccessoryView('item);
 
 type viewToken('item) = {
   .
@@ -69,7 +76,7 @@ let make:
     ~sectionSeparatorComponent: separatorComponent('item)=?,
     ~extraData: 'extraData=?,
     ~initialNumToRender: int=?,
-    ~onEndReached: {. "distanceFromEnd": float}=?,
+    ~onEndReached: {. "distanceFromEnd": float} => unit=?,
     ~onEndReachedThreshold: float=?,
     ~onViewableItemsChanged: {
                                .
@@ -84,4 +91,8 @@ let make:
     ~stickySectionHeadersEnabled: bool=?,
     array(ReasonReact.reactElement)
   ) =>
-  ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
+  ReasonReact.component(
+    ReasonReact.stateless,
+    ReasonReact.noRetainedProps,
+    unit
+  );
