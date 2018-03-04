@@ -24,7 +24,7 @@ Well, that happens. But don't give up! Just join the [Discord Server](https://di
 ## Setup Development
 ```sh
 git clone https://github.com/BuckleTypes/bs-react-native.git
-cd react-native
+cd bs-react-native
 npm install
 ```
 
