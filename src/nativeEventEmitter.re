@@ -2,10 +2,11 @@ type t;
 
 type emitterSubscription;
 
-[@bs.new] [@bs.module "react-native"] external create : NativeModules.t('a) => t =
-  "NativeEventEmitter";
+[@bs.new] [@bs.module "react-native"]
+external create : NativeModules.t('a) => t = "NativeEventEmitter";
 
-[@bs.send] external addListener : (t, string, 'a => unit) => emitterSubscription = "";
+[@bs.send]
+external addListener : (t, string, 'a => unit) => emitterSubscription = "";
 
 [@bs.send] external removeAllListeners : (t, string) => unit = "";
 

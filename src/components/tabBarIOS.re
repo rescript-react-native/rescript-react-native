@@ -31,7 +31,7 @@ module Item = {
         ~renderToHardwareTextureAndroid=?,
         ~accessibilityTraits=?,
         ~accessibilityViewIsModal=?,
-        ~shouldRasterizeIOS=?
+        ~shouldRasterizeIOS=?,
       ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=tabBarItemIOS,
@@ -46,11 +46,12 @@ module Item = {
               "onPress": fromOption(onPress),
               "renderAsOriginal":
                 fromOption(UtilsRN.optBoolToOptJsBoolean(renderAsOriginal)),
-              "selected": fromOption(UtilsRN.optBoolToOptJsBoolean(selected)),
+              "selected":
+                fromOption(UtilsRN.optBoolToOptJsBoolean(selected)),
               "selectedIcon": fromOption(selectedIcon),
               "style": fromOption(style),
               "isTVSelectable":
-                fromOption(UtilsRN.optBoolToOptJsBoolean(isTVSelectable))
+                fromOption(UtilsRN.optBoolToOptJsBoolean(isTVSelectable)),
             }
           ),
           ~accessibilityLabel?,
@@ -72,8 +73,8 @@ module Item = {
           ~renderToHardwareTextureAndroid?,
           ~accessibilityTraits?,
           ~accessibilityViewIsModal?,
-          ~shouldRasterizeIOS?
-        )
+          ~shouldRasterizeIOS?,
+        ),
     );
 };
 
@@ -107,7 +108,7 @@ let make =
       ~renderToHardwareTextureAndroid=?,
       ~accessibilityTraits=?,
       ~accessibilityViewIsModal=?,
-      ~shouldRasterizeIOS=?
+      ~shouldRasterizeIOS=?,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=tabBarIOS,
@@ -120,19 +121,19 @@ let make =
               fromOption(
                 UtilsRN.option_map(
                   x =>
-                    switch x {
+                    switch (x) {
                     | `fill => "fill"
                     | `center => "center"
                     | `auto => "auto"
                     },
-                  itemPositioning
-                )
+                  itemPositioning,
+                ),
               ),
             "tintColor": fromOption(tintColor),
             "translucent":
               fromOption(UtilsRN.optBoolToOptJsBoolean(translucent)),
             "unselectedItemTintColor": fromOption(unselectedItemTintColor),
-            "unselectedTintColor": fromOption(unselectedTintColor)
+            "unselectedTintColor": fromOption(unselectedTintColor),
           }
         ),
         ~accessibilityLabel?,
@@ -154,6 +155,6 @@ let make =
         ~renderToHardwareTextureAndroid?,
         ~accessibilityTraits?,
         ~accessibilityViewIsModal?,
-        ~shouldRasterizeIOS?
-      )
+        ~shouldRasterizeIOS?,
+      ),
   );

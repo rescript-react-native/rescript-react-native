@@ -4,7 +4,7 @@ module View =
       [@bs.module "react-native"] [@bs.scope "Animated"]
       external view : ReasonReact.reactClass = "View";
       let view = view;
-    }
+    },
   );
 
 module Image =
@@ -13,7 +13,7 @@ module Image =
       [@bs.module "react-native"] [@bs.scope "Animated"]
       external view : ReasonReact.reactClass = "Image";
       let view = view;
-    }
+    },
   );
 
 module Text =
@@ -22,7 +22,7 @@ module Text =
       [@bs.module "react-native"] [@bs.scope "Animated"]
       external view : ReasonReact.reactClass = "Text";
       let view = view;
-    }
+    },
   );
 
 module ScrollView = {
@@ -37,13 +37,13 @@ module ScrollView = {
             "nativeEvent": {
               "contentOffset": {
                 "x": Js.Undefined.fromOption(x),
-                "y": Js.Undefined.fromOption(y)
-              }
-            }
-          }
+                "y": Js.Undefined.fromOption(y),
+              },
+            },
+          },
         |],
-        {"useNativeDriver": Js.Boolean.to_js_boolean(native)}
-      )
+        {"useNativeDriver": Js.Boolean.to_js_boolean(native)},
+      ),
     );
   include
     ScrollView.CreateComponent(
@@ -51,6 +51,6 @@ module ScrollView = {
         [@bs.module "react-native"] [@bs.scope "Animated"]
         external view : ReasonReact.reactClass = "ScrollView";
         let view = view;
-      }
+      },
     );
 };

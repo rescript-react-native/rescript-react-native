@@ -1,14 +1,14 @@
 [@bs.module "react-native"] external modal : ReasonReact.reactClass = "Modal";
 
 let encodeAnimationType = x =>
-  switch x {
+  switch (x) {
   | `none => "none"
   | `slide => "slide"
   | `fade => "fade"
   };
 
 let encodeSupportedOrientations = x =>
-  switch x {
+  switch (x) {
   | `portrait => "portrait"
   | `portraitUpsideDown => "portrait-upside-down"
   | `landscape => "landscape"
@@ -25,7 +25,7 @@ let make =
       ~hardwareAccelerated=?,
       ~onRequestClose=?,
       ~onOrientationChange=?,
-      ~supportedOrientations=?
+      ~supportedOrientations=?,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=modal,
@@ -33,9 +33,12 @@ let make =
       Js.Undefined.(
         {
           "animationType":
-            fromOption(UtilsRN.option_map(encodeAnimationType, animationType)),
+            fromOption(
+              UtilsRN.option_map(encodeAnimationType, animationType),
+            ),
           "onShow": fromOption(onShow),
-          "transparent": fromOption(UtilsRN.optBoolToOptJsBoolean(transparent)),
+          "transparent":
+            fromOption(UtilsRN.optBoolToOptJsBoolean(transparent)),
           "visible": fromOption(UtilsRN.optBoolToOptJsBoolean(visible)),
           "hardwareAccelerated":
             fromOption(UtilsRN.optBoolToOptJsBoolean(hardwareAccelerated)),
@@ -45,9 +48,9 @@ let make =
             fromOption(
               UtilsRN.option_map(
                 encodeSupportedOrientations,
-                supportedOrientations
-              )
-            )
+                supportedOrientations,
+              ),
+            ),
         }
-      )
+      ),
   );

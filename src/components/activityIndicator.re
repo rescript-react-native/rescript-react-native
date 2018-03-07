@@ -2,7 +2,7 @@
 external view : ReasonReact.reactClass = "ActivityIndicator";
 
 let encodeSize = size =>
-  switch size {
+  switch (size) {
   | `small => Encode.string("small")
   | `large => Encode.string("large")
   | `exact(x) => Encode.int(x)
@@ -33,7 +33,7 @@ let make =
       ~renderToHardwareTextureAndroid=?,
       ~accessibilityTraits=?,
       ~accessibilityViewIsModal=?,
-      ~shouldRasterizeIOS=?
+      ~shouldRasterizeIOS=?,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
@@ -45,7 +45,7 @@ let make =
             "color": fromOption(color),
             "size": fromOption(UtilsRN.option_map(encodeSize, size)),
             "hidesWhenStopped":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(hidesWhenStopped))
+              fromOption(UtilsRN.optBoolToOptJsBoolean(hidesWhenStopped)),
           }
         ),
         ~accessibilityLabel?,
@@ -67,6 +67,6 @@ let make =
         ~renderToHardwareTextureAndroid?,
         ~accessibilityTraits?,
         ~accessibilityViewIsModal?,
-        ~shouldRasterizeIOS?
-      )
+        ~shouldRasterizeIOS?,
+      ),
   );

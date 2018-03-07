@@ -23,7 +23,7 @@ let make =
       ~style=?,
       ~underlayColor=?,
       ~hasTVPreferredFocus=?,
-      ~tvParallaxProperties=?
+      ~tvParallaxProperties=?,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
@@ -46,14 +46,14 @@ let make =
             fromOption(
               UtilsRN.option_map(
                 x =>
-                  switch x {
+                  switch (x) {
                   | `none => "none"
                   | `button => "button"
                   | `radiobutton_checked => "radiobutton_checked-none"
                   | `radiobutton_unchecked => "radiobutton_unchecked"
                   },
-                accessibilityComponentType
-              )
+                accessibilityComponentType,
+              ),
             ),
           "accessibilityTraits":
             fromOption(
@@ -80,8 +80,8 @@ let make =
                     | `pageTurn => "pageTurn";
                   traits |> List.map(to_string) |> Array.of_list;
                 },
-                accessibilityTraits
-              )
+                accessibilityTraits,
+              ),
             ),
           "activeOpacity": fromOption(activeOpacity),
           "onHideUnderlay": fromOption(onHideUnderlay),
@@ -90,7 +90,7 @@ let make =
           "underlayColor": fromOption(underlayColor),
           "hasTVPreferredFocus":
             fromOption(UtilsRN.optBoolToOptJsBoolean(hasTVPreferredFocus)),
-          "tvParallaxProperties": fromOption(tvParallaxProperties)
+          "tvParallaxProperties": fromOption(tvParallaxProperties),
         }
-      )
+      ),
   );

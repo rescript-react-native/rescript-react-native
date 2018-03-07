@@ -29,7 +29,7 @@ module type ImageComponent = {
     type error;
     type progress = {
       loaded: float,
-      total: float
+      total: float,
     };
   };
   let make:
@@ -56,7 +56,7 @@ module type ImageComponent = {
     ReasonReact.component(
       ReasonReact.stateless,
       ReasonReact.noRetainedProps,
-      unit
+      unit,
     );
 };
 
@@ -77,8 +77,7 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
        * This is hot it should look (or to copy it in again ^^)
        *  cache::[ | `default | `reload | `forceCache [@bs.as "force-cache"] | `onlyIfCached  [@bs.as "only-if-cached"]] [@bs.string]? =>
        */
-      ~cache: [@bs.string]
-              [
+      ~cache: [@bs.string] [
                 | `default
                 | `reload
                 | [@bs.as "force-cache"] `forceCache
@@ -112,12 +111,12 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
     type error;
     type progress = {
       loaded: float,
-      total: float
+      total: float,
     };
     [@bs.get] external progress : t => progress = "nativeEvent";
   };
   let encodeResizeMode = x =>
-    switch x {
+    switch (x) {
     | `cover => "cover"
     | `contain => "contain"
     | `stretch => "stretch"
@@ -125,19 +124,19 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
     | `center => "center"
     };
   let encodeSource = (x: imageSource) =>
-    switch x {
+    switch (x) {
     | URI(x) => rawImageSourceJS(x)
     | Required(x) => rawImageSourceJS(x)
     | Multiple(x) => rawImageSourceJS(Array.of_list(x))
     };
   let encodeResizeMethod = x =>
-    switch x {
+    switch (x) {
     | `auto => "auto"
     | `resize => "resize"
     | `scale => "scale"
     };
   let encodeDefaultSource = (x: defaultSource) =>
-    switch x {
+    switch (x) {
     | URI(x) => rawImageSourceJS(x)
     | Required(x) => rawImageSourceJS(x)
     };
@@ -159,7 +158,7 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
         ~capInsets=?,
         ~defaultSource=?,
         ~onPartialLoad=?,
-        ~onProgress=?
+        ~onProgress=?,
       ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=Impl.view,
@@ -177,22 +176,28 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
             "style": fromOption(style),
             "testID": fromOption(testID),
             "resizeMethod":
-              fromOption(UtilsRN.option_map(encodeResizeMethod, resizeMethod)),
+              fromOption(
+                UtilsRN.option_map(encodeResizeMethod, resizeMethod),
+              ),
             "accessibilityLabel": fromOption(accessibilityLabel),
-            "accessible": fromOption(UtilsRN.optBoolToOptJsBoolean(accessible)),
+            "accessible":
+              fromOption(UtilsRN.optBoolToOptJsBoolean(accessible)),
             "blurRadius": fromOption(blurRadius),
             "capInsets": fromOption(capInsets),
             "defaultSource":
               fromOption(
-                UtilsRN.option_map(encodeDefaultSource, defaultSource)
+                UtilsRN.option_map(encodeDefaultSource, defaultSource),
               ),
             "onPartialLoad": fromOption(onPartialLoad),
             "onProgress":
               fromOption(
-                UtilsRN.option_map((x, y) => x(Event.progress(y)), onProgress)
-              )
+                UtilsRN.option_map(
+                  (x, y) => x(Event.progress(y)),
+                  onProgress,
+                ),
+              ),
           }
-        )
+        ),
     );
 };
 
@@ -201,5 +206,5 @@ include
     {
       [@bs.module "react-native"]
       external view : ReasonReact.reactClass = "Image";
-    }
+    },
   );

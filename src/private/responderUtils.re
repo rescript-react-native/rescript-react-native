@@ -10,7 +10,7 @@ let responderHandlers =
       ~onResponderTerminationRequest=?,
       ~onStartShouldSetResponder=?,
       ~onStartShouldSetResponderCapture=?,
-      ()
+      (),
     )
     : Types.touchResponderHandlers => {
   onMoveShouldSetResponder,
@@ -22,5 +22,5 @@ let responderHandlers =
   onResponderTerminate,
   onResponderTerminationRequest,
   onStartShouldSetResponder,
-  onStartShouldSetResponderCapture
+  onStartShouldSetResponderCapture,
 };

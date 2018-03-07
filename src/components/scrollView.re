@@ -1,7 +1,7 @@
 module type ScrollViewComponent = {
   type point = {
     x: float,
-    y: float
+    y: float,
   };
   let scrollTo:
     (ReasonReact.reactRef, ~x: int, ~y: int, ~animated: bool) => unit;
@@ -51,7 +51,7 @@ module type ScrollViewComponent = {
                                 | `adjustable
                                 | `allowsDirectInteraction
                                 | `pageTurn
-                              ]
+                              ],
                             )
                               =?,
       ~accessibilityViewIsModal: bool=?,
@@ -94,14 +94,14 @@ module type ScrollViewComponent = {
     ReasonReact.component(
       ReasonReact.stateless,
       ReasonReact.noRetainedProps,
-      unit
+      unit,
     );
 };
 
 module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
   type point = {
     x: float,
-    y: float
+    y: float,
   };
   [@bs.send]
   external _scrollTo :
@@ -111,7 +111,7 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
         .
         "x": int,
         "y": int,
-        "animated": Js.boolean
+        "animated": Js.boolean,
       }
     ) =>
     unit =
@@ -123,7 +123,7 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
   let scrollTo = (ref, ~x, ~y, ~animated) =>
     _scrollTo(
       ref,
-      {"x": x, "y": y, "animated": Js.Boolean.to_js_boolean(animated)}
+      {"x": x, "y": y, "animated": Js.Boolean.to_js_boolean(animated)},
     );
   let scrollToEnd = (ref, ~animated) =>
     _scrollToEnd(ref, {"animated": Js.Boolean.to_js_boolean(animated)});
@@ -181,7 +181,7 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
         ~scrollIndicatorInsets=?,
         ~scrollsToTop=?,
         ~snapToAlignment=?,
-        ~zoomScale=?
+        ~zoomScale=?,
       ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=Impl.view,
@@ -196,25 +196,25 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
                 fromOption(
                   UtilsRN.option_map(
                     x =>
-                      switch x {
+                      switch (x) {
                       | `interactive => "interactive"
                       | `none => "none"
                       | `onDrag => "on-drag"
                       },
-                    keyboardDismissMode
-                  )
+                    keyboardDismissMode,
+                  ),
                 ),
               "keyboardShouldPersistTaps":
                 fromOption(
                   UtilsRN.option_map(
                     x =>
-                      switch x {
+                      switch (x) {
                       | `always => "always"
                       | `never => "never"
                       | `handled => "handled"
                       },
-                    keyboardShouldPersistTaps
-                  )
+                    keyboardShouldPersistTaps,
+                  ),
                 ),
               "onContentSizeChange": fromOption(onContentSizeChange),
               "onScroll": fromOption(onScroll),
@@ -225,45 +225,49 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
                 fromOption(UtilsRN.optBoolToOptJsBoolean(scrollEnabled)),
               "showsHorizontalScrollIndicator":
                 fromOption(
-                  UtilsRN.optBoolToOptJsBoolean(showsHorizontalScrollIndicator)
+                  UtilsRN.optBoolToOptJsBoolean(
+                    showsHorizontalScrollIndicator,
+                  ),
                 ),
               "showsVerticalScrollIndicator":
                 fromOption(
-                  UtilsRN.optBoolToOptJsBoolean(showsVerticalScrollIndicator)
+                  UtilsRN.optBoolToOptJsBoolean(showsVerticalScrollIndicator),
                 ),
               "stickyHeaderIndices":
                 fromOption(
-                  UtilsRN.option_map(Array.of_list, stickyHeaderIndices)
+                  UtilsRN.option_map(Array.of_list, stickyHeaderIndices),
                 ),
               "overScrollMode":
                 fromOption(
                   UtilsRN.option_map(
                     x =>
-                      switch x {
+                      switch (x) {
                       | `always => "always"
                       | `never => "never"
                       | `auto => "auto"
                       },
-                    overScrollMode
-                  )
+                    overScrollMode,
+                  ),
                 ),
               "scrollPerfTag": fromOption(scrollPerfTag),
               "alwaysBounceHorizontal":
                 fromOption(
-                  UtilsRN.optBoolToOptJsBoolean(alwaysBounceHorizontal)
+                  UtilsRN.optBoolToOptJsBoolean(alwaysBounceHorizontal),
                 ),
               "alwaysBounceVertical":
-                fromOption(UtilsRN.optBoolToOptJsBoolean(alwaysBounceVertical)),
+                fromOption(
+                  UtilsRN.optBoolToOptJsBoolean(alwaysBounceVertical),
+                ),
               "automaticallyAdjustContentInsets":
                 fromOption(
                   UtilsRN.optBoolToOptJsBoolean(
-                    automaticallyAdjustContentInsets
-                  )
+                    automaticallyAdjustContentInsets,
+                  ),
                 ),
               "bounces": fromOption(UtilsRN.optBoolToOptJsBoolean(bounces)),
               "canCancelContentTouches":
                 fromOption(
-                  UtilsRN.optBoolToOptJsBoolean(canCancelContentTouches)
+                  UtilsRN.optBoolToOptJsBoolean(canCancelContentTouches),
                 ),
               "centerContent":
                 fromOption(UtilsRN.optBoolToOptJsBoolean(centerContent)),
@@ -272,35 +276,35 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
                 fromOption(
                   UtilsRN.option_map(
                     ({x, y}) => {"x": x, "y": y},
-                    contentOffset
-                  )
+                    contentOffset,
+                  ),
                 ),
               "decelerationRate":
                 fromOption(
                   UtilsRN.option_map(
                     x =>
-                      switch x {
+                      switch (x) {
                       | `fast => "fast"
                       | `normal => "normal"
                       },
-                    decelerationRate
-                  )
+                    decelerationRate,
+                  ),
                 ),
               "directionalLockEnabled":
                 fromOption(
-                  UtilsRN.optBoolToOptJsBoolean(directionalLockEnabled)
+                  UtilsRN.optBoolToOptJsBoolean(directionalLockEnabled),
                 ),
               "indicatorStyle":
                 fromOption(
                   UtilsRN.option_map(
                     x =>
-                      switch x {
+                      switch (x) {
                       | `default => "default"
                       | `black => "black"
                       | `white => "white"
                       },
-                    indicatorStyle
-                  )
+                    indicatorStyle,
+                  ),
                 ),
               "maximumZoomScale": fromOption(maximumZoomScale),
               "minimumZoomScale": fromOption(minimumZoomScale),
@@ -313,15 +317,15 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
                 fromOption(
                   UtilsRN.option_map(
                     x =>
-                      switch x {
+                      switch (x) {
                       | `center => "center"
                       | `start => "start"
                       | `end_ => "end"
                       },
-                    snapToAlignment
-                  )
+                    snapToAlignment,
+                  ),
                 ),
-              "zoomScale": fromOption(zoomScale)
+              "zoomScale": fromOption(zoomScale),
             }
           ),
           ~accessibilityLabel?,
@@ -343,8 +347,8 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
           ~renderToHardwareTextureAndroid?,
           ~accessibilityTraits?,
           ~accessibilityViewIsModal?,
-          ~shouldRasterizeIOS?
-        )
+          ~shouldRasterizeIOS?,
+        ),
     );
 };
 
@@ -353,5 +357,5 @@ include
     {
       [@bs.module "react-native"]
       external view : ReasonReact.reactClass = "ScrollView";
-    }
+    },
   );

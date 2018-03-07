@@ -20,11 +20,11 @@ type effectiveConnectionType =
 type info = {
   .
   "effectiveType": infoEffectiveType,
-  "_type": infoType
+  "_type": infoType,
 };
 
 let connectionType = connectionType =>
-  switch connectionType {
+  switch (connectionType) {
   | "none" => None
   | "wifi" => WiFi
   | "cellular" => Cellular
@@ -37,7 +37,7 @@ let connectionType = connectionType =>
   };
 
 let effectiveConnectionType = effectiveConnectionType =>
-  switch effectiveConnectionType {
+  switch (effectiveConnectionType) {
   | "2g" => Net2G
   | "3g" => Net3G
   | "4g" => Net4G
@@ -66,15 +66,15 @@ module IsConnected = {
   type t;
   [@bs.module "react-native"] [@bs.scope "NetInfo"] [@bs.val]
   external isConnected : t = "";
-  [@bs.send.pipe : t]
+  [@bs.send.pipe: t]
   external _addEventListener :
     ([@bs.as "connectionChange"] _, bool => unit) => unit =
     "addEventListener";
-  [@bs.send.pipe : t]
+  [@bs.send.pipe: t]
   external _removeEventListener :
     ([@bs.as "connectionChange"] _, bool => unit) => unit =
     "removeEventListener";
-  [@bs.send.pipe : t] external _fetch : unit => Js.Promise.t(bool) = "fetch";
+  [@bs.send.pipe: t] external _fetch : unit => Js.Promise.t(bool) = "fetch";
   let addEventListener = listener =>
     isConnected |> _addEventListener(listener);
   let removeEventListener = listener =>
