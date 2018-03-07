@@ -29,7 +29,7 @@ external makeWatchPositionConfig :
   "";
 
 [@bs.module "react-native"] [@bs.scope "Geolocation"]
-external _setRNConfiguration : rnConfig => unit = "";
+external _setRNConfiguration : rnConfig => unit = "setRNConfiguration";
 
 let setRNConfiguration = (~skipPermissionRequests=?, ()) =>
   _setRNConfiguration(makeRnConfig(~skipPermissionRequests?));
@@ -43,12 +43,12 @@ external stopObserving : unit => unit = "";
 [@bs.module "react-native"] [@bs.scope "Geolocation"]
 external _getCurrentPosition :
   (unit => unit, unit => unit, currentPositionConfig) => unit =
-  "";
+  "getCurrentPosition";
 
 [@bs.module "react-native"] [@bs.scope "Geolocation"]
 external _watchPosition :
   (unit => unit, unit => unit, watchPositionConfig) => watchId =
-  "";
+  "watchPosition";
 
 [@bs.module "react-native"] [@bs.scope "Geolocation"]
 external clearWatch : watchId => unit = "";
