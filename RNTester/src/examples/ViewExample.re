@@ -8,17 +8,17 @@ let styles =
           style([
             backgroundColor("#527FE4"),
             borderColor("#000033"),
-            borderWidth(1.)
+            borderWidth(1.),
           ]),
         "zIndex":
           style([
             justifyContent(SpaceAround),
             width(Pt(100.)),
             height(Pt(50.)),
-            marginTop(Pt(-10.))
-          ])
+            marginTop(Pt(-10.)),
+          ]),
       }
-    )
+    ),
   );
 
 module ViewBorderStyleExample = {
@@ -30,7 +30,7 @@ module ViewBorderStyleExample = {
     ...component,
     initialState: () => {showBorder: false},
     reducer: (action, _state) =>
-      switch action {
+      switch (action) {
       | UpdateBorderState(showBorder) => Update({showBorder: showBorder})
       },
     render: ({state, send}) =>
@@ -47,9 +47,9 @@ module ViewBorderStyleExample = {
                       Dashed;
                     } else {
                       Solid;
-                    }
+                    },
                   ),
-                  padding(Pt(5.))
+                  padding(Pt(5.)),
                 ])
               )>
               <Text style=(style([fontSize(Float(11.))]))>
@@ -67,9 +67,9 @@ module ViewBorderStyleExample = {
                       Dotted;
                     } else {
                       Solid;
-                    }
+                    },
                   ),
-                  padding(Pt(5.))
+                  padding(Pt(5.)),
                 ])
               )>
               <Text style=(style([fontSize(Float(11.))]))>
@@ -78,7 +78,7 @@ module ViewBorderStyleExample = {
             </View>
           </View>
         </TouchableWithoutFeedback>
-      )
+      ),
   };
 };
 
@@ -91,7 +91,7 @@ module ZIndexExample = {
     ...component,
     initialState: () => {flipped: false},
     reducer: (action, _state) =>
-      switch action {
+      switch (action) {
       | UpdateFlippedState(flipped) => Update({flipped: flipped})
       },
     render: ({state, send}) => {
@@ -117,8 +117,8 @@ module ZIndexExample = {
                 style([
                   marginTop(Pt(0.)),
                   backgroundColor("#E57373"),
-                  zIndex(Array.unsafe_get(indices, 0))
-                ])
+                  zIndex(Array.unsafe_get(indices, 0)),
+                ]),
               ])
             )>
             <Text> (ReasonReact.stringToElement(zIndexStr(0))) </Text>
@@ -130,8 +130,8 @@ module ZIndexExample = {
                 style([
                   marginLeft(Pt(50.)),
                   backgroundColor("#FFF176"),
-                  zIndex(Array.unsafe_get(indices, 1))
-                ])
+                  zIndex(Array.unsafe_get(indices, 1)),
+                ]),
               ])
             )>
             <Text> (ReasonReact.stringToElement(zIndexStr(1))) </Text>
@@ -143,8 +143,8 @@ module ZIndexExample = {
                 style([
                   marginLeft(Pt(100.)),
                   backgroundColor("#81C784"),
-                  zIndex(Array.unsafe_get(indices, 2))
-                ])
+                  zIndex(Array.unsafe_get(indices, 2)),
+                ]),
               ])
             )>
             <Text> (ReasonReact.stringToElement(zIndexStr(2))) </Text>
@@ -156,15 +156,15 @@ module ZIndexExample = {
                 style([
                   marginLeft(Pt(150.)),
                   backgroundColor("#64B5F6"),
-                  zIndex(Array.unsafe_get(indices, 3))
-                ])
+                  zIndex(Array.unsafe_get(indices, 3)),
+                ]),
               ])
             )>
             <Text> (ReasonReact.stringToElement(zIndexStr(3))) </Text>
           </View>
         </View>
       </TouchableWithoutFeedback>;
-    }
+    },
   };
 };
 
@@ -181,11 +181,12 @@ let examples: array(Example.t) =
         title: "Background Color",
         description: None,
         render: () =>
-          <View style=(style([backgroundColor("#527FE4"), padding(Pt(5.))]))>
+          <View
+            style=(style([backgroundColor("#527FE4"), padding(Pt(5.))]))>
             <Text style=(style([fontSize(Float(11.))]))>
               (ReasonReact.stringToElement("Blue background"))
             </Text>
-          </View>
+          </View>,
       },
       {
         title: "Border",
@@ -196,13 +197,13 @@ let examples: array(Example.t) =
               style([
                 borderColor("#527FE4"),
                 borderWidth(5.),
-                padding(Pt(10.))
+                padding(Pt(10.)),
               ])
             )>
             <Text style=(style([fontSize(Float(11.))]))>
               (ReasonReact.stringToElement("5px blue border"))
             </Text>
-          </View>
+          </View>,
       },
       {
         title: "Padding/Margin",
@@ -226,8 +227,8 @@ let examples: array(Example.t) =
                   style([
                     margin(Pt(5.)),
                     padding(Pt(5.)),
-                    alignSelf(FlexStart)
-                  ])
+                    alignSelf(FlexStart),
+                  ]),
                 ])
               )>
               <Text style=(style([fontSize(Float(11.))]))>
@@ -237,27 +238,29 @@ let examples: array(Example.t) =
                 (ReasonReact.stringToElement("widthAutonomous=true"))
               </Text>
             </View>
-          </View>
+          </View>,
       },
       {
         title: "Border Radius",
         description: None,
         render: () =>
           <View
-            style=(style([borderWidth(1.), borderRadius(5.), padding(Pt(5.))]))>
+            style=(
+              style([borderWidth(1.), borderRadius(5.), padding(Pt(5.))])
+            )>
             <Text style=(style([fontSize(Float(11.))]))>
               (
                 ReasonReact.stringToElement(
-                  "Too much use of `borderRadius` (especially large radii) on\nanything which is scrolling may result in dropped frames.\nUse sparingly."
+                  "Too much use of `borderRadius` (especially large radii) on\nanything which is scrolling may result in dropped frames.\nUse sparingly.",
                 )
               )
             </Text>
-          </View>
+          </View>,
       },
       {
         title: "Border Style",
         description: None,
-        render: () => <ViewBorderStyleExample />
+        render: () => <ViewBorderStyleExample />,
       },
       {
         title: "Circle with Border Radius",
@@ -269,10 +272,10 @@ let examples: array(Example.t) =
                 borderRadius(10.),
                 borderWidth(1.),
                 width(Pt(20.)),
-                height(Pt(20.))
+                height(Pt(20.)),
               ])
             )
-          />
+          />,
       },
       {
         title: "Overflow",
@@ -287,11 +290,13 @@ let examples: array(Example.t) =
                   marginRight(Pt(10.)),
                   marginBottom(Pt(5.)),
                   overflow(Hidden),
-                  borderWidth(StyleSheet.hairlineWidth)
+                  borderWidth(StyleSheet.hairlineWidth),
                 ])
               )>
               <View style=(style([width(Pt(200.)), height(Pt(20.))]))>
-                <Text> (ReasonReact.stringToElement("Overflow hidden")) </Text>
+                <Text>
+                  (ReasonReact.stringToElement("Overflow hidden"))
+                </Text>
               </View>
             </View>
             <View
@@ -300,7 +305,7 @@ let examples: array(Example.t) =
                   width(Pt(95.)),
                   height(Pt(10.)),
                   marginBottom(Pt(5.)),
-                  borderWidth(StyleSheet.hairlineWidth)
+                  borderWidth(StyleSheet.hairlineWidth),
                 ])
               )>
               <View style=(style([width(Pt(200.)), height(Pt(20.))]))>
@@ -309,7 +314,7 @@ let examples: array(Example.t) =
                 </Text>
               </View>
             </View>
-          </View>
+          </View>,
       },
       {
         title: "Opacity",
@@ -337,8 +342,8 @@ let examples: array(Example.t) =
             <View style=(style([opacity(Float(1.0))]))>
               <Text> (ReasonReact.stringToElement("Opacity 1")) </Text>
             </View>
-          </View>
+          </View>,
       },
-      {title: "ZIndex", description: None, render: () => <ZIndexExample />}
+      {title: "ZIndex", description: None, render: () => <ZIndexExample />},
     |]
   );

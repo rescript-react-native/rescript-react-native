@@ -13,19 +13,19 @@ let styles =
             marginBottom(Pt(0.)),
             height(Pt(45.)),
             padding(Pt(10.)),
-            backgroundColor("white")
+            backgroundColor("white"),
           ]),
-        "text": style([fontSize(Float(19.)), fontWeight(`_500)])
+        "text": style([fontSize(Float(19.)), fontWeight(`_500)]),
       }
-    )
+    ),
   );
 
 let component = ReasonReact.statelessComponent("RNTesterTitle");
 
 let make = (~title, _children) => {
   ...component,
-  render: (_self) =>
+  render: _self =>
     <View style=styles##container>
       <Text style=styles##text> (ReasonReact.stringToElement(title)) </Text>
-    </View>
+    </View>,
 };

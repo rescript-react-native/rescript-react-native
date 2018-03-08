@@ -313,7 +313,19 @@ type fontStyle =
 let fontStyle: fontStyle => styleElement;
 
 let fontWeight:
-  [ | `Normal | `Bold | `_100 | `_200 | `_300 | `_400 | `_500 | `_600 | `_700 | `_800 | `_900] =>
+  [
+    | `Normal
+    | `Bold
+    | `_100
+    | `_200
+    | `_300
+    | `_400
+    | `_500
+    | `_600
+    | `_700
+    | `_800
+    | `_900
+  ] =>
   styleElement;
 
 let lineHeight: float => styleElement;
