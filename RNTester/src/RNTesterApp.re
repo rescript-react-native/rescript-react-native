@@ -8,8 +8,8 @@ let styles =
           style([
             height(Pt(60.)),
             borderBottomWidth(StyleSheet.hairlineWidth),
-            borderBottomColor("#96969A"),
-            backgroundColor("#F5F5F6"),
+            borderBottomColor(String("#96969A")),
+            backgroundColor(String("#F5F5F6")),
             flexDirection(Row),
             paddingTop(Pt(20.)),
           ]),

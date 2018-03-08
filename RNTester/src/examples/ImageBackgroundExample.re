@@ -36,7 +36,12 @@ let examples: array(Example.t) =
               )
             )>
             <View
-              style=(style([backgroundColor("#FFFFFF"), padding(Pt(5.))]))>
+              style=(
+                style([
+                  backgroundColor(String("#FFFFFF")),
+                  padding(Pt(5.)),
+                ])
+              )>
               <Text> (ReasonReact.stringToElement("Nested text")) </Text>
             </View>
           </ImageBackground>,

@@ -4,7 +4,7 @@ let styles =
   StyleSheet.create(
     Style.(
       {
-        "container": style([backgroundColor("#e9eaed"), flex(1.0)]),
+        "container": style([backgroundColor(String("#e9eaed")), flex(1.0)]),
         "spacer": style([height(Pt(270.))]),
         "wrapper": style([flex(1.0), paddingTop(Pt(10.))]),
       }

@@ -7,7 +7,7 @@ let styles =
         "listContainer": style([flex(1.0)]),
         "row":
           style([
-            backgroundColor("white"),
+            backgroundColor(String("white")),
             justifyContent(Center),
             paddingHorizontal(Pt(15.)),
             paddingVertical(Pt(8.)),
@@ -16,19 +16,19 @@ let styles =
         "rowDetailText":
           style([
             fontSize(Float(15.)),
-            color("#888888"),
+            color(String("#888888")),
             lineHeight(20.),
           ]),
         "separator":
           style([
             height(Pt(StyleSheet.hairlineWidth)),
-            backgroundColor("#bbbbbb"),
+            backgroundColor(String("#bbbbbb")),
             marginLeft(Pt(15.)),
           ]),
         "separatorHighlighted":
           style([
             height(Pt(StyleSheet.hairlineWidth)),
-            backgroundColor("rgb(217, 217, 217)"),
+            backgroundColor(String("rgb(217, 217, 217)")),
           ]),
       }
     ),

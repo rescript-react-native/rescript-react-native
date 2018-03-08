@@ -8,12 +8,12 @@ let styles =
           style([
             borderRadius(4.),
             borderWidth(1.),
-            borderColor("#d6d7da"),
+            borderColor(String("#d6d7da")),
             margin(Pt(10.)),
             marginBottom(Pt(0.)),
             height(Pt(45.)),
             padding(Pt(10.)),
-            backgroundColor("white"),
+            backgroundColor(String("white")),
           ]),
         "text": style([fontSize(Float(19.)), fontWeight(`_500)]),
       }
