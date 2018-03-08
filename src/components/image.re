@@ -70,13 +70,6 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
       ~method: string=?,
       ~headers: Js.t('a)=?,
       ~body: string=?,
-      /*
-       * Be careful not to refmt this away !!!
-       * https://github.com/facebook/reason/issues/821 (resolved, not released yet)
-       *
-       * This is hot it should look (or to copy it in again ^^)
-       *  cache::[ | `default | `reload | `forceCache [@bs.as "force-cache"] | `onlyIfCached  [@bs.as "only-if-cached"]] [@bs.string]? =>
-       */
       ~cache: [@bs.string] [
                 | `default
                 | `reload
