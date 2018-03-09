@@ -24,7 +24,7 @@ let make =
       ~pressRetentionOffset=?,
       ~activeOpacity=?,
       ~focusedOpacity=?,
-      ~tvParallaxProperties=?
+      ~tvParallaxProperties=?,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
@@ -48,14 +48,14 @@ let make =
             fromOption(
               UtilsRN.option_map(
                 x =>
-                  switch x {
+                  switch (x) {
                   | `none => "none"
                   | `button => "button"
                   | `radiobutton_checked => "radiobutton_checked-none"
                   | `radiobutton_unchecked => "radiobutton_unchecked"
                   },
-                accessibilityComponentType
-              )
+                accessibilityComponentType,
+              ),
             ),
           "accessibilityTraits":
             fromOption(
@@ -82,12 +82,12 @@ let make =
                     | `pageTurn => "pageTurn";
                   traits |> List.map(to_string) |> Array.of_list;
                 },
-                accessibilityTraits
-              )
+                accessibilityTraits,
+              ),
             ),
           "focusedOpacity": fromOption(focusedOpacity),
           "activeOpacity": fromOption(activeOpacity),
-          "tvParallaxProperties": fromOption(tvParallaxProperties)
+          "tvParallaxProperties": fromOption(tvParallaxProperties),
         }
-      )
+      ),
   );

@@ -46,7 +46,7 @@ let showActionSheetWithOptions =
       ~message=?,
       ~tintColor=?,
       callback,
-      ()
+      (),
     ) =>
   _showActionSheetWithOptions(
     makeActionSheetConfig(
@@ -55,9 +55,9 @@ let showActionSheetWithOptions =
       ~destructiveButtonIndex?,
       ~title?,
       ~message?,
-      ~tintColor?
+      ~tintColor?,
     ),
-    callback
+    callback,
   );
 
 let showShareActionSheetWithOptions =
@@ -68,15 +68,15 @@ let showShareActionSheetWithOptions =
       ~excludedActivityTypes=?,
       failureCallback,
       successCallback,
-      ()
+      (),
     ) =>
   _showShareActionSheetWithOptions(
     makeShareActionSheetConfig(
       ~message?,
       ~url?,
       ~subject?,
-      ~excludedActivityTypes?
+      ~excludedActivityTypes?,
     ),
     failureCallback,
-    successCallback
+    successCallback,
   );

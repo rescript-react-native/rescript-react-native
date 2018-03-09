@@ -9,7 +9,7 @@ type iOSLoadRequestEvent = {
   "title": string,
   "canGoForward": bool,
   "navigationType": string,
-  "url": string
+  "url": string,
 };
 
 type source;
@@ -82,7 +82,7 @@ let make =
       ~dataDetectorTypes=?,
       ~decelerationRate=?,
       ~onShouldStartLoadWithRequest=?,
-      ~scrollEnabled=?
+      ~scrollEnabled=?,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
@@ -142,12 +142,13 @@ let make =
                       | `compatibility => "compatibility";
                     contentMode |> List.map(to_string) |> Array.of_list;
                   },
-                  mixedContentMode
-                )
+                  mixedContentMode,
+                ),
               ),
             "thirdPartyCookiesEnabled": fromOption(thirdPartyCookiesEnabled),
             "userAgent": fromOption(userAgent),
-            "allowsInlineMediaPlayback": fromOption(allowsInlineMediaPlayback),
+            "allowsInlineMediaPlayback":
+              fromOption(allowsInlineMediaPlayback),
             "bounces": fromOption(bounces),
             "dataDetectorTypes":
               fromOption(
@@ -163,8 +164,8 @@ let make =
                       | `all => "all";
                     dataDetectorType |> List.map(to_string) |> Array.of_list;
                   },
-                  dataDetectorTypes
-                )
+                  dataDetectorTypes,
+                ),
               ),
             "decelerationRate":
               fromOption(
@@ -177,13 +178,13 @@ let make =
                       | `value(f) => f;
                     rate |> List.map(to_float) |> Array.of_list;
                   },
-                  decelerationRate
-                )
+                  decelerationRate,
+                ),
               ),
             "onShouldStartLoadWithRequest":
               fromOption(onShouldStartLoadWithRequest),
-            "scrollEnabled": fromOption(scrollEnabled)
-          }
+            "scrollEnabled": fromOption(scrollEnabled),
+          },
         )
-      )
+      ),
   );

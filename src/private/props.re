@@ -1,5 +1,5 @@
 let serialize = (handlers: option(Types.touchResponderHandlers)) =>
-  switch handlers {
+  switch (handlers) {
   | None => Js.Obj.empty()
   | Some(handlers) =>
     Js.Undefined.(
@@ -8,15 +8,15 @@ let serialize = (handlers: option(Types.touchResponderHandlers)) =>
           fromOption(
             UtilsRN.option_map(
               (g, x) => Js.Boolean.to_js_boolean(g(x)),
-              handlers.onMoveShouldSetResponder
-            )
+              handlers.onMoveShouldSetResponder,
+            ),
           ),
         "onMoveShouldSetResponderCapture":
           fromOption(
             UtilsRN.option_map(
               (g, x) => Js.Boolean.to_js_boolean(g(x)),
-              handlers.onMoveShouldSetResponderCapture
-            )
+              handlers.onMoveShouldSetResponderCapture,
+            ),
           ),
         "onResponderGrant": fromOption(handlers.onResponderGrant),
         "onResponderMove": fromOption(handlers.onResponderMove),
@@ -29,16 +29,16 @@ let serialize = (handlers: option(Types.touchResponderHandlers)) =>
           fromOption(
             UtilsRN.option_map(
               (g, x) => Js.Boolean.to_js_boolean(g(x)),
-              handlers.onStartShouldSetResponder
-            )
+              handlers.onStartShouldSetResponder,
+            ),
           ),
         "onStartShouldSetResponderCapture":
           fromOption(
             UtilsRN.option_map(
               (g, x) => Js.Boolean.to_js_boolean(g(x)),
-              handlers.onStartShouldSetResponderCapture
-            )
-          )
+              handlers.onStartShouldSetResponderCapture,
+            ),
+          ),
       }
     )
   };
@@ -65,7 +65,7 @@ let extendView =
       ~accessibilityTraits=?,
       ~accessibilityViewIsModal=?,
       ~shouldRasterizeIOS=?,
-      moreProps
+      moreProps,
     ) =>
   UtilsRN.objAssign2(
     Js.Undefined.(
@@ -82,14 +82,14 @@ let extendView =
           fromOption(
             UtilsRN.option_map(
               x =>
-                switch x {
+                switch (x) {
                 | `auto => "auto"
                 | `none => "none"
                 | `boxNone => "box-none"
                 | `boxOnly => "box-only"
                 },
-              pointerEvents
-            )
+              pointerEvents,
+            ),
           ),
         "style": fromOption(style),
         "testID": fromOption(testID),
@@ -97,48 +97,49 @@ let extendView =
           fromOption(
             UtilsRN.option_map(
               x =>
-                switch x {
+                switch (x) {
                 | `none => "none"
                 | `button => "button"
                 | `radiobutton_checked => "radiobutton_checked-none"
                 | `radiobutton_unchecked => "radiobutton_unchecked"
                 },
-              accessibilityComponentType
-            )
+              accessibilityComponentType,
+            ),
           ),
         "accessibilityLiveRegion":
           fromOption(
             UtilsRN.option_map(
               x =>
-                switch x {
+                switch (x) {
                 | `polite => "polite"
                 | `none => "none"
                 | `assertive => "assertive"
                 },
-              accessibilityLiveRegion
-            )
+              accessibilityLiveRegion,
+            ),
           ),
-        "collapsable": fromOption(UtilsRN.optBoolToOptJsBoolean(collapsable)),
+        "collapsable":
+          fromOption(UtilsRN.optBoolToOptJsBoolean(collapsable)),
         "importantForAccessibility":
           fromOption(
             UtilsRN.option_map(
               prop =>
-                switch prop {
+                switch (prop) {
                 | `auto => "auto"
                 | `yes => "yes"
                 | `no => "no"
                 | `noHideDescendants => "noHideDescendants"
                 },
-              importantForAccessibility
-            )
+              importantForAccessibility,
+            ),
           ),
         "needsOffscreenAlphaCompositing":
           fromOption(
-            UtilsRN.optBoolToOptJsBoolean(needsOffscreenAlphaCompositing)
+            UtilsRN.optBoolToOptJsBoolean(needsOffscreenAlphaCompositing),
           ),
         "renderToHardwareTextureAndroid":
           fromOption(
-            UtilsRN.optBoolToOptJsBoolean(renderToHardwareTextureAndroid)
+            UtilsRN.optBoolToOptJsBoolean(renderToHardwareTextureAndroid),
           ),
         "accessibilityTraits":
           fromOption(
@@ -165,15 +166,17 @@ let extendView =
                   | `pageTurn => "pageTurn";
                 traits |> List.map(to_string) |> Array.of_list;
               },
-              accessibilityTraits
-            )
+              accessibilityTraits,
+            ),
           ),
         "accessibilityViewIsModal":
-          fromOption(UtilsRN.optBoolToOptJsBoolean(accessibilityViewIsModal)),
+          fromOption(
+            UtilsRN.optBoolToOptJsBoolean(accessibilityViewIsModal),
+          ),
         "shouldRasterizeIOS":
-          fromOption(UtilsRN.optBoolToOptJsBoolean(shouldRasterizeIOS))
+          fromOption(UtilsRN.optBoolToOptJsBoolean(shouldRasterizeIOS)),
       }
     ),
     moreProps,
-    serialize(responderHandlers)
+    serialize(responderHandlers),
   );

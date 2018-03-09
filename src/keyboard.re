@@ -8,8 +8,8 @@ type event('a) =
       "height": float,
       "screenX": float,
       "screenY": float,
-      "width": float
-    }
+      "width": float,
+    },
   } as 'a;
 
 type listener('a) = event('a) => unit;
@@ -23,7 +23,7 @@ type keyboardEvent =
   | KeyboardDidChangeFrame;
 
 let mapKeyboardEvent = keyboardEvent =>
-  switch keyboardEvent {
+  switch (keyboardEvent) {
   | KeyboardWillShow => "keyboardWillShow"
   | KeyboardDidShow => "keyboardDidShow"
   | KeyboardWillHide => "keyboardWillHide"
@@ -33,7 +33,8 @@ let mapKeyboardEvent = keyboardEvent =>
   };
 
 [@bs.module "react-native"] [@bs.scope "Keyboard"]
-external _addListener : (string, listener('a)) => subscription = "addListener";
+external _addListener : (string, listener('a)) => subscription =
+  "addListener";
 
 [@bs.module "react-native"] [@bs.scope "Keyboard"]
 external dismiss : unit => unit = "";
@@ -54,5 +55,5 @@ let removeListener = (keyboardEvent, listener) =>
   _removeListener(mapKeyboardEvent(keyboardEvent), listener);
 
 module Subscription = {
-  [@bs.send.pipe : subscription] external remove : unit = "";
+  [@bs.send.pipe: subscription] external remove : unit = "";
 };

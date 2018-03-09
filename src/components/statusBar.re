@@ -11,14 +11,14 @@ let setHidden = (hidden, ~animation=?, ()) =>
     Js.Undefined.fromOption(
       UtilsRN.option_map(
         x =>
-          switch x {
+          switch (x) {
           | `none => "none"
           | `fade => "fade"
           | `slide => "slide"
           },
-        animation
-      )
-    )
+        animation,
+      ),
+    ),
   );
 
 [@bs.scope "StatusBar"] [@bs.module "react-native"]
@@ -27,12 +27,12 @@ external _setBarStyle : (string, Js.Undefined.t(Js.boolean)) => unit =
 
 let setBarStyle = (style, ~animated=?, ()) =>
   _setBarStyle(
-    switch style {
+    switch (style) {
     | `default => "default"
     | `lightContent => "light-content"
     | `darkContent => "dark-content"
     },
-    Js.Undefined.fromOption(UtilsRN.optBoolToOptJsBoolean(animated))
+    Js.Undefined.fromOption(UtilsRN.optBoolToOptJsBoolean(animated)),
   );
 
 [@bs.scope "StatusBar"] [@bs.module "react-native"]
@@ -49,7 +49,7 @@ external _setBackgroundColor : (string, Js.Undefined.t(Js.boolean)) => unit =
 let setBackgroundColor = (color, ~animated=?, ()) =>
   _setBackgroundColor(
     color,
-    Js.Undefined.fromOption(UtilsRN.optBoolToOptJsBoolean(animated))
+    Js.Undefined.fromOption(UtilsRN.optBoolToOptJsBoolean(animated)),
   );
 
 [@bs.scope "StatusBar"] [@bs.module "react-native"]
@@ -66,7 +66,7 @@ let make =
       ~backgroundColor=?,
       ~translucent=?,
       ~networkActivityIndicatorVisible=?,
-      ~showHideTransition=?
+      ~showHideTransition=?,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=statusBar,
@@ -78,33 +78,34 @@ let make =
             fromOption(
               UtilsRN.option_map(
                 x =>
-                  switch x {
+                  switch (x) {
                   | `default => "default"
                   | `lightContent => "light-content"
                   | `darkContent => "dark-content"
                   },
-                barStyle
-              )
+                barStyle,
+              ),
             ),
           "backgroundColor": fromOption(backgroundColor),
           "hidden": fromOption(UtilsRN.optBoolToOptJsBoolean(hidden)),
-          "translucent": fromOption(UtilsRN.optBoolToOptJsBoolean(translucent)),
+          "translucent":
+            fromOption(UtilsRN.optBoolToOptJsBoolean(translucent)),
           "networkActivityIndicatorVisible":
             fromOption(
-              UtilsRN.optBoolToOptJsBoolean(networkActivityIndicatorVisible)
+              UtilsRN.optBoolToOptJsBoolean(networkActivityIndicatorVisible),
             ),
           "showHideTransition":
             fromOption(
               UtilsRN.option_map(
                 x =>
-                  switch x {
+                  switch (x) {
                   | `none => "none"
                   | `fade => "fade"
                   | `slide => "slide"
                   },
-                showHideTransition
-              )
-            )
+                showHideTransition,
+              ),
+            ),
         }
-      )
+      ),
   );

@@ -2,7 +2,7 @@
 external view : ReasonReact.reactClass = "DatePickerIOS";
 
 let encodeMode = prop =>
-  switch prop {
+  switch (prop) {
   | `date => "date"
   | `time => "time"
   | `datetime => "datetime"
@@ -36,7 +36,7 @@ let make =
       ~renderToHardwareTextureAndroid=?,
       ~accessibilityTraits=?,
       ~accessibilityViewIsModal=?,
-      ~shouldRasterizeIOS=?
+      ~shouldRasterizeIOS=?,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
@@ -50,7 +50,7 @@ let make =
             "minimumDate": fromOption(minimumDate),
             "mode": fromOption(UtilsRN.option_map(encodeMode, mode)),
             "minuteInterval": fromOption(minuteInterval),
-            "timeZoneOffsetInMinutes": fromOption(timeZoneOffsetInMinutes)
+            "timeZoneOffsetInMinutes": fromOption(timeZoneOffsetInMinutes),
           }
         ),
         ~accessibilityLabel?,
@@ -72,6 +72,6 @@ let make =
         ~renderToHardwareTextureAndroid?,
         ~accessibilityTraits?,
         ~accessibilityViewIsModal?,
-        ~shouldRasterizeIOS?
-      )
+        ~shouldRasterizeIOS?,
+      ),
   );

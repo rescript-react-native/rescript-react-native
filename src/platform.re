@@ -19,12 +19,12 @@ external _os : string = "OS";
 exception UnknownPlatform(string);
 
 let os = () =>
-  switch _os {
+  switch (_os) {
   | "ios" =>
-    switch _ios_isPad {
+    switch (_ios_isPad) {
     | true => IOS(Pad)
     | _ =>
-      switch _ios_isTVOS {
+      switch (_ios_isTVOS) {
       | true => IOS(TV)
       | _ => IOS(Phone)
       }

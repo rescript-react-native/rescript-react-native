@@ -18,7 +18,7 @@ external _scrollToIndex :
       "index": int,
       "viewOffset": Js.undefined(int),
       "viewPosition": Js.undefined(int),
-      "animated": Js.undefined(Js.boolean)
+      "animated": Js.undefined(Js.boolean),
     }
   ) =>
   unit =
@@ -33,9 +33,9 @@ let scrollToIndex =
         "index": index,
         "viewOffset": fromOption(viewOffset),
         "viewPosition": fromOption(viewPosition),
-        "animated": fromOption(animated)
+        "animated": fromOption(animated),
       }
-    )
+    ),
   );
 
 [@bs.send]
@@ -46,7 +46,7 @@ external _scrollToItem :
       .
       "item": 'item,
       "viewPosition": Js.undefined(int),
-      "animated": Js.undefined(Js.boolean)
+      "animated": Js.undefined(Js.boolean),
     }
   ) =>
   unit =
@@ -59,9 +59,9 @@ let scrollToItem = (ref, ~item, ~animated=?, ~viewPosition=?, ()) =>
       {
         "item": item,
         "viewPosition": fromOption(viewPosition),
-        "animated": fromOption(animated)
+        "animated": fromOption(animated),
       }
-    )
+    ),
   );
 
 [@bs.send]
@@ -71,7 +71,7 @@ external _scrollToOffset :
     {
       .
       "offset": Js.undefined(int),
-      "animated": Js.undefined(Js.boolean)
+      "animated": Js.undefined(Js.boolean),
     }
   ) =>
   unit =
@@ -82,7 +82,7 @@ let scrollToOffset = (ref, ~offset=?, ~animated=?, ()) =>
     ref,
     Js.Undefined.(
       {"offset": fromOption(offset), "animated": fromOption(animated)}
-    )
+    ),
   );
 
 [@bs.send] external recordInteraction : ReasonReact.reactRef => unit = "";
@@ -90,12 +90,12 @@ let scrollToOffset = (ref, ~offset=?, ~animated=?, ()) =>
 type jsRenderBag('item) = {
   .
   "item": 'item,
-  "index": int
+  "index": int,
 };
 
 type renderBag('item) = {
   item: 'item,
-  index: int
+  index: int,
 };
 
 type renderItem('item) = jsRenderBag('item) => ReasonReact.reactElement;
@@ -109,12 +109,12 @@ let renderItem =
 type jsSeparatorProps('item) = {
   .
   "highlighted": Js.boolean,
-  "leadingItem": Js.Undefined.t('item)
+  "leadingItem": Js.Undefined.t('item),
 };
 
 type separatorProps('item) = {
   highlighted: bool,
-  leadingItem: option('item)
+  leadingItem: option('item),
 };
 
 type separatorComponent('item) =
@@ -126,7 +126,7 @@ let separatorComponent =
   (jsSeparatorProps: jsSeparatorProps('item)) =>
     reSeparatorComponent({
       highlighted: Js.to_bool(jsSeparatorProps##highlighted),
-      leadingItem: Js.Undefined.toOption(jsSeparatorProps##leadingItem)
+      leadingItem: Js.Undefined.toOption(jsSeparatorProps##leadingItem),
     });
 
 let make =
@@ -160,7 +160,7 @@ let make =
       ~maxToRenderPerBatch=?,
       ~viewabilityConfig=?,
       ~onScroll=?,
-      ~style=?
+      ~style=?,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
@@ -178,10 +178,11 @@ let make =
             fromOption(
               UtilsRN.option_map(
                 (f, data, index) => f(Js.Undefined.toOption(data), index),
-                getItemLayout
-              )
+                getItemLayout,
+              ),
             ),
-          "horizontal": fromOption(UtilsRN.optBoolToOptJsBoolean(horizontal)),
+          "horizontal":
+            fromOption(UtilsRN.optBoolToOptJsBoolean(horizontal)),
           "initialNumToRender": fromOption(initialNumToRender),
           "initialScrollIndex": fromOption(initialScrollIndex),
           "keyExtractor": keyExtractor,
@@ -194,17 +195,18 @@ let make =
             fromOption(
               UtilsRN.option_map(
                 x =>
-                  switch x {
+                  switch (x) {
                   | `auto => "auto"
                   | `always => "always"
                   | `never => "never"
                   },
-                overScrollMode
-              )
+                overScrollMode,
+              ),
             ),
           "pagingEnabled":
             fromOption(UtilsRN.optBoolToOptJsBoolean(pagingEnabled)),
-          "refreshing": fromOption(UtilsRN.optBoolToOptJsBoolean(refreshing)),
+          "refreshing":
+            fromOption(UtilsRN.optBoolToOptJsBoolean(refreshing)),
           "renderItem": renderItem,
           "removeClippedSubviews":
             fromOption(UtilsRN.optBoolToOptJsBoolean(removeClippedSubviews)),
@@ -212,17 +214,17 @@ let make =
             fromOption(UtilsRN.optBoolToOptJsBoolean(scrollEnabled)),
           "showsHorizontalScrollIndicator":
             fromOption(
-              UtilsRN.optBoolToOptJsBoolean(showsHorizontalScrollIndicator)
+              UtilsRN.optBoolToOptJsBoolean(showsHorizontalScrollIndicator),
             ),
           "showsVerticalScrollIndicator":
             fromOption(
-              UtilsRN.optBoolToOptJsBoolean(showsVerticalScrollIndicator)
+              UtilsRN.optBoolToOptJsBoolean(showsVerticalScrollIndicator),
             ),
           "windowSize": fromOption(windowSize),
           "maxToRenderPerBatch": fromOption(maxToRenderPerBatch),
           "viewabilityConfig": fromOption(viewabilityConfig),
           "onScroll": fromOption(onScroll),
-          "style": fromOption(style)
+          "style": fromOption(style),
         }
-      )
+      ),
   );
