@@ -237,31 +237,31 @@ let make:
             "renderSectionHeader": fromOption(renderSectionHeader),
             "renderSectionFooter": fromOption(renderSectionFooter),
             "stickySectionHeadersEnabled":
-              from_opt(
+              fromOption(
                 UtilsRN.optBoolToOptJsBoolean(stickySectionHeadersEnabled),
               ),
             "keyboardDismissMode":
-              from_opt(
+              fromOption(
                 keyboardDismissMode
                 |> UtilsRN.option_map(keyboardDismissModeToJs),
               ),
             "keyboardShouldPersistTaps":
-              from_opt(
+              fromOption(
                 keyboardShouldPersistTaps
                 |> UtilsRN.option_map(keyboardShouldPersistTapsToJs),
               ),
             "showsHorizontalScrollIndicator":
-              from_opt(
+              fromOption(
                 UtilsRN.optBoolToOptJsBoolean(showsHorizontalScrollIndicator),
               ),
             "showsVerticalScrollIndicator":
-              from_opt(
+              fromOption(
                 UtilsRN.optBoolToOptJsBoolean(showsVerticalScrollIndicator),
               ),
             "getItemLayout":
-              from_opt(
+              fromOption(
                 UtilsRN.option_map(
-                  (f, data, index) => f(Js.Undefined.to_opt(data), index),
+                  (f, data, index) => f(Js.Undefined.toOption(data), index),
                   getItemLayout,
                 ),
               ),

@@ -52,8 +52,8 @@ external _open : optsJs => Js.Promise.t(responseJs) = "open";
 let open_ = (~date: Js.Date.t, ~minDate=?, ~maxDate=?, ~mode=Default, ()) =>
   _open({
     "date": date,
-    "minDate": Js.Nullable.from_opt(minDate),
-    "maxDate": Js.Nullable.from_opt(maxDate),
+    "minDate": Js.Nullable.fromOption(minDate),
+    "maxDate": Js.Nullable.fromOption(maxDate),
     "mode":
       switch (mode) {
       | Default => "default"
