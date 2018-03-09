@@ -6,11 +6,10 @@ type pt_pct =
   | Pt(float)
   | Pct(float);
 
-let encode_pt_pct = value =>
-  switch (value) {
-  | Pt(px) => Encode.float(px)
-  | Pct(pct) => Encode.pct(pct)
-  };
+let encode_pt_pct =
+  fun
+  | Pt(value) => Encode.float(value)
+  | Pct(value) => Encode.pct(value);
 
 type pt_pct_auto =
   | Pt(float)
@@ -31,25 +30,31 @@ type pt_pct_animated_interpolated =
   | Interpolated(AnimatedRe.Interpolation.t);
 
 let encode_pt_pct_animated_interpolated =
-    (value: pt_pct_animated_interpolated) =>
-  switch (value) {
-  | Pt(px) => Encode.float(px)
-  | Pct(pct) => Encode.pct(pct)
+  fun
+  | Pt(value) => Encode.float(value)
+  | Pct(value) => Encode.pct(value)
   | Animated(value) => Encode.animatedValue(value)
-  | Interpolated(value) => Encode.interpolatedValue(value)
-  };
+  | Interpolated(value) => Encode.interpolatedValue(value);
 
 type float_interpolated_animated =
   | Float(float)
   | Animated(AnimatedRe.Value.t)
   | Interpolated(AnimatedRe.Interpolation.t);
 
-let encode_float_interpolated_animated = value =>
-  switch (value) {
+let encode_float_interpolated_animated =
+  fun
   | Float(value) => Encode.float(value)
   | Animated(value) => Encode.animatedValue(value)
-  | Interpolated(value) => Encode.interpolatedValue(value)
-  };
+  | Interpolated(value) => Encode.interpolatedValue(value);
+
+type string_interpolated =
+  | String(string)
+  | Interpolated(AnimatedRe.Interpolation.t);
+
+let encode_string_interpolated =
+  fun
+  | String(value) => Encode.string(value)
+  | Interpolated(value) => Encode.interpolatedValue(value);
 
 external flatten : array(t) => t = "%identity";
 
@@ -327,7 +332,10 @@ let direction = v =>
 /***
  * Shadow Props
  */
-let shadowColor = stringStyle("shadowColor");
+let shadowColor = value => (
+  "shadowColor",
+  encode_string_interpolated(value),
+);
 
 let shadowOffset = (~height, ~width) =>
   UtilsRN.dictFromArray([|
@@ -494,17 +502,35 @@ let backfaceVisibility = v =>
     },
   );
 
-let backgroundColor = stringStyle("backgroundColor");
+let backgroundColor = value => (
+  "backgroundColor",
+  encode_string_interpolated(value),
+);
 
-let borderColor = stringStyle("borderColor");
+let borderColor = value => (
+  "borderColor",
+  encode_string_interpolated(value),
+);
 
-let borderTopColor = stringStyle("borderTopColor");
+let borderTopColor = value => (
+  "borderTopColor",
+  encode_string_interpolated(value),
+);
 
-let borderRightColor = stringStyle("borderRightColor");
+let borderRightColor = value => (
+  "borderRightColor",
+  encode_string_interpolated(value),
+);
 
-let borderBottomColor = stringStyle("borderBottomColor");
+let borderBottomColor = value => (
+  "borderBottomColor",
+  encode_string_interpolated(value),
+);
 
-let borderLeftColor = stringStyle("borderLeftColor");
+let borderLeftColor = value => (
+  "borderLeftColor",
+  encode_string_interpolated(value),
+);
 
 let borderRadius = floatStyle("borderRadius");
 
@@ -542,7 +568,7 @@ let elevation = floatStyle("elevation");
 /***
  * Text Props
  */
-let color = stringStyle("color");
+let color = value => ("color", encode_string_interpolated(value));
 
 let fontFamily = stringStyle("fontFamily");
 
@@ -620,7 +646,10 @@ let textDecorationLine = v =>
     },
   );
 
-let textShadowColor = stringStyle("textShadowColor");
+let textShadowColor = value => (
+  "textShadowColor",
+  encode_string_interpolated(value),
+);
 
 let textShadowOffset = (~height, ~width) =>
   UtilsRN.dictFromArray([|
@@ -661,7 +690,10 @@ let fontVariant = fontVariants =>
 
 let letterSpacing = floatStyle("letterSpacing");
 
-let textDecorationColor = stringStyle("textDecorationColor");
+let textDecorationColor = value => (
+  "textDecorationColor",
+  encode_string_interpolated(value),
+);
 
 type textDecorationStyle =
   | Solid
@@ -716,6 +748,9 @@ let resizeMode = v =>
     },
   );
 
-let tintColor = stringStyle("tintColor");
+let tintColor = value => ("tintColor", encode_string_interpolated(value));
 
-let overlayColor = stringStyle("overlayColor");
+let overlayColor = value => (
+  "overlayColor",
+  encode_string_interpolated(value),
+);
