@@ -57,7 +57,7 @@
 - [x] DatePickerAndroid
 - [x] Dimensions
 - [x] Easing
-- [ ] Geolocation
+- [x] Geolocation
 - [ ] ImageEditor
 - [ ] ImagePickerIOS
 - [ ] ImageStore
