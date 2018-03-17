@@ -20,7 +20,7 @@ let examples: array(Example.t) =
                 justifyContent(Center),
                 alignItems(Center),
                 height(Pt(400.)),
-                width(Pt(300.))
+                width(Pt(300.)),
               ])
             )
             imageStyle=(style([flex(1.)]))
@@ -28,16 +28,23 @@ let examples: array(Example.t) =
               URI(
                 Image.(
                   imageURISource(
-                    ~uri="https://lorempixel.com/output/abstract-h-c-250-400-8.jpg",
-                    ()
+                    ~uri=
+                      "https://lorempixel.com/output/abstract-h-c-250-400-8.jpg",
+                    (),
                   )
-                )
+                ),
               )
             )>
-            <View style=(style([backgroundColor("#FFFFFF"), padding(Pt(5.))]))>
+            <View
+              style=(
+                style([
+                  backgroundColor(String("#FFFFFF")),
+                  padding(Pt(5.)),
+                ])
+              )>
               <Text> (ReasonReact.stringToElement("Nested text")) </Text>
             </View>
-          </ImageBackground>
-      }
+          </ImageBackground>,
+      },
     |]
   );

@@ -23,7 +23,7 @@ module type TextComponent = {
     ReasonReact.component(
       ReasonReact.stateless,
       ReasonReact.noRetainedProps,
-      unit
+      unit,
     );
 };
 
@@ -47,14 +47,15 @@ module CreateComponent = (Impl: View.Impl) : TextComponent => {
         ~minimumFontScale=?,
         ~suppressHighlighting=?,
         ~value=?,
-        children
+        children,
       ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=Impl.view,
       ~props=
         Js.Undefined.(
           {
-            "accessible": fromOption(UtilsRN.optBoolToOptJsBoolean(accessible)),
+            "accessible":
+              fromOption(UtilsRN.optBoolToOptJsBoolean(accessible)),
             "allowFontScaling":
               fromOption(UtilsRN.optBoolToOptJsBoolean(allowFontScaling)),
             "ellipsizeMode":
@@ -65,15 +66,16 @@ module CreateComponent = (Impl: View.Impl) : TextComponent => {
                   | `middle => "middle"
                   | `tail => "tail"
                   | `clip => "clip",
-                  ellipsizeMode
-                )
+                  ellipsizeMode,
+                ),
               ),
             "numberOfLines": fromOption(numberOfLines),
             "onLayout": fromOption(onLayout),
             "onLongPress": fromOption(onLongPress),
             "onPress": fromOption(onPress),
             "pressRetentionOffset": fromOption(pressRetentionOffset),
-            "selectable": fromOption(UtilsRN.optBoolToOptJsBoolean(selectable)),
+            "selectable":
+              fromOption(UtilsRN.optBoolToOptJsBoolean(selectable)),
             "style": fromOption(style),
             "testID": fromOption(testID),
             "selectionColor": fromOption(selectionColor),
@@ -84,21 +86,25 @@ module CreateComponent = (Impl: View.Impl) : TextComponent => {
                   | `simple => "simple"
                   | `highQuality => "highQuality"
                   | `balanced => "balanced",
-                  textBreakStrategy
-                )
+                  textBreakStrategy,
+                ),
               ),
             "adjustsFontSizeToFit":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(adjustsFontSizeToFit)),
+              fromOption(
+                UtilsRN.optBoolToOptJsBoolean(adjustsFontSizeToFit),
+              ),
             "minimumFontScale": fromOption(minimumFontScale),
             "suppressHighlighting":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(suppressHighlighting))
+              fromOption(
+                UtilsRN.optBoolToOptJsBoolean(suppressHighlighting),
+              ),
           }
         ),
-      switch value {
+      switch (value) {
       | Some(string) =>
         Array.append([|ReasonReact.stringToElement(string)|], children)
       | None => children
-      }
+      },
     );
 };
 
@@ -107,5 +113,5 @@ include
     {
       [@bs.module "react-native"]
       external view : ReasonReact.reactClass = "Text";
-    }
+    },
   );

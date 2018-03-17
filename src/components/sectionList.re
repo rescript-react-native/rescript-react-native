@@ -5,7 +5,8 @@ type jsSection('item) = {
   .
   "data": array('item),
   "key": Js.Undefined.t(string),
-  "renderItem": Js.Undefined.t(jsRenderBag('item) => ReasonReact.reactElement)
+  "renderItem":
+    Js.Undefined.t(jsRenderBag('item) => ReasonReact.reactElement),
 }
 and jsRenderBag('item) = {
   .
@@ -15,8 +16,8 @@ and jsRenderBag('item) = {
   "separators": {
     .
     "highlight": unit => unit,
-    "unhighlight": unit => unit
-  }
+    "unhighlight": unit => unit,
+  },
 };
 
 type jsSeparatorProps('item) = {
@@ -26,7 +27,7 @@ type jsSeparatorProps('item) = {
   "leadingSection": Js.Undefined.t(jsSection('item)),
   "section": jsSection('item),
   "trailingItem": Js.Undefined.t('item),
-  "trailingSection": Js.Undefined.t(jsSection('item))
+  "trailingSection": Js.Undefined.t(jsSection('item)),
 };
 
 type renderBag('item) = {
@@ -36,13 +37,13 @@ type renderBag('item) = {
   separators: {
     .
     "highlight": unit => unit,
-    "unhighlight": unit => unit
-  }
+    "unhighlight": unit => unit,
+  },
 }
 and section('item) = {
   data: array('item),
   key: option(string),
-  renderItem: option(renderBag('item) => ReasonReact.reactElement)
+  renderItem: option(renderBag('item) => ReasonReact.reactElement),
 };
 
 type separatorProps('item) = {
@@ -51,7 +52,7 @@ type separatorProps('item) = {
   leadingSection: option(section('item)),
   section: section('item),
   trailingItem: option('item),
-  trailingSection: option(section('item))
+  trailingSection: option(section('item)),
 };
 
 type renderItem('item) = jsRenderBag('item) => ReasonReact.reactElement;
@@ -60,7 +61,7 @@ let jsSectionToSection = jsSection => {
   data: jsSection##data,
   key: Js.Undefined.toOption(jsSection##key),
   /*** We set renderItem to None to avoid an infinite conversion loop */
-  renderItem: None
+  renderItem: None,
 };
 
 type sections('item) = array(jsSection('item));
@@ -73,7 +74,7 @@ let renderItem =
       item: jsRenderBag##item,
       index: jsRenderBag##index,
       section: jsSectionToSection(jsRenderBag##section),
-      separators: jsRenderBag##separators
+      separators: jsRenderBag##separators,
     });
 
 let section = (~data, ~key=?, ~renderItem=?, ()) => {data, key, renderItem};
@@ -85,10 +86,10 @@ let sections = reSections : sections('item) =>
       "key": Js.Undefined.fromOption(reSection.key),
       "renderItem":
         Js.Undefined.fromOption(
-          UtilsRN.option_map(renderItem, reSection.renderItem)
-        )
+          UtilsRN.option_map(renderItem, reSection.renderItem),
+        ),
     },
-    reSections
+    reSections,
   );
 
 type separatorComponent('item) =
@@ -108,7 +109,7 @@ let separatorComponent =
       trailingItem: Js.Undefined.toOption(jsSeparatorProps##trailingItem),
       trailingSection:
         Js.Undefined.toOption(jsSeparatorProps##trailingSection)
-        |> UtilsRN.option_map(jsSectionToSection)
+        |> UtilsRN.option_map(jsSectionToSection),
     });
 
 type viewToken('item) = {
@@ -117,7 +118,7 @@ type viewToken('item) = {
   "key": string,
   "index": Js.undefined(int),
   "isViewable": Js.boolean,
-  "section": section('item)
+  "section": section('item),
 };
 
 type jsRenderAccessory('item) = {. "section": jsSection('item)};
@@ -132,7 +133,7 @@ let renderAccessoryView =
     : renderAccessoryView('item) =>
   (jsRenderAccessory: jsRenderAccessory('item)) =>
     reRenderAccessory({
-      section: jsSectionToSection(jsRenderAccessory##section)
+      section: jsSectionToSection(jsRenderAccessory##section),
     });
 
 let make:
@@ -152,7 +153,7 @@ let make:
     ~onViewableItemsChanged: {
                                .
                                "viewableItems": array(viewToken('item)),
-                               "changed": array(viewToken('item))
+                               "changed": array(viewToken('item)),
                              }
                                =?,
     ~onRefresh: unit => unit=?,
@@ -165,7 +166,7 @@ let make:
   ReasonReact.component(
     ReasonReact.stateless,
     ReasonReact.noRetainedProps,
-    unit
+    unit,
   ) =
   (
     ~sections,
@@ -186,7 +187,7 @@ let make:
     ~renderSectionHeader=?,
     ~renderSectionFooter=?,
     ~stickySectionHeadersEnabled=?,
-    _children
+    _children,
   ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=view,
@@ -200,21 +201,23 @@ let make:
             "ListEmptyComponent": fromOption(listEmptyComponent),
             "ListFooterComponent": fromOption(listFooterComponent),
             "ListHeaderComponent": fromOption(listHeaderComponent),
-            "SectionSeparatorComponent": fromOption(sectionSeparatorComponent),
+            "SectionSeparatorComponent":
+              fromOption(sectionSeparatorComponent),
             "extraData": fromOption(extraData),
             "initialNumToRender": fromOption(initialNumToRender),
             "onEndReached": fromOption(onEndReached),
             "onEndReachedThreshold": fromOption(onEndReachedThreshold),
             "onRefresh": fromOption(onRefresh),
             "onViewableItemsChanged": fromOption(onViewableItemsChanged),
-            "refreshing": fromOption(UtilsRN.optBoolToOptJsBoolean(refreshing)),
+            "refreshing":
+              fromOption(UtilsRN.optBoolToOptJsBoolean(refreshing)),
             "renderSectionHeader": fromOption(renderSectionHeader),
             "renderSectionFooter": fromOption(renderSectionFooter),
             "stickySectionHeadersEnabled":
               fromOption(
-                UtilsRN.optBoolToOptJsBoolean(stickySectionHeadersEnabled)
-              )
+                UtilsRN.optBoolToOptJsBoolean(stickySectionHeadersEnabled),
+              ),
           }
         ),
-      _children
+      _children,
     );

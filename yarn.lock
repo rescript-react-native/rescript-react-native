@@ -6,9 +6,9 @@ asap@~2.0.3:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
 
-bs-platform@^2.2.0:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-2.2.1.tgz#e22b82143a43a10630d7b2040aab87648b12190c"
+bs-platform@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-2.2.2.tgz#95ff37719771bbf310e8376fedd1148865c0da19"
 
 core-js@^1.0.0:
   version "1.2.7"
@@ -100,9 +100,9 @@ prop-types@^15.6.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-reason-react@^0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/reason-react/-/reason-react-0.3.2.tgz#14574b619bd9bf2b6057d681867a5dfa69f2360f"
+reason-react@^0.3.4:
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/reason-react/-/reason-react-0.3.4.tgz#afec4073ec0ea8122833f52b7e77219ef8ab8467"
   dependencies:
     react ">=15.0.0 || >=16.0.0"
     react-dom ">=15.0.0 || >=16.0.0"

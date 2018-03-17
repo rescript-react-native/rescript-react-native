@@ -5,7 +5,7 @@ type rawImageSourceJS;
 external rawImageSourceJS : 'a => rawImageSourceJS = "%identity";
 
 let convertImageSource = src =>
-  switch src {
+  switch (src) {
   | Image.Multiple(x) => rawImageSourceJS(Array.of_list(x))
   | Image.URI(x) => rawImageSourceJS(x)
   | Image.Required(x) => rawImageSourceJS(x)
@@ -46,7 +46,7 @@ let make =
       ~renderToHardwareTextureAndroid=?,
       ~accessibilityTraits=?,
       ~accessibilityViewIsModal=?,
-      ~shouldRasterizeIOS=?
+      ~shouldRasterizeIOS=?,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
@@ -66,16 +66,16 @@ let make =
             "thumbTintColor": fromOption(thumbTintColor),
             "maximumTrackImage":
               fromOption(
-                UtilsRN.option_map(convertImageSource, maximumTrackImage)
+                UtilsRN.option_map(convertImageSource, maximumTrackImage),
               ),
             "minimumTrackImage":
               fromOption(
-                UtilsRN.option_map(convertImageSource, minimumTrackImage)
+                UtilsRN.option_map(convertImageSource, minimumTrackImage),
               ),
             "thumbImage":
               fromOption(UtilsRN.option_map(convertImageSource, thumbImage)),
             "trackImage":
-              fromOption(UtilsRN.option_map(convertImageSource, trackImage))
+              fromOption(UtilsRN.option_map(convertImageSource, trackImage)),
           }
         ),
         ~accessibilityLabel?,
@@ -97,6 +97,6 @@ let make =
         ~renderToHardwareTextureAndroid?,
         ~accessibilityTraits?,
         ~accessibilityViewIsModal?,
-        ~shouldRasterizeIOS?
-      )
+        ~shouldRasterizeIOS?,
+      ),
   );

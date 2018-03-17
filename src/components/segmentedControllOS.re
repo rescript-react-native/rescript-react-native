@@ -29,7 +29,7 @@ let make =
       ~renderToHardwareTextureAndroid=?,
       ~accessibilityTraits=?,
       ~accessibilityViewIsModal=?,
-      ~shouldRasterizeIOS=?
+      ~shouldRasterizeIOS=?,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
@@ -38,12 +38,13 @@ let make =
         Js.Undefined.(
           {
             "enabled": fromOption @@ UtilsRN.optBoolToOptJsBoolean(enabled),
-            "momentary": fromOption @@ UtilsRN.optBoolToOptJsBoolean(momentary),
+            "momentary":
+              fromOption @@ UtilsRN.optBoolToOptJsBoolean(momentary),
             "tintColor": fromOption(tintColor),
             "values": Array.of_list(values),
             "selectedIndex": fromOption(selectedIndex),
             "onChange": fromOption(onChange),
-            "onValueChange": fromOption(onValueChange)
+            "onValueChange": fromOption(onValueChange),
           }
         ),
         ~accessibilityLabel?,
@@ -65,6 +66,6 @@ let make =
         ~renderToHardwareTextureAndroid?,
         ~accessibilityTraits?,
         ~accessibilityViewIsModal?,
-        ~shouldRasterizeIOS?
-      )
+        ~shouldRasterizeIOS?,
+      ),
   );

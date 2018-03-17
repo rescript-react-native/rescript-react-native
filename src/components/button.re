@@ -8,7 +8,7 @@ let make =
       ~disabled=?,
       ~onPress=?,
       ~testID=?,
-      ~title=?
+      ~title=?,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=button,
@@ -20,7 +20,7 @@ let make =
           "disabled": fromOption(UtilsRN.optBoolToOptJsBoolean(disabled)),
           "onPress": fromOption(onPress),
           "testID": fromOption(testID),
-          "title": fromOption(title)
+          "title": fromOption(title),
         }
-      )
+      ),
   );
