@@ -6,6 +6,26 @@ type watchPositionConfig;
 
 type watchId = int;
 
+type position = {
+  .
+  "coords": coords,
+  "timestamp": float,
+}
+and coords = {
+  .
+  "speed": int,
+  "longitude": float,
+  "latitude": float,
+  "accuracy": int,
+  "heading": int,
+};
+
+type error = {
+  .
+  "code": int,
+  "message": string,
+};
+
 [@bs.obj]
 external makeRnConfig : (~skipPermissionRequests: Js.boolean=?) => rnConfig =
   "";
@@ -28,49 +48,45 @@ external makeWatchPositionConfig :
   watchPositionConfig =
   "";
 
-[@bs.module "react-native"] [@bs.scope "Geolocation"]
-external _setRNConfiguration : rnConfig => unit = "setRNConfiguration";
+[@bs.val "navigator.geolocation.setRNConfiguration"]
+external _setRNConfiguration : rnConfig => unit = "";
 
 let setRNConfiguration = (~skipPermissionRequests=?, ()) =>
   _setRNConfiguration(makeRnConfig(~skipPermissionRequests?));
 
-[@bs.module "react-native"] [@bs.scope "Geolocation"]
+[@bs.val "navigator.geolocation.requestAuthorization"]
 external requestAuthorization : unit => unit = "";
 
-[@bs.module "react-native"] [@bs.scope "Geolocation"]
+[@bs.val "navigator.geolocation.stopObserving"]
 external stopObserving : unit => unit = "";
 
-[@bs.module "react-native"] [@bs.scope "Geolocation"]
+[@bs.val "navigator.geolocation.getCurrentPosition"]
 external _getCurrentPosition :
-  (unit => unit, unit => unit, currentPositionConfig) => unit =
-  "getCurrentPosition";
-
-[@bs.module "react-native"] [@bs.scope "Geolocation"]
-external _watchPosition :
-  (unit => unit, unit => unit, watchPositionConfig) => watchId =
-  "watchPosition";
-
-[@bs.module "react-native"] [@bs.scope "Geolocation"]
-external clearWatch : watchId => unit = "";
+  (position => unit, error => unit, currentPositionConfig) => unit =
+  "";
 
 let getCurrentPosition =
-    (~success, ~error, ~timeout=?, ~maximumAge=?, ~enableHighAccuracy=?, ()) =>
+    (~timeout=?, ~maximumAge=?, ~enableHighAccuracy=?, success, error) =>
   _getCurrentPosition(
     success,
     error,
     makeCurrentPositionConfig(~timeout?, ~maximumAge?, ~enableHighAccuracy?),
   );
 
+[@bs.val "navigator.geolocation.watchPosition"]
+external _watchPosition :
+  (position => unit, error => unit, watchPositionConfig) => watchId =
+  "";
+
 let watchPosition =
     (
-      ~success,
-      ~error,
       ~timeout=?,
       ~maximumAge=?,
       ~enableHighAccuracy=?,
       ~distanceFilter=?,
       ~useSignificantChanges=?,
-      (),
+      success,
+      error,
     ) =>
   _watchPosition(
     success,
@@ -83,3 +99,6 @@ let watchPosition =
       ~useSignificantChanges?,
     ),
   );
+
+[@bs.val "navigator.geolocation.clearWatch"]
+external clearWatch : watchId => unit = "";
