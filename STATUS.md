@@ -10,7 +10,7 @@
 - [x] FlatList
 - [x] Image
 - [x] Image Background
-- [ ] KeyboardAvoidingView
+- [x] KeyboardAvoidingView
 - [ ] ListView
 - [ ] MapView
 - [x] Modal
