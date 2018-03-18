@@ -30,8 +30,6 @@ let make =
       ~keyboardVerticalOffset=?,
       ~behavior=?,
       ~contentContainerStyle=?,
-      ~relativeKeyboardHeight=?,
-      ~onKeyboardChange=?,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=keyboardAvoidingView,
@@ -63,8 +61,6 @@ let make =
             "behavior":
               fromOption(UtilsRN.option_map(behaviorToJs, behavior)),
             "contentContainerStyle": fromOption(contentContainerStyle),
-            "relativeKeyboardHeight": fromOption(relativeKeyboardHeight),
-            "onKeyboardChange": fromOption(onKeyboardChange),
           },
         )
       ),

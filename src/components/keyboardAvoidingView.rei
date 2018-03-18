@@ -50,8 +50,6 @@ let make:
     ~keyboardVerticalOffset: float=?,
     ~behavior: [ | `height | `position | `padding]=?,
     ~contentContainerStyle: Style.t=?,
-    ~relativeKeyboardHeight: 'k=?,
-    ~onKeyboardChange: 'l=?,
     array(ReasonReact.reactElement)
   ) =>
   ReasonReact.component(
