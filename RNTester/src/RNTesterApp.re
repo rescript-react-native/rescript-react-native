@@ -10,18 +10,20 @@ let styles =
             borderBottomWidth(StyleSheet.hairlineWidth),
             borderBottomColor(String("#96969A")),
             backgroundColor(String("#F5F5F6")),
+            alignItems(Center),
+            justifyContent(Center),
             flexDirection(Row),
-            paddingTop(Pt(20.)),
           ]),
-        "headerLeft": style([]),
-        "headerCenter":
+        "headerLeft":
           style([
-            flex(1.0),
             position(Absolute),
-            top(Pt(27.)),
-            left(Pt(0.)),
-            right(Pt(0.)),
+            top(Pt(0.)),
+            left(Pt(10.)),
+            bottom(Pt(0.)),
+            alignItems(Center),
+            justifyContent(Center),
           ]),
+        "headerCenter": style([flex(1.0)]),
         "title":
           style([
             fontSize(Float(19.)),
@@ -29,6 +31,8 @@ let styles =
             textAlign(Center),
           ]),
         "exampleContainer": style([flex(1.0)]),
+        "appContainer":
+          style([flex(1.0), backgroundColor(String("#F5F5F6"))]),
       }
     ),
   );
@@ -65,33 +69,37 @@ let make = _children => {
     },
   render: ({state, send}) => {
     let components = ExampleList.components;
-    switch (state.currentExample) {
-    | None =>
-      <View style=styles##exampleContainer>
-        (header(~title="ReasonRNTester", ()))
-        <RNTesterExampleList
-          components
-          onPress=(
-            item =>
-              switch (state.currentExample) {
-              | None => send(ChangeCurrentExample(Some(item)))
-              | Some(_) => send(ChangeCurrentExample(None))
-              }
-          )
-        />
-      </View>
-    | Some(example) =>
-      <View style=styles##exampleContainer>
-        (
-          header(
-            ~title=example.title,
-            ~onBack=_event => send(ChangeCurrentExample(None)),
-            (),
-          )
-        )
-        <RNTesterExampleContainer example />
-      </View>
-    };
+    <SafeAreaView style=styles##appContainer>
+      (
+        switch (state.currentExample) {
+        | None =>
+          <View style=styles##exampleContainer>
+            (header(~title="ReasonRNTester", ()))
+            <RNTesterExampleList
+              components
+              onPress=(
+                item =>
+                  switch (state.currentExample) {
+                  | None => send(ChangeCurrentExample(Some(item)))
+                  | Some(_) => send(ChangeCurrentExample(None))
+                  }
+              )
+            />
+          </View>
+        | Some(example) =>
+          <View style=styles##exampleContainer>
+            (
+              header(
+                ~title=example.title,
+                ~onBack=_event => send(ChangeCurrentExample(None)),
+                (),
+              )
+            )
+            <RNTesterExampleContainer example />
+          </View>
+        }
+      )
+    </SafeAreaView>;
   },
 };
 

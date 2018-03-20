@@ -19,6 +19,7 @@
 - [ ] ProgressBarAndroid
 - [ ] ProgressViewIOS
 - [x] RefreshControl
+- [x] SafeAreaView
 - [x] ScrollView
 - [x] SectionList
 - [x] SegmentedControlIOS
