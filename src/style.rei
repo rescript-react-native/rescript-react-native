@@ -400,3 +400,5 @@ let resizeMode: resizeMode => styleElement;
 let tintColor: string_interpolated => styleElement;
 
 let overlayColor: string_interpolated => styleElement;
+
+let unsafeStyleElement: (string, Js.Json.t) => styleElement;
