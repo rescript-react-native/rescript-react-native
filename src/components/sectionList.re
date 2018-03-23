@@ -136,6 +136,12 @@ let renderAccessoryView =
       section: jsSectionToSection(jsRenderAccessory##section),
     });
 
+[@bs.deriving jsConverter]
+type keyboardDismissMode = [ | `none | `interactive | `onDrag];
+
+[@bs.deriving jsConverter]
+type keyboardShouldPersistTaps = [ | `always | `never | `handled];
+
 let make:
   (
     ~sections: sections('item),
@@ -161,6 +167,18 @@ let make:
     ~renderSectionHeader: renderAccessoryView('item)=?,
     ~renderSectionFooter: renderAccessoryView('item)=?,
     ~stickySectionHeadersEnabled: bool=?,
+    ~keyboardDismissMode: keyboardDismissMode=?,
+    ~keyboardShouldPersistTaps: keyboardShouldPersistTaps=?,
+    ~showsHorizontalScrollIndicator: bool=?,
+    ~showsVerticalScrollIndicator: bool=?,
+    ~getItemLayout: (option(array('item)), int) =>
+                    {
+                      .
+                      "length": int,
+                      "offset": int,
+                      "index": int,
+                    }
+                      =?,
     array(ReasonReact.reactElement)
   ) =>
   ReasonReact.component(
@@ -187,6 +205,11 @@ let make:
     ~renderSectionHeader=?,
     ~renderSectionFooter=?,
     ~stickySectionHeadersEnabled=?,
+    ~keyboardDismissMode=?,
+    ~keyboardShouldPersistTaps=?,
+    ~showsHorizontalScrollIndicator=?,
+    ~showsVerticalScrollIndicator=?,
+    ~getItemLayout=?,
     _children,
   ) =>
     ReasonReact.wrapJsForReason(
@@ -216,6 +239,31 @@ let make:
             "stickySectionHeadersEnabled":
               fromOption(
                 UtilsRN.optBoolToOptJsBoolean(stickySectionHeadersEnabled),
+              ),
+            "keyboardDismissMode":
+              fromOption(
+                keyboardDismissMode
+                |> UtilsRN.option_map(keyboardDismissModeToJs),
+              ),
+            "keyboardShouldPersistTaps":
+              fromOption(
+                keyboardShouldPersistTaps
+                |> UtilsRN.option_map(keyboardShouldPersistTapsToJs),
+              ),
+            "showsHorizontalScrollIndicator":
+              fromOption(
+                UtilsRN.optBoolToOptJsBoolean(showsHorizontalScrollIndicator),
+              ),
+            "showsVerticalScrollIndicator":
+              fromOption(
+                UtilsRN.optBoolToOptJsBoolean(showsVerticalScrollIndicator),
+              ),
+            "getItemLayout":
+              fromOption(
+                UtilsRN.option_map(
+                  (f, data, index) => f(Js.Undefined.toOption(data), index),
+                  getItemLayout,
+                ),
               ),
           }
         ),
