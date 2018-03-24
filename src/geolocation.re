@@ -1,4 +1,4 @@
-type rnConfig;
+type geolactionConfig;
 
 type currentPositionConfig;
 
@@ -27,7 +27,8 @@ type error = {
 };
 
 [@bs.obj]
-external makeRnConfig : (~skipPermissionRequests: Js.boolean=?) => rnConfig =
+external makeGeolocationConfig :
+  (~skipPermissionRequests: Js.boolean=?) => geolactionConfig =
   "";
 
 [@bs.obj]
@@ -49,10 +50,10 @@ external makeWatchPositionConfig :
   "";
 
 [@bs.val] [@bs.scope ("navigator", "geolocation")]
-external setRNConfiguration : rnConfig => unit = "";
+external setRNConfiguration : geolactionConfig => unit = "";
 
 let setRNConfiguration = (~skipPermissionRequests=?, ()) =>
-  setRNConfiguration(makeRnConfig(~skipPermissionRequests?));
+  setRNConfiguration(makeGeolocationConfig(~skipPermissionRequests?));
 
 [@bs.val] [@bs.scope ("navigator", "geolocation")]
 external requestAuthorization : unit => unit = "";
