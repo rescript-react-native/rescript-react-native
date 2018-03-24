@@ -48,19 +48,19 @@ external makeWatchPositionConfig :
   watchPositionConfig =
   "";
 
-[@bs.val "navigator.geolocation.setRNConfiguration"]
+[@bs.val] [@bs.scope ("navigator", "geolocation")]
 external _setRNConfiguration : rnConfig => unit = "";
 
 let setRNConfiguration = (~skipPermissionRequests=?, ()) =>
   _setRNConfiguration(makeRnConfig(~skipPermissionRequests?));
 
-[@bs.val "navigator.geolocation.requestAuthorization"]
+[@bs.val] [@bs.scope ("navigator", "geolocation")]
 external requestAuthorization : unit => unit = "";
 
-[@bs.val "navigator.geolocation.stopObserving"]
+[@bs.val] [@bs.scope ("navigator", "geolocation")]
 external stopObserving : unit => unit = "";
 
-[@bs.val "navigator.geolocation.getCurrentPosition"]
+[@bs.val] [@bs.scope ("navigator", "geolocation")]
 external _getCurrentPosition :
   (position => unit, error => unit, currentPositionConfig) => unit =
   "";
@@ -73,7 +73,7 @@ let getCurrentPosition =
     makeCurrentPositionConfig(~timeout?, ~maximumAge?, ~enableHighAccuracy?),
   );
 
-[@bs.val "navigator.geolocation.watchPosition"]
+[@bs.val] [@bs.scope ("navigator", "geolocation")]
 external _watchPosition :
   (position => unit, error => unit, watchPositionConfig) => watchId =
   "";
@@ -100,5 +100,5 @@ let watchPosition =
     ),
   );
 
-[@bs.val "navigator.geolocation.clearWatch"]
+[@bs.val] [@bs.scope ("navigator", "geolocation")]
 external clearWatch : watchId => unit = "";
