@@ -754,3 +754,5 @@ let overlayColor = value => (
   "overlayColor",
   encode_string_interpolated(value),
 );
+
+let unsafeStyleElement = (key, value) => (key, value);
