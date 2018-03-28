@@ -14,6 +14,30 @@ type iOSLoadRequestEvent = {
 
 type source;
 
+type callbackParams = Js.t({
+  .
+  url: option(string),
+  title: option(string),
+  loading: option(bool),
+  canGoBack: option(bool),
+  canGoForward: option(bool),
+});
+
+[@bs.obj]
+external makeCallbackParams: (~url:option(string)) => (~title:option(string)) => (~loading:option(bool)) => (~canGoBack:option(bool)) => (~canGoForward:option(bool)) => callbackParams = "";
+
+let optionalCallbackToJs = (callbackFunction) => Js.Undefined.fromOption(UtilsRN.option_map((callback) => {
+  (params) => {
+    callback(makeCallbackParams(
+      ~url=params##url |> Js.toOption,
+      ~title=params##title |> Js.toOption,
+      ~loading=params##loading |> Js.toOption |> UtilsRN.option_map(Js.to_bool),
+      ~canGoBack=params##canGoBack |> Js.toOption |> UtilsRN.option_map(Js.to_bool),
+      ~canGoForward=params##canGoForward |> Js.toOption |> UtilsRN.option_map(Js.to_bool)
+    ));
+  }
+}, callbackFunction));
+
 [@bs.obj]
 external source :
   (
@@ -119,12 +143,12 @@ let make =
             "injectedJavaScript": fromOption(injectedJavaScript),
             "mediaPlaybackRequiresUserAction":
               fromOption(mediaPlaybackRequiresUserAction),
-            "onError": fromOption(onError),
-            "onLoad": fromOption(onLoad),
-            "onLoadEnd": fromOption(onLoadEnd),
-            "onLoadStart": fromOption(onLoadStart),
+            "onError": optionalCallbackToJs(onError),
+            "onLoad": optionalCallbackToJs(onLoad),
+            "onLoadEnd": optionalCallbackToJs(onLoadEnd),
+            "onLoadStart": optionalCallbackToJs(onLoadStart),
             "onMessage": fromOption(onMessage),
-            "onNavigationStateChange": fromOption(onNavigationStateChange),
+            "onNavigationStateChange": optionalCallbackToJs(onNavigationStateChange),
             "renderError": fromOption(renderError),
             "renderLoading": fromOption(renderLoading),
             "scalesPageToFit": fromOption(scalesPageToFit),
