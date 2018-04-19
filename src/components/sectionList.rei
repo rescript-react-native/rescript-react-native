@@ -58,7 +58,7 @@ let renderAccessoryView:
 type viewToken('item) = {
   .
   "index": Js.undefined(int),
-  "isViewable": Js.boolean,
+  "isViewable": bool,
   "item": 'item,
   "key": string,
   "section": section('item),

@@ -22,7 +22,7 @@ and jsRenderBag('item) = {
 
 type jsSeparatorProps('item) = {
   .
-  "highlighted": Js.boolean,
+  "highlighted": bool,
   "leadingItem": Js.Undefined.t('item),
   "leadingSection": Js.Undefined.t(jsSection('item)),
   "section": jsSection('item),
@@ -100,7 +100,7 @@ let separatorComponent =
     : separatorComponent('item) =>
   (jsSeparatorProps: jsSeparatorProps('item)) =>
     reSeparatorComponent({
-      highlighted: Js.to_bool(jsSeparatorProps##highlighted),
+      highlighted: jsSeparatorProps##highlighted,
       leadingItem: Js.Undefined.toOption(jsSeparatorProps##leadingItem),
       leadingSection:
         Js.Undefined.toOption(jsSeparatorProps##leadingSection)
@@ -117,7 +117,7 @@ type viewToken('item) = {
   "item": 'item,
   "key": string,
   "index": Js.undefined(int),
-  "isViewable": Js.boolean,
+  "isViewable": bool,
   "section": section('item),
 };
 

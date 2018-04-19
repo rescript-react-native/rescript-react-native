@@ -7,7 +7,7 @@ let option_map = (fn, opt_value) =>
 let optBoolToOptJsBoolean =
   fun
   | None => None
-  | Some(v) => Some(Js.Boolean.to_js_boolean(v));
+  | Some(v) => Some(v);
 
 [@bs.val]
 external objAssign2 : (Js.t({..}), Js.t({..}), Js.t({..})) => Js.t({..}) =

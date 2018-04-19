@@ -74,7 +74,7 @@ let animatedEvent = l => {
   shamelesslyWrapCallback(
     AnimatedRe.event(
       [|Js.null, Js.Null.return(config)|],
-      {"useNativeDriver": Js.false_},
+      {"useNativeDriver": false},
     ),
   );
 };

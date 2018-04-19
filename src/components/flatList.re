@@ -3,11 +3,11 @@ external view : ReasonReact.reactClass = "FlatList";
 
 [@bs.send]
 external _scrollToEnd :
-  (ReasonReact.reactRef, {. "animated": Js.boolean}) => unit =
+  (ReasonReact.reactRef, {. "animated": bool}) => unit =
   "scrollToEnd";
 
 let scrollToEnd = (ref, ~animated) =>
-  _scrollToEnd(ref, {"animated": Js.Boolean.to_js_boolean(animated)});
+  _scrollToEnd(ref, {"animated": animated});
 
 [@bs.send]
 external _scrollToIndex :
@@ -18,7 +18,7 @@ external _scrollToIndex :
       "index": int,
       "viewOffset": Js.undefined(int),
       "viewPosition": Js.undefined(int),
-      "animated": Js.undefined(Js.boolean),
+      "animated": Js.undefined(bool),
     }
   ) =>
   unit =
@@ -46,7 +46,7 @@ external _scrollToItem :
       .
       "item": 'item,
       "viewPosition": Js.undefined(int),
-      "animated": Js.undefined(Js.boolean),
+      "animated": Js.undefined(bool),
     }
   ) =>
   unit =
@@ -71,7 +71,7 @@ external _scrollToOffset :
     {
       .
       "offset": Js.undefined(int),
-      "animated": Js.undefined(Js.boolean),
+      "animated": Js.undefined(bool),
     }
   ) =>
   unit =
@@ -108,7 +108,7 @@ let renderItem =
 
 type jsSeparatorProps('item) = {
   .
-  "highlighted": Js.boolean,
+  "highlighted": bool,
   "leadingItem": Js.Undefined.t('item),
 };
 
@@ -125,7 +125,7 @@ let separatorComponent =
     : separatorComponent('item) =>
   (jsSeparatorProps: jsSeparatorProps('item)) =>
     reSeparatorComponent({
-      highlighted: Js.to_bool(jsSeparatorProps##highlighted),
+      highlighted: jsSeparatorProps##highlighted,
       leadingItem: Js.Undefined.toOption(jsSeparatorProps##leadingItem),
     });
 

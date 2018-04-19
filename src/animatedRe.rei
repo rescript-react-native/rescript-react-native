@@ -1,6 +1,6 @@
 module Animation: {
   type t;
-  type endResult = {. "finished": Js.boolean};
+  type endResult = {. "finished": bool};
   type endCallback = endResult => unit;
 };
 
@@ -96,8 +96,8 @@ module Value: {
         ~easing: Easing.t=?,
         ~duration: float=?,
         ~delay: float=?,
-        ~isInteraction: Js.boolean=?,
-        ~useNativeDriver: Js.boolean=?,
+        ~isInteraction: bool=?,
+        ~useNativeDriver: bool=?,
         ~onComplete: Animation.endCallback=?,
         ~iterations: int=?,
         unit
@@ -111,7 +111,7 @@ module Value: {
         ~value: value,
         ~toValue: [ | `raw(float) | `animated(value)],
         ~restDisplacementThreshold: float=?,
-        ~overshootClamping: Js.boolean=?,
+        ~overshootClamping: bool=?,
         ~restSpeedThreshold: float=?,
         ~velocity: float=?,
         ~bounciness: float=?,
@@ -121,8 +121,8 @@ module Value: {
         ~stiffness: float=?,
         ~mass: float=?,
         ~damping: float=?,
-        ~isInteraction: Js.boolean=?,
-        ~useNativeDriver: Js.boolean=?,
+        ~isInteraction: bool=?,
+        ~useNativeDriver: bool=?,
         ~onComplete: Animation.endCallback=?,
         ~iterations: int=?,
         unit
@@ -179,8 +179,8 @@ module ValueXY: {
         ~easing: Easing.t=?,
         ~duration: float=?,
         ~delay: float=?,
-        ~isInteraction: Js.boolean=?,
-        ~useNativeDriver: Js.boolean=?,
+        ~isInteraction: bool=?,
+        ~useNativeDriver: bool=?,
         ~onComplete: Animation.endCallback=?,
         ~iterations: int=?,
         unit
@@ -194,7 +194,7 @@ module ValueXY: {
         ~value: value,
         ~toValue: [ | `raw(jsValue) | `animated(value)],
         ~restDisplacementThreshold: float=?,
-        ~overshootClamping: Js.boolean=?,
+        ~overshootClamping: bool=?,
         ~restSpeedThreshold: float=?,
         ~velocity: jsValue=?,
         ~bounciness: float=?,
@@ -204,8 +204,8 @@ module ValueXY: {
         ~stiffness: float=?,
         ~mass: float=?,
         ~damping: float=?,
-        ~isInteraction: Js.boolean=?,
-        ~useNativeDriver: Js.boolean=?,
+        ~isInteraction: bool=?,
+        ~useNativeDriver: bool=?,
         ~onComplete: Animation.endCallback=?,
         ~iterations: int=?,
         unit
@@ -238,7 +238,7 @@ let delay: float => CompositeAnimation.t;
 let sequence: array(CompositeAnimation.t) => CompositeAnimation.t;
 
 let parallel:
-  (array(CompositeAnimation.t), {. "stopTogether": Js.boolean}) => CompositeAnimation.t;
+  (array(CompositeAnimation.t), {. "stopTogether": bool}) => CompositeAnimation.t;
 
 let stagger: (float, array(CompositeAnimation.t)) => CompositeAnimation.t;
 
