@@ -39,8 +39,8 @@ yarn add bs-platform reason-react bs-react-native
 ```
 
 5. Now you can build all your (so far nonexsisting) Reason in two modes:
-  - `yarn run build` performs a single build
-  - `yarn run watch` enters the watch mode
+  - `yarn build` performs a single build
+  - `yarn watch` enters the watch mode
 6. Now we come to the fun stuff! Create a new file `re/app.re` and make it look like this:
 ```reason
 open BsReactNative;
