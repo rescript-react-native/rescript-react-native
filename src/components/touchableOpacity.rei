@@ -41,6 +41,7 @@ let make:
     ~style: Style.t=?,
     ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
     ~onPress: unit => unit=?,
+    ~onLongPress: unit => unit=?,
     ~onPressIn: unit => unit=?,
     ~onPressOut: unit => unit=?,
     ~pressRetentionOffset: Types.insets=?,
