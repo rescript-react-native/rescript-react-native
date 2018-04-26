@@ -52,6 +52,7 @@ let make:
     ~horizontal: bool=?,
     ~initialNumToRender: int=?,
     ~initialScrollIndex: int=?,
+    ~inverted: bool=?,
     ~numColumns: 'int=?,
     ~onEndReached: {. "distanceFromEnd": float} => unit=?,
     ~onEndReachedThreshold: float=?,
