@@ -74,6 +74,7 @@ let make:
     ~listFooterComponent: ReasonReact.reactElement=?,
     ~listHeaderComponent: ReasonReact.reactElement=?,
     ~sectionSeparatorComponent: separatorComponent('item)=?,
+    ~inverted: bool=?,
     ~extraData: 'extraData=?,
     ~initialNumToRender: int=?,
     ~onEndReached: {. "distanceFromEnd": float} => unit=?,
