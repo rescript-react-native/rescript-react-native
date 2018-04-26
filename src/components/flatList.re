@@ -144,6 +144,7 @@ let make =
       ~horizontal=?,
       ~initialNumToRender=?,
       ~initialScrollIndex=?,
+      ~inverted=?,
       ~numColumns=?,
       ~onEndReached=?,
       ~onEndReachedThreshold=?,
@@ -185,6 +186,8 @@ let make =
             fromOption(UtilsRN.optBoolToOptJsBoolean(horizontal)),
           "initialNumToRender": fromOption(initialNumToRender),
           "initialScrollIndex": fromOption(initialScrollIndex),
+          "inverted":
+            fromOption(UtilsRN.optBoolToOptJsBoolean(inverted)),
           "keyExtractor": keyExtractor,
           "numColumns": fromOption(numColumns),
           "onEndReached": fromOption(onEndReached),
