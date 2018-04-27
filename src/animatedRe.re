@@ -34,7 +34,7 @@ module Easing = {
   external back : float => t = "";
   [@bs.module "react-native"] [@bs.scope "Easing"]
   external elastic : float => t = "";
-  [@bs.module "react-native"] [@bs.scope "Easing"] external in_ : t => t = "";
+  [@bs.module "react-native"] [@bs.scope "Easing"] external in_ : t => t = "in";
   [@bs.module "react-native"] [@bs.scope "Easing"]
   external inOut : t => t = "";
   [@bs.module "react-native"] [@bs.scope "Easing"] external out : t => t = "";
