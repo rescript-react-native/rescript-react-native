@@ -7,14 +7,17 @@ let make:
     ~hardwareAccelerated: bool=?,
     ~onRequestClose: unit => unit=?,
     ~onOrientationChange: unit => unit=?,
-    ~supportedOrientations: [
-                              | `landscape
-                              | `landscapeLeft
-                              | `landscapeRight
-                              | `portrait
-                              | `portraitUpsideDown
-                            ]
+    ~supportedOrientations: array(
+                              [
+                                | `landscape
+                                | `landscapeLeft
+                                | `landscapeRight
+                                | `portrait
+                                | `portraitUpsideDown
+                              ],
+                            )
                               =?,
     array(ReasonReact.reactElement)
   ) =>
   ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
+

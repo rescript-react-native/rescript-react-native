@@ -7,14 +7,18 @@ let encodeAnimationType = x =>
   | `fade => "fade"
   };
 
-let encodeSupportedOrientations = x =>
-  switch (x) {
-  | `portrait => "portrait"
-  | `portraitUpsideDown => "portrait-upside-down"
-  | `landscape => "landscape"
-  | `landscapeLeft => "landscape-left"
-  | `landscapeRight => "landscape-right"
-  };
+let encodeSupportedOrientations = xs =>
+  Array.map(
+    x =>
+      switch (x) {
+      | `portrait => "portrait"
+      | `portraitUpsideDown => "portrait-upside-down"
+      | `landscape => "landscape"
+      | `landscapeLeft => "landscape-left"
+      | `landscapeRight => "landscape-right"
+      },
+    xs,
+  );
 
 let make =
     (
@@ -54,3 +58,4 @@ let make =
         }
       ),
   );
+
