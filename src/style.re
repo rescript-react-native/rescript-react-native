@@ -375,8 +375,8 @@ module Transform = {
       ("scaleY", encoder(. scaleY)),
       ("translateX", encoder(. translateX)),
       ("translateY", encoder(. translateY)),
-      ("skewX", encoder(. skewX)),
-      ("skewY", encoder(. skewY)),
+      ("skewX", rotationEncoder(. skewX)),
+      ("skewY", rotationEncoder(. skewY)),
     |];
     let values =
       Array.fold_right(

@@ -218,8 +218,8 @@ module Transform: {
       ~scaleY: float=?,
       ~translateX: float=?,
       ~translateY: float=?,
-      ~skewX: float=?,
-      ~skewY: float=?,
+      ~skewX: string=?,
+      ~skewY: string=?,
       unit
     ) =>
     styleElement;
