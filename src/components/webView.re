@@ -34,6 +34,14 @@ external contentInsets :
   contentInsets =
   "";
 
+[@bs.send] external goForward : ReasonReact.reactRef => unit = "";
+
+[@bs.send] external goBack : ReasonReact.reactRef => unit = "";
+
+[@bs.send] external reload : ReasonReact.reactRef => unit = "";
+
+[@bs.send] external stopLoading : ReasonReact.reactRef => unit = "";
+
 let make =
     (
       ~source=?,

@@ -20,6 +20,14 @@ type contentInsets;
 let contentInsets:
   (~top: int=?, ~left: int=?, ~bottom: int=?, ~right: int=?, unit) => contentInsets;
 
+let goForward: ReasonReact.reactRef => unit;
+
+let goBack: ReasonReact.reactRef => unit;
+
+let reload: ReasonReact.reactRef => unit;
+
+let stopLoading: ReasonReact.reactRef => unit;
+
 let make:
   (
     ~source: source=?,
