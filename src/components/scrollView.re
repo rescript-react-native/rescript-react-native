@@ -111,22 +111,22 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
         .
         "x": int,
         "y": int,
-        "animated": Js.boolean,
+        "animated": bool,
       }
     ) =>
     unit =
     "scrollTo";
   [@bs.send]
   external _scrollToEnd :
-    (ReasonReact.reactRef, {. "animated": Js.boolean}) => unit =
+    (ReasonReact.reactRef, {. "animated": bool}) => unit =
     "scrollToEnd";
   let scrollTo = (ref, ~x, ~y, ~animated) =>
     _scrollTo(
       ref,
-      {"x": x, "y": y, "animated": Js.Boolean.to_js_boolean(animated)},
+      {"x": x, "y": y, "animated": animated},
     );
   let scrollToEnd = (ref, ~animated) =>
-    _scrollToEnd(ref, {"animated": Js.Boolean.to_js_boolean(animated)});
+    _scrollToEnd(ref, {"animated": animated});
   let make =
       (
         ~accessibilityLabel=?,

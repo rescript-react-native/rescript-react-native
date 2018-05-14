@@ -662,7 +662,7 @@ let textShadowRadius = floatStyle("textShadowRadius");
 
 let includeFontPadding = value => (
   "includeFontPadding",
-  Encode.boolean(Js.Boolean.to_js_boolean(value)),
+  Encode.boolean(value),
 );
 
 type textAlignVertical =

@@ -42,7 +42,7 @@ module ScrollView = {
             },
           },
         |],
-        {"useNativeDriver": Js.Boolean.to_js_boolean(native)},
+        {"useNativeDriver": native},
       ),
     );
   include

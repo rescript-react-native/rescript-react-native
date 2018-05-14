@@ -28,12 +28,12 @@ type error = {
 
 [@bs.obj]
 external makeGeolocationConfig :
-  (~skipPermissionRequests: Js.boolean=?) => geolactionConfig =
+  (~skipPermissionRequests: bool=?) => geolactionConfig =
   "";
 
 [@bs.obj]
 external makeCurrentPositionConfig :
-  (~timeout: int=?, ~maximumAge: int=?, ~enableHighAccuracy: Js.boolean=?) =>
+  (~timeout: int=?, ~maximumAge: int=?, ~enableHighAccuracy: bool=?) =>
   currentPositionConfig =
   "";
 
@@ -42,9 +42,9 @@ external makeWatchPositionConfig :
   (
     ~timeout: int=?,
     ~maximumAge: int=?,
-    ~enableHighAccuracy: Js.boolean=?,
+    ~enableHighAccuracy: bool=?,
     ~distanceFilter: int=?,
-    ~useSignificantChanges: Js.boolean=?
+    ~useSignificantChanges: bool=?
   ) =>
   watchPositionConfig =
   "";

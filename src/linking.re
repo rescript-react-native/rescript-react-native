@@ -2,11 +2,11 @@
 external openURL : string => Js.Promise.t(unit) = "openURL";
 
 [@bs.scope "Linking"] [@bs.module "react-native"]
-external _canOpenURL : string => Js.Promise.t(Js.boolean) = "canOpenURL";
+external _canOpenURL : string => Js.Promise.t(bool) = "canOpenURL";
 
 let canOpenURL = url =>
   _canOpenURL(url)
-  |> Js.Promise.then_(bool => Js.Promise.resolve(Js.to_bool(bool)));
+  |> Js.Promise.then_(bool => Js.Promise.resolve(bool));
 
 [@bs.scope "Linking"] [@bs.module "react-native"]
 external _getInitialURL : unit => Js.Promise.t(Js.Null.t(string)) =

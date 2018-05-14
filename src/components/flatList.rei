@@ -4,7 +4,7 @@ let scrollToIndex:
   (
     ReasonReact.reactRef,
     ~index: int,
-    ~animated: Js.boolean=?,
+    ~animated: bool=?,
     ~viewOffset: int=?,
     ~viewPosition: int=?,
     unit
@@ -12,9 +12,9 @@ let scrollToIndex:
   unit;
 
 let scrollToItem:
-  (ReasonReact.reactRef, ~item: 'item, ~animated: Js.boolean=?, ~viewPosition: int=?, unit) => unit;
+  (ReasonReact.reactRef, ~item: 'item, ~animated: bool=?, ~viewPosition: int=?, unit) => unit;
 
-let scrollToOffset: (ReasonReact.reactRef, ~offset: int=?, ~animated: Js.boolean=?, unit) => unit;
+let scrollToOffset: (ReasonReact.reactRef, ~offset: int=?, ~animated: bool=?, unit) => unit;
 
 [@bs.send] external recordInteraction : ReasonReact.reactRef => unit = "";
 
@@ -66,7 +66,7 @@ let make:
                                      "item": 'item,
                                      "key": string,
                                      "index": Js.undefined(int),
-                                     "isViewable": Js.boolean,
+                                     "isViewable": bool,
                                      "section": Js.t({.})
                                    }
                                  ),
@@ -77,7 +77,7 @@ let make:
                                      "item": 'item,
                                      "key": string,
                                      "index": Js.undefined(int),
-                                     "isViewable": Js.boolean,
+                                     "isViewable": bool,
                                      "section": Js.t({.})
                                    }
                                  )

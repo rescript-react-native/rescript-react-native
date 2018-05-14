@@ -1,6 +1,6 @@
 module Animation = {
   type t;
-  type endResult = {. "finished": Js.boolean};
+  type endResult = {. "finished": bool};
   type endCallback = endResult => unit;
 };
 
@@ -50,8 +50,8 @@ module Animations = {
       (
         ~velocity: Val.rawJsType,
         ~deceleration: float=?,
-        ~isInteraction: Js.boolean=?,
-        ~useNativeDriver: Js.boolean=?,
+        ~isInteraction: bool=?,
+        ~useNativeDriver: bool=?,
         ~onComplete: Animation.endCallback=?,
         ~iterations: int=?
       ) =>
@@ -88,7 +88,7 @@ module Animations = {
       .
       "toValue": toValue,
       "restDisplacementThreshold": Js.undefined(float),
-      "overshootClamping": Js.undefined(Js.boolean),
+      "overshootClamping": Js.undefined(bool),
       "restSpeedThreshold": Js.undefined(float),
       "velocity": Js.undefined(Val.rawJsType),
       "bounciness": Js.undefined(float),
@@ -98,8 +98,8 @@ module Animations = {
       "stiffness": Js.undefined(float),
       "mass": Js.undefined(float),
       "damping": Js.undefined(float),
-      "isInteraction": Js.undefined(Js.boolean),
-      "useNativeDriver": Js.undefined(Js.boolean),
+      "isInteraction": Js.undefined(bool),
+      "useNativeDriver": Js.undefined(bool),
       "onComplete": Js.undefined(Animation.endCallback),
       "iterations": Js.undefined(int),
     };
@@ -167,8 +167,8 @@ module Animations = {
         ~easing: Easing.t=?,
         ~duration: float=?,
         ~delay: float=?,
-        ~isInteraction: Js.boolean=?,
-        ~useNativeDriver: Js.boolean=?,
+        ~isInteraction: bool=?,
+        ~useNativeDriver: bool=?,
         ~onComplete: Animation.endCallback=?,
         ~iterations: int=?
       ) =>
@@ -422,7 +422,7 @@ external sequence : array(CompositeAnimation.t) => CompositeAnimation.t = "";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
 external parallel :
-  (array(CompositeAnimation.t), {. "stopTogether": Js.boolean}) =>
+  (array(CompositeAnimation.t), {. "stopTogether": bool}) =>
   CompositeAnimation.t =
   "";
 

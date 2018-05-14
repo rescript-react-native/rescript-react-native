@@ -20,7 +20,7 @@ type error = {
   "message": string,
 };
 
-let setRNConfiguration: (~skipPermissionRequests: Js.boolean=?, unit) => unit;
+let setRNConfiguration: (~skipPermissionRequests: bool=?, unit) => unit;
 
 let requestAuthorization: unit => unit;
 
@@ -30,7 +30,7 @@ let getCurrentPosition:
   (
     ~timeout: int=?,
     ~maximumAge: int=?,
-    ~enableHighAccuracy: Js.boolean=?,
+    ~enableHighAccuracy: bool=?,
     position => unit,
     error => unit
   ) =>
@@ -40,9 +40,9 @@ let watchPosition:
   (
     ~timeout: int=?,
     ~maximumAge: int=?,
-    ~enableHighAccuracy: Js.boolean=?,
+    ~enableHighAccuracy: bool=?,
     ~distanceFilter: int=?,
-    ~useSignificantChanges: Js.boolean=?,
+    ~useSignificantChanges: bool=?,
     position => unit,
     error => unit
   ) =>

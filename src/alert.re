@@ -29,7 +29,7 @@ external _alert :
     Js.Undefined.t(
       {
         .
-        "cancelable": Js.Undefined.t(Js.boolean),
+        "cancelable": Js.Undefined.t(bool),
         "onDismiss": Js.Undefined.t(unit => unit),
       },
     ),

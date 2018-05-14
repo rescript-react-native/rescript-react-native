@@ -1,9 +1,8 @@
 [@bs.module "react-native"]
 external view : ReasonReact.reactClass = "TextInput";
 
-[@bs.send] external _isFocused : ReasonReact.reactRef => Js.boolean = "";
+[@bs.send] external isFocused : ReasonReact.reactRef => bool = "";
 
-let isFocused = UtilsRN.(Js.to_bool << _isFocused);
 
 [@bs.send] external clear : ReasonReact.reactRef => unit = "";
 

@@ -2,12 +2,12 @@
 external statusBar : ReasonReact.reactClass = "StatusBar";
 
 [@bs.scope "StatusBar"] [@bs.module "react-native"]
-external _setHidden : (Js.boolean, Js.Undefined.t(string)) => unit =
+external _setHidden : (bool, Js.Undefined.t(string)) => unit =
   "setHidden";
 
 let setHidden = (hidden, ~animation=?, ()) =>
   _setHidden(
-    Js.Boolean.to_js_boolean(hidden),
+    hidden,
     Js.Undefined.fromOption(
       UtilsRN.option_map(
         x =>
@@ -22,7 +22,7 @@ let setHidden = (hidden, ~animation=?, ()) =>
   );
 
 [@bs.scope "StatusBar"] [@bs.module "react-native"]
-external _setBarStyle : (string, Js.Undefined.t(Js.boolean)) => unit =
+external _setBarStyle : (string, Js.Undefined.t(bool)) => unit =
   "setBarStyle";
 
 let setBarStyle = (style, ~animated=?, ()) =>
@@ -36,14 +36,14 @@ let setBarStyle = (style, ~animated=?, ()) =>
   );
 
 [@bs.scope "StatusBar"] [@bs.module "react-native"]
-external _setNetworkActivityIndicatorVisible : Js.boolean => unit =
+external _setNetworkActivityIndicatorVisible : bool => unit =
   "setNetworkActivityIndicatorVisible";
 
 let setNetworkActivityIndicatorVisible = visible =>
-  _setNetworkActivityIndicatorVisible(Js.Boolean.to_js_boolean(visible));
+  _setNetworkActivityIndicatorVisible(visible);
 
 [@bs.scope "StatusBar"] [@bs.module "react-native"]
-external _setBackgroundColor : (string, Js.Undefined.t(Js.boolean)) => unit =
+external _setBackgroundColor : (string, Js.Undefined.t(bool)) => unit =
   "setBackgroundColor";
 
 let setBackgroundColor = (color, ~animated=?, ()) =>
@@ -53,10 +53,10 @@ let setBackgroundColor = (color, ~animated=?, ()) =>
   );
 
 [@bs.scope "StatusBar"] [@bs.module "react-native"]
-external _setTranslucent : Js.boolean => unit = "setTranslucent";
+external _setTranslucent : bool => unit = "setTranslucent";
 
 let setTranslucent = translucent =>
-  _setTranslucent(Js.Boolean.to_js_boolean(translucent));
+  _setTranslucent(translucent);
 
 let make =
     (

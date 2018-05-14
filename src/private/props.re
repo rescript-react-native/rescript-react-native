@@ -7,14 +7,14 @@ let serialize = (handlers: option(Types.touchResponderHandlers)) =>
         "onMoveShouldSetResponder":
           fromOption(
             UtilsRN.option_map(
-              (g, x) => Js.Boolean.to_js_boolean(g(x)),
+              (g, x) => g(x),
               handlers.onMoveShouldSetResponder,
             ),
           ),
         "onMoveShouldSetResponderCapture":
           fromOption(
             UtilsRN.option_map(
-              (g, x) => Js.Boolean.to_js_boolean(g(x)),
+              (g, x) => g(x),
               handlers.onMoveShouldSetResponderCapture,
             ),
           ),
@@ -28,14 +28,14 @@ let serialize = (handlers: option(Types.touchResponderHandlers)) =>
         "onStartShouldSetResponder":
           fromOption(
             UtilsRN.option_map(
-              (g, x) => Js.Boolean.to_js_boolean(g(x)),
+              (g, x) => g(x),
               handlers.onStartShouldSetResponder,
             ),
           ),
         "onStartShouldSetResponderCapture":
           fromOption(
             UtilsRN.option_map(
-              (g, x) => Js.Boolean.to_js_boolean(g(x)),
+              (g, x) => g(x),
               handlers.onStartShouldSetResponderCapture,
             ),
           ),
