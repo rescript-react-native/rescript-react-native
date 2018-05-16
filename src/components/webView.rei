@@ -6,6 +6,9 @@ let sourceUri:
 let sourceHtml:
 (~html: string=?, ~baseUrl: string=?, unit) => source;
 
+[@deprecated "Please use WebView.sourceUri instead"]
+let source: (~uri: string=?, ~method: string=?, ~headers: Js.t('a)=?, ~body: string=?, unit) => source;
+
 type iOSLoadRequestEvent = {
   .
   "target": int,

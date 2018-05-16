@@ -36,6 +36,8 @@ external sourceHtml :
   source =
   "";
 
+let source = sourceUri;
+
 type contentInsets;
 
 [@bs.obj]
