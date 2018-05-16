@@ -15,12 +15,22 @@ type iOSLoadRequestEvent = {
 type source;
 
 [@bs.obj]
-external source :
+external sourceUri :
   (
     ~uri: string=?,
     ~method: string=?,
     ~headers: Js.t('a)=?,
     ~body: string=?,
+    unit
+  ) =>
+  source =
+  "";
+
+[@bs.obj]
+external sourceHtml :
+  (
+    ~html: string=?,
+    ~baseUrl: string=?,
     unit
   ) =>
   source =
