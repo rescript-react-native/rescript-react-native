@@ -1,7 +1,13 @@
 type source;
 
-let source:
+let sourceUri:
   (~uri: string=?, ~method: string=?, ~headers: Js.t('a)=?, ~body: string=?, unit) => source;
+
+let sourceHtml:
+(~html: string=?, ~baseUrl: string=?, unit) => source;
+
+[@deprecated "Please use WebView.sourceUri instead"]
+let source: (~uri: string=?, ~method: string=?, ~headers: Js.t('a)=?, ~body: string=?, unit) => source;
 
 type iOSLoadRequestEvent = {
   .

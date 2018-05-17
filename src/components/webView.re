@@ -15,7 +15,7 @@ type iOSLoadRequestEvent = {
 type source;
 
 [@bs.obj]
-external source :
+external sourceUri :
   (
     ~uri: string=?,
     ~method: string=?,
@@ -25,6 +25,18 @@ external source :
   ) =>
   source =
   "";
+
+[@bs.obj]
+external sourceHtml :
+  (
+    ~html: string=?,
+    ~baseUrl: string=?,
+    unit
+  ) =>
+  source =
+  "";
+
+let source = sourceUri;
 
 type contentInsets;
 
