@@ -1,15 +1,22 @@
 [@bs.module "react-native"] external view : ReasonReact.reactClass = "WebView";
 
-type iOSLoadRequestEvent = {
+type navigationType = [
+  | [@bs.as "click"] `click
+  | [@bs.as "formsubmit"] `formsubmit
+  | [@bs.as "backforward"] `backforward
+  | [@bs.as "reload"] `reload
+  | [@bs.as "formresubmit"] `formresubmit
+  | [@bs.as "other"] `other
+];
+
+type iOSOnShouldStartLoadWithRequestEvent = {
   .
-  "target": int,
-  "canGoBack": bool,
-  "lockIdentifier": int,
-  "loading": bool,
-  "title": string,
-  "canGoForward": bool,
-  "navigationType": string,
   "url": string,
+  "title": string,
+  "loading": bool,
+  "canGoBack": bool,
+  "canGoForward": bool,
+  "navigationType": navigationType,
 };
 
 type source;
@@ -40,10 +47,63 @@ let make =
       ~style=?,
       ~renderError=?,
       ~renderLoading=?,
-      ~onError=?,
-      ~onLoad=?,
-      ~onLoadEnd=?,
-      ~onLoadStart=?,
+      ~onError:
+         option(
+           {
+             .
+             "url": string,
+             "title": string,
+             "loading": bool,
+             "canGoBack": bool,
+             "canGoForward": bool,
+             /* iOS only */
+             "domain": Js.Null_undefined.t(string),
+             "code": float,
+             "description": string,
+           } =>
+           unit,
+         )=?,
+      ~onLoad:
+         option(
+           {
+             .
+             "target": Js.Null_undefined.t(float),
+             "url": string,
+             "title": string,
+             "loading": bool,
+             "canGoBack": bool,
+             "canGoForward": bool,
+           } =>
+           unit,
+         )=?,
+      ~onLoadEnd:
+         option(
+           {
+             .
+             "target": Js.Null_undefined.t(float),
+             "url": string,
+             "title": string,
+             "loading": bool,
+             "canGoBack": bool,
+             "canGoForward": bool,
+           } =>
+           unit,
+         )=?,
+      ~onLoadStart:
+         option(
+           {
+             .
+             "target": Js.Null_undefined.t(float),
+             "url": string,
+             "title": string,
+             "loading": bool,
+             "canGoBack": bool,
+             "canGoForward": bool,
+             /* iOS only */
+             "navigationType": Js.Null_undefined.t(navigationType)
+           } =>
+           unit,
+         )=?,
       ~automaticallyAdjustContentInsets=?,
       ~contentInsets=?,
       ~accessibilityLabel=?,
@@ -81,7 +141,8 @@ let make =
       ~bounces=?,
       ~dataDetectorTypes=?,
       ~decelerationRate=?,
-      ~onShouldStartLoadWithRequest=?,
+      ~onShouldStartLoadWithRequest:
+         option(iOSOnShouldStartLoadWithRequestEvent => bool)=?,
       ~scrollEnabled=?,
     ) =>
   ReasonReact.wrapJsForReason(
