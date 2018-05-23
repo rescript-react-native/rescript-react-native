@@ -22,7 +22,7 @@ type iOSOnShouldStartLoadWithRequestEvent = {
 type source;
 
 [@bs.obj]
-external source :
+external sourceUri :
   (
     ~uri: string=?,
     ~method: string=?,
@@ -33,6 +33,18 @@ external source :
   source =
   "";
 
+[@bs.obj]
+external sourceHtml :
+  (
+    ~html: string=?,
+    ~baseUrl: string=?,
+    unit
+  ) =>
+  source =
+  "";
+
+let source = sourceUri;
+
 type contentInsets;
 
 [@bs.obj]
@@ -40,6 +52,14 @@ external contentInsets :
   (~top: int=?, ~left: int=?, ~bottom: int=?, ~right: int=?, unit) =>
   contentInsets =
   "";
+
+[@bs.send] external goForward : ReasonReact.reactRef => unit = "";
+
+[@bs.send] external goBack : ReasonReact.reactRef => unit = "";
+
+[@bs.send] external reload : ReasonReact.reactRef => unit = "";
+
+[@bs.send] external stopLoading : ReasonReact.reactRef => unit = "";
 
 let make =
     (
