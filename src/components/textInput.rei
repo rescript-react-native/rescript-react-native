@@ -120,7 +120,7 @@ let make:
     ~dataDetectorTypes: array([ | `all | `calendarEvent | `link | `none | `phoneNumber])=?,
     ~enablesReturnKeyAutomatically: bool=?,
     ~keyboardAppearance: [ | `dark | `default | `light]=?,
-    ~onKeyPress: {. "nativeEvent": {. "key": string}}=?,
+    ~onKeyPress: {. "nativeEvent": {. "key": string}} => unit =?,
     ~selectionState: 'documentSelectionState=?,
     ~spellCheck: bool=?,
     array(ReasonReact.reactElement)

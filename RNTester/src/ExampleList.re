@@ -23,6 +23,8 @@ module MakeExample = (Example: ExampleT) => {
   };
 };
 
+module TextInput = MakeExample(TextInputExample);
+
 module Button = MakeExample(ButtonExample);
 
 module View = MakeExample(ViewExample);
@@ -36,6 +38,7 @@ module NetInfo = MakeExample(NetInfoExample);
 module Geolocation = MakeExample(GeolocationExample);
 
 let components: array(item) = [|
+  TextInput.item("TextInput"),
   Button.item("ButtonExample"),
   View.item("ViewExample"),
   WebView.item("WebViewExample"),
