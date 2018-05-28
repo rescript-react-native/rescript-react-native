@@ -78,12 +78,12 @@ let make:
     ~onBlur: unit => unit=?,
     ~onChange: unit => unit=?,
     ~onChangeText: string => unit=?,
-    ~onContentSizeChange: {. "nativeEvent": {. "contentSize": {. "width": float, "height": float}}}
+    ~onContentSizeChange: {. "nativeEvent": {. "contentSize": {. "width": float, "height": float}}} => unit
                             =?,
     ~onEndEditing: unit => unit=?,
     ~onFocus: unit => unit=?,
-    ~onScroll: {. "nativeEvent": {. "contentOffset": {. "x": float, "y": float}}}=?,
-    ~onSelectionChange: {. "nativeEvent": {. "selection": {. "start": int, "_end": int}}}=?,
+    ~onScroll: {. "nativeEvent": {. "contentOffset": {. "x": float, "y": float}}} => unit =?,
+    ~onSelectionChange: {. "nativeEvent": {. "selection": {. "start": int, "_end": int}}} => unit =?,
     ~onSubmitEditing: unit => unit=?,
     ~placeholder: string=?,
     ~placeholderTextColor: string=?,
@@ -120,7 +120,7 @@ let make:
     ~dataDetectorTypes: array([ | `all | `calendarEvent | `link | `none | `phoneNumber])=?,
     ~enablesReturnKeyAutomatically: bool=?,
     ~keyboardAppearance: [ | `dark | `default | `light]=?,
-    ~onKeyPress: {. "nativeEvent": {. "key": string}}=?,
+    ~onKeyPress: {. "nativeEvent": {. "key": string}} => unit =?,
     ~selectionState: 'documentSelectionState=?,
     ~spellCheck: bool=?,
     array(ReasonReact.reactElement)
