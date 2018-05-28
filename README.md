@@ -1,5 +1,5 @@
 # [BuckleScript](https://github.com/bloomberg/bucklescript) bindings for [React Native](https://github.com/facebook/react-native)
-[![Build Status](https://travis-ci.org/reasonml-community/bs-react-native.svg?branch=master)](https://travis-ci.org/reasonml-community/bs-react-native)
+[![CircleCI](https://circleci.com/gh/callstack/rebolt.svg?style=svg)](https://circleci.com/gh/callstack/rebolt)
 
 ## Getting started
 
