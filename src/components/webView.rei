@@ -42,41 +42,41 @@ let make:
     ~renderLoading: unit => ReasonReact.reactElement=?,
     ~onError: {
                 .
-                "url": option(string),
-                "title": option(string),
-                "loading": option(bool),
-                "canGoBack": option(bool),
-                "canGoForward": option(bool)
+                "url": Js.Nullable.t(string),
+                "title": Js.Nullable.t(string),
+                "loading": Js.Nullable.t(bool),
+                "canGoBack": Js.Nullable.t(bool),
+                "canGoForward": Js.Nullable.t(bool)
               } =>
               unit
                 =?,
     ~onLoad: {
                .
-               "url": option(string),
-               "title": option(string),
-               "loading": option(bool),
-               "canGoBack": option(bool),
-               "canGoForward": option(bool)
+               "url": Js.Nullable.t(string),
+               "title": Js.Nullable.t(string),
+               "loading": Js.Nullable.t(bool),
+               "canGoBack": Js.Nullable.t(bool),
+               "canGoForward": Js.Nullable.t(bool)
              } =>
              unit
                =?,
     ~onLoadEnd: {
                   .
-                  "url": option(string),
-                  "title": option(string),
-                  "loading": option(bool),
-                  "canGoBack": option(bool),
-                  "canGoForward": option(bool)
+                  "url": Js.Nullable.t(string),
+                  "title": Js.Nullable.t(string),
+                  "loading": Js.Nullable.t(bool),
+                  "canGoBack": Js.Nullable.t(bool),
+                  "canGoForward": Js.Nullable.t(bool)
                 } =>
                 unit
                   =?,
     ~onLoadStart: {
                     .
-                    "url": option(string),
-                    "title": option(string),
-                    "loading": option(bool),
-                    "canGoBack": option(bool),
-                    "canGoForward": option(bool)
+                    "url": Js.Nullable.t(string),
+                    "title": Js.Nullable.t(string),
+                    "loading": Js.Nullable.t(bool),
+                    "canGoBack": Js.Nullable.t(bool),
+                    "canGoForward": Js.Nullable.t(bool)
                   } =>
                   unit
                     =?,
@@ -134,11 +134,11 @@ let make:
     ~onMessage: RNEvent.NativeEvent.t => unit=?,
     ~onNavigationStateChange: {
                                 .
-                                "url": option(string),
-                                "title": option(string),
-                                "loading": option(bool),
-                                "canGoBack": option(bool),
-                                "canGoForward": option(bool)
+                                "url": Js.Nullable.t(string),
+                                "title": Js.Nullable.t(string),
+                                "loading": Js.Nullable.t(bool),
+                                "canGoBack": Js.Nullable.t(bool),
+                                "canGoForward": Js.Nullable.t(bool)
                               } =>
                               unit
                                 =?,
