@@ -1,7 +1,7 @@
 {
-  "name": "bs-react-native",
+  "name": "rebolt",
   "bsc-flags": ["-bs-super-errors"],
-  "reason": {"react-jsx": 2},
+  "reason": { "react-jsx": 2 },
   "refmt": 3,
   "bs-dependencies": ["reason-react"],
   "namespace": true,
@@ -10,13 +10,13 @@
       "dir": "src",
       "subdirs": [
         {
-          "dir": "components",
+          "dir": "components"
         },
         {
           "dir": "private",
-          "public": [],
-        },
-      ],
+          "public": []
+        }
+      ]
     }
   ]
 }

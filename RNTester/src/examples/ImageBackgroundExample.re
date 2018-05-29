@@ -42,7 +42,7 @@ let examples: array(Example.t) =
                   padding(Pt(5.)),
                 ])
               )>
-              <Text> (ReasonReact.stringToElement("Nested text")) </Text>
+              <Text> (ReasonReact.string("Nested text")) </Text>
             </View>
           </ImageBackground>,
       },

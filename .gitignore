@@ -1,7 +1,6 @@
 .DS_Store
 node_modules
-lib/bs
-lib/ocaml
+lib
 .merlin
 .vscode
 package-lock.json

@@ -102,16 +102,12 @@ module CreateComponent = (Impl: View.Impl) : TextComponent => {
         ),
       switch (value) {
       | Some(string) =>
-        Array.append([|ReasonReact.stringToElement(string)|], children)
+        Array.append([|ReasonReact.string(string)|], children)
       | None => children
       },
     );
 };
 
-include
-  CreateComponent(
-    {
-      [@bs.module "react-native"]
-      external view : ReasonReact.reactClass = "Text";
-    },
-  );
+include CreateComponent({
+  [@bs.module "react-native"] external view : ReasonReact.reactClass = "Text";
+});

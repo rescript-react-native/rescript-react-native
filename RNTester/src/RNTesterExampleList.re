@@ -41,10 +41,10 @@ let renderItem = onPress =>
     <TouchableHighlight onPress=(() => onPress(item))>
       <View style=styles##row>
         <Text style=styles##rowTitleText>
-          (ReasonReact.stringToElement(item.ExampleList.title))
+          (ReasonReact.string(item.ExampleList.title))
         </Text>
         <Text style=styles##rowDetailText>
-          (ReasonReact.stringToElement(item.description))
+          (ReasonReact.string(item.description))
         </Text>
       </View>
     </TouchableHighlight>

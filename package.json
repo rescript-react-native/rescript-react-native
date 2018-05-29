@@ -1,30 +1,25 @@
 {
-	"name": "rebolt",
-	"version": "0.1.0",
-	"scripts": {
-		"build": "bsb -make-world",
-		"start": "bsb -make-world -w",
-		"clean-build": "bsb -clean-world -make-world",
-		"test": "exit 0"
-	},
-	"license": "MIT",
-	"keywords": [
-		"reason",
-		"reasonml",
-		"bucklescript",
-		"react-native"
-	],
-	"author": "",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/callstack/rebolt.git"
-	},
-	"devDependencies": {
-		"bs-platform": "^3.0.0",
-		"reason-react": "^0.3.4"
-	},
-	"peerDependencies": {
-		"react-native": "^0.53.3",
-		"reason-react": "^0.3.4"
-	}
+  "name": "rebolt",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "bsb -make-world",
+    "start": "bsb -make-world -w",
+    "clean": "bsb -clean-world -make-world",
+    "test": "exit 0"
+  },
+  "license": "MIT",
+  "keywords": ["reason", "reasonml", "bucklescript", "react-native"],
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/callstack/rebolt.git"
+  },
+  "devDependencies": {
+    "bs-platform": "^3.1.4",
+    "reason-react": "^0.4.2"
+  },
+  "peerDependencies": {
+    "react-native": "^0.53.3",
+    "reason-react": "^0.4.2"
+  }
 }
