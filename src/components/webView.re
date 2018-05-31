@@ -1,12 +1,13 @@
 [@bs.module "react-native"] external view : ReasonReact.reactClass = "WebView";
 
+[@bs.deriving jsConverter]
 type navigationType = [
-  | [@bs.as "click"] `click
-  | [@bs.as "formsubmit"] `formsubmit
-  | [@bs.as "backforward"] `backforward
-  | [@bs.as "reload"] `reload
-  | [@bs.as "formresubmit"] `formresubmit
-  | [@bs.as "other"] `other
+  | `click
+  | `formsubmit
+  | `backforward
+  | `reload
+  | `formresubmit
+  | `other
 ];
 
 type iOSOnShouldStartLoadWithRequestEvent = {
@@ -16,7 +17,7 @@ type iOSOnShouldStartLoadWithRequestEvent = {
   "loading": bool,
   "canGoBack": bool,
   "canGoForward": bool,
-  "navigationType": navigationType,
+  "navigationType": string,
 };
 
 type source;
@@ -34,13 +35,7 @@ external sourceUri :
   "";
 
 [@bs.obj]
-external sourceHtml :
-  (
-    ~html: string=?,
-    ~baseUrl: string=?,
-    unit
-  ) =>
-  source =
+external sourceHtml : (~html: string=?, ~baseUrl: string=?, unit) => source =
   "";
 
 let source = sourceUri;
@@ -77,7 +72,7 @@ let make =
              "canGoBack": bool,
              "canGoForward": bool,
              /* iOS only */
-             "domain": Js.Null_undefined.t(string),
+             "domain": Js.Nullable.t(string),
              "code": float,
              "description": string,
            } =>
@@ -87,7 +82,7 @@ let make =
          option(
            {
              .
-             "target": Js.Null_undefined.t(float),
+             "target": Js.Nullable.t(float),
              "url": string,
              "title": string,
              "loading": bool,
@@ -100,7 +95,7 @@ let make =
          option(
            {
              .
-             "target": Js.Null_undefined.t(float),
+             "target": Js.Nullable.t(float),
              "url": string,
              "title": string,
              "loading": bool,
@@ -113,14 +108,14 @@ let make =
          option(
            {
              .
-             "target": Js.Null_undefined.t(float),
+             "target": Js.Nullable.t(float),
              "url": string,
              "title": string,
              "loading": bool,
              "canGoBack": bool,
              "canGoForward": bool,
              /* iOS only */
-             "navigationType": Js.Null_undefined.t(navigationType)
+             "navigationType": Js.Nullable.t(string),
            } =>
            unit,
          )=?,
