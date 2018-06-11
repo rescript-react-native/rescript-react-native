@@ -1,4 +1,4 @@
-open BsReactNative;
+open Rebolt;
 
 module NetInfoIsConnectedExample = {
   type action =
