@@ -4,33 +4,72 @@ title: DatePickerIOS
 sidebar_label: DatePickerIOS
 ---
 
-# Props
+## Example of use
 
-## date
+`DatePickerIOS` requires `date` and `onDateChange` props to be rendered:
 
-```reason
-date: Js.Date.t=?
-```
-
-## onDateChange
+### default
 
 ```reason
-onDateChange: Js.Date.t => unit=?
+let component = ReasonReact.statelessComponent("MyComponent");
+
+let make = _children => {
+  ...component,
+  render: _self =>
+    <DatePickerIOS
+      date=(Js.Date.fromString("February 12, 1990 17:40"))
+      onDateChange=(date => Js.log(date))
+    />,
+};
 ```
 
-## maximumDate
+Here you can find BuckleScript's [`Js.Date` API](https://bucklescript.github.io/bucklescript/api/Js_date.html).
+
+[The JavaScript Date API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) might also be a useful resource.
+
+### mode
+
+```reason
+let component = ReasonReact.statelessComponent("MyComponent");
+
+let make = _children => {
+  ...component,
+  render: _self =>
+    <DatePickerIOS
+      date=(Js.Date.fromString("February 12, 1990 17:40"))
+      onDateChange=(date => Js.log(date))
+      mode=`date
+    />,
+};
+```
+
+## Props
+
+### date
+
+```reason
+date: Js.Date.t
+```
+
+### onDateChange
+
+```reason
+onDateChange: Js.Date.t => unit
+```
+
+### maximumDate
 
 ```reason
 maximumDate: Js.Date.t=?
 ```
 
-## minimumDate
+### minimumDate
 
 ```reason
 minimumDate: Js.Date.t=?
 ```
 
-## mode
+### mode
 
 ```reason
 mode: [
@@ -40,31 +79,31 @@ mode: [
 ]=?
 ```
 
-## minuteInterval
+### minuteInterval
 
 ```reason
 minuteInterval: int=?
 ```
 
-## timeZoneOffsetInMinutes
+### timeZoneOffsetInMinutes
 
 ```reason
 timeZoneOffsetInMinutes: int=?
 ```
 
-## accessibilityLabel
+### accessibilityLabel
 
 ```reason
 accessibilityLabel: ReasonReact.reactElement=?
 ```
 
-## accessible
+### accessible
 
 ```reason
 accessible: bool=?
 ```
 
-## hitSlop
+### hitSlop
 
 ```reason
 hitSlop: Types.insets=?
@@ -84,25 +123,25 @@ type insets = {
 };
 ```
 
-## onAccessibilityTap
+### onAccessibilityTap
 
 ```reason
 onAccessibilityTap: unit => unit=?
 ```
 
-## onLayout
+### onLayout
 
 ```reason
 onLayout: RNEvent.NativeLayoutEvent.t => unit=?
 ```
 
-## onMagicTap
+### onMagicTap
 
 ```reason
 onMagicTap: unit => unit=?
 ```
 
-## responderHandlers
+### responderHandlers
 
 ```reason
 responderHandlers: Types.touchResponderHandlers=?
@@ -145,7 +184,7 @@ module NativeEvent: {
 };
 ```
 
-## pointerEvents
+### pointerEvents
 
 ```reason
 pointerEvents: [
@@ -156,25 +195,25 @@ pointerEvents: [
 ]=?
 ```
 
-## removeClippedSubviews
+### removeClippedSubviews
 
 ```reason
 removeClippedSubviews: bool=?
 ```
 
-## style
+### style
 
 ```reason
 style: Style.t=?
 ```
 
-## testID
+### testID
 
 ```reason
 testID: string=?
 ```
 
-## accessibilityComponentType
+### accessibilityComponentType
 
 ```reason
 accessibilityComponentType: [
@@ -185,7 +224,7 @@ accessibilityComponentType: [
 ]=?
 ```
 
-## accessibilityLiveRegion
+### accessibilityLiveRegion
 
 ```reason
 accessibilityLiveRegion: [
@@ -195,13 +234,13 @@ accessibilityLiveRegion: [
 ]=?
 ```
 
-## collapsable
+### collapsable
 
 ```reason
 collapsable: bool=?
 ```
 
-## importantForAccessibility
+### importantForAccessibility
 
 ```reason
 importantForAccessibility: [
@@ -212,19 +251,19 @@ importantForAccessibility: [
 ]=?
 ```
 
-## needsOffscreenAlphaCompositing
+### needsOffscreenAlphaCompositing
 
 ```reason
 needsOffscreenAlphaCompositing: bool=?
 ```
 
-## renderToHardwareTextureAndroid
+### renderToHardwareTextureAndroid
 
 ```reason
 renderToHardwareTextureAndroid: bool=?
 ```
 
-## accessibilityTraits
+### accessibilityTraits
 
 ```reason
 accessibilityTraits:
@@ -251,13 +290,13 @@ accessibilityTraits:
   )=?
 ```
 
-## accessibilityViewIsModal
+### accessibilityViewIsModal
 
 ```reason
 accessibilityViewIsModal: bool=?
 ```
 
-## shouldRasterizeIOS
+### shouldRasterizeIOS
 
 ```reason
 shouldRasterizeIOS: bool=?

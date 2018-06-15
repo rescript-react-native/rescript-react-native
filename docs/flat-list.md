@@ -4,27 +4,69 @@ title: FlatList
 sidebar_label: FlatList
 ---
 
-# Props
+## Example of use
 
-## data
+In order to render a `FlatList` you need to provide three props:
+
+- `data`
+- `renderItem`
+- `keyExtractor`
+
+### default
+
+```reason
+type contact = {
+  id: int,
+  name: string,
+  count: int,
+};
+type myData = array(contact);
+let myData = [|
+  {id: 1, name: "Davin Roth", count: 645},
+  {id: 2, name: "Milton Walsh", count: 12},
+|];
+
+let myKeyExtractor = (item, _index) => string_of_int(item.id);
+
+let renderMyItem =
+  FlatList.renderItem((contact: FlatList.renderBag(contact)) =>
+    <View> <Text> (ReasonReact.string(contact.item.name)) </Text> </View>
+  );
+
+let component = ReasonReact.statelessComponent("MyComponent");
+
+let make = _children => {
+  ...component,
+  render: _self =>
+    <FlatList
+      data=myData
+      keyExtractor=myKeyExtractor
+      renderItem=renderMyItem
+    />,
+};
+```
+
+## Props
+
+### data
 
 ```reason
 data: array('item)
 ```
 
-## renderItem
+### renderItem
 
 ```reason
 renderItem: renderItem('item)
 ```
 
-## keyExtractor
+### keyExtractor
 
 ```reason
 keyExtractor: ('item, int) => string
 ```
 
-## itemSeparatorComponent
+### itemSeparatorComponent
 
 ```reason
 itemSeparatorComponent: separatorComponent('item)=?
@@ -38,37 +80,37 @@ let separatorComponent:
   separatorComponent('item);
 ```
 
-## bounces
+### bounces
 
 ```reason
 bounces: bool=?
 ```
 
-## listFooterComponent
+### listFooterComponent
 
 ```reason
 listFooterComponent: ReasonReact.reactElement=?
 ```
 
-## listHeaderComponent
+### listHeaderComponent
 
 ```reason
 listHeaderComponent: ReasonReact.reactElement=?
 ```
 
-## columnWrapperStyle
+### columnWrapperStyle
 
 ```reason
 columnWrapperStyle: Style.t=?
 ```
 
-## extraData
+### extraData
 
 ```reason
 extraData: 'any=?
 ```
 
-## getItemLayout
+### getItemLayout
 
 ```reason
 getItemLayout: (option(array('item)), int) => {
@@ -79,55 +121,55 @@ getItemLayout: (option(array('item)), int) => {
 }=?
 ```
 
-## horizontal
+### horizontal
 
 ```reason
 horizontal: bool=?
 ```
 
-## initialNumToRender
+### initialNumToRender
 
 ```reason
 initialNumToRender: int=?
 ```
 
-## initialScrollIndex
+### initialScrollIndex
 
 ```reason
 initialScrollIndex: int=?
 ```
 
-## inverted
+### inverted
 
 ```reason
 inverted: bool=?
 ```
 
-## numColumns
+### numColumns
 
 ```reason
 numColumns: 'int=?
 ```
 
-## onEndReached
+### onEndReached
 
 ```reason
 onEndReached: {. "distanceFromEnd": float} => unit=?
 ```
 
-## onEndReachedThreshold
+### onEndReachedThreshold
 
 ```reason
 onEndReachedThreshold: float=?
 ```
 
-## onRefresh
+### onRefresh
 
 ```reason
 onRefresh: unit => unit=?
 ```
 
-## onViewableItemsChanged
+### onViewableItemsChanged
 
 ```reason
 onViewableItemsChanged: {
@@ -157,7 +199,7 @@ onViewableItemsChanged: {
 }=?
 ```
 
-## overScrollMode
+### overScrollMode
 
 ```reason
 overScrollMode: [
@@ -167,61 +209,61 @@ overScrollMode: [
 ]=?
 ```
 
-## pagingEnabled
+### pagingEnabled
 
 ```reason
 pagingEnabled: bool=?
 ```
 
-## refreshing
+### refreshing
 
 ```reason
 refreshing: bool=?
 ```
 
-## removeClippedSubviews
+### removeClippedSubviews
 
 ```reason
 removeClippedSubviews: bool=?
 ```
 
-## scrollEnabled
+### scrollEnabled
 
 ```reason
 scrollEnabled: bool=?
 ```
 
-## showsHorizontalScrollIndicator
+### showsHorizontalScrollIndicator
 
 ```reason
 showsHorizontalScrollIndicator: bool=?
 ```
 
-## showsVerticalScrollIndicator
+### showsVerticalScrollIndicator
 
 ```reason
 showsVerticalScrollIndicator: bool=?
 ```
 
-## windowSize
+### windowSize
 
 ```reason
 windowSize: int=?
 ```
 
-## maxToRenderPerBatch
+### maxToRenderPerBatch
 
 ```reason
 maxToRenderPerBatch: int=?
 ```
 
-## viewabilityConfig
+### viewabilityConfig
 
 ```reason
 viewabilityConfig: Js.t({.})=?
 ```
 
-## onScroll
+### onScroll
 
 ```reason
 onScroll: RNEvent.NativeScrollEvent.t => unit=?
@@ -255,7 +297,7 @@ module NativeScrollEvent: {
 };
 ```
 
-## style
+### style
 
 ```reason
 style: Style.t=?

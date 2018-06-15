@@ -12,7 +12,8 @@
     "reason",
     "reasonml",
     "bucklescript",
-    "react-native"
+    "react-native",
+    "rebolt"
   ],
   "author": "",
   "repository": {

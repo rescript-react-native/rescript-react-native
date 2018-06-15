@@ -4,27 +4,74 @@ title: Picker
 sidebar_label: Picker
 ---
 
-# Props
+## Example of use
 
-## onValueChange
+In order to render a `Picker` component you will need to pass one or many `Picker.Item` components as children.
+
+And `Picker.Item` has a required `label` prop
+
+### default
+
+```reason
+let component = ReasonReact.statelessComponent("MyComponent");
+
+let make = _children => {
+  ...component,
+  render: _self =>
+    <View>
+      <Picker>
+        <Picker.Item label="ReasonML" value="reason" />
+        <Picker.Item label="Ocaml" value="ocaml" />
+        <Picker.Item label="JavaScript" value="js" />
+      </Picker>
+    </View>,
+};
+```
+
+### selectedValue and onValueChange
+
+```reason
+let component = ReasonReact.statelessComponent("MyComponent");
+
+let make = _children => {
+  ...component,
+  render: _self =>
+    <View>
+      <Picker selectedValue="ocaml" onValueChange=(value => Js.log(value))>
+        <Picker.Item label="ReasonML" value="reason" />
+        <Picker.Item label="Ocaml" value="ocaml" />
+        <Picker.Item label="JavaScript" value="js" />
+      </Picker>
+    </View>,
+};  
+```
+
+## Props
+
+### onValueChange
 
 ```reason
 onValueChange: 'value => unit=?
 ```
 
-## selectedValue
+### selectedValue
 
 ```reason
 selectedValue: 'value=?
 ```
 
-## enabled
+### enabled
 
 ```reason
 enabled: bool=?
 ```
 
-## mode
+### mode
+
+On **Android only**, specifies how to display the selection items when the user taps on the picker:
+
+- `dialog - shows a modal dialog. This is the default.
+- `dropdown - shows a dropdown anchored to the picker view
 
 ```reason
 mode: [
@@ -33,31 +80,31 @@ mode: [
 ]=?
 ```
 
-## prompt
+### prompt
 
 ```reason
 prompt: string=?
 ```
 
-## itemStyle
+### itemStyle
 
 ```reason
 itemStyle: Style.t=?
 ```
 
-## accessibilityLabel
+### accessibilityLabel
 
 ```reason
 accessibilityLabel: ReasonReact.reactElement=?
 ```
 
-## accessible
+### accessible
 
 ```reason
 accessible: bool=?
 ```
 
-## hitSlop
+### hitSlop
 
 ```reason
 hitSlop: Types.insets=?
@@ -77,13 +124,13 @@ type insets = {
 };
 ```
 
-## onAccessibilityTap
+### onAccessibilityTap
 
 ```reason
 onAccessibilityTap: unit => unit=?
 ```
 
-## onLayout
+### onLayout
 
 ```reason
 onLayout: RNEvent.NativeLayoutEvent.t => unit=?
@@ -106,13 +153,13 @@ module NativeLayoutEvent: {
 };
 ```
 
-## onMagicTap
+### onMagicTap
 
 ```reason
 onMagicTap: unit => unit=?
 ```
 
-## responderHandlers
+### responderHandlers
 
 ```reason
 responderHandlers: Types.touchResponderHandlers=?
@@ -155,7 +202,7 @@ module NativeEvent: {
 };
 ```
 
-## pointerEvents
+### pointerEvents
 
 ```reason
 pointerEvents: [
@@ -166,25 +213,25 @@ pointerEvents: [
 ]=?
 ```
 
-## removeClippedSubviews
+### removeClippedSubviews
 
 ```reason
 removeClippedSubviews: bool=?
 ```
 
-## style
+### style
 
 ```reason
 style: Style.t=?
 ```
 
-## testID
+### testID
 
 ```reason
 testID: string=?
 ```
 
-## accessibilityComponentType
+### accessibilityComponentType
 
 ```reason
 accessibilityComponentType: [
@@ -195,7 +242,7 @@ accessibilityComponentType: [
 ]=?
 ```
 
-## accessibilityLiveRegion
+### accessibilityLiveRegion
 
 ```reason
 accessibilityLiveRegion: [
@@ -205,13 +252,13 @@ accessibilityLiveRegion: [
 ]=?
 ```
 
-## collapsable
+### collapsable
 
 ```reason
 collapsable: bool=?
 ```
 
-## importantForAccessibility
+### importantForAccessibility
 
 ```reason
 importantForAccessibility: [
@@ -222,19 +269,19 @@ importantForAccessibility: [
 ]=?
 ```
 
-## needsOffscreenAlphaCompositing
+### needsOffscreenAlphaCompositing
 
 ```reason
 needsOffscreenAlphaCompositing: bool=?
 ```
 
-## renderToHardwareTextureAndroid
+### renderToHardwareTextureAndroid
 
 ```reason
 renderToHardwareTextureAndroid: bool=?
 ```
 
-## accessibilityTraits
+### accessibilityTraits
 
 ```reason
 accessibilityTraits: list(
@@ -260,13 +307,13 @@ accessibilityTraits: list(
 )=?
 ```
 
-## accessibilityViewIsModal
+### accessibilityViewIsModal
 
 ```reason
 accessibilityViewIsModal: bool=?
 ```
 
-## shouldRasterizeIOS
+### shouldRasterizeIOS
 
 ```reason
 shouldRasterizeIOS: bool=?

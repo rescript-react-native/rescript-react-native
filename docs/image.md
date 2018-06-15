@@ -4,15 +4,61 @@ title: Image
 sidebar_label: Image
 ---
 
-# Props
+## Example of use
 
-## onError
+`Image` component requires the `source` prop, here is the example usage. Note that you also need to specify the `width` and `height`, this can be done via `imageURISource` named arguments, or via `style` prop that is passed to `Image` component
+
+### source from URI
+
+```reason
+let component = ReasonReact.statelessComponent("MyComponent");
+
+let make = _children => {
+  ...component,
+  render: _self =>
+    <Image
+      source=(
+        URI(
+          Image.(
+            imageURISource(
+              ~uri="https://bit.ly/2ya4e2o",
+              ~width=320.,
+              ~height=480.,
+              (),
+            )
+          ),
+        )
+      )
+    />,
+};
+```
+
+### source from a file path
+
+One thing to remember here is that the path is relative to the compiled code.
+
+```reason
+let component = ReasonReact.statelessComponent("MyComponent");
+
+let make = _children => {
+  ...component,
+  render: _self =>
+    <Image
+      style=Style.(style([width(Pt(320.)), height(Pt(480.))]))
+      source=(Required(Packager.require("./assets/panamera.png")))
+    />,
+};
+```
+
+## Props
+
+### onError
 
 ```reason
 onError: Event.error => unit=?
 ```
 
-## onLayout
+### onLayout
 
 ```reason
 onLayout: RNEvent.NativeLayoutEvent.t => unit=?
@@ -35,25 +81,25 @@ module NativeLayoutEvent: {
 };
 ```
 
-## onLoad
+### onLoad
 
 ```reason
 onLoad: unit => unit=?
 ```
 
-## onLoadEnd
+### onLoadEnd
 
 ```reason
 onLoadEnd: unit => unit=?
 ```
 
-## onLoadStart
+### onLoadStart
 
 ```reason
 onLoadStart: unit => unit=?
 ```
 
-## resizeMode
+### resizeMode
 
 ```reason
 resizeMode: [<
@@ -65,10 +111,10 @@ resizeMode: [<
 ]=?
 ```
 
-## source
+### source
 
 ```reason
-source: imageSource=?
+source: imageSource
 ```
 
 _reference:_
@@ -102,19 +148,19 @@ let imageURISource:
   imageURISource;
 ```
 
-## style
+### style
 
 ```reason
 style: Style.t=?
 ```
 
-## testID
+### testID
 
 ```reason
 testID: string=?
 ```
 
-## resizeMethod
+### resizeMethod
 
 ```reason
 resizeMethod: [<
@@ -124,25 +170,25 @@ resizeMethod: [<
 ]=?
 ```
 
-## accessibilityLabel
+### accessibilityLabel
 
 ```reason
 accessibilityLabel: string=?
 ```
 
-## accessible
+### accessible
 
 ```reason
 accessible: bool=?
 ```
 
-## blurRadius
+### blurRadius
 
 ```reason
 blurRadius: float=?
 ```
 
-## capInsets
+### capInsets
 
 ```reason
 capInsets: Types.insets=?
@@ -162,7 +208,7 @@ type insets = {
 };
 ```
 
-## defaultSource
+### defaultSource
 
 ```reason
 defaultSource: defaultSource=?
@@ -181,13 +227,13 @@ let defaultURISource:
   (~uri: string, ~scale: float=?, ~width: float=?, ~height: float=?, unit) => defaultURISource;
 ```
 
-## onPartialLoad
+### onPartialLoad
 
 ```reason
 onPartialLoad: unit => unit=?
 ```
 
-## onProgress
+### onProgress
 
 ```reason
 onProgress: Event.progress => unit=?

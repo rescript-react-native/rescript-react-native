@@ -4,21 +4,121 @@ title: ActivityIndicator
 sidebar_label: ActivityIndicator
 ---
 
-# Props
+## Example of use
 
-## animating
+### default
+
+To render a default ActivityIndicator (spinner) you don't need to pass any props:
+
+```reason
+let component = ReasonReact.statelessComponent("MyComponent");
+
+let make = _children => {
+  ...component,
+  render: _self => <ActivityIndicator />,
+};
+```
+
+### size
+
+In order to change the size of the indicator pass one of the [polymorphic variants](http://2ality.com/2018/01/polymorphic-variants-reasonml.html):
+
+- ```reason
+  `large
+  ```
+
+- ```reason
+  `small
+  ```
+
+- passing an integer to the size prop is only supported on Android:
+  ```reason
+  `exact(SOME_INTEGER)
+  ```
+
+#### large size example
+
+```reason
+let component = ReasonReact.statelessComponent("MyComponent");
+
+let make = _children => {
+  ...component,
+  render: _self => <ActivityIndicator size=`large />,
+};
+```
+
+#### small size example
+
+```reason
+let component = ReasonReact.statelessComponent("MyComponent");
+
+let make = _children => {
+  ...component,
+  render: _self => <ActivityIndicator size=`small />,
+};
+```
+
+#### any size example [(Android only)](https://facebook.github.io/react-native/docs/activityindicator.html#size)
+
+```reason
+let component = ReasonReact.statelessComponent("MyComponent");
+
+let make = _children => {
+  ...component,
+  render: _self => <ActivityIndicator size=(`exact(32)) />,
+};
+```
+
+### color
+
+#### named colors
+
+```reason
+let component = ReasonReact.statelessComponent("MyComponent");
+
+let make = _children => {
+  ...component,
+  render: _self => <ActivityIndicator color="tomato" />,
+};
+```
+
+#### hex colors
+
+```reason
+let component = ReasonReact.statelessComponent("MyComponent");
+
+let make = _children => {
+  ...component,
+  render: _self => <ActivityIndicator color="#ff00ff" />,
+};
+```
+
+#### rgb colors
+
+```reason
+let component = ReasonReact.statelessComponent("MyComponent");
+
+let make = _children => {
+  ...component,
+  render: _self => <ActivityIndicator color="rgb(255, 34, 11)" />,
+};
+```
+
+## Props
+
+### animating
 
 ```reason
 animating: bool=?
 ```
 
-## color
+### color
 
 ```reason
 color: string=?
 ```
 
-## size
+### size
 
 ```reason
 size: [
@@ -28,25 +128,25 @@ size: [
 ]=?
 ```
 
-## hidesWhenStopped
+### hidesWhenStopped
 
 ```reason
 hidesWhenStopped: bool=?
 ```
 
-## accessibilityLabel
+### accessibilityLabel
 
 ```reason
 accessibilityLabel: ReasonReact.reactElement=?
 ```
 
-## accessible
+### accessible
 
 ```reason
 accessible: bool=?
 ```
 
-## hitSlop
+### hitSlop
 
 ```reason
 hitSlop: Types.insets=?
@@ -66,25 +166,25 @@ type insets = {
 };
 ```
 
-## onAccessibilityTap
+### onAccessibilityTap
 
 ```reason
 onAccessibilityTap: unit => unit=?
 ```
 
-## onLayout
+### onLayout
 
 ```reason
 onLayout: RNEvent.NativeLayoutEvent.t => unit=?
 ```
 
-## onMagicTap
+### onMagicTap
 
 ```reason
 onMagicTap: unit => unit=?
 ```
 
-## responderHandlers
+### responderHandlers
 
 ```reason
 responderHandlers: Types.touchResponderHandlers=?
@@ -127,7 +227,7 @@ module NativeEvent: {
 };
 ```
 
-## pointerEvents
+### pointerEvents
 
 ```reason
 pointerEvents: [
@@ -138,25 +238,25 @@ pointerEvents: [
 ]=?
 ```
 
-## removeClippedSubviews
+### removeClippedSubviews
 
 ```reason
 removeClippedSubviews: bool=?
 ```
 
-## style
+### style
 
 ```reason
 style: Style.t=?
 ```
 
-## testID
+### testID
 
 ```reason
 testID: string=?
 ```
 
-## accessibilityComponentType
+### accessibilityComponentType
 
 ```reason
 accessibilityComponentType: [
@@ -167,7 +267,7 @@ accessibilityComponentType: [
 ]=?
 ```
 
-## accessibilityLiveRegion
+### accessibilityLiveRegion
 
 ```reason
 accessibilityLiveRegion: [
@@ -177,13 +277,13 @@ accessibilityLiveRegion: [
 ]=?
 ```
 
-## collapsable
+### collapsable
 
 ```reason
 collapsable: bool=?
 ```
 
-## importantForAccessibility
+### importantForAccessibility
 
 ```reason
 importantForAccessibility: [
@@ -194,19 +294,19 @@ importantForAccessibility: [
 ]=?
 ```
 
-## needsOffscreenAlphaCompositing
+### needsOffscreenAlphaCompositing
 
 ```reason
 needsOffscreenAlphaCompositing: bool=?
 ```
 
-## renderToHardwareTextureAndroid
+### renderToHardwareTextureAndroid
 
 ```reason
 renderToHardwareTextureAndroid: bool=?
 ```
 
-## accessibilityTraits
+### accessibilityTraits
 
 ```reason
 accessibilityTraits:
@@ -233,13 +333,13 @@ accessibilityTraits:
   )=?
 ```
 
-## accessibilityViewIsModal
+### accessibilityViewIsModal
 
 ```reason
 accessibilityViewIsModal: bool=?
 ```
 
-## shouldRasterizeIOS
+### shouldRasterizeIOS
 
 ```reason
 shouldRasterizeIOS: bool=?
