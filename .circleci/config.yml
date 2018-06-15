@@ -20,4 +20,4 @@ jobs:
             - ./node_modules
       - run:
           name: build
-          command: cd RNTester && npm install && npm run clean-build
+          command: cd RNTester && npm install && npm run clean
