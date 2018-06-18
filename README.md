@@ -6,7 +6,7 @@ _First of all we would like to thank ReasonML Community for starting the [`bs-re
 
 ## Getting started
 
-Please see the documentation on the [website](https://rebolt.netlify.com).
+Please see the documentation on the [website](https://rebolt.callstack.com).
 
 ## Why forking?
 

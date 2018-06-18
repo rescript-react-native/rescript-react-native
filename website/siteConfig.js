@@ -21,36 +21,36 @@ const users = [
 ];
 
 const siteConfig = {
-  title: 'Rebolt' /* title for your website */,
-  tagline: 'BuckleScript bindings for React Native',
-  url: 'https://rebolt.netlify.com' /* your website url */,
-  baseUrl: '/' /* base url for your project */,
+  title: "Rebolt" /* title for your website */,
+  tagline: "BuckleScript bindings for React Native",
+  url: "https://rebolt.callstack.com" /* your website url */,
+  baseUrl: "/" /* base url for your project */,
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
 
   // Used for publishing and more
-  projectName: 'rebolt',
-  organizationName: 'callstack',
+  projectName: "rebolt",
+  organizationName: "callstack",
   // For top-level user or org sites, the organization is still the same.
   // e.g., for the https://JoelMarcey.github.io site, it would be set like...
   //   organizationName: 'JoelMarcey'
 
   // For no header links in the top nav bar -> headerLinks: [],
-  headerLinks: [{ doc: 'intro', label: 'Docs' }],
+  headerLinks: [{ doc: "intro", label: "Docs" }],
 
   // If you have users set above, you add it here:
   // users,
 
   /* path to images for header/footer */
-  headerIcon: '',
-  footerIcon: '',
-  favicon: '',
+  headerIcon: "",
+  footerIcon: "",
+  favicon: "",
 
   /* colors for website */
   colors: {
-    primaryColor: '#f94544',
-    secondaryColor: '#ff5155'
+    primaryColor: "#f94544",
+    secondaryColor: "#ff5155"
   },
 
   /* custom fonts for website */
@@ -66,21 +66,21 @@ const siteConfig = {
   },*/
 
   // This copyright info is used in /core/Footer.js and blog rss/atom feeds.
-  copyright: 'Copyright © ' + new Date().getFullYear() + ' Callstack',
-  usePrism: ['jsx', 'reason'],
+  copyright: "Copyright © " + new Date().getFullYear() + " Callstack",
+  usePrism: ["jsx", "reason"],
   highlight: {
-    theme: 'atom-one-light'
+    theme: "atom-one-light"
   },
 
   // Add custom scripts here that would be placed in <script> tags
-  scripts: ['https://buttons.github.io/buttons.js'],
+  scripts: ["https://buttons.github.io/buttons.js"],
 
   /* On page navigation for the current documentation page */
-  onPageNav: 'separate',
+  onPageNav: "separate",
 
   /* Open Graph and Twitter card images */
-  ogImage: 'img/docusaurus.png',
-  twitterImage: 'img/docusaurus.png'
+  ogImage: "img/docusaurus.png",
+  twitterImage: "img/docusaurus.png"
 
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
