@@ -85,7 +85,7 @@ let app = () =>
 **index.js**
 
 ```js
-import { app } from './lib/js/src/app.js';
+import { app } from './lib/js/src/App.js';
 import React from 'react';
 import { AppRegistry } from 'react-native';
 
@@ -112,7 +112,7 @@ and then you can reference the files in the shorter way:
 **index.js**
 
 ```js
-import { app } from './src/app.js';
+import { app } from './src/App.js';
 import React from 'react';
 import { AppRegistry } from 'react-native';
 
