@@ -1,4 +1,4 @@
-open BsReactNative;
+open Rebolt;
 
 let styles =
   StyleSheet.create(

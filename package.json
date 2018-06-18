@@ -8,7 +8,13 @@
     "test": "exit 0"
   },
   "license": "MIT",
-  "keywords": ["reason", "reasonml", "bucklescript", "react-native"],
+  "keywords": [
+    "reason",
+    "reasonml",
+    "bucklescript",
+    "react-native",
+    "rebolt"
+  ],
   "author": "",
   "repository": {
     "type": "git",
