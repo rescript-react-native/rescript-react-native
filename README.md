@@ -1,6 +1,6 @@
 # Rebolt - BuckleScript bindings for React Native (for now™)
 
-[![CircleCI](https://circleci.com/gh/callstack/rebolt.svg?style=svg)](https://circleci.com/gh/callstack/rebolt)
+[![CircleCI](https://circleci.com/gh/callstackincubator/rebolt.svg?style=svg)](https://circleci.com/gh/callstackincubator/rebolt)
 
 _First of all we would like to thank ReasonML Community for starting the [`bs-react-native`](https://github.com/reasonml-community/bs-react-native) project, and thanks to its MIT license we can continue exploring our ideas starting on the solid foundation!_
 
