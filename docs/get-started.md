@@ -72,7 +72,7 @@ A bit of explanation to what both of the scripts do:
 **App.re**
 
 ```reason
-open BsReactNative;
+open Rebolt;
 
 let app = () =>
   <View>
@@ -81,6 +81,8 @@ let app = () =>
 ```
 
 6.  We are going to use `App.re` as the entry point in the `index.js` file from the root of the project:
+
+**index.js**
 
 ```js
 import { app } from './lib/js/src/app.js';
@@ -96,6 +98,8 @@ There is an option in the BuckleScript's config file (`bsconfig.json`) to compil
 
 When you add this to your `bsconfig.json`, you will get in source compilation that we just spoke about:
 
+**bsconfig.json**
+
 ```json
 "package-specs": {
   "module": "commonjs",
@@ -105,6 +109,8 @@ When you add this to your `bsconfig.json`, you will get in source compilation th
 
 and then you can reference the files in the shorter way:
 
+**index.js**
+
 ```js
 import { app } from './src/app.js';
 import React from 'react';
@@ -112,3 +118,9 @@ import { AppRegistry } from 'react-native';
 
 AppRegistry.registerComponent('MyReasonReactNativeApp', () => app);
 ```
+
+7. You can run your app now:
+
+Run in one tab of your terminal `yarn run watch` to compile the ReasonML code,
+and in the other start the React Native app in the simulator `react-native run-ios`
+
