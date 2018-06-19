@@ -6,7 +6,19 @@ sidebar_label: Quick Start
 
 _Note: If you are currently using [`bs-react-native`](https://github.com/reasonml-community/bs-react-native), these docs might also be useful for you; but Rebolt might have slight differences, so please be aware of that._
 
-## Adding ReasonML to your new React Native project
+## Starting a fresh React Native project
+
+You can create a new React Native project by running the following:
+
+```sh
+react-native init MyApp --template rebolt
+```
+
+This will create a fresh React Native project using `rebolt` template, giving you the already preconfigured Reason environment out of the box.
+
+To better understand the integration between Reason and React Native, please see the following section that explains the manual integration step by step.
+
+## Adding ReasonML to your existing React Native project
 
 1.  Let's add the dependencies first:
 
@@ -89,7 +101,7 @@ import { app } from './lib/js/src/App.js';
 import React from 'react';
 import { AppRegistry } from 'react-native';
 
-AppRegistry.registerComponent('MyReasonReactNativeApp', () => app);
+AppRegistry.registerComponent("MyReasonReactNativeApp", () => app);
 ```
 
 In the first line we are referencing `app`, but it is not the one from `src/App.re`, this is because we are in the JavaScript world now, and we need to use compiled version of what we've written in Reason.
@@ -116,7 +128,7 @@ import { app } from './src/App.js';
 import React from 'react';
 import { AppRegistry } from 'react-native';
 
-AppRegistry.registerComponent('MyReasonReactNativeApp', () => app);
+AppRegistry.registerComponent("MyReasonReactNativeApp", () => app);
 ```
 
 7. You can run your app now:
