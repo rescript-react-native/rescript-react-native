@@ -1,0 +1,237 @@
+
+    
+<!doctype html>
+<meta charset=utf8>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel=stylesheet href='../styles.css'>
+<script defer src='../script.js'></script>
+<title>AsyncStorage</title>
+<body>
+<script>window.relativeToRoot=".."</script>
+<script defer src="../block-script.js"></script>
+<div id='error-message'>
+  ⚠️ Oops! This page doesn't appear to define a <span>type</span> called <code>_</code>.
+</div>
+
+    <script>window.shouldCheckHashes=true</script>
+    <div class='container'>
+    
+    <div class='sidebar-wrapper'>
+    <div class='sidebar-expander'>Show navigation</div>
+    <div class='sidebar'>
+      <a href="../search.html" style="display: block; padding: 0 8px;">Search</a>
+      
+      <div class='docs-listing'><a href="../index.html">Home</a></div>
+      <div class='toc-header'>Page Contents</div>
+      <div class='table-of-contents'>
+      <a href="#AsyncStorage" class='level-1 header'>AsyncStorage</a>
+<a href="#type-error" class='level-2 type'>error</a>
+<a href="#value-getItem" class='level-2 value'>getItem</a>
+<a href="#value-setItem" class='level-2 value'>setItem</a>
+<a href="#value-removeItem" class='level-2 value'>removeItem</a>
+<a href="#value-mergeItem" class='level-2 value'>mergeItem</a>
+<a href="#value-clear" class='level-2 value'>clear</a>
+<a href="#value-getAllKeys" class='level-2 value'>getAllKeys</a>
+<a href="#value-flushGetRequests" class='level-2 value'>flushGetRequests</a>
+<a href="#value-multiGet" class='level-2 value'>multiGet</a>
+<a href="#value-multiSet" class='level-2 value'>multiSet</a>
+<a href="#value-multiRemove" class='level-2 value'>multiRemove</a>
+<a href="#value-multiMerge" class='level-2 value'>multiMerge</a>
+      </div>
+      <div class='project-title'>Package modules</div><div class='project-listing'><a href="RNEvent.html">RNEvent</a>
+<a href="ActionSheetIOS.html">ActionSheetIOS</a>
+<a href="Alert.html">Alert</a>
+<a href="AlertIOS.html">AlertIOS</a>
+<a href="Animated.html">Animated</a>
+<a href="AnimatedRe.html">AnimatedRe</a>
+<a href="AppRegistry.html">AppRegistry</a>
+<a href="AppState.html">AppState</a>
+<a href="AsyncStorage.html">AsyncStorage</a>
+<a href="BackHandler.html">BackHandler</a>
+<a href="CameraRoll.html">CameraRoll</a>
+<a href="Clipboard.html">Clipboard</a>
+<a href="ActivityIndicator.html">ActivityIndicator</a>
+<a href="AnimatedComponents.html">AnimatedComponents</a>
+<a href="Button.html">Button</a>
+<a href="DatePickerIOS.html">DatePickerIOS</a>
+<a href="FlatList.html">FlatList</a>
+<a href="Image.html">Image</a>
+<a href="ImageBackground.html">ImageBackground</a>
+<a href="KeyboardAvoidingView.html">KeyboardAvoidingView</a>
+<a href="Modal.html">Modal</a>
+<a href="Picker.html">Picker</a>
+<a href="RefreshControl.html">RefreshControl</a>
+<a href="SafeAreaView.html">SafeAreaView</a>
+<a href="ScrollView.html">ScrollView</a>
+<a href="SectionList.html">SectionList</a>
+<a href="SegmentedControllOS.html">SegmentedControllOS</a>
+<a href="Slider.html">Slider</a>
+<a href="StatusBar.html">StatusBar</a>
+<a href="Switch.html">Switch</a>
+<a href="TabBarIOS.html">TabBarIOS</a>
+<a href="Text.html">Text</a>
+<a href="TextInput.html">TextInput</a>
+<a href="TouchableHighlight.html">TouchableHighlight</a>
+<a href="TouchableOpacity.html">TouchableOpacity</a>
+<a href="TouchableWithoutFeedback.html">TouchableWithoutFeedback</a>
+<a href="View.html">View</a>
+<a href="WebView.html">WebView</a>
+<a href="DatePickerAndroid.html">DatePickerAndroid</a>
+<a href="Dimensions.html">Dimensions</a>
+<a href="Geolocation.html">Geolocation</a>
+<a href="Keyboard.html">Keyboard</a>
+<a href="Linking.html">Linking</a>
+<a href="NativeEventEmitter.html">NativeEventEmitter</a>
+<a href="NativeModules.html">NativeModules</a>
+<a href="NetInfo.html">NetInfo</a>
+<a href="Packager.html">Packager</a>
+<a href="PanResponder.html">PanResponder</a>
+<a href="PixelRatio.html">PixelRatio</a>
+<a href="Platform.html">Platform</a>
+<a href="Encode.html">Encode</a>
+<a href="Props.html">Props</a>
+<a href="ResponderUtils.html">ResponderUtils</a>
+<a href="UtilsRN.html">UtilsRN</a>
+<a href="Style.html">Style</a>
+<a href="StyleSheet.html">StyleSheet</a>
+<a href="Types.html">Types</a>
+<a href="Vibration.html">Vibration</a>
+<a href="ActivityIndicator.html">ActivityIndicator</a>
+<a href="AnimatedComponents.html">AnimatedComponents</a>
+<a href="Button.html">Button</a>
+<a href="DatePickerIOS.html">DatePickerIOS</a>
+<a href="FlatList.html">FlatList</a>
+<a href="Image.html">Image</a>
+<a href="ImageBackground.html">ImageBackground</a>
+<a href="KeyboardAvoidingView.html">KeyboardAvoidingView</a>
+<a href="Modal.html">Modal</a>
+<a href="Picker.html">Picker</a>
+<a href="RefreshControl.html">RefreshControl</a>
+<a href="SafeAreaView.html">SafeAreaView</a>
+<a href="ScrollView.html">ScrollView</a>
+<a href="SectionList.html">SectionList</a>
+<a href="SegmentedControllOS.html">SegmentedControllOS</a>
+<a href="Slider.html">Slider</a>
+<a href="StatusBar.html">StatusBar</a>
+<a href="Switch.html">Switch</a>
+<a href="TabBarIOS.html">TabBarIOS</a>
+<a href="Text.html">Text</a>
+<a href="TextInput.html">TextInput</a>
+<a href="TouchableHighlight.html">TouchableHighlight</a>
+<a href="TouchableOpacity.html">TouchableOpacity</a>
+<a href="TouchableWithoutFeedback.html">TouchableWithoutFeedback</a>
+<a href="View.html">View</a>
+<a href="WebView.html">WebView</a>
+<a href="Encode.html">Encode</a>
+<a href="Props.html">Props</a>
+<a href="ResponderUtils.html">ResponderUtils</a>
+<a href="UtilsRN.html">UtilsRN</a></div>
+    </div>
+    </div>
+  
+    <div class='main'>
+    
+    <a href="#AsyncStorage" id="AsyncStorage"><h1>AsyncStorage</h1></a>
+
+<p><span class='missing'>This module does not have a toplevel documentation block.</span></p>
+<div class='doc-item'><h4 class='item'>type <a href="#type-error" id="type-error">error</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-getItem" id="value-getItem">getItem</a>: (
+  string,
+  ~?callback: option(
+    (option(<a href="#type-error">error</a>), option(string)) => unit
+  ),
+  unit
+) => Js.Promise.t(option(string))</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-setItem" id="value-setItem">setItem</a>: (
+  string,
+  string,
+  ~?callback: option(option(<a href="#type-error">error</a>) => unit),
+  unit
+) => Js.Promise.t(unit)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-removeItem" id="value-removeItem">removeItem</a>: (
+  string,
+  ~?callback: option(option(<a href="#type-error">error</a>) => unit),
+  unit
+) => Js.Promise.t(unit)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-mergeItem" id="value-mergeItem">mergeItem</a>: (
+  string,
+  string,
+  ~?callback: option(option(<a href="#type-error">error</a>) => unit),
+  unit
+) => Js.Promise.t(unit)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-clear" id="value-clear">clear</a>: (
+  ~?callback: option(option(<a href="#type-error">error</a>) => unit),
+  unit
+) => Js.Promise.t(unit)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-getAllKeys" id="value-getAllKeys">getAllKeys</a>: (
+  ~?callback: option(
+    (option(<a href="#type-error">error</a>), option(array(string))) => unit
+  ),
+  unit
+) => Js.Promise.t(option(array(string)))</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-flushGetRequests" id="value-flushGetRequests">flushGetRequests</a>: unit => unit</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-multiGet" id="value-multiGet">multiGet</a>: (
+  array(string),
+  ~?callback: option(
+    (
+      option(array(<a href="#type-error">error</a>)),
+      option(array(array(string)))
+    ) => unit
+  ),
+  unit
+) => Js.Promise.t(option(array(array(string))))</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-multiSet" id="value-multiSet">multiSet</a>: (
+  array((string, string)),
+  ~?callback: option(option(array(<a href="#type-error">error</a>)) => unit),
+  unit
+) => Js.Promise.t(unit)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-multiRemove" id="value-multiRemove">multiRemove</a>: (
+  array(string),
+  ~?callback: option(option(array(<a href="#type-error">error</a>)) => unit),
+  unit
+) => Js.Promise.t(unit)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-multiMerge" id="value-multiMerge">multiMerge</a>: (
+  array((string, string)),
+  ~?callback: option(option(array(<a href="#type-error">error</a>)) => unit),
+  unit
+) => Js.Promise.t(unit)</h4>
+
+<div class='body body-empty'></div></div>
+
+    </div>
+    <div class='right-blank'></div>
+    </div>
+  

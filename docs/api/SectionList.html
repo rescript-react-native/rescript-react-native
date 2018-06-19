@@ -1,0 +1,289 @@
+
+    
+<!doctype html>
+<meta charset=utf8>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel=stylesheet href='../styles.css'>
+<script defer src='../script.js'></script>
+<title>SectionList</title>
+<body>
+<script>window.relativeToRoot=".."</script>
+<script defer src="../block-script.js"></script>
+<div id='error-message'>
+  ⚠️ Oops! This page doesn't appear to define a <span>type</span> called <code>_</code>.
+</div>
+
+    <script>window.shouldCheckHashes=true</script>
+    <div class='container'>
+    
+    <div class='sidebar-wrapper'>
+    <div class='sidebar-expander'>Show navigation</div>
+    <div class='sidebar'>
+      <a href="../search.html" style="display: block; padding: 0 8px;">Search</a>
+      
+      <div class='docs-listing'><a href="../index.html">Home</a></div>
+      <div class='toc-header'>Page Contents</div>
+      <div class='table-of-contents'>
+      <a href="#SectionList" class='level-1 header'>SectionList</a>
+<a href="#type-renderBag" class='level-2 type'>renderBag</a>
+<a href="#type-section" class='level-2 type'>section</a>
+<a href="#value-section" class='level-2 value'>section</a>
+<a href="#type-separatorProps" class='level-2 type'>separatorProps</a>
+<a href="#type-sections" class='level-2 type'>sections</a>
+<a href="#value-sections" class='level-2 value'>sections</a>
+<a href="#type-renderItem" class='level-2 type'>renderItem</a>
+<a href="#value-renderItem" class='level-2 value'>renderItem</a>
+<a href="#type-separatorComponent" class='level-2 type'>separatorComponent</a>
+<a href="#value-separatorComponent" class='level-2 value'>separatorComponent</a>
+<a href="#type-renderAccessory" class='level-2 type'>renderAccessory</a>
+<a href="#type-renderAccessoryView" class='level-2 type'>renderAccessoryView</a>
+<a href="#value-renderAccessoryView" class='level-2 value'>renderAccessoryView</a>
+<a href="#type-viewToken" class='level-2 type'>viewToken</a>
+<a href="#value-make" class='level-2 value'>make</a>
+      </div>
+      <div class='project-title'>Package modules</div><div class='project-listing'><a href="RNEvent.html">RNEvent</a>
+<a href="ActionSheetIOS.html">ActionSheetIOS</a>
+<a href="Alert.html">Alert</a>
+<a href="AlertIOS.html">AlertIOS</a>
+<a href="Animated.html">Animated</a>
+<a href="AnimatedRe.html">AnimatedRe</a>
+<a href="AppRegistry.html">AppRegistry</a>
+<a href="AppState.html">AppState</a>
+<a href="AsyncStorage.html">AsyncStorage</a>
+<a href="BackHandler.html">BackHandler</a>
+<a href="CameraRoll.html">CameraRoll</a>
+<a href="Clipboard.html">Clipboard</a>
+<a href="ActivityIndicator.html">ActivityIndicator</a>
+<a href="AnimatedComponents.html">AnimatedComponents</a>
+<a href="Button.html">Button</a>
+<a href="DatePickerIOS.html">DatePickerIOS</a>
+<a href="FlatList.html">FlatList</a>
+<a href="Image.html">Image</a>
+<a href="ImageBackground.html">ImageBackground</a>
+<a href="KeyboardAvoidingView.html">KeyboardAvoidingView</a>
+<a href="Modal.html">Modal</a>
+<a href="Picker.html">Picker</a>
+<a href="RefreshControl.html">RefreshControl</a>
+<a href="SafeAreaView.html">SafeAreaView</a>
+<a href="ScrollView.html">ScrollView</a>
+<a href="SectionList.html">SectionList</a>
+<a href="SegmentedControllOS.html">SegmentedControllOS</a>
+<a href="Slider.html">Slider</a>
+<a href="StatusBar.html">StatusBar</a>
+<a href="Switch.html">Switch</a>
+<a href="TabBarIOS.html">TabBarIOS</a>
+<a href="Text.html">Text</a>
+<a href="TextInput.html">TextInput</a>
+<a href="TouchableHighlight.html">TouchableHighlight</a>
+<a href="TouchableOpacity.html">TouchableOpacity</a>
+<a href="TouchableWithoutFeedback.html">TouchableWithoutFeedback</a>
+<a href="View.html">View</a>
+<a href="WebView.html">WebView</a>
+<a href="DatePickerAndroid.html">DatePickerAndroid</a>
+<a href="Dimensions.html">Dimensions</a>
+<a href="Geolocation.html">Geolocation</a>
+<a href="Keyboard.html">Keyboard</a>
+<a href="Linking.html">Linking</a>
+<a href="NativeEventEmitter.html">NativeEventEmitter</a>
+<a href="NativeModules.html">NativeModules</a>
+<a href="NetInfo.html">NetInfo</a>
+<a href="Packager.html">Packager</a>
+<a href="PanResponder.html">PanResponder</a>
+<a href="PixelRatio.html">PixelRatio</a>
+<a href="Platform.html">Platform</a>
+<a href="Encode.html">Encode</a>
+<a href="Props.html">Props</a>
+<a href="ResponderUtils.html">ResponderUtils</a>
+<a href="UtilsRN.html">UtilsRN</a>
+<a href="Style.html">Style</a>
+<a href="StyleSheet.html">StyleSheet</a>
+<a href="Types.html">Types</a>
+<a href="Vibration.html">Vibration</a>
+<a href="ActivityIndicator.html">ActivityIndicator</a>
+<a href="AnimatedComponents.html">AnimatedComponents</a>
+<a href="Button.html">Button</a>
+<a href="DatePickerIOS.html">DatePickerIOS</a>
+<a href="FlatList.html">FlatList</a>
+<a href="Image.html">Image</a>
+<a href="ImageBackground.html">ImageBackground</a>
+<a href="KeyboardAvoidingView.html">KeyboardAvoidingView</a>
+<a href="Modal.html">Modal</a>
+<a href="Picker.html">Picker</a>
+<a href="RefreshControl.html">RefreshControl</a>
+<a href="SafeAreaView.html">SafeAreaView</a>
+<a href="ScrollView.html">ScrollView</a>
+<a href="SectionList.html">SectionList</a>
+<a href="SegmentedControllOS.html">SegmentedControllOS</a>
+<a href="Slider.html">Slider</a>
+<a href="StatusBar.html">StatusBar</a>
+<a href="Switch.html">Switch</a>
+<a href="TabBarIOS.html">TabBarIOS</a>
+<a href="Text.html">Text</a>
+<a href="TextInput.html">TextInput</a>
+<a href="TouchableHighlight.html">TouchableHighlight</a>
+<a href="TouchableOpacity.html">TouchableOpacity</a>
+<a href="TouchableWithoutFeedback.html">TouchableWithoutFeedback</a>
+<a href="View.html">View</a>
+<a href="WebView.html">WebView</a>
+<a href="Encode.html">Encode</a>
+<a href="Props.html">Props</a>
+<a href="ResponderUtils.html">ResponderUtils</a>
+<a href="UtilsRN.html">UtilsRN</a></div>
+    </div>
+    </div>
+  
+    <div class='main'>
+    
+    <a href="#SectionList" id="SectionList"><h1>SectionList</h1></a>
+
+<p><span class='missing'>This module does not have a toplevel documentation block.</span></p>
+<div class='doc-item'><h4 class='item'>type <a href="#type-renderBag" id="type-renderBag">renderBag</a>('item) = {
+  item: 'item,
+  index: int,
+  section: <a href="#type-section">section</a>('item),
+  separators: Js.t(
+    &lt; highlight : unit -&gt; unit; unhighlight : unit -&gt; unit &gt;
+  )
+}</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-section" id="type-section">section</a>('item) = {
+  data: array('item),
+  key: option(string),
+  renderItem: option(
+    <a href="#type-renderBag">renderBag</a>('item) => ReasonReact.reactElement
+  )
+}</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-section" id="value-section">section</a>: (
+  ~data: array('item),
+  ~?key: option(string),
+  ~?renderItem: option(
+    <a href="#type-renderBag">renderBag</a>('item) => ReasonReact.reactElement
+  ),
+  unit
+) => <a href="#type-section">section</a>('item)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-separatorProps" id="type-separatorProps">separatorProps</a>('item) = {
+  highlighted: bool,
+  leadingItem: option('item),
+  leadingSection: option(<a href="#type-section">section</a>('item)),
+  section: <a href="#type-section">section</a>('item),
+  trailingItem: option('item),
+  trailingSection: option(<a href="#type-section">section</a>('item))
+}</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-sections" id="type-sections">sections</a>('item)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-sections" id="value-sections">sections</a>: array(<a href="#type-section">section</a>('item)) => <a href="#type-sections">sections</a>('item)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-renderItem" id="type-renderItem">renderItem</a>('item)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-renderItem" id="value-renderItem">renderItem</a>: <a href="#type-renderBag">renderBag</a>(
+  'item
+) => ReasonReact.reactElement => <a href="#type-renderItem">renderItem</a>('item)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-separatorComponent" id="type-separatorComponent">separatorComponent</a>('item)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-separatorComponent" id="value-separatorComponent">separatorComponent</a>: <a href="#type-separatorProps">separatorProps</a>(
+  'item
+) => ReasonReact.reactElement => <a href="#type-separatorComponent">separatorComponent</a>('item)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-renderAccessory" id="type-renderAccessory">renderAccessory</a>('item) = {section: <a href="#type-section">section</a>('item)}</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-renderAccessoryView" id="type-renderAccessoryView">renderAccessoryView</a>('item)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-renderAccessoryView" id="value-renderAccessoryView">renderAccessoryView</a>: <a href="#type-renderAccessory">renderAccessory</a>(
+  'item
+) => ReasonReact.reactElement => <a href="#type-renderAccessoryView">renderAccessoryView</a>('item)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-viewToken" id="type-viewToken">viewToken</a>('item) = Js.t(
+  &lt; index : int Js.undefined; isViewable : bool; item : 'item3; key : string;
+  section : 'item3 section &gt;
+)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-make" id="value-make">make</a>: (
+  ~sections: <a href="#type-sections">sections</a>('item),
+  ~renderItem: <a href="#type-renderItem">renderItem</a>('item),
+  ~keyExtractor: ('item, int) => string,
+  ~?itemSeparatorComponent: option(
+    <a href="#type-separatorComponent">separatorComponent</a>('item)
+  ),
+  ~?listEmptyComponent: option(
+    unit => ReasonReact.reactElement
+  ),
+  ~?listFooterComponent: option(ReasonReact.reactElement),
+  ~?listHeaderComponent: option(ReasonReact.reactElement),
+  ~?sectionSeparatorComponent: option(
+    <a href="#type-separatorComponent">separatorComponent</a>('item)
+  ),
+  ~?inverted: option(bool),
+  ~?extraData: option('extraData),
+  ~?initialNumToRender: option(int),
+  ~?onEndReached: option(
+    Js.t(&lt; distanceFromEnd : float &gt;) => unit
+  ),
+  ~?onEndReachedThreshold: option(float),
+  ~?onViewableItemsChanged: option(
+    Js.t(
+      &lt; changed : 'item4 viewToken array; viewableItems : 'item4 viewToken array &gt;
+    )
+  ),
+  ~?onRefresh: option(unit => unit),
+  ~?refreshing: option(bool),
+  ~?renderSectionHeader: option(<a href="#type-renderAccessoryView">renderAccessoryView</a>('item)),
+  ~?renderSectionFooter: option(<a href="#type-renderAccessoryView">renderAccessoryView</a>('item)),
+  ~?stickySectionHeadersEnabled: option(bool),
+  ~?keyboardDismissMode: option(
+    [ `interactive | `none | `onDrag ]
+  ),
+  ~?keyboardShouldPersistTaps: option(
+    [ `never | `handled | `always ]
+  ),
+  ~?showsHorizontalScrollIndicator: option(bool),
+  ~?showsVerticalScrollIndicator: option(bool),
+  ~?getItemLayout: option(
+    (option(array('item)), int) => Js.t(
+      &lt; index : int; length : int; offset : int &gt;
+    )
+  ),
+  array(ReasonReact.reactElement)
+) => ReasonReact.component(
+  ReasonReact.stateless,
+  ReasonReact.noRetainedProps,
+  unit
+)</h4>
+
+<div class='body body-empty'></div></div>
+
+    </div>
+    <div class='right-blank'></div>
+    </div>
+  
