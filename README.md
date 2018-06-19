@@ -42,17 +42,19 @@ yarn add bs-platform reason-react bs-react-native
   - `yarn build` performs a single build
   - `yarn watch` enters the watch mode
 6. Now we come to the fun stuff! Create a new file `re/app.re` and make it look like this:
+
 ```reason
 open BsReactNative;
 
 let app = () =>
   <View style=Style.(style([flex(1.), justifyContent(Center), alignItems(Center)]))>
-    <Text value="Reason is awesome!" />
+    <BsReactNative.Text value="Reason is awesome!" />
   </View>;
 ```
 and start the watcher with `yarn run watch` if you haven't done it yet.
 
 7. We are nearly done! We now have to adopt the `index.ios.js` / `index.android.js` to look like this
+
 ```js
 import { app } from "./lib/js/re/app.js";
 import React from "react";
@@ -62,9 +64,11 @@ import {
 
 AppRegistry.registerComponent('MyAwesomeProject', () => app);
 ```
+
 **Note:** Make sure that the first argument to `AppRegistry.registerComponent` is **your** correct project name.
 
 If you are using `react-native-scripts`, then you will need to modify `App.js` to be like this
+
 ```js
 import { app } from "./lib/js/re/app.js";
 
@@ -89,30 +93,34 @@ There are some components and APIs missing. You can find an overview of the impl
 
 ## Style
 Since we have a proper type system we can make styles **typesafe**! Therefore styles are a little bit different declared than in JavaScript:
+
+### Inline styles
+
 ```reason
 open BsReactNative;
+open Style;
 
-/* inline styles */
-<View
-  style=(
-    Style.style([
-      Style.flexDirection(Column),
-      Style.backgroundColor(String("#6698FF")),
-      Style.marginTop(Pt(5.))
-    ])
-  )
-/>;
+let render = () => 
+  <View style=(
+      style([
+        flexDirection(Column),
+        backgroundColor(String("#6698FF")),
+        marginTop(Pt(5.))
+      ])
+    )
+  />;
+```
 
-/* inline styles with a local open */
-<View style=Style.(style([flexDirection(Column), backgroundColor(String("#6698FF")), marginTop(Pt(5.))])) />;
+### StyleSheet
 
-/* StyleSheets with a local open */
+```reason
+open BsReactNative;
+open Style;
+
 let styles =
   StyleSheet.create(
-    Style.({"wrapper": style([flexDirection(Column), backgroundColor(String("#6698FF")), marginTop(Pt(5.))])})
+    ({"wrapper": style([flexDirection(Column), backgroundColor(String("#6698FF")), marginTop(Pt(5.))])})
   );
-
-<View style=styles##wrapper />;
 ```
 
 ### Animations
@@ -120,30 +128,29 @@ let styles =
 ```reason
 open BsReactNative;
 
-[...]
 type state = {animatedValue: Animated.Value.t};
 let component = ReasonReact.reducerComponent("Example");
 
-initialState: () => {animatedValue: Animated.Value.create((-100.))},
-
-/* Start animation in method */
-Animated.CompositeAnimation.start(
-  Animated.Timing.animate(
-    ~value=state.animatedValue,
-    ~toValue=`raw(0.),
-    ()
-  ),
-  ()
-);
-[...]
-
-/* Styles with an animated value */
-
-<Animated.View
-  style=Style.(style([flexDirection(Column), backgroundColor("#6698FF"), top(Animated(state.animatedValue))]))
-  )
-/>;
-
+let make = (_) => {
+  ...component,
+  initialState: () => {animatedValue: Animated.Value.create((-100.))},
+  reducer: (state, _) => {
+    /* Start animation in method */
+    UpdateWithSideEffects(state, (_) => Animated.CompositeAnimation.start(
+      Animated.Timing.animate(
+        ~value=state.animatedValue,
+        ~toValue=`raw(0.),
+        ()
+      ),
+      ()
+    ));
+  },
+  render: ({state}) =>
+    /* Styles with an animated value */
+    <Animated.View
+      style=Style.(style([flexDirection(Column), backgroundColor(String("#6698FF")), top(Animated(state.animatedValue))]))
+    />
+}
 ```
 
 

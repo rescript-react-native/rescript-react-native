@@ -1,0 +1,8 @@
+{
+  "name": "bsrn-redoc",
+  "version": "1.0.0",
+  "license": "MIT",
+  "devDependencies": {
+    "redoc": "jaredly/redoc#master"
+  }
+}
