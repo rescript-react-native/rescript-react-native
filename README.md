@@ -85,7 +85,7 @@ Yes! Check out the [Seattle JS Conf App](https://github.com/FormidableLabs/seatt
 
 ### Disclaimer
 
-There are some components and APIs missing. You can find an overview of the implemented components and APIs [here](STATUS.md). Contributions of Components and APIs are very welcome! The bindings are targeted to React Native **0.46+**.
+There are some components and APIs missing. But fear not; you still can use uncovered APIs through JS ffi. You can find an overview of the implemented components and APIs [here](STATUS.md). Contributions of Components and APIs are very welcome! The bindings are targeted to React Native **0.46+**.
 
 ## Style
 Since we have a proper type system we can make styles **typesafe**! Therefore styles are a little bit different declared than in JavaScript:
