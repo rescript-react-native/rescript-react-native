@@ -1,4 +1,17 @@
+
+/** # View
+ *
+ * React Native docs: [View](https://facebook.github.io/react-native/docs/view.html)
+ *
+ * @all
+ */; 
+
 module type ViewComponent = {
+  /**
+   * This is description
+   *
+   * @param accessibilityLabel: param description
+   */
   let make:
     (
       ~accessibilityLabel: string=?,
