@@ -324,7 +324,6 @@ module Value = {
     type t = node(value);
     type rawJsType = float;
   });
-  include ValueOperations;
   let interpolate = Interpolation.interpolate;
 };
 
@@ -372,7 +371,6 @@ module ValueXY = {
     type t = node(valueXY);
     type rawJsType = jsValue;
   });
-  include ValueOperations;
 };
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
@@ -421,3 +419,5 @@ module SpringXY = ValueXY.Spring;
 module Decay = Value.Decay;
 
 module DecayXY = ValueXY.Decay;
+
+include ValueOperations;

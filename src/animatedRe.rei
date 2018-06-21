@@ -86,11 +86,6 @@ module Value: {
   let animate: (t, Animation.t, Animation.endCallback) => unit;
   let stopTracking: t => unit;
   let track: t => unit;
-  let modulo: (node('a), float) => node(calculated);
-  let diffClamp:  (node('a), float, float) => node(calculated);
-  let add: (node('a), node('b)) => node(calculated);
-  let divide: (node('a), node('b)) => node(calculated);
-  let multiply: (node('a), node('b)) => node(calculated);
   module Timing: {
     type config;
     let animate:
@@ -168,11 +163,6 @@ module ValueXY: {
   let removeAllListeners: t => unit;
   let getLayout: t => layout;
 	let getTranslateTransform: t => translateTransform;
-	let modulo: (node('a), float) => node(calculated);
-  let diffClamp:  (node('a), float, float) => node(calculated);
-  let add: (node('a), node('b)) => node(calculated);
-  let divide: (node('a), node('b)) => node(calculated);
-  let multiply: (node('a), node('b)) => node(calculated);
   let getX: t => Value.t;
   let getY: t => Value.t;
   module Timing: {
@@ -233,6 +223,16 @@ module ValueXY: {
       CompositeAnimation.t;
   };
 };
+
+let modulo: (node('a), float) => node(calculated);
+
+let diffClamp:  (node('a), float, float) => node(calculated);
+
+let add: (node('a), node('b)) => node(calculated);
+
+let divide: (node('a), node('b)) => node(calculated);
+
+let multiply: (node('a), node('b)) => node(calculated);
 
 type animatedEvent;
 
