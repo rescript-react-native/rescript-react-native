@@ -226,8 +226,8 @@ module ValueOperations = {
   [@bs.module "react-native"] [@bs.scope "Animated"]
   external divide : (value('a), value('b)) => value(calculated) = "";
   [@bs.module "react-native"] [@bs.scope "Animated"]
-	external multiply : (value('a), value('b)) => value(calculated) = "";
-	[@bs.module "react-native"] [@bs.scope "Animated"]
+  external multiply : (value('a), value('b)) => value(calculated) = "";
+  [@bs.module "react-native"] [@bs.scope "Animated"]
   external modulo : (value('a), float) => value(calculated) = "";
   [@bs.module "react-native"] [@bs.scope "Animated"]
   external diffClamp : (value('a), float, float) => value(calculated) = "";
@@ -323,8 +323,8 @@ module Value = {
   include ValueAnimations({
     type t = value(regular);
     type rawJsType = float;
-	});
-	include ValueOperations;
+  });
+  include ValueOperations;
   let interpolate = Interpolation.interpolate;
 };
 

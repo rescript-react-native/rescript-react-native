@@ -162,7 +162,7 @@ module ValueXY: {
   let removeListener: (t, string) => unit;
   let removeAllListeners: t => unit;
   let getLayout: t => layout;
-	let getTranslateTransform: t => translateTransform;
+  let getTranslateTransform: t => translateTransform;
   let getX: t => Value.t;
   let getY: t => Value.t;
   module Timing: {
