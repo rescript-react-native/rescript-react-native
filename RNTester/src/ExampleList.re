@@ -1,5 +1,8 @@
+open Utils;
+
 type item = {
   key: string,
+  exampleType,
   displayName: string,
   title: string,
   description: string,
@@ -7,6 +10,7 @@ type item = {
 };
 
 module type ExampleT = {
+  let exampleType: exampleType;
   let displayName: string;
   let title: string;
   let description: string;
@@ -16,6 +20,7 @@ module type ExampleT = {
 module MakeExample = (Example: ExampleT) => {
   let item = key => {
     key,
+    exampleType: Example.exampleType,
     displayName: Example.displayName,
     title: Example.title,
     description: Example.description,
@@ -35,6 +40,8 @@ module NetInfo = MakeExample(NetInfoExample);
 
 module Geolocation = MakeExample(GeolocationExample);
 
+module DrawerLayoutAndroid = MakeExample(DrawerLayoutAndroid);
+
 let components: array(item) = [|
   Button.item("ButtonExample"),
   View.item("ViewExample"),
@@ -42,4 +49,5 @@ let components: array(item) = [|
   ImageBackground.item("ImageBackground"),
   NetInfo.item("NetInfo"),
   Geolocation.item("Geolocation"),
+  DrawerLayoutAndroid.item("DrawerLayoutAndroid"),
 |];

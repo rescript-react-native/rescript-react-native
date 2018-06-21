@@ -1,4 +1,5 @@
 open Rebolt;
+open Utils;
 
 module GeolocationGetCurrentPositionExample = {
   type coords = {
@@ -123,6 +124,8 @@ module GeolocationWatchPositionExample = {
 };
 
 let title = "<GeolocationExample>";
+
+let exampleType = Multiple;
 
 let description = "GeolocationExample";
 

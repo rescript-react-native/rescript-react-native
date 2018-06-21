@@ -1,6 +1,9 @@
 open Rebolt;
+open Utils;
 
 let onButtonPress = () => Alert.alert(~title="Button has been pressed!", ());
+
+let exampleType = Multiple;
 
 let displayName = "ButtonExample";
 

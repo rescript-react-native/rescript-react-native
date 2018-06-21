@@ -1,6 +1,9 @@
 open Rebolt;
+open Utils;
 
 let title = "<ImageBackground>";
+
+let exampleType = Multiple;
 
 let description = "A very basic ImageBackground component";
 

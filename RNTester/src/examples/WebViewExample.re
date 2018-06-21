@@ -1,6 +1,10 @@
 open Rebolt;
 
+open Utils;
+
 let title = "<WebView>";
+
+let exampleType = Multiple;
 
 let description = "Simple React Native WebView.";
 

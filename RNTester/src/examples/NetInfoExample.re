@@ -1,4 +1,5 @@
 open Rebolt;
+open Utils;
 
 module NetInfoIsConnectedExample = {
   type action =
@@ -91,6 +92,8 @@ module NetInfoConnectionTypeExample = {
 };
 
 let title = "<NetInfo>";
+
+let exampleType = Multiple;
 
 let description = "NetInfo";
 

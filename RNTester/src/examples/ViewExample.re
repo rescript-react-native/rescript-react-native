@@ -1,4 +1,5 @@
 open Rebolt;
+open Utils;
 
 let styles =
   StyleSheet.create(
@@ -169,6 +170,8 @@ module ZIndexExample = {
 };
 
 let title = "<View>";
+
+let exampleType = Multiple;
 
 let description = "Basic building block of all UI, examples that demonstrate some of the many styles available.";
 
