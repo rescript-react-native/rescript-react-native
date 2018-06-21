@@ -1,3 +1,8 @@
+type calculated;
+type value;
+type valueXY;
+type node('a);
+
 module Animation: {
   type t;
   type endResult = {. "finished": bool};
@@ -40,7 +45,7 @@ module Interpolation: {
     | Identity;
   let interpolate:
     (
-      ~value: t,
+      node('a),
       ~inputRange: list(float),
       ~outputRange: [< | `float(list(float)) | `string(list(string))],
       ~easing: Easing.t=?,
@@ -81,18 +86,17 @@ module Value: {
   let animate: (t, Animation.t, Animation.endCallback) => unit;
   let stopTracking: t => unit;
   let track: t => unit;
-  let modulo: (t, float) => t;
-  let diffClamp: (t, float, float) => t;
-  type value = t;
-  let add: (value, value) => value;
-  let divide: (value, value) => value;
-  let multiply: (value, value) => value;
+  let modulo: (node('a), float) => node(calculated);
+  let diffClamp:  (node('a), float, float) => node(calculated);
+  let add: (node('a), node('b)) => node(calculated);
+  let divide: (node('a), node('b)) => node(calculated);
+  let multiply: (node('a), node('b)) => node(calculated);
   module Timing: {
     type config;
     let animate:
       (
-        ~value: value,
-        ~toValue: [ | `raw(float) | `animated(value)],
+        ~value: node(value),
+        ~toValue: [ | `raw(float) | `animated(node(value))],
         ~easing: Easing.t=?,
         ~duration: float=?,
         ~delay: float=?,
@@ -108,8 +112,8 @@ module Value: {
     type config;
     let animate:
       (
-        ~value: value,
-        ~toValue: [ | `raw(float) | `animated(value)],
+        ~value: node(value),
+        ~toValue: [ | `raw(float) | `animated(node(value))],
         ~restDisplacementThreshold: float=?,
         ~overshootClamping: bool=?,
         ~restSpeedThreshold: float=?,
@@ -133,7 +137,7 @@ module Value: {
     type config;
     let animate:
       (
-        ~value: value,
+        ~value: node(value),
         ~velocity: float,
         ~deceleration: float=?,
         ~isInteraction: bool=?,
@@ -163,19 +167,20 @@ module ValueXY: {
   let removeListener: (t, string) => unit;
   let removeAllListeners: t => unit;
   let getLayout: t => layout;
-  let getTranslateTransform: t => translateTransform;
-  let add: (t, t) => t;
-  let divide: (t, t) => t;
-  let multiply: (t, t) => t;
+	let getTranslateTransform: t => translateTransform;
+	let modulo: (node('a), float) => node(calculated);
+  let diffClamp:  (node('a), float, float) => node(calculated);
+  let add: (node('a), node('b)) => node(calculated);
+  let divide: (node('a), node('b)) => node(calculated);
+  let multiply: (node('a), node('b)) => node(calculated);
   let getX: t => Value.t;
   let getY: t => Value.t;
-  type value = t;
   module Timing: {
     type config;
     let animate:
       (
-        ~value: value,
-        ~toValue: [ | `raw(jsValue) | `animated(value)],
+        ~value: node(valueXY),
+        ~toValue: [ | `raw(jsValue) | `animated(node(valueXY))],
         ~easing: Easing.t=?,
         ~duration: float=?,
         ~delay: float=?,
@@ -191,8 +196,8 @@ module ValueXY: {
     type config;
     let animate:
       (
-        ~value: value,
-        ~toValue: [ | `raw(jsValue) | `animated(value)],
+        ~value: node(valueXY),
+        ~toValue: [ | `raw(jsValue) | `animated(node(valueXY))],
         ~restDisplacementThreshold: float=?,
         ~overshootClamping: bool=?,
         ~restSpeedThreshold: float=?,
@@ -216,7 +221,7 @@ module ValueXY: {
     type config;
     let animate:
       (
-        ~value: value,
+        ~value: node(valueXY),
         ~velocity: jsValue,
         ~deceleration: float=?,
         ~isInteraction: bool=?,
