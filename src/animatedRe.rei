@@ -1,7 +1,7 @@
 type calculated;
-type value;
-type valueXY;
-type node('a);
+type regular;
+type value('a);
+type valueXY('a);
 
 module Animation: {
   type t;
@@ -45,7 +45,7 @@ module Interpolation: {
     | Identity;
   let interpolate:
     (
-      node('a),
+      value('a),
       ~inputRange: list(float),
       ~outputRange: [< | `float(list(float)) | `string(list(string))],
       ~easing: Easing.t=?,
@@ -90,8 +90,8 @@ module Value: {
     type config;
     let animate:
       (
-        ~value: node(value),
-        ~toValue: [ | `raw(float) | `animated(node(value))],
+        ~value: value(regular),
+        ~toValue: [ | `raw(float) | `animated(value(regular))],
         ~easing: Easing.t=?,
         ~duration: float=?,
         ~delay: float=?,
@@ -107,8 +107,8 @@ module Value: {
     type config;
     let animate:
       (
-        ~value: node(value),
-        ~toValue: [ | `raw(float) | `animated(node(value))],
+        ~value: value(regular),
+        ~toValue: [ | `raw(float) | `animated(value(regular))],
         ~restDisplacementThreshold: float=?,
         ~overshootClamping: bool=?,
         ~restSpeedThreshold: float=?,
@@ -132,7 +132,7 @@ module Value: {
     type config;
     let animate:
       (
-        ~value: node(value),
+        ~value: value(regular),
         ~velocity: float,
         ~deceleration: float=?,
         ~isInteraction: bool=?,
@@ -169,8 +169,8 @@ module ValueXY: {
     type config;
     let animate:
       (
-        ~value: node(valueXY),
-        ~toValue: [ | `raw(jsValue) | `animated(node(valueXY))],
+        ~value: valueXY(regular),
+        ~toValue: [ | `raw(jsValue) | `animated(valueXY(regular))],
         ~easing: Easing.t=?,
         ~duration: float=?,
         ~delay: float=?,
@@ -186,8 +186,8 @@ module ValueXY: {
     type config;
     let animate:
       (
-        ~value: node(valueXY),
-        ~toValue: [ | `raw(jsValue) | `animated(node(valueXY))],
+        ~value: valueXY(regular),
+        ~toValue: [ | `raw(jsValue) | `animated(valueXY(regular))],
         ~restDisplacementThreshold: float=?,
         ~overshootClamping: bool=?,
         ~restSpeedThreshold: float=?,
@@ -211,7 +211,7 @@ module ValueXY: {
     type config;
     let animate:
       (
-        ~value: node(valueXY),
+        ~value: valueXY(regular),
         ~velocity: jsValue,
         ~deceleration: float=?,
         ~isInteraction: bool=?,
@@ -223,16 +223,6 @@ module ValueXY: {
       CompositeAnimation.t;
   };
 };
-
-let modulo: (node('a), float) => node(calculated);
-
-let diffClamp:  (node('a), float, float) => node(calculated);
-
-let add: (node('a), node('b)) => node(calculated);
-
-let divide: (node('a), node('b)) => node(calculated);
-
-let multiply: (node('a), node('b)) => node(calculated);
 
 type animatedEvent;
 

@@ -7,9 +7,9 @@ module Animation = {
 module type Value = {type t; type rawJsType;};
 
 type calculated;
-type value;
-type valueXY;
-type node('a);
+type regular;
+type value('a);
+type valueXY('a);
 
 module CompositeAnimation = {
   type t;
@@ -222,19 +222,19 @@ module ValueAnimations = (Val: Value) => {
 
 module ValueOperations = {
   [@bs.module "react-native"] [@bs.scope "Animated"]
-  external add : (node('a), node('b)) => node(calculated) = "";
+  external add : (value('a), value('b)) => value(calculated) = "";
   [@bs.module "react-native"] [@bs.scope "Animated"]
-  external divide : (node('a), node('b)) => node(calculated) = "";
+  external divide : (value('a), value('b)) => value(calculated) = "";
   [@bs.module "react-native"] [@bs.scope "Animated"]
-	external multiply : (node('a), node('b)) => node(calculated) = "";
+	external multiply : (value('a), value('b)) => value(calculated) = "";
 	[@bs.module "react-native"] [@bs.scope "Animated"]
-  external modulo : (node('a), float) => node(calculated) = "";
+  external modulo : (value('a), float) => value(calculated) = "";
   [@bs.module "react-native"] [@bs.scope "Animated"]
-  external diffClamp : (node('a), float, float) => node(calculated) = "";
+  external diffClamp : (value('a), float, float) => value(calculated) = "";
 };
 
 module Interpolation = {
-  type t = node(calculated);
+  type t = value(calculated);
   type outputRange;
   external outputRangeCreate : 'a => outputRange = "%identity";
   type extrapolate =
@@ -260,7 +260,7 @@ module Interpolation = {
     ) =>
     config =
     "";
-  [@bs.send] external _interpolate : (node('a), config) => t = "interpolate";
+  [@bs.send] external _interpolate : (value('a), config) => t = "interpolate";
   let interpolate =
       (
         value,
@@ -293,7 +293,7 @@ module Interpolation = {
 };
 
 module Value = {
-  type t = node(value);
+  type t = value(regular);
   type jsValue = {. "value": float};
   type callback = jsValue => unit;
   [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
@@ -321,14 +321,15 @@ module Value = {
   [@bs.send] external stopTracking : t => unit = "stopTracking";
   [@bs.send] external track : t => unit = "track";
   include ValueAnimations({
-    type t = node(value);
+    type t = value(regular);
     type rawJsType = float;
-  });
+	});
+	include ValueOperations;
   let interpolate = Interpolation.interpolate;
 };
 
 module ValueXY = {
-  type t = node(valueXY);
+  type t = valueXY(regular);
   type jsValue = {
     .
     "x": float,
@@ -368,7 +369,7 @@ module ValueXY = {
   [@bs.get] external getX : t => Value.t = "x";
   [@bs.get] external getY : t => Value.t = "y";
   include ValueAnimations({
-    type t = node(valueXY);
+    type t = valueXY(regular);
     type rawJsType = jsValue;
   });
 };
@@ -419,5 +420,3 @@ module SpringXY = ValueXY.Spring;
 module Decay = Value.Decay;
 
 module DecayXY = ValueXY.Decay;
-
-include ValueOperations;
