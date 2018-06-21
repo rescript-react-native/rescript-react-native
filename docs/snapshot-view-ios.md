@@ -1,9 +1,19 @@
 ---
 id: snapshot-view-ios
 title: SnapshotViewIOS
-sidebar_label: SnapshotViewIOS (x)
+sidebar_label: SnapshotViewIOS
 ---
 
-Missing bindings
+## Props
 
-# Props
+### onSnapshotReady
+
+```reason
+onSnapshotReady: unit => unit=?
+```
+
+### testIdentifier
+
+```reason
+testIdentifier: string=?
+```

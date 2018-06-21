@@ -6,7 +6,14 @@ let make:
   (
     ~accessibilityLabel: ReasonReact.reactElement=?,
     ~accessible: bool=?,
-    ~hitSlop: {. "left": int, "right": int, "top": int, "bottom": int}=?,
+    ~hitSlop: {
+                .
+                "left": int,
+                "right": int,
+                "top": int,
+                "bottom": int,
+              }
+                =?,
     ~onAccessibilityTap: unit => unit=?,
     ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
     ~onMagicTap: unit => unit=?,
@@ -46,7 +53,7 @@ let make:
                               | `adjustable
                               | `allowsDirectInteraction
                               | `pageTurn
-                            ]
+                            ],
                           )
                             =?,
     ~accessibilityViewIsModal: bool=?,
@@ -78,12 +85,44 @@ let make:
     ~onBlur: unit => unit=?,
     ~onChange: unit => unit=?,
     ~onChangeText: string => unit=?,
-    ~onContentSizeChange: {. "nativeEvent": {. "contentSize": {. "width": float, "height": float}}}
+    ~onContentSizeChange: {
+                            .
+                            "nativeEvent": {
+                              .
+                              "contentSize": {
+                                .
+                                "width": float,
+                                "height": float,
+                              },
+                            },
+                          }
                             =?,
     ~onEndEditing: unit => unit=?,
     ~onFocus: unit => unit=?,
-    ~onScroll: {. "nativeEvent": {. "contentOffset": {. "x": float, "y": float}}}=?,
-    ~onSelectionChange: {. "nativeEvent": {. "selection": {. "start": int, "_end": int}}}=?,
+    ~onScroll: {
+                 .
+                 "nativeEvent": {
+                   .
+                   "contentOffset": {
+                     .
+                     "x": float,
+                     "y": float,
+                   },
+                 },
+               }
+                 =?,
+    ~onSelectionChange: {
+                          .
+                          "nativeEvent": {
+                            .
+                            "selection": {
+                              .
+                              "start": int,
+                              "_end": int,
+                            },
+                          },
+                        }
+                          =?,
     ~onSubmitEditing: unit => unit=?,
     ~placeholder: string=?,
     ~placeholderTextColor: string=?,
@@ -105,7 +144,12 @@ let make:
                       =?,
     ~secureTextEntry: bool=?,
     ~selectTextOnFocus: bool=?,
-    ~selection: {. "start": int, "_end": int}=?,
+    ~selection: {
+                  .
+                  "start": int,
+                  "_end": int,
+                }
+                  =?,
     ~selectionColor: string=?,
     ~value: string=?,
     ~disableFullscreenUI: bool=?,
@@ -117,12 +161,26 @@ let make:
     ~underlineColorAndroid: string=?,
     ~clearButtonMode: [ | `always | `never | `unlessEditing | `whileEditing]=?,
     ~clearTextOnFocus: bool=?,
-    ~dataDetectorTypes: array([ | `all | `calendarEvent | `link | `none | `phoneNumber])=?,
+    ~dataDetectorTypes: array(
+                          [
+                            | `all
+                            | `calendarEvent
+                            | `link
+                            | `none
+                            | `phoneNumber
+                          ],
+                        )
+                          =?,
     ~enablesReturnKeyAutomatically: bool=?,
     ~keyboardAppearance: [ | `dark | `default | `light]=?,
     ~onKeyPress: {. "nativeEvent": {. "key": string}}=?,
     ~selectionState: 'documentSelectionState=?,
     ~spellCheck: bool=?,
+    ~inputAccessoryViewID: string=?,
     array(ReasonReact.reactElement)
   ) =>
-  ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
+  ReasonReact.component(
+    ReasonReact.stateless,
+    ReasonReact.noRetainedProps,
+    unit,
+  );

@@ -4,6 +4,6 @@ title: ProgressBarAndroid
 sidebar_label: ProgressBarAndroid (x)
 ---
 
-Missing bindings
+## Example of use
 
-# Props
+## Props
