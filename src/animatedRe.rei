@@ -1,3 +1,8 @@
+type calculated;
+type regular;
+type value('a);
+type valueXY('a);
+
 module Animation: {
   type t;
   type endResult = {. "finished": bool};
@@ -40,7 +45,7 @@ module Interpolation: {
     | Identity;
   let interpolate:
     (
-      ~value: t,
+      value('a),
       ~inputRange: list(float),
       ~outputRange: [< | `float(list(float)) | `string(list(string))],
       ~easing: Easing.t=?,
@@ -81,18 +86,12 @@ module Value: {
   let animate: (t, Animation.t, Animation.endCallback) => unit;
   let stopTracking: t => unit;
   let track: t => unit;
-  let modulo: (t, float) => t;
-  let diffClamp: (t, float, float) => t;
-  type value = t;
-  let add: (value, value) => value;
-  let divide: (value, value) => value;
-  let multiply: (value, value) => value;
   module Timing: {
     type config;
     let animate:
       (
-        ~value: value,
-        ~toValue: [ | `raw(float) | `animated(value)],
+        ~value: value(regular),
+        ~toValue: [ | `raw(float) | `animated(value(regular))],
         ~easing: Easing.t=?,
         ~duration: float=?,
         ~delay: float=?,
@@ -108,8 +107,8 @@ module Value: {
     type config;
     let animate:
       (
-        ~value: value,
-        ~toValue: [ | `raw(float) | `animated(value)],
+        ~value: value(regular),
+        ~toValue: [ | `raw(float) | `animated(value(regular))],
         ~restDisplacementThreshold: float=?,
         ~overshootClamping: bool=?,
         ~restSpeedThreshold: float=?,
@@ -133,7 +132,7 @@ module Value: {
     type config;
     let animate:
       (
-        ~value: value,
+        ~value: value(regular),
         ~velocity: float,
         ~deceleration: float=?,
         ~isInteraction: bool=?,
@@ -164,18 +163,14 @@ module ValueXY: {
   let removeAllListeners: t => unit;
   let getLayout: t => layout;
   let getTranslateTransform: t => translateTransform;
-  let add: (t, t) => t;
-  let divide: (t, t) => t;
-  let multiply: (t, t) => t;
   let getX: t => Value.t;
   let getY: t => Value.t;
-  type value = t;
   module Timing: {
     type config;
     let animate:
       (
-        ~value: value,
-        ~toValue: [ | `raw(jsValue) | `animated(value)],
+        ~value: valueXY(regular),
+        ~toValue: [ | `raw(jsValue) | `animated(valueXY(regular))],
         ~easing: Easing.t=?,
         ~duration: float=?,
         ~delay: float=?,
@@ -191,8 +186,8 @@ module ValueXY: {
     type config;
     let animate:
       (
-        ~value: value,
-        ~toValue: [ | `raw(jsValue) | `animated(value)],
+        ~value: valueXY(regular),
+        ~toValue: [ | `raw(jsValue) | `animated(valueXY(regular))],
         ~restDisplacementThreshold: float=?,
         ~overshootClamping: bool=?,
         ~restSpeedThreshold: float=?,
@@ -216,7 +211,7 @@ module ValueXY: {
     type config;
     let animate:
       (
-        ~value: value,
+        ~value: valueXY(regular),
         ~velocity: jsValue,
         ~deceleration: float=?,
         ~isInteraction: bool=?,
