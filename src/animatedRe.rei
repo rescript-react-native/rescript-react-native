@@ -143,6 +143,11 @@ module Value: {
       ) =>
       CompositeAnimation.t;
   };
+  let add: (value('a), value('b)) => value(calculated);
+  let divide: (value('a), value('b)) => value(calculated);
+  let multiply: (value('a), value('b)) => value(calculated);
+  let modulo: (value('a), float) => value(calculated);
+  let diffClamp: (value('a), float, float) => value(calculated);
 };
 
 module ValueXY: {
