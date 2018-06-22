@@ -38,7 +38,7 @@ module Easing: {
 };
 
 module Interpolation: {
-  type t;
+  type t = value(calculated);
   type extrapolate =
     | Extend
     | Clamp
@@ -58,7 +58,7 @@ module Interpolation: {
 };
 
 module Value: {
-  type t;
+  type t = value(regular);
   type jsValue = {. "value": float};
   type callback = jsValue => unit;
   let create: float => t;
@@ -73,7 +73,7 @@ module Value: {
   let stopAnimation: (t, ~callback: callback=?, unit) => unit;
   let interpolate:
     (
-      t,
+      value('a),
       ~inputRange: list(float),
       ~outputRange: [< | `float(list(float)) | `string(list(string))],
       ~easing: Easing.t=?,
@@ -151,11 +151,23 @@ module Value: {
 };
 
 module ValueXY: {
-  type t;
-  type jsValue = {. "x": float, "y": float};
+  type t = valueXY(regular);
+  type jsValue = {
+    .
+    "x": float,
+    "y": float,
+  };
   type callback = jsValue => unit;
-  type translateTransform = {. "translateX": Value.t, "translateY": Value.t};
-  type layout = {. "left": Value.t, "top": Value.t};
+  type translateTransform = {
+    .
+    "translateX": Value.t,
+    "translateY": Value.t,
+  };
+  type layout = {
+    .
+    "left": Value.t,
+    "top": Value.t,
+  };
   let create: (~x: float, ~y: float) => t;
   let setValue: (t, ~x: float, ~y: float) => unit;
   let setOffset: (t, ~x: float, ~y: float) => unit;
@@ -238,13 +250,16 @@ let delay: float => CompositeAnimation.t;
 let sequence: array(CompositeAnimation.t) => CompositeAnimation.t;
 
 let parallel:
-  (array(CompositeAnimation.t), {. "stopTogether": bool}) => CompositeAnimation.t;
+  (array(CompositeAnimation.t), {. "stopTogether": bool}) =>
+  CompositeAnimation.t;
 
 let stagger: (float, array(CompositeAnimation.t)) => CompositeAnimation.t;
 
-let loop: (~iterations: int=?, ~animation: CompositeAnimation.t, unit) => CompositeAnimation.t;
+let loop:
+  (~iterations: int=?, ~animation: CompositeAnimation.t, unit) =>
+  CompositeAnimation.t;
 
-let createAnimatedComponent : ReasonReact.reactClass => ReasonReact.reactClass;
+let createAnimatedComponent: ReasonReact.reactClass => ReasonReact.reactClass;
 
 module Timing = Value.Timing;
 
