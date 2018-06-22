@@ -24,11 +24,11 @@ module Easing: {
   let ease: t;
   let exp: t;
   let linear: t;
-  let poly: t;
+  let poly: float => t;
   let quad: t;
   let sin: t;
-  let step0: t;
-  let step1: t;
+  let step0: float => int;
+  let step1: float => int;
   let back: float => t;
   let elastic: float => t;
   let in_: t => t;
