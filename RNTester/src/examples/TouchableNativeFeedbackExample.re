@@ -1,0 +1,43 @@
+open Rebolt;
+open Utils;
+
+let onButtonPress = () => Alert.alert(~title="Button has been pressed!", ());
+
+let exampleType = Multiple;
+
+let displayName = "TouchableNativeFeedback";
+
+let title = "<TouchableNativeFeedback>";
+
+let description = "Simple React Native TouchableNativeFeedback component.";
+
+module ExampleContent = {
+  let component = ReasonReact.statelessComponent("ExampleContent");
+
+  let make = _children => {
+    ...component,
+    render: _children =>
+      <TouchableNativeFeedback>
+        <View style=Style.(style([backgroundColor(String("#03DAC5"))]))>
+          <Text
+            style=Style.(
+                    style([
+                      height(Pt(50.)),
+                      textAlign(Center),
+                      fontSize(Float(20.)),
+                    ])
+                  )>
+            (ReasonReact.string("Press the button"))
+          </Text>
+        </View>
+      </TouchableNativeFeedback>,
+  };
+};
+
+let examples: array(Example.t) = [|
+  {
+    title: "TouchableNativeFeedback",
+    description: Some("Base example"),
+    render: () => <ExampleContent />,
+  },
+|];

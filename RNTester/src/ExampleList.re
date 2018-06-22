@@ -42,6 +42,8 @@ module Geolocation = MakeExample(GeolocationExample);
 
 module DrawerLayoutAndroid = MakeExample(DrawerLayoutAndroid);
 
+module TouchableNativeFeedback = MakeExample(TouchableNativeFeedbackExample);
+
 let components: array(item) = [|
   Button.item("ButtonExample"),
   View.item("ViewExample"),
@@ -50,4 +52,5 @@ let components: array(item) = [|
   NetInfo.item("NetInfo"),
   Geolocation.item("Geolocation"),
   DrawerLayoutAndroid.item("DrawerLayoutAndroid"),
+  TouchableNativeFeedback.item("ButtonExample=asdasd"),
 |];

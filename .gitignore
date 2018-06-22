@@ -3,6 +3,7 @@ node_modules
 lib
 .merlin
 .vscode
+.bsb.lock
 package-lock.json
 npm-debug.log
 
