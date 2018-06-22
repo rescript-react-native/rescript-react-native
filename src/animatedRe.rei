@@ -16,27 +16,6 @@ module CompositeAnimation: {
   let reset: t => unit;
 };
 
-module Easing: {
-  type t = float => float;
-  let bounce: t;
-  let circle: t;
-  let cubic: t;
-  let ease: t;
-  let exp: t;
-  let linear: t;
-  let poly: float => t;
-  let quad: t;
-  let sin: t;
-  let step0: float => int;
-  let step1: float => int;
-  let back: float => t;
-  let elastic: float => t;
-  let in_: t => t;
-  let inOut: t => t;
-  let out: t => t;
-  let bezier: (float, float, float, float) => t;
-};
-
 module Interpolation: {
   type t = value(calculated);
   type extrapolate =
@@ -272,3 +251,5 @@ module SpringXY = ValueXY.Spring;
 module Decay = Value.Decay;
 
 module DecayXY = ValueXY.Decay;
+
+module Easing = Easing;
