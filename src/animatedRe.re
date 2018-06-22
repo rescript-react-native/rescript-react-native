@@ -30,11 +30,14 @@ module Easing = {
   [@bs.module "react-native"] [@bs.scope "Easing"] external ease : t = "";
   [@bs.module "react-native"] [@bs.scope "Easing"] external exp : t = "";
   [@bs.module "react-native"] [@bs.scope "Easing"] external linear : t = "";
-  [@bs.module "react-native"] [@bs.scope "Easing"] external poly : t = "";
+  [@bs.module "react-native"] [@bs.scope "Easing"]
+  external poly : float => t = "";
   [@bs.module "react-native"] [@bs.scope "Easing"] external quad : t = "";
   [@bs.module "react-native"] [@bs.scope "Easing"] external sin : t = "";
-  [@bs.module "react-native"] [@bs.scope "Easing"] external step0 : t = "";
-  [@bs.module "react-native"] [@bs.scope "Easing"] external step1 : t = "";
+  [@bs.module "react-native"] [@bs.scope "Easing"]
+  external step0 : float => int = "";
+  [@bs.module "react-native"] [@bs.scope "Easing"]
+  external step1 : float => int = "";
   [@bs.module "react-native"] [@bs.scope "Easing"]
   external back : float => t = "";
   [@bs.module "react-native"] [@bs.scope "Easing"]
