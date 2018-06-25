@@ -12,7 +12,8 @@ let title = "<TouchableNativeFeedback>";
 let description = "Simple React Native TouchableNativeFeedback component.";
 
 module ExampleContent = {
-  let component = ReasonReact.statelessComponent("ExampleContent");
+  let component =
+    ReasonReact.statelessComponent("TouchableNativeFeedbackExampleContent");
 
   let make = _children => {
     ...component,

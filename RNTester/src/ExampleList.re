@@ -44,6 +44,8 @@ module DrawerLayoutAndroid = MakeExample(DrawerLayoutAndroid);
 
 module TouchableNativeFeedback = MakeExample(TouchableNativeFeedbackExample);
 
+module ProgressBarAndroid = MakeExample(ProgressBarAndroidExample);
+
 let components: array(item) = [|
   Button.item("ButtonExample"),
   View.item("ViewExample"),
@@ -52,5 +54,6 @@ let components: array(item) = [|
   NetInfo.item("NetInfo"),
   Geolocation.item("Geolocation"),
   DrawerLayoutAndroid.item("DrawerLayoutAndroid"),
-  TouchableNativeFeedback.item("ButtonExample=asdasd"),
+  TouchableNativeFeedback.item("TouchableNativeFeedback"),
+  ProgressBarAndroid.item("ProgressBarAndroid"),
 |];

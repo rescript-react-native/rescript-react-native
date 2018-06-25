@@ -67,7 +67,7 @@
     "Picker": "Picker",
     "pixel-ratio": "pixel-ratio",
     "progress-bar-android": "ProgressBarAndroid",
-    "ProgressBarAndroid (x)": "ProgressBarAndroid (x)",
+    "ProgressBarAndroid": "ProgressBarAndroid",
     "progress-view-ios": "ProgressViewIOS",
     "ProgressViewIOS": "ProgressViewIOS",
     "push-notifications-ios": "push-notifications-ios",
@@ -134,10 +134,8 @@
     "APIs": "APIs"
   },
   "pages-strings": {
-    "Help Translate|recruit community translators for your project":
-      "Help Translate",
+    "Help Translate|recruit community translators for your project": "Help Translate",
     "Edit this Doc|recruitment message asking to edit the doc source": "Edit",
-    "Translate this Doc|recruitment message asking to translate the docs":
-      "Translate"
+    "Translate this Doc|recruitment message asking to translate the docs": "Translate"
   }
 }
