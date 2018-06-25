@@ -17,7 +17,8 @@ module ExampleContent = {
   let make = _children => {
     ...component,
     render: _children =>
-      <TouchableNativeFeedback>
+      <TouchableNativeFeedback
+        background=(TouchableNativeFeedback.selectableBackground())>
         <View style=Style.(style([backgroundColor(String("#03DAC5"))]))>
           <Text
             style=Style.(

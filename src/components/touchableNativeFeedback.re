@@ -1,5 +1,20 @@
 [@bs.module "react-native"]
-external view : ReasonReact.reactClass = "TouchableNativeFeedback";
+external component : ReasonReact.reactClass = "TouchableNativeFeedback";
+
+type t;
+
+[@bs.module "react-native"] [@bs.scope "TouchableNativeFeedback"]
+external selectableBackground : unit => t = "SelectableBackground";
+
+[@bs.module "react-native"] [@bs.scope "TouchableNativeFeedback"]
+external selectableBackgroundBorderless : unit => t =
+  "SelectableBackgroundBorderless";
+
+[@bs.module "react-native"] [@bs.scope "TouchableNativeFeedback"]
+external canUseNativeForeground : unit => t = "CanUseNativeForeground";
+
+[@bs.module "react-native"] [@bs.scope "TouchableNativeFeedback"]
+external ripple : (string, bool) => t = "Ripple";
 
 let make =
     (
@@ -23,7 +38,7 @@ let make =
       ~style=?,
     ) =>
   ReasonReact.wrapJsForReason(
-    ~reactClass=view,
+    ~reactClass=component,
     ~props=
       Js.Undefined.(
         {

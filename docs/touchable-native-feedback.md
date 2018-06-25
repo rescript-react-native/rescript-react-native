@@ -6,8 +6,6 @@ sidebar_label: TouchableNativeFeedback
 
 ## Exampele of usage
 
-### default
-
 ```reason
 let component = ReasonReact.statelessComponent("MyComponent");
 
@@ -26,7 +24,9 @@ let make = _children => {
 
 # Props
 
-[TouchableWithoutFeedback props...](touchable-without-feedback.md)
+## TouchableWithoutFeedback props...
+
+[props...](touchable-without-feedback.md)
 
 ## background
 
@@ -38,4 +38,33 @@ background: string=?
 
 ```reason
 useForeground: bool=?
+```
+
+# Methods
+
+[RN docs](https://facebook.github.io/react-native/docs/touchablenativefeedback.html#methods-1)
+
+## selectableBackground
+
+```reason
+ unit => t;
+```
+
+## selectableBackgroundBorderless
+
+```reason
+  unit => t
+```
+
+## canUseNativeForeground
+
+```reason
+  unit => t
+```
+
+## ripple
+
+```reason
+(string, bool) => t;
+``
 ```

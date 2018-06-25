@@ -1,3 +1,10 @@
+type t;
+
+let selectableBackground: unit => t;
+let selectableBackgroundBorderless: unit => t;
+let canUseNativeForeground: unit => t;
+let ripple: (string, bool) => t;
+
 let make:
   (
     ~accessible: string=?,
@@ -42,7 +49,7 @@ let make:
     ~onPressIn: unit => unit=?,
     ~onPressOut: unit => unit=?,
     ~pressRetentionOffset: Types.insets=?,
-    ~background: string=?,
+    ~background: t=?,
     ~useForeground: bool=?,
     ~style: Style.t=?,
     array(ReasonReact.reactElement)

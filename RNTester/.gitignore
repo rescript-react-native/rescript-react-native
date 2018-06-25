@@ -24,6 +24,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
+.bsb.lock
 
 # Android/IntelliJ
 #
