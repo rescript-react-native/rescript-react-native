@@ -26,6 +26,6 @@ let make = (~title, _children) => {
   ...component,
   render: _self =>
     <View style=styles##container>
-      <Text style=styles##text> (ReasonReact.stringToElement(title)) </Text>
+      <Text style=styles##text> (ReasonReact.string(title)) </Text>
     </View>,
 };

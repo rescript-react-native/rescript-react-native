@@ -47,13 +47,13 @@ let make = (~description, ~title, children) => {
     <View style=styles##container>
       <View style=styles##titleContainer>
         <Text style=styles##titleText>
-          (ReasonReact.stringToElement(title))
+          (ReasonReact.string(title))
         </Text>
         (
           switch (description) {
           | Some(description) =>
             <Text style=styles##descriptionText>
-              (ReasonReact.stringToElement(description))
+              (ReasonReact.string(description))
             </Text>
           | None => ReasonReact.nullElement
           }

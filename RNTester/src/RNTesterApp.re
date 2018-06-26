@@ -40,7 +40,7 @@ let styles =
 let header = (~onBack=?, ~title, ()) =>
   <View style=styles##header>
     <View style=styles##headerCenter>
-      <Text style=styles##title> (ReasonReact.stringToElement(title)) </Text>
+      <Text style=styles##title> (ReasonReact.string(title)) </Text>
     </View>
     (
       switch (onBack) {

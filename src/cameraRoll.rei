@@ -55,7 +55,7 @@ type assetType =
 
 let saveToCameraRoll:
   (~uri: string, ~type_: fileType=?, unit) =>
-  Js.Promise.t(Js.Result.t(string, Js.Promise.error));
+  Js.Promise.t(Belt.Result.t(string, Js.Promise.error));
 
 let getPhotos:
   (
