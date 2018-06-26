@@ -135,7 +135,25 @@ let make = _children => {
 
 ### event
 
-### custom component
+You can map gestures and other events state directly to an animated value directly with `Animated.event`.
+
+```reason
+let animatedValue = Animated.Value.create(0.0);
+
+let handler =
+  Animated.event(
+    [|{
+        "nativeEvent": {
+          "contentOffset": {
+            "x": animatedValue,
+          },
+        },
+      }|],
+    {"useNativeDriver": true},
+  );
+
+<ScrollView onScroll=handler />
+```
 
 ## Animations
 

@@ -292,19 +292,26 @@ let start: (Animation.t, ~callback: Animation.endCallback=?, unit) => unit;
 
 let reset: Animation.t => unit;
 
-/** Legacy interface */
+[@deprecated "Please use Easing module instead"]
+module Easing = Easing;
+
+[@deprecated
+  "Please use Animated.start, Animated.stop or Animated.reset instead"
+]
+module CompositeAnimation = Animation;
+
+[@deprecated "Please use Animated.timing instead"]
 module Timing = Value.Timing;
 
 module TimingXY = ValueXY.Timing;
 
+[@deprecated "Please use Animated.spring instead"]
 module Spring = Value.Spring;
 
 module SpringXY = ValueXY.Spring;
 
+[@deprecated "Please use Animated.decay instead"]
 module Decay = Value.Decay;
 
 module DecayXY = ValueXY.Decay;
-
-module Easing = Easing;
-
-module CompositeAnimation = Animation;
+g

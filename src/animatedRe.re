@@ -292,13 +292,10 @@ module Value = {
     "animate";
   [@bs.send] external stopTracking : t => unit = "stopTracking";
   [@bs.send] external track : t => unit = "track";
-  include
-    ValueAnimations(
-      {
-        type t = value(regular);
-        type rawJsType = float;
-      },
-    );
+  include ValueAnimations({
+    type t = value(regular);
+    type rawJsType = float;
+  });
   include ValueOperations;
   let interpolate = Interpolation.interpolate;
 };
@@ -343,13 +340,10 @@ module ValueXY = {
     "getTranslateTransform";
   [@bs.get] external getX : t => Value.t = "x";
   [@bs.get] external getY : t => Value.t = "y";
-  include
-    ValueAnimations(
-      {
-        type t = valueXY(regular);
-        type rawJsType = jsValue;
-      },
-    );
+  include ValueAnimations({
+    type t = valueXY(regular);
+    type rawJsType = jsValue;
+  });
 };
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
@@ -390,7 +384,6 @@ let decay = Value.Decay.animate;
 
 include Animation;
 
-/* Legacy, to prevent breaking changes */
 module Easing = Easing;
 
 module CompositeAnimation = Animation;
