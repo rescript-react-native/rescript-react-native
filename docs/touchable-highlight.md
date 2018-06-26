@@ -4,21 +4,21 @@ title: TouchableHighlight
 sidebar_label: TouchableHighlight
 ---
 
-# Props
+## Props
 
-## accessible
+### accessible
 
 ```reason
 accessible: bool=?
 ```
 
-## accessibilityLabel
+### accessibilityLabel
 
 ```reason
 accessibilityLabel: string=?
 ```
 
-## accessibilityComponentType
+### accessibilityComponentType
 
 ```reason
 accessibilityComponentType: [
@@ -29,7 +29,7 @@ accessibilityComponentType: [
 ]=?
 ```
 
-## accessibilityTraits
+### accessibilityTraits
 
 ```reason
 accessibilityTraits: list(
@@ -55,31 +55,31 @@ accessibilityTraits: list(
 )=?
 ```
 
-## delayLongPress
+### delayLongPress
 
 ```reason
 delayLongPress: int=?
 ```
 
-## delayPressIn
+### delayPressIn
 
 ```reason
 delayPressIn: int=?
 ```
 
-## delayPressOut
+### delayPressOut
 
 ```reason
 delayPressOut: int=?
 ```
 
-## disabled
+### disabled
 
 ```reason
 disabled: bool=?
 ```
 
-## hitSlop
+### hitSlop
 
 ```reason
 hitSlop: Types.insets=?
@@ -99,7 +99,7 @@ type insets = {
 };
 ```
 
-## onLayout
+### onLayout
 
 ```reason
 onLayout: RNEvent.NativeLayoutEvent.t => unit=?
@@ -120,25 +120,25 @@ module NativeLayoutEvent: {
 };
 ```
 
-## onPress
+### onPress
 
 ```reason
 onPress: unit => unit=?
 ```
 
-## onPressIn
+### onPressIn
 
 ```reason
 onPressIn: unit => unit=?
 ```
 
-## onPressOut
+### onPressOut
 
 ```reason
 onPressOut: unit => unit=?
 ```
 
-## pressRetentionOffset
+### pressRetentionOffset
 
 ```reason
 pressRetentionOffset: Types.insets=?
@@ -158,43 +158,43 @@ type insets = {
 };
 ```
 
-## activeOpacity
+### activeOpacity
 
 ```reason
 activeOpacity: float=?
 ```
 
-## onHideUnderlay
+### onHideUnderlay
 
 ```reason
 onHideUnderlay: unit => unit=?
 ```
 
-## onShowUnderlay
+### onShowUnderlay
 
 ```reason
 onShowUnderlay: unit => unit=?
 ```
 
-## style
+### style
 
 ```reason
 style: Style.t=?
 ```
 
-## underlayColor
+### underlayColor
 
 ```reason
 underlayColor: string=?
 ```
 
-## hasTVPreferredFocus
+### hasTVPreferredFocus
 
 ```reason
 hasTVPreferredFocus: bool=?
 ```
 
-## tvParallaxProperties
+### tvParallaxProperties
 
 ```reason
 tvParallaxProperties: Js.t({.})=?

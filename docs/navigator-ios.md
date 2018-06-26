@@ -4,6 +4,6 @@ title: NavigatorIOS
 sidebar_label: NavigatorIOS (x)
 ---
 
-Missing bindings
+## Example of use
 
-# Props
+## Props

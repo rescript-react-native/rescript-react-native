@@ -4,6 +4,6 @@ title: InputAccessoryView
 sidebar_label: InputAccessoryView (x)
 ---
 
-Missing bindings
+## Example of use
 
-# Props
+## Props

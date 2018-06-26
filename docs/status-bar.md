@@ -4,15 +4,15 @@ title: StatusBar
 sidebar_label: StatusBar
 ---
 
-# Props
+## Props
 
-## animated
+### animated
 
 ```reason
 animated: bool=?
 ```
 
-## barStyle
+### barStyle
 
 ```reason
 barStyle: [
@@ -22,31 +22,31 @@ barStyle: [
 ]=?
 ```
 
-## hidden
+### hidden
 
 ```reason
 hidden: bool=?
 ```
 
-## backgroundColor
+### backgroundColor
 
 ```reason
 backgroundColor: string=?
 ```
 
-## translucent
+### translucent
 
 ```reason
 translucent: bool=?
 ```
 
-## networkActivityIndicatorVisible
+### networkActivityIndicatorVisible
 
 ```reason
 networkActivityIndicatorVisible: bool=?
 ```
 
-## showHideTransition
+### showHideTransition
 
 ```reason
 showHideTransition: [

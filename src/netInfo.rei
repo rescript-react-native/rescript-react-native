@@ -20,7 +20,7 @@ type effectiveConnectionType =
 type info = {
   .
   "_type": infoType,
-  "effectiveType": infoEffectiveType
+  "effectiveType": infoEffectiveType,
 };
 
 let connectionType: infoType => connectionType;

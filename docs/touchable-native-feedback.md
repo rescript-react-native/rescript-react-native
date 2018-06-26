@@ -22,47 +22,47 @@ let make = _children => {
 };
 ```
 
-# Props
+## Props
 
-## TouchableWithoutFeedback props...
+### TouchableWithoutFeedback props...
 
 [props...](touchable-without-feedback.md)
 
-## background
+### background
 
 ```reason
 background: string=?
 ```
 
-## useForeground
+### useForeground
 
 ```reason
 useForeground: bool=?
 ```
 
-# Methods
+## Methods
 
 [RN docs](https://facebook.github.io/react-native/docs/touchablenativefeedback.html#methods-1)
 
-## selectableBackground
+### selectableBackground
 
 ```reason
  unit => t;
 ```
 
-## selectableBackgroundBorderless
+### selectableBackgroundBorderless
 
 ```reason
   unit => t
 ```
 
-## canUseNativeForeground
+### canUseNativeForeground
 
 ```reason
   unit => t
 ```
 
-## ripple
+### ripple
 
 ```reason
 (string, bool) => t;

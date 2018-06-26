@@ -4,21 +4,21 @@ title: Text
 sidebar_label: Text
 ---
 
-# Props
+## Props
 
-## accessible
+### accessible
 
 ```reason
 accessible: bool=?
 ```
 
-## allowFontScaling
+### allowFontScaling
 
 ```reason
 allowFontScaling: bool=?
 ```
 
-## ellipsizeMode
+### ellipsizeMode
 
 ```reason
 ellipsizeMode: [
@@ -29,31 +29,31 @@ ellipsizeMode: [
 ]=?
 ```
 
-## numberOfLines
+### numberOfLines
 
 ```reason
 numberOfLines: int=?
 ```
 
-## onLayout
+### onLayout
 
 ```reason
 onLayout: RNEvent.NativeLayoutEvent.t => unit=?
 ```
 
-## onLongPress
+### onLongPress
 
 ```reason
 onLongPress: unit => unit=?
 ```
 
-## onPress
+### onPress
 
 ```reason
 onPress: unit => unit=?
 ```
 
-## pressRetentionOffset
+### pressRetentionOffset
 
 ```reason
 pressRetentionOffset: Types.insets=?
@@ -73,31 +73,31 @@ type insets = {
 };
 ```
 
-## selectable
+### selectable
 
 ```reason
 selectable: bool=?
 ```
 
-## style
+### style
 
 ```reason
 style: Style.t=?
 ```
 
-## testID
+### testID
 
 ```reason
 testID: string=?
 ```
 
-## selectionColor
+### selectionColor
 
 ```reason
 selectionColor: string=?
 ```
 
-## textBreakStrategy
+### textBreakStrategy
 
 ```reason
 textBreakStrategy: [
@@ -107,25 +107,25 @@ textBreakStrategy: [
 ]=?
 ```
 
-## adjustsFontSizeToFit
+### adjustsFontSizeToFit
 
 ```reason
 adjustsFontSizeToFit: bool=?
 ```
 
-## minimumFontScale
+### minimumFontScale
 
 ```reason
 minimumFontScale: float=?
 ```
 
-## suppressHighlighting
+### suppressHighlighting
 
 ```reason
 suppressHighlighting: bool=?
 ```
 
-## value
+### value
 
 ```reason
 value: string=?

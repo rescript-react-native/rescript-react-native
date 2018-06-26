@@ -49,6 +49,7 @@ let make = _children => {
 ## Props
 
 ### initialPage
+
 Index of initial page that should be selected.
 
 [RN docs](https://facebook.github.io/react-native/docs/viewpagerandroid.html#initialpage)
@@ -58,15 +59,17 @@ initialPage: int=?
 ```
 
 ### keyboardDismissMode
+
 Determines whether the keyboard gets dismissed in response to a drag. Possible values:
- - `` `none`` *(default)* - drags do not dismiss the keyboard.
- - `` `onDrag`` - the keyboard is dismissed when a drag begins.
+
+- `` `none `` _(default)_ - drags do not dismiss the keyboard.
+- `` `onDrag `` - the keyboard is dismissed when a drag begins.
 
 [RN docs](https://facebook.github.io/react-native/docs/viewpagerandroid.html#keyboarddismissmode)
 
- ```reason
+```reason
 keyboardDismissMode: [ | `none | `onDrag]=?
- ```
+```
 
 ### onPageScroll
 
@@ -77,20 +80,21 @@ Executed when transitioning between pages (either because of animation for the r
 
 [RN docs](https://facebook.github.io/react-native/docs/viewpagerandroid.html#onpagescroll)
 
- ```reason
+```reason
 onPageScroll: {
-                .
-                "nativeEvent": {
-                  .
-                  "position": int,
-                  "offset": int,
-                },
-              } =>
-              unit
-                =?
- ```
+               .
+               "nativeEvent": {
+                 .
+                 "position": int,
+                 "offset": int,
+               },
+             } =>
+             unit
+               =?
+```
 
 ### onPageScrollStateChanged
+
 Called when the page scrolling state has changed. The page scrolling state can be in 3 states:
 
 - `idle` - there is no interaction with the page scroller happening at the time
@@ -99,56 +103,62 @@ Called when the page scrolling state has changed. The page scrolling state can b
 
 [RN docs](https://facebook.github.io/react-native/docs/viewpagerandroid.html#onpagescrollstatechanged)
 
- ```reason
+```reason
 onPageScrollStateChanged: string => unit=?
- ```
+```
 
 ### onPageSelected
+
 This callback will be called once ViewPager finishes navigating to selected page (when user swipes between pages). The `event.nativeEvent` object passed to this callback will have following fields:
 
 - `position` - index of page that has been selected
 
 [RN docs](https://facebook.github.io/react-native/docs/viewpagerandroid.html#onpageselected)
 
- ```reason
+```reason
 onPageSelected: {. "nativeEvent": {. "position": int}} => unit=?
- ```
+```
 
 ### pageMargin
+
 Blank space to show between pages. This is only visible while scrolling, pages are still edge-to-edge.
 
 [RN docs](https://facebook.github.io/react-native/docs/viewpagerandroid.html#pagemargin)
 
- ```reason
+```reason
 pageMargin: int=?
- ```
+```
 
 ### peekEnabled
-Whether enable showing peekFraction or not. If this is true, the preview of last and next page will show in current screen.  
+
+Whether enable showing peekFraction or not. If this is true, the preview of last and next page will show in current screen.
 
 **default:** `false`
 
 [RN docs](https://facebook.github.io/react-native/docs/viewpagerandroid.html#peekenabled)
 
- ```reason
+```reason
 peekEnabled: bool=?
- ```
+```
 
 ### scrollEnabled
-When false, the content does not scroll.  
+
+When false, the content does not scroll.
 
 **default:** `true`
 
 [RN docs](https://facebook.github.io/react-native/docs/viewpagerandroid.html#scrollenabled)
 
- ```reason
+```reason
 peekEnabled: bool=?
- ```
+```
 
 ## Methods
+
 ### setPage: (int) => unit
+
 You can use this method to manually set page at given index.
 
 ### Example with methods
-To use `setPage` method you have to call them on `DrawerLayoutAndroid` `ref`.  See [ReasonReact docs](https://reasonml.github.io/reason-react/docs/en/react-ref.html) to learn more about using `ref`s.
 
+To use `setPage` method you have to call them on `DrawerLayoutAndroid` `ref`. See [ReasonReact docs](https://reasonml.github.io/reason-react/docs/en/react-ref.html) to learn more about using `ref`s.

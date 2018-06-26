@@ -4,7 +4,7 @@ title: SafeAreaView
 sidebar_label: SafeAreaView
 ---
 
-# Props
+## Props
 
 [RN docs](https://facebook.github.io/react-native/docs/safeareaview.html)
 

@@ -4,6 +4,6 @@ title: MaskedViewIOS
 sidebar_label: MaskedViewIOS (x)
 ---
 
-Missing bindings
+## Example of use
 
-# Props
+## Props

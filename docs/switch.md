@@ -4,57 +4,57 @@ title: Switch
 sidebar_label: Switch
 ---
 
-# Props
+## Props
 
-## disabled
+### disabled
 
 ```reason
 disabled: bool=?
 ```
 
-## onTintColor
+### onTintColor
 
 ```reason
 onTintColor: string=?
 ```
 
-## onValueChange
+### onValueChange
 
 ```reason
 onValueChange: bool => unit=?
 ```
 
-## thumbTintColor
+### thumbTintColor
 
 ```reason
 thumbTintColor: string=?
 ```
 
-## tintColor
+### tintColor
 
 ```reason
 tintColor: string=?
 ```
 
-## value
+### value
 
 ```reason
 value: bool=?
 ```
 
-## accessibilityLabel
+### accessibilityLabel
 
 ```reason
 accessibilityLabel: ReasonReact.reactElement=?
 ```
 
-## accessible
+### accessible
 
 ```reason
 accessible: bool=?
 ```
 
-## hitSlop
+### hitSlop
 
 ```reason
 hitSlop: Types.insets=?
@@ -74,13 +74,13 @@ type insets = {
 };
 ```
 
-## onAccessibilityTap
+### onAccessibilityTap
 
 ```reason
 onAccessibilityTap: unit => unit=?
 ```
 
-## onLayout
+### onLayout
 
 ```reason
 onLayout: RNEvent.NativeLayoutEvent.t => unit=?
@@ -101,13 +101,13 @@ module NativeLayoutEvent: {
 };
 ```
 
-## onMagicTap
+### onMagicTap
 
 ```reason
 onMagicTap: unit => unit=?
 ```
 
-## responderHandlers
+### responderHandlers
 
 ```reason
 responderHandlers: Types.touchResponderHandlers=?
@@ -150,7 +150,7 @@ module NativeEvent: {
 };
 ```
 
-## pointerEvents
+### pointerEvents
 
 ```reason
 pointerEvents: [
@@ -161,25 +161,25 @@ pointerEvents: [
 ]=?
 ```
 
-## removeClippedSubviews
+### removeClippedSubviews
 
 ```reason
 removeClippedSubviews: bool=?
 ```
 
-## style
+### style
 
 ```reason
 style: Style.t=?
 ```
 
-## testID
+### testID
 
 ```reason
 testID: string=?
 ```
 
-## accessibilityComponentType
+### accessibilityComponentType
 
 ```reason
 accessibilityComponentType: [
@@ -190,7 +190,7 @@ accessibilityComponentType: [
 ]=?
 ```
 
-## accessibilityLiveRegion
+### accessibilityLiveRegion
 
 ```reason
 accessibilityLiveRegion: [
@@ -200,13 +200,13 @@ accessibilityLiveRegion: [
 ]=?
 ```
 
-## collapsable
+### collapsable
 
 ```reason
 collapsable: bool=?
 ```
 
-## importantForAccessibility
+### importantForAccessibility
 
 ```reason
 importantForAccessibility: [
@@ -217,19 +217,19 @@ importantForAccessibility: [
 ]=?
 ```
 
-## needsOffscreenAlphaCompositing
+### needsOffscreenAlphaCompositing
 
 ```reason
 needsOffscreenAlphaCompositing: bool=?
 ```
 
-## renderToHardwareTextureAndroid
+### renderToHardwareTextureAndroid
 
 ```reason
 renderToHardwareTextureAndroid: bool=?
 ```
 
-## accessibilityTraits
+### accessibilityTraits
 
 ```reason
 accessibilityTraits: list(
@@ -255,13 +255,13 @@ accessibilityTraits: list(
 )=?
 ```
 
-## accessibilityViewIsModal
+### accessibilityViewIsModal
 
 ```reason
 accessibilityViewIsModal: bool=?
 ```
 
-## shouldRasterizeIOS
+### shouldRasterizeIOS
 
 ```reason
 shouldRasterizeIOS: bool=?

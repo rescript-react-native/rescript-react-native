@@ -4,6 +4,6 @@ title: VirtualizedList
 sidebar_label: VirtualizedList (x)
 ---
 
-Missing bindings
+## Example of use
 
-# Props
+## Props

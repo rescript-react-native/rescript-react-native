@@ -4,6 +4,6 @@ title: ListView
 sidebar_label: ListView (x)
 ---
 
-Missing bindings
+## Example of use
 
-# Props
+## Props

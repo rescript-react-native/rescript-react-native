@@ -4,9 +4,9 @@ title: View
 sidebar_label: View
 ---
 
-# Props
+## Props
 
-## accessibilityLabel
+### accessibilityLabel
 
 [RN docs](https://facebook.github.io/react-native/docs/view.html#accessibilitylabel)
 
@@ -14,7 +14,7 @@ sidebar_label: View
 accessibilityLabel: string=?
 ```
 
-## accessible
+### accessible
 
 [RN docs](https://facebook.github.io/react-native/docs/view.html#accessible)
 
@@ -22,7 +22,7 @@ accessibilityLabel: string=?
 accessible: bool=?
 ```
 
-## hitSlop
+### hitSlop
 
 [RN docs](https://facebook.github.io/react-native/docs/view.html#hitslop)
 
@@ -44,7 +44,7 @@ type insets = {
 };
 ```
 
-## onAccessibilityTap
+### onAccessibilityTap
 
 [RN docs](https://facebook.github.io/react-native/docs/view.html#onaccessibilityTap)
 
@@ -52,7 +52,7 @@ type insets = {
 onAccessibilityTap: unit => unit=?
 ```
 
-## onLayout
+### onLayout
 
 [RN docs](https://facebook.github.io/react-native/docs/view.html#onlaout)
 
@@ -75,7 +75,7 @@ module NativeLayoutEvent: {
 };
 ```
 
-## onMagicTap
+### onMagicTap
 
 [RN docs](https://facebook.github.io/react-native/docs/view.html#onmagictap)
 
@@ -83,7 +83,7 @@ module NativeLayoutEvent: {
 onMagicTap: unit => unit=?
 ```
 
-## responderHandlers
+### responderHandlers
 
 [RN docs](https://facebook.github.io/react-native/docs/view.html#responderhandlers)
 
@@ -128,7 +128,7 @@ module NativeEvent: {
 };
 ```
 
-## pointerEvents
+### pointerEvents
 
 [RN docs](https://facebook.github.io/react-native/docs/view.html#pointerevents)
 
@@ -141,7 +141,7 @@ pointerEvents: [
 ]=?
 ```
 
-## removeClippedSubviews
+### removeClippedSubviews
 
 [RN docs](https://facebook.github.io/react-native/docs/view.html#removeclippedsubviews)
 
@@ -149,7 +149,7 @@ pointerEvents: [
 removeClippedSubviews: bool=?
 ```
 
-## style
+### style
 
 [RN docs](https://facebook.github.io/react-native/docs/view.html#style)
 
@@ -157,7 +157,7 @@ removeClippedSubviews: bool=?
 style: Style.t=?
 ```
 
-## testID
+### testID
 
 [RN docs](https://facebook.github.io/react-native/docs/view.html#testid)
 
@@ -165,7 +165,7 @@ style: Style.t=?
 testID: string=?
 ```
 
-## accessibilityComponentType
+### accessibilityComponentType
 
 [RN docs](https://facebook.github.io/react-native/docs/view.html#accessibilitycomponenttype)
 
@@ -178,7 +178,7 @@ accessibilityComponentType: [
 ]=?
 ```
 
-## accessibilityLiveRegion
+### accessibilityLiveRegion
 
 [RN docs](https://facebook.github.io/react-native/docs/view.html#accessibilityliveregion)
 
@@ -190,7 +190,7 @@ accessibilityLiveRegion: [
 ]=?
 ```
 
-## collapsable
+### collapsable
 
 [RN docs](https://facebook.github.io/react-native/docs/view.html#collapsable)
 
@@ -198,7 +198,7 @@ accessibilityLiveRegion: [
 collapsable: bool=?
 ```
 
-## importantForAccessibility
+### importantForAccessibility
 
 [RN docs](https://facebook.github.io/react-native/docs/view.html#importantforaccessibility)
 
@@ -211,7 +211,7 @@ importantForAccessibility: [
 ]=?
 ```
 
-## needsOffscreenAlphaCompositing
+### needsOffscreenAlphaCompositing
 
 [RN docs](https://facebook.github.io/react-native/docs/view.html#needsoffscreenalphacompositing)
 
@@ -219,7 +219,7 @@ importantForAccessibility: [
 needsOffscreenAlphaCompositing: bool=?
 ```
 
-## renderToHardwareTextureAndroid
+### renderToHardwareTextureAndroid
 
 [RN docs](https://facebook.github.io/react-native/docs/view.html#rendertohardwaretextureandroid)
 
@@ -227,7 +227,7 @@ needsOffscreenAlphaCompositing: bool=?
 renderToHardwareTextureAndroid: bool=?
 ```
 
-## accessibilityTraits
+### accessibilityTraits
 
 [RN docs](https://facebook.github.io/react-native/docs/view.html#accessibilitytraits)
 
@@ -256,7 +256,7 @@ accessibilityTraits:
   )=?
 ```
 
-## accessibilityViewIsModal
+### accessibilityViewIsModal
 
 [RN docs](https://facebook.github.io/react-native/docs/view.html#accessibilityviewismodal)
 
@@ -264,7 +264,7 @@ accessibilityTraits:
 accessibilityViewIsModal: bool=?
 ```
 
-## shouldRasterizeIOS
+### shouldRasterizeIOS
 
 [RN docs](https://facebook.github.io/react-native/docs/view.html#shouldrasterizeios)
 

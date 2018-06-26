@@ -4,27 +4,27 @@ title: SectionList
 sidebar_label: SectionList
 ---
 
-# Props
+## Props
 
-## sections
+### sections
 
 ```reason
 sections: sections('item)
 ```
 
-## renderItem
+### renderItem
 
 ```reason
 renderItem: renderItem('item)
 ```
 
-## keyExtractor
+### keyExtractor
 
 ```reason
 keyExtractor: ('item, int) => string
 ```
 
-## itemSeparatorComponent
+### itemSeparatorComponent
 
 ```reason
 itemSeparatorComponent: separatorComponent('item)=?
@@ -70,25 +70,25 @@ type renderBag('item) = {
 };
 ```
 
-## listEmptyComponent
+### listEmptyComponent
 
 ```reason
 listEmptyComponent: unit => ReasonReact.reactElement=?
 ```
 
-## listFooterComponent
+### listFooterComponent
 
 ```reason
 listFooterComponent: ReasonReact.reactElement=?
 ```
 
-## listHeaderComponent
+### listHeaderComponent
 
 ```reason
 listHeaderComponent: ReasonReact.reactElement=?
 ```
 
-## sectionSeparatorComponent
+### sectionSeparatorComponent
 
 ```reason
 sectionSeparatorComponent: separatorComponent('item)=?
@@ -134,37 +134,37 @@ type renderBag('item) = {
 };
 ```
 
-## inverted
+### inverted
 
 ```reason
 inverted: bool=?
 ```
 
-## extraData
+### extraData
 
 ```reason
 extraData: 'extraData=?
 ```
 
-## initialNumToRender
+### initialNumToRender
 
 ```reason
 initialNumToRender: int=?
 ```
 
-## onEndReached
+### onEndReached
 
 ```reason
 onEndReached: {. "distanceFromEnd": float} => unit=?
 ```
 
-## onEndReachedThreshold
+### onEndReachedThreshold
 
 ```reason
 onEndReachedThreshold: float=?
 ```
 
-## onViewableItemsChanged
+### onViewableItemsChanged
 
 ```reason
 onViewableItemsChanged: {
@@ -187,19 +187,19 @@ type viewToken('item) = {
 };
 ```
 
-## onRefresh
+### onRefresh
 
 ```reason
 onRefresh: unit => unit=?
 ```
 
-## refreshing
+### refreshing
 
 ```reason
 refreshing: bool=?
 ```
 
-## renderSectionHeader
+### renderSectionHeader
 
 ```reason
 renderSectionHeader: renderAccessoryView('item)=?
@@ -235,7 +235,7 @@ and section('item) = {
 };
 ```
 
-## renderSectionFooter
+### renderSectionFooter
 
 ```reason
 renderSectionFooter: renderAccessoryView('item)=?
@@ -271,13 +271,13 @@ and section('item) = {
 };
 ```
 
-## stickySectionHeadersEnabled
+### stickySectionHeadersEnabled
 
 ```reason
 stickySectionHeadersEnabled: bool=?
 ```
 
-## keyboardDismissMode
+### keyboardDismissMode
 
 ```reason
 keyboardDismissMode: [
@@ -287,7 +287,7 @@ keyboardDismissMode: [
 ]=?
 ```
 
-## keyboardShouldPersistTaps
+### keyboardShouldPersistTaps
 
 ```reason
 keyboardShouldPersistTaps: [
@@ -297,19 +297,19 @@ keyboardShouldPersistTaps: [
 ]=?
 ```
 
-## showsHorizontalScrollIndicator
+### showsHorizontalScrollIndicator
 
 ```reason
 showsHorizontalScrollIndicator: bool=?
 ```
 
-## showsVerticalScrollIndicator
+### showsVerticalScrollIndicator
 
 ```reason
 showsVerticalScrollIndicator: bool=?
 ```
 
-## getItemLayout
+### getItemLayout
 
 ```reason
 getItemLayout: (option(array('item)), int) => {

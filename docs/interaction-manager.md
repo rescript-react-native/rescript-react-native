@@ -1,9 +1,11 @@
 ---
 id: interaction-manager
 title: InteractionManager
-sidebar_label: InteractionManager
+sidebar_label: InteractionManager (x)
 ---
 
 Missing bindings
 
-# Props
+## Example of use
+
+## Function parameters
