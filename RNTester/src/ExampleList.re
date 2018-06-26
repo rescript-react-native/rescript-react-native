@@ -46,6 +46,8 @@ module TouchableNativeFeedback = MakeExample(TouchableNativeFeedbackExample);
 
 module ProgressBarAndroid = MakeExample(ProgressBarAndroidExample);
 
+module ViewPagerAndroid = MakeExample(ViewPagerAndroid);
+
 let components: array(item) = [|
   Button.item("ButtonExample"),
   View.item("ViewExample"),
@@ -56,4 +58,5 @@ let components: array(item) = [|
   DrawerLayoutAndroid.item("DrawerLayoutAndroid"),
   TouchableNativeFeedback.item("TouchableNativeFeedback"),
   ProgressBarAndroid.item("ProgressBarAndroid"),
+  ViewPagerAndroid.item("ViewPagerAndroid"),
 |];
