@@ -2,25 +2,23 @@ module Animation = {
   type t;
   type endResult = {. "finished": bool};
   type endCallback = endResult => unit;
-};
-
-module type Value = {type t; type rawJsType;};
-
-type calculated;
-type regular;
-type value('a);
-type valueXY('a);
-
-module CompositeAnimation = {
-  type t;
   [@bs.send]
-  external _start : (t, Js.undefined(Animation.endCallback)) => unit =
-    "start";
+  external _start : (t, Js.undefined(endCallback)) => unit = "start";
   let start = (t, ~callback=?, ()) =>
     _start(t, Js.Undefined.fromOption(callback));
   [@bs.send] external stop : t => unit = "";
   [@bs.send] external reset : t => unit = "";
 };
+
+module type Value = {type t; type rawJsType;};
+
+type calculated;
+
+type regular;
+
+type value('a);
+
+type valueXY('a);
 
 module ValueAnimations = (Val: Value) => {
   module Decay = {
@@ -38,7 +36,7 @@ module ValueAnimations = (Val: Value) => {
       config =
       "";
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external _decay : (Val.t, config) => CompositeAnimation.t = "decay";
+    external _decay : (Val.t, config) => Animation.t = "decay";
     let animate =
         (
           ~value,
@@ -90,7 +88,7 @@ module ValueAnimations = (Val: Value) => {
     external toValueRaw : Val.rawJsType => toValue = "%identity";
     external toValueAnimated : Val.t => toValue = "%identity";
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external _spring : (Val.t, config) => CompositeAnimation.t = "spring";
+    external _spring : (Val.t, config) => Animation.t = "spring";
     let animate =
         (
           ~value,
@@ -160,7 +158,7 @@ module ValueAnimations = (Val: Value) => {
     external toValueRaw : Val.rawJsType => toValue = "%identity";
     external toValueAnimated : Val.t => toValue = "%identity";
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external _timing : (Val.t, config) => CompositeAnimation.t = "timing";
+    external _timing : (Val.t, config) => Animation.t = "timing";
     let animate =
         (
           ~value,
@@ -294,10 +292,13 @@ module Value = {
     "animate";
   [@bs.send] external stopTracking : t => unit = "stopTracking";
   [@bs.send] external track : t => unit = "track";
-  include ValueAnimations({
-    type t = value(regular);
-    type rawJsType = float;
-  });
+  include
+    ValueAnimations(
+      {
+        type t = value(regular);
+        type rawJsType = float;
+      },
+    );
   include ValueOperations;
   let interpolate = Interpolation.interpolate;
 };
@@ -342,33 +343,31 @@ module ValueXY = {
     "getTranslateTransform";
   [@bs.get] external getX : t => Value.t = "x";
   [@bs.get] external getY : t => Value.t = "y";
-  include ValueAnimations({
-    type t = valueXY(regular);
-    type rawJsType = jsValue;
-  });
+  include
+    ValueAnimations(
+      {
+        type t = valueXY(regular);
+        type rawJsType = jsValue;
+      },
+    );
 };
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external delay : float => CompositeAnimation.t = "";
+external delay : float => Animation.t = "";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external sequence : array(CompositeAnimation.t) => CompositeAnimation.t = "";
+external sequence : array(Animation.t) => Animation.t = "";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
 external parallel :
-  (array(CompositeAnimation.t), {. "stopTogether": bool}) =>
-  CompositeAnimation.t =
+  (array(Animation.t), {. "stopTogether": bool}) => Animation.t =
   "";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external stagger :
-  (float, array(CompositeAnimation.t)) => CompositeAnimation.t =
-  "";
+external stagger : (float, array(Animation.t)) => Animation.t = "";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external _loop :
-  (CompositeAnimation.t, {. "iterations": int}) => CompositeAnimation.t =
-  "loop";
+external _loop : (Animation.t, {. "iterations": int}) => Animation.t = "loop";
 
 let loop = (~iterations=(-1), ~animation, ()) =>
   _loop(animation, {"iterations": iterations});
@@ -383,6 +382,19 @@ external createAnimatedComponent :
   ReasonReact.reactClass => ReasonReact.reactClass =
   "";
 
+let timing = Value.Timing.animate;
+
+let spring = Value.Spring.animate;
+
+let decay = Value.Decay.animate;
+
+include Animation;
+
+/* Legacy, to prevent breaking changes */
+module Easing = Easing;
+
+module CompositeAnimation = Animation;
+
 module Timing = Value.Timing;
 
 module TimingXY = ValueXY.Timing;
@@ -394,5 +406,3 @@ module SpringXY = ValueXY.Spring;
 module Decay = Value.Decay;
 
 module DecayXY = ValueXY.Decay;
-
-module Easing = Easing;

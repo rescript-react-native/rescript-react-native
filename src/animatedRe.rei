@@ -1,18 +1,17 @@
 type calculated;
+
 type regular;
+
 type value('a);
+
 type valueXY('a);
 
 module Animation: {
   type t;
   type endResult = {. "finished": bool};
   type endCallback = endResult => unit;
-};
-
-module CompositeAnimation: {
-  type t;
   let stop: t => unit;
-  let start: (t, ~callback: Animation.endCallback=?, unit) => unit;
+  let start: (t, ~callback: endCallback=?, unit) => unit;
   let reset: t => unit;
 };
 
@@ -80,7 +79,7 @@ module Value: {
         ~iterations: int=?,
         unit
       ) =>
-      CompositeAnimation.t;
+      Animation.t;
   };
   module Spring: {
     type config;
@@ -105,7 +104,7 @@ module Value: {
         ~iterations: int=?,
         unit
       ) =>
-      CompositeAnimation.t;
+      Animation.t;
   };
   module Decay: {
     type config;
@@ -120,7 +119,7 @@ module Value: {
         ~iterations: int=?,
         unit
       ) =>
-      CompositeAnimation.t;
+      Animation.t;
   };
   let add: (value('a), value('b)) => value(calculated);
   let divide: (value('a), value('b)) => value(calculated);
@@ -176,7 +175,7 @@ module ValueXY: {
         ~iterations: int=?,
         unit
       ) =>
-      CompositeAnimation.t;
+      Animation.t;
   };
   module Spring: {
     type config;
@@ -201,7 +200,7 @@ module ValueXY: {
         ~iterations: int=?,
         unit
       ) =>
-      CompositeAnimation.t;
+      Animation.t;
   };
   module Decay: {
     type config;
@@ -216,7 +215,7 @@ module ValueXY: {
         ~iterations: int=?,
         unit
       ) =>
-      CompositeAnimation.t;
+      Animation.t;
   };
 };
 
@@ -224,22 +223,76 @@ type animatedEvent;
 
 let event: (array('a), 'b) => animatedEvent;
 
-let delay: float => CompositeAnimation.t;
+let delay: float => Animation.t;
 
-let sequence: array(CompositeAnimation.t) => CompositeAnimation.t;
+let sequence: array(Animation.t) => Animation.t;
 
-let parallel:
-  (array(CompositeAnimation.t), {. "stopTogether": bool}) =>
-  CompositeAnimation.t;
+let parallel: (array(Animation.t), {. "stopTogether": bool}) => Animation.t;
 
-let stagger: (float, array(CompositeAnimation.t)) => CompositeAnimation.t;
+let stagger: (float, array(Animation.t)) => Animation.t;
 
-let loop:
-  (~iterations: int=?, ~animation: CompositeAnimation.t, unit) =>
-  CompositeAnimation.t;
+let loop: (~iterations: int=?, ~animation: Animation.t, unit) => Animation.t;
 
 let createAnimatedComponent: ReasonReact.reactClass => ReasonReact.reactClass;
 
+let timing:
+  (
+    ~value: value(regular),
+    ~toValue: [ | `raw(float) | `animated(value(regular))],
+    ~easing: Easing.t=?,
+    ~duration: float=?,
+    ~delay: float=?,
+    ~isInteraction: bool=?,
+    ~useNativeDriver: bool=?,
+    ~onComplete: Animation.endCallback=?,
+    ~iterations: int=?,
+    unit
+  ) =>
+  Animation.t;
+
+let spring:
+  (
+    ~value: value(regular),
+    ~toValue: [ | `raw(float) | `animated(value(regular))],
+    ~restDisplacementThreshold: float=?,
+    ~overshootClamping: bool=?,
+    ~restSpeedThreshold: float=?,
+    ~velocity: float=?,
+    ~bounciness: float=?,
+    ~speed: float=?,
+    ~tension: float=?,
+    ~friction: float=?,
+    ~stiffness: float=?,
+    ~mass: float=?,
+    ~damping: float=?,
+    ~isInteraction: bool=?,
+    ~useNativeDriver: bool=?,
+    ~onComplete: Animation.endCallback=?,
+    ~iterations: int=?,
+    unit
+  ) =>
+  Animation.t;
+
+let decay:
+  (
+    ~value: value(regular),
+    ~velocity: float,
+    ~deceleration: float=?,
+    ~isInteraction: bool=?,
+    ~useNativeDriver: bool=?,
+    ~onComplete: Animation.endCallback=?,
+    ~iterations: int=?,
+    unit
+  ) =>
+  Animation.t;
+
+let stop: Animation.t => unit;
+
+let start: (Animation.t, ~callback: Animation.endCallback=?, unit) => unit;
+
+let reset: Animation.t => unit;
+
+/** Legacy interface */
 module Timing = Value.Timing;
 
 module TimingXY = ValueXY.Timing;
@@ -253,3 +306,5 @@ module Decay = Value.Decay;
 module DecayXY = ValueXY.Decay;
 
 module Easing = Easing;
+
+module CompositeAnimation = Animation;
