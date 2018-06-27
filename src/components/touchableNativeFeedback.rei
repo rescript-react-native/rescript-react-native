@@ -1,43 +1,41 @@
 type t;
-
 let selectableBackground: unit => t;
 let selectableBackgroundBorderless: unit => t;
 let canUseNativeForeground: unit => t;
 let ripple: (string, bool) => t;
-
 let make:
   (
-    ~accessible: string=?,
-    ~accessibilityLabel: [
-                           | `none
-                           | `button
-                           | `radiobutton_checked
-                           | `radiobutton_unchecked
-                         ]
-                           =?,
-    ~accessibilityComponentType: list(
-                                   [
-                                     | `none
-                                     | `button
-                                     | `link
-                                     | `header
-                                     | `search
-                                     | `image
-                                     | `selected
-                                     | `plays
-                                     | `key
-                                     | `text
-                                     | `summary
-                                     | `disabled
-                                     | `frequentUpdates
-                                     | `startsMedia
-                                     | `adjustable
-                                     | `allowsDirectInteraction
-                                     | `pageTurn
-                                   ],
-                                 )
+    ~accessible: bool=?,
+    ~accessibilityLabel: string=?,
+    ~accessibilityComponentType: [
+                                   | `none
+                                   | `button
+                                   | `radiobutton_checked
+                                   | `radiobutton_unchecked
+                                 ]
                                    =?,
-    ~accessibilityTraits: int=?,
+    ~accessibilityTraits: list(
+                            [
+                              | `none
+                              | `button
+                              | `link
+                              | `header
+                              | `search
+                              | `image
+                              | `selected
+                              | `plays
+                              | `key
+                              | `text
+                              | `summary
+                              | `disabled
+                              | `frequentUpdates
+                              | `startsMedia
+                              | `adjustable
+                              | `allowsDirectInteraction
+                              | `pageTurn
+                            ],
+                          )
+                            =?,
     ~delayLongPress: int=?,
     ~delayPressIn: int=?,
     ~delayPressOut: int=?,
@@ -49,13 +47,13 @@ let make:
     ~onPressIn: unit => unit=?,
     ~onPressOut: unit => unit=?,
     ~pressRetentionOffset: Types.insets=?,
-    ~background: t=?,
-    ~useForeground: bool=?,
     ~style: Style.t=?,
+    ~background: bool=?,
+    ~useForeground: bool=?,
     array(ReasonReact.reactElement)
   ) =>
   ReasonReact.component(
     ReasonReact.stateless,
     ReasonReact.noRetainedProps,
-    ReasonReact.actionless,
+    unit,
   );

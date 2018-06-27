@@ -1,5 +1,5 @@
 [@bs.module "react-native"]
-external component : ReasonReact.reactClass = "TouchableNativeFeedback";
+external view : ReasonReact.reactClass = "TouchableNativeFeedback";
 
 type t;
 
@@ -33,34 +33,73 @@ let make =
       ~onPressIn=?,
       ~onPressOut=?,
       ~pressRetentionOffset=?,
+      ~style=?,
       ~background=?,
       ~useForeground=?,
-      ~style=?,
     ) =>
   ReasonReact.wrapJsForReason(
-    ~reactClass=component,
+    ~reactClass=view,
     ~props=
       Js.Undefined.(
         {
-          "accessible": fromOption(accessible),
+          "accessible": fromOption(UtilsRN.optBoolToOptJsBoolean(accessible)),
           "accessibilityLabel": fromOption(accessibilityLabel),
-          "accessibilityComponentType":
-            fromOption(accessibilityComponentType),
-          "accessibilityTraits": fromOption(accessibilityTraits),
           "delayLongPress": fromOption(delayLongPress),
           "delayPressIn": fromOption(delayPressIn),
           "delayPressOut": fromOption(delayPressOut),
-          "disabled": fromOption(disabled),
+          "disabled": fromOption(UtilsRN.optBoolToOptJsBoolean(disabled)),
           "hitSlop": fromOption(hitSlop),
           "onLayout": fromOption(onLayout),
           "onLongPress": fromOption(onLongPress),
           "onPress": fromOption(onPress),
+          "background": fromOption(background),
           "onPressIn": fromOption(onPressIn),
           "onPressOut": fromOption(onPressOut),
           "pressRetentionOffset": fromOption(pressRetentionOffset),
-          "background": fromOption(background),
-          "useForeground": fromOption(useForeground),
           "style": fromOption(style),
+          "useForeground":
+            fromOption(UtilsRN.optBoolToOptJsBoolean(useForeground)),
+          "accessibilityComponentType":
+            fromOption(
+              UtilsRN.option_map(
+                x =>
+                  switch (x) {
+                  | `none => "none"
+                  | `button => "button"
+                  | `radiobutton_checked => "radiobutton_checked-none"
+                  | `radiobutton_unchecked => "radiobutton_unchecked"
+                  },
+                accessibilityComponentType,
+              ),
+            ),
+          "accessibilityTraits":
+            fromOption(
+              UtilsRN.option_map(
+                traits => {
+                  let to_string =
+                    fun
+                    | `none => "none"
+                    | `button => "button"
+                    | `link => "link"
+                    | `header => "header"
+                    | `search => "search"
+                    | `image => "image"
+                    | `selected => "selected"
+                    | `plays => "plays"
+                    | `key => "key"
+                    | `text => "text"
+                    | `summary => "summary"
+                    | `disabled => "disabled"
+                    | `frequentUpdates => "frequentUpdates"
+                    | `startsMedia => "startsMedia"
+                    | `adjustable => "adjustable"
+                    | `allowsDirectInteraction => "allowsDirectInteraction"
+                    | `pageTurn => "pageTurn";
+                  traits |> List.map(to_string) |> Array.of_list;
+                },
+                accessibilityTraits,
+              ),
+            ),
         }
       ),
   );
