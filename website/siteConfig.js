@@ -29,6 +29,12 @@ const siteConfig = {
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
 
+  algolia: {
+    apiKey: '58b6347e69ebfa1b85ad384e83d2808a',
+    indexName: 'rebolt',
+    algoliaOptions: {} // Optional, if provided by Algolia
+  },
+
   // Used for publishing and more
   projectName: 'rebolt',
   organizationName: 'callstack',
