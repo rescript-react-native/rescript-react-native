@@ -1,7 +1,5 @@
 ---
-id: image-store
-title: ImageStore
-sidebar_label: ImageStore (x)
+title: ImageStore (x)
 ---
 
 Missing bindings

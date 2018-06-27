@@ -1,7 +1,5 @@
 ---
-id: text-input
 title: TextInput
-sidebar_label: TextInput
 ---
 
 ## Props

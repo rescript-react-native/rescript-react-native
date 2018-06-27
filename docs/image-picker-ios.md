@@ -1,7 +1,5 @@
 ---
-id: image-picker-ios
-title: ImagePickerIOS
-sidebar_label: ImagePickerIOS (x)
+title: ImagePickerIOS (x)
 ---
 
 Missing bindings

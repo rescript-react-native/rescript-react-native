@@ -1,7 +1,5 @@
 ---
-id: progress-bar-android
 title: ProgressBarAndroid
-sidebar_label: ProgressBarAndroid
 ---
 
 ## Example of use

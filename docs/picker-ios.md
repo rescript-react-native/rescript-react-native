@@ -1,7 +1,5 @@
 ---
-id: picker-ios
 title: PickerIOS
-sidebar_label: PickerIOS
 ---
 
 ## Example of use

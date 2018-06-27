@@ -1,7 +1,5 @@
 ---
-id: navigator-ios
-title: NavigatorIOS
-sidebar_label: NavigatorIOS (x)
+title: NavigatorIOS (x)
 ---
 
 ## Example of use

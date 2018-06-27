@@ -1,7 +1,5 @@
 ---
-id: button
 title: Button
-sidebar_label: Button
 ---
 
 ## Example of use

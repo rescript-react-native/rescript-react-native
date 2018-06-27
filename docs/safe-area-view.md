@@ -1,7 +1,5 @@
 ---
-id: safe-area-view
 title: SafeAreaView
-sidebar_label: SafeAreaView
 ---
 
 ## Props

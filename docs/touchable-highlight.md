@@ -1,7 +1,5 @@
 ---
-id: touchable-highlight
 title: TouchableHighlight
-sidebar_label: TouchableHighlight
 ---
 
 ## Props

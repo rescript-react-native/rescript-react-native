@@ -1,7 +1,5 @@
 ---
-id: web-view
 title: WebView
-sidebar_label: WebView
 ---
 
 ## Props

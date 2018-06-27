@@ -1,7 +1,5 @@
 ---
-id: clipboard
 title: Clipboard
-sidebar_label: Clipboard
 ---
 
 ## Example of use

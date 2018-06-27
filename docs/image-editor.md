@@ -1,7 +1,5 @@
 ---
-id: image-editor
-title: ImageEditor
-sidebar_label: ImageEditor (x)
+title: ImageEditor (x)
 ---
 
 Missing bindings

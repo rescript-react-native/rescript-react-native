@@ -1,7 +1,5 @@
 ---
-id: touchable-opacity
 title: TouchableOpacity
-sidebar_label: TouchableOpacity
 ---
 
 ## Props

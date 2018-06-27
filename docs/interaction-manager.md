@@ -1,7 +1,5 @@
 ---
-id: interaction-manager
-title: InteractionManager
-sidebar_label: InteractionManager (x)
+title: InteractionManager (x)
 ---
 
 Missing bindings

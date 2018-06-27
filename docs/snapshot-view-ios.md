@@ -1,7 +1,5 @@
 ---
-id: snapshot-view-ios
 title: SnapshotViewIOS
-sidebar_label: SnapshotViewIOS
 ---
 
 ## Props

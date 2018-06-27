@@ -1,7 +1,5 @@
 ---
-id: status-bar
 title: StatusBar
-sidebar_label: StatusBar
 ---
 
 ## Props

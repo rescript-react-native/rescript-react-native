@@ -1,7 +1,5 @@
 ---
-id: push-notifications-ios
-title: PushNotificationsIOS
-sidebar_label: PushNotificationsIOS (x)
+title: PushNotificationsIOS (x)
 ---
 
 Missing bindings

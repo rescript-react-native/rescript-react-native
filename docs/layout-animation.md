@@ -1,7 +1,5 @@
 ---
-id: layout-animation
-title: LayoutAnimation
-sidebar_label: LayoutAnimation (x)
+title: LayoutAnimation (x)
 ---
 
 Missing bindings

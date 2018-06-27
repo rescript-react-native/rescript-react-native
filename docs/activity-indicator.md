@@ -1,7 +1,5 @@
 ---
-id: activity-indicator
 title: ActivityIndicator
-sidebar_label: ActivityIndicator
 ---
 
 ## Example of use

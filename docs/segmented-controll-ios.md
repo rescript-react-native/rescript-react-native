@@ -1,7 +1,5 @@
 ---
-id: segmented-controll-ios
 title: SegmentedControllIOS
-sidebar_label: SegmentedControllIOS
 ---
 
 ## Props

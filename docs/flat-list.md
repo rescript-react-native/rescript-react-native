@@ -1,7 +1,5 @@
 ---
-id: flat-list
 title: FlatList
-sidebar_label: FlatList
 ---
 
 ## Example of use

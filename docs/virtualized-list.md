@@ -1,7 +1,5 @@
 ---
-id: virtualized-list
-title: VirtualizedList
-sidebar_label: VirtualizedList (x)
+title: VirtualizedList (x)
 ---
 
 ## Example of use

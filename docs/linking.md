@@ -1,7 +1,5 @@
 ---
-id: linking
-title: Linking
-sidebar_label: Linking (x)
+title: Linking (x)
 ---
 
 Missing bindings

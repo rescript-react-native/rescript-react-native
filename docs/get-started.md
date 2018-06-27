@@ -1,7 +1,5 @@
 ---
-id: get-started
 title: Quick start
-sidebar_label: Quick Start
 ---
 
 _Note: If you are currently using [`bs-react-native`](https://github.com/reasonml-community/bs-react-native), these docs might also be useful for you; but Rebolt might have slight differences, so please be aware of that._
@@ -101,7 +99,7 @@ import { app } from './lib/js/src/App.js';
 import React from 'react';
 import { AppRegistry } from 'react-native';
 
-AppRegistry.registerComponent("MyReasonReactNativeApp", () => app);
+AppRegistry.registerComponent('MyReasonReactNativeApp', () => app);
 ```
 
 In the first line we are referencing `app`, but it is not the one from `src/App.re`, this is because we are in the JavaScript world now, and we need to use compiled version of what we've written in Reason.
@@ -128,11 +126,10 @@ import { app } from './src/App.js';
 import React from 'react';
 import { AppRegistry } from 'react-native';
 
-AppRegistry.registerComponent("MyReasonReactNativeApp", () => app);
+AppRegistry.registerComponent('MyReasonReactNativeApp', () => app);
 ```
 
-7. You can run your app now:
+7.  You can run your app now:
 
 Run in one tab of your terminal `yarn run watch` to compile the ReasonML code,
 and in the other start the React Native app in the simulator `react-native run-ios`
-

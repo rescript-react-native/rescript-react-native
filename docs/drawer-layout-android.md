@@ -1,7 +1,5 @@
 ---
-id: drawer-layout-android
 title: DrawerLayoutAndroid
-sidebar_label: DrawerLayoutAndroid
 ---
 
 ## Example of use
@@ -28,6 +26,7 @@ let make = _children => {
 ## Props
 
 ### renderNavigationView
+
 The navigation view that will be rendered inside Drawer.
 
 [RN docs](https://facebook.github.io/react-native/docs/drawerlayoutandroid.html#rendernavigationview)
@@ -37,6 +36,7 @@ renderNavigationView: unit => ReasonReact.reactElement
 ```
 
 ### drawerPosition
+
 Specifies the side of the screen from which the drawer will slide in.
 
 [RN docs](https://facebook.github.io/react-native/docs/drawerlayoutandroid.html#drawerposition)
@@ -46,6 +46,7 @@ drawerPosition: [ | `left | `right]=?,
 ```
 
 ### onDrawerClose
+
 Function called on drawer close
 
 [RN docs](https://facebook.github.io/react-native/docs/drawerlayoutandroid.html#ondrawerclose)
@@ -55,6 +56,7 @@ onDrawerClose: unit => unit=?
 ```
 
 ### drawerWidth
+
 Specifies the width of the drawer.
 
 [RN docs](https://facebook.github.io/react-native/docs/drawerlayoutandroid.html#drawerwidth)
@@ -64,9 +66,11 @@ drawerWidth: int=?
 ```
 
 ### keyboardDismissMode
+
 Specifies the width of the drawer. I accepts 2 variants:
- - `` `none`` *(default)* - drags do not dismiss the keyboard
- - `` `onDrag`` - the keyboard is dismissed when a drag begins
+
+- `` `none `` _(default)_ - drags do not dismiss the keyboard
+- `` `onDrag `` - the keyboard is dismissed when a drag begins
 
 [RN docs](https://facebook.github.io/react-native/docs/drawerlayoutandroid.html#keyboarddismissmode)
 
@@ -75,10 +79,12 @@ keyboardDismissMode: [ | `none | `onDrag]=?
 ```
 
 ### drawerLockMode
+
 Specifies the lock mode of the drawer. Drawer can be in 3 states:
- - `` `unlocked`` *(default)* - drawer will respond normally to touch gestures
- - `` `lockedClosed`` - drawer will stay closed and not respond to gestures
- - `` `lockedOpen`` - drawer will stay opened and not respond to gestures
+
+- `` `unlocked `` _(default)_ - drawer will respond normally to touch gestures
+- `` `lockedClosed `` - drawer will stay closed and not respond to gestures
+- `` `lockedOpen `` - drawer will stay opened and not respond to gestures
 
 [RN docs](https://facebook.github.io/react-native/docs/drawerlayoutandroid.html#drawerlockmode)
 
@@ -87,6 +93,7 @@ drawerLockMode: [ | `unlocked | `lockedClosed | `lockedOpen]=?
 ```
 
 ### onDrawerOpen
+
 Function called on drawer open.
 
 [RN docs](https://facebook.github.io/react-native/docs/drawerlayoutandroid.html#ondraweropen)
@@ -96,6 +103,7 @@ onDrawerOpen: unit => unit=?
 ```
 
 ### onDrawerSlide
+
 Function called whenever there is an interaction with the navigation view.
 
 [RN docs](https://facebook.github.io/react-native/docs/drawerlayoutandroid.html#ondrawerslide)
@@ -105,6 +113,7 @@ onDrawerSlide: unit => unit=?
 ```
 
 ### onDrawerStateChanged
+
 Function called when the drawer state has changed.
 
 [RN docs](https://facebook.github.io/react-native/docs/drawerlayoutandroid.html#ondrawerstatechanged)
@@ -114,6 +123,7 @@ onDrawerStateChanged: string => unit=?
 ```
 
 ### drawerBackgroundColor
+
 Background color of the Drawer.
 
 [RN docs](https://facebook.github.io/react-native/docs/drawerlayoutandroid.html#drawerbackgroundcolor)
@@ -123,6 +133,7 @@ drawerBackgroundColor: string=?
 ```
 
 ### statusBarBackgroundColor
+
 Make the drawer take the entire screen and draw the background of the status bar to allow it to open over the status bar.
 
 [RN docs](https://facebook.github.io/react-native/docs/drawerlayoutandroid.html#statusbarbackgroundcolor)
@@ -132,14 +143,18 @@ statusBarBackgroundColor: string=?
 ```
 
 ## Methods
+
 ### openDrawer()
+
 Opens the drawer.
 
 ### closeDrawer()
+
 Closes the drawer.
 
 ### Example with methods
-To use `openDrawer` and `closeDrawer` methods you have to call them on `DrawerLayoutAndroid` `ref`.  See [ReasonReact docs](https://reasonml.github.io/reason-react/docs/en/react-ref.html) to learn more about using `ref`s.
+
+To use `openDrawer` and `closeDrawer` methods you have to call them on `DrawerLayoutAndroid` `ref`. See [ReasonReact docs](https://reasonml.github.io/reason-react/docs/en/react-ref.html) to learn more about using `ref`s.
 
 ```reason
 type action;
@@ -178,5 +193,3 @@ let make = _children => {
     </DrawerLayoutAndroid>,
 };
 ```
-
-

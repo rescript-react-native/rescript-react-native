@@ -1,7 +1,5 @@
 ---
-id: systrace
-title: Systrace
-sidebar_label: Systrace (x)
+title: Systrace (x)
 ---
 
 Missing bindings

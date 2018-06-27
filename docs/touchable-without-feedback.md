@@ -1,7 +1,5 @@
 ---
-id: touchable-without-feedback
 title: TouchableWithoutFeedback
-sidebar_label: TouchableWithoutFeedback
 ---
 
 ## Props

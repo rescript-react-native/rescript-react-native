@@ -1,7 +1,5 @@
 ---
-id: tab-bar-ios
 title: TabBarIOS
-sidebar_label: TabBarIOS
 ---
 
 ## Props

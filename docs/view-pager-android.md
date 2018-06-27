@@ -1,7 +1,5 @@
 ---
-id: view-pager-android
 title: ViewPagerAndroid
-sidebar_label: ViewPagerAndroid
 ---
 
 ## Example of use

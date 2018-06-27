@@ -1,7 +1,5 @@
 ---
-id: image
 title: Image
-sidebar_label: Image
 ---
 
 ## Example of use

@@ -1,7 +1,5 @@
 ---
-id: settings
-title: Settings
-sidebar_label: Settings (x)
+title: Settings (x)
 ---
 
 Missing bindings

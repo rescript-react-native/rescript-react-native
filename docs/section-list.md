@@ -1,7 +1,5 @@
 ---
-id: section-list
 title: SectionList
-sidebar_label: SectionList
 ---
 
 ## Props

@@ -1,7 +1,5 @@
 ---
-id: alert
 title: Alert
-sidebar_label: Alert
 ---
 
 ## Example of use

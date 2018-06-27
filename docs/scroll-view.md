@@ -1,7 +1,5 @@
 ---
-id: scroll-view
 title: ScrollView
-sidebar_label: ScrollView
 ---
 
 ## Props

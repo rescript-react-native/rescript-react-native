@@ -1,7 +1,5 @@
 ---
-id: toast-android
-title: ToastAndroid
-sidebar_label: ToastAndroid (x)
+title: ToastAndroid (x)
 ---
 
 Missing bindings

@@ -1,7 +1,5 @@
 ---
-id: app-registry
-title: AppRegistry
-sidebar_label: AppRegistry (x)
+title: AppRegistry (x)
 ---
 
 This component is missing most of the bindings

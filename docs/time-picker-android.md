@@ -1,7 +1,5 @@
 ---
-id: time-picker-android
-title: TimePickerAndroid
-sidebar_label: TimePickerAndroid (x)
+title: TimePickerAndroid (x)
 ---
 
 Missing bindings

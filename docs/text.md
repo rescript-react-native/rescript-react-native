@@ -1,7 +1,5 @@
 ---
-id: text
 title: Text
-sidebar_label: Text
 ---
 
 ## Props

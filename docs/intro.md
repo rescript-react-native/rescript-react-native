@@ -1,7 +1,5 @@
 ---
-id: intro
 title: What is Rebolt?
-sidebar_label: What is Rebolt?
 ---
 
 _Currently this is a fork of [`bs-react-native`](https://github.com/reasonml-community/bs-react-native)_

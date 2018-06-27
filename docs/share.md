@@ -1,7 +1,5 @@
 ---
-id: share
-title: Share
-sidebar_label: Share (x)
+title: Share (x)
 ---
 
 Missing bindings

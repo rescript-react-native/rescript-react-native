@@ -1,7 +1,5 @@
 ---
-id: masked-view-ios
-title: MaskedViewIOS
-sidebar_label: MaskedViewIOS (x)
+title: MaskedViewIOS (x)
 ---
 
 ## Example of use

@@ -1,7 +1,5 @@
 ---
-id: list-view-data-source
-title: ListViewDataSource
-sidebar_label: ListViewDataSource (x)
+title: ListViewDataSource (x)
 ---
 
 ## Example of use

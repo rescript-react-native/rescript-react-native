@@ -1,7 +1,5 @@
 ---
-id: refresh-control
 title: RefreshControl
-sidebar_label: RefreshControl
 ---
 
 ## Props

@@ -1,7 +1,5 @@
 ---
-id: modal
 title: Modal
-sidebar_label: Modal
 ---
 
 ## Example of use

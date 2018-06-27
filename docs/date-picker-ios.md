@@ -1,7 +1,5 @@
 ---
-id: date-picker-ios
 title: DatePickerIOS
-sidebar_label: DatePickerIOS
 ---
 
 ## Example of use

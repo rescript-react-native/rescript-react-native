@@ -1,7 +1,5 @@
 ---
-id: progress-view-ios
 title: ProgressViewIOS
-sidebar_label: ProgressViewIOS
 ---
 
 ## Example of use

@@ -1,7 +1,5 @@
 ---
-id: accessibility-info
-title: AccessibilityInfo
-sidebar_label: AccessibilityInfo (x)
+title: AccessibilityInfo (x)
 ---
 
 Missing bindings
