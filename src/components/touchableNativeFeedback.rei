@@ -1,37 +1,39 @@
 type t;
+
 let selectableBackground: unit => t;
 let selectableBackgroundBorderless: unit => t;
 let canUseNativeForeground: unit => t;
 let ripple: (string, bool) => t;
+
 let make:
   (
     ~accessible: string=?,
     ~accessibilityLabel: [
-                           | `button
                            | `none
+                           | `button
                            | `radiobutton_checked
                            | `radiobutton_unchecked
                          ]
                            =?,
     ~accessibilityComponentType: list(
                                    [
-                                     | `adjustable
-                                     | `allowsDirectInteraction
+                                     | `none
                                      | `button
+                                     | `link
+                                     | `header
+                                     | `search
+                                     | `image
+                                     | `selected
+                                     | `plays
+                                     | `key
+                                     | `text
+                                     | `summary
                                      | `disabled
                                      | `frequentUpdates
-                                     | `header
-                                     | `image
-                                     | `key
-                                     | `link
-                                     | `none
-                                     | `pageTurn
-                                     | `plays
-                                     | `search
-                                     | `selected
                                      | `startsMedia
-                                     | `summary
-                                     | `text
+                                     | `adjustable
+                                     | `allowsDirectInteraction
+                                     | `pageTurn
                                    ],
                                  )
                                    =?,
@@ -40,16 +42,16 @@ let make:
     ~delayPressIn: int=?,
     ~delayPressOut: int=?,
     ~disabled: bool=?,
-    ~hitSlop: Rebolt.Types.insets=?,
-    ~onLayout: Rebolt.RNEvent.NativeLayoutEvent.t => unit=?,
+    ~hitSlop: Types.insets=?,
+    ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
     ~onLongPress: unit => unit=?,
     ~onPress: unit => unit=?,
     ~onPressIn: unit => unit=?,
     ~onPressOut: unit => unit=?,
-    ~pressRetentionOffset: Rebolt.Types.insets=?,
+    ~pressRetentionOffset: Types.insets=?,
     ~background: t=?,
     ~useForeground: bool=?,
-    ~style: Rebolt.Style.t=?,
+    ~style: Style.t=?,
     array(ReasonReact.reactElement)
   ) =>
   ReasonReact.component(
