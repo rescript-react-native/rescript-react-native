@@ -92,7 +92,6 @@ class Footer extends React.Component {
             src={this.props.config.baseUrl + 'img/callstack-logo.png'}
             alt="Callstack"
             width="170"
-            height="45"
           />
         </a>
         <section className="copyright">{this.props.config.copyright}</section>
