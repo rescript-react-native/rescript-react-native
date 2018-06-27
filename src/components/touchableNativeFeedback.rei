@@ -48,7 +48,7 @@ let make:
     ~onPressOut: unit => unit=?,
     ~pressRetentionOffset: Types.insets=?,
     ~style: Style.t=?,
-    ~background: bool=?,
+    ~background: t=?,
     ~useForeground: bool=?,
     array(ReasonReact.reactElement)
   ) =>
