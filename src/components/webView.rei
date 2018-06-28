@@ -1,5 +1,16 @@
 type source;
 
+module EventTypes: {
+  [@bs.deriving abstract]
+  type t = {
+    [@bs.option] url: string,
+    [@bs.option] title: string,
+    [@bs.option] loading: bool,
+    [@bs.option] canGoBack: bool,
+    [@bs.option] canGoForward: bool
+  };
+};
+
 let sourceUri:
   (~uri: string=?, ~method: string=?, ~headers: Js.t('a)=?, ~body: string=?, unit) => source;
 
@@ -40,46 +51,10 @@ let make:
     ~style: Style.t=?,
     ~renderError: unit => ReasonReact.reactElement=?,
     ~renderLoading: unit => ReasonReact.reactElement=?,
-    ~onError: {
-                .
-                "url": option(string),
-                "title": option(string),
-                "loading": option(bool),
-                "canGoBack": option(bool),
-                "canGoForward": option(bool)
-              } =>
-              unit
-                =?,
-    ~onLoad: {
-               .
-               "url": option(string),
-               "title": option(string),
-               "loading": option(bool),
-               "canGoBack": option(bool),
-               "canGoForward": option(bool)
-             } =>
-             unit
-               =?,
-    ~onLoadEnd: {
-                  .
-                  "url": option(string),
-                  "title": option(string),
-                  "loading": option(bool),
-                  "canGoBack": option(bool),
-                  "canGoForward": option(bool)
-                } =>
-                unit
-                  =?,
-    ~onLoadStart: {
-                    .
-                    "url": option(string),
-                    "title": option(string),
-                    "loading": option(bool),
-                    "canGoBack": option(bool),
-                    "canGoForward": option(bool)
-                  } =>
-                  unit
-                    =?,
+    ~onError: EventTypes.t => unit=?,
+    ~onLoad: EventTypes.t => unit=?,
+    ~onLoadEnd: EventTypes.t => unit=?,
+    ~onLoadStart: EventTypes.t => unit=?,
     ~automaticallyAdjustContentInsets: bool=?,
     ~contentInsets: contentInsets=?,
     ~accessibilityLabel: ReasonReact.reactElement=?,
@@ -132,16 +107,7 @@ let make:
     ~injectedJavaScript: string=?,
     ~mediaPlaybackRequiresUserAction: bool=?,
     ~onMessage: RNEvent.NativeEvent.t => unit=?,
-    ~onNavigationStateChange: {
-                                .
-                                "url": option(string),
-                                "title": option(string),
-                                "loading": option(bool),
-                                "canGoBack": option(bool),
-                                "canGoForward": option(bool)
-                              } =>
-                              unit
-                                =?,
+    ~onNavigationStateChange: EventTypes.t => unit=?,
     ~scalesPageToFit: bool=?,
     ~startInLoadingState: bool=?,
     ~domStorageEnabled: bool=?,
