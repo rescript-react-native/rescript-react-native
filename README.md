@@ -1,6 +1,10 @@
 # Rebolt - BuckleScript bindings for React Native (for now™)
 
-[![CircleCI](https://circleci.com/gh/callstackincubator/rebolt.svg?style=svg)](https://circleci.com/gh/callstackincubator/rebolt)
+[![Build Status][build-badge]][build]
+[![Version][version-badge]][package]
+[![MIT License][license-badge]][license]
+[![PRs Welcome][prs-welcome-badge]][prs-welcome]
+[![Chat][chat-badge]][chat]
 
 _First of all we would like to thank ReasonML Community for starting the [`bs-react-native`](https://github.com/reasonml-community/bs-react-native) project, and thanks to its MIT license we can continue exploring our ideas starting on the solid foundation!_
 
@@ -22,3 +26,15 @@ Our plan for the stable v1 is to complete the missing bindings and create as man
 
 In version v2 we would like to do quite a few breaking changes, and this will be the place were we explore different ideas that we have for the new API.
 Think about it as React Native built in Reason.
+
+<!-- badges -->
+[build-badge]: https://img.shields.io/circleci/project/github/callstackincubator/rebolt/master.svg?style=flat-square
+[build]: https://circleci.com/gh/callstackincubator/rebolt
+[version-badge]: https://img.shields.io/npm/v/rebolt.svg?style=flat-square
+[package]: https://www.npmjs.com/package/rebolt
+[license-badge]: https://img.shields.io/npm/l/rebolt.svg?style=flat-square
+[license]: https://opensource.org/licenses/MIT
+[prs-welcome-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
+[prs-welcome]: http://makeapullrequest.com
+[chat-badge]: https://img.shields.io/discord/426714625279524876.svg?style=flat-square&colorB=758ED3
+[chat]: https://discord.gg/zwR2Cdh
