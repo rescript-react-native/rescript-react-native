@@ -1,6 +1,6 @@
 [@bs.module "react-native"] external view : ReasonReact.reactClass = "WebView";
 
-[@bs.deriving abstract] type t = {
+[@bs.deriving abstract] type eventTypes = {
   [@bs.option] url: string,
   [@bs.option] title: string,
   [@bs.option] loading: bool,

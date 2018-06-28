@@ -1,6 +1,6 @@
 type source;
 
-[@bs.deriving abstract] type t = {
+[@bs.deriving abstract] type eventTypes = {
   [@bs.option] url: string,
   [@bs.option] title: string,
   [@bs.option] loading: bool,
@@ -48,10 +48,10 @@ let make:
     ~style: Style.t=?,
     ~renderError: unit => ReasonReact.reactElement=?,
     ~renderLoading: unit => ReasonReact.reactElement=?,
-    ~onError: t => unit=?,
-    ~onLoad: t => unit=?,
-    ~onLoadEnd: t => unit=?,
-    ~onLoadStart: t => unit=?,
+    ~onError: eventTypes => unit=?,
+    ~onLoad: eventTypes => unit=?,
+    ~onLoadEnd: eventTypes => unit=?,
+    ~onLoadStart: eventTypes => unit=?,
     ~automaticallyAdjustContentInsets: bool=?,
     ~contentInsets: contentInsets=?,
     ~accessibilityLabel: ReasonReact.reactElement=?,
@@ -104,7 +104,7 @@ let make:
     ~injectedJavaScript: string=?,
     ~mediaPlaybackRequiresUserAction: bool=?,
     ~onMessage: RNEvent.NativeEvent.t => unit=?,
-    ~onNavigationStateChange: t => unit=?,
+    ~onNavigationStateChange: eventTypes => unit=?,
     ~scalesPageToFit: bool=?,
     ~startInLoadingState: bool=?,
     ~domStorageEnabled: bool=?,
