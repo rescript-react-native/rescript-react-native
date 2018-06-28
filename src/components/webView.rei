@@ -1,11 +1,14 @@
 type source;
 
-[@bs.deriving abstract] type eventTypes = {
-  [@bs.option] url: string,
-  [@bs.option] title: string,
-  [@bs.option] loading: bool,
-  [@bs.option] canGoBack: bool,
-  [@bs.option] canGoForward: bool
+module EventTypes: {
+  [@bs.deriving abstract]
+  type t = {
+    [@bs.option] url: string,
+    [@bs.option] title: string,
+    [@bs.option] loading: bool,
+    [@bs.option] canGoBack: bool,
+    [@bs.option] canGoForward: bool
+  };
 };
 
 let sourceUri:
@@ -48,10 +51,10 @@ let make:
     ~style: Style.t=?,
     ~renderError: unit => ReasonReact.reactElement=?,
     ~renderLoading: unit => ReasonReact.reactElement=?,
-    ~onError: eventTypes => unit=?,
-    ~onLoad: eventTypes => unit=?,
-    ~onLoadEnd: eventTypes => unit=?,
-    ~onLoadStart: eventTypes => unit=?,
+    ~onError: EventTypes.t => unit=?,
+    ~onLoad: EventTypes.t => unit=?,
+    ~onLoadEnd: EventTypes.t => unit=?,
+    ~onLoadStart: EventTypes.t => unit=?,
     ~automaticallyAdjustContentInsets: bool=?,
     ~contentInsets: contentInsets=?,
     ~accessibilityLabel: ReasonReact.reactElement=?,
@@ -104,7 +107,7 @@ let make:
     ~injectedJavaScript: string=?,
     ~mediaPlaybackRequiresUserAction: bool=?,
     ~onMessage: RNEvent.NativeEvent.t => unit=?,
-    ~onNavigationStateChange: eventTypes => unit=?,
+    ~onNavigationStateChange: EventTypes.t => unit=?,
     ~scalesPageToFit: bool=?,
     ~startInLoadingState: bool=?,
     ~domStorageEnabled: bool=?,
