@@ -1,5 +1,13 @@
 [@bs.module "react-native"] external view : ReasonReact.reactClass = "WebView";
 
+[@bs.deriving abstract] type t = {
+  [@bs.option] url: string,
+  [@bs.option] title: string,
+  [@bs.option] loading: bool,
+  [@bs.option] canGoBack: bool,
+  [@bs.option] canGoForward: bool
+};
+
 type iOSLoadRequestEvent = {
   .
   "target": int,
