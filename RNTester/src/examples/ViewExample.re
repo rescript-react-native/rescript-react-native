@@ -53,7 +53,7 @@ module ViewBorderStyleExample = {
                 ])
               )>
               <Text style=(style([fontSize(Float(11.))]))>
-                (ReasonReact.stringToElement("Dashed border style"))
+                (ReasonReact.string("Dashed border style"))
               </Text>
             </View>
             <View
@@ -73,7 +73,7 @@ module ViewBorderStyleExample = {
                 ])
               )>
               <Text style=(style([fontSize(Float(11.))]))>
-                (ReasonReact.stringToElement("Dotted border style"))
+                (ReasonReact.string("Dotted border style"))
               </Text>
             </View>
           </View>
@@ -108,7 +108,7 @@ module ZIndexExample = {
         onPress=(_event => send(UpdateFlippedState(! state.flipped)))>
         <View>
           <Text style=(style([paddingBottom(Pt(10.))]))>
-            (ReasonReact.stringToElement("Tap to flip sorting order"))
+            (ReasonReact.string("Tap to flip sorting order"))
           </Text>
           <View
             style=(
@@ -121,7 +121,7 @@ module ZIndexExample = {
                 ]),
               ])
             )>
-            <Text> (ReasonReact.stringToElement(zIndexStr(0))) </Text>
+            <Text> (ReasonReact.string(zIndexStr(0))) </Text>
           </View>
           <View
             style=(
@@ -134,7 +134,7 @@ module ZIndexExample = {
                 ]),
               ])
             )>
-            <Text> (ReasonReact.stringToElement(zIndexStr(1))) </Text>
+            <Text> (ReasonReact.string(zIndexStr(1))) </Text>
           </View>
           <View
             style=(
@@ -147,7 +147,7 @@ module ZIndexExample = {
                 ]),
               ])
             )>
-            <Text> (ReasonReact.stringToElement(zIndexStr(2))) </Text>
+            <Text> (ReasonReact.string(zIndexStr(2))) </Text>
           </View>
           <View
             style=(
@@ -160,7 +160,7 @@ module ZIndexExample = {
                 ]),
               ])
             )>
-            <Text> (ReasonReact.stringToElement(zIndexStr(3))) </Text>
+            <Text> (ReasonReact.string(zIndexStr(3))) </Text>
           </View>
         </View>
       </TouchableWithoutFeedback>;
@@ -186,7 +186,7 @@ let examples: array(Example.t) =
               style([backgroundColor(String("#527FE4")), padding(Pt(5.))])
             )>
             <Text style=(style([fontSize(Float(11.))]))>
-              (ReasonReact.stringToElement("Blue background"))
+              (ReasonReact.string("Blue background"))
             </Text>
           </View>,
       },
@@ -203,7 +203,7 @@ let examples: array(Example.t) =
               ])
             )>
             <Text style=(style([fontSize(Float(11.))]))>
-              (ReasonReact.stringToElement("5px blue border"))
+              (ReasonReact.string("5px blue border"))
             </Text>
           </View>,
       },
@@ -217,12 +217,12 @@ let examples: array(Example.t) =
             )>
             <View style=(concat([styles##box, style([padding(Pt(5.))])]))>
               <Text style=(style([fontSize(Float(11.))]))>
-                (ReasonReact.stringToElement("5px padding"))
+                (ReasonReact.string("5px padding"))
               </Text>
             </View>
             <View style=(concat([styles##box, style([margin(Pt(5.))])]))>
               <Text style=(style([fontSize(Float(11.))]))>
-                (ReasonReact.stringToElement("5px margin"))
+                (ReasonReact.string("5px margin"))
               </Text>
             </View>
             <View
@@ -237,10 +237,10 @@ let examples: array(Example.t) =
                 ])
               )>
               <Text style=(style([fontSize(Float(11.))]))>
-                (ReasonReact.stringToElement("5px margin and padding,"))
+                (ReasonReact.string("5px margin and padding,"))
               </Text>
               <Text style=(style([fontSize(Float(11.))]))>
-                (ReasonReact.stringToElement("widthAutonomous=true"))
+                (ReasonReact.string("widthAutonomous=true"))
               </Text>
             </View>
           </View>,
@@ -255,7 +255,7 @@ let examples: array(Example.t) =
             )>
             <Text style=(style([fontSize(Float(11.))]))>
               (
-                ReasonReact.stringToElement(
+                ReasonReact.string(
                   "Too much use of `borderRadius` (especially large radii) on\nanything which is scrolling may result in dropped frames.\nUse sparingly.",
                 )
               )
@@ -300,7 +300,7 @@ let examples: array(Example.t) =
               )>
               <View style=(style([width(Pt(200.)), height(Pt(20.))]))>
                 <Text>
-                  (ReasonReact.stringToElement("Overflow hidden"))
+                  (ReasonReact.string("Overflow hidden"))
                 </Text>
               </View>
             </View>
@@ -315,7 +315,7 @@ let examples: array(Example.t) =
               )>
               <View style=(style([width(Pt(200.)), height(Pt(20.))]))>
                 <Text>
-                  (ReasonReact.stringToElement("Overflow visible"))
+                  (ReasonReact.string("Overflow visible"))
                 </Text>
               </View>
             </View>
@@ -327,25 +327,25 @@ let examples: array(Example.t) =
         render: () =>
           <View>
             <View style=(style([opacity(Float(0.0))]))>
-              <Text> (ReasonReact.stringToElement("Opacity 0")) </Text>
+              <Text> (ReasonReact.string("Opacity 0")) </Text>
             </View>
             <View style=(style([opacity(Float(0.1))]))>
-              <Text> (ReasonReact.stringToElement("Opacity 0.1")) </Text>
+              <Text> (ReasonReact.string("Opacity 0.1")) </Text>
             </View>
             <View style=(style([opacity(Float(0.3))]))>
-              <Text> (ReasonReact.stringToElement("Opacity 0.3")) </Text>
+              <Text> (ReasonReact.string("Opacity 0.3")) </Text>
             </View>
             <View style=(style([opacity(Float(0.5))]))>
-              <Text> (ReasonReact.stringToElement("Opacity 0.5")) </Text>
+              <Text> (ReasonReact.string("Opacity 0.5")) </Text>
             </View>
             <View style=(style([opacity(Float(0.7))]))>
-              <Text> (ReasonReact.stringToElement("Opacity 0.7")) </Text>
+              <Text> (ReasonReact.string("Opacity 0.7")) </Text>
             </View>
             <View style=(style([opacity(Float(0.9))]))>
-              <Text> (ReasonReact.stringToElement("Opacity 0.9")) </Text>
+              <Text> (ReasonReact.string("Opacity 0.9")) </Text>
             </View>
             <View style=(style([opacity(Float(1.0))]))>
-              <Text> (ReasonReact.stringToElement("Opacity 1")) </Text>
+              <Text> (ReasonReact.string("Opacity 1")) </Text>
             </View>
           </View>,
       },

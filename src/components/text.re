@@ -102,7 +102,7 @@ module CreateComponent = (Impl: View.Impl) : TextComponent => {
         ),
       switch (value) {
       | Some(string) =>
-        Array.append([|ReasonReact.stringToElement(string)|], children)
+        Array.append([|ReasonReact.string(string)|], children)
       | None => children
       },
     );
