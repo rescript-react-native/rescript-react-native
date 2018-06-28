@@ -1,17 +1,17 @@
 let make:
   (
-    ~color: string=?,
     ~animating: bool=?,
+    ~color: string=?,
     ~indeterminate: bool=?,
     ~progress: float=?,
     ~styleAttr: [
                   | `Horizontal
+                  | `Inverse
+                  | `Large
+                  | `LargeInverse
                   | `Normal
                   | `Small
-                  | `Large
-                  | `Inverse
                   | `SmallInverse
-                  | `LargeInverse
                 ]
                   =?,
     ~testID: string=?,

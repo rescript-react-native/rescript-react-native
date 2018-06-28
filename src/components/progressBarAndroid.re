@@ -4,18 +4,18 @@ external component : ReasonReact.reactClass = "ProgressBarAndroid";
 let style = attr =>
   switch (attr) {
   | `Horizontal => "Horizontal"
+  | `Inverse => "Inverse"
+  | `Large => "Large"
+  | `LargeInverse => "LargeInverse"
   | `Normal => "Normal"
   | `Small => "Small"
-  | `Large => "Large"
-  | `Inverse => "Inverse"
   | `SmallInverse => "SmallInverse"
-  | `LargeInverse => "LargeInverse"
   };
 
 let make =
     (
-      ~color=?,
       ~animating=?,
+      ~color=?,
       ~indeterminate=?,
       ~progress=?,
       ~styleAttr=?,
@@ -27,8 +27,8 @@ let make =
       Props.extendView(
         Js.Undefined.(
           {
-            "color": fromOption(color),
             "animating": fromOption(animating),
+            "color": fromOption(color),
             "indeterminate": fromOption(indeterminate),
             "progress": fromOption(progress),
             "styleAttr": fromOption(UtilsRN.option_map(style, styleAttr)),
