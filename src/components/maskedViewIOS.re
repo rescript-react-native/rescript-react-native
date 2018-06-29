@@ -49,6 +49,6 @@ let make =
         ~accessibilityTraits?,
         ~accessibilityViewIsModal?,
         ~shouldRasterizeIOS?,
-        Js.Undefined.({"maskElement": maskElement}),
+        {"maskElement": maskElement},
       ),
   );

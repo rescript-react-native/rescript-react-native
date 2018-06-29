@@ -18,7 +18,7 @@ external makeCameraDialogConfig : (~videoMode: bool) => cameraDialogConfig =
 
 [@bs.module "react-native"] [@bs.scope "ImagePickerIOS"]
 external openCameraDialog :
-  (cameraDialogConfig, string => unit, error => unit) => unit =
+  (cameraDialogConfig, unit => unit, error => unit) => unit =
   "";
 
 let openCameraDialog = (~videoMode, success, error) =>

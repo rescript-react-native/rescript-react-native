@@ -14,9 +14,6 @@ type gravity =
 external show : (string, duration) => unit = "";
 
 [@bs.module "react-native"] [@bs.scope "ToastAndroid"]
-external show : (string, duration) => unit = "";
-
-[@bs.module "react-native"] [@bs.scope "ToastAndroid"]
 external showWithGravity : (string, duration, gravity) => unit = "";
 
 [@bs.module "react-native"] [@bs.scope "ToastAndroid"]

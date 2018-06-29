@@ -8,8 +8,7 @@ type error = {
   "message": string,
 };
 
-let openCameraDialog:
-  (~videoMode: bool, string => unit, error => unit) => unit;
+let openCameraDialog: (~videoMode: bool, unit => unit, error => unit) => unit;
 
 let openSelectDialog:
   (~showImages: bool, ~showVideos: bool, string => unit, error => unit) => unit;
