@@ -51,7 +51,7 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need access for testing the imagepicker</string>
 </dict>
 </plist>
