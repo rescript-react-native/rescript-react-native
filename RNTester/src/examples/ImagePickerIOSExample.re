@@ -1,8 +1,4 @@
-open Rebolt;
-
-open Utils;
-
-let exampleType = Multiple;
+open BsReactNative;
 
 let displayName = "ImagePickerIOS";
 
@@ -94,7 +90,7 @@ module CameraDialogExample = {
   let openCameraDialog = (_event, _self) =>
     ImagePickerIOS.openCameraDialog(
       ~videoMode=false,
-      () => Js.log("Success!"),
+      uri => Js.log(uri),
       error => Js.log(error),
     );
 
