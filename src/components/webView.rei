@@ -1,13 +1,38 @@
 type source;
 
-let sourceUri:
-  (~uri: string=?, ~method: string=?, ~headers: Js.t('a)=?, ~body: string=?, unit) => source;
+module EventTypes: {
+  [@bs.deriving abstract]
+  type t = {
+    url: string,
+    title: string,
+    loading: bool,
+    canGoBack: bool,
+    canGoForward: bool,
+  };
+};
 
-let sourceHtml:
-(~html: string=?, ~baseUrl: string=?, unit) => source;
+let sourceUri:
+  (
+    ~uri: string=?,
+    ~method: string=?,
+    ~headers: Js.t('a)=?,
+    ~body: string=?,
+    unit
+  ) =>
+  source;
+
+let sourceHtml: (~html: string=?, ~baseUrl: string=?, unit) => source;
 
 [@deprecated "Please use WebView.sourceUri instead"]
-let source: (~uri: string=?, ~method: string=?, ~headers: Js.t('a)=?, ~body: string=?, unit) => source;
+let source:
+  (
+    ~uri: string=?,
+    ~method: string=?,
+    ~headers: Js.t('a)=?,
+    ~body: string=?,
+    unit
+  ) =>
+  source;
 
 type iOSLoadRequestEvent = {
   .
@@ -18,13 +43,14 @@ type iOSLoadRequestEvent = {
   "title": string,
   "canGoForward": bool,
   "navigationType": string,
-  "url": string
+  "url": string,
 };
 
 type contentInsets;
 
 let contentInsets:
-  (~top: int=?, ~left: int=?, ~bottom: int=?, ~right: int=?, unit) => contentInsets;
+  (~top: int=?, ~left: int=?, ~bottom: int=?, ~right: int=?, unit) =>
+  contentInsets;
 
 let goForward: ReasonReact.reactRef => unit;
 
@@ -40,46 +66,10 @@ let make:
     ~style: Style.t=?,
     ~renderError: unit => ReasonReact.reactElement=?,
     ~renderLoading: unit => ReasonReact.reactElement=?,
-    ~onError: {
-                .
-                "url": option(string),
-                "title": option(string),
-                "loading": option(bool),
-                "canGoBack": option(bool),
-                "canGoForward": option(bool)
-              } =>
-              unit
-                =?,
-    ~onLoad: {
-               .
-               "url": option(string),
-               "title": option(string),
-               "loading": option(bool),
-               "canGoBack": option(bool),
-               "canGoForward": option(bool)
-             } =>
-             unit
-               =?,
-    ~onLoadEnd: {
-                  .
-                  "url": option(string),
-                  "title": option(string),
-                  "loading": option(bool),
-                  "canGoBack": option(bool),
-                  "canGoForward": option(bool)
-                } =>
-                unit
-                  =?,
-    ~onLoadStart: {
-                    .
-                    "url": option(string),
-                    "title": option(string),
-                    "loading": option(bool),
-                    "canGoBack": option(bool),
-                    "canGoForward": option(bool)
-                  } =>
-                  unit
-                    =?,
+    ~onError: EventTypes.t => unit=?,
+    ~onLoad: EventTypes.t => unit=?,
+    ~onLoadEnd: EventTypes.t => unit=?,
+    ~onLoadStart: EventTypes.t => unit=?,
     ~automaticallyAdjustContentInsets: bool=?,
     ~contentInsets: contentInsets=?,
     ~accessibilityLabel: ReasonReact.reactElement=?,
@@ -123,7 +113,7 @@ let make:
                               | `adjustable
                               | `allowsDirectInteraction
                               | `pageTurn
-                            ]
+                            ],
                           )
                             =?,
     ~accessibilityViewIsModal: bool=?,
@@ -132,16 +122,7 @@ let make:
     ~injectedJavaScript: string=?,
     ~mediaPlaybackRequiresUserAction: bool=?,
     ~onMessage: RNEvent.NativeEvent.t => unit=?,
-    ~onNavigationStateChange: {
-                                .
-                                "url": option(string),
-                                "title": option(string),
-                                "loading": option(bool),
-                                "canGoBack": option(bool),
-                                "canGoForward": option(bool)
-                              } =>
-                              unit
-                                =?,
+    ~onNavigationStateChange: EventTypes.t => unit=?,
     ~scalesPageToFit: bool=?,
     ~startInLoadingState: bool=?,
     ~domStorageEnabled: bool=?,
@@ -151,11 +132,24 @@ let make:
     ~userAgent: string=?,
     ~allowsInlineMediaPlayback: bool=?,
     ~bounces: bool=?,
-    ~dataDetectorTypes: list([ | `phoneNumber | `link | `address | `calendarEvent | `none | `all])
+    ~dataDetectorTypes: list(
+                          [
+                            | `phoneNumber
+                            | `link
+                            | `address
+                            | `calendarEvent
+                            | `none
+                            | `all
+                          ],
+                        )
                           =?,
     ~decelerationRate: list([ | `normal | `fast | `value(float)])=?,
     ~onShouldStartLoadWithRequest: iOSLoadRequestEvent => bool=?,
     ~scrollEnabled: bool=?,
     array(ReasonReact.reactElement)
   ) =>
-  ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
+  ReasonReact.component(
+    ReasonReact.stateless,
+    ReasonReact.noRetainedProps,
+    unit,
+  );

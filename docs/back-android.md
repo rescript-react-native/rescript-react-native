@@ -2,6 +2,4 @@
 title: BackAndroid
 ---
 
-## Example of use
-
-## Props
+`BackAndroid` is deprecated, please use [`BackHandler`](./back-handler) instead.

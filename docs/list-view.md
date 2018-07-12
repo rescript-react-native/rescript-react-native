@@ -1,7 +1,5 @@
 ---
-title: ListView (x)
+title: ListView
 ---
 
-## Example of use
-
-## Props
+`ListView` is deprecated. Please use either [`FlatList`](./flat-list) or [`SectionList`](./section-list) instead.

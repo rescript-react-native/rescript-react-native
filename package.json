@@ -21,7 +21,7 @@
     "url": "https://github.com/callstack/rebolt.git"
   },
   "devDependencies": {
-    "bs-platform": "^3.1.4",
+    "bs-platform": "^4.0.0",
     "reason-react": "^0.4.2"
   },
   "peerDependencies": {

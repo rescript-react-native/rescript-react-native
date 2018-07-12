@@ -2,6 +2,4 @@
 title: VibrationIOS
 ---
 
-## Example of use
-
-## Props
+`VibrationIOS` is deprecated, please use [`Vibration`](./vibration) instead.
