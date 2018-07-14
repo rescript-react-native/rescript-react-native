@@ -17,11 +17,14 @@ external makeActionSheetConfig :
   actionSheetConfig =
   "";
 
+type options =
+  | Message(string)
+  | URL(string);
+
 [@bs.obj]
 external makeShareActionSheetConfig :
   (
-    ~message: string=?,
-    ~url: string=?,
+    ~options: options,
     ~subject: string=?,
     ~excludedActivityTypes: array(string)=?
   ) =>
@@ -62,8 +65,7 @@ let showActionSheetWithOptions =
 
 let showShareActionSheetWithOptions =
     (
-      ~message=?,
-      ~url=?,
+      ~options,
       ~subject=?,
       ~excludedActivityTypes=?,
       failureCallback,
@@ -71,12 +73,7 @@ let showShareActionSheetWithOptions =
       (),
     ) =>
   _showShareActionSheetWithOptions(
-    makeShareActionSheetConfig(
-      ~message?,
-      ~url?,
-      ~subject?,
-      ~excludedActivityTypes?,
-    ),
+    makeShareActionSheetConfig(~options, ~subject?, ~excludedActivityTypes?),
     failureCallback,
     successCallback,
   );

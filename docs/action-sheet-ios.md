@@ -23,9 +23,8 @@ ActionSheetIOS.showActionSheetWithOptions(
 
 ```reason
 ActionSheetIOS.showShareActionSheetWithOptions(
+  ~options=Message("Hello, welcome to my new ReasonML app"),
   ~subject="New app",
-  ~message="Hello, welcome to my new ReasonML app",
-  ~url="https://blog.callstack.com",
   error => Js.log(error),
   (hasSucceeded, methodOfSharing) =>
     Js.log(
@@ -92,16 +91,18 @@ unit
 
 ### showShareActionSheetWithOptions
 
-#### message
+#### options
 
 ```reason
-~message: string=?
+~options: options
 ```
 
-#### url
+_reference:_
 
 ```reason
-~url: string=?
+type options =
+  | Message(string)
+  | URL(string);
 ```
 
 #### subject
