@@ -18,7 +18,33 @@ module Item = {
     );
 };
 
-let make = (~itemStyle=?, ~onValueChange=?, ~selectedValue=?) =>
+let make =
+    (
+      ~itemStyle=?,
+      ~onValueChange=?,
+      ~selectedValue=?,
+      /* view props */
+      ~accessibilityLabel=?,
+      ~accessible=?,
+      ~hitSlop=?,
+      ~onAccessibilityTap=?,
+      ~onLayout=?,
+      ~onMagicTap=?,
+      ~responderHandlers=?,
+      ~pointerEvents=?,
+      ~removeClippedSubviews=?,
+      ~style=?,
+      ~testID=?,
+      ~accessibilityComponentType=?,
+      ~accessibilityLiveRegion=?,
+      ~collapsable=?,
+      ~importantForAccessibility=?,
+      ~needsOffscreenAlphaCompositing=?,
+      ~renderToHardwareTextureAndroid=?,
+      ~accessibilityTraits=?,
+      ~accessibilityViewIsModal=?,
+      ~shouldRasterizeIOS=?,
+    ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=pickerIOS,
     ~props=
@@ -30,5 +56,25 @@ let make = (~itemStyle=?, ~onValueChange=?, ~selectedValue=?) =>
             "selectedValue": fromOption(selectedValue),
           }
         ),
+        ~accessibilityLabel?,
+        ~accessible?,
+        ~hitSlop?,
+        ~onAccessibilityTap?,
+        ~onLayout?,
+        ~onMagicTap?,
+        ~responderHandlers?,
+        ~pointerEvents?,
+        ~removeClippedSubviews?,
+        ~style?,
+        ~testID?,
+        ~accessibilityComponentType?,
+        ~accessibilityLiveRegion?,
+        ~collapsable?,
+        ~importantForAccessibility?,
+        ~needsOffscreenAlphaCompositing?,
+        ~renderToHardwareTextureAndroid?,
+        ~accessibilityTraits?,
+        ~accessibilityViewIsModal?,
+        ~shouldRasterizeIOS?,
       ),
   );

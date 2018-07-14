@@ -2,8 +2,7 @@
 external view : ReasonReact.reactClass = "FlatList";
 
 [@bs.send]
-external _scrollToEnd :
-  (ReasonReact.reactRef, {. "animated": bool}) => unit =
+external _scrollToEnd : (ReasonReact.reactRef, {. "animated": bool}) => unit =
   "scrollToEnd";
 
 let scrollToEnd = (ref, ~animated) =>
@@ -162,72 +161,77 @@ let make =
       ~viewabilityConfig=?,
       ~onScroll=?,
       ~style=?,
+      ~onLayout=?,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
     ~props=
-      Js.Undefined.(
-        {
-          "bounces": fromOption(UtilsRN.optBoolToOptJsBoolean(bounces)),
-          "ItemSeparatorComponent": fromOption(itemSeparatorComponent),
-          "ListFooterComponent": fromOption(listFooterComponent),
-          "ListHeaderComponent": fromOption(listHeaderComponent),
-          "columnWrapperStyle": fromOption(columnWrapperStyle),
-          "data": data,
-          "extraData": fromOption(extraData),
-          "getItemLayout":
-            fromOption(
-              UtilsRN.option_map(
-                (f, data, index) => f(Js.Undefined.toOption(data), index),
-                getItemLayout,
+      Props.extendView(
+        Js.Undefined.(
+          {
+            "bounces": fromOption(UtilsRN.optBoolToOptJsBoolean(bounces)),
+            "ItemSeparatorComponent": fromOption(itemSeparatorComponent),
+            "ListFooterComponent": fromOption(listFooterComponent),
+            "ListHeaderComponent": fromOption(listHeaderComponent),
+            "columnWrapperStyle": fromOption(columnWrapperStyle),
+            "data": data,
+            "extraData": fromOption(extraData),
+            "getItemLayout":
+              fromOption(
+                UtilsRN.option_map(
+                  (f, data, index) => f(Js.Undefined.toOption(data), index),
+                  getItemLayout,
+                ),
               ),
-            ),
-          "horizontal":
-            fromOption(UtilsRN.optBoolToOptJsBoolean(horizontal)),
-          "initialNumToRender": fromOption(initialNumToRender),
-          "initialScrollIndex": fromOption(initialScrollIndex),
-          "inverted":
-            fromOption(UtilsRN.optBoolToOptJsBoolean(inverted)),
-          "keyExtractor": keyExtractor,
-          "numColumns": fromOption(numColumns),
-          "onEndReached": fromOption(onEndReached),
-          "onEndReachedThreshold": fromOption(onEndReachedThreshold),
-          "onRefresh": fromOption(onRefresh),
-          "onViewableItemsChanged": fromOption(onViewableItemsChanged),
-          "overScrollMode":
-            fromOption(
-              UtilsRN.option_map(
-                x =>
-                  switch (x) {
-                  | `auto => "auto"
-                  | `always => "always"
-                  | `never => "never"
-                  },
-                overScrollMode,
+            "horizontal":
+              fromOption(UtilsRN.optBoolToOptJsBoolean(horizontal)),
+            "initialNumToRender": fromOption(initialNumToRender),
+            "initialScrollIndex": fromOption(initialScrollIndex),
+            "inverted": fromOption(UtilsRN.optBoolToOptJsBoolean(inverted)),
+            "keyExtractor": keyExtractor,
+            "numColumns": fromOption(numColumns),
+            "onEndReached": fromOption(onEndReached),
+            "onEndReachedThreshold": fromOption(onEndReachedThreshold),
+            "onRefresh": fromOption(onRefresh),
+            "onViewableItemsChanged": fromOption(onViewableItemsChanged),
+            "overScrollMode":
+              fromOption(
+                UtilsRN.option_map(
+                  x =>
+                    switch (x) {
+                    | `auto => "auto"
+                    | `always => "always"
+                    | `never => "never"
+                    },
+                  overScrollMode,
+                ),
               ),
-            ),
-          "pagingEnabled":
-            fromOption(UtilsRN.optBoolToOptJsBoolean(pagingEnabled)),
-          "refreshing":
-            fromOption(UtilsRN.optBoolToOptJsBoolean(refreshing)),
-          "renderItem": renderItem,
-          "removeClippedSubviews":
-            fromOption(UtilsRN.optBoolToOptJsBoolean(removeClippedSubviews)),
-          "scrollEnabled":
-            fromOption(UtilsRN.optBoolToOptJsBoolean(scrollEnabled)),
-          "showsHorizontalScrollIndicator":
-            fromOption(
-              UtilsRN.optBoolToOptJsBoolean(showsHorizontalScrollIndicator),
-            ),
-          "showsVerticalScrollIndicator":
-            fromOption(
-              UtilsRN.optBoolToOptJsBoolean(showsVerticalScrollIndicator),
-            ),
-          "windowSize": fromOption(windowSize),
-          "maxToRenderPerBatch": fromOption(maxToRenderPerBatch),
-          "viewabilityConfig": fromOption(viewabilityConfig),
-          "onScroll": fromOption(onScroll),
-          "style": fromOption(style),
-        }
+            "pagingEnabled":
+              fromOption(UtilsRN.optBoolToOptJsBoolean(pagingEnabled)),
+            "refreshing":
+              fromOption(UtilsRN.optBoolToOptJsBoolean(refreshing)),
+            "renderItem": renderItem,
+            "removeClippedSubviews":
+              fromOption(
+                UtilsRN.optBoolToOptJsBoolean(removeClippedSubviews),
+              ),
+            "scrollEnabled":
+              fromOption(UtilsRN.optBoolToOptJsBoolean(scrollEnabled)),
+            "showsHorizontalScrollIndicator":
+              fromOption(
+                UtilsRN.optBoolToOptJsBoolean(showsHorizontalScrollIndicator),
+              ),
+            "showsVerticalScrollIndicator":
+              fromOption(
+                UtilsRN.optBoolToOptJsBoolean(showsVerticalScrollIndicator),
+              ),
+            "windowSize": fromOption(windowSize),
+            "maxToRenderPerBatch": fromOption(maxToRenderPerBatch),
+            "viewabilityConfig": fromOption(viewabilityConfig),
+            "onScroll": fromOption(onScroll),
+            "style": fromOption(style),
+          }
+        ),
+        ~onLayout?,
       ),
   );

@@ -32,6 +32,7 @@ let make =
       ~mode=?,
       ~prompt=?,
       ~itemStyle=?,
+      /* view props */
       ~accessibilityLabel=?,
       ~accessible=?,
       ~hitSlop=?,

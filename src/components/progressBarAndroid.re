@@ -1,7 +1,7 @@
 [@bs.module "react-native"]
 external component : ReasonReact.reactClass = "ProgressBarAndroid";
 
-let style = attr =>
+let styleAttribute = attr =>
   switch (attr) {
   | `Horizontal => "Horizontal"
   | `Inverse => "Inverse"
@@ -19,7 +19,27 @@ let make =
       ~indeterminate=?,
       ~progress=?,
       ~styleAttr=?,
+      /* view props */
+      ~accessibilityLabel=?,
+      ~accessible=?,
+      ~hitSlop=?,
+      ~onAccessibilityTap=?,
+      ~onLayout=?,
+      ~onMagicTap=?,
+      ~responderHandlers=?,
+      ~pointerEvents=?,
+      ~removeClippedSubviews=?,
+      ~style=?,
       ~testID=?,
+      ~accessibilityComponentType=?,
+      ~accessibilityLiveRegion=?,
+      ~collapsable=?,
+      ~importantForAccessibility=?,
+      ~needsOffscreenAlphaCompositing=?,
+      ~renderToHardwareTextureAndroid=?,
+      ~accessibilityTraits=?,
+      ~accessibilityViewIsModal=?,
+      ~shouldRasterizeIOS=?,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=component,
@@ -31,9 +51,30 @@ let make =
             "color": fromOption(color),
             "indeterminate": fromOption(indeterminate),
             "progress": fromOption(progress),
-            "styleAttr": fromOption(UtilsRN.option_map(style, styleAttr)),
+            "styleAttr":
+              fromOption(UtilsRN.option_map(styleAttribute, styleAttr)),
             "testID": fromOption(testID),
           }
         ),
+        ~accessibilityLabel?,
+        ~accessible?,
+        ~hitSlop?,
+        ~onAccessibilityTap?,
+        ~onLayout?,
+        ~onMagicTap?,
+        ~responderHandlers?,
+        ~pointerEvents?,
+        ~removeClippedSubviews?,
+        ~style?,
+        ~testID?,
+        ~accessibilityComponentType?,
+        ~accessibilityLiveRegion?,
+        ~collapsable?,
+        ~importantForAccessibility?,
+        ~needsOffscreenAlphaCompositing?,
+        ~renderToHardwareTextureAndroid?,
+        ~accessibilityTraits?,
+        ~accessibilityViewIsModal?,
+        ~shouldRasterizeIOS?,
       ),
   );
