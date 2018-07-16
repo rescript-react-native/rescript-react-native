@@ -50,6 +50,8 @@ module ViewPagerAndroid = MakeExample(ViewPagerAndroid);
 
 module ImagePickerIOS = MakeExample(ImagePickerIOSExample);
 
+module Settings = MakeExample(SettingsExample);
+
 let components: array(item) = [|
   Button.item("ButtonExample"),
   View.item("ViewExample"),
@@ -62,4 +64,5 @@ let components: array(item) = [|
   ProgressBarAndroid.item("ProgressBarAndroid"),
   ViewPagerAndroid.item("ViewPagerAndroid"),
   ImagePickerIOS.item("ImagePickerIOSExample"),
+  Settings.item("SettingsExample"),
 |];
