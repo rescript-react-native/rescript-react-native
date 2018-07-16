@@ -27,6 +27,10 @@ Our plan for the stable v1 is to complete the missing bindings and create as man
 In version v2 we would like to do quite a few breaking changes, and this will be the place were we explore different ideas that we have for the new API.
 Think about it as React Native built in Reason.
 
+## Meeting notes
+
+You can find our meeting notes here: https://github.com/callstackincubator/rebolt/wiki
+
 <!-- badges -->
 [build-badge]: https://img.shields.io/circleci/project/github/callstackincubator/rebolt/master.svg?style=flat-square
 [build]: https://circleci.com/gh/callstackincubator/rebolt
