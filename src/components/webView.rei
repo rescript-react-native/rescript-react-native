@@ -3,10 +3,15 @@ type source;
 module EventTypes: {
   [@bs.deriving abstract]
   type t = {
+    [@bs.optional]
     url: string,
+    [@bs.optional]
     title: string,
+    [@bs.optional]
     loading: bool,
+    [@bs.optional]
     canGoBack: bool,
+    [@bs.optional]
     canGoForward: bool,
   };
 };
