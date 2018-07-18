@@ -9,7 +9,7 @@ let displayName = "TouchableNativeFeedback";
 
 let title = "<TouchableNativeFeedback>";
 
-let description = "Simple React Native TouchableNativeFeedback component.";
+let description = "Simple React Native TouchableNativeFeedback component (only Android)";
 
 module ExampleContent = {
   let component =
@@ -24,7 +24,7 @@ module ExampleContent = {
           <Text
             style=Style.(
                     style([
-                      height(Pt(50.)),
+                      marginVertical(Pt(20.)),
                       textAlign(Center),
                       fontSize(Float(20.)),
                     ])

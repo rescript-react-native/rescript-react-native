@@ -7,7 +7,7 @@ let displayName = "ProgressBarAndroid";
 
 let title = "<ProgressBarAndroid>";
 
-let description = "Simple React Native ProgressBarAndroid component.";
+let description = "Simple React Native ProgressBarAndroid component (only Android)";
 
 module ExampleHorizontal = {
   let component = ReasonReact.statelessComponent("ExampleHorizontal");
