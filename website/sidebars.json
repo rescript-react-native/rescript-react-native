@@ -1,6 +1,7 @@
 {
   "docs": {
     "Introduction": ["intro", "get-started"],
+    "Guides": ["rebolt-navigation"],
     "Components": [
       "activity-indicator",
       "button",

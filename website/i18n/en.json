@@ -52,6 +52,7 @@
     "progress-bar-android": "ProgressBarAndroid",
     "progress-view-ios": "ProgressViewIOS",
     "push-notifications-ios": "PushNotificationsIOS (x)",
+    "rebolt-navigation": "Rebolt Navigation",
     "refresh-control": "RefreshControl",
     "safe-area-view": "SafeAreaView",
     "scroll-view": "ScrollView",
@@ -88,6 +89,7 @@
     "web-view": "WebView",
     "Docs": "Docs",
     "Introduction": "Introduction",
+    "Guides": "Guides",
     "Components": "Components",
     "APIs": "APIs"
   },
