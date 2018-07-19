@@ -11,8 +11,25 @@ You can create a new React Native project by running the following:
 ```sh
 react-native init MyApp --template rebolt
 ```
-
 This will create a fresh React Native project using `rebolt` template, giving you the already preconfigured Reason environment out of the box.
+
+To get started, add `build` and `watch` scripts to your `package.json`. As a result, your `package.json` scripts should look like this:
+
+```json
+ "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "build": "bsb -make-world -clean-world",
+    "watch": "bsb -make-world -clean-world -w"
+  },
+```
+
+A bit of explanation to what both of the scripts do:
+
+- `yarn build` - performs a single build
+- `yarn watch` - enters the watch mode
+
+Now, you can start your application by running `yarn run watch` to compile the ReasonML code in one tab of your terminal, and in the other start the React Native app in the simulator using `react-native run-ios`
 
 To better understand the integration between Reason and React Native, please see the following section that explains the manual integration step by step.
 
