@@ -300,3 +300,47 @@ module NativeScrollEvent: {
 ```reason
 style: Style.t=?
 ```
+
+## methods
+
+### scrollToEnd
+
+```reason
+scrollToEnd: (ReasonReact.reactRef, ~animated: bool) => unit
+```
+
+### scrollToIndex
+
+```reason
+scrollToIndex:
+  (
+    ReasonReact.reactRef,
+    ~index: int,
+    ~animated: bool=?,
+    ~viewOffset: int=?,
+    ~viewPosition: int=?,
+    unit
+  ) =>
+  unit
+```
+
+### scrollToItem
+
+```reason
+scrollToItem:
+  (
+    ReasonReact.reactRef,
+    ~item: 'item,
+    ~animated: bool=?,
+    ~viewPosition: int=?,
+    unit
+  ) =>
+  unit
+```
+
+### scrollToOffset
+
+```reason
+scrollToOffset:
+  (ReasonReact.reactRef, ~offset: int=?, ~animated: bool=?, unit) => unit
+```

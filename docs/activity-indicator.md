@@ -21,18 +21,12 @@ let make = _children => {
 
 In order to change the size of the indicator pass one of the [polymorphic variants](http://2ality.com/2018/01/polymorphic-variants-reasonml.html):
 
-- ```reason
-  `large
-  ```
+- `` `large ``
 
-- ```reason
-  `small
-  ```
+- `` `small ``
 
 - passing an integer to the size prop is only supported on Android:
-  ```reason
-  `exact(SOME_INTEGER)
-  ```
+  `` `exact(SOME_INTEGER) ``
 
 #### large size example
 

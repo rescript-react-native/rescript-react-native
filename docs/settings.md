@@ -1,13 +1,14 @@
 ---
 title: Settings
 ---
->**iOS only**
 
-On iOS you can easily add your app custom settings into Settings app built-in iOS system. You can do it by adding Settings bundle into your Xcode project - `New File` -> `Settings Bundle` -> `Create`.  Than you can compose your settings shape by modyfying `Settings.bundle/Root.plist`.
+> **iOS only**
+
+On iOS you can easily add your app custom settings into Settings app built-in iOS system. You can do it by adding Settings bundle into your Xcode project - `New File` -> `Settings Bundle` -> `Create`. Than you can compose your settings shape by modyfying `Settings.bundle/Root.plist`.
 
 ## Example of use
 
-```re
+```reason
 type action =
   | SetVersion(string);
 
@@ -57,28 +58,33 @@ let make = _children => {
 ## Methods
 
 ### get
+
 Returns the value of one setting.
 
-```
+```reason
 let get: string => string;
 ```
 
 ### set
+
 Sets values for settings. It will accept `Js.Dict` with your settings Identifiers as keys.
 
-```
+```reason
 let set: Js.Dict.t(string) => unit;
 ```
 
 ### watchKeys
+
 Creates settings change listener. It will be fired after user change setting value in syste Settings app.
-```
+
+```reason
 let watchKeys: (list(string), unit => unit) => int;
 ```
 
 ### clearWatch
+
 Removes listener by its id.
 
-```
+```reason
 let clearWatch: int => unit;
 ```

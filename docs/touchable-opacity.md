@@ -185,3 +185,11 @@ focusedOpacity: float=?
 ```reason
 tvParallaxProperties: Js.t({.})=?
 ```
+
+## methods
+
+### setOpacityTo
+
+```reason
+setOpacityTo: (ReasonReact.reactRef, float, int) => unit
+```

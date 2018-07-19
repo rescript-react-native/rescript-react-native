@@ -515,3 +515,29 @@ type iOSLoadRequestEvent = {
 ```reason
 scrollEnabled: bool=?
 ```
+
+## methods
+
+### goForward
+
+```reason
+goForward: ReasonReact.reactRef => unit
+```
+
+### goBack
+
+```reason
+goBack: ReasonReact.reactRef => unit
+```
+
+### reload
+
+```reason
+reload: ReasonReact.reactRef => unit
+```
+
+### stopLoading
+
+```reason
+stopLoading: ReasonReact.reactRef => unit
+```

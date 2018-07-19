@@ -563,3 +563,17 @@ selectionState: 'documentSelectionState=?
 ```reason
 spellCheck: bool=?
 ```
+
+## methods
+
+### isFocused
+
+```reason
+isFocused: ReasonReact.reactRef => bool
+```
+
+### clear
+
+```reason
+clear: ReasonReact.reactRef => unit
+```

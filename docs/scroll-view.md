@@ -515,3 +515,17 @@ snapToAlignment: [
 ```reason
 zoomScale: float=?
 ```
+
+## methods
+
+### scrollTo
+
+```reason
+scrollTo: (ReasonReact.reactRef, ~x: int, ~y: int, ~animated: bool) => unit
+```
+
+### scrollToEnd
+
+```reason
+scrollToEnd: (ReasonReact.reactRef, ~animated: bool) => unit
+```
