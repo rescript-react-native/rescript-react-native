@@ -108,7 +108,8 @@ As per this [issue](https://github.com/callstackincubator/rebolt-navigation/issu
 "package-specs": {
   "module": "commonjs",
   "in-source": true
-}
+},
+"namespace": true
 ```
 
 This generates output alongside source files. ([documentation](https://bucklescript.github.io/docs/en/build-configuration.html#package-specs))
