@@ -53,6 +53,8 @@ module PermissionsAndroid = MakeExample(PermissionsAndroidExample);
 
 module Settings = MakeExample(SettingsExample);
 
+module ImageStore = MakeExample(ImageStoreExample);
+
 let components: array(item) = [|
   Button.item("ButtonExample"),
   View.item("ViewExample"),
@@ -67,4 +69,5 @@ let components: array(item) = [|
   ImagePickerIOS.item("ImagePickerIOSExample"),
   PermissionsAndroid.item("PermissionsAndroid"),
   Settings.item("SettingsExample"),
+  ImageStore.item("ImageStoreExample"),
 |];

@@ -28,7 +28,7 @@
     "get-started": "Quick start",
     "image-editor": "ImageEditor (x)",
     "image-picker-ios": "ImagePickerIOS",
-    "image-store": "ImageStore (x)",
+    "image-store": "ImageStore",
     "image-style-props": "ImageStyleProps",
     "image": "Image",
     "input-accessory-view": "InputAccessoryView (x)",
