@@ -20,7 +20,7 @@ let make = _children => {
 ### progress
 
 ```reason
-progress: float=?
+progress: float
 ```
 
 ### progressImage

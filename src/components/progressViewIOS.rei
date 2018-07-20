@@ -1,6 +1,6 @@
 let make:
   (
-    ~progress: float=?,
+    ~progress: float,
     ~progressImage: Image.imageSource=?,
     ~progressTintColor: string=?,
     ~progressViewStyle: Style.t=?,

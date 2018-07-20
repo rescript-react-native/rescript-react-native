@@ -3,7 +3,7 @@ external progressViewIOS : ReasonReact.reactClass = "ProgressViewIOS";
 
 let make =
     (
-      ~progress=?,
+      ~progress,
       ~progressImage=?,
       ~progressTintColor=?,
       ~progressViewStyle=?,
@@ -37,7 +37,7 @@ let make =
       Props.extendView(
         Js.Undefined.(
           {
-            "progress": fromOption(progress),
+            "progress": progress,
             "progressImage": fromOption(progressImage),
             "progressTintColor": fromOption(progressTintColor),
             "progressViewStyle": fromOption(progressViewStyle),
