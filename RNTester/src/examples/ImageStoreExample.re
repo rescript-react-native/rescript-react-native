@@ -57,7 +57,8 @@ module ImageExample = {
                 image,
                 uri => self.send(SetImageUri(uri)),
                 _ => (),
-              );
+              )
+              |> ignore;
               ();
             }
           )
@@ -99,8 +100,8 @@ module ImageExample = {
                 URI(
                   Image.imageURISource(
                     ~uri=imageUri,
-                    ~width=200.,
-                    ~height=200.,
+                    ~width=Pt(200.),
+                    ~height=Pt(200.),
                     (),
                   ),
                 )

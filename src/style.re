@@ -2,6 +2,9 @@ type t;
 
 type styleElement = (string, Js.Json.t);
 
+type pt_only =
+  | Pt(float);
+
 type pt_pct =
   | Pt(float)
   | Pct(float);

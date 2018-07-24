@@ -20,8 +20,8 @@ let make = _children => {
           Image.(
             imageURISource(
               ~uri="https://bit.ly/2ya4e2o",
-              ~width=320.,
-              ~height=480.,
+              ~width=Pt(320.),
+              ~height=Pt(480.),
               (),
             )
           ),
@@ -119,13 +119,13 @@ _reference:_
 
 ```reason
 type imageSource =
-  | URI(imageURISource)
+  | URI(_imageURISource)
   | Required(Packager.required)
-  | Multiple(list(imageURISource));
+  | Multiple(list(_imageURISource));
 ```
 
 ```reason
-let imageURISource:
+let _imageURISource:
   (
     ~uri: string,
     ~bundle: string=?,
@@ -139,11 +139,31 @@ let imageURISource:
       | `onlyIfCached
     ]=?,
     ~scale: float=?,
-    ~width: float=?,
-    ~height: float=?,
+    ~width: option(float)=?,
+    ~height: option(float)=?,
     unit
   ) =>
-  imageURISource;
+  _imageURISource;
+```
+
+```reason
+type pt_only =
+  | Pt(float);
+type imageURISource;
+let imageURISource:
+  (
+    ~uri: string,
+    ~bundle: string=?,
+    ~method: string=?,
+    ~headers: Js.t('a)=?,
+    ~body: string=?,
+    ~cache: [ | `default | `reload | `forceCache | `onlyIfCached]=?,
+    ~scale: float=?,
+    ~width: pt_only=?,
+    ~height: pt_only=?,
+    unit
+  ) =>
+  _imageURISource;
 ```
 
 ### style
@@ -216,13 +236,37 @@ _reference:_
 
 ```reason
 type defaultSource =
-  | URI(defaultURISource)
+  | URI(_defaultURISource)
   | Required(Packager.required);
 ```
 
 ```reason
+let _defaultURISource:
+    (
+      ~uri: string,
+      ~scale: float=?,
+      ~width: option(float)=?,
+      ~height: option(float)=?,
+      unit
+    ) =>
+    _defaultURISource;
+```
+
+```reason
 let defaultURISource:
-  (~uri: string, ~scale: float=?, ~width: float=?, ~height: float=?, unit) => defaultURISource;
+  (
+    ~uri: string,
+    ~scale: float=?,
+    ~width: pt_only=?,
+    ~height: pt_only=?,
+    unit
+  ) =>
+  _defaultURISource;
+```
+
+```reason
+type pt_only =
+  | Pt(float);
 ```
 
 ### onPartialLoad

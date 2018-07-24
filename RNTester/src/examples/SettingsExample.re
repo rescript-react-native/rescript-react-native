@@ -20,9 +20,9 @@ module SetExample = {
   let make = _children => {
     ...component,
     initialState: () => {version: "1.0"},
-    reducer: (action: action, state: state) =>
+    reducer: (action: action, _state: state) =>
       switch (action) {
-      | SetVersion(version) => ReasonReact.Update({...state, version})
+      | SetVersion(version) => ReasonReact.Update({version: version})
       },
     didMount: _self => {
       let _ =
