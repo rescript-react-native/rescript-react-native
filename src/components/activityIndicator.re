@@ -1,11 +1,22 @@
 [@bs.module "react-native"]
 external view : ReasonReact.reactClass = "ActivityIndicator";
 
+[@bs.module "react-native"] [@bs.scope "Platform"]
+external _os : string = "OS";
+
 let encodeSize = size =>
   switch (size) {
   | `small => Encode.string("small")
   | `large => Encode.string("large")
-  | `exact(x) => Encode.int(x)
+  | `exact(x) =>
+    switch (_os) {
+    | "ios" =>
+      Js.Console.warn(
+        "Passing 'exact' to the size prop of activityIndicator is supported only on Android. Because you only provided the 'exact' size, we defaulted it to the small size on iOS",
+      );
+      Encode.string("small");
+    | _ => Encode.int(x)
+    }
   };
 
 let make =
@@ -42,7 +53,7 @@ let make =
         Js.Undefined.(
           {
             "animating": fromOption(UtilsRN.optBoolToOptJsBoolean(animating)),
-            "color": fromOption(color),
+            "color": color,
             "size": fromOption(UtilsRN.option_map(encodeSize, size)),
             "hidesWhenStopped":
               fromOption(UtilsRN.optBoolToOptJsBoolean(hidesWhenStopped)),

@@ -55,6 +55,8 @@ module Settings = MakeExample(SettingsExample);
 
 module ImageStore = MakeExample(ImageStoreExample);
 
+module ActivityIndicator = MakeExample(ActivityIndicatorExample);
+
 let components: array(item) = [|
   Button.item("ButtonExample"),
   View.item("ViewExample"),
@@ -70,4 +72,5 @@ let components: array(item) = [|
   PermissionsAndroid.item("PermissionsAndroid"),
   Settings.item("SettingsExample"),
   ImageStore.item("ImageStoreExample"),
+  ActivityIndicator.item("ActivityIndicatorExample"),
 |];

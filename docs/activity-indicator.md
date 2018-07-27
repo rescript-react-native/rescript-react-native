@@ -25,8 +25,9 @@ In order to change the size of the indicator pass one of the [polymorphic varian
 
 - `` `small ``
 
-- passing an integer to the size prop is only supported on Android:
-  `` `exact(SOME_INTEGER) ``
+-  `` `exact(SOME_INTEGER) ``
+    - using `` `exact `` is only supported on Android; on iOs, this defaults to a `` `small `` size   
+
 
 #### large size example
 

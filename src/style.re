@@ -752,3 +752,6 @@ let overlayColor = value => (
   "overlayColor",
   encode_string_interpolated(value),
 );
+
+type color =
+  | String(string);

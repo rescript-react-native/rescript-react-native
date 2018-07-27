@@ -1,7 +1,8 @@
+
 let make:
   (
     ~animating: bool=?,
-    ~color: string=?,
+    ~color: Style.color=?,
     ~size: [ | `large | `small | `exact(int)]=?,
     ~hidesWhenStopped: bool=?,
     ~accessibilityLabel: ReasonReact.reactElement=?,
