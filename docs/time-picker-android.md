@@ -1,8 +1,6 @@
 ---
-title: TimePickerAndroid (x)
+title: TimePickerAndroid
 ---
-
-Missing bindings
 
 ## Example of use
 

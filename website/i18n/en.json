@@ -72,7 +72,7 @@
     "text-input": "TextInput",
     "text-style-props": "TextStyleProps",
     "text": "Text",
-    "time-picker-android": "TimePickerAndroid (x)",
+    "time-picker-android": "TimePickerAndroid",
     "toast-android": "ToastAndroid",
     "toolbar-android": "ToolbarAndroid (x)",
     "touchable-highlight": "TouchableHighlight",
