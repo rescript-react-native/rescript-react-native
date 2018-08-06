@@ -1,4 +1,5 @@
 open BsReactNative;
+open Utils;
 
 let styles =
   StyleSheet.create(
@@ -170,6 +171,8 @@ module ZIndexExample = {
 
 let title = "<View>";
 
+let exampleType = Multiple;
+
 let description = "Basic building block of all UI, examples that demonstrate some of the many styles available.";
 
 let displayName = "ViewExample";
@@ -299,9 +302,13 @@ let examples: array(Example.t) =
                 ])
               )>
               <View style=(style([width(Pt(200.)), height(Pt(20.))]))>
+<<<<<<< HEAD
+                <Text> (ReasonReact.string("Overflow hidden")) </Text>
+=======
                 <Text>
                   (ReasonReact.string("Overflow hidden"))
                 </Text>
+>>>>>>> 752544cbdeda19914dc2ec769a77b0cf9f2a0ff5
               </View>
             </View>
             <View
@@ -314,9 +321,13 @@ let examples: array(Example.t) =
                 ])
               )>
               <View style=(style([width(Pt(200.)), height(Pt(20.))]))>
+<<<<<<< HEAD
+                <Text> (ReasonReact.string("Overflow visible")) </Text>
+=======
                 <Text>
                   (ReasonReact.string("Overflow visible"))
                 </Text>
+>>>>>>> 752544cbdeda19914dc2ec769a77b0cf9f2a0ff5
               </View>
             </View>
           </View>,

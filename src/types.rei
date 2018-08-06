@@ -1,4 +1,10 @@
-type insets = {. "left": int, "right": int, "top": int, "bottom": int};
+type insets = {
+  .
+  "left": int,
+  "right": int,
+  "top": int,
+  "bottom": int,
+};
 
 type touchResponderHandlers = {
   onMoveShouldSetResponder: option(RNEvent.NativeEvent.t => bool),
@@ -10,5 +16,5 @@ type touchResponderHandlers = {
   onResponderTerminate: option(RNEvent.NativeEvent.t => unit),
   onResponderTerminationRequest: option(RNEvent.NativeEvent.t => unit),
   onStartShouldSetResponder: option(RNEvent.NativeEvent.t => bool),
-  onStartShouldSetResponderCapture: option(RNEvent.NativeEvent.t => bool)
+  onStartShouldSetResponderCapture: option(RNEvent.NativeEvent.t => bool),
 };

@@ -80,7 +80,7 @@ let alert = (~title, ~message=?, ~buttons=?, ~options=?, ~type_=?, ()) => {
           switch (x) {
           | `default => "default"
           | `plainText => "plain-text"
-          | `secureText => "sercure-text"
+          | `secureText => "secure-text"
           | `loginPassword => "login-password"
           },
         type_,

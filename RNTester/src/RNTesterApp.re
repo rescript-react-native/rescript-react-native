@@ -1,4 +1,5 @@
 open BsReactNative;
+open Utils;
 
 let styles =
   StyleSheet.create(
@@ -44,7 +45,7 @@ let header = (~onBack=?, ~title, ()) =>
     </View>
     (
       switch (onBack) {
-      | None => ReasonReact.nullElement
+      | None => ReasonReact.null
       | Some(onBack) =>
         <View style=styles##headerLeft>
           <Button title="Back" onPress=onBack />
@@ -86,6 +87,8 @@ let make = _children => {
               )
             />
           </View>
+        | Some(example) when example.exampleType === FullScreen =>
+          example.examples[0].render()
         | Some(example) =>
           <View style=styles##exampleContainer>
             (

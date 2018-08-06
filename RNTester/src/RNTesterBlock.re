@@ -46,16 +46,14 @@ let make = (~description, ~title, children) => {
   render: _self =>
     <View style=styles##container>
       <View style=styles##titleContainer>
-        <Text style=styles##titleText>
-          (ReasonReact.string(title))
-        </Text>
+        <Text style=styles##titleText> (ReasonReact.string(title)) </Text>
         (
           switch (description) {
           | Some(description) =>
             <Text style=styles##descriptionText>
               (ReasonReact.string(description))
             </Text>
-          | None => ReasonReact.nullElement
+          | None => ReasonReact.null
           }
         )
       </View>

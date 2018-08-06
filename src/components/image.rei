@@ -1,4 +1,20 @@
 module type ImageComponent = {
+  type _imageURISource;
+  let _imageURISource:
+    (
+      ~uri: string,
+      ~bundle: string=?,
+      ~method: string=?,
+      ~headers: Js.t('a)=?,
+      ~body: string=?,
+      ~cache: [ | `default | `reload | `forceCache | `onlyIfCached]=?,
+      ~scale: float=?,
+      ~width: option(float)=?,
+      ~height: option(float)=?,
+      unit
+    ) =>
+    _imageURISource;
+
   type imageURISource;
   let imageURISource:
     (
@@ -9,26 +25,46 @@ module type ImageComponent = {
       ~body: string=?,
       ~cache: [ | `default | `reload | `forceCache | `onlyIfCached]=?,
       ~scale: float=?,
-      ~width: float=?,
-      ~height: float=?,
+      ~width: Style.pt_only=?,
+      ~height: Style.pt_only=?,
       unit
     ) =>
-    imageURISource;
+    _imageURISource;
+
   type imageSource =
-    | URI(imageURISource)
+    | URI(_imageURISource)
     | Required(Packager.required)
-    | Multiple(list(imageURISource));
+    | Multiple(list(_imageURISource));
+  type _defaultURISource;
+  let _defaultURISource:
+    (
+      ~uri: string,
+      ~scale: float=?,
+      ~width: option(float)=?,
+      ~height: option(float)=?,
+      unit
+    ) =>
+    _defaultURISource;
+
   type defaultURISource;
   let defaultURISource:
-    (~uri: string, ~scale: float=?, ~width: float=?, ~height: float=?, unit) => defaultURISource;
+    (
+      ~uri: string,
+      ~scale: float=?,
+      ~width: Style.pt_only=?,
+      ~height: Style.pt_only=?,
+      unit
+    ) =>
+    _defaultURISource;
+
   type defaultSource =
-    | URI(defaultURISource)
+    | URI(_defaultURISource)
     | Required(Packager.required);
   module Event: {
     type error;
     type progress = {
       loaded: float,
-      total: float
+      total: float,
     };
   };
   let make:
@@ -39,7 +75,7 @@ module type ImageComponent = {
       ~onLoadEnd: unit => unit=?,
       ~onLoadStart: unit => unit=?,
       ~resizeMode: [< | `center | `contain | `cover | `repeat | `stretch]=?,
-      ~source: imageSource=?,
+      ~source: imageSource,
       ~style: Style.t=?,
       ~testID: string=?,
       ~resizeMethod: [< | `auto | `resize | `scale]=?,
@@ -52,7 +88,11 @@ module type ImageComponent = {
       ~onProgress: Event.progress => unit=?,
       array(ReasonReact.reactElement)
     ) =>
-    ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
+    ReasonReact.component(
+      ReasonReact.stateless,
+      ReasonReact.noRetainedProps,
+      unit,
+    );
 };
 
 module CreateComponent: (Impl: View.Impl) => ImageComponent;

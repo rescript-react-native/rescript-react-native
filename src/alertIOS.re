@@ -1,10 +1,5 @@
 type type_ = [ | `default | `plainText | `secureText | `loginPassword];
 
-type options = {
-  cancelable: option(bool),
-  onDismiss: option(unit => unit),
-};
-
 type button = {
   text: option(string),
   onPress: option(unit => unit),
@@ -26,18 +21,12 @@ external _alert :
         },
       ),
     ),
-    Js.Undefined.t(
-      {
-        .
-        "cancelable": Js.Undefined.t(bool),
-        "onDismiss": Js.Undefined.t(unit => unit),
-      },
-    )
+    Js.Undefined.t(string)
   ) =>
   unit =
   "alert";
 
-let alert = (~title, ~message=?, ~buttons=?, ~options=?, ()) => {
+let alert = (~title, ~message=?, ~buttons=?, ~type_=?, ()) => {
   open Js.Undefined;
   let msg = fromOption(message);
   let transformButtons = xs =>
@@ -61,18 +50,20 @@ let alert = (~title, ~message=?, ~buttons=?, ~options=?, ()) => {
          }
        );
   let bts = fromOption(UtilsRN.option_map(transformButtons, buttons));
-  let opts =
+  let t_ =
     fromOption(
       UtilsRN.option_map(
-        ({cancelable, onDismiss}) => {
-          "cancelable":
-            fromOption(UtilsRN.optBoolToOptJsBoolean(cancelable)),
-          "onDismiss": fromOption(onDismiss),
-        },
-        options,
+        x =>
+          switch (x) {
+          | `default => "default"
+          | `plainText => "plain-text"
+          | `secureText => "secure-text"
+          | `loginPassword => "login-password"
+          },
+        type_,
       ),
     );
-  _alert(title, msg, bts, opts);
+  _alert(title, msg, bts, t_);
 };
 
 [@bs.scope "AlertIOS"] [@bs.module "react-native"]
@@ -90,13 +81,6 @@ external _prompt :
         },
       ),
     ),
-    Js.Undefined.t(
-      {
-        .
-        "cancelable": Js.Undefined.t(bool),
-        "onDismiss": Js.Undefined.t(unit => unit),
-      },
-    ),
     Js.Undefined.t(string),
     Js.Undefined.t(string),
     Js.Undefined.t(string)
@@ -109,7 +93,6 @@ let prompt =
       ~title,
       ~message=?,
       ~buttons=?,
-      ~options=?,
       ~type_=?,
       ~defaultValue=?,
       ~keyboardType=?,
@@ -138,17 +121,6 @@ let prompt =
          }
        );
   let bts = fromOption(UtilsRN.option_map(transformButtons, buttons));
-  let opts =
-    fromOption(
-      UtilsRN.option_map(
-        ({cancelable, onDismiss}) => {
-          "cancelable":
-            fromOption(UtilsRN.optBoolToOptJsBoolean(cancelable)),
-          "onDismiss": fromOption(onDismiss),
-        },
-        options,
-      ),
-    );
   let t_ =
     fromOption(
       UtilsRN.option_map(
@@ -156,7 +128,7 @@ let prompt =
           switch (x) {
           | `default => "default"
           | `plainText => "plain-text"
-          | `secureText => "sercure-text"
+          | `secureText => "secure-text"
           | `loginPassword => "login-password"
           },
         type_,
@@ -184,5 +156,5 @@ let prompt =
         keyboardType,
       ),
     );
-  _prompt(title, msg, bts, opts, t_, def_, keyboardT);
+  _prompt(title, msg, bts, t_, def_, keyboardT);
 };

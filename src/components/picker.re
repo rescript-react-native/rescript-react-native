@@ -3,13 +3,13 @@
 module Item = {
   [@bs.scope "Picker"] [@bs.module "react-native"]
   external item : ReasonReact.reactClass = "Item";
-  let make = (~color=?, ~label=?, ~value=?, ~testID=?) =>
+  let make = (~color=?, ~label, ~value=?, ~testID=?) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=item,
       ~props=
         Js.Undefined.(
           {
-            "label": fromOption(label),
+            "label": label,
             "value": fromOption(value),
             "color": fromOption(color),
             "testID": fromOption(testID),
@@ -32,6 +32,7 @@ let make =
       ~mode=?,
       ~prompt=?,
       ~itemStyle=?,
+      /* view props */
       ~accessibilityLabel=?,
       ~accessible=?,
       ~hitSlop=?,

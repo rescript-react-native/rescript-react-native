@@ -3,7 +3,6 @@ external view : ReasonReact.reactClass = "TextInput";
 
 [@bs.send] external isFocused : ReasonReact.reactRef => bool = "";
 
-
 [@bs.send] external clear : ReasonReact.reactRef => unit = "";
 
 let make =
@@ -70,6 +69,7 @@ let make =
       ~onKeyPress=?,
       ~selectionState=?,
       ~spellCheck=?,
+      ~inputAccessoryViewID=?,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
@@ -234,6 +234,7 @@ let make =
             "selectionState": fromOption(selectionState),
             "spellCheck":
               fromOption(UtilsRN.optBoolToOptJsBoolean(spellCheck)),
+            "inputAccessoryViewID": fromOption(inputAccessoryViewID),
           }
         ),
         ~accessibilityLabel?,

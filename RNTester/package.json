@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "../node_modules/.bin/bsb -make-world",
-    "clean-build": "../node_modules/.bin/bsb -clean-world -make-world",
+    "clean": "../node_modules/.bin/bsb -clean-world -make-world",
     "packager:start": "node node_modules/react-native/local-cli/cli.js start",
     "watch": "../node_modules/.bin/bsb -make-world -w",
     "start": "npm run build && npm run packager:start",

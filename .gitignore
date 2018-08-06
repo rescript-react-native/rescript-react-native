@@ -6,3 +6,10 @@ lib/ocaml
 .vscode
 package-lock.json
 npm-debug.log
+
+website/translated_docs
+website/build/
+website/yarn.lock
+website/node_modules
+website/i18n/*
+!website/i18n/en.json

@@ -1,4 +1,20 @@
 module type ImageComponent = {
+  type _imageURISource;
+  let _imageURISource:
+    (
+      ~uri: string,
+      ~bundle: string=?,
+      ~method: string=?,
+      ~headers: Js.t('a)=?,
+      ~body: string=?,
+      ~cache: [ | `default | `reload | `forceCache | `onlyIfCached]=?,
+      ~scale: float=?,
+      ~width: option(float)=?,
+      ~height: option(float)=?,
+      unit
+    ) =>
+    _imageURISource;
+
   type imageURISource;
   let imageURISource:
     (
@@ -9,21 +25,40 @@ module type ImageComponent = {
       ~body: string=?,
       ~cache: [ | `default | `reload | `forceCache | `onlyIfCached]=?,
       ~scale: float=?,
-      ~width: float=?,
-      ~height: float=?,
+      ~width: Style.pt_only=?,
+      ~height: Style.pt_only=?,
       unit
     ) =>
-    imageURISource;
+    _imageURISource;
   type imageSource =
-    | URI(imageURISource)
+    | URI(_imageURISource)
     | Required(Packager.required)
-    | Multiple(list(imageURISource));
+    | Multiple(list(_imageURISource));
+
+  type _defaultURISource;
+  let _defaultURISource:
+    (
+      ~uri: string,
+      ~scale: float=?,
+      ~width: option(float)=?,
+      ~height: option(float)=?,
+      unit
+    ) =>
+    _defaultURISource;
+
   type defaultURISource;
   let defaultURISource:
-    (~uri: string, ~scale: float=?, ~width: float=?, ~height: float=?, unit) =>
-    defaultURISource;
+    (
+      ~uri: string,
+      ~scale: float=?,
+      ~width: Style.pt_only=?,
+      ~height: Style.pt_only=?,
+      unit
+    ) =>
+    _defaultURISource;
+
   type defaultSource =
-    | URI(defaultURISource)
+    | URI(_defaultURISource)
     | Required(Packager.required);
   module Event: {
     type error;
@@ -40,7 +75,7 @@ module type ImageComponent = {
       ~onLoadEnd: unit => unit=?,
       ~onLoadStart: unit => unit=?,
       ~resizeMode: [< | `center | `contain | `cover | `repeat | `stretch]=?,
-      ~source: imageSource=?,
+      ~source: imageSource,
       ~style: Style.t=?,
       ~testID: string=?,
       ~resizeMethod: [< | `auto | `resize | `scale]=?,
@@ -61,9 +96,15 @@ module type ImageComponent = {
 };
 
 module CreateComponent = (Impl: View.Impl) : ImageComponent => {
-  type imageURISource;
+  let encode_pt_only: Style.pt_only => float =
+    value =>
+      switch (value) {
+      | Pt(value) => value
+      };
+
+  type _imageURISource;
   [@bs.obj]
-  external imageURISource :
+  external _imageURISource :
     (
       ~uri: string,
       ~bundle: string=?,
@@ -78,24 +119,70 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
               ]
                 =?,
       ~scale: float=?,
-      ~width: float=?,
-      ~height: float=?,
+      ~width: option(float)=?,
+      ~height: option(float)=?,
       unit
     ) =>
-    imageURISource =
+    _imageURISource =
     "";
+
+  type imageURISource;
+  let imageURISource =
+      (
+        ~uri,
+        ~bundle=?,
+        ~method=?,
+        ~headers=?,
+        ~body=?,
+        ~cache=?,
+        ~scale=?,
+        ~width=?,
+        ~height=?,
+        unit,
+      ) =>
+    _imageURISource(
+      ~uri,
+      ~bundle?,
+      ~method?,
+      ~headers?,
+      ~body?,
+      ~cache?,
+      ~scale?,
+      ~width=UtilsRN.option_map(encode_pt_only, width),
+      ~height=UtilsRN.option_map(encode_pt_only, height),
+      unit,
+    );
+
   type imageSource =
-    | URI(imageURISource)
+    | URI(_imageURISource)
     | Required(Packager.required)
-    | Multiple(list(imageURISource));
-  type defaultURISource;
+    | Multiple(list(_imageURISource));
+
+  type _defaultURISource;
   [@bs.obj]
-  external defaultURISource :
-    (~uri: string, ~scale: float=?, ~width: float=?, ~height: float=?, unit) =>
-    defaultURISource =
+  external _defaultURISource :
+    (
+      ~uri: string,
+      ~scale: float=?,
+      ~width: option(float)=?,
+      ~height: option(float)=?,
+      unit
+    ) =>
+    _defaultURISource =
     "";
+
+  type defaultURISource;
+  let defaultURISource = (~uri, ~scale=?, ~width=?, ~height=?, unit) =>
+    _defaultURISource(
+      ~uri,
+      ~scale?,
+      ~width=UtilsRN.option_map(encode_pt_only, width),
+      ~height=UtilsRN.option_map(encode_pt_only, height),
+      unit,
+    );
+
   type defaultSource =
-    | URI(defaultURISource)
+    | URI(_defaultURISource)
     | Required(Packager.required);
   type rawImageSourceJS;
   external rawImageSourceJS : 'a => rawImageSourceJS = "%identity";
@@ -141,7 +228,7 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
         ~onLoadEnd=?,
         ~onLoadStart=?,
         ~resizeMode=?,
-        ~source=?,
+        ~source,
         ~style=?,
         ~testID=?,
         ~resizeMethod=?,
@@ -165,7 +252,7 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
             "onLoadStart": fromOption(onLoadStart),
             "resizeMode":
               fromOption(UtilsRN.option_map(encodeResizeMode, resizeMode)),
-            "source": fromOption(UtilsRN.option_map(encodeSource, source)),
+            "source": encodeSource(source),
             "style": fromOption(style),
             "testID": fromOption(testID),
             "resizeMethod":
@@ -194,10 +281,6 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
     );
 };
 
-include
-  CreateComponent(
-    {
-      [@bs.module "react-native"]
-      external view : ReasonReact.reactClass = "Image";
-    },
-  );
+include CreateComponent({
+  [@bs.module "react-native"] external view : ReasonReact.reactClass = "Image";
+});

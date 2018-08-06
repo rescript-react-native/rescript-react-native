@@ -24,6 +24,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
+.bsb.lock
 
 # Android/IntelliJ
 #
@@ -54,3 +55,5 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
+
+.bsb.lock
