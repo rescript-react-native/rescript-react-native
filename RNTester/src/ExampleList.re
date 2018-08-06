@@ -28,6 +28,8 @@ module MakeExample = (Example: ExampleT) => {
   };
 };
 
+module TextInput = MakeExample(TextInputExample);
+
 module Button = MakeExample(ButtonExample);
 
 module View = MakeExample(ViewExample);
@@ -58,6 +60,7 @@ module ImageStore = MakeExample(ImageStoreExample);
 module ActivityIndicator = MakeExample(ActivityIndicatorExample);
 
 let components: array(item) = [|
+  TextInput.item("TextInput"),
   Button.item("ButtonExample"),
   View.item("ViewExample"),
   WebView.item("WebViewExample"),

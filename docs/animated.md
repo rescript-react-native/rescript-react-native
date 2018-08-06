@@ -13,7 +13,7 @@ The simplest animation starts with creating an animated value and using one of t
 The following example demonstrates use of `Animated.Timing` in order to animate an animated value throughout given period of time.
 
 ```reason
-open Rebolt;
+open BsReactNative;
 
 let animatedValue = Animated.Value.create(0.0);
 
@@ -35,7 +35,7 @@ Animations can be also combined together in complex ways using composition funct
 The following example demonstrates use of `Animated.sequence` in order to run animations in a sequence, one by one.
 
 ```reason
-open Rebolt;
+open BsReactNative;
 
 let animatedValue = Animated.Value.create(0.0);
 
@@ -65,7 +65,7 @@ You can combine two animated values via addition, multiplication, division, or m
 The following example demonstrates use of `Animated.multiply` in order to reverse the value of the `animatedValue`.
 
 ```reason
-open Rebolt;
+open BsReactNative;
 
 let animatedValue = Animated.Value.create(0.0);
 
@@ -100,7 +100,7 @@ Animated values can be passed to an animated component in order to change its ap
 The example below demonstrates animating opacity of a component.
 
 ```reason
-open Rebolt;
+open BsReactNative;
 
 let animatedValue = Animated.Value.create(0.0);
 

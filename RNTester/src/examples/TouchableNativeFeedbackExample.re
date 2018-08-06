@@ -1,4 +1,4 @@
-open Rebolt;
+open BsReactNative;
 open Utils;
 
 let onButtonPress = () => Alert.alert(~title="Button has been pressed!", ());

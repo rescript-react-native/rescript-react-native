@@ -1,4 +1,4 @@
-open Rebolt;
+open BsReactNative;
 open Utils;
 
 let exampleType = Multiple;

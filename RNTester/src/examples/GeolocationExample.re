@@ -1,4 +1,4 @@
-open Rebolt;
+open BsReactNative;
 open Utils;
 
 module GeolocationGetCurrentPositionExample = {

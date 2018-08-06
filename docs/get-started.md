@@ -11,6 +11,7 @@ You can create a new React Native project by running the following:
 ```sh
 react-native init MyApp --template rebolt
 ```
+
 This will create a fresh React Native project using `rebolt` template, giving you the already preconfigured Reason environment out of the box.
 
 To get started, add `build` and `watch` scripts to your `package.json`. As a result, your `package.json` scripts should look like this:
@@ -99,7 +100,7 @@ A bit of explanation to what both of the scripts do:
 **App.re**
 
 ```reason
-open Rebolt;
+open BsReactNative;
 
 let app = () =>
   <View>
