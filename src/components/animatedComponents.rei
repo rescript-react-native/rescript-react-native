@@ -4,6 +4,8 @@ module Image: Image.ImageComponent;
 
 module Text: Text.TextComponent;
 
+module FlatList: FlatList.FlatListComponent;
+
 module ScrollView: {
   let onScrollUpdater:
     (~x: 'a=?, ~y: 'b=?, ~native: bool=?, unit, RNEvent.NativeScrollEvent.t) => unit;
