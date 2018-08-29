@@ -40,7 +40,7 @@ module type ImageComponent = {
       ~onLoadEnd: unit => unit=?,
       ~onLoadStart: unit => unit=?,
       ~resizeMode: [< | `center | `contain | `cover | `repeat | `stretch]=?,
-      ~source: imageSource=?,
+      ~source: imageSource,
       ~style: Style.t=?,
       ~testID: string=?,
       ~resizeMethod: [< | `auto | `resize | `scale]=?,
@@ -141,7 +141,7 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
         ~onLoadEnd=?,
         ~onLoadStart=?,
         ~resizeMode=?,
-        ~source=?,
+        ~source,
         ~style=?,
         ~testID=?,
         ~resizeMethod=?,
@@ -165,7 +165,7 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
             "onLoadStart": fromOption(onLoadStart),
             "resizeMode":
               fromOption(UtilsRN.option_map(encodeResizeMode, resizeMode)),
-            "source": fromOption(UtilsRN.option_map(encodeSource, source)),
+            "source": encodeSource(source),
             "style": fromOption(style),
             "testID": fromOption(testID),
             "resizeMethod":
@@ -194,10 +194,6 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
     );
 };
 
-include
-  CreateComponent(
-    {
-      [@bs.module "react-native"]
-      external view : ReasonReact.reactClass = "Image";
-    },
-  );
+include CreateComponent({
+  [@bs.module "react-native"] external view : ReasonReact.reactClass = "Image";
+});

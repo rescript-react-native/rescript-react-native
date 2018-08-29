@@ -28,7 +28,6 @@ type string_interpolated =
 
 let style: list(styleElement) => t;
 
-
 /*** Generates a style out of an array of styles.
   * This is equivalent:
   * // js
@@ -41,7 +40,6 @@ let flatten: array(t) => t;
 let combine: (t, t) => t;
 
 let concat: list(t) => t;
-
 
 /***
  * Layout Props
@@ -194,7 +192,6 @@ type direction =
 
 let direction: direction => styleElement;
 
-
 /***
  * Shadow Props
  */
@@ -257,7 +254,6 @@ module Transform: {
     styleElement;
 };
 
-
 /***
  * View Props
  */
@@ -299,7 +295,6 @@ let borderBottomRightRadius: float => styleElement;
 let opacity: float_interpolated_animated => styleElement;
 
 let elevation: float => styleElement;
-
 
 /***
  *  Text Props

@@ -20,7 +20,8 @@ module type ImageComponent = {
     | Multiple(list(imageURISource));
   type defaultURISource;
   let defaultURISource:
-    (~uri: string, ~scale: float=?, ~width: float=?, ~height: float=?, unit) => defaultURISource;
+    (~uri: string, ~scale: float=?, ~width: float=?, ~height: float=?, unit) =>
+    defaultURISource;
   type defaultSource =
     | URI(defaultURISource)
     | Required(Packager.required);
@@ -28,7 +29,7 @@ module type ImageComponent = {
     type error;
     type progress = {
       loaded: float,
-      total: float
+      total: float,
     };
   };
   let make:
@@ -39,7 +40,7 @@ module type ImageComponent = {
       ~onLoadEnd: unit => unit=?,
       ~onLoadStart: unit => unit=?,
       ~resizeMode: [< | `center | `contain | `cover | `repeat | `stretch]=?,
-      ~source: imageSource=?,
+      ~source: imageSource,
       ~style: Style.t=?,
       ~testID: string=?,
       ~resizeMethod: [< | `auto | `resize | `scale]=?,
@@ -52,7 +53,11 @@ module type ImageComponent = {
       ~onProgress: Event.progress => unit=?,
       array(ReasonReact.reactElement)
     ) =>
-    ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
+    ReasonReact.component(
+      ReasonReact.stateless,
+      ReasonReact.noRetainedProps,
+      unit,
+    );
 };
 
 module CreateComponent: (Impl: View.Impl) => ImageComponent;

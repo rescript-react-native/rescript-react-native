@@ -6,9 +6,9 @@ let make =
       ~accessibilityLabel=?,
       ~color=?,
       ~disabled=?,
-      ~onPress=?,
+      ~onPress,
       ~testID=?,
-      ~title=?,
+      ~title,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=button,
@@ -18,9 +18,9 @@ let make =
           "accessibilityLabel": fromOption(accessibilityLabel),
           "color": fromOption(color),
           "disabled": fromOption(UtilsRN.optBoolToOptJsBoolean(disabled)),
-          "onPress": fromOption(onPress),
+          "onPress": onPress,
           "testID": fromOption(testID),
-          "title": fromOption(title),
+          "title": title,
         }
       ),
   );

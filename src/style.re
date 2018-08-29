@@ -85,7 +85,6 @@ let arrayStyle = (key, value) => (key, Encode.array(value));
 
 let style = sarr => sarr |> UtilsRN.dictFromList |> to_style;
 
-
 /***
  * Layout Props
  */
@@ -328,7 +327,6 @@ let direction = v =>
     },
   );
 
-
 /***
  * Shadow Props
  */
@@ -485,7 +483,6 @@ module Transform = {
     );
 };
 
-
 /***
  * View Props
  */
@@ -563,7 +560,6 @@ let opacity = value => (
 );
 
 let elevation = floatStyle("elevation");
-
 
 /***
  * Text Props
@@ -733,7 +729,6 @@ type resizeMode =
   | Stretch
   | Repeat
   | Center;
-
 
 /*** Image props */
 let resizeMode = v =>
