@@ -17,7 +17,7 @@ let make = (~title=?, ~noScroll=false, ~noSpacer=false, children) => {
   let contentWrapper = (children_: array(ReasonReact.reactElement)) =>
     if (noScroll) {
       <View key="wrapper" style=styles##wrapper>
-        (ReasonReact.arrayToElement(children_))
+        (ReasonReact.array(children_))
       </View>;
     } else {
       let automaticallyAdjustContentInsets =
@@ -31,7 +31,7 @@ let make = (~title=?, ~noScroll=false, ~noSpacer=false, children) => {
         keyboardShouldPersistTaps=`handled
         keyboardDismissMode=`interactive
         style=styles##wrapper>
-        (ReasonReact.arrayToElement(children_))
+        (ReasonReact.array(children_))
       </ScrollView>;
     };
   {
@@ -40,11 +40,11 @@ let make = (~title=?, ~noScroll=false, ~noSpacer=false, children) => {
       let title =
         switch (title) {
         | Some(title) => <RNTesterTitle key="title" title />
-        | None => ReasonReact.nullElement
+        | None => ReasonReact.null
         };
       let spacer =
         if (noSpacer) {
-          ReasonReact.nullElement;
+          ReasonReact.null;
         } else {
           <View key="spacer" style=styles##spacer />;
         };
