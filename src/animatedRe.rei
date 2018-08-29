@@ -1,46 +1,29 @@
+type calculated;
+
+type regular;
+
+type value('a);
+
+type valueXY('a);
+
 module Animation: {
   type t;
   type endResult = {. "finished": bool};
   type endCallback = endResult => unit;
-};
-
-module CompositeAnimation: {
-  type t;
   let stop: t => unit;
-  let start: (t, ~callback: Animation.endCallback=?, unit) => unit;
+  let start: (t, ~callback: endCallback=?, unit) => unit;
   let reset: t => unit;
 };
 
-module Easing: {
-  type t = float => float;
-  let bounce: t;
-  let circle: t;
-  let cubic: t;
-  let ease: t;
-  let exp: t;
-  let linear: t;
-  let poly: t;
-  let quad: t;
-  let sin: t;
-  let step0: t;
-  let step1: t;
-  let back: float => t;
-  let elastic: float => t;
-  let in_: t => t;
-  let inOut: t => t;
-  let out: t => t;
-  let bezier: (float, float, float, float) => t;
-};
-
 module Interpolation: {
-  type t;
+  type t = value(calculated);
   type extrapolate =
     | Extend
     | Clamp
     | Identity;
   let interpolate:
     (
-      ~value: t,
+      value('a),
       ~inputRange: list(float),
       ~outputRange: [< | `float(list(float)) | `string(list(string))],
       ~easing: Easing.t=?,
@@ -53,7 +36,7 @@ module Interpolation: {
 };
 
 module Value: {
-  type t;
+  type t = value(regular);
   type jsValue = {. "value": float};
   type callback = jsValue => unit;
   let create: float => t;
@@ -68,7 +51,7 @@ module Value: {
   let stopAnimation: (t, ~callback: callback=?, unit) => unit;
   let interpolate:
     (
-      t,
+      value('a),
       ~inputRange: list(float),
       ~outputRange: [< | `float(list(float)) | `string(list(string))],
       ~easing: Easing.t=?,
@@ -81,18 +64,12 @@ module Value: {
   let animate: (t, Animation.t, Animation.endCallback) => unit;
   let stopTracking: t => unit;
   let track: t => unit;
-  let modulo: (t, float) => t;
-  let diffClamp: (t, float, float) => t;
-  type value = t;
-  let add: (value, value) => value;
-  let divide: (value, value) => value;
-  let multiply: (value, value) => value;
   module Timing: {
     type config;
     let animate:
       (
-        ~value: value,
-        ~toValue: [ | `raw(float) | `animated(value)],
+        ~value: value(regular),
+        ~toValue: [ | `raw(float) | `animated(value(regular))],
         ~easing: Easing.t=?,
         ~duration: float=?,
         ~delay: float=?,
@@ -102,14 +79,14 @@ module Value: {
         ~iterations: int=?,
         unit
       ) =>
-      CompositeAnimation.t;
+      Animation.t;
   };
   module Spring: {
     type config;
     let animate:
       (
-        ~value: value,
-        ~toValue: [ | `raw(float) | `animated(value)],
+        ~value: value(regular),
+        ~toValue: [ | `raw(float) | `animated(value(regular))],
         ~restDisplacementThreshold: float=?,
         ~overshootClamping: bool=?,
         ~restSpeedThreshold: float=?,
@@ -127,13 +104,13 @@ module Value: {
         ~iterations: int=?,
         unit
       ) =>
-      CompositeAnimation.t;
+      Animation.t;
   };
   module Decay: {
     type config;
     let animate:
       (
-        ~value: value,
+        ~value: value(regular),
         ~velocity: float,
         ~deceleration: float=?,
         ~isInteraction: bool=?,
@@ -142,16 +119,33 @@ module Value: {
         ~iterations: int=?,
         unit
       ) =>
-      CompositeAnimation.t;
+      Animation.t;
   };
+  let add: (value('a), value('b)) => value(calculated);
+  let divide: (value('a), value('b)) => value(calculated);
+  let multiply: (value('a), value('b)) => value(calculated);
+  let modulo: (value('a), float) => value(calculated);
+  let diffClamp: (value('a), float, float) => value(calculated);
 };
 
 module ValueXY: {
-  type t;
-  type jsValue = {. "x": float, "y": float};
+  type t = valueXY(regular);
+  type jsValue = {
+    .
+    "x": float,
+    "y": float,
+  };
   type callback = jsValue => unit;
-  type translateTransform = {. "translateX": Value.t, "translateY": Value.t};
-  type layout = {. "left": Value.t, "top": Value.t};
+  type translateTransform = {
+    .
+    "translateX": Value.t,
+    "translateY": Value.t,
+  };
+  type layout = {
+    .
+    "left": Value.t,
+    "top": Value.t,
+  };
   let create: (~x: float, ~y: float) => t;
   let setValue: (t, ~x: float, ~y: float) => unit;
   let setOffset: (t, ~x: float, ~y: float) => unit;
@@ -164,18 +158,14 @@ module ValueXY: {
   let removeAllListeners: t => unit;
   let getLayout: t => layout;
   let getTranslateTransform: t => translateTransform;
-  let add: (t, t) => t;
-  let divide: (t, t) => t;
-  let multiply: (t, t) => t;
   let getX: t => Value.t;
   let getY: t => Value.t;
-  type value = t;
   module Timing: {
     type config;
     let animate:
       (
-        ~value: value,
-        ~toValue: [ | `raw(jsValue) | `animated(value)],
+        ~value: valueXY(regular),
+        ~toValue: [ | `raw(jsValue) | `animated(valueXY(regular))],
         ~easing: Easing.t=?,
         ~duration: float=?,
         ~delay: float=?,
@@ -185,14 +175,14 @@ module ValueXY: {
         ~iterations: int=?,
         unit
       ) =>
-      CompositeAnimation.t;
+      Animation.t;
   };
   module Spring: {
     type config;
     let animate:
       (
-        ~value: value,
-        ~toValue: [ | `raw(jsValue) | `animated(value)],
+        ~value: valueXY(regular),
+        ~toValue: [ | `raw(jsValue) | `animated(valueXY(regular))],
         ~restDisplacementThreshold: float=?,
         ~overshootClamping: bool=?,
         ~restSpeedThreshold: float=?,
@@ -210,13 +200,13 @@ module ValueXY: {
         ~iterations: int=?,
         unit
       ) =>
-      CompositeAnimation.t;
+      Animation.t;
   };
   module Decay: {
     type config;
     let animate:
       (
-        ~value: value,
+        ~value: valueXY(regular),
         ~velocity: jsValue,
         ~deceleration: float=?,
         ~isInteraction: bool=?,
@@ -225,7 +215,7 @@ module ValueXY: {
         ~iterations: int=?,
         unit
       ) =>
-      CompositeAnimation.t;
+      Animation.t;
   };
 };
 
@@ -233,27 +223,94 @@ type animatedEvent;
 
 let event: (array('a), 'b) => animatedEvent;
 
-let delay: float => CompositeAnimation.t;
+let delay: float => Animation.t;
 
-let sequence: array(CompositeAnimation.t) => CompositeAnimation.t;
+let sequence: array(Animation.t) => Animation.t;
 
-let parallel:
-  (array(CompositeAnimation.t), {. "stopTogether": bool}) => CompositeAnimation.t;
+let parallel: (array(Animation.t), {. "stopTogether": bool}) => Animation.t;
 
-let stagger: (float, array(CompositeAnimation.t)) => CompositeAnimation.t;
+let stagger: (float, array(Animation.t)) => Animation.t;
 
-let loop: (~iterations: int=?, ~animation: CompositeAnimation.t, unit) => CompositeAnimation.t;
+let loop: (~iterations: int=?, ~animation: Animation.t, unit) => Animation.t;
 
-let createAnimatedComponent : ReasonReact.reactClass => ReasonReact.reactClass;
+let createAnimatedComponent: ReasonReact.reactClass => ReasonReact.reactClass;
 
+let timing:
+  (
+    ~value: value(regular),
+    ~toValue: [ | `raw(float) | `animated(value(regular))],
+    ~easing: Easing.t=?,
+    ~duration: float=?,
+    ~delay: float=?,
+    ~isInteraction: bool=?,
+    ~useNativeDriver: bool=?,
+    ~onComplete: Animation.endCallback=?,
+    ~iterations: int=?,
+    unit
+  ) =>
+  Animation.t;
+
+let spring:
+  (
+    ~value: value(regular),
+    ~toValue: [ | `raw(float) | `animated(value(regular))],
+    ~restDisplacementThreshold: float=?,
+    ~overshootClamping: bool=?,
+    ~restSpeedThreshold: float=?,
+    ~velocity: float=?,
+    ~bounciness: float=?,
+    ~speed: float=?,
+    ~tension: float=?,
+    ~friction: float=?,
+    ~stiffness: float=?,
+    ~mass: float=?,
+    ~damping: float=?,
+    ~isInteraction: bool=?,
+    ~useNativeDriver: bool=?,
+    ~onComplete: Animation.endCallback=?,
+    ~iterations: int=?,
+    unit
+  ) =>
+  Animation.t;
+
+let decay:
+  (
+    ~value: value(regular),
+    ~velocity: float,
+    ~deceleration: float=?,
+    ~isInteraction: bool=?,
+    ~useNativeDriver: bool=?,
+    ~onComplete: Animation.endCallback=?,
+    ~iterations: int=?,
+    unit
+  ) =>
+  Animation.t;
+
+let stop: Animation.t => unit;
+
+let start: (Animation.t, ~callback: Animation.endCallback=?, unit) => unit;
+
+let reset: Animation.t => unit;
+
+[@deprecated "Please use Easing module instead"]
+module Easing = Easing;
+
+[@deprecated
+  "Please use Animated.start, Animated.stop or Animated.reset instead"
+]
+module CompositeAnimation = Animation;
+
+[@deprecated "Please use Animated.timing instead"]
 module Timing = Value.Timing;
 
 module TimingXY = ValueXY.Timing;
 
+[@deprecated "Please use Animated.spring instead"]
 module Spring = Value.Spring;
 
 module SpringXY = ValueXY.Spring;
 
+[@deprecated "Please use Animated.decay instead"]
 module Decay = Value.Decay;
 
 module DecayXY = ValueXY.Decay;
