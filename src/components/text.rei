@@ -20,7 +20,11 @@ module type TextComponent = {
       ~value: string=?,
       array(ReasonReact.reactElement)
     ) =>
-    ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
+    ReasonReact.component(
+      ReasonReact.stateless,
+      ReasonReact.noRetainedProps,
+      unit,
+    );
 };
 
 module CreateComponent: (Impl: View.Impl) => TextComponent;

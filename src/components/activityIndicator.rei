@@ -1,4 +1,3 @@
-
 let make:
   (
     ~animating: bool=?,
@@ -47,11 +46,15 @@ let make:
                               | `adjustable
                               | `allowsDirectInteraction
                               | `pageTurn
-                            ]
+                            ],
                           )
                             =?,
     ~accessibilityViewIsModal: bool=?,
     ~shouldRasterizeIOS: bool=?,
     array(ReasonReact.reactElement)
   ) =>
-  ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
+  ReasonReact.component(
+    ReasonReact.stateless,
+    ReasonReact.noRetainedProps,
+    unit,
+  );

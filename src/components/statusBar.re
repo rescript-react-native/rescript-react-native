@@ -2,8 +2,7 @@
 external statusBar : ReasonReact.reactClass = "StatusBar";
 
 [@bs.scope "StatusBar"] [@bs.module "react-native"]
-external _setHidden : (bool, Js.Undefined.t(string)) => unit =
-  "setHidden";
+external _setHidden : (bool, Js.Undefined.t(string)) => unit = "setHidden";
 
 let setHidden = (hidden, ~animation=?, ()) =>
   _setHidden(
@@ -55,8 +54,7 @@ let setBackgroundColor = (color, ~animated=?, ()) =>
 [@bs.scope "StatusBar"] [@bs.module "react-native"]
 external _setTranslucent : bool => unit = "setTranslucent";
 
-let setTranslucent = translucent =>
-  _setTranslucent(translucent);
+let setTranslucent = translucent => _setTranslucent(translucent);
 
 let make =
     (

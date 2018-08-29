@@ -228,8 +228,7 @@ let make:
             "ListHeaderComponent": fromOption(listHeaderComponent),
             "SectionSeparatorComponent":
               fromOption(sectionSeparatorComponent),
-            "inverted":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(inverted)),
+            "inverted": fromOption(UtilsRN.optBoolToOptJsBoolean(inverted)),
             "extraData": fromOption(extraData),
             "initialNumToRender": fromOption(initialNumToRender),
             "onEndReached": fromOption(onEndReached),
