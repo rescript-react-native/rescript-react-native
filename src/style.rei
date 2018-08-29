@@ -2,6 +2,9 @@ type t;
 
 type styleElement;
 
+type pt_only =
+  | Pt(float);
+
 type pt_pct =
   | Pt(float)
   | Pct(float);
@@ -395,3 +398,6 @@ let resizeMode: resizeMode => styleElement;
 let tintColor: string_interpolated => styleElement;
 
 let overlayColor: string_interpolated => styleElement;
+
+type color =
+  | String(string);

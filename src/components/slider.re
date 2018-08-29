@@ -6,9 +6,9 @@ external rawImageSourceJS : 'a => rawImageSourceJS = "%identity";
 
 let convertImageSource = src =>
   switch (src) {
-  | Image.Multiple(x) => rawImageSourceJS(Array.of_list(x))
-  | Image.URI(x) => rawImageSourceJS(x)
-  | Image.Required(x) => rawImageSourceJS(x)
+  | `Multiple(x) => rawImageSourceJS(Array.of_list(x))
+  | `URI(x) => rawImageSourceJS(x)
+  | `Required(x) => rawImageSourceJS(x)
   };
 
 let make =

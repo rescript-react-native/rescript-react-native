@@ -3,14 +3,18 @@
 module EventTypes = {
   [@bs.deriving abstract]
   type t = {
-    [@bs.option] url: string,
-    [@bs.option] title: string,
-    [@bs.option] loading: bool,
-    [@bs.option] canGoBack: bool,
-    [@bs.option] canGoForward: bool
+    [@bs.optional]
+    url: string,
+    [@bs.optional]
+    title: string,
+    [@bs.optional]
+    loading: bool,
+    [@bs.optional]
+    canGoBack: bool,
+    [@bs.optional]
+    canGoForward: bool,
   };
 };
-
 
 type iOSLoadRequestEvent = {
   .
@@ -39,13 +43,7 @@ external sourceUri :
   "";
 
 [@bs.obj]
-external sourceHtml :
-  (
-    ~html: string=?,
-    ~baseUrl: string=?,
-    unit
-  ) =>
-  source =
+external sourceHtml : (~html: string=?, ~baseUrl: string=?, unit) => source =
   "";
 
 let source = sourceUri;

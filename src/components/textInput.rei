@@ -95,7 +95,8 @@ let make:
                                 "height": float,
                               },
                             },
-                          }
+                          } =>
+                          unit
                             =?,
     ~onEndEditing: unit => unit=?,
     ~onFocus: unit => unit=?,
@@ -109,7 +110,8 @@ let make:
                      "y": float,
                    },
                  },
-               }
+               } =>
+               unit
                  =?,
     ~onSelectionChange: {
                           .
@@ -121,7 +123,8 @@ let make:
                               "_end": int,
                             },
                           },
-                        }
+                        } =>
+                        unit
                           =?,
     ~onSubmitEditing: unit => unit=?,
     ~placeholder: string=?,
@@ -173,7 +176,7 @@ let make:
                           =?,
     ~enablesReturnKeyAutomatically: bool=?,
     ~keyboardAppearance: [ | `dark | `default | `light]=?,
-    ~onKeyPress: {. "nativeEvent": {. "key": string}}=?,
+    ~onKeyPress: {. "nativeEvent": {. "key": string}} => unit=?,
     ~selectionState: 'documentSelectionState=?,
     ~spellCheck: bool=?,
     ~inputAccessoryViewID: string=?,

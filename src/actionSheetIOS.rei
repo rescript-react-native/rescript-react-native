@@ -13,10 +13,13 @@ let showActionSheetWithOptions:
   ) =>
   unit;
 
+type options =
+  | Message(string)
+  | URL(string);
+
 let showShareActionSheetWithOptions:
   (
-    ~message: string=?,
-    ~url: string=?,
+    ~options: options,
     ~subject: string=?,
     ~excludedActivityTypes: array(string)=?,
     error => unit,

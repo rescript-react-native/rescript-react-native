@@ -190,7 +190,7 @@ let make =
                   x =>
                     switch (x) {
                     | `never => "never"
-                    | `whileEditing => "whileEditing"
+                    | `whileEditing => "while-editing"
                     | `unlessEditing => "unless-editing"
                     | `always => "always"
                     },
