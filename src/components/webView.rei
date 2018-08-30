@@ -126,7 +126,7 @@ let make:
     ~injectJavaScript: string => unit=?,
     ~injectedJavaScript: string=?,
     ~mediaPlaybackRequiresUserAction: bool=?,
-    ~onMessage: RNEvent.NativeEvent.t => unit=?,
+    ~onMessage: RNEvent.t => unit=?,
     ~onNavigationStateChange: EventTypes.t => unit=?,
     ~scalesPageToFit: bool=?,
     ~startInLoadingState: bool=?,
