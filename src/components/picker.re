@@ -60,7 +60,7 @@ let make =
       Props.extendView(
         Js.Undefined.(
           {
-            "enabled": fromOption(UtilsRN.optBoolToOptJsBoolean(enabled)),
+            "enabled": fromOption(enabled),
             "onValueChange": fromOption(onValueChange),
             "selectedValue": fromOption(selectedValue),
             "itemStyle": fromOption(itemStyle),

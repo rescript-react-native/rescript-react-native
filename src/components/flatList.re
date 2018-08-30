@@ -292,7 +292,7 @@ module CreateComponent = (Impl: View.Impl) : FlatListComponent => {
       ~props=
         Js.Undefined.(
           {
-            "bounces": fromOption(UtilsRN.optBoolToOptJsBoolean(bounces)),
+            "bounces": fromOption(bounces),
             "ItemSeparatorComponent": fromOption(itemSeparatorComponent),
             "ListFooterComponent": fromOption(listFooterComponent),
             "ListHeaderComponent": fromOption(listHeaderComponent),
@@ -307,10 +307,10 @@ module CreateComponent = (Impl: View.Impl) : FlatListComponent => {
                 ),
               ),
             "horizontal":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(horizontal)),
+              fromOption(horizontal),
             "initialNumToRender": fromOption(initialNumToRender),
             "initialScrollIndex": fromOption(initialScrollIndex),
-            "inverted": fromOption(UtilsRN.optBoolToOptJsBoolean(inverted)),
+            "inverted": fromOption(inverted),
             "keyExtractor": keyExtractor,
             "numColumns": fromOption(numColumns),
             "onEndReached": fromOption(onEndReached),
@@ -330,24 +330,18 @@ module CreateComponent = (Impl: View.Impl) : FlatListComponent => {
                 ),
               ),
             "pagingEnabled":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(pagingEnabled)),
+              fromOption(pagingEnabled),
             "refreshing":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(refreshing)),
+              fromOption(refreshing),
             "renderItem": renderItem,
             "removeClippedSubviews":
-              fromOption(
-                UtilsRN.optBoolToOptJsBoolean(removeClippedSubviews),
-              ),
+              fromOption(removeClippedSubviews),
             "scrollEnabled":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(scrollEnabled)),
+              fromOption(scrollEnabled),
             "showsHorizontalScrollIndicator":
-              fromOption(
-                UtilsRN.optBoolToOptJsBoolean(showsHorizontalScrollIndicator),
-              ),
+              fromOption(showsHorizontalScrollIndicator),
             "showsVerticalScrollIndicator":
-              fromOption(
-                UtilsRN.optBoolToOptJsBoolean(showsVerticalScrollIndicator),
-              ),
+              fromOption(showsVerticalScrollIndicator),
             "windowSize": fromOption(windowSize),
             "maxToRenderPerBatch": fromOption(maxToRenderPerBatch),
             "viewabilityConfig": fromOption(viewabilityConfig),

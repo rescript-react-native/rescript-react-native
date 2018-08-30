@@ -54,7 +54,7 @@ let make =
       Props.extendView(
         Js.Undefined.(
           {
-            "disabled": fromOption(UtilsRN.optBoolToOptJsBoolean(disabled)),
+            "disabled": fromOption(disabled),
             "maximumTrackTintColor": fromOption(maximumTrackTintColor),
             "maximumValue": fromOption(maximumValue),
             "minimumTrackTintColor": fromOption(minimumTrackTintColor),

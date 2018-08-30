@@ -40,10 +40,9 @@ let make =
         Js.Undefined.(
           {
             "onRefresh": fromOption(onRefresh),
-            "refreshing":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(refreshing)),
+            "refreshing": fromOption(refreshing),
             "colors": fromOption(colors),
-            "enabled": fromOption(UtilsRN.optBoolToOptJsBoolean(enabled)),
+            "enabled": fromOption(enabled),
             "progressBackgroundColor": fromOption(progressBackgroundColor),
             "progressViewOffset": fromOption(progressViewOffset),
             "tintColor": fromOption(tintColor),

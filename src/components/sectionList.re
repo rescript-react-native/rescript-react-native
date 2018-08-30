@@ -228,21 +228,17 @@ let make:
             "ListHeaderComponent": fromOption(listHeaderComponent),
             "SectionSeparatorComponent":
               fromOption(sectionSeparatorComponent),
-            "inverted": fromOption(UtilsRN.optBoolToOptJsBoolean(inverted)),
+            "inverted": fromOption(inverted),
             "extraData": fromOption(extraData),
             "initialNumToRender": fromOption(initialNumToRender),
             "onEndReached": fromOption(onEndReached),
             "onEndReachedThreshold": fromOption(onEndReachedThreshold),
             "onRefresh": fromOption(onRefresh),
             "onViewableItemsChanged": fromOption(onViewableItemsChanged),
-            "refreshing":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(refreshing)),
+            "refreshing": fromOption(refreshing),
             "renderSectionHeader": fromOption(renderSectionHeader),
             "renderSectionFooter": fromOption(renderSectionFooter),
-            "stickySectionHeadersEnabled":
-              fromOption(
-                UtilsRN.optBoolToOptJsBoolean(stickySectionHeadersEnabled),
-              ),
+            "stickySectionHeadersEnabled": fromOption(stickySectionHeadersEnabled),
             "keyboardDismissMode":
               fromOption(
                 keyboardDismissMode
@@ -253,14 +249,8 @@ let make:
                 keyboardShouldPersistTaps
                 |> UtilsRN.option_map(keyboardShouldPersistTapsToJs),
               ),
-            "showsHorizontalScrollIndicator":
-              fromOption(
-                UtilsRN.optBoolToOptJsBoolean(showsHorizontalScrollIndicator),
-              ),
-            "showsVerticalScrollIndicator":
-              fromOption(
-                UtilsRN.optBoolToOptJsBoolean(showsVerticalScrollIndicator),
-              ),
+            "showsHorizontalScrollIndicator": fromOption(showsHorizontalScrollIndicator),
+            "showsVerticalScrollIndicator": fromOption(showsVerticalScrollIndicator),
             "getItemLayout":
               fromOption(
                 UtilsRN.option_map(

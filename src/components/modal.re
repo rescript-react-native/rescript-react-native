@@ -42,10 +42,10 @@ let make =
             ),
           "onShow": fromOption(onShow),
           "transparent":
-            fromOption(UtilsRN.optBoolToOptJsBoolean(transparent)),
-          "visible": fromOption(UtilsRN.optBoolToOptJsBoolean(visible)),
+            fromOption(transparent),
+          "visible": fromOption(visible),
           "hardwareAccelerated":
-            fromOption(UtilsRN.optBoolToOptJsBoolean(hardwareAccelerated)),
+            fromOption(hardwareAccelerated),
           "onRequestClose": fromOption(onRequestClose),
           "onOrientationChange": fromOption(onOrientationChange),
           "supportedOrientations":

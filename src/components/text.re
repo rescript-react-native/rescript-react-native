@@ -55,9 +55,9 @@ module CreateComponent = (Impl: View.Impl) : TextComponent => {
         Js.Undefined.(
           {
             "accessible":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(accessible)),
+              fromOption(accessible),
             "allowFontScaling":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(allowFontScaling)),
+              fromOption(allowFontScaling),
             "ellipsizeMode":
               fromOption(
                 UtilsRN.option_map(
@@ -75,7 +75,7 @@ module CreateComponent = (Impl: View.Impl) : TextComponent => {
             "onPress": fromOption(onPress),
             "pressRetentionOffset": fromOption(pressRetentionOffset),
             "selectable":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(selectable)),
+              fromOption(selectable),
             "style": fromOption(style),
             "testID": fromOption(testID),
             "selectionColor": fromOption(selectionColor),
@@ -90,14 +90,10 @@ module CreateComponent = (Impl: View.Impl) : TextComponent => {
                 ),
               ),
             "adjustsFontSizeToFit":
-              fromOption(
-                UtilsRN.optBoolToOptJsBoolean(adjustsFontSizeToFit),
-              ),
+              fromOption(adjustsFontSizeToFit),
             "minimumFontScale": fromOption(minimumFontScale),
             "suppressHighlighting":
-              fromOption(
-                UtilsRN.optBoolToOptJsBoolean(suppressHighlighting),
-              ),
+              fromOption(suppressHighlighting)
           }
         ),
       switch (value) {

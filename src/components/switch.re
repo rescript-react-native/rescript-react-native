@@ -35,8 +35,8 @@ let make =
       Props.extendView(
         Js.Undefined.(
           {
-            "value": fromOption(UtilsRN.optBoolToOptJsBoolean(value)),
-            "disabled": fromOption(UtilsRN.optBoolToOptJsBoolean(disabled)),
+            "value": fromOption(value),
+            "disabled": fromOption(disabled),
             "onValueChange": fromOption(onValueChange),
             "onTintColor": fromOption(onTintColor),
             "thumbTintColor": fromOption(thumbTintColor),

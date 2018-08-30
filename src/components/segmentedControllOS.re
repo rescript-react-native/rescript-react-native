@@ -37,9 +37,8 @@ let make =
       Props.extendView(
         Js.Undefined.(
           {
-            "enabled": fromOption @@ UtilsRN.optBoolToOptJsBoolean(enabled),
-            "momentary":
-              fromOption @@ UtilsRN.optBoolToOptJsBoolean(momentary),
+            "enabled": fromOption(enabled),
+            "momentary": fromOption(momentary),
             "tintColor": fromOption(tintColor),
             "values": Array.of_list(values),
             "selectedIndex": fromOption(selectedIndex),
