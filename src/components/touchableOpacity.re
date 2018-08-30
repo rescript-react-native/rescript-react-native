@@ -32,12 +32,12 @@ let make =
     ~props=
       Js.Undefined.(
         {
-          "accessible": fromOption(UtilsRN.optBoolToOptJsBoolean(accessible)),
+          "accessible": fromOption(accessible),
           "accessibilityLabel": fromOption(accessibilityLabel),
           "delayLongPress": fromOption(delayLongPress),
           "delayPressIn": fromOption(delayPressIn),
           "delayPressOut": fromOption(delayPressOut),
-          "disabled": fromOption(UtilsRN.optBoolToOptJsBoolean(disabled)),
+          "disabled": fromOption(disabled),
           "hitSlop": fromOption(hitSlop),
           "style": fromOption(style),
           "onLayout": fromOption(onLayout),

@@ -91,15 +91,15 @@ let make =
                 ),
               ),
             "autoCorrect":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(autoCorrect)),
+              fromOption(autoCorrect),
             "autoFocus":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(autoFocus)),
+              fromOption(autoFocus),
             "blurOnSubmit":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(blurOnSubmit)),
+              fromOption(blurOnSubmit),
             "caretHidden":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(caretHidden)),
+              fromOption((caretHidden),
             "defaultValue": fromOption(defaultValue),
-            "editable": fromOption(UtilsRN.optBoolToOptJsBoolean(editable)),
+            "editable": fromOption(editable),
             "keyboardType":
               fromOption(
                 UtilsRN.option_map(
@@ -123,7 +123,7 @@ let make =
               ),
             "maxLength": fromOption(maxLength),
             "multiline":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(multiline)),
+              fromOption(multiline),
             "onBlur": fromOption(onBlur),
             "onChange": fromOption(onChange),
             "onChangeText": fromOption(onChangeText),
@@ -158,14 +158,14 @@ let make =
                 ),
               ),
             "secureTextEntry":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(secureTextEntry)),
+              fromOption(secureTextEntry),
             "selectTextOnFocus":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(selectTextOnFocus)),
+              fromOption(selectTextOnFocus),
             "selection": fromOption(selection),
             "selectionColor": fromOption(selectionColor),
             "value": fromOption(value),
             "disableFullscreenUI":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(disableFullscreenUI)),
+              fromOption(disableFullscreenUI),
             /* TODO */
             "inlineImageLeft": fromOption(inlineImageLeft),
             "inlineImagePadding": fromOption(inlineImagePadding),
@@ -198,7 +198,7 @@ let make =
                 ),
               ),
             "clearTextOnFocus":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(clearTextOnFocus)),
+              fromOption(clearTextOnFocus),
             "dataDetectorTypes":
               fromOption(
                 UtilsRN.option_map(
@@ -215,9 +215,7 @@ let make =
                 ),
               ),
             "enablesReturnKeyAutomatically":
-              fromOption(
-                UtilsRN.optBoolToOptJsBoolean(enablesReturnKeyAutomatically),
-              ),
+              fromOption(enablesReturnKeyAutomatically),
             "keyboardAppearance":
               fromOption(
                 UtilsRN.option_map(
@@ -233,8 +231,8 @@ let make =
             "onKeyPress": fromOption(onKeyPress),
             "selectionState": fromOption(selectionState),
             "spellCheck":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(spellCheck)),
-            "inputAccessoryViewID": fromOption(inputAccessoryViewID),
+              fromOption(spellCheck),
+            "inputAccessoryViewID": fromOption(inputAccessoryViewID)
           }
         ),
         ~accessibilityLabel?,

@@ -45,13 +45,13 @@ module Item = {
               "icon": fromOption(icon),
               "onPress": fromOption(onPress),
               "renderAsOriginal":
-                fromOption(UtilsRN.optBoolToOptJsBoolean(renderAsOriginal)),
+                fromOption(renderAsOriginal),
               "selected":
-                fromOption(UtilsRN.optBoolToOptJsBoolean(selected)),
+                fromOption(selected),
               "selectedIcon": fromOption(selectedIcon),
               "style": fromOption(style),
               "isTVSelectable":
-                fromOption(UtilsRN.optBoolToOptJsBoolean(isTVSelectable)),
+                fromOption(isTVSelectable),
             }
           ),
           ~accessibilityLabel?,
@@ -131,7 +131,7 @@ let make =
               ),
             "tintColor": fromOption(tintColor),
             "translucent":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(translucent)),
+              fromOption(translucent),
             "unselectedItemTintColor": fromOption(unselectedItemTintColor),
             "unselectedTintColor": fromOption(unselectedTintColor),
           }

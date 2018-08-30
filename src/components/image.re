@@ -264,8 +264,7 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
                 UtilsRN.option_map(encodeResizeMethod, resizeMethod),
               ),
             "accessibilityLabel": fromOption(accessibilityLabel),
-            "accessible":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(accessible)),
+            "accessible": fromOption(accessible),
             "blurRadius": fromOption(blurRadius),
             "capInsets": fromOption(capInsets),
             "defaultSource":

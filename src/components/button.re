@@ -17,7 +17,7 @@ let make =
         {
           "accessibilityLabel": fromOption(accessibilityLabel),
           "color": fromOption(color),
-          "disabled": fromOption(UtilsRN.optBoolToOptJsBoolean(disabled)),
+          "disabled": fromOption(disabled),
           "onPress": onPress,
           "testID": fromOption(testID),
           "title": title,

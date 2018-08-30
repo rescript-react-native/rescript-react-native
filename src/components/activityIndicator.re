@@ -52,11 +52,10 @@ let make =
       Props.extendView(
         Js.Undefined.(
           {
-            "animating": fromOption(UtilsRN.optBoolToOptJsBoolean(animating)),
+            "animating": fromOption(animating),
             "color": color,
             "size": fromOption(UtilsRN.option_map(encodeSize, size)),
-            "hidesWhenStopped":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(hidesWhenStopped)),
+            "hidesWhenStopped": fromOption(hidesWhenStopped)
           }
         ),
         ~accessibilityLabel?,

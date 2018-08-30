@@ -31,7 +31,7 @@ let setBarStyle = (style, ~animated=?, ()) =>
     | `lightContent => "light-content"
     | `darkContent => "dark-content"
     },
-    Js.Undefined.fromOption(UtilsRN.optBoolToOptJsBoolean(animated)),
+    Js.Undefined.fromOption(animated),
   );
 
 [@bs.scope "StatusBar"] [@bs.module "react-native"]
@@ -48,7 +48,7 @@ external _setBackgroundColor : (string, Js.Undefined.t(bool)) => unit =
 let setBackgroundColor = (color, ~animated=?, ()) =>
   _setBackgroundColor(
     color,
-    Js.Undefined.fromOption(UtilsRN.optBoolToOptJsBoolean(animated)),
+    Js.Undefined.fromOption(animated),
   );
 
 [@bs.scope "StatusBar"] [@bs.module "react-native"]
@@ -71,7 +71,7 @@ let make =
     ~props=
       Js.Undefined.(
         {
-          "animated": fromOption(UtilsRN.optBoolToOptJsBoolean(animated)),
+          "animated": fromOption(animated),
           "barStyle":
             fromOption(
               UtilsRN.option_map(
@@ -85,13 +85,11 @@ let make =
               ),
             ),
           "backgroundColor": fromOption(backgroundColor),
-          "hidden": fromOption(UtilsRN.optBoolToOptJsBoolean(hidden)),
+          "hidden": fromOption(hidden),
           "translucent":
-            fromOption(UtilsRN.optBoolToOptJsBoolean(translucent)),
+            fromOption(translucent),
           "networkActivityIndicatorVisible":
-            fromOption(
-              UtilsRN.optBoolToOptJsBoolean(networkActivityIndicatorVisible),
-            ),
+            fromOption(networkActivityIndicatorVisible),
           "showHideTransition":
             fromOption(
               UtilsRN.option_map(
