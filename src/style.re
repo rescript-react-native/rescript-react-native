@@ -2,6 +2,9 @@ type t;
 
 type styleElement = (string, Js.Json.t);
 
+type pt_only =
+  | Pt(float);
+
 type pt_pct =
   | Pt(float)
   | Pct(float);
@@ -328,7 +331,6 @@ let direction = v =>
     },
   );
 
-
 /***
  * Shadow Props
  */
@@ -484,7 +486,6 @@ module Transform = {
       skewY,
     );
 };
-
 
 /***
  * View Props
@@ -734,7 +735,6 @@ type resizeMode =
   | Repeat
   | Center;
 
-
 /*** Image props */
 let resizeMode = v =>
   stringStyle(
@@ -754,3 +754,6 @@ let overlayColor = value => (
   "overlayColor",
   encode_string_interpolated(value),
 );
+
+type color =
+  | String(string);
