@@ -55,7 +55,7 @@ let make = (~description, ~title, children) => {
             <Text style=styles##descriptionText>
               (ReasonReact.string(description))
             </Text>
-          | None => ReasonReact.nullElement
+          | None => ReasonReact.null
           }
         )
       </View>

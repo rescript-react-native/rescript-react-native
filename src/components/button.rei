@@ -3,9 +3,13 @@ let make:
     ~accessibilityLabel: string=?,
     ~color: string=?,
     ~disabled: bool=?,
-    ~onPress: unit => unit=?,
+    ~onPress: unit => unit,
     ~testID: string=?,
-    ~title: string=?,
+    ~title: string,
     array(ReasonReact.reactElement)
   ) =>
-  ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
+  ReasonReact.component(
+    ReasonReact.stateless,
+    ReasonReact.noRetainedProps,
+    unit,
+  );

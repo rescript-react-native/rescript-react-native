@@ -2,6 +2,9 @@ type t;
 
 type styleElement = (string, Js.Json.t);
 
+type pt_only =
+  | Pt(float);
+
 type pt_pct =
   | Pt(float)
   | Pct(float);
@@ -84,7 +87,6 @@ let objectStyle = (key, value) => (key, Encode.object_(value));
 let arrayStyle = (key, value) => (key, Encode.array(value));
 
 let style = sarr => sarr |> UtilsRN.dictFromList |> to_style;
-
 
 /***
  * Layout Props
@@ -328,7 +330,6 @@ let direction = v =>
     },
   );
 
-
 /***
  * Shadow Props
  */
@@ -485,7 +486,6 @@ module Transform = {
     );
 };
 
-
 /***
  * View Props
  */
@@ -563,7 +563,6 @@ let opacity = value => (
 );
 
 let elevation = floatStyle("elevation");
-
 
 /***
  * Text Props
@@ -734,7 +733,6 @@ type resizeMode =
   | Repeat
   | Center;
 
-
 /*** Image props */
 let resizeMode = v =>
   stringStyle(
@@ -754,3 +752,6 @@ let overlayColor = value => (
   "overlayColor",
   encode_string_interpolated(value),
 );
+
+type color =
+  | String(string);

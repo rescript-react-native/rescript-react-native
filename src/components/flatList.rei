@@ -1,32 +1,31 @@
 module type FlatListComponent = {
-
   let scrollToEnd: (ReasonReact.reactRef, ~animated: bool) => unit;
 
-let scrollToIndex:
-  (
-    ReasonReact.reactRef,
-    ~index: int,
-    ~animated: bool=?,
-    ~viewOffset: int=?,
-    ~viewPosition: int=?,
-    unit
-  ) =>
-  unit;
+  let scrollToIndex:
+    (
+      ReasonReact.reactRef,
+      ~index: int,
+      ~animated: bool=?,
+      ~viewOffset: int=?,
+      ~viewPosition: int=?,
+      unit
+    ) =>
+    unit;
 
-let scrollToItem:
-  (
-    ReasonReact.reactRef,
-    ~item: 'item,
-    ~animated: bool=?,
-    ~viewPosition: int=?,
-    unit
-  ) =>
-  unit;
+  let scrollToItem:
+    (
+      ReasonReact.reactRef,
+      ~item: 'item,
+      ~animated: bool=?,
+      ~viewPosition: int=?,
+      unit
+    ) =>
+    unit;
 
-let scrollToOffset:
-  (ReasonReact.reactRef, ~offset: int=?, ~animated: bool=?, unit) => unit;
+  let scrollToOffset:
+    (ReasonReact.reactRef, ~offset: int=?, ~animated: bool=?, unit) => unit;
 
-[@bs.send] external recordInteraction : ReasonReact.reactRef => unit = "";
+  [@bs.send] external recordInteraction : ReasonReact.reactRef => unit = "";
 
   type renderBag('item) = {
     item: 'item,

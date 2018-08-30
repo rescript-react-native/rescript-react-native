@@ -1,7 +1,7 @@
 type response = {
   year: int,
   month: int,
-  day: int
+  day: int,
 };
 
 type action =
@@ -14,5 +14,11 @@ type mode =
   | Default;
 
 let open_:
-  (~date: Js.Date.t, ~minDate: Js.Date.t=?, ~maxDate: Js.Date.t=?, ~mode: mode=?, unit) =>
+  (
+    ~date: Js.Date.t,
+    ~minDate: Js.Date.t=?,
+    ~maxDate: Js.Date.t=?,
+    ~mode: mode=?,
+    unit
+  ) =>
   Js.Promise.t(action);

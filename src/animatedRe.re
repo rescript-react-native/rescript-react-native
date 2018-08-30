@@ -53,8 +53,8 @@ module ValueAnimations = (Val: Value) => {
         makeConfig(
           ~velocity,
           ~deceleration?,
-          ~isInteraction=?isInteraction,
-          ~useNativeDriver=?useNativeDriver,
+          ~isInteraction=?UtilsRN.optBoolToOptJsBoolean(isInteraction),
+          ~useNativeDriver=?UtilsRN.optBoolToOptJsBoolean(useNativeDriver),
           ~onComplete?,
           ~iterations?,
         ),

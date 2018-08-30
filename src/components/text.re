@@ -108,10 +108,6 @@ module CreateComponent = (Impl: View.Impl) : TextComponent => {
     );
 };
 
-include
-  CreateComponent(
-    {
-      [@bs.module "react-native"]
-      external view : ReasonReact.reactClass = "Text";
-    },
-  );
+include CreateComponent({
+  [@bs.module "react-native"] external view : ReasonReact.reactClass = "Text";
+});

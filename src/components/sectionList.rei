@@ -94,7 +94,14 @@ let make:
     ~keyboardShouldPersistTaps: [ | `always | `never | `handled]=?,
     ~showsHorizontalScrollIndicator: bool=?,
     ~showsVerticalScrollIndicator: bool=?,
-    ~getItemLayout: (option(array('item)), int) => {. "length": int, "offset": int, "index": int}=?,
+    ~getItemLayout: (option(array('item)), int) =>
+                    {
+                      .
+                      "length": int,
+                      "offset": int,
+                      "index": int,
+                    }
+                      =?,
     array(ReasonReact.reactElement)
   ) =>
   ReasonReact.component(

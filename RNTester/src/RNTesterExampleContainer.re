@@ -7,6 +7,6 @@ let make = (~example: ExampleList.item, _children) => {
   ...component,
   render: (_self) =>
     <RNTesterPage title=example.title>
-      (ReasonReact.arrayToElement(Array.mapi(renderExample, example.examples)))
+      (ReasonReact.array(Array.mapi(renderExample, example.examples)))
     </RNTesterPage>
 };

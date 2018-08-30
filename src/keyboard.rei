@@ -10,9 +10,9 @@ constraint 'a =
         "height": float,
         "screenX": float,
         "screenY": float,
-        "width": float
-      }
-    } as 'b
+        "width": float,
+      },
+    } as 'b,
   );
 
 type listener('a) = event('a) => unit
@@ -25,9 +25,9 @@ constraint 'a =
         "height": float,
         "screenX": float,
         "screenY": float,
-        "width": float
-      }
-    } as 'b
+        "width": float,
+      },
+    } as 'b,
   );
 
 type keyboardEvent =
@@ -52,9 +52,9 @@ let addListener:
           "height": float,
           "screenX": float,
           "screenY": float,
-          "width": float
-        }
-      }
+          "width": float,
+        },
+      },
     )
   ) =>
   subscription;
@@ -72,9 +72,9 @@ let removeListener:
           "height": float,
           "screenX": float,
           "screenY": float,
-          "width": float
-        }
-      }
+          "width": float,
+        },
+      },
     )
   ) =>
   unit;
