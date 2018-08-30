@@ -1,4 +1,6 @@
-[@bs.send] external setOpacityTo : (ReasonReact.reactRef, float, int) => unit = "setOpacityTo";
+[@bs.send]
+external setOpacityTo : (ReasonReact.reactRef, float, int) => unit =
+  "setOpacityTo";
 
 let make:
   (
@@ -30,7 +32,7 @@ let make:
                               | `adjustable
                               | `allowsDirectInteraction
                               | `pageTurn
-                            ]
+                            ],
                           )
                             =?,
     ~delayLongPress: int=?,
@@ -50,4 +52,8 @@ let make:
     ~tvParallaxProperties: Js.t({.})=?,
     array(ReasonReact.reactElement)
   ) =>
-  ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
+  ReasonReact.component(
+    ReasonReact.stateless,
+    ReasonReact.noRetainedProps,
+    unit,
+  );

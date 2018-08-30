@@ -10,8 +10,8 @@ let encodeMode = prop =>
 
 let make =
     (
-      ~date=?,
-      ~onDateChange=?,
+      ~date,
+      ~onDateChange,
       ~maximumDate=?,
       ~minimumDate=?,
       ~mode=?,
@@ -44,8 +44,8 @@ let make =
       Props.extendView(
         Js.Undefined.(
           {
-            "date": fromOption(date),
-            "onDateChange": fromOption(onDateChange),
+            "date": date,
+            "onDateChange": onDateChange,
             "maximumDate": fromOption(maximumDate),
             "minimumDate": fromOption(minimumDate),
             "mode": fromOption(UtilsRN.option_map(encodeMode, mode)),

@@ -2884,7 +2884,7 @@ react-devtools-core@3.0.0:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
-react-native@0.53.3:
+react-native@^0.53.3:
   version "0.53.3"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.53.3.tgz#930d1de5d68866f32a4b55112fc0228e29784e8f"
   dependencies:

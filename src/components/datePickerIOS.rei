@@ -1,7 +1,7 @@
 let make:
   (
-    ~date: Js.Date.t=?,
-    ~onDateChange: Js.Date.t => unit=?,
+    ~date: Js.Date.t,
+    ~onDateChange: Js.Date.t => unit,
     ~maximumDate: Js.Date.t=?,
     ~minimumDate: Js.Date.t=?,
     ~mode: [ | `date | `datetime | `time]=?,
@@ -49,11 +49,15 @@ let make:
                               | `adjustable
                               | `allowsDirectInteraction
                               | `pageTurn
-                            ]
+                            ],
                           )
                             =?,
     ~accessibilityViewIsModal: bool=?,
     ~shouldRasterizeIOS: bool=?,
     array(ReasonReact.reactElement)
   ) =>
-  ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
+  ReasonReact.component(
+    ReasonReact.stateless,
+    ReasonReact.noRetainedProps,
+    unit,
+  );

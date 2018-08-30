@@ -15,7 +15,6 @@ external objAssign2 : (Js.t({..}), Js.t({..}), Js.t({..})) => Js.t({..}) =
 
 let (<<) = (f, g, x) => f(g(x));
 
-
 /***
  * The following is taken from bs-json (https://github.com/BuckleTypes/bs-json) converted to reason syntax
  */
