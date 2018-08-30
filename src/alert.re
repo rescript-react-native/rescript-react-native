@@ -66,8 +66,7 @@ let alert = (~title, ~message=?, ~buttons=?, ~options=?, ~type_=?, ()) => {
     fromOption(
       UtilsRN.option_map(
         ({cancelable, onDismiss}) => {
-          "cancelable":
-            fromOption(UtilsRN.optBoolToOptJsBoolean(cancelable)),
+          "cancelable": fromOption(cancelable),
           "onDismiss": fromOption(onDismiss),
         },
         options,
