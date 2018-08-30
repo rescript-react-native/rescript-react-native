@@ -1,9 +1,10 @@
-[@bs.module "react-native"] external view : ReasonReact.reactClass = "Picker";
+[@bs.module "react-native"]
+external pickerIOS : ReasonReact.reactClass = "PickerIOS";
 
 module Item = {
-  [@bs.scope "Picker"] [@bs.module "react-native"]
+  [@bs.scope "PickerIOS"] [@bs.module "react-native"]
   external item : ReasonReact.reactClass = "Item";
-  let make = (~color=?, ~label, ~value=?, ~testID=?) =>
+  let make = (~label, ~value=?, ~color=?) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=item,
       ~props=
@@ -12,26 +13,16 @@ module Item = {
             "label": label,
             "value": fromOption(value),
             "color": fromOption(color),
-            "testID": fromOption(testID),
           }
         ),
     );
 };
 
-let encodeMode = x =>
-  switch (x) {
-  | `dialog => "dialog"
-  | `dropdown => "dropdown"
-  };
-
 let make =
     (
+      ~itemStyle=?,
       ~onValueChange=?,
       ~selectedValue=?,
-      ~enabled=?,
-      ~mode=?,
-      ~prompt=?,
-      ~itemStyle=?,
       /* view props */
       ~accessibilityLabel=?,
       ~accessible=?,
@@ -55,17 +46,14 @@ let make =
       ~shouldRasterizeIOS=?,
     ) =>
   ReasonReact.wrapJsForReason(
-    ~reactClass=view,
+    ~reactClass=pickerIOS,
     ~props=
       Props.extendView(
         Js.Undefined.(
           {
-            "enabled": fromOption(UtilsRN.optBoolToOptJsBoolean(enabled)),
+            "itemStyle": fromOption(itemStyle),
             "onValueChange": fromOption(onValueChange),
             "selectedValue": fromOption(selectedValue),
-            "itemStyle": fromOption(itemStyle),
-            "prompt": fromOption(prompt),
-            "mode": fromOption(UtilsRN.option_map(encodeMode, mode)),
           }
         ),
         ~accessibilityLabel?,
