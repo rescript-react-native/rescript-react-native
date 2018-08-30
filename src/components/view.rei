@@ -21,7 +21,8 @@ module type ViewComponent = {
                                      =?,
       ~accessibilityLiveRegion: [ | `assertive | `none | `polite]=?,
       ~collapsable: bool=?,
-      ~importantForAccessibility: [ | `auto | `no | `noHideDescendants | `yes]=?,
+      ~importantForAccessibility: [ | `auto | `no | `noHideDescendants | `yes]
+                                    =?,
       ~needsOffscreenAlphaCompositing: bool=?,
       ~renderToHardwareTextureAndroid: bool=?,
       ~accessibilityTraits: list(
@@ -43,14 +44,18 @@ module type ViewComponent = {
                                 | `startsMedia
                                 | `summary
                                 | `text
-                              ]
+                              ],
                             )
                               =?,
       ~accessibilityViewIsModal: bool=?,
       ~shouldRasterizeIOS: bool=?,
       array(ReasonReact.reactElement)
     ) =>
-    ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
+    ReasonReact.component(
+      ReasonReact.stateless,
+      ReasonReact.noRetainedProps,
+      unit,
+    );
 };
 
 module type Impl = {let view: ReasonReact.reactClass;};

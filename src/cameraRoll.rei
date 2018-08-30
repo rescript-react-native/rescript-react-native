@@ -11,7 +11,7 @@ type node = {
     "isStored": bool,
     "playableDuration": int,
     "uri": string,
-    "width": int
+    "width": int,
   },
   "location": {
     .
@@ -19,9 +19,9 @@ type node = {
     "heading": float,
     "latitude": float,
     "longitude": float,
-    "speed": float
+    "speed": float,
   },
-  "timestamp": float
+  "timestamp": float,
 };
 
 type assets = {
@@ -31,8 +31,8 @@ type assets = {
     .
     "end_cursor": cursor,
     "has_next_page": bool,
-    "start_cursor": cursor
-  }
+    "start_cursor": cursor,
+  },
 };
 
 type fileType =

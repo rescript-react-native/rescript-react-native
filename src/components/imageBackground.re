@@ -1,5 +1,3 @@
-open Image;
-
 [@bs.module "react-native"]
 external view : ReasonReact.reactClass = "ImageBackground";
 
@@ -67,9 +65,9 @@ let make =
               UtilsRN.option_map(
                 (x: Image.imageSource) =>
                   switch (x) {
-                  | URI(x) => rawImageSourceJS(x)
-                  | Required(x) => rawImageSourceJS(x)
-                  | Multiple(x) => rawImageSourceJS(Array.of_list(x))
+                  | `URI(x) => rawImageSourceJS(x)
+                  | `Required(x) => rawImageSourceJS(x)
+                  | `Multiple(x) => rawImageSourceJS(Array.of_list(x))
                   },
                 source,
               ),
@@ -99,8 +97,8 @@ let make =
               UtilsRN.option_map(
                 (x: Image.defaultSource) =>
                   switch (x) {
-                  | URI(x) => rawImageSourceJS(x)
-                  | Required(x) => rawImageSourceJS(x)
+                  | `URI(x) => rawImageSourceJS(x)
+                  | `Required(x) => rawImageSourceJS(x)
                   },
                 defaultSource,
               ),

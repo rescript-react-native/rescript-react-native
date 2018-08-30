@@ -18,17 +18,17 @@ module NativeScrollEvent: {
   type t;
   type point = {
     x: float,
-    y: float
+    y: float,
   };
   type size = {
     width: float,
-    height: float
+    height: float,
   };
   type contentInset = {
     bottom: float,
     top: float,
     left: float,
-    right: float
+    right: float,
   };
   let contentOffset: t => point;
   let contentSize: t => size;
@@ -42,7 +42,7 @@ module NativeLayoutEvent: {
     x: float,
     y: float,
     width: float,
-    height: float
+    height: float,
   };
   let layout: t => layout;
 };

@@ -28,7 +28,7 @@ let make:
                               | `adjustable
                               | `allowsDirectInteraction
                               | `pageTurn
-                            ]
+                            ],
                           )
                             =?,
     ~delayLongPress: int=?,
@@ -45,4 +45,8 @@ let make:
     ~style: Style.t=?,
     array(ReasonReact.reactElement)
   ) =>
-  ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
+  ReasonReact.component(
+    ReasonReact.stateless,
+    ReasonReact.noRetainedProps,
+    unit,
+  );

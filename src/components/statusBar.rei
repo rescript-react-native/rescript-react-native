@@ -1,6 +1,8 @@
 let setHidden: (bool, ~animation: [ | `fade | `none | `slide]=?, unit) => unit;
 
-let setBarStyle: ([ | `darkContent | `default | `lightContent], ~animated: bool=?, unit) => unit;
+let setBarStyle:
+  ([ | `darkContent | `default | `lightContent], ~animated: bool=?, unit) =>
+  unit;
 
 let setNetworkActivityIndicatorVisible: bool => unit;
 
@@ -19,4 +21,8 @@ let make:
     ~showHideTransition: [ | `fade | `none | `slide]=?,
     array(ReasonReact.reactElement)
   ) =>
-  ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
+  ReasonReact.component(
+    ReasonReact.stateless,
+    ReasonReact.noRetainedProps,
+    unit,
+  );

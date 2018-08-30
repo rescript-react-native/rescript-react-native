@@ -2,7 +2,7 @@ module Event: {
   type error;
   type progress = {
     loaded: float,
-    total: float
+    total: float,
   };
 };
 
@@ -28,4 +28,8 @@ let make:
     ~onProgress: Event.progress => unit=?,
     array(ReasonReact.reactElement)
   ) =>
-  ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
+  ReasonReact.component(
+    ReasonReact.stateless,
+    ReasonReact.noRetainedProps,
+    unit,
+  );
