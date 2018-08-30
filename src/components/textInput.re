@@ -97,7 +97,7 @@ let make =
             "blurOnSubmit":
               fromOption(blurOnSubmit),
             "caretHidden":
-              fromOption((caretHidden),
+              fromOption(caretHidden),
             "defaultValue": fromOption(defaultValue),
             "editable": fromOption(editable),
             "keyboardType":
