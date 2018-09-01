@@ -8,13 +8,11 @@ module Item = {
     ReasonReact.wrapJsForReason(
       ~reactClass=item,
       ~props=
-        Js.Undefined.(
-          {
-            "label": label,
-            "value": fromOption(value),
-            "color": fromOption(color),
-          }
-        ),
+        {
+          "label": label,
+          "value": value,
+          "color": color,
+        },
     );
 };
 
@@ -49,13 +47,11 @@ let make =
     ~reactClass=pickerIOS,
     ~props=
       Props.extendView(
-        Js.Undefined.(
-          {
-            "itemStyle": fromOption(itemStyle),
-            "onValueChange": fromOption(onValueChange),
-            "selectedValue": fromOption(selectedValue),
-          }
-        ),
+        {
+          "itemStyle": itemStyle,
+          "onValueChange": onValueChange,
+          "selectedValue": selectedValue,
+        },
         ~accessibilityLabel?,
         ~accessible?,
         ~hitSlop?,

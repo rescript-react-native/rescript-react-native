@@ -39,78 +39,65 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
     ~props=
-      Js.Undefined.(
-        {
-          "onLayout": fromOption(onLayout),
-          "onError": fromOption(onError),
-          "onLoad": fromOption(onLoad),
-          "onLoadEnd": fromOption(onLoadEnd),
-          "onLoadStart": fromOption(onLoadStart),
-          "resizeMode":
-            fromOption(
-              UtilsRN.option_map(
-                x =>
-                  switch (x) {
-                  | `cover => "cover"
-                  | `contain => "contain"
-                  | `stretch => "stretch"
-                  | `repeat => "repeat"
-                  | `center => "center"
-                  },
-                resizeMode,
-              ),
-            ),
-          "source":
-            fromOption(
-              UtilsRN.option_map(
-                (x: Image.imageSource) =>
-                  switch (x) {
-                  | `URI(x) => rawImageSourceJS(x)
-                  | `Required(x) => rawImageSourceJS(x)
-                  | `Multiple(x) => rawImageSourceJS(Array.of_list(x))
-                  },
-                source,
-              ),
-            ),
-          "style": fromOption(style),
-          "imageStyle": fromOption(imageStyle),
-          "testID": fromOption(testID),
-          "resizeMethod":
-            fromOption(
-              UtilsRN.option_map(
-                x =>
-                  switch (x) {
-                  | `auto => "auto"
-                  | `resize => "resize"
-                  | `scale => "scale"
-                  },
-                resizeMethod,
-              ),
-            ),
-          "accessibilityLabel": fromOption(accessibilityLabel),
-          "accessible":
-            fromOption(UtilsRN.optBoolToOptJsBoolean(accessible)),
-          "blurRadius": fromOption(blurRadius),
-          "capInsets": fromOption(capInsets),
-          "defaultSource":
-            fromOption(
-              UtilsRN.option_map(
-                (x: Image.defaultSource) =>
-                  switch (x) {
-                  | `URI(x) => rawImageSourceJS(x)
-                  | `Required(x) => rawImageSourceJS(x)
-                  },
-                defaultSource,
-              ),
-            ),
-          "onPartialLoad": fromOption(onPartialLoad),
-          "onProgress":
-            fromOption(
-              UtilsRN.option_map(
-                (x, y) => x(Event.progress(y)),
-                onProgress,
-              ),
-            ),
-        }
-      ),
+      {
+        "onLayout": onLayout,
+        "onError": onError,
+        "onLoad": onLoad,
+        "onLoadEnd": onLoadEnd,
+        "onLoadStart": onLoadStart,
+        "resizeMode":
+          UtilsRN.option_map(
+            x =>
+              switch (x) {
+              | `cover => "cover"
+              | `contain => "contain"
+              | `stretch => "stretch"
+              | `repeat => "repeat"
+              | `center => "center"
+              },
+            resizeMode,
+          ),
+        "source":
+          UtilsRN.option_map(
+            (x: Image.imageSource) =>
+              switch (x) {
+              | `URI(x) => rawImageSourceJS(x)
+              | `Required(x) => rawImageSourceJS(x)
+              | `Multiple(x) => rawImageSourceJS(Array.of_list(x))
+              },
+            source,
+          ),
+        "style": style,
+        "imageStyle": imageStyle,
+        "testID": testID,
+        "resizeMethod":
+          UtilsRN.option_map(
+            x =>
+              switch (x) {
+              | `auto => "auto"
+              | `resize => "resize"
+              | `scale => "scale"
+              },
+            resizeMethod,
+          ),
+        "accessibilityLabel": accessibilityLabel,
+        "accessible": accessible,
+        "blurRadius": blurRadius,
+        "capInsets": capInsets,
+        "defaultSource":
+          UtilsRN.option_map(
+            (x: Image.defaultSource) =>
+              switch (x) {
+              | `URI(x) => rawImageSourceJS(x)
+              | `Required(x) => rawImageSourceJS(x)
+              },
+            defaultSource,
+          ),
+        "onPartialLoad": onPartialLoad,
+        "onProgress":
+          UtilsRN.option_map(
+            (x, y) => x(Event.progress(y)),
+            onProgress,
+          ),
+      },
   );

@@ -13,14 +13,12 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass=button,
     ~props=
-      Js.Undefined.(
-        {
-          "accessibilityLabel": fromOption(accessibilityLabel),
-          "color": fromOption(color),
-          "disabled": fromOption(UtilsRN.optBoolToOptJsBoolean(disabled)),
-          "onPress": onPress,
-          "testID": fromOption(testID),
-          "title": title,
-        }
-      ),
+      {
+        "accessibilityLabel": accessibilityLabel,
+        "color": color,
+        "disabled": disabled,
+        "onPress": onPress,
+        "testID": testID,
+        "title": title,
+      },
   );

@@ -45,17 +45,15 @@ let make =
     ~reactClass=component,
     ~props=
       Props.extendView(
-        Js.Undefined.(
-          {
-            "animating": fromOption(animating),
-            "color": fromOption(color),
-            "indeterminate": fromOption(indeterminate),
-            "progress": fromOption(progress),
-            "styleAttr":
-              fromOption(UtilsRN.option_map(styleAttribute, styleAttr)),
-            "testID": fromOption(testID),
-          }
-        ),
+        {
+          "animating": animating,
+          "color": color,
+          "indeterminate": indeterminate,
+          "progress": progress,
+          "styleAttr":
+            UtilsRN.option_map(styleAttribute, styleAttr),
+          "testID": testID,
+        },
         ~accessibilityLabel?,
         ~accessible?,
         ~hitSlop?,

@@ -247,41 +247,32 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
     ReasonReact.wrapJsForReason(
       ~reactClass=Impl.view,
       ~props=
-        Js.Undefined.(
-          {
-            "onLayout": fromOption(onLayout),
-            "onError": fromOption(onError),
-            "onLoad": fromOption(onLoad),
-            "onLoadEnd": fromOption(onLoadEnd),
-            "onLoadStart": fromOption(onLoadStart),
-            "resizeMode":
-              fromOption(UtilsRN.option_map(encodeResizeMode, resizeMode)),
-            "source": encodeSource(source),
-            "style": fromOption(style),
-            "testID": fromOption(testID),
-            "resizeMethod":
-              fromOption(
-                UtilsRN.option_map(encodeResizeMethod, resizeMethod),
-              ),
-            "accessibilityLabel": fromOption(accessibilityLabel),
-            "accessible":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(accessible)),
-            "blurRadius": fromOption(blurRadius),
-            "capInsets": fromOption(capInsets),
-            "defaultSource":
-              fromOption(
-                UtilsRN.option_map(encodeDefaultSource, defaultSource),
-              ),
-            "onPartialLoad": fromOption(onPartialLoad),
-            "onProgress":
-              fromOption(
-                UtilsRN.option_map(
-                  (x, y) => x(Event.progress(y)),
-                  onProgress,
-                ),
-              ),
-          }
-        ),
+        {
+          "onLayout": onLayout,
+          "onError": onError,
+          "onLoad": onLoad,
+          "onLoadEnd": onLoadEnd,
+          "onLoadStart": onLoadStart,
+          "resizeMode":
+            UtilsRN.option_map(encodeResizeMode, resizeMode),
+          "source": encodeSource(source),
+          "style": style,
+          "testID": testID,
+          "resizeMethod":
+            UtilsRN.option_map(encodeResizeMethod, resizeMethod),
+          "accessibilityLabel": accessibilityLabel,
+          "accessible": accessible,
+          "blurRadius": blurRadius,
+          "capInsets": capInsets,
+          "defaultSource":
+            UtilsRN.option_map(encodeDefaultSource, defaultSource),
+          "onPartialLoad": onPartialLoad,
+          "onProgress":
+            UtilsRN.option_map(
+              (x, y) => x(Event.progress(y)),
+              onProgress,
+            ),
+        },
     );
 };
 

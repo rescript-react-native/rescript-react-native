@@ -37,20 +37,17 @@ let make =
     ~reactClass=view,
     ~props=
       Props.extendView(
-        Js.Undefined.(
-          {
-            "onRefresh": fromOption(onRefresh),
-            "refreshing":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(refreshing)),
-            "colors": fromOption(colors),
-            "enabled": fromOption(UtilsRN.optBoolToOptJsBoolean(enabled)),
-            "progressBackgroundColor": fromOption(progressBackgroundColor),
-            "progressViewOffset": fromOption(progressViewOffset),
-            "tintColor": fromOption(tintColor),
-            "title": fromOption(title),
-            "titleColor": fromOption(titleColor),
-          }
-        ),
+        {
+          "onRefresh": onRefresh,
+          "refreshing": refreshing,
+          "colors": colors,
+          "enabled": enabled,
+          "progressBackgroundColor": progressBackgroundColor,
+          "progressViewOffset": progressViewOffset,
+          "tintColor": tintColor,
+          "title": title,
+          "titleColor": titleColor,
+        },
         ~accessibilityLabel?,
         ~accessible?,
         ~hitSlop?,
