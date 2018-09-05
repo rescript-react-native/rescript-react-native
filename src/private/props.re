@@ -71,13 +71,12 @@ let extendView =
     Js.Undefined.(
       {
         "accessibilityLabel": fromOption(accessibilityLabel),
-        "accessible": fromOption(UtilsRN.optBoolToOptJsBoolean(accessible)),
+        "accessible": fromOption(accessible),
         "hitSlop": fromOption(hitSlop),
         "onAccessibilityTap": fromOption(onAccessibilityTap),
         "onLayout": fromOption(onLayout),
         "onMagicTap": fromOption(onMagicTap),
-        "removeClippedSubviews":
-          fromOption(UtilsRN.optBoolToOptJsBoolean(removeClippedSubviews)),
+        "removeClippedSubviews": fromOption(removeClippedSubviews),
         "pointerEvents":
           fromOption(
             UtilsRN.option_map(
@@ -118,8 +117,7 @@ let extendView =
               accessibilityLiveRegion,
             ),
           ),
-        "collapsable":
-          fromOption(UtilsRN.optBoolToOptJsBoolean(collapsable)),
+        "collapsable": fromOption(collapsable),
         "importantForAccessibility":
           fromOption(
             UtilsRN.option_map(
@@ -134,13 +132,9 @@ let extendView =
             ),
           ),
         "needsOffscreenAlphaCompositing":
-          fromOption(
-            UtilsRN.optBoolToOptJsBoolean(needsOffscreenAlphaCompositing),
-          ),
+          fromOption(needsOffscreenAlphaCompositing),
         "renderToHardwareTextureAndroid":
-          fromOption(
-            UtilsRN.optBoolToOptJsBoolean(renderToHardwareTextureAndroid),
-          ),
+          fromOption(renderToHardwareTextureAndroid),
         "accessibilityTraits":
           fromOption(
             UtilsRN.option_map(
@@ -170,11 +164,9 @@ let extendView =
             ),
           ),
         "accessibilityViewIsModal":
-          fromOption(
-            UtilsRN.optBoolToOptJsBoolean(accessibilityViewIsModal),
-          ),
+          fromOption(accessibilityViewIsModal),
         "shouldRasterizeIOS":
-          fromOption(UtilsRN.optBoolToOptJsBoolean(shouldRasterizeIOS)),
+          fromOption(shouldRasterizeIOS)
       }
     ),
     moreProps,
