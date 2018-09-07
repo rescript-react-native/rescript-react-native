@@ -1,11 +1,13 @@
 [@bs.module "react-native"] [@bs.scope "Settings"]
-external get : string => string = "";
+external get: string => string = "";
 
 [@bs.module "react-native"] [@bs.scope "Settings"]
-external set : Js.Dict.t(string) => unit = "";
+external set: Js.Dict.t(string) => unit = "";
+
+type watchToken;
 
 [@bs.module "react-native"] [@bs.scope "Settings"]
-external watchKeys : (list(string), unit => unit) => int = "";
+external watchKeys: (list(string), unit => unit) => watchToken = "";
 
 [@bs.module "react-native"] [@bs.scope "Settings"]
-external clearWatch : int => unit = "";
+external clearWatch: watchToken => unit = "";

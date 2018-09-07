@@ -2,6 +2,8 @@ let get: string => string;
 
 let set: Js.Dict.t(string) => unit;
 
-let watchKeys: (list(string), unit => unit) => int;
+type watchToken;
 
-let clearWatch: int => unit;
+let watchKeys: (list(string), unit => unit) => watchToken;
+
+let clearWatch: watchToken => unit;
