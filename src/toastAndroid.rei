@@ -1,9 +1,6 @@
 type duration =
-  | BOTTOM
-  | CENTER
   | LONG
-  | SHORT
-  | TOP;
+  | SHORT;
 
 type gravity =
   | BOTTOM
