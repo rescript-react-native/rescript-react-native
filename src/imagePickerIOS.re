@@ -1,8 +1,8 @@
 [@bs.module "react-native"] [@bs.scope "ImagePickerIOS"]
-external canUseCamera : (unit => unit) => unit = "";
+external canUseCamera: (unit => unit) => unit = "";
 
 [@bs.module "react-native"] [@bs.scope "ImagePickerIOS"]
-external canRecordVideos : (unit => unit) => unit = "";
+external canRecordVideos: (unit => unit) => unit = "";
 
 type error = {
   .
@@ -13,16 +13,15 @@ type error = {
 type cameraDialogConfig = {. "videoMode": bool};
 
 [@bs.obj]
-external makeCameraDialogConfig : (~videoMode: bool) => cameraDialogConfig =
-  "";
+external makeCameraDialogConfig: (~videoMode: bool) => cameraDialogConfig = "";
 
 [@bs.module "react-native"] [@bs.scope "ImagePickerIOS"]
-external openCameraDialog :
+external openCameraDialog:
   (cameraDialogConfig, unit => unit, error => unit) => unit =
   "";
 
-let openCameraDialog = (~videoMode, success, error) =>
-  openCameraDialog(makeCameraDialogConfig(~videoMode), success, error);
+let openCameraDialog = (~videoMode, ~onSuccess, ~onError) =>
+  openCameraDialog(makeCameraDialogConfig(~videoMode), onSuccess, onError);
 
 type selectDialogConfig = {
   .
@@ -31,12 +30,12 @@ type selectDialogConfig = {
 };
 
 [@bs.obj]
-external makeSelectDialogConfig :
+external makeSelectDialogConfig:
   (~showImages: bool, ~showVideos: bool) => selectDialogConfig =
   "";
 
 [@bs.module "react-native"] [@bs.scope "ImagePickerIOS"]
-external openSelectDialog :
+external openSelectDialog:
   (selectDialogConfig, string => unit, error => unit) => unit =
   "";
 
