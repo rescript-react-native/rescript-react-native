@@ -39,9 +39,9 @@ external openSelectDialog:
   (selectDialogConfig, string => unit, error => unit) => unit =
   "";
 
-let openSelectDialog = (~showImages, ~showVideos, success, error) =>
+let openSelectDialog = (~showImages, ~showVideos, ~onSuccess, ~onError) =>
   openSelectDialog(
     makeSelectDialogConfig(~showImages, ~showVideos),
-    success,
-    error,
+    onSuccess,
+    onError,
   );
