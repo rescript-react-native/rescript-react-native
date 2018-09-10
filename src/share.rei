@@ -1,7 +1,7 @@
 let share:
   (
-		~content: [< `text(string) | `url(string)],
-		~title: string=?,
+    ~content: [< `text(string) | `url(string)],
+    ~title: string=?,
     ~subject: string=?,
     ~tintColor: string=?,
     ~excludedActivityTypes: array(string)=?,

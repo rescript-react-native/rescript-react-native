@@ -22,8 +22,8 @@ external _share : (content, options) => Js.Promise.t(bool) = "share";
 
 let share =
     (
-			~content,
-			~title=?,
+      ~content,
+      ~title=?,
       ~subject=?,
       ~tintColor=?,
       ~excludedActivityTypes=?,
