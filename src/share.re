@@ -1,16 +1,11 @@
-type makeContent;
-type makeOptions;
-type title = string;
-type message = string;
-type url = string;
-type content =
-  | Message(message, option(title))
-  | URL(url, option(title));
+type content;
+type options;
 
 [@bs.obj]
 external makeContent :
-  (~title: string=?, ~message: string, ~url: string) => makeContent =
-  "";
+  (~title: string=?, ~message: string=?, ~url: string=?, unit) => content =
+	"";
+
 [@bs.obj]
 external makeOptions :
   (
@@ -19,15 +14,16 @@ external makeOptions :
     ~excludedActivityTypes: array(string)=?,
     ~dialogTitle: string=?
   ) =>
-  makeOptions =
+  options =
   "";
 
 [@bs.module "react-native"] [@bs.scope "Share"]
-external _share : (makeContent, makeOptions) => Js.Promise.t(bool) = "share";
+external _share : (content, options) => Js.Promise.t(bool) = "share";
 
 let share =
     (
-      ~content,
+			~content,
+			~title=?,
       ~subject=?,
       ~tintColor=?,
       ~excludedActivityTypes=?,
@@ -35,9 +31,9 @@ let share =
       (),
     ) =>
   switch (content) {
-  | Message(message, title) =>
+  | `text(message) =>
     _share(
-      makeContent(~message, ~title?, ~url=""),
+      makeContent(~message, ~title?, ()),
       makeOptions(
         ~subject?,
         ~tintColor?,
@@ -45,9 +41,9 @@ let share =
         ~dialogTitle?,
       ),
     )
-  | URL(url, title) =>
+  | `url(url) =>
     _share(
-      makeContent(~url, ~title?, ~message=""),
+      makeContent(~url, ~title?, ()),
       makeOptions(
         ~subject?,
         ~tintColor?,
