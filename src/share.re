@@ -4,7 +4,7 @@ type options;
 [@bs.obj]
 external makeContent :
   (~title: string=?, ~message: string=?, ~url: string=?, unit) => content =
-	"";
+  "";
 
 [@bs.obj]
 external makeOptions :

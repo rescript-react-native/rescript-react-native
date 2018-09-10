@@ -1,6 +1,6 @@
 let share:
   (
-    ~content: [< `text(string) | `url(string)],
+    ~content: [< | `text(string) | `url(string)],
     ~title: string=?,
     ~subject: string=?,
     ~tintColor: string=?,
