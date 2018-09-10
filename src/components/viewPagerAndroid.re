@@ -38,26 +38,22 @@ let make =
     ~reactClass=view,
     ~props=
       Props.extendView(
-        Js.Undefined.(
-          {
-            "initialPage": fromOption(initialPage),
-            "onPageScroll": fromOption(onPageScroll),
-            "onPageScrollStateChanged": fromOption(onPageScrollStateChanged),
-            "onPageSelected": fromOption(onPageSelected),
-            "pageMargin": fromOption(pageMargin),
-            "keyboardDismissMode":
-              fromOption(
-                UtilsRN.option_map(
-                  fun
-                  | `none => "none"
-                  | `onDrag => "on-drag",
-                  keyboardDismissMode,
-                ),
-              ),
-            "peekEnabled": fromOption(peekEnabled),
-            "scrollEnabled": fromOption(scrollEnabled),
-          }
-        ),
+        {
+          "initialPage": initialPage,
+          "onPageScroll": onPageScroll,
+          "onPageScrollStateChanged": onPageScrollStateChanged,
+          "onPageSelected": onPageSelected,
+          "pageMargin": pageMargin,
+          "keyboardDismissMode":
+            UtilsRN.option_map(
+              fun
+              | `none => "none"
+              | `onDrag => "on-drag",
+              keyboardDismissMode,
+            ),
+          "peekEnabled": peekEnabled,
+          "scrollEnabled": scrollEnabled,
+        },
         ~accessibilityLabel?,
         ~accessible?,
         ~hitSlop?,

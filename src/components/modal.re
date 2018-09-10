@@ -34,27 +34,19 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass=modal,
     ~props=
-      Js.Undefined.(
-        {
-          "animationType":
-            fromOption(
-              UtilsRN.option_map(encodeAnimationType, animationType),
-            ),
-          "onShow": fromOption(onShow),
-          "transparent":
-            fromOption(UtilsRN.optBoolToOptJsBoolean(transparent)),
-          "visible": fromOption(UtilsRN.optBoolToOptJsBoolean(visible)),
-          "hardwareAccelerated":
-            fromOption(UtilsRN.optBoolToOptJsBoolean(hardwareAccelerated)),
-          "onRequestClose": fromOption(onRequestClose),
-          "onOrientationChange": fromOption(onOrientationChange),
-          "supportedOrientations":
-            fromOption(
-              UtilsRN.option_map(
-                encodeSupportedOrientations,
-                supportedOrientations,
-              ),
-            ),
-        }
-      ),
+      {
+        "animationType":
+          UtilsRN.option_map(encodeAnimationType, animationType),
+        "onShow": onShow,
+        "transparent": transparent,
+        "visible": visible,
+        "hardwareAccelerated": hardwareAccelerated,
+        "onRequestClose": onRequestClose,
+        "onOrientationChange": onOrientationChange,
+        "supportedOrientations":
+          UtilsRN.option_map(
+            encodeSupportedOrientations,
+            supportedOrientations,
+          ),
+      },
   );

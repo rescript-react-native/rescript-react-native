@@ -7,14 +7,12 @@ module Item = {
     ReasonReact.wrapJsForReason(
       ~reactClass=item,
       ~props=
-        Js.Undefined.(
-          {
-            "label": label,
-            "value": fromOption(value),
-            "color": fromOption(color),
-            "testID": fromOption(testID),
-          }
-        ),
+        {
+          "label": label,
+          "value": value,
+          "color": color,
+          "testID": testID,
+        },
     );
 };
 
@@ -58,16 +56,14 @@ let make =
     ~reactClass=view,
     ~props=
       Props.extendView(
-        Js.Undefined.(
-          {
-            "enabled": fromOption(UtilsRN.optBoolToOptJsBoolean(enabled)),
-            "onValueChange": fromOption(onValueChange),
-            "selectedValue": fromOption(selectedValue),
-            "itemStyle": fromOption(itemStyle),
-            "prompt": fromOption(prompt),
-            "mode": fromOption(UtilsRN.option_map(encodeMode, mode)),
-          }
-        ),
+        {
+          "enabled": enabled,
+          "onValueChange": onValueChange,
+          "selectedValue": selectedValue,
+          "itemStyle": itemStyle,
+          "prompt": prompt,
+          "mode": UtilsRN.option_map(encodeMode, mode),
+        },
         ~accessibilityLabel?,
         ~accessible?,
         ~hitSlop?,

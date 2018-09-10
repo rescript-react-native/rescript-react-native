@@ -8,10 +8,7 @@ type action =
   | Dismissed
   | Set(response);
 
-type mode =
-  | Calendar
-  | Spinner
-  | Default;
+type mode = [ | `calendar | `spinner | `default];
 
 let open_:
   (

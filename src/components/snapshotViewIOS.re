@@ -31,12 +31,10 @@ let make =
     ~reactClass=snapshotViewIOS,
     ~props=
       Props.extendView(
-        Js.Undefined.(
-          {
-            "onSnapshotReady": fromOption(onSnapshotReady),
-            "testIdentifier": fromOption(testIdentifier),
-          }
-        ),
+        {
+          "onSnapshotReady": onSnapshotReady,
+          "testIdentifier": testIdentifier,
+        },
         ~accessibilityLabel?,
         ~accessible?,
         ~hitSlop?,
