@@ -7,8 +7,4 @@ type gravity =
   | CENTER
   | TOP;
 
-let show: (string, ~duration: duration) => unit;
-
-let showWithGravity: (string, ~duration: duration, ~gravity: gravity) => unit;
-
-let showWithGravityAndOffset: (string, ~duration: duration, ~gravity: gravity, ~xOffset: int, ~yOffset: int) => unit;
+let show: (string, ~duration: duration, ~gravity: gravity=?, ~offset: (int, int)=?, unit) => unit;

@@ -35,23 +35,17 @@ let getGravity = g =>
 [@bs.module "react-native"] [@bs.scope "ToastAndroid"]
 external _show: (string, int) => unit = "show";
 
-let show = (message, ~duration) => _show(message, getDuration(duration));
-
 [@bs.module "react-native"] [@bs.scope "ToastAndroid"]
 external _showWithGravity: (string, int, int) => unit = "showWithGravity";
-
-let showWithGravity = (message, ~duration, ~gravity) =>
-  _showWithGravity(message, getDuration(duration), getGravity(gravity));
 
 [@bs.module "react-native"] [@bs.scope "ToastAndroid"]
 external _showWithGravityAndOffset: (string, int, int, int, int) => unit =
   "showWithGravityAndOffset";
 
-let showWithGravityAndOffset = (message, ~duration, ~gravity, ~xOffset, ~yOffset) =>
-  _showWithGravityAndOffset(
-    message,
-    getDuration(duration),
-    getGravity(gravity),
-    xOffset,
-    yOffset,
-  );
+let show = (message, ~duration, ~gravity=?, ~offset=?, ()) =>
+	switch ((gravity, offset)) {
+	| (None, None) => _show(message, getDuration(duration))
+	| (Some(gravity), None) => _showWithGravity(message, getDuration(duration), getGravity(gravity))
+	| (Some(gravity), Some((x, y))) => _showWithGravityAndOffset(message, getDuration(duration), getGravity(gravity), x, y)
+	| (None, Some((x, y))) => _showWithGravityAndOffset(message, getDuration(duration), getGravity(BOTTOM), x, y)
+	}
