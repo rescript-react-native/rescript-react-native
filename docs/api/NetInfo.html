@@ -1,0 +1,214 @@
+
+    
+<!doctype html>
+<meta charset=utf8>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel=stylesheet href='../styles.css'>
+<script defer src='../script.js'></script>
+<title>NetInfo</title>
+<body>
+<script>window.relativeToRoot=".."</script>
+<script defer src="../block-script.js"></script>
+<div id='error-message'>
+  ⚠️ Oops! This page doesn't appear to define a <span>type</span> called <code>_</code>.
+</div>
+
+    <script>window.shouldCheckHashes=true</script>
+    <div class='container'>
+    
+    <div class='sidebar-wrapper'>
+    <div class='sidebar-expander'>Show navigation</div>
+    <div class='sidebar'>
+      <a href="../search.html" style="display: block; padding: 0 8px;">Search</a>
+      
+      <div class='docs-listing'><a href="../index.html">Home</a></div>
+      <div class='toc-header'>Page Contents</div>
+      <div class='table-of-contents'>
+      <a href="#NetInfo" class='level-1 header'>NetInfo</a>
+<a href="#type-infoType" class='level-2 type'>infoType</a>
+<a href="#type-infoEffectiveType" class='level-2 type'>infoEffectiveType</a>
+<a href="#type-connectionType" class='level-2 type'>connectionType</a>
+<a href="#type-effectiveConnectionType" class='level-2 type'>effectiveConnectionType</a>
+<a href="#type-info" class='level-2 type'>info</a>
+<a href="#value-connectionType" class='level-2 value'>connectionType</a>
+<a href="#value-effectiveConnectionType" class='level-2 value'>effectiveConnectionType</a>
+<a href="#value-addEventListener" class='level-2 value'>addEventListener</a>
+<a href="#value-removeEventListener" class='level-2 value'>removeEventListener</a>
+<a href="#value-isConnectionExpensive" class='level-2 value'>isConnectionExpensive</a>
+<a href="#value-getConnectionInfo" class='level-2 value'>getConnectionInfo</a>
+<a href="#module-IsConnected" class='level-2 module'>IsConnected</a>
+<a href="#value-IsConnected.addEventListener" class='level-3 value'>addEventListener</a>
+<a href="#value-IsConnected.removeEventListener" class='level-3 value'>removeEventListener</a>
+<a href="#value-IsConnected.fetch" class='level-3 value'>fetch</a>
+      </div>
+      <div class='project-title'>Package modules</div><div class='project-listing'><a href="RNEvent.html">RNEvent</a>
+<a href="ActionSheetIOS.html">ActionSheetIOS</a>
+<a href="Alert.html">Alert</a>
+<a href="AlertIOS.html">AlertIOS</a>
+<a href="Animated.html">Animated</a>
+<a href="AnimatedRe.html">AnimatedRe</a>
+<a href="AppRegistry.html">AppRegistry</a>
+<a href="AppState.html">AppState</a>
+<a href="AsyncStorage.html">AsyncStorage</a>
+<a href="BackHandler.html">BackHandler</a>
+<a href="CameraRoll.html">CameraRoll</a>
+<a href="Clipboard.html">Clipboard</a>
+<a href="ActivityIndicator.html">ActivityIndicator</a>
+<a href="AnimatedComponents.html">AnimatedComponents</a>
+<a href="Button.html">Button</a>
+<a href="DatePickerIOS.html">DatePickerIOS</a>
+<a href="FlatList.html">FlatList</a>
+<a href="Image.html">Image</a>
+<a href="ImageBackground.html">ImageBackground</a>
+<a href="KeyboardAvoidingView.html">KeyboardAvoidingView</a>
+<a href="Modal.html">Modal</a>
+<a href="Picker.html">Picker</a>
+<a href="RefreshControl.html">RefreshControl</a>
+<a href="SafeAreaView.html">SafeAreaView</a>
+<a href="ScrollView.html">ScrollView</a>
+<a href="SectionList.html">SectionList</a>
+<a href="SegmentedControllOS.html">SegmentedControllOS</a>
+<a href="Slider.html">Slider</a>
+<a href="StatusBar.html">StatusBar</a>
+<a href="Switch.html">Switch</a>
+<a href="TabBarIOS.html">TabBarIOS</a>
+<a href="Text.html">Text</a>
+<a href="TextInput.html">TextInput</a>
+<a href="TouchableHighlight.html">TouchableHighlight</a>
+<a href="TouchableOpacity.html">TouchableOpacity</a>
+<a href="TouchableWithoutFeedback.html">TouchableWithoutFeedback</a>
+<a href="View.html">View</a>
+<a href="WebView.html">WebView</a>
+<a href="DatePickerAndroid.html">DatePickerAndroid</a>
+<a href="Dimensions.html">Dimensions</a>
+<a href="Geolocation.html">Geolocation</a>
+<a href="Keyboard.html">Keyboard</a>
+<a href="Linking.html">Linking</a>
+<a href="NativeEventEmitter.html">NativeEventEmitter</a>
+<a href="NativeModules.html">NativeModules</a>
+<a href="NetInfo.html">NetInfo</a>
+<a href="Packager.html">Packager</a>
+<a href="PanResponder.html">PanResponder</a>
+<a href="PixelRatio.html">PixelRatio</a>
+<a href="Platform.html">Platform</a>
+<a href="Encode.html">Encode</a>
+<a href="Props.html">Props</a>
+<a href="ResponderUtils.html">ResponderUtils</a>
+<a href="UtilsRN.html">UtilsRN</a>
+<a href="Style.html">Style</a>
+<a href="StyleSheet.html">StyleSheet</a>
+<a href="Types.html">Types</a>
+<a href="Vibration.html">Vibration</a>
+<a href="ActivityIndicator.html">ActivityIndicator</a>
+<a href="AnimatedComponents.html">AnimatedComponents</a>
+<a href="Button.html">Button</a>
+<a href="DatePickerIOS.html">DatePickerIOS</a>
+<a href="FlatList.html">FlatList</a>
+<a href="Image.html">Image</a>
+<a href="ImageBackground.html">ImageBackground</a>
+<a href="KeyboardAvoidingView.html">KeyboardAvoidingView</a>
+<a href="Modal.html">Modal</a>
+<a href="Picker.html">Picker</a>
+<a href="RefreshControl.html">RefreshControl</a>
+<a href="SafeAreaView.html">SafeAreaView</a>
+<a href="ScrollView.html">ScrollView</a>
+<a href="SectionList.html">SectionList</a>
+<a href="SegmentedControllOS.html">SegmentedControllOS</a>
+<a href="Slider.html">Slider</a>
+<a href="StatusBar.html">StatusBar</a>
+<a href="Switch.html">Switch</a>
+<a href="TabBarIOS.html">TabBarIOS</a>
+<a href="Text.html">Text</a>
+<a href="TextInput.html">TextInput</a>
+<a href="TouchableHighlight.html">TouchableHighlight</a>
+<a href="TouchableOpacity.html">TouchableOpacity</a>
+<a href="TouchableWithoutFeedback.html">TouchableWithoutFeedback</a>
+<a href="View.html">View</a>
+<a href="WebView.html">WebView</a>
+<a href="Encode.html">Encode</a>
+<a href="Props.html">Props</a>
+<a href="ResponderUtils.html">ResponderUtils</a>
+<a href="UtilsRN.html">UtilsRN</a></div>
+    </div>
+    </div>
+  
+    <div class='main'>
+    
+    <a href="#NetInfo" id="NetInfo"><h1>NetInfo</h1></a>
+
+<p><span class='missing'>This module does not have a toplevel documentation block.</span></p>
+<div class='doc-item'><h4 class='item'>type <a href="#type-infoType" id="type-infoType">infoType</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-infoEffectiveType" id="type-infoEffectiveType">infoEffectiveType</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-connectionType" id="type-connectionType">connectionType</a> = 
+  | None
+  | WiFi
+  | Cellular
+  | Unknown
+  | Bluetooth
+  | Ethernet
+  | WiMax</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-effectiveConnectionType" id="type-effectiveConnectionType">effectiveConnectionType</a> = 
+  | Net2G
+  | Net3G
+  | Net4G
+  | Unknown</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-info" id="type-info">info</a> = Js.t(
+  &lt; _type : infoType; effectiveType : infoEffectiveType &gt;
+)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-connectionType" id="value-connectionType">connectionType</a>: <a href="#type-infoType">infoType</a> => <a href="#type-connectionType">connectionType</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-effectiveConnectionType" id="value-effectiveConnectionType">effectiveConnectionType</a>: <a href="#type-infoEffectiveType">infoEffectiveType</a> => <a href="#type-effectiveConnectionType">effectiveConnectionType</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-addEventListener" id="value-addEventListener">addEventListener</a>: <a href="#type-info">info</a> => unit => unit</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-removeEventListener" id="value-removeEventListener">removeEventListener</a>: <a href="#type-info">info</a> => unit => unit</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-isConnectionExpensive" id="value-isConnectionExpensive">isConnectionExpensive</a>: unit => Js.Promise.t(bool)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-getConnectionInfo" id="value-getConnectionInfo">getConnectionInfo</a>: unit => Js.Promise.t(<a href="#type-info">info</a>)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item module'>module <a href="#module-IsConnected" id="module-IsConnected">IsConnected</a></h4><div class='body module-body'><p><span class='missing'>This module does not have a toplevel documentation block.</span></p>
+<div class='doc-item'><h4 class='item'>let <a href="#value-IsConnected.addEventListener" id="value-IsConnected.addEventListener">addEventListener</a>: bool => unit => unit</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-IsConnected.removeEventListener" id="value-IsConnected.removeEventListener">removeEventListener</a>: bool => unit => unit</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-IsConnected.fetch" id="value-IsConnected.fetch">fetch</a>: unit => Js.Promise.t(bool)</h4>
+
+<div class='body body-empty'></div></div>
+</div></div>
+
+    </div>
+    <div class='right-blank'></div>
+    </div>
+  

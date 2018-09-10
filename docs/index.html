@@ -1,0 +1,991 @@
+
+    
+<!doctype html>
+<meta charset=utf8>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel=stylesheet href='./styles.css'>
+<script defer src='./script.js'></script>
+<title>Home</title>
+<body>
+<script>window.relativeToRoot="./"</script>
+<script defer src="./block-script.js"></script>
+<div id='error-message'>
+  ⚠️ Oops! This page doesn't appear to define a <span>type</span> called <code>_</code>.
+</div>
+
+    
+    <div class='container'>
+    
+    <div class='sidebar-wrapper'>
+    <div class='sidebar-expander'>Show navigation</div>
+    <div class='sidebar'>
+      <a href="./search.html" style="display: block; padding: 0 8px;">Search</a>
+      
+      <div class='docs-listing'><a href="./index.html">Home</a></div>
+      <div class='toc-header'>Page Contents</div>
+      <div class='table-of-contents'>
+      <a href="#bucklescript-bindings-for-react-native" class='level-1 header'><a href="https://github.com/bloomberg/bucklescript" target="_blank" rel="noopener nofollow" title="" class="external-link">BuckleScript</a> bindings for <a href="https://github.com/facebook/react-native" target="_blank" rel="noopener nofollow" title="" class="external-link">React Native</a></a>
+<a href="#getting-started" class='level-2 header'>Getting started</a>
+<a href="#can-i-really-build-my-react-native-app-with-reason-" class='level-2 header'>Can I really build my React Native app with Reason?</a>
+<a href="#disclaimer" class='level-3 header'>Disclaimer</a>
+<a href="#style" class='level-2 header'>Style</a>
+<a href="#inline-styles" class='level-3 header'>Inline styles</a>
+<a href="#stylesheet" class='level-3 header'>StyleSheet</a>
+<a href="#animations" class='level-3 header'>Animations</a>
+<a href="#troubleshooting" class='level-2 header'>Troubleshooting</a>
+<a href="#native-module-cannot-be-null-with-create-react-native-app" class='level-3 header'><code>Native module cannot be null</code> with create-react-native-app</a>
+      </div>
+      <div class='project-title'>Package modules</div><div class='project-listing'><a href="./api/RNEvent.html">RNEvent</a>
+<a href="./api/ActionSheetIOS.html">ActionSheetIOS</a>
+<a href="./api/Alert.html">Alert</a>
+<a href="./api/AlertIOS.html">AlertIOS</a>
+<a href="./api/Animated.html">Animated</a>
+<a href="./api/AnimatedRe.html">AnimatedRe</a>
+<a href="./api/AppRegistry.html">AppRegistry</a>
+<a href="./api/AppState.html">AppState</a>
+<a href="./api/AsyncStorage.html">AsyncStorage</a>
+<a href="./api/BackHandler.html">BackHandler</a>
+<a href="./api/CameraRoll.html">CameraRoll</a>
+<a href="./api/Clipboard.html">Clipboard</a>
+<a href="./api/ActivityIndicator.html">ActivityIndicator</a>
+<a href="./api/AnimatedComponents.html">AnimatedComponents</a>
+<a href="./api/Button.html">Button</a>
+<a href="./api/DatePickerIOS.html">DatePickerIOS</a>
+<a href="./api/FlatList.html">FlatList</a>
+<a href="./api/Image.html">Image</a>
+<a href="./api/ImageBackground.html">ImageBackground</a>
+<a href="./api/KeyboardAvoidingView.html">KeyboardAvoidingView</a>
+<a href="./api/Modal.html">Modal</a>
+<a href="./api/Picker.html">Picker</a>
+<a href="./api/RefreshControl.html">RefreshControl</a>
+<a href="./api/SafeAreaView.html">SafeAreaView</a>
+<a href="./api/ScrollView.html">ScrollView</a>
+<a href="./api/SectionList.html">SectionList</a>
+<a href="./api/SegmentedControllOS.html">SegmentedControllOS</a>
+<a href="./api/Slider.html">Slider</a>
+<a href="./api/StatusBar.html">StatusBar</a>
+<a href="./api/Switch.html">Switch</a>
+<a href="./api/TabBarIOS.html">TabBarIOS</a>
+<a href="./api/Text.html">Text</a>
+<a href="./api/TextInput.html">TextInput</a>
+<a href="./api/TouchableHighlight.html">TouchableHighlight</a>
+<a href="./api/TouchableOpacity.html">TouchableOpacity</a>
+<a href="./api/TouchableWithoutFeedback.html">TouchableWithoutFeedback</a>
+<a href="./api/View.html">View</a>
+<a href="./api/WebView.html">WebView</a>
+<a href="./api/DatePickerAndroid.html">DatePickerAndroid</a>
+<a href="./api/Dimensions.html">Dimensions</a>
+<a href="./api/Geolocation.html">Geolocation</a>
+<a href="./api/Keyboard.html">Keyboard</a>
+<a href="./api/Linking.html">Linking</a>
+<a href="./api/NativeEventEmitter.html">NativeEventEmitter</a>
+<a href="./api/NativeModules.html">NativeModules</a>
+<a href="./api/NetInfo.html">NetInfo</a>
+<a href="./api/Packager.html">Packager</a>
+<a href="./api/PanResponder.html">PanResponder</a>
+<a href="./api/PixelRatio.html">PixelRatio</a>
+<a href="./api/Platform.html">Platform</a>
+<a href="./api/Encode.html">Encode</a>
+<a href="./api/Props.html">Props</a>
+<a href="./api/ResponderUtils.html">ResponderUtils</a>
+<a href="./api/UtilsRN.html">UtilsRN</a>
+<a href="./api/Style.html">Style</a>
+<a href="./api/StyleSheet.html">StyleSheet</a>
+<a href="./api/Types.html">Types</a>
+<a href="./api/Vibration.html">Vibration</a>
+<a href="./api/ActivityIndicator.html">ActivityIndicator</a>
+<a href="./api/AnimatedComponents.html">AnimatedComponents</a>
+<a href="./api/Button.html">Button</a>
+<a href="./api/DatePickerIOS.html">DatePickerIOS</a>
+<a href="./api/FlatList.html">FlatList</a>
+<a href="./api/Image.html">Image</a>
+<a href="./api/ImageBackground.html">ImageBackground</a>
+<a href="./api/KeyboardAvoidingView.html">KeyboardAvoidingView</a>
+<a href="./api/Modal.html">Modal</a>
+<a href="./api/Picker.html">Picker</a>
+<a href="./api/RefreshControl.html">RefreshControl</a>
+<a href="./api/SafeAreaView.html">SafeAreaView</a>
+<a href="./api/ScrollView.html">ScrollView</a>
+<a href="./api/SectionList.html">SectionList</a>
+<a href="./api/SegmentedControllOS.html">SegmentedControllOS</a>
+<a href="./api/Slider.html">Slider</a>
+<a href="./api/StatusBar.html">StatusBar</a>
+<a href="./api/Switch.html">Switch</a>
+<a href="./api/TabBarIOS.html">TabBarIOS</a>
+<a href="./api/Text.html">Text</a>
+<a href="./api/TextInput.html">TextInput</a>
+<a href="./api/TouchableHighlight.html">TouchableHighlight</a>
+<a href="./api/TouchableOpacity.html">TouchableOpacity</a>
+<a href="./api/TouchableWithoutFeedback.html">TouchableWithoutFeedback</a>
+<a href="./api/View.html">View</a>
+<a href="./api/WebView.html">WebView</a>
+<a href="./api/Encode.html">Encode</a>
+<a href="./api/Props.html">Props</a>
+<a href="./api/ResponderUtils.html">ResponderUtils</a>
+<a href="./api/UtilsRN.html">UtilsRN</a></div>
+    </div>
+    </div>
+  
+    <div class='main'>
+    
+    <a href="#bucklescript-bindings-for-react-native" id="bucklescript-bindings-for-react-native"><h1><a href="https://github.com/bloomberg/bucklescript" target="_blank" rel="noopener nofollow" title="" class="external-link">BuckleScript</a> bindings for <a href="https://github.com/facebook/react-native" target="_blank" rel="noopener nofollow" title="" class="external-link">React Native</a></h1></a><p><a href="https://travis-ci.org/reasonml-community/bs-react-native" target="_blank" rel="noopener nofollow" title="" class="external-link"><img src='https://travis-ci.org/reasonml-community/bs-react-native.svg?branch=master' alt='Build Status' /></a></p>
+<a href="#getting-started" id="getting-started"><h2>Getting started</h2></a>
+
+<p>Great that you want to use Reason with React Native! To get everything running are just a couple of steps.
+Let&#39;s assume that you already have a React Native project. Otherwise follow the React Native <a href="http://facebook.github.io/react-native/docs/getting-started.html" target="_blank" rel="noopener nofollow" title="" class="external-link">instructions</a> until you have your app running.</p>
+<ol><li><p>Install <a href="https://github.com/bloomberg/bucklescript" target="_blank" rel="noopener nofollow" title="" class="external-link">Bucklescript</a> (the Reason -&gt; JS compiler), <a href="https://github.com/reasonml/reason-react" target="_blank" rel="noopener nofollow" title="" class="external-link">Reason-React</a> and <code>bs-react-native</code>:</p>
+<pre class='code-txt sh'><code class='sh'># substitute yarn with npm if you prefer
+yarn add bs-platform reason-react bs-react-native</code></pre></li><li><p>Create a <code>re</code> folder (there will be your Reason code)</p>
+</li><li><p>Create a <code>bsconfig.json</code> with the following content file in your project root</p>
+<pre class='code-txt json'><code class='json'>{
+    &quot;name&quot;: &quot;my-awesome-app&quot;,
+    &quot;reason&quot;: {
+        &quot;react-jsx&quot;: 2
+    },
+    &quot;bsc-flags&quot;: [&quot;-bs-super-errors&quot;],
+    &quot;bs-dependencies&quot;: [&quot;bs-react-native&quot;, &quot;reason-react&quot;],
+    &quot;sources&quot;: [{
+        &quot;dir&quot;: &quot;re&quot;
+    }],
+    &quot;refmt&quot;: 3
+}</code></pre></li><li><p>You are nearly done, the last configuration before we get to the fun stuff. In your <code>package.json</code> add to the <code>&quot;scripts&quot;</code> section two scripts:</p>
+</li></ol>
+
+<pre class='code-txt json'><code class='json'>&quot;scripts&quot;: {
+  ...
+  &quot;build&quot;: &quot;bsb -make-world -clean-world&quot;,
+  &quot;watch&quot;: &quot;bsb -make-world -clean-world -w&quot;
+}</code></pre>
+
+<ol><li>Now you can build all your (so far nonexsisting) Reason in two modes:<ul><li><code>yarn build</code> performs a single build</li><li><code>yarn watch</code> enters the watch mode</li></ul></li><li>Now we come to the fun stuff! Create a new file <code>re/app.re</code> and make it look like this:</li></ol>
+
+<div class='code-block' data-block-syntax="re">
+  
+  <pre class='code' data-block-id='3' id='block-3'><code>open BsReactNative;
+
+let <span class='pattern-ident' data-type="unit => ReasonReact.reactElement">app</span> = <span class='pattern-constructor' data-type="unit">()</span> =&gt;
+  <span class='ident' data-type="(
+  ~?key: option(string),
+  ~?ref: option(Js.nullable(ReasonReact.reactRef) => unit),
+  ReasonReact.component(
+    ReasonReact.stateless,
+    ReasonReact.noRetainedProps,
+    unit
+  )
+) => ReasonReact.reactElement"><span class='ident' data-type="(
+  ~?accessibilityLabel: option(string),
+  ~?accessible: option(bool),
+  ~?hitSlop: option(BsReactNative.Types.insets),
+  ~?onAccessibilityTap: option(unit => unit),
+  ~?onLayout: option(
+    BsReactNative.RNEvent.NativeLayoutEvent.t => unit
+  ),
+  ~?onMagicTap: option(unit => unit),
+  ~?responderHandlers: option(
+    BsReactNative.Types.touchResponderHandlers
+  ),
+  ~?pointerEvents: option(
+    [ `none | `boxOnly | `auto | `boxNone ]
+  ),
+  ~?removeClippedSubviews: option(bool),
+  ~?style: option(BsReactNative.Style.t),
+  ~?testID: option(string),
+  ~?accessibilityComponentType: option(
+    [ `button | `none | `radiobutton_checked | `radiobutton_unchecked ]
+  ),
+  ~?accessibilityLiveRegion: option(
+    [ `none | `polite | `assertive ]
+  ),
+  ~?collapsable: option(bool),
+  ~?importantForAccessibility: option(
+    [ `no | `yes | `noHideDescendants | `auto ]
+  ),
+  ~?needsOffscreenAlphaCompositing: option(bool),
+  ~?renderToHardwareTextureAndroid: option(bool),
+  ~?accessibilityTraits: option(
+    list(
+      [ `frequentUpdates
+| `adjustable
+| `image
+| `button
+| `none
+| `header
+| `plays
+| `text
+| `startsMedia
+| `link
+| `disabled
+| `pageTurn
+| `selected
+| `summary
+| `search
+| `allowsDirectInteraction
+| `key ]
+    )
+  ),
+  ~?accessibilityViewIsModal: option(bool),
+  ~?shouldRasterizeIOS: option(bool),
+  array(ReasonReact.reactElement)
+) => ReasonReact.component(
+  ReasonReact.stateless,
+  ReasonReact.noRetainedProps,
+  unit
+)">&lt;View style=Style.(<span class='ident' data-type="list(
+  BsReactNative.Style.styleElement
+) => BsReactNative.Style.t">style</span>([<span data-type="list(BsReactNative.Style.styleElement)"><span class='ident' data-type="float => BsReactNative.Style.styleElement">flex</span>(<span class='float' data-type="float">1.</span>), <span data-type="list(BsReactNative.Style.styleElement)"><span class='ident' data-type="BsReactNative.Style.justifyContent => BsReactNative.Style.styleElement">justifyContent</span>(<span class='constructor' data-type="BsReactNative.Style.justifyContent">Center</span>), <span data-type="list(BsReactNative.Style.styleElement)"><span class='ident' data-type="BsReactNative.Style.alignItems => BsReactNative.Style.styleElement">alignItems</span>(<span class='constructor' data-type="BsReactNative.Style.alignItems">Center</span>)</span></span></span>]))&gt;
+    <span class='ident' data-type="(
+  ~?key: option(string),
+  ~?ref: option(Js.nullable(ReasonReact.reactRef) => unit),
+  ReasonReact.component(
+    ReasonReact.stateless,
+    ReasonReact.noRetainedProps,
+    unit
+  )
+) => ReasonReact.reactElement"><span class='ident' data-type="(
+  ~?accessible: option(bool),
+  ~?allowFontScaling: option(bool),
+  ~?ellipsizeMode: option(
+    [ `clip | `head | `middle | `tail ]
+  ),
+  ~?numberOfLines: option(int),
+  ~?onLayout: option(
+    BsReactNative.RNEvent.NativeLayoutEvent.t => unit
+  ),
+  ~?onLongPress: option(unit => unit),
+  ~?onPress: option(unit => unit),
+  ~?pressRetentionOffset: option(
+    BsReactNative.Types.insets
+  ),
+  ~?selectable: option(bool),
+  ~?style: option(BsReactNative.Style.t),
+  ~?testID: option(string),
+  ~?selectionColor: option(string),
+  ~?textBreakStrategy: option(
+    [ `highQuality | `balanced | `simple ]
+  ),
+  ~?adjustsFontSizeToFit: option(bool),
+  ~?minimumFontScale: option(float),
+  ~?suppressHighlighting: option(bool),
+  ~?value: option(string),
+  array(ReasonReact.reactElement)
+) => ReasonReact.component(
+  ReasonReact.stateless,
+  ReasonReact.noRetainedProps,
+  unit
+)">&lt;BsReactNative.Text value=<span class='string' data-type="string">&quot;Reason is awesome!&quot;</span> /&gt;</span></span>
+  &lt;/View&gt;</span></span>;</code></pre>
+  
+  
+  
+</div><div class='code-block' data-block-syntax="ml">
+  
+  <pre class='code' data-block-id='3-alt' id='block-3-alt'><code>[@@@ocaml.ppx.context { cookies = [] }]
+open BsReactNative
+let <span class='pattern-ident' data-type="unit => ReasonReact.reactElement">app</span> <span class='pattern-constructor' data-type="unit">()</span> =
+  <span class='ident' data-type="(
+  ~?key: option(string),
+  ~?ref: option(Js.nullable(ReasonReact.reactRef) => unit),
+  ReasonReact.component(
+    ReasonReact.stateless,
+    ReasonReact.noRetainedProps,
+    unit
+  )
+) => ReasonReact.reactElement">ReasonReact.element</span>
+    (<span class='ident' data-type="(
+  ~?accessibilityLabel: option(string),
+  ~?accessible: option(bool),
+  ~?hitSlop: option(BsReactNative.Types.insets),
+  ~?onAccessibilityTap: option(unit => unit),
+  ~?onLayout: option(
+    BsReactNative.RNEvent.NativeLayoutEvent.t => unit
+  ),
+  ~?onMagicTap: option(unit => unit),
+  ~?responderHandlers: option(
+    BsReactNative.Types.touchResponderHandlers
+  ),
+  ~?pointerEvents: option(
+    [ `none | `boxOnly | `auto | `boxNone ]
+  ),
+  ~?removeClippedSubviews: option(bool),
+  ~?style: option(BsReactNative.Style.t),
+  ~?testID: option(string),
+  ~?accessibilityComponentType: option(
+    [ `button | `none | `radiobutton_checked | `radiobutton_unchecked ]
+  ),
+  ~?accessibilityLiveRegion: option(
+    [ `none | `polite | `assertive ]
+  ),
+  ~?collapsable: option(bool),
+  ~?importantForAccessibility: option(
+    [ `no | `yes | `noHideDescendants | `auto ]
+  ),
+  ~?needsOffscreenAlphaCompositing: option(bool),
+  ~?renderToHardwareTextureAndroid: option(bool),
+  ~?accessibilityTraits: option(
+    list(
+      [ `frequentUpdates
+| `adjustable
+| `image
+| `button
+| `none
+| `header
+| `plays
+| `text
+| `startsMedia
+| `link
+| `disabled
+| `pageTurn
+| `selected
+| `summary
+| `search
+| `allowsDirectInteraction
+| `key ]
+    )
+  ),
+  ~?accessibilityViewIsModal: option(bool),
+  ~?shouldRasterizeIOS: option(bool),
+  array(ReasonReact.reactElement)
+) => ReasonReact.component(
+  ReasonReact.stateless,
+  ReasonReact.noRetainedProps,
+  unit
+)">View.make</span>
+       ~style:(let open Style in
+                 <span class='ident' data-type="list(
+  BsReactNative.Style.styleElement
+) => BsReactNative.Style.t">style</span> [<span class='ident' data-type="float => BsReactNative.Style.styleElement">flex</span> <span class='float' data-type="float">1.</span>; <span class='ident' data-type="BsReactNative.Style.justifyContent => BsReactNative.Style.styleElement">justifyContent</span> <span class='constructor' data-type="BsReactNative.Style.justifyContent">Center</span>; <span class='ident' data-type="BsReactNative.Style.alignItems => BsReactNative.Style.styleElement">alignItems</span> <span class='constructor' data-type="BsReactNative.Style.alignItems">Center</span>])
+       [|(<span class='ident' data-type="(
+  ~?key: option(string),
+  ~?ref: option(Js.nullable(ReasonReact.reactRef) => unit),
+  ReasonReact.component(
+    ReasonReact.stateless,
+    ReasonReact.noRetainedProps,
+    unit
+  )
+) => ReasonReact.reactElement">ReasonReact.element</span>
+            (<span class='ident' data-type="(
+  ~?accessible: option(bool),
+  ~?allowFontScaling: option(bool),
+  ~?ellipsizeMode: option(
+    [ `clip | `head | `middle | `tail ]
+  ),
+  ~?numberOfLines: option(int),
+  ~?onLayout: option(
+    BsReactNative.RNEvent.NativeLayoutEvent.t => unit
+  ),
+  ~?onLongPress: option(unit => unit),
+  ~?onPress: option(unit => unit),
+  ~?pressRetentionOffset: option(
+    BsReactNative.Types.insets
+  ),
+  ~?selectable: option(bool),
+  ~?style: option(BsReactNative.Style.t),
+  ~?testID: option(string),
+  ~?selectionColor: option(string),
+  ~?textBreakStrategy: option(
+    [ `highQuality | `balanced | `simple ]
+  ),
+  ~?adjustsFontSizeToFit: option(bool),
+  ~?minimumFontScale: option(float),
+  ~?suppressHighlighting: option(bool),
+  ~?value: option(string),
+  array(ReasonReact.reactElement)
+) => ReasonReact.component(
+  ReasonReact.stateless,
+  ReasonReact.noRetainedProps,
+  unit
+)">BsReactNative.Text.make</span>
+               ~value:((&quot;Reason is awesome!&quot;)[@reason.raw_literal
+                                               &quot;Reason is awesome!&quot;]) 
+               [||]))|])</code></pre>
+  
+  
+  
+</div><p>and start the watcher with <code>yarn run watch</code> if you haven&#39;t done it yet.</p>
+<ol><li>We are nearly done! We now have to adopt the <code>index.ios.js</code> / <code>index.android.js</code> to look like this</li></ol>
+
+<pre class='code-txt js'><code class='js'>import { app } from &quot;./lib/js/re/app.js&quot;;
+import React from &quot;react&quot;;
+import {
+  AppRegistry
+} from &#39;react-native&#39;;
+
+AppRegistry.registerComponent(&#39;MyAwesomeProject&#39;, () =&gt; app);</code></pre>
+
+<p><strong>Note:</strong> Make sure that the first argument to <code>AppRegistry.registerComponent</code> is <strong>your</strong> correct project name.</p>
+<p>If you are using <code>react-native-scripts</code>, then you will need to modify <code>App.js</code> to be like this</p>
+<pre class='code-txt js'><code class='js'>import { app } from &quot;./lib/js/re/app.js&quot;;
+
+export default app;</code></pre>
+
+<ol><li><p>Now go to a new tab and start your app with <code>react-native run-ios</code> or <code>react-native run-android</code>.</p>
+</li><li><p>Great you are all set up! Check the source of <code>bs-react-native</code> to find out more about the implemented APIs and Components. If you get stuck just ask on our <a href="https://discord.gg/reasonml" target="_blank" rel="noopener nofollow" title="" class="external-link">Discord Server</a>! Happy Hacking!</p>
+</li></ol>
+
+<p>Here are some more things which will be probably useful for you:</p>
+<ul><li><a href="https://reasonml.github.io/reason-react/" target="_blank" rel="noopener nofollow" title="" class="external-link">Reason-React Documentation</a></li><li><a href="http://bucklescript.github.io/bucklescript/Manual.html" target="_blank" rel="noopener nofollow" title="" class="external-link">Bucklescript Manual</a></li></ul>
+
+<a href="#can-i-really-build-my-react-native-app-with-reason-" id="can-i-really-build-my-react-native-app-with-reason-"><h2>Can I really build my React Native app with Reason?</h2></a><p>Yes! Check out the <a href="https://github.com/FormidableLabs/seattlejsconf-app" target="_blank" rel="noopener nofollow" title="" class="external-link">Seattle JS Conf App</a> for a real world App written with Reason.</p>
+<a href="#disclaimer" id="disclaimer"><h3>Disclaimer</h3></a>
+
+<p>There are some components and APIs missing. You can find an overview of the implemented components and APIs <a href="STATUS.md" target="_blank" rel="noopener nofollow" title="" class="external-link">here</a>. Contributions of Components and APIs are very welcome! The bindings are targeted to React Native <strong>0.46+</strong>.</p>
+<a href="#style" id="style"><h2>Style</h2></a><p>Since we have a proper type system we can make styles <strong>typesafe</strong>! Therefore styles are a little bit different declared than in JavaScript:</p>
+<a href="#inline-styles" id="inline-styles"><h3>Inline styles</h3></a>
+
+<div class='code-block' data-block-syntax="re">
+  
+  <pre class='code' data-block-id='2' id='block-2'><code>open BsReactNative;
+open Style;
+
+let <span class='pattern-ident' data-type="unit => ReasonReact.reactElement">render</span> = <span class='pattern-constructor' data-type="unit">()</span> =&gt; 
+  <span class='ident' data-type="(
+  ~?key: option(string),
+  ~?ref: option(Js.nullable(ReasonReact.reactRef) => unit),
+  ReasonReact.component(
+    ReasonReact.stateless,
+    ReasonReact.noRetainedProps,
+    unit
+  )
+) => ReasonReact.reactElement"><span class='ident' data-type="(
+  ~?accessibilityLabel: option(string),
+  ~?accessible: option(bool),
+  ~?hitSlop: option(BsReactNative.Types.insets),
+  ~?onAccessibilityTap: option(unit => unit),
+  ~?onLayout: option(
+    BsReactNative.RNEvent.NativeLayoutEvent.t => unit
+  ),
+  ~?onMagicTap: option(unit => unit),
+  ~?responderHandlers: option(
+    BsReactNative.Types.touchResponderHandlers
+  ),
+  ~?pointerEvents: option(
+    [ `none | `boxOnly | `auto | `boxNone ]
+  ),
+  ~?removeClippedSubviews: option(bool),
+  ~?style: option(BsReactNative.Style.t),
+  ~?testID: option(string),
+  ~?accessibilityComponentType: option(
+    [ `button | `none | `radiobutton_checked | `radiobutton_unchecked ]
+  ),
+  ~?accessibilityLiveRegion: option(
+    [ `none | `polite | `assertive ]
+  ),
+  ~?collapsable: option(bool),
+  ~?importantForAccessibility: option(
+    [ `no | `yes | `noHideDescendants | `auto ]
+  ),
+  ~?needsOffscreenAlphaCompositing: option(bool),
+  ~?renderToHardwareTextureAndroid: option(bool),
+  ~?accessibilityTraits: option(
+    list(
+      [ `frequentUpdates
+| `adjustable
+| `image
+| `button
+| `none
+| `header
+| `plays
+| `text
+| `startsMedia
+| `link
+| `disabled
+| `pageTurn
+| `selected
+| `summary
+| `search
+| `allowsDirectInteraction
+| `key ]
+    )
+  ),
+  ~?accessibilityViewIsModal: option(bool),
+  ~?shouldRasterizeIOS: option(bool),
+  array(ReasonReact.reactElement)
+) => ReasonReact.component(
+  ReasonReact.stateless,
+  ReasonReact.noRetainedProps,
+  unit
+)">&lt;View style=(
+      <span class='ident' data-type="list(
+  BsReactNative.Style.styleElement
+) => BsReactNative.Style.t">style</span>([
+        <span data-type="list(BsReactNative.Style.styleElement)"><span class='ident' data-type="BsReactNative.Style.flexDirection => BsReactNative.Style.styleElement">flexDirection</span>(<span class='constructor' data-type="BsReactNative.Style.flexDirection">Column</span>),
+        <span data-type="list(BsReactNative.Style.styleElement)"><span class='ident' data-type="BsReactNative.Style.string_interpolated => BsReactNative.Style.styleElement">backgroundColor</span>(<span class='constructor' data-type="BsReactNative.Style.string_interpolated">String</span>(<span class='string' data-type="string">&quot;#6698FF&quot;</span>)),
+        <span data-type="list(BsReactNative.Style.styleElement)"><span class='ident' data-type="BsReactNative.Style.pt_pct_auto => BsReactNative.Style.styleElement">marginTop</span>(<span class='constructor' data-type="BsReactNative.Style.pt_pct_auto">Pt</span>(<span class='float' data-type="float">5.</span>))</span></span></span>
+      ])
+    )
+  /&gt;</span></span>;</code></pre>
+  
+  
+  
+</div><div class='code-block' data-block-syntax="ml">
+  
+  <pre class='code' data-block-id='2-alt' id='block-2-alt'><code>[@@@ocaml.ppx.context { cookies = [] }]
+open BsReactNative
+open Style
+let <span class='pattern-ident' data-type="unit => ReasonReact.reactElement">render</span> <span class='pattern-constructor' data-type="unit">()</span> =
+  <span class='ident' data-type="(
+  ~?key: option(string),
+  ~?ref: option(Js.nullable(ReasonReact.reactRef) => unit),
+  ReasonReact.component(
+    ReasonReact.stateless,
+    ReasonReact.noRetainedProps,
+    unit
+  )
+) => ReasonReact.reactElement">ReasonReact.element</span>
+    (<span class='ident' data-type="(
+  ~?accessibilityLabel: option(string),
+  ~?accessible: option(bool),
+  ~?hitSlop: option(BsReactNative.Types.insets),
+  ~?onAccessibilityTap: option(unit => unit),
+  ~?onLayout: option(
+    BsReactNative.RNEvent.NativeLayoutEvent.t => unit
+  ),
+  ~?onMagicTap: option(unit => unit),
+  ~?responderHandlers: option(
+    BsReactNative.Types.touchResponderHandlers
+  ),
+  ~?pointerEvents: option(
+    [ `none | `boxOnly | `auto | `boxNone ]
+  ),
+  ~?removeClippedSubviews: option(bool),
+  ~?style: option(BsReactNative.Style.t),
+  ~?testID: option(string),
+  ~?accessibilityComponentType: option(
+    [ `button | `none | `radiobutton_checked | `radiobutton_unchecked ]
+  ),
+  ~?accessibilityLiveRegion: option(
+    [ `none | `polite | `assertive ]
+  ),
+  ~?collapsable: option(bool),
+  ~?importantForAccessibility: option(
+    [ `no | `yes | `noHideDescendants | `auto ]
+  ),
+  ~?needsOffscreenAlphaCompositing: option(bool),
+  ~?renderToHardwareTextureAndroid: option(bool),
+  ~?accessibilityTraits: option(
+    list(
+      [ `frequentUpdates
+| `adjustable
+| `image
+| `button
+| `none
+| `header
+| `plays
+| `text
+| `startsMedia
+| `link
+| `disabled
+| `pageTurn
+| `selected
+| `summary
+| `search
+| `allowsDirectInteraction
+| `key ]
+    )
+  ),
+  ~?accessibilityViewIsModal: option(bool),
+  ~?shouldRasterizeIOS: option(bool),
+  array(ReasonReact.reactElement)
+) => ReasonReact.component(
+  ReasonReact.stateless,
+  ReasonReact.noRetainedProps,
+  unit
+)">View.make</span>
+       ~style:(<span class='ident' data-type="list(
+  BsReactNative.Style.styleElement
+) => BsReactNative.Style.t">style</span>
+                 [<span class='ident' data-type="BsReactNative.Style.flexDirection => BsReactNative.Style.styleElement">flexDirection</span> <span class='constructor' data-type="BsReactNative.Style.flexDirection">Column</span>;
+                 <span class='ident' data-type="BsReactNative.Style.string_interpolated => BsReactNative.Style.styleElement">backgroundColor</span>
+                   ((<span class='constructor' data-type="BsReactNative.Style.string_interpolated">String</span> (((&quot;#6698FF&quot;)[@reason.raw_literal &quot;#6698FF&quot;])))
+                   [@explicit_arity ]);
+                 <span class='ident' data-type="BsReactNative.Style.pt_pct_auto => BsReactNative.Style.styleElement">marginTop</span> ((<span class='constructor' data-type="BsReactNative.Style.pt_pct_auto">Pt</span> <span class='float' data-type="float">(5.)</span>)[@explicit_arity ])]) [||])</code></pre>
+  
+  
+  
+</div>
+
+<a href="#stylesheet" id="stylesheet"><h3>StyleSheet</h3></a>
+
+<div class='code-block' data-block-syntax="re">
+  
+  <pre class='code' data-block-id='1' id='block-1'><code>open BsReactNative;
+open Style;
+
+let <span class='pattern-ident' data-type="Js.t(&lt; wrapper : BsReactNative.Style.t &gt;)">styles</span> =
+  <span class='ident' data-type="Js.t(&lt; wrapper : BsReactNative.Style.t &gt;) => Js.t(
+  &lt; wrapper : BsReactNative.Style.t &gt;
+)">StyleSheet.create</span>(
+    (<span class='type-vbl'><span class='type-constructor'><span class='type-vbl'><span class='ident' data-type="(~wrapper: BsReactNative.Style.t) => Js.t(
+  &lt; wrapper : BsReactNative.Style.t &gt;
+)">{&quot;wrapper&quot;: <span class='ident' data-type="list(
+  BsReactNative.Style.styleElement
+) => BsReactNative.Style.t">style</span>([<span data-type="list(BsReactNative.Style.styleElement)"><span class='ident' data-type="BsReactNative.Style.flexDirection => BsReactNative.Style.styleElement">flexDirection</span>(<span class='constructor' data-type="BsReactNative.Style.flexDirection">Column</span>), <span data-type="list(BsReactNative.Style.styleElement)"><span class='ident' data-type="BsReactNative.Style.string_interpolated => BsReactNative.Style.styleElement">backgroundColor</span>(<span class='constructor' data-type="BsReactNative.Style.string_interpolated">String</span>(<span class='string' data-type="string">&quot;#6698FF&quot;</span>)), <span data-type="list(BsReactNative.Style.styleElement)"><span class='ident' data-type="BsReactNative.Style.pt_pct_auto => BsReactNative.Style.styleElement">marginTop</span>(<span class='constructor' data-type="BsReactNative.Style.pt_pct_auto">Pt</span>(<span class='float' data-type="float">5.</span>))</span></span></span>])}</span></span></span></span>)
+  );</code></pre>
+  
+  
+  
+</div><div class='code-block' data-block-syntax="ml">
+  
+  <pre class='code' data-block-id='1-alt' id='block-1-alt'><code>[@@@ocaml.ppx.context { cookies = [] }]
+open BsReactNative
+open Style
+let <span class='pattern-ident' data-type="Js.t(&lt; wrapper : BsReactNative.Style.t &gt;)">styles</span> =
+  <span class='ident' data-type="Js.t(&lt; wrapper : BsReactNative.Style.t &gt;) => Js.t(
+  &lt; wrapper : BsReactNative.Style.t &gt;
+)">StyleSheet.create</span>
+    ([%bs.obj
+       <span class='type-vbl'><span class='type-constructor'><span class='type-vbl'><span class='ident' data-type="(~wrapper: BsReactNative.Style.t) => Js.t(
+  &lt; wrapper : BsReactNative.Style.t &gt;
+)">{
+         wrapper =
+           (<span class='ident' data-type="list(
+  BsReactNative.Style.styleElement
+) => BsReactNative.Style.t">style</span>
+              [<span class='ident' data-type="BsReactNative.Style.flexDirection => BsReactNative.Style.styleElement">flexDirection</span> <span class='constructor' data-type="BsReactNative.Style.flexDirection">Column</span>;
+              <span class='ident' data-type="BsReactNative.Style.string_interpolated => BsReactNative.Style.styleElement">backgroundColor</span>
+                ((<span class='constructor' data-type="BsReactNative.Style.string_interpolated">String</span> (((&quot;#6698FF&quot;)[@reason.raw_literal &quot;#6698FF&quot;])))
+                [@explicit_arity ]);
+              <span class='ident' data-type="BsReactNative.Style.pt_pct_auto => BsReactNative.Style.styleElement">marginTop</span> ((<span class='constructor' data-type="BsReactNative.Style.pt_pct_auto">Pt</span> <span class='float' data-type="float">(5.)</span>)[@explicit_arity ])])
+       }</span></span></span></span>])</code></pre>
+  
+  
+  
+</div>
+
+<a href="#animations" id="animations"><h3>Animations</h3></a>
+
+<div class='code-block' data-block-syntax="re">
+  
+  <pre class='code' data-block-id='0' id='block-0'><code>open BsReactNative;
+
+type state = {animatedValue: <span class='type-constructor'>Animated.Value.t</span>};
+let <span class='pattern-ident' data-type="ReasonReact.componentSpec(
+  state,
+  ReasonReact.stateless,
+  ReasonReact.noRetainedProps,
+  ReasonReact.noRetainedProps,
+  state
+)">component</span> = <span class='ident' data-type="string => ReasonReact.componentSpec(
+  state,
+  ReasonReact.stateless,
+  ReasonReact.noRetainedProps,
+  ReasonReact.noRetainedProps,
+  state
+)">ReasonReact.reducerComponent</span>(<span class='string' data-type="string">&quot;Example&quot;</span>);
+
+let <span class='pattern-ident' data-type="'a => ReasonReact.componentSpec(
+  state,
+  state,
+  ReasonReact.noRetainedProps,
+  ReasonReact.noRetainedProps,
+  state
+)">make</span> = (_) =&gt; <span data-type="ReasonReact.componentSpec(
+  state,
+  state,
+  ReasonReact.noRetainedProps,
+  ReasonReact.noRetainedProps,
+  state
+)">{
+  ...<span class='ident' data-type="ReasonReact.componentSpec(
+  state,
+  ReasonReact.stateless,
+  ReasonReact.noRetainedProps,
+  ReasonReact.noRetainedProps,
+  state
+)">component</span>,
+  initialState: <span class='pattern-constructor' data-type="unit">()</span> =&gt; <span data-type="state">{animatedValue: <span class='ident' data-type="float => BsReactNative.Animated.Value.t">Animated.Value.create</span>(<span class='float' data-type="float">(-100.)</span>)}</span>,
+  reducer: (<span class='pattern-ident' data-type="state">state</span>, _) =&gt; {
+    /* Start animation in method */
+    <span class='constructor' data-type="ReasonReact.update(
+  state,
+  ReasonReact.noRetainedProps,
+  state
+)">UpdateWithSideEffects</span>(<span class='ident' data-type="state">state</span>, (_) =&gt; <span class='ident' data-type="(
+  BsReactNative.Animated.CompositeAnimation.t,
+  ~?callback: option(
+    BsReactNative.Animated.Animation.endCallback
+  ),
+  unit
+) => unit">Animated.CompositeAnimation.start</span>(
+      <span class='ident' data-type="(
+  ~value: BsReactNative.Animated.Value.value,
+  ~toValue: [ `animated of BsReactNative.Animated.Value.value | `raw of float ],
+  ~?easing: option(BsReactNative.Animated.Easing.t),
+  ~?duration: option(float),
+  ~?delay: option(float),
+  ~?isInteraction: option(bool),
+  ~?useNativeDriver: option(bool),
+  ~?onComplete: option(
+    BsReactNative.Animated.Animation.endCallback
+  ),
+  ~?iterations: option(int),
+  unit
+) => BsReactNative.Animated.CompositeAnimation.t">Animated.Timing.animate</span>(
+        ~value=<span class='ident' data-type="state">state</span>.<span class='field' data-type="BsReactNative.Animated.Value.t">animatedValue</span>,
+        ~toValue=`raw<span class='float' data-type="float">(0.)</span>,
+        <span class='constructor' data-type="unit">()</span>
+      ),
+      <span class='constructor' data-type="unit">()</span>
+    ));
+  },
+  render: ({<span class='pattern-ident' data-type="state">state</span>}) =&gt;
+    /* Styles with an animated value */
+    <span class='ident' data-type="(
+  ~?key: option(string),
+  ~?ref: option(Js.nullable(ReasonReact.reactRef) => unit),
+  ReasonReact.component(
+    ReasonReact.stateless,
+    ReasonReact.noRetainedProps,
+    unit
+  )
+) => ReasonReact.reactElement"><span class='ident' data-type="(
+  ~?accessibilityLabel: option(string),
+  ~?accessible: option(bool),
+  ~?hitSlop: option(BsReactNative.Types.insets),
+  ~?onAccessibilityTap: option(unit => unit),
+  ~?onLayout: option(
+    BsReactNative.RNEvent.NativeLayoutEvent.t => unit
+  ),
+  ~?onMagicTap: option(unit => unit),
+  ~?responderHandlers: option(
+    BsReactNative.Types.touchResponderHandlers
+  ),
+  ~?pointerEvents: option(
+    [ `none | `boxOnly | `auto | `boxNone ]
+  ),
+  ~?removeClippedSubviews: option(bool),
+  ~?style: option(BsReactNative.Style.t),
+  ~?testID: option(string),
+  ~?accessibilityComponentType: option(
+    [ `button | `none | `radiobutton_checked | `radiobutton_unchecked ]
+  ),
+  ~?accessibilityLiveRegion: option(
+    [ `none | `polite | `assertive ]
+  ),
+  ~?collapsable: option(bool),
+  ~?importantForAccessibility: option(
+    [ `no | `yes | `noHideDescendants | `auto ]
+  ),
+  ~?needsOffscreenAlphaCompositing: option(bool),
+  ~?renderToHardwareTextureAndroid: option(bool),
+  ~?accessibilityTraits: option(
+    list(
+      [ `frequentUpdates
+| `adjustable
+| `image
+| `button
+| `none
+| `header
+| `plays
+| `text
+| `startsMedia
+| `link
+| `disabled
+| `pageTurn
+| `selected
+| `summary
+| `search
+| `allowsDirectInteraction
+| `key ]
+    )
+  ),
+  ~?accessibilityViewIsModal: option(bool),
+  ~?shouldRasterizeIOS: option(bool),
+  array(ReasonReact.reactElement)
+) => ReasonReact.component(
+  ReasonReact.stateless,
+  ReasonReact.noRetainedProps,
+  unit
+)">&lt;Animated.View
+      style=Style.(<span class='ident' data-type="list(
+  BsReactNative.Style.styleElement
+) => BsReactNative.Style.t">style</span>([<span data-type="list(BsReactNative.Style.styleElement)"><span class='ident' data-type="BsReactNative.Style.flexDirection => BsReactNative.Style.styleElement">flexDirection</span>(<span class='constructor' data-type="BsReactNative.Style.flexDirection">Column</span>), <span data-type="list(BsReactNative.Style.styleElement)"><span class='ident' data-type="BsReactNative.Style.string_interpolated => BsReactNative.Style.styleElement">backgroundColor</span>(<span class='constructor' data-type="BsReactNative.Style.string_interpolated">String</span>(<span class='string' data-type="string">&quot;#6698FF&quot;</span>)), <span data-type="list(BsReactNative.Style.styleElement)"><span class='ident' data-type="BsReactNative.Style.pt_pct_animated_interpolated => BsReactNative.Style.styleElement">top</span>(<span class='constructor' data-type="BsReactNative.Style.pt_pct_animated_interpolated">Animated</span>(<span class='ident' data-type="state">state</span>.<span class='field' data-type="BsReactNative.Animated.Value.t">animatedValue</span>))</span></span></span>]))
+    /&gt;</span></span>
+}</span></code></pre>
+  
+  
+  
+</div><div class='code-block' data-block-syntax="ml">
+  
+  <pre class='code' data-block-id='0-alt' id='block-0-alt'><code>[@@@ocaml.ppx.context { cookies = [] }]
+open BsReactNative
+type state = {
+  animatedValue: <span class='type-constructor'>Animated.Value.t</span>;}
+let <span class='pattern-ident' data-type="ReasonReact.componentSpec(
+  state,
+  ReasonReact.stateless,
+  ReasonReact.noRetainedProps,
+  ReasonReact.noRetainedProps,
+  state
+)">component</span> =
+  <span class='ident' data-type="string => ReasonReact.componentSpec(
+  state,
+  ReasonReact.stateless,
+  ReasonReact.noRetainedProps,
+  ReasonReact.noRetainedProps,
+  state
+)">ReasonReact.reducerComponent</span> ((&quot;Example&quot;)[@reason.raw_literal &quot;Example&quot;])
+let <span class='pattern-ident' data-type="'a => ReasonReact.componentSpec(
+  state,
+  state,
+  ReasonReact.noRetainedProps,
+  ReasonReact.noRetainedProps,
+  state
+)">make</span> _ =
+  <span data-type="ReasonReact.componentSpec(
+  state,
+  state,
+  ReasonReact.noRetainedProps,
+  ReasonReact.noRetainedProps,
+  state
+)">{
+    <span class='ident' data-type="ReasonReact.componentSpec(
+  state,
+  ReasonReact.stateless,
+  ReasonReact.noRetainedProps,
+  ReasonReact.noRetainedProps,
+  state
+)">component</span> with
+    initialState =
+      (fun <span class='pattern-constructor' data-type="unit">()</span>  -&gt; <span data-type="state">{ animatedValue = (<span class='ident' data-type="float => BsReactNative.Animated.Value.t">Animated.Value.create</span> <span class='float' data-type="float">(-100.)</span>) }</span>);
+    reducer =
+      (fun <span class='pattern-ident' data-type="state">state</span>  -&gt;
+         fun _  -&gt;
+           ((<span class='constructor' data-type="ReasonReact.update(
+  state,
+  ReasonReact.noRetainedProps,
+  state
+)">UpdateWithSideEffects</span>
+               (<span class='ident' data-type="state">state</span>,
+                 (fun _  -&gt;
+                    <span class='ident' data-type="(
+  BsReactNative.Animated.CompositeAnimation.t,
+  ~?callback: option(
+    BsReactNative.Animated.Animation.endCallback
+  ),
+  unit
+) => unit">Animated.CompositeAnimation.start</span>
+                      (<span class='ident' data-type="(
+  ~value: BsReactNative.Animated.Value.value,
+  ~toValue: [ `animated of BsReactNative.Animated.Value.value | `raw of float ],
+  ~?easing: option(BsReactNative.Animated.Easing.t),
+  ~?duration: option(float),
+  ~?delay: option(float),
+  ~?isInteraction: option(bool),
+  ~?useNativeDriver: option(bool),
+  ~?onComplete: option(
+    BsReactNative.Animated.Animation.endCallback
+  ),
+  ~?iterations: option(int),
+  unit
+) => BsReactNative.Animated.CompositeAnimation.t">Animated.Timing.animate</span> ~value:(<span class='ident' data-type="state">state</span>.<span class='field' data-type="BsReactNative.Animated.Value.t">animatedValue</span>)
+                         ~toValue:(`raw <span class='float' data-type="float">0.</span>) <span class='constructor' data-type="unit">()</span>) <span class='constructor' data-type="unit">()</span>)))[@explicit_arity ]));
+    render =
+      (fun { <span class='pattern-ident' data-type="state">state</span> }  -&gt;
+         <span class='ident' data-type="(
+  ~?key: option(string),
+  ~?ref: option(Js.nullable(ReasonReact.reactRef) => unit),
+  ReasonReact.component(
+    ReasonReact.stateless,
+    ReasonReact.noRetainedProps,
+    unit
+  )
+) => ReasonReact.reactElement">ReasonReact.element</span>
+           (<span class='ident' data-type="(
+  ~?accessibilityLabel: option(string),
+  ~?accessible: option(bool),
+  ~?hitSlop: option(BsReactNative.Types.insets),
+  ~?onAccessibilityTap: option(unit => unit),
+  ~?onLayout: option(
+    BsReactNative.RNEvent.NativeLayoutEvent.t => unit
+  ),
+  ~?onMagicTap: option(unit => unit),
+  ~?responderHandlers: option(
+    BsReactNative.Types.touchResponderHandlers
+  ),
+  ~?pointerEvents: option(
+    [ `none | `boxOnly | `auto | `boxNone ]
+  ),
+  ~?removeClippedSubviews: option(bool),
+  ~?style: option(BsReactNative.Style.t),
+  ~?testID: option(string),
+  ~?accessibilityComponentType: option(
+    [ `button | `none | `radiobutton_checked | `radiobutton_unchecked ]
+  ),
+  ~?accessibilityLiveRegion: option(
+    [ `none | `polite | `assertive ]
+  ),
+  ~?collapsable: option(bool),
+  ~?importantForAccessibility: option(
+    [ `no | `yes | `noHideDescendants | `auto ]
+  ),
+  ~?needsOffscreenAlphaCompositing: option(bool),
+  ~?renderToHardwareTextureAndroid: option(bool),
+  ~?accessibilityTraits: option(
+    list(
+      [ `frequentUpdates
+| `adjustable
+| `image
+| `button
+| `none
+| `header
+| `plays
+| `text
+| `startsMedia
+| `link
+| `disabled
+| `pageTurn
+| `selected
+| `summary
+| `search
+| `allowsDirectInteraction
+| `key ]
+    )
+  ),
+  ~?accessibilityViewIsModal: option(bool),
+  ~?shouldRasterizeIOS: option(bool),
+  array(ReasonReact.reactElement)
+) => ReasonReact.component(
+  ReasonReact.stateless,
+  ReasonReact.noRetainedProps,
+  unit
+)">Animated.View.make</span>
+              ~style:(let open Style in
+                        <span class='ident' data-type="list(
+  BsReactNative.Style.styleElement
+) => BsReactNative.Style.t">style</span>
+                          [<span class='ident' data-type="BsReactNative.Style.flexDirection => BsReactNative.Style.styleElement">flexDirection</span> <span class='constructor' data-type="BsReactNative.Style.flexDirection">Column</span>;
+                          <span class='ident' data-type="BsReactNative.Style.string_interpolated => BsReactNative.Style.styleElement">backgroundColor</span>
+                            ((<span class='constructor' data-type="BsReactNative.Style.string_interpolated">String</span>
+                                (((&quot;#6698FF&quot;)[@reason.raw_literal &quot;#6698FF&quot;])))
+                            [@explicit_arity ]);
+                          <span class='ident' data-type="BsReactNative.Style.pt_pct_animated_interpolated => BsReactNative.Style.styleElement">top</span>
+                            ((<span class='constructor' data-type="BsReactNative.Style.pt_pct_animated_interpolated">Animated</span> ((<span class='ident' data-type="state">state</span>.<span class='field' data-type="BsReactNative.Animated.Value.t">animatedValue</span>)))[@explicit_arity
+                                                                 ])]) 
+              [||]))
+  }</span></code></pre>
+  
+  
+  
+</div>
+
+<a href="#troubleshooting" id="troubleshooting"><h2>Troubleshooting</h2></a>
+
+<a href="#native-module-cannot-be-null-with-create-react-native-app" id="native-module-cannot-be-null-with-create-react-native-app"><h3><code>Native module cannot be null</code> with create-react-native-app</h3></a>
+
+<p>Currently BuckleScript can generate <code>import * as ReactNative from &#39;react-native&#39;</code>, which breaks
+create-react-native-app. To get around this you can force BuckleScript to generate CommonJS
+modules instead of ES Modules using:</p>
+<pre class='code-txt json'><code class='json'>/* bsconfig.json */
+{
+  /* ... */
+  &quot;package-specs&quot;: [
+    {
+      &quot;module&quot;: &quot;commonjs&quot;
+    }
+  ]
+}</code></pre>
+    </div>
+    <div class='right-blank'></div>
+    </div>
+  

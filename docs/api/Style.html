@@ -1,0 +1,842 @@
+
+    
+<!doctype html>
+<meta charset=utf8>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel=stylesheet href='../styles.css'>
+<script defer src='../script.js'></script>
+<title>Style</title>
+<body>
+<script>window.relativeToRoot=".."</script>
+<script defer src="../block-script.js"></script>
+<div id='error-message'>
+  ⚠️ Oops! This page doesn't appear to define a <span>type</span> called <code>_</code>.
+</div>
+
+    <script>window.shouldCheckHashes=true</script>
+    <div class='container'>
+    
+    <div class='sidebar-wrapper'>
+    <div class='sidebar-expander'>Show navigation</div>
+    <div class='sidebar'>
+      <a href="../search.html" style="display: block; padding: 0 8px;">Search</a>
+      
+      <div class='docs-listing'><a href="../index.html">Home</a></div>
+      <div class='toc-header'>Page Contents</div>
+      <div class='table-of-contents'>
+      <a href="#Style" class='level-1 header'>Style</a>
+<a href="#type-t" class='level-2 type'>t</a>
+<a href="#type-styleElement" class='level-2 type'>styleElement</a>
+<a href="#type-pt_pct" class='level-2 type'>pt_pct</a>
+<a href="#type-pt_pct_auto" class='level-2 type'>pt_pct_auto</a>
+<a href="#type-pt_pct_animated_interpolated" class='level-2 type'>pt_pct_animated_interpolated</a>
+<a href="#type-float_interpolated_animated" class='level-2 type'>float_interpolated_animated</a>
+<a href="#type-string_interpolated" class='level-2 type'>string_interpolated</a>
+<a href="#value-style" class='level-2 value'>style</a>
+<a href="#value-flatten" class='level-2 value'>flatten</a>
+<a href="#value-combine" class='level-2 value'>combine</a>
+<a href="#value-concat" class='level-2 value'>concat</a>
+<a href="#type-alignContent" class='level-2 type'>alignContent</a>
+<a href="#value-alignContent" class='level-2 value'>alignContent</a>
+<a href="#type-alignItems" class='level-2 type'>alignItems</a>
+<a href="#value-alignItems" class='level-2 value'>alignItems</a>
+<a href="#type-alignSelf" class='level-2 type'>alignSelf</a>
+<a href="#value-alignSelf" class='level-2 value'>alignSelf</a>
+<a href="#value-aspectRatio" class='level-2 value'>aspectRatio</a>
+<a href="#value-borderBottomWidth" class='level-2 value'>borderBottomWidth</a>
+<a href="#value-borderLeftWidth" class='level-2 value'>borderLeftWidth</a>
+<a href="#value-borderRightWidth" class='level-2 value'>borderRightWidth</a>
+<a href="#value-borderTopWidth" class='level-2 value'>borderTopWidth</a>
+<a href="#value-borderWidth" class='level-2 value'>borderWidth</a>
+<a href="#value-flex" class='level-2 value'>flex</a>
+<a href="#type-display" class='level-2 type'>display</a>
+<a href="#value-display" class='level-2 value'>display</a>
+<a href="#value-flexBasis" class='level-2 value'>flexBasis</a>
+<a href="#value-flexGrow" class='level-2 value'>flexGrow</a>
+<a href="#type-flexDirection" class='level-2 type'>flexDirection</a>
+<a href="#value-flexDirection" class='level-2 value'>flexDirection</a>
+<a href="#value-flexShrink" class='level-2 value'>flexShrink</a>
+<a href="#type-flexWrap" class='level-2 type'>flexWrap</a>
+<a href="#value-flexWrap" class='level-2 value'>flexWrap</a>
+<a href="#type-justifyContent" class='level-2 type'>justifyContent</a>
+<a href="#value-justifyContent" class='level-2 value'>justifyContent</a>
+<a href="#value-margin" class='level-2 value'>margin</a>
+<a href="#value-marginBottom" class='level-2 value'>marginBottom</a>
+<a href="#value-marginHorizontal" class='level-2 value'>marginHorizontal</a>
+<a href="#value-marginLeft" class='level-2 value'>marginLeft</a>
+<a href="#value-marginRight" class='level-2 value'>marginRight</a>
+<a href="#value-marginTop" class='level-2 value'>marginTop</a>
+<a href="#value-marginVertical" class='level-2 value'>marginVertical</a>
+<a href="#value-maxHeight" class='level-2 value'>maxHeight</a>
+<a href="#value-maxWidth" class='level-2 value'>maxWidth</a>
+<a href="#value-minHeight" class='level-2 value'>minHeight</a>
+<a href="#value-minWidth" class='level-2 value'>minWidth</a>
+<a href="#type-overflow" class='level-2 type'>overflow</a>
+<a href="#value-overflow" class='level-2 value'>overflow</a>
+<a href="#value-padding" class='level-2 value'>padding</a>
+<a href="#value-paddingBottom" class='level-2 value'>paddingBottom</a>
+<a href="#value-paddingHorizontal" class='level-2 value'>paddingHorizontal</a>
+<a href="#value-paddingLeft" class='level-2 value'>paddingLeft</a>
+<a href="#value-paddingRight" class='level-2 value'>paddingRight</a>
+<a href="#value-paddingTop" class='level-2 value'>paddingTop</a>
+<a href="#value-paddingVertical" class='level-2 value'>paddingVertical</a>
+<a href="#type-position" class='level-2 type'>position</a>
+<a href="#value-position" class='level-2 value'>position</a>
+<a href="#value-top" class='level-2 value'>top</a>
+<a href="#value-left" class='level-2 value'>left</a>
+<a href="#value-right" class='level-2 value'>right</a>
+<a href="#value-bottom" class='level-2 value'>bottom</a>
+<a href="#value-height" class='level-2 value'>height</a>
+<a href="#value-width" class='level-2 value'>width</a>
+<a href="#value-zIndex" class='level-2 value'>zIndex</a>
+<a href="#type-direction" class='level-2 type'>direction</a>
+<a href="#value-direction" class='level-2 value'>direction</a>
+<a href="#value-shadowColor" class='level-2 value'>shadowColor</a>
+<a href="#value-shadowOffset" class='level-2 value'>shadowOffset</a>
+<a href="#value-shadowOpacity" class='level-2 value'>shadowOpacity</a>
+<a href="#value-shadowRadius" class='level-2 value'>shadowRadius</a>
+<a href="#module-Transform" class='level-2 module'>Transform</a>
+<a href="#value-Transform.make" class='level-3 value'>make</a>
+<a href="#value-Transform.makeAnimated" class='level-3 value'>makeAnimated</a>
+<a href="#value-Transform.makeInterpolated" class='level-3 value'>makeInterpolated</a>
+<a href="#type-backfaceVisibility" class='level-2 type'>backfaceVisibility</a>
+<a href="#value-backfaceVisibility" class='level-2 value'>backfaceVisibility</a>
+<a href="#value-backgroundColor" class='level-2 value'>backgroundColor</a>
+<a href="#value-borderColor" class='level-2 value'>borderColor</a>
+<a href="#value-borderTopColor" class='level-2 value'>borderTopColor</a>
+<a href="#value-borderRightColor" class='level-2 value'>borderRightColor</a>
+<a href="#value-borderBottomColor" class='level-2 value'>borderBottomColor</a>
+<a href="#value-borderLeftColor" class='level-2 value'>borderLeftColor</a>
+<a href="#value-borderRadius" class='level-2 value'>borderRadius</a>
+<a href="#value-borderTopLeftRadius" class='level-2 value'>borderTopLeftRadius</a>
+<a href="#value-borderTopRightRadius" class='level-2 value'>borderTopRightRadius</a>
+<a href="#type-borderStyle" class='level-2 type'>borderStyle</a>
+<a href="#value-borderStyle" class='level-2 value'>borderStyle</a>
+<a href="#value-borderBottomLeftRadius" class='level-2 value'>borderBottomLeftRadius</a>
+<a href="#value-borderBottomRightRadius" class='level-2 value'>borderBottomRightRadius</a>
+<a href="#value-opacity" class='level-2 value'>opacity</a>
+<a href="#value-elevation" class='level-2 value'>elevation</a>
+<a href="#value-color" class='level-2 value'>color</a>
+<a href="#value-fontFamily" class='level-2 value'>fontFamily</a>
+<a href="#value-fontSize" class='level-2 value'>fontSize</a>
+<a href="#type-fontStyle" class='level-2 type'>fontStyle</a>
+<a href="#value-fontStyle" class='level-2 value'>fontStyle</a>
+<a href="#value-fontWeight" class='level-2 value'>fontWeight</a>
+<a href="#value-lineHeight" class='level-2 value'>lineHeight</a>
+<a href="#type-textAlign" class='level-2 type'>textAlign</a>
+<a href="#value-textAlign" class='level-2 value'>textAlign</a>
+<a href="#type-textDecorationLine" class='level-2 type'>textDecorationLine</a>
+<a href="#value-textDecorationLine" class='level-2 value'>textDecorationLine</a>
+<a href="#value-textShadowColor" class='level-2 value'>textShadowColor</a>
+<a href="#value-textShadowOffset" class='level-2 value'>textShadowOffset</a>
+<a href="#value-textShadowRadius" class='level-2 value'>textShadowRadius</a>
+<a href="#value-includeFontPadding" class='level-2 value'>includeFontPadding</a>
+<a href="#type-textAlignVertical" class='level-2 type'>textAlignVertical</a>
+<a href="#value-textAlignVertical" class='level-2 value'>textAlignVertical</a>
+<a href="#value-fontVariant" class='level-2 value'>fontVariant</a>
+<a href="#value-letterSpacing" class='level-2 value'>letterSpacing</a>
+<a href="#value-textDecorationColor" class='level-2 value'>textDecorationColor</a>
+<a href="#type-textDecorationStyle" class='level-2 type'>textDecorationStyle</a>
+<a href="#value-textDecorationStyle" class='level-2 value'>textDecorationStyle</a>
+<a href="#type-writingDirection" class='level-2 type'>writingDirection</a>
+<a href="#value-writingDirection" class='level-2 value'>writingDirection</a>
+<a href="#type-resizeMode" class='level-2 type'>resizeMode</a>
+<a href="#value-resizeMode" class='level-2 value'>resizeMode</a>
+<a href="#value-tintColor" class='level-2 value'>tintColor</a>
+<a href="#value-overlayColor" class='level-2 value'>overlayColor</a>
+      </div>
+      <div class='project-title'>Package modules</div><div class='project-listing'><a href="RNEvent.html">RNEvent</a>
+<a href="ActionSheetIOS.html">ActionSheetIOS</a>
+<a href="Alert.html">Alert</a>
+<a href="AlertIOS.html">AlertIOS</a>
+<a href="Animated.html">Animated</a>
+<a href="AnimatedRe.html">AnimatedRe</a>
+<a href="AppRegistry.html">AppRegistry</a>
+<a href="AppState.html">AppState</a>
+<a href="AsyncStorage.html">AsyncStorage</a>
+<a href="BackHandler.html">BackHandler</a>
+<a href="CameraRoll.html">CameraRoll</a>
+<a href="Clipboard.html">Clipboard</a>
+<a href="ActivityIndicator.html">ActivityIndicator</a>
+<a href="AnimatedComponents.html">AnimatedComponents</a>
+<a href="Button.html">Button</a>
+<a href="DatePickerIOS.html">DatePickerIOS</a>
+<a href="FlatList.html">FlatList</a>
+<a href="Image.html">Image</a>
+<a href="ImageBackground.html">ImageBackground</a>
+<a href="KeyboardAvoidingView.html">KeyboardAvoidingView</a>
+<a href="Modal.html">Modal</a>
+<a href="Picker.html">Picker</a>
+<a href="RefreshControl.html">RefreshControl</a>
+<a href="SafeAreaView.html">SafeAreaView</a>
+<a href="ScrollView.html">ScrollView</a>
+<a href="SectionList.html">SectionList</a>
+<a href="SegmentedControllOS.html">SegmentedControllOS</a>
+<a href="Slider.html">Slider</a>
+<a href="StatusBar.html">StatusBar</a>
+<a href="Switch.html">Switch</a>
+<a href="TabBarIOS.html">TabBarIOS</a>
+<a href="Text.html">Text</a>
+<a href="TextInput.html">TextInput</a>
+<a href="TouchableHighlight.html">TouchableHighlight</a>
+<a href="TouchableOpacity.html">TouchableOpacity</a>
+<a href="TouchableWithoutFeedback.html">TouchableWithoutFeedback</a>
+<a href="View.html">View</a>
+<a href="WebView.html">WebView</a>
+<a href="DatePickerAndroid.html">DatePickerAndroid</a>
+<a href="Dimensions.html">Dimensions</a>
+<a href="Geolocation.html">Geolocation</a>
+<a href="Keyboard.html">Keyboard</a>
+<a href="Linking.html">Linking</a>
+<a href="NativeEventEmitter.html">NativeEventEmitter</a>
+<a href="NativeModules.html">NativeModules</a>
+<a href="NetInfo.html">NetInfo</a>
+<a href="Packager.html">Packager</a>
+<a href="PanResponder.html">PanResponder</a>
+<a href="PixelRatio.html">PixelRatio</a>
+<a href="Platform.html">Platform</a>
+<a href="Encode.html">Encode</a>
+<a href="Props.html">Props</a>
+<a href="ResponderUtils.html">ResponderUtils</a>
+<a href="UtilsRN.html">UtilsRN</a>
+<a href="Style.html">Style</a>
+<a href="StyleSheet.html">StyleSheet</a>
+<a href="Types.html">Types</a>
+<a href="Vibration.html">Vibration</a>
+<a href="ActivityIndicator.html">ActivityIndicator</a>
+<a href="AnimatedComponents.html">AnimatedComponents</a>
+<a href="Button.html">Button</a>
+<a href="DatePickerIOS.html">DatePickerIOS</a>
+<a href="FlatList.html">FlatList</a>
+<a href="Image.html">Image</a>
+<a href="ImageBackground.html">ImageBackground</a>
+<a href="KeyboardAvoidingView.html">KeyboardAvoidingView</a>
+<a href="Modal.html">Modal</a>
+<a href="Picker.html">Picker</a>
+<a href="RefreshControl.html">RefreshControl</a>
+<a href="SafeAreaView.html">SafeAreaView</a>
+<a href="ScrollView.html">ScrollView</a>
+<a href="SectionList.html">SectionList</a>
+<a href="SegmentedControllOS.html">SegmentedControllOS</a>
+<a href="Slider.html">Slider</a>
+<a href="StatusBar.html">StatusBar</a>
+<a href="Switch.html">Switch</a>
+<a href="TabBarIOS.html">TabBarIOS</a>
+<a href="Text.html">Text</a>
+<a href="TextInput.html">TextInput</a>
+<a href="TouchableHighlight.html">TouchableHighlight</a>
+<a href="TouchableOpacity.html">TouchableOpacity</a>
+<a href="TouchableWithoutFeedback.html">TouchableWithoutFeedback</a>
+<a href="View.html">View</a>
+<a href="WebView.html">WebView</a>
+<a href="Encode.html">Encode</a>
+<a href="Props.html">Props</a>
+<a href="ResponderUtils.html">ResponderUtils</a>
+<a href="UtilsRN.html">UtilsRN</a></div>
+    </div>
+    </div>
+  
+    <div class='main'>
+    
+    <a href="#Style" id="Style"><h1>Style</h1></a>
+
+<p><span class='missing'>This module does not have a toplevel documentation block.</span></p>
+<div class='doc-item'><h4 class='item'>type <a href="#type-t" id="type-t">t</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-styleElement" id="type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-pt_pct" id="type-pt_pct">pt_pct</a> = | Pt(float) | Pct(float)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-pt_pct_auto" id="type-pt_pct_auto">pt_pct_auto</a> = | Pt(float) | Pct(float) | Auto</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-pt_pct_animated_interpolated" id="type-pt_pct_animated_interpolated">pt_pct_animated_interpolated</a> = 
+  | Pt(float)
+  | Pct(float)
+  | Animated(BsReactNative.AnimatedRe.Value.t)
+  | Interpolated(BsReactNative.AnimatedRe.Interpolation.t)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-float_interpolated_animated" id="type-float_interpolated_animated">float_interpolated_animated</a> = 
+  | Float(float)
+  | Animated(BsReactNative.AnimatedRe.Value.t)
+  | Interpolated(BsReactNative.AnimatedRe.Interpolation.t)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-string_interpolated" id="type-string_interpolated">string_interpolated</a> = 
+  | String(string)
+  | Interpolated(BsReactNative.AnimatedRe.Interpolation.t)</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-style" id="value-style">style</a>: list(<a href="#type-styleElement">styleElement</a>) => <a href="#type-t">t</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-flatten" id="value-flatten">flatten</a>: array(<a href="#type-t">t</a>) => <a href="#type-t">t</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-combine" id="value-combine">combine</a>: (<a href="#type-t">t</a>, <a href="#type-t">t</a>) => <a href="#type-t">t</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-concat" id="value-concat">concat</a>: list(<a href="#type-t">t</a>) => <a href="#type-t">t</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-alignContent" id="type-alignContent">alignContent</a> = 
+  | FlexStart
+  | FlexEnd
+  | Center
+  | Stretch
+  | SpaceAround
+  | SpaceBetween</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-alignContent" id="value-alignContent">alignContent</a>: <a href="#type-alignContent">alignContent</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-alignItems" id="type-alignItems">alignItems</a> = 
+  | FlexStart
+  | FlexEnd
+  | Center
+  | Stretch
+  | Baseline</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-alignItems" id="value-alignItems">alignItems</a>: <a href="#type-alignItems">alignItems</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-alignSelf" id="type-alignSelf">alignSelf</a> = 
+  | FlexStart
+  | FlexEnd
+  | Center
+  | Stretch
+  | Baseline</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-alignSelf" id="value-alignSelf">alignSelf</a>: <a href="#type-alignSelf">alignSelf</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-aspectRatio" id="value-aspectRatio">aspectRatio</a>: float => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-borderBottomWidth" id="value-borderBottomWidth">borderBottomWidth</a>: float => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-borderLeftWidth" id="value-borderLeftWidth">borderLeftWidth</a>: float => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-borderRightWidth" id="value-borderRightWidth">borderRightWidth</a>: float => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-borderTopWidth" id="value-borderTopWidth">borderTopWidth</a>: float => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-borderWidth" id="value-borderWidth">borderWidth</a>: float => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-flex" id="value-flex">flex</a>: float => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-display" id="type-display">display</a> = | Flex | None</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-display" id="value-display">display</a>: <a href="#type-display">display</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-flexBasis" id="value-flexBasis">flexBasis</a>: <a href="#type-pt_pct">pt_pct</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-flexGrow" id="value-flexGrow">flexGrow</a>: float => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-flexDirection" id="type-flexDirection">flexDirection</a> = 
+  | Row
+  | RowReverse
+  | Column
+  | ColumnReverse</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-flexDirection" id="value-flexDirection">flexDirection</a>: <a href="#type-flexDirection">flexDirection</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-flexShrink" id="value-flexShrink">flexShrink</a>: float => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-flexWrap" id="type-flexWrap">flexWrap</a> = | Wrap | Nowrap</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-flexWrap" id="value-flexWrap">flexWrap</a>: <a href="#type-flexWrap">flexWrap</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-justifyContent" id="type-justifyContent">justifyContent</a> = 
+  | FlexStart
+  | FlexEnd
+  | Center
+  | Stretch
+  | SpaceAround
+  | SpaceBetween</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-justifyContent" id="value-justifyContent">justifyContent</a>: <a href="#type-justifyContent">justifyContent</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-margin" id="value-margin">margin</a>: <a href="#type-pt_pct_auto">pt_pct_auto</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-marginBottom" id="value-marginBottom">marginBottom</a>: <a href="#type-pt_pct_auto">pt_pct_auto</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-marginHorizontal" id="value-marginHorizontal">marginHorizontal</a>: <a href="#type-pt_pct_auto">pt_pct_auto</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-marginLeft" id="value-marginLeft">marginLeft</a>: <a href="#type-pt_pct_auto">pt_pct_auto</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-marginRight" id="value-marginRight">marginRight</a>: <a href="#type-pt_pct_auto">pt_pct_auto</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-marginTop" id="value-marginTop">marginTop</a>: <a href="#type-pt_pct_auto">pt_pct_auto</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-marginVertical" id="value-marginVertical">marginVertical</a>: <a href="#type-pt_pct_auto">pt_pct_auto</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-maxHeight" id="value-maxHeight">maxHeight</a>: <a href="#type-pt_pct">pt_pct</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-maxWidth" id="value-maxWidth">maxWidth</a>: <a href="#type-pt_pct">pt_pct</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-minHeight" id="value-minHeight">minHeight</a>: <a href="#type-pt_pct">pt_pct</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-minWidth" id="value-minWidth">minWidth</a>: <a href="#type-pt_pct">pt_pct</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-overflow" id="type-overflow">overflow</a> = | Visible | Hidden | Scroll</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-overflow" id="value-overflow">overflow</a>: <a href="#type-overflow">overflow</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-padding" id="value-padding">padding</a>: <a href="#type-pt_pct">pt_pct</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-paddingBottom" id="value-paddingBottom">paddingBottom</a>: <a href="#type-pt_pct">pt_pct</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-paddingHorizontal" id="value-paddingHorizontal">paddingHorizontal</a>: <a href="#type-pt_pct">pt_pct</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-paddingLeft" id="value-paddingLeft">paddingLeft</a>: <a href="#type-pt_pct">pt_pct</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-paddingRight" id="value-paddingRight">paddingRight</a>: <a href="#type-pt_pct">pt_pct</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-paddingTop" id="value-paddingTop">paddingTop</a>: <a href="#type-pt_pct">pt_pct</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-paddingVertical" id="value-paddingVertical">paddingVertical</a>: <a href="#type-pt_pct">pt_pct</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-position" id="type-position">position</a> = | Absolute | Relative</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-position" id="value-position">position</a>: <a href="#type-position">position</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-top" id="value-top">top</a>: <a href="#type-pt_pct_animated_interpolated">pt_pct_animated_interpolated</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-left" id="value-left">left</a>: <a href="#type-pt_pct_animated_interpolated">pt_pct_animated_interpolated</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-right" id="value-right">right</a>: <a href="#type-pt_pct_animated_interpolated">pt_pct_animated_interpolated</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-bottom" id="value-bottom">bottom</a>: <a href="#type-pt_pct_animated_interpolated">pt_pct_animated_interpolated</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-height" id="value-height">height</a>: <a href="#type-pt_pct_animated_interpolated">pt_pct_animated_interpolated</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-width" id="value-width">width</a>: <a href="#type-pt_pct_animated_interpolated">pt_pct_animated_interpolated</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-zIndex" id="value-zIndex">zIndex</a>: int => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-direction" id="type-direction">direction</a> = | Inherit | Ltr | Rtl</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-direction" id="value-direction">direction</a>: <a href="#type-direction">direction</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-shadowColor" id="value-shadowColor">shadowColor</a>: <a href="#type-string_interpolated">string_interpolated</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-shadowOffset" id="value-shadowOffset">shadowOffset</a>: (
+  ~height: float,
+  ~width: float
+) => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-shadowOpacity" id="value-shadowOpacity">shadowOpacity</a>: float => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-shadowRadius" id="value-shadowRadius">shadowRadius</a>: float => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item module'>module <a href="#module-Transform" id="module-Transform">Transform</a></h4><div class='body module-body'><p><span class='missing'>This module does not have a toplevel documentation block.</span></p>
+<div class='doc-item'><h4 class='item'>let <a href="#value-Transform.make" id="value-Transform.make">make</a>: (
+  ~?perspective: option(float),
+  ~?rotate: option(string),
+  ~?rotateX: option(string),
+  ~?rotateY: option(string),
+  ~?rotateZ: option(string),
+  ~?scaleX: option(float),
+  ~?scaleY: option(float),
+  ~?translateX: option(float),
+  ~?translateY: option(float),
+  ~?skewX: option(string),
+  ~?skewY: option(string),
+  unit
+) => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-Transform.makeAnimated" id="value-Transform.makeAnimated">makeAnimated</a>: (
+  ~?perspective: option(BsReactNative.AnimatedRe.Value.t),
+  ~?rotate: option(BsReactNative.AnimatedRe.Value.t),
+  ~?rotateX: option(BsReactNative.AnimatedRe.Value.t),
+  ~?rotateY: option(BsReactNative.AnimatedRe.Value.t),
+  ~?rotateZ: option(BsReactNative.AnimatedRe.Value.t),
+  ~?scaleX: option(BsReactNative.AnimatedRe.Value.t),
+  ~?scaleY: option(BsReactNative.AnimatedRe.Value.t),
+  ~?translateX: option(BsReactNative.AnimatedRe.Value.t),
+  ~?translateY: option(BsReactNative.AnimatedRe.Value.t),
+  ~?skewX: option(BsReactNative.AnimatedRe.Value.t),
+  ~?skewY: option(BsReactNative.AnimatedRe.Value.t),
+  unit
+) => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-Transform.makeInterpolated" id="value-Transform.makeInterpolated">makeInterpolated</a>: (
+  ~?perspective: option(
+    BsReactNative.AnimatedRe.Interpolation.t
+  ),
+  ~?rotate: option(
+    BsReactNative.AnimatedRe.Interpolation.t
+  ),
+  ~?rotateX: option(
+    BsReactNative.AnimatedRe.Interpolation.t
+  ),
+  ~?rotateY: option(
+    BsReactNative.AnimatedRe.Interpolation.t
+  ),
+  ~?rotateZ: option(
+    BsReactNative.AnimatedRe.Interpolation.t
+  ),
+  ~?scaleX: option(
+    BsReactNative.AnimatedRe.Interpolation.t
+  ),
+  ~?scaleY: option(
+    BsReactNative.AnimatedRe.Interpolation.t
+  ),
+  ~?translateX: option(
+    BsReactNative.AnimatedRe.Interpolation.t
+  ),
+  ~?translateY: option(
+    BsReactNative.AnimatedRe.Interpolation.t
+  ),
+  ~?skewX: option(BsReactNative.AnimatedRe.Interpolation.t),
+  ~?skewY: option(BsReactNative.AnimatedRe.Interpolation.t),
+  unit
+) => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+</div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-backfaceVisibility" id="type-backfaceVisibility">backfaceVisibility</a> = | Visible | Hidden</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-backfaceVisibility" id="value-backfaceVisibility">backfaceVisibility</a>: <a href="#type-backfaceVisibility">backfaceVisibility</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-backgroundColor" id="value-backgroundColor">backgroundColor</a>: <a href="#type-string_interpolated">string_interpolated</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-borderColor" id="value-borderColor">borderColor</a>: <a href="#type-string_interpolated">string_interpolated</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-borderTopColor" id="value-borderTopColor">borderTopColor</a>: <a href="#type-string_interpolated">string_interpolated</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-borderRightColor" id="value-borderRightColor">borderRightColor</a>: <a href="#type-string_interpolated">string_interpolated</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-borderBottomColor" id="value-borderBottomColor">borderBottomColor</a>: <a href="#type-string_interpolated">string_interpolated</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-borderLeftColor" id="value-borderLeftColor">borderLeftColor</a>: <a href="#type-string_interpolated">string_interpolated</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-borderRadius" id="value-borderRadius">borderRadius</a>: float => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-borderTopLeftRadius" id="value-borderTopLeftRadius">borderTopLeftRadius</a>: float => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-borderTopRightRadius" id="value-borderTopRightRadius">borderTopRightRadius</a>: float => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-borderStyle" id="type-borderStyle">borderStyle</a> = | Solid | Dotted | Dashed</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-borderStyle" id="value-borderStyle">borderStyle</a>: <a href="#type-borderStyle">borderStyle</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-borderBottomLeftRadius" id="value-borderBottomLeftRadius">borderBottomLeftRadius</a>: float => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-borderBottomRightRadius" id="value-borderBottomRightRadius">borderBottomRightRadius</a>: float => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-opacity" id="value-opacity">opacity</a>: <a href="#type-float_interpolated_animated">float_interpolated_animated</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-elevation" id="value-elevation">elevation</a>: float => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-color" id="value-color">color</a>: <a href="#type-string_interpolated">string_interpolated</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-fontFamily" id="value-fontFamily">fontFamily</a>: string => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-fontSize" id="value-fontSize">fontSize</a>: <a href="#type-float_interpolated_animated">float_interpolated_animated</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-fontStyle" id="type-fontStyle">fontStyle</a> = | Normal | Italic</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-fontStyle" id="value-fontStyle">fontStyle</a>: <a href="#type-fontStyle">fontStyle</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-fontWeight" id="value-fontWeight">fontWeight</a>: [ `Bold
+| `_200
+| `Normal
+| `_900
+| `_400
+| `_800
+| `_300
+| `_100
+| `_500
+| `_700
+| `_600 ] => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-lineHeight" id="value-lineHeight">lineHeight</a>: float => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-textAlign" id="type-textAlign">textAlign</a> = | Auto | Left | Right | Center | Justify</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-textAlign" id="value-textAlign">textAlign</a>: <a href="#type-textAlign">textAlign</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-textDecorationLine" id="type-textDecorationLine">textDecorationLine</a> = 
+  | None
+  | Underline
+  | LineThrough
+  | UnderlineLineThrough</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-textDecorationLine" id="value-textDecorationLine">textDecorationLine</a>: <a href="#type-textDecorationLine">textDecorationLine</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-textShadowColor" id="value-textShadowColor">textShadowColor</a>: <a href="#type-string_interpolated">string_interpolated</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-textShadowOffset" id="value-textShadowOffset">textShadowOffset</a>: (
+  ~height: float,
+  ~width: float
+) => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-textShadowRadius" id="value-textShadowRadius">textShadowRadius</a>: float => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-includeFontPadding" id="value-includeFontPadding">includeFontPadding</a>: bool => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-textAlignVertical" id="type-textAlignVertical">textAlignVertical</a> = | Auto | Top | Bottom | Center</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-textAlignVertical" id="value-textAlignVertical">textAlignVertical</a>: <a href="#type-textAlignVertical">textAlignVertical</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-fontVariant" id="value-fontVariant">fontVariant</a>: list(string) => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-letterSpacing" id="value-letterSpacing">letterSpacing</a>: float => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-textDecorationColor" id="value-textDecorationColor">textDecorationColor</a>: <a href="#type-string_interpolated">string_interpolated</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-textDecorationStyle" id="type-textDecorationStyle">textDecorationStyle</a> = 
+  | Solid
+  | Double
+  | Dotted
+  | Dashed</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-textDecorationStyle" id="value-textDecorationStyle">textDecorationStyle</a>: <a href="#type-textDecorationStyle">textDecorationStyle</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-writingDirection" id="type-writingDirection">writingDirection</a> = | Auto | Ltr | Rtl</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-writingDirection" id="value-writingDirection">writingDirection</a>: <a href="#type-writingDirection">writingDirection</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>type <a href="#type-resizeMode" id="type-resizeMode">resizeMode</a> = 
+  | Cover
+  | Contain
+  | Stretch
+  | Repeat
+  | Center</h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-resizeMode" id="value-resizeMode">resizeMode</a>: <a href="#type-resizeMode">resizeMode</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-tintColor" id="value-tintColor">tintColor</a>: <a href="#type-string_interpolated">string_interpolated</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+<div class='doc-item'><h4 class='item'>let <a href="#value-overlayColor" id="value-overlayColor">overlayColor</a>: <a href="#type-string_interpolated">string_interpolated</a> => <a href="#type-styleElement">styleElement</a></h4>
+
+<div class='body body-empty'></div></div>
+
+    </div>
+    <div class='right-blank'></div>
+    </div>
+  
