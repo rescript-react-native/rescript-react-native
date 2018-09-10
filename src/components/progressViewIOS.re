@@ -35,16 +35,14 @@ let make =
     ~reactClass=progressViewIOS,
     ~props=
       Props.extendView(
-        Js.Undefined.(
-          {
-            "progress": progress,
-            "progressImage": fromOption(progressImage),
-            "progressTintColor": fromOption(progressTintColor),
-            "progressViewStyle": fromOption(progressViewStyle),
-            "trackImage": fromOption(trackImage),
-            "trackTintColor": fromOption(trackTintColor),
-          }
-        ),
+        {
+          "progress": progress,
+          "progressImage": progressImage,
+          "progressTintColor": progressTintColor,
+          "progressViewStyle": progressViewStyle,
+          "trackImage": trackImage,
+          "trackTintColor": trackTintColor,
+        },
         ~accessibilityLabel?,
         ~accessible?,
         ~hitSlop?,

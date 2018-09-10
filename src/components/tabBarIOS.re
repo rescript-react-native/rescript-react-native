@@ -37,23 +37,18 @@ module Item = {
       ~reactClass=tabBarItemIOS,
       ~props=
         Props.extendView(
-          Js.Undefined.(
-            {
-              "badgeColor": fromOption(badgeColor),
-              "title": fromOption(title),
-              "badge": fromOption(badge),
-              "icon": fromOption(icon),
-              "onPress": fromOption(onPress),
-              "renderAsOriginal":
-                fromOption(UtilsRN.optBoolToOptJsBoolean(renderAsOriginal)),
-              "selected":
-                fromOption(UtilsRN.optBoolToOptJsBoolean(selected)),
-              "selectedIcon": fromOption(selectedIcon),
-              "style": fromOption(style),
-              "isTVSelectable":
-                fromOption(UtilsRN.optBoolToOptJsBoolean(isTVSelectable)),
-            }
-          ),
+          {
+            "badgeColor": badgeColor,
+            "title": title,
+            "badge": badge,
+            "icon": icon,
+            "onPress": onPress,
+            "renderAsOriginal": renderAsOriginal,
+            "selected": selected,
+            "selectedIcon": selectedIcon,
+            "style": style,
+            "isTVSelectable": isTVSelectable,
+          },
           ~accessibilityLabel?,
           ~accessible?,
           ~hitSlop?,
@@ -114,28 +109,23 @@ let make =
     ~reactClass=tabBarIOS,
     ~props=
       Props.extendView(
-        Js.Undefined.(
-          {
-            "barTintColor": fromOption(barTintColor),
-            "itemPositioning":
-              fromOption(
-                UtilsRN.option_map(
-                  x =>
-                    switch (x) {
-                    | `fill => "fill"
-                    | `center => "center"
-                    | `auto => "auto"
-                    },
-                  itemPositioning,
-                ),
-              ),
-            "tintColor": fromOption(tintColor),
-            "translucent":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(translucent)),
-            "unselectedItemTintColor": fromOption(unselectedItemTintColor),
-            "unselectedTintColor": fromOption(unselectedTintColor),
-          }
-        ),
+        {
+          "barTintColor": barTintColor,
+          "itemPositioning":
+            UtilsRN.option_map(
+              x =>
+                switch (x) {
+                | `fill => "fill"
+                | `center => "center"
+                | `auto => "auto"
+                },
+              itemPositioning,
+            ),
+          "tintColor": tintColor,
+          "translucent": translucent,
+          "unselectedItemTintColor": unselectedItemTintColor,
+          "unselectedTintColor": unselectedTintColor,
+        },
         ~accessibilityLabel?,
         ~accessible?,
         ~hitSlop?,

@@ -33,16 +33,14 @@ let make =
     ~reactClass=view,
     ~props=
       Props.extendView(
-        Js.Undefined.(
-          {
-            "value": fromOption(UtilsRN.optBoolToOptJsBoolean(value)),
-            "disabled": fromOption(UtilsRN.optBoolToOptJsBoolean(disabled)),
-            "onValueChange": fromOption(onValueChange),
-            "onTintColor": fromOption(onTintColor),
-            "thumbTintColor": fromOption(thumbTintColor),
-            "tintColor": fromOption(tintColor),
-          }
-        ),
+        {
+          "value": value,
+          "disabled": disabled,
+          "onValueChange": onValueChange,
+          "onTintColor": onTintColor,
+          "thumbTintColor": thumbTintColor,
+          "tintColor": tintColor,
+        },
         ~accessibilityLabel?,
         ~accessible?,
         ~hitSlop?,

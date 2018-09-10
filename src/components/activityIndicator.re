@@ -50,15 +50,12 @@ let make =
     ~reactClass=view,
     ~props=
       Props.extendView(
-        Js.Undefined.(
-          {
-            "animating": fromOption(UtilsRN.optBoolToOptJsBoolean(animating)),
-            "color": color,
-            "size": fromOption(UtilsRN.option_map(encodeSize, size)),
-            "hidesWhenStopped":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(hidesWhenStopped)),
-          }
-        ),
+        {
+          "animating": animating,
+          "color": color,
+          "size": UtilsRN.option_map(encodeSize, size),
+          "hidesWhenStopped": hidesWhenStopped,
+        },
         ~accessibilityLabel?,
         ~accessible?,
         ~hitSlop?,

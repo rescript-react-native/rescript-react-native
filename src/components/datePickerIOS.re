@@ -42,17 +42,15 @@ let make =
     ~reactClass=view,
     ~props=
       Props.extendView(
-        Js.Undefined.(
-          {
-            "date": date,
-            "onDateChange": onDateChange,
-            "maximumDate": fromOption(maximumDate),
-            "minimumDate": fromOption(minimumDate),
-            "mode": fromOption(UtilsRN.option_map(encodeMode, mode)),
-            "minuteInterval": fromOption(minuteInterval),
-            "timeZoneOffsetInMinutes": fromOption(timeZoneOffsetInMinutes),
-          }
-        ),
+        {
+          "date": date,
+          "onDateChange": onDateChange,
+          "maximumDate": maximumDate,
+          "minimumDate": minimumDate,
+          "mode": UtilsRN.option_map(encodeMode, mode),
+          "minuteInterval": minuteInterval,
+          "timeZoneOffsetInMinutes": timeZoneOffsetInMinutes,
+        },
         ~accessibilityLabel?,
         ~accessible?,
         ~hitSlop?,
