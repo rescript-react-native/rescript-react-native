@@ -1,6 +1,9 @@
 open BsReactNative;
+open Utils;
 
 let title = "<ImageBackground>";
+
+let exampleType = Multiple;
 
 let description = "A very basic ImageBackground component";
 
@@ -14,7 +17,7 @@ let examples: array(Example.t) =
         description: None,
         render: () =>
           <ImageBackground
-            style=(
+            style={
               style([
                 flex(1.),
                 justifyContent(Center),
@@ -22,27 +25,27 @@ let examples: array(Example.t) =
                 height(Pt(400.)),
                 width(Pt(300.)),
               ])
-            )
-            imageStyle=(style([flex(1.)]))
-            source=(
-              `URI(
-                Image.(
-                  imageURISource(
-                    ~uri=
-                      "https://lorempixel.com/output/abstract-h-c-250-400-8.jpg",
-                    (),
-                  )
-                ),
-              )
-            )>
+            }
+            imageStyle={style([flex(1.)])}
+            source={
+                     `URI(
+                       Image.(
+                         imageURISource(
+                           ~uri=
+                             "https://lorempixel.com/output/abstract-h-c-250-400-8.jpg",
+                           (),
+                         )
+                       ),
+                     )
+                   }>
             <View
-              style=(
+              style={
                 style([
                   backgroundColor(String("#FFFFFF")),
                   padding(Pt(5.)),
                 ])
-              )>
-              <Text> (ReasonReact.string("Nested text")) </Text>
+              }>
+              <Text> {ReasonReact.string("Nested text")} </Text>
             </View>
           </ImageBackground>,
       },
