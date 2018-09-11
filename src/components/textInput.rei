@@ -2,6 +2,10 @@ let isFocused: ReasonReact.reactRef => bool;
 
 let clear: ReasonReact.reactRef => unit;
 
+let focus: ReasonReact.reactRef => unit;
+
+let blur: ReasonReact.reactRef => unit;
+
 let make:
   (
     ~accessibilityLabel: ReasonReact.reactElement=?,

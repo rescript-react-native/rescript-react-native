@@ -5,6 +5,10 @@ external view : ReasonReact.reactClass = "TextInput";
 
 [@bs.send] external clear : ReasonReact.reactRef => unit = "";
 
+[@bs.send] external focus : ReasonReact.reactRef => unit = "";
+
+[@bs.send] external blur : ReasonReact.reactRef => unit = "";
+
 let make =
     (
       ~accessibilityLabel=?,
