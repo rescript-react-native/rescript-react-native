@@ -22,8 +22,8 @@ module type FlatListComponent = {
     ) =>
     unit;
 
-let scrollToOffset:
-  (ReasonReact.reactRef, ~offset: float=?, ~animated: bool=?, unit) => unit;
+  let scrollToOffset:
+    (ReasonReact.reactRef, ~offset: float=?, ~animated: bool=?, unit) => unit;
 
   [@bs.send] external recordInteraction : ReasonReact.reactRef => unit = "";
 
