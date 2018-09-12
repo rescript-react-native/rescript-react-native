@@ -113,12 +113,8 @@ module CreateComponent = (Impl: Impl) : ViewComponent => {
     );
 };
 
-include
-  CreateComponent(
-    {
-      [@bs.module "react-native"]
-      external view : ReasonReact.reactClass = "View";
-    },
-  );
+include CreateComponent({
+  [@bs.module "react-native"] external view : ReasonReact.reactClass = "View";
+});
 
 include ResponderUtils;

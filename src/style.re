@@ -2,6 +2,9 @@ type t;
 
 type styleElement = (string, Js.Json.t);
 
+type pt_only =
+  | Pt(float);
+
 type pt_pct =
   | Pt(float)
   | Pct(float);
@@ -67,10 +70,10 @@ external array_to_style : array(t) => t = "%identity";
 let combine = (a, b) => {
   let entries =
     Array.append(
-      UtilsRN.dictEntries(style_to_dict(a)),
-      UtilsRN.dictEntries(style_to_dict(b)),
+      Js.Dict.entries(style_to_dict(a)),
+      Js.Dict.entries(style_to_dict(b)),
     );
-  UtilsRN.dictFromArray(entries) |> to_style;
+  Js.Dict.fromArray(entries) |> to_style;
 };
 
 let concat = styles => array_to_style(Array.of_list(styles));
@@ -83,8 +86,7 @@ let objectStyle = (key, value) => (key, Encode.object_(value));
 
 let arrayStyle = (key, value) => (key, Encode.array(value));
 
-let style = sarr => sarr |> UtilsRN.dictFromList |> to_style;
-
+let style = sarr => sarr |> Js.Dict.fromList |> to_style;
 
 /***
  * Layout Props
@@ -328,7 +330,6 @@ let direction = v =>
     },
   );
 
-
 /***
  * Shadow Props
  */
@@ -338,7 +339,7 @@ let shadowColor = value => (
 );
 
 let shadowOffset = (~height, ~width) =>
-  UtilsRN.dictFromArray([|
+  Js.Dict.fromArray([|
     ("height", Encode.float(height)),
     ("width", Encode.float(width)),
   |])
@@ -384,7 +385,7 @@ module Transform = {
           switch (x) {
           | (key, Some(value)) =>
             let val_ =
-              UtilsRN.dictFromArray([|(key, value)|]) |> Encode.object_;
+              Js.Dict.fromArray([|(key, value)|]) |> Encode.object_;
             [val_, ...acc];
           | _ => acc
           },
@@ -485,7 +486,6 @@ module Transform = {
     );
 };
 
-
 /***
  * View Props
  */
@@ -563,7 +563,6 @@ let opacity = value => (
 );
 
 let elevation = floatStyle("elevation");
-
 
 /***
  * Text Props
@@ -652,7 +651,7 @@ let textShadowColor = value => (
 );
 
 let textShadowOffset = (~height, ~width) =>
-  UtilsRN.dictFromArray([|
+  Js.Dict.fromArray([|
     ("height", Encode.float(height)),
     ("width", Encode.float(width)),
   |])
@@ -734,7 +733,6 @@ type resizeMode =
   | Repeat
   | Center;
 
-
 /*** Image props */
 let resizeMode = v =>
   stringStyle(
@@ -754,3 +752,6 @@ let overlayColor = value => (
   "overlayColor",
   encode_string_interpolated(value),
 );
+
+type color =
+  | String(string);

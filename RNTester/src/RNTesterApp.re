@@ -44,7 +44,7 @@ let header = (~onBack=?, ~title, ()) =>
     </View>
     (
       switch (onBack) {
-      | None => ReasonReact.nullElement
+      | None => ReasonReact.null
       | Some(onBack) =>
         <View style=styles##headerLeft>
           <Button title="Back" onPress=onBack />

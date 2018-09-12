@@ -4,10 +4,8 @@ external dateSet : string = "dateSetAction";
 [@bs.scope "DatePickerAndroid"] [@bs.module "react-native"]
 external dismissed : string = "dismissedAction";
 
-type mode =
-  | Calendar
-  | Spinner
-  | Default;
+[@bs.deriving jsConverter]
+type mode = [ | `calendar | `spinner | `default];
 
 type response = {
   year: int,
@@ -19,10 +17,26 @@ type action =
   | Dismissed
   | Set(response);
 
+[@bs.deriving abstract]
+type responseJs = {
+  action: string,
+  year: int,
+  month: int,
+  day: int,
+};
+
+[@bs.deriving abstract]
+type optsJs = {
+  date: Js.Date.t,
+  minDate: Js.Nullable.t(Js.Date.t),
+  maxDate: Js.Nullable.t(Js.Date.t),
+  mode: string,
+};
+
 let action = resp =>
-  if (resp##action == dateSet) {
-    Set({year: resp##year, month: resp##month, day: resp##day});
-  } else if (resp##action == dismissed) {
+  if (actionGet(resp) == dateSet) {
+    Set({year: yearGet(resp), month: monthGet(resp), day: dayGet(resp)});
+  } else if (actionGet(resp) == dismissed) {
     Dismissed;
   } else {
     failwith(
@@ -30,37 +44,18 @@ let action = resp =>
     );
   };
 
-type responseJs = {
-  .
-  "action": string,
-  "year": int,
-  "month": int,
-  "day": int,
-};
-
-type optsJs = {
-  .
-  "date": Js.Date.t,
-  "minDate": Js.Nullable.t(Js.Date.t),
-  "maxDate": Js.Nullable.t(Js.Date.t),
-  "mode": string,
-};
-
 [@bs.scope "DatePickerAndroid"] [@bs.module "react-native"]
 external _open : optsJs => Js.Promise.t(responseJs) = "open";
 
-let open_ = (~date: Js.Date.t, ~minDate=?, ~maxDate=?, ~mode=Default, ()) =>
-  _open({
-    "date": date,
-    "minDate": Js.Nullable.fromOption(minDate),
-    "maxDate": Js.Nullable.fromOption(maxDate),
-    "mode":
-      switch (mode) {
-      | Default => "default"
-      | Calendar => "calendar"
-      | Spinner => "spinner"
-      },
-  })
+let open_ = (~date: Js.Date.t, ~minDate=?, ~maxDate=?, ~mode=`default, ()) =>
+  _open(
+    optsJs(
+      ~date,
+      ~minDate=minDate |> Js.Nullable.fromOption,
+      ~maxDate=maxDate |> Js.Nullable.fromOption,
+      ~mode=modeToJs(mode),
+    ),
+  )
   |> Js.Promise.then_((resp: responseJs) =>
        resp |> action |> Js.Promise.resolve
      );

@@ -217,59 +217,39 @@ let make:
     ReasonReact.wrapJsForReason(
       ~reactClass=view,
       ~props=
-        Js.Undefined.(
-          {
-            "sections": sections,
-            "renderItem": renderItem,
-            "keyExtractor": keyExtractor,
-            "ItemSeparatorComponent": fromOption(itemSeparatorComponent),
-            "ListEmptyComponent": fromOption(listEmptyComponent),
-            "ListFooterComponent": fromOption(listFooterComponent),
-            "ListHeaderComponent": fromOption(listHeaderComponent),
-            "SectionSeparatorComponent":
-              fromOption(sectionSeparatorComponent),
-            "inverted":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(inverted)),
-            "extraData": fromOption(extraData),
-            "initialNumToRender": fromOption(initialNumToRender),
-            "onEndReached": fromOption(onEndReached),
-            "onEndReachedThreshold": fromOption(onEndReachedThreshold),
-            "onRefresh": fromOption(onRefresh),
-            "onViewableItemsChanged": fromOption(onViewableItemsChanged),
-            "refreshing":
-              fromOption(UtilsRN.optBoolToOptJsBoolean(refreshing)),
-            "renderSectionHeader": fromOption(renderSectionHeader),
-            "renderSectionFooter": fromOption(renderSectionFooter),
-            "stickySectionHeadersEnabled":
-              fromOption(
-                UtilsRN.optBoolToOptJsBoolean(stickySectionHeadersEnabled),
-              ),
-            "keyboardDismissMode":
-              fromOption(
-                keyboardDismissMode
-                |> UtilsRN.option_map(keyboardDismissModeToJs),
-              ),
-            "keyboardShouldPersistTaps":
-              fromOption(
-                keyboardShouldPersistTaps
-                |> UtilsRN.option_map(keyboardShouldPersistTapsToJs),
-              ),
-            "showsHorizontalScrollIndicator":
-              fromOption(
-                UtilsRN.optBoolToOptJsBoolean(showsHorizontalScrollIndicator),
-              ),
-            "showsVerticalScrollIndicator":
-              fromOption(
-                UtilsRN.optBoolToOptJsBoolean(showsVerticalScrollIndicator),
-              ),
-            "getItemLayout":
-              fromOption(
-                UtilsRN.option_map(
-                  (f, data, index) => f(Js.Undefined.toOption(data), index),
-                  getItemLayout,
-                ),
-              ),
-          }
-        ),
+        {
+          "sections": sections,
+          "renderItem": renderItem,
+          "keyExtractor": keyExtractor,
+          "ItemSeparatorComponent": itemSeparatorComponent,
+          "ListEmptyComponent": listEmptyComponent,
+          "ListFooterComponent": listFooterComponent,
+          "ListHeaderComponent": listHeaderComponent,
+          "SectionSeparatorComponent": sectionSeparatorComponent,
+          "inverted": inverted,
+          "extraData": extraData,
+          "initialNumToRender": initialNumToRender,
+          "onEndReached": onEndReached,
+          "onEndReachedThreshold": onEndReachedThreshold,
+          "onRefresh": onRefresh,
+          "onViewableItemsChanged": onViewableItemsChanged,
+          "refreshing": refreshing,
+          "renderSectionHeader": renderSectionHeader,
+          "renderSectionFooter": renderSectionFooter,
+          "stickySectionHeadersEnabled": stickySectionHeadersEnabled,
+          "keyboardDismissMode":
+            keyboardDismissMode
+            |> UtilsRN.option_map(keyboardDismissModeToJs),
+          "keyboardShouldPersistTaps":
+            keyboardShouldPersistTaps
+            |> UtilsRN.option_map(keyboardShouldPersistTapsToJs),
+          "showsHorizontalScrollIndicator": showsHorizontalScrollIndicator,
+          "showsVerticalScrollIndicator": showsVerticalScrollIndicator,
+          "getItemLayout":
+            UtilsRN.option_map(
+              (f, data, index) => f(Js.Undefined.toOption(data), index),
+              getItemLayout,
+            ),
+        },
       _children,
     );

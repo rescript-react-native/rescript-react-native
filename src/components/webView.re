@@ -3,14 +3,18 @@
 module EventTypes = {
   [@bs.deriving abstract]
   type t = {
-    [@bs.option] url: string,
-    [@bs.option] title: string,
-    [@bs.option] loading: bool,
-    [@bs.option] canGoBack: bool,
-    [@bs.option] canGoForward: bool
+    [@bs.optional]
+    url: string,
+    [@bs.optional]
+    title: string,
+    [@bs.optional]
+    loading: bool,
+    [@bs.optional]
+    canGoBack: bool,
+    [@bs.optional]
+    canGoForward: bool,
   };
 };
-
 
 type iOSLoadRequestEvent = {
   .
@@ -39,13 +43,7 @@ external sourceUri :
   "";
 
 [@bs.obj]
-external sourceHtml :
-  (
-    ~html: string=?,
-    ~baseUrl: string=?,
-    unit
-  ) =>
-  source =
+external sourceHtml : (~html: string=?, ~baseUrl: string=?, unit) => source =
   "";
 
 let source = sourceUri;
@@ -119,104 +117,92 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
     ~props=
-      Js.Undefined.(
-        Props.extendView(
-          ~accessibilityLabel?,
-          ~accessible?,
-          ~hitSlop?,
-          ~onAccessibilityTap?,
-          ~onLayout?,
-          ~onMagicTap?,
-          ~responderHandlers?,
-          ~pointerEvents?,
-          ~removeClippedSubviews?,
-          ~style?,
-          ~testID?,
-          ~accessibilityComponentType?,
-          ~accessibilityLiveRegion?,
-          ~collapsable?,
-          ~importantForAccessibility?,
-          ~needsOffscreenAlphaCompositing?,
-          ~renderToHardwareTextureAndroid?,
-          ~accessibilityTraits?,
-          ~accessibilityViewIsModal?,
-          ~shouldRasterizeIOS?,
-          {
-            "source": fromOption(source),
-            "style": fromOption(style),
-            "automaticallyAdjustContentInsets":
-              fromOption(automaticallyAdjustContentInsets),
-            "contentInsets": fromOption(contentInsets),
-            "injectJavaScript": fromOption(injectJavaScript),
-            "injectedJavaScript": fromOption(injectedJavaScript),
-            "mediaPlaybackRequiresUserAction":
-              fromOption(mediaPlaybackRequiresUserAction),
-            "onError": fromOption(onError),
-            "onLoad": fromOption(onLoad),
-            "onLoadEnd": fromOption(onLoadEnd),
-            "onLoadStart": fromOption(onLoadStart),
-            "onMessage": fromOption(onMessage),
-            "onNavigationStateChange": fromOption(onNavigationStateChange),
-            "renderError": fromOption(renderError),
-            "renderLoading": fromOption(renderLoading),
-            "scalesPageToFit": fromOption(scalesPageToFit),
-            "startInLoadingState": fromOption(startInLoadingState),
-            "domStorageEnabled": fromOption(domStorageEnabled),
-            "javaScriptEnabled": fromOption(javaScriptEnabled),
-            "mixedContentMode":
-              fromOption(
-                UtilsRN.option_map(
-                  contentMode => {
-                    let to_string =
-                      fun
-                      | `never => "never"
-                      | `always => "always"
-                      | `compatibility => "compatibility";
-                    contentMode |> List.map(to_string) |> Array.of_list;
-                  },
-                  mixedContentMode,
-                ),
-              ),
-            "thirdPartyCookiesEnabled": fromOption(thirdPartyCookiesEnabled),
-            "userAgent": fromOption(userAgent),
-            "allowsInlineMediaPlayback":
-              fromOption(allowsInlineMediaPlayback),
-            "bounces": fromOption(bounces),
-            "dataDetectorTypes":
-              fromOption(
-                UtilsRN.option_map(
-                  dataDetectorType => {
-                    let to_string =
-                      fun
-                      | `phoneNumber => "phoneNumber"
-                      | `link => "link"
-                      | `address => "address"
-                      | `calendarEvent => "calendarEvent"
-                      | `none => "none"
-                      | `all => "all";
-                    dataDetectorType |> List.map(to_string) |> Array.of_list;
-                  },
-                  dataDetectorTypes,
-                ),
-              ),
-            "decelerationRate":
-              fromOption(
-                UtilsRN.option_map(
-                  rate => {
-                    let to_float =
-                      fun
-                      | `normal => 0.998
-                      | `fast => 0.99
-                      | `value(f) => f;
-                    rate |> List.map(to_float) |> Array.of_list;
-                  },
-                  decelerationRate,
-                ),
-              ),
-            "onShouldStartLoadWithRequest":
-              fromOption(onShouldStartLoadWithRequest),
-            "scrollEnabled": fromOption(scrollEnabled),
-          },
-        )
-      ),
+      Props.extendView(
+        ~accessibilityLabel?,
+        ~accessible?,
+        ~hitSlop?,
+        ~onAccessibilityTap?,
+        ~onLayout?,
+        ~onMagicTap?,
+        ~responderHandlers?,
+        ~pointerEvents?,
+        ~removeClippedSubviews?,
+        ~style?,
+        ~testID?,
+        ~accessibilityComponentType?,
+        ~accessibilityLiveRegion?,
+        ~collapsable?,
+        ~importantForAccessibility?,
+        ~needsOffscreenAlphaCompositing?,
+        ~renderToHardwareTextureAndroid?,
+        ~accessibilityTraits?,
+        ~accessibilityViewIsModal?,
+        ~shouldRasterizeIOS?,
+        {
+          "source": source,
+          "style": style,
+          "automaticallyAdjustContentInsets": automaticallyAdjustContentInsets,
+          "contentInsets": contentInsets,
+          "injectJavaScript": injectJavaScript,
+          "injectedJavaScript": injectedJavaScript,
+          "mediaPlaybackRequiresUserAction": mediaPlaybackRequiresUserAction,
+          "onError": onError,
+          "onLoad": onLoad,
+          "onLoadEnd": onLoadEnd,
+          "onLoadStart": onLoadStart,
+          "onMessage": onMessage,
+          "onNavigationStateChange": onNavigationStateChange,
+          "renderError": renderError,
+          "renderLoading": renderLoading,
+          "scalesPageToFit": scalesPageToFit,
+          "startInLoadingState": startInLoadingState,
+          "domStorageEnabled": domStorageEnabled,
+          "javaScriptEnabled": javaScriptEnabled,
+          "mixedContentMode":
+            UtilsRN.option_map(
+              contentMode => {
+                let to_string =
+                  fun
+                  | `never => "never"
+                  | `always => "always"
+                  | `compatibility => "compatibility";
+                contentMode |> List.map(to_string) |> Array.of_list;
+              },
+              mixedContentMode,
+            ),
+          "thirdPartyCookiesEnabled": thirdPartyCookiesEnabled,
+          "userAgent": userAgent,
+          "allowsInlineMediaPlayback": allowsInlineMediaPlayback,
+          "bounces": bounces,
+          "dataDetectorTypes":
+            UtilsRN.option_map(
+              dataDetectorType => {
+                let to_string =
+                  fun
+                  | `phoneNumber => "phoneNumber"
+                  | `link => "link"
+                  | `address => "address"
+                  | `calendarEvent => "calendarEvent"
+                  | `none => "none"
+                  | `all => "all";
+                dataDetectorType |> List.map(to_string) |> Array.of_list;
+              },
+              dataDetectorTypes,
+            ),
+          "decelerationRate":
+            UtilsRN.option_map(
+              rate => {
+                let to_float =
+                  fun
+                  | `normal => 0.998
+                  | `fast => 0.99
+                  | `value(f) => f;
+                rate |> List.map(to_float) |> Array.of_list;
+              },
+              decelerationRate,
+            ),
+          "onShouldStartLoadWithRequest": onShouldStartLoadWithRequest,
+          "scrollEnabled": scrollEnabled,
+        },
+      )
   );

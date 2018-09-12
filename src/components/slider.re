@@ -6,9 +6,9 @@ external rawImageSourceJS : 'a => rawImageSourceJS = "%identity";
 
 let convertImageSource = src =>
   switch (src) {
-  | Image.Multiple(x) => rawImageSourceJS(Array.of_list(x))
-  | Image.URI(x) => rawImageSourceJS(x)
-  | Image.Required(x) => rawImageSourceJS(x)
+  | `Multiple(x) => rawImageSourceJS(Array.of_list(x))
+  | `URI(x) => rawImageSourceJS(x)
+  | `Required(x) => rawImageSourceJS(x)
   };
 
 let make =
@@ -52,32 +52,26 @@ let make =
     ~reactClass=view,
     ~props=
       Props.extendView(
-        Js.Undefined.(
-          {
-            "disabled": fromOption(UtilsRN.optBoolToOptJsBoolean(disabled)),
-            "maximumTrackTintColor": fromOption(maximumTrackTintColor),
-            "maximumValue": fromOption(maximumValue),
-            "minimumTrackTintColor": fromOption(minimumTrackTintColor),
-            "minimumValue": fromOption(minimumValue),
-            "onSlidingComplete": fromOption(onSlidingComplete),
-            "onValueChange": fromOption(onValueChange),
-            "step": fromOption(step),
-            "value": fromOption(value),
-            "thumbTintColor": fromOption(thumbTintColor),
-            "maximumTrackImage":
-              fromOption(
-                UtilsRN.option_map(convertImageSource, maximumTrackImage),
-              ),
-            "minimumTrackImage":
-              fromOption(
-                UtilsRN.option_map(convertImageSource, minimumTrackImage),
-              ),
-            "thumbImage":
-              fromOption(UtilsRN.option_map(convertImageSource, thumbImage)),
-            "trackImage":
-              fromOption(UtilsRN.option_map(convertImageSource, trackImage)),
-          }
-        ),
+        {
+          "disabled": disabled,
+          "maximumTrackTintColor": maximumTrackTintColor,
+          "maximumValue": maximumValue,
+          "minimumTrackTintColor": minimumTrackTintColor,
+          "minimumValue": minimumValue,
+          "onSlidingComplete": onSlidingComplete,
+          "onValueChange": onValueChange,
+          "step": step,
+          "value": value,
+          "thumbTintColor": thumbTintColor,
+          "maximumTrackImage":
+            UtilsRN.option_map(convertImageSource, maximumTrackImage),
+          "minimumTrackImage":
+            UtilsRN.option_map(convertImageSource, minimumTrackImage),
+          "thumbImage":
+            UtilsRN.option_map(convertImageSource, thumbImage),
+          "trackImage":
+            UtilsRN.option_map(convertImageSource, trackImage),
+        },
         ~accessibilityLabel?,
         ~accessible?,
         ~hitSlop?,

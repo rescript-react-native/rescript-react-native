@@ -1,0 +1,67 @@
+[@bs.module "react-native"]
+external progressViewIOS : ReasonReact.reactClass = "ProgressViewIOS";
+
+let make =
+    (
+      ~progress,
+      ~progressImage=?,
+      ~progressTintColor=?,
+      ~progressViewStyle=?,
+      ~trackImage=?,
+      ~trackTintColor=?,
+      /* view props */
+      ~accessibilityLabel=?,
+      ~accessible=?,
+      ~hitSlop=?,
+      ~onAccessibilityTap=?,
+      ~onLayout=?,
+      ~onMagicTap=?,
+      ~responderHandlers=?,
+      ~pointerEvents=?,
+      ~removeClippedSubviews=?,
+      ~style=?,
+      ~testID=?,
+      ~accessibilityComponentType=?,
+      ~accessibilityLiveRegion=?,
+      ~collapsable=?,
+      ~importantForAccessibility=?,
+      ~needsOffscreenAlphaCompositing=?,
+      ~renderToHardwareTextureAndroid=?,
+      ~accessibilityTraits=?,
+      ~accessibilityViewIsModal=?,
+      ~shouldRasterizeIOS=?,
+    ) =>
+  ReasonReact.wrapJsForReason(
+    ~reactClass=progressViewIOS,
+    ~props=
+      Props.extendView(
+        {
+          "progress": progress,
+          "progressImage": progressImage,
+          "progressTintColor": progressTintColor,
+          "progressViewStyle": progressViewStyle,
+          "trackImage": trackImage,
+          "trackTintColor": trackTintColor,
+        },
+        ~accessibilityLabel?,
+        ~accessible?,
+        ~hitSlop?,
+        ~onAccessibilityTap?,
+        ~onLayout?,
+        ~onMagicTap?,
+        ~responderHandlers?,
+        ~pointerEvents?,
+        ~removeClippedSubviews?,
+        ~style?,
+        ~testID?,
+        ~accessibilityComponentType?,
+        ~accessibilityLiveRegion?,
+        ~collapsable?,
+        ~importantForAccessibility?,
+        ~needsOffscreenAlphaCompositing?,
+        ~renderToHardwareTextureAndroid?,
+        ~accessibilityTraits?,
+        ~accessibilityViewIsModal?,
+        ~shouldRasterizeIOS?,
+      ),
+  );

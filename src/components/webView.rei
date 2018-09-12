@@ -3,22 +3,41 @@ type source;
 module EventTypes: {
   [@bs.deriving abstract]
   type t = {
-    [@bs.option] url: string,
-    [@bs.option] title: string,
-    [@bs.option] loading: bool,
-    [@bs.option] canGoBack: bool,
-    [@bs.option] canGoForward: bool
+    [@bs.optional]
+    url: string,
+    [@bs.optional]
+    title: string,
+    [@bs.optional]
+    loading: bool,
+    [@bs.optional]
+    canGoBack: bool,
+    [@bs.optional]
+    canGoForward: bool,
   };
 };
 
 let sourceUri:
-  (~uri: string=?, ~method: string=?, ~headers: Js.t('a)=?, ~body: string=?, unit) => source;
+  (
+    ~uri: string=?,
+    ~method: string=?,
+    ~headers: Js.t('a)=?,
+    ~body: string=?,
+    unit
+  ) =>
+  source;
 
-let sourceHtml:
-(~html: string=?, ~baseUrl: string=?, unit) => source;
+let sourceHtml: (~html: string=?, ~baseUrl: string=?, unit) => source;
 
 [@deprecated "Please use WebView.sourceUri instead"]
-let source: (~uri: string=?, ~method: string=?, ~headers: Js.t('a)=?, ~body: string=?, unit) => source;
+let source:
+  (
+    ~uri: string=?,
+    ~method: string=?,
+    ~headers: Js.t('a)=?,
+    ~body: string=?,
+    unit
+  ) =>
+  source;
 
 type iOSLoadRequestEvent = {
   .
@@ -29,13 +48,14 @@ type iOSLoadRequestEvent = {
   "title": string,
   "canGoForward": bool,
   "navigationType": string,
-  "url": string
+  "url": string,
 };
 
 type contentInsets;
 
 let contentInsets:
-  (~top: int=?, ~left: int=?, ~bottom: int=?, ~right: int=?, unit) => contentInsets;
+  (~top: int=?, ~left: int=?, ~bottom: int=?, ~right: int=?, unit) =>
+  contentInsets;
 
 let goForward: ReasonReact.reactRef => unit;
 
@@ -98,7 +118,7 @@ let make:
                               | `adjustable
                               | `allowsDirectInteraction
                               | `pageTurn
-                            ]
+                            ],
                           )
                             =?,
     ~accessibilityViewIsModal: bool=?,
@@ -106,7 +126,7 @@ let make:
     ~injectJavaScript: string => unit=?,
     ~injectedJavaScript: string=?,
     ~mediaPlaybackRequiresUserAction: bool=?,
-    ~onMessage: RNEvent.NativeEvent.t => unit=?,
+    ~onMessage: RNEvent.t => unit=?,
     ~onNavigationStateChange: EventTypes.t => unit=?,
     ~scalesPageToFit: bool=?,
     ~startInLoadingState: bool=?,
@@ -117,11 +137,24 @@ let make:
     ~userAgent: string=?,
     ~allowsInlineMediaPlayback: bool=?,
     ~bounces: bool=?,
-    ~dataDetectorTypes: list([ | `phoneNumber | `link | `address | `calendarEvent | `none | `all])
+    ~dataDetectorTypes: list(
+                          [
+                            | `phoneNumber
+                            | `link
+                            | `address
+                            | `calendarEvent
+                            | `none
+                            | `all
+                          ],
+                        )
                           =?,
     ~decelerationRate: list([ | `normal | `fast | `value(float)])=?,
     ~onShouldStartLoadWithRequest: iOSLoadRequestEvent => bool=?,
     ~scrollEnabled: bool=?,
     array(ReasonReact.reactElement)
   ) =>
-  ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, unit);
+  ReasonReact.component(
+    ReasonReact.stateless,
+    ReasonReact.noRetainedProps,
+    unit,
+  );

@@ -34,34 +34,32 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass=keyboardAvoidingView,
     ~props=
-      Js.Undefined.(
-        Props.extendView(
-          ~accessibilityLabel?,
-          ~accessible?,
-          ~hitSlop?,
-          ~onAccessibilityTap?,
-          ~onLayout?,
-          ~onMagicTap?,
-          ~responderHandlers?,
-          ~pointerEvents?,
-          ~removeClippedSubviews?,
-          ~style?,
-          ~testID?,
-          ~accessibilityComponentType?,
-          ~accessibilityLiveRegion?,
-          ~collapsable?,
-          ~importantForAccessibility?,
-          ~needsOffscreenAlphaCompositing?,
-          ~renderToHardwareTextureAndroid?,
-          ~accessibilityTraits?,
-          ~accessibilityViewIsModal?,
-          ~shouldRasterizeIOS?,
-          {
-            "keyboardVerticalOffset": fromOption(keyboardVerticalOffset),
-            "behavior":
-              fromOption(UtilsRN.option_map(behaviorToJs, behavior)),
-            "contentContainerStyle": fromOption(contentContainerStyle),
-          },
-        )
-      ),
+      Props.extendView(
+        ~accessibilityLabel?,
+        ~accessible?,
+        ~hitSlop?,
+        ~onAccessibilityTap?,
+        ~onLayout?,
+        ~onMagicTap?,
+        ~responderHandlers?,
+        ~pointerEvents?,
+        ~removeClippedSubviews?,
+        ~style?,
+        ~testID?,
+        ~accessibilityComponentType?,
+        ~accessibilityLiveRegion?,
+        ~collapsable?,
+        ~importantForAccessibility?,
+        ~needsOffscreenAlphaCompositing?,
+        ~renderToHardwareTextureAndroid?,
+        ~accessibilityTraits?,
+        ~accessibilityViewIsModal?,
+        ~shouldRasterizeIOS?,
+        {
+          "keyboardVerticalOffset": keyboardVerticalOffset,
+          "behavior":
+            UtilsRN.option_map(behaviorToJs, behavior),
+          "contentContainerStyle": contentContainerStyle,
+        },
+      )
   );

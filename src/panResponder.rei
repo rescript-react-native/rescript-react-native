@@ -10,7 +10,7 @@ type gestureState = {
   dy: float,
   vx: float,
   vy: float,
-  numberActiveTouches: int
+  numberActiveTouches: int,
 };
 
 type callback('a);
@@ -36,8 +36,8 @@ let create:
                                    | `X(AnimatedRe.Value.t)
                                    | `XY(AnimatedRe.ValueXY.t)
                                    | `Y(AnimatedRe.Value.t)
-                                 ]
-                               )
+                                 ],
+                               ),
                              )
                          ]
                            =?,
