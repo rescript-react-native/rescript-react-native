@@ -27,13 +27,13 @@ module NetInfoIsConnectedExample = {
     render: ({state}) =>
       Style.(
         <View>
-          <View style={style([padding(Pt(10.))])}>
+          <View style=(style([padding(Pt(10.))]))>
             <Text>
-              {
+              (
                 ReasonReact.string(
                   state.isConnected ? "Connected" : "Not connected",
                 )
-              }
+              )
             </Text>
           </View>
         </View>
@@ -66,13 +66,13 @@ module NetInfoConnectionTypeExample = {
     render: ({state, handle}) =>
       Style.(
         <View>
-          <View style={style([padding(Pt(10.))])}>
-            <TouchableOpacity onPress={handle(checkConnectionType)}>
-              <Text> {ReasonReact.string("Check connection type")} </Text>
+          <View style=(style([padding(Pt(10.))]))>
+            <TouchableOpacity onPress=(handle(checkConnectionType))>
+              <Text> (ReasonReact.string("Check connection type")) </Text>
             </TouchableOpacity>
             <View>
               <Text>
-                {
+                (
                   ReasonReact.string(
                     switch (state.connectionType) {
                     | NetInfo.None => "none"
@@ -82,7 +82,7 @@ module NetInfoConnectionTypeExample = {
                     | _ => "something else"
                     },
                   )
-                }
+                )
               </Text>
             </View>
           </View>

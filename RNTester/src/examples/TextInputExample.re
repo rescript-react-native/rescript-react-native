@@ -15,6 +15,6 @@ let examples: array(Example.t) = [|
     description:
       Some("Checking a simple TextInput with onKeyPress handler works"),
     render: () =>
-      <TextInput onKeyPress={ev => Js.log(ev##nativeEvent##key)} />,
+      <TextInput onKeyPress=(ev => Js.log(ev##nativeEvent##key)) />,
   },
 |];

@@ -51,8 +51,8 @@ let examples: array(Example.t) = [|
     render: () =>
       <View
         style=Style.(
-          style([flexDirection(Row), justifyContent(SpaceBetween)])
-        )>
+                style([flexDirection(Row), justifyContent(SpaceBetween)])
+              )>
         <Button
           onPress=onButtonPress
           title="This looks great!"

@@ -35,18 +35,18 @@ module ExampleSingle = {
     render: _children =>
       <View>
         <TouchableNativeFeedback
-          background={TouchableNativeFeedback.selectableBackground()}
+          background=(TouchableNativeFeedback.selectableBackground())
           onPress=requestPermissions>
           <View style=Style.(style([backgroundColor(String("#03DAC5"))]))>
             <Text
               style=Style.(
-                style([
-                  marginVertical(Pt(20.)),
-                  textAlign(Center),
-                  fontSize(Float(20.)),
-                ])
-              )>
-              {ReasonReact.string("Get SEND_SMS permission")}
+                      style([
+                        marginVertical(Pt(20.)),
+                        textAlign(Center),
+                        fontSize(Float(20.)),
+                      ])
+                    )>
+              (ReasonReact.string("Get SEND_SMS permission"))
             </Text>
           </View>
         </TouchableNativeFeedback>
@@ -80,18 +80,18 @@ module ExampleMultiple = {
     render: _children =>
       <View>
         <TouchableNativeFeedback
-          background={TouchableNativeFeedback.selectableBackground()}
+          background=(TouchableNativeFeedback.selectableBackground())
           onPress=requestMultiplePermissions>
           <View style=Style.(style([backgroundColor(String("#03DAC5"))]))>
             <Text
               style=Style.(
-                style([
-                  marginVertical(Pt(20.)),
-                  textAlign(Center),
-                  fontSize(Float(20.)),
-                ])
-              )>
-              {ReasonReact.string("Get multiple permissions")}
+                      style([
+                        marginVertical(Pt(20.)),
+                        textAlign(Center),
+                        fontSize(Float(20.)),
+                      ])
+                    )>
+              (ReasonReact.string("Get multiple permissions"))
             </Text>
           </View>
         </TouchableNativeFeedback>

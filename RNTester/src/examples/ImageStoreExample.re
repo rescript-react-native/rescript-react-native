@@ -30,7 +30,7 @@ module ImageExample = {
     render: self =>
       <View>
         <Button
-          onPress={
+          onPress=(
             () => {
               ImageStore.hasImageForTag(
                 switch (self.state.imageUri) {
@@ -46,12 +46,12 @@ module ImageExample = {
               );
               ();
             }
-          }
+          )
           title="Has Image For Tag"
           accessibilityLabel="Has Image For Tag"
         />
         <Button
-          onPress={
+          onPress=(
             () => {
               ImageStore.addImageFromBase64(
                 image,
@@ -61,23 +61,23 @@ module ImageExample = {
               |> ignore;
               ();
             }
-          }
+          )
           title="Set Image Uri"
           accessibilityLabel="Set image uri"
         />
         <Button
-          onPress={
+          onPress=(
             () =>
               switch (self.state.imageUri) {
               | Some(uri) => ImageStore.removeImageForTag(uri)
               | None => ()
               }
-          }
+          )
           title="Remove Image For Tag"
           accessibilityLabel="Remove Image For Tag"
         />
         <Button
-          onPress={
+          onPress=(
             () =>
               switch (self.state.imageUri) {
               | Some(uri) =>
@@ -88,15 +88,15 @@ module ImageExample = {
                 )
               | None => ()
               }
-          }
+          )
           title="Get Base64 For Tag"
           accessibilityLabel="Get Base64 For Tag"
         />
-        {
+        (
           switch (self.state.imageUri) {
           | Some(imageUri) =>
             <Image
-              source={
+              source=(
                        `URI(
                          Image.imageURISource(
                            ~uri=imageUri,
@@ -105,11 +105,11 @@ module ImageExample = {
                            (),
                          ),
                        )
-                     }
+                     )
             />
           | None => ReasonReact.null
           }
-        }
+        )
       </View>,
   };
 };
