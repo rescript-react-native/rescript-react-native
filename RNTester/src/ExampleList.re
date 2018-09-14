@@ -37,6 +37,8 @@ module NetInfo = MakeExample(NetInfoExample);
 
 module Geolocation = MakeExample(GeolocationExample);
 
+module InputAccessoryView = MakeExample(InputAccessoryViewExample);
+
 let components: array(item) = [|
   TextInput.item("TextInput"),
   Button.item("ButtonExample"),
@@ -45,4 +47,5 @@ let components: array(item) = [|
   ImageBackground.item("ImageBackground"),
   NetInfo.item("NetInfo"),
   Geolocation.item("Geolocation"),
+  InputAccessoryView.item("InputAccessoryViewExample"),
 |];
