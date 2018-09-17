@@ -86,6 +86,8 @@ let make = _children => {
               )
             />
           </View>
+        | Some(example) when example.exampleType === FullScreen =>
+          example.examples[0].render()
         | Some(example) =>
           <View style=styles##exampleContainer>
             (

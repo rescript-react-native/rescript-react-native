@@ -1,4 +1,5 @@
 open BsReactNative;
+open Utils;
 
 module NetInfoIsConnectedExample = {
   type action =
@@ -9,7 +10,7 @@ module NetInfoIsConnectedExample = {
     ...component,
     initialState: () => {isConnected: false},
     reducer: (action, _state) =>
-      switch action {
+      switch (action) {
       | UpdateIsConnected(isConnected) => Update({isConnected: isConnected})
       },
     subscriptions: self => [
@@ -20,8 +21,8 @@ module NetInfoIsConnectedExample = {
           NetInfo.IsConnected.addEventListener(handleConnectionChange);
           handleConnectionChange;
         },
-        listener => NetInfo.IsConnected.removeEventListener(listener)
-      )
+        listener => NetInfo.IsConnected.removeEventListener(listener),
+      ),
     ],
     render: ({state}) =>
       Style.(
@@ -30,13 +31,13 @@ module NetInfoIsConnectedExample = {
             <Text>
               (
                 ReasonReact.string(
-                  state.isConnected ? "Connected" : "Not connected"
+                  state.isConnected ? "Connected" : "Not connected",
                 )
               )
             </Text>
           </View>
         </View>
-      )
+      ),
   };
 };
 
@@ -44,7 +45,8 @@ module NetInfoConnectionTypeExample = {
   type action =
     | UpdateConnectionType(NetInfo.infoType);
   type state = {connectionType: NetInfo.connectionType};
-  let component = ReasonReact.reducerComponent("NetInfoConnectionTypeExample");
+  let component =
+    ReasonReact.reducerComponent("NetInfoConnectionTypeExample");
   let checkConnectionType = (_event, {ReasonReact.send}) =>
     NetInfo.getConnectionInfo()
     |> Js.Promise.then_(info => {
@@ -56,7 +58,7 @@ module NetInfoConnectionTypeExample = {
     ...component,
     initialState: () => {connectionType: NetInfo.Unknown},
     reducer: (action, _state) =>
-      switch action {
+      switch (action) {
       | UpdateConnectionType(infoType) =>
         let connectionType = NetInfo.connectionType(infoType);
         Update({connectionType: connectionType});
@@ -66,32 +68,32 @@ module NetInfoConnectionTypeExample = {
         <View>
           <View style=(style([padding(Pt(10.))]))>
             <TouchableOpacity onPress=(handle(checkConnectionType))>
-              <Text>
-                (ReasonReact.string("Check connection type"))
-              </Text>
+              <Text> (ReasonReact.string("Check connection type")) </Text>
             </TouchableOpacity>
             <View>
               <Text>
                 (
                   ReasonReact.string(
-                    switch state.connectionType {
+                    switch (state.connectionType) {
                     | NetInfo.None => "none"
                     | NetInfo.Unknown => "unknown"
                     | NetInfo.WiFi => "wifi"
                     | NetInfo.Cellular => "cellular"
                     | _ => "something else"
-                    }
+                    },
                   )
                 )
               </Text>
             </View>
           </View>
         </View>
-      )
+      ),
   };
 };
 
 let title = "<NetInfo>";
+
+let exampleType = Multiple;
 
 let description = "NetInfo";
 
@@ -101,11 +103,11 @@ let examples: array(Example.t) = [|
   {
     title: "NetInfo.IsConnected.addEventListener()",
     description: None,
-    render: () => <NetInfoIsConnectedExample />
+    render: () => <NetInfoIsConnectedExample />,
   },
   {
     title: "NetInfo.getConnectionInfo()",
     description: None,
-    render: () => <NetInfoConnectionTypeExample />
-  }
+    render: () => <NetInfoConnectionTypeExample />,
+  },
 |];

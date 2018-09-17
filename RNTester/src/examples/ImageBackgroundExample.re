@@ -1,6 +1,9 @@
 open BsReactNative;
+open Utils;
 
 let title = "<ImageBackground>";
+
+let exampleType = Multiple;
 
 let description = "A very basic ImageBackground component";
 
@@ -25,16 +28,16 @@ let examples: array(Example.t) =
             )
             imageStyle=(style([flex(1.)]))
             source=(
-              `URI(
-                Image.(
-                  imageURISource(
-                    ~uri=
-                      "https://lorempixel.com/output/abstract-h-c-250-400-8.jpg",
-                    (),
-                  )
-                ),
-              )
-            )>
+                     `URI(
+                       Image.(
+                         imageURISource(
+                           ~uri=
+                             "https://lorempixel.com/output/abstract-h-c-250-400-8.jpg",
+                           (),
+                         )
+                       ),
+                     )
+                   )>
             <View
               style=(
                 style([

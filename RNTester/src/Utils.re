@@ -1,0 +1,3 @@
+type exampleType =
+  | Multiple
+  | FullScreen;

@@ -1,4 +1,5 @@
 open BsReactNative;
+open Utils;
 
 module GeolocationGetCurrentPositionExample = {
   type coords = {
@@ -38,9 +39,7 @@ module GeolocationGetCurrentPositionExample = {
         <View>
           <View style=(style([padding(Pt(10.))]))>
             <TouchableOpacity onPress=(handle(getCurrentPosition))>
-              <Text>
-                (ReasonReact.string("Get current position"))
-              </Text>
+              <Text> (ReasonReact.string("Get current position")) </Text>
             </TouchableOpacity>
             <Text>
               (
@@ -125,6 +124,8 @@ module GeolocationWatchPositionExample = {
 };
 
 let title = "<GeolocationExample>";
+
+let exampleType = Multiple;
 
 let description = "GeolocationExample";
 
