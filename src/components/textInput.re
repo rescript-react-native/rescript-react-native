@@ -9,6 +9,141 @@ external view : ReasonReact.reactClass = "TextInput";
 
 [@bs.send] external blur : ReasonReact.reactRef => unit = "";
 
+module AutoCapitalize = {
+  type t = [
+    | `none
+    | `sentences
+    | `words
+    | `characters
+  ];
+let to_string = x => {
+        switch (x) {
+        | `none => "none"
+        | `sentences => "sentences"
+        | `words => "words"
+        | `characters => "characters"
+        }
+      };
+};
+
+module ReturnKeyType = {
+  type t = [
+    | `done_
+    | `go
+    | `next
+    | `search
+    | `send
+    | `none
+    | `previous
+    | `default
+    | `emergencyCall
+    | `google
+    | `join
+    | `route
+    | `yahoo
+  ];
+  let to_string = x => {
+    switch (x) {
+    | `done_ => "done"
+    | `go => "go"
+    | `next => "next"
+    | `search => "search"
+    | `send => "send"
+    | `none => "none"
+    | `previous => "previous"
+    | `default => "default"
+    | `emergencyCall => "emergencyCall"
+    | `google => "google"
+    | `join => "join"
+    | `route => "route"
+    | `yahoo => "yahoo"
+    }
+  };
+}
+
+module KeyboardType = {
+  type t = [
+    | `default
+    | `emailAddress
+    | `numeric
+    | `phonePad
+    | `asciiCapable
+    | `numbersAndPunctuation
+    | `url
+    | `numberPad
+    | `namePhonePad
+    | `decimalPad
+    | `twitter
+    | `webSearch
+  ]
+  let to_string = x => {
+  switch (x) {
+  | `default => "default"
+  | `emailAddress => "email-address"
+  | `numeric => "numeric"
+  | `phonePad => "phone-pad"
+  | `asciiCapable => "ascii-capable"
+  | `numbersAndPunctuation => "numbers-and-punctuation"
+  | `url => "url"
+  | `numberPad => "number-pad"
+  | `namePhonePad => "name-phone-pad"
+  | `decimalPad => "decimal-pad"
+  | `twitter => "twitter"
+  | `webSearch => "web-search"
+  }
+}
+}
+
+module TextBreakStrategy = {
+  type t = [
+    | `simple
+    | `highQuality
+    | `balanced
+  ]
+
+  let to_string = x => {
+    switch (x) {
+    | `simple => "simple"
+    | `highQuality => "highQuality"
+    | `balanced => "balanced"
+    }
+  }
+}
+
+module ClearButtonMode = {
+  type t = [
+    | `never
+    | `whileEditing
+    | `unlessEditing
+    | `always
+  ]
+
+  let to_string = x => {
+  switch (x) {
+  | `never => "never"
+  | `whileEditing => "while-editing"
+  | `unlessEditing => "unless-editing"
+  | `always => "always"
+  }
+}
+}
+
+module KeyboardAppearance = {
+  type t = [
+    | `default
+    | `light
+    | `dark
+  ]
+
+  let to_string = x => {
+    switch (x) {
+    | `default => "never"
+    | `light => "light"
+    | `dark => "dark"
+    }
+  }
+}
+
 let make =
     (
       ~accessibilityLabel=?,
@@ -82,13 +217,7 @@ let make =
         {
           "autoCapitalize":
             UtilsRN.option_map(
-              x =>
-                switch (x) {
-                | `none => "none"
-                | `sentences => "sentences"
-                | `words => "words"
-                | `characters => "characters"
-                },
+              AutoCapitalize.to_string,
               autoCapitalize,
             ),
           "autoCorrect": autoCorrect,
@@ -99,21 +228,7 @@ let make =
           "editable": editable ,
           "keyboardType":
             UtilsRN.option_map(
-              x =>
-                switch (x) {
-                | `default => "default"
-                | `emailAddress => "email-address"
-                | `numeric => "numeric"
-                | `phonePad => "phone-pad"
-                | `asciiCapable => "ascii-capable"
-                | `numbersAndPunctuation => "numbers-and-punctuation"
-                | `url => "url"
-                | `numberPad => "number-pad"
-                | `namePhonePad => "name-phone-pad"
-                | `decimalPad => "decimal-pad"
-                | `twitter => "twitter"
-                | `webSearch => "web-search"
-                },
+              KeyboardType.to_string,
               keyboardType,
             ),
           "maxLength": maxLength,
@@ -131,22 +246,7 @@ let make =
           "placeholderTextColor": placeholderTextColor,
           "returnKeyType":
             UtilsRN.option_map(
-              x =>
-                switch (x) {
-                | `done_ => "done"
-                | `go => "go"
-                | `next => "next"
-                | `search => "search"
-                | `send => "send"
-                | `none => "none"
-                | `previous => "previous"
-                | `default => "default"
-                | `emergencyCall => "emergencyCall"
-                | `google => "google"
-                | `join => "join"
-                | `route => "route"
-                | `yahoo => "yahoo"
-                },
+              ReturnKeyType.to_string,
               returnKeyType,
             ),
           "secureTextEntry": secureTextEntry,
@@ -162,24 +262,13 @@ let make =
           "returnKeyLabel": returnKeyLabel,
           "textBreakStrategy":
             UtilsRN.option_map(
-              x =>
-                switch (x) {
-                | `simple => "simple"
-                | `highQuality => "highQuality"
-                | `balanced => "balanced"
-                },
+              TextBreakStrategy.to_string,
               textBreakStrategy,
             ),
           "underlineColorAndroid": underlineColorAndroid,
           "clearButtonMode":
             UtilsRN.option_map(
-              x =>
-                switch (x) {
-                | `never => "never"
-                | `whileEditing => "while-editing"
-                | `unlessEditing => "unless-editing"
-                | `always => "always"
-                },
+              ClearButtonMode.to_string,
               clearButtonMode,
             ),
           "clearTextOnFocus": clearTextOnFocus,
@@ -199,12 +288,7 @@ let make =
           "enablesReturnKeyAutomatically": enablesReturnKeyAutomatically,
           "keyboardAppearance":
             UtilsRN.option_map(
-              x =>
-                switch (x) {
-                | `default => "never"
-                | `light => "light"
-                | `dark => "dark"
-                },
+              KeyboardAppearance.to_string,
               keyboardAppearance,
             ),
           "onKeyPress": onKeyPress,
