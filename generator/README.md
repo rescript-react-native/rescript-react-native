@@ -20,22 +20,6 @@ The first script compiles you Reason code in a watch mode, meaning that every ch
 
 Second one is a React Native packager that serves the compiled Reason code to the React Native client.
 
-## Hiding `.bs.js` files
-
-Bucklescript compiles your Reason files to Javascript `in source`, meaning that `App.re` will result in `App.bs.js` file generated next to it.
-
-These are build files and are by default ignored from the git repository.
-
-If you are using VSCode, you can add the following to your workspace settings to hide them automatically:
-
-```json
-{
-  "files.exclude": {
-    "**/*.bs.js": true
-  }
-}
-```
-
 ## Breakdown of existing files
 
 The `react-native init` command generates a lot of boilerplate with files that might be not needed for your particular use case. Below is a breakdown of all top-level files to help you decide:
