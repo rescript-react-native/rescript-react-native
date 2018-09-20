@@ -16,7 +16,7 @@ To get started, add the following scripts to your `package.json`:
 
 Next, run `watch` and `start` scripts from the command line so that both processes are running at the same time. This can be done with `yarn` (e.g. `yarn watch`) or `npm` (e.g. `npm run watch`).
 
-The first script compiles you Reason code in a watch mode, meaning that every change is instantly recompiled.
+The first script compiles your Reason code in a watch mode, meaning that every change is instantly recompiled.
 
 Second one is a React Native packager that serves the compiled Reason code to the React Native client.
 
