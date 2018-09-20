@@ -1,0 +1,19 @@
+{
+  "name": "my-reason-react-native-app",
+  "reason": {
+    "react-jsx": 2
+  },
+  "package-specs": {
+    "module": "commonjs"
+  },
+  "bsc-flags": ["-bs-super-errors"],
+  "bs-dependencies": ["bs-react-native", "reason-react"],
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
+    }
+  ],
+  "suffix": ".js",
+  "refmt": 3
+}
