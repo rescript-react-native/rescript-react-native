@@ -37,7 +37,7 @@ let encode_pt_pct_animated_interpolated =
   | Pt(value) => Encode.float(value)
   | Pct(value) => Encode.pct(value)
   | Animated(value) => Encode.animatedValue(value)
-  | Interpolated(value) => Encode.interpolatedValue(value);
+  | Interpolated(value) => Encode.animatedValue(value);
 
 type float_interpolated_animated =
   | Float(float)
@@ -48,7 +48,7 @@ let encode_float_interpolated_animated =
   fun
   | Float(value) => Encode.float(value)
   | Animated(value) => Encode.animatedValue(value)
-  | Interpolated(value) => Encode.interpolatedValue(value);
+  | Interpolated(value) => Encode.animatedValue(value);
 
 type string_interpolated =
   | String(string)
@@ -57,7 +57,7 @@ type string_interpolated =
 let encode_string_interpolated =
   fun
   | String(value) => Encode.string(value)
-  | Interpolated(value) => Encode.interpolatedValue(value);
+  | Interpolated(value) => Encode.animatedValue(value);
 
 external flatten : array(t) => t = "%identity";
 
@@ -442,36 +442,6 @@ module Transform = {
     create_(
       (. value) => UtilsRN.option_map(Encode.animatedValue, value),
       (. value) => UtilsRN.option_map(Encode.animatedValue, value),
-      perspective,
-      rotate,
-      rotateX,
-      rotateY,
-      rotateZ,
-      scaleX,
-      scaleY,
-      translateX,
-      translateY,
-      skewX,
-      skewY,
-    );
-  let makeInterpolated =
-      (
-        ~perspective=?,
-        ~rotate=?,
-        ~rotateX=?,
-        ~rotateY=?,
-        ~rotateZ=?,
-        ~scaleX=?,
-        ~scaleY=?,
-        ~translateX=?,
-        ~translateY=?,
-        ~skewX=?,
-        ~skewY=?,
-        (),
-      ) =>
-    create_(
-      (. value) => UtilsRN.option_map(Encode.interpolatedValue, value),
-      (. value) => UtilsRN.option_map(Encode.interpolatedValue, value),
       perspective,
       rotate,
       rotateX,

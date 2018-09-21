@@ -225,33 +225,17 @@ module Transform: {
     styleElement;
   let makeAnimated:
     (
-      ~perspective: AnimatedRe.Value.t=?,
-      ~rotate: AnimatedRe.Value.t=?,
-      ~rotateX: AnimatedRe.Value.t=?,
-      ~rotateY: AnimatedRe.Value.t=?,
-      ~rotateZ: AnimatedRe.Value.t=?,
-      ~scaleX: AnimatedRe.Value.t=?,
-      ~scaleY: AnimatedRe.Value.t=?,
-      ~translateX: AnimatedRe.Value.t=?,
-      ~translateY: AnimatedRe.Value.t=?,
-      ~skewX: AnimatedRe.Value.t=?,
-      ~skewY: AnimatedRe.Value.t=?,
-      unit
-    ) =>
-    styleElement;
-  let makeInterpolated:
-    (
-      ~perspective: AnimatedRe.Interpolation.t=?,
-      ~rotate: AnimatedRe.Interpolation.t=?,
-      ~rotateX: AnimatedRe.Interpolation.t=?,
-      ~rotateY: AnimatedRe.Interpolation.t=?,
-      ~rotateZ: AnimatedRe.Interpolation.t=?,
-      ~scaleX: AnimatedRe.Interpolation.t=?,
-      ~scaleY: AnimatedRe.Interpolation.t=?,
-      ~translateX: AnimatedRe.Interpolation.t=?,
-      ~translateY: AnimatedRe.Interpolation.t=?,
-      ~skewX: AnimatedRe.Interpolation.t=?,
-      ~skewY: AnimatedRe.Interpolation.t=?,
+      ~perspective: AnimatedRe.value('a)=?,
+      ~rotate: AnimatedRe.value('a)=?,
+      ~rotateX: AnimatedRe.value('a)=?,
+      ~rotateY: AnimatedRe.value('a)=?,
+      ~rotateZ: AnimatedRe.value('a)=?,
+      ~scaleX: AnimatedRe.value('a)=?,
+      ~scaleY: AnimatedRe.value('a)=?,
+      ~translateX: AnimatedRe.value('a)=?,
+      ~translateY: AnimatedRe.value('a)=?,
+      ~skewX: AnimatedRe.value('a)=?,
+      ~skewY: AnimatedRe.value('a)=?,
       unit
     ) =>
     styleElement;
