@@ -12,13 +12,13 @@ type pt_pct_auto =
 type pt_pct_animated('a) =
   | Pt(float)
   | Pct(float)
-  | Animated(BsReactNative.AnimatedRe.value('a));
+  | Animated(AnimatedRe.value('a));
 type float_animated('a) =
   | Float(float)
-  | Animated(BsReactNative.AnimatedRe.value('a));
+  | Animated(AnimatedRe.value('a));
 type string_animated('a) =
   | String(string)
-  | Animated(BsReactNative.AnimatedRe.value('a));
+  | Animated(AnimatedRe.value('a));
 external flatten : array(t) => t = "%identity";
 let combine: (t, t) => t;
 let concat: list(t) => t;
@@ -139,17 +139,17 @@ module Transform: {
     styleElement;
   let makeAnimated:
     (
-      ~perspective: BsReactNative.AnimatedRe.value('a)=?,
-      ~rotate: BsReactNative.AnimatedRe.value('a)=?,
-      ~rotateX: BsReactNative.AnimatedRe.value('a)=?,
-      ~rotateY: BsReactNative.AnimatedRe.value('a)=?,
-      ~rotateZ: BsReactNative.AnimatedRe.value('a)=?,
-      ~scaleX: BsReactNative.AnimatedRe.value('a)=?,
-      ~scaleY: BsReactNative.AnimatedRe.value('a)=?,
-      ~translateX: BsReactNative.AnimatedRe.value('a)=?,
-      ~translateY: BsReactNative.AnimatedRe.value('a)=?,
-      ~skewX: BsReactNative.AnimatedRe.value('a)=?,
-      ~skewY: BsReactNative.AnimatedRe.value('a)=?,
+      ~perspective: AnimatedRe.value('a)=?,
+      ~rotate: AnimatedRe.value('a)=?,
+      ~rotateX: AnimatedRe.value('a)=?,
+      ~rotateY: AnimatedRe.value('a)=?,
+      ~rotateZ: AnimatedRe.value('a)=?,
+      ~scaleX: AnimatedRe.value('a)=?,
+      ~scaleY: AnimatedRe.value('a)=?,
+      ~translateX: AnimatedRe.value('a)=?,
+      ~translateY: AnimatedRe.value('a)=?,
+      ~skewX: AnimatedRe.value('a)=?,
+      ~skewY: AnimatedRe.value('a)=?,
       unit
     ) =>
     styleElement;
