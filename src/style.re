@@ -26,38 +26,34 @@ let encode_pt_pct_auto = value =>
   | Auto => Encode.string("auto")
   };
 
-type pt_pct_animated_interpolated =
+type pt_pct_animated('a) =
   | Pt(float)
   | Pct(float)
-  | Animated(AnimatedRe.Value.t)
-  | Interpolated(AnimatedRe.Interpolation.t);
+  | Animated(AnimatedRe.value('a));
 
-let encode_pt_pct_animated_interpolated =
+let encode_pt_pct_animated =
   fun
   | Pt(value) => Encode.float(value)
   | Pct(value) => Encode.pct(value)
-  | Animated(value) => Encode.animatedValue(value)
-  | Interpolated(value) => Encode.animatedValue(value);
+  | Animated(value) => Encode.animatedValue(value);
 
-type float_interpolated_animated =
+type float_animated('a) =
   | Float(float)
-  | Animated(AnimatedRe.Value.t)
-  | Interpolated(AnimatedRe.Interpolation.t);
+  | Animated(AnimatedRe.value('a));
 
-let encode_float_interpolated_animated =
+let encode_float_animated =
   fun
   | Float(value) => Encode.float(value)
-  | Animated(value) => Encode.animatedValue(value)
-  | Interpolated(value) => Encode.animatedValue(value);
+  | Animated(value) => Encode.animatedValue(value);
 
-type string_interpolated =
+type string_animated('a) =
   | String(string)
-  | Interpolated(AnimatedRe.Interpolation.t);
+  | Animated(AnimatedRe.value('a));
 
-let encode_string_interpolated =
+let encode_string_animated =
   fun
   | String(value) => Encode.string(value)
-  | Interpolated(value) => Encode.animatedValue(value);
+  | Animated(value) => Encode.animatedValue(value);
 
 external flatten : array(t) => t = "%identity";
 
@@ -301,17 +297,17 @@ let position = v =>
     },
   );
 
-let top = value => ("top", encode_pt_pct_animated_interpolated(value));
+let top = value => ("top", encode_pt_pct_animated(value));
 
-let left = value => ("left", encode_pt_pct_animated_interpolated(value));
+let left = value => ("left", encode_pt_pct_animated(value));
 
-let right = value => ("right", encode_pt_pct_animated_interpolated(value));
+let right = value => ("right", encode_pt_pct_animated(value));
 
-let bottom = value => ("bottom", encode_pt_pct_animated_interpolated(value));
+let bottom = value => ("bottom", encode_pt_pct_animated(value));
 
-let height = value => ("height", encode_pt_pct_animated_interpolated(value));
+let height = value => ("height", encode_pt_pct_animated(value));
 
-let width = value => ("width", encode_pt_pct_animated_interpolated(value));
+let width = value => ("width", encode_pt_pct_animated(value));
 
 let zIndex = value => ("zIndex", Encode.int(value));
 
@@ -335,7 +331,7 @@ let direction = v =>
  */
 let shadowColor = value => (
   "shadowColor",
-  encode_string_interpolated(value),
+  encode_string_animated(value),
 );
 
 let shadowOffset = (~height, ~width) =>
@@ -474,32 +470,32 @@ let backfaceVisibility = v =>
 
 let backgroundColor = value => (
   "backgroundColor",
-  encode_string_interpolated(value),
+  encode_string_animated(value),
 );
 
 let borderColor = value => (
   "borderColor",
-  encode_string_interpolated(value),
+  encode_string_animated(value),
 );
 
 let borderTopColor = value => (
   "borderTopColor",
-  encode_string_interpolated(value),
+  encode_string_animated(value),
 );
 
 let borderRightColor = value => (
   "borderRightColor",
-  encode_string_interpolated(value),
+  encode_string_animated(value),
 );
 
 let borderBottomColor = value => (
   "borderBottomColor",
-  encode_string_interpolated(value),
+  encode_string_animated(value),
 );
 
 let borderLeftColor = value => (
   "borderLeftColor",
-  encode_string_interpolated(value),
+  encode_string_animated(value),
 );
 
 let borderRadius = floatStyle("borderRadius");
@@ -529,7 +525,7 @@ let borderStyle = v =>
 
 let opacity = value => (
   "opacity",
-  encode_float_interpolated_animated(value),
+  encode_float_animated(value),
 );
 
 let elevation = floatStyle("elevation");
@@ -537,13 +533,13 @@ let elevation = floatStyle("elevation");
 /***
  * Text Props
  */
-let color = value => ("color", encode_string_interpolated(value));
+let color = value => ("color", encode_string_animated(value));
 
 let fontFamily = stringStyle("fontFamily");
 
 let fontSize = value => (
   "fontSize",
-  encode_float_interpolated_animated(value),
+  encode_float_animated(value),
 );
 
 type fontStyle =
@@ -617,7 +613,7 @@ let textDecorationLine = v =>
 
 let textShadowColor = value => (
   "textShadowColor",
-  encode_string_interpolated(value),
+  encode_string_animated(value),
 );
 
 let textShadowOffset = (~height, ~width) =>
@@ -661,7 +657,7 @@ let letterSpacing = floatStyle("letterSpacing");
 
 let textDecorationColor = value => (
   "textDecorationColor",
-  encode_string_interpolated(value),
+  encode_string_animated(value),
 );
 
 type textDecorationStyle =
@@ -716,11 +712,11 @@ let resizeMode = v =>
     },
   );
 
-let tintColor = value => ("tintColor", encode_string_interpolated(value));
+let tintColor = value => ("tintColor", encode_string_animated(value));
 
 let overlayColor = value => (
   "overlayColor",
-  encode_string_interpolated(value),
+  encode_string_animated(value),
 );
 
 type color =
