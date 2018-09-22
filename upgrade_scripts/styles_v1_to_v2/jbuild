@@ -1,5 +1,0 @@
-(executable 
- ((name styles_v1_to_v2) 
- (public_name styles_v1_to_v2) 
- (libraries (compiler-libs.common unix))
- (flags (-w A-42-40-4-9))))
