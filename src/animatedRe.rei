@@ -1,3 +1,29 @@
+/** Animated allows to create declarative animations that are fluid, powerful and easy to build.
+
+	{2 basic}
+
+ 	The simplest animation starts with creating an animated value and using one of the built-in animations to change its value over time.
+
+	The following example demonstrates use of Animated.Timing in order to animate an animated value throughout given period of time.
+
+	{[open BsReactNative;
+let animatedValue = Animated.Value.create(0.0);
+let animation =
+  Animated.timing(
+    ~value=animatedValue,
+    ~toValue=`raw(1.0),
+    ~duration=100.0,
+    (),
+  );
+Animated.start(animation, ());]}
+
+	{2 multiple}
+
+	Animations can be also combined together in complex ways using composition functions.
+
+  The following example demonstrates use of Animated.sequence in order to run animations in a sequence, one by one.
+ */
+
 type calculated;
 
 type regular;
