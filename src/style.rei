@@ -16,9 +16,9 @@ type pt_pct_animated('a) =
 type float_animated('a) =
   | Float(float)
   | Animated(AnimatedRe.value('a));
-type string_animated('a) =
+type string_interpolated =
   | String(string)
-  | Animated(AnimatedRe.value('a));
+  | Animated(AnimatedRe.Interpolation.t);
 external flatten : array(t) => t = "%identity";
 let combine: (t, t) => t;
 let concat: list(t) => t;
@@ -116,7 +116,7 @@ type direction =
   | Ltr
   | Rtl;
 let direction: direction => styleElement;
-let shadowColor: string_animated('a) => styleElement;
+let shadowColor: string_interpolated => styleElement;
 let shadowOffset: (~height: float, ~width: float) => styleElement;
 let shadowOpacity: float => styleElement;
 let shadowRadius: float => styleElement;
@@ -158,12 +158,12 @@ type backfaceVisibility =
   | Visible
   | Hidden;
 let backfaceVisibility: backfaceVisibility => styleElement;
-let backgroundColor: string_animated('a) => styleElement;
-let borderColor: string_animated('a) => styleElement;
-let borderTopColor: string_animated('a) => styleElement;
-let borderRightColor: string_animated('a) => styleElement;
-let borderBottomColor: string_animated('a) => styleElement;
-let borderLeftColor: string_animated('a) => styleElement;
+let backgroundColor: string_interpolated => styleElement;
+let borderColor: string_interpolated => styleElement;
+let borderTopColor: string_interpolated => styleElement;
+let borderRightColor: string_interpolated => styleElement;
+let borderBottomColor: string_interpolated => styleElement;
+let borderLeftColor: string_interpolated => styleElement;
 let borderRadius: float => styleElement;
 let borderTopLeftRadius: float => styleElement;
 let borderTopRightRadius: float => styleElement;
@@ -176,7 +176,7 @@ type borderStyle =
 let borderStyle: borderStyle => styleElement;
 let opacity: float_animated('a) => styleElement;
 let elevation: float => styleElement;
-let color: string_animated('a) => styleElement;
+let color: string_interpolated => styleElement;
 let fontFamily: string => styleElement;
 let fontSize: float_animated('a) => styleElement;
 type fontStyle =
@@ -212,7 +212,7 @@ type textDecorationLine =
   | LineThrough
   | UnderlineLineThrough;
 let textDecorationLine: textDecorationLine => styleElement;
-let textShadowColor: string_animated('a) => styleElement;
+let textShadowColor: string_interpolated => styleElement;
 let textShadowOffset: (~height: float, ~width: float) => styleElement;
 let textShadowRadius: float => styleElement;
 let includeFontPadding: bool => styleElement;
@@ -224,7 +224,7 @@ type textAlignVertical =
 let textAlignVertical: textAlignVertical => styleElement;
 let fontVariant: list(string) => styleElement;
 let letterSpacing: float => styleElement;
-let textDecorationColor: string_animated('a) => styleElement;
+let textDecorationColor: string_interpolated => styleElement;
 type textDecorationStyle =
   | Solid
   | Double
@@ -243,7 +243,7 @@ type resizeMode =
   | Repeat
   | Center;
 let resizeMode: resizeMode => styleElement;
-let tintColor: string_animated('a) =>  styleElement;
-let overlayColor: string_animated('a) => styleElement;
+let tintColor: string_interpolated =>  styleElement;
+let overlayColor: string_interpolated => styleElement;
 type color =
   | String(string);

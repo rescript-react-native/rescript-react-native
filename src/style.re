@@ -46,11 +46,11 @@ let encode_float_animated =
   | Float(value) => Encode.float(value)
   | Animated(value) => Encode.animatedValue(value);
 
-type string_animated('a) =
+type string_interpolated =
   | String(string)
-  | Animated(AnimatedRe.value('a));
+  | Animated(AnimatedRe.Interpolation.t);
 
-let encode_string_animated =
+let encode_string_interpolated =
   fun
   | String(value) => Encode.string(value)
   | Animated(value) => Encode.animatedValue(value);
@@ -331,7 +331,7 @@ let direction = v =>
  */
 let shadowColor = value => (
   "shadowColor",
-  encode_string_animated(value),
+  encode_string_interpolated(value),
 );
 
 let shadowOffset = (~height, ~width) =>
@@ -470,32 +470,32 @@ let backfaceVisibility = v =>
 
 let backgroundColor = value => (
   "backgroundColor",
-  encode_string_animated(value),
+  encode_string_interpolated(value),
 );
 
 let borderColor = value => (
   "borderColor",
-  encode_string_animated(value),
+  encode_string_interpolated(value),
 );
 
 let borderTopColor = value => (
   "borderTopColor",
-  encode_string_animated(value),
+  encode_string_interpolated(value),
 );
 
 let borderRightColor = value => (
   "borderRightColor",
-  encode_string_animated(value),
+  encode_string_interpolated(value),
 );
 
 let borderBottomColor = value => (
   "borderBottomColor",
-  encode_string_animated(value),
+  encode_string_interpolated(value),
 );
 
 let borderLeftColor = value => (
   "borderLeftColor",
-  encode_string_animated(value),
+  encode_string_interpolated(value),
 );
 
 let borderRadius = floatStyle("borderRadius");
@@ -533,7 +533,7 @@ let elevation = floatStyle("elevation");
 /***
  * Text Props
  */
-let color = value => ("color", encode_string_animated(value));
+let color = value => ("color", encode_string_interpolated(value));
 
 let fontFamily = stringStyle("fontFamily");
 
@@ -613,7 +613,7 @@ let textDecorationLine = v =>
 
 let textShadowColor = value => (
   "textShadowColor",
-  encode_string_animated(value),
+  encode_string_interpolated(value),
 );
 
 let textShadowOffset = (~height, ~width) =>
@@ -657,7 +657,7 @@ let letterSpacing = floatStyle("letterSpacing");
 
 let textDecorationColor = value => (
   "textDecorationColor",
-  encode_string_animated(value),
+  encode_string_interpolated(value),
 );
 
 type textDecorationStyle =
@@ -712,11 +712,11 @@ let resizeMode = v =>
     },
   );
 
-let tintColor = value => ("tintColor", encode_string_animated(value));
+let tintColor = value => ("tintColor", encode_string_interpolated(value));
 
 let overlayColor = value => (
   "overlayColor",
-  encode_string_animated(value),
+  encode_string_interpolated(value),
 );
 
 type color =
