@@ -3,7 +3,7 @@
 	"version": "0.10.0-rc.0",
 	"scripts": {
     "build": "bsb -make-world",
-    "build-docs": "sh ./docs/make.sh",
+    "build-docs": "sh ./scripts/build-docs.sh",
 		"start": "bsb -make-world -w",
 		"clean-build": "bsb -clean-world -make-world",
 		"test": "exit 0"
