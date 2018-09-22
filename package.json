@@ -2,7 +2,8 @@
 	"name": "bs-react-native",
 	"version": "0.10.0-rc.0",
 	"scripts": {
-		"build": "bsb -make-world",
+    "build": "bsb -make-world",
+    "build-docs": "sh ./docs/make.sh",
 		"start": "bsb -make-world -w",
 		"clean-build": "bsb -clean-world -make-world",
 		"test": "exit 0"
