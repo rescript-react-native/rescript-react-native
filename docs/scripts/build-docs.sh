@@ -16,6 +16,7 @@ for file in ${CMT_FILES}; do
   ${ODOC} compile \
     -I ${LIB} \
     --pkg=${PKG} \
+    --resolve-fwd-refs \
     ${file}
 done
 echo ">> Done!"
@@ -26,6 +27,7 @@ for file in ${MLD_FILES}; do
   ${ODOC} compile \
     -I ${LIB} \
     --pkg=${PKG} \
+    --resolve-fwd-refs \
     -o ${LIB}/${odoc_file} \
     ${file}
 done
