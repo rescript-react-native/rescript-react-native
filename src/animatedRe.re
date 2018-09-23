@@ -1,6 +1,3 @@
-/**
-	You can create animation
- */
 module Animation = {
   type t;
   type endResult = {. "finished": bool};
