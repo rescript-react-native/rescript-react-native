@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>AnimatedRe-BsReactNative (BsReactNative.AnimatedRe-BsReactNative)</title><link rel="stylesheet" href="../../odoc.css"/><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><script src="../../highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><div class="content"><header><nav><a href="..">Up</a> – <a href="../">BsReactNative</a> &#x00BB; AnimatedRe-BsReactNative</nav><h1>Module <code>AnimatedRe-BsReactNative</code></h1></header><dl><dt class="spec type" id="type-calculated"><a href="#type-calculated" class="anchor"></a><code><span class="keyword">type </span>calculated</code><code></code><span class="keyword">;</span></dt><dd><h2 id="guide"><a href="#guide" class="anchor"></a>Guide</h2><p>Animated allows to create declarative animations that are fluid, powerful and easy to build.</p><h3 id="basic"><a href="#basic" class="anchor"></a>basic</h3><p>The simplest animation starts with creating an animated value and using one of the built-in animations to change its value over time.</p><p>The following example demonstrates use of Animated.Timing in order to animate an animated value throughout given period of time.</p><pre><code class="re">open BsReactNative;
+
+let animatedValue = Animated.Value.create(0.0);
+
+let animation =
+  Animated.timing(
+    ~value=animatedValue,
+    ~toValue=`raw(1.0),
+    ~duration=100.0,
+    (),
+  );
+
+Animated.start(animation, ());</code></pre><h3 id="multiple"><a href="#multiple" class="anchor"></a>multiple</h3><p>Animations can be also combined together in complex ways using composition functions.</p><p>The following example demonstrates use of Animated.sequence in order to run animations in a sequence, one by one.</p><pre><code class="re">open BsReactNative;
+
+let animatedValue = Animated.Value.create(0.0);
+
+let animation =
+  Animated.sequence([|
+    Animated.timing(
+      ~value=animatedValue,
+      ~toValue=`raw(1.0),
+      ~duration=100.0,
+      (),
+    ),
+    Animated.timing(
+      ~value=animatedValue,
+      ~toValue=`raw(0.0),
+      ~duration=100.0,
+      (),
+    ),
+  |]);
+
+Animated.start(animation, ());</code></pre><h3 id="calculation"><a href="#calculation" class="anchor"></a>calculation</h3><p>You can combine two animated values via addition, multiplication, division, or modulo to make a new animated value.</p><p>The following example demonstrates use of <code>Animated.multiply</code> in order to reverse the value of the <code>animatedValue</code>.</p><pre><code class="re">open BsReactNative;
+
+let animatedValue = Animated.Value.create(0.0);
+
+let newAnimatedValue = Animated.multiply(
+  animatedValue,
+  Animated.Value.create(-1.0)
+);</code></pre><p>Keep in mind that calculated values (such as <code>newAnimatedValue</code> from the snippet above) cannot be animated. Trying to pass them to any of the animated functions will result in a type error.</p><h3 id="interpolation"><a href="#interpolation" class="anchor"></a>interpolation</h3><p>You can interpolate an animated value in order to bind to its value and change the output.</p><p>The following example demonstrates interpolation in order to map values of an animated value to the opacity of a container.</p><pre><code class="re">let animatedValue = Animated.Value.create(100.0);
+
+let animatedOpacity =
+  Animated.Value.interpolate(
+    animatedValue,
+    ~inputRange=[0.0, 100.0],
+    ~outputRange=`float([0.0, 1.0]),
+    ~extrapolate=Animated.Interpolation.Clamp,
+    (),
+  );</code></pre><h3 id="styling"><a href="#styling" class="anchor"></a>styling</h3><p>Animated values can be passed to an animated component in order to change its apperance as the animated value changes.</p><p>The example below demonstrates animating opacity of a component.</p><pre><code class="re">open BsReactNative;
+
+let animatedValue = Animated.Value.create(0.0);
+
+let component = ReasonReact.statelessComponent(&quot;MyComponent&quot;);
+
+let containerStyle = Style.(
+  style([
+    opacity(Animated(animatedValue))
+    flex(1.0)
+  ])
+);
+
+let make = _children =&gt; {
+  ...component,
+  didMount: _self =&gt; {
+    Animated.start(
+      Animated.timing(
+        ~value=animatedValue,
+        ~toValue=`raw(1.0),
+        ~duration=100.0,
+        (),
+      ),
+      ~callback=_didFinish =&gt; (),
+      ()
+    );
+  },
+  render: _self =&gt; &lt;Animated.View style=containerStyle /&gt;,
+};</code></pre><h3 id="event"><a href="#event" class="anchor"></a>event</h3><p>You can map gestures and other events state directly to an animated value directly with <code>Animated.event</code>.</p><pre><code class="re">let animatedValue = Animated.Value.create(0.0);
+
+let handler =
+  Animated.event(
+    [|{
+        &quot;nativeEvent&quot;: {
+          &quot;contentOffset&quot;: {
+            &quot;x&quot;: animatedValue,
+          },
+        },
+      }|],
+    {&quot;useNativeDriver&quot;: true},
+  );
+
+&lt;ScrollView onScroll=handler /&gt;</code></pre><h2 id="api-reference"><a href="#api-reference" class="anchor"></a>API reference</h2></dd></dl><dl><dt class="spec type" id="type-regular"><a href="#type-regular" class="anchor"></a><code><span class="keyword">type </span>regular</code><code></code><span class="keyword">;</span></dt><dt class="spec type" id="type-value"><a href="#type-value" class="anchor"></a><code><span class="keyword">type </span>value('a) </code><code></code><span class="keyword">;</span></dt><dd><p>Type of an Animated value.</p><p>A <code>regular</code> value is a one created by calling <a href="Value#val-create"><code>Value.create</code></a>.</p><p>A <code>calculated</code> is a value received as a result of performing <a href="Value#val-interpolate"><code>Value.interpolate</code></a>, <a href="Value#val-add"><code>Value.add</code></a>, <a href="Value#val-divide"><code>Value.divide</code></a> or <a href="Value#val-modulo"><code>Value.modulo</code></a>.</p><p><b>Note:</b> Some operations are only allowed on either <code>regular</code> or <code>calculated</code> values.</p></dd></dl><dl><dt class="spec type" id="type-valueXY"><a href="#type-valueXY" class="anchor"></a><code><span class="keyword">type </span>valueXY</code><code></code><span class="keyword">;</span></dt><dd><p>Type of a vector Animated value. See <a href="ValueXY"><code>ValueXY</code></a> module for details. Unlike <a href="#type-value"><code>value</code></a>, it cannot be interpolated or subject to math operations.</p></dd></dl><article class="spec module" id="module-Animation"><a href="#module-Animation" class="anchor"></a><code><span class="keyword">module </span><a href="Animation">Animation</a> : <span class="keyword">{</span> ... <span class="keyword">}</span><span class="keyword">;</span></code></article><article class="spec module" id="module-Interpolation"><a href="#module-Interpolation" class="anchor"></a><code><span class="keyword">module </span><a href="Interpolation">Interpolation</a> : <span class="keyword">{</span> ... <span class="keyword">}</span><span class="keyword">;</span></code></article><article class="spec module" id="module-Value"><a href="#module-Value" class="anchor"></a><code><span class="keyword">module </span><a href="Value">Value</a> : <span class="keyword">{</span> ... <span class="keyword">}</span><span class="keyword">;</span></code></article><article class="spec module" id="module-ValueXY"><a href="#module-ValueXY" class="anchor"></a><code><span class="keyword">module </span><a href="ValueXY">ValueXY</a> : <span class="keyword">{</span> ... <span class="keyword">}</span><span class="keyword">;</span></code></article><dl><dt class="spec type" id="type-animatedEvent"><a href="#type-animatedEvent" class="anchor"></a><code><span class="keyword">type </span>animatedEvent</code><code></code><span class="keyword">;</span></dt><dd><p>Event handler that maps values to <a href="#type-value"><code>value</code></a>. See next section for example use.</p></dd></dl><dl><dt class="spec value" id="val-event"><a href="#val-event" class="anchor"></a><code><span class="keyword">let </span>event : array(<span class="type-var">'a</span>) <span>=&gt;</span> <span class="type-var">'b</span> <span>=&gt;</span> <a href="#type-animatedEvent">animatedEvent</a><span class="keyword">;</span></code></dt><dd><p>You can map gestures and other events state directly to an animated value directly with Animated.event.</p><h4 id="example"><a href="#example" class="anchor"></a>Example</h4><pre><code class="re">let animatedValue = Animated.Value.create(0.0);
+
+let handler =
+  Animated.event(
+    [|{
+        &quot;nativeEvent&quot;: {
+          &quot;contentOffset&quot;: {
+            &quot;x&quot;: animatedValue,
+          },
+        },
+      }|],
+    {&quot;useNativeDriver&quot;: true},
+  );
+
+&lt;ScrollView onScroll=handler /&gt;</code></pre></dd></dl><dl><dt class="spec value" id="val-delay"><a href="#val-delay" class="anchor"></a><code><span class="keyword">let </span>delay : float <span>=&gt;</span> <a href="Animation#type-t">Animation.t</a><span class="keyword">;</span></code></dt><dd><p>Helper function to delay execution of the animation. To be used with other Animated functions, as demonstrated at the below example.</p><h4 id="example"><a href="#example" class="anchor"></a>Example</h4><pre><code class="re">let barValue = Animated.Value.create(0.0);
+
+let animation =
+  Animated.sequence(
+    [|
+      Animated.delay(500),
+      Animated.timing(
+        ~value=barValue,
+        ~toValue=`raw(0.0),
+        ~duration=100.0,
+        (),
+      ),
+    |],
+    {&quot;stopTogether&quot;: false},
+  );
+
+Animated.start(animation, ());</code></pre><p>The above example will delay the <code>barValue</code> animation by 500 milliseconds.</p></dd></dl><dl><dt class="spec value" id="val-sequence"><a href="#val-sequence" class="anchor"></a><code><span class="keyword">let </span>sequence : array(<a href="Animation#type-t">Animation.t</a>) <span>=&gt;</span> <a href="Animation#type-t">Animation.t</a><span class="keyword">;</span></code></dt><dd><p>Starts an array of animations in order, waiting for each to complete before starting the next. If the current running animation is stopped, no following animations will be started.</p><h4 id="example"><a href="#example" class="anchor"></a>Example</h4><p>See <a href="#val-delay"><code>delay</code></a> example above.</p></dd></dl><dl><dt class="spec value" id="val-parallel"><a href="#val-parallel" class="anchor"></a><code><span class="keyword">let </span>parallel : array(<a href="Animation#type-t">Animation.t</a>) <span>=&gt;</span> Js.t({. stopTogether : bool, }) <span>=&gt;</span> <a href="Animation#type-t">Animation.t</a><span class="keyword">;</span></code></dt><dd><p>Runs an array of animations in parallel.</p><h4 id="example"><a href="#example" class="anchor"></a>Example</h4><pre><code class="re">let fooValue = Animated.Value.create(0.0);
+let barValue = Animated.Value.create(0.0);
+
+let animation =
+  Animated.parallel(
+    [|
+      Animated.timing(
+        ~value=fooValue,
+        ~toValue=`raw(1.0),
+        ~duration=100.0,
+        (),
+      ),
+      Animated.timing(
+        ~value=barValue,
+        ~toValue=`raw(0.0),
+        ~duration=100.0,
+        (),
+      ),
+    |],
+    {&quot;stopTogether&quot;: false},
+  );
+
+Animated.start(animation, ());</code></pre><p>When <code>stopTogether</code> is set to true, callback passed to <a href="#val-start"><span>Animated.start</span></a> will get executed only once, after all animations within the array have finished. Otherwise, it may get executed many times.</p><p>You should check for the value of <code>didFinish</code> boolean that is the first argument to the callback function.</p></dd></dl><dl><dt class="spec value" id="val-stagger"><a href="#val-stagger" class="anchor"></a><code><span class="keyword">let </span>stagger : float <span>=&gt;</span> array(<a href="Animation#type-t">Animation.t</a>) <span>=&gt;</span> <a href="Animation#type-t">Animation.t</a><span class="keyword">;</span></code></dt><dd><p>Array of animations may run in parallel (overlap), but are started in sequence with successive delays.</p><h4 id="example"><a href="#example" class="anchor"></a>Example</h4><pre><code class="re">let fooValue = Animated.Value.create(0.0);
+let barValue = Animated.Value.create(0.0);
+
+let animation =
+  Animated.stagger(
+    50.0,
+    [|
+      Animated.timing(
+        ~value=fooValue,
+        ~toValue=`raw(1.0),
+        ~duration=100.0,
+        (),
+      ),
+      Animated.timing(
+        ~value=barValue,
+        ~toValue=`raw(0.0),
+        ~duration=100.0,
+        (),
+      ),
+    |],
+  );
+
+Animated.start(animation, ());</code></pre></dd></dl><dl><dt class="spec value" id="val-loop"><a href="#val-loop" class="anchor"></a><code><span class="keyword">let </span>loop : ?&#8288;iterations:int <span>=&gt;</span> animation:<a href="Animation#type-t">Animation.t</a> <span>=&gt;</span> unit <span>=&gt;</span> <a href="Animation#type-t">Animation.t</a><span class="keyword">;</span></code></dt><dd><p>Loops a given animation continuously, so that each time it reaches the end, it resets and begins again from the start.</p><p>You can specify the number of interations explicitly here or use iterations property when defining animation.</p><h4 id="example"><a href="#example" class="anchor"></a>Example</h4><pre><code class="re">let fooValue = Animated.Value.create(0.0);
+
+let animation =
+  Animated.loop(
+    ~animation=Animated.timing(
+      ~value=fooValue,
+      ~toValue=`raw(0.0),
+      ~iterations=4,
+      ~duration=100.0,
+      (),
+    ),
+    (),
+  );
+
+Animated.start(animation, ());</code></pre></dd></dl><dl><dt class="spec value" id="val-createAnimatedComponent"><a href="#val-createAnimatedComponent" class="anchor"></a><code><span class="keyword">let </span>createAnimatedComponent : ReasonReact.reactClass <span>=&gt;</span> ReasonReact.reactClass<span class="keyword">;</span></code></dt><dd><p>Make any React component Animatable</p></dd></dl><dl><dt class="spec value" id="val-timing"><a href="#val-timing" class="anchor"></a><code><span class="keyword">let </span>timing : value:<a href="#type-value">value</a>(<a href="#type-regular">regular</a>) <span>=&gt;</span> toValue:[ `raw(float)<span class="keyword"> | </span>`animated(<a href="#type-value">value</a>(<a href="#type-regular">regular</a>)) ] <span>=&gt;</span> ?&#8288;easing:BsReactNative.Easing.t <span>=&gt;</span> ?&#8288;duration:float <span>=&gt;</span> ?&#8288;delay:float <span>=&gt;</span> ?&#8288;isInteraction:bool <span>=&gt;</span> ?&#8288;useNativeDriver:bool <span>=&gt;</span> ?&#8288;onComplete:<a href="Animation#type-endCallback">Animation.endCallback</a> <span>=&gt;</span> ?&#8288;iterations:int <span>=&gt;</span> unit <span>=&gt;</span> <a href="Animation#type-t">Animation.t</a><span class="keyword">;</span></code></dt><dd><p>Animates a value over time using Easing functions.</p><h4 id="example"><a href="#example" class="anchor"></a>Example</h4><pre><code class="re">let animatedValue = Animated.Value.create(0.0);
+
+let animation = Animated.timing(
+  ~value=animatedValue,
+  ~toValue=`raw(1.0),
+  ~duration=100.0,
+  (),
+);
+
+Animated.start(animation, ());</code></pre><p>Check <a href="https://facebook.github.io/react-native/docs/animated#timing">React Native documentation</a> for details.</p></dd></dl><dl><dt class="spec value" id="val-spring"><a href="#val-spring" class="anchor"></a><code><span class="keyword">let </span>spring : value:<a href="#type-value">value</a>(<a href="#type-regular">regular</a>) <span>=&gt;</span> toValue:[ `raw(float)<span class="keyword"> | </span>`animated(<a href="#type-value">value</a>(<a href="#type-regular">regular</a>)) ] <span>=&gt;</span> ?&#8288;restDisplacementThreshold:float <span>=&gt;</span> ?&#8288;overshootClamping:bool <span>=&gt;</span> ?&#8288;restSpeedThreshold:float <span>=&gt;</span> ?&#8288;velocity:float <span>=&gt;</span> ?&#8288;bounciness:float <span>=&gt;</span> ?&#8288;speed:float <span>=&gt;</span> ?&#8288;tension:float <span>=&gt;</span> ?&#8288;friction:float <span>=&gt;</span> ?&#8288;stiffness:float <span>=&gt;</span> ?&#8288;mass:float <span>=&gt;</span> ?&#8288;damping:float <span>=&gt;</span> ?&#8288;isInteraction:bool <span>=&gt;</span> ?&#8288;useNativeDriver:bool <span>=&gt;</span> ?&#8288;onComplete:<a href="Animation#type-endCallback">Animation.endCallback</a> <span>=&gt;</span> ?&#8288;iterations:int <span>=&gt;</span> unit <span>=&gt;</span> <a href="Animation#type-t">Animation.t</a><span class="keyword">;</span></code></dt><dd><p>Provides a simple spring physics model.</p><h4 id="example"><a href="#example" class="anchor"></a>Example</h4><pre><code class="re">let animatedValue = Animated.Value.create(0.0);
+
+let animation = Animated.spring(
+  ~value=animatedValue,
+  ~toValue=`raw(1.0),
+  ~bounciness=5.0,
+  (),
+);
+
+Animated.start(animation, ());</code></pre><p>Check <a href="https://facebook.github.io/react-native/docs/animated#spring">React Native documentation</a> for details.</p></dd></dl><dl><dt class="spec value" id="val-decay"><a href="#val-decay" class="anchor"></a><code><span class="keyword">let </span>decay : value:<a href="#type-value">value</a>(<a href="#type-regular">regular</a>) <span>=&gt;</span> velocity:float <span>=&gt;</span> ?&#8288;deceleration:float <span>=&gt;</span> ?&#8288;isInteraction:bool <span>=&gt;</span> ?&#8288;useNativeDriver:bool <span>=&gt;</span> ?&#8288;onComplete:<a href="Animation#type-endCallback">Animation.endCallback</a> <span>=&gt;</span> ?&#8288;iterations:int <span>=&gt;</span> unit <span>=&gt;</span> <a href="Animation#type-t">Animation.t</a><span class="keyword">;</span></code></dt><dd><p>Starts with an initial velocity and gradually slows to a stop.</p><h4 id="example"><a href="#example" class="anchor"></a>Example</h4><pre><code class="re">let animatedValue = Animated.Value.create(0.0);
+
+let animation = Animated.decay(
+  ~value=animatedValue,
+  ~toValue=`raw(1.0),
+  ~velocity=100.0,
+  (),
+);
+
+Animated.start(animation, ());</code></pre><p>Check <a href="https://facebook.github.io/react-native/docs/animated#decay">React Native documentation</a> for details.</p></dd></dl><dl><dt class="spec value" id="val-stop"><a href="#val-stop" class="anchor"></a><code><span class="keyword">let </span>stop : <a href="Animation#type-t">Animation.t</a> <span>=&gt;</span> unit<span class="keyword">;</span></code></dt><dd><p>Stops an animation</p></dd></dl><dl><dt class="spec value" id="val-start"><a href="#val-start" class="anchor"></a><code><span class="keyword">let </span>start : <a href="Animation#type-t">Animation.t</a> <span>=&gt;</span> ?&#8288;callback:<a href="Animation#type-endCallback">Animation.endCallback</a> <span>=&gt;</span> unit <span>=&gt;</span> unit<span class="keyword">;</span></code></dt><dd><p>Starts an animation</p></dd></dl><dl><dt class="spec value" id="val-reset"><a href="#val-reset" class="anchor"></a><code><span class="keyword">let </span>reset : <a href="Animation#type-t">Animation.t</a> <span>=&gt;</span> unit<span class="keyword">;</span></code></dt><dd><p>Resets an animation</p></dd></dl><article class="spec module" id="module-Easing"><a href="#module-Easing" class="anchor"></a><code><span class="keyword">module </span>Easing = BsReactNative.Easing<span class="keyword">;</span></code></article><article class="spec module" id="module-CompositeAnimation"><a href="#module-CompositeAnimation" class="anchor"></a><code><span class="keyword">module </span>CompositeAnimation = <a href="#module-Animation">Animation</a><span class="keyword">;</span></code></article><article class="spec module" id="module-Timing"><a href="#module-Timing" class="anchor"></a><code><span class="keyword">module </span>Timing = <a href="Value#module-Timing">Value.Timing</a><span class="keyword">;</span></code></article><article class="spec module" id="module-TimingXY"><a href="#module-TimingXY" class="anchor"></a><code><span class="keyword">module </span>TimingXY = <a href="ValueXY#module-Timing">ValueXY.Timing</a><span class="keyword">;</span></code></article><article class="spec module" id="module-Spring"><a href="#module-Spring" class="anchor"></a><code><span class="keyword">module </span>Spring = <a href="Value#module-Spring">Value.Spring</a><span class="keyword">;</span></code></article><article class="spec module" id="module-SpringXY"><a href="#module-SpringXY" class="anchor"></a><code><span class="keyword">module </span>SpringXY = <a href="ValueXY#module-Spring">ValueXY.Spring</a><span class="keyword">;</span></code></article><article class="spec module" id="module-Decay"><a href="#module-Decay" class="anchor"></a><code><span class="keyword">module </span>Decay = <a href="Value#module-Decay">Value.Decay</a><span class="keyword">;</span></code></article><article class="spec module" id="module-DecayXY"><a href="#module-DecayXY" class="anchor"></a><code><span class="keyword">module </span>DecayXY = <a href="ValueXY#module-Decay">ValueXY.Decay</a><span class="keyword">;</span></code></article></div></body></html>
