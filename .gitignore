@@ -6,3 +6,4 @@ lib/ocaml
 .vscode
 package-lock.json
 npm-debug.log
+docs/BsReactNative
