@@ -176,12 +176,34 @@ type value('a);
 type valueXY;
 
 /**
-  Configured animation as created by calling {!timing}, {!spring} or {!decay}
+  Configured animation as created by calling {!timing}, {!spring} or {!decay}.
  */
 module Animation: {
+  /** Type of the animation. */ 
   type t;
+  /**
+    If the animation finished running normally, the completion callback will be invoked with [finished] [true]. If the animation is done because stop() 
+    was called on it before it could finish (e.g. because it was interrupted by a gesture or another animation), then it will receive [finished] [false].
+   */
   type endResult = {. "finished": bool};
+  /**
+    {!start} takes this callback that will be called when the animation is done. See {!endResult} for arguments.
+   */
   type endCallback = endResult => unit;
+  /**
+    Stops an animation
+   */
+  let stop: t => unit;
+
+  /**
+    Starts an animation
+   */
+  let start: (t, ~callback: endCallback=?, unit) => unit;
+
+  /**
+    Resets an animation
+   */
+  let reset: t => unit;
 };
 
 /**
@@ -296,7 +318,8 @@ module Value: {
   let modulo: (value('a), float) => value(calculated);
   let diffClamp: (value('a), float, float) => value(calculated);
   /**
-    Allows mapping input ranges of an Animated {!value} to different output ranges. See {!Animated.Interpolation.interpolate} for details.
+    Allows mapping input ranges of an Animated {!value} to different output ranges. Exposed here as a convenience to match React Native API. 
+    See {!Animation.stop} for details.See {!Animated.Interpolation.interpolate} for details.
    */
   let interpolate:
     (
@@ -682,18 +705,18 @@ let decay:
   Animation.t;
 
 /**
-  Stops an animation
-*/
+  Exposed here as a convenience to match React Native API. See {!Animation.stop} for details.
+ */
 let stop: Animation.t => unit;
 
 /**
-  Starts an animation
-*/
+  Exposed here as a convenience to match React Native API. See {!Animation.start} for details.
+ */
 let start: (Animation.t, ~callback: Animation.endCallback=?, unit) => unit;
 
 /**
-  Resets an animation
-*/
+  Exposed here as a convenience to match React Native API. See {!Animation.reset} for details.
+ */
 let reset: Animation.t => unit;
 
 [@deprecated "Please use Easing module instead"]
