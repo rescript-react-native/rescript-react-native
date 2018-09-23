@@ -1,21 +1,10 @@
 /** Extras **/
 
-/** Hide deprecated modules **/
-article.spec.module#module-Easing,
-article.spec.module#module-CompositeAnimation,
-article.spec.module#module-Timing,
-article.spec.module#module-TimingXY,
-article.spec.module#module-Spring,
-article.spec.module#module-SpringXY,
-article.spec.module#module-Decay,
-article.spec.module#module-DecayXY {
-	display: none;
-}
-
 dt#type-calculated {
   display: none;
 }
 
-.content > header {
-  padding: 0 0.75em;
+.content > dl > dd {
+  padding: 0;
+  padding-top: 0.75em;
 }

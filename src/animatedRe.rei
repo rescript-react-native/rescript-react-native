@@ -210,7 +210,7 @@ module Animation: {
   Allows mapping input ranges of an Animated {!value} to different output ranges. By default, it will extrapolate the curve beyond the ranges given,
   but you can also have it clamp the output value.
 
-  It uses lineal interpolation by default but also supports easing functions.
+  It uses lineal interpolation by default but also supports {!Easing} functions.
   */
 module Interpolation: {
   type t = value(calculated);
@@ -237,24 +237,57 @@ module Interpolation: {
   by one mechanism at a time. Using a new mechanism (e.g. starting a new animation, or calling [setValue]) will stop any previous ones.
 
   Typically initialized with [Animated.Value.create(0.0);]
+
+  See {{:http://facebook.github.io/react-native/docs/animatedvalue} React Native documentation} for additional details.
 */
 module Value: {
   type t = value(regular);
   type jsValue = {. "value": float};
   type callback = jsValue => unit;
+  /** Creates new Animated value with a given initial value. */
   let create: float => t;
+  /** Directly set the value. This will stop any animations running on the value and update all the bound properties. */
   let setValue: (t, float) => unit;
+  /** Sets an offset that is applied on top of whatever value is set. */
   let setOffset: (t, float) => unit;
+  /** Merges the offset value into the base value and resets the offset to zero. The final output of the value is unchanged. */
   let flattenOffset: t => unit;
+  /** Sets the offset value to the base value, and resets the base value to zero. The final output of the value is unchanged. */
   let extractOffset: t => unit;
+  /**
+    Adds an asynchronous listener to the value so you can observe updates from animations. 
+    See {{:http://facebook.github.io/react-native/docs/animatedvalue#addListener} React Native documentation} for additional details.
+   */
   let addListener: (t, callback) => string;
+  /**
+    Unregister a listener. The id param shall match the identifier previously returned by {!addListener}.
+   */
   let removeListener: (t, string) => unit;
+  /** Remove all registered listeners. */
   let removeAllListeners: t => unit;
+  /** Stops any animation and resets the value to its original. */
   let resetAnimation: (t, ~callback: callback=?, unit) => unit;
+  /** Stops any running animation or tracking. */
   let stopAnimation: (t, ~callback: callback=?, unit) => unit;
-  let animate: (t, Animation.t, Animation.endCallback) => unit;
-  let stopTracking: t => unit;
-  let track: t => unit;
+  /**
+    Animates a value over time using {!Easing} functions.
+
+    {4 Example}
+
+    {[let animatedValue = Animated.Value.create(0.0);
+
+let animation = Animated.timing(
+  ~value=animatedValue,
+  ~toValue=`raw(1.0),
+  ~duration=100.0,
+  (),
+);
+
+Animated.start(animation, ());]}
+
+    Check {{:https://facebook.github.io/react-native/docs/animated#timing} React Native documentation}
+    for details.
+  */
   module Timing: {
     type config;
     let animate:
@@ -272,6 +305,25 @@ module Value: {
       ) =>
       Animation.t;
   };
+  /**
+    Provides a simple spring physics model.
+
+    {4 Example}
+
+    {[let animatedValue = Animated.Value.create(0.0);
+
+let animation = Animated.spring(
+  ~value=animatedValue,
+  ~toValue=`raw(1.0),
+  ~bounciness=5.0,
+  (),
+);
+
+Animated.start(animation, ());]}
+
+    Check {{:https://facebook.github.io/react-native/docs/animated#spring} React Native documentation}
+    for details.
+  */
   module Spring: {
     type config;
     let animate:
@@ -297,6 +349,25 @@ module Value: {
       ) =>
       Animation.t;
   };
+  /**
+    Starts with an initial velocity and gradually slows to a stop.
+
+    {4 Example}
+
+    {[let animatedValue = Animated.Value.create(0.0);
+
+let animation = Animated.decay(
+  ~value=animatedValue,
+  ~toValue=`raw(1.0),
+  ~velocity=100.0,
+  (),
+);
+
+Animated.start(animation, ());]}
+
+    Check {{:https://facebook.github.io/react-native/docs/animated#decay} React Native documentation}
+    for details.
+   */
   module Decay: {
     type config;
     let animate:
@@ -312,14 +383,24 @@ module Value: {
       ) =>
       Animation.t;
   };
+  /** Creates a new Animated value composed from two Animated values added together. */
   let add: (value('a), value('b)) => value(calculated);
+  /** Creates a new Animated value composed by dividing the first Animated value by the second Animated value. */
   let divide: (value('a), value('b)) => value(calculated);
+  /** Creates a new Animated value composed by subtracting the second Animated value from the first Animated value. */
+  let subtract: (value('a), value('b)) => value(calculated);
+  /** Creates a new Animated value composed from two Animated values multiplied together. */
   let multiply: (value('a), value('b)) => value(calculated);
+  /** Creates a new Animated value that is the (non-negative) modulo of the provided Animated value */
   let modulo: (value('a), float) => value(calculated);
+  /**
+    Create a new Animated value that is limited between 2 values.
+    See {{:https://facebook.github.io/react-native/docs/animated.html#diffclamp} React Native documentation} for details.BsReactNative
+   */
   let diffClamp: (value('a), float, float) => value(calculated);
   /**
-    Allows mapping input ranges of an Animated {!value} to different output ranges. Exposed here as a convenience to match React Native API. 
-    See {!Animation.stop} for details.See {!Animated.Interpolation.interpolate} for details.
+    Allows mapping input ranges of an Animated {!value} to different output ranges. 
+    See {!Animation.stop} for details. See {!Interpolation.interpolate} for details.
    */
   let interpolate:
     (
@@ -336,8 +417,10 @@ module Value: {
 };
 
 /**
-  2D Value for driving 2D animations, such as pan gestures. Almost identical API to normal {!value}, but multiplexed. Contains two regular
+  2D Value for driving 2D animations, such as pan gestures. Almost identical API to normal {!Value}, but multiplexed. Contains two regular
   [Animated.Values] under the hood.
+
+  Check {{:http://facebook.github.io/react-native/docs/animatedvaluexy} React Native documentation} for details.
  */
 module ValueXY: {
   type t = valueXY;
@@ -596,25 +679,7 @@ let loop: (~iterations: int=?, ~animation: Animation.t, unit) => Animation.t;
 /** Make any React component Animatable */
 let createAnimatedComponent: ReasonReact.reactClass => ReasonReact.reactClass;
 
-/**
-  Animates a value over time using Easing functions.
-
-  {4 Example}
-
-  {[let animatedValue = Animated.Value.create(0.0);
-
-let animation = Animated.timing(
-  ~value=animatedValue,
-  ~toValue=`raw(1.0),
-  ~duration=100.0,
-  (),
-);
-
-Animated.start(animation, ());]}
-
-  Check {{:https://facebook.github.io/react-native/docs/animated#timing} React Native documentation}
-  for details.
- */
+/** See {!Value.Timing} for details. */
 let timing:
   (
     ~value: value(regular),
@@ -630,25 +695,7 @@ let timing:
   ) =>
   Animation.t;
 
-/**
- Provides a simple spring physics model.
-
- {4 Example}
-
- {[let animatedValue = Animated.Value.create(0.0);
-
-let animation = Animated.spring(
-  ~value=animatedValue,
-  ~toValue=`raw(1.0),
-  ~bounciness=5.0,
-  (),
-);
-
-Animated.start(animation, ());]}
-
-  Check {{:https://facebook.github.io/react-native/docs/animated#spring} React Native documentation}
-  for details.
- */
+/** See {!Value.Spring} for details. */
 let spring:
   (
     ~value: value(regular),
@@ -672,25 +719,7 @@ let spring:
   ) =>
   Animation.t;
 
-/**
-  Starts with an initial velocity and gradually slows to a stop.
-
-  {4 Example}
-
-  {[let animatedValue = Animated.Value.create(0.0);
-
-let animation = Animated.decay(
-  ~value=animatedValue,
-  ~toValue=`raw(1.0),
-  ~velocity=100.0,
-  (),
-);
-
-Animated.start(animation, ());]}
-
-  Check {{:https://facebook.github.io/react-native/docs/animated#decay} React Native documentation}
-  for details.
-  */
+/** See {!Value.Decay} for details. */
 let decay:
   (
     ~value: value(regular),
@@ -704,43 +733,11 @@ let decay:
   ) =>
   Animation.t;
 
-/**
-  Exposed here as a convenience to match React Native API. See {!Animation.stop} for details.
- */
+/** See {!Animation.stop} for details. */
 let stop: Animation.t => unit;
 
-/**
-  Exposed here as a convenience to match React Native API. See {!Animation.start} for details.
- */
+/** See {!Animation.start} for details. */
 let start: (Animation.t, ~callback: Animation.endCallback=?, unit) => unit;
 
-/**
-  Exposed here as a convenience to match React Native API. See {!Animation.reset} for details.
- */
+/** See {!Animation.reset} for details. */
 let reset: Animation.t => unit;
-
-[@deprecated "Please use Easing module instead"]
-module Easing = Easing;
-
-[@deprecated
-  "Please use Animated.start, Animated.stop or Animated.reset instead"
-]
-module CompositeAnimation = Animation;
-
-[@deprecated "Please use Animated.timing instead"]
-module Timing = Value.Timing;
-
-[@deprecated "Please use Animated.ValueXY.Timing instead"]
-module TimingXY = ValueXY.Timing;
-
-[@deprecated "Please use Animated.spring instead"]
-module Spring = Value.Spring;
-
-[@deprecated "Please use Animated.ValueXY.Spring instead"]
-module SpringXY = ValueXY.Spring;
-
-[@deprecated "Please use Animated.decay instead"]
-module Decay = Value.Decay;
-
-[@deprecated "Please use Animated.ValueXY.Decay instead"]
-module DecayXY = ValueXY.Decay;

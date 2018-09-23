@@ -192,19 +192,6 @@ module ValueAnimations = (Val: Value) => {
   };
 };
 
-module ValueOperations = {
-  [@bs.module "react-native"] [@bs.scope "Animated"]
-  external add : (value('a), value('b)) => value(calculated) = "";
-  [@bs.module "react-native"] [@bs.scope "Animated"]
-  external divide : (value('a), value('b)) => value(calculated) = "";
-  [@bs.module "react-native"] [@bs.scope "Animated"]
-  external multiply : (value('a), value('b)) => value(calculated) = "";
-  [@bs.module "react-native"] [@bs.scope "Animated"]
-  external modulo : (value('a), float) => value(calculated) = "";
-  [@bs.module "react-native"] [@bs.scope "Animated"]
-  external diffClamp : (value('a), float, float) => value(calculated) = "";
-};
-
 module Interpolation = {
   type t = value(calculated);
   type outputRange;
@@ -264,6 +251,22 @@ module Interpolation = {
     );
 };
 
+module ValueOperations = {
+  [@bs.module "react-native"] [@bs.scope "Animated"]
+  external add : (value('a), value('b)) => value(calculated) = "";
+  [@bs.module "react-native"] [@bs.scope "Animated"]
+  external divide : (value('a), value('b)) => value(calculated) = "";
+  [@bs.module "react-native"] [@bs.scope "Animated"]
+  external multiply : (value('a), value('b)) => value(calculated) = "";
+  [@bs.module "react-native"] [@bs.scope "Animated"]
+  external modulo : (value('a), float) => value(calculated) = "";
+  [@bs.module "react-native"] [@bs.scope "Animated"]
+  external subtract : (value('a), value('b)) => value(calculated) = "";
+  [@bs.module "react-native"] [@bs.scope "Animated"]
+  external diffClamp : (value('a), float, float) => value(calculated) = "";
+  let interpolate = Interpolation.interpolate;
+};
+
 module Value = {
   type t = value(regular);
   type jsValue = {. "value": float};
@@ -287,17 +290,11 @@ module Value = {
     _resetAnimation(value, Js.Undefined.fromOption(callback));
   let stopAnimation = (value, ~callback=?, ()) =>
     _stopAnimation(value, Js.Undefined.fromOption(callback));
-  [@bs.send]
-  external animate : (t, Animation.t, Animation.endCallback) => unit =
-    "animate";
-  [@bs.send] external stopTracking : t => unit = "stopTracking";
-  [@bs.send] external track : t => unit = "track";
   include ValueAnimations({
     type t = value(regular);
     type rawJsType = float;
   });
   include ValueOperations;
-  let interpolate = Interpolation.interpolate;
 };
 
 module ValueXY = {
@@ -382,20 +379,8 @@ let spring = Value.Spring.animate;
 
 let decay = Value.Decay.animate;
 
-include Animation;
+let start = Animation.start;
 
-module Easing = Easing;
+let stop = Animation.stop;
 
-module CompositeAnimation = Animation;
-
-module Timing = Value.Timing;
-
-module TimingXY = ValueXY.Timing;
-
-module Spring = Value.Spring;
-
-module SpringXY = ValueXY.Spring;
-
-module Decay = Value.Decay;
-
-module DecayXY = ValueXY.Decay;
+let reset = Animation.reset;
