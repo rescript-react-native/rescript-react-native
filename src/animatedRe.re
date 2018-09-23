@@ -1,3 +1,6 @@
+/**
+	You can create animation
+ */
 module Animation = {
   type t;
   type endResult = {. "finished": bool};
@@ -18,7 +21,7 @@ type regular;
 
 type value('a);
 
-type valueXY('a);
+type valueXY;
 
 module ValueAnimations = (Val: Value) => {
   module Decay = {
@@ -301,7 +304,7 @@ module Value = {
 };
 
 module ValueXY = {
-  type t = valueXY(regular);
+  type t = valueXY;
   type jsValue = {
     .
     "x": float,
@@ -341,7 +344,7 @@ module ValueXY = {
   [@bs.get] external getX : t => Value.t = "x";
   [@bs.get] external getY : t => Value.t = "y";
   include ValueAnimations({
-    type t = valueXY(regular);
+    type t = valueXY;
     type rawJsType = jsValue;
   });
 };
