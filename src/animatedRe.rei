@@ -160,23 +160,23 @@ type calculated;
 type regular;
 
 /**
-	Type of an Animated value.
+  Type of an Animated value.
 
-	A [regular] value is a one created by calling {!Value.create}.
+  A [regular] value is a one created by calling {!Value.create}.
 
-	A [calculated] is a value received as a result of performing {!Value.interpolate}, {!Value.add}, {!Value.divide} or {!Value.modulo}.
+  A [calculated] is a value received as a result of performing {!Value.interpolate}, {!Value.add}, {!Value.divide} or {!Value.modulo}.
 
-	{b Note:} Some operations are only allowed on either [regular] or [calculated] values.
+  {b Note:} Some operations are only allowed on either [regular] or [calculated] values.
  */
 type value('a);
 
 /**
-	Type of a vector Animated value. See {!module:ValueXY} module for details. Unlike {!value}, it cannot be interpolated or subject to math operations.
+  Type of a vector Animated value. See {!module:ValueXY} module for details. Unlike {!value}, it cannot be interpolated or subject to math operations.
  */
 type valueXY;
 
 /**
-	Configured animation as created by calling {!timing}, {!spring} or {!decay}
+  Configured animation as created by calling {!timing}, {!spring} or {!decay}
  */
 module Animation: {
   type t;
@@ -185,11 +185,11 @@ module Animation: {
 };
 
 /**
-	Allows mapping input ranges of an Animated {!value} to different output ranges. By default, it will extrapolate the curve beyond the ranges given,
-	but you can also have it clamp the output value.
+  Allows mapping input ranges of an Animated {!value} to different output ranges. By default, it will extrapolate the curve beyond the ranges given,
+  but you can also have it clamp the output value.
 
-	It uses lineal interpolation by default but also supports easing functions.
-	*/
+  It uses lineal interpolation by default but also supports easing functions.
+  */
 module Interpolation: {
   type t = value(calculated);
   type extrapolate =
@@ -212,9 +212,9 @@ module Interpolation: {
 
 /**
   Standard value for driving animations. One [Animated.Value] can drive multiple properties in a synchronized fashion, but can only be driven
-	by one mechanism at a time. Using a new mechanism (e.g. starting a new animation, or calling [setValue]) will stop any previous ones.
+  by one mechanism at a time. Using a new mechanism (e.g. starting a new animation, or calling [setValue]) will stop any previous ones.
 
-	Typically initialized with [Animated.Value.create(0.0);]
+  Typically initialized with [Animated.Value.create(0.0);]
 */
 module Value: {
   type t = value(regular);
@@ -229,7 +229,7 @@ module Value: {
   let removeListener: (t, string) => unit;
   let removeAllListeners: t => unit;
   let resetAnimation: (t, ~callback: callback=?, unit) => unit;
-	let stopAnimation: (t, ~callback: callback=?, unit) => unit;
+  let stopAnimation: (t, ~callback: callback=?, unit) => unit;
   let animate: (t, Animation.t, Animation.endCallback) => unit;
   let stopTracking: t => unit;
   let track: t => unit;
@@ -294,10 +294,10 @@ module Value: {
   let divide: (value('a), value('b)) => value(calculated);
   let multiply: (value('a), value('b)) => value(calculated);
   let modulo: (value('a), float) => value(calculated);
-	let diffClamp: (value('a), float, float) => value(calculated);
-	/**
-	  Allows mapping input ranges of an Animated {!value} to different output ranges. See {!Animated.Interpolation.interpolate} for details.
-	 */
+  let diffClamp: (value('a), float, float) => value(calculated);
+  /**
+    Allows mapping input ranges of an Animated {!value} to different output ranges. See {!Animated.Interpolation.interpolate} for details.
+   */
   let interpolate:
     (
       value('a),
@@ -313,8 +313,8 @@ module Value: {
 };
 
 /**
-	2D Value for driving 2D animations, such as pan gestures. Almost identical API to normal {!value}, but multiplexed. Contains two regular
-	[Animated.Values] under the hood.
+  2D Value for driving 2D animations, such as pan gestures. Almost identical API to normal {!value}, but multiplexed. Contains two regular
+  [Animated.Values] under the hood.
  */
 module ValueXY: {
   type t = valueXY;
@@ -466,11 +466,11 @@ let delay: float => Animation.t;
 
 /**
   Starts an array of animations in order, waiting for each to complete before starting the next.
-	If the current running animation is stopped, no following animations will be started.
+  If the current running animation is stopped, no following animations will be started.
 
-	{4 Example}
+  {4 Example}
 
-	See {!delay} example above.
+  See {!delay} example above.
  */
 let sequence: array(Animation.t) => Animation.t;
 
@@ -574,9 +574,9 @@ let loop: (~iterations: int=?, ~animation: Animation.t, unit) => Animation.t;
 let createAnimatedComponent: ReasonReact.reactClass => ReasonReact.reactClass;
 
 /**
-	Animates a value over time using Easing functions.
+  Animates a value over time using Easing functions.
 
-	{4 Example}
+  {4 Example}
 
   {[let animatedValue = Animated.Value.create(0.0);
 
@@ -650,9 +650,9 @@ let spring:
   Animation.t;
 
 /**
-	Starts with an initial velocity and gradually slows to a stop.
+  Starts with an initial velocity and gradually slows to a stop.
 
-	{4 Example}
+  {4 Example}
 
   {[let animatedValue = Animated.Value.create(0.0);
 
@@ -682,17 +682,17 @@ let decay:
   Animation.t;
 
 /**
-	Stops an animation
+  Stops an animation
 */
 let stop: Animation.t => unit;
 
 /**
-	Starts an animation
+  Starts an animation
 */
 let start: (Animation.t, ~callback: Animation.endCallback=?, unit) => unit;
 
 /**
-	Resets an animation
+  Resets an animation
 */
 let reset: Animation.t => unit;
 

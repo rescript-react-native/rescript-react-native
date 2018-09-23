@@ -5,15 +5,15 @@
  * Some tweaks to make documentation nicer
  */
 document.addEventListener("DOMContentLoaded", function(event) {
-	var header = document.querySelector("h1 code");
-	if (header) {
-		header.textContent = header.textContent.replace("-BsReactNative", "");
-	}
+  var header = document.querySelector("h1 code");
+  if (header) {
+    header.textContent = header.textContent.replace("-BsReactNative", "");
+  }
 
-	var nav = document.querySelector("nav");
-	if (nav) {
-		nav.childNodes.forEach(function(node) {
-			node.textContent = node.textContent.replace("-BsReactNative", "");
-		});
-	}
+  var nav = document.querySelector("nav");
+  if (nav) {
+    nav.childNodes.forEach(function(node) {
+      node.textContent = node.textContent.replace("-BsReactNative", "");
+    });
+  }
 });
