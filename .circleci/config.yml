@@ -112,7 +112,7 @@ jobs:
             git add . --force
             git commit -m "Documentation"
 
-            git push origin gh-pages --force
+            git push origin HEAD:gh-pages --force
           
 workflows:
   version: 2
