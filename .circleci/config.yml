@@ -12,13 +12,13 @@ aliases:
     branches:
       ignore: gh-pages
   - &save-opam-cache
-    keys:
-      - v1-opam-cache-{{ checksum "package.json" }}
-      - v1-opam-cache
+    key: v1-opam-cache-{{ checksum "package.json" }}
     paths:
       - ~/.opam/
   - &restore-opam-cache
-    key: v1-opam-cache-{{ checksum "package.json" }}
+    keys:
+      - v1-opam-cache-{{ checksum "package.json" }}
+      - v1-opam-cache
 
 defaults: &defaults
   docker:
