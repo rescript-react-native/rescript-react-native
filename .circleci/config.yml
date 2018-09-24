@@ -1,46 +1,88 @@
 aliases:
-  - &common_cache_key
-    key: dependency-cache-{{ checksum ".circleci/config.yml" }}-{{ checksum "package.json" }}
+  # Cache Management
+  - &restore-yarn-cache
+    keys:
+      - v1-yarn-cache-{{ checksum "package.json" }}
+      - v1-yarn-cache
+  - &save-yarn-cache
     paths:
-      - ~/.opam
-      - node_modules
+      - ~/.cache/yarn
+    key: v1-yarn-cache-{{ checksum "package.json" }}
+  - &filter-ignore-gh-pages
+    branches:
+      ignore: gh-pages
 
 version: 2
 jobs:
-  build:
+
+  # Set up a Node environment for downstream jobs
+  checkout_code:
     docker:
-      - image: ocaml/opam:debian-9_ocaml-4.02.3
+      - image: circleci/node:8.0
+    steps:
+      - checkout
+      
+      # Install Node.js dependencies
+      - restore-cache: *restore-yarn-cache
+      - run: yarn
+      - save-cache: *save-yarn-cache
+
+      - persist_to_workspace:
+          root: .
+          paths: .
+  
+  # Test bs-react-native
+  test:
+    docker:
+      - image: circleci/node:8.0
+    steps:
+      - attach_workspace:
+          at: ~/bs-react-native
+      - run:
+          name: "Run tests"
+          command: |
+            yarn build
+
+  # Build documentation
+  docs:
+    docker:
+      - image: circleci/node:8.0
     environment:
       - TERM: dumb
     steps:
-      - checkout
-      - restore_cache: *common_cache_key
+      - attach_workspace:
+          at: ~/bs-react-native
       - run:
-          name: "Install Node.js"
+          name: Install opam
           command: |
-            curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
-            sudo apt-get install -y nodejs
+            wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sudo sh -s /usr/local/bin
+            /usr/local/bin/opam init --compiler 4.02.3+buckle-master && eval $(opam config env)
       - run:
-          name: "Update opam"
-          command: |
-            opam update
-            opam pin add -y odoc https://github.com/ocaml/odoc.git#e1e73ba
+          name: Install dependencies
+          command: opam update && opam install -y odoc
       - run:
-          name: "Install dependencies"
+          name: "Build documentation"
           command: |
-            opam install -y odoc
-            npm install
-      - run:
-          name: "Test"
-          command: |
-            npm run build
-            npm run build-docs
+            yarn build-docs
       - store_artifacts:
           path: ~/bs-react-native/docs
-      - save_cache: *common_cache_key
 
 workflows:
   version: 2
   build-deploy:
     jobs:
-      - build
+      # Checkout repo and run Yarn
+      - checkout_code:
+          filters: *filter-ignore-gh-pages
+      
+      # Test
+      - test:
+          filters: *filter-ignore-gh-pages
+          requires:
+            - checkout_code
+
+      # Build documentation
+      - docs:
+          filters: *filter-ignore-gh-pages
+          requires:
+            - checkout_code
