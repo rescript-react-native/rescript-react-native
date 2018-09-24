@@ -59,7 +59,7 @@ jobs:
     <<: *defaults
     environment:
       - TERM: dumb
-      - BASH_ENV: ~/.bashrc
+      - BASH_ENV: ./.circleci/.profile
     steps:
       - attach_workspace:
           at: ~/bs-react-native
@@ -71,7 +71,7 @@ jobs:
               wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sudo sh -s /usr/local/bin
               /usr/local/bin/opam init --compiler 4.02.3+buckle-master
             fi
-            echo 'export PATH=~/.opam/4.02.3+buckle-master/bin/:$PATH' >> $BASH_ENV
+            echo '. ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true' >> $BASH_ENV
       - run:
           name: Install dependencies
           command: |
