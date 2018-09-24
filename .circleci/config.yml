@@ -18,8 +18,7 @@ aliases:
     paths:
       - ~/.opam/
   - &restore-opam-cache
-    keys:
-      - v1-opam-cache-{{ checksum "package.json" }}
+    key: v1-opam-cache-{{ checksum "package.json" }}
 
 defaults: &defaults
   docker:
