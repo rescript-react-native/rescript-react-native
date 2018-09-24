@@ -1,15 +1,15 @@
 #!/bin/bash
 
-readonly PKG=BsReactNative
+PKG=BsReactNative
 
-readonly DOCS=docs
-readonly ODOC=$(which odoc)
-readonly LIB=./lib/bs/src
-readonly PAGES=./docs/pages
+DOCS=docs
+ODOC=$(which odoc)
+LIB=./lib/bs/src
+PAGES=./docs/pages
 
 # Gather the sources to compile .odoc files
-readonly CMT_FILES=$(find ${LIB} -name "*.cmti")
-readonly MLD_FILES=$(find ${PAGES} -name "*.mld")
+CMT_FILES=$(find ${LIB} -name "*.cmti")
+MLD_FILES=$(find ${PAGES} -name "*.mld")
 
 echo "<< Compiling module docs..."
 for file in ${CMT_FILES}; do
