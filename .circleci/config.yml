@@ -83,8 +83,27 @@ jobs:
           command: |
             eval $(opam config env)
             yarn build && yarn build-docs
-      - store_artifacts:
-          path: ~/bs-react-native/docs
+      - persist_to_workspace:
+          root: .
+          paths:
+            - docs
+  
+  deploy-docs:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/bs-react-native
+      - run:
+          name: Deploy to GH Pages
+          command: |
+            git config credential.helper 'cache --timeout=120'
+            git config user.email "grabbou@gmail.com"
+            git config user.name "Mike Grabowski"
+
+            git add docs/BsReactNative --force
+            git commit -m "Documentation"
+
+            git subtree push --prefix docs https://${GITHUB_TOKEN}@github.com/reasonml-community/bs-react-native.git gh-pages --force
 
 workflows:
   version: 2
@@ -105,3 +124,8 @@ workflows:
           filters: *filter-ignore-gh-pages
           requires:
             - checkout_code
+      
+      # Deploy documentation
+      - deploy-docs:
+          requires:
+            - docs
