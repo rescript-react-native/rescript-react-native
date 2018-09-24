@@ -17,6 +17,7 @@ jobs:
 
   # Set up a Node environment for downstream jobs
   checkout_code:
+    working_directory: ~/bs-react-native
     docker:
       - image: circleci/node:8.0
     steps:
@@ -33,6 +34,7 @@ jobs:
   
   # Test bs-react-native
   test:
+    working_directory: ~/bs-react-native
     docker:
       - image: circleci/node:8.0
     steps:
@@ -45,6 +47,7 @@ jobs:
 
   # Build documentation
   docs:
+    working_directory: ~/bs-react-native
     docker:
       - image: circleci/node:8.0
     environment:
