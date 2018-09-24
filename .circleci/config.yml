@@ -45,7 +45,6 @@ jobs:
       - save_cache: *common_cache_key
           paths:
             - ~/.opam
-
 workflows:
   version: 2
   build-deploy:
