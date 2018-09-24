@@ -3,6 +3,8 @@
 
 > [BuckleScript](https://github.com/bucklescript/bucklescript) bindings for [React Native](https://github.com/facebook/react-native)
 
+Currently supported React Native version: `^0.53.3`
+
 ```bash
 $ react-native init HelloWorld --template reason
 ```
@@ -17,11 +19,6 @@ See https://github.com/reasonml-community/bs-react-native/tree/master/RNTester
 
 ## Contribute
 
-```bash
-git clone git@github.com:reasonml-community/bs-react-native.git
-cd bs-react-native
-yarn
-yarn start
-```
+Read the [contribution guidelines](./CONTRIBUTING.md) before contributing.
 
 ## Contributors
