@@ -9,31 +9,25 @@ jobs:
   build:
     docker:
       - image: ocaml/opam:debian-9_ocaml-4.02.3
+    environment:
+      - TERM: dumb
     steps:
+      - checkout
+      - restore_cache: *common_cache_key
       - run:
           name: "Install Node.js"
           command: |
             curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
             sudo apt-get install -y nodejs
-      - checkout
-      - restore_cache: *common_cache_key
       - run:
-          name: "Initialize opam"
+          name: "Update opam"
           command: |
-            sudo apt-get install -y m4
-            opam init --auto-setup --dot-profile=~/.bash_profile
-            opam remote add ocamlorg https://opam.ocaml.org -p 0 || true
-            opam remote remove default || true
             opam update
-            eval `opam config env`
-      - run:
-          name: "Install OCaml dependencies"
-          command: |
             opam pin add -y odoc git@github.com:ocaml/odoc.git#e1e73ba
-            opam install -y odoc
       - run:
-          name: "Install Javascript dependencies"
+          name: "Install dependencies"
           command: |
+            opam install -y odoc
             npm install
       - run:
           name: "Test"
