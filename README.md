@@ -1,5 +1,5 @@
 # bs-react-native
-[![Build Status](https://travis-ci.org/reasonml-community/bs-react-native.svg?branch=master)](https://travis-ci.org/reasonml-community/bs-react-native)
+[![CircleCI](https://circleci.com/gh/reasonml-community/bs-react-native/tree/master.svg?style=svg)](https://circleci.com/gh/reasonml-community/bs-react-native/tree/master)
 
 > [BuckleScript](https://github.com/bucklescript/bucklescript) bindings for [React Native](https://github.com/facebook/react-native)
 
@@ -9,7 +9,7 @@ $ react-native init HelloWorld --template reason
 
 ## Documentation
 
-See [https://rasonml-community.github.io/bs-react-native](https://practical-knuth-fdb0a7.netlify.com/bsreactnative/animatedre-bsreactnative/).
+See https://reasonml-community.github.io/bs-react-native.
 
 ## Usage
 
