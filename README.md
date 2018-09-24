@@ -24,4 +24,4 @@ Read the [contribution guidelines](./CONTRIBUTING.md) before contributing.
 
 ## Contributors
 
-This project has been brought to you buy all these [great contributors](./CONTRIBUTORS.md) from the community.
+This project has been brought to you thanks to hard work of [contributors](./CONTRIBUTORS.md) from the community.
