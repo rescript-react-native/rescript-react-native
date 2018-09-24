@@ -24,16 +24,17 @@ jobs:
             opam init --auto-setup --dot-profile=~/.bash_profile
             opam remote add ocamlorg https://opam.ocaml.org -p 0 || true
             opam remote remove default || true
+            opam update
+            eval `opam config env`
       - run:
-          name: "Pin dependency versions"
+          name: "Install OCaml dependencies"
           command: |
-            opam pin add -y odoc
+            opam pin add -y odoc git@github.com:ocaml/odoc.git#e1e73ba
+            opam install -y odoc
       - run:
-          name: "Install dependencies"
+          name: "Install Javascript dependencies"
           command: |
             npm install
-            opam update
-            opam install -y odoc
       - run:
           name: "Test"
           command: |
