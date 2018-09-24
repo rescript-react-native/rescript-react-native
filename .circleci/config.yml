@@ -76,7 +76,7 @@ jobs:
           command: |
             if [[ ! -x "odoc" ]]; then
               opam update
-              # opam pin add -y odoc https://github.com/ocaml/odoc.git#e1e73ba
+              opam pin add odoc --dev-repo
               opam install -y odoc
             fi
       - save-cache: *save-opam-cache
