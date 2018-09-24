@@ -104,11 +104,15 @@ jobs:
             git config user.email "grabbou@gmail.com"
             git config user.name "Mike Grabowski"
 
-            git add docs/BsReactNative --force
+            cd ./docs
+            git init
+            git remote add origin https://${GITHUB_TOKEN}@github.com/reasonml-community/bs-react-native.git
+
+            git add . --force
             git commit -m "Documentation"
 
-            git push https://${GITHUB_TOKEN}@github.com/reasonml-community/bs-react-native.git `git subtree split --prefix docs gh-pages`:gh-pages  --force
-
+            git push origin gh-pages --force
+          
 workflows:
   version: 2
   build-deploy:
