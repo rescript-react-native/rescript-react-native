@@ -11,6 +11,15 @@ aliases:
   - &filter-ignore-gh-pages
     branches:
       ignore: gh-pages
+  - &save-opam-cache
+    keys:
+      - v1-opam-cache-{{ checksum "package.json" }}
+      - v1-opam-cache
+    paths:
+      - ~/.opam/
+  - &restore-opam-cache
+    keys:
+      - v1-opam-cache-{{ checksum "package.json" }}
 
 version: 2
 jobs:
@@ -55,17 +64,24 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/bs-react-native
+      - run: *restore-opam-cache
       - run:
           name: Install opam
           command: |
-            wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sudo sh -s /usr/local/bin
-            /usr/local/bin/opam init --compiler 4.02.3+buckle-master && eval $(opam config env)
+            if [[ ! -e ~/buck ]]; then
+              wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sudo sh -s /usr/local/bin
+              /usr/local/bin/opam init --compiler 4.02.3+buckle-master
+            fi
+            eval $(opam config env)
       - run:
           name: Install dependencies
           command: |
-            opam update
-            opam pin add -y odoc https://github.com/ocaml/odoc.git#e1e73ba
-            opam install -y odoc
+            if [[ ! -x "odoc" ]]; then
+              opam update
+              # opam pin add -y odoc https://github.com/ocaml/odoc.git#e1e73ba
+              opam install -y odoc
+            fi
+      - run: *save-opam-cache
       - run:
           name: "Build documentation"
           command: |
