@@ -107,7 +107,7 @@ jobs:
             git add docs/BsReactNative --force
             git commit -m "Documentation"
 
-            git subtree push --prefix docs https://${GITHUB_TOKEN}@github.com/reasonml-community/bs-react-native.git gh-pages
+            git push https://${GITHUB_TOKEN}@github.com/reasonml-community/bs-react-native.git `git subtree split --prefix docs gh-pages`:gh-pages  --force
 
 workflows:
   version: 2
