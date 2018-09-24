@@ -59,7 +59,6 @@ jobs:
     <<: *defaults
     environment:
       - TERM: dumb
-      - BASH_ENV: ./.circleci/.profile
     steps:
       - attach_workspace:
           at: ~/bs-react-native
@@ -67,14 +66,14 @@ jobs:
       - run:
           name: Install opam
           command: |
-            if [[ ! -e ~/buck ]]; then
+            if [[ ! -e ~/.opam ]]; then
               wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sudo sh -s /usr/local/bin
               /usr/local/bin/opam init --compiler 4.02.3+buckle-master
             fi
-            echo '. ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true' >> $BASH_ENV
       - run:
           name: Install dependencies
           command: |
+            eval $(opam config env)
             if [[ ! -x "odoc" ]]; then
               opam update
               opam pin add odoc --dev-repo -y
@@ -84,6 +83,7 @@ jobs:
       - run:
           name: "Build documentation"
           command: |
+            eval $(opam config env)
             yarn build && yarn build-docs
       - store_artifacts:
           path: ~/bs-react-native/docs
