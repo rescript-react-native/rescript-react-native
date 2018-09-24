@@ -9,15 +9,12 @@ jobs:
   build:
     docker:
       - image: ocaml/opam:debian-9_ocaml-4.02.3
-    environment:
-      - TERM: dumb
     steps:
       - run:
           name: "Install Node.js"
           command: |
             curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
             sudo apt-get install -y nodejs
-            npm install -g yarn
       - checkout
       - restore_cache: *common_cache_key
       - run:
@@ -34,14 +31,14 @@ jobs:
       - run:
           name: "Install dependencies"
           command: |
-            yarn
+            npm install
             opam update
             opam install -y odoc
       - run:
           name: "Test"
           command: |
-            yarn build
-            yarn build-docs
+            npm run build
+            npm run build-docs
       - store_artifacts:
           path: ~/bs-react-native/docs
       - save_cache: *common_cache_key
