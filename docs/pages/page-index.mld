@@ -1,0 +1,5 @@
+{1 BsReactNative}
+
+BuckleScript bindings for React Native.
+
+Check the list of available {{!status} APIs and components}.
