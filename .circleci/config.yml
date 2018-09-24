@@ -83,7 +83,7 @@ jobs:
       - run:
           name: "Build documentation"
           command: |
-            yarn build-docs
+            yarn build && yarn build-docs
       - store_artifacts:
           path: ~/bs-react-native/docs
 
