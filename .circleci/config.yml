@@ -11,6 +11,10 @@ aliases:
   - &filter-ignore-gh-pages
     branches:
       ignore: gh-pages
+  - &filter-only-master
+    branches:
+      only:
+        - master
   - &save-opam-cache
     key: v1-opam-cache-{{ checksum "package.json" }}
     paths:
@@ -127,6 +131,7 @@ workflows:
       
       # Deploy documentation
       - deploy-docs:
+          filters: *filter-only-master
           requires:
             - docs
             - test
