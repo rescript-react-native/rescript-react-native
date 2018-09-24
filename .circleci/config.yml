@@ -66,10 +66,8 @@ jobs:
       - run:
           name: Install opam
           command: |
-            if [[ ! -e ~/.opam ]]; then
-              wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sudo sh -s /usr/local/bin
-              /usr/local/bin/opam init --compiler 4.02.3+buckle-master
-            fi
+            wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sudo sh -s /usr/local/bin
+            /usr/local/bin/opam init --compiler 4.02.3+buckle-master
       - run:
           name: Install dependencies
           command: |
