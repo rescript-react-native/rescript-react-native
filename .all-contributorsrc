@@ -1,0 +1,22 @@
+{
+  "projectName": "bs-react-native",
+  "projectOwner": "reasonml-community",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "wokalski",
+      "name": "Wojtek Czekalski",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1693190?v=4",
+      "profile": "http://wokalski.com",
+      "contributions": [
+        "code"
+      ]
+    }
+  ]
+}
