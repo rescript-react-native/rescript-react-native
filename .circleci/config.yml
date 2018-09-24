@@ -3,6 +3,7 @@ aliases:
     key: dependency-cache-{{ checksum ".circleci/config.yml" }}-{{ checksum "package.json" }}
     paths:
       - ~/.opam
+      - node_modules
 
 version: 2
 jobs:
@@ -23,7 +24,7 @@ jobs:
           name: "Update opam"
           command: |
             opam update
-            opam pin add -y odoc git@github.com:ocaml/odoc.git#e1e73ba
+            opam pin add -y odoc https://github.com/ocaml/odoc.git#e1e73ba
       - run:
           name: "Install dependencies"
           command: |
