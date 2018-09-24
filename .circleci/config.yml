@@ -1,6 +1,8 @@
 aliases:
   - &common_cache_key
     key: dependency-cache-{{ checksum ".circleci/config.yml" }}-{{ checksum "package.json" }}
+    paths:
+      - ~/.opam
 
 version: 2
 jobs:
@@ -43,8 +45,7 @@ jobs:
       - store_artifacts:
           path: ~/bs-react-native/docs
       - save_cache: *common_cache_key
-          paths:
-            - ~/.opam
+
 workflows:
   version: 2
   build-deploy:
