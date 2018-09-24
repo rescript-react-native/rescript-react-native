@@ -62,7 +62,10 @@ jobs:
             /usr/local/bin/opam init --compiler 4.02.3+buckle-master && eval $(opam config env)
       - run:
           name: Install dependencies
-          command: opam update && opam install -y odoc
+          command: |
+            opam update
+            opam pin add -y odoc https://github.com/ocaml/odoc.git#e1e73ba
+            opam install -y odoc
       - run:
           name: "Build documentation"
           command: |
