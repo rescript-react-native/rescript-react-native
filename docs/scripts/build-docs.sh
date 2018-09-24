@@ -34,7 +34,7 @@ done
 echo ">> Done!"
 
 # Now we can look for the compiled .odoc files
-readonly ODOC_FILES=$(find ${LIB} -name "*.odoc")
+ODOC_FILES=$(find ${LIB} -name "*.odoc")
 
 echo "<< Generating HTML..."
 for file in ${ODOC_FILES}; do
