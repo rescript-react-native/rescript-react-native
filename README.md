@@ -27,6 +27,10 @@ See https://github.com/reasonml-community/bs-react-native/tree/master/RNTester
 
 Read the [contribution guidelines](./CONTRIBUTING.md) before contributing.
 
+## Changelog
+
+Chec the [changelog](./CHANGELOG.md) for more information.
+
 ## Code of Conduct
 
 We want this community to be friendly and respectful to each other. Please read [the full text](/CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
