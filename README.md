@@ -1,4 +1,5 @@
 # bs-react-native
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-53-orange.svg?style=flat-square)](./CONTRIBUTORS.md)
 [![CircleCI](https://circleci.com/gh/reasonml-community/bs-react-native/tree/master.svg?style=svg)](https://circleci.com/gh/reasonml-community/bs-react-native/tree/master)
 
@@ -10,7 +11,9 @@ Currently supported React Native version: `^0.53.3`
 $ react-native init HelloWorld --template reason
 ```
 
-You can run the [playground](./example) with Expo: https://expo.io/@grabbou/bs-react-native
+You can run the [playground](./example) with Expo: https://expo.io/@grabbou/bs-react-native,
+
+> Works only on Android devices
 
 ## Documentation
 
