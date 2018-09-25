@@ -1,4 +1,5 @@
 # bs-react-native
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-53-orange.svg?style=flat-square)](./CONTRIBUTORS.md)
 [![CircleCI](https://circleci.com/gh/reasonml-community/bs-react-native/tree/master.svg?style=svg)](https://circleci.com/gh/reasonml-community/bs-react-native/tree/master)
 
@@ -21,6 +22,10 @@ See https://github.com/reasonml-community/bs-react-native/tree/master/RNTester
 ## Contribute
 
 Read the [contribution guidelines](./CONTRIBUTING.md) before contributing.
+
+## Changelog
+
+Chec the [changelog](./CHANGELOG.md) for more information.
 
 ## Contributors
 
