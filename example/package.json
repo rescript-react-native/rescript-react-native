@@ -7,7 +7,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "build": "../node_modules/.bin/bsb -make-world",
+    "build": "../node_modules/.bin/bsb -make-world -w",
     "clean-build": "../node_modules/.bin/bsb -clean-world -make-world"
   },
   "dependencies": {

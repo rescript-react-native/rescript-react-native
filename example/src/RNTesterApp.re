@@ -32,7 +32,11 @@ let styles =
           ]),
         "exampleContainer": style([flex(1.0)]),
         "appContainer":
-          style([flex(1.0), backgroundColor(String("#F5F5F6"))]),
+          style([
+            flex(1.0),
+            backgroundColor(String("#F5F5F6")),
+            marginTop(Pt(Platform.os() == Platform.Android ? 20.0 : 0.0))
+          ]),
       }
     ),
   );
@@ -67,6 +71,16 @@ let make = _children => {
     switch (action) {
     | ChangeCurrentExample(example) => Update({currentExample: example})
     },
+  didMount: (self) => {
+    let handler = () => {
+      self.send(ChangeCurrentExample(None));  
+      /* Js.Option.isSome(self.state.currentExample); */
+      /* Right now, BackButton is disabled - we need to figure out dynamic access to state */
+      true;
+    };
+    BackHandler.addEventListener("hardwareBackPress", handler);
+    self.onUnmount(() => BackHandler.removeEventListener("hardwareBackPress", handler));
+  },
   render: ({state, send}) => {
     let components = ExampleList.components;
     <SafeAreaView style=styles##appContainer>

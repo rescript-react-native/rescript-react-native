@@ -1,8 +1,6 @@
 open BsReactNative;
 open Utils;
 
-let exampleType = FullScreen;
-
 let displayName = "TextInputExample";
 
 let title = "<TextInput>";
