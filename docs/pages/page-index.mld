@@ -2,4 +2,6 @@
 
 BuckleScript bindings for React Native.
 
-Check the list of available {{!status} APIs and components}.
+{3 Getting started}
+
+Read our {{!gettingstarted} getting started} guide for details on how to start developing your first React Native app with Reason.

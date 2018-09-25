@@ -10,6 +10,8 @@ Currently supported React Native version: `^0.53.3`
 $ react-native init HelloWorld --template reason
 ```
 
+Check our [getting started](https://reasonml-community.github.io/bs-react-native/BsReactNative/gettingstarted.html) guide for details.
+
 ## Documentation
 
 See https://reasonml-community.github.io/bs-react-native.
