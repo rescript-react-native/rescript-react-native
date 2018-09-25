@@ -1,1 +1,0 @@
-src/pages/ViewPagerAndroid.cmj : src/example.cmj src/Utils.cmj
