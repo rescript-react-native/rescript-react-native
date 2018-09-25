@@ -89,7 +89,7 @@ Now let's add our first component in Reason, add [App.re] in the [src] folder:
 
 {b App.re}
 {[
-open Rebolt;
+open BsReactNative;
 
 let app = () =>
   <View>
