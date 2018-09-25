@@ -29,7 +29,7 @@ Read the [contribution guidelines](./CONTRIBUTING.md) before contributing.
 
 ## Changelog
 
-Chec the [changelog](./CHANGELOG.md) for more information.
+Check the [changelog](./CHANGELOG.md) for more informations about recent releases.
 
 ## Code of Conduct
 
