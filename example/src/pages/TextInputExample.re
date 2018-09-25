@@ -1,6 +1,8 @@
 open BsReactNative;
 open Utils;
 
+let exampleType = Multiple;
+
 let displayName = "TextInputExample";
 
 let title = "<TextInput>";
