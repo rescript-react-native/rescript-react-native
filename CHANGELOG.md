@@ -1,8 +1,8 @@
-## v0.10.0 - 2018-09-17
+## v0.10.0-rc0 - 2018-09-17
 
 Preview of upcoming version with goodies from Rebolt. We are working on migrating the documentation and last pieces of the information. Meanwhile, feel free to give this one a go.
 
-Article raleted:
+Article releted:
 
 - [Announcing Rebolt](https://blog.callstack.io/announcing-rebolt-207a1686a242) (@grabbou)
 - [Merging Rebolt v1 back to bs-react-native](https://github.com/reasonml-community/bs-react-native/issues/204) (@knowbody)
