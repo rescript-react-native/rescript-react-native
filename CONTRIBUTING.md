@@ -33,6 +33,21 @@ yarn
 
 Then build with `yarn start`.
 
+## Running example
+
+Example app is written in Expo. Please check their documentation for any additional details. Before running the app, make sure to build the Reason code.
+
+```sh
+cd ./example
+yarn build
+```
+
+Next, start Expo and follow on-screen instructions:
+
+```sh
+yarn start
+```
+
 ### Tips and Tricks
 
 ## Generate Interface files

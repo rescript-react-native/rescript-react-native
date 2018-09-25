@@ -1,4 +1,5 @@
 # bs-react-native
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-53-orange.svg?style=flat-square)](./CONTRIBUTORS.md)
 [![CircleCI](https://circleci.com/gh/reasonml-community/bs-react-native/tree/master.svg?style=svg)](https://circleci.com/gh/reasonml-community/bs-react-native/tree/master)
 
@@ -11,6 +12,8 @@ $ react-native init HelloWorld --template reason
 ```
 
 Check our [getting started](https://reasonml-community.github.io/bs-react-native/BsReactNative/gettingstarted.html) guide for details.
+
+You can run the [playground](./example) with Expo: https://expo.io/@grabbou/bs-react-native.
 
 ## Documentation
 
