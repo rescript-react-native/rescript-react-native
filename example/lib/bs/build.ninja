@@ -1,0 +1,146 @@
+bs_package_flags = -bs-package-name react-native-tester
+src_root_dir = /Users/grabbou/Repositories/bs-react-native/example
+bsc = /Users/grabbou/Repositories/bs-react-native/node_modules/bs-platform/lib/bsc.exe
+bsdep = /Users/grabbou/Repositories/bs-react-native/node_modules/bs-platform/lib/bsb_helper.exe
+warnings = -w -30-40+6+7+27+32..39+44+45+101
+bsc_flags = -nostdlib -I '/Users/grabbou/Repositories/bs-react-native/node_modules/bs-platform/lib/ocaml' -color always
+ppx_flags = 
+bs_package_includes = -I /Users/grabbou/Repositories/bs-react-native/node_modules/reason-react/lib/ocaml -I /Users/grabbou/Repositories/bs-react-native/example/node_modules/../../lib/ocaml
+bs_package_dev_includes = 
+namespace = 
+bsb_dir_group = 0
+refmt = /Users/grabbou/Repositories/bs-react-native/node_modules/bs-platform/lib/refmt.exe
+reason_react_jsx = -ppx '/Users/grabbou/Repositories/bs-react-native/node_modules/bs-platform/lib/reactjs_jsx_ppx_2.exe'
+refmt_flags = --print binary
+bsc_lib_includes = -I src/pages -I src
+rule build_ast_and_module_sets_from_re
+  command = ${bsc} -pp "${refmt} ${refmt_flags}" ${reason_react_jsx}  ${ppx_flags} ${warnings} ${bsc_flags} -c -o ${out} -bs-syntax-only -bs-binary-ast -impl ${in}
+  description = [34mBuilding[39m [2m${out}[22m
+build src/Utils.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/Utils.re
+rule build_deps
+  command = ${bsdep} ${namespace} -g ${bsb_dir_group} -MD ${in}
+  description = [34mBuilding[39m [2m${out}[22m
+build src/Utils.mlast.d : build_deps src/Utils.mlast
+rule build_cmj_cmi
+  command = ${bsc} ${bs_package_flags} -bs-assume-no-mli -bs-no-builtin-ppx-ml -bs-no-implicit-include ${bs_package_includes} ${bsc_lib_includes} ${bsc_extra_includes} ${warnings} ${bsc_flags} -o ${out} -c  ${in} $postbuild
+  depfile = ${in}.d
+  description = [34mBuilding[39m [2m${out}[22m
+build src/Utils.cmj |  $src_root_dir/lib/js/src/Utils.js src/Utils.cmi : build_cmj_cmi src/Utils.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src
+build src/example.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/example.re
+build src/example.mlast.d : build_deps src/example.mlast
+build src/example.cmj |  $src_root_dir/lib/js/src/example.js src/example.cmi : build_cmj_cmi src/example.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src
+build src/ExampleList.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/ExampleList.re
+build src/ExampleList.mlast.d : build_deps src/ExampleList.mlast
+build src/ExampleList.cmj |  $src_root_dir/lib/js/src/ExampleList.js src/ExampleList.cmi : build_cmj_cmi src/ExampleList.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src
+build src/RNTesterApp.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/RNTesterApp.re
+build src/RNTesterApp.mlast.d : build_deps src/RNTesterApp.mlast
+build src/RNTesterApp.cmj |  $src_root_dir/lib/js/src/RNTesterApp.js src/RNTesterApp.cmi : build_cmj_cmi src/RNTesterApp.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src
+build src/RNTesterPage.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/RNTesterPage.re
+build src/RNTesterPage.mlast.d : build_deps src/RNTesterPage.mlast
+build src/RNTesterPage.cmj |  $src_root_dir/lib/js/src/RNTesterPage.js src/RNTesterPage.cmi : build_cmj_cmi src/RNTesterPage.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src
+build src/RNTesterBlock.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/RNTesterBlock.re
+build src/RNTesterBlock.mlast.d : build_deps src/RNTesterBlock.mlast
+build src/RNTesterBlock.cmj |  $src_root_dir/lib/js/src/RNTesterBlock.js src/RNTesterBlock.cmi : build_cmj_cmi src/RNTesterBlock.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src
+build src/RNTesterTitle.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/RNTesterTitle.re
+build src/RNTesterTitle.mlast.d : build_deps src/RNTesterTitle.mlast
+build src/RNTesterTitle.cmj |  $src_root_dir/lib/js/src/RNTesterTitle.js src/RNTesterTitle.cmi : build_cmj_cmi src/RNTesterTitle.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src
+build src/RNTesterExampleList.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/RNTesterExampleList.re
+build src/RNTesterExampleList.mlast.d : build_deps src/RNTesterExampleList.mlast
+build src/RNTesterExampleList.cmj |  $src_root_dir/lib/js/src/RNTesterExampleList.js src/RNTesterExampleList.cmi : build_cmj_cmi src/RNTesterExampleList.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src
+build src/RNTesterExampleContainer.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/RNTesterExampleContainer.re
+build src/RNTesterExampleContainer.mlast.d : build_deps src/RNTesterExampleContainer.mlast
+build src/RNTesterExampleContainer.cmj |  $src_root_dir/lib/js/src/RNTesterExampleContainer.js src/RNTesterExampleContainer.cmi : build_cmj_cmi src/RNTesterExampleContainer.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src
+build src/pages/ViewExample.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/pages/ViewExample.re
+build src/pages/ViewExample.mlast.d : build_deps src/pages/ViewExample.mlast
+build src/pages/ViewExample.cmj |  $src_root_dir/lib/js/src/pages/ViewExample.js src/pages/ViewExample.cmi : build_cmj_cmi src/pages/ViewExample.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src/pages
+build src/pages/ButtonExample.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/pages/ButtonExample.re
+build src/pages/ButtonExample.mlast.d : build_deps src/pages/ButtonExample.mlast
+build src/pages/ButtonExample.cmj |  $src_root_dir/lib/js/src/pages/ButtonExample.js src/pages/ButtonExample.cmi : build_cmj_cmi src/pages/ButtonExample.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src/pages
+build src/pages/NetInfoExample.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/pages/NetInfoExample.re
+build src/pages/NetInfoExample.mlast.d : build_deps src/pages/NetInfoExample.mlast
+build src/pages/NetInfoExample.cmj |  $src_root_dir/lib/js/src/pages/NetInfoExample.js src/pages/NetInfoExample.cmi : build_cmj_cmi src/pages/NetInfoExample.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src/pages
+build src/pages/WebViewExample.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/pages/WebViewExample.re
+build src/pages/WebViewExample.mlast.d : build_deps src/pages/WebViewExample.mlast
+build src/pages/WebViewExample.cmj |  $src_root_dir/lib/js/src/pages/WebViewExample.js src/pages/WebViewExample.cmi : build_cmj_cmi src/pages/WebViewExample.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src/pages
+build src/pages/SettingsExample.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/pages/SettingsExample.re
+build src/pages/SettingsExample.mlast.d : build_deps src/pages/SettingsExample.mlast
+build src/pages/SettingsExample.cmj |  $src_root_dir/lib/js/src/pages/SettingsExample.js src/pages/SettingsExample.cmi : build_cmj_cmi src/pages/SettingsExample.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src/pages
+build src/pages/TextInputExample.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/pages/TextInputExample.re
+build src/pages/TextInputExample.mlast.d : build_deps src/pages/TextInputExample.mlast
+build src/pages/TextInputExample.cmj |  $src_root_dir/lib/js/src/pages/TextInputExample.js src/pages/TextInputExample.cmi : build_cmj_cmi src/pages/TextInputExample.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src/pages
+build src/pages/ViewPagerAndroid.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/pages/ViewPagerAndroid.re
+build src/pages/ViewPagerAndroid.mlast.d : build_deps src/pages/ViewPagerAndroid.mlast
+build src/pages/ViewPagerAndroid.cmj |  $src_root_dir/lib/js/src/pages/ViewPagerAndroid.js src/pages/ViewPagerAndroid.cmi : build_cmj_cmi src/pages/ViewPagerAndroid.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src/pages
+build src/pages/ImageStoreExample.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/pages/ImageStoreExample.re
+build src/pages/ImageStoreExample.mlast.d : build_deps src/pages/ImageStoreExample.mlast
+build src/pages/ImageStoreExample.cmj |  $src_root_dir/lib/js/src/pages/ImageStoreExample.js src/pages/ImageStoreExample.cmi : build_cmj_cmi src/pages/ImageStoreExample.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src/pages
+build src/pages/GeolocationExample.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/pages/GeolocationExample.re
+build src/pages/GeolocationExample.mlast.d : build_deps src/pages/GeolocationExample.mlast
+build src/pages/GeolocationExample.cmj |  $src_root_dir/lib/js/src/pages/GeolocationExample.js src/pages/GeolocationExample.cmi : build_cmj_cmi src/pages/GeolocationExample.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src/pages
+build src/pages/ImagePickerIOSExample.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/pages/ImagePickerIOSExample.re
+build src/pages/ImagePickerIOSExample.mlast.d : build_deps src/pages/ImagePickerIOSExample.mlast
+build src/pages/ImagePickerIOSExample.cmj |  $src_root_dir/lib/js/src/pages/ImagePickerIOSExample.js src/pages/ImagePickerIOSExample.cmi : build_cmj_cmi src/pages/ImagePickerIOSExample.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src/pages
+build src/pages/ImageBackgroundExample.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/pages/ImageBackgroundExample.re
+build src/pages/ImageBackgroundExample.mlast.d : build_deps src/pages/ImageBackgroundExample.mlast
+build src/pages/ImageBackgroundExample.cmj |  $src_root_dir/lib/js/src/pages/ImageBackgroundExample.js src/pages/ImageBackgroundExample.cmi : build_cmj_cmi src/pages/ImageBackgroundExample.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src/pages
+build src/pages/ActivityIndicatorExample.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/pages/ActivityIndicatorExample.re
+build src/pages/ActivityIndicatorExample.mlast.d : build_deps src/pages/ActivityIndicatorExample.mlast
+build src/pages/ActivityIndicatorExample.cmj |  $src_root_dir/lib/js/src/pages/ActivityIndicatorExample.js src/pages/ActivityIndicatorExample.cmi : build_cmj_cmi src/pages/ActivityIndicatorExample.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src/pages
+build src/pages/PermissionsAndroidExample.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/pages/PermissionsAndroidExample.re
+build src/pages/PermissionsAndroidExample.mlast.d : build_deps src/pages/PermissionsAndroidExample.mlast
+build src/pages/PermissionsAndroidExample.cmj |  $src_root_dir/lib/js/src/pages/PermissionsAndroidExample.js src/pages/PermissionsAndroidExample.cmi : build_cmj_cmi src/pages/PermissionsAndroidExample.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src/pages
+build src/pages/ProgressBarAndroidExample.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/pages/ProgressBarAndroidExample.re
+build src/pages/ProgressBarAndroidExample.mlast.d : build_deps src/pages/ProgressBarAndroidExample.mlast
+build src/pages/ProgressBarAndroidExample.cmj |  $src_root_dir/lib/js/src/pages/ProgressBarAndroidExample.js src/pages/ProgressBarAndroidExample.cmi : build_cmj_cmi src/pages/ProgressBarAndroidExample.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src/pages
+build src/pages/TouchableNativeFeedbackExample.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/pages/TouchableNativeFeedbackExample.re
+build src/pages/TouchableNativeFeedbackExample.mlast.d : build_deps src/pages/TouchableNativeFeedbackExample.mlast
+build src/pages/TouchableNativeFeedbackExample.cmj |  $src_root_dir/lib/js/src/pages/TouchableNativeFeedbackExample.js src/pages/TouchableNativeFeedbackExample.cmi : build_cmj_cmi src/pages/TouchableNativeFeedbackExample.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src/pages
+build build.ninja : phony  ||  src/pages/TouchableNativeFeedbackExample.mlast.d src/pages/ProgressBarAndroidExample.mlast.d src/pages/PermissionsAndroidExample.mlast.d src/pages/ActivityIndicatorExample.mlast.d src/pages/ImageBackgroundExample.mlast.d src/pages/ImagePickerIOSExample.mlast.d src/pages/GeolocationExample.mlast.d src/pages/ImageStoreExample.mlast.d src/pages/ViewPagerAndroid.mlast.d src/pages/TextInputExample.mlast.d src/pages/SettingsExample.mlast.d src/pages/WebViewExample.mlast.d src/pages/NetInfoExample.mlast.d src/pages/ButtonExample.mlast.d src/pages/ViewExample.mlast.d src/RNTesterExampleContainer.mlast.d src/RNTesterExampleList.mlast.d src/RNTesterTitle.mlast.d src/RNTesterBlock.mlast.d src/RNTesterPage.mlast.d src/RNTesterApp.mlast.d src/ExampleList.mlast.d src/example.mlast.d src/Utils.mlast.d
