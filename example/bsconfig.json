@@ -6,7 +6,7 @@
   "refmt": 3,
   "bs-dependencies": [
     "reason-react",
-    "../../"
+    "../../bs-react-native"
   ],
   "sources": [
     {

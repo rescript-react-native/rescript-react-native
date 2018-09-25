@@ -73,10 +73,12 @@ let make = _children => {
     },
   didMount: (self) => {
     let handler = () => {
-      self.send(ChangeCurrentExample(None));  
-      /* Js.Option.isSome(self.state.currentExample); */
-      /* Right now, BackButton is disabled - we need to figure out dynamic access to state */
-      true;
+      let didHandleBackButton = ref(false);
+      self.handle((_, self) => {
+        self.send(ChangeCurrentExample(None));
+        didHandleBackButton := Js.Option.isSome(self.state.currentExample);
+      })(());
+      didHandleBackButton^;
     };
     BackHandler.addEventListener("hardwareBackPress", handler);
     self.onUnmount(() => BackHandler.removeEventListener("hardwareBackPress", handler));
