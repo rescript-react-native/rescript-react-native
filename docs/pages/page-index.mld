@@ -1,0 +1,17 @@
+{1 BsReactNative}
+
+BuckleScript bindings for React Native.
+
+{3 Getting started}
+
+Read our {!page-gettingstarted} guide for details on how to start developing your first React Native app with Reason.
+
+{3 Status}
+
+Check the {!page-status} page for a list of available components, APIs and details on how to use each of them.
+
+{3 Troubleshooting}
+
+Before filling in an issue, check our {!page-faq} section for possible solution. 
+
+You can also join {{:https://discord.gg/reasonml} Discord} server and ask your questions in [#react] or [#bucklescript] channels. Everybody is really welcoming and helpful!

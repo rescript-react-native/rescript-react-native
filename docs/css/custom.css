@@ -1,0 +1,10 @@
+/** Extras **/
+
+dt#type-calculated {
+  display: none;
+}
+
+.content > dl > dd {
+  padding: 0;
+  padding-top: 0.75em;
+}

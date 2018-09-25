@@ -1,0 +1,142 @@
+aliases:
+  # Cache Management
+  - &restore-yarn-cache
+    keys:
+      - v1-yarn-cache-{{ checksum "package.json" }}
+      - v1-yarn-cache
+  - &save-yarn-cache
+    paths:
+      - ~/.cache/yarn
+    key: v1-yarn-cache-{{ checksum "package.json" }}
+  - &filter-ignore-gh-pages
+    branches:
+      ignore: gh-pages
+  - &filter-only-master
+    branches:
+      only:
+        - master
+  - &save-opam-cache
+    key: v1-opam-cache-{{ checksum "package.json" }}
+    paths:
+      - ~/.opam/
+  - &restore-opam-cache
+    keys:
+      - v1-opam-cache-{{ checksum "package.json" }}
+      - v1-opam-cache
+
+defaults: &defaults
+  docker:
+    - image: circleci/node:8
+  working_directory: ~/bs-react-native
+
+version: 2
+jobs:
+
+  # Set up a Node environment for downstream jobs
+  checkout_code:
+    <<: *defaults
+    steps:
+      - checkout
+      
+      # Install Node.js dependencies
+      - restore-cache: *restore-yarn-cache
+      - run: yarn
+      - save-cache: *save-yarn-cache
+
+      - persist_to_workspace:
+          root: .
+          paths: .
+  
+  # Test bs-react-native
+  test:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/bs-react-native
+      - run:
+          name: "Run tests"
+          command: |
+            yarn build
+
+  # Build documentation
+  docs:
+    <<: *defaults
+    environment:
+      - TERM: dumb
+    steps:
+      - attach_workspace:
+          at: ~/bs-react-native
+      - restore-cache: *restore-opam-cache
+      - run:
+          name: Install opam
+          command: |
+            wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sudo sh -s /usr/local/bin
+            /usr/local/bin/opam init --compiler 4.02.3+buckle-master
+      - run:
+          name: Install dependencies
+          command: |
+            eval $(opam config env)
+            if [[ ! -x "odoc" ]]; then
+              opam update
+              opam pin add odoc --dev-repo -y
+              opam install -y odoc
+            fi
+      - save-cache: *save-opam-cache
+      - run:
+          name: "Build documentation"
+          command: |
+            eval $(opam config env)
+            yarn build && yarn build-docs
+      - persist_to_workspace:
+          root: .
+          paths:
+            - docs
+  
+  deploy-docs:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/bs-react-native
+      - run:
+          name: Deploy to GH Pages
+          command: |
+            cd ./docs
+            git init
+
+            git config credential.helper 'cache --timeout=120'
+            git config user.email "grabbou@gmail.com"
+            git config user.name "Mike Grabowski"
+
+            git remote add origin https://${GITHUB_TOKEN}@github.com/reasonml-community/bs-react-native.git
+
+            git add . --force
+            git commit -m "Documentation"
+
+            git push origin HEAD:gh-pages --quiet --force
+          
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      # Checkout repo and run Yarn
+      - checkout_code:
+          filters: *filter-ignore-gh-pages
+      
+      # Test
+      - test:
+          filters: *filter-ignore-gh-pages
+          requires:
+            - checkout_code
+
+      # Build documentation
+      - docs:
+          filters: *filter-ignore-gh-pages
+          requires:
+            - checkout_code
+      
+      # Deploy documentation
+      - deploy-docs:
+          filters: *filter-only-master
+          requires:
+            - docs
+            - test

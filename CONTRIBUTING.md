@@ -3,8 +3,6 @@
 It's great of you to consider contributing to the BuckleScript bindings for React Native. **Every contribution is greatly appreciated!**
 There are many ways to contribute. Besides implementing new features and fixing bugs, you can give advice in issues, create and improve documentation, etc. 
 
-You can find an overview of the implemented components and APIs [here](STATUS.md).
-
 ## I want to contribute a missing component or API
 
 That's awesome!. If you have a specific one in mind go for it, otherwise just pick one of your choice.
@@ -34,6 +32,21 @@ yarn
 ```
 
 Then build with `yarn start`.
+
+## Running example
+
+Example app is written in Expo. Please check their documentation for any additional details. Before running the app, make sure to build the Reason code.
+
+```sh
+cd ./example
+yarn build
+```
+
+Next, start Expo and follow on-screen instructions:
+
+```sh
+yarn start
+```
 
 ### Tips and Tricks
 

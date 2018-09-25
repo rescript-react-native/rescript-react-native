@@ -26,38 +26,34 @@ let encode_pt_pct_auto = value =>
   | Auto => Encode.string("auto")
   };
 
-type pt_pct_animated_interpolated =
+type pt_pct_animated('a) =
   | Pt(float)
   | Pct(float)
-  | Animated(AnimatedRe.Value.t)
-  | Interpolated(AnimatedRe.Interpolation.t);
+  | Animated(AnimatedRe.value('a));
 
-let encode_pt_pct_animated_interpolated =
+let encode_pt_pct_animated =
   fun
   | Pt(value) => Encode.float(value)
   | Pct(value) => Encode.pct(value)
-  | Animated(value) => Encode.animatedValue(value)
-  | Interpolated(value) => Encode.interpolatedValue(value);
+  | Animated(value) => Encode.animatedValue(value);
 
-type float_interpolated_animated =
+type float_animated('a) =
   | Float(float)
-  | Animated(AnimatedRe.Value.t)
-  | Interpolated(AnimatedRe.Interpolation.t);
+  | Animated(AnimatedRe.value('a));
 
-let encode_float_interpolated_animated =
+let encode_float_animated =
   fun
   | Float(value) => Encode.float(value)
-  | Animated(value) => Encode.animatedValue(value)
-  | Interpolated(value) => Encode.interpolatedValue(value);
+  | Animated(value) => Encode.animatedValue(value);
 
 type string_interpolated =
   | String(string)
-  | Interpolated(AnimatedRe.Interpolation.t);
+  | Animated(AnimatedRe.Interpolation.t);
 
 let encode_string_interpolated =
   fun
   | String(value) => Encode.string(value)
-  | Interpolated(value) => Encode.interpolatedValue(value);
+  | Animated(value) => Encode.animatedValue(value);
 
 external flatten : array(t) => t = "%identity";
 
@@ -301,17 +297,17 @@ let position = v =>
     },
   );
 
-let top = value => ("top", encode_pt_pct_animated_interpolated(value));
+let top = value => ("top", encode_pt_pct_animated(value));
 
-let left = value => ("left", encode_pt_pct_animated_interpolated(value));
+let left = value => ("left", encode_pt_pct_animated(value));
 
-let right = value => ("right", encode_pt_pct_animated_interpolated(value));
+let right = value => ("right", encode_pt_pct_animated(value));
 
-let bottom = value => ("bottom", encode_pt_pct_animated_interpolated(value));
+let bottom = value => ("bottom", encode_pt_pct_animated(value));
 
-let height = value => ("height", encode_pt_pct_animated_interpolated(value));
+let height = value => ("height", encode_pt_pct_animated(value));
 
-let width = value => ("width", encode_pt_pct_animated_interpolated(value));
+let width = value => ("width", encode_pt_pct_animated(value));
 
 let zIndex = value => ("zIndex", Encode.int(value));
 
@@ -454,36 +450,6 @@ module Transform = {
       skewX,
       skewY,
     );
-  let makeInterpolated =
-      (
-        ~perspective=?,
-        ~rotate=?,
-        ~rotateX=?,
-        ~rotateY=?,
-        ~rotateZ=?,
-        ~scaleX=?,
-        ~scaleY=?,
-        ~translateX=?,
-        ~translateY=?,
-        ~skewX=?,
-        ~skewY=?,
-        (),
-      ) =>
-    create_(
-      (. value) => UtilsRN.option_map(Encode.interpolatedValue, value),
-      (. value) => UtilsRN.option_map(Encode.interpolatedValue, value),
-      perspective,
-      rotate,
-      rotateX,
-      rotateY,
-      rotateZ,
-      scaleX,
-      scaleY,
-      translateX,
-      translateY,
-      skewX,
-      skewY,
-    );
 };
 
 /***
@@ -559,7 +525,7 @@ let borderStyle = v =>
 
 let opacity = value => (
   "opacity",
-  encode_float_interpolated_animated(value),
+  encode_float_animated(value),
 );
 
 let elevation = floatStyle("elevation");
@@ -573,7 +539,7 @@ let fontFamily = stringStyle("fontFamily");
 
 let fontSize = value => (
   "fontSize",
-  encode_float_interpolated_animated(value),
+  encode_float_animated(value),
 );
 
 type fontStyle =

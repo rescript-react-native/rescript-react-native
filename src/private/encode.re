@@ -15,9 +15,6 @@ external object_ : Js_dict.t(Js.Json.t) => Js.Json.t = "%identity"; /* [object_ 
 
 external array : array(Js.Json.t) => Js.Json.t = "%identity";
 
-external animatedValue : AnimatedRe.Value.t => Js.Json.t = "%identity";
-
-external interpolatedValue : AnimatedRe.Interpolation.t => Js.Json.t =
-  "%identity";
+external animatedValue : AnimatedRe.value('a) => Js.Json.t = "%identity";
 
 let pct = pct => string(Printf.sprintf("%.2f%%", pct));

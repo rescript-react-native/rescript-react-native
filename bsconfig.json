@@ -10,13 +10,13 @@
       "dir": "src",
       "subdirs": [
         {
-          "dir": "components",
+          "dir": "components"
         },
         {
           "dir": "private",
-          "public": [],
-        },
-      ],
+          "public": []
+        }
+      ]
     }
   ]
 }

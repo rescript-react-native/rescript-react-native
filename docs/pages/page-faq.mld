@@ -1,0 +1,21 @@
+{1 Troubleshooting}
+
+Please find a list of common problems when working with [bs-react-native] below. If you have encountered an error that affected many developers, consider
+{{:https://github.com/reasonml-community/bs-react-native/edit/master/docs/pages/page-faq.mld} editing this file} and adding a possible solution below.
+
+{3 [Native module cannot be null] with create-react-native-app}
+
+Currently BuckleScript can generate [import * as ReactNative from 'react-native'], which breaks [create-react-native-app]. To get around this you can
+force BuckleScript to generate CommonJS modules instead of ES Modules using:
+
+{[
+/* bsconfig.json */
+{
+  /* ... */
+  "package-specs": [
+    {
+      "module": "commonjs"
+    }
+  ]
+}  
+]}
