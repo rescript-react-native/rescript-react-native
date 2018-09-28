@@ -12,17 +12,11 @@ let description = "ImagePickerIOS API";
 
 let styles =
   StyleSheet.create(
-    Style.(
-      {
-        "pageStyle": style([flex(1.), flexGrow(1.)]),
-        "viewPager":
-          style([
-            alignItems(Center),
-            padding(Pt(20.)),
-            height(Pt(400.)),
-          ]),
-      }
-    ),
+    RN_style.{
+      "pageStyle": style([flex(1.), flexGrow(1.)]),
+      "viewPager":
+        style([alignItems(Center), padding(Pt(20.)), height(Pt(400.))]),
+    },
   );
 
 module CanRecordVideosExample = {
@@ -47,9 +41,9 @@ module CanRecordVideosExample = {
       ),
     render: ({state}) =>
       <View style=styles##pageStyle key="1">
-        <Text> (ReasonReact.string("Can we record videos?")) </Text>
+        <Text> {ReasonReact.string("Can we record videos?")} </Text>
         <Text>
-          (ReasonReact.string(string_of_bool(state.canRecordVideos)))
+          {ReasonReact.string(string_of_bool(state.canRecordVideos))}
         </Text>
       </View>,
   };
@@ -75,9 +69,9 @@ module CanUseCameraExample = {
       ImagePickerIOS.canUseCamera(() => send(UpdateCanUseCamera(true))),
     render: ({state}) =>
       <View style=styles##pageStyle key="1">
-        <Text> (ReasonReact.string("Can we use camera?")) </Text>
+        <Text> {ReasonReact.string("Can we use camera?")} </Text>
         <Text>
-          (ReasonReact.string(string_of_bool(state.canUseCamera)))
+          {ReasonReact.string(string_of_bool(state.canUseCamera))}
         </Text>
       </View>,
   };
@@ -108,8 +102,8 @@ module CameraDialogExample = {
       },
     render: ({handle}) =>
       <View style=styles##pageStyle key="1">
-        <TouchableOpacity onPress=(handle(openCameraDialog))>
-          <Text> (ReasonReact.string("OPEN CAMERA DIALOG")) </Text>
+        <TouchableOpacity onPress={handle(openCameraDialog)}>
+          <Text> {ReasonReact.string("OPEN CAMERA DIALOG")} </Text>
         </TouchableOpacity>
       </View>,
   };
@@ -140,10 +134,10 @@ module SelectDialogExample = {
       },
     render: ({handle, state}) =>
       <View style=styles##pageStyle key="1">
-        <TouchableOpacity onPress=(handle(openCameraDialog))>
-          <Text> (ReasonReact.string("OPEN SELECT DIALOG")) </Text>
+        <TouchableOpacity onPress={handle(openCameraDialog)}>
+          <Text> {ReasonReact.string("OPEN SELECT DIALOG")} </Text>
         </TouchableOpacity>
-        <Text> (ReasonReact.string("image Uri:" ++ state.imageUri)) </Text>
+        <Text> {ReasonReact.string("image Uri:" ++ state.imageUri)} </Text>
       </View>,
   };
 };

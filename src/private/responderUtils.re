@@ -12,7 +12,7 @@ let responderHandlers =
       ~onStartShouldSetResponderCapture=?,
       (),
     )
-    : Types.touchResponderHandlers => {
+    : RN_types.touchResponderHandlers => {
   onMoveShouldSetResponder,
   onMoveShouldSetResponderCapture,
   onResponderGrant,

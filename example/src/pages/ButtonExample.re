@@ -30,7 +30,7 @@ let examples: array(Example.t) = [|
     description:
       Some(
         "Adjusts the color in a way that looks standard on each "
-        ++ "platform. On iOS, the color prop controls the color of the text. On "
+        ++ "platform. On iOS, the color prop controls the color of the RN_text. On "
         ++ "Android, the color adjusts the background color of the button.",
       ),
     render: () =>
@@ -50,9 +50,9 @@ let examples: array(Example.t) = [|
       ),
     render: () =>
       <View
-        style=Style.(
-                style([flexDirection(Row), justifyContent(SpaceBetween)])
-              )>
+        style=RN_style.(
+          style([flexDirection(Row), justifyContent(SpaceBetween)])
+        )>
         <Button
           onPress=onButtonPress
           title="This looks great!"

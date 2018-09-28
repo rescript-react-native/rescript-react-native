@@ -19,17 +19,17 @@ module ExampleContent = {
     ...component,
     render: _children =>
       <TouchableNativeFeedback
-        background=(TouchableNativeFeedback.selectableBackground())>
-        <View style=Style.(style([backgroundColor(String("#03DAC5"))]))>
+        background={TouchableNativeFeedback.selectableBackground()}>
+        <View style=RN_style.(style([backgroundColor(String("#03DAC5"))]))>
           <Text
-            style=Style.(
-                    style([
-                      marginVertical(Pt(20.)),
-                      textAlign(Center),
-                      fontSize(Float(20.)),
-                    ])
-                  )>
-            (ReasonReact.string("Press the button"))
+            style=RN_style.(
+              style([
+                marginVertical(Pt(20.)),
+                textAlign(Center),
+                fontSize(Float(20.)),
+              ])
+            )>
+            {ReasonReact.string("Press the button")}
           </Text>
         </View>
       </TouchableNativeFeedback>,
