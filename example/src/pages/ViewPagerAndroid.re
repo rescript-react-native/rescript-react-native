@@ -12,7 +12,7 @@ let description = "ViewPagerAndroid component (supported only on Android).";
 
 let styles =
   StyleSheet.create(
-    Style.(
+    RN_style.(
       {
         "pageStyle": style([flex(1.), flexGrow(1.)]),
         "viewPager":
