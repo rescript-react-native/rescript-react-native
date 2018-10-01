@@ -47,7 +47,7 @@ Please find the list of available components and APIs below.
 - {!AdSupportIOS}
 - {{:Alert-BsReactNative} [Alert]}
 - {{:AlertIOS-BsReactNative} [AlertIOS]}
-- {{:Animated-BsReactNative} [Animated]}
+- {{:AnimatedRe-BsReactNative} [Animated]}
 - {{:AppRegistry-BsReactNative} [AppRegistry]}
 - {{:AppState-BsReactNative} [AppState]}
 - {{:AsyncStorage-BsReactNative} [AsyncStorage]}
