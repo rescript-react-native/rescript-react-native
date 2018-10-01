@@ -4,83 +4,83 @@ Please find the list of available components and APIs below.
 
 {3 Components}
 - {!ART}
-- {{:/BsReactNative/ActivityIndicator-BsReactNative} [ActivityIndicator]}
-- {{:/BsReactNative/Button-BsReactNative} [Button]}
-- {{:/BsReactNative/DatePickerIOS-BsReactNative} [DatePickerIOS]}
+- {{:ActivityIndicator-BsReactNative} [ActivityIndicator]}
+- {{:Button-BsReactNative} [Button]}
+- {{:DatePickerIOS-BsReactNative} [DatePickerIOS]}
 - {!DrawerLayoutAndroid}
-- {{:/BsReactNative/FlatList-BsReactNative} [FlatList]}
-- {{:/BsReactNative/Image-BsReactNative} [Image]}
-- {{:/BsReactNative/ImageBackground-BsReactNative} [ImageBackground]}
-- {{:/BsReactNative/KeyboardAvoidingView-BsReactNative} [KeyboardAvoidingView]}
+- {{:FlatList-BsReactNative} [FlatList]}
+- {{:Image-BsReactNative} [Image]}
+- {{:ImageBackground-BsReactNative} [ImageBackground]}
+- {{:KeyboardAvoidingView-BsReactNative} [KeyboardAvoidingView]}
 - {!ListView}
 - {!MapView}
-- {{:/BsReactNative/Modal-BsReactNative} [Modal]}
-- {{:/BsReactNative/Picker-BsReactNative} [Picker]}
-- {{:/BsReactNative/PickerIOS-BsReactNative} [PickerIOS]}
-- {{:/BsReactNative/ProgressBarAndroid-BsReactNative} [ProgressBarAndroid]}
-- {{:/BsReactNative/ProgressViewIOS-BsReactNative} [ProgressViewIOS]}
-- {{:/BsReactNative/RefreshControl-BsReactNative} [RefreshControl]}
-- {{:/BsReactNative/SafeAreaView-BsReactNative} [SafeAreaView]}
-- {{:/BsReactNative/ScrollView-BsReactNative} [ScrollView]}
-- {{:/BsReactNative/SectionList-BsReactNative} [SectionList]}
-- {{:/BsReactNative/SegmentedControlIOS-BsReactNative} [SegmentedControlIOS]}
-- {{:/BsReactNative/Slider-BsReactNative} [Slider]}
-- {{:/BsReactNative/SnapshotViewIOS-BsReactNative} [SnapshotViewIOS]}
-- {{:/BsReactNative/StatusBar-BsReactNative} [StatusBar]}
-- {{:/BsReactNative/Switch-BsReactNative} [Switch]}
-- {{:/BsReactNative/TabBarIOS-BsReactNative} [TabBarIOS]}
-- {{:/BsReactNative/Text-BsReactNative} [Text]}
-- {{:/BsReactNative/TextInput-BsReactNative} [TextInput]}
+- {{:Modal-BsReactNative} [Modal]}
+- {{:Picker-BsReactNative} [Picker]}
+- {{:PickerIOS-BsReactNative} [PickerIOS]}
+- {{:ProgressBarAndroid-BsReactNative} [ProgressBarAndroid]}
+- {{:ProgressViewIOS-BsReactNative} [ProgressViewIOS]}
+- {{:RefreshControl-BsReactNative} [RefreshControl]}
+- {{:SafeAreaView-BsReactNative} [SafeAreaView]}
+- {{:ScrollView-BsReactNative} [ScrollView]}
+- {{:SectionList-BsReactNative} [SectionList]}
+- {{:SegmentedControlIOS-BsReactNative} [SegmentedControlIOS]}
+- {{:Slider-BsReactNative} [Slider]}
+- {{:SnapshotViewIOS-BsReactNative} [SnapshotViewIOS]}
+- {{:StatusBar-BsReactNative} [StatusBar]}
+- {{:Switch-BsReactNative} [Switch]}
+- {{:TabBarIOS-BsReactNative} [TabBarIOS]}
+- {{:Text-BsReactNative} [Text]}
+- {{:TextInput-BsReactNative} [TextInput]}
 - {!ToolbarAndroid}
-- {{:/BsReactNative/TouchableHighlight-BsReactNative} [TouchableHighlight]}
-- {{:/BsReactNative/TouchableWithoutFeedback-BsReactNative} [TouchableNativeFeedback]}
-- {{:/BsReactNative/TouchableOpacity-BsReactNative} [TouchableOpacity]}
-- {{:/BsReactNative/TouchableWithoutFeedback-BsReactNative} [TouchableWithoutFeedback]}
-- {{:/BsReactNative/View-BsReactNative} [View]}
-- {{:/BsReactNative/ViewPagerAndroid-BsReactNative} [ViewPagerAndroid]}
+- {{:TouchableHighlight-BsReactNative} [TouchableHighlight]}
+- {{:TouchableWithoutFeedback-BsReactNative} [TouchableNativeFeedback]}
+- {{:TouchableOpacity-BsReactNative} [TouchableOpacity]}
+- {{:TouchableWithoutFeedback-BsReactNative} [TouchableWithoutFeedback]}
+- {{:View-BsReactNative} [View]}
+- {{:ViewPagerAndroid-BsReactNative} [ViewPagerAndroid]}
 - {!VirtualizedList}
-- {{:/BsReactNative/WebView-BsReactNative} [WebView]}
+- {{:WebView-BsReactNative} [WebView]}
 
 {3 APIs}
 - {!AccessibilityInfo}
-- {{:/BsReactNative/Button-BsReactNative} [ActionSheetIOS]}
+- {{:Button-BsReactNative} [ActionSheetIOS]}
 - {!AdSupportIOS}
-- {{:/BsReactNative/Alert-BsReactNative} [Alert]}
-- {{:/BsReactNative/AlertIOS-BsReactNative} [AlertIOS]}
-- {{:/BsReactNative/Animated-BsReactNative} [Animated]}
-- {{:/BsReactNative/AppRegistry-BsReactNative} [AppRegistry]}
-- {{:/BsReactNative/AppState-BsReactNative} [AppState]}
-- {{:/BsReactNative/AsyncStorage-BsReactNative} [AsyncStorage]}
-- {{:/BsReactNative/BackHandler-BsReactNative} [BackHandler]}
-- {{:/BsReactNative/CameraRoll-BsReactNative} [CameraRoll]}
-- {{:/BsReactNative/Clipboard-BsReactNative} [Clipboard]}
-- {{:/BsReactNative/DatePickerAndroid-BsReactNative} [DatePickerAndroid]}
-- {{:/BsReactNative/Dimensions-BsReactNative} [Dimensions]}
-- {{:/BsReactNative/Easing-BsReactNative} [Easing]}
-- {{:/BsReactNative/Geolocation-BsReactNative} [Geolocation]}
+- {{:Alert-BsReactNative} [Alert]}
+- {{:AlertIOS-BsReactNative} [AlertIOS]}
+- {{:Animated-BsReactNative} [Animated]}
+- {{:AppRegistry-BsReactNative} [AppRegistry]}
+- {{:AppState-BsReactNative} [AppState]}
+- {{:AsyncStorage-BsReactNative} [AsyncStorage]}
+- {{:BackHandler-BsReactNative} [BackHandler]}
+- {{:CameraRoll-BsReactNative} [CameraRoll]}
+- {{:Clipboard-BsReactNative} [Clipboard]}
+- {{:DatePickerAndroid-BsReactNative} [DatePickerAndroid]}
+- {{:Dimensions-BsReactNative} [Dimensions]}
+- {{:Easing-BsReactNative} [Easing]}
+- {{:Geolocation-BsReactNative} [Geolocation]}
 - {!ImageEditor}
-- {{:/BsReactNative/ImagePickerIOS-BsReactNative} [ImagePickerIOS]}
-- {{:/BsReactNative/ImageStore-BsReactNative} [ImageStore]}
+- {{:ImagePickerIOS-BsReactNative} [ImagePickerIOS]}
+- {{:ImageStore-BsReactNative} [ImageStore]}
 - {!InteractionManager}
-- {{:/BsReactNative/Keyboard-BsReactNative} [Keyboard]}
+- {{:Keyboard-BsReactNative} [Keyboard]}
 - {!LayoutAnimation}
-- {{:/BsReactNative/Linking-BsReactNative} [Linking]}
-- {{:/BsReactNative/Button-BsReactNative} [NativeEventEmitter]}
+- {{:Linking-BsReactNative} [Linking]}
+- {{:Button-BsReactNative} [NativeEventEmitter]}
 - {!NativeMethodsMixin}
-- {{:/BsReactNative/NativeModules-BsReactNative} [NativeModules]}
-- {{:/BsReactNative/NetInfo-BsReactNative} [NetInfo]}
-- {{:/BsReactNative/PanResponder-BsReactNative} [PanResponder]}
-- {{:/BsReactNative/PermissionsAndroid-BsReactNative} [PermissionsAndroid]}
-- {{:/BsReactNative/PixelRatio-BsReactNative} [PixelRatio]}
-- {{:/BsReactNative/Platform-BsReactNative} [Platform]}
-- {{:/BsReactNative/PermissionsAndroid-BsReactNative} [PushNotificationIOS]}
-- {{:/BsReactNative/Settings-BsReactNative} [Settings]}
-- {{:/BsReactNative/Share-BsReactNative} [Share]}
+- {{:NativeModules-BsReactNative} [NativeModules]}
+- {{:NetInfo-BsReactNative} [NetInfo]}
+- {{:PanResponder-BsReactNative} [PanResponder]}
+- {{:PermissionsAndroid-BsReactNative} [PermissionsAndroid]}
+- {{:PixelRatio-BsReactNative} [PixelRatio]}
+- {{:Platform-BsReactNative} [Platform]}
+- {{:PermissionsAndroid-BsReactNative} [PushNotificationIOS]}
+- {{:Settings-BsReactNative} [Settings]}
+- {{:Share-BsReactNative} [Share]}
 - {!StatusBarIOS}
-- {{:/BsReactNative/StyleSheet-BsReactNative} [StyleSheet]}
+- {{:StyleSheet-BsReactNative} [StyleSheet]}
 - {!Systrace}
-- {{:/BsReactNative/TimePickerAndroid-BsReactNative} [TimePickerAndroid]}
-- {{:/BsReactNative/ToastAndroid-BsReactNative} [ToastAndroid]}
-- {{:/BsReactNative/Vibration-BsReactNative} [Vibration]}
+- {{:TimePickerAndroid-BsReactNative} [TimePickerAndroid]}
+- {{:ToastAndroid-BsReactNative} [ToastAndroid]}
+- {{:Vibration-BsReactNative} [Vibration]}
 - {!LayoutProps}
 - {!ShadowProps}
