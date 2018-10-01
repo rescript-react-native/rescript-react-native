@@ -179,10 +179,10 @@ type valueXY;
   Configured animation as created by calling {!timing}, {!spring} or {!decay}.
  */
 module Animation: {
-  /** Type of the animation. */ 
+  /** Type of the animation. */
   type t;
   /**
-    If the animation finished running normally, the completion callback will be invoked with [finished] [true]. If the animation is done because stop() 
+    If the animation finished running normally, the completion callback will be invoked with [finished] [true]. If the animation is done because stop()
     was called on it before it could finish (e.g. because it was interrupted by a gesture or another animation), then it will receive [finished] [false].
    */
   type endResult = {. "finished": bool};
@@ -255,7 +255,7 @@ module Value: {
   /** Sets the offset value to the base value, and resets the base value to zero. The final output of the value is unchanged. */
   let extractOffset: t => unit;
   /**
-    Adds an asynchronous listener to the value so you can observe updates from animations. 
+    Adds an asynchronous listener to the value so you can observe updates from animations.
     See {{:http://facebook.github.io/react-native/docs/animatedvalue#addListener} React Native documentation} for additional details.
    */
   let addListener: (t, callback) => string;
@@ -399,7 +399,7 @@ Animated.start(animation, ());]}
    */
   let diffClamp: (value('a), float, float) => value(calculated);
   /**
-    Allows mapping input ranges of an Animated {!value} to different output ranges. 
+    Allows mapping input ranges of an Animated {!value} to different output ranges.
     See {!Animation.stop} for details. See {!Interpolation.interpolate} for details.
    */
   let interpolate:

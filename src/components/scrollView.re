@@ -104,7 +104,7 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
     y: float,
   };
   [@bs.send]
-  external _scrollTo :
+  external _scrollTo:
     (
       ReasonReact.reactRef,
       {
@@ -117,7 +117,7 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
     unit =
     "scrollTo";
   [@bs.send]
-  external _scrollToEnd : (ReasonReact.reactRef, {. "animated": bool}) => unit =
+  external _scrollToEnd: (ReasonReact.reactRef, {. "animated": bool}) => unit =
     "scrollToEnd";
   let scrollTo = (ref, ~x, ~y, ~animated) =>
     _scrollTo(ref, {"x": x, "y": y, "animated": animated});
@@ -302,5 +302,5 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
 
 include CreateComponent({
   [@bs.module "react-native"]
-  external view : ReasonReact.reactClass = "ScrollView";
+  external view: ReasonReact.reactClass = "ScrollView";
 });

@@ -1,5 +1,5 @@
 [@bs.module "react-native"]
-external component : ReasonReact.reactClass = "ProgressBarAndroid";
+external component: ReasonReact.reactClass = "ProgressBarAndroid";
 
 let styleAttribute = attr =>
   switch (attr) {
@@ -50,8 +50,7 @@ let make =
           "color": color,
           "indeterminate": indeterminate,
           "progress": progress,
-          "styleAttr":
-            UtilsRN.option_map(styleAttribute, styleAttr),
+          "styleAttr": UtilsRN.option_map(styleAttribute, styleAttr),
           "testID": testID,
         },
         ~accessibilityLabel?,

@@ -9,7 +9,7 @@ type dimensions = {
 let get: [< | `screen | `window] => dimensions;
 
 [@bs.scope "Dimensions"] [@bs.module "react-native"]
-external addEventListener :
+external addEventListener:
   (
     string,
     {
@@ -23,7 +23,7 @@ external addEventListener :
   "";
 
 [@bs.scope "Dimensions"] [@bs.module "react-native"]
-external removeEventListener :
+external removeEventListener:
   (
     string,
     {

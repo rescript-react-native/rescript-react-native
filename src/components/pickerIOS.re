@@ -1,18 +1,13 @@
 [@bs.module "react-native"]
-external pickerIOS : ReasonReact.reactClass = "PickerIOS";
+external pickerIOS: ReasonReact.reactClass = "PickerIOS";
 
 module Item = {
   [@bs.scope "PickerIOS"] [@bs.module "react-native"]
-  external item : ReasonReact.reactClass = "Item";
+  external item: ReasonReact.reactClass = "Item";
   let make = (~label, ~value=?, ~color=?) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=item,
-      ~props=
-        {
-          "label": label,
-          "value": value,
-          "color": color,
-        },
+      ~props={"label": label, "value": value, "color": color},
     );
 };
 

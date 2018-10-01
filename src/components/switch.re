@@ -1,4 +1,4 @@
-[@bs.module "react-native"] external view : ReasonReact.reactClass = "Switch";
+[@bs.module "react-native"] external view: ReasonReact.reactClass = "Switch";
 
 let make =
     (

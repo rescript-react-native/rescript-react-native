@@ -106,7 +106,7 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
 
   type _imageURISource;
   [@bs.obj]
-  external _imageURISource :
+  external _imageURISource:
     (
       ~uri: string,
       ~bundle: string=?,
@@ -163,7 +163,7 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
 
   type _defaultURISource;
   [@bs.obj]
-  external _defaultURISource :
+  external _defaultURISource:
     (
       ~uri: string,
       ~scale: float=?,
@@ -189,7 +189,7 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
     | `Required(Packager.required)
   ];
   type rawImageSourceJS;
-  external rawImageSourceJS : 'a => rawImageSourceJS = "%identity";
+  external rawImageSourceJS: 'a => rawImageSourceJS = "%identity";
   module Event = {
     type t;
     type error;
@@ -197,7 +197,7 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
       loaded: float,
       total: float,
     };
-    [@bs.get] external progress : t => progress = "nativeEvent";
+    [@bs.get] external progress: t => progress = "nativeEvent";
   };
   let encodeResizeMode = x =>
     switch (x) {
@@ -246,36 +246,30 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
       ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=Impl.view,
-      ~props=
-        {
-          "onLayout": onLayout,
-          "onError": onError,
-          "onLoad": onLoad,
-          "onLoadEnd": onLoadEnd,
-          "onLoadStart": onLoadStart,
-          "resizeMode":
-            UtilsRN.option_map(encodeResizeMode, resizeMode),
-          "source": encodeSource(source),
-          "style": style,
-          "testID": testID,
-          "resizeMethod":
-            UtilsRN.option_map(encodeResizeMethod, resizeMethod),
-          "accessibilityLabel": accessibilityLabel,
-          "accessible": accessible,
-          "blurRadius": blurRadius,
-          "capInsets": capInsets,
-          "defaultSource":
-            UtilsRN.option_map(encodeDefaultSource, defaultSource),
-          "onPartialLoad": onPartialLoad,
-          "onProgress":
-            UtilsRN.option_map(
-              (x, y) => x(Event.progress(y)),
-              onProgress,
-            ),
-        },
+      ~props={
+        "onLayout": onLayout,
+        "onError": onError,
+        "onLoad": onLoad,
+        "onLoadEnd": onLoadEnd,
+        "onLoadStart": onLoadStart,
+        "resizeMode": UtilsRN.option_map(encodeResizeMode, resizeMode),
+        "source": encodeSource(source),
+        "style": style,
+        "testID": testID,
+        "resizeMethod": UtilsRN.option_map(encodeResizeMethod, resizeMethod),
+        "accessibilityLabel": accessibilityLabel,
+        "accessible": accessible,
+        "blurRadius": blurRadius,
+        "capInsets": capInsets,
+        "defaultSource":
+          UtilsRN.option_map(encodeDefaultSource, defaultSource),
+        "onPartialLoad": onPartialLoad,
+        "onProgress":
+          UtilsRN.option_map((x, y) => x(Event.progress(y)), onProgress),
+      },
     );
 };
 
 include CreateComponent({
-  [@bs.module "react-native"] external view : ReasonReact.reactClass = "Image";
+  [@bs.module "react-native"] external view: ReasonReact.reactClass = "Image";
 });

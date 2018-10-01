@@ -1,8 +1,8 @@
 [@bs.module "react-native"]
-external statusBar : ReasonReact.reactClass = "StatusBar";
+external statusBar: ReasonReact.reactClass = "StatusBar";
 
 [@bs.scope "StatusBar"] [@bs.module "react-native"]
-external _setHidden : (bool, Js.Undefined.t(string)) => unit = "setHidden";
+external _setHidden: (bool, Js.Undefined.t(string)) => unit = "setHidden";
 
 let setHidden = (hidden, ~animation=?, ()) =>
   _setHidden(
@@ -21,8 +21,7 @@ let setHidden = (hidden, ~animation=?, ()) =>
   );
 
 [@bs.scope "StatusBar"] [@bs.module "react-native"]
-external _setBarStyle : (string, Js.Undefined.t(bool)) => unit =
-  "setBarStyle";
+external _setBarStyle: (string, Js.Undefined.t(bool)) => unit = "setBarStyle";
 
 let setBarStyle = (style, ~animated=?, ()) =>
   _setBarStyle(
@@ -35,24 +34,21 @@ let setBarStyle = (style, ~animated=?, ()) =>
   );
 
 [@bs.scope "StatusBar"] [@bs.module "react-native"]
-external _setNetworkActivityIndicatorVisible : bool => unit =
+external _setNetworkActivityIndicatorVisible: bool => unit =
   "setNetworkActivityIndicatorVisible";
 
 let setNetworkActivityIndicatorVisible = visible =>
   _setNetworkActivityIndicatorVisible(visible);
 
 [@bs.scope "StatusBar"] [@bs.module "react-native"]
-external _setBackgroundColor : (string, Js.Undefined.t(bool)) => unit =
+external _setBackgroundColor: (string, Js.Undefined.t(bool)) => unit =
   "setBackgroundColor";
 
 let setBackgroundColor = (color, ~animated=?, ()) =>
-  _setBackgroundColor(
-    color,
-    Js.Undefined.fromOption(animated),
-  );
+  _setBackgroundColor(color, Js.Undefined.fromOption(animated));
 
 [@bs.scope "StatusBar"] [@bs.module "react-native"]
-external _setTranslucent : bool => unit = "setTranslucent";
+external _setTranslucent: bool => unit = "setTranslucent";
 
 let setTranslucent = translucent => _setTranslucent(translucent);
 
@@ -68,32 +64,31 @@ let make =
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=statusBar,
-    ~props=
-      {
-        "animated": animated,
-        "barStyle":
-          UtilsRN.option_map(
-            x =>
-              switch (x) {
-              | `default => "default"
-              | `lightContent => "light-content"
-              | `darkContent => "dark-content"
-              },
-            barStyle,
-          ),
-        "backgroundColor": backgroundColor,
-        "hidden": hidden,
-        "translucent": translucent,
-        "networkActivityIndicatorVisible": networkActivityIndicatorVisible,
-        "showHideTransition":
-          UtilsRN.option_map(
-            x =>
-              switch (x) {
-              | `none => "none"
-              | `fade => "fade"
-              | `slide => "slide"
-              },
-            showHideTransition,
-          ),
-      },
+    ~props={
+      "animated": animated,
+      "barStyle":
+        UtilsRN.option_map(
+          x =>
+            switch (x) {
+            | `default => "default"
+            | `lightContent => "light-content"
+            | `darkContent => "dark-content"
+            },
+          barStyle,
+        ),
+      "backgroundColor": backgroundColor,
+      "hidden": hidden,
+      "translucent": translucent,
+      "networkActivityIndicatorVisible": networkActivityIndicatorVisible,
+      "showHideTransition":
+        UtilsRN.option_map(
+          x =>
+            switch (x) {
+            | `none => "none"
+            | `fade => "fade"
+            | `slide => "slide"
+            },
+          showHideTransition,
+        ),
+    },
   );

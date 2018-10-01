@@ -27,18 +27,18 @@ type error = {
 };
 
 [@bs.obj]
-external makeGeolocationConfig :
+external makeGeolocationConfig:
   (~skipPermissionRequests: bool=?) => geolactionConfig =
   "";
 
 [@bs.obj]
-external makeCurrentPositionConfig :
+external makeCurrentPositionConfig:
   (~timeout: int=?, ~maximumAge: int=?, ~enableHighAccuracy: bool=?) =>
   currentPositionConfig =
   "";
 
 [@bs.obj]
-external makeWatchPositionConfig :
+external makeWatchPositionConfig:
   (
     ~timeout: int=?,
     ~maximumAge: int=?,
@@ -50,19 +50,19 @@ external makeWatchPositionConfig :
   "";
 
 [@bs.val] [@bs.scope ("navigator", "geolocation")]
-external setRNConfiguration : geolactionConfig => unit = "";
+external setRNConfiguration: geolactionConfig => unit = "";
 
 let setRNConfiguration = (~skipPermissionRequests=?, ()) =>
   setRNConfiguration(makeGeolocationConfig(~skipPermissionRequests?));
 
 [@bs.val] [@bs.scope ("navigator", "geolocation")]
-external requestAuthorization : unit => unit = "";
+external requestAuthorization: unit => unit = "";
 
 [@bs.val] [@bs.scope ("navigator", "geolocation")]
-external stopObserving : unit => unit = "";
+external stopObserving: unit => unit = "";
 
 [@bs.val] [@bs.scope ("navigator", "geolocation")]
-external getCurrentPosition :
+external getCurrentPosition:
   (position => unit, error => unit, currentPositionConfig) => unit =
   "";
 
@@ -75,7 +75,7 @@ let getCurrentPosition =
   );
 
 [@bs.val] [@bs.scope ("navigator", "geolocation")]
-external watchPosition :
+external watchPosition:
   (position => unit, error => unit, watchPositionConfig) => watchId =
   "";
 
@@ -102,4 +102,4 @@ let watchPosition =
   );
 
 [@bs.val] [@bs.scope ("navigator", "geolocation")]
-external clearWatch : watchId => unit = "";
+external clearWatch: watchId => unit = "";

@@ -2,13 +2,11 @@ open BsReactNative;
 
 let styles =
   StyleSheet.create(
-    Style.(
-      {
-        "container": style([backgroundColor(String("#e9eaed")), flex(1.0)]),
-        "spacer": style([height(Pt(270.))]),
-        "wrapper": style([flex(1.0), paddingTop(Pt(10.))]),
-      }
-    ),
+    Style.{
+      "container": style([backgroundColor(String("#e9eaed")), flex(1.0)]),
+      "spacer": style([height(Pt(270.))]),
+      "wrapper": style([flex(1.0), paddingTop(Pt(10.))]),
+    },
   );
 
 let component = ReasonReact.statelessComponent("RNTesterPage");
@@ -17,7 +15,7 @@ let make = (~title=?, ~noScroll=false, ~noSpacer=false, children) => {
   let contentWrapper = (children_: array(ReasonReact.reactElement)) =>
     if (noScroll) {
       <View key="wrapper" style=styles##wrapper>
-        (ReasonReact.array(children_))
+        {ReasonReact.array(children_)}
       </View>;
     } else {
       let automaticallyAdjustContentInsets =
@@ -31,7 +29,7 @@ let make = (~title=?, ~noScroll=false, ~noSpacer=false, children) => {
         keyboardShouldPersistTaps=`handled
         keyboardDismissMode=`interactive
         style=styles##wrapper>
-        (ReasonReact.array(children_))
+        {ReasonReact.array(children_)}
       </ScrollView>;
     };
   {
@@ -50,7 +48,7 @@ let make = (~title=?, ~noScroll=false, ~noSpacer=false, children) => {
         };
       <View style=styles##container>
         title
-        (contentWrapper(Array.append(children, [|spacer|])))
+        {contentWrapper(Array.append(children, [|spacer|]))}
       </View>;
     },
   };

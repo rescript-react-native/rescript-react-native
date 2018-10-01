@@ -1,8 +1,7 @@
 [@bs.module "react-native"]
-external view : ReasonReact.reactClass = "ActivityIndicator";
+external view: ReasonReact.reactClass = "ActivityIndicator";
 
-[@bs.module "react-native"] [@bs.scope "Platform"]
-external _os : string = "OS";
+[@bs.module "react-native"] [@bs.scope "Platform"] external _os: string = "OS";
 
 let encodeSize = size =>
   switch (size) {

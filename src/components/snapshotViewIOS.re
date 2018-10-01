@@ -1,5 +1,5 @@
 [@bs.module "react-native"]
-external snapshotViewIOS : ReasonReact.reactClass = "SnapshotViewIOS";
+external snapshotViewIOS: ReasonReact.reactClass = "SnapshotViewIOS";
 
 let make =
     (

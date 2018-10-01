@@ -1,5 +1,5 @@
 [@bs.module "react-native"]
-external view : ReasonReact.reactClass = "SectionList";
+external view: ReasonReact.reactClass = "SectionList";
 
 type jsSection('item) = {
   .
@@ -79,7 +79,7 @@ let renderItem =
 
 let section = (~data, ~key=?, ~renderItem=?, ()) => {data, key, renderItem};
 
-let sections = reSections : sections('item) =>
+let sections = reSections: sections('item) =>
   Array.map(
     reSection => {
       "data": reSection.data,
@@ -216,40 +216,38 @@ let make:
   ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=view,
-      ~props=
-        {
-          "sections": sections,
-          "renderItem": renderItem,
-          "keyExtractor": keyExtractor,
-          "ItemSeparatorComponent": itemSeparatorComponent,
-          "ListEmptyComponent": listEmptyComponent,
-          "ListFooterComponent": listFooterComponent,
-          "ListHeaderComponent": listHeaderComponent,
-          "SectionSeparatorComponent": sectionSeparatorComponent,
-          "inverted": inverted,
-          "extraData": extraData,
-          "initialNumToRender": initialNumToRender,
-          "onEndReached": onEndReached,
-          "onEndReachedThreshold": onEndReachedThreshold,
-          "onRefresh": onRefresh,
-          "onViewableItemsChanged": onViewableItemsChanged,
-          "refreshing": refreshing,
-          "renderSectionHeader": renderSectionHeader,
-          "renderSectionFooter": renderSectionFooter,
-          "stickySectionHeadersEnabled": stickySectionHeadersEnabled,
-          "keyboardDismissMode":
-            keyboardDismissMode
-            |> UtilsRN.option_map(keyboardDismissModeToJs),
-          "keyboardShouldPersistTaps":
-            keyboardShouldPersistTaps
-            |> UtilsRN.option_map(keyboardShouldPersistTapsToJs),
-          "showsHorizontalScrollIndicator": showsHorizontalScrollIndicator,
-          "showsVerticalScrollIndicator": showsVerticalScrollIndicator,
-          "getItemLayout":
-            UtilsRN.option_map(
-              (f, data, index) => f(Js.Undefined.toOption(data), index),
-              getItemLayout,
-            ),
-        },
+      ~props={
+        "sections": sections,
+        "renderItem": renderItem,
+        "keyExtractor": keyExtractor,
+        "ItemSeparatorComponent": itemSeparatorComponent,
+        "ListEmptyComponent": listEmptyComponent,
+        "ListFooterComponent": listFooterComponent,
+        "ListHeaderComponent": listHeaderComponent,
+        "SectionSeparatorComponent": sectionSeparatorComponent,
+        "inverted": inverted,
+        "extraData": extraData,
+        "initialNumToRender": initialNumToRender,
+        "onEndReached": onEndReached,
+        "onEndReachedThreshold": onEndReachedThreshold,
+        "onRefresh": onRefresh,
+        "onViewableItemsChanged": onViewableItemsChanged,
+        "refreshing": refreshing,
+        "renderSectionHeader": renderSectionHeader,
+        "renderSectionFooter": renderSectionFooter,
+        "stickySectionHeadersEnabled": stickySectionHeadersEnabled,
+        "keyboardDismissMode":
+          keyboardDismissMode |> UtilsRN.option_map(keyboardDismissModeToJs),
+        "keyboardShouldPersistTaps":
+          keyboardShouldPersistTaps
+          |> UtilsRN.option_map(keyboardShouldPersistTapsToJs),
+        "showsHorizontalScrollIndicator": showsHorizontalScrollIndicator,
+        "showsVerticalScrollIndicator": showsVerticalScrollIndicator,
+        "getItemLayout":
+          UtilsRN.option_map(
+            (f, data, index) => f(Js.Undefined.toOption(data), index),
+            getItemLayout,
+          ),
+      },
       _children,
     );

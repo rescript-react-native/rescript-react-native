@@ -51,40 +51,39 @@ module CreateComponent = (Impl: View.Impl) : TextComponent => {
       ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=Impl.view,
-      ~props=
-        {
-          "accessible": accessible,
-          "allowFontScaling": allowFontScaling,
-          "ellipsizeMode":
-            UtilsRN.option_map(
-              fun
-              | `head => "head"
-              | `middle => "middle"
-              | `tail => "tail"
-              | `clip => "clip",
-              ellipsizeMode,
-            ),
-          "numberOfLines": numberOfLines,
-          "onLayout": onLayout,
-          "onLongPress": onLongPress,
-          "onPress": onPress,
-          "pressRetentionOffset": pressRetentionOffset,
-          "selectable": selectable,
-          "style": style,
-          "testID": testID,
-          "selectionColor": selectionColor,
-          "textBreakStrategy":
-            UtilsRN.option_map(
-              fun
-              | `simple => "simple"
-              | `highQuality => "highQuality"
-              | `balanced => "balanced",
-              textBreakStrategy,
-            ),
-          "adjustsFontSizeToFit": adjustsFontSizeToFit,
-          "minimumFontScale": minimumFontScale,
-          "suppressHighlighting": suppressHighlighting,
-        },
+      ~props={
+        "accessible": accessible,
+        "allowFontScaling": allowFontScaling,
+        "ellipsizeMode":
+          UtilsRN.option_map(
+            fun
+            | `head => "head"
+            | `middle => "middle"
+            | `tail => "tail"
+            | `clip => "clip",
+            ellipsizeMode,
+          ),
+        "numberOfLines": numberOfLines,
+        "onLayout": onLayout,
+        "onLongPress": onLongPress,
+        "onPress": onPress,
+        "pressRetentionOffset": pressRetentionOffset,
+        "selectable": selectable,
+        "style": style,
+        "testID": testID,
+        "selectionColor": selectionColor,
+        "textBreakStrategy":
+          UtilsRN.option_map(
+            fun
+            | `simple => "simple"
+            | `highQuality => "highQuality"
+            | `balanced => "balanced",
+            textBreakStrategy,
+          ),
+        "adjustsFontSizeToFit": adjustsFontSizeToFit,
+        "minimumFontScale": minimumFontScale,
+        "suppressHighlighting": suppressHighlighting,
+      },
       switch (value) {
       | Some(string) =>
         Array.append([|ReasonReact.string(string)|], children)
@@ -94,5 +93,5 @@ module CreateComponent = (Impl: View.Impl) : TextComponent => {
 };
 
 include CreateComponent({
-  [@bs.module "react-native"] external view : ReasonReact.reactClass = "Text";
+  [@bs.module "react-native"] external view: ReasonReact.reactClass = "Text";
 });

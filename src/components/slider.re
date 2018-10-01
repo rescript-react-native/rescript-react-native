@@ -1,8 +1,8 @@
-[@bs.module "react-native"] external view : ReasonReact.reactClass = "Slider";
+[@bs.module "react-native"] external view: ReasonReact.reactClass = "Slider";
 
 type rawImageSourceJS;
 
-external rawImageSourceJS : 'a => rawImageSourceJS = "%identity";
+external rawImageSourceJS: 'a => rawImageSourceJS = "%identity";
 
 let convertImageSource = src =>
   switch (src) {
@@ -67,10 +67,8 @@ let make =
             UtilsRN.option_map(convertImageSource, maximumTrackImage),
           "minimumTrackImage":
             UtilsRN.option_map(convertImageSource, minimumTrackImage),
-          "thumbImage":
-            UtilsRN.option_map(convertImageSource, thumbImage),
-          "trackImage":
-            UtilsRN.option_map(convertImageSource, trackImage),
+          "thumbImage": UtilsRN.option_map(convertImageSource, thumbImage),
+          "trackImage": UtilsRN.option_map(convertImageSource, trackImage),
         },
         ~accessibilityLabel?,
         ~accessible?,
