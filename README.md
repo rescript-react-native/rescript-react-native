@@ -1,9 +1,5 @@
 # bs-react-native
 
-> [BuckleScript](https://github.com/bucklescript/bucklescript) bindings for [React Native](https://github.com/facebook/react-native)
-
----
-
 [![Build Status][build-badge]][build]
 [![Version][version-badge]][package]
 [![MIT License][license-badge]][license]
@@ -13,6 +9,8 @@
 [![Chat][chat-badge]][chat]
 [![React Native][react-native-badge]][react-native]
 [![Code of Conduct][coc-badge]][coc]
+
+> > [BuckleScript](https://github.com/bucklescript/bucklescript) bindings for [React Native](https://github.com/facebook/react-native)
 
 ```bash
 $ react-native init HelloWorld --template reason
