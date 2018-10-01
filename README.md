@@ -9,7 +9,7 @@
 [![Version][version-badge]][package]
 [![MIT License][license-badge]][license]
 
-[![All Contributors][all-contributors-badge]](#contributors)
+[![All Contributors][all-contributors-badge]][contributors]
 [![PRs Welcome][prs-welcome-badge]][prs-welcome]
 [![Chat][chat-badge]][chat]
 [![Code of Conduct][coc-badge]][coc]
@@ -44,10 +44,6 @@ Check the [changelog](./CHANGELOG.md) for more informations about recent release
 
 We want this community to be friendly and respectful to each other. Please read [the full text](https://github.com/callstack/reasonml-community/blob/master/CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
 
-## Contributors
-
-This project has been brought to you thanks to hard work of [contributors](./CONTRIBUTORS.md) from the community.
-
 <!-- badges -->
 [build-badge]: https://img.shields.io/circleci/project/github/reasonml-community/bs-react-native/master.svg
 [build]: https://circleci.com/gh/reasonml-community/bs-react-native
@@ -60,5 +56,6 @@ This project has been brought to you thanks to hard work of [contributors](./CON
 [coc-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
 [coc]: https://github.com/callstack/reasonml-community/blob/master/CODE_OF_CONDUCT.md
 [all-contributors-badge]: https://img.shields.io/badge/all_contributors-53-orange.svg
+[contributors]: https://github.com/callstack/reasonml-community/blob/master/CONTRIBUTORS.md
 [chat-badge]: https://img.shields.io/discord/496273792503513089.svg?logo=discord&colorB=blue
 [chat]: https://discord.gg/q8GQD34
