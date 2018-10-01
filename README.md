@@ -8,6 +8,7 @@
 [![Version][version-badge]][package]
 [![MIT License][license-badge]][license]
 [![All Contributors][all-contributors-badge]][contributors]
+
 [![PRs Welcome][prs-welcome-badge]][prs-welcome]
 [![Chat][chat-badge]][chat]
 [![React Native][react-native-badge]][react-native]
@@ -56,5 +57,5 @@ We want this community to be friendly and respectful to each other. Please read 
 [contributors]: https://github.com/callstack/reasonml-community/blob/master/CONTRIBUTORS.md
 [chat-badge]: https://img.shields.io/discord/496273792503513089.svg?logo=discord&colorB=blue
 [chat]: https://discord.gg/q8GQD34
-[react-native-badge]: https://img.shields.io/badge/react--nativ-%5E0.53.3-green.svg
+[react-native-badge]: https://img.shields.io/badge/react--native-%5E0.53.3-green.svg
 [react-native]: https://github.com/facebook/react-native
