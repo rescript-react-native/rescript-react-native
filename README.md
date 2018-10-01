@@ -5,16 +5,13 @@
 ---
 
 [![Build Status][build-badge]][build]
-[![Code Coverage][coverage-badge]][coverage]
 [![Version][version-badge]][package]
 [![MIT License][license-badge]][license]
-
 [![All Contributors][all-contributors-badge]][contributors]
 [![PRs Welcome][prs-welcome-badge]][prs-welcome]
 [![Chat][chat-badge]][chat]
+[![React Native][react-native-badge]][react-native]
 [![Code of Conduct][coc-badge]][coc]
-
-Currently supported React Native version: `^0.53.3`
 
 ```bash
 $ react-native init HelloWorld --template reason
@@ -53,9 +50,11 @@ We want this community to be friendly and respectful to each other. Please read 
 [license]: https://github.com/reasonml-community/bs-react-native/blob/master/LICENSE
 [prs-welcome-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
 [prs-welcome]: http://makeapullrequest.com
-[coc-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
+[coc-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg
 [coc]: https://github.com/callstack/reasonml-community/blob/master/CODE_OF_CONDUCT.md
 [all-contributors-badge]: https://img.shields.io/badge/all_contributors-53-orange.svg
 [contributors]: https://github.com/callstack/reasonml-community/blob/master/CONTRIBUTORS.md
 [chat-badge]: https://img.shields.io/discord/496273792503513089.svg?logo=discord&colorB=blue
 [chat]: https://discord.gg/q8GQD34
+[react-native-badge]: https://img.shields.io/badge/react--nativ-%5E0.53.3-green.svg
+[react-native]: https://github.com/facebook/react-native
