@@ -1,13 +1,13 @@
 [@bs.module "react-native"]
-external view : ReasonReact.reactClass = "TextInput";
+external view: ReasonReact.reactClass = "TextInput";
 
-[@bs.send] external isFocused : ReasonReact.reactRef => bool = "";
+[@bs.send] external isFocused: ReasonReact.reactRef => bool = "";
 
-[@bs.send] external clear : ReasonReact.reactRef => unit = "";
+[@bs.send] external clear: ReasonReact.reactRef => unit = "";
 
-[@bs.send] external focus : ReasonReact.reactRef => unit = "";
+[@bs.send] external focus: ReasonReact.reactRef => unit = "";
 
-[@bs.send] external blur : ReasonReact.reactRef => unit = "";
+[@bs.send] external blur: ReasonReact.reactRef => unit = "";
 
 let make =
     (
@@ -96,7 +96,7 @@ let make =
           "blurOnSubmit": blurOnSubmit,
           "caretHidden": caretHidden,
           "defaultValue": defaultValue,
-          "editable": editable ,
+          "editable": editable,
           "keyboardType":
             UtilsRN.option_map(
               x =>

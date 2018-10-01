@@ -1,18 +1,17 @@
-[@bs.module "react-native"] external view : ReasonReact.reactClass = "Picker";
+[@bs.module "react-native"] external view: ReasonReact.reactClass = "Picker";
 
 module Item = {
   [@bs.scope "Picker"] [@bs.module "react-native"]
-  external item : ReasonReact.reactClass = "Item";
+  external item: ReasonReact.reactClass = "Item";
   let make = (~color=?, ~label, ~value=?, ~testID=?) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=item,
-      ~props=
-        {
-          "label": label,
-          "value": value,
-          "color": color,
-          "testID": testID,
-        },
+      ~props={
+        "label": label,
+        "value": value,
+        "color": color,
+        "testID": testID,
+      },
     );
 };
 

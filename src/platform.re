@@ -4,17 +4,16 @@ type iosIdiom =
   | TV;
 
 [@bs.module "react-native"] [@bs.scope "Platform"]
-external _ios_isPad : bool = "isPad";
+external _ios_isPad: bool = "isPad";
 
 [@bs.module "react-native"] [@bs.scope "Platform"]
-external _ios_isTVOS : bool = "isTVOS";
+external _ios_isTVOS: bool = "isTVOS";
 
 type os =
   | IOS(iosIdiom)
   | Android;
 
-[@bs.module "react-native"] [@bs.scope "Platform"]
-external _os : string = "OS";
+[@bs.module "react-native"] [@bs.scope "Platform"] external _os: string = "OS";
 
 exception UnknownPlatform(string);
 
@@ -42,7 +41,7 @@ let equals = targetOs =>
   };
 
 [@bs.module "react-native"] [@bs.scope "Platform"]
-external _version : Js.undefined(int) = "Version";
+external _version: Js.undefined(int) = "Version";
 
 exception UnknownVersion;
 

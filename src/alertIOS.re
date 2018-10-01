@@ -7,19 +7,17 @@ type button = {
 };
 
 [@bs.scope "AlertIOS"] [@bs.module "react-native"]
-external _alert :
+external _alert:
   (
     string,
     Js.Undefined.t(string),
     Js.Undefined.t(
-      array(
-        {
-          .
-          "text": Js.Undefined.t(string),
-          "onPress": Js.Undefined.t(unit => unit),
-          "style": Js.Undefined.t(string),
-        },
-      ),
+      array({
+        .
+        "text": Js.Undefined.t(string),
+        "onPress": Js.Undefined.t(unit => unit),
+        "style": Js.Undefined.t(string),
+      }),
     ),
     Js.Undefined.t(string)
   ) =>
@@ -67,19 +65,17 @@ let alert = (~title, ~message=?, ~buttons=?, ~type_=?, ()) => {
 };
 
 [@bs.scope "AlertIOS"] [@bs.module "react-native"]
-external _prompt :
+external _prompt:
   (
     string,
     Js.Undefined.t(string),
     Js.Undefined.t(
-      array(
-        {
-          .
-          "text": Js.Undefined.t(string),
-          "onPress": Js.Undefined.t(unit => unit),
-          "style": Js.Undefined.t(string),
-        },
-      ),
+      array({
+        .
+        "text": Js.Undefined.t(string),
+        "onPress": Js.Undefined.t(unit => unit),
+        "style": Js.Undefined.t(string),
+      }),
     ),
     Js.Undefined.t(string),
     Js.Undefined.t(string),

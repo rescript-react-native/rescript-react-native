@@ -7,7 +7,7 @@ type dimensions = {
 };
 
 [@bs.scope "Dimensions"] [@bs.module "react-native"]
-external _get : string => dimensions = "get";
+external _get: string => dimensions = "get";
 
 let get = key => {
   let strKey =
@@ -19,7 +19,7 @@ let get = key => {
 };
 
 [@bs.scope "Dimensions"] [@bs.module "react-native"]
-external addEventListener :
+external addEventListener:
   (
     string,
     {
@@ -33,7 +33,7 @@ external addEventListener :
   "";
 
 [@bs.scope "Dimensions"] [@bs.module "react-native"]
-external removeEventListener :
+external removeEventListener:
   (
     string,
     {

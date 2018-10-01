@@ -15,7 +15,7 @@ module ActivityIndicatorExample = {
     ...component,
     render: _self =>
       <View>
-        <ActivityIndicator color=(String("#0000ff")) size=(`exact(40)) />
+        <ActivityIndicator color={String("#0000ff")} size={`exact(40)} />
       </View>,
   };
 };

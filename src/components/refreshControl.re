@@ -1,5 +1,5 @@
 [@bs.module "react-native"]
-external view : ReasonReact.reactClass = "RefreshControl";
+external view: ReasonReact.reactClass = "RefreshControl";
 
 let make =
     (

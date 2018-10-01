@@ -1,6 +1,6 @@
 type t;
 
-[@bs.module "react-native"] external t : t = "StyleSheet";
+[@bs.module "react-native"] external t: t = "StyleSheet";
 
 let create: Js.t('a) => Js.t('a);
 

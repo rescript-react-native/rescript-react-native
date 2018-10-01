@@ -43,9 +43,24 @@ external _showWithGravityAndOffset: (string, int, int, int, int) => unit =
   "showWithGravityAndOffset";
 
 let show = (message, ~duration, ~gravity=?, ~offset=?, ()) =>
-	switch ((gravity, offset)) {
-	| (None, None) => _show(message, getDuration(duration))
-	| (Some(gravity), None) => _showWithGravity(message, getDuration(duration), getGravity(gravity))
-	| (Some(gravity), Some((x, y))) => _showWithGravityAndOffset(message, getDuration(duration), getGravity(gravity), x, y)
-	| (None, Some((x, y))) => _showWithGravityAndOffset(message, getDuration(duration), getGravity(BOTTOM), x, y)
-	}
+  switch (gravity, offset) {
+  | (None, None) => _show(message, getDuration(duration))
+  | (Some(gravity), None) =>
+    _showWithGravity(message, getDuration(duration), getGravity(gravity))
+  | (Some(gravity), Some((x, y))) =>
+    _showWithGravityAndOffset(
+      message,
+      getDuration(duration),
+      getGravity(gravity),
+      x,
+      y,
+    )
+  | (None, Some((x, y))) =>
+    _showWithGravityAndOffset(
+      message,
+      getDuration(duration),
+      getGravity(BOTTOM),
+      x,
+      y,
+    )
+  };

@@ -1,5 +1,5 @@
 [@bs.module "react-native"]
-external view : ReasonReact.reactClass = "MaskedViewIOS";
+external view: ReasonReact.reactClass = "MaskedViewIOS";
 
 let make =
     (

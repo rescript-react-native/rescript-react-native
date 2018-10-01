@@ -25,7 +25,7 @@ module type FlatListComponent = {
   let scrollToOffset:
     (ReasonReact.reactRef, ~offset: float=?, ~animated: bool=?, unit) => unit;
 
-  [@bs.send] external recordInteraction : ReasonReact.reactRef => unit = "";
+  [@bs.send] external recordInteraction: ReasonReact.reactRef => unit = "";
 
   type renderBag('item) = {
     item: 'item,
@@ -78,27 +78,23 @@ module type FlatListComponent = {
       ~onViewableItemsChanged: {
                                  .
                                  "viewableItems":
-                                   array(
-                                     {
-                                       .
-                                       "item": 'item,
-                                       "key": string,
-                                       "index": Js.undefined(int),
-                                       "isViewable": bool,
-                                       "section": Js.t({.}),
-                                     },
-                                   ),
+                                   array({
+                                     .
+                                     "item": 'item,
+                                     "key": string,
+                                     "index": Js.undefined(int),
+                                     "isViewable": bool,
+                                     "section": Js.t({.}),
+                                   }),
                                  "changed":
-                                   array(
-                                     {
-                                       .
-                                       "item": 'item,
-                                       "key": string,
-                                       "index": Js.undefined(int),
-                                       "isViewable": bool,
-                                       "section": Js.t({.}),
-                                     },
-                                   ),
+                                   array({
+                                     .
+                                     "item": 'item,
+                                     "key": string,
+                                     "index": Js.undefined(int),
+                                     "isViewable": bool,
+                                     "section": Js.t({.}),
+                                   }),
                                }
                                  =?,
       ~overScrollMode: [ | `auto | `always | `never]=?,
@@ -124,14 +120,14 @@ module type FlatListComponent = {
 
 module CreateComponent = (Impl: View.Impl) : FlatListComponent => {
   [@bs.send]
-  external _scrollToEnd : (ReasonReact.reactRef, {. "animated": bool}) => unit =
+  external _scrollToEnd: (ReasonReact.reactRef, {. "animated": bool}) => unit =
     "scrollToEnd";
 
   let scrollToEnd = (ref, ~animated) =>
     _scrollToEnd(ref, {"animated": animated});
 
   [@bs.send]
-  external _scrollToIndex :
+  external _scrollToIndex:
     (
       ReasonReact.reactRef,
       {
@@ -149,18 +145,16 @@ module CreateComponent = (Impl: View.Impl) : FlatListComponent => {
       (ref, ~index, ~animated=?, ~viewOffset=?, ~viewPosition=?, ()) =>
     _scrollToIndex(
       ref,
-      Js.Undefined.(
-        {
-          "index": index,
-          "viewOffset": fromOption(viewOffset),
-          "viewPosition": fromOption(viewPosition),
-          "animated": fromOption(animated),
-        }
-      ),
+      Js.Undefined.{
+        "index": index,
+        "viewOffset": fromOption(viewOffset),
+        "viewPosition": fromOption(viewPosition),
+        "animated": fromOption(animated),
+      },
     );
 
   [@bs.send]
-  external _scrollToItem :
+  external _scrollToItem:
     (
       ReasonReact.reactRef,
       {
@@ -176,17 +170,15 @@ module CreateComponent = (Impl: View.Impl) : FlatListComponent => {
   let scrollToItem = (ref, ~item, ~animated=?, ~viewPosition=?, ()) =>
     _scrollToItem(
       ref,
-      Js.Undefined.(
-        {
-          "item": item,
-          "viewPosition": fromOption(viewPosition),
-          "animated": fromOption(animated),
-        }
-      ),
+      Js.Undefined.{
+        "item": item,
+        "viewPosition": fromOption(viewPosition),
+        "animated": fromOption(animated),
+      },
     );
 
   [@bs.send]
-  external _scrollToOffset :
+  external _scrollToOffset:
     (
       ReasonReact.reactRef,
       {
@@ -201,12 +193,13 @@ module CreateComponent = (Impl: View.Impl) : FlatListComponent => {
   let scrollToOffset = (ref, ~offset=?, ~animated=?, ()) =>
     _scrollToOffset(
       ref,
-      Js.Undefined.(
-        {"offset": fromOption(offset), "animated": fromOption(animated)}
-      ),
+      Js.Undefined.{
+        "offset": fromOption(offset),
+        "animated": fromOption(animated),
+      },
     );
 
-  [@bs.send] external recordInteraction : ReasonReact.reactRef => unit = "";
+  [@bs.send] external recordInteraction: ReasonReact.reactRef => unit = "";
 
   type jsRenderBag('item) = {
     .
@@ -289,57 +282,56 @@ module CreateComponent = (Impl: View.Impl) : FlatListComponent => {
       ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=Impl.view,
-      ~props=
-        {
-          "bounces": bounces,
-          "ItemSeparatorComponent": itemSeparatorComponent,
-          "ListFooterComponent": listFooterComponent,
-          "ListHeaderComponent": listHeaderComponent,
-          "columnWrapperStyle": columnWrapperStyle,
-          "data": data,
-          "extraData": extraData,
-          "getItemLayout":
-            UtilsRN.option_map(
-              (f, data, index) => f(Js.Undefined.toOption(data), index),
-              getItemLayout,
-            ),
-          "horizontal": horizontal,
-          "initialNumToRender": initialNumToRender,
-          "initialScrollIndex": initialScrollIndex,
-          "inverted": inverted,
-          "keyExtractor": keyExtractor,
-          "numColumns": numColumns,
-          "onEndReached": onEndReached,
-          "onEndReachedThreshold": onEndReachedThreshold,
-          "onRefresh": onRefresh,
-          "onViewableItemsChanged": onViewableItemsChanged,
-          "overScrollMode":
-            UtilsRN.option_map(
-              x =>
-                switch (x) {
-                | `auto => "auto"
-                | `always => "always"
-                | `never => "never"
-                },
-              overScrollMode,
-            ),
-          "pagingEnabled": pagingEnabled,
-          "refreshing": refreshing,
-          "renderItem": renderItem,
-          "removeClippedSubviews": removeClippedSubviews,
-          "scrollEnabled": scrollEnabled,
-          "showsHorizontalScrollIndicator": showsHorizontalScrollIndicator,
-          "showsVerticalScrollIndicator": showsVerticalScrollIndicator,
-          "windowSize": windowSize,
-          "maxToRenderPerBatch": maxToRenderPerBatch,
-          "viewabilityConfig": viewabilityConfig,
-          "onScroll": onScroll,
-          "style": style,
-        },
+      ~props={
+        "bounces": bounces,
+        "ItemSeparatorComponent": itemSeparatorComponent,
+        "ListFooterComponent": listFooterComponent,
+        "ListHeaderComponent": listHeaderComponent,
+        "columnWrapperStyle": columnWrapperStyle,
+        "data": data,
+        "extraData": extraData,
+        "getItemLayout":
+          UtilsRN.option_map(
+            (f, data, index) => f(Js.Undefined.toOption(data), index),
+            getItemLayout,
+          ),
+        "horizontal": horizontal,
+        "initialNumToRender": initialNumToRender,
+        "initialScrollIndex": initialScrollIndex,
+        "inverted": inverted,
+        "keyExtractor": keyExtractor,
+        "numColumns": numColumns,
+        "onEndReached": onEndReached,
+        "onEndReachedThreshold": onEndReachedThreshold,
+        "onRefresh": onRefresh,
+        "onViewableItemsChanged": onViewableItemsChanged,
+        "overScrollMode":
+          UtilsRN.option_map(
+            x =>
+              switch (x) {
+              | `auto => "auto"
+              | `always => "always"
+              | `never => "never"
+              },
+            overScrollMode,
+          ),
+        "pagingEnabled": pagingEnabled,
+        "refreshing": refreshing,
+        "renderItem": renderItem,
+        "removeClippedSubviews": removeClippedSubviews,
+        "scrollEnabled": scrollEnabled,
+        "showsHorizontalScrollIndicator": showsHorizontalScrollIndicator,
+        "showsVerticalScrollIndicator": showsVerticalScrollIndicator,
+        "windowSize": windowSize,
+        "maxToRenderPerBatch": maxToRenderPerBatch,
+        "viewabilityConfig": viewabilityConfig,
+        "onScroll": onScroll,
+        "style": style,
+      },
     );
 };
 
 include CreateComponent({
   [@bs.module "react-native"]
-  external view : ReasonReact.reactClass = "FlatList";
+  external view: ReasonReact.reactClass = "FlatList";
 });

@@ -19,7 +19,7 @@ type float_animated('a) =
 type string_interpolated =
   | String(string)
   | Animated(AnimatedRe.Interpolation.t);
-external flatten : array(t) => t = "%identity";
+external flatten: array(t) => t = "%identity";
 let combine: (t, t) => t;
 let concat: list(t) => t;
 let style: list(styleElement) => t;
@@ -243,7 +243,7 @@ type resizeMode =
   | Repeat
   | Center;
 let resizeMode: resizeMode => styleElement;
-let tintColor: string_interpolated =>  styleElement;
+let tintColor: string_interpolated => styleElement;
 let overlayColor: string_interpolated => styleElement;
 type color =
   | String(string);

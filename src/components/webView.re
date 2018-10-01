@@ -1,4 +1,4 @@
-[@bs.module "react-native"] external view : ReasonReact.reactClass = "WebView";
+[@bs.module "react-native"] external view: ReasonReact.reactClass = "WebView";
 
 module EventTypes = {
   [@bs.deriving abstract]
@@ -31,7 +31,7 @@ type iOSLoadRequestEvent = {
 type source;
 
 [@bs.obj]
-external sourceUri :
+external sourceUri:
   (
     ~uri: string=?,
     ~method: string=?,
@@ -43,7 +43,7 @@ external sourceUri :
   "";
 
 [@bs.obj]
-external sourceHtml : (~html: string=?, ~baseUrl: string=?, unit) => source =
+external sourceHtml: (~html: string=?, ~baseUrl: string=?, unit) => source =
   "";
 
 let source = sourceUri;
@@ -51,18 +51,18 @@ let source = sourceUri;
 type contentInsets;
 
 [@bs.obj]
-external contentInsets :
+external contentInsets:
   (~top: int=?, ~left: int=?, ~bottom: int=?, ~right: int=?, unit) =>
   contentInsets =
   "";
 
-[@bs.send] external goForward : ReasonReact.reactRef => unit = "";
+[@bs.send] external goForward: ReasonReact.reactRef => unit = "";
 
-[@bs.send] external goBack : ReasonReact.reactRef => unit = "";
+[@bs.send] external goBack: ReasonReact.reactRef => unit = "";
 
-[@bs.send] external reload : ReasonReact.reactRef => unit = "";
+[@bs.send] external reload: ReasonReact.reactRef => unit = "";
 
-[@bs.send] external stopLoading : ReasonReact.reactRef => unit = "";
+[@bs.send] external stopLoading: ReasonReact.reactRef => unit = "";
 
 let make =
     (
@@ -204,5 +204,5 @@ let make =
           "onShouldStartLoadWithRequest": onShouldStartLoadWithRequest,
           "scrollEnabled": scrollEnabled,
         },
-      )
+      ),
   );

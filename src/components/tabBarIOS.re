@@ -1,6 +1,6 @@
 module Item = {
   [@bs.scope "TabBarIOS"] [@bs.module "react-native"]
-  external tabBarItemIOS : ReasonReact.reactClass = "Item";
+  external tabBarItemIOS: ReasonReact.reactClass = "Item";
   let make =
       (
         ~title: option(string)=?,
@@ -74,7 +74,7 @@ module Item = {
 };
 
 [@bs.module "react-native"]
-external tabBarIOS : ReasonReact.reactClass = "TabBarIOS";
+external tabBarIOS: ReasonReact.reactClass = "TabBarIOS";
 
 let make =
     (

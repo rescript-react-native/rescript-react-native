@@ -25,7 +25,7 @@ module type FlatListComponent = {
   let scrollToOffset:
     (ReasonReact.reactRef, ~offset: float=?, ~animated: bool=?, unit) => unit;
 
-  [@bs.send] external recordInteraction : ReasonReact.reactRef => unit = "";
+  [@bs.send] external recordInteraction: ReasonReact.reactRef => unit = "";
 
   type renderBag('item) = {
     item: 'item,
@@ -78,27 +78,23 @@ module type FlatListComponent = {
       ~onViewableItemsChanged: {
                                  .
                                  "viewableItems":
-                                   array(
-                                     {
-                                       .
-                                       "item": 'item,
-                                       "key": string,
-                                       "index": Js.undefined(int),
-                                       "isViewable": bool,
-                                       "section": Js.t({.}),
-                                     },
-                                   ),
+                                   array({
+                                     .
+                                     "item": 'item,
+                                     "key": string,
+                                     "index": Js.undefined(int),
+                                     "isViewable": bool,
+                                     "section": Js.t({.}),
+                                   }),
                                  "changed":
-                                   array(
-                                     {
-                                       .
-                                       "item": 'item,
-                                       "key": string,
-                                       "index": Js.undefined(int),
-                                       "isViewable": bool,
-                                       "section": Js.t({.}),
-                                     },
-                                   ),
+                                   array({
+                                     .
+                                     "item": 'item,
+                                     "key": string,
+                                     "index": Js.undefined(int),
+                                     "isViewable": bool,
+                                     "section": Js.t({.}),
+                                   }),
                                }
                                  =?,
       ~overScrollMode: [ | `auto | `always | `never]=?,

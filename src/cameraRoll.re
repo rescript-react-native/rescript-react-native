@@ -80,7 +80,7 @@ let mapAssetType = (assetType: assetType) =>
   };
 
 [@bs.obj]
-external makeConfig :
+external makeConfig:
   (
     ~first: int,
     ~after: cursor=?,
@@ -93,12 +93,12 @@ external makeConfig :
   "";
 
 [@bs.module "react-native"] [@bs.scope "CameraRoll"]
-external _saveToCameraRoll :
+external _saveToCameraRoll:
   (string, Js.Undefined.t(string)) => Js.Promise.t(string) =
   "saveToCameraRoll";
 
 [@bs.module "react-native"] [@bs.scope "CameraRoll"]
-external _getPhotos : config => Js.Promise.t(assets) = "getPhotos";
+external _getPhotos: config => Js.Promise.t(assets) = "getPhotos";
 
 let saveToCameraRoll = (~uri, ~type_=?, ()) => {
   let fileType =

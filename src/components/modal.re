@@ -1,4 +1,4 @@
-[@bs.module "react-native"] external modal : ReasonReact.reactClass = "Modal";
+[@bs.module "react-native"] external modal: ReasonReact.reactClass = "Modal";
 
 let encodeAnimationType = x =>
   switch (x) {
@@ -33,20 +33,18 @@ let make =
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=modal,
-    ~props=
-      {
-        "animationType":
-          UtilsRN.option_map(encodeAnimationType, animationType),
-        "onShow": onShow,
-        "transparent": transparent,
-        "visible": visible,
-        "hardwareAccelerated": hardwareAccelerated,
-        "onRequestClose": onRequestClose,
-        "onOrientationChange": onOrientationChange,
-        "supportedOrientations":
-          UtilsRN.option_map(
-            encodeSupportedOrientations,
-            supportedOrientations,
-          ),
-      },
+    ~props={
+      "animationType": UtilsRN.option_map(encodeAnimationType, animationType),
+      "onShow": onShow,
+      "transparent": transparent,
+      "visible": visible,
+      "hardwareAccelerated": hardwareAccelerated,
+      "onRequestClose": onRequestClose,
+      "onOrientationChange": onOrientationChange,
+      "supportedOrientations":
+        UtilsRN.option_map(
+          encodeSupportedOrientations,
+          supportedOrientations,
+        ),
+    },
   );

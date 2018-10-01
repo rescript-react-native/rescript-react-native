@@ -2,12 +2,12 @@ type content;
 type options;
 
 [@bs.obj]
-external makeContent :
+external makeContent:
   (~title: string=?, ~message: string=?, ~url: string=?, unit) => content =
   "";
 
 [@bs.obj]
-external makeOptions :
+external makeOptions:
   (
     ~subject: string=?,
     ~tintColor: string=?,
@@ -18,7 +18,7 @@ external makeOptions :
   "";
 
 [@bs.module "react-native"] [@bs.scope "Share"]
-external _share : (content, options) => Js.Promise.t(bool) = "share";
+external _share: (content, options) => Js.Promise.t(bool) = "share";
 
 let share =
     (

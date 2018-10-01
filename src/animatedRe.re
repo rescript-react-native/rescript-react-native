@@ -3,14 +3,17 @@ module Animation = {
   type endResult = {. "finished": bool};
   type endCallback = endResult => unit;
   [@bs.send]
-  external _start : (t, Js.undefined(endCallback)) => unit = "start";
+  external _start: (t, Js.undefined(endCallback)) => unit = "start";
   let start = (t, ~callback=?, ()) =>
     _start(t, Js.Undefined.fromOption(callback));
-  [@bs.send] external stop : t => unit = "";
-  [@bs.send] external reset : t => unit = "";
+  [@bs.send] external stop: t => unit = "";
+  [@bs.send] external reset: t => unit = "";
 };
 
-module type Value = {type t; type rawJsType;};
+module type Value = {
+  type t;
+  type rawJsType;
+};
 
 type calculated;
 
@@ -24,7 +27,7 @@ module ValueAnimations = (Val: Value) => {
   module Decay = {
     type config;
     [@bs.obj]
-    external makeConfig :
+    external makeConfig:
       (
         ~velocity: Val.rawJsType,
         ~deceleration: float=?,
@@ -36,7 +39,7 @@ module ValueAnimations = (Val: Value) => {
       config =
       "";
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external _decay : (Val.t, config) => Animation.t = "decay";
+    external _decay: (Val.t, config) => Animation.t = "decay";
     let animate =
         (
           ~value,
@@ -64,7 +67,7 @@ module ValueAnimations = (Val: Value) => {
     type toValue;
     type config;
     [@bs.obj]
-    external makeConfig :
+    external makeConfig:
       (
         ~toValue: toValue,
         ~restDisplacementThreshold: Js.undefined(float),
@@ -85,10 +88,10 @@ module ValueAnimations = (Val: Value) => {
       ) =>
       config =
       "";
-    external toValueRaw : Val.rawJsType => toValue = "%identity";
-    external toValueAnimated : Val.t => toValue = "%identity";
+    external toValueRaw: Val.rawJsType => toValue = "%identity";
+    external toValueAnimated: Val.t => toValue = "%identity";
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external _spring : (Val.t, config) => Animation.t = "spring";
+    external _spring: (Val.t, config) => Animation.t = "spring";
     let animate =
         (
           ~value,
@@ -142,7 +145,7 @@ module ValueAnimations = (Val: Value) => {
     type toValue;
     type config;
     [@bs.obj]
-    external makeConfig :
+    external makeConfig:
       (
         ~toValue: toValue,
         ~easing: Easing.t=?,
@@ -155,10 +158,10 @@ module ValueAnimations = (Val: Value) => {
       ) =>
       config =
       "";
-    external toValueRaw : Val.rawJsType => toValue = "%identity";
-    external toValueAnimated : Val.t => toValue = "%identity";
+    external toValueRaw: Val.rawJsType => toValue = "%identity";
+    external toValueAnimated: Val.t => toValue = "%identity";
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external _timing : (Val.t, config) => Animation.t = "timing";
+    external _timing: (Val.t, config) => Animation.t = "timing";
     let animate =
         (
           ~value,
@@ -195,7 +198,7 @@ module ValueAnimations = (Val: Value) => {
 module Interpolation = {
   type t = value(calculated);
   type outputRange;
-  external outputRangeCreate : 'a => outputRange = "%identity";
+  external outputRangeCreate: 'a => outputRange = "%identity";
   type extrapolate =
     | Extend
     | Clamp
@@ -208,7 +211,7 @@ module Interpolation = {
     };
   type config;
   [@bs.obj]
-  external makeConfig :
+  external makeConfig:
     (
       ~inputRange: array(float),
       ~outputRange: outputRange,
@@ -219,7 +222,7 @@ module Interpolation = {
     ) =>
     config =
     "";
-  [@bs.send] external _interpolate : (value('a), config) => t = "interpolate";
+  [@bs.send] external _interpolate: (value('a), config) => t = "interpolate";
   let interpolate =
       (
         value,
@@ -253,17 +256,17 @@ module Interpolation = {
 
 module ValueOperations = {
   [@bs.module "react-native"] [@bs.scope "Animated"]
-  external add : (value('a), value('b)) => value(calculated) = "";
+  external add: (value('a), value('b)) => value(calculated) = "";
   [@bs.module "react-native"] [@bs.scope "Animated"]
-  external divide : (value('a), value('b)) => value(calculated) = "";
+  external divide: (value('a), value('b)) => value(calculated) = "";
   [@bs.module "react-native"] [@bs.scope "Animated"]
-  external multiply : (value('a), value('b)) => value(calculated) = "";
+  external multiply: (value('a), value('b)) => value(calculated) = "";
   [@bs.module "react-native"] [@bs.scope "Animated"]
-  external modulo : (value('a), float) => value(calculated) = "";
+  external modulo: (value('a), float) => value(calculated) = "";
   [@bs.module "react-native"] [@bs.scope "Animated"]
-  external subtract : (value('a), value('b)) => value(calculated) = "";
+  external subtract: (value('a), value('b)) => value(calculated) = "";
   [@bs.module "react-native"] [@bs.scope "Animated"]
-  external diffClamp : (value('a), float, float) => value(calculated) = "";
+  external diffClamp: (value('a), float, float) => value(calculated) = "";
   let interpolate = Interpolation.interpolate;
 };
 
@@ -272,19 +275,19 @@ module Value = {
   type jsValue = {. "value": float};
   type callback = jsValue => unit;
   [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
-  external create : float => t = "Value";
-  [@bs.send] external setValue : (t, float) => unit = "setValue";
-  [@bs.send] external setOffset : (t, float) => unit = "setOffset";
-  [@bs.send] external flattenOffset : t => unit = "flattenOffset";
-  [@bs.send] external extractOffset : t => unit = "extractOffset";
-  [@bs.send] external addListener : (t, callback) => string = "addListener";
-  [@bs.send] external removeListener : (t, string) => unit = "removeListener";
-  [@bs.send] external removeAllListeners : t => unit = "removeAllListeners";
+  external create: float => t = "Value";
+  [@bs.send] external setValue: (t, float) => unit = "setValue";
+  [@bs.send] external setOffset: (t, float) => unit = "setOffset";
+  [@bs.send] external flattenOffset: t => unit = "flattenOffset";
+  [@bs.send] external extractOffset: t => unit = "extractOffset";
+  [@bs.send] external addListener: (t, callback) => string = "addListener";
+  [@bs.send] external removeListener: (t, string) => unit = "removeListener";
+  [@bs.send] external removeAllListeners: t => unit = "removeAllListeners";
   [@bs.send]
-  external _resetAnimation : (t, Js.Undefined.t(callback)) => unit =
+  external _resetAnimation: (t, Js.Undefined.t(callback)) => unit =
     "resetAnimation";
   [@bs.send]
-  external _stopAnimation : (t, Js.Undefined.t(callback)) => unit =
+  external _stopAnimation: (t, Js.Undefined.t(callback)) => unit =
     "stopAnimation";
   let resetAnimation = (value, ~callback=?, ()) =>
     _resetAnimation(value, Js.Undefined.fromOption(callback));
@@ -316,27 +319,27 @@ module ValueXY = {
     "top": Value.t,
   };
   [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
-  external _create : jsValue => t = "ValueXY";
+  external _create: jsValue => t = "ValueXY";
   let create = (~x, ~y) => _create({"x": x, "y": y});
-  [@bs.send] external _setValue : (t, jsValue) => unit = "setValue";
+  [@bs.send] external _setValue: (t, jsValue) => unit = "setValue";
   let setValue = (t, ~x, ~y) => _setValue(t, {"x": x, "y": y});
-  [@bs.send] external _setOffset : (t, jsValue) => unit = "setOffset";
+  [@bs.send] external _setOffset: (t, jsValue) => unit = "setOffset";
   let setOffset = (t, ~x, ~y) => _setOffset(t, {"x": x, "y": y});
-  [@bs.send] external flattenOffset : t => unit = "flattenOffset";
-  [@bs.send] external extractOffset : t => unit = "extractOffset";
+  [@bs.send] external flattenOffset: t => unit = "flattenOffset";
+  [@bs.send] external extractOffset: t => unit = "extractOffset";
   [@bs.send]
-  external resetAnimation : (t, option(callback)) => unit = "resetAnimation";
+  external resetAnimation: (t, option(callback)) => unit = "resetAnimation";
   [@bs.send]
-  external stopAnimation : (t, option(callback)) => unit = "stopAnimation";
-  [@bs.send] external addListener : (t, callback) => string = "addListener";
-  [@bs.send] external removeListener : (t, string) => unit = "removeListener";
-  [@bs.send] external removeAllListeners : t => unit = "removeAllListeners";
-  [@bs.send] external getLayout : t => layout = "getLayout";
+  external stopAnimation: (t, option(callback)) => unit = "stopAnimation";
+  [@bs.send] external addListener: (t, callback) => string = "addListener";
+  [@bs.send] external removeListener: (t, string) => unit = "removeListener";
+  [@bs.send] external removeAllListeners: t => unit = "removeAllListeners";
+  [@bs.send] external getLayout: t => layout = "getLayout";
   [@bs.send]
-  external getTranslateTransform : t => translateTransform =
+  external getTranslateTransform: t => translateTransform =
     "getTranslateTransform";
-  [@bs.get] external getX : t => Value.t = "x";
-  [@bs.get] external getY : t => Value.t = "y";
+  [@bs.get] external getX: t => Value.t = "x";
+  [@bs.get] external getY: t => Value.t = "y";
   include ValueAnimations({
     type t = valueXY;
     type rawJsType = jsValue;
@@ -344,21 +347,21 @@ module ValueXY = {
 };
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external delay : float => Animation.t = "";
+external delay: float => Animation.t = "";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external sequence : array(Animation.t) => Animation.t = "";
+external sequence: array(Animation.t) => Animation.t = "";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external parallel :
+external parallel:
   (array(Animation.t), {. "stopTogether": bool}) => Animation.t =
   "";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external stagger : (float, array(Animation.t)) => Animation.t = "";
+external stagger: (float, array(Animation.t)) => Animation.t = "";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external _loop : (Animation.t, {. "iterations": int}) => Animation.t = "loop";
+external _loop: (Animation.t, {. "iterations": int}) => Animation.t = "loop";
 
 let loop = (~iterations=(-1), ~animation, ()) =>
   _loop(animation, {"iterations": iterations});
@@ -366,10 +369,10 @@ let loop = (~iterations=(-1), ~animation, ()) =>
 type animatedEvent;
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external event : (array('a), 'b) => animatedEvent = "";
+external event: (array('a), 'b) => animatedEvent = "";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external createAnimatedComponent :
+external createAnimatedComponent:
   ReasonReact.reactClass => ReasonReact.reactClass =
   "";
 

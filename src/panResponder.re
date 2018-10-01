@@ -14,7 +14,7 @@ type gestureState = {
 };
 
 [@bs.scope "PanResponder"] [@bs.module "react-native"]
-external _create : 'a => t = "create";
+external _create: 'a => t = "create";
 
 type jsGestureState = {
   .
@@ -33,9 +33,7 @@ type jsGestureState = {
 type callback('a) =
   ({. "nativeEvent": RNEvent.NativeEvent.t}, jsGestureState) => 'a;
 
-let callback =
-    (x: (RNEvent.NativeEvent.t, gestureState) => 'a)
-    : callback('a) =>
+let callback = (x: (RNEvent.NativeEvent.t, gestureState) => 'a): callback('a) =>
   (event, state) =>
     x(
       event##nativeEvent,
@@ -53,7 +51,7 @@ let callback =
       },
     );
 
-external shamelesslyWrapCallback : 'a => callback(unit) = "%identity";
+external shamelesslyWrapCallback: 'a => callback(unit) = "%identity";
 
 let animatedEvent = l => {
   let config =
@@ -65,7 +63,7 @@ let animatedEvent = l => {
         | `XY(value) =>
           Js.Obj.assign(
             x,
-            AnimatedRe.ValueXY.({"dx": getX(value), "dy": getY(value)}),
+            AnimatedRe.ValueXY.{"dx": getX(value), "dy": getY(value)},
           )
         },
       Js.Obj.empty(),
@@ -127,9 +125,9 @@ let create =
       Js.Undefined.fromOption(onShouldBlockNativeResponder),
   });
 
-[@bs.get] external _panHandlers : t => Js.t('a) = "panHandlers";
+[@bs.get] external _panHandlers: t => Js.t('a) = "panHandlers";
 
-let panHandlers = t : Types.touchResponderHandlers => {
+let panHandlers = t: Types.touchResponderHandlers => {
   let jsHandlers = _panHandlers(t);
   {
     onMoveShouldSetResponder:

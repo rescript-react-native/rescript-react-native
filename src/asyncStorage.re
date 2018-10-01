@@ -8,7 +8,7 @@ let map_cb = (cb, err, value) =>
 let map_cb_err_only = (cb, err) => cb(Js.Null.toOption(err));
 
 [@bs.scope "AsyncStorage"] [@bs.module "react-native"]
-external _getItem :
+external _getItem:
   (
     string,
     Js.Undefined.t((Js.Null.t(error), Js.Null_undefined.t(string)) => unit)
@@ -27,7 +27,7 @@ let getItem = (key, ~callback=?, ()) =>
   };
 
 [@bs.scope "AsyncStorage"] [@bs.module "react-native"]
-external _setItem :
+external _setItem:
   (string, string, Js.Undefined.t(Js.Null.t(error) => unit)) =>
   Js.Promise.t(unit) =
   "setItem";
@@ -40,7 +40,7 @@ let setItem = (key, value, ~callback=?, ()) =>
   };
 
 [@bs.scope "AsyncStorage"] [@bs.module "react-native"]
-external _removeItem :
+external _removeItem:
   (string, Js.Undefined.t(Js.Null.t(error) => unit)) => Js.Promise.t(unit) =
   "removeItem";
 
@@ -51,7 +51,7 @@ let removeItem = (key, ~callback=?, ()) =>
   };
 
 [@bs.scope "AsyncStorage"] [@bs.module "react-native"]
-external _mergeItem :
+external _mergeItem:
   (string, string, Js.Undefined.t(Js.Null.t(error) => unit)) =>
   Js.Promise.t(unit) =
   "mergeItem";
@@ -64,7 +64,7 @@ let mergeItem = (key, value, ~callback=?, ()) =>
   };
 
 [@bs.scope "AsyncStorage"] [@bs.module "react-native"]
-external _clear :
+external _clear:
   Js.Undefined.t(Js.Null.t(error) => unit) => Js.Promise.t(unit) =
   "clear";
 
@@ -75,7 +75,7 @@ let clear = (~callback=?, ()) =>
   };
 
 [@bs.scope "AsyncStorage"] [@bs.module "react-native"]
-external _getAllKeys :
+external _getAllKeys:
   Js.Undefined.t(
     (Js.Null.t(error), Js.Null_undefined.t(array(string))) => unit,
   ) =>
@@ -93,10 +93,10 @@ let getAllKeys = (~callback=?, ()) =>
   };
 
 [@bs.scope "AsyncStorage"] [@bs.module "react-native"]
-external flushGetRequests : unit => unit = "";
+external flushGetRequests: unit => unit = "";
 
 [@bs.scope "AsyncStorage"] [@bs.module "react-native"]
-external _multiGet :
+external _multiGet:
   (
     array(string),
     Js.Undefined.t(
@@ -121,7 +121,7 @@ let multiGet = (keys, ~callback=?, ()) =>
   };
 
 [@bs.scope "AsyncStorage"] [@bs.module "react-native"]
-external _multiSet :
+external _multiSet:
   (
     array(array(string)),
     Js.Undefined.t(Js.Null.t(array(error)) => unit)
@@ -142,7 +142,7 @@ let multiSet = (keyValues, ~callback=?, ()) => {
 };
 
 [@bs.scope "AsyncStorage"] [@bs.module "react-native"]
-external _multiRemove :
+external _multiRemove:
   (array(string), Js.Undefined.t(Js.Null.t(array(error)) => unit)) =>
   Js.Promise.t(unit) =
   "multiRemove";
@@ -154,7 +154,7 @@ let multiRemove = (keys, ~callback=?, ()) =>
   };
 
 [@bs.scope "AsyncStorage"] [@bs.module "react-native"]
-external _multiMerge :
+external _multiMerge:
   (
     array(array(string)),
     Js.Undefined.t(Js.Null.t(array(error)) => unit)

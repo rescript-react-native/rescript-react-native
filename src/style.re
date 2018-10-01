@@ -55,13 +55,13 @@ let encode_string_interpolated =
   | String(value) => Encode.string(value)
   | Animated(value) => Encode.animatedValue(value);
 
-external flatten : array(t) => t = "%identity";
+external flatten: array(t) => t = "%identity";
 
-external to_style : Js.Dict.t(Js.Json.t) => t = "%identity";
+external to_style: Js.Dict.t(Js.Json.t) => t = "%identity";
 
-external style_to_dict : t => Js.Dict.t(Js.Json.t) = "%identity";
+external style_to_dict: t => Js.Dict.t(Js.Json.t) = "%identity";
 
-external array_to_style : array(t) => t = "%identity";
+external array_to_style: array(t) => t = "%identity";
 
 let combine = (a, b) => {
   let entries =
@@ -380,8 +380,7 @@ module Transform = {
         (x, acc) =>
           switch (x) {
           | (key, Some(value)) =>
-            let val_ =
-              Js.Dict.fromArray([|(key, value)|]) |> Encode.object_;
+            let val_ = Js.Dict.fromArray([|(key, value)|]) |> Encode.object_;
             [val_, ...acc];
           | _ => acc
           },
@@ -523,10 +522,7 @@ let borderStyle = v =>
     },
   );
 
-let opacity = value => (
-  "opacity",
-  encode_float_animated(value),
-);
+let opacity = value => ("opacity", encode_float_animated(value));
 
 let elevation = floatStyle("elevation");
 
@@ -537,10 +533,7 @@ let color = value => ("color", encode_string_interpolated(value));
 
 let fontFamily = stringStyle("fontFamily");
 
-let fontSize = value => (
-  "fontSize",
-  encode_float_animated(value),
-);
+let fontSize = value => ("fontSize", encode_float_animated(value));
 
 type fontStyle =
   | Normal

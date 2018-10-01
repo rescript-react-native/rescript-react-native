@@ -47,34 +47,34 @@ let effectiveConnectionType = effectiveConnectionType =>
   };
 
 [@bs.module "react-native"] [@bs.scope "NetInfo"]
-external addEventListener :
+external addEventListener:
   ([@bs.as "connectionChange"] _, info => unit) => unit =
   "";
 
 [@bs.module "react-native"] [@bs.scope "NetInfo"]
-external removeEventListener :
+external removeEventListener:
   ([@bs.as "connectionChange"] _, info => unit) => unit =
   "";
 
 [@bs.module "react-native"] [@bs.scope "NetInfo"]
-external isConnectionExpensive : unit => Js.Promise.t(bool) = "";
+external isConnectionExpensive: unit => Js.Promise.t(bool) = "";
 
 [@bs.module "react-native"] [@bs.scope "NetInfo"]
-external getConnectionInfo : unit => Js.Promise.t(info) = "";
+external getConnectionInfo: unit => Js.Promise.t(info) = "";
 
 module IsConnected = {
   type t;
   [@bs.module "react-native"] [@bs.scope "NetInfo"] [@bs.val]
-  external isConnected : t = "";
+  external isConnected: t = "";
   [@bs.send.pipe: t]
-  external _addEventListener :
+  external _addEventListener:
     ([@bs.as "connectionChange"] _, bool => unit) => unit =
     "addEventListener";
   [@bs.send.pipe: t]
-  external _removeEventListener :
+  external _removeEventListener:
     ([@bs.as "connectionChange"] _, bool => unit) => unit =
     "removeEventListener";
-  [@bs.send.pipe: t] external _fetch : unit => Js.Promise.t(bool) = "fetch";
+  [@bs.send.pipe: t] external _fetch: unit => Js.Promise.t(bool) = "fetch";
   let addEventListener = listener =>
     isConnected |> _addEventListener(listener);
   let removeEventListener = listener =>

@@ -5,7 +5,7 @@ type shareActionSheetConfig;
 type error;
 
 [@bs.obj]
-external makeActionSheetConfig :
+external makeActionSheetConfig:
   (
     ~options: array(string),
     ~cancelButtonIndex: int=?,
@@ -22,7 +22,7 @@ type options =
   | URL(string);
 
 [@bs.obj]
-external makeShareActionSheetConfig :
+external makeShareActionSheetConfig:
   (
     ~options: options,
     ~subject: string=?,
@@ -32,11 +32,11 @@ external makeShareActionSheetConfig :
   "";
 
 [@bs.module "react-native"] [@bs.scope "ActionSheetIOS"]
-external _showActionSheetWithOptions : (actionSheetConfig, int => unit) => unit =
+external _showActionSheetWithOptions: (actionSheetConfig, int => unit) => unit =
   "showActionSheetWithOptions";
 
 [@bs.module "react-native"] [@bs.scope "ActionSheetIOS"]
-external _showShareActionSheetWithOptions :
+external _showShareActionSheetWithOptions:
   (shareActionSheetConfig, error => unit, (bool, string) => unit) => unit =
   "showShareActionSheetWithOptions";
 

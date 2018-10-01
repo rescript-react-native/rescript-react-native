@@ -2,8 +2,7 @@
 type behavior = [ | `height | `position | `padding];
 
 [@bs.module "react-native"]
-external keyboardAvoidingView : ReasonReact.reactClass =
-  "KeyboardAvoidingView";
+external keyboardAvoidingView: ReasonReact.reactClass = "KeyboardAvoidingView";
 
 let make =
     (
@@ -57,9 +56,8 @@ let make =
         ~shouldRasterizeIOS?,
         {
           "keyboardVerticalOffset": keyboardVerticalOffset,
-          "behavior":
-            UtilsRN.option_map(behaviorToJs, behavior),
+          "behavior": UtilsRN.option_map(behaviorToJs, behavior),
           "contentContainerStyle": contentContainerStyle,
         },
-      )
+      ),
   );

@@ -1,8 +1,8 @@
 [@bs.scope "DatePickerAndroid"] [@bs.module "react-native"]
-external dateSet : string = "dateSetAction";
+external dateSet: string = "dateSetAction";
 
 [@bs.scope "DatePickerAndroid"] [@bs.module "react-native"]
-external dismissed : string = "dismissedAction";
+external dismissed: string = "dismissedAction";
 
 [@bs.deriving jsConverter]
 type mode = [ | `calendar | `spinner | `default];
@@ -45,7 +45,7 @@ let action = resp =>
   };
 
 [@bs.scope "DatePickerAndroid"] [@bs.module "react-native"]
-external _open : optsJs => Js.Promise.t(responseJs) = "open";
+external _open: optsJs => Js.Promise.t(responseJs) = "open";
 
 let open_ = (~date: Js.Date.t, ~minDate=?, ~maxDate=?, ~mode=`default, ()) =>
   _open(

@@ -1,7 +1,7 @@
 [@bs.module "react-native"]
-external view : ReasonReact.reactClass = "ViewPagerAndroid";
+external view: ReasonReact.reactClass = "ViewPagerAndroid";
 
-[@bs.send] external setPage : (ReasonReact.reactRef, int) => unit = "";
+[@bs.send] external setPage: (ReasonReact.reactRef, int) => unit = "";
 
 let make =
     (

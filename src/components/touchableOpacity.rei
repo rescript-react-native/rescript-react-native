@@ -1,5 +1,5 @@
 [@bs.send]
-external setOpacityTo : (ReasonReact.reactRef, float, int) => unit =
+external setOpacityTo: (ReasonReact.reactRef, float, int) => unit =
   "setOpacityTo";
 
 let make:

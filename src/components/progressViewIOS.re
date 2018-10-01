@@ -1,5 +1,5 @@
 [@bs.module "react-native"]
-external progressViewIOS : ReasonReact.reactClass = "ProgressViewIOS";
+external progressViewIOS: ReasonReact.reactClass = "ProgressViewIOS";
 
 let make =
     (
