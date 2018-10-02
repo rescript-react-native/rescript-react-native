@@ -1,6 +1,6 @@
 {
   "name": "bs-react-native",
-  "version": "0.10.0-rc.0",
+  "version": "0.10.0",
   "scripts": {
     "build": "bsb -make-world",
     "build-docs": "sh ./docs/scripts/build-docs.sh",
