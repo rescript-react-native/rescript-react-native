@@ -16,4 +16,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
       node.textContent = node.textContent.replace("-BsReactNative", "");
     });
   }
+
+  var make = document.querySelector("dl > dt#val-make");
+  if (make) {
+    var parent = make.parentNode;
+    parent.removeChild(make);
+    parent.lastChild.appendChild(make);
+  }
 });

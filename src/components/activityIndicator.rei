@@ -1,3 +1,20 @@
+/**
+  {2 Example of use}
+
+  Displays a circular loading indicator.
+
+  {2 Props}
+
+  Check {{:https://facebook.github.io/react-native/docs/activityindicator.html} React Native docs} for details.
+
+  {3 animating}
+
+  {[
+    animating: bool=?
+  ]}
+
+  {2 API}
+ */
 let make:
   (
     ~animating: bool=?,
