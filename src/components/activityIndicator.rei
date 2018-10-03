@@ -1,7 +1,7 @@
 /**
-  {2 Example of use}
-
   Displays a circular loading indicator.
+
+  {2 Example of use}
 
   {2 Props}
 
