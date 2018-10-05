@@ -20,7 +20,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var make = document.querySelector("dl > dt#val-make");
   if (make) {
     var parent = make.parentNode;
-    parent.removeChild(make);
-    parent.lastChild.appendChild(make);
+    // Only remove `make` if it has corresponding doc block
+    if (parent.childNodes.length == 2) {
+      parent.removeChild(make);
+    }
   }
 });
