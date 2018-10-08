@@ -55,9 +55,9 @@ Documentation is generated from the Reason interface and comments that are inclu
 To start working with documentation:
 
 - Ensure that have the odoc installed [odoc](https://github.com/ocaml/odoc)
-  > if you have the problem during installing the odoc with OCaml dependencies, try: `opam pin add odoc.dev git+https://github.com/ocaml/odoc`
+  > if you have a problem during installing the odoc with OCaml dependencies, try: `opam pin add odoc.dev git+https://github.com/ocaml/odoc`
 - build code with: `yarn clean-build` or if you want to build with watch then use: `yarn start`
-- start docs server using: `yarn start-docs`. Script will run the HTTP server and reload after something will change.
+- start docs server using: `yarn start-docs`. Script will run the HTTP server and reload after something changes.
 - To build documentation from ReasonMl interfaces to HTML file run: `yarn build-docs`
 
 ### Tips and Tricks
