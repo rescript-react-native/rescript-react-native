@@ -6,6 +6,84 @@ let focus: ReasonReact.reactRef => unit;
 
 let blur: ReasonReact.reactRef => unit;
 
+module AutoCapitalize: {
+  type t = [
+    | `none
+    | `sentences
+    | `words
+    | `characters
+  ];
+  let to_string: t => string
+};
+
+module ReturnKeyType: {
+  type t = [
+    | `done_
+    | `go
+    | `next
+    | `search
+    | `send
+    | `none
+    | `previous
+    | `default
+    | `emergencyCall
+    | `google
+    | `join
+    | `route
+    | `yahoo
+  ];
+  let to_string: t =>  string;
+}
+
+module KeyboardType: {
+  type t = [
+    | `default
+    | `emailAddress
+    | `numeric
+    | `phonePad
+    | `asciiCapable
+    | `numbersAndPunctuation
+    | `url
+    | `numberPad
+    | `namePhonePad
+    | `decimalPad
+    | `twitter
+    | `webSearch
+  ];
+  let to_string: t => string;
+}
+
+module TextBreakStrategy: {
+  type t = [
+    | `simple
+    | `highQuality
+    | `balanced
+  ]
+
+  let to_string: t => string;
+}
+
+module ClearButtonMode: {
+  type t = [
+    | `never
+    | `whileEditing
+    | `unlessEditing
+    | `always
+  ]
+
+  let to_string: t => string;
+}
+
+module KeyboardAppearance: {
+  type t = [
+    | `default
+    | `light
+    | `dark
+  ]
+
+  let to_string: t => string;
+}
+
 let make:
   (
     ~accessibilityLabel: ReasonReact.reactElement=?,
@@ -62,28 +140,14 @@ let make:
                             =?,
     ~accessibilityViewIsModal: bool=?,
     ~shouldRasterizeIOS: bool=?,
-    ~autoCapitalize: [< | `characters | `none | `sentences | `words]=?,
+    ~autoCapitalize: AutoCapitalize.t=?,
     ~autoCorrect: bool=?,
     ~autoFocus: bool=?,
     ~blurOnSubmit: bool=?,
     ~caretHidden: bool=?,
     ~defaultValue: string=?,
     ~editable: bool=?,
-    ~keyboardType: [
-                     | `asciiCapable
-                     | `decimalPad
-                     | `default
-                     | `emailAddress
-                     | `namePhonePad
-                     | `numberPad
-                     | `numbersAndPunctuation
-                     | `numeric
-                     | `phonePad
-                     | `twitter
-                     | `url
-                     | `webSearch
-                   ]
-                     =?,
+    ~keyboardType: KeyboardType.t =?,
     ~maxLength: int=?,
     ~multiline: bool=?,
     ~onBlur: unit => unit=?,
@@ -133,22 +197,7 @@ let make:
     ~onSubmitEditing: unit => unit=?,
     ~placeholder: string=?,
     ~placeholderTextColor: string=?,
-    ~returnKeyType: [
-                      | `default
-                      | `done_
-                      | `emergencyCall
-                      | `go
-                      | `google
-                      | `join
-                      | `next
-                      | `none
-                      | `previous
-                      | `route
-                      | `search
-                      | `send
-                      | `yahoo
-                    ]
-                      =?,
+    ~returnKeyType: ReturnKeyType.t=?,
     ~secureTextEntry: bool=?,
     ~selectTextOnFocus: bool=?,
     ~selection: {
@@ -164,9 +213,9 @@ let make:
     ~inlineImagePadding: int=?,
     ~numberOfLines: int=?,
     ~returnKeyLabel: string=?,
-    ~textBreakStrategy: [ | `balanced | `highQuality | `simple]=?,
+    ~textBreakStrategy: TextBreakStrategy.t=?,
     ~underlineColorAndroid: string=?,
-    ~clearButtonMode: [ | `always | `never | `unlessEditing | `whileEditing]=?,
+    ~clearButtonMode: ClearButtonMode.t=?,
     ~clearTextOnFocus: bool=?,
     ~dataDetectorTypes: array(
                           [
@@ -179,7 +228,7 @@ let make:
                         )
                           =?,
     ~enablesReturnKeyAutomatically: bool=?,
-    ~keyboardAppearance: [ | `dark | `default | `light]=?,
+    ~keyboardAppearance: KeyboardAppearance.t=?,
     ~onKeyPress: {. "nativeEvent": {. "key": string}} => unit=?,
     ~selectionState: 'documentSelectionState=?,
     ~spellCheck: bool=?,
