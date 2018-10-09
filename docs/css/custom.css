@@ -4,6 +4,15 @@ dt#type-calculated {
   display: none;
 }
 
+#module-type-FlatListComponent, #module-CreateComponent, #module-CreateComponent ~ div > .include.spec details summary {
+  display: none;
+}
+
+#module-CreateComponent ~ div dl {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 .content > dl > dd {
   padding: 0;
   padding-top: 0.75em;
