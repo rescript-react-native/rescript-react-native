@@ -8,6 +8,10 @@ dt#type-calculated {
   display: none;
 }
 
+#module-type-FlatListComponent, #module-CreateComponent, #module-CreateComponent ~ div > .include.spec details {
+  overflow: hidden;
+}
+
 #module-CreateComponent ~ div dl {
   display: flex;
   flex-direction: column-reverse;
