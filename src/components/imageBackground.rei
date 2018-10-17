@@ -1,3 +1,8 @@
+/**
+  [ImageBackground] component has the same props as {{:\BsReactNative/Image-BsReactNative} [Image] component}
+  You can read more on ImageBackground component usage in official docs: {{:https://facebook.github.io/react-native/docs/images}}
+*/
+
 module Event: {
   type error;
   type progress = {
