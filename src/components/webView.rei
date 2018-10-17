@@ -51,12 +51,6 @@ type iOSLoadRequestEvent = {
   "url": string,
 };
 
-type contentInsets;
-
-let contentInsets:
-  (~top: int=?, ~left: int=?, ~bottom: int=?, ~right: int=?, unit) =>
-  contentInsets;
-
 let goForward: ReasonReact.reactRef => unit;
 
 let goBack: ReasonReact.reactRef => unit;
@@ -76,7 +70,7 @@ let make:
     ~onLoadEnd: EventTypes.t => unit=?,
     ~onLoadStart: EventTypes.t => unit=?,
     ~automaticallyAdjustContentInsets: bool=?,
-    ~contentInsets: contentInsets=?,
+    ~contentInsets: Types.insets=?,
     ~accessibilityLabel: ReasonReact.reactElement=?,
     ~accessible: bool=?,
     ~hitSlop: Types.insets=?,
