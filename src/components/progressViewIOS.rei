@@ -1,3 +1,44 @@
+/**
+ Use [ProgressViewIOS] {{:https://facebook.github.io/react-native/docs/progressviewios}} to render a [UIProgressView] on iOS.
+
+ {3 Example of use}
+  {[
+    let component = ReasonReact.statelessComponent("MyComponent");
+
+    let make = _children => {
+      ...component,
+      render: _self => <ProgressViewIOS progress=0.4 progressTintColor="tomato" />,
+    };
+  ]}
+ 
+ {3 Props}
+ {{:\BsReactNative/View-BsReactNative} [View] props}
+ {4 progress}
+ {[
+   ~progress: float
+ ]}
+ {4 progressImage}
+ {[
+   ~progressImage: Image.imageSource=?
+ ]}
+ {4 progressTintColor}
+ {[
+   ~progressTintColor: string=?
+ ]}
+ {4 progressViewStyle}
+ {[
+   ~progressViewStyle: Style.t=?
+ ]}
+ {4 trackImage}
+ {[
+   trackImage: Image.imageSource=?
+ ]}
+ {4 trackTintColor}
+ {[
+   ~trackTintColor: string=?
+ ]}
+*/
+
 let make:
   (
     ~progress: float,
