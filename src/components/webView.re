@@ -48,14 +48,6 @@ external sourceHtml: (~html: string=?, ~baseUrl: string=?, unit) => source =
 
 let source = sourceUri;
 
-type contentInsets;
-
-[@bs.obj]
-external contentInsets:
-  (~top: int=?, ~left: int=?, ~bottom: int=?, ~right: int=?, unit) =>
-  contentInsets =
-  "";
-
 [@bs.send] external goForward: ReasonReact.reactRef => unit = "";
 
 [@bs.send] external goBack: ReasonReact.reactRef => unit = "";
