@@ -129,7 +129,7 @@ let create =
 
 let panHandlers = t: Types.touchResponderHandlers => {
   let jsHandlers = _panHandlers(t);
-  {
+  Types.{
     onMoveShouldSetResponder:
       Js.Undefined.toOption(jsHandlers##onMoveShouldSetResponder),
     onMoveShouldSetResponderCapture:

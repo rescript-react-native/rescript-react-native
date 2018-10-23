@@ -1,6 +1,6 @@
 {
   "name": "bs-react-native",
-  "bsc-flags": ["-bs-super-errors", "-warn-error @a", "-w -40..42-102"],
+  "bsc-flags": ["-bs-super-errors", "-warn-error @a", "-w -41..42-102"],
   "reason": {"react-jsx": 2},
   "refmt": 3,
   "bs-dependencies": ["reason-react"],
