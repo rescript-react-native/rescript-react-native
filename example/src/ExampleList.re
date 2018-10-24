@@ -58,6 +58,8 @@ module ImageStore = MakeExample(ImageStoreExample);
 
 module ActivityIndicator = MakeExample(ActivityIndicatorExample);
 
+module ImageEditor = MakeExample(ImageEditorExample);
+
 let components: array(item) = [|
   TextInput.item("TextInput"),
   Button.item("ButtonExample"),
@@ -74,4 +76,5 @@ let components: array(item) = [|
   Settings.item("SettingsExample"),
   ImageStore.item("ImageStoreExample"),
   ActivityIndicator.item("ActivityIndicatorExample"),
+  ImageEditor.item("ImageEditorExample"),
 |];
