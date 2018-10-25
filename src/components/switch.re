@@ -3,6 +3,7 @@
 let make =
     (
       ~disabled: option(bool)=?,
+      ~trackColor: option(string)=?,
       ~onTintColor: option(string)=?,
       ~onValueChange: option(bool => unit)=?,
       ~thumbTintColor: option(string)=?,
@@ -37,6 +38,7 @@ let make =
           "value": value,
           "disabled": disabled,
           "onValueChange": onValueChange,
+          "trackColor": trackColor,
           "onTintColor": onTintColor,
           "thumbTintColor": thumbTintColor,
           "tintColor": tintColor,

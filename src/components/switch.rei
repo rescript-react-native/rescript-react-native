@@ -1,6 +1,7 @@
 let make:
   (
     ~disabled: bool=?,
+    ~trackColor: string=?,
     ~onTintColor: string=?,
     ~onValueChange: bool => unit=?,
     ~thumbTintColor: string=?,
