@@ -35,3 +35,10 @@ exception UnknownVersion;
  Raises UnknownVersion if version is undefined, i.e. in react-native-web
  */
 let version: unit => int;
+
+type selectOptions('a) = {
+  ios: 'a,
+  android: 'a
+};
+
+let select: selectOptions('a) => 'a
