@@ -34,7 +34,7 @@ Please find the list of available components and APIs below.
 - {{:TextInput-BsReactNative} [TextInput]}
 - {!ToolbarAndroid}
 - {{:TouchableHighlight-BsReactNative} [TouchableHighlight]}
-- {{:TouchableWithoutFeedback-BsReactNative} [TouchableNativeFeedback]}
+- {{:TouchableNativeFeedback-BsReactNative} [TouchableNativeFeedback]}
 - {{:TouchableOpacity-BsReactNative} [TouchableOpacity]}
 - {{:TouchableWithoutFeedback-BsReactNative} [TouchableWithoutFeedback]}
 - {{:View-BsReactNative} [View]}
