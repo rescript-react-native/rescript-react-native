@@ -1,3 +1,43 @@
+/**
+A wrapper for making views respond properly to touches. On press down, the opacity of the wrapped view is decreased, which allows the underlay color to show through, darkening or tinting the view.
+You can read more on [TouchableHighlight] component usage in official docs: {{:https://facebook.github.io/react-native/docs/touchablehighlight}}
+
+  {3 Props}
+
+  {{:\BsReactNative/TouchableWithoutFeedback-BsReactNative} [TouchableWithoutFeedback] props}
+
+  {4 activeOpacity}
+  {[
+    ~activeOpacity: float=?
+  ]}
+  {4 onHideUnderlay}
+  {[
+    ~onHideUnderlay: unit => unit=?    
+  ]}
+  {4 onShowUnderlay}
+  {[
+    ~onShowUnderlay: unit => unit=?
+  ]}
+  {4 style}
+  {[ 
+    ~style: Style.t=?
+  ]}
+  {4 underlayColor}
+  {[
+    ~underlayColor: string=?
+  ]}
+  {4 hasTVPreferredFocus}
+  {[
+    ~hasTVPreferredFocus: bool=?
+  ]}
+  {4 tvParallaxProperties}
+  {[
+    ~tvParallaxProperties: Js.t({.})=?
+  ]}
+ */
+
+
+
 let make:
   (
     ~accessible: bool=?,
