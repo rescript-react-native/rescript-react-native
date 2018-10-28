@@ -8,6 +8,9 @@ dt#type-calculated {
 #module-type-ImageComponent,
 #module-type-ScrollViewComponent,
 #module-CreateComponent, 
+#type-renderBag,
+#type-renderAccessory,
+#type-viewToken,
 #module-CreateComponent ~ article summary,
 #module-CreateComponent ~ div summary
 {
