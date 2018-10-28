@@ -5,9 +5,12 @@ dt#type-calculated {
 }
 
 #module-type-FlatListComponent,
+#module-type-ViewComponent,
+#module-type-Impl,
 #module-type-ImageComponent,
 #module-type-ScrollViewComponent,
 #module-CreateComponent, 
+#module-type-TextComponent,
 #type-renderBag,
 #type-renderAccessory,
 #type-viewToken,
