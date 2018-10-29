@@ -7,7 +7,7 @@
     "start-docs": "live-server docs",
     "start": "bsb -make-world -w",
     "clean-build": "bsb -clean-world -make-world",
-    "test": "exit 0"
+    "test": "yarn clean-build && yarn build-docs"
   },
   "license": "MIT",
   "keywords": [
