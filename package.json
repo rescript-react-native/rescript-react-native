@@ -2,6 +2,7 @@
   "name": "bs-react-native",
   "version": "0.10.0",
   "scripts": {
+    "format": "find . -name \"*.re\" | grep -v \"node_modules\" | xargs bsrefmt --in-place",
     "build": "bsb -make-world",
     "build-docs": "sh ./docs/scripts/build-docs.sh",
     "start-docs": "live-server docs",
