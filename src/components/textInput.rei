@@ -373,7 +373,16 @@ let make:
                           } =>
                           unit
                             =?,
-    ~onEndEditing: unit => unit=?,
+    ~onEndEditing: {
+                     .
+                     "nativeEvent": {
+                       .
+                       "text": string,
+                       "target": int,
+                     },
+                   } =>
+                   unit
+                     =?,
     ~onFocus: unit => unit=?,
     ~onScroll: {
                  .
