@@ -1,3 +1,97 @@
+/**
+  A component used to select a single value from a range of values.
+  You can read more on [Slider] component usage in official docs: {{:https://facebook.github.io/react-native/docs/slider}}
+
+  {3 Props}
+
+  {{:\BsReactNative/View-BsReactNative} [View] props}
+
+  {4 disabled}
+  {[
+    ~disabled: bool=?,
+  ]}
+  {4 maximumTrackTintColor}
+  {[
+    ~maximumTrackTintColor: string=?,
+  ]}
+  {4 maximumValue}
+  {[
+    ~maximumValue: float=?,
+  ]}
+  {4 minimumTrackTintColor}
+  {[
+    ~minimumTrackTintColor: string=?,
+  ]}
+  {4 minimumValue}
+  {[
+    ~minimumValue: float=?,
+  ]}
+  {4 onSlidingComplete}
+  {[
+    ~onSlidingComplete: float => unit=?,
+  ]}
+  {4 onValueChange}
+  {[
+    ~onValueChange: float => unit=?,
+  ]}
+  {4 step}
+  {[
+    ~step: float=?,
+  ]}
+  {4 value}
+  {[
+    ~value: float=?,
+  ]}
+  {4 thumbTintColor}
+  {[
+    ~thumbTintColor: string=?,
+  ]}
+  {4 maximumTrackImage}
+  {[
+    ~maximumTrackImage: Image.imageSource=?,
+  ]}
+  reference:
+  {[
+    type imageSource =
+      | `URI(imageURISource)
+      | `Required(Packager.required)
+      | `Multiple(list(imageURISource));
+  ]}
+  {[
+    let imageURISource:
+    (
+      ~uri: string,
+      ~bundle: string=?,
+      ~method: string=?,
+      ~headers: Js.t('a)=?,
+      ~body: string=?,
+      ~cache: [
+        | `default
+        | `reload
+        | `forceCache
+        | `onlyIfCached
+      ]=?,
+      ~scale: float=?,
+      ~width: float=?,
+      ~height: float=?,
+      unit
+    ) =>
+    imageURISource;
+  ]}
+  {4 minimumTrackImage}
+  {[
+    ~minimumTrackImage: Image.imageSource=?,
+  ]}
+  {4 thumbImage}
+  {[
+    ~thumbImage: Image.imageSource=?,
+  ]}
+  {4 trackImage}
+  {[
+    ~trackImage: Image.imageSource=?,
+  ]}
+ */
+
 let make:
   (
     ~disabled: bool=?,
