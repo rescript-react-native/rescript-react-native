@@ -1,3 +1,17 @@
+/**
+  {3 Props}
+
+  {{:\BsReactNative/View-BsReactNative} [View] props}
+  {4 onSnapshotReady}
+  {[
+    ~onSnapshotReady: unit => unit=?,
+  ]}
+  {4 testIdentifier}
+  {[
+    ~testIdentifier: string=?,
+  ]}
+*/
+
 let make:
   (
     ~onSnapshotReady: unit => unit=?,

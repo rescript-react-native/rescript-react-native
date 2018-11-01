@@ -5,8 +5,16 @@ dt#type-calculated {
 }
 
 #module-type-FlatListComponent,
+#module-type-ViewComponent,
+#module-type-Impl,
 #module-type-ImageComponent,
+#module-type-ScrollViewComponent,
 #module-CreateComponent, 
+#module-type-TextComponent,
+#type-renderBag,
+#type-t,
+#type-renderAccessory,
+#type-viewToken,
 #module-CreateComponent ~ article summary,
 #module-CreateComponent ~ div summary
 {

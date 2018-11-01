@@ -1,12 +1,9 @@
 module type ViewComponent = {
   /**
+    The most fundamental component for building a UI,
+    You can read more on [View] component usage in official docs: {{:https://facebook.github.io/react-native/docs/view}}
+
     {2 Props}
-
-    {3 hidesWhenStopped}
-
-    {[
-      ~hidesWhenStopped: bool=?,
-    ]}
 
     {3 accessibilityLabel}
 

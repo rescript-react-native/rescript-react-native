@@ -1,3 +1,47 @@
+/**
+{3 Example of use}
+You can read more on RefreshControl component usage in official docs: {{:https://facebook.github.io/react-native/docs/refreshcontrol}}
+
+{3 Props}
+{4 onRefresh}
+{[
+  onRefresh: unit => unit=?
+]}
+{4 refreshing}
+{[
+  ~refreshing: bool=?,
+]}
+{4 colors}
+{[
+  ~colors: array(string)=?,
+]}
+{4 enabled}
+{[
+  ~enabled: bool=?,
+]}
+{4 progressBackgroundColor}
+{[
+  ~progressBackgroundColor: string=?,
+]}
+{4 progressViewOffset}
+{[
+  ~progressViewOffset: float=?,
+]}
+{4 tintColor}
+{[
+  ~tintColor: string=?,
+]}
+{4 title}
+{[
+  ~title: string=?,
+]}
+{4 titleColor}
+{[
+  ~titleColor: string=?,
+]}
+All other {{:\BsReactNative/View-BsReactNative} [View] props}
+*/
+
 let make:
   (
     ~onRefresh: unit => unit=?,
