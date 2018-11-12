@@ -36,6 +36,7 @@ let make =
       ~style=?,
       ~background=?,
       ~useForeground=?,
+      ~testID=?,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
@@ -93,5 +94,6 @@ let make =
           },
           accessibilityTraits,
         ),
+      "testID": testID,
     },
   );

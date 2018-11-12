@@ -19,6 +19,7 @@ let make =
       ~onPressOut=?,
       ~pressRetentionOffset=?,
       ~style=?,
+      ~testID=?,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
@@ -74,5 +75,6 @@ let make =
           },
           accessibilityTraits,
         ),
+      "testID": testID,
     },
   );
