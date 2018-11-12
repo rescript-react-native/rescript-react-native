@@ -1,36 +1,71 @@
 let serialize = (handlers: option(Types.touchResponderHandlers)) =>
   switch (handlers) {
   | None => Js.Obj.empty()
-  | Some(handlers) => Types.{
-      "onMoveShouldSetResponder":
-        UtilsRN.option_map(
-          (g, x) => g(x),
-          handlers.onMoveShouldSetResponder,
-        ),
+  | Some(handlers) => {
+      "onMoveShouldSetResponder": UtilsRN.option_map((g, x) => g(x), handlers.onMoveShouldSetResponder),
       "onMoveShouldSetResponderCapture":
-        UtilsRN.option_map(
-          (g, x) => g(x),
-          handlers.onMoveShouldSetResponderCapture,
-        ),
+        UtilsRN.option_map((g, x) => g(x), handlers.onMoveShouldSetResponderCapture),
       "onResponderGrant": handlers.onResponderGrant,
       "onResponderMove": handlers.onResponderMove,
       "onResponderReject": handlers.onResponderReject,
       "onResponderRelease": handlers.onResponderRelease,
       "onResponderTerminate": handlers.onResponderTerminate,
       "onResponderTerminationRequest": handlers.onResponderTerminationRequest,
-      "onStartShouldSetResponder":
-        UtilsRN.option_map(
-          (g, x) => g(x),
-          handlers.onStartShouldSetResponder,
-        ),
+      "onStartShouldSetResponder": UtilsRN.option_map((g, x) => g(x), handlers.onStartShouldSetResponder),
       "onStartShouldSetResponderCapture":
-        UtilsRN.option_map(
-          (g, x) => g(x),
-          handlers.onStartShouldSetResponderCapture,
-        ),
+        UtilsRN.option_map((g, x) => g(x), handlers.onStartShouldSetResponderCapture),
     }
   };
 
+[@bs.deriving abstract]
+type viewProps = {
+  [@bs.optional]
+  accessibilityLabel: string,
+  [@bs.optional]
+  accessible: bool,
+  [@bs.optional]
+  hitSlop: Types.insets,
+  [@bs.optional]
+  onAccessibilityTap: unit => unit,
+  [@bs.optional]
+  onLayout: RNEvent.NativeLayoutEvent.t => unit,
+  [@bs.optional]
+  onMagicTap: unit => unit,
+  [@bs.optional]
+  removeClippedSubviews: bool,
+  [@bs.optional]
+  responderHandlers: Types.touchResponderHandlers,
+  [@bs.optional]
+  pointerEvents: string,
+  [@bs.optional]
+  style: Style.t,
+  [@bs.optional]
+  testID: string,
+  [@bs.optional]
+  accessibilityComponentType: string,
+  [@bs.optional]
+  accessibilityLiveRegion: string,
+  [@bs.optional]
+  collapsable: bool,
+  [@bs.optional]
+  importantForAccessibility: string,
+  [@bs.optional]
+  needsOffscreenAlphaCompositing: bool,
+  [@bs.optional]
+  renderToHardwareTextureAndroid: bool,
+  [@bs.optional]
+  accessibilityTraits: array(string),
+  [@bs.optional]
+  accessibilityViewIsModal: bool,
+  [@bs.optional]
+  shouldRasterizeIOS: bool,
+  [@bs.optional]
+  keyboardVerticalOffset: int,
+  [@bs.optional]
+  behavior: string,
+  [@bs.optional]
+  contentContainerStyle: Style.t,
+};
 let extendView =
     (
       ~accessibilityLabel=?,
@@ -54,17 +89,17 @@ let extendView =
       ~accessibilityViewIsModal=?,
       ~shouldRasterizeIOS=?,
       moreProps,
-    ) =>
-  UtilsRN.objAssign2(
-    {
-      "accessibilityLabel": accessibilityLabel,
-      "accessible": accessible,
-      "hitSlop": hitSlop,
-      "onAccessibilityTap": onAccessibilityTap,
-      "onLayout": onLayout,
-      "onMagicTap": onMagicTap,
-      "removeClippedSubviews": removeClippedSubviews,
-      "pointerEvents":
+    ) => {
+  let viewProps =
+    viewProps(
+      ~accessibilityLabel?,
+      ~accessible?,
+      ~hitSlop?,
+      ~onAccessibilityTap?,
+      ~onLayout?,
+      ~onMagicTap?,
+      ~removeClippedSubviews?,
+      ~pointerEvents=?
         UtilsRN.option_map(
           x =>
             switch (x) {
@@ -75,9 +110,9 @@ let extendView =
             },
           pointerEvents,
         ),
-      "style": style,
-      "testID": testID,
-      "accessibilityComponentType":
+      ~style?,
+      ~testID?,
+      ~accessibilityComponentType=?
         UtilsRN.option_map(
           x =>
             switch (x) {
@@ -88,7 +123,7 @@ let extendView =
             },
           accessibilityComponentType,
         ),
-      "accessibilityLiveRegion":
+      ~accessibilityLiveRegion=?
         UtilsRN.option_map(
           x =>
             switch (x) {
@@ -98,8 +133,8 @@ let extendView =
             },
           accessibilityLiveRegion,
         ),
-      "collapsable": collapsable,
-      "importantForAccessibility":
+      ~collapsable?,
+      ~importantForAccessibility=?
         UtilsRN.option_map(
           prop =>
             switch (prop) {
@@ -110,9 +145,9 @@ let extendView =
             },
           importantForAccessibility,
         ),
-      "needsOffscreenAlphaCompositing": needsOffscreenAlphaCompositing,
-      "renderToHardwareTextureAndroid": renderToHardwareTextureAndroid,
-      "accessibilityTraits":
+      ~needsOffscreenAlphaCompositing?,
+      ~renderToHardwareTextureAndroid?,
+      ~accessibilityTraits=?
         UtilsRN.option_map(
           traits => {
             let to_string =
@@ -138,9 +173,11 @@ let extendView =
           },
           accessibilityTraits,
         ),
-      "accessibilityViewIsModal": accessibilityViewIsModal,
-      "shouldRasterizeIOS": shouldRasterizeIOS,
-    },
-    moreProps,
-    serialize(responderHandlers),
-  );
+      ~accessibilityViewIsModal?,
+      ~shouldRasterizeIOS?,
+      (),
+    )
+    ->Obj.magic;
+
+  UtilsRN.objAssign2(viewProps, moreProps, serialize(responderHandlers));
+};
