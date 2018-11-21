@@ -44,7 +44,7 @@ Please find the list of available components and APIs below.
 
 {3 APIs}
 - {!AccessibilityInfo}
-- {{:Button-BsReactNative} [ActionSheetIOS]}
+- {{:ActionSheetIOS-BsReactNative} [ActionSheetIOS]}
 - {!AdSupportIOS}
 - {{:Alert-BsReactNative} [Alert]}
 - {{:AlertIOS-BsReactNative} [AlertIOS]}

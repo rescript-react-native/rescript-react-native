@@ -1,8 +1,11 @@
 /** Extras **/
 
+
 dt#type-calculated {
   display: none;
 }
+
+#val-share {}
 
 #module-type-FlatListComponent,
 #module-type-ViewComponent,
@@ -12,7 +15,16 @@ dt#type-calculated {
 #module-CreateComponent, 
 #module-type-TextComponent,
 #type-renderBag,
+#type-dimensions,
+#val-canUseCamera,
+#type-result,
+#type-duration,
 #type-t,
+#val-get,
+#val-share,
+#type-type_,
+#type-options,
+#type-error,
 #type-renderAccessory,
 #type-viewToken,
 #module-CreateComponent ~ article summary,
