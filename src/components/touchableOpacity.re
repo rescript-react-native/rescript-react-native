@@ -25,6 +25,7 @@ let make =
       ~pressRetentionOffset=?,
       ~activeOpacity=?,
       ~focusedOpacity=?,
+      ~testID=?,
       ~tvParallaxProperties=?,
     ) =>
   ReasonReact.wrapJsForReason(
@@ -83,6 +84,7 @@ let make =
         ),
       "focusedOpacity": focusedOpacity,
       "activeOpacity": activeOpacity,
+      "testID": testID,
       "tvParallaxProperties": tvParallaxProperties,
     },
   );
