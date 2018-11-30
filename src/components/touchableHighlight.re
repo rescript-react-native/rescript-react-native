@@ -24,6 +24,7 @@ let make =
       ~underlayColor=?,
       ~hasTVPreferredFocus=?,
       ~tvParallaxProperties=?,
+      ~testID=?,
     ) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
@@ -84,5 +85,6 @@ let make =
       "underlayColor": underlayColor,
       "hasTVPreferredFocus": hasTVPreferredFocus,
       "tvParallaxProperties": tvParallaxProperties,
+      "testID": testID,
     },
   );

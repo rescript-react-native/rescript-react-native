@@ -54,3 +54,9 @@ buck-out/
 
 # Bundle artifact
 *.jsbundle
+
+# Bucklescript artifacts
+.merlin
+.bsb.lock
+/lib/bs/
+/lib/js/
