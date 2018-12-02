@@ -553,15 +553,14 @@ let event: (array('a), 'b) => animatedEvent;
 let animation =
   Animated.sequence(
     [|
-      Animated.delay(500),
+      Animated.delay(500.),
       Animated.timing(
         ~value=barValue,
         ~toValue=`raw(0.0),
         ~duration=100.0,
         (),
       ),
-    |],
-    {"stopTogether": false},
+    |]
   );
 
 Animated.start(animation, ());]}

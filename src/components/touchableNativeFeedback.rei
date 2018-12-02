@@ -1,5 +1,3 @@
-
-
 type t;
 
 /**
@@ -92,6 +90,7 @@ let make:
     ~style: Style.t=?,
     ~background: t=?,
     ~useForeground: bool=?,
+    ~testID: string=?,
     array(ReasonReact.reactElement)
   ) =>
   ReasonReact.component(
@@ -112,7 +111,7 @@ let selectableBackground: unit => t;
  */
 let selectableBackgroundBorderless: unit => t;
 
-/** 
+/**
 {4 ripple}
 Creates an object that represents ripple drawable with specified color (as a string). If property borderless evaluates to true the ripple will render outside of the view bounds (see native actionbar buttons as an example of that behavior). This background type is available on Android API level 21+.
  */

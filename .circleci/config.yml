@@ -31,13 +31,12 @@ defaults: &defaults
 
 version: 2
 jobs:
-
   # Set up a Node environment for downstream jobs
   checkout_code:
     <<: *defaults
     steps:
       - checkout
-      
+
       # Install Node.js dependencies
       - restore-cache: *restore-yarn-cache
       - run: yarn
@@ -46,7 +45,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths: .
-  
+
   # Test bs-react-native
   test:
     <<: *defaults
@@ -54,7 +53,7 @@ jobs:
       - attach_workspace:
           at: ~/bs-react-native
       - run:
-          name: "Run tests"
+          name: 'Run tests'
           command: |
             yarn build
 
@@ -64,26 +63,19 @@ jobs:
     environment:
       - TERM: dumb
     steps:
-      - attach_workspace:
-          at: ~/bs-react-native
-      - restore-cache: *restore-opam-cache
       - run:
           name: Install opam
-          command: |
-            wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sudo sh -s /usr/local/bin
-            /usr/local/bin/opam init --compiler 4.02.3+buckle-master
+          command: wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sudo sh -s /usr/local/bin
+      - run: /usr/local/bin/opam init --comp 4.02.3+buckle-master && eval $(opam config env) && opam switch 4.02.3+buckle-master
       - run:
-          name: Install dependencies
-          command: |
-            eval $(opam config env)
-            if [[ ! -x "odoc" ]]; then
-              opam update
-              opam pin add odoc --dev-repo -y
-              opam install -y odoc
-            fi
-      - save-cache: *save-opam-cache
+          name: Install opam deps
+          command: eval $(opam config env) && opam update && opam pin add odoc.dev git+https://github.com/ocaml/odoc && opam install -y odoc
       - run:
-          name: "Build documentation"
+          name: Install node deps
+          command: eval $(opam config env) && yarn install
+
+      - run:
+          name: 'Build documentation'
           command: |
             eval $(opam config env)
             yarn build && yarn build-docs
@@ -91,7 +83,7 @@ jobs:
           root: .
           paths:
             - docs
-  
+
   deploy-docs:
     <<: *defaults
     steps:
@@ -113,7 +105,7 @@ jobs:
             git commit -m "Documentation"
 
             git push origin HEAD:gh-pages --quiet --force
-          
+
 workflows:
   version: 2
   build-deploy:
@@ -121,7 +113,7 @@ workflows:
       # Checkout repo and run Yarn
       - checkout_code:
           filters: *filter-ignore-gh-pages
-      
+
       # Test
       - test:
           filters: *filter-ignore-gh-pages
@@ -133,7 +125,7 @@ workflows:
           filters: *filter-ignore-gh-pages
           requires:
             - checkout_code
-      
+
       # Deploy documentation
       - deploy-docs:
           filters: *filter-only-master
