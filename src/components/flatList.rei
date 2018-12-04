@@ -1,16 +1,14 @@
-
-
 /************* */
 module type FlatListComponent = {
   /**
     {3 Example of use}
     In order to render a FlatList {{:https://facebook.github.io/react-native/docs/flatlist}} in React Native you need to provide three props:
-    
+
     - [data]
     - [renderItem]
     - [keyExtractor]
 
-   {4 default} 
+   {4 default}
    {[
       type contact = {
         id: int,
@@ -183,6 +181,10 @@ module type FlatListComponent = {
   {[
     showsVerticalScrollIndicator: bool=?
   ]}
+  {4 stickyHeaderIndices}
+  {[
+    stickyHeaderIndices: list(int)=?
+  ]}
   {4 windowSize}
   {[
     windowSize: int=?
@@ -233,7 +235,7 @@ module type FlatListComponent = {
     {3 methods }
     {4 scrollToEnd}
   */
- 
+
   let scrollToEnd: (ReasonReact.reactRef, ~animated: bool) => unit;
 
   /**
@@ -267,15 +269,16 @@ module type FlatListComponent = {
 
   /**
   {4 scrollToOffset}
-  */  
+  */
 
   let scrollToOffset:
     (ReasonReact.reactRef, ~offset: float=?, ~animated: bool=?, unit) => unit;
 
-/**
+  /**
 {2 API reference}
 */
-  [@bs.send] external recordInteraction: ReasonReact.reactRef => unit = "";
+  [@bs.send]
+  external recordInteraction: ReasonReact.reactRef => unit = "";
 
   type renderBag('item) = {
     item: 'item,
@@ -287,7 +290,6 @@ module type FlatListComponent = {
   let renderItem:
     (renderBag('item) => ReasonReact.reactElement) => renderItem('item);
 
-  
   type separatorComponent('item);
 
   type separatorProps('item) = {
@@ -355,6 +357,7 @@ module type FlatListComponent = {
       ~scrollEnabled: bool=?,
       ~showsHorizontalScrollIndicator: bool=?,
       ~showsVerticalScrollIndicator: bool=?,
+      ~stickyHeaderIndices: list(int)=?,
       ~windowSize: int=?,
       ~maxToRenderPerBatch: int=?,
       ~viewabilityConfig: Js.t({.})=?,
