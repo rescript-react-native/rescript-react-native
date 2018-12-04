@@ -181,6 +181,10 @@ module type FlatListComponent = {
   {[
     showsVerticalScrollIndicator: bool=?
   ]}
+  {4 stickyHeaderIndices}
+  {[
+    stickyHeaderIndices: list(int)=?
+  ]}
   {4 windowSize}
   {[
     windowSize: int=?
@@ -353,7 +357,7 @@ module type FlatListComponent = {
       ~scrollEnabled: bool=?,
       ~showsHorizontalScrollIndicator: bool=?,
       ~showsVerticalScrollIndicator: bool=?,
-      ~stickyHeaderIndices: list(string)=?,
+      ~stickyHeaderIndices: list(int)=?,
       ~windowSize: int=?,
       ~maxToRenderPerBatch: int=?,
       ~viewabilityConfig: Js.t({.})=?,
