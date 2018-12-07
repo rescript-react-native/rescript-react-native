@@ -12,14 +12,14 @@ You can read more on [TouchableHighlight] component usage in official docs: {{:h
   ]}
   {4 onHideUnderlay}
   {[
-    ~onHideUnderlay: unit => unit=?    
+    ~onHideUnderlay: unit => unit=?
   ]}
   {4 onShowUnderlay}
   {[
     ~onShowUnderlay: unit => unit=?
   ]}
   {4 style}
-  {[ 
+  {[
     ~style: Style.t=?
   ]}
   {4 underlayColor}
@@ -34,9 +34,11 @@ You can read more on [TouchableHighlight] component usage in official docs: {{:h
   {[
     ~tvParallaxProperties: Js.t({.})=?
   ]}
+  {4 testID}
+  {[
+    ~testID: string=?
+  ]}
  */
-
-
 
 let make:
   (
@@ -88,6 +90,7 @@ let make:
     ~underlayColor: string=?,
     ~hasTVPreferredFocus: bool=?,
     ~tvParallaxProperties: Js.t({.})=?,
+    ~testID: string=?,
     array(ReasonReact.reactElement)
   ) =>
   ReasonReact.component(

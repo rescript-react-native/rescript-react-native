@@ -1,4 +1,3 @@
-
 /**
 
 A wrapper for making views respond properly to touches. On press down, the opacity of the wrapped view is decreased, dimming it.
@@ -28,7 +27,6 @@ You can read more on [TouchableOpacity] component usage in official docs: {{:htt
     setOpacityTo: (ReasonReact.reactRef, float, int) => unit
   ]}
   */
-
 
 let make:
   (
@@ -77,6 +75,7 @@ let make:
     ~pressRetentionOffset: Types.insets=?,
     ~activeOpacity: float=?,
     ~focusedOpacity: float=?,
+    ~testID: string=?,
     ~tvParallaxProperties: Js.t({.})=?,
     array(ReasonReact.reactElement)
   ) =>
