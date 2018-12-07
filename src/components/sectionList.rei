@@ -1,3 +1,29 @@
+/**
+  A performant interface for rendering sectioned lists, supporting the most handy features:
+  You can read more on [SectionList] component usage in official docs: {{:https://facebook.github.io/react-native/docs/sectionlist}}
+
+  {3 Props}
+  {4 sections}
+  The actual data to render, akin to the data prop in FlatList.
+  {[
+    ~sections: sections('item),
+  ]}
+ reference:
+  {[
+    type renderBag('item) = {
+      item: 'item,
+      index: int,
+      section: section('item),
+      separators: {
+        .
+        "highlight": unit => unit,
+        "unhighlight": unit => unit,
+      },
+    }
+  ]}
+  */
+
+
 type renderBag('item) = {
   item: 'item,
   index: int,
@@ -23,6 +49,41 @@ let section:
   ) =>
   section('item);
 
+type sections('item);
+
+/**
+{4 renderItem}
+  {[
+    ~renderItem: renderItem('item),
+  ]}
+*/
+
+let sections: array(section('item)) => sections('item);
+
+
+
+type renderItem('item);
+
+
+/**
+  {4 keyExtractor}
+  {[
+    ~keyExtractor: ('item, int) => string,
+  ]}
+  {4 itemSeparatorComponent}
+  {[
+    ~itemSeparatorComponent: separatorComponent('item)=?,
+  ]}
+  reference:
+*/
+
+
+let renderItem:
+  (renderBag('item) => ReasonReact.reactElement) => renderItem('item);
+
+
+
+
 type separatorProps('item) = {
   highlighted: bool,
   leadingItem: option('item),
@@ -32,29 +93,74 @@ type separatorProps('item) = {
   trailingSection: option(section('item)),
 };
 
-type sections('item);
-
-let sections: array(section('item)) => sections('item);
-
-type renderItem('item);
-
-let renderItem:
-  (renderBag('item) => ReasonReact.reactElement) => renderItem('item);
-
 type separatorComponent('item);
+
+/**
+  {4 listEmptyComponent}
+  {[
+    ~listEmptyComponent: unit => ReasonReact.reactElement=?,
+  ]}
+  {4 listFooterComponent}
+  {[
+    ~listFooterComponent: ReasonReact.reactElement=?,
+  ]}
+  {4 listHeaderComponent}
+  {[
+    ~listHeaderComponent: ReasonReact.reactElement=?,
+  ]}
+  {4 sectionSeparatorComponent}
+  {[
+    ~sectionSeparatorComponent: separatorComponent('item)=?,
+  ]}
+  {4 inverted}
+  {[
+    ~inverted: bool=?,
+  ]}
+  {4 extraData}
+  {[
+    ~extraData: 'extraData=?,
+  ]}
+  {4 initialNumToRender}
+  {[
+    ~initialNumToRender: int=?,
+  ]}
+  {4 onEndReached}
+  {[
+    ~onEndReached: {
+      . "distanceFromEnd": float
+    } => unit=?,
+  ]}
+  {4 onEndReachedThreshold}
+  {[
+    ~onEndReachedThreshold: float=?,
+  ]}
+  {4 onViewableItemsChanged}
+  {[
+    onViewableItemsChanged: {
+      .
+      "changed": array(viewToken('item)),
+      "viewableItems": array(viewToken('item)),
+    }=?
+  ]}
+  reference:
+  {[
+    type viewToken('item) = {
+      .
+      "index": Js.undefined(int),
+      "isViewable": bool,
+      "item": 'item,
+      "key": string,
+      "section": section('item),
+    };
+  ]}
+   */
+
 
 let separatorComponent:
   (separatorProps('item) => ReasonReact.reactElement) =>
   separatorComponent('item);
 
-type renderAccessory('item) = {section: section('item)};
-
-type renderAccessoryView('item);
-
-let renderAccessoryView:
-  (renderAccessory('item) => ReasonReact.reactElement) =>
-  renderAccessoryView('item);
-
+  
 type viewToken('item) = {
   .
   "index": Js.undefined(int),
@@ -63,6 +169,84 @@ type viewToken('item) = {
   "key": string,
   "section": section('item),
 };
+
+/**
+{4 onRefresh}
+{[
+  onRefresh: unit => unit=?
+]}
+{4 refreshing}
+{[
+  refreshing: bool=?
+]}
+{4 renderSectionHeaader}
+{[
+  renderSectionHeader: renderAccessoryView('item)=?
+]}
+reference: 
+{[
+  type renderAccessory('item) = {
+    section: section('item),
+  };
+]}
+ */
+
+type renderAccessory('item) = {section: section('item)};
+
+
+type renderAccessoryView('item);
+
+
+
+/**
+  {4 renderSectionFooter}
+  {[
+    ~renderSectionFooter: renderAccessoryView('item)=?,
+  ]}
+  {4 stickySectionHeadersEnabled}
+  {[
+    ~stickySectionHeadersEnabled: bool=?,
+  ]}
+  {4 keyboardDismissMode}
+  {[
+    keyboardDismissMode: [
+      | `none
+      | `interactive
+      | `onDrag
+    ]=?
+  ]}
+  {4 keyboardShouldPersistTaps}
+  {[
+    keyboardShouldPersistTaps: [
+      | `always
+      | `never
+      | `handled
+    ]=?
+  ]}
+  {4 showsHorizontalScrollIndicator}
+  {[
+    ~showsHorizontalScrollIndicator: bool=?,
+  ]}
+  {4 showsVerticalScrollIndicator}
+  {[
+    ~showsVerticalScrollIndicator: bool=?,
+  ]}
+  {4 getItemLayout}
+  {[
+    ~getItemLayout: (option(array('item)), int) => {
+      .
+      "length": int,
+      "offset": int,
+      "index": int,
+    }
+      =?,
+  ]}
+*/
+
+let renderAccessoryView:
+  (renderAccessory('item) => ReasonReact.reactElement) =>
+  renderAccessoryView('item);
+
 
 let make:
   (

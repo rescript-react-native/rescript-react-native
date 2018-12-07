@@ -32,13 +32,14 @@ let os = () =>
   | x => raise(UnknownPlatform(x))
   };
 
-let equals = targetOs =>
+let equals = targetOs => 
   switch (os(), targetOs) {
-  | (IOS(_), IOS(_)) => true
-  | (Android, Android) => true
-  | exception (UnknownPlatform(_)) => false
-  | _ => false
-  };
+    | (IOS(_), IOS(_)) => true
+    | (Android, Android) => true
+    | (Android, IOS(_)) => false
+    | (IOS(_), Android) => false
+    | exception (UnknownPlatform(_)) => false
+};
 
 [@bs.module "react-native"] [@bs.scope "Platform"]
 external _version: Js.undefined(int) = "Version";

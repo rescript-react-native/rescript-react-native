@@ -101,7 +101,7 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
   let encode_pt_only: Style.pt_only => float =
     value =>
       switch (value) {
-      | Pt(value) => value
+      | Style.Pt(value) => value
       };
 
   type _imageURISource;

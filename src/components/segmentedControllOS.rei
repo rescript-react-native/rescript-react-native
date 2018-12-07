@@ -1,3 +1,42 @@
+/**
+  Use SegmentedControlIOS to render a [UISegmentedControl] iOS.
+  You can read more on [SegmentedControlIOS] component usage in official docs: {{:https://facebook.github.io/react-native/docs/segmentedcontrolios}}
+
+  {3 Props}
+
+  {{:\BsReactNative/View-BsReactNative} [View] props}
+
+  {4 values}
+  {[
+    ~values: list(string),
+  ]}
+  {4 selectedIndex}
+  {[
+    ~selectedIndex: int=?,
+  ]}
+  {4 onChange}
+  {[
+    ~onChange: RNEvent.t => unit=?,
+  ]}
+  {4 enabled}
+  {[
+    ~enabled: bool=?,
+  ]}
+  {4 momentary}
+  {[
+    ~momentary: bool=?,
+  ]}
+  {4 tintColor}
+  {[
+    ~tintColor: string=?,
+  ]}
+  {4 onValueChange}
+  {[
+    ~onValueChange: string => unit=?,
+  ]}
+
+*/
+
 let make:
   (
     ~values: list(string),

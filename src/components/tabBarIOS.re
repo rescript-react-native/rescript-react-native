@@ -3,15 +3,16 @@ module Item = {
   external tabBarItemIOS: ReasonReact.reactClass = "Item";
   let make =
       (
-        ~title: option(string)=?,
-        ~badgeColor: option(string)=?,
+        ~selected=?,
         ~badge=?,
         ~icon=?,
         ~onPress=?,
-        ~renderAsOriginal=?,
+        ~renderAsOriginal=?,     
+        ~badgeColor: option(string)=?,
+        ~selectedIcon=?,   
         ~style=?,
-        ~selected=?,
-        ~selectedIcon=?,
+        ~systemIcon=?,
+        ~title: option(string)=?,
         ~isTVSelectable=?,
         ~accessibilityLabel=?,
         ~accessible=?,
@@ -33,20 +34,39 @@ module Item = {
         ~accessibilityViewIsModal=?,
         ~shouldRasterizeIOS=?,
       ) =>
+      
     ReasonReact.wrapJsForReason(
       ~reactClass=tabBarItemIOS,
       ~props=
         Props.extendView(
           {
-            "badgeColor": badgeColor,
-            "title": title,
+            "selected": selected,
             "badge": badge,
             "icon": icon,
             "onPress": onPress,
             "renderAsOriginal": renderAsOriginal,
-            "selected": selected,
+            "badgeColor": badgeColor,
             "selectedIcon": selectedIcon,
             "style": style,
+            "systemIcon": UtilsRN.option_map(
+              x =>
+                switch (x) {                  
+                | `bookmarks => "fill"
+                | `contacts => "contacts"
+                | `downloads => "downloads"
+                | `favourites => "favourites"
+                | `featured => "featured"
+                | `history => "history"
+                | `more => "more"
+                | `mostRecent => "most-recent"
+                | `mostViewed => "most-viewed"
+                | `recents => "recents"
+                | `search => "search"
+                | `topRated => "top-rated"
+              },
+              systemIcon,
+            ),
+            "title": title,
             "isTVSelectable": isTVSelectable,
           },
           ~accessibilityLabel?,
@@ -78,9 +98,9 @@ external tabBarIOS: ReasonReact.reactClass = "TabBarIOS";
 
 let make =
     (
+      ~barStyle=?,
       ~barTintColor=?,
       ~itemPositioning=?,
-      ~style=?,
       ~tintColor=?,
       ~translucent=?,
       ~unselectedItemTintColor=?,
@@ -95,6 +115,7 @@ let make =
       ~pointerEvents=?,
       ~removeClippedSubviews=?,
       ~testID=?,
+      ~style=?,
       ~accessibilityComponentType=?,
       ~accessibilityLiveRegion=?,
       ~collapsable=?,
@@ -110,6 +131,14 @@ let make =
     ~props=
       Props.extendView(
         {
+          "barStyle": UtilsRN.option_map(
+              x =>
+                switch (x) {
+                | `default => "default"
+                | `black => "black"
+                },
+              barStyle,
+          ),
           "barTintColor": barTintColor,
           "itemPositioning":
             UtilsRN.option_map(
