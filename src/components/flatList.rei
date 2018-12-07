@@ -74,6 +74,10 @@ module type FlatListComponent = {
   {[
     listHeaderComponent: ReasonReact.reactElement=?
   ]}
+  {4 listEmptyComponent}
+  {[
+    listEmptyComponent: ReasonReact.reactElement=?
+  ]}
   {4 columnWrapperStyle}
   {[
     columnWrapperStyle: Style.t=?
@@ -308,6 +312,7 @@ module type FlatListComponent = {
       ~bounces: bool=?,
       ~listFooterComponent: ReasonReact.reactElement=?,
       ~listHeaderComponent: ReasonReact.reactElement=?,
+      ~listEmptyComponent: ReasonReact.reactElement=?,
       ~columnWrapperStyle: Style.t=?,
       ~extraData: 'any=?,
       ~getItemLayout: (option(array('item)), int) =>
