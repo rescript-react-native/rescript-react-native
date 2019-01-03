@@ -1,3 +1,12 @@
+/**
+The Geolocation API extends the Geolocation web spec: {{:https://developer.mozilla.org/en-US/docs/Web/API/Geolocation}}.
+
+As a browser polyfill, this API is available through the [navigator.geolocation] global - you do not need to import it.
+
+You can read more on [GeoLocation] API usage in official docs: {{:https://facebook.github.io/react-native/docs/geolocation}}
+
+*/
+
 type watchId = int;
 
 type position = {
