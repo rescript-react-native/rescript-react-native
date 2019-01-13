@@ -64,7 +64,7 @@ You can read more on [TouchableWithoutFeedback] component usage in official docs
   {[
     ~hitSlop: Types.insets=?
   ]}
-  reference: 
+  reference:
   {4 Types.rei}
   {[
     type insets = {
@@ -79,7 +79,7 @@ You can read more on [TouchableWithoutFeedback] component usage in official docs
   {[
     ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?
   ]}
-  reference: 
+  reference:
   {[
     module NativeLayoutEvent: {
       type t;
@@ -125,6 +125,10 @@ You can read more on [TouchableWithoutFeedback] component usage in official docs
   {4 style}
   {[
     ~style: Style.t=?
+  ]}
+  {4 testID}
+  {[
+    ~testID: string=?
   ]}
  */
 
@@ -173,6 +177,7 @@ let make:
     ~onPressOut: unit => unit=?,
     ~pressRetentionOffset: Types.insets=?,
     ~style: Style.t=?,
+    ~testID: string=?,
     array(ReasonReact.reactElement)
   ) =>
   ReasonReact.component(
