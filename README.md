@@ -25,7 +25,7 @@ See https://reasonml-community.github.io/bs-react-native.
 
 ## Usage
 
-See https://github.com/reasonml-community/bs-react-native/tree/master/RNTester
+See https://github.com/reasonml-community/bs-react-native/tree/master/example
 
 ## Contribute
 
