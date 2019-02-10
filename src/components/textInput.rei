@@ -358,7 +358,15 @@ let make:
     ~maxLength: int=?,
     ~multiline: bool=?,
     ~onBlur: unit => unit=?,
-    ~onChange: unit => unit=?,
+    ~onChange: {
+                 .
+                 "nativeEvent": {
+                   .
+                   "text": string,
+                   "target": int,
+                   "eventCount": int,
+                 },
+               } => unit=?,
     ~onChangeText: string => unit=?,
     ~onContentSizeChange: {
                             .
