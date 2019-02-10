@@ -61,6 +61,8 @@ jobs:
   # Build documentation
   docs:
     <<: *defaults
+    docker:
+      - image: ocaml/opam2:debian-9-ocaml-4.02.3
     environment:
       - TERM: dumb
     steps:
@@ -80,7 +82,6 @@ jobs:
             eval $(opam config env)
             if [[ ! -x "odoc" ]]; then
               opam update
-              opam pin add odoc --dev-repo -y
               opam install -y odoc
             fi
       - save-cache: *save-opam-cache
