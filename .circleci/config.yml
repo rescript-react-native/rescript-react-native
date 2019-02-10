@@ -31,13 +31,12 @@ defaults: &defaults
 
 version: 2
 jobs:
-
   # Set up a Node environment for downstream jobs
   checkout_code:
     <<: *defaults
     steps:
       - checkout
-      
+
       # Install Node.js dependencies
       - restore-cache: *restore-yarn-cache
       - run: yarn
@@ -46,7 +45,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths: .
-  
+
   # Test bs-react-native
   test:
     <<: *defaults
@@ -86,18 +85,18 @@ jobs:
             fi
       - save-cache: *save-opam-cache
       - run:
-        name: "Install node"
-        command: |
-          curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-          sudo apt-get install -y nodejs
-          mkdir -p ~/.npm-global
-          npm config set prefix $NPM_CONFIG_PREFIX
+          name: "Install node"
+          command: |
+            curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+            mkdir -p ~/.npm-global
+            npm config set prefix $NPM_CONFIG_PREFIX
       - run:
-        name: "Install yarn"
-        command: |
-          curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-          echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-          sudo apt-get update && sudo apt-get install yarn
+          name: "Install yarn"
+          command: |
+            curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+            echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+            sudo apt-get update && sudo apt-get install yarn
       - run:
           name: "Build documentation"
           command: |
@@ -107,7 +106,7 @@ jobs:
           root: .
           paths:
             - docs
-  
+
   deploy-docs:
     <<: *defaults
     steps:
@@ -129,7 +128,7 @@ jobs:
             git commit -m "Documentation"
 
             git push origin HEAD:gh-pages --quiet --force
-          
+
 workflows:
   version: 2
   build-deploy:
@@ -137,7 +136,7 @@ workflows:
       # Checkout repo and run Yarn
       - checkout_code:
           filters: *filter-ignore-gh-pages
-      
+
       # Test
       - test:
           filters: *filter-ignore-gh-pages
@@ -149,7 +148,7 @@ workflows:
           filters: *filter-ignore-gh-pages
           requires:
             - checkout_code
-      
+
       # Deploy documentation
       - deploy-docs:
           filters: *filter-only-master
