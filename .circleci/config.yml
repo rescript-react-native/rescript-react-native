@@ -78,6 +78,7 @@ jobs:
             eval $(opam config env)
             if [[ ! -x "odoc" ]]; then
               opam update
+              opam pin add odoc --dev-repo -y
               opam install -y odoc
             fi
       - save-cache: *save-opam-cache
