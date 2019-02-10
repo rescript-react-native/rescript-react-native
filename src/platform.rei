@@ -1,3 +1,15 @@
+/**
+React Native provides a module that detects the platform in which the app is running. You can use the detection logic to implement platform-specific code. Use this option when only small parts of a component are platform-specific.
+
+You can read more on [Platform] API usage in official docs: {{:https://facebook.github.io/react-native/docs/platform-specific-code}}
+
+{3 Example of use }
+{[
+  marginTop(Pt(Platform.os() == Platform.Android ? 20.0 : 0.0))
+]}
+
+*/
+
 type iosIdiom =
   | Phone
   | Pad

@@ -31,13 +31,12 @@ defaults: &defaults
 
 version: 2
 jobs:
-
   # Set up a Node environment for downstream jobs
   checkout_code:
     <<: *defaults
     steps:
       - checkout
-      
+
       # Install Node.js dependencies
       - restore-cache: *restore-yarn-cache
       - run: yarn
@@ -46,7 +45,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths: .
-  
+
   # Test bs-react-native
   test:
     <<: *defaults
@@ -61,6 +60,8 @@ jobs:
   # Build documentation
   docs:
     <<: *defaults
+    docker:
+      - image: ocaml/opam2:debian-9-ocaml-4.02.3
     environment:
       - TERM: dumb
     steps:
@@ -68,30 +69,44 @@ jobs:
           at: ~/bs-react-native
       - restore-cache: *restore-opam-cache
       - run:
-          name: Install opam
+          name: Initialize opam
           command: |
-            wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sudo sh -s /usr/local/bin
-            /usr/local/bin/opam init --compiler 4.02.3+buckle-master
+            sudo apt-get install -y m4
+            opam init --auto-setup --dot-profile=~/.bash_profile
+            opam remote add ocamlorg https://opam.ocaml.org || true
+            opam remote remove default || true
       - run:
           name: Install dependencies
           command: |
             eval $(opam config env)
             if [[ ! -x "odoc" ]]; then
               opam update
-              opam pin add odoc --dev-repo -y
               opam install -y odoc
             fi
       - save-cache: *save-opam-cache
       - run:
+          name: "Install node"
+          command: |
+            curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+            mkdir -p ~/.npm-global
+            npm config set prefix $NPM_CONFIG_PREFIX
+      - run:
+          name: "Install yarn"
+          command: |
+            curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+            echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+            sudo apt-get update && sudo apt-get install yarn
+      - run:
           name: "Build documentation"
           command: |
             eval $(opam config env)
-            yarn build && yarn build-docs
+            yarn && yarn build && yarn build-docs
       - persist_to_workspace:
           root: .
           paths:
             - docs
-  
+
   deploy-docs:
     <<: *defaults
     steps:
@@ -113,7 +128,7 @@ jobs:
             git commit -m "Documentation"
 
             git push origin HEAD:gh-pages --quiet --force
-          
+
 workflows:
   version: 2
   build-deploy:
@@ -121,7 +136,7 @@ workflows:
       # Checkout repo and run Yarn
       - checkout_code:
           filters: *filter-ignore-gh-pages
-      
+
       # Test
       - test:
           filters: *filter-ignore-gh-pages
@@ -133,7 +148,7 @@ workflows:
           filters: *filter-ignore-gh-pages
           requires:
             - checkout_code
-      
+
       # Deploy documentation
       - deploy-docs:
           filters: *filter-only-master

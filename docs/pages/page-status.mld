@@ -44,7 +44,7 @@ Please find the list of available components and APIs below.
 
 {3 APIs}
 - {!AccessibilityInfo}
-- {{:Button-BsReactNative} [ActionSheetIOS]}
+- {{:ActionSheetIOS-BsReactNative} [ActionSheetIOS]}
 - {!AdSupportIOS}
 - {{:Alert-BsReactNative} [Alert]}
 - {{:AlertIOS-BsReactNative} [AlertIOS]}
@@ -83,5 +83,4 @@ Please find the list of available components and APIs below.
 - {{:TimePickerAndroid-BsReactNative} [TimePickerAndroid]}
 - {{:ToastAndroid-BsReactNative} [ToastAndroid]}
 - {{:Vibration-BsReactNative} [Vibration]}
-- {!LayoutProps}
-- {!ShadowProps}
+- {{:Style-BsReactNative} [Style]}
