@@ -1,5 +1,6 @@
 /** Extras **/
 
+
 dt#type-calculated {
   display: none;
 }
@@ -12,7 +13,24 @@ dt#type-calculated {
 #module-CreateComponent, 
 #module-type-TextComponent,
 #type-renderBag,
+#type-dimensions,
+#type-infoType,
+#type-cursor,
+#val-canUseCamera,
+#type-result,
+#type-subscription,
+#type-duration,
 #type-t,
+#val-get,
+#val-exitApp,
+#val-addEventListener,
+#val-removeEventListener,
+#val-share,
+#val-vibrate,
+#val-cancel,
+#type-type_,
+#type-options,
+#type-error,
 #type-renderAccessory,
 #type-viewToken,
 #module-CreateComponent ~ article summary,
