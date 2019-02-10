@@ -68,10 +68,12 @@ jobs:
           at: ~/bs-react-native
       - restore-cache: *restore-opam-cache
       - run:
-          name: Install opam
+          name: Initialize opam
           command: |
-            wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sudo sh -s /usr/local/bin
-            /usr/local/bin/opam init --compiler 4.02.3+buckle-master
+            sudo apt-get install -y m4
+            opam init --auto-setup --dot-profile=~/.bash_profile
+            opam remote add ocamlorg https://opam.ocaml.org || true
+            opam remote remove default || true
       - run:
           name: Install dependencies
           command: |
