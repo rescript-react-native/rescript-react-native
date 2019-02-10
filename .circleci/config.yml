@@ -86,10 +86,23 @@ jobs:
             fi
       - save-cache: *save-opam-cache
       - run:
+        name: "Install node"
+        command: |
+          curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+          sudo apt-get install -y nodejs
+          mkdir -p ~/.npm-global
+          npm config set prefix $NPM_CONFIG_PREFIX
+      - run:
+        name: "Install yarn"
+        command: |
+          curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+          echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+          sudo apt-get update && sudo apt-get install yarn
+      - run:
           name: "Build documentation"
           command: |
             eval $(opam config env)
-            yarn build && yarn build-docs
+            yarn && yarn build && yarn build-docs
       - persist_to_workspace:
           root: .
           paths:
