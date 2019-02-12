@@ -213,7 +213,6 @@ type justifyContent =
   | FlexStart
   | FlexEnd
   | Center
-  | Stretch
   | SpaceAround
   | SpaceBetween;
 
@@ -224,7 +223,6 @@ let justifyContent = v =>
     | FlexStart => "flex-start"
     | FlexEnd => "flex-end"
     | Center => "center"
-    | Stretch => "stretch"
     | SpaceAround => "space-around"
     | SpaceBetween => "space-between"
     },
