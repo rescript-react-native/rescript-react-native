@@ -73,9 +73,9 @@ type justifyContent =
   | FlexStart
   | FlexEnd
   | Center
-  | Stretch
   | SpaceAround
-  | SpaceBetween;
+  | SpaceBetween
+  | SpaceEvenly;
 let justifyContent: justifyContent => styleElement;
 let margin: pt_pct_auto => styleElement;
 let marginBottom: pt_pct_auto => styleElement;
