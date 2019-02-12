@@ -5,12 +5,11 @@ module type FlatListComponent = {
   /**
     {3 Example of use}
     In order to render a FlatList {{:https://facebook.github.io/react-native/docs/flatlist}} in React Native you need to provide three props:
-    
     - [data]
     - [renderItem]
     - [keyExtractor]
 
-   {4 default} 
+   {4 default}
    {[
       type contact = {
         id: int,
@@ -167,6 +166,10 @@ module type FlatListComponent = {
   {[
     pagingEnabled: bool=?
   ]}
+  {4 refreshControl}
+  {[
+    refreshControl: ReasonReact.reactElement=?
+  ]}
   {4 refreshing}
   {[
     refreshing: bool=?
@@ -237,7 +240,6 @@ module type FlatListComponent = {
     {3 methods }
     {4 scrollToEnd}
   */
- 
   let scrollToEnd: (ReasonReact.reactRef, ~animated: bool) => unit;
 
   /**
@@ -271,14 +273,14 @@ module type FlatListComponent = {
 
   /**
   {4 scrollToOffset}
-  */  
+  */
 
   let scrollToOffset:
     (ReasonReact.reactRef, ~offset: float=?, ~animated: bool=?, unit) => unit;
 
-/**
-{2 API reference}
-*/
+  /**
+  {2 API reference}
+  */
   [@bs.send] external recordInteraction: ReasonReact.reactRef => unit = "";
 
   type renderBag('item) = {
@@ -355,6 +357,7 @@ module type FlatListComponent = {
                                  =?,
       ~overScrollMode: [ | `auto | `always | `never]=?,
       ~pagingEnabled: bool=?,
+      ~refreshControl: ReasonReact.reactElement=?,
       ~refreshing: bool=?,
       ~removeClippedSubviews: bool=?,
       ~scrollEnabled: bool=?,
