@@ -1,5 +1,4 @@
 module type TextComponent = {
-
   /**
 A React component for displaying text.
 You can read more on [Text] component usage in official docs: {{:https://facebook.github.io/react-native/docs/text}}
@@ -24,10 +23,10 @@ You can read more on [Text] component usage in official docs: {{:https://faceboo
   ]}
   {4 ellipsizeMode}
   {[
-    ~ellipsizeMode: [ 
-      | `clip 
-      | `head 
-      | `middle 
+    ~ellipsizeMode: [
+      | `clip
+      | `head
+      | `middle
       | `tail
     ]=?
   ]}
@@ -39,7 +38,7 @@ You can read more on [Text] component usage in official docs: {{:https://faceboo
   {[
     ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?
   ]}
-  reference: 
+  reference:
   {[
     module NativeLayoutEvent: {
       type t;
@@ -64,7 +63,7 @@ You can read more on [Text] component usage in official docs: {{:https://faceboo
   {[
     ~pressRetentionOffset: Types.insets=?
   ]}
-  reference: 
+  reference:
   {[
     type insets = {
       .
@@ -92,9 +91,9 @@ You can read more on [Text] component usage in official docs: {{:https://faceboo
   ]}
   {4 textBreakStrategy}
   {[
-    ~textBreakStrategy: [ 
-      | `balanced 
-      | `highQuality 
+    ~textBreakStrategy: [
+      | `balanced
+      | `highQuality
       | `simple
     ]=?
   ]}
@@ -115,10 +114,12 @@ You can read more on [Text] component usage in official docs: {{:https://faceboo
     ~value: string=?
   ]}
  */
- 
+
   let make:
     (
       ~accessible: bool=?,
+      ~accessibilityHint: string=?,
+      ~accessibilityLabel: string=?,
       ~allowFontScaling: bool=?,
       ~ellipsizeMode: [ | `clip | `head | `middle | `tail]=?,
       ~numberOfLines: int=?,
