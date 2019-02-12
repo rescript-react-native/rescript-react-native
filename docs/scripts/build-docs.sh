@@ -3,9 +3,13 @@
 PKG=BsReactNative
 
 DOCS=docs
-ODOC=$(which odoc)
 LIB=./lib/bs/src
 PAGES=./docs/pages
+ODOC=$(which odoc)
+if [[ $? != 0 ]] ; then
+  echo "Missing odoc, please look at the CONTRIBUTING.md guide"
+  exit 1
+fi
 
 # Gather the sources to compile .odoc files
 CMT_FILES=$(find ${LIB} -name "*.cmti")
