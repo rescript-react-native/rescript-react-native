@@ -73,7 +73,6 @@ type justifyContent =
   | FlexStart
   | FlexEnd
   | Center
-  | Stretch
   | SpaceAround
   | SpaceBetween
   | SpaceEvenly;
