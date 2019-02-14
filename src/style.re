@@ -213,9 +213,9 @@ type justifyContent =
   | FlexStart
   | FlexEnd
   | Center
-  | Stretch
   | SpaceAround
-  | SpaceBetween;
+  | SpaceBetween
+  | SpaceEvenly;
 
 let justifyContent = v =>
   stringStyle(
@@ -224,9 +224,9 @@ let justifyContent = v =>
     | FlexStart => "flex-start"
     | FlexEnd => "flex-end"
     | Center => "center"
-    | Stretch => "stretch"
     | SpaceAround => "space-around"
     | SpaceBetween => "space-between"
+    | SpaceEvenly => "space-evenly"
     },
   );
 

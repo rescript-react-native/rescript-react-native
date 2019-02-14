@@ -51,3 +51,23 @@ let version = () =>
   | Some(v) => v
   | None => raise(UnknownVersion)
   };
+
+type selectOptions('a) = {
+  ios: 'a,
+  android: 'a,
+};
+
+[@bs.deriving abstract]
+type _selectOptions('a) = {
+  ios: 'a,
+  android: 'a,
+};
+[@bs.module "react-native"] [@bs.scope "Platform"]
+external _select: _selectOptions('a) => 'a = "select";
+
+let select: selectOptions('a) => 'a =
+  options => {
+    let _options = _selectOptions(~android=options.android, ~ios=options.ios);
+    _select(_options);
+  };
+  
