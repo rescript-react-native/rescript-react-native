@@ -3,6 +3,8 @@ A component that renders [Switch] component usage in official docs: {{:https://f
 
 This is a controlled component that requires an [onValueChange] callback that updates the [value] prop in order for the component to reflect user actions. If the [value] prop is not updated, the component will continue to render the supplied [value] prop instead of the expected result of any user actions.
 
+As of React Native version 0.57, [tintColor], [onTintColor] and [thumbTintColor] have been deprecated.
+
   {3 Props}
 
   {{:\BsReactNative/View-BsReactNative} [View] props}
@@ -10,6 +12,18 @@ This is a controlled component that requires an [onValueChange] callback that up
   {4 disabled}
   {[
     ~disabled: bool=?
+  ]}
+  {4 trackColorTrue}
+  {[
+    ~trackColorTrue: string=?
+  ]}
+  {4 trackColorFalse}
+  {[
+    ~trackColorFalse: string=?
+  ]}
+  {4 iosBackgroundColor}
+  {[
+    ~iosBackgroundColor: string=?
   ]}
   {4 onTintColor}
   {[
@@ -22,6 +36,10 @@ This is a controlled component that requires an [onValueChange] callback that up
   {4 thumbTintColor}
   {[
     ~thumbTintColor: string=?
+  ]}
+  {4 thumbColor}
+  {[
+    ~thumbColor: string=?
   ]}
   {4 tintColor}
   {[
@@ -36,9 +54,13 @@ This is a controlled component that requires an [onValueChange] callback that up
 let make:
   (
     ~disabled: bool=?,
+    ~trackColorTrue: string=?,
+    ~trackColorFalse: string=?,
+    ~iosBackgroundColor: string=?,
     ~onTintColor: string=?,
     ~onValueChange: bool => unit=?,
     ~thumbTintColor: string=?,
+    ~thumbColor: string=?,
     ~tintColor: string=?,
     ~value: bool=?,
     ~accessibilityLabel: ReasonReact.reactElement=?,
