@@ -1,9 +1,9 @@
 type t;
 
-[@bs.module "react-native"] external t : t = "AppRegistry";
+[@bs.module "react-native"] external t: t = "AppRegistry";
 
 [@bs.send]
-external _registerComponent :
+external _registerComponent:
   (t, string, unit => ReasonReact.reactClass) => unit =
   "registerComponent";
 

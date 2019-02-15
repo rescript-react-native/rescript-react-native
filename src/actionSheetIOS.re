@@ -80,7 +80,12 @@ let showShareActionSheetWithOptions =
       (),
     ) =>
   _showShareActionSheetWithOptions(
-    makeShareActionSheetConfig(~options, ~subject?, ~excludedActivityTypes?, ()),
+    makeShareActionSheetConfig(
+      ~options,
+      ~subject?,
+      ~excludedActivityTypes?,
+      (),
+    ),
     failureCallback,
     successCallback,
   );

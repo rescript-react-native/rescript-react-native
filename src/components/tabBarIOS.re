@@ -7,9 +7,9 @@ module Item = {
         ~badge=?,
         ~icon=?,
         ~onPress=?,
-        ~renderAsOriginal=?,     
+        ~renderAsOriginal=?,
         ~badgeColor: option(string)=?,
-        ~selectedIcon=?,   
+        ~selectedIcon=?,
         ~style=?,
         ~systemIcon=?,
         ~title: option(string)=?,
@@ -34,7 +34,6 @@ module Item = {
         ~accessibilityViewIsModal=?,
         ~shouldRasterizeIOS=?,
       ) =>
-      
     ReasonReact.wrapJsForReason(
       ~reactClass=tabBarItemIOS,
       ~props=
@@ -48,24 +47,25 @@ module Item = {
             "badgeColor": badgeColor,
             "selectedIcon": selectedIcon,
             "style": style,
-            "systemIcon": UtilsRN.option_map(
-              x =>
-                switch (x) {                  
-                | `bookmarks => "fill"
-                | `contacts => "contacts"
-                | `downloads => "downloads"
-                | `favourites => "favourites"
-                | `featured => "featured"
-                | `history => "history"
-                | `more => "more"
-                | `mostRecent => "most-recent"
-                | `mostViewed => "most-viewed"
-                | `recents => "recents"
-                | `search => "search"
-                | `topRated => "top-rated"
-              },
-              systemIcon,
-            ),
+            "systemIcon":
+              UtilsRN.option_map(
+                x =>
+                  switch (x) {
+                  | `bookmarks => "fill"
+                  | `contacts => "contacts"
+                  | `downloads => "downloads"
+                  | `favourites => "favourites"
+                  | `featured => "featured"
+                  | `history => "history"
+                  | `more => "more"
+                  | `mostRecent => "most-recent"
+                  | `mostViewed => "most-viewed"
+                  | `recents => "recents"
+                  | `search => "search"
+                  | `topRated => "top-rated"
+                  },
+                systemIcon,
+              ),
             "title": title,
             "isTVSelectable": isTVSelectable,
           },
@@ -131,14 +131,15 @@ let make =
     ~props=
       Props.extendView(
         {
-          "barStyle": UtilsRN.option_map(
+          "barStyle":
+            UtilsRN.option_map(
               x =>
                 switch (x) {
                 | `default => "default"
                 | `black => "black"
                 },
               barStyle,
-          ),
+            ),
           "barTintColor": barTintColor,
           "itemPositioning":
             UtilsRN.option_map(

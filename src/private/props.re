@@ -1,7 +1,8 @@
 let serialize = (handlers: option(Types.touchResponderHandlers)) =>
   switch (handlers) {
   | None => Js.Obj.empty()
-  | Some(handlers) => Types.{
+  | Some(handlers) =>
+    Types.{
       "onMoveShouldSetResponder":
         UtilsRN.option_map(
           (g, x) => g(x),
