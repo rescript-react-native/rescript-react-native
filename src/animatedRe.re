@@ -70,21 +70,21 @@ module ValueAnimations = (Val: Value) => {
     external makeConfig:
       (
         ~toValue: toValue,
-        ~restDisplacementThreshold: Js.undefined(float),
-        ~overshootClamping: Js.undefined(bool),
-        ~restSpeedThreshold: Js.undefined(float),
-        ~velocity: Js.undefined(Val.rawJsType),
-        ~bounciness: Js.undefined(float),
-        ~speed: Js.undefined(float),
-        ~tension: Js.undefined(float),
-        ~friction: Js.undefined(float),
-        ~stiffness: Js.undefined(float),
-        ~mass: Js.undefined(float),
-        ~damping: Js.undefined(float),
-        ~isInteraction: Js.undefined(bool),
-        ~useNativeDriver: Js.undefined(bool),
-        ~onComplete: Js.undefined(Animation.endCallback),
-        ~iterations: Js.undefined(int)
+        ~restDisplacementThreshold: float=?,
+        ~overshootClamping: bool=?,
+        ~restSpeedThreshold: float=?,
+        ~velocity: Val.rawJsType=?,
+        ~bounciness: float=?,
+        ~speed: float=?,
+        ~tension: float=?,
+        ~friction: float=?,
+        ~stiffness: float=?,
+        ~mass: float=?,
+        ~damping: float=?,
+        ~isInteraction: bool=?,
+        ~useNativeDriver: bool=?,
+        ~onComplete: Animation.endCallback=?,
+        ~iterations: int=?
       ) =>
       config =
       "";
@@ -115,30 +115,28 @@ module ValueAnimations = (Val: Value) => {
         ) =>
       _spring(
         value,
-        Js.Undefined.(
-          makeConfig(
-            ~toValue=
-              switch (toValue) {
-              | `raw(x) => toValueRaw(x)
-              | `animated(x) => toValueAnimated(x)
-              },
-            ~restDisplacementThreshold=fromOption(restDisplacementThreshold),
-            ~overshootClamping=fromOption(overshootClamping),
-            ~restSpeedThreshold=fromOption(restSpeedThreshold),
-            ~velocity=fromOption(velocity),
-            ~bounciness=fromOption(bounciness),
-            ~speed=fromOption(speed),
-            ~tension=fromOption(tension),
-            ~friction=fromOption(friction),
-            ~stiffness=fromOption(stiffness),
-            ~mass=fromOption(mass),
-            ~damping=fromOption(damping),
-            ~isInteraction=fromOption(isInteraction),
-            ~useNativeDriver=fromOption(useNativeDriver),
-            ~onComplete=fromOption(onComplete),
-            ~iterations=fromOption(iterations),
-          )
-        ),
+        makeConfig(
+          ~toValue=
+            switch (toValue) {
+            | `raw(x) => toValueRaw(x)
+            | `animated(x) => toValueAnimated(x)
+            },
+          ~restDisplacementThreshold?,
+          ~overshootClamping?,
+          ~restSpeedThreshold?,
+          ~velocity?,
+          ~bounciness?,
+          ~speed?,
+          ~tension?,
+          ~friction?,
+          ~stiffness?,
+          ~mass?,
+          ~damping?,
+          ~isInteraction?,
+          ~useNativeDriver?,
+          ~onComplete?,
+          ~iterations?,
+        )
       );
   };
   module Timing = {
