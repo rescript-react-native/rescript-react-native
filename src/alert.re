@@ -12,27 +12,23 @@ type button = {
 };
 
 [@bs.scope "Alert"] [@bs.module "react-native"]
-external _alert :
+external _alert:
   (
     string,
     Js.Undefined.t(string),
     Js.Undefined.t(
-      array(
-        {
-          .
-          "text": Js.Undefined.t(string),
-          "onPress": Js.Undefined.t(unit => unit),
-          "style": Js.Undefined.t(string),
-        },
-      ),
-    ),
-    Js.Undefined.t(
-      {
+      array({
         .
-        "cancelable": Js.Undefined.t(bool),
-        "onDismiss": Js.Undefined.t(unit => unit),
-      },
+        "text": Js.Undefined.t(string),
+        "onPress": Js.Undefined.t(unit => unit),
+        "style": Js.Undefined.t(string),
+      }),
     ),
+    Js.Undefined.t({
+      .
+      "cancelable": Js.Undefined.t(bool),
+      "onDismiss": Js.Undefined.t(unit => unit),
+    }),
     Js.Undefined.t(string)
   ) =>
   unit =

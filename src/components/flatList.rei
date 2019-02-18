@@ -1,5 +1,3 @@
-
-
 /************* */
 module type FlatListComponent = {
   /**
@@ -182,6 +180,10 @@ module type FlatListComponent = {
   {[
     scrollEnabled: bool=?
   ]}
+  {4 stickyHeaderIndices}
+  {[
+    stickyHeaderIndices: list(int)=?
+  ]}
   {4 showsHorizontalScrollIndicator}
   {[
     showsHorizontalScrollIndicator: bool=?
@@ -281,7 +283,8 @@ module type FlatListComponent = {
   /**
   {2 API reference}
   */
-  [@bs.send] external recordInteraction: ReasonReact.reactRef => unit = "";
+  [@bs.send]
+  external recordInteraction: ReasonReact.reactRef => unit = "";
 
   type renderBag('item) = {
     item: 'item,
@@ -293,7 +296,6 @@ module type FlatListComponent = {
   let renderItem:
     (renderBag('item) => ReasonReact.reactElement) => renderItem('item);
 
-  
   type separatorComponent('item);
 
   type separatorProps('item) = {
@@ -361,6 +363,7 @@ module type FlatListComponent = {
       ~refreshing: bool=?,
       ~removeClippedSubviews: bool=?,
       ~scrollEnabled: bool=?,
+      ~stickyHeaderIndices: list(int)=?,
       ~showsHorizontalScrollIndicator: bool=?,
       ~showsVerticalScrollIndicator: bool=?,
       ~windowSize: int=?,

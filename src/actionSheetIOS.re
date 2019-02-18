@@ -1,6 +1,8 @@
 type actionSheetConfig;
 
 type shareActionSheetConfig;
+external shareActionSheetConfig: Js.t('a) => shareActionSheetConfig =
+  "%identity";
 
 type error;
 
@@ -21,15 +23,20 @@ type options =
   | Message(string)
   | URL(string);
 
-[@bs.obj]
-external makeShareActionSheetConfig:
+let makeShareActionSheetConfig =
+    (~options, ~subject=?, ~excludedActivityTypes=?, ()) => {
+  let obj = {
+    "subject": Js.Nullable.fromOption(subject),
+    "excludedActivityTypes": Js.Nullable.fromOption(excludedActivityTypes),
+  };
   (
-    ~options: options,
-    ~subject: string=?,
-    ~excludedActivityTypes: array(string)=?
-  ) =>
-  shareActionSheetConfig =
-  "";
+    switch (options) {
+    | URL(url) => Js.Obj.assign(obj, {"url": url})
+    | Message(message) => Js.Obj.assign(obj, {"message": message})
+    }
+  )
+  |> shareActionSheetConfig;
+};
 
 [@bs.module "react-native"] [@bs.scope "ActionSheetIOS"]
 external _showActionSheetWithOptions: (actionSheetConfig, int => unit) => unit =
@@ -73,7 +80,12 @@ let showShareActionSheetWithOptions =
       (),
     ) =>
   _showShareActionSheetWithOptions(
-    makeShareActionSheetConfig(~options, ~subject?, ~excludedActivityTypes?),
+    makeShareActionSheetConfig(
+      ~options,
+      ~subject?,
+      ~excludedActivityTypes?,
+      (),
+    ),
     failureCallback,
     successCallback,
   );
