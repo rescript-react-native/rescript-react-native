@@ -173,7 +173,7 @@ let display = v =>
 
 let flex = floatStyle("flex");
 
-let flexBasis = value => ("flexBasis", encode_pt_pct(value));
+let flexBasis = value => ("flexBasis", encode_pt_pct_auto(value));
 
 type flexDirection =
   | Row
