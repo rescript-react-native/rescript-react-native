@@ -57,9 +57,9 @@ To start working with documentation:
 - Ensure that have [opam](http://opam.ocaml.org/doc/Install.html) & use `opam switch create 4.02.3+buckle-master`.
 - Ensure that have [odoc](https://github.com/ocaml/odoc) installed.
   > if you have a problem during installing the odoc with OCaml dependencies, try: `opam pin add odoc.dev git+https://github.com/ocaml/odoc`
-- build code with: `yarn clean-build` or if you want to build with watch then use: `yarn start`
-- start docs server using: `yarn start-docs`. Script will run the HTTP server and reload after something changes.
-- To build documentation from ReasonMl interfaces to HTML file run: `yarn build-docs`
+- build code with: `yarn build` or if you want to build with watch then use: `yarn start`
+- start docs server using: `yarn docs:start`. Script will run the HTTP server and reload after something changes.
+- To build documentation from ReasonMl interfaces to HTML file run: `yarn docs:build`
 
 ### Tips and Tricks
 

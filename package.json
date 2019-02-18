@@ -3,12 +3,15 @@
   "version": "0.10.0",
   "scripts": {
     "format": "find . -name \"*.re\" | grep -v \"node_modules\" | xargs bsrefmt --in-place",
-    "build": "bsb -make-world",
-    "build-docs": "sh ./docs/scripts/build-docs.sh",
-    "start-docs": "live-server docs",
-    "start": "bsb -make-world -w",
-    "clean-build": "bsb -clean-world -make-world",
-    "test": "yarn clean-build && yarn build-docs"
+    "bsb:clean": "bsb -clean-world",
+    "bsb:start": "bsb -make-world -w",
+    "bsb:build": "bsb -make-world",
+    "bsb:clean-build": "yarn bsb:clean && yarn bsb:build",
+    "docs:build": "sh ./docs/scripts/build-docs.sh",
+    "docs:start": "live-server docs",
+    "start": "yarn bsb:start",
+    "build": "yarn bsb:clean-build",
+    "test": "yarn build && yarn docs:build"
   },
   "license": "MIT",
   "keywords": [

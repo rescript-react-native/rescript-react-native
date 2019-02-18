@@ -1,13 +1,24 @@
 aliases:
   # Cache Management
-  - &restore-yarn-cache
+  - &yarn-cache-restore
     keys:
-      - v1-yarn-cache-{{ checksum "package.json" }}
-      - v1-yarn-cache
-  - &save-yarn-cache
+      - yarn-cache-{{ checksum "package.json" }}
+  - &yarn-cache-save
     paths:
       - ~/.cache/yarn
-    key: v1-yarn-cache-{{ checksum "package.json" }}
+      - ./node_modules
+    key: yarn-cache-{{ checksum "package.json" }}
+
+  - &opam-cache-restore
+    keys:
+      - opam-cache-{{ checksum ".circleci/config.yml" }}
+      - opam-cache
+  - &opam-cache-save
+    key: opam-cache-{{ checksum ".circleci/config.yml" }}
+    paths:
+      - ~/.opam/
+
+  # Branch Filtering
   - &filter-ignore-gh-pages
     branches:
       ignore: gh-pages
@@ -15,93 +26,98 @@ aliases:
     branches:
       only:
         - master
-  - &save-opam-cache
-    key: v1-opam-cache-{{ checksum "package.json" }}
-    paths:
-      - ~/.opam/
-  - &restore-opam-cache
-    keys:
-      - v1-opam-cache-{{ checksum "package.json" }}
-      - v1-opam-cache
+
+  # Commands
+  - &opam-setup
+    name: Setup opam
+    command: |
+      sudo apt-get install -y m4
+      opam init --auto-setup --dot-profile=~/.bash_profile
+      opam remote add ocamlorg https://opam.ocaml.org || true
+      opam remote remove default || true
+  - &opam-get-deps
+    name: Install opam dependencies
+    command: |
+      eval $(opam config env)
+      if [[ ! -x "odoc" ]]; then
+        opam update
+        opam install -y odoc
+      fi
+  - &node-setup
+    name: "Setup node"
+    command: |
+      curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+      sudo apt-get install -y nodejs
+      mkdir -p ~/.npm-global
+      npm config set prefix $NPM_CONFIG_PREFIX
+  - &yarn-setup
+    name: "Setup yarn"
+    command: |
+      curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+      echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+      sudo apt-get update && sudo apt-get install yarn
+      echo 'export PATH=$PATH:`yarn global bin`' >> $BASH_ENV
+  - &node-get-deps-with-yarn
+    name: Install Node deps with Yarn
+    command: |
+      yarn install --non-interactive --frozen-lockfile --cache-folder ~/.cache/yarn
+  - &tests-run
+    name: "Run tests"
+    command: |
+      yarn build
+  - &docs-build
+    name: "Build documentation"
+    command: |
+      eval $(opam config env)
+      yarn docs:build
+  - &docs-deploy-to-gh-pages
+    name: Deploy documentation to GH Pages
+    command: |
+      cd ./docs
+      git init
+
+      git config credential.helper 'cache --timeout=120'
+      git config user.email "grabbou@gmail.com"
+      git config user.name "Mike Grabowski"
+
+      git remote add origin https://${GITHUB_TOKEN}@github.com/reasonml-community/bs-react-native.git
+
+      git add . --force
+      git commit -m "Documentation"
+
+      git push origin HEAD:gh-pages --quiet --force
 
 defaults: &defaults
   docker:
-    - image: circleci/node:8
+    - image: circleci/node:10
   working_directory: ~/bs-react-native
 
 version: 2
 jobs:
-  # Set up a Node environment for downstream jobs
-  checkout_code:
-    <<: *defaults
-    steps:
-      - checkout
-
-      # Install Node.js dependencies
-      - restore-cache: *restore-yarn-cache
-      - run: yarn
-      - save-cache: *save-yarn-cache
-
-      - persist_to_workspace:
-          root: .
-          paths: .
-
-  # Test bs-react-native
   test:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/bs-react-native
-      - run:
-          name: "Run tests"
-          command: |
-            yarn build
-
-  # Build documentation
-  docs:
     <<: *defaults
     docker:
       - image: ocaml/opam2:debian-9-ocaml-4.02.3
     environment:
       - TERM: dumb
     steps:
-      - attach_workspace:
-          at: ~/bs-react-native
-      - restore-cache: *restore-opam-cache
-      - run:
-          name: Initialize opam
-          command: |
-            sudo apt-get install -y m4
-            opam init --auto-setup --dot-profile=~/.bash_profile
-            opam remote add ocamlorg https://opam.ocaml.org || true
-            opam remote remove default || true
-      - run:
-          name: Install dependencies
-          command: |
-            eval $(opam config env)
-            if [[ ! -x "odoc" ]]; then
-              opam update
-              opam install -y odoc
-            fi
-      - save-cache: *save-opam-cache
-      - run:
-          name: "Install node"
-          command: |
-            curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-            sudo apt-get install -y nodejs
-            mkdir -p ~/.npm-global
-            npm config set prefix $NPM_CONFIG_PREFIX
-      - run:
-          name: "Install yarn"
-          command: |
-            curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-            echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-            sudo apt-get update && sudo apt-get install yarn
-      - run:
-          name: "Build documentation"
-          command: |
-            eval $(opam config env)
-            yarn && yarn build && yarn build-docs
+      - checkout
+      # Install Node.js & Yarn as we are on an ocaml docker image
+      - run: *node-setup
+      - run: *yarn-setup
+      # Install Node.js dependencies using Yarn
+      - restore-cache: *yarn-cache-restore
+      - run: *node-get-deps-with-yarn
+      - save-cache: *yarn-cache-save
+      # Tests
+      - run: *tests-run
+      # Documentation
+      - restore-cache: *opam-cache-restore
+      - run: *opam-setup
+      - run: *opam-get-deps
+      - save-cache: *opam-cache-save
+      - run: *docs-build
+      ## Save docs for deployments
       - persist_to_workspace:
           root: .
           paths:
@@ -112,46 +128,16 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/bs-react-native
-      - run:
-          name: Deploy to GH Pages
-          command: |
-            cd ./docs
-            git init
-
-            git config credential.helper 'cache --timeout=120'
-            git config user.email "grabbou@gmail.com"
-            git config user.name "Mike Grabowski"
-
-            git remote add origin https://${GITHUB_TOKEN}@github.com/reasonml-community/bs-react-native.git
-
-            git add . --force
-            git commit -m "Documentation"
-
-            git push origin HEAD:gh-pages --quiet --force
+      - run: *docs-deploy-to-gh-pages
 
 workflows:
   version: 2
-  build-deploy:
+  test:
     jobs:
-      # Checkout repo and run Yarn
-      - checkout_code:
-          filters: *filter-ignore-gh-pages
-
-      # Test
       - test:
           filters: *filter-ignore-gh-pages
-          requires:
-            - checkout_code
 
-      # Build documentation
-      - docs:
-          filters: *filter-ignore-gh-pages
-          requires:
-            - checkout_code
-
-      # Deploy documentation
       - deploy-docs:
           filters: *filter-only-master
           requires:
-            - docs
             - test
