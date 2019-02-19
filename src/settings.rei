@@ -1,4 +1,3 @@
-
 /**
 {b iOS only}
 
@@ -73,7 +72,6 @@ Removes listener by its id.
 {[ let clearWatch: int => unit; ]}
 
 */
-
 
 let get: string => string;
 

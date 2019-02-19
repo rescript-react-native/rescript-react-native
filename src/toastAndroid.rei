@@ -1,4 +1,3 @@
-
 /**
 You can read more on [ToastAndroid] API usage in official docs: {{:https://facebook.github.io/react-native/docs/toastandroid}}
 
@@ -36,7 +35,7 @@ ToastAndroid module provides simple feedback in the small popup.
   | LONG
   | SHORT
   | TOP
-  
+
   (string, duration) => unit;
 ]}
 
@@ -71,7 +70,6 @@ let showWithGravityAndOffset: (string, duration, gravity, int, int) => unit;
 - TOP
   {[ ToastAndroid.TOP ]}
 */
-
 
 type duration =
   | LONG

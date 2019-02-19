@@ -55,8 +55,8 @@ You can read more on [ViewPagerAndroid] component usage in official docs: {{:htt
   - [`none (default)] - drags do not dismiss the keyboard.
   - [`onDrag] - the keyboard is dismissed when a drag begins.
   {[
-    ~keyboardDismissMode: [ 
-      | `none 
+    ~keyboardDismissMode: [
+      | `none
       | `onDrag
     ]=?
   ]}
@@ -143,44 +143,17 @@ let make:
     ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
     ~onMagicTap: unit => unit=?,
     ~responderHandlers: Types.touchResponderHandlers=?,
-    ~pointerEvents: [ | `auto | `boxNone | `boxOnly | `none]=?,
+    ~pointerEvents: Types.pointerEvents=?,
     ~removeClippedSubviews: bool=?,
     ~style: Style.t=?,
     ~testID: string=?,
-    ~accessibilityComponentType: [
-                                   | `button
-                                   | `none
-                                   | `radiobutton_checked
-                                   | `radiobutton_unchecked
-                                 ]
-                                   =?,
-    ~accessibilityLiveRegion: [ | `assertive | `none | `polite]=?,
+    ~accessibilityComponentType: Types.accessibilityComponentType=?,
+    ~accessibilityLiveRegion: Types.accessibilityLiveRegion=?,
     ~collapsable: bool=?,
-    ~importantForAccessibility: [ | `auto | `no | `noHideDescendants | `yes]=?,
+    ~importantForAccessibility: Types.importantForAccessibility=?,
     ~needsOffscreenAlphaCompositing: bool=?,
     ~renderToHardwareTextureAndroid: bool=?,
-    ~accessibilityTraits: list(
-                            [
-                              | `adjustable
-                              | `allowsDirectInteraction
-                              | `button
-                              | `disabled
-                              | `frequentUpdates
-                              | `header
-                              | `image
-                              | `key
-                              | `link
-                              | `none
-                              | `pageTurn
-                              | `plays
-                              | `search
-                              | `selected
-                              | `startsMedia
-                              | `summary
-                              | `text
-                            ],
-                          )
-                            =?,
+    ~accessibilityTraits: list(Types.accessibilityTrait)=?,
     ~accessibilityViewIsModal: bool=?,
     ~shouldRasterizeIOS: bool=?,
     array(ReasonReact.reactElement)
@@ -191,11 +164,9 @@ let make:
     unit,
   );
 
-    /**
+/**
   {4 Example with methods}
   To use {b [setPage]} method you have to call them on [DrawerLayoutAndroid] [ref]. See {{:https://reasonml.github.io/reason-react/docs/en/react-ref.html} ReasonReact docs} to learn more about using refs.
    */
 
-
-  let setPage: (ReasonReact.reactRef, int) => unit;
-
+let setPage: (ReasonReact.reactRef, int) => unit;

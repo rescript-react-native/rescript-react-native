@@ -44,35 +44,8 @@ let make:
   (
     ~accessible: bool=?,
     ~accessibilityLabel: string=?,
-    ~accessibilityComponentType: [
-                                   | `none
-                                   | `button
-                                   | `radiobutton_checked
-                                   | `radiobutton_unchecked
-                                 ]
-                                   =?,
-    ~accessibilityTraits: list(
-                            [
-                              | `none
-                              | `button
-                              | `link
-                              | `header
-                              | `search
-                              | `image
-                              | `selected
-                              | `plays
-                              | `key
-                              | `text
-                              | `summary
-                              | `disabled
-                              | `frequentUpdates
-                              | `startsMedia
-                              | `adjustable
-                              | `allowsDirectInteraction
-                              | `pageTurn
-                            ],
-                          )
-                            =?,
+    ~accessibilityComponentType: Types.accessibilityComponentType=?,
+    ~accessibilityTraits: list(Types.accessibilityTrait)=?,
     ~delayLongPress: int=?,
     ~delayPressIn: int=?,
     ~delayPressOut: int=?,

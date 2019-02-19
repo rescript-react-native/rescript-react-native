@@ -1,4 +1,3 @@
-
 /**
 IOS only
 
@@ -98,7 +97,6 @@ Retrieves the base64-encoded image data for given tag (URI).
 - Second argument - success callback which gets image string in base64 as an aargument
 - Third argument - failure callback which gets error as an argument
 */
-
 
 type error;
 

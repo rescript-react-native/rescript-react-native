@@ -38,7 +38,7 @@ let version: unit => int;
 
 type selectOptions('a) = {
   ios: 'a,
-  android: 'a
+  android: 'a,
 };
 
-let select: selectOptions('a) => 'a
+let select: selectOptions('a) => 'a;

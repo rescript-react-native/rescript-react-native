@@ -1,6 +1,6 @@
-let make:
+let extendView:
   (
-    ~accessibilityLabel: string=?,
+    ~accessibilityLabel: 'a=?,
     ~accessible: bool=?,
     ~hitSlop: Types.insets=?,
     ~onAccessibilityTap: unit => unit=?,
@@ -20,13 +20,6 @@ let make:
     ~accessibilityTraits: list(Types.accessibilityTrait)=?,
     ~accessibilityViewIsModal: bool=?,
     ~shouldRasterizeIOS: bool=?,
-    ~keyboardVerticalOffset: float=?,
-    ~behavior: [ | `height | `position | `padding]=?,
-    ~contentContainerStyle: Style.t=?,
-    array(ReasonReact.reactElement)
+    Js.t({..})
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    unit,
-  );
+  Js.t({..});

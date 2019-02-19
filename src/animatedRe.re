@@ -136,7 +136,7 @@ module ValueAnimations = (Val: Value) => {
           ~useNativeDriver?,
           ~onComplete?,
           ~iterations?,
-        )
+        ),
       );
   };
   module Timing = {

@@ -1,5 +1,3 @@
-
-
 module Event: {
   type error;
   type progress = {

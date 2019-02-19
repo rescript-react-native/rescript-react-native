@@ -66,78 +66,30 @@ let extendView =
       "onMagicTap": onMagicTap,
       "removeClippedSubviews": removeClippedSubviews,
       "pointerEvents":
-        UtilsRN.option_map(
-          x =>
-            switch (x) {
-            | `auto => "auto"
-            | `none => "none"
-            | `boxNone => "box-none"
-            | `boxOnly => "box-only"
-            },
-          pointerEvents,
-        ),
+        Belt.Option.map(pointerEvents, Types.pointerEventsToJs),
       "style": style,
       "testID": testID,
       "accessibilityComponentType":
-        UtilsRN.option_map(
-          x =>
-            switch (x) {
-            | `none => "none"
-            | `button => "button"
-            | `radiobutton_checked => "radiobutton_checked-none"
-            | `radiobutton_unchecked => "radiobutton_unchecked"
-            },
+        Belt.Option.map(
           accessibilityComponentType,
+          Types.accessibilityComponentTypeToJs,
         ),
       "accessibilityLiveRegion":
-        UtilsRN.option_map(
-          x =>
-            switch (x) {
-            | `polite => "polite"
-            | `none => "none"
-            | `assertive => "assertive"
-            },
+        Belt.Option.map(
           accessibilityLiveRegion,
+          Types.accessibilityLiveRegionToJs,
         ),
       "collapsable": collapsable,
       "importantForAccessibility":
-        UtilsRN.option_map(
-          prop =>
-            switch (prop) {
-            | `auto => "auto"
-            | `yes => "yes"
-            | `no => "no"
-            | `noHideDescendants => "noHideDescendants"
-            },
+        Belt.Option.map(
           importantForAccessibility,
+          Types.importantForAccessibilityToJs,
         ),
       "needsOffscreenAlphaCompositing": needsOffscreenAlphaCompositing,
       "renderToHardwareTextureAndroid": renderToHardwareTextureAndroid,
       "accessibilityTraits":
-        UtilsRN.option_map(
-          traits => {
-            let to_string =
-              fun
-              | `none => "none"
-              | `button => "button"
-              | `link => "link"
-              | `header => "header"
-              | `search => "search"
-              | `image => "image"
-              | `selected => "selected"
-              | `plays => "plays"
-              | `key => "key"
-              | `text => "text"
-              | `summary => "summary"
-              | `disabled => "disabled"
-              | `frequentUpdates => "frequentUpdates"
-              | `startsMedia => "startsMedia"
-              | `adjustable => "adjustable"
-              | `allowsDirectInteraction => "allowsDirectInteraction"
-              | `pageTurn => "pageTurn";
-            traits |> List.map(to_string) |> Array.of_list;
-          },
-          accessibilityTraits,
+        Belt.Option.map(accessibilityTraits, x =>
+          x |> List.map(Types.accessibilityTraitToJs) |> Array.of_list
         ),
       "accessibilityViewIsModal": accessibilityViewIsModal,
       "shouldRasterizeIOS": shouldRasterizeIOS,
