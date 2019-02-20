@@ -51,7 +51,7 @@ module Item = {
               UtilsRN.option_map(
                 x =>
                   switch (x) {
-                  | `bookmarks => "fill"
+                  | `bookmarks => "bookmarks"
                   | `contacts => "contacts"
                   | `downloads => "downloads"
                   | `favourites => "favourites"
