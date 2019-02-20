@@ -46,44 +46,41 @@ let extendView =
       ~shouldRasterizeIOS=?,
       moreProps,
     ) =>
-  UtilsRN.objAssign2(
-    {
-      "accessibilityLabel": accessibilityLabel,
-      "accessible": accessible,
-      "hitSlop": hitSlop,
-      "onAccessibilityTap": onAccessibilityTap,
-      "onLayout": onLayout,
-      "onMagicTap": onMagicTap,
-      "removeClippedSubviews": removeClippedSubviews,
-      "pointerEvents":
-        Belt.Option.map(pointerEvents, Types.pointerEventsToJs),
-      "style": style,
-      "testID": testID,
-      "accessibilityComponentType":
-        Belt.Option.map(
-          accessibilityComponentType,
-          Types.accessibilityComponentTypeToJs,
-        ),
-      "accessibilityLiveRegion":
-        Belt.Option.map(
-          accessibilityLiveRegion,
-          Types.accessibilityLiveRegionToJs,
-        ),
-      "collapsable": collapsable,
-      "importantForAccessibility":
-        Belt.Option.map(
-          importantForAccessibility,
-          Types.importantForAccessibilityToJs,
-        ),
-      "needsOffscreenAlphaCompositing": needsOffscreenAlphaCompositing,
-      "renderToHardwareTextureAndroid": renderToHardwareTextureAndroid,
-      "accessibilityTraits":
-        Belt.Option.map(accessibilityTraits, x =>
-          x |> List.map(Types.accessibilityTraitToJs) |> Array.of_list
-        ),
-      "accessibilityViewIsModal": accessibilityViewIsModal,
-      "shouldRasterizeIOS": shouldRasterizeIOS,
-    },
-    moreProps,
-    serialize(responderHandlers),
-  );
+  {
+    "accessibilityLabel": accessibilityLabel,
+    "accessible": accessible,
+    "hitSlop": hitSlop,
+    "onAccessibilityTap": onAccessibilityTap,
+    "onLayout": onLayout,
+    "onMagicTap": onMagicTap,
+    "removeClippedSubviews": removeClippedSubviews,
+    "pointerEvents": Belt.Option.map(pointerEvents, Types.pointerEventsToJs),
+    "style": style,
+    "testID": testID,
+    "accessibilityComponentType":
+      Belt.Option.map(
+        accessibilityComponentType,
+        Types.accessibilityComponentTypeToJs,
+      ),
+    "accessibilityLiveRegion":
+      Belt.Option.map(
+        accessibilityLiveRegion,
+        Types.accessibilityLiveRegionToJs,
+      ),
+    "collapsable": collapsable,
+    "importantForAccessibility":
+      Belt.Option.map(
+        importantForAccessibility,
+        Types.importantForAccessibilityToJs,
+      ),
+    "needsOffscreenAlphaCompositing": needsOffscreenAlphaCompositing,
+    "renderToHardwareTextureAndroid": renderToHardwareTextureAndroid,
+    "accessibilityTraits":
+      Belt.Option.map(accessibilityTraits, x =>
+        x |> List.map(Types.accessibilityTraitToJs) |> Array.of_list
+      ),
+    "accessibilityViewIsModal": accessibilityViewIsModal,
+    "shouldRasterizeIOS": shouldRasterizeIOS,
+  }
+  ->Js.Obj.assign(moreProps)
+  ->Js.Obj.assign(serialize(responderHandlers));
