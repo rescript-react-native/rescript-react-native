@@ -187,6 +187,10 @@ module type ScrollViewComponent = {
   {[
     ~scrollsToTop: bool=?,
   ]}
+  {4 snapToInterval}
+  {[
+    ~snapToInterval: float=?,
+  ]}
   {4 snapToAlignment}
   {[
     ~snapToAlignment: [
@@ -274,6 +278,7 @@ module type ScrollViewComponent = {
       ~scrollEventThrottle: int=?,
       ~scrollIndicatorInsets: Types.insets=?,
       ~scrollsToTop: bool=?,
+      ~snapToInterval: float=?,
       ~snapToAlignment: [ | `center | `end_ | `start]=?,
       ~zoomScale: float=?,
       array(ReasonReact.reactElement)

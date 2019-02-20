@@ -70,6 +70,7 @@ module ScrollView: {
       ~scrollEventThrottle: int=?,
       ~scrollIndicatorInsets: Types.insets=?,
       ~scrollsToTop: bool=?,
+      ~snapToInterval: float=?,
       ~snapToAlignment: [ | `center | `end_ | `start]=?,
       ~zoomScale: float=?,
       array(ReasonReact.reactElement)
