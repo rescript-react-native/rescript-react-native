@@ -1,9 +1,8 @@
-
 /**
     {3 Example of use}
     In order to render a [Picker] component {{:https://facebook.github.io/react-native/docs/picker}} you will need to pass one or many [Picker.Item]
     components as children.
-    
+
     And [Picker.Item] has a required [label] prop
 
     {4 default}
@@ -36,7 +35,7 @@
               <Picker.Item label="JavaScript" value="js" />
             </Picker>
           </View>,
-      };  
+      };
     ]}
     {3 Props}
     {4 onValueChange}
@@ -82,7 +81,7 @@
     {[
       hitSlop: Types.insets=?
     ]}
-    reference: 
+    reference:
     {4 Types.rei}
     {[
       type insets = {
@@ -176,7 +175,7 @@
     {[
       testID: string=?
     ]}
-    {4 accessibilityComponentType} 
+    {4 accessibilityComponentType}
     {[
       accessibilityComponentType: [
         | `none
@@ -248,9 +247,6 @@
     ]}
 */
 
-
-
-
 let make:
   (
     ~onValueChange: 'value => unit=?,
@@ -266,44 +262,17 @@ let make:
     ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
     ~onMagicTap: unit => unit=?,
     ~responderHandlers: Types.touchResponderHandlers=?,
-    ~pointerEvents: [ | `auto | `none | `boxNone | `boxOnly]=?,
+    ~pointerEvents: Types.pointerEvents=?,
     ~removeClippedSubviews: bool=?,
     ~style: Style.t=?,
     ~testID: string=?,
-    ~accessibilityComponentType: [
-                                   | `none
-                                   | `button
-                                   | `radiobutton_checked
-                                   | `radiobutton_unchecked
-                                 ]
-                                   =?,
-    ~accessibilityLiveRegion: [ | `none | `polite | `assertive]=?,
+    ~accessibilityComponentType: Types.accessibilityComponentType=?,
+    ~accessibilityLiveRegion: Types.accessibilityLiveRegion=?,
     ~collapsable: bool=?,
-    ~importantForAccessibility: [ | `auto | `yes | `no | `noHideDescendants]=?,
+    ~importantForAccessibility: Types.importantForAccessibility=?,
     ~needsOffscreenAlphaCompositing: bool=?,
     ~renderToHardwareTextureAndroid: bool=?,
-    ~accessibilityTraits: list(
-                            [
-                              | `none
-                              | `button
-                              | `link
-                              | `header
-                              | `search
-                              | `image
-                              | `selected
-                              | `plays
-                              | `key
-                              | `text
-                              | `summary
-                              | `disabled
-                              | `frequentUpdates
-                              | `startsMedia
-                              | `adjustable
-                              | `allowsDirectInteraction
-                              | `pageTurn
-                            ],
-                          )
-                            =?,
+    ~accessibilityTraits: list(Types.accessibilityTrait)=?,
     ~accessibilityViewIsModal: bool=?,
     ~shouldRasterizeIOS: bool=?,
     array(ReasonReact.reactElement)
@@ -316,7 +285,7 @@ let make:
 
 /**
   [Picker.Item] component is used {b only} inside [<Picker></Picker>] component
-  
+
   {3 Props}
   {4 label}
   {[

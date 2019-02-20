@@ -70,44 +70,17 @@ let make:
     ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
     ~onMagicTap: unit => unit=?,
     ~responderHandlers: Types.touchResponderHandlers=?,
-    ~pointerEvents: [ | `auto | `none | `boxNone | `boxOnly]=?,
+    ~pointerEvents: Types.pointerEvents=?,
     ~removeClippedSubviews: bool=?,
     ~style: Style.t=?,
     ~testID: string=?,
-    ~accessibilityComponentType: [
-                                   | `none
-                                   | `button
-                                   | `radiobutton_checked
-                                   | `radiobutton_unchecked
-                                 ]
-                                   =?,
-    ~accessibilityLiveRegion: [ | `none | `polite | `assertive]=?,
+    ~accessibilityComponentType: Types.accessibilityComponentType=?,
+    ~accessibilityLiveRegion: Types.accessibilityLiveRegion=?,
     ~collapsable: bool=?,
-    ~importantForAccessibility: [ | `auto | `yes | `no | `noHideDescendants]=?,
+    ~importantForAccessibility: Types.importantForAccessibility=?,
     ~needsOffscreenAlphaCompositing: bool=?,
     ~renderToHardwareTextureAndroid: bool=?,
-    ~accessibilityTraits: list(
-                            [
-                              | `none
-                              | `button
-                              | `link
-                              | `header
-                              | `search
-                              | `image
-                              | `selected
-                              | `plays
-                              | `key
-                              | `text
-                              | `summary
-                              | `disabled
-                              | `frequentUpdates
-                              | `startsMedia
-                              | `adjustable
-                              | `allowsDirectInteraction
-                              | `pageTurn
-                            ],
-                          )
-                            =?,
+    ~accessibilityTraits: list(Types.accessibilityTrait)=?,
     ~accessibilityViewIsModal: bool=?,
     ~shouldRasterizeIOS: bool=?,
     array(ReasonReact.reactElement)

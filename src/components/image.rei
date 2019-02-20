@@ -4,7 +4,7 @@ module type ImageComponent = {
     [Image] component {{:https://facebook.github.io/react-native/docs/image}} requires the [source] prop, here is the example usage. Note that you also need to specify the width and height, this can be done via [imageURISource] named arguments, or via [style] prop that is passed to [Image] component
 
     {2 source from URI}
-    {[ 
+    {[
       let component = ReasonReact.statelessComponent("MyComponent");
 
       let make = _children => {
@@ -278,8 +278,6 @@ module type ImageComponent = {
     | `URI(_defaultURISource)
     | `Required(Packager.required)
   ];
-
-
 
   module Event: {
     type error;

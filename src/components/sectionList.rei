@@ -23,7 +23,6 @@
   ]}
   */
 
-
 type renderBag('item) = {
   item: 'item,
   index: int,
@@ -60,10 +59,7 @@ type sections('item);
 
 let sections: array(section('item)) => sections('item);
 
-
-
 type renderItem('item);
-
 
 /**
   {4 keyExtractor}
@@ -77,12 +73,8 @@ type renderItem('item);
   reference:
 */
 
-
 let renderItem:
   (renderBag('item) => ReasonReact.reactElement) => renderItem('item);
-
-
-
 
 type separatorProps('item) = {
   highlighted: bool,
@@ -155,12 +147,10 @@ type separatorComponent('item);
   ]}
    */
 
-
 let separatorComponent:
   (separatorProps('item) => ReasonReact.reactElement) =>
   separatorComponent('item);
 
-  
 type viewToken('item) = {
   .
   "index": Js.undefined(int),
@@ -183,7 +173,7 @@ type viewToken('item) = {
 {[
   renderSectionHeader: renderAccessoryView('item)=?
 ]}
-reference: 
+reference:
 {[
   type renderAccessory('item) = {
     section: section('item),
@@ -193,10 +183,7 @@ reference:
 
 type renderAccessory('item) = {section: section('item)};
 
-
 type renderAccessoryView('item);
-
-
 
 /**
   {4 renderSectionFooter}
@@ -246,7 +233,6 @@ type renderAccessoryView('item);
 let renderAccessoryView:
   (renderAccessory('item) => ReasonReact.reactElement) =>
   renderAccessoryView('item);
-
 
 let make:
   (

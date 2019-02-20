@@ -91,7 +91,7 @@ type options =
   | URL(string);
 ]}
 
-{4 subject} 
+{4 subject}
 {[
   ~subject: string=?
 ]}
@@ -118,13 +118,9 @@ type options =
 
 */
 
-
 type options =
   | Message(string)
   | URL(string);
-
-
-
 
 let showActionSheetWithOptions:
   (
@@ -140,7 +136,6 @@ let showActionSheetWithOptions:
   unit;
 
 type error;
-
 
 let showShareActionSheetWithOptions:
   (

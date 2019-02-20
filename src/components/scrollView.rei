@@ -1,5 +1,4 @@
 module type ScrollViewComponent = {
-
   /**
   Component that wraps platform [ScrollView] while providing integration with touch locking "responder" system.
   ScrollView simply renders all its react child components at once. That makes it very easy to understand and use.
@@ -20,21 +19,21 @@ module type ScrollViewComponent = {
   ]}
   {4 keyboardDismissMode}
   {[
-    ~keyboardDismissMode: [ 
-      | `interactive 
-      | `none 
+    ~keyboardDismissMode: [
+      | `interactive
+      | `none
       | `onDrag
     ]=?,
   ]}
   {4 keyboardShouldPersistTaps}
   {[
-    ~keyboardShouldPersistTaps: [ 
-      | `always 
-      | `handled 
+    ~keyboardShouldPersistTaps: [
+      | `always
+      | `handled
       | `never
     ]=?,
   ]}
-  {4 onContentSizeChange}    
+  {4 onContentSizeChange}
   {[
     ~onContentSizeChange: ((float, float)) => unit=?,
   ]}
@@ -42,7 +41,7 @@ module type ScrollViewComponent = {
   {[
     ~onScroll: RNEvent.NativeScrollEvent.t => unit=?,
   ]}
-  reference: 
+  reference:
   {4 RNEvent.rei}
   {[
     module NativeScrollEvent: {
@@ -89,9 +88,9 @@ module type ScrollViewComponent = {
   ]}
   {4 overScrollMode}
   {[
-    ~overScrollMode: [ 
-      | `always 
-      | `auto 
+    ~overScrollMode: [
+      | `always
+      | `auto
       | `never
     ]=?,
   ]}
@@ -140,8 +139,8 @@ module type ScrollViewComponent = {
   ]}
   {4 decelerationRate}
   {[
-    ~decelerationRate: [ 
-      | `fast 
+    ~decelerationRate: [
+      | `fast
       | `normal
     ]=?,
   ]}
@@ -190,9 +189,9 @@ module type ScrollViewComponent = {
   ]}
   {4 snapToAlignment}
   {[
-    ~snapToAlignment: [ 
-      | `center 
-      | `end_ 
+    ~snapToAlignment: [
+      | `center
+      | `end_
       | `start
     ]=?,
   ]}
@@ -200,18 +199,15 @@ module type ScrollViewComponent = {
   {[
     ~zoomScale: float=?,
   ]}
-        
+
    */
-
-
 
   type point = {
     x: float,
     y: float,
   };
 
-
-/**
+  /**
 {3 Methods}
 
 {4 scrollTo}
@@ -220,12 +216,11 @@ module type ScrollViewComponent = {
   let scrollTo:
     (ReasonReact.reactRef, ~x: int, ~y: int, ~animated: bool) => unit;
 
-    /**
+  /**
     {4 scrollToEnd}
     */
   let scrollToEnd: (ReasonReact.reactRef, ~animated: bool) => unit;
-  
-  
+
   let make:
     (
       ~accessibilityLabel: ReasonReact.reactElement=?,
@@ -235,45 +230,17 @@ module type ScrollViewComponent = {
       ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
       ~onMagicTap: unit => unit=?,
       ~responderHandlers: Types.touchResponderHandlers=?,
-      ~pointerEvents: [ | `auto | `boxNone | `boxOnly | `none]=?,
+      ~pointerEvents: Types.pointerEvents=?,
       ~removeClippedSubviews: bool=?,
       ~style: Style.t=?,
       ~testID: string=?,
-      ~accessibilityComponentType: [
-                                     | `button
-                                     | `none
-                                     | `radiobutton_checked
-                                     | `radiobutton_unchecked
-                                   ]
-                                     =?,
-      ~accessibilityLiveRegion: [ | `assertive | `none | `polite]=?,
+      ~accessibilityComponentType: Types.accessibilityComponentType=?,
+      ~accessibilityLiveRegion: Types.accessibilityLiveRegion=?,
       ~collapsable: bool=?,
-      ~importantForAccessibility: [ | `auto | `no | `noHideDescendants | `yes]
-                                    =?,
+      ~importantForAccessibility: Types.importantForAccessibility=?,
       ~needsOffscreenAlphaCompositing: bool=?,
       ~renderToHardwareTextureAndroid: bool=?,
-      ~accessibilityTraits: list(
-                              [
-                                | `adjustable
-                                | `allowsDirectInteraction
-                                | `button
-                                | `disabled
-                                | `frequentUpdates
-                                | `header
-                                | `image
-                                | `key
-                                | `link
-                                | `none
-                                | `pageTurn
-                                | `plays
-                                | `search
-                                | `selected
-                                | `startsMedia
-                                | `summary
-                                | `text
-                              ],
-                            )
-                              =?,
+      ~accessibilityTraits: list(Types.accessibilityTrait)=?,
       ~accessibilityViewIsModal: bool=?,
       ~shouldRasterizeIOS: bool=?,
       ~contentContainerStyle: Style.t=?,

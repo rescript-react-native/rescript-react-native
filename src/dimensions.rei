@@ -34,7 +34,7 @@ You can read more on [Dimensions] API usage in official docs: {{:https://faceboo
 reference:
 
 {[
-  
+
 type dimensions = {
   .
   "width": int,
@@ -59,7 +59,7 @@ type dimensions = {
 reference:
 
 {[
-  
+
   type dimensions = {
     .
     "width": int,
@@ -83,7 +83,7 @@ reference:
 
 reference:
 {[
-  
+
 type dimensions = {
   .
   "width": int,
@@ -94,9 +94,6 @@ type dimensions = {
 
 ]}
 */
-
-
-
 
 type dimensions = {
   .

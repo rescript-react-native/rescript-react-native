@@ -35,7 +35,7 @@ You can read more on [Alert] API usage in official docs: {{:https://facebook.git
 {4 message}
 
 {[
-   ~message: string=? 
+   ~message: string=?
 ]}
 
 {4 button}

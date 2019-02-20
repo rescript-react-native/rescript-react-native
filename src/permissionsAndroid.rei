@@ -1,8 +1,3 @@
-
-
-
-
-
 /**
 
 You can read more on [PermissionsAndroid] API usage in official docs: {{:https://facebook.github.io/react-native/docs/permissionAndroid}}
@@ -27,7 +22,7 @@ You can read more on [PermissionsAndroid] API usage in official docs: {{:https:/
        })
     |> ignore;
 ]}
-  
+
 {4 Requesting multiple permissions.}
 {[
   let requestMultiplePermissions = () => {
@@ -47,7 +42,7 @@ You can read more on [PermissionsAndroid] API usage in official docs: {{:https:/
     ();
   };
 ]}
-  
+
 {4 Functions}
 {3 check}
 {[
@@ -68,10 +63,10 @@ To create rationale paramters use [PermissionsAndroid.rationale] function.
     (),
   ),
 ]}
-  
+
 {4 requestMultiple }
 {[
-  
+
   let requestMultiple:
     (~permissions: list(Permission.t)) => Js.Promise.t(Js.Dict.t('a));
 ]}
@@ -82,7 +77,7 @@ To create rationale for showing why you want to get permission.
 {3 Permissions that require prompting the user }
 All possieble values are avaliable via PermissionsAndroid.Permission
 {[
-  
+
   PermissionsAndroid.Permission.READ_CALENDAR;
   PermissionsAndroid.Permission.WRITE_CALENDAR;
   PermissionsAndroid.Permission.CAMERA;
@@ -115,15 +110,13 @@ All possieble values are avaliable via PermissionsAndroid.Permission
   PermissionsAndroid.DENIED
   PermissionsAndroid.NEVER_ASK_AGAIN
 ]}
-  
-*/
 
+*/
 
 type result =
   | GRANTED
   | DENIED
   | NEVER_ASK_AGAIN;
-
 
 [@bs.deriving abstract]
 type rationale = {
@@ -161,7 +154,6 @@ module Permission: {
     | WRITE_EXTERNAL_STORAGE;
 };
 
-
 let check: Permission.t => Js.Promise.t(bool);
 
 let request:
@@ -170,4 +162,3 @@ let request:
 
 let requestMultiple:
   (~permissions: list(Permission.t)) => Js.Promise.t(Js.Dict.t('a));
-

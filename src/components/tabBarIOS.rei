@@ -1,4 +1,3 @@
-
 /**
   You can read more on [TabBatIOS] component usage in official docs: {{:https://facebook.github.io/react-native/docs/tabbarios}}
 
@@ -9,7 +8,7 @@
   {4 barStyle}
   {[
     ~barStyle: [
-       | `default 
+       | `default
        | `black
     ],
   ]}
@@ -19,9 +18,9 @@
   ]}
   {4 itemPositioning}
   {[
-    ~itemPositioning: [ 
-      | `fill 
-      | `center 
+    ~itemPositioning: [
+      | `fill
+      | `center
       | `auto
     ]=?,
   ]}
@@ -44,7 +43,7 @@
  */
 let make:
   (
-    ~barStyle: [ | `default | `black ]=?,
+    ~barStyle: [ | `default | `black]=?,
     ~barTintColor: string=?,
     ~itemPositioning: [ | `fill | `center | `auto]=?,
     ~tintColor: string=?,
@@ -58,44 +57,17 @@ let make:
     ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
     ~onMagicTap: unit => unit=?,
     ~responderHandlers: Types.touchResponderHandlers=?,
-    ~pointerEvents: [ | `auto | `none | `boxNone | `boxOnly]=?,
+    ~pointerEvents: Types.pointerEvents=?,
     ~removeClippedSubviews: bool=?,
     ~testID: string=?,
     ~style: Style.t=?,
-    ~accessibilityComponentType: [
-                                   | `none
-                                   | `button
-                                   | `radiobutton_checked
-                                   | `radiobutton_unchecked
-                                 ]
-                                   =?,
-    ~accessibilityLiveRegion: [ | `none | `polite | `assertive]=?,
+    ~accessibilityComponentType: Types.accessibilityComponentType=?,
+    ~accessibilityLiveRegion: Types.accessibilityLiveRegion=?,
     ~collapsable: bool=?,
-    ~importantForAccessibility: [ | `auto | `yes | `no | `noHideDescendants]=?,
+    ~importantForAccessibility: Types.importantForAccessibility=?,
     ~needsOffscreenAlphaCompositing: bool=?,
     ~renderToHardwareTextureAndroid: bool=?,
-    ~accessibilityTraits: list(
-                            [
-                              | `none
-                              | `button
-                              | `link
-                              | `header
-                              | `search
-                              | `image
-                              | `selected
-                              | `plays
-                              | `key
-                              | `text
-                              | `summary
-                              | `disabled
-                              | `frequentUpdates
-                              | `startsMedia
-                              | `adjustable
-                              | `allowsDirectInteraction
-                              | `pageTurn
-                            ],
-                          )
-                            =?,
+    ~accessibilityTraits: list(Types.accessibilityTrait)=?,
     ~accessibilityViewIsModal: bool=?,
     ~shouldRasterizeIOS: bool=?,
     array(ReasonReact.reactElement)
@@ -107,8 +79,7 @@ let make:
   );
 
 module Item: {
-
-/**
+  /**
   You can read more on [TabBatIOS.Item] component usage in official docs: {{:https://facebook.github.io/react-native/docs/tabbarios-item}}
 
   {3 Props}
@@ -127,7 +98,7 @@ module Item: {
   {[
     ~icon: Image.imageSource=?
   ]}
-  reference: 
+  reference:
   {[
     type imageSource = [
       | `URI(_imageURISource)
@@ -157,24 +128,24 @@ module Item: {
   ]}
   {4 systemIcon}
   {[
-    ~systemIcon: [ 
-      | `bookmarks 
-      | `contacts 
-      | `downloads 
-      | `favourites 
-      | `featured 
-      | `history 
-      | `more 
-      | `mostRecent 
-      | `mostViewed 
-      | `recents 
-      | `search 
-      | `topRated 
+    ~systemIcon: [
+      | `bookmarks
+      | `contacts
+      | `downloads
+      | `favourites
+      | `featured
+      | `history
+      | `more
+      | `mostRecent
+      | `mostViewed
+      | `recents
+      | `search
+      | `topRated
     ]=?
   ]}
   {4 title}
   {[
-    ~title: string=?, 
+    ~title: string=?,
   ]}
   {4 style}
   {[
@@ -192,8 +163,22 @@ module Item: {
       ~badgeColor: string=?,
       ~selectedIcon: Image.imageSource=?,
       ~style: Style.t=?,
-      ~systemIcon: [ | `bookmarks | `contacts | `downloads | `favourites | `featured | `history | `more | `mostRecent | `mostViewed | `recents | `search | `topRated ]=?,
-      ~title: string=?,  
+      ~systemIcon: [
+                     | `bookmarks
+                     | `contacts
+                     | `downloads
+                     | `favourites
+                     | `featured
+                     | `history
+                     | `more
+                     | `mostRecent
+                     | `mostViewed
+                     | `recents
+                     | `search
+                     | `topRated
+                   ]
+                     =?,
+      ~title: string=?,
       ~isTVSelectable: bool=?,
       ~accessibilityLabel: ReasonReact.reactElement=?,
       ~accessible: bool=?,
@@ -202,44 +187,16 @@ module Item: {
       ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
       ~onMagicTap: unit => unit=?,
       ~responderHandlers: Types.touchResponderHandlers=?,
-      ~pointerEvents: [ | `auto | `none | `boxNone | `boxOnly]=?,
+      ~pointerEvents: Types.pointerEvents=?,
       ~removeClippedSubviews: bool=?,
       ~testID: string=?,
-      ~accessibilityComponentType: [
-                                     | `none
-                                     | `button
-                                     | `radiobutton_checked
-                                     | `radiobutton_unchecked
-                                   ]
-                                     =?,
-      ~accessibilityLiveRegion: [ | `none | `polite | `assertive]=?,
+      ~accessibilityComponentType: Types.accessibilityComponentType=?,
+      ~accessibilityLiveRegion: Types.accessibilityLiveRegion=?,
       ~collapsable: bool=?,
-      ~importantForAccessibility: [ | `auto | `yes | `no | `noHideDescendants]
-                                    =?,
+      ~importantForAccessibility: Types.importantForAccessibility=?,
       ~needsOffscreenAlphaCompositing: bool=?,
       ~renderToHardwareTextureAndroid: bool=?,
-      ~accessibilityTraits: list(
-                              [
-                                | `none
-                                | `button
-                                | `link
-                                | `header
-                                | `search
-                                | `image
-                                | `selected
-                                | `plays
-                                | `key
-                                | `text
-                                | `summary
-                                | `disabled
-                                | `frequentUpdates
-                                | `startsMedia
-                                | `adjustable
-                                | `allowsDirectInteraction
-                                | `pageTurn
-                              ],
-                            )
-                              =?,
+      ~accessibilityTraits: list(Types.accessibilityTrait)=?,
       ~accessibilityViewIsModal: bool=?,
       ~shouldRasterizeIOS: bool=?,
       array(ReasonReact.reactElement)
