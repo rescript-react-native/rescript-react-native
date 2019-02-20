@@ -47,7 +47,7 @@ let make =
           "onDateChange": onDateChange,
           "maximumDate": maximumDate,
           "minimumDate": minimumDate,
-          "mode": UtilsRN.option_map(encodeMode, mode),
+          "mode": mode->Belt.Option.map(encodeMode),
           "minuteInterval": minuteInterval,
           "timeZoneOffsetInMinutes": timeZoneOffsetInMinutes,
         },

@@ -64,11 +64,11 @@ let make =
           "value": value,
           "thumbTintColor": thumbTintColor,
           "maximumTrackImage":
-            UtilsRN.option_map(convertImageSource, maximumTrackImage),
+            maximumTrackImage->Belt.Option.map(convertImageSource),
           "minimumTrackImage":
-            UtilsRN.option_map(convertImageSource, minimumTrackImage),
-          "thumbImage": UtilsRN.option_map(convertImageSource, thumbImage),
-          "trackImage": UtilsRN.option_map(convertImageSource, trackImage),
+            minimumTrackImage->Belt.Option.map(convertImageSource),
+          "thumbImage": thumbImage->Belt.Option.map(convertImageSource),
+          "trackImage": trackImage->Belt.Option.map(convertImageSource),
         },
         ~accessibilityLabel?,
         ~accessible?,

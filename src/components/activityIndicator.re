@@ -52,7 +52,7 @@ let make =
         {
           "animating": animating,
           "color": color,
-          "size": UtilsRN.option_map(encodeSize, size),
+          "size": size->Belt.Option.map(encodeSize),
           "hidesWhenStopped": hidesWhenStopped,
         },
         ~accessibilityLabel?,

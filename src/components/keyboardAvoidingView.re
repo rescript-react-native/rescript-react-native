@@ -56,7 +56,7 @@ let make =
         ~shouldRasterizeIOS?,
         {
           "keyboardVerticalOffset": keyboardVerticalOffset,
-          "behavior": UtilsRN.option_map(behaviorToJs, behavior),
+          "behavior": behavior->Belt.Option.map(behaviorToJs),
           "contentContainerStyle": contentContainerStyle,
         },
       ),

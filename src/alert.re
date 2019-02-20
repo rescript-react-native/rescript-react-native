@@ -45,41 +45,36 @@ let alert = (~title, ~message=?, ~buttons=?, ~options=?, ~type_=?, ()) => {
            "onPress": fromOption(onPress),
            "style":
              fromOption(
-               UtilsRN.option_map(
-                 x =>
-                   switch (x) {
+               style
+               ->Belt.Option.map(
+                   fun
                    | `default => "default"
                    | `cancel => "cancel"
-                   | `destructive => "destructive"
-                   },
-                 style,
-               ),
+                   | `destructive => "destructive",
+                 ),
              ),
          }
        );
-  let bts = fromOption(UtilsRN.option_map(transformButtons, buttons));
+  let bts = buttons->Belt.Option.map(transformButtons)->fromOption;
   let opts =
-    fromOption(
-      UtilsRN.option_map(
-        ({cancelable, onDismiss}) => {
+    options
+    ->Belt.Option.map(({cancelable, onDismiss}) =>
+        {
           "cancelable": fromOption(cancelable),
           "onDismiss": fromOption(onDismiss),
-        },
-        options,
-      ),
-    );
+        }
+      )
+    ->fromOption;
   let t_ =
-    fromOption(
-      UtilsRN.option_map(
-        x =>
-          switch (x) {
-          | `default => "default"
-          | `plainText => "plain-text"
-          | `secureText => "secure-text"
-          | `loginPassword => "login-password"
-          },
-        type_,
-      ),
-    );
+    type_
+    ->Belt.Option.map(
+        fun
+        | `default => "default"
+        | `plainText => "plain-text"
+        | `secureText => "secure-text"
+        | `loginPassword => "login-password",
+      )
+    ->fromOption;
+
   _alert(title, msg, bts, opts, t_);
 };

@@ -1,24 +1,21 @@
 [@bs.module "react-native"] external modal: ReasonReact.reactClass = "Modal";
 
-let encodeAnimationType = x =>
-  switch (x) {
+let encodeAnimationType =
+  fun
   | `none => "none"
   | `slide => "slide"
-  | `fade => "fade"
-  };
+  | `fade => "fade";
 
 let encodeSupportedOrientations = xs =>
-  Array.map(
-    x =>
-      switch (x) {
+  xs
+  ->Belt.Array.map(
+      fun
       | `portrait => "portrait"
       | `portraitUpsideDown => "portrait-upside-down"
       | `landscape => "landscape"
       | `landscapeLeft => "landscape-left"
-      | `landscapeRight => "landscape-right"
-      },
-    xs,
-  );
+      | `landscapeRight => "landscape-right",
+    );
 
 let make =
     (
@@ -34,7 +31,7 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass=modal,
     ~props={
-      "animationType": UtilsRN.option_map(encodeAnimationType, animationType),
+      "animationType": animationType->Belt.Option.map(encodeAnimationType),
       "onShow": onShow,
       "transparent": transparent,
       "visible": visible,
@@ -42,9 +39,6 @@ let make =
       "onRequestClose": onRequestClose,
       "onOrientationChange": onOrientationChange,
       "supportedOrientations":
-        UtilsRN.option_map(
-          encodeSupportedOrientations,
-          supportedOrientations,
-        ),
+        supportedOrientations->Belt.Option.map(encodeSupportedOrientations),
     },
   );

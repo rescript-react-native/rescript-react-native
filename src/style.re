@@ -405,8 +405,8 @@ module Transform = {
         (),
       ) =>
     create_(
-      (. value) => UtilsRN.option_map(Encode.float, value),
-      (. value) => UtilsRN.option_map(Encode.string, value),
+      (. value) => value->Belt.Option.map(Encode.float),
+      (. value) => value->Belt.Option.map(Encode.string),
       perspective,
       rotate,
       rotateX,
@@ -435,8 +435,8 @@ module Transform = {
         (),
       ) =>
     create_(
-      (. value) => UtilsRN.option_map(Encode.animatedValue, value),
-      (. value) => UtilsRN.option_map(Encode.animatedValue, value),
+      (. value) => value->Belt.Option.map(Encode.animatedValue),
+      (. value) => value->Belt.Option.map(Encode.animatedValue),
       perspective,
       rotate,
       rotateX,

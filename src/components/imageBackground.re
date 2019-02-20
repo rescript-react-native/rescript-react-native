@@ -23,7 +23,7 @@ let make =
       ~onLoadEnd=?,
       ~onLoadStart=?,
       ~resizeMode=?,
-      ~source=?,
+      ~source: option(Image.imageSource)=?,
       ~style=?,
       ~imageStyle=?,
       ~testID=?,
@@ -32,7 +32,7 @@ let make =
       ~accessible=?,
       ~blurRadius=?,
       ~capInsets=?,
-      ~defaultSource=?,
+      ~defaultSource: option(Image.defaultSource)=?,
       ~onPartialLoad=?,
       ~onProgress=?,
     ) =>
@@ -45,55 +45,47 @@ let make =
       "onLoadEnd": onLoadEnd,
       "onLoadStart": onLoadStart,
       "resizeMode":
-        UtilsRN.option_map(
-          x =>
-            switch (x) {
+        resizeMode
+        ->Belt.Option.map(
+            fun
             | `cover => "cover"
             | `contain => "contain"
             | `stretch => "stretch"
             | `repeat => "repeat"
-            | `center => "center"
-            },
-          resizeMode,
-        ),
+            | `center => "center",
+          ),
       "source":
-        UtilsRN.option_map(
-          (x: Image.imageSource) =>
-            switch (x) {
+        source
+        ->Belt.Option.map(
+            fun
             | `URI(x) => rawImageSourceJS(x)
             | `Required(x) => rawImageSourceJS(x)
-            | `Multiple(x) => rawImageSourceJS(Array.of_list(x))
-            },
-          source,
-        ),
+            | `Multiple(x) => rawImageSourceJS(Array.of_list(x)),
+          ),
       "style": style,
       "imageStyle": imageStyle,
       "testID": testID,
       "resizeMethod":
-        UtilsRN.option_map(
-          x =>
-            switch (x) {
+        resizeMethod
+        ->Belt.Option.map(
+            fun
             | `auto => "auto"
             | `resize => "resize"
-            | `scale => "scale"
-            },
-          resizeMethod,
-        ),
+            | `scale => "scale",
+          ),
       "accessibilityLabel": accessibilityLabel,
       "accessible": accessible,
       "blurRadius": blurRadius,
       "capInsets": capInsets,
       "defaultSource":
-        UtilsRN.option_map(
-          (x: Image.defaultSource) =>
-            switch (x) {
+        defaultSource
+        ->Belt.Option.map(
+            fun
             | `URI(x) => rawImageSourceJS(x)
-            | `Required(x) => rawImageSourceJS(x)
-            },
-          defaultSource,
-        ),
+            | `Required(x) => rawImageSourceJS(x),
+          ),
       "onPartialLoad": onPartialLoad,
       "onProgress":
-        UtilsRN.option_map((x, y) => x(Event.progress(y)), onProgress),
+        onProgress->Belt.Option.map((x, y) => x(Event.progress(y))),
     },
   );

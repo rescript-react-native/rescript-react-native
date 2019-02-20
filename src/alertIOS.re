@@ -34,33 +34,28 @@ let alert = (~title, ~message=?, ~buttons=?, ~type_=?, ()) => {
            "text": fromOption(text),
            "onPress": fromOption(onPress),
            "style":
-             fromOption(
-               UtilsRN.option_map(
-                 x =>
-                   switch (x) {
-                   | `default => "default"
-                   | `cancel => "cancel"
-                   | `destructive => "destructive"
-                   },
-                 style,
-               ),
-             ),
+             style
+             ->Belt.Option.map(
+                 fun
+                 | `default => "default"
+                 | `cancel => "cancel"
+                 | `destructive => "destructive",
+               )
+             ->fromOption,
          }
        );
-  let bts = fromOption(UtilsRN.option_map(transformButtons, buttons));
+  let bts = buttons->Belt.Option.map(transformButtons)->fromOption;
   let t_ =
-    fromOption(
-      UtilsRN.option_map(
-        x =>
-          switch (x) {
-          | `default => "default"
-          | `plainText => "plain-text"
-          | `secureText => "secure-text"
-          | `loginPassword => "login-password"
-          },
-        type_,
-      ),
-    );
+    type_
+    ->Belt.Option.map(
+        fun
+        | `default => "default"
+        | `plainText => "plain-text"
+        | `secureText => "secure-text"
+        | `loginPassword => "login-password",
+      )
+    ->fromOption;
+
   _alert(title, msg, bts, t_);
 };
 
@@ -103,54 +98,46 @@ let prompt =
            "text": fromOption(text),
            "onPress": fromOption(onPress),
            "style":
-             fromOption(
-               UtilsRN.option_map(
-                 x =>
-                   switch (x) {
-                   | `default => "default"
-                   | `cancel => "cancel"
-                   | `destructive => "destructive"
-                   },
-                 style,
-               ),
-             ),
+             style
+             ->Belt.Option.map(
+                 fun
+                 | `default => "default"
+                 | `cancel => "cancel"
+                 | `destructive => "destructive",
+               )
+             ->fromOption,
          }
        );
-  let bts = fromOption(UtilsRN.option_map(transformButtons, buttons));
+  let bts = buttons->Belt.Option.map(transformButtons)->fromOption;
   let t_ =
-    fromOption(
-      UtilsRN.option_map(
-        x =>
-          switch (x) {
-          | `default => "default"
-          | `plainText => "plain-text"
-          | `secureText => "secure-text"
-          | `loginPassword => "login-password"
-          },
-        type_,
-      ),
-    );
+    type_
+    ->Belt.Option.map(
+        fun
+        | `default => "default"
+        | `plainText => "plain-text"
+        | `secureText => "secure-text"
+        | `loginPassword => "login-password",
+      )
+    ->fromOption;
   let def_ = fromOption(defaultValue);
   let keyboardT =
-    fromOption(
-      UtilsRN.option_map(
-        x =>
-          switch (x) {
-          | `default => "default"
-          | `emailAddress => "email-address"
-          | `numeric => "numeric"
-          | `phonePad => "phone-pad"
-          | `asciiCapable => "ascii-capable"
-          | `numbersAndPunctuation => "numbers-and-punctuation"
-          | `url => "url"
-          | `numberPad => "number-pad"
-          | `namePhonePad => "name-phone-pad"
-          | `decimalPad => "decimal-pad"
-          | `twitter => "twitter"
-          | `webSearch => "web-search"
-          },
-        keyboardType,
-      ),
-    );
+    keyboardType
+    ->Belt.Option.map(
+        fun
+        | `default => "default"
+        | `emailAddress => "email-address"
+        | `numeric => "numeric"
+        | `phonePad => "phone-pad"
+        | `asciiCapable => "ascii-capable"
+        | `numbersAndPunctuation => "numbers-and-punctuation"
+        | `url => "url"
+        | `numberPad => "number-pad"
+        | `namePhonePad => "name-phone-pad"
+        | `decimalPad => "decimal-pad"
+        | `twitter => "twitter"
+        | `webSearch => "web-search",
+      )
+    ->fromOption;
+
   _prompt(title, msg, bts, t_, def_, keyboardT);
 };

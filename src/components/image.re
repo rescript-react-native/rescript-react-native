@@ -150,8 +150,8 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
       ~body?,
       ~cache?,
       ~scale?,
-      ~width=UtilsRN.option_map(encode_pt_only, width),
-      ~height=UtilsRN.option_map(encode_pt_only, height),
+      ~width=width->Belt.Option.map(encode_pt_only),
+      ~height=height->Belt.Option.map(encode_pt_only),
       unit,
     );
 
@@ -179,8 +179,8 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
     _defaultURISource(
       ~uri,
       ~scale?,
-      ~width=UtilsRN.option_map(encode_pt_only, width),
-      ~height=UtilsRN.option_map(encode_pt_only, height),
+      ~width=width->Belt.Option.map(encode_pt_only),
+      ~height=height->Belt.Option.map(encode_pt_only),
       unit,
     );
 
@@ -199,26 +199,26 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
     };
     [@bs.get] external progress: t => progress = "nativeEvent";
   };
-  let encodeResizeMode = x =>
-    switch (x) {
+  let encodeResizeMode =
+    fun
     | `cover => "cover"
     | `contain => "contain"
     | `stretch => "stretch"
     | `repeat => "repeat"
-    | `center => "center"
-    };
+    | `center => "center";
+
   let encodeSource = (x: imageSource) =>
     switch (x) {
     | `URI(x) => rawImageSourceJS(x)
     | `Required(x) => rawImageSourceJS(x)
     | `Multiple(x) => rawImageSourceJS(Array.of_list(x))
     };
-  let encodeResizeMethod = x =>
-    switch (x) {
+  let encodeResizeMethod =
+    fun
     | `auto => "auto"
     | `resize => "resize"
-    | `scale => "scale"
-    };
+    | `scale => "scale";
+
   let encodeDefaultSource = (x: defaultSource) =>
     switch (x) {
     | `URI(x) => rawImageSourceJS(x)
@@ -252,20 +252,19 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
         "onLoad": onLoad,
         "onLoadEnd": onLoadEnd,
         "onLoadStart": onLoadStart,
-        "resizeMode": UtilsRN.option_map(encodeResizeMode, resizeMode),
+        "resizeMode": resizeMode->Belt.Option.map(encodeResizeMode),
         "source": encodeSource(source),
         "style": style,
         "testID": testID,
-        "resizeMethod": UtilsRN.option_map(encodeResizeMethod, resizeMethod),
+        "resizeMethod": resizeMethod->Belt.Option.map(encodeResizeMethod),
         "accessibilityLabel": accessibilityLabel,
         "accessible": accessible,
         "blurRadius": blurRadius,
         "capInsets": capInsets,
-        "defaultSource":
-          UtilsRN.option_map(encodeDefaultSource, defaultSource),
+        "defaultSource": defaultSource->Belt.Option.map(encodeDefaultSource),
         "onPartialLoad": onPartialLoad,
         "onProgress":
-          UtilsRN.option_map((x, y) => x(Event.progress(y)), onProgress),
+          onProgress->Belt.Option.map((x, y) => x(Event.progress(y))),
       },
     );
 };

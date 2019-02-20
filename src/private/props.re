@@ -4,15 +4,10 @@ let serialize = (handlers: option(Types.touchResponderHandlers)) =>
   | Some(handlers) =>
     Types.{
       "onMoveShouldSetResponder":
-        UtilsRN.option_map(
-          (g, x) => g(x),
-          handlers.onMoveShouldSetResponder,
-        ),
+        handlers.onMoveShouldSetResponder->Belt.Option.map((g, x) => g(x)),
       "onMoveShouldSetResponderCapture":
-        UtilsRN.option_map(
-          (g, x) => g(x),
-          handlers.onMoveShouldSetResponderCapture,
-        ),
+        handlers.onMoveShouldSetResponderCapture
+        ->Belt.Option.map((g, x) => g(x)),
       "onResponderGrant": handlers.onResponderGrant,
       "onResponderMove": handlers.onResponderMove,
       "onResponderReject": handlers.onResponderReject,
@@ -20,15 +15,10 @@ let serialize = (handlers: option(Types.touchResponderHandlers)) =>
       "onResponderTerminate": handlers.onResponderTerminate,
       "onResponderTerminationRequest": handlers.onResponderTerminationRequest,
       "onStartShouldSetResponder":
-        UtilsRN.option_map(
-          (g, x) => g(x),
-          handlers.onStartShouldSetResponder,
-        ),
+        handlers.onStartShouldSetResponder->Belt.Option.map((g, x) => g(x)),
       "onStartShouldSetResponderCapture":
-        UtilsRN.option_map(
-          (g, x) => g(x),
-          handlers.onStartShouldSetResponderCapture,
-        ),
+        handlers.onStartShouldSetResponderCapture
+        ->Belt.Option.map((g, x) => g(x)),
     }
   };
 
