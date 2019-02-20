@@ -56,7 +56,7 @@ type display =
   | None;
 let display: display => styleElement;
 let flex: float => styleElement;
-let flexBasis: pt_pct => styleElement;
+let flexBasis: pt_pct_auto => styleElement;
 type flexDirection =
   | Row
   | RowReverse
