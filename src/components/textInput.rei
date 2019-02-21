@@ -15,6 +15,24 @@ You can read more on [Text] component usage in official docs: {{:https://faceboo
       | `words
     ]=?
   ]}
+  {4 autoComplete}
+  {[
+    autoComplete: [<
+      | `off
+      | `username
+      | `password
+      | `email
+      | `name
+      | `tel
+      | `streetAddress
+      | `postalCode
+      | `ccNumber
+      | `ccCsc
+      | `ccExp
+      | `ccExpMonth
+      | `ccExpYear
+    ]=?
+  ]}
   {4 autoCorrect}
   {[
     ~autoCorrect: bool=?
@@ -307,6 +325,22 @@ let make:
     ~accessibilityViewIsModal: bool=?,
     ~shouldRasterizeIOS: bool=?,
     ~autoCapitalize: [< | `characters | `none | `sentences | `words]=?,
+    ~autoComplete: [<
+                     | `off
+                     | `username
+                     | `password
+                     | `email
+                     | `name
+                     | `tel
+                     | `streetAddress
+                     | `postalCode
+                     | `ccNumber
+                     | `ccCsc
+                     | `ccExp
+                     | `ccExpMonth
+                     | `ccExpYear
+                   ]
+                     =?,
     ~autoCorrect: bool=?,
     ~autoFocus: bool=?,
     ~blurOnSubmit: bool=?,
