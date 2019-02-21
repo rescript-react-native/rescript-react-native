@@ -201,12 +201,12 @@ module Interpolation = {
     | Extend
     | Clamp
     | Identity;
-  let extrapolateString = x =>
-    switch (x) {
+  let extrapolateString =
+    fun
     | Extend => "extend"
     | Clamp => "clamp"
-    | Identity => "identity"
-    };
+    | Identity => "identity";
+
   type config;
   [@bs.obj]
   external makeConfig:
@@ -243,11 +243,10 @@ module Interpolation = {
           | `float((x: list(float))) => outputRangeCreate(Array.of_list(x))
           },
         ~easing?,
-        ~extrapolate=?UtilsRN.option_map(extrapolateString, extrapolate),
+        ~extrapolate=?extrapolate->Belt.Option.map(extrapolateString),
         ~extrapolateRight=?
-          UtilsRN.option_map(extrapolateString, extrapolateRight),
-        ~extrapolateLeft=?
-          UtilsRN.option_map(extrapolateString, extrapolateLeft),
+          extrapolateRight->Belt.Option.map(extrapolateString),
+        ~extrapolateLeft=?extrapolateLeft->Belt.Option.map(extrapolateString),
       ),
     );
 };

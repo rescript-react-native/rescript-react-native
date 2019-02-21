@@ -4,15 +4,10 @@ let serialize = (handlers: option(Types.touchResponderHandlers)) =>
   | Some(handlers) =>
     Types.{
       "onMoveShouldSetResponder":
-        UtilsRN.option_map(
-          (g, x) => g(x),
-          handlers.onMoveShouldSetResponder,
-        ),
+        handlers.onMoveShouldSetResponder->Belt.Option.map((g, x) => g(x)),
       "onMoveShouldSetResponderCapture":
-        UtilsRN.option_map(
-          (g, x) => g(x),
-          handlers.onMoveShouldSetResponderCapture,
-        ),
+        handlers.onMoveShouldSetResponderCapture
+        ->Belt.Option.map((g, x) => g(x)),
       "onResponderGrant": handlers.onResponderGrant,
       "onResponderMove": handlers.onResponderMove,
       "onResponderReject": handlers.onResponderReject,
@@ -20,15 +15,10 @@ let serialize = (handlers: option(Types.touchResponderHandlers)) =>
       "onResponderTerminate": handlers.onResponderTerminate,
       "onResponderTerminationRequest": handlers.onResponderTerminationRequest,
       "onStartShouldSetResponder":
-        UtilsRN.option_map(
-          (g, x) => g(x),
-          handlers.onStartShouldSetResponder,
-        ),
+        handlers.onStartShouldSetResponder->Belt.Option.map((g, x) => g(x)),
       "onStartShouldSetResponderCapture":
-        UtilsRN.option_map(
-          (g, x) => g(x),
-          handlers.onStartShouldSetResponderCapture,
-        ),
+        handlers.onStartShouldSetResponderCapture
+        ->Belt.Option.map((g, x) => g(x)),
     }
   };
 
@@ -56,44 +46,41 @@ let extendView =
       ~shouldRasterizeIOS=?,
       moreProps,
     ) =>
-  UtilsRN.objAssign2(
-    {
-      "accessibilityLabel": accessibilityLabel,
-      "accessible": accessible,
-      "hitSlop": hitSlop,
-      "onAccessibilityTap": onAccessibilityTap,
-      "onLayout": onLayout,
-      "onMagicTap": onMagicTap,
-      "removeClippedSubviews": removeClippedSubviews,
-      "pointerEvents":
-        Belt.Option.map(pointerEvents, Types.pointerEventsToJs),
-      "style": style,
-      "testID": testID,
-      "accessibilityComponentType":
-        Belt.Option.map(
-          accessibilityComponentType,
-          Types.accessibilityComponentTypeToJs,
-        ),
-      "accessibilityLiveRegion":
-        Belt.Option.map(
-          accessibilityLiveRegion,
-          Types.accessibilityLiveRegionToJs,
-        ),
-      "collapsable": collapsable,
-      "importantForAccessibility":
-        Belt.Option.map(
-          importantForAccessibility,
-          Types.importantForAccessibilityToJs,
-        ),
-      "needsOffscreenAlphaCompositing": needsOffscreenAlphaCompositing,
-      "renderToHardwareTextureAndroid": renderToHardwareTextureAndroid,
-      "accessibilityTraits":
-        Belt.Option.map(accessibilityTraits, x =>
-          x |> List.map(Types.accessibilityTraitToJs) |> Array.of_list
-        ),
-      "accessibilityViewIsModal": accessibilityViewIsModal,
-      "shouldRasterizeIOS": shouldRasterizeIOS,
-    },
-    moreProps,
-    serialize(responderHandlers),
-  );
+  {
+    "accessibilityLabel": accessibilityLabel,
+    "accessible": accessible,
+    "hitSlop": hitSlop,
+    "onAccessibilityTap": onAccessibilityTap,
+    "onLayout": onLayout,
+    "onMagicTap": onMagicTap,
+    "removeClippedSubviews": removeClippedSubviews,
+    "pointerEvents": Belt.Option.map(pointerEvents, Types.pointerEventsToJs),
+    "style": style,
+    "testID": testID,
+    "accessibilityComponentType":
+      Belt.Option.map(
+        accessibilityComponentType,
+        Types.accessibilityComponentTypeToJs,
+      ),
+    "accessibilityLiveRegion":
+      Belt.Option.map(
+        accessibilityLiveRegion,
+        Types.accessibilityLiveRegionToJs,
+      ),
+    "collapsable": collapsable,
+    "importantForAccessibility":
+      Belt.Option.map(
+        importantForAccessibility,
+        Types.importantForAccessibilityToJs,
+      ),
+    "needsOffscreenAlphaCompositing": needsOffscreenAlphaCompositing,
+    "renderToHardwareTextureAndroid": renderToHardwareTextureAndroid,
+    "accessibilityTraits":
+      Belt.Option.map(accessibilityTraits, x =>
+        x |> List.map(Types.accessibilityTraitToJs) |> Array.of_list
+      ),
+    "accessibilityViewIsModal": accessibilityViewIsModal,
+    "shouldRasterizeIOS": shouldRasterizeIOS,
+  }
+  ->Js.Obj.assign(moreProps)
+  ->Js.Obj.assign(serialize(responderHandlers));

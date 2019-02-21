@@ -48,9 +48,9 @@ module Item = {
             "selectedIcon": selectedIcon,
             "style": style,
             "systemIcon":
-              UtilsRN.option_map(
-                x =>
-                  switch (x) {
+              systemIcon
+              ->Belt.Option.map(
+                  fun
                   | `bookmarks => "bookmarks"
                   | `contacts => "contacts"
                   | `downloads => "downloads"
@@ -62,10 +62,8 @@ module Item = {
                   | `mostViewed => "most-viewed"
                   | `recents => "recents"
                   | `search => "search"
-                  | `topRated => "top-rated"
-                  },
-                systemIcon,
-              ),
+                  | `topRated => "top-rated",
+                ),
             "title": title,
             "isTVSelectable": isTVSelectable,
           },
@@ -132,25 +130,21 @@ let make =
       Props.extendView(
         {
           "barStyle":
-            UtilsRN.option_map(
-              x =>
-                switch (x) {
+            barStyle
+            ->Belt.Option.map(
+                fun
                 | `default => "default"
-                | `black => "black"
-                },
-              barStyle,
-            ),
+                | `black => "black",
+              ),
           "barTintColor": barTintColor,
           "itemPositioning":
-            UtilsRN.option_map(
-              x =>
-                switch (x) {
+            itemPositioning
+            ->Belt.Option.map(
+                fun
                 | `fill => "fill"
                 | `center => "center"
-                | `auto => "auto"
-                },
-              itemPositioning,
-            ),
+                | `auto => "auto",
+              ),
           "tintColor": tintColor,
           "translucent": translucent,
           "unselectedItemTintColor": unselectedItemTintColor,

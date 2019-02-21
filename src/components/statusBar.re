@@ -7,17 +7,14 @@ external _setHidden: (bool, Js.Undefined.t(string)) => unit = "setHidden";
 let setHidden = (hidden, ~animation=?, ()) =>
   _setHidden(
     hidden,
-    Js.Undefined.fromOption(
-      UtilsRN.option_map(
-        x =>
-          switch (x) {
-          | `none => "none"
-          | `fade => "fade"
-          | `slide => "slide"
-          },
-        animation,
-      ),
-    ),
+    animation
+    ->Belt.Option.map(
+        fun
+        | `none => "none"
+        | `fade => "fade"
+        | `slide => "slide",
+      )
+    ->Js.Undefined.fromOption,
   );
 
 [@bs.scope "StatusBar"] [@bs.module "react-native"]
@@ -67,28 +64,24 @@ let make =
     ~props={
       "animated": animated,
       "barStyle":
-        UtilsRN.option_map(
-          x =>
-            switch (x) {
+        barStyle
+        ->Belt.Option.map(
+            fun
             | `default => "default"
             | `lightContent => "light-content"
-            | `darkContent => "dark-content"
-            },
-          barStyle,
-        ),
+            | `darkContent => "dark-content",
+          ),
       "backgroundColor": backgroundColor,
       "hidden": hidden,
       "translucent": translucent,
       "networkActivityIndicatorVisible": networkActivityIndicatorVisible,
       "showHideTransition":
-        UtilsRN.option_map(
-          x =>
-            switch (x) {
+        showHideTransition
+        ->Belt.Option.map(
+            fun
             | `none => "none"
             | `fade => "fade"
-            | `slide => "slide"
-            },
-          showHideTransition,
-        ),
+            | `slide => "slide",
+          ),
     },
   );

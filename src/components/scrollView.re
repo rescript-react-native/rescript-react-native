@@ -161,25 +161,21 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
             "contentContainerStyle": contentContainerStyle,
             "horizontal": horizontal,
             "keyboardDismissMode":
-              UtilsRN.option_map(
-                x =>
-                  switch (x) {
+              keyboardDismissMode
+              ->Belt.Option.map(
+                  fun
                   | `interactive => "interactive"
                   | `none => "none"
-                  | `onDrag => "on-drag"
-                  },
-                keyboardDismissMode,
-              ),
+                  | `onDrag => "on-drag",
+                ),
             "keyboardShouldPersistTaps":
-              UtilsRN.option_map(
-                x =>
-                  switch (x) {
+              keyboardShouldPersistTaps
+              ->Belt.Option.map(
+                  fun
                   | `always => "always"
                   | `never => "never"
-                  | `handled => "handled"
-                  },
-                keyboardShouldPersistTaps,
-              ),
+                  | `handled => "handled",
+                ),
             "onContentSizeChange": onContentSizeChange,
             "onScroll": onScroll,
             "pagingEnabled": pagingEnabled,
@@ -188,17 +184,15 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
             "showsHorizontalScrollIndicator": showsHorizontalScrollIndicator,
             "showsVerticalScrollIndicator": showsVerticalScrollIndicator,
             "stickyHeaderIndices":
-              UtilsRN.option_map(Array.of_list, stickyHeaderIndices),
+              stickyHeaderIndices->Belt.Option.map(Belt.List.toArray),
             "overScrollMode":
-              UtilsRN.option_map(
-                x =>
-                  switch (x) {
+              overScrollMode
+              ->Belt.Option.map(
+                  fun
                   | `always => "always"
                   | `never => "never"
-                  | `auto => "auto"
-                  },
-                overScrollMode,
-              ),
+                  | `auto => "auto",
+                ),
             "scrollPerfTag": scrollPerfTag,
             "alwaysBounceHorizontal": alwaysBounceHorizontal,
             "alwaysBounceVertical": alwaysBounceVertical,
@@ -208,30 +202,23 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
             "centerContent": centerContent,
             "contentInset": contentInset,
             "contentOffset":
-              UtilsRN.option_map(
-                ({x, y}) => {"x": x, "y": y},
-                contentOffset,
-              ),
+              contentOffset->Belt.Option.map(({x, y}) => {"x": x, "y": y}),
             "decelerationRate":
-              UtilsRN.option_map(
-                x =>
-                  switch (x) {
+              decelerationRate
+              ->Belt.Option.map(
+                  fun
                   | `fast => "fast"
-                  | `normal => "normal"
-                  },
-                decelerationRate,
-              ),
+                  | `normal => "normal",
+                ),
             "directionalLockEnabled": directionalLockEnabled,
             "indicatorStyle":
-              UtilsRN.option_map(
-                x =>
-                  switch (x) {
+              indicatorStyle
+              ->Belt.Option.map(
+                  fun
                   | `default => "default"
                   | `black => "black"
-                  | `white => "white"
-                  },
-                indicatorStyle,
-              ),
+                  | `white => "white",
+                ),
             "maximumZoomScale": maximumZoomScale,
             "minimumZoomScale": minimumZoomScale,
             "onScrollAnimationEnd": onScrollAnimationEnd,
@@ -240,15 +227,13 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
             "scrollsToTop": scrollsToTop,
             "snapToInterval": snapToInterval,
             "snapToAlignment":
-              UtilsRN.option_map(
-                x =>
-                  switch (x) {
+              snapToAlignment
+              ->Belt.Option.map(
+                  fun
                   | `center => "center"
                   | `start => "start"
-                  | `end_ => "end"
-                  },
-                snapToAlignment,
-              ),
+                  | `end_ => "end",
+                ),
             "zoomScale": zoomScale,
           },
           ~accessibilityLabel?,

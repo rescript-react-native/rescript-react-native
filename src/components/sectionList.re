@@ -85,9 +85,9 @@ let sections = reSections: sections('item) =>
       "data": reSection.data,
       "key": Js.Undefined.fromOption(reSection.key),
       "renderItem":
-        Js.Undefined.fromOption(
-          UtilsRN.option_map(renderItem, reSection.renderItem),
-        ),
+        reSection.renderItem
+        ->Belt.Option.map(renderItem)
+        ->Js.Undefined.fromOption,
     },
     reSections,
   );
@@ -104,12 +104,12 @@ let separatorComponent =
       leadingItem: Js.Undefined.toOption(jsSeparatorProps##leadingItem),
       leadingSection:
         Js.Undefined.toOption(jsSeparatorProps##leadingSection)
-        |> UtilsRN.option_map(jsSectionToSection),
+        ->Belt.Option.map(jsSectionToSection),
       section: jsSectionToSection(jsSeparatorProps##section),
       trailingItem: Js.Undefined.toOption(jsSeparatorProps##trailingItem),
       trailingSection:
         Js.Undefined.toOption(jsSeparatorProps##trailingSection)
-        |> UtilsRN.option_map(jsSectionToSection),
+        ->Belt.Option.map(jsSectionToSection),
     });
 
 type viewToken('item) = {
@@ -237,17 +237,17 @@ let make:
         "renderSectionFooter": renderSectionFooter,
         "stickySectionHeadersEnabled": stickySectionHeadersEnabled,
         "keyboardDismissMode":
-          keyboardDismissMode |> UtilsRN.option_map(keyboardDismissModeToJs),
+          keyboardDismissMode->Belt.Option.map(keyboardDismissModeToJs),
         "keyboardShouldPersistTaps":
           keyboardShouldPersistTaps
-          |> UtilsRN.option_map(keyboardShouldPersistTapsToJs),
+          ->Belt.Option.map(keyboardShouldPersistTapsToJs),
         "showsHorizontalScrollIndicator": showsHorizontalScrollIndicator,
         "showsVerticalScrollIndicator": showsVerticalScrollIndicator,
         "getItemLayout":
-          UtilsRN.option_map(
-            (f, data, index) => f(Js.Undefined.toOption(data), index),
-            getItemLayout,
-          ),
+          getItemLayout
+          ->Belt.Option.map((f, data, index) =>
+              f(Js.Undefined.toOption(data), index)
+            ),
       },
       _children,
     );

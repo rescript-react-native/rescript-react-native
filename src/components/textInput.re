@@ -81,16 +81,14 @@ let make =
       Props.extendView(
         {
           "autoCapitalize":
-            UtilsRN.option_map(
-              x =>
-                switch (x) {
+            autoCapitalize
+            ->Belt.Option.map(
+                fun
                 | `none => "none"
                 | `sentences => "sentences"
                 | `words => "words"
-                | `characters => "characters"
-                },
-              autoCapitalize,
-            ),
+                | `characters => "characters",
+              ),
           "autoCorrect": autoCorrect,
           "autoFocus": autoFocus,
           "blurOnSubmit": blurOnSubmit,
@@ -98,9 +96,9 @@ let make =
           "defaultValue": defaultValue,
           "editable": editable,
           "keyboardType":
-            UtilsRN.option_map(
-              x =>
-                switch (x) {
+            keyboardType
+            ->Belt.Option.map(
+                fun
                 | `default => "default"
                 | `emailAddress => "email-address"
                 | `numeric => "numeric"
@@ -112,10 +110,8 @@ let make =
                 | `namePhonePad => "name-phone-pad"
                 | `decimalPad => "decimal-pad"
                 | `twitter => "twitter"
-                | `webSearch => "web-search"
-                },
-              keyboardType,
-            ),
+                | `webSearch => "web-search",
+              ),
           "maxLength": maxLength,
           "multiline": multiline,
           "onBlur": onBlur,
@@ -130,9 +126,9 @@ let make =
           "placeholder": placeholder,
           "placeholderTextColor": placeholderTextColor,
           "returnKeyType":
-            UtilsRN.option_map(
-              x =>
-                switch (x) {
+            returnKeyType
+            ->Belt.Option.map(
+                fun
                 | `done_ => "done"
                 | `go => "go"
                 | `next => "next"
@@ -145,10 +141,8 @@ let make =
                 | `google => "google"
                 | `join => "join"
                 | `route => "route"
-                | `yahoo => "yahoo"
-                },
-              returnKeyType,
-            ),
+                | `yahoo => "yahoo",
+              ),
           "secureTextEntry": secureTextEntry,
           "selectTextOnFocus": selectTextOnFocus,
           "selection": selection,
@@ -161,52 +155,45 @@ let make =
           "numberOfLines": numberOfLines,
           "returnKeyLabel": returnKeyLabel,
           "textBreakStrategy":
-            UtilsRN.option_map(
-              x =>
-                switch (x) {
+            textBreakStrategy
+            ->Belt.Option.map(
+                fun
                 | `simple => "simple"
                 | `highQuality => "highQuality"
-                | `balanced => "balanced"
-                },
-              textBreakStrategy,
-            ),
+                | `balanced => "balanced",
+              ),
           "underlineColorAndroid": underlineColorAndroid,
           "clearButtonMode":
-            UtilsRN.option_map(
-              x =>
-                switch (x) {
+            clearButtonMode
+            ->Belt.Option.map(
+                fun
                 | `never => "never"
                 | `whileEditing => "while-editing"
                 | `unlessEditing => "unless-editing"
-                | `always => "always"
-                },
-              clearButtonMode,
-            ),
+                | `always => "always",
+              ),
           "clearTextOnFocus": clearTextOnFocus,
           "dataDetectorTypes":
-            UtilsRN.option_map(
-              Array.map(x =>
-                switch (x) {
-                | `phoneNumber => "phoneNumber"
-                | `link => "link"
-                | `calendarEvent => "calendarEvent"
-                | `none => "none"
-                | `all => "all"
-                }
+            dataDetectorTypes
+            ->Belt.Option.map(
+                Array.map(
+                  fun
+                  | `phoneNumber => "phoneNumber"
+                  | `link => "link"
+                  | `calendarEvent => "calendarEvent"
+                  | `none => "none"
+                  | `all => "all",
+                ),
               ),
-              dataDetectorTypes,
-            ),
           "enablesReturnKeyAutomatically": enablesReturnKeyAutomatically,
           "keyboardAppearance":
-            UtilsRN.option_map(
-              x =>
-                switch (x) {
+            keyboardAppearance
+            ->Belt.Option.map(
+                fun
                 | `default => "never"
                 | `light => "light"
-                | `dark => "dark"
-                },
-              keyboardAppearance,
-            ),
+                | `dark => "dark",
+              ),
           "onKeyPress": onKeyPress,
           "selectionState": selectionState,
           "spellCheck": spellCheck,

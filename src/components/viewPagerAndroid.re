@@ -45,12 +45,12 @@ let make =
           "onPageSelected": onPageSelected,
           "pageMargin": pageMargin,
           "keyboardDismissMode":
-            UtilsRN.option_map(
-              fun
-              | `none => "none"
-              | `onDrag => "on-drag",
-              keyboardDismissMode,
-            ),
+            keyboardDismissMode
+            ->Belt.Option.map(
+                fun
+                | `none => "none"
+                | `onDrag => "on-drag",
+              ),
           "peekEnabled": peekEnabled,
           "scrollEnabled": scrollEnabled,
         },

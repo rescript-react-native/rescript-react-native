@@ -151,24 +151,22 @@ let make =
           "domStorageEnabled": domStorageEnabled,
           "javaScriptEnabled": javaScriptEnabled,
           "mixedContentMode":
-            UtilsRN.option_map(
-              contentMode => {
+            mixedContentMode
+            ->Belt.Option.map(contentMode => {
                 let to_string =
                   fun
                   | `never => "never"
                   | `always => "always"
                   | `compatibility => "compatibility";
                 contentMode |> List.map(to_string) |> Array.of_list;
-              },
-              mixedContentMode,
-            ),
+              }),
           "thirdPartyCookiesEnabled": thirdPartyCookiesEnabled,
           "userAgent": userAgent,
           "allowsInlineMediaPlayback": allowsInlineMediaPlayback,
           "bounces": bounces,
           "dataDetectorTypes":
-            UtilsRN.option_map(
-              dataDetectorType => {
+            dataDetectorTypes
+            ->Belt.Option.map(dataDetectorType => {
                 let to_string =
                   fun
                   | `phoneNumber => "phoneNumber"
@@ -178,21 +176,17 @@ let make =
                   | `none => "none"
                   | `all => "all";
                 dataDetectorType |> List.map(to_string) |> Array.of_list;
-              },
-              dataDetectorTypes,
-            ),
+              }),
           "decelerationRate":
-            UtilsRN.option_map(
-              rate => {
+            decelerationRate
+            ->Belt.Option.map(rate => {
                 let to_float =
                   fun
                   | `normal => 0.998
                   | `fast => 0.99
                   | `value(f) => f;
                 rate |> List.map(to_float) |> Array.of_list;
-              },
-              decelerationRate,
-            ),
+              }),
           "onShouldStartLoadWithRequest": onShouldStartLoadWithRequest,
           "scrollEnabled": scrollEnabled,
         },

@@ -298,10 +298,10 @@ module CreateComponent = (Impl: View.Impl) : FlatListComponent => {
         "data": data,
         "extraData": extraData,
         "getItemLayout":
-          UtilsRN.option_map(
-            (f, data, index) => f(Js.Undefined.toOption(data), index),
-            getItemLayout,
-          ),
+          getItemLayout
+          ->Belt.Option.map((f, data, index) =>
+              f(Js.Undefined.toOption(data), index)
+            ),
         "horizontal": horizontal,
         "initialNumToRender": initialNumToRender,
         "initialScrollIndex": initialScrollIndex,
@@ -313,15 +313,13 @@ module CreateComponent = (Impl: View.Impl) : FlatListComponent => {
         "onRefresh": onRefresh,
         "onViewableItemsChanged": onViewableItemsChanged,
         "overScrollMode":
-          UtilsRN.option_map(
-            x =>
-              switch (x) {
+          overScrollMode
+          ->Belt.Option.map(
+              fun
               | `auto => "auto"
               | `always => "always"
-              | `never => "never"
-              },
-            overScrollMode,
-          ),
+              | `never => "never",
+            ),
         "pagingEnabled": pagingEnabled,
         "refreshControl": refreshControl,
         "refreshing": refreshing,
@@ -329,7 +327,7 @@ module CreateComponent = (Impl: View.Impl) : FlatListComponent => {
         "removeClippedSubviews": removeClippedSubviews,
         "scrollEnabled": scrollEnabled,
         "stickyHeaderIndices":
-          UtilsRN.option_map(Array.of_list, stickyHeaderIndices),
+          stickyHeaderIndices->Belt.Option.map(Array.of_list),
         "showsHorizontalScrollIndicator": showsHorizontalScrollIndicator,
         "showsVerticalScrollIndicator": showsVerticalScrollIndicator,
         "windowSize": windowSize,

@@ -50,7 +50,7 @@ let make =
           "color": color,
           "indeterminate": indeterminate,
           "progress": progress,
-          "styleAttr": UtilsRN.option_map(styleAttribute, styleAttr),
+          "styleAttr": styleAttr->Belt.Option.map(styleAttribute),
           "testID": testID,
         },
         ~accessibilityLabel?,

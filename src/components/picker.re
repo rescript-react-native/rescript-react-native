@@ -15,11 +15,10 @@ module Item = {
     );
 };
 
-let encodeMode = x =>
-  switch (x) {
+let encodeMode =
+  fun
   | `dialog => "dialog"
-  | `dropdown => "dropdown"
-  };
+  | `dropdown => "dropdown";
 
 let make =
     (
@@ -61,7 +60,7 @@ let make =
           "selectedValue": selectedValue,
           "itemStyle": itemStyle,
           "prompt": prompt,
-          "mode": UtilsRN.option_map(encodeMode, mode),
+          "mode": mode->Belt.Option.map(encodeMode),
         },
         ~accessibilityLabel?,
         ~accessible?,
