@@ -313,6 +313,20 @@ module type ImageComponent = {
       ReasonReact.noRetainedProps,
       unit,
     );
+
+  type asset = {
+    .
+    "uri": string,
+    "width": int,
+    "height": int,
+  };
+
+  type assetSource = [
+    | `URI(_imageURISource)
+    | `Required(Packager.required)
+  ];
+
+  let resolveAssetSource: assetSource => asset;
 };
 
 module CreateComponent: (Impl: View.Impl) => ImageComponent;
