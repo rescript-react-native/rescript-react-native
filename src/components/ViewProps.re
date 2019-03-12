@@ -43,6 +43,10 @@ let extend =
       ~needsOffscreenAlphaCompositing=?,
       ~renderToHardwareTextureAndroid=?,
       ~accessibilityTraits=?,
+      ~accessibilityRole=?,
+      ~accessibilityStates=?,
+      ~accessibilityHint=?,
+      ~accessibilityIgnoresInvertColors=?,
       ~accessibilityViewIsModal=?,
       ~shouldRasterizeIOS=?,
       moreProps,
@@ -80,6 +84,14 @@ let extend =
       Belt.Option.map(accessibilityTraits, x =>
         x |> List.map(Types.accessibilityTraitToJs) |> Array.of_list
       ),
+    "accessibilityRole":
+      Belt.Option.map(accessibilityRole, Types.accessibilityRoleToJs),
+    "accessibilityStates":
+      Belt.Option.map(accessibilityStates, x =>
+        x |> List.map(Types.accessibilityStateToJs) |> Array.of_list
+      ),
+    "accessibilityHint": accessibilityHint,
+    "accessibilityIgnoresInvertColors": accessibilityIgnoresInvertColors,
     "accessibilityViewIsModal": accessibilityViewIsModal,
     "shouldRasterizeIOS": shouldRasterizeIOS,
   }

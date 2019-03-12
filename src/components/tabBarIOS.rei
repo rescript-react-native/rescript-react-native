@@ -68,6 +68,10 @@ let make:
     ~needsOffscreenAlphaCompositing: bool=?,
     ~renderToHardwareTextureAndroid: bool=?,
     ~accessibilityTraits: list(Types.accessibilityTrait)=?,
+    ~accessibilityRole: Types.accessibilityRole=?,
+    ~accessibilityStates: list(Types.accessibilityState)=?,
+    ~accessibilityHint: string=?,
+    ~accessibilityIgnoresInvertColors: bool=?,
     ~accessibilityViewIsModal: bool=?,
     ~shouldRasterizeIOS: bool=?,
     array(ReasonReact.reactElement)
@@ -197,6 +201,10 @@ module Item: {
       ~needsOffscreenAlphaCompositing: bool=?,
       ~renderToHardwareTextureAndroid: bool=?,
       ~accessibilityTraits: list(Types.accessibilityTrait)=?,
+      ~accessibilityRole: Types.accessibilityRole=?,
+      ~accessibilityStates: list(Types.accessibilityState)=?,
+      ~accessibilityHint: string=?,
+      ~accessibilityIgnoresInvertColors: bool=?,
       ~accessibilityViewIsModal: bool=?,
       ~shouldRasterizeIOS: bool=?,
       array(ReasonReact.reactElement)
