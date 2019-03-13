@@ -29,7 +29,8 @@
     "all-contributors-cli": "^5.4.0",
     "bs-platform": "^4.0.0",
     "live-server": "^1.2.0",
-    "reason-react": "^0.4.2"
+    "reason-react": "^0.4.2",
+    "replace": "^1.1.0"
   },
   "peerDependencies": {
     "react-native": "^0.53.3",
