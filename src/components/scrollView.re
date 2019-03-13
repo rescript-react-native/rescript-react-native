@@ -10,6 +10,13 @@ module type ScrollViewComponent = {
     (
       ~accessibilityLabel: ReasonReact.reactElement=?,
       ~accessible: bool=?,
+      ~contentInsetAdjustmentBehavior: [
+                                         | `automatic
+                                         | `scrollableAxes
+                                         | `never
+                                         | `always
+                                       ]
+                                         =?,
       ~hitSlop: Types.insets=?,
       ~onAccessibilityTap: unit => unit=?,
       ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
@@ -103,6 +110,7 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
       (
         ~accessibilityLabel=?,
         ~accessible=?,
+        ~contentInsetAdjustmentBehavior=?,
         ~hitSlop=?,
         ~onAccessibilityTap=?,
         ~onLayout=?,
@@ -165,6 +173,15 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
         Props.extendView(
           {
             "contentContainerStyle": contentContainerStyle,
+            "contentInsetAdjustmentBehavior":
+              contentInsetAdjustmentBehavior
+              ->Belt.Option.map(
+                  fun
+                  | `automatic => "automatic"
+                  | `scrollableAxes => "scrollableAxes"
+                  | `never => "never"
+                  | `always => "always",
+                ),
             "horizontal": horizontal,
             "keyboardDismissMode":
               keyboardDismissMode

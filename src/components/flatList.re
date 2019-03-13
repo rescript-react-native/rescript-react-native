@@ -116,6 +116,13 @@ module type FlatListComponent = {
       ~onMomentumScrollBegin: RNEvent.NativeScrollEvent.t => unit=?,
       ~onMomentumScrollEnd: RNEvent.NativeScrollEvent.t => unit=?,
       ~style: Style.t=?,
+      ~contentInsetAdjustmentBehavior: [
+                                         | `automatic
+                                         | `scrollableAxes
+                                         | `never
+                                         | `always
+                                       ]
+                                         =?,
       array(ReasonReact.reactElement)
     ) =>
     ReasonReact.component(
@@ -293,6 +300,7 @@ module CreateComponent = (Impl: View.Impl) : FlatListComponent => {
         ~onMomentumScrollBegin=?,
         ~onMomentumScrollEnd=?,
         ~style=?,
+        ~contentInsetAdjustmentBehavior=?,
       ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=Impl.view,
@@ -347,6 +355,7 @@ module CreateComponent = (Impl: View.Impl) : FlatListComponent => {
         "onMomentumScrollBegin": onMomentumScrollBegin,
         "onMomentumScrollEnd": onMomentumScrollEnd,
         "style": style,
+        "contentInsetAdjustmentBehavior": contentInsetAdjustmentBehavior,
       },
     );
 };

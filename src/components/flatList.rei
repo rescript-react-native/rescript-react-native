@@ -238,6 +238,16 @@ module type FlatListComponent = {
   {[
     style: Style.t=?
   ]}
+  {4 contentInsetAdjustmentBehavior}
+  {[
+    ~contentInsetAdjustmentBehavior: [
+      | `automatic
+      | `scrollableAxes
+      | `never
+      | `always
+    ]=?,
+  ]}
+
   */
   /**
     {3 methods }
@@ -376,6 +386,13 @@ module type FlatListComponent = {
       ~onMomentumScrollBegin: RNEvent.NativeScrollEvent.t => unit=?,
       ~onMomentumScrollEnd: RNEvent.NativeScrollEvent.t => unit=?,
       ~style: Style.t=?,
+      ~contentInsetAdjustmentBehavior: [
+                                         | `automatic
+                                         | `scrollableAxes
+                                         | `never
+                                         | `always
+                                       ]
+                                         =?,
       array(ReasonReact.reactElement)
     ) =>
     ReasonReact.component(

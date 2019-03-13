@@ -13,6 +13,16 @@ module type ScrollViewComponent = {
     ~contentContainerStyle: Style.t=?
   ]}
 
+  {4 contentInsetAdjustmentBehavior}
+  {[
+    ~contentInsetAdjustmentBehavior: [
+      | `automatic
+      | `scrollableAxes
+      | `never
+      | `always
+    ]=?,
+  ]}
+
   {4 horizontal}
   {[
     ~horizontal: bool=?,
@@ -227,6 +237,13 @@ module type ScrollViewComponent = {
     (
       ~accessibilityLabel: ReasonReact.reactElement=?,
       ~accessible: bool=?,
+      ~contentInsetAdjustmentBehavior: [
+                                         | `automatic
+                                         | `scrollableAxes
+                                         | `never
+                                         | `always
+                                       ]
+                                         =?,
       ~hitSlop: Types.insets=?,
       ~onAccessibilityTap: unit => unit=?,
       ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
