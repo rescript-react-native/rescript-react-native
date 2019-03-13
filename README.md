@@ -40,7 +40,7 @@ We want this community to be friendly and respectful to each other. Please read 
 [build]: https://circleci.com/gh/reasonml-community/bs-react-native
 [version-badge]: https://img.shields.io/npm/v/bs-react-native.svg
 [package]: https://www.npmjs.com/package/bs-react-native
-[all-contributors-badge]: https://img.shields.io/badge/all_contributors-53-orange.svg
+[all-contributors-badge]: https://img.shields.io/badge/all_contributors-68-blue.svg
 [contributors]: https://github.com/reasonml-community/bs-react-native/blob/master/CONTRIBUTORS.md
 [chat-badge]: https://img.shields.io/discord/496273792503513089.svg?logo=discord&colorB=blue
 [chat]: https://discord.gg/q8GQD34
