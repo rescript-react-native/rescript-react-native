@@ -2,9 +2,10 @@
 
 PKG=BsReactNative
 
-DOCS=docs
+DOCS=docs/dist
 LIB=./lib/bs/src
 PAGES=./docs/pages
+PUBLIC=./docs/public/
 ODOC=$(which odoc)
 if [[ $? != 0 ]] ; then
   echo "Missing odoc, please look at the CONTRIBUTING.md guide"
@@ -50,3 +51,8 @@ for file in ${ODOC_FILES}; do
     ${file}
 done
 echo ">> Done!"
+
+echo "<< Adding static public files..."
+cp -r ${PUBLIC} ${DOCS}
+echo ">> Done!"
+
