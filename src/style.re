@@ -95,6 +95,13 @@ let arrayStyle = (key, value) => (key, Encode.array(value));
 
 let style = sarr => sarr |> Js.Dict.fromList |> to_style;
 
+let emptyStyle = style([]);
+
+let combineOptional = (s, so) =>
+  so->Belt.Option.map(so => s->combine(so))->Belt.Option.getWithDefault(s);
+
+let optional = s => s->Belt.Option.getWithDefault(emptyStyle);
+
 /***
  * Layout Props
  */

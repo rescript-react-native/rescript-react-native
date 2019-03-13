@@ -27,6 +27,10 @@ external flatten: array(t) => t = "%identity";
 let combine: (t, t) => t;
 let concat: list(t) => t;
 let style: list(styleElement) => t;
+let emptyStyle: t;
+let combineOptional: (t, option(t)) => t;
+let optional: (option(t)) => t;
+
 type alignContent =
   | FlexStart
   | FlexEnd
