@@ -50,20 +50,8 @@ module type ImageComponent = {
     {[
       onLayout: RNEvent.NativeLayoutEvent.t => unit=?
     ]}
-    reference:
-    {4 RNEvent.rei}
-    {[
-      module NativeLayoutEvent: {
-        type t;
-        type layout = {
-          x: float,
-          y: float,
-          width: float,
-          height: float
-        };
-        let layout: t => layout;
-      };
-    ]}
+    Reference {{:/BsReactNative/RNEvent-BsReactNative/NativeLayoutEvent/} [RNEvent.NativeLayoutEvent]}
+
     {4 onLoad}
     {[
       onLoad: unit => unit=?

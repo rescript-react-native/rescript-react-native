@@ -111,6 +111,10 @@ module type FlatListComponent = {
       ~maxToRenderPerBatch: int=?,
       ~viewabilityConfig: Js.t({.})=?,
       ~onScroll: RNEvent.NativeScrollEvent.t => unit=?,
+      ~onScrollBeginDrag: RNEvent.NativeScrollEvent.t => unit=?,
+      ~onScrollEndDrag: RNEvent.NativeScrollEvent.t => unit=?,
+      ~onMomentumScrollBegin: RNEvent.NativeScrollEvent.t => unit=?,
+      ~onMomentumScrollEnd: RNEvent.NativeScrollEvent.t => unit=?,
       ~style: Style.t=?,
       array(ReasonReact.reactElement)
     ) =>
@@ -284,6 +288,10 @@ module CreateComponent = (Impl: View.Impl) : FlatListComponent => {
         ~maxToRenderPerBatch=?,
         ~viewabilityConfig=?,
         ~onScroll=?,
+        ~onScrollBeginDrag=?,
+        ~onScrollEndDrag=?,
+        ~onMomentumScrollBegin=?,
+        ~onMomentumScrollEnd=?,
         ~style=?,
       ) =>
     ReasonReact.wrapJsForReason(
@@ -334,6 +342,10 @@ module CreateComponent = (Impl: View.Impl) : FlatListComponent => {
         "maxToRenderPerBatch": maxToRenderPerBatch,
         "viewabilityConfig": viewabilityConfig,
         "onScroll": onScroll,
+        "onScrollBeginDrag": onScrollBeginDrag,
+        "onScrollEndDrag": onScrollEndDrag,
+        "onMomentumScrollBegin": onMomentumScrollBegin,
+        "onMomentumScrollEnd": onMomentumScrollEnd,
         "style": style,
       },
     );

@@ -37,35 +37,37 @@ module type ScrollViewComponent = {
   {[
     ~onContentSizeChange: ((float, float)) => unit=?,
   ]}
+
   {4 onScroll}
   {[
     ~onScroll: RNEvent.NativeScrollEvent.t => unit=?,
   ]}
-  reference:
-  {4 RNEvent.rei}
+  Reference {{:/BsReactNative/RNEvent-BsReactNative/NativeScrollEvent/} [RNEvent.NativeScrollEvent]}
+
+  {4 onScrollBeginDrag}
   {[
-    module NativeScrollEvent: {
-      type t;
-      type point = {
-        x: float,
-        y: float
-      };
-      type size = {
-        width: float,
-        height: float
-      };
-      type contentInset = {
-        bottom: float,
-        top: float,
-        left: float,
-        right: float
-      };
-      let contentOffset: t => point;
-      let contentSize: t => size;
-      let contentInset: t => contentInset;
-      let layoutMeasurement: t => size;
-    };
+    ~onScrollBeginDrag: RNEvent.NativeScrollEvent.t => unit=?,
   ]}
+  Reference {{:/BsReactNative/RNEvent-BsReactNative/NativeScrollEvent/} [RNEvent.NativeScrollEvent]}
+
+  {4 onScrollEndDrag}
+  {[
+    ~onScrollEndDrag: RNEvent.NativeScrollEvent.t => unit=?,
+  ]}
+  Reference {{:/BsReactNative/RNEvent-BsReactNative/NativeScrollEvent/} [RNEvent.NativeScrollEvent]}
+
+  {4 onMomentumScrollBegin}
+  {[
+    ~onMomentumScrollBegin: RNEvent.NativeScrollEvent.t => unit=?,
+  ]}
+  Reference {{:/BsReactNative/RNEvent-BsReactNative/NativeScrollEvent/} [RNEvent.NativeScrollEvent]}
+
+  {4 onMomentumScrollEnd}
+  {[
+    ~onMomentumScrollEnd: RNEvent.NativeScrollEvent.t => unit=?,
+  ]}
+  Reference {{:/BsReactNative/RNEvent-BsReactNative/NativeScrollEvent/} [RNEvent.NativeScrollEvent]}
+
   {4 pagingEnabled}
   {[
     ~pagingEnabled: bool=?,
@@ -249,6 +251,10 @@ module type ScrollViewComponent = {
       ~keyboardShouldPersistTaps: [ | `always | `handled | `never]=?,
       ~onContentSizeChange: ((float, float)) => unit=?,
       ~onScroll: RNEvent.NativeScrollEvent.t => unit=?,
+      ~onScrollBeginDrag: RNEvent.NativeScrollEvent.t => unit=?,
+      ~onScrollEndDrag: RNEvent.NativeScrollEvent.t => unit=?,
+      ~onMomentumScrollBegin: RNEvent.NativeScrollEvent.t => unit=?,
+      ~onMomentumScrollEnd: RNEvent.NativeScrollEvent.t => unit=?,
       ~pagingEnabled: bool=?,
       ~refreshControl: ReasonReact.reactElement=?,
       ~scrollEnabled: bool=?,
