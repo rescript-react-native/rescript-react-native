@@ -1,5 +1,6 @@
 type t;
 type styleElement;
+type styleTransformElement = (string, Js.Json.t);
 type pt_only =
   | Pt(float);
 type pt_pct =
@@ -19,6 +20,9 @@ type float_animated('a) =
 type string_interpolated =
   | String(string)
   | Animated(AnimatedRe.Interpolation.t);
+type deg_animated('a) =
+  | Deg(string)
+  | Animated(AnimatedRe.value('a));
 external flatten: array(t) => t = "%identity";
 let combine: (t, t) => t;
 let concat: list(t) => t;
@@ -120,7 +124,26 @@ let shadowColor: string_interpolated => styleElement;
 let shadowOffset: (~height: float, ~width: float) => styleElement;
 let shadowOpacity: float => styleElement;
 let shadowRadius: float => styleElement;
+
+let transform: list(styleTransformElement) => styleElement;
+
 module Transform: {
+  let perspective: float_animated('a) => styleTransformElement;
+  let translateX: float_animated('a) => styleTransformElement;
+  let translateY: float_animated('a) => styleTransformElement;
+  let scaleX: float_animated('a) => styleTransformElement;
+  let scaleY: float_animated('a) => styleTransformElement;
+  let scale: float_animated('a) => styleTransformElement;
+  let rotate: deg_animated('a) => styleTransformElement;
+  let rotateX: deg_animated('a) => styleTransformElement;
+  let rotateY: deg_animated('a) => styleTransformElement;
+  let rotateZ: deg_animated('a) => styleTransformElement;
+  let skewX: deg_animated('a) => styleTransformElement;
+  let skewY: deg_animated('a) => styleTransformElement;
+
+  [@deprecated
+    "Please use Style.transform instead. Read more at https://github.com/reasonml-community/bs-react-native/issues/333"
+  ]
   let make:
     (
       ~perspective: float=?,
@@ -137,6 +160,10 @@ module Transform: {
       unit
     ) =>
     styleElement;
+
+  [@deprecated
+    "Please use Style.transform instead. Read more at https://github.com/reasonml-community/bs-react-native/issues/333"
+  ]
   let makeAnimated:
     (
       ~perspective: AnimatedRe.value('a)=?,

@@ -2,6 +2,8 @@ type t;
 
 type styleElement = (string, Js.Json.t);
 
+type styleTransformElement = (string, Js.Json.t);
+
 type pt_only =
   | Pt(float);
 
@@ -53,6 +55,15 @@ type string_interpolated =
 let encode_string_interpolated =
   fun
   | String(value) => Encode.string(value)
+  | Animated(value) => Encode.animatedValue(value);
+
+type deg_animated('a) =
+  | Deg(string)
+  | Animated(AnimatedRe.value('a));
+
+let encode_deg_animated =
+  fun
+  | Deg(value) => Encode.string(value)
   | Animated(value) => Encode.animatedValue(value);
 
 external flatten: array(t) => t = "%identity";
@@ -345,7 +356,25 @@ let shadowOpacity = floatStyle("shadowOpacity");
 
 let shadowRadius = floatStyle("shadowRadius");
 
+let transform = listyle =>
+  listyle
+  ->Belt.List.map(ts => [ts]->Js.Dict.fromList->Encode.object_)
+  ->Belt.List.toArray
+  |> arrayStyle("transform");
 module Transform = {
+  let perspective = value => ("perspective", encode_float_animated(value));
+  let translateX = value => ("translateX", encode_float_animated(value));
+  let translateY = value => ("translateY", encode_float_animated(value));
+  let scaleX = value => ("scaleX", encode_float_animated(value));
+  let scaleY = value => ("scaleY", encode_float_animated(value));
+  let scale = value => ("scale", encode_float_animated(value));
+  let rotate = value => ("rotate", encode_deg_animated(value));
+  let rotateX = value => ("rotateX", encode_deg_animated(value));
+  let rotateY = value => ("rotateY", encode_deg_animated(value));
+  let rotateZ = value => ("rotateZ", encode_deg_animated(value));
+  let skewX = value => ("skewX", encode_deg_animated(value));
+  let skewY = value => ("skewY", encode_deg_animated(value));
+
   let create_ =
       (
         encoder,
