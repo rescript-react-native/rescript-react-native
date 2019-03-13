@@ -5,7 +5,7 @@ PKG=BsReactNative
 DOCS=docs/dist
 LIB=./lib/bs/src
 PAGES=./docs/pages
-PUBLIC=./docs/public/
+PUBLIC=./docs/public
 ODOC=$(which odoc)
 if [[ $? != 0 ]] ; then
   echo "Missing odoc, please look at the CONTRIBUTING.md guide"
@@ -56,7 +56,7 @@ done
 echo ">> Done!"
 
 echo "<< Adding static public files..."
-cp -r ${PUBLIC} ${DOCS}
+cp -r ${PUBLIC}/* ${DOCS}
 echo ">> Done!"
 
 echo "<< Editing html files to inject meta..."
