@@ -12,6 +12,9 @@ if [[ $? != 0 ]] ; then
   exit 1
 fi
 
+# Ensure docs/dist exist
+mkdir -p ${DOCS}
+
 # Gather the sources to compile .odoc files
 CMT_FILES=$(find ${LIB} -name "*.cmti")
 MLD_FILES=$(find ${PAGES} -name "*.mld")
