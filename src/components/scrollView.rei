@@ -160,10 +160,6 @@ module type ScrollViewComponent = {
   {[
     ~minimumZoomScale: float=?,
   ]}
-  {4 onScrollAnimationEnd}
-  {[
-    ~onScrollAnimationEnd: unit => unit=?,
-  ]}
   {4 scrollEventThrottle}
   {[
     ~scrollEventThrottle: int=?,
@@ -274,7 +270,6 @@ module type ScrollViewComponent = {
       ~indicatorStyle: [ | `black | `default | `white]=?,
       ~maximumZoomScale: float=?,
       ~minimumZoomScale: float=?,
-      ~onScrollAnimationEnd: unit => unit=?,
       ~scrollEventThrottle: int=?,
       ~scrollIndicatorInsets: Types.insets=?,
       ~scrollsToTop: bool=?,
