@@ -21,6 +21,13 @@ module ScrollView: {
     (
       ~accessibilityLabel: ReasonReact.reactElement=?,
       ~accessible: bool=?,
+      ~contentInsetAdjustmentBehavior: [
+                                         | `automatic
+                                         | `scrollableAxes
+                                         | `never
+                                         | `always
+                                       ]
+                                         =?,
       ~hitSlop: Types.insets=?,
       ~onAccessibilityTap: unit => unit=?,
       ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
