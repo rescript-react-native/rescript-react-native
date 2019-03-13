@@ -1,4 +1,4 @@
-# bs-react-native
+# BuckleScript bindings for React Native
 
 [![Build Status][build-badge]][build]
 [![Version][version-badge]][package]
@@ -9,11 +9,9 @@
 [![React Native][react-native-badge]][react-native]
 [![Code of Conduct][coc-badge]][coc]
 
-> [BuckleScript](https://github.com/bucklescript/bucklescript) bindings for [React Native](https://github.com/facebook/react-native)
+[BuckleScript](https://bucklescript.github.io) bindings for [React Native](https://github.com/facebook/react-native) allows to use [ReasonML](https://reasonml.github.io) with [ReasonReact](https://reasonml.github.io/reason-react/) to make your iOS, Android and [Web](https://github.com/necolas/react-native-web) apps.
 
-```bash
-$ react-native init HelloWorld --template reason
-```
+## Getting Started
 
 Check our [getting started](https://reasonml-community.github.io/bs-react-native/BsReactNative/gettingstarted.html) guide for details.
 
@@ -40,6 +38,7 @@ Check the [changelog](./CHANGELOG.md) for more informations about recent release
 We want this community to be friendly and respectful to each other. Please read [the full text](https://github.com/callstack/reasonml-community/blob/master/CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
 
 <!-- badges -->
+
 [build-badge]: https://img.shields.io/circleci/project/github/reasonml-community/bs-react-native/master.svg
 [build]: https://circleci.com/gh/reasonml-community/bs-react-native
 [version-badge]: https://img.shields.io/npm/v/bs-react-native.svg
