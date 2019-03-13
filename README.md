@@ -32,7 +32,7 @@ Check the [changelog](./CHANGELOG.md) for more informations about recent release
 
 ## Code of Conduct
 
-We want this community to be friendly and respectful to each other. Please read [the full text](https://github.com/callstack/reasonml-community/blob/master/CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
+We want this community to be friendly and respectful to each other. Please read [the full text](https://github.com/reasonml-community/bs-react-native/blob/master/CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
 
 <!-- badges -->
 
