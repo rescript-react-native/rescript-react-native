@@ -32,6 +32,7 @@ let make =
       ~accessibilityViewIsModal=?,
       ~shouldRasterizeIOS=?,
       ~autoCapitalize=?,
+      ~autoComplete=?,
       ~autoCorrect=?,
       ~autoFocus=?,
       ~blurOnSubmit=?,
@@ -88,6 +89,24 @@ let make =
                 | `sentences => "sentences"
                 | `words => "words"
                 | `characters => "characters",
+              ),
+          "autoComplete":
+            autoComplete
+            ->Belt.Option.map(
+                fun
+                | `off => "off"
+                | `username => "username"
+                | `password => "password"
+                | `email => "email"
+                | `name => "name"
+                | `tel => "tel"
+                | `streetAddress => "street-address"
+                | `postalCode => "postal-code"
+                | `ccNumber => "cc-number"
+                | `ccCsc => "cc-csc"
+                | `ccExp => "cc-exp"
+                | `ccExpMonth => "cc-exp-month"
+                | `ccExpYear => "cc-exp-year",
               ),
           "autoCorrect": autoCorrect,
           "autoFocus": autoFocus,
