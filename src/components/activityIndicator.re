@@ -5,16 +5,16 @@ external view: ReasonReact.reactClass = "ActivityIndicator";
 
 let encodeSize = size =>
   switch (size) {
-  | `small => Encode.string("small")
-  | `large => Encode.string("large")
+  | `small => Internals.Encoder.string("small")
+  | `large => Internals.Encoder.string("large")
   | `exact(x) =>
     switch (_os) {
     | "ios" =>
       Js.Console.warn(
         "Passing 'exact' to the size prop of activityIndicator is supported only on Android. Because you only provided the 'exact' size, we defaulted it to the small size on iOS",
       );
-      Encode.string("small");
-    | _ => Encode.int(x)
+      Internals.Encoder.string("small");
+    | _ => Internals.Encoder.int(x)
     }
   };
 
@@ -48,7 +48,7 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
     ~props=
-      Props.extendView(
+      ViewProps.extend(
         {
           "animating": animating,
           "color": color,

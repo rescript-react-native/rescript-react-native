@@ -44,7 +44,7 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass=component,
     ~props=
-      Props.extendView(
+      ViewProps.extend(
         {
           "animating": animating,
           "color": color,

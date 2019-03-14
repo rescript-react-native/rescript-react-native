@@ -51,7 +51,7 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
     ~props=
-      Props.extendView(
+      ViewProps.extend(
         {
           "disabled": disabled,
           "maximumTrackTintColor": maximumTrackTintColor,

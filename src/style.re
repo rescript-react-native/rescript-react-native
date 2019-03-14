@@ -13,8 +13,8 @@ type pt_pct =
 
 let encode_pt_pct =
   fun
-  | Pt(value) => Encode.float(value)
-  | Pct(value) => Encode.pct(value);
+  | Pt(value) => Internals.Encoder.float(value)
+  | Pct(value) => Internals.Encoder.pct(value);
 
 type pt_pct_auto =
   | Pt(float)
@@ -23,9 +23,9 @@ type pt_pct_auto =
 
 let encode_pt_pct_auto = value =>
   switch (value) {
-  | Pt(pt) => Encode.float(pt)
-  | Pct(pct) => Encode.pct(pct)
-  | Auto => Encode.string("auto")
+  | Pt(pt) => Internals.Encoder.float(pt)
+  | Pct(pct) => Internals.Encoder.pct(pct)
+  | Auto => Internals.Encoder.string("auto")
   };
 
 type pt_pct_animated('a) =
@@ -35,9 +35,9 @@ type pt_pct_animated('a) =
 
 let encode_pt_pct_animated =
   fun
-  | Pt(value) => Encode.float(value)
-  | Pct(value) => Encode.pct(value)
-  | Animated(value) => Encode.animatedValue(value);
+  | Pt(value) => Internals.Encoder.float(value)
+  | Pct(value) => Internals.Encoder.pct(value)
+  | Animated(value) => Internals.Encoder.animatedValue(value);
 
 type float_animated('a) =
   | Float(float)
@@ -45,8 +45,8 @@ type float_animated('a) =
 
 let encode_float_animated =
   fun
-  | Float(value) => Encode.float(value)
-  | Animated(value) => Encode.animatedValue(value);
+  | Float(value) => Internals.Encoder.float(value)
+  | Animated(value) => Internals.Encoder.animatedValue(value);
 
 type string_interpolated =
   | String(string)
@@ -54,8 +54,8 @@ type string_interpolated =
 
 let encode_string_interpolated =
   fun
-  | String(value) => Encode.string(value)
-  | Animated(value) => Encode.animatedValue(value);
+  | String(value) => Internals.Encoder.string(value)
+  | Animated(value) => Internals.Encoder.animatedValue(value);
 
 type deg_animated('a) =
   | Deg(string)
@@ -63,8 +63,8 @@ type deg_animated('a) =
 
 let encode_deg_animated =
   fun
-  | Deg(value) => Encode.string(value)
-  | Animated(value) => Encode.animatedValue(value);
+  | Deg(value) => Internals.Encoder.string(value)
+  | Animated(value) => Internals.Encoder.animatedValue(value);
 
 external flatten: array(t) => t = "%identity";
 
@@ -85,13 +85,13 @@ let combine = (a, b) => {
 
 let concat = styles => array_to_style(Array.of_list(styles));
 
-let floatStyle = (key, value) => (key, Encode.float(value));
+let floatStyle = (key, value) => (key, Internals.Encoder.float(value));
 
-let stringStyle = (key, value) => (key, Encode.string(value));
+let stringStyle = (key, value) => (key, Internals.Encoder.string(value));
 
-let objectStyle = (key, value) => (key, Encode.object_(value));
+let objectStyle = (key, value) => (key, Internals.Encoder.object_(value));
 
-let arrayStyle = (key, value) => (key, Encode.array(value));
+let arrayStyle = (key, value) => (key, Internals.Encoder.array(value));
 
 let style = sarr => sarr |> Js.Dict.fromList |> to_style;
 
@@ -327,7 +327,7 @@ let height = value => ("height", encode_pt_pct_animated(value));
 
 let width = value => ("width", encode_pt_pct_animated(value));
 
-let zIndex = value => ("zIndex", Encode.int(value));
+let zIndex = value => ("zIndex", Internals.Encoder.int(value));
 
 type direction =
   | Inherit
@@ -354,8 +354,8 @@ let shadowColor = value => (
 
 let shadowOffset = (~height, ~width) =>
   Js.Dict.fromArray([|
-    ("height", Encode.float(height)),
-    ("width", Encode.float(width)),
+    ("height", Internals.Encoder.float(height)),
+    ("width", Internals.Encoder.float(width)),
   |])
   |> objectStyle("shadowOffset");
 
@@ -365,7 +365,7 @@ let shadowRadius = floatStyle("shadowRadius");
 
 let transform = listyle =>
   listyle
-  ->Belt.List.map(ts => [ts]->Js.Dict.fromList->Encode.object_)
+  ->Belt.List.map(ts => [ts]->Js.Dict.fromList->Internals.Encoder.object_)
   ->Belt.List.toArray
   |> arrayStyle("transform");
 module Transform = {
@@ -416,7 +416,9 @@ module Transform = {
         (x, acc) =>
           switch (x) {
           | (key, Some(value)) =>
-            let val_ = Js.Dict.fromArray([|(key, value)|]) |> Encode.object_;
+            let val_ =
+              Js.Dict.fromArray([|(key, value)|])
+              |> Internals.Encoder.object_;
             [val_, ...acc];
           | _ => acc
           },
@@ -441,8 +443,8 @@ module Transform = {
         (),
       ) =>
     create_(
-      (. value) => value->Belt.Option.map(Encode.float),
-      (. value) => value->Belt.Option.map(Encode.string),
+      (. value) => value->Belt.Option.map(Internals.Encoder.float),
+      (. value) => value->Belt.Option.map(Internals.Encoder.string),
       perspective,
       rotate,
       rotateX,
@@ -471,8 +473,8 @@ module Transform = {
         (),
       ) =>
     create_(
-      (. value) => value->Belt.Option.map(Encode.animatedValue),
-      (. value) => value->Belt.Option.map(Encode.animatedValue),
+      (. value) => value->Belt.Option.map(Internals.Encoder.animatedValue),
+      (. value) => value->Belt.Option.map(Internals.Encoder.animatedValue),
       perspective,
       rotate,
       rotateX,
@@ -647,8 +649,8 @@ let textShadowColor = value => (
 
 let textShadowOffset = (~height, ~width) =>
   Js.Dict.fromArray([|
-    ("height", Encode.float(height)),
-    ("width", Encode.float(width)),
+    ("height", Internals.Encoder.float(height)),
+    ("width", Internals.Encoder.float(width)),
   |])
   |> objectStyle("textShadowOffset");
 
@@ -656,7 +658,7 @@ let textShadowRadius = floatStyle("textShadowRadius");
 
 let includeFontPadding = value => (
   "includeFontPadding",
-  Encode.boolean(value),
+  Internals.Encoder.boolean(value),
 );
 
 type textAlignVertical =
@@ -679,7 +681,7 @@ let textAlignVertical = v =>
 let fontVariant = fontVariants =>
   fontVariants
   |> Array.of_list
-  |> Array.map(Encode.string)
+  |> Array.map(Internals.Encoder.string)
   |> arrayStyle("fontVariant");
 
 let letterSpacing = floatStyle("letterSpacing");

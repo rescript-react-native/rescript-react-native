@@ -34,7 +34,7 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass=progressViewIOS,
     ~props=
-      Props.extendView(
+      ViewProps.extend(
         {
           "progress": progress,
           "progressImage": progressImage,

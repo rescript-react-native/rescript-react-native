@@ -28,7 +28,7 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
     ~props=
-      Props.extendView(
+      ViewProps.extend(
         ~accessibilityLabel?,
         ~accessible?,
         ~hitSlop?,

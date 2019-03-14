@@ -170,7 +170,7 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
     ReasonReact.wrapJsForReason(
       ~reactClass=Impl.view,
       ~props=
-        Props.extendView(
+        ViewProps.extend(
           {
             "contentContainerStyle": contentContainerStyle,
             "contentInsetAdjustmentBehavior":

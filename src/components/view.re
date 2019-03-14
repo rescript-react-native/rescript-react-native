@@ -59,7 +59,7 @@ module CreateComponent = (Impl: Impl) : ViewComponent => {
     ReasonReact.wrapJsForReason(
       ~reactClass=Impl.view,
       ~props=
-        Props.extendView(
+        ViewProps.extend(
           ~accessibilityLabel?,
           ~accessible?,
           ~hitSlop?,
@@ -88,5 +88,3 @@ module CreateComponent = (Impl: Impl) : ViewComponent => {
 include CreateComponent({
   [@bs.module "react-native"] external view: ReasonReact.reactClass = "View";
 });
-
-include ResponderUtils;

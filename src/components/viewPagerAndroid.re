@@ -37,7 +37,7 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
     ~props=
-      Props.extendView(
+      ViewProps.extend(
         {
           "initialPage": initialPage,
           "onPageScroll": onPageScroll,

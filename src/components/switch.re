@@ -36,7 +36,7 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
     ~props=
-      Props.extendView(
+      ViewProps.extend(
         {
           "value": value,
           "disabled": disabled,

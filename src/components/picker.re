@@ -53,7 +53,7 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
     ~props=
-      Props.extendView(
+      ViewProps.extend(
         {
           "enabled": enabled,
           "onValueChange": onValueChange,

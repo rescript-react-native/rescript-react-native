@@ -30,7 +30,7 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass=snapshotViewIOS,
     ~props=
-      Props.extendView(
+      ViewProps.extend(
         {
           "onSnapshotReady": onSnapshotReady,
           "testIdentifier": testIdentifier,

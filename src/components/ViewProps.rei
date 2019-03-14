@@ -1,4 +1,4 @@
-let extendView:
+let extend:
   (
     ~accessibilityLabel: 'a=?,
     ~accessible: bool=?,

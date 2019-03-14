@@ -37,7 +37,7 @@ module Item = {
     ReasonReact.wrapJsForReason(
       ~reactClass=tabBarItemIOS,
       ~props=
-        Props.extendView(
+        ViewProps.extend(
           {
             "selected": selected,
             "badge": badge,
@@ -127,7 +127,7 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass=tabBarIOS,
     ~props=
-      Props.extendView(
+      ViewProps.extend(
         {
           "barStyle":
             barStyle

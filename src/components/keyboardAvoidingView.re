@@ -33,7 +33,7 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass=keyboardAvoidingView,
     ~props=
-      Props.extendView(
+      ViewProps.extend(
         ~accessibilityLabel?,
         ~accessible?,
         ~hitSlop?,

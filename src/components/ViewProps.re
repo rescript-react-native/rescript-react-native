@@ -1,4 +1,5 @@
-let serialize = (handlers: option(Types.touchResponderHandlers)) =>
+let serializeResponderHandlers =
+    (handlers: option(Types.touchResponderHandlers)) =>
   switch (handlers) {
   | None => Js.Obj.empty()
   | Some(handlers) =>
@@ -22,7 +23,7 @@ let serialize = (handlers: option(Types.touchResponderHandlers)) =>
     }
   };
 
-let extendView =
+let extend =
     (
       ~accessibilityLabel=?,
       ~accessible=?,
@@ -82,5 +83,5 @@ let extendView =
     "accessibilityViewIsModal": accessibilityViewIsModal,
     "shouldRasterizeIOS": shouldRasterizeIOS,
   }
-  ->Js.Obj.assign(moreProps)
-  ->Js.Obj.assign(serialize(responderHandlers));
+  ->Js.Obj.assign(responderHandlers->serializeResponderHandlers)
+  ->Js.Obj.assign(moreProps);

@@ -41,7 +41,7 @@ let make =
   ReasonReact.wrapJsForReason(
     ~reactClass=pickerIOS,
     ~props=
-      Props.extendView(
+      ViewProps.extend(
         {
           "itemStyle": itemStyle,
           "onValueChange": onValueChange,
