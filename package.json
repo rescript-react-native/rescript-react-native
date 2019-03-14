@@ -2,7 +2,9 @@
   "name": "bs-react-native",
   "version": "0.10.0",
   "scripts": {
+    "precommit": "yarn build && yarn bsb:auto-git-add-lib-js",
     "format": "find . -name \"*.re\" | grep -v \"node_modules\" | xargs bsrefmt --in-place",
+    "bsb:auto-git-add-lib-js": "git add -A lib/js",
     "bsb:clean": "bsb -clean-world",
     "bsb:start": "bsb -make-world -w",
     "bsb:build": "bsb -make-world",
@@ -47,7 +49,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "yarn precommit && lint-staged"
     }
   }
 }
