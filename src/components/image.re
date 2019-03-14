@@ -95,6 +95,20 @@ module type ImageComponent = {
       ReasonReact.noRetainedProps,
       unit,
     );
+
+  type asset = {
+    .
+    "uri": string,
+    "width": int,
+    "height": int,
+  };
+
+  type assetSource = [
+    | `URI(_imageURISource)
+    | `Required(Packager.required)
+  ];
+
+  let resolveAssetSource: assetSource => asset;
 };
 
 module CreateComponent = (Impl: View.Impl) : ImageComponent => {
@@ -267,6 +281,21 @@ module CreateComponent = (Impl: View.Impl) : ImageComponent => {
           onProgress->Belt.Option.map((x, y) => x(Event.progress(y))),
       },
     );
+
+  type asset = {
+    .
+    "uri": string,
+    "width": int,
+    "height": int,
+  };
+
+  type assetSource = [
+    | `URI(_imageURISource)
+    | `Required(Packager.required)
+  ];
+
+  [@bs.scope "Image"] [@bs.module "react-native"]
+  external resolveAssetSource: assetSource => asset = "";
 };
 
 include CreateComponent({

@@ -21,6 +21,13 @@ module ScrollView: {
     (
       ~accessibilityLabel: ReasonReact.reactElement=?,
       ~accessible: bool=?,
+      ~contentInsetAdjustmentBehavior: [
+                                         | `automatic
+                                         | `scrollableAxes
+                                         | `never
+                                         | `always
+                                       ]
+                                         =?,
       ~hitSlop: Types.insets=?,
       ~onAccessibilityTap: unit => unit=?,
       ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
@@ -45,6 +52,10 @@ module ScrollView: {
       ~keyboardShouldPersistTaps: [ | `always | `handled | `never]=?,
       ~onContentSizeChange: ((float, float)) => unit=?,
       ~onScroll: RNEvent.NativeScrollEvent.t => unit=?,
+      ~onScrollBeginDrag: RNEvent.NativeScrollEvent.t => unit=?,
+      ~onScrollEndDrag: RNEvent.NativeScrollEvent.t => unit=?,
+      ~onMomentumScrollBegin: RNEvent.NativeScrollEvent.t => unit=?,
+      ~onMomentumScrollEnd: RNEvent.NativeScrollEvent.t => unit=?,
       ~pagingEnabled: bool=?,
       ~refreshControl: ReasonReact.reactElement=?,
       ~scrollEnabled: bool=?,
@@ -66,7 +77,6 @@ module ScrollView: {
       ~indicatorStyle: [ | `black | `default | `white]=?,
       ~maximumZoomScale: float=?,
       ~minimumZoomScale: float=?,
-      ~onScrollAnimationEnd: unit => unit=?,
       ~scrollEventThrottle: int=?,
       ~scrollIndicatorInsets: Types.insets=?,
       ~scrollsToTop: bool=?,

@@ -10,6 +10,13 @@ module type ScrollViewComponent = {
     (
       ~accessibilityLabel: ReasonReact.reactElement=?,
       ~accessible: bool=?,
+      ~contentInsetAdjustmentBehavior: [
+                                         | `automatic
+                                         | `scrollableAxes
+                                         | `never
+                                         | `always
+                                       ]
+                                         =?,
       ~hitSlop: Types.insets=?,
       ~onAccessibilityTap: unit => unit=?,
       ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
@@ -34,6 +41,10 @@ module type ScrollViewComponent = {
       ~keyboardShouldPersistTaps: [ | `always | `never | `handled]=?,
       ~onContentSizeChange: ((float, float)) => unit=?,
       ~onScroll: RNEvent.NativeScrollEvent.t => unit=?,
+      ~onScrollBeginDrag: RNEvent.NativeScrollEvent.t => unit=?,
+      ~onScrollEndDrag: RNEvent.NativeScrollEvent.t => unit=?,
+      ~onMomentumScrollBegin: RNEvent.NativeScrollEvent.t => unit=?,
+      ~onMomentumScrollEnd: RNEvent.NativeScrollEvent.t => unit=?,
       ~pagingEnabled: bool=?,
       ~refreshControl: ReasonReact.reactElement=?,
       ~scrollEnabled: bool=?,
@@ -55,7 +66,6 @@ module type ScrollViewComponent = {
       ~indicatorStyle: [ | `default | `black | `white]=?,
       ~maximumZoomScale: float=?,
       ~minimumZoomScale: float=?,
-      ~onScrollAnimationEnd: unit => unit=?,
       ~scrollEventThrottle: int=?,
       ~scrollIndicatorInsets: Types.insets=?,
       ~scrollsToTop: bool=?,
@@ -100,6 +110,7 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
       (
         ~accessibilityLabel=?,
         ~accessible=?,
+        ~contentInsetAdjustmentBehavior=?,
         ~hitSlop=?,
         ~onAccessibilityTap=?,
         ~onLayout=?,
@@ -124,6 +135,10 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
         ~keyboardShouldPersistTaps=?,
         ~onContentSizeChange=?,
         ~onScroll=?,
+        ~onScrollBeginDrag=?,
+        ~onScrollEndDrag=?,
+        ~onMomentumScrollBegin=?,
+        ~onMomentumScrollEnd=?,
         ~pagingEnabled=?,
         ~refreshControl=?,
         ~scrollEnabled=?,
@@ -145,7 +160,6 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
         ~indicatorStyle=?,
         ~maximumZoomScale=?,
         ~minimumZoomScale=?,
-        ~onScrollAnimationEnd=?,
         ~scrollEventThrottle=?,
         ~scrollIndicatorInsets=?,
         ~scrollsToTop=?,
@@ -159,6 +173,15 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
         Props.extendView(
           {
             "contentContainerStyle": contentContainerStyle,
+            "contentInsetAdjustmentBehavior":
+              contentInsetAdjustmentBehavior
+              ->Belt.Option.map(
+                  fun
+                  | `automatic => "automatic"
+                  | `scrollableAxes => "scrollableAxes"
+                  | `never => "never"
+                  | `always => "always",
+                ),
             "horizontal": horizontal,
             "keyboardDismissMode":
               keyboardDismissMode
@@ -178,6 +201,10 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
                 ),
             "onContentSizeChange": onContentSizeChange,
             "onScroll": onScroll,
+            "onScrollBeginDrag": onScrollBeginDrag,
+            "onScrollEndDrag": onScrollEndDrag,
+            "onMomentumScrollBegin": onMomentumScrollBegin,
+            "onMomentumScrollEnd": onMomentumScrollEnd,
             "pagingEnabled": pagingEnabled,
             "refreshControl": refreshControl,
             "scrollEnabled": scrollEnabled,
@@ -221,7 +248,6 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
                 ),
             "maximumZoomScale": maximumZoomScale,
             "minimumZoomScale": minimumZoomScale,
-            "onScrollAnimationEnd": onScrollAnimationEnd,
             "scrollEventThrottle": scrollEventThrottle,
             "scrollIndicatorInsets": scrollIndicatorInsets,
             "scrollsToTop": scrollsToTop,

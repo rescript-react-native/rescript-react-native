@@ -8,7 +8,7 @@
     "bsb:build": "bsb -make-world",
     "bsb:clean-build": "yarn bsb:clean && yarn bsb:build",
     "docs:build": "sh ./docs/scripts/build-docs.sh",
-    "docs:start": "live-server docs",
+    "docs:start": "live-server docs/dist",
     "start": "yarn bsb:start",
     "build": "yarn bsb:clean-build",
     "test": "yarn build && yarn docs:build"
@@ -26,10 +26,11 @@
     "url": "https://github.com/reasonml-community/bs-react-native.git"
   },
   "devDependencies": {
-    "all-contributors-cli": "^5.4.0",
+    "all-contributors-cli": "^6.1.2",
     "bs-platform": "^4.0.0",
     "live-server": "^1.2.0",
-    "reason-react": "^0.4.2"
+    "reason-react": "^0.4.2",
+    "replace": "^1.1.0"
   },
   "peerDependencies": {
     "react-native": "^0.53.3",
