@@ -380,6 +380,7 @@ module type FlatListComponent = {
       ~windowSize: int=?,
       ~maxToRenderPerBatch: int=?,
       ~viewabilityConfig: Js.t({.})=?,
+      ~scrollEventThrottle: int=?,
       ~onScroll: RNEvent.NativeScrollEvent.t => unit=?,
       ~onScrollBeginDrag: RNEvent.NativeScrollEvent.t => unit=?,
       ~onScrollEndDrag: RNEvent.NativeScrollEvent.t => unit=?,

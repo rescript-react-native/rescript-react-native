@@ -110,6 +110,7 @@ module type FlatListComponent = {
       ~windowSize: int=?,
       ~maxToRenderPerBatch: int=?,
       ~viewabilityConfig: Js.t({.})=?,
+      ~scrollEventThrottle: int=?,
       ~onScroll: RNEvent.NativeScrollEvent.t => unit=?,
       ~onScrollBeginDrag: RNEvent.NativeScrollEvent.t => unit=?,
       ~onScrollEndDrag: RNEvent.NativeScrollEvent.t => unit=?,
@@ -294,6 +295,7 @@ module CreateComponent = (Impl: View.Impl) : FlatListComponent => {
         ~windowSize=?,
         ~maxToRenderPerBatch=?,
         ~viewabilityConfig=?,
+        ~scrollEventThrottle=?,
         ~onScroll=?,
         ~onScrollBeginDrag=?,
         ~onScrollEndDrag=?,
@@ -314,10 +316,9 @@ module CreateComponent = (Impl: View.Impl) : FlatListComponent => {
         "data": data,
         "extraData": extraData,
         "getItemLayout":
-          getItemLayout
-          ->Belt.Option.map((f, data, index) =>
-              f(Js.Undefined.toOption(data), index)
-            ),
+          getItemLayout->Belt.Option.map((f, data, index) =>
+            f(Js.Undefined.toOption(data), index)
+          ),
         "horizontal": horizontal,
         "initialNumToRender": initialNumToRender,
         "initialScrollIndex": initialScrollIndex,
@@ -329,13 +330,12 @@ module CreateComponent = (Impl: View.Impl) : FlatListComponent => {
         "onRefresh": onRefresh,
         "onViewableItemsChanged": onViewableItemsChanged,
         "overScrollMode":
-          overScrollMode
-          ->Belt.Option.map(
-              fun
-              | `auto => "auto"
-              | `always => "always"
-              | `never => "never",
-            ),
+          overScrollMode->Belt.Option.map(
+            fun
+            | `auto => "auto"
+            | `always => "always"
+            | `never => "never",
+          ),
         "pagingEnabled": pagingEnabled,
         "refreshControl": refreshControl,
         "refreshing": refreshing,
@@ -349,6 +349,7 @@ module CreateComponent = (Impl: View.Impl) : FlatListComponent => {
         "windowSize": windowSize,
         "maxToRenderPerBatch": maxToRenderPerBatch,
         "viewabilityConfig": viewabilityConfig,
+        "scrollEventThrottle": scrollEventThrottle,
         "onScroll": onScroll,
         "onScrollBeginDrag": onScrollBeginDrag,
         "onScrollEndDrag": onScrollEndDrag,
