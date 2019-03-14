@@ -13,17 +13,11 @@ module NetInfoIsConnectedExample = {
       switch (action) {
       | UpdateIsConnected(isConnected) => Update({isConnected: isConnected})
       },
-    subscriptions: self => [
-      Sub(
-        () => {
-          let handleConnectionChange = isConnected =>
-            self.send(UpdateIsConnected(isConnected));
-          NetInfo.IsConnected.addEventListener(handleConnectionChange);
-          handleConnectionChange;
-        },
-        listener => NetInfo.IsConnected.removeEventListener(listener),
-      ),
-    ],
+    didMount: (self) => {
+      let handleConnectionChange = isConnected => self.send(UpdateIsConnected(isConnected));
+      NetInfo.IsConnected.addEventListener(handleConnectionChange);
+      self.onUnmount(() => NetInfo.IsConnected.removeEventListener(handleConnectionChange));
+    },
     render: ({state}) =>
       Style.(
         <View>

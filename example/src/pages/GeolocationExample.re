@@ -42,18 +42,14 @@ module GeolocationGetCurrentPositionExample = {
               <Text> {ReasonReact.string("Get current position")} </Text>
             </TouchableOpacity>
             <Text>
-              {
-                ReasonReact.string(
-                  "latitude:" ++ string_of_float(state.coords.latitude),
-                )
-              }
+              {ReasonReact.string(
+                 "latitude:" ++ string_of_float(state.coords.latitude),
+               )}
             </Text>
             <Text>
-              {
-                ReasonReact.string(
-                  "longitude:" ++ string_of_float(state.coords.longitude),
-                )
-              }
+              {ReasonReact.string(
+                 "longitude:" ++ string_of_float(state.coords.longitude),
+               )}
             </Text>
           </View>
         </View>
@@ -83,39 +79,33 @@ module GeolocationWatchPositionExample = {
       switch (action) {
       | UpdateCoords(coords) => Update({coords: coords})
       },
-    subscriptions: ({send}) => [
-      Sub(
-        () =>
-          Geolocation.watchPosition(
-            position =>
-              send(
-                UpdateCoords({
-                  latitude: position##coords##latitude,
-                  longitude: position##coords##longitude,
-                }),
-              ),
-            error => Js.log(error),
-          ),
-        Geolocation.clearWatch,
-      ),
-    ],
+    didMount: self => {
+      let watchId =
+        Geolocation.watchPosition(
+          position =>
+            self.send(
+              UpdateCoords({
+                latitude: position##coords##latitude,
+                longitude: position##coords##longitude,
+              }),
+            ),
+          error => Js.log(error),
+        );
+      self.onUnmount(() => Geolocation.clearWatch(watchId));
+    },
     render: ({state}) =>
       Style.(
         <View>
           <View style={style([padding(Pt(10.))])}>
             <Text>
-              {
-                ReasonReact.string(
-                  "latitude:" ++ string_of_float(state.coords.latitude),
-                )
-              }
+              {ReasonReact.string(
+                 "latitude:" ++ string_of_float(state.coords.latitude),
+               )}
             </Text>
             <Text>
-              {
-                ReasonReact.string(
-                  "longitude:" ++ string_of_float(state.coords.longitude),
-                )
-              }
+              {ReasonReact.string(
+                 "longitude:" ++ string_of_float(state.coords.longitude),
+               )}
             </Text>
           </View>
         </View>

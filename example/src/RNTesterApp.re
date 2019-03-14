@@ -44,15 +44,13 @@ let header = (~onBack=?, ~title, ()) =>
     <View style=styles##headerCenter>
       <Text style=styles##title> {ReasonReact.string(title)} </Text>
     </View>
-    {
-      switch (onBack) {
-      | None => ReasonReact.null
-      | Some(onBack) =>
-        <View style=styles##headerLeft>
-          <Button title="Back" onPress=onBack />
-        </View>
-      }
-    }
+    {switch (onBack) {
+     | None => ReasonReact.null
+     | Some(onBack) =>
+       <View style=styles##headerLeft>
+         <Button title="Back" onPress=onBack />
+       </View>
+     }}
   </View>;
 
 type action =
@@ -89,40 +87,35 @@ let make = _children => {
   render: ({state, send}) => {
     let components = ExampleList.components;
     <SafeAreaView style=styles##appContainer>
-      {
-        switch (state.currentExample) {
-        | None =>
-          <View style=styles##exampleContainer>
-            {header(~title="ReasonRNTester", ())}
-            <RNTesterExampleList
-              components
-              onPress=(
-                item =>
-                  switch (state.currentExample) {
-                  | None => send(ChangeCurrentExample(Some(item)))
-                  | Some(_) => send(ChangeCurrentExample(None))
-                  }
-              )
-            />
-          </View>
-        | Some(example) when example.exampleType === FullScreen =>
-          example.examples[0].render()
-        | Some(example) =>
-          <View style=styles##exampleContainer>
-            {
-              header(
-                ~title=example.title,
-                ~onBack=_event => send(ChangeCurrentExample(None)),
-                (),
-              )
-            }
-            <RNTesterExampleContainer example />
-          </View>
-        }
-      }
+      {switch (state.currentExample) {
+       | None =>
+         <View style=styles##exampleContainer>
+           {header(~title="ReasonRNTester", ())}
+           <RNTesterExampleList
+             components
+             onPress={item =>
+               switch (state.currentExample) {
+               | None => send(ChangeCurrentExample(Some(item)))
+               | Some(_) => send(ChangeCurrentExample(None))
+               }
+             }
+           />
+         </View>
+       | Some(example) when example.exampleType === FullScreen =>
+         example.examples[0].render()
+       | Some(example) =>
+         <View style=styles##exampleContainer>
+           {header(
+              ~title=example.title,
+              ~onBack=_event => send(ChangeCurrentExample(None)),
+              (),
+            )}
+           <RNTesterExampleContainer example />
+         </View>
+       }}
     </SafeAreaView>;
   },
 };
 
-let reactClass =
+let reactComponentForJs =
   ReasonReact.wrapReasonForJs(~component, _jsProps => make([||]));

@@ -1,1 +1,1 @@
-export { reactClass as default } from './lib/js/src/RNTesterApp.js';
+export { reactComponentForJs as default } from "./src/RNTesterApp.bs.js";
