@@ -11,7 +11,8 @@
     "docs:start": "live-server docs/dist",
     "start": "yarn bsb:start",
     "build": "yarn bsb:clean-build",
-    "test": "yarn build && yarn docs:build"
+    "example:build": "cd example && yarn re:build",
+    "test": "yarn build && yarn docs:build && yarn example:build"
   },
   "license": "MIT",
   "keywords": [
