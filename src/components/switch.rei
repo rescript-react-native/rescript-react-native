@@ -25,25 +25,13 @@ As of React Native version 0.57, [tintColor], [onTintColor] and [thumbTintColor]
   {[
     ~iosBackgroundColor: string=?
   ]}
-  {4 onTintColor}
-  {[
-    ~onTintColor: string=?
-  ]}
   {4 onValueChange}
   {[
     ~onValueChange: bool => unit=?
   ]}
-  {4 thumbTintColor}
-  {[
-    ~thumbTintColor: string=?
-  ]}
   {4 thumbColor}
   {[
     ~thumbColor: string=?
-  ]}
-  {4 tintColor}
-  {[
-    ~tintColor: string=?
   ]}
   {4 value}
   {[
@@ -57,11 +45,8 @@ let make:
     ~trackColorTrue: string=?,
     ~trackColorFalse: string=?,
     ~iosBackgroundColor: string=?,
-    ~onTintColor: string=?,
     ~onValueChange: bool => unit=?,
-    ~thumbTintColor: string=?,
     ~thumbColor: string=?,
-    ~tintColor: string=?,
     ~value: bool=?,
     ~accessibilityLabel: ReasonReact.reactElement=?,
     ~accessible: bool=?,

@@ -1,3 +1,5 @@
+open Belt;
+
 [@bs.module "react-native"] external view: ReasonReact.reactClass = "Switch";
 
 let make =
@@ -6,11 +8,8 @@ let make =
       ~trackColorTrue: option(string)=?,
       ~trackColorFalse: option(string)=?,
       ~iosBackgroundColor: option(string)=?,
-      ~onTintColor: option(string)=?,
       ~onValueChange: option(bool => unit)=?,
-      ~thumbTintColor: option(string)=?,
       ~thumbColor: option(string)=?,
-      ~tintColor: option(string)=?,
       ~value: option(bool)=?,
       ~accessibilityLabel=?,
       ~accessible=?,
@@ -46,32 +45,19 @@ let make =
           "disabled": disabled,
           "onValueChange": onValueChange,
           "trackColor": {
-            let d = Js.Dict.empty();
-            Js.Dict.set(
-              d,
-              "true",
-              Belt.Option.mapWithDefault(
-                trackColorTrue,
+            "true":
+              trackColorTrue->Option.mapWithDefault(
                 Js.Nullable.null,
                 Js.Nullable.return,
               ),
-            );
-            Js.Dict.set(
-              d,
-              "false",
-              Belt.Option.mapWithDefault(
-                trackColorFalse,
+            "false":
+              trackColorFalse->Option.mapWithDefault(
                 Js.Nullable.null,
                 Js.Nullable.return,
               ),
-            );
-            d;
           },
           "ios_backgroundColor": iosBackgroundColor,
-          "onTintColor": onTintColor,
-          "thumbTintColor": thumbTintColor,
           "thumbColor": thumbColor,
-          "tintColor": tintColor,
         },
         ~accessibilityLabel?,
         ~accessible?,
