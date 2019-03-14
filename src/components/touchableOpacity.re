@@ -11,6 +11,10 @@ let make =
       ~accessibilityLabel=?,
       ~accessibilityComponentType=?,
       ~accessibilityTraits=?,
+      ~accessibilityRole=?,
+      ~accessibilityStates=?,
+      ~accessibilityHint=?,
+      ~accessibilityIgnoresInvertColors=?,
       ~delayLongPress=?,
       ~delayPressIn=?,
       ~delayPressOut=?,
@@ -54,6 +58,14 @@ let make =
         Belt.Option.map(accessibilityTraits, x =>
           x |> List.map(Types.accessibilityTraitToJs) |> Array.of_list
         ),
+      "accessibilityRole":
+        Belt.Option.map(accessibilityRole, Types.accessibilityRoleToJs),
+      "accessibilityStates":
+        Belt.Option.map(accessibilityStates, x =>
+          x |> List.map(Types.accessibilityStateToJs) |> Array.of_list
+        ),
+      "accessibilityHint": accessibilityHint,
+      "accessibilityIgnoresInvertColors": accessibilityIgnoresInvertColors,
       "focusedOpacity": focusedOpacity,
       "activeOpacity": activeOpacity,
       "testID": testID,

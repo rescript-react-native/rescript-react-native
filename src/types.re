@@ -27,6 +27,7 @@ type pointerEvents = [
   | [@bs.as "box-only"] `boxOnly
 ];
 
+/* deprecated : Please use accessibilityRole and accessibilityState instead */
 [@bs.deriving {jsConverter: newType}]
 type accessibilityComponentType = [
   | `none
@@ -35,6 +36,7 @@ type accessibilityComponentType = [
   | `radiobutton_unchecked
 ];
 
+/* deprecated : Please use accessibilityRole and accessibilityState instead */
 [@bs.deriving {jsConverter: newType}]
 type accessibilityTrait = [
   | `none
@@ -66,3 +68,21 @@ type importantForAccessibility = [
   | `no
   | [@bs.as "no-hide-descendants"] `noHideDescendants
 ];
+
+[@bs.deriving {jsConverter: newType}]
+type accessibilityRole = [
+  | `none
+  | `button
+  | `link
+  | `search
+  | `image
+  | `keyboardkey
+  | `text
+  | `adjustable
+  | `header
+  | `summary
+  | `imagebutton
+];
+
+[@bs.deriving {jsConverter: newType}]
+type accessibilityState = [ | `selected | `disabled];
