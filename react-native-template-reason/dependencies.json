@@ -1,0 +1,5 @@
+{
+  "bs-platform": "^4.0.0",
+  "reason-react": "^0.6.0",
+  "bs-react-native": "^0.10.0"
+}

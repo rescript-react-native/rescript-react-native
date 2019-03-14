@@ -58,5 +58,5 @@ buck-out/
 # Bucklescript artifacts
 .merlin
 .bsb.lock
-/lib/bs/
-/lib/js/
+lib/bs
+*.bs.js
