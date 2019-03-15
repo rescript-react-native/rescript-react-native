@@ -1,3 +1,5 @@
+open ScrollViewProps;
+
 /************* */
 module type FlatListComponent = {
   /**
@@ -370,7 +372,7 @@ module type FlatListComponent = {
                                    }),
                                }
                                  =?,
-      ~overScrollMode: [ | `auto | `always | `never]=?,
+      ~overScrollMode: overScrollMode=?,
       ~pagingEnabled: bool=?,
       ~refreshControl: ReasonReact.reactElement=?,
       ~refreshing: bool=?,
@@ -389,13 +391,7 @@ module type FlatListComponent = {
       ~onMomentumScrollBegin: RNEvent.NativeScrollEvent.t => unit=?,
       ~onMomentumScrollEnd: RNEvent.NativeScrollEvent.t => unit=?,
       ~style: Style.t=?,
-      ~contentInsetAdjustmentBehavior: [
-                                         | `automatic
-                                         | `scrollableAxes
-                                         | `never
-                                         | `always
-                                       ]
-                                         =?,
+      ~contentInsetAdjustmentBehavior: contentInsetAdjustmentBehavior=?,
       array(ReasonReact.reactElement)
     ) =>
     ReasonReact.component(

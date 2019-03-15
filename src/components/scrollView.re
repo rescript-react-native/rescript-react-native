@@ -1,3 +1,5 @@
+open ScrollViewProps;
+
 module type ScrollViewComponent = {
   type point = {
     x: float,
@@ -10,13 +12,7 @@ module type ScrollViewComponent = {
     (
       ~accessibilityLabel: ReasonReact.reactElement=?,
       ~accessible: bool=?,
-      ~contentInsetAdjustmentBehavior: [
-                                         | `automatic
-                                         | `scrollableAxes
-                                         | `never
-                                         | `always
-                                       ]
-                                         =?,
+      ~contentInsetAdjustmentBehavior: contentInsetAdjustmentBehavior=?,
       ~hitSlop: Types.insets=?,
       ~onAccessibilityTap: unit => unit=?,
       ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
@@ -41,8 +37,8 @@ module type ScrollViewComponent = {
       ~shouldRasterizeIOS: bool=?,
       ~contentContainerStyle: Style.t=?,
       ~horizontal: bool=?,
-      ~keyboardDismissMode: [ | `none | `interactive | `onDrag]=?,
-      ~keyboardShouldPersistTaps: [ | `always | `never | `handled]=?,
+      ~keyboardDismissMode: keyboardDismissMode=?,
+      ~keyboardShouldPersistTaps: keyboardShouldPersistTaps=?,
       ~onContentSizeChange: ((float, float)) => unit=?,
       ~onScroll: RNEvent.NativeScrollEvent.t => unit=?,
       ~onScrollBeginDrag: RNEvent.NativeScrollEvent.t => unit=?,
@@ -55,7 +51,7 @@ module type ScrollViewComponent = {
       ~showsHorizontalScrollIndicator: bool=?,
       ~showsVerticalScrollIndicator: bool=?,
       ~stickyHeaderIndices: list(int)=?,
-      ~overScrollMode: [ | `always | `never | `auto]=?,
+      ~overScrollMode: overScrollMode=?,
       ~scrollPerfTag: string=?,
       ~alwaysBounceHorizontal: bool=?,
       ~alwaysBounceVertical: bool=?,
@@ -65,9 +61,9 @@ module type ScrollViewComponent = {
       ~centerContent: bool=?,
       ~contentInset: Types.insets=?,
       ~contentOffset: point=?,
-      ~decelerationRate: [ | `fast | `normal]=?,
+      ~decelerationRate: decelerationRate=?,
       ~directionalLockEnabled: bool=?,
-      ~indicatorStyle: [ | `default | `black | `white]=?,
+      ~indicatorStyle: indicatorStyle=?,
       ~maximumZoomScale: float=?,
       ~minimumZoomScale: float=?,
       ~scrollEventThrottle: int=?,
@@ -182,31 +178,16 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
           {
             "contentContainerStyle": contentContainerStyle,
             "contentInsetAdjustmentBehavior":
-              contentInsetAdjustmentBehavior
-              ->Belt.Option.map(
-                  fun
-                  | `automatic => "automatic"
-                  | `scrollableAxes => "scrollableAxes"
-                  | `never => "never"
-                  | `always => "always",
-                ),
+              contentInsetAdjustmentBehavior->Belt.Option.map(
+                contentInsetAdjustmentBehaviorToJs,
+              ),
             "horizontal": horizontal,
             "keyboardDismissMode":
-              keyboardDismissMode
-              ->Belt.Option.map(
-                  fun
-                  | `interactive => "interactive"
-                  | `none => "none"
-                  | `onDrag => "on-drag",
-                ),
+              keyboardDismissMode->Belt.Option.map(keyboardDismissModeToJs),
             "keyboardShouldPersistTaps":
-              keyboardShouldPersistTaps
-              ->Belt.Option.map(
-                  fun
-                  | `always => "always"
-                  | `never => "never"
-                  | `handled => "handled",
-                ),
+              keyboardShouldPersistTaps->Belt.Option.map(
+                keyboardShouldPersistTapsToJs,
+              ),
             "onContentSizeChange": onContentSizeChange,
             "onScroll": onScroll,
             "onScrollBeginDrag": onScrollBeginDrag,
@@ -221,13 +202,7 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
             "stickyHeaderIndices":
               stickyHeaderIndices->Belt.Option.map(Belt.List.toArray),
             "overScrollMode":
-              overScrollMode
-              ->Belt.Option.map(
-                  fun
-                  | `always => "always"
-                  | `never => "never"
-                  | `auto => "auto",
-                ),
+              overScrollMode->Belt.Option.map(overScrollModeToJs),
             "scrollPerfTag": scrollPerfTag,
             "alwaysBounceHorizontal": alwaysBounceHorizontal,
             "alwaysBounceVertical": alwaysBounceVertical,
@@ -239,21 +214,10 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
             "contentOffset":
               contentOffset->Belt.Option.map(({x, y}) => {"x": x, "y": y}),
             "decelerationRate":
-              decelerationRate
-              ->Belt.Option.map(
-                  fun
-                  | `fast => "fast"
-                  | `normal => "normal",
-                ),
+              decelerationRate->Belt.Option.map(decelerationRateToJs),
             "directionalLockEnabled": directionalLockEnabled,
             "indicatorStyle":
-              indicatorStyle
-              ->Belt.Option.map(
-                  fun
-                  | `default => "default"
-                  | `black => "black"
-                  | `white => "white",
-                ),
+              indicatorStyle->Belt.Option.map(indicatorStyleToJs),
             "maximumZoomScale": maximumZoomScale,
             "minimumZoomScale": minimumZoomScale,
             "scrollEventThrottle": scrollEventThrottle,
@@ -261,13 +225,7 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
             "scrollsToTop": scrollsToTop,
             "snapToInterval": snapToInterval,
             "snapToAlignment":
-              snapToAlignment
-              ->Belt.Option.map(
-                  fun
-                  | `center => "center"
-                  | `start => "start"
-                  | `end_ => "end",
-                ),
+              snapToAlignment->Belt.Option.map(snapToAlignmentToJs),
             "zoomScale": zoomScale,
           },
           ~accessibilityLabel?,

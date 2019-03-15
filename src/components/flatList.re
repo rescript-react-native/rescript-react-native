@@ -1,3 +1,5 @@
+open ScrollViewProps;
+
 module type FlatListComponent = {
   let scrollToEnd: (ReasonReact.reactRef, ~animated: bool) => unit;
 
@@ -100,7 +102,7 @@ module type FlatListComponent = {
                                    }),
                                }
                                  =?,
-      ~overScrollMode: [ | `auto | `always | `never]=?,
+      ~overScrollMode: overScrollMode=?,
       ~pagingEnabled: bool=?,
       ~refreshControl: ReasonReact.reactElement=?,
       ~refreshing: bool=?,
@@ -119,13 +121,7 @@ module type FlatListComponent = {
       ~onMomentumScrollBegin: RNEvent.NativeScrollEvent.t => unit=?,
       ~onMomentumScrollEnd: RNEvent.NativeScrollEvent.t => unit=?,
       ~style: Style.t=?,
-      ~contentInsetAdjustmentBehavior: [
-                                         | `automatic
-                                         | `scrollableAxes
-                                         | `never
-                                         | `always
-                                       ]
-                                         =?,
+      ~contentInsetAdjustmentBehavior: contentInsetAdjustmentBehavior=?,
       array(ReasonReact.reactElement)
     ) =>
     ReasonReact.component(
@@ -335,13 +331,7 @@ module CreateComponent = (Impl: View.Impl) : FlatListComponent => {
         "onEndReachedThreshold": onEndReachedThreshold,
         "onRefresh": onRefresh,
         "onViewableItemsChanged": onViewableItemsChanged,
-        "overScrollMode":
-          overScrollMode->Belt.Option.map(
-            fun
-            | `auto => "auto"
-            | `always => "always"
-            | `never => "never",
-          ),
+        "overScrollMode": overScrollMode->Belt.Option.map(overScrollModeToJs),
         "pagingEnabled": pagingEnabled,
         "refreshControl": refreshControl,
         "refreshing": refreshing,
@@ -362,7 +352,10 @@ module CreateComponent = (Impl: View.Impl) : FlatListComponent => {
         "onMomentumScrollBegin": onMomentumScrollBegin,
         "onMomentumScrollEnd": onMomentumScrollEnd,
         "style": style,
-        "contentInsetAdjustmentBehavior": contentInsetAdjustmentBehavior,
+        "contentInsetAdjustmentBehavior":
+          contentInsetAdjustmentBehavior->Belt.Option.map(
+            contentInsetAdjustmentBehaviorToJs,
+          ),
       },
     );
 };

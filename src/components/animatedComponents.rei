@@ -1,3 +1,5 @@
+open ScrollViewProps;
+
 module View: View.ViewComponent;
 
 module Image: Image.ImageComponent;
@@ -21,13 +23,7 @@ module ScrollView: {
     (
       ~accessibilityLabel: ReasonReact.reactElement=?,
       ~accessible: bool=?,
-      ~contentInsetAdjustmentBehavior: [
-                                         | `automatic
-                                         | `scrollableAxes
-                                         | `never
-                                         | `always
-                                       ]
-                                         =?,
+      ~contentInsetAdjustmentBehavior: contentInsetAdjustmentBehavior=?,
       ~hitSlop: Types.insets=?,
       ~onAccessibilityTap: unit => unit=?,
       ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
@@ -52,8 +48,8 @@ module ScrollView: {
       ~shouldRasterizeIOS: bool=?,
       ~contentContainerStyle: Style.t=?,
       ~horizontal: bool=?,
-      ~keyboardDismissMode: [ | `interactive | `none | `onDrag]=?,
-      ~keyboardShouldPersistTaps: [ | `always | `handled | `never]=?,
+      ~keyboardDismissMode: keyboardDismissMode=?,
+      ~keyboardShouldPersistTaps: keyboardShouldPersistTaps=?,
       ~onContentSizeChange: ((float, float)) => unit=?,
       ~onScroll: RNEvent.NativeScrollEvent.t => unit=?,
       ~onScrollBeginDrag: RNEvent.NativeScrollEvent.t => unit=?,
@@ -85,7 +81,7 @@ module ScrollView: {
       ~scrollIndicatorInsets: Types.insets=?,
       ~scrollsToTop: bool=?,
       ~snapToInterval: float=?,
-      ~snapToAlignment: [ | `center | `end_ | `start]=?,
+      ~snapToAlignment: snapToAlignment=?,
       ~zoomScale: float=?,
       array(ReasonReact.reactElement)
     ) =>

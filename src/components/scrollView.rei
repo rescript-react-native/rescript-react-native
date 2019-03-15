@@ -1,3 +1,5 @@
+open ScrollViewProps;
+
 module type ScrollViewComponent = {
   /**
   Component that wraps platform [ScrollView] while providing integration with touch locking "responder" system.
@@ -237,13 +239,7 @@ module type ScrollViewComponent = {
     (
       ~accessibilityLabel: ReasonReact.reactElement=?,
       ~accessible: bool=?,
-      ~contentInsetAdjustmentBehavior: [
-                                         | `automatic
-                                         | `scrollableAxes
-                                         | `never
-                                         | `always
-                                       ]
-                                         =?,
+      ~contentInsetAdjustmentBehavior: contentInsetAdjustmentBehavior=?,
       ~hitSlop: Types.insets=?,
       ~onAccessibilityTap: unit => unit=?,
       ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
@@ -268,8 +264,8 @@ module type ScrollViewComponent = {
       ~shouldRasterizeIOS: bool=?,
       ~contentContainerStyle: Style.t=?,
       ~horizontal: bool=?,
-      ~keyboardDismissMode: [ | `interactive | `none | `onDrag]=?,
-      ~keyboardShouldPersistTaps: [ | `always | `handled | `never]=?,
+      ~keyboardDismissMode: keyboardDismissMode=?,
+      ~keyboardShouldPersistTaps: keyboardShouldPersistTaps=?,
       ~onContentSizeChange: ((float, float)) => unit=?,
       ~onScroll: RNEvent.NativeScrollEvent.t => unit=?,
       ~onScrollBeginDrag: RNEvent.NativeScrollEvent.t => unit=?,
@@ -282,7 +278,7 @@ module type ScrollViewComponent = {
       ~showsHorizontalScrollIndicator: bool=?,
       ~showsVerticalScrollIndicator: bool=?,
       ~stickyHeaderIndices: list(int)=?,
-      ~overScrollMode: [ | `always | `auto | `never]=?,
+      ~overScrollMode: overScrollMode=?,
       ~scrollPerfTag: string=?,
       ~alwaysBounceHorizontal: bool=?,
       ~alwaysBounceVertical: bool=?,
@@ -292,16 +288,16 @@ module type ScrollViewComponent = {
       ~centerContent: bool=?,
       ~contentInset: Types.insets=?,
       ~contentOffset: point=?,
-      ~decelerationRate: [ | `fast | `normal]=?,
+      ~decelerationRate: decelerationRate=?,
       ~directionalLockEnabled: bool=?,
-      ~indicatorStyle: [ | `black | `default | `white]=?,
+      ~indicatorStyle: indicatorStyle=?,
       ~maximumZoomScale: float=?,
       ~minimumZoomScale: float=?,
       ~scrollEventThrottle: int=?,
       ~scrollIndicatorInsets: Types.insets=?,
       ~scrollsToTop: bool=?,
       ~snapToInterval: float=?,
-      ~snapToAlignment: [ | `center | `end_ | `start]=?,
+      ~snapToAlignment: snapToAlignment=?,
       ~zoomScale: float=?,
       array(ReasonReact.reactElement)
     ) =>
