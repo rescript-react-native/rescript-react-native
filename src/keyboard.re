@@ -22,15 +22,14 @@ type keyboardEvent =
   | KeyboardWillChangeFrame
   | KeyboardDidChangeFrame;
 
-let mapKeyboardEvent = keyboardEvent =>
-  switch (keyboardEvent) {
+let keyboardEventToJs =
+  fun
   | KeyboardWillShow => "keyboardWillShow"
   | KeyboardDidShow => "keyboardDidShow"
   | KeyboardWillHide => "keyboardWillHide"
   | KeyboardDidHide => "keyboardDidHide"
   | KeyboardWillChangeFrame => "keyboardWillChangeFrame"
-  | KeyboardDidChangeFrame => "keyboardDidChangeFrame"
-  };
+  | KeyboardDidChangeFrame => "keyboardDidChangeFrame";
 
 [@bs.module "react-native"] [@bs.scope "Keyboard"]
 external _addListener: (string, listener('a)) => subscription = "addListener";
@@ -45,13 +44,13 @@ external _removeAllListeners: string => unit = "removeAllListeners";
 external _removeListener: (string, listener('a)) => unit = "removeListener";
 
 let addListener = (keyboardEvent, listener) =>
-  _addListener(mapKeyboardEvent(keyboardEvent), listener);
+  _addListener(keyboardEventToJs(keyboardEvent), listener);
 
 let removeAllListeners = keyboardEvent =>
-  _removeAllListeners(mapKeyboardEvent(keyboardEvent));
+  _removeAllListeners(keyboardEventToJs(keyboardEvent));
 
 let removeListener = (keyboardEvent, listener) =>
-  _removeListener(mapKeyboardEvent(keyboardEvent), listener);
+  _removeListener(keyboardEventToJs(keyboardEvent), listener);
 
 module Subscription = {
   [@bs.send.pipe: subscription] external remove: unit = "";
