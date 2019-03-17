@@ -23,13 +23,22 @@ type string_interpolated =
 type deg_animated('a) =
   | Deg(string)
   | Animated(AnimatedRe.value('a));
-external flatten: array(t) => t = "%identity";
-let combine: (t, t) => t;
-let concat: list(t) => t;
+
 let style: list(styleElement) => t;
-let emptyStyle: t;
+external fromArray: array(t) => t = "%identity";
+let fromList: list(t) => t;
+let merge: (t, t) => t;
+let mergeOptional: (t, option(t)) => t;
+let optional: option(t) => t;
+
+[@deprecated "use Style.fromArray([|t|]) instead"]
+let flatten: array(t) => t;
+[@deprecated "use Style.merge(t, t) instead"]
+let combine: (t, t) => t;
+[@deprecated "use Style.fromList([t]) instead"]
+let concat: list(t) => t;
+[@deprecated "use Style.mergeOptional(t, option(t)) instead"]
 let combineOptional: (t, option(t)) => t;
-let optional: (option(t)) => t;
 
 type alignContent =
   | FlexStart

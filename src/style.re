@@ -66,24 +66,11 @@ let encode_deg_animated =
   | Deg(value) => Internals.Encoder.string(value)
   | Animated(value) => Internals.Encoder.animatedValue(value);
 
-external flatten: array(t) => t = "%identity";
-
 external to_style: Js.Dict.t(Js.Json.t) => t = "%identity";
 
 external style_to_dict: t => Js.Dict.t(Js.Json.t) = "%identity";
 
-external array_to_style: array(t) => t = "%identity";
-
-let combine = (a, b) => {
-  let entries =
-    Array.append(
-      Js.Dict.entries(style_to_dict(a)),
-      Js.Dict.entries(style_to_dict(b)),
-    );
-  Js.Dict.fromArray(entries) |> to_style;
-};
-
-let concat = styles => array_to_style(Array.of_list(styles));
+external arrayOfStyle: array(t) => t = "%identity";
 
 let floatStyle = (key, value) => (key, Internals.Encoder.float(value));
 
@@ -94,13 +81,27 @@ let objectStyle = (key, value) => (key, Internals.Encoder.object_(value));
 let arrayStyle = (key, value) => (key, Internals.Encoder.array(value));
 
 let style = sarr => sarr |> Js.Dict.fromList |> to_style;
+let emptyStyle = Js.Dict.empty()->to_style;
 
-let emptyStyle = style([]);
-
-let combineOptional = (s, so) =>
-  so->Belt.Option.map(so => s->combine(so))->Belt.Option.getWithDefault(s);
-
+external fromArray: array(t) => t = "%identity";
+let fromList = styles => styles->Belt.List.toArray->arrayOfStyle;
+let merge = (a, b) => {
+  let entries =
+    Array.append(
+      Js.Dict.entries(style_to_dict(a)),
+      Js.Dict.entries(style_to_dict(b)),
+    );
+  Js.Dict.fromArray(entries) |> to_style;
+};
+let mergeOptional = (s, so) =>
+  so->Belt.Option.map(so => s->merge(so))->Belt.Option.getWithDefault(s);
 let optional = s => s->Belt.Option.getWithDefault(emptyStyle);
+
+/* deprecated */
+let flatten = fromArray;
+let concat = fromList;
+let combine = merge;
+let combineOptional = mergeOptional;
 
 /***
  * Layout Props
