@@ -38,39 +38,35 @@ module ViewBorderStyleExample = {
           onPress={_event => send(UpdateBorderState(!state.showBorder))}>
           <View>
             <View
-              style={
-                style([
-                  borderWidth(1.),
-                  borderStyle(
-                    if (state.showBorder) {
-                      Dashed;
-                    } else {
-                      Solid;
-                    },
-                  ),
-                  padding(Pt(5.)),
-                ])
-              }>
+              style={style([
+                borderWidth(1.),
+                borderStyle(
+                  if (state.showBorder) {
+                    Dashed;
+                  } else {
+                    Solid;
+                  },
+                ),
+                padding(Pt(5.)),
+              ])}>
               <Text style={style([fontSize(Float(11.))])}>
                 {ReasonReact.string("Dashed border style")}
               </Text>
             </View>
             <View
-              style={
-                style([
-                  marginTop(Pt(5.)),
-                  borderWidth(1.),
-                  borderRadius(5.),
-                  borderStyle(
-                    if (state.showBorder) {
-                      Dotted;
-                    } else {
-                      Solid;
-                    },
-                  ),
-                  padding(Pt(5.)),
-                ])
-              }>
+              style={style([
+                marginTop(Pt(5.)),
+                borderWidth(1.),
+                borderRadius(5.),
+                borderStyle(
+                  if (state.showBorder) {
+                    Dotted;
+                  } else {
+                    Solid;
+                  },
+                ),
+                padding(Pt(5.)),
+              ])}>
               <Text style={style([fontSize(Float(11.))])}>
                 {ReasonReact.string("Dotted border style")}
               </Text>
@@ -111,53 +107,53 @@ module ZIndexExample = {
           </Text>
           <View
             style={
-              concat([
-                styles##zIndex,
-                style([
-                  marginTop(Pt(0.)),
-                  backgroundColor(String("#E57373")),
-                  zIndex(Array.unsafe_get(indices, 0)),
-                ]),
-              ])
+              styles##zIndex
+              ->merge(
+                  style([
+                    marginTop(Pt(0.)),
+                    backgroundColor(String("#E57373")),
+                    zIndex(Array.unsafe_get(indices, 0)),
+                  ]),
+                )
             }>
             <Text> {ReasonReact.string(zIndexStr(0))} </Text>
           </View>
           <View
             style={
-              concat([
-                styles##zIndex,
-                style([
-                  marginLeft(Pt(50.)),
-                  backgroundColor(String("#FFF176")),
-                  zIndex(Array.unsafe_get(indices, 1)),
-                ]),
-              ])
+              styles##zIndex
+              ->merge(
+                  style([
+                    marginLeft(Pt(50.)),
+                    backgroundColor(String("#FFF176")),
+                    zIndex(Array.unsafe_get(indices, 1)),
+                  ]),
+                )
             }>
             <Text> {ReasonReact.string(zIndexStr(1))} </Text>
           </View>
           <View
             style={
-              concat([
-                styles##zIndex,
-                style([
-                  marginLeft(Pt(100.)),
-                  backgroundColor(String("#81C784")),
-                  zIndex(Array.unsafe_get(indices, 2)),
-                ]),
-              ])
+              styles##zIndex
+              ->merge(
+                  style([
+                    marginLeft(Pt(100.)),
+                    backgroundColor(String("#81C784")),
+                    zIndex(Array.unsafe_get(indices, 2)),
+                  ]),
+                )
             }>
             <Text> {ReasonReact.string(zIndexStr(2))} </Text>
           </View>
           <View
             style={
-              concat([
-                styles##zIndex,
-                style([
-                  marginLeft(Pt(150.)),
-                  backgroundColor(String("#64B5F6")),
-                  zIndex(Array.unsafe_get(indices, 3)),
-                ]),
-              ])
+              styles##zIndex
+              ->merge(
+                  style([
+                    marginLeft(Pt(150.)),
+                    backgroundColor(String("#64B5F6")),
+                    zIndex(Array.unsafe_get(indices, 3)),
+                  ]),
+                )
             }>
             <Text> {ReasonReact.string(zIndexStr(3))} </Text>
           </View>
@@ -183,9 +179,10 @@ let examples: array(Example.t) =
         description: None,
         render: () =>
           <View
-            style={
-              style([backgroundColor(String("#527FE4")), padding(Pt(5.))])
-            }>
+            style={style([
+              backgroundColor(String("#527FE4")),
+              padding(Pt(5.)),
+            ])}>
             <Text style={style([fontSize(Float(11.))])}>
               {ReasonReact.string("Blue background")}
             </Text>
@@ -196,13 +193,11 @@ let examples: array(Example.t) =
         description: None,
         render: () =>
           <View
-            style={
-              style([
-                borderColor(String("#527FE4")),
-                borderWidth(5.),
-                padding(Pt(10.)),
-              ])
-            }>
+            style={style([
+              borderColor(String("#527FE4")),
+              borderWidth(5.),
+              padding(Pt(10.)),
+            ])}>
             <Text style={style([fontSize(Float(11.))])}>
               {ReasonReact.string("5px blue border")}
             </Text>
@@ -213,29 +208,30 @@ let examples: array(Example.t) =
         description: None,
         render: () =>
           <View
-            style={
-              style([borderColor(String("#bb0000")), borderWidth(1.)])
-            }>
-            <View style={concat([styles##box, style([padding(Pt(5.))])])}>
+            style={style([
+              borderColor(String("#bb0000")),
+              borderWidth(1.),
+            ])}>
+            <View style={styles##box->merge(style([padding(Pt(5.))]))}>
               <Text style={style([fontSize(Float(11.))])}>
                 {ReasonReact.string("5px padding")}
               </Text>
             </View>
-            <View style={concat([styles##box, style([margin(Pt(5.))])])}>
+            <View style={styles##box->merge(style([margin(Pt(5.))]))}>
               <Text style={style([fontSize(Float(11.))])}>
                 {ReasonReact.string("5px margin")}
               </Text>
             </View>
             <View
               style={
-                concat([
-                  styles##box,
-                  style([
-                    margin(Pt(5.)),
-                    padding(Pt(5.)),
-                    alignSelf(FlexStart),
-                  ]),
-                ])
+                styles##box
+                ->merge(
+                    style([
+                      margin(Pt(5.)),
+                      padding(Pt(5.)),
+                      alignSelf(FlexStart),
+                    ]),
+                  )
               }>
               <Text style={style([fontSize(Float(11.))])}>
                 {ReasonReact.string("5px margin and padding,")}
@@ -251,15 +247,15 @@ let examples: array(Example.t) =
         description: None,
         render: () =>
           <View
-            style={
-              style([borderWidth(1.), borderRadius(5.), padding(Pt(5.))])
-            }>
+            style={style([
+              borderWidth(1.),
+              borderRadius(5.),
+              padding(Pt(5.)),
+            ])}>
             <Text style={style([fontSize(Float(11.))])}>
-              {
-                ReasonReact.string(
-                  "Too much use of `borderRadius` (especially large radii) on\nanything which is scrolling may result in dropped frames.\nUse sparingly.",
-                )
-              }
+              {ReasonReact.string(
+                 "Too much use of `borderRadius` (especially large radii) on\nanything which is scrolling may result in dropped frames.\nUse sparingly.",
+               )}
             </Text>
           </View>,
       },
@@ -273,14 +269,12 @@ let examples: array(Example.t) =
         description: None,
         render: () =>
           <View
-            style={
-              style([
-                borderRadius(10.),
-                borderWidth(1.),
-                width(Pt(20.)),
-                height(Pt(20.)),
-              ])
-            }
+            style={style([
+              borderRadius(10.),
+              borderWidth(1.),
+              width(Pt(20.)),
+              height(Pt(20.)),
+            ])}
           />,
       },
       {
@@ -289,29 +283,25 @@ let examples: array(Example.t) =
         render: () =>
           <View style={style([flexDirection(Row)])}>
             <View
-              style={
-                style([
-                  width(Pt(95.)),
-                  height(Pt(10.)),
-                  marginRight(Pt(10.)),
-                  marginBottom(Pt(5.)),
-                  overflow(Hidden),
-                  borderWidth(StyleSheet.hairlineWidth),
-                ])
-              }>
+              style={style([
+                width(Pt(95.)),
+                height(Pt(10.)),
+                marginRight(Pt(10.)),
+                marginBottom(Pt(5.)),
+                overflow(Hidden),
+                borderWidth(StyleSheet.hairlineWidth),
+              ])}>
               <View style={style([width(Pt(200.)), height(Pt(20.))])}>
                 <Text> {ReasonReact.string("Overflow hidden")} </Text>
               </View>
             </View>
             <View
-              style={
-                style([
-                  width(Pt(95.)),
-                  height(Pt(10.)),
-                  marginBottom(Pt(5.)),
-                  borderWidth(StyleSheet.hairlineWidth),
-                ])
-              }>
+              style={style([
+                width(Pt(95.)),
+                height(Pt(10.)),
+                marginBottom(Pt(5.)),
+                borderWidth(StyleSheet.hairlineWidth),
+              ])}>
               <View style={style([width(Pt(200.)), height(Pt(20.))])}>
                 <Text> {ReasonReact.string("Overflow visible")} </Text>
               </View>
