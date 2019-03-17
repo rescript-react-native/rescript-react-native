@@ -369,19 +369,35 @@ let transform = listyle =>
   ->Belt.List.map(ts => [ts]->Js.Dict.fromList->Internals.Encoder.object_)
   ->Belt.List.toArray
   |> arrayStyle("transform");
+
+// transform
+let perspective = value => ("perspective", encode_float_animated(value));
+let translateX = value => ("translateX", encode_float_animated(value));
+let translateY = value => ("translateY", encode_float_animated(value));
+let scaleX = value => ("scaleX", encode_float_animated(value));
+let scaleY = value => ("scaleY", encode_float_animated(value));
+let scale = value => ("scale", encode_float_animated(value));
+let rotate = value => ("rotate", encode_deg_animated(value));
+let rotateX = value => ("rotateX", encode_deg_animated(value));
+let rotateY = value => ("rotateY", encode_deg_animated(value));
+let rotateZ = value => ("rotateZ", encode_deg_animated(value));
+let skewX = value => ("skewX", encode_deg_animated(value));
+let skewY = value => ("skewY", encode_deg_animated(value));
+
 module Transform = {
-  let perspective = value => ("perspective", encode_float_animated(value));
-  let translateX = value => ("translateX", encode_float_animated(value));
-  let translateY = value => ("translateY", encode_float_animated(value));
-  let scaleX = value => ("scaleX", encode_float_animated(value));
-  let scaleY = value => ("scaleY", encode_float_animated(value));
-  let scale = value => ("scale", encode_float_animated(value));
-  let rotate = value => ("rotate", encode_deg_animated(value));
-  let rotateX = value => ("rotateX", encode_deg_animated(value));
-  let rotateY = value => ("rotateY", encode_deg_animated(value));
-  let rotateZ = value => ("rotateZ", encode_deg_animated(value));
-  let skewX = value => ("skewX", encode_deg_animated(value));
-  let skewY = value => ("skewY", encode_deg_animated(value));
+  /* deprecated */
+  let perspective = perspective;
+  let translateX = translateX;
+  let translateY = translateY;
+  let scaleX = scaleX;
+  let scaleY = scaleY;
+  let scale = scale;
+  let rotate = rotate;
+  let rotateX = rotateX;
+  let rotateY = rotateY;
+  let rotateZ = rotateZ;
+  let skewX = skewX;
+  let skewY = skewY;
 
   let create_ =
       (

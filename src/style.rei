@@ -140,18 +140,67 @@ let shadowRadius: float => styleElement;
 
 let transform: list(styleTransformElement) => styleElement;
 
+let perspective: float_animated('a) => styleTransformElement;
+let translateX: float_animated('a) => styleTransformElement;
+let translateY: float_animated('a) => styleTransformElement;
+let scaleX: float_animated('a) => styleTransformElement;
+let scaleY: float_animated('a) => styleTransformElement;
+let scale: float_animated('a) => styleTransformElement;
+let rotate: deg_animated('a) => styleTransformElement;
+let rotateX: deg_animated('a) => styleTransformElement;
+let rotateY: deg_animated('a) => styleTransformElement;
+let rotateZ: deg_animated('a) => styleTransformElement;
+let skewX: deg_animated('a) => styleTransformElement;
+let skewY: deg_animated('a) => styleTransformElement;
+
 module Transform: {
+  [@deprecated
+    "Style.Transform.perspective as been deprecated in favor of Style.perspective"
+  ]
   let perspective: float_animated('a) => styleTransformElement;
+  [@deprecated
+    "Style.Transform.translateX as been deprecated in favor of Style.translateX"
+  ]
   let translateX: float_animated('a) => styleTransformElement;
+  [@deprecated
+    "Style.Transform.translateY as been deprecated in favor of Style.translateY"
+  ]
   let translateY: float_animated('a) => styleTransformElement;
+  [@deprecated
+    "Style.Transform.scaleX as been deprecated in favor of Style.scaleX"
+  ]
   let scaleX: float_animated('a) => styleTransformElement;
+  [@deprecated
+    "Style.Transform.scaleY as been deprecated in favor of Style.scaleY"
+  ]
   let scaleY: float_animated('a) => styleTransformElement;
+  [@deprecated
+    "Style.Transform.scale as been deprecated in favor of Style.scale"
+  ]
   let scale: float_animated('a) => styleTransformElement;
+  [@deprecated
+    "Style.Transform.rotate as been deprecated in favor of Style.rotate"
+  ]
   let rotate: deg_animated('a) => styleTransformElement;
+  [@deprecated
+    "Style.Transform.rotateX as been deprecated in favor of Style.rotateX"
+  ]
   let rotateX: deg_animated('a) => styleTransformElement;
+  [@deprecated
+    "Style.Transform.rotateY as been deprecated in favor of Style.rotateY"
+  ]
   let rotateY: deg_animated('a) => styleTransformElement;
+  [@deprecated
+    "Style.Transform.rotateZ as been deprecated in favor of Style.rotateZ"
+  ]
   let rotateZ: deg_animated('a) => styleTransformElement;
+  [@deprecated
+    "Style.Transform.skewX as been deprecated in favor of Style.skewX"
+  ]
   let skewX: deg_animated('a) => styleTransformElement;
+  [@deprecated
+    "Style.Transform.skewY as been deprecated in favor of Style.skewY"
+  ]
   let skewY: deg_animated('a) => styleTransformElement;
 
   [@deprecated
