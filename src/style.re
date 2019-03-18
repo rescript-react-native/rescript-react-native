@@ -370,7 +370,7 @@ let transform = listyle =>
   ->Belt.List.toArray
   |> arrayStyle("transform");
 
-// transform
+/* transform method */
 let perspective = value => ("perspective", encode_float_animated(value));
 let translateX = value => ("translateX", encode_float_animated(value));
 let translateY = value => ("translateY", encode_float_animated(value));
