@@ -87,14 +87,23 @@ You can read more on [Text] component usage in official docs: {{:https://faceboo
   {[
     ~onBlur: unit => unit=?
   ]}
-  {4 onChange}
-  {[
-    ~onChange: unit => unit=?
-  ]}
   {4 onChangeText}
   {[
     ~onChangeText: string => unit=?
   ]}
+  {4 onChange}
+  {[
+    ~onChange: editingEvent => unit=?
+  ]}
+  {4 onEndEditing}
+  {[
+    ~onEndEditing: editingEvent => unit=?
+  ]}
+  {4 onSubmitEditing}
+  {[
+    ~onSubmitEditing: editingEvent => unit=?
+  ]}
+
   {4 onContentSizeChange}
   {[
     ~onContentSizeChange: {
@@ -108,10 +117,6 @@ You can read more on [Text] component usage in official docs: {{:https://faceboo
         }
       }
     } => unit=?
-  ]}
-  {4 onEndEditing}
-  {[
-    ~onEndEditing: unit => unit=?
   ]}
   {4 onFocus}
   {[
@@ -144,10 +149,6 @@ You can read more on [Text] component usage in official docs: {{:https://faceboo
         }
       }
     } => unit=?
-  ]}
-  {4 onSubmitEditing}
-  {[
-    ~onSubmitEditing: unit => unit=?
   ]}
   {4 placeholder}
   {[
@@ -295,6 +296,16 @@ You can read more on [Text] component usage in official docs: {{:https://faceboo
 Returns [true] if the input is currently focused; [false] otherwise.
  */
 
+type editingEvent = {
+  .
+  "nativeEvent": {
+    .
+    "text": string,
+    "eventCount": int,
+    "target": int,
+  },
+};
+
 let make:
   (
     ~accessibilityLabel: ReasonReact.reactElement=?,
@@ -369,18 +380,10 @@ let make:
     ~maxLength: int=?,
     ~multiline: bool=?,
     ~onBlur: unit => unit=?,
-    ~onChange: {
-                 .
-                 "nativeEvent": {
-                   .
-                   "text": string,
-                   "target": int,
-                   "eventCount": int,
-                 },
-               } =>
-               unit
-                 =?,
     ~onChangeText: string => unit=?,
+    ~onChange: editingEvent => unit=?,
+    ~onEndEditing: editingEvent => unit=?,
+    ~onSubmitEditing: editingEvent => unit=?,
     ~onContentSizeChange: {
                             .
                             "nativeEvent": {
@@ -394,16 +397,6 @@ let make:
                           } =>
                           unit
                             =?,
-    ~onEndEditing: {
-                     .
-                     "nativeEvent": {
-                       .
-                       "text": string,
-                       "target": int,
-                     },
-                   } =>
-                   unit
-                     =?,
     ~onFocus: unit => unit=?,
     ~onScroll: {
                  .
@@ -431,7 +424,6 @@ let make:
                         } =>
                         unit
                           =?,
-    ~onSubmitEditing: unit => unit=?,
     ~placeholder: string=?,
     ~placeholderTextColor: string=?,
     ~returnKeyType: [
