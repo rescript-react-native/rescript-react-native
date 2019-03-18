@@ -58,12 +58,12 @@ let encode_string_interpolated =
   | Animated(value) => Internals.Encoder.animatedValue(value);
 
 type deg_animated('a) =
-  | Deg(string)
+  | Deg(float)
   | Animated(AnimatedRe.value('a));
 
 let encode_deg_animated =
   fun
-  | Deg(value) => Internals.Encoder.string(value)
+  | Deg(value) => Internals.Encoder.deg(value)
   | Animated(value) => Internals.Encoder.animatedValue(value);
 
 external to_style: Js.Dict.t(Js.Json.t) => t = "%identity";

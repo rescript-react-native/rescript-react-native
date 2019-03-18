@@ -21,7 +21,7 @@ type string_interpolated =
   | String(string)
   | Animated(AnimatedRe.Interpolation.t);
 type deg_animated('a) =
-  | Deg(string)
+  | Deg(float)
   | Animated(AnimatedRe.value('a));
 
 let style: list(styleElement) => t;
