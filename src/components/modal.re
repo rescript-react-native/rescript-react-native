@@ -7,15 +7,14 @@ let encodeAnimationType =
   | `fade => "fade";
 
 let encodeSupportedOrientations = xs =>
-  xs
-  ->Belt.Array.map(
-      fun
-      | `portrait => "portrait"
-      | `portraitUpsideDown => "portrait-upside-down"
-      | `landscape => "landscape"
-      | `landscapeLeft => "landscape-left"
-      | `landscapeRight => "landscape-right",
-    );
+  xs->Belt.Array.map(
+    fun
+    | `portrait => "portrait"
+    | `portraitUpsideDown => "portrait-upside-down"
+    | `landscape => "landscape"
+    | `landscapeLeft => "landscape-left"
+    | `landscapeRight => "landscape-right",
+  );
 
 let make =
     (

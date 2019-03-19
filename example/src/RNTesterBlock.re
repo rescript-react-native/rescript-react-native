@@ -45,15 +45,13 @@ let make = (~description, ~title, children) => {
     <View style=styles##container>
       <View style=styles##titleContainer>
         <Text style=styles##titleText> {ReasonReact.string(title)} </Text>
-        {
-          switch (description) {
-          | Some(description) =>
-            <Text style=styles##descriptionText>
-              {ReasonReact.string(description)}
-            </Text>
-          | None => ReasonReact.null
-          }
-        }
+        {switch (description) {
+         | Some(description) =>
+           <Text style=styles##descriptionText>
+             {ReasonReact.string(description)}
+           </Text>
+         | None => ReasonReact.null
+         }}
       </View>
       {View.make(~style=styles##children, children) |> ReasonReact.element}
     </View>,

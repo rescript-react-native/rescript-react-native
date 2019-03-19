@@ -17,15 +17,13 @@ let examples: array(Example.t) =
         description: None,
         render: () =>
           <ImageBackground
-            style={
-              style([
-                flex(1.),
-                justifyContent(Center),
-                alignItems(Center),
-                height(Pt(400.)),
-                width(Pt(300.)),
-              ])
-            }
+            style={style([
+              flex(1.),
+              justifyContent(Center),
+              alignItems(Center),
+              height(Pt(400.)),
+              width(Pt(300.)),
+            ])}
             imageStyle={style([flex(1.)])}
             source={
                      `URI(
@@ -39,12 +37,10 @@ let examples: array(Example.t) =
                      )
                    }>
             <View
-              style={
-                style([
-                  backgroundColor(String("#FFFFFF")),
-                  padding(Pt(5.)),
-                ])
-              }>
+              style={style([
+                backgroundColor(String("#FFFFFF")),
+                padding(Pt(5.)),
+              ])}>
               <Text> {ReasonReact.string("Nested text")} </Text>
             </View>
           </ImageBackground>,

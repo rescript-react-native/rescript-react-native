@@ -52,22 +52,21 @@ module Item = {
             "selectedIcon": selectedIcon,
             "style": style,
             "systemIcon":
-              systemIcon
-              ->Belt.Option.map(
-                  fun
-                  | `bookmarks => "bookmarks"
-                  | `contacts => "contacts"
-                  | `downloads => "downloads"
-                  | `favourites => "favourites"
-                  | `featured => "featured"
-                  | `history => "history"
-                  | `more => "more"
-                  | `mostRecent => "most-recent"
-                  | `mostViewed => "most-viewed"
-                  | `recents => "recents"
-                  | `search => "search"
-                  | `topRated => "top-rated",
-                ),
+              systemIcon->Belt.Option.map(
+                fun
+                | `bookmarks => "bookmarks"
+                | `contacts => "contacts"
+                | `downloads => "downloads"
+                | `favourites => "favourites"
+                | `featured => "featured"
+                | `history => "history"
+                | `more => "more"
+                | `mostRecent => "most-recent"
+                | `mostViewed => "most-viewed"
+                | `recents => "recents"
+                | `search => "search"
+                | `topRated => "top-rated",
+              ),
             "title": title,
             "isTVSelectable": isTVSelectable,
           },
@@ -142,21 +141,19 @@ let make =
       ViewProps.extend(
         {
           "barStyle":
-            barStyle
-            ->Belt.Option.map(
-                fun
-                | `default => "default"
-                | `black => "black",
-              ),
+            barStyle->Belt.Option.map(
+              fun
+              | `default => "default"
+              | `black => "black",
+            ),
           "barTintColor": barTintColor,
           "itemPositioning":
-            itemPositioning
-            ->Belt.Option.map(
-                fun
-                | `fill => "fill"
-                | `center => "center"
-                | `auto => "auto",
-              ),
+            itemPositioning->Belt.Option.map(
+              fun
+              | `fill => "fill"
+              | `center => "center"
+              | `auto => "auto",
+            ),
           "tintColor": tintColor,
           "translucent": translucent,
           "unselectedItemTintColor": unselectedItemTintColor,

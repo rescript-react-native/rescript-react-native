@@ -13,21 +13,22 @@ module NetInfoIsConnectedExample = {
       switch (action) {
       | UpdateIsConnected(isConnected) => Update({isConnected: isConnected})
       },
-    didMount: (self) => {
-      let handleConnectionChange = isConnected => self.send(UpdateIsConnected(isConnected));
+    didMount: self => {
+      let handleConnectionChange = isConnected =>
+        self.send(UpdateIsConnected(isConnected));
       NetInfo.IsConnected.addEventListener(handleConnectionChange);
-      self.onUnmount(() => NetInfo.IsConnected.removeEventListener(handleConnectionChange));
+      self.onUnmount(() =>
+        NetInfo.IsConnected.removeEventListener(handleConnectionChange)
+      );
     },
     render: ({state}) =>
       Style.(
         <View>
           <View style={style([padding(Pt(10.))])}>
             <Text>
-              {
-                ReasonReact.string(
-                  state.isConnected ? "Connected" : "Not connected",
-                )
-              }
+              {ReasonReact.string(
+                 state.isConnected ? "Connected" : "Not connected",
+               )}
             </Text>
           </View>
         </View>
@@ -66,17 +67,15 @@ module NetInfoConnectionTypeExample = {
             </TouchableOpacity>
             <View>
               <Text>
-                {
-                  ReasonReact.string(
-                    switch (state.connectionType) {
-                    | NetInfo.None => "none"
-                    | NetInfo.Unknown => "unknown"
-                    | NetInfo.WiFi => "wifi"
-                    | NetInfo.Cellular => "cellular"
-                    | _ => "something else"
-                    },
-                  )
-                }
+                {ReasonReact.string(
+                   switch (state.connectionType) {
+                   | NetInfo.None => "none"
+                   | NetInfo.Unknown => "unknown"
+                   | NetInfo.WiFi => "wifi"
+                   | NetInfo.Cellular => "cellular"
+                   | _ => "something else"
+                   },
+                 )}
               </Text>
             </View>
           </View>

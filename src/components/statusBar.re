@@ -64,24 +64,22 @@ let make =
     ~props={
       "animated": animated,
       "barStyle":
-        barStyle
-        ->Belt.Option.map(
-            fun
-            | `default => "default"
-            | `lightContent => "light-content"
-            | `darkContent => "dark-content",
-          ),
+        barStyle->Belt.Option.map(
+          fun
+          | `default => "default"
+          | `lightContent => "light-content"
+          | `darkContent => "dark-content",
+        ),
       "backgroundColor": backgroundColor,
       "hidden": hidden,
       "translucent": translucent,
       "networkActivityIndicatorVisible": networkActivityIndicatorVisible,
       "showHideTransition":
-        showHideTransition
-        ->Belt.Option.map(
-            fun
-            | `none => "none"
-            | `fade => "fade"
-            | `slide => "slide",
-          ),
+        showHideTransition->Belt.Option.map(
+          fun
+          | `none => "none"
+          | `fade => "fade"
+          | `slide => "slide",
+        ),
     },
   );

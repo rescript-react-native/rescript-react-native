@@ -49,12 +49,11 @@ let make =
           "onPageSelected": onPageSelected,
           "pageMargin": pageMargin,
           "keyboardDismissMode":
-            keyboardDismissMode
-            ->Belt.Option.map(
-                fun
-                | `none => "none"
-                | `onDrag => "on-drag",
-              ),
+            keyboardDismissMode->Belt.Option.map(
+              fun
+              | `none => "none"
+              | `onDrag => "on-drag",
+            ),
           "peekEnabled": peekEnabled,
           "scrollEnabled": scrollEnabled,
         },

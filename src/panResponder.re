@@ -127,7 +127,7 @@ let create =
 
 [@bs.get] external _panHandlers: t => Js.t('a) = "panHandlers";
 
-let panHandlers = t: Types.touchResponderHandlers => {
+let panHandlers = (t): Types.touchResponderHandlers => {
   let jsHandlers = _panHandlers(t);
   Types.{
     onMoveShouldSetResponder:

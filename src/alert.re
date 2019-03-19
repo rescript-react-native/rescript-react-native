@@ -45,13 +45,12 @@ let alert = (~title, ~message=?, ~buttons=?, ~options=?, ~type_=?, ()) => {
            "onPress": fromOption(onPress),
            "style":
              fromOption(
-               style
-               ->Belt.Option.map(
-                   fun
-                   | `default => "default"
-                   | `cancel => "cancel"
-                   | `destructive => "destructive",
-                 ),
+               style->Belt.Option.map(
+                 fun
+                 | `default => "default"
+                 | `cancel => "cancel"
+                 | `destructive => "destructive",
+               ),
              ),
          }
        );

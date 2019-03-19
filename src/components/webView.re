@@ -159,42 +159,39 @@ let make =
           "domStorageEnabled": domStorageEnabled,
           "javaScriptEnabled": javaScriptEnabled,
           "mixedContentMode":
-            mixedContentMode
-            ->Belt.Option.map(contentMode => {
-                let to_string =
-                  fun
-                  | `never => "never"
-                  | `always => "always"
-                  | `compatibility => "compatibility";
-                contentMode |> List.map(to_string) |> Array.of_list;
-              }),
+            mixedContentMode->Belt.Option.map(contentMode => {
+              let to_string =
+                fun
+                | `never => "never"
+                | `always => "always"
+                | `compatibility => "compatibility";
+              contentMode |> List.map(to_string) |> Array.of_list;
+            }),
           "thirdPartyCookiesEnabled": thirdPartyCookiesEnabled,
           "userAgent": userAgent,
           "allowsInlineMediaPlayback": allowsInlineMediaPlayback,
           "bounces": bounces,
           "dataDetectorTypes":
-            dataDetectorTypes
-            ->Belt.Option.map(dataDetectorType => {
-                let to_string =
-                  fun
-                  | `phoneNumber => "phoneNumber"
-                  | `link => "link"
-                  | `address => "address"
-                  | `calendarEvent => "calendarEvent"
-                  | `none => "none"
-                  | `all => "all";
-                dataDetectorType |> List.map(to_string) |> Array.of_list;
-              }),
+            dataDetectorTypes->Belt.Option.map(dataDetectorType => {
+              let to_string =
+                fun
+                | `phoneNumber => "phoneNumber"
+                | `link => "link"
+                | `address => "address"
+                | `calendarEvent => "calendarEvent"
+                | `none => "none"
+                | `all => "all";
+              dataDetectorType |> List.map(to_string) |> Array.of_list;
+            }),
           "decelerationRate":
-            decelerationRate
-            ->Belt.Option.map(rate => {
-                let to_float =
-                  fun
-                  | `normal => 0.998
-                  | `fast => 0.99
-                  | `value(f) => f;
-                rate |> List.map(to_float) |> Array.of_list;
-              }),
+            decelerationRate->Belt.Option.map(rate => {
+              let to_float =
+                fun
+                | `normal => 0.998
+                | `fast => 0.99
+                | `value(f) => f;
+              rate |> List.map(to_float) |> Array.of_list;
+            }),
           "onShouldStartLoadWithRequest": onShouldStartLoadWithRequest,
           "scrollEnabled": scrollEnabled,
         },

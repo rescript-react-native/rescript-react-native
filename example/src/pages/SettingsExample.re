@@ -46,14 +46,12 @@ module SetExample = {
           onChangeText={text => self.send(SetVersion(text))}
         />
         <Button
-          onPress={
-            () => {
-              let settings = Js.Dict.empty();
-              Js.Dict.set(settings, "version_preference", self.state.version);
+          onPress={() => {
+            let settings = Js.Dict.empty();
+            Js.Dict.set(settings, "version_preference", self.state.version);
 
-              Settings.set(settings);
-            }
-          }
+            Settings.set(settings);
+          }}
           title="Set version"
           accessibilityLabel="See an informative alert"
         />
@@ -72,12 +70,10 @@ let examples: array(Example.t) = [|
     description: Some("Get Settings value"),
     render: () =>
       <Button
-        onPress={
-          () => {
-            let version = Settings.get("version_preference");
-            Alert.alert(~title="version -> " ++ version, ());
-          }
-        }
+        onPress={() => {
+          let version = Settings.get("version_preference");
+          Alert.alert(~title="version -> " ++ version, ());
+        }}
         title="Get version"
         accessibilityLabel="See an informative alert"
       />,

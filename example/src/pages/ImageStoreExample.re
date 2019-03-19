@@ -30,86 +30,78 @@ module ImageExample = {
     render: self =>
       <View>
         <Button
-          onPress={
-            () => {
-              ImageStore.hasImageForTag(
-                switch (self.state.imageUri) {
-                | Some(x) => x
-                | None => ""
-                },
-                has =>
-                Alert.alert(
-                  ~title="Does store have image?",
-                  ~message=has ? "Yes :)" : "No :(",
-                  (),
-                )
-              );
-              ();
-            }
-          }
+          onPress={() => {
+            ImageStore.hasImageForTag(
+              switch (self.state.imageUri) {
+              | Some(x) => x
+              | None => ""
+              },
+              has =>
+              Alert.alert(
+                ~title="Does store have image?",
+                ~message=has ? "Yes :)" : "No :(",
+                (),
+              )
+            );
+            ();
+          }}
           title="Has Image For Tag"
           accessibilityLabel="Has Image For Tag"
         />
         <Button
-          onPress={
-            () => {
-              ImageStore.addImageFromBase64(
-                image,
-                uri => self.send(SetImageUri(uri)),
-                _ => (),
-              )
-              |> ignore;
-              ();
-            }
-          }
+          onPress={() => {
+            ImageStore.addImageFromBase64(
+              image,
+              uri => self.send(SetImageUri(uri)),
+              _ => (),
+            )
+            |> ignore;
+            ();
+          }}
           title="Set Image Uri"
           accessibilityLabel="Set image uri"
         />
         <Button
-          onPress={
-            () =>
-              switch (self.state.imageUri) {
-              | Some(uri) => ImageStore.removeImageForTag(uri)
-              | None => ()
-              }
+          onPress={() =>
+            switch (self.state.imageUri) {
+            | Some(uri) => ImageStore.removeImageForTag(uri)
+            | None => ()
+            }
           }
           title="Remove Image For Tag"
           accessibilityLabel="Remove Image For Tag"
         />
         <Button
-          onPress={
-            () =>
-              switch (self.state.imageUri) {
-              | Some(uri) =>
-                ImageStore.getBase64ForTag(
-                  uri,
-                  base64 => Alert.alert(~title=base64, ()),
-                  _ => (),
-                )
-              | None => ()
-              }
+          onPress={() =>
+            switch (self.state.imageUri) {
+            | Some(uri) =>
+              ImageStore.getBase64ForTag(
+                uri,
+                base64 => Alert.alert(~title=base64, ()),
+                _ => (),
+              )
+            | None => ()
+            }
           }
           title="Get Base64 For Tag"
           accessibilityLabel="Get Base64 For Tag"
         />
-        {
-          switch (self.state.imageUri) {
-          | Some(imageUri) =>
-            <Image
-              source={
-                       `URI(
-                         Image.imageURISource(
-                           ~uri=imageUri,
-                           ~width=Pt(200.),
-                           ~height=Pt(200.),
-                           (),
-                         ),
-                       )
-                     }
-            />
-          | None => ReasonReact.null
-          }
-        }
+        {switch (self.state.imageUri) {
+         | Some(imageUri) =>
+           <Image
+             source={
+                      `URI(
+                        Image.imageURISource(
+                          ~uri=imageUri,
+                          ~width=Pt(200.),
+                          ~height=Pt(200.),
+                          (),
+                        ),
+                      )
+                    }
+           />
+         | None => ReasonReact.null
+         }}
       </View>,
   };
 };

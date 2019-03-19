@@ -79,16 +79,17 @@ let renderItem =
 
 let section = (~data, ~key=?, ~renderItem=?, ()) => {data, key, renderItem};
 
-let sections = reSections: sections('item) =>
+let sections = (reSections): sections('item) =>
   Array.map(
-    reSection => {
-      "data": reSection.data,
-      "key": Js.Undefined.fromOption(reSection.key),
-      "renderItem":
-        reSection.renderItem
-        ->Belt.Option.map(renderItem)
-        ->Js.Undefined.fromOption,
-    },
+    reSection =>
+      {
+        "data": reSection.data,
+        "key": Js.Undefined.fromOption(reSection.key),
+        "renderItem":
+          reSection.renderItem
+          ->Belt.Option.map(renderItem)
+          ->Js.Undefined.fromOption,
+      },
     reSections,
   );
 
@@ -239,15 +240,15 @@ let make:
         "keyboardDismissMode":
           keyboardDismissMode->Belt.Option.map(keyboardDismissModeToJs),
         "keyboardShouldPersistTaps":
-          keyboardShouldPersistTaps
-          ->Belt.Option.map(keyboardShouldPersistTapsToJs),
+          keyboardShouldPersistTaps->Belt.Option.map(
+            keyboardShouldPersistTapsToJs,
+          ),
         "showsHorizontalScrollIndicator": showsHorizontalScrollIndicator,
         "showsVerticalScrollIndicator": showsVerticalScrollIndicator,
         "getItemLayout":
-          getItemLayout
-          ->Belt.Option.map((f, data, index) =>
-              f(Js.Undefined.toOption(data), index)
-            ),
+          getItemLayout->Belt.Option.map((f, data, index) =>
+            f(Js.Undefined.toOption(data), index)
+          ),
       },
       _children,
     );

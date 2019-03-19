@@ -3,7 +3,7 @@ type t('a) = Js.t('a);
 [@bs.module "react-native"]
 external nativeModules: Js.Dict.t('a) = "NativeModules";
 
-let _get = name: t('a) => Js.Dict.unsafeGet(nativeModules, name);
+let _get = (name): t('a) => Js.Dict.unsafeGet(nativeModules, name);
 
 let get = name => _get(name);
 

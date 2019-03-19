@@ -61,14 +61,13 @@ module CreateComponent = (Impl: View.Impl) : TextComponent => {
         "accessibilityLabel": accessibilityLabel,
         "allowFontScaling": allowFontScaling,
         "ellipsizeMode":
-          ellipsizeMode
-          ->Belt.Option.map(
-              fun
-              | `head => "head"
-              | `middle => "middle"
-              | `tail => "tail"
-              | `clip => "clip",
-            ),
+          ellipsizeMode->Belt.Option.map(
+            fun
+            | `head => "head"
+            | `middle => "middle"
+            | `tail => "tail"
+            | `clip => "clip",
+          ),
         "numberOfLines": numberOfLines,
         "onLayout": onLayout,
         "onLongPress": onLongPress,
@@ -79,13 +78,12 @@ module CreateComponent = (Impl: View.Impl) : TextComponent => {
         "testID": testID,
         "selectionColor": selectionColor,
         "textBreakStrategy":
-          textBreakStrategy
-          ->Belt.Option.map(
-              fun
-              | `simple => "simple"
-              | `highQuality => "highQuality"
-              | `balanced => "balanced",
-            ),
+          textBreakStrategy->Belt.Option.map(
+            fun
+            | `simple => "simple"
+            | `highQuality => "highQuality"
+            | `balanced => "balanced",
+          ),
         "adjustsFontSizeToFit": adjustsFontSizeToFit,
         "minimumFontScale": minimumFontScale,
         "suppressHighlighting": suppressHighlighting,

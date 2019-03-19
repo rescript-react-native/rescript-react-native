@@ -45,17 +45,13 @@ module ExampleContent = {
         initialPage=0
         style=styles##viewPager
         onLayout={_ => Js.log("JUPI")}
-        onPageScroll={
-          e =>
-            Js.log(
-              "onPageScroll: " ++ string_of_int(e##nativeEvent##position),
-            )
+        onPageScroll={e =>
+          Js.log("onPageScroll: " ++ string_of_int(e##nativeEvent##position))
         }
-        onPageSelected={
-          e =>
-            Js.log(
-              "onPageSelected: " ++ string_of_int(e##nativeEvent##position),
-            )
+        onPageSelected={e =>
+          Js.log(
+            "onPageSelected: " ++ string_of_int(e##nativeEvent##position),
+          )
         }>
         <View style=styles##pageStyle key="1">
           <Text> {ReasonReact.string("First page")} </Text>
