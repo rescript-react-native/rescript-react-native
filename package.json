@@ -1,55 +1,47 @@
 {
-  "name": "bs-react-native",
-  "version": "0.10.0",
-  "scripts": {
-    "precommit": "yarn build && yarn bsb:auto-git-add-lib-js",
-    "format": "find . -name \"*.re\" | grep -v \"node_modules\" | xargs bsrefmt --in-place",
-    "bsb:auto-git-add-lib-js": "git add -A lib/js",
-    "bsb:clean": "bsb -clean-world",
-    "bsb:start": "bsb -make-world -w",
-    "bsb:build": "bsb -make-world",
-    "bsb:clean-build": "yarn bsb:clean && yarn bsb:build",
-    "docs:build": "sh ./docs/scripts/build-docs.sh",
-    "docs:start": "live-server docs/dist",
-    "start": "yarn bsb:start",
-    "build": "yarn bsb:clean-build",
-    "example:build": "cd example && yarn re:build",
-    "test": "yarn build && yarn docs:build && yarn example:build"
-  },
+  "private": true,
+  "version": "0.0.0",
+  "name": "bs-react-native-monorepo",
   "license": "MIT",
-  "keywords": [
-    "reason",
-    "reasonml",
-    "bucklescript",
-    "react-native"
-  ],
-  "author": "",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/reasonml-community/bs-react-native.git"
-  },
   "devDependencies": {
-    "all-contributors-cli": "^6.1.2",
     "bs-platform": "^4.0.18",
     "husky": "^1.3.1",
+    "lerna": "^3.4.0",
     "lint-staged": "^8.1.5",
-    "live-server": "^1.2.0",
-    "reason-react": "^0.6.0",
-    "replace": "^1.1.0"
+    "npm-run-all": "^3.0.0",
+    "prettier": "^1.16.4"
   },
-  "peerDependencies": {
-    "react-native": "^0.53.3",
-    "reason-react": "^0.6.0"
+  "scripts": {
+    "prerelease": "yarn prepare",
+    "release": "lerna publish",
+    "format": "yarn format:most && yarn format:re",
+    "format:most": "prettier --write \"**/*.{js,json,css,md}\"",
+    "format:re": "find . -name \"*.re\" | grep -v \"node_modules\" | xargs bsrefmt --in-place",
+    "clean": "lerna exec --concurrency 1 -- yarn clean",
+    "test": "lerna exec --concurrency 1 -- yarn test"
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "proseWrap": "always"
   },
   "lint-staged": {
     "*.re": [
       "bsrefmt --in-place",
       "git add"
+    ],
+    "*.{js,json,css,md}": [
+      "prettier --write"
     ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn precommit && lint-staged"
+      "pre-commit": "lint-staged"
     }
-  }
+  },
+  "workspaces": [
+    "bs-react-native",
+    "bs-react-native-example",
+    "react-native-template-bs",
+    "website"
+  ]
 }

@@ -1,0 +1,791 @@
+@charset "UTF-8";
+@import url(https://cdn.rawgit.com/tonsky/FiraCode/1.205/distr/fira_code.css);
+
+/* Copyright (c) 2016 Daniel C. Bünzli. All rights reserved.
+   Distributed under the ISC license, see terms at the end of the file.
+   %%NAME%% %%VERSION%% */
+
+/* Reset a few things. */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: inherit;
+  font: inherit;
+  line-height: inherit;
+  vertical-align: baseline;
+  text-align: inherit;
+  color: inherit;
+  background: transparent;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Helvetica, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 300;
+  font-size: 1em;
+  line-height: 1.5;
+  text-align: left;
+  color: #333;
+  background: #ffffff;
+}
+
+.content {
+  max-width: 80ex;
+  margin-left: calc(10% + 19ex);
+  margin-right: 4ex;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.content > header {
+  margin-bottom: 30px;
+}
+
+/* Basic markup elements */
+
+b,
+strong {
+  font-weight: 400;
+}
+
+i,
+em {
+  font-style: italic;
+}
+
+sup {
+  vertical-align: super;
+}
+
+sub {
+  vertical-align: sub;
+}
+
+sup,
+sub {
+  font-size: 12px;
+  line-height: 0;
+  margin-left: 0.2ex;
+}
+
+p {
+  margin-bottom: 0.5em;
+}
+pre {
+  margin: 1.5em 0;
+}
+
+ul,
+ol {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  list-style-position: outside;
+}
+
+ul {
+  list-style-type: square;
+}
+
+ul > li {
+  margin-left: 22px;
+}
+
+ol > li {
+  margin-left: 27.2px;
+}
+
+li > *:first-child {
+  margin-top: 0;
+}
+
+/* Text alignements, this should be forbidden. */
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.center {
+  text-align: center;
+}
+
+/* Links and anchors */
+
+a {
+  text-decoration: none;
+  color: #2c5cbd;
+}
+
+a:hover {
+  box-shadow: 0 1px 0 0 #2c5cbd;
+}
+
+/* Linked highlight */
+*:target {
+  background-color: rgba(187, 239, 253, 0.3) !important;
+  box-shadow: 0 0px 0 1px rgba(187, 239, 253, 0.8) !important;
+}
+
+*:hover > a.anchor {
+  visibility: visible;
+}
+
+a.anchor:before {
+  content: "#";
+}
+
+a.anchor:hover {
+  box-shadow: none;
+  text-decoration: none;
+  color: #555;
+}
+
+a.anchor {
+  visibility: hidden;
+  position: absolute;
+  /* top: 0px; */
+  /* margin-left: -3ex; */
+  margin-left: -1.3em;
+  font-weight: normal;
+  font-style: normal;
+  padding-right: 0.4em;
+  padding-left: 0.4em;
+  /* To remain selectable */
+  color: #d5d5d5;
+}
+
+.spec > a.anchor {
+  margin-left: -2.3em;
+  padding-right: 0.9em;
+}
+
+.xref-unresolved {
+  box-shadow: 0 1px 0 0 red;
+}
+
+/* Section and document divisions.
+   Until at least 4.03 many of the modules of the stdlib start at .h7,
+   we restart the sequence there like h2  */
+
+section > header {
+  margin-bottom: 30px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h7,
+.h8,
+.h9,
+.h10 {
+  font-weight: 600;
+  margin: 1em 0 0.5em;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+}
+
+h1 {
+  font-size: 2.441em;
+  margin-top: 1.214em;
+}
+
+h2 {
+  font-size: 1.953em;
+  box-shadow: 0 1px 0 0 #ddd;
+  padding-bottom: 0.1em;
+}
+
+h3 {
+  font-size: 1.563em;
+}
+
+h4 {
+  font-size: 1.25em;
+}
+
+small,
+.font_small {
+  font-size: 0.8em;
+}
+
+h1 code,
+h1 tt {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+h2 code,
+h2 tt {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+h3 code,
+h3 tt {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+h4 code,
+h4 tt {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* Preformatted and code */
+
+tt,
+code,
+pre {
+  font-family: "Fira Code", Menlo, "DejaVu Sans Mono",
+    "Bitstream Vera Sans Mono", monospace;
+  font-variant-ligatures: contextual;
+  font-weight: normal;
+  font-size: 0.95em;
+}
+
+pre {
+  padding: 0.1em;
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+
+p code {
+  background-color: #f6f8fa;
+  color: #0d2b3e;
+  border-radius: 5px;
+  padding: 0 0.5ex;
+}
+
+p a > code {
+  color: #2c5cbd;
+}
+
+/* Code blocks (e.g. Examples) */
+
+pre code {
+  font-size: 0.9rem;
+}
+
+/* Code lexemes */
+
+.keyword {
+  font-weight: 500;
+}
+
+/* Module member specification */
+
+.spec:not(.include),
+.spec.include details summary {
+  font-size: 0.95em;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+  border-left: 4px solid #5c9cf5;
+  border-right: 5px solid transparent;
+  padding: 0.5em;
+}
+
+.spec.include details summary:hover {
+  background-color: #ebeff2;
+}
+
+/* Indent the second line in multiline spec definitions. */
+.spec:not(.type) > code {
+  display: inline-block;
+  padding-left: 4ex;
+  text-indent: -4ex;
+}
+
+dl > dd {
+  padding: 0.75em;
+  padding-bottom: 0;
+}
+
+dd > :first-child {
+  margin-top: 0;
+}
+
+dl,
+article,
+.doc,
+aside {
+  margin-bottom: 30px;
+}
+
+dl:last-child,
+aside:last-child,
+article:last-child {
+  margin-bottom: 0;
+}
+
+dt + dt {
+  margin-top: 30px;
+}
+
+.spec.type .variant {
+  margin-left: 2ch;
+}
+.spec.type .variant p {
+  margin: 0;
+  font-style: italic;
+}
+
+div.def {
+  margin-top: 0;
+  text-indent: -2ex;
+  padding-left: 2ex;
+}
+
+div.def + div.doc {
+  margin-left: 1ex;
+  margin-top: 2.5px;
+}
+
+div.doc > *:first-child {
+  margin-top: 0;
+}
+
+/* The elements other than heading should be wrapped in <aside> elements. */
+heading,
+body > p,
+body > ul,
+body > ol,
+h3,
+h4,
+body > pre {
+  margin-bottom: 16px;
+}
+
+/* Collapsible inlined include and module */
+
+.spec.include details {
+  position: relative;
+}
+
+.spec.include details:after {
+  z-index: -100;
+  display: block;
+  content: " ";
+  position: absolute;
+  border-radius: 0 1ex 1ex 0;
+  right: -20px;
+  top: 0;
+  bottom: 0;
+  width: 15px;
+  background: rgba(0, 4, 15, 0.05);
+}
+
+.spec.include details summary {
+  position: relative;
+  margin-bottom: 30px;
+  cursor: pointer;
+  outline: none;
+}
+
+/* FIXME: Does not work in Firefox. */
+details summary::-webkit-details-marker {
+  color: #888;
+  transform: scaleX(-1);
+  position: absolute;
+  top: calc(50% - 5px);
+  height: 11px;
+  right: -29px;
+}
+
+/* Records and variants FIXME */
+
+div.def table {
+  text-indent: 0em;
+  padding: 0;
+  margin-left: -2ex;
+}
+
+td.def {
+  padding-right: 2ex;
+}
+
+.record td.def {
+  padding-left: 2ex;
+}
+
+td.doc *:first-child {
+  margin-top: 0em;
+}
+
+/* @ tags */
+
+ul.at-tag {
+  list-style-type: none;
+  margin-left: 0;
+  padding: 0;
+}
+
+ul.at-tag li {
+  margin-left: 0;
+  padding: 0;
+}
+
+ul.at-tag li p:first-child {
+  margin-top: 0;
+}
+
+/* FIXME remove */
+
+span.at-tag {
+  font-weight: bold;
+}
+
+.at-tag.deprecated {
+  font-weight: normal;
+  color: crimson;
+}
+
+.at-tag.raise {
+  font-weight: bold;
+}
+
+/* FIXME random other things to review. */
+
+.heading {
+  margin-top: 10px;
+  border-top: solid;
+  border-width: 1px;
+  border-color: #ddd;
+  text-align: right;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.heading + .sig {
+  margin-top: -20px;
+}
+
+.heading + .parameters {
+  margin-top: -20px;
+}
+
+/* Odig package index */
+
+.by-name ol,
+.by-tag ol,
+.errors ol {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+.by-name ol ol,
+.by-tag ol ol {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.by-name li,
+.by-tag li,
+.errors li {
+  margin-left: 0;
+}
+
+.by-name .version {
+  font-size: 10px;
+  color: #aaa;
+}
+
+.by-name nav {
+  margin-bottom: 10px;
+}
+
+.by-name nav a {
+  text-transform: uppercase;
+  font-size: 18px;
+  margin-right: 1ex;
+  color: #222;
+  display: inline-block;
+}
+
+.by-tag nav a {
+  margin-right: 1ex;
+  color: #222;
+  display: inline-block;
+}
+
+.by-tag > ol > li {
+  margin-top: 10px;
+}
+
+.by-tag > ol > li > span,
+.by-tag > ol > li > ol,
+.by-tag > ol > li > ol > li {
+  display: inline-block;
+  margin-right: 1ex;
+}
+
+/* Odig package page */
+
+.package nav {
+  display: inline;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.package .version {
+  font-size: 14px;
+}
+
+h1 + .modules,
+h1 + .sel {
+  margin-top: 10px;
+}
+
+.sel {
+  font-weight: normal;
+  font-style: italic;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.sel + .modules {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 1ex;
+}
+
+.modules {
+  margin: 0;
+}
+
+.modules .module {
+  min-width: 8ex;
+  padding-right: 2ex;
+}
+
+.package.info {
+  margin: 0;
+}
+
+.package.info td:first-child {
+  font-style: italic;
+  padding-right: 2ex;
+}
+
+.package.info ul {
+  list-style-type: none;
+  display: inline;
+  margin: 0;
+}
+
+.package.info li {
+  display: inline-block;
+  margin: 0;
+  margin-right: 1ex;
+}
+
+#info-authors li,
+#info-maintainers li {
+  display: block;
+}
+
+/* Sidebar and TOC */
+
+.toc:before {
+  display: block;
+  content: "Topics";
+  text-transform: uppercase;
+  font-size: 0.95em;
+  margin: 1.414em 0 0.5em;
+  font-weight: 600;
+  color: #777;
+  line-height: 1.2;
+}
+
+.toc {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  max-width: 30ex;
+  min-width: 26ex;
+  width: 20%;
+  background: #f6f8fa;
+  overflow: auto;
+  color: #1f2d3d;
+  padding-left: 2ex;
+  padding-right: 2ex;
+}
+
+.toc ul li a {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 400;
+}
+
+.toc ul li a:hover {
+  box-shadow: none;
+  text-decoration: underline;
+}
+
+/* First level titles */
+
+.toc > ul > li > a {
+  font-weight: 600;
+}
+
+.toc li ul {
+  margin-top: 3px;
+  margin-left: 0;
+}
+
+.toc > ul {
+  list-style-type: none;
+}
+
+.toc ul li {
+  margin: 0;
+}
+
+.toc ul li li {
+  margin-left: 20px;
+}
+
+/* Mobile adjustements. */
+
+@media only screen and (max-width: 95ex) {
+  .content {
+    margin: auto;
+    padding: 2.5em;
+  }
+  .toc {
+    position: static;
+    width: auto;
+    min-width: unset;
+    max-width: unset;
+    border: none;
+    padding: 0.2em 0.5em;
+    border-radius: 5px;
+  }
+}
+
+/* Print adjustements. */
+
+@media print {
+  body {
+    color: black;
+    background: white;
+  }
+  body nav:first-child {
+    visibility: hidden;
+  }
+}
+
+/*---------------------------------------------------------------------------
+   Copyright (c) 2016 Daniel C. Bünzli
+
+   Permission to use, copy, modify, and/or distribute this software for any
+   purpose with or without fee is hereby granted, provided that the above
+   copyright notice and this permission notice appear in all copies.
+
+   THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+   WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+   MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+   ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+   WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+   ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+   OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  ---------------------------------------------------------------------------*/

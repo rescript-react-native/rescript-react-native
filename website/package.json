@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "name": "bs-react-native-website",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "./scripts/odoc-to-html.sh",
+    "clean": "trash dist",
+    "test": "exit 0"
+  },
+  "devDependencies": {
+    "replace": "^1.1.0",
+    "trash-cli": "^1.4.0"
+  }
+}
