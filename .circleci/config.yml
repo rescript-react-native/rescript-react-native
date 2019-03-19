@@ -64,16 +64,17 @@ aliases:
   - &tests-run
     name: "Run tests"
     command: |
-      yarn build
-  - &docs-build
+      yarn test
+  - &website-build
     name: "Build documentation"
     command: |
       eval $(opam config env)
-      yarn docs:build
-  - &docs-deploy-to-gh-pages
+      cd ./website
+      yarn build
+  - &website-deploy-to-gh-pages
     name: Deploy documentation to GH Pages
     command: |
-      cd ./docs/dist
+      cd ./website/dist
       git init
 
       git config credential.helper 'cache --timeout=120'
@@ -116,19 +117,19 @@ jobs:
       - run: *opam-setup
       - run: *opam-get-deps
       - save-cache: *opam-cache-save
-      - run: *docs-build
-      ## Save docs for deployments
+      - run: *website-build
+      ## Save website for deployments
       - persist_to_workspace:
           root: .
           paths:
-            - docs
+            - website
 
-  deploy-docs:
+  website-deploy:
     <<: *defaults
     steps:
       - attach_workspace:
           at: ~/bs-react-native
-      - run: *docs-deploy-to-gh-pages
+      - run: *website-deploy-to-gh-pages
 
 workflows:
   version: 2
@@ -137,7 +138,7 @@ workflows:
       - test:
           filters: *filter-ignore-gh-pages
 
-      - deploy-docs:
+      - website-deploy:
           filters: *filter-only-master
           requires:
             - test

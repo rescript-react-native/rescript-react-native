@@ -1,0 +1,11 @@
+{
+  "name": "react-native-template-bs",
+  "version": "0.1.0",
+  "scripts": {
+    "re:clean": "bsb -clean-world",
+    "re:watch": "bsb -clean-world -make-world -w",
+    "re:build": "bsb -clean-world -make-world",
+    "clean": "yarn re:clean",
+    "test": "yarn re:build"
+  }
+}

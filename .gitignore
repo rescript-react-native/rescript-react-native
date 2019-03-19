@@ -1,9 +1,12 @@
+# macos crap
 .DS_Store
+
+# node
 node_modules
-lib/bs
-lib/ocaml
-.merlin
-.vscode
+# npm unused lock file (we use yarn.lock)
 package-lock.json
-npm-debug.log
-docs/dist
+
+# ocaml/reason build artifacts
+**/lib/bs
+**/lib/ocaml
+**/.merlin
