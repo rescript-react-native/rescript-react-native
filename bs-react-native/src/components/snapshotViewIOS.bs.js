@@ -17,6 +17,6 @@ function make(onSnapshotReady, testIdentifier, accessibilityLabel, accessible, h
 
 export {
   make ,
-
+  
 }
 /* ReasonReact Not a pure module */

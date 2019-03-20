@@ -4,13 +4,13 @@ import * as ReactNative from "react-native";
 
 function getGravity(g) {
   switch (g) {
-    case 0 :
+    case 0 : 
         return ReactNative.ToastAndroid.BOTTOM;
-    case 1 :
+    case 1 : 
         return ReactNative.ToastAndroid.CENTER;
-    case 2 :
+    case 2 : 
         return ReactNative.ToastAndroid.TOP;
-
+    
   }
 }
 
@@ -37,6 +37,6 @@ function show(message, duration, gravity, offset, param) {
 
 export {
   show ,
-
+  
 }
 /* react-native Not a pure module */

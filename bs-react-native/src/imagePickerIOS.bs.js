@@ -32,6 +32,6 @@ export {
   canRecordVideos ,
   openCameraDialog ,
   openSelectDialog ,
-
+  
 }
 /* react-native Not a pure module */

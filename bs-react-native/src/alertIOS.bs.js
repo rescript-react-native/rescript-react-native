@@ -124,6 +124,6 @@ function prompt(title, message, buttons, type_, defaultValue, keyboardType, para
 export {
   alert ,
   prompt ,
-
+  
 }
 /* react-native Not a pure module */

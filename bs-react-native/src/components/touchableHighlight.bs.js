@@ -48,6 +48,6 @@ function make(accessible, accessibilityLabel, accessibilityComponentType, access
 
 export {
   make ,
-
+  
 }
 /* ReasonReact Not a pure module */

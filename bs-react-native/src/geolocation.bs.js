@@ -68,6 +68,6 @@ export {
   getCurrentPosition ,
   watchPosition ,
   clearWatch ,
-
+  
 }
 /* No side effect */

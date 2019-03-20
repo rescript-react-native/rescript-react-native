@@ -33,6 +33,6 @@ function make$1(itemStyle, onValueChange, selectedValue, accessibilityLabel, acc
 export {
   make$1 as make,
   Item ,
-
+  
 }
 /* ReasonReact Not a pure module */

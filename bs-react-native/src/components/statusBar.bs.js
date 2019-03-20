@@ -85,6 +85,6 @@ export {
   setNetworkActivityIndicatorVisible ,
   setBackgroundColor ,
   setTranslucent ,
-
+  
 }
 /* ReasonReact Not a pure module */

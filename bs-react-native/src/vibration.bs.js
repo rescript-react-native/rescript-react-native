@@ -15,6 +15,6 @@ function cancel(prim) {
 export {
   vibrate ,
   cancel ,
-
+  
 }
 /* react-native Not a pure module */

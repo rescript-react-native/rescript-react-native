@@ -41,6 +41,6 @@ var Encoder = /* module */[
 
 export {
   Encoder ,
-
+  
 }
 /* No side effect */

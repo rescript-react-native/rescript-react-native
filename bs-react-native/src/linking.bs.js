@@ -18,6 +18,6 @@ function getInitialURL(param) {
 export {
   canOpenURL ,
   getInitialURL ,
-
+  
 }
 /* react-native Not a pure module */

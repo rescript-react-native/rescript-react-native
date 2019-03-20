@@ -28,6 +28,6 @@ function make(accessibilityLabel, accessible, hitSlop, onAccessibilityTap, onLay
 export {
   CreateComponent ,
   make ,
-
+  
 }
 /* Impl Not a pure module */

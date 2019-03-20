@@ -4,19 +4,19 @@ import * as ReactNative from "react-native";
 
 function keyboardEventToJs(param) {
   switch (param) {
-    case 0 :
+    case 0 : 
         return "keyboardWillShow";
-    case 1 :
+    case 1 : 
         return "keyboardDidShow";
-    case 2 :
+    case 2 : 
         return "keyboardWillHide";
-    case 3 :
+    case 3 : 
         return "keyboardDidHide";
-    case 4 :
+    case 4 : 
         return "keyboardWillChangeFrame";
-    case 5 :
+    case 5 : 
         return "keyboardDidChangeFrame";
-
+    
   }
 }
 
@@ -44,6 +44,6 @@ export {
   removeAllListeners ,
   removeListener ,
   Subscription ,
-
+  
 }
 /* react-native Not a pure module */

@@ -46,6 +46,6 @@ function make(animating, color, indeterminate, progress, styleAttr, accessibilit
 
 export {
   make ,
-
+  
 }
 /* ReasonReact Not a pure module */

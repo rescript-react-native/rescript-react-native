@@ -39,6 +39,6 @@ function make(disabled, maximumTrackTintColor, maximumValue, minimumTrackTintCol
 
 export {
   make ,
-
+  
 }
 /* ReasonReact Not a pure module */

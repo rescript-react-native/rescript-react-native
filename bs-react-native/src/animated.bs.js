@@ -69,6 +69,6 @@ export {
   View ,
   ScrollView ,
   FlatList ,
-
+  
 }
 /* AnimatedRe-BsReactNative Not a pure module */

@@ -38,6 +38,6 @@ function make(animating, color, size, hidesWhenStopped, accessibilityLabel, acce
 
 export {
   make ,
-
+  
 }
 /* ReasonReact Not a pure module */

@@ -27,6 +27,6 @@ export {
   removeImageForTag ,
   addImageFromBase64 ,
   getBase64ForTag ,
-
+  
 }
 /* react-native Not a pure module */

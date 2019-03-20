@@ -68,6 +68,6 @@ function extend(accessibilityLabel, accessible, hitSlop, onAccessibilityTap, onL
 
 export {
   extend ,
-
+  
 }
 /* No side effect */

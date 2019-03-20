@@ -98,6 +98,6 @@ function make$1(barStyle, barTintColor, itemPositioning, tintColor, translucent,
 export {
   make$1 as make,
   Item ,
-
+  
 }
 /* ReasonReact Not a pure module */

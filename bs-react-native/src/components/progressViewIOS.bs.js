@@ -21,6 +21,6 @@ function make(progress, progressImage, progressTintColor, progressViewStyle, tra
 
 export {
   make ,
-
+  
 }
 /* ReasonReact Not a pure module */

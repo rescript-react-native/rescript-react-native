@@ -9,9 +9,9 @@ var UnknownPlatform = Caml_exceptions.create("Platform-BsReactNative.UnknownPlat
 function os(param) {
   var x = ReactNative.Platform.OS;
   switch (x) {
-    case "android" :
+    case "android" : 
         return /* Android */0;
-    case "ios" :
+    case "ios" : 
         var match = ReactNative.Platform.isPad;
         if (match) {
           return /* IOS */[/* Pad */1];
@@ -61,7 +61,7 @@ function equals(targetOs) {
       return true;
     }
   }
-
+  
 }
 
 var UnknownVersion = Caml_exceptions.create("Platform-BsReactNative.UnknownVersion");
@@ -89,6 +89,6 @@ export {
   UnknownVersion ,
   version ,
   select ,
-
+  
 }
 /* react-native Not a pure module */

@@ -23,6 +23,6 @@ export {
   getFontScale ,
   getPixelSizeForLayoutSize ,
   roundToNearestPixel ,
-
+  
 }
 /* react-native Not a pure module */

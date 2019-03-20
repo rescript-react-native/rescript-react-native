@@ -8,6 +8,6 @@ function get(key) {
 
 export {
   get ,
-
+  
 }
 /* react-native Not a pure module */

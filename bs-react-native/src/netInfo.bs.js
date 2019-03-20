@@ -5,19 +5,19 @@ import * as ReactNative from "react-native";
 
 function connectionType(connectionType$1) {
   switch (connectionType$1) {
-    case "bluetooth" :
+    case "bluetooth" : 
         return /* Bluetooth */4;
-    case "cellular" :
+    case "cellular" : 
         return /* Cellular */2;
-    case "ethernet" :
+    case "ethernet" : 
         return /* Ethernet */5;
-    case "none" :
+    case "none" : 
         return /* None */0;
-    case "unknown" :
+    case "unknown" : 
         return /* Unknown */3;
-    case "wifi" :
+    case "wifi" : 
         return /* WiFi */1;
-    case "wimax" :
+    case "wimax" : 
         return /* WiMax */6;
     default:
       return Pervasives.failwith("NetInfo, unexpected `connection` type: " + connectionType$1);
@@ -26,13 +26,13 @@ function connectionType(connectionType$1) {
 
 function effectiveConnectionType(effectiveConnectionType$1) {
   switch (effectiveConnectionType$1) {
-    case "2g" :
+    case "2g" : 
         return /* Net2G */0;
-    case "3g" :
+    case "3g" : 
         return /* Net3G */1;
-    case "4g" :
+    case "4g" : 
         return /* Net4G */2;
-    case "unknown" :
+    case "unknown" : 
         return /* Unknown */3;
     default:
       return Pervasives.failwith("NetInfo, unexpected `effectiveConnection` type: " + effectiveConnectionType$1);
@@ -85,6 +85,6 @@ export {
   isConnectionExpensive ,
   getConnectionInfo ,
   IsConnected ,
-
+  
 }
 /* react-native Not a pure module */

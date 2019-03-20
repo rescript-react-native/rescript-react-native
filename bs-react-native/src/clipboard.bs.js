@@ -14,6 +14,6 @@ function setString(prim) {
 export {
   getString ,
   setString ,
-
+  
 }
 /* react-native Not a pure module */

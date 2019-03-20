@@ -16,6 +16,6 @@ function make(maskElement, accessible, accessibilityLabel, accessibilityComponen
 
 export {
   make ,
-
+  
 }
 /* ReasonReact Not a pure module */

@@ -7,55 +7,55 @@ import * as ReactNative from "react-native";
 
 function getPermission(value) {
   switch (value) {
-    case 0 :
+    case 0 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.READ_CALENDAR;
-    case 1 :
+    case 1 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.WRITE_CALENDAR;
-    case 2 :
+    case 2 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.CAMERA;
-    case 3 :
+    case 3 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.READ_CONTACTS;
-    case 4 :
+    case 4 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.WRITE_CONTACTS;
-    case 5 :
+    case 5 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.GET_ACCOUNTS;
-    case 6 :
+    case 6 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION;
-    case 7 :
+    case 7 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION;
-    case 8 :
+    case 8 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.RECORD_AUDIO;
-    case 9 :
+    case 9 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.READ_PHONE_STATE;
-    case 10 :
+    case 10 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.CALL_PHONE;
-    case 11 :
+    case 11 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.READ_CALL_LOG;
-    case 12 :
+    case 12 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.WRITE_CALL_LOG;
-    case 13 :
+    case 13 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS["permission.ADD_VOICEMAIL"];
-    case 14 :
+    case 14 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.USE_SIP;
-    case 15 :
+    case 15 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.PROCESS_OUTGOING_CALLS;
-    case 16 :
+    case 16 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.BODY_SENSORS;
-    case 17 :
+    case 17 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.SEND_SMS;
-    case 18 :
+    case 18 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.RECEIVE_SMS;
-    case 19 :
+    case 19 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.READ_SMS;
-    case 20 :
+    case 20 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.RECEIVE_WAP_PUSH;
-    case 21 :
+    case 21 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.RECEIVE_MMS;
-    case 22 :
+    case 22 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE;
-    case 23 :
+    case 23 : 
         return ReactNative.PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE;
-
+    
   }
 }
 
@@ -99,6 +99,6 @@ export {
   check ,
   request ,
   requestMultiple ,
-
+  
 }
 /* react-native Not a pure module */

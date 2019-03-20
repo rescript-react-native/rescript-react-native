@@ -29,6 +29,6 @@ function make(disabled, trackColorTrue, trackColorFalse, iosBackgroundColor, onV
 
 export {
   make ,
-
+  
 }
 /* ReasonReact Not a pure module */

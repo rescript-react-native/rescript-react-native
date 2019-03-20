@@ -103,6 +103,6 @@ function make(accessible, accessibilityHint, accessibilityLabel, allowFontScalin
 export {
   CreateComponent ,
   make ,
-
+  
 }
 /* Impl Not a pure module */
