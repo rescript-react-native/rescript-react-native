@@ -51,12 +51,18 @@ var emptyStyle = { };
 var fromList = Belt_List.toArray;
 
 function merge(a, b) {
-  return Js_dict.fromArray($$Array.append(Js_dict.entries(a), Js_dict.entries(b)));
+  return /* array */[
+          a,
+          b
+        ];
 }
 
 function mergeOptional(s, so) {
   return Belt_Option.getWithDefault(Belt_Option.map(so, (function (so) {
-                    return merge(s, so);
+                    return /* array */[
+                            s,
+                            so
+                          ];
                   })), s);
 }
 
