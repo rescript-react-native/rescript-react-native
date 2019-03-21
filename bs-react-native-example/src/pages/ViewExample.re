@@ -106,7 +106,7 @@ module ZIndexExample = {
             {ReasonReact.string("Tap to flip sorting order")}
           </Text>
           <View
-            style={concat([
+            style={fromList([
               styles##zIndex,
               style([
                 marginTop(Pt(0.)),
@@ -117,7 +117,7 @@ module ZIndexExample = {
             <Text> {ReasonReact.string(zIndexStr(0))} </Text>
           </View>
           <View
-            style={concat([
+            style={fromList([
               styles##zIndex,
               style([
                 marginLeft(Pt(50.)),
@@ -128,7 +128,7 @@ module ZIndexExample = {
             <Text> {ReasonReact.string(zIndexStr(1))} </Text>
           </View>
           <View
-            style={concat([
+            style={fromList([
               styles##zIndex,
               style([
                 marginLeft(Pt(100.)),
@@ -139,7 +139,7 @@ module ZIndexExample = {
             <Text> {ReasonReact.string(zIndexStr(2))} </Text>
           </View>
           <View
-            style={concat([
+            style={fromList([
               styles##zIndex,
               style([
                 marginLeft(Pt(150.)),
@@ -204,18 +204,19 @@ let examples: array(Example.t) =
               borderColor(String("#bb0000")),
               borderWidth(1.),
             ])}>
-            <View style={concat([styles##box, style([padding(Pt(5.))])])}>
+            <View
+              style={fromList([styles##box, style([padding(Pt(5.))])])}>
               <Text style={style([fontSize(Float(11.))])}>
                 {ReasonReact.string("5px padding")}
               </Text>
             </View>
-            <View style={concat([styles##box, style([margin(Pt(5.))])])}>
+            <View style={fromList([styles##box, style([margin(Pt(5.))])])}>
               <Text style={style([fontSize(Float(11.))])}>
                 {ReasonReact.string("5px margin")}
               </Text>
             </View>
             <View
-              style={concat([
+              style={fromList([
                 styles##box,
                 style([
                   margin(Pt(5.)),
