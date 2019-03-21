@@ -15,8 +15,20 @@ Android and [Web](https://github.com/necolas/react-native-web) apps.
 
 If you use this bindings from the git repo, be sure to use
 
-`"bs-react-native/bs-react-native"` as a `bs-dependencies` instead if just
-`"bs-react-native"`.
+```js
+{
+  // ...
+  "bsc-flags": ["-bs-super-errors"],
+  "bs-dependencies": [
+    // BsReactNative, current "stable" bindings
+    "bs-react-native/bs-react-native",
+    // ReactNative, WIP on zero-cost bindings (require bs-platform 5.0.0 & and reason-react hooks branch)
+    "bs-react-native/bs-react-native-next"
+  }
+}
+```
+
+Did you notice that this way, you can use both bindings to slowly migrate?
 
 ## Getting Started
 
