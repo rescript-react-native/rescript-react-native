@@ -68,6 +68,8 @@ let encode_deg_animated =
 
 external to_style: Js.Dict.t(Js.Json.t) => t = "%identity";
 
+external style_to_dict: t => Js.Dict.t(Js.Json.t) = "%identity";
+
 external arrayOfStyle: array(t) => t = "%identity";
 
 let floatStyle = (key, value) => (key, Internals.Encoder.float(value));
@@ -83,7 +85,14 @@ let emptyStyle = Js.Dict.empty()->to_style;
 
 external fromArray: array(t) => t = "%identity";
 let fromList = styles => styles->Belt.List.toArray->arrayOfStyle;
-let merge = (a, b) => [|a, b|]->arrayOfStyle;
+let merge = (a, b) => {
+  let entries =
+    Array.append(
+      Js.Dict.entries(style_to_dict(a)),
+      Js.Dict.entries(style_to_dict(b)),
+    );
+  Js.Dict.fromArray(entries) |> to_style;
+};
 let mergeOptional = (s, so) =>
   so->Belt.Option.map(so => s->merge(so))->Belt.Option.getWithDefault(s);
 let optional = s => s->Belt.Option.getWithDefault(emptyStyle);
