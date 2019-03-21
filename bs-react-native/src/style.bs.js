@@ -46,26 +46,14 @@ function encode_deg_animated(param) {
 
 var style = Js_dict.fromList;
 
-var emptyStyle = { };
-
-var fromList = Belt_List.toArray;
-
-function merge(a, b) {
-  return Js_dict.fromArray($$Array.append(Js_dict.entries(a), Js_dict.entries(b)));
-}
-
-function mergeOptional(s, so) {
-  return Belt_Option.getWithDefault(Belt_Option.map(so, (function (so) {
-                    return merge(s, so);
-                  })), s);
-}
-
-function optional(s) {
-  return Belt_Option.getWithDefault(s, emptyStyle);
-}
-
 function flatten(prim) {
   return prim;
+}
+
+var concat = Belt_List.toArray;
+
+function combine(a, b) {
+  return Js_dict.fromArray($$Array.append(Js_dict.entries(a), Js_dict.entries(b)));
 }
 
 function alignContent(v) {
@@ -1125,11 +1113,21 @@ function overlayColor(value) {
         ];
 }
 
-var combine = merge;
+function array(prim) {
+  return prim;
+}
 
-var concat = fromList;
+function arrayOption(prim) {
+  return prim;
+}
 
-var combineOptional = mergeOptional;
+function list(prim) {
+  return prim;
+}
+
+function listOption(prim) {
+  return prim;
+}
 
 var Transform = [
   perspective,
@@ -1150,14 +1148,13 @@ var Transform = [
 
 export {
   style ,
-  fromList ,
-  merge ,
-  mergeOptional ,
-  optional ,
+  array ,
+  arrayOption ,
+  list ,
+  listOption ,
   flatten ,
-  combine ,
   concat ,
-  combineOptional ,
+  combine ,
   alignContent ,
   alignItems ,
   alignSelf ,

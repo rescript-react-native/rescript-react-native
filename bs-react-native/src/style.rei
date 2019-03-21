@@ -25,20 +25,48 @@ type deg_animated('a) =
   | Animated(AnimatedRe.value('a));
 
 let style: list(styleElement) => t;
-external fromArray: array(t) => t = "%identity";
-let fromList: list(t) => t;
-let merge: (t, t) => t;
-let mergeOptional: (t, option(t)) => t;
-let optional: option(t) => t;
 
-[@deprecated "use Style.fromArray([|t|]) instead"]
+/*
+ <View style=mix([|
+   styles##thing,
+   styles##whatever,
+ |])>
+   */
+let array: array(t) => t;
+/*
+ <View style=arrayOption([|
+   Some(styles##thing),
+   Some(styles##whatever),
+   optionalStyle,
+   cond ? {something:"dynamic"} : None
+ |])>
+ */
+let arrayOption: array(option(t)) => t;
+/* list works too since RN accept recursive array of styles (list are just recursive arrays)*/
+/*
+ <View style=list([
+   styles##thing,
+   styles##whatever,
+ ])>
+   */
+let list: list(t) => t;
+/*
+ <View style=listOption([
+   Some(styles##thing),
+   Some(styles##whatever),
+   optionalStyle,
+   cond ? {something:"dynamic"} : None
+ ])>
+ */
+let listOption: list(option(t)) => t;
+[@deprecated "Use Style.array([|t|]) instead"]
 let flatten: array(t) => t;
-[@deprecated "use Style.merge(t, t) instead"]
-let combine: (t, t) => t;
-[@deprecated "use Style.fromList([t]) instead"]
+[@deprecated "Use Style.list([t]) instead"]
 let concat: list(t) => t;
-[@deprecated "use Style.mergeOptional(t, option(t)) instead"]
-let combineOptional: (t, option(t)) => t;
+[@deprecated
+  "This method is unsafe as it doesn't work well with StyleSheet values."
+]
+let combine: (t, t) => t;
 
 type alignContent =
   | FlexStart

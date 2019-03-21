@@ -252,6 +252,12 @@ external style:
   t =
   "";
 
-// Duplicated from StyleSheet.re for convenience.
-[@bs.module "react-native"] [@bs.scope "StyleSheet"]
+[@deprecated "Use Style.array([|t|]) instead"]
+[@bs.module "react-native"]
+[@bs.scope "StyleSheet"]
 external flatten: array(t) => t = "";
+
+external array: array(t) => t = "%identity";
+external arrayOption: array(option(t)) => t = "%identity";
+external list: list(t) => t = "%identity";
+external listOption: list(option(t)) => t = "%identity";
