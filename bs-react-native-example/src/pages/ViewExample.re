@@ -106,55 +106,47 @@ module ZIndexExample = {
             {ReasonReact.string("Tap to flip sorting order")}
           </Text>
           <View
-            style={
-              styles##zIndex
-              ->merge(
-                  style([
-                    marginTop(Pt(0.)),
-                    backgroundColor(String("#E57373")),
-                    zIndex(Array.unsafe_get(indices, 0)),
-                  ]),
-                )
-            }>
+            style={concat([
+              styles##zIndex,
+              style([
+                marginTop(Pt(0.)),
+                backgroundColor(String("#E57373")),
+                zIndex(Array.unsafe_get(indices, 0)),
+              ]),
+            ])}>
             <Text> {ReasonReact.string(zIndexStr(0))} </Text>
           </View>
           <View
-            style={
-              styles##zIndex
-              ->merge(
-                  style([
-                    marginLeft(Pt(50.)),
-                    backgroundColor(String("#FFF176")),
-                    zIndex(Array.unsafe_get(indices, 1)),
-                  ]),
-                )
-            }>
+            style={concat([
+              styles##zIndex,
+              style([
+                marginLeft(Pt(50.)),
+                backgroundColor(String("#FFF176")),
+                zIndex(Array.unsafe_get(indices, 1)),
+              ]),
+            ])}>
             <Text> {ReasonReact.string(zIndexStr(1))} </Text>
           </View>
           <View
-            style={
-              styles##zIndex
-              ->merge(
-                  style([
-                    marginLeft(Pt(100.)),
-                    backgroundColor(String("#81C784")),
-                    zIndex(Array.unsafe_get(indices, 2)),
-                  ]),
-                )
-            }>
+            style={concat([
+              styles##zIndex,
+              style([
+                marginLeft(Pt(100.)),
+                backgroundColor(String("#81C784")),
+                zIndex(Array.unsafe_get(indices, 2)),
+              ]),
+            ])}>
             <Text> {ReasonReact.string(zIndexStr(2))} </Text>
           </View>
           <View
-            style={
-              styles##zIndex
-              ->merge(
-                  style([
-                    marginLeft(Pt(150.)),
-                    backgroundColor(String("#64B5F6")),
-                    zIndex(Array.unsafe_get(indices, 3)),
-                  ]),
-                )
-            }>
+            style={concat([
+              styles##zIndex,
+              style([
+                marginLeft(Pt(150.)),
+                backgroundColor(String("#64B5F6")),
+                zIndex(Array.unsafe_get(indices, 3)),
+              ]),
+            ])}>
             <Text> {ReasonReact.string(zIndexStr(3))} </Text>
           </View>
         </View>
@@ -212,27 +204,25 @@ let examples: array(Example.t) =
               borderColor(String("#bb0000")),
               borderWidth(1.),
             ])}>
-            <View style={styles##box->merge(style([padding(Pt(5.))]))}>
+            <View style={concat([styles##box, style([padding(Pt(5.))])])}>
               <Text style={style([fontSize(Float(11.))])}>
                 {ReasonReact.string("5px padding")}
               </Text>
             </View>
-            <View style={styles##box->merge(style([margin(Pt(5.))]))}>
+            <View style={concat([styles##box, style([margin(Pt(5.))])])}>
               <Text style={style([fontSize(Float(11.))])}>
                 {ReasonReact.string("5px margin")}
               </Text>
             </View>
             <View
-              style={
-                styles##box
-                ->merge(
-                    style([
-                      margin(Pt(5.)),
-                      padding(Pt(5.)),
-                      alignSelf(FlexStart),
-                    ]),
-                  )
-              }>
+              style={concat([
+                styles##box,
+                style([
+                  margin(Pt(5.)),
+                  padding(Pt(5.)),
+                  alignSelf(FlexStart),
+                ]),
+              ])}>
               <Text style={style([fontSize(Float(11.))])}>
                 {ReasonReact.string("5px margin and padding,")}
               </Text>
