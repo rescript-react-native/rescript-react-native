@@ -30,6 +30,8 @@ If you use this bindings from the git repo, be sure to use
 
 Did you notice that this way, you can use both bindings to slowly migrate?
 
+_Next ReactNative zero-cost bindings are still WIP, so use carefully at your own risk._
+
 ## Getting Started
 
 Check our
