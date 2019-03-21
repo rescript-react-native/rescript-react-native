@@ -24,13 +24,17 @@ If you use this bindings from the git repo, be sure to use
     "bs-react-native/bs-react-native",
     // ReactNative, WIP on zero-cost bindings (require bs-platform 5.0.0 & and reason-react hooks branch)
     "bs-react-native/bs-react-native-next"
+  },
+  "js-post-build": {
+    "cmd": "./node_modules/bs-react-native/git-monorepo-usage-trick"
   }
 }
 ```
 
 Did you notice that this way, you can use both bindings to slowly migrate?
 
-_Next ReactNative zero-cost bindings are still WIP, so use carefully at your own risk._
+_Next ReactNative zero-cost bindings are still WIP, so use carefully at your own
+risk._
 
 ## Getting Started
 
