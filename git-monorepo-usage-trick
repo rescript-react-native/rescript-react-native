@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-# Trick to convert require("bs-react-native*
-# to require("bs-react-native/bs-react-native*
+# Trick to convert
+# `require("bs-react-native*` to `require("bs-react-native/bs-react-native*`
+# `from "bs-react-native*` to `from "bs-react-native/bs-react-native*`
 # only necessary when you are using git repo as a dep
 
 sed -i '' -e 's/require("bs-react-native\//require("bs-react-native\/bs-react-native\//g' $1
+sed -i '' -e 's/from "bs-react-native\//from "bs-react-native\/bs-react-native\//g' $1
