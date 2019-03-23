@@ -3,7 +3,7 @@ external make:
   (
     ~accessible: bool=?,
     ~accessibilityHint: string=?,
-    ~accessibilityLabel: string=?,
+    ~accessibilityLabel: React.element=?,
     ~allowFontScaling: bool=?,
     ~ellipsizeMode: [@bs.string] [ | `clip | `head | `middle | `tail]=?,
     ~numberOfLines: int=?,

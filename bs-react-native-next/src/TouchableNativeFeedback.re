@@ -19,7 +19,7 @@ module Background = {
 external make:
   (
     ~accessible: bool=?,
-    ~accessibilityLabel: string=?,
+    ~accessibilityLabel: React.element=?,
     ~accessibilityComponentType: [@bs.string] [
                                    | `none
                                    | `button

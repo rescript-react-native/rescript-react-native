@@ -65,7 +65,7 @@ external make:
     ~style: Style.t=?,
     ~testID: string=?,
     ~resizeMethod: [@bs.string] [ | `auto | `resize | `scale]=?,
-    ~accessibilityLabel: string=?,
+    ~accessibilityLabel: React.element=?,
     ~accessible: bool=?,
     ~blurRadius: float=?,
     ~capInsets: Types.insets=?,

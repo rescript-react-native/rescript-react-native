@@ -16,7 +16,7 @@ external make:
     ~accessibilityElementsHidden: bool=?,
     ~accessibilityHint: string=?,
     ~accessibilityIgnoresInvertColors: bool=?,
-    ~accessibilityLabel: string=?,
+    ~accessibilityLabel: React.element=?,
     ~accessibilityLiveRegion: [@bs.string] [ | `none | `polite | `assertive]=?,
     ~accessibilityRole: [@bs.string] [
                           | `none
