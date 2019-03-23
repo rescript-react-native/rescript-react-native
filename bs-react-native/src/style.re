@@ -81,11 +81,16 @@ let objectStyle = (key, value) => (key, Internals.Encoder.object_(value));
 let arrayStyle = (key, value) => (key, Internals.Encoder.array(value));
 
 let style = sarr => sarr |> Js.Dict.fromList |> to_style;
-let emptyStyle = Js.Dict.empty()->to_style;
 
-external fromArray: array(t) => t = "%identity";
-let fromList = styles => styles->Belt.List.toArray->arrayOfStyle;
-let merge = (a, b) => {
+external array: array(t) => t = "%identity";
+external arrayOption: array(option(t)) => t = "%identity";
+external list: list(t) => t = "%identity";
+external listOption: list(option(t)) => t = "%identity";
+
+/* deprecated */
+let flatten = array;
+let concat = styles => styles->Belt.List.toArray->arrayOfStyle;
+let combine = (a, b) => {
   let entries =
     Array.append(
       Js.Dict.entries(style_to_dict(a)),
@@ -93,15 +98,6 @@ let merge = (a, b) => {
     );
   Js.Dict.fromArray(entries) |> to_style;
 };
-let mergeOptional = (s, so) =>
-  so->Belt.Option.map(so => s->merge(so))->Belt.Option.getWithDefault(s);
-let optional = s => s->Belt.Option.getWithDefault(emptyStyle);
-
-/* deprecated */
-let flatten = fromArray;
-let concat = fromList;
-let combine = merge;
-let combineOptional = mergeOptional;
 
 /***
  * Layout Props
