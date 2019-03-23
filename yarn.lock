@@ -2403,10 +2403,10 @@ bs-platform@^4.0.18:
   resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-4.0.18.tgz#d17b8693ba1f714d9b27e0ddb365f2069ba4b8a0"
   integrity sha512-BwzW0iYHvREqUZIgQxJmdJrxexppLvJxYQ4LLexbhCp7uZU5DIZ5ub4ZHpkCkc8fn8bsXWc+Rrejb3csi+BoAQ==
 
-bs-platform@^5.0.0-dev.6:
-  version "5.0.0-dev.6"
-  resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-5.0.0-dev.6.tgz#aaa076debd40c2e710b52985aa22d8d3f05bf09d"
-  integrity sha512-41C/VUPBJp/TboHVIUhgdwXbRY8Yijj9ccnc7C0usmg4SJKtFTAvnLrHZYUP3cWOZcoTkMatjf9IfGN9/f5FlA==
+bs-platform@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-5.0.0.tgz#f9fded818bafc3891aeb85eb4e0d95b8d8f8b4d7"
+  integrity sha512-zxLobdIaf/r7go47hOgxcd6C0ANh7MYMEtZNb9Al7JdoekzFZI50F4GpZpP8kMh9Z+M5PoPE1WuryT4S8mT8Kg==
 
 bser@^2.0.0:
   version "2.0.0"

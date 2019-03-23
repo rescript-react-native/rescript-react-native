@@ -18,7 +18,7 @@
     "test": "yarn re:clean-build"
   },
   "devDependencies": {
-    "bs-platform": "^5.0.0-dev.6",
+    "bs-platform": "^5.0.0",
     "reason-react": "https://github.com/reasonml/reason-react.git#hooks"
   },
   "peerDependencies": {
