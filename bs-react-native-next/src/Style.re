@@ -252,7 +252,39 @@ external style:
   t =
   "";
 
+/*
+ <View style=array([|
+   styles##thing,
+   styles##whatever,
+ |])>
+   */
 external array: array(t) => t = "%identity";
+
+/*
+ <View style=arrayOption([|
+   Some(styles##thing),
+   Some(styles##whatever),
+   optionalStyle,
+   cond ? Some({something:"dynamic"}) : None
+ |])>
+ */
 external arrayOption: array(option(t)) => t = "%identity";
+
+/* list works too since RN accept recursive array of styles (list are just recursive arrays)*/
+/*
+ <View style=list([
+   styles##thing,
+   styles##whatever,
+ ])>
+   */
 external list: list(t) => t = "%identity";
+
+/*
+ <View style=listOption([
+   Some(styles##thing),
+   Some(styles##whatever),
+   optionalStyle,
+   cond ? Some({something:"dynamic"}) : None
+ ])>
+ */
 external listOption: list(option(t)) => t = "%identity";

@@ -27,7 +27,7 @@ type deg_animated('a) =
 let style: list(styleElement) => t;
 
 /*
- <View style=mix([|
+ <View style=array([|
    styles##thing,
    styles##whatever,
  |])>
@@ -38,7 +38,7 @@ let array: array(t) => t;
    Some(styles##thing),
    Some(styles##whatever),
    optionalStyle,
-   cond ? {something:"dynamic"} : None
+   cond ? Some({something:"dynamic"}) : None
  |])>
  */
 let arrayOption: array(option(t)) => t;
@@ -55,7 +55,7 @@ let list: list(t) => t;
    Some(styles##thing),
    Some(styles##whatever),
    optionalStyle,
-   cond ? {something:"dynamic"} : None
+   cond ? Some({something:"dynamic"}) : None
  ])>
  */
 let listOption: list(option(t)) => t;
