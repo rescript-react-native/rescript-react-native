@@ -36,7 +36,7 @@ module ExampleSingle = {
       <View>
         <TouchableNativeFeedback
           background={TouchableNativeFeedback.selectableBackground()}
-          onPress=requestPermissions>
+          onPress={_ => requestPermissions()}>
           <View style=Style.(style([backgroundColor(String("#03DAC5"))]))>
             <Text
               style=Style.(
@@ -81,7 +81,7 @@ module ExampleMultiple = {
       <View>
         <TouchableNativeFeedback
           background={TouchableNativeFeedback.selectableBackground()}
-          onPress=requestMultiplePermissions>
+          onPress={_ => requestMultiplePermissions()}>
           <View style=Style.(style([backgroundColor(String("#03DAC5"))]))>
             <Text
               style=Style.(

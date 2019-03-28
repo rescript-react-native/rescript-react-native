@@ -7,7 +7,7 @@ import * as ReasonReact from "reason-react/src/ReasonReact.js";
 import * as ReactNative from "react-native";
 import * as Types$BsReactNative from "../types.bs.js";
 
-function make(accessible, accessibilityLabel, accessibilityComponentType, accessibilityTraits, accessibilityRole, accessibilityStates, accessibilityHint, accessibilityIgnoresInvertColors, delayLongPress, delayPressIn, delayPressOut, disabled, hitSlop, onLayout, onPress, onPressIn, onPressOut, pressRetentionOffset, activeOpacity, onHideUnderlay, onShowUnderlay, style, underlayColor, hasTVPreferredFocus, tvParallaxProperties, testID) {
+function make(accessible, accessibilityLabel, accessibilityComponentType, accessibilityTraits, accessibilityRole, accessibilityStates, accessibilityHint, accessibilityIgnoresInvertColors, delayLongPress, delayPressIn, delayPressOut, disabled, hitSlop, onLayout, onLongPress, onPress, onPressIn, onPressOut, pressRetentionOffset, activeOpacity, onHideUnderlay, onShowUnderlay, style, underlayColor, hasTVPreferredFocus, tvParallaxProperties, testID) {
   var partial_arg = {
     accessible: accessible,
     accessibilityLabel: accessibilityLabel,
@@ -17,6 +17,7 @@ function make(accessible, accessibilityLabel, accessibilityComponentType, access
     disabled: disabled,
     hitSlop: hitSlop,
     onLayout: onLayout,
+    onLongPress: onLongPress,
     onPress: onPress,
     onPressIn: onPressIn,
     onPressOut: onPressOut,

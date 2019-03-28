@@ -56,8 +56,11 @@ var NativeScrollEvent = /* module */[
   /* contentInset */contentInset
 ];
 
+var NativePressEvent = 0;
+
 export {
   NativeEvent ,
+  NativePressEvent ,
   NativeLayoutEvent ,
   NativeScrollEvent ,
   

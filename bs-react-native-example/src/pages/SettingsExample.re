@@ -46,7 +46,7 @@ module SetExample = {
           onChangeText={text => self.send(SetVersion(text))}
         />
         <Button
-          onPress={() => {
+          onPress={_ => {
             let settings = Js.Dict.empty();
             Js.Dict.set(settings, "version_preference", self.state.version);
 
@@ -70,7 +70,7 @@ let examples: array(Example.t) = [|
     description: Some("Get Settings value"),
     render: () =>
       <Button
-        onPress={() => {
+        onPress={_ => {
           let version = Settings.get("version_preference");
           Alert.alert(~title="version -> " ++ version, ());
         }}

@@ -36,7 +36,7 @@ let component = ReasonReact.statelessComponent("RNTesterExampleList");
 
 let renderItem = onPress =>
   SectionList.renderItem(({item}) =>
-    <TouchableHighlight onPress={() => onPress(item)}>
+    <TouchableHighlight onPress={_ => onPress(item)}>
       <View style=styles##row>
         <Text style=styles##rowTitleText>
           {ReasonReact.string(item.ExampleList.title)}

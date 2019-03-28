@@ -14,6 +14,8 @@ module NativeEvent: {
   let data: t => string;
 };
 
+module NativePressEvent = NativeEvent;
+
 module NativeScrollEvent: {
   type t;
   type point = {

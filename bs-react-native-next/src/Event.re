@@ -14,6 +14,12 @@ module NativeEvent = {
   [@bs.get] external data: t => string = "";
 };
 
+/*
+ fixme rename NativeEvent to NativePressEvent when necessary
+ see https://github.com/facebook/react-native/blob/master/Libraries/Types/CoreEventTypes.js
+ */
+module NativePressEvent = NativeEvent;
+
 module NativeLayoutEvent = {
   type t;
   type layout = {

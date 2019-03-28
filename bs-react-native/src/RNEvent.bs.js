@@ -100,6 +100,8 @@ var NativeEvent = [
   NativeEvent_009
 ];
 
+var NativePressEvent = 0;
+
 var NativeScrollEvent = [
   contentOffset,
   contentSize,
@@ -121,6 +123,7 @@ function nativeScrollEvent(prim) {
 
 export {
   NativeEvent ,
+  NativePressEvent ,
   NativeScrollEvent ,
   NativeLayoutEvent ,
   nativeEvent ,

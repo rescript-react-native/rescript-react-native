@@ -30,7 +30,7 @@ module ImageExample = {
     render: self =>
       <View>
         <Button
-          onPress={() => {
+          onPress={_ => {
             ImageStore.hasImageForTag(
               switch (self.state.imageUri) {
               | Some(x) => x
@@ -49,7 +49,7 @@ module ImageExample = {
           accessibilityLabel="Has Image For Tag"
         />
         <Button
-          onPress={() => {
+          onPress={_ => {
             ImageStore.addImageFromBase64(
               image,
               uri => self.send(SetImageUri(uri)),
@@ -62,7 +62,7 @@ module ImageExample = {
           accessibilityLabel="Set image uri"
         />
         <Button
-          onPress={() =>
+          onPress={_ =>
             switch (self.state.imageUri) {
             | Some(uri) => ImageStore.removeImageForTag(uri)
             | None => ()
@@ -72,7 +72,7 @@ module ImageExample = {
           accessibilityLabel="Remove Image For Tag"
         />
         <Button
-          onPress={() =>
+          onPress={_ =>
             switch (self.state.imageUri) {
             | Some(uri) =>
               ImageStore.getBase64ForTag(
