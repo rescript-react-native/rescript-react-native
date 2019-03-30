@@ -2,7 +2,6 @@
   "name": "bs-react-native-next",
   "namespace": "react-native",
   "refmt": 3,
-  "reason": { "react-jsx": 2 },
   "package-specs": {
     "module": "es6",
     "in-source": true
@@ -13,6 +12,9 @@
       "dir": "src",
       "subdirs": true
     }
+  ],
+  "ppx-flags": [
+    "./node_modules/reason-react/_build/default/jsx_ppx/reactjs_jsx_ppx_v3.exe"
   ],
   "bsc-flags": ["-bs-super-errors", "-warn-error @a", "-w -41..42-102"],
   "bs-dependencies": ["reason-react"]
