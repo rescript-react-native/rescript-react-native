@@ -2,7 +2,7 @@ let pct = num => num->Js.Float.toString ++ "%";
 
 // Unsafe, unfortunately, but allows us to pass animated values everywhere.
 // May be refined later.
-external animated: AnimatedRe.value('a) => 'b = "%identity";
+external animated: Animated.value('a) => 'b = "%identity";
 
 module Margin = {
   type t;
