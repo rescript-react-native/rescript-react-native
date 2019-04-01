@@ -25,6 +25,13 @@ If you use this bindings from the git repo, be sure to use
     // ReactNative, WIP on zero-cost bindings (require bs-platform 5.0.0 & and reason-react hooks branch)
     "bs-react-native/bs-react-native-next"
   },
+  // When used from git with the following path, bs-platform will use path that won't be working
+  // (because deps are pointing to folder in folder)`
+  // Your bundler (metro or webpack) will say that it can find `bs-react-native/whatever` and/or
+  // `bs-react-native-next/whatever`
+  // which is correct because it should be `bs-react-native/bs-react-native/whatever` / `bs-react-native/bs-react-native-next/whatever`
+  // the trick below will correct path in generated JavaScript files
+  // and will just need to be removed when you won't use git directly anymore
   "js-post-build": {
     "cmd": "./node_modules/bs-react-native/git-monorepo-usage-trick"
   }
