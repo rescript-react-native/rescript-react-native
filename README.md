@@ -43,6 +43,17 @@ Did you notice that this way, you can use both bindings to slowly migrate?
 _Next ReactNative zero-cost bindings are still WIP, so use carefully at your own
 risk._
 
+## ⚠️ ReactNative zero-cost bindings setup with Reason React hooks
+
+Things you need to
+- reason-react master/hooks branch (the branch has been merged into master)
+- bs-platform 5.0.0
+- remove `"reason": { "react-jsx": 2 }` from your `bsconfig.json`
+- add `"ppx-flags": ["./node_modules/reason-react/_build/default/jsx_ppx/reactjs_jsx_ppx_v3.exe"]` in your `bsconfig.json` (this is because bs-platform 5 doesn't have react-jsx 3 in it
+- add into all you react files `[@bs.config {jsx: 3}];` at the top
+
+---
+
 ## Getting Started
 
 Check our
