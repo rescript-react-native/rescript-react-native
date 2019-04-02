@@ -2,7 +2,12 @@
 external make:
   (
     ~animated: bool=?,
-    ~barStyle: [@bs.string] [ | `darkContent | `default | `lightContent]=?,
+    ~barStyle: [@bs.string] [
+                 | `default
+                 | [@bs.as "light-content"] `lightContent
+                 | [@bs.as "dark-content"] `darkContent
+               ]
+                 =?,
     ~hidden: bool=?,
     ~backgroundColor: string=?,
     ~translucent: bool=?,
