@@ -1,31 +1,34 @@
+type uriSource;
+
+[@bs.obj]
+external uriSource:
+  (
+    ~uri: string,
+    ~bundle: string=?,
+    ~method: string=?,
+    ~headers: Js.t('a)=?,
+    ~body: string=?,
+    ~cache: [@bs.string] [
+              | `default
+              | `reload
+              | [@bs.as "force-cache"] `forceCache
+              | [@bs.as "only-if-cached"] `onlyIfCached
+            ]
+              =?,
+    ~scale: float=?,
+    ~width: float=?,
+    ~height: float=?,
+    unit
+  ) =>
+  uriSource =
+  "";
+
 module Source = {
   type t;
 
-  [@bs.obj]
-  external fromUri:
-    (
-      ~uri: string,
-      ~bundle: string=?,
-      ~method: string=?,
-      ~headers: Js.t('a)=?,
-      ~body: string=?,
-      ~cache: [@bs.string] [
-                | `default
-                | `reload
-                | `forceCache
-                | `onlyIfCached
-              ]
-                =?,
-      ~scale: float=?,
-      ~width: float=?,
-      ~height: float=?,
-      unit
-    ) =>
-    t =
-    "";
-
   external fromRequired: Packager.required => t = "%identity";
-  external fromArray: array(t) => t = "%identity";
+  external fromUriSource: uriSource => t = "%identity";
+  external fromUriSources: array(uriSource) => t = "%identity";
 };
 
 module DefaultSource = {
@@ -75,3 +78,31 @@ external make:
   ) =>
   React.element =
   "Image";
+
+type error;
+
+[@bs.module "react-native"] [@bs.scope "Image"]
+external getSize:
+  (
+    ~uri: string,
+    ~success: (~width: float, ~height: float) => unit,
+    ~failure: error => unit=?,
+    unit
+  ) =>
+  unit =
+  "getSize";
+
+type requestId;
+
+[@bs.module "react-native"] [@bs.scope "Image"]
+external prefetch: (~uri: string) => requestId = "prefetch";
+
+[@bs.module "react-native"] [@bs.scope "Image"]
+external abortPrefetch: requestId => unit = "abortPrefetch";
+
+[@bs.module "react-native"] [@bs.scope "Image"]
+external queryCache: (~uris: array(string)) => unit = "queryCache";
+
+[@bs.module "react-native"] [@bs.scope "Image"]
+external resolveAssetSource: Packager.required => uriSource =
+  "resolveAssetSource";
