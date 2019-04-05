@@ -78,6 +78,7 @@ external make:
     ~_ListEmptyComponent: React.element=?,
     ~_ListFooterComponent: React.element=?,
     ~_ListHeaderComponent: React.element=?,
+    ~debug: bool=?,
     ~data: 'data, // any collection of 'item
     ~disableVirtualization: bool=?, // deprecated
     ~extraData: 'extraData=?,
@@ -223,7 +224,7 @@ external make:
     ~testID: string=?
   ) =>
   React.element =
-  "FlatList";
+  "VirtualizedList";
 
 type scrollToEndOptions;
 [@bs.obj]
