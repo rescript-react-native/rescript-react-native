@@ -1,4 +1,4 @@
-
+'use strict';
 
 
 var NativeEvent = /* module */[];
@@ -58,11 +58,8 @@ var NativeScrollEvent = /* module */[
 
 var NativePressEvent = 0;
 
-export {
-  NativeEvent ,
-  NativePressEvent ,
-  NativeLayoutEvent ,
-  NativeScrollEvent ,
-  
-}
+exports.NativeEvent = NativeEvent;
+exports.NativePressEvent = NativePressEvent;
+exports.NativeLayoutEvent = NativeLayoutEvent;
+exports.NativeScrollEvent = NativeScrollEvent;
 /* No side effect */

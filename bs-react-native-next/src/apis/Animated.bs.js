@@ -1,10 +1,10 @@
+'use strict';
 
-
-import * as $$Array from "bs-platform/lib/es6/array.js";
-import * as Belt_Option from "bs-platform/lib/es6/belt_Option.js";
-import * as Caml_option from "bs-platform/lib/es6/caml_option.js";
-import * as Js_undefined from "bs-platform/lib/es6/js_undefined.js";
-import * as ReactNative from "react-native";
+var $$Array = require("bs-platform/lib/js/array.js");
+var Belt_Option = require("bs-platform/lib/js/belt_Option.js");
+var Caml_option = require("bs-platform/lib/js/caml_option.js");
+var Js_undefined = require("bs-platform/lib/js/js_undefined.js");
+var ReactNative = require("react-native");
 
 function start(t, callback, param) {
   t.start(Js_undefined.fromOption(callback));
@@ -455,20 +455,17 @@ var spring = animate$1;
 
 var decay = animate;
 
-export {
-  Animation ,
-  ValueAnimations ,
-  Interpolation ,
-  ValueOperations ,
-  Value ,
-  ValueXY ,
-  loop ,
-  timing ,
-  spring ,
-  decay ,
-  start ,
-  stop ,
-  reset ,
-  
-}
+exports.Animation = Animation;
+exports.ValueAnimations = ValueAnimations;
+exports.Interpolation = Interpolation;
+exports.ValueOperations = ValueOperations;
+exports.Value = Value;
+exports.ValueXY = ValueXY;
+exports.loop = loop;
+exports.timing = timing;
+exports.spring = spring;
+exports.decay = decay;
+exports.start = start;
+exports.stop = stop;
+exports.reset = reset;
 /* react-native Not a pure module */

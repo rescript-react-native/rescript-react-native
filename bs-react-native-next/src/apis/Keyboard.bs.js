@@ -1,4 +1,4 @@
-
+'use strict';
 
 
 var Easing = /* module */[
@@ -9,8 +9,5 @@ var Easing = /* module */[
   /* keyboard */"keyboard"
 ];
 
-export {
-  Easing ,
-  
-}
+exports.Easing = Easing;
 /* No side effect */

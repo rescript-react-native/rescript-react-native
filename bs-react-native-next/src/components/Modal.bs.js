@@ -1,4 +1,4 @@
-
+'use strict';
 
 
 var Orientation = /* module */[
@@ -9,8 +9,5 @@ var Orientation = /* module */[
   /* portraitUpsideDown */"portrait-upside-down"
 ];
 
-export {
-  Orientation ,
-  
-}
+exports.Orientation = Orientation;
 /* No side effect */

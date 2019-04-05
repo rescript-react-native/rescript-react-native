@@ -1,7 +1,7 @@
+'use strict';
 
-
-import * as ReactNative from "react-native";
-import * as PromiseUtils$ReactNative from "../utils/PromiseUtils.bs.js";
+var ReactNative = require("react-native");
+var PromiseUtils$ReactNative = require("../utils/PromiseUtils.bs.js");
 
 function getItem(key) {
   return ReactNative.AsyncStorage.getItem(key).then(PromiseUtils$ReactNative.nullableToOption);
@@ -15,10 +15,7 @@ function multiGet(keys) {
   return ReactNative.AsyncStorage.multiGet(keys).then(PromiseUtils$ReactNative.nullableToOption);
 }
 
-export {
-  getItem ,
-  getAllKeys ,
-  multiGet ,
-  
-}
+exports.getItem = getItem;
+exports.getAllKeys = getAllKeys;
+exports.multiGet = multiGet;
 /* react-native Not a pure module */

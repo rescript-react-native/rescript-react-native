@@ -1,10 +1,7 @@
-
+'use strict';
 
 
 var Background = /* module */[];
 
-export {
-  Background ,
-  
-}
+exports.Background = Background;
 /* No side effect */

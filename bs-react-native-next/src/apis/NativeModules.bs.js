@@ -1,13 +1,10 @@
+'use strict';
 
-
-import * as ReactNative from "react-native";
+var ReactNative = require("react-native");
 
 function get(name) {
   return ReactNative.NativeModules[name];
 }
 
-export {
-  get ,
-  
-}
+exports.get = get;
 /* react-native Not a pure module */

@@ -1,4 +1,4 @@
-
+'use strict';
 
 
 function pct(num) {
@@ -33,12 +33,9 @@ var FontVariant = /* module */[
   /* proportionalNums */"proportional-nums"
 ];
 
-export {
-  pct ,
-  Margin ,
-  Size ,
-  Transform ,
-  FontVariant ,
-  
-}
+exports.pct = pct;
+exports.Margin = Margin;
+exports.Size = Size;
+exports.Transform = Transform;
+exports.FontVariant = FontVariant;
 /* No side effect */

@@ -1,4 +1,4 @@
-
+'use strict';
 
 
 var AccessibilityState = /* module */[
@@ -26,9 +26,6 @@ var AccessibilityTrait = /* module */[
   /* pageTurn */"pageTurn"
 ];
 
-export {
-  AccessibilityState ,
-  AccessibilityTrait ,
-  
-}
+exports.AccessibilityState = AccessibilityState;
+exports.AccessibilityTrait = AccessibilityTrait;
 /* No side effect */

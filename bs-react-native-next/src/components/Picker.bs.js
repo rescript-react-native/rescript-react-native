@@ -1,10 +1,7 @@
-
+'use strict';
 
 
 var Item = /* module */[];
 
-export {
-  Item ,
-  
-}
+exports.Item = Item;
 /* No side effect */
