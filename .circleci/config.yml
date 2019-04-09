@@ -64,7 +64,6 @@ aliases:
       # until new react ppx is in bs-platform
       yarn global add esy@0.5.6
       cd ./bs-react-native-next/node_modules/reason-react && esy install && esy build && cd ../../..
-      cd ./website/node_modules/reason-react && esy install && esy build && cd ../../..
   - &tests-run
     name: "Run tests"
     command: |
