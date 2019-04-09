@@ -2398,15 +2398,15 @@ braces@^2.3.1:
     split-string "^3.0.2"
     to-regex "^3.0.1"
 
+bs-platform@5.0.1-beta.1:
+  version "5.0.1-beta.1"
+  resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-5.0.1-beta.1.tgz#e6267122ce04420224b1e1e658701d1652a7f73a"
+  integrity sha512-zbi6biUmkjUMOyCjYCtpQKQrB/x9UWJGMN9WS9n/3PIRmC8GjgaJT0mWGrXgrZWhLPXaOp72r9laAfhLXOQnIQ==
+
 bs-platform@^4.0.18:
   version "4.0.18"
   resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-4.0.18.tgz#d17b8693ba1f714d9b27e0ddb365f2069ba4b8a0"
   integrity sha512-BwzW0iYHvREqUZIgQxJmdJrxexppLvJxYQ4LLexbhCp7uZU5DIZ5ub4ZHpkCkc8fn8bsXWc+Rrejb3csi+BoAQ==
-
-bs-platform@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-5.0.0.tgz#f9fded818bafc3891aeb85eb4e0d95b8d8f8b4d7"
-  integrity sha512-zxLobdIaf/r7go47hOgxcd6C0ANh7MYMEtZNb9Al7JdoekzFZI50F4GpZpP8kMh9Z+M5PoPE1WuryT4S8mT8Kg==
 
 bser@^2.0.0:
   version "2.0.0"
