@@ -16,6 +16,9 @@
   "ppx-flags": [
     "./node_modules/reason-react/_build/default/jsx_ppx/reactjs_jsx_ppx_v3.exe"
   ],
+  "reason": {
+    "react-jsx": 3
+  },
   "bsc-flags": ["-bs-no-version-header", "-warn-error @a", "-w -41..42-102"],
   "bs-dependencies": ["reason-react"]
 }
