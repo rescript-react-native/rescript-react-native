@@ -79,7 +79,7 @@ let make = () =>
       </View>
       <Spacer size=Spacer.XXL />
       <ViewLink
-        href="/BsReactNative/gettingstarted.html"
+        href={Consts.baseUrl ++ "/BsReactNative/gettingstarted.html"}
         style=Style.(
           style(
             ~borderRadius=6.,

@@ -82,12 +82,12 @@ let styles =
 
 [@react.component]
 let make = (~currentLocation) => {
-  let uri = "/apple-touch-icon.png";
+  let uri = Consts.baseUrl ++ "/apple-touch-icon.png";
   let width = 36.;
   let height = 36.;
   <View style=styles##menu>
     <Container style=styles##bar wrapperStyle=styles##barWrapper>
-      <ViewLink style=styles##logo href="/">
+      <ViewLink style=styles##logo href={Consts.baseUrl ++ "/"}>
         /* <SVGLogo width=20. height=20. fill=Consts.Colors.dark /> */
         /* react-native-web doesn't render source when renderToString is used*/
 

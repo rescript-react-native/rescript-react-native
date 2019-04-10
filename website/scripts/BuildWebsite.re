@@ -2,7 +2,7 @@ open Node;
 open Belt;
 
 let root = Process.cwd();
-let outputPath = Path.join([|root, "dist"|]);
+let outputPath = Path.join([|root, "dist", Consts.baseUrl|]);
 
 let buildOdoc = () => {
   let sourcePath = Path.join([|root, "build", "odoc"|]);

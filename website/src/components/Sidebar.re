@@ -69,7 +69,7 @@ let make = () => {
                 sections
                 renderItem={renderItemBag => {
                   let (title, link) = renderItemBag##item;
-                  <TextLink key=title href={"/en/" ++ link} style=styles##link>
+                  <TextLink key=title href={Consts.baseUrl++ "/en/" ++ link} style=styles##link>
                     title->React.string
                   </TextLink>;
                 }}
@@ -113,7 +113,9 @@ let make = () => {
              {{section.data
                ->List.map(((title, link)) =>
                    <TextLink
-                     key=title href={"/en/" ++ link} style=styles##link>
+                     key=title
+                     href={Consts.baseUrl ++ "/en/" ++ link}
+                     style=styles##link>
                      title->React.string
                    </TextLink>
                  )}

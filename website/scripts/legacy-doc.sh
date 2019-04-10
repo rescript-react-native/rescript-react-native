@@ -2,7 +2,7 @@
 
 PKG=BsReactNative
 
-OUTPUT=./dist
+OUTPUT=./dist/bs-react-native
 LIB=../bs-react-native/lib/bs/src
 PAGES=./legacy/pages
 PUBLIC=./legacy/public

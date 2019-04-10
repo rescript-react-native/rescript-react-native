@@ -15,9 +15,10 @@
     "build:prepare": "yarn build:prepare:odoc && yarn build:prepare:md",
     "build:prerender-legacy": "./scripts/legacy-doc.sh",
     "build:prerender": "node scripts/BuildWebsite.entry.js",
-    "build:copy-static": "cpy \"public/**/*\" dist",
+    "build:copy-static": "cpy \"public/**/*\" dist/bs-react-native",
     "build": "yarn svg && yarn re:build && yarn build:prepare && yarn build:prerender && yarn build:prerender-legacy && yarn build:copy-static",
-    "serve": "serve dist",
+    "serve": "static-server-cli dist",
+    "start": "opn http://localhost:9000/bs-react-native/ & yarn serve",
     "test": "yarn svg && yarn re:build"
   },
   "devDependencies": {
@@ -28,6 +29,7 @@
     "highlight.js": "^9.15.6",
     "mkdirp": "^0.5.1",
     "module-alias": "^2.2.0",
+    "opn-cli": "^4.1.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-from-svg": "^0.1.3",
@@ -36,7 +38,7 @@
     "reason-highlightjs": "^0.2.0",
     "reason-react": "^0.7.0",
     "remarkable": "^1.7.1",
-    "serve": "^10.1.2",
+    "static-server-cli": "^1.0.2",
     "trash-cli": "^1.4.0"
   }
 }

@@ -1,3 +1,4 @@
+let baseUrl = "/bs-react-native";
 let title = {j|BS React Native|j};
 let defaultTitle = title ++ {j|, BuckleScript bindings for React Native.|j};
 let titleTemplate = {j|%s - |j} ++ title;
@@ -34,18 +35,18 @@ let menuLinks = [|
    },
    */
   {
-    link: "/BsReactNative/",
+    link: baseUrl ++ "/BsReactNative/",
     text: {j|Legacy Docs|j},
     icon: (~width, ~height, ~fill) => <SVGDocumentation width height fill />,
     isActive: (current, _link) =>
-      Js.String.startsWith("/BsReactNative/", current),
+      Js.String.startsWith(baseUrl ++ "/BsReactNative/", current),
   },
   /*
    {
-     link: "/en/docs/",
+     link: Consts.baseUrl++"/en/docs/",
      text: {j|Docs@next|j},
      icon: (~width, ~height, ~fill) => <SVGDocumentation width height fill />,
-     isActive: (current, _link) => Js.String.startsWith("/en/docs/", current),
+     isActive: (current, _link) => Js.String.startsWith(Consts.baseUrl++"/en/docs/", current),
    },*/
 |];
 
