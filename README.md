@@ -46,9 +46,8 @@ risk._
 
 Things you need
 
-- `package.json` dep: `"bs-platform": "^5.0.1-beta.1",`
-- `package.json` dep:
-  `"reason-react": "https://github.com/reasonml/reason-react.git#0.7.0",`
+- `package.json` dep: `"bs-platform": "^5.0.1"`
+- `package.json` dep: `"reason-react": "^0.7.0"`
 - `bsconfig.json`: `"reason": { "react-jsx": 3 }`
 
 ---

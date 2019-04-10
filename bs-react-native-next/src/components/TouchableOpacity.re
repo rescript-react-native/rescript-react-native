@@ -48,5 +48,5 @@ external make:
   "TouchableOpacity";
 
 [@bs.send]
-external setOpacityTo: (React.Ref.domRef, float, float) => unit =
+external setOpacityTo: (ReactDOMRe.Ref.t, float, float) => unit =
   "setOpacityTo";

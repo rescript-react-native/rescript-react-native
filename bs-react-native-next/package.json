@@ -18,11 +18,11 @@
     "test": "yarn re:clean-build"
   },
   "devDependencies": {
-    "bs-platform": "5.0.1-beta.1",
-    "reason-react": "https://github.com/reasonml/reason-react.git#hooks"
+    "bs-platform": "^5.0.1",
+    "reason-react": "^0.7.0"
   },
   "peerDependencies": {
     "react-native": "^0.59.0",
-    "reason-react": "https://github.com/reasonml/reason-react.git#hooks"
+    "reason-react": "^0.7.0"
   }
 }
