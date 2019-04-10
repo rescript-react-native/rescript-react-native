@@ -15,6 +15,5 @@
       "subdirs": true
     }
   ],
-  "bsc-flags": ["-bs-super-errors"],
   "bs-dependencies": ["bs-react-native", "reason-react"]
 }
