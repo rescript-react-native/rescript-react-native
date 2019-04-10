@@ -13,9 +13,6 @@
       "subdirs": true
     }
   ],
-  "ppx-flags": [
-    "./node_modules/reason-react/_build/default/jsx_ppx/reactjs_jsx_ppx_v3.exe"
-  ],
   "reason": {
     "react-jsx": 3
   },
