@@ -61,9 +61,6 @@ aliases:
     name: Install Node deps with Yarn
     command: |
       yarn install --non-interactive --frozen-lockfile --cache-folder ~/.cache/yarn
-      # until new react ppx is in bs-platform
-      yarn global add esy@0.5.6
-      cd ./bs-react-native-next/node_modules/reason-react && esy install && esy build && cd ../../..
   - &tests-run
     name: "Run tests"
     command: |
