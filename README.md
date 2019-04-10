@@ -18,7 +18,6 @@ If you use this bindings from the git repo, be sure to use
 ```js
 {
   // ...
-  "bsc-flags": ["-bs-super-errors"],
   "bs-dependencies": [
     // BsReactNative, current "stable" bindings
     "bs-react-native/bs-react-native",
@@ -45,12 +44,12 @@ risk._
 
 ## ⚠️ ReactNative zero-cost bindings setup with Reason React hooks
 
-Things you need to
-- reason-react master/hooks branch (the branch has been merged into master)
-- bs-platform 5.0.0
-- remove `"reason": { "react-jsx": 2 }` from your `bsconfig.json`
-- add `"ppx-flags": ["./node_modules/reason-react/_build/default/jsx_ppx/reactjs_jsx_ppx_v3.exe"]` in your `bsconfig.json` (this is because bs-platform 5 doesn't have react-jsx 3 in it
-- add into all you react files `[@bs.config {jsx: 3}];` at the top
+Things you need
+
+- `package.json` dep: `"bs-platform": "^5.0.1-beta.1",`
+- `package.json` dep:
+  `"reason-react": "https://github.com/reasonml/reason-react.git#0.7.0",`
+- `bsconfig.json`: `"reason": { "react-jsx": 3 }`
 
 ---
 
