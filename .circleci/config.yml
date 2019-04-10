@@ -103,8 +103,6 @@ jobs:
       - TERM: dumb
     steps:
       - checkout
-      # Install Opam
-      - run: *opam-setup
       # Install Node.js & Yarn as we are on an ocaml docker image
       - run: *node-setup
       - run: *yarn-setup
@@ -115,6 +113,7 @@ jobs:
       # Tests
       - run: *tests-run
       # Documentation
+      - run: *opam-setup
       - restore-cache: *opam-cache-restore
       - run: *opam-get-deps
       - save-cache: *opam-cache-save

@@ -14,6 +14,6 @@
       "subdirs": true
     }
   ],
-  "bsc-flags": ["-bs-super-errors", "-warn-error @a", "-w -41..42-102"],
+  "bsc-flags": ["-warn-error @a", "-w -41-42-102"],
   "bs-dependencies": ["reason-react"]
 }

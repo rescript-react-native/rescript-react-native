@@ -63,6 +63,21 @@ type t;
 
 [@bs.module "react-native"] external t: t = "StyleSheet";
 
+/**
+ Method to create a StyleSheet
+ Eg:
+ {[
+ let styles =
+   StyleSheet.create(
+     Style.{
+       "box":
+         style([
+           backgroundColor(String("#527FE4")),
+         ]),
+     },
+   );
+  ]}
+ */
 let create: Js.t('a) => Js.t('a);
 
 let hairlineWidth: float;

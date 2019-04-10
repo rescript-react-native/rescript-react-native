@@ -1,0 +1,29 @@
+{
+  "name": "bs-react-native-website",
+  "refmt": 3,
+  "reason": {
+    "react-jsx": 3
+  },
+  "package-specs": {
+    "module": "commonjs",
+    "in-source": true
+  },
+  "suffix": ".bs.js",
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
+    },
+    {
+      "dir": "scripts",
+      "subdirs": true
+    }
+  ],
+  "bsc-flags": ["-bs-no-version-header"],
+  "bs-dependencies": [
+    "reason-future",
+    "reason-react",
+    "react-from-svg",
+    "../bs-react-native-next"
+  ]
+}
