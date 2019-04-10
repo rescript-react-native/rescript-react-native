@@ -137,9 +137,9 @@ type scrollToEndOptions;
 external scrollToEndOptions:
   (~animated: bool=?, ~duration: float=?, unit) => scrollToEndOptions =
   "";
-[@bs.send] external scrollToEnd: React.Ref.domRef => unit = "scrollToEnd";
+[@bs.send] external scrollToEnd: ReactDOMRe.Ref.t => unit = "scrollToEnd";
 [@bs.send]
-external scrollToEndWithOptions: (React.Ref.domRef, scrollToEndOptions) => unit =
+external scrollToEndWithOptions: (ReactDOMRe.Ref.t, scrollToEndOptions) => unit =
   "scrollToEnd";
 
-[@bs.send] external flashScrollIndicators: React.Ref.domRef => unit = "";
+[@bs.send] external flashScrollIndicators: ReactDOMRe.Ref.t => unit = "";

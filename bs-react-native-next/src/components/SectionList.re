@@ -180,9 +180,9 @@ type scrollToEndOptions;
 [@bs.obj]
 external scrollToEndOptions: (~animated: bool=?, unit) => scrollToEndOptions =
   "";
-[@bs.send] external scrollToEnd: React.Ref.domRef => unit = "scrollToEnd";
+[@bs.send] external scrollToEnd: ReactDOMRe.Ref.t => unit = "scrollToEnd";
 [@bs.send]
-external scrollToEndWithOptions: (React.Ref.domRef, scrollToEndOptions) => unit =
+external scrollToEndWithOptions: (ReactDOMRe.Ref.t, scrollToEndOptions) => unit =
   "scrollToEnd";
 
 type scrollToIndexParams;
@@ -217,6 +217,6 @@ external scrollToOffsetParams:
 [@bs.send]
 external scrollToOffset: scrollToOffsetParams => unit = "scrollToOffset";
 
-[@bs.send] external recordInteraction: React.Ref.domRef => unit = "";
+[@bs.send] external recordInteraction: ReactDOMRe.Ref.t => unit = "";
 
-[@bs.send] external flashScrollIndicators: React.Ref.domRef => unit = "";
+[@bs.send] external flashScrollIndicators: ReactDOMRe.Ref.t => unit = "";
