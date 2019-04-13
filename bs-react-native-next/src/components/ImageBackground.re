@@ -1,3 +1,6 @@
+type element;
+type ref = React.Ref.t(Js.nullable(element));
+
 type t;
 
 [@bs.obj]
@@ -25,6 +28,7 @@ external style:
 [@react.component] [@bs.module "react-native"]
 external make:
   (
+    ~imageRef: ref=?,
     ~onLayout: Event.NativeLayoutEvent.t => unit=?,
     ~onLoad: unit => unit=?,
     ~onLoadEnd: unit => unit=?,
