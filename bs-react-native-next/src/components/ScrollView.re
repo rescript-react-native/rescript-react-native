@@ -1,6 +1,11 @@
+type element;
+type ref = React.Ref.t(Js.nullable(element));
+
 [@react.component] [@bs.module "react-native"]
 external make:
   (
+    ~ref: ref=?,
+    // ScrollView props
     ~alwaysBounceHorizontal: bool=?,
     ~alwaysBounceVertical: bool=?,
     ~automaticallyAdjustContentInsets: bool=?,
@@ -137,9 +142,9 @@ type scrollToEndOptions;
 external scrollToEndOptions:
   (~animated: bool=?, ~duration: float=?, unit) => scrollToEndOptions =
   "";
-[@bs.send] external scrollToEnd: ReactDOMRe.Ref.t => unit = "scrollToEnd";
+[@bs.send] external scrollToEnd: ref => unit = "scrollToEnd";
 [@bs.send]
-external scrollToEndWithOptions: (ReactDOMRe.Ref.t, scrollToEndOptions) => unit =
+external scrollToEndWithOptions: (ref, scrollToEndOptions) => unit =
   "scrollToEnd";
 
-[@bs.send] external flashScrollIndicators: ReactDOMRe.Ref.t => unit = "";
+[@bs.send] external flashScrollIndicators: ref => unit = "";

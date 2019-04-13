@@ -1,7 +1,11 @@
+type element;
+type ref = React.Ref.t(Js.nullable(element));
+
 [@react.component] [@bs.module "react-native"]
-// VirtualizedSectionList props
 external make:
   (
+    ~ref: ref=?,
+    // SectionList props
     ~sections: array(VirtualizedSectionList.section('item)),
     ~renderItem: VirtualizedSectionList.renderItemCallback('item),
     ~renderSectionHeader: VirtualizedSectionList.renderSectionHeaderCallback(
@@ -180,9 +184,9 @@ type scrollToEndOptions;
 [@bs.obj]
 external scrollToEndOptions: (~animated: bool=?, unit) => scrollToEndOptions =
   "";
-[@bs.send] external scrollToEnd: ReactDOMRe.Ref.t => unit = "scrollToEnd";
+[@bs.send] external scrollToEnd: ref => unit = "scrollToEnd";
 [@bs.send]
-external scrollToEndWithOptions: (ReactDOMRe.Ref.t, scrollToEndOptions) => unit =
+external scrollToEndWithOptions: (ref, scrollToEndOptions) => unit =
   "scrollToEnd";
 
 type scrollToIndexParams;
@@ -217,6 +221,6 @@ external scrollToOffsetParams:
 [@bs.send]
 external scrollToOffset: scrollToOffsetParams => unit = "scrollToOffset";
 
-[@bs.send] external recordInteraction: ReactDOMRe.Ref.t => unit = "";
+[@bs.send] external recordInteraction: ref => unit = "";
 
-[@bs.send] external flashScrollIndicators: ReactDOMRe.Ref.t => unit = "";
+[@bs.send] external flashScrollIndicators: ref => unit = "";
