@@ -1,13 +1,13 @@
-type t = string;
+type t;
 
-[@bs.inline]
-let active = "active";
+[@bs.inline "active"]
+let active: t;
 
-[@bs.inline]
-let background = "background";
+[@bs.inline "background"]
+let background: t;
 
-[@bs.inline]
-let inactive = "inactive";
+[@bs.inline "inactive"]
+let inactive: t;
 
 [@bs.scope "AppState"] [@bs.module "react-native"]
 external currentState: t = "currentState";
