@@ -143,8 +143,8 @@ external make:
                           | `imagebutton
                         ]
                           =?,
-    ~accessibilityStates: array(Types.AccessibilityState.t)=?,
-    ~accessibilityTraits: array(Types.AccessibilityTrait.t)=?,
+    ~accessibilityStates: array(AccessibilityState.t)=?,
+    ~accessibilityTraits: array(AccessibilityTrait.t)=?,
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
     ~collapsable: bool=?,
