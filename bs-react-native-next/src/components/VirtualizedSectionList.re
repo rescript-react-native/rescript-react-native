@@ -1,3 +1,6 @@
+type element;
+type ref = React.Ref.t(Js.nullable(element));
+
 type renderItemProps('item) = {
   .
   "item": 'item,
@@ -21,6 +24,8 @@ and renderSectionHeaderCallback('item) =
 [@react.component] [@bs.module "react-native"]
 external make:
   (
+    ~ref: ref=?,
+    // VirtualizedSectionList props
     ~sections: array(section('item)),
     ~renderItem: renderItemCallback('item),
     ~renderSectionHeader: renderSectionHeaderCallback('item)=?,
@@ -143,8 +148,8 @@ external make:
                           | `imagebutton
                         ]
                           =?,
-    ~accessibilityStates: array(Types.AccessibilityState.t)=?,
-    ~accessibilityTraits: array(Types.AccessibilityTrait.t)=?,
+    ~accessibilityStates: array(AccessibilityState.t)=?,
+    ~accessibilityTraits: array(AccessibilityTrait.t)=?,
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
     ~collapsable: bool=?,
@@ -193,9 +198,9 @@ type scrollToEndOptions;
 [@bs.obj]
 external scrollToEndOptions: (~animated: bool=?, unit) => scrollToEndOptions =
   "";
-[@bs.send] external scrollToEnd: ReactDOMRe.Ref.t => unit = "scrollToEnd";
+[@bs.send] external scrollToEnd: ref => unit = "scrollToEnd";
 [@bs.send]
-external scrollToEndWithOptions: (ReactDOMRe.Ref.t, scrollToEndOptions) => unit =
+external scrollToEndWithOptions: (ref, scrollToEndOptions) => unit =
   "scrollToEnd";
 
 type scrollToIndexParams;
@@ -230,6 +235,6 @@ external scrollToOffsetParams:
 [@bs.send]
 external scrollToOffset: scrollToOffsetParams => unit = "scrollToOffset";
 
-[@bs.send] external recordInteraction: ReactDOMRe.Ref.t => unit = "";
+[@bs.send] external recordInteraction: ref => unit = "";
 
-[@bs.send] external flashScrollIndicators: ReactDOMRe.Ref.t => unit = "";
+[@bs.send] external flashScrollIndicators: ref => unit = "";

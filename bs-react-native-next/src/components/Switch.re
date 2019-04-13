@@ -1,8 +1,15 @@
+type trackColor;
+[@bs.obj] external trackColor: (
+  ~_true: Style.color=?,
+  ~_false: Style.color=?,
+  unit
+) => trackColor = "";
+
 [@react.component] [@bs.module "react-native"]
 external make:
   (
     ~disabled: bool=?,
-    ~trackColor: Style.color=?,
+    ~trackColor: trackColor=?,
     ~ios_backgroundColor: Style.color=?,
     ~onValueChange: bool => unit=?,
     ~thumbColor: Style.color=?,
@@ -35,8 +42,8 @@ external make:
                           | `imagebutton
                         ]
                           =?,
-    ~accessibilityStates: array(Types.AccessibilityState.t)=?,
-    ~accessibilityTraits: array(Types.AccessibilityTrait.t)=?,
+    ~accessibilityStates: array(AccessibilityState.t)=?,
+    ~accessibilityTraits: array(AccessibilityTrait.t)=?,
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
     ~collapsable: bool=?,

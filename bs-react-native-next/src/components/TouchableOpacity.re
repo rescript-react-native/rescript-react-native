@@ -1,6 +1,11 @@
+type element;
+type ref = React.Ref.t(Js.nullable(element));
+
 [@react.component] [@bs.module "react-native"]
 external make:
   (
+    ~ref: ref=?,
+    // TouchableOpacity props
     ~accessible: bool=?,
     ~accessibilityLabel: string=?,
     ~accessibilityComponentType: [@bs.string] [
@@ -24,7 +29,7 @@ external make:
                           | `imagebutton
                         ]
                           =?,
-    ~accessibilityStates: array(Types.AccessibilityState.t)=?,
+    ~accessibilityStates: array(AccessibilityState.t)=?,
     ~delayLongPress: int=?,
     ~delayPressIn: int=?,
     ~delayPressOut: int=?,
@@ -48,5 +53,5 @@ external make:
   "TouchableOpacity";
 
 [@bs.send]
-external setOpacityTo: (ReactDOMRe.Ref.t, float, float) => unit =
+external setOpacityTo: (ref, ~value: float, ~duration: float) => unit =
   "setOpacityTo";
