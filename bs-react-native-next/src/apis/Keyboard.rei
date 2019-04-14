@@ -1,20 +1,20 @@
-module Easing = {
-  type t = string;
+module Easing: {
+  type t;
 
-  [@bs.inline]
-  let easeIn = "easeIn";
+  [@bs.inline "easeIn"]
+  let easeIn: t;
 
-  [@bs.inline]
-  let easeInEaseOut = "easeInEaseOut";
+  [@bs.inline "easeInEaseOut"]
+  let easeInEaseOut: t;
 
-  [@bs.inline]
-  let easeOut = "easeOut";
+  [@bs.inline "easeOut"]
+  let easeOut: t;
 
-  [@bs.inline]
-  let linear = "linear";
+  [@bs.inline "linear"]
+  let linear: t;
 
-  [@bs.inline]
-  let keyboard = "keyboard";
+  [@bs.inline "keyboard"]
+  let keyboard: t;
 };
 
 type screenRect = {
