@@ -46,15 +46,22 @@ module Transform = {
 };
 
 module FontVariant = {
-  type t;
+  type t = string;
 
-  external fromString: string => t = "%identity";
+  [@bs.inline]
+  let smallCaps = "small-caps";
 
-  let smallCaps = "small-caps"->fromString;
-  let oldstyleNums = "oldstyle-nums"->fromString;
-  let liningNums = "lining-nums"->fromString;
-  let tabularNums = "tabular-nums"->fromString;
-  let proportionalNums = "proportional-nums"->fromString;
+  [@bs.inline]
+  let oldstyleNums = "oldstyle-nums";
+
+  [@bs.inline]
+  let liningNums = "lining-nums";
+
+  [@bs.inline]
+  let tabularNums = "tabular-nums";
+
+  [@bs.inline]
+  let proportionalNums = "proportional-nums";
 };
 
 type offset;
