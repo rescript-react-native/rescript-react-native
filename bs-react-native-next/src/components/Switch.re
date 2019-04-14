@@ -61,16 +61,17 @@ external make:
     ~onAccessibilityTap: unit => unit=?,
     ~onLayout: Event.NativeLayoutEvent.t => unit=?,
     ~onMagicTap: unit => unit=?,
-    ~onMoveShouldSetResponder: Event.NativeEvent.t => bool=?,
-    ~onMoveShouldSetResponderCapture: Event.NativeEvent.t => bool=?,
-    ~onResponderGrant: Event.NativeEvent.t => unit=?,
-    ~onResponderMove: Event.NativeEvent.t => unit=?,
-    ~onResponderReject: Event.NativeEvent.t => unit=?,
-    ~onResponderRelease: Event.NativeEvent.t => unit=?,
-    ~onResponderTerminate: Event.NativeEvent.t => unit=?,
-    ~onResponderTerminationRequest: Event.NativeEvent.t => unit=?,
-    ~onStartShouldSetResponder: Event.NativeEvent.t => bool=?,
-    ~onStartShouldSetResponderCapture: Event.NativeEvent.t => bool=?,
+    // Gesture Responder props
+    ~onMoveShouldSetResponder: Event.t => bool=?,
+    ~onMoveShouldSetResponderCapture: Event.t => bool=?,
+    ~onResponderGrant: Event.t => unit=?,
+    ~onResponderMove: Event.t => unit=?,
+    ~onResponderReject: Event.t => unit=?,
+    ~onResponderRelease: Event.t => unit=?,
+    ~onResponderTerminate: Event.t => unit=?,
+    ~onResponderTerminationRequest: Event.t => unit=?,
+    ~onStartShouldSetResponder: Event.t => bool=?,
+    ~onStartShouldSetResponderCapture: Event.t => bool=?,
     ~pointerEvents: [@bs.string] [
                       | `auto
                       | `none
