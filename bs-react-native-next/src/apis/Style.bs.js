@@ -25,11 +25,8 @@ var Transform = /* module */[
   /* rad */rad
 ];
 
-var FontVariant = /* module */[];
-
 exports.pct = pct;
 exports.Margin = Margin;
 exports.Size = Size;
 exports.Transform = Transform;
-exports.FontVariant = FontVariant;
 /* No side effect */
