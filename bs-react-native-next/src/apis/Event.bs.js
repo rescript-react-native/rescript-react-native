@@ -3,57 +3,21 @@
 
 var NativeEvent = /* module */[];
 
-function layout(t) {
-  var l = t.nativeEvent.layout;
-  return /* record */[
-          /* x */l.x,
-          /* y */l.y,
-          /* width */l.width,
-          /* height */l.height
-        ];
-}
+var NativeLayoutEvent = /* module */[];
 
-var NativeLayoutEvent = /* module */[/* layout */layout];
+var ContentInset = /* module */[];
 
-function contentOffset(t) {
-  var co = t.nativeEvent.contentOffset;
-  return /* record */[
-          /* x */co.x,
-          /* y */co.y
-        ];
-}
+var ContentOffset = /* module */[];
 
-function contentSize(t) {
-  var cs = t.nativeEvent.contentSize;
-  return /* record */[
-          /* width */cs.width,
-          /* height */cs.height
-        ];
-}
+var ContentSize = /* module */[];
 
-function layoutMeasurement(t) {
-  var lm = t.nativeEvent.layoutMeasurement;
-  return /* record */[
-          /* width */lm.width,
-          /* height */lm.height
-        ];
-}
-
-function contentInset(t) {
-  var ci = t.nativeEvent.contentInset;
-  return /* record */[
-          /* bottom */ci.bottom,
-          /* top */ci.top,
-          /* left */ci.left,
-          /* right */ci.right
-        ];
-}
+var LayoutMeasurement = /* module */[];
 
 var NativeScrollEvent = /* module */[
-  /* contentOffset */contentOffset,
-  /* contentSize */contentSize,
-  /* layoutMeasurement */layoutMeasurement,
-  /* contentInset */contentInset
+  /* ContentInset */ContentInset,
+  /* ContentOffset */ContentOffset,
+  /* ContentSize */ContentSize,
+  /* LayoutMeasurement */LayoutMeasurement
 ];
 
 var NativePressEvent = 0;

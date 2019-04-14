@@ -22,52 +22,49 @@ module NativePressEvent = NativeEvent;
 
 module NativeLayoutEvent = {
   type t;
-  type layout = {
-    x: float,
-    y: float,
-    width: float,
-    height: float,
-  };
-  [@bs.get] external _layout: t => Js.t('a) = "nativeEvent";
-  let layout = (t: t) => {
-    let l = _layout(t)##layout;
-    {x: l##x, y: l##y, width: l##width, height: l##height};
-  };
+  [@bs.get] external x: t => float = "";
+  [@bs.get] external y: t => float = "";
+  [@bs.get] external width: t => float = "";
+  [@bs.get] external height: t => float = "";
 };
 
 module NativeScrollEvent = {
   type t;
-  type point = {
-    x: float,
-    y: float,
+
+  module ContentInset = {
+    type t;
+
+    [@bs.get] external bottom: t => float = "";
+    [@bs.get] external left: t => float = "";
+    [@bs.get] external right: t => float = "";
+    [@bs.get] external top: t => float = "";
   };
-  type size = {
-    width: float,
-    height: float,
+
+  module ContentOffset = {
+    type t;
+
+    [@bs.get] external y: t => float = "";
+    [@bs.get] external x: t => float = ""
   };
-  type contentInset = {
-    bottom: float,
-    top: float,
-    left: float,
-    right: float,
+  
+  module ContentSize = {
+    type t;
+
+    [@bs.get] external height: t => float = "";
+    [@bs.get] external width: t => float = "";
   };
-  [@bs.get] external _nativeEvent: t => Js.t('a) = "nativeEvent";
-  let contentOffset = (t: t) => {
-    let co = _nativeEvent(t)##contentOffset;
-    {x: co##x, y: co##y};
+
+  module LayoutMeasurement = {
+    type t;
+
+    [@bs.get] external height: t => float = "";
+    [@bs.get] external width: t => float = "";
   };
-  let contentSize = (t: t) => {
-    let cs = _nativeEvent(t)##contentSize;
-    {width: cs##width, height: cs##height};
-  };
-  let layoutMeasurement = (t: t) => {
-    let lm = _nativeEvent(t)##layoutMeasurement;
-    {width: lm##width, height: lm##height};
-  };
-  let contentInset = (t: t) => {
-    let ci = _nativeEvent(t)##contentInset;
-    {bottom: ci##bottom, top: ci##top, left: ci##left, right: ci##right};
-  };
+  
+  [@bs.get] external contentInset: t => ContentInset.t = "";
+  [@bs.get] external contentOffset: t => ContentOffset.t = "";
+  [@bs.get] external contentSize: t => ContentSize.t = "";
+  [@bs.get] external layoutMeasurement: t => LayoutMeasurement.t = "";
 };
 
 [@bs.get] external nativeEvent: t => NativeEvent.t = "";
