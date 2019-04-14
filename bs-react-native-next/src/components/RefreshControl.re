@@ -56,6 +56,7 @@ external make:
     ~onAccessibilityTap: unit => unit=?,
     ~onLayout: Event.NativeLayoutEvent.t => unit=?,
     ~onMagicTap: unit => unit=?,
+    // Gesture Responder props
     ~onMoveShouldSetResponder: Event.t => bool=?,
     ~onMoveShouldSetResponderCapture: Event.t => bool=?,
     ~onResponderGrant: Event.t => unit=?,
