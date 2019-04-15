@@ -122,10 +122,10 @@ $code
 let sourcePath = Path.join([|root, "..", "bs-react-native-next", "src"|]);
 let outputPath = Path.join([|root, "..", "bs-react-native-next", "src"|]);
 // create from rei first
-Path.join([|sourcePath, "**/*.rei"|])
+Path.join([|sourcePath, "(apis|components)/*.rei"|])
 ->FsUtils.transform(createMissingMd(sourcePath, outputPath));
 // fallback to re
-Path.join([|sourcePath, "**/*.re"|])
+Path.join([|sourcePath, "(apis|components)/*.re"|])
 ->FsUtils.transform(createMissingMd(sourcePath, outputPath));
 
 Js.log("Modules...");
