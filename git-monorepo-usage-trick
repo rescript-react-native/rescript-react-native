@@ -7,3 +7,5 @@
 
 sed -i '' -e 's/require("bs-react-native\//require("bs-react-native\/bs-react-native\//g' $1
 sed -i '' -e 's/from "bs-react-native\//from "bs-react-native\/bs-react-native\//g' $1
+sed -i '' -e 's/require("bs-react-native-next\//require("bs-react-native\/bs-react-native-next\//g' $1
+sed -i '' -e 's/from "bs-react-native-next\//from "bs-react-native\/bs-react-native-next\//g' $1
