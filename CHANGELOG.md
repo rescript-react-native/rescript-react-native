@@ -1,3 +1,61 @@
+# v0.11.0 - 2019-04-15
+
+Good news, maintenance of this bindings have been taken by a new crew. While we
+are working hard on new, zero-cost & more straight forward bindings that will
+works nicely with
+[reason-react 0.7.0](https://reasonml.github.io/reason-react/blog/2019/04/10/react-hooks)
+(stay tuned for more soon), we are publishing is a new release that will brings
+you some latest things before we start to breaks things a little bit (but don’t
+worry we have a migration plan, just because, like everybody, we have to migrate
+various codebases).
+
+This release mostly add some missing stuffs, and fixes some.
+
+## Changelog
+
+> We have highlighted most significant changes below. You can see the full list
+> of commits
+> [here](https://github.com/reasonml-community/bs-react-native/compare/v0.10.0...v0.11.0).
+
+### Notable changes
+
+- Fully compatible with bs-platform 4.0.18 & reason-react 0.6.0
+- A lots of things has been documented
+- Deprecate & replace Style.(flatten|concat) with
+  (array|arrayOption|list|listOption)
+- Deprecate Style.combine as it's unsafe
+- New `Style.transform` function so you can choose transform order & deprecate
+  `Style.Transform` methods
+- View props: support `accessibilityRole`, `accessibilityStates`,
+  `accessibilityHint`, `accessibilityIgnoresInvertColors` on lots of components
+
+### More in details
+
+- ActionSheetIOS: fix options conversion
+- Animated: fix annotations
+- FlatList: add `listEmptyComponent`, `refreshControl`, `stickyHeaderIndices`,
+  `contentInsetAdjustmentBehavior`, `scrollEventThrottle`,
+  `listFooterComponentStyle` & `listHeaderComponentStyle`
+- Image: `resolveAssetSource`
+- InteractionManager
+- Platform: add `select`
+- ScrollView: remove `onScrollAnimationEnd`, add `snapToInterval`,
+  `onScrollBeginDrag`, `onScrollEndDrag`, `onMomentumScrollBegin`,
+  `onMomentumScrollEnd`, `contentInsetAdjustmentBehavior`
+- Style: remove `justifyContent(Stretch)` (unsupported by Yoga), add
+  `justifyContent(SpaceEvenly)`, `flexBasis(Auto)`, new `transform` function
+- Switch: remove `onTintColor`, `thumbTintColor` & `tintColor`, add `trackColor`
+  (via `trackColorTrue` & `trackColorFalse` props), `thumbColor` and
+  `iosBackgroundColor`
+- Text: add `accessibilityHint`, `accessibilityLabel`
+- TextInput: fixes `onChange`, `onEndEditing`, `autoComplete`
+- Touchables: add `testID`, fix `on(Long)Press(In|Out)` events
+- TabBarIOS: fix systemIcon `bookmarks`
+- View: `accessibilityRole`, `accessibilityStates`, `accessibilityHint`,
+  `accessibilityIgnoresInvertColors`
+- react-native-template-reason: Enhance the react native template so you don't
+  have a weird black screen. Looks more like standard RN hello world
+
 # v0.10.0 - 2018-09-17
 
 This is the biggest release we have done in a while. It is a result of hard work
