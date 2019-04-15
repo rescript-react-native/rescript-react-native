@@ -3,7 +3,7 @@ open ReactNative;
 
 type pageData = {
   id: string,
-  title: option(string),
+  title: string,
   wip: option(bool),
   body: string,
   modulesIndex: array(string),
@@ -35,7 +35,18 @@ let styles =
           ~borderRadius=4.,
           (),
         ),
-      "editLinkText": style(~color=color(Consts.Colors.accent), ()),
+      "editLinkText":
+        style(~color=color(Consts.Colors.accent), ~alignItems=`center, ()),
+      "officialDocLink":
+        style(
+          ~display=`flex,
+          ~flexDirection=`row,
+          ~fontSize=14.,
+          ~fontWeight=`_300,
+          ~alignItems=`center,
+          ~color=color(Consts.Colors.accent),
+          (),
+        ),
       "wip":
         style(
           ~borderWidth=1.,
@@ -56,15 +67,40 @@ let make = (~pageData) => {
   if (pageData.wip->Option.getWithDefault(false)) {
     Js.log3("@todo", pageData.title, "docs is still WIP");
   };
+  let officialDocHref =
+    if (pageData.id
+        |> Js.String.startsWith("apis/")
+        || pageData.id
+        |> Js.String.startsWith("components/")) {
+      Some(
+        "http://facebook.github.io/react-native/docs/"
+        ++ pageData.title->Js.String.toLocaleLowerCase
+        ++ "/",
+      );
+    } else {
+      None;
+    };
   let editHref =
     "https://github.com/reasonml-community/bs-react-native/blob/master/bs-react-native-next/src/"
     ++ pageData.id
     ++ ".md";
   <SpacedView style=styles##container vertical=SpacedView.L>
     <View style=styles##title>
-      <Text style=styles##titleText>
-        {pageData.title->Option.getWithDefault(pageData.id)->React.string}
-      </Text>
+      <View>
+        <Text style=styles##titleText> pageData.title->React.string </Text>
+        {officialDocHref
+         ->Option.map(officialDocHref =>
+             <TextLink style=styles##officialDocLink href=officialDocHref>
+               <SVGExternalLink
+                 width={14.->ReactFromSvg.Size.pt}
+                 height={14.->ReactFromSvg.Size.pt}
+                 fill=Consts.Colors.accent
+               />
+               {| Official documentation |}->React.string
+             </TextLink>
+           )
+         ->Option.getWithDefault(React.null)}
+      </View>
       <SpacedView
         vertical=SpacedView.XS horizontal=SpacedView.XS style=styles##editLink>
         <TextLink style=styles##editLinkText href=editHref>

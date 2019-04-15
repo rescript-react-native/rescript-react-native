@@ -59,10 +59,10 @@ let file = (file: FsUtils.t, modulesIndex: array(string)) => {
         switch (Js.Dict.get(value, "title")) {
         | Some(v) =>
           switch (Js.Json.classify(v)) {
-          | Js.Json.JSONString(v) => Some(v)
+          | Js.Json.JSONString(v) => v
           | _ => failwith("Expected an string for the `title`")
           }
-        | None => None // failwith("Expected an `title` property")
+        | None => failwith("Expected an `title` property")
         };
       let wip =
         switch (Js.Dict.get(value, "wip")) {
