@@ -21,6 +21,7 @@
     "test": "yarn svg && yarn re:build"
   },
   "devDependencies": {
+    "@moox/bs-react-helmet": "^2.0.0",
     "bs-platform": "^5.0.1",
     "cpy-cli": "^2.0.0",
     "front-matter": "^3.0.1",
@@ -32,6 +33,7 @@
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-from-svg": "^0.1.3",
+    "react-helmet": "^5.2.0",
     "react-native-web": "^0.11.2",
     "reason-future": "^2.4.0",
     "reason-highlightjs": "^0.2.0",

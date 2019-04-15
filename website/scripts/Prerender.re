@@ -26,15 +26,17 @@ let make = (~url: string, ~pageData) => {
     );
   let html = renderToString(app##element);
   let css = renderToStaticMarkup(app##getStyleElement());
+  let helmet = BsReactHelmet.renderStatic();
+  let helmetMeta = helmet##meta##toString();
+  let helmetLinks = helmet##link##toString();
+  let helmetTitle = helmet##title##toString();
+  let helmetStyle = helmet##style##toString();
+  let helmetScript = helmet##script##toString();
   {j|
 <!DOCTYPE html>
 <html style="height:100%">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-$css
-<body style="min-height:100%">
-$html
-</body>
+<head>$helmetMeta $helmetLinks $helmetTitle $helmetStyle $helmetScript $css</head>
+<body style="min-height:100%">$html</body>
 </html>|j};
 };
 
