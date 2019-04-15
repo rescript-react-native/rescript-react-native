@@ -38,12 +38,11 @@ $html
 </html>|j};
 };
 
-let file = (file: FsUtils.t) => {
+let file = (file: FsUtils.t, modulesIndex: array(string)) => {
   let json =
     try (Js.Json.parseExn(file.content)) {
     | _ => failwith("Error parsing JSON string")
     };
-
   let pageData =
     switch (Js.Json.classify(json)) {
     | Js.Json.JSONObject(value) =>
@@ -52,7 +51,7 @@ let file = (file: FsUtils.t) => {
         | Some(v) =>
           switch (Js.Json.classify(v)) {
           | Js.Json.JSONString(v) => v
-          | _ => failwith("Expected an string")
+          | _ => failwith("Expected an string for `id`")
           }
         | None => failwith("Expected an `id` property")
         };
@@ -61,22 +60,32 @@ let file = (file: FsUtils.t) => {
         | Some(v) =>
           switch (Js.Json.classify(v)) {
           | Js.Json.JSONString(v) => Some(v)
-          | _ => failwith("Expected an string")
+          | _ => failwith("Expected an string for the `title`")
           }
         | None => None // failwith("Expected an `title` property")
+        };
+      let wip =
+        switch (Js.Dict.get(value, "wip")) {
+        | Some(v) =>
+          switch (Js.Json.classify(v)) {
+          | Js.Json.JSONTrue => Some(true)
+          | Js.Json.JSONFalse => Some(false)
+          | _ => failwith("Expected a boolean for `wip`")
+          }
+        | None => None // failwith("Expected an `wip` property")
         };
       let body =
         switch (Js.Dict.get(value, "body")) {
         | Some(v) =>
           switch (Js.Json.classify(v)) {
           | Js.Json.JSONString(v) => v
-          | _ => failwith("Expected an string")
+          | _ => failwith("Expected an string for the `body`")
           }
         | None => failwith("Expected an `body` property")
         };
-      let p: PageContent.pageData = {id, title, body};
+      let p: PageContent.pageData = {id, title, wip, body, modulesIndex};
       p;
-    | _ => failwith("Expected an object")
+    | _ => failwith("Expected an object for pageData")
     };
 
   make(~url=file.name, ~pageData=Some(pageData));

@@ -10,6 +10,51 @@ let make =
   | [""] => <> <HeaderLarge currentLocation /> <Homepage /> </>
   | _ =>
     <>
+      <link
+        rel="stylesheet"
+        href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"
+      />
+      <style
+        dangerouslySetInnerHTML={
+          "__html": {|
+.hljs {
+  font-size: 14px;
+  padding: 20px;
+  border: 1px solid rgba(0,0,0,0.05);
+  background: rgba(0,0,0,0.01);
+  border-radius: 4px;
+}
+
+.hljs.javascript {
+  background-color: rgba(247, 223, 30, .03)
+}
+
+table .hljs {
+  border: none;
+  background: none
+}
+
+.hljs-operator {
+  color: #a626a4
+}
+
+.hljs-character {
+  color: #50a14f
+}
+
+.hljs-module-identifier {
+  color: #4078f2
+}
+
+.hljs-constructor {
+  color: #e45649
+}
+
+.stick { position: -webkit-sticky; position: sticky; }
+
+|},
+        }
+      />
       <HeaderLarge currentLocation />
       {pageData
        ->Option.map(pageData =>
@@ -17,7 +62,7 @@ let make =
              style=Style.(
                style(~flexDirection=`row, ~height=100.->Size.pct, ())
              )>
-             <Sidebar />
+             <Sidebar modulesIndex={pageData.modulesIndex} />
              <PageContent pageData />
            </Container>
          )
