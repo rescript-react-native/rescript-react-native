@@ -8,12 +8,12 @@ wip: true
 type element;
 type ref = React.Ref.t(Js.nullable(element));
 
-type t;
+type imageStyle;
 
 [@bs.obj]
-external style:
+external imageStyle:
   (
-    ~backfaceVisibility: [@bs.string] [ | `visible | `hidden ]=?,
+    ~backfaceVisibility: [@bs.string] [ | `visible | `hidden]=?,
     ~backgroundColor: Style.color=?,
     ~borderColor: Style.color=?,
     ~borderRadius: float=?,
@@ -23,13 +23,20 @@ external style:
     ~borderTopRightRadius: float=?,
     ~borderWidth: float=?,
     ~opacity: float=?,
-    ~overflow: [@bs.string] [ | `visible | `hidden ]=?,
-    ~resizeMode: [@bs.string] [ | `cover | `contain | `stretch | `repeat | `center ]=?,
+    ~overflow: [@bs.string] [ | `visible | `hidden]=?,
+    ~resizeMode: [@bs.string] [
+                   | `cover
+                   | `contain
+                   | `stretch
+                   | `repeat
+                   | `center
+                 ]
+                   =?,
     ~overlayColor: Style.color=?,
     ~tintColor: Style.color=?,
     unit
   ) =>
-  t =
+  imageStyle =
   "";
 
 [@react.component] [@bs.module "react-native"]
@@ -50,7 +57,7 @@ external make:
                    =?,
     ~source: Image.Source.t,
     ~style: Style.t=?,
-    ~imageStyle: t=?,
+    ~imageStyle: imageStyle=?,
     ~testID: string=?,
     ~resizeMethod: [@bs.string] [ | `auto | `resize | `scale]=?,
     ~accessibilityLabel: string=?,
