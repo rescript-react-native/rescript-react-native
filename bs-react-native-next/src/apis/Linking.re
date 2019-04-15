@@ -8,9 +8,6 @@ external canOpenURL: string => Js.Promise.t(bool) = "canOpenURL";
 external getInitialURL: unit => Js.Promise.t(Js.Null.t(string)) =
   "getInitialURL";
 
-let getInitialURL = () =>
-  Js.Promise.(getInitialURL() |> then_(PromiseUtils.nullableToOption));
-
 [@bs.scope "Linking"] [@bs.module "react-native"]
 external addEventListener: (string, {. "url": string} => unit) => unit = "";
 

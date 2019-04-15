@@ -2,8 +2,6 @@ type error;
 
 [@bs.scope "AsyncStorage"] [@bs.module "react-native"]
 external getItem: string => Js.Promise.t(Js.Null.t(string)) = "getItem";
-let getItem = key =>
-  getItem(key) |> Js.Promise.then_(PromiseUtils.nullableToOption);
 
 [@bs.scope "AsyncStorage"] [@bs.module "react-native"]
 external setItem: (string, string) => Js.Promise.t(unit) = "setItem";
@@ -20,8 +18,6 @@ external clear: unit => Js.Promise.t(unit) = "clear";
 [@bs.scope "AsyncStorage"] [@bs.module "react-native"]
 external getAllKeys: unit => Js.Promise.t(Js.Null.t(array(string))) =
   "getAllKeys";
-let getAllKeys = () =>
-  getAllKeys() |> Js.Promise.then_(PromiseUtils.nullableToOption);
 
 [@bs.scope "AsyncStorage"] [@bs.module "react-native"]
 external flushGetRequests: unit => unit = "";
@@ -30,8 +26,6 @@ external flushGetRequests: unit => unit = "";
 external multiGet:
   array(string) => Js.Promise.t(Js.Null.t(array(array(string)))) =
   "multiGet";
-let multiGet = keys =>
-  multiGet(keys) |> Js.Promise.then_(PromiseUtils.nullableToOption);
 
 [@bs.scope "AsyncStorage"] [@bs.module "react-native"]
 external multiSet: array((string, string)) => Js.Promise.t(unit) =
