@@ -206,7 +206,7 @@ type scrollToEndOptions;
 [@bs.obj]
 external scrollToEndOptions: (~animated: bool=?, unit) => scrollToEndOptions =
   "";
-[@bs.send] external scrollToEnd: ref => unit = "scrollToEnd";
+[@bs.send] external scrollToEnd: element => unit = "scrollToEnd";
 [@bs.send]
 external scrollToEndWithOptions: (ref, scrollToEndOptions) => unit =
   "scrollToEnd";
@@ -243,7 +243,7 @@ external scrollToOffsetParams:
 [@bs.send]
 external scrollToOffset: scrollToOffsetParams => unit = "scrollToOffset";
 
-[@bs.send] external recordInteraction: ref => unit = "";
+[@bs.send] external recordInteraction: element => unit = "";
 
-[@bs.send] external flashScrollIndicators: ref => unit = "";
+[@bs.send] external flashScrollIndicators: element => unit = "";
 ```

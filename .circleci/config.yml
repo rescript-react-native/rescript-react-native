@@ -83,7 +83,7 @@ aliases:
       git remote add origin https://${GITHUB_TOKEN}@github.com/reasonml-community/bs-react-native.git
 
       git add . --force
-      git commit -m "Documentation"
+      git commit -m "Website update [ci skip]"
 
       git push origin HEAD:gh-pages --quiet --force
 
