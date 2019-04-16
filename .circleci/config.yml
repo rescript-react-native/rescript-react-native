@@ -2,12 +2,11 @@ aliases:
   # Cache Management
   - &yarn-cache-restore
     keys:
-      - yarn-cache-{{ checksum "package.json" }}
+      - yarn-cache-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
   - &yarn-cache-save
     paths:
       - ~/.cache/yarn
-      - ./node_modules
-    key: yarn-cache-{{ checksum "package.json" }}
+    key: yarn-cache-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
 
   - &opam-cache-restore
     keys:
@@ -78,8 +77,8 @@ aliases:
       git init
 
       git config credential.helper 'cache --timeout=120'
-      git config user.email "grabbou@gmail.com"
-      git config user.name "Mike Grabowski"
+      git config user.email "nobody@circleci.com"
+      git config user.name "CircleCI"
 
       git remote add origin https://${GITHUB_TOKEN}@github.com/reasonml-community/bs-react-native.git
 

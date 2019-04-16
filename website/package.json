@@ -10,9 +10,8 @@
     "re:clean": "bsb -clean-world",
     "re:start": "bsb -make-world -w",
     "re:build": "bsb -make-world",
-    "build:prepare:odoc": "trash build/odoc-html && ./scripts/odoc-to-html.sh && trash build/odoc && node scripts/PrepareOdocHtmlToJson.bs.js",
     "build:prepare:md": "trash build/md && node scripts/PrepareMdToJson.bs.js",
-    "build:prepare": "yarn build:prepare:odoc && yarn build:prepare:md",
+    "build:prepare": "yarn build:prepare:md",
     "build:prerender-legacy": "./scripts/legacy-doc.sh",
     "build:prerender": "node scripts/BuildWebsite.entry.js",
     "build:copy-static": "cpy \"public/**/*\" dist/bs-react-native",
@@ -22,6 +21,7 @@
     "test": "yarn svg && yarn re:build"
   },
   "devDependencies": {
+    "@moox/bs-react-helmet": "^2.0.0",
     "bs-platform": "^5.0.1",
     "cpy-cli": "^2.0.0",
     "front-matter": "^3.0.1",
@@ -33,6 +33,7 @@
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-from-svg": "^0.1.3",
+    "react-helmet": "^5.2.0",
     "react-native-web": "^0.11.2",
     "reason-future": "^2.4.0",
     "reason-highlightjs": "^0.2.0",

@@ -1,5 +1,5 @@
 {
-  "name": "react-native-template-bs",
+  "name": "react-native-template-reason",
   "version": "0.1.0",
   "scripts": {
     "re:clean": "bsb -clean-world",

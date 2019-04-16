@@ -82,31 +82,18 @@ let styles =
 
 [@react.component]
 let make = (~currentLocation) => {
-  let uri = Consts.baseUrl ++ "/apple-touch-icon.png";
-  let width = 36.;
-  let height = 36.;
   <View style=styles##menu>
     <Container style=styles##bar wrapperStyle=styles##barWrapper>
       <ViewLink style=styles##logo href={Consts.baseUrl ++ "/"}>
-        /* <SVGLogo width=20. height=20. fill=Consts.Colors.dark /> */
-        /* react-native-web doesn't render source when renderToString is used*/
-
-          <Image
-            source={
-              Image.uriSource(~uri, ~width, ~height, ())
-              ->Image.Source.fromUriSource
-            }
-            defaultSource={Image.DefaultSource.fromUri(
-              ~uri,
-              ~width,
-              ~height,
-              (),
-            )}
-          />
-          <Text style=styles##logoText>
-            {("  " ++ Consts.title)->ReasonReact.string}
-          </Text>
-        </ViewLink>
+        <SVGBsReactNative
+          width={36.->ReactFromSvg.Size.pt}
+          height={36.->ReactFromSvg.Size.pt}
+          fill=Consts.Colors.lightest
+        />
+        <Text style=styles##logoText>
+          {("   " ++ Consts.title)->ReasonReact.string}
+        </Text>
+      </ViewLink>
       <View style=styles##links>
         {Consts.menuLinks
          ->Belt.Array.map(item => {

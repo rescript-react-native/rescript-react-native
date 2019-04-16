@@ -7,9 +7,10 @@ open ReactNative;
 let make =
     (~pageData: option(PageContent.pageData)=?, ~currentLocation: location) => {
   switch (Js.String.split("/", currentLocation##pathname)->List.fromArray) {
-  | [""] => <> <HeaderLarge currentLocation /> <Homepage /> </>
+  | [""] => <> <Head /> <HeaderLarge currentLocation /> <Homepage /> </>
   | _ =>
     <>
+      <Head />
       <HeaderLarge currentLocation />
       {pageData
        ->Option.map(pageData =>
@@ -17,7 +18,12 @@ let make =
              style=Style.(
                style(~flexDirection=`row, ~height=100.->Size.pct, ())
              )>
-             <Sidebar />
+             <BsReactHelmet>
+               <title>
+                 {("BsReactNative " ++ pageData.title)->React.string}
+               </title>
+             </BsReactHelmet>
+             <Sidebar modulesIndex={pageData.modulesIndex} />
              <PageContent pageData />
            </Container>
          )

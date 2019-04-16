@@ -4,6 +4,7 @@ type config = {
   "html": bool,
   "xhtmlOut": bool,
   "linkify": bool,
+  "langPrefix": string,
 };
 
 type remarkable;

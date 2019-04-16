@@ -1,13 +1,20 @@
 module Easing = {
-  type t;
+  type t = string;
 
-  external fromString: string => t = "%identity";
+  [@bs.inline]
+  let easeIn = "easeIn";
 
-  let easeIn = "easeIn"->fromString;
-  let easeInEaseOut = "easeInEaseOut"->fromString;
-  let easeOut = "easeOut"->fromString;
-  let linear = "linear"->fromString;
-  let keyboard = "keyboard"->fromString;
+  [@bs.inline]
+  let easeInEaseOut = "easeInEaseOut";
+
+  [@bs.inline]
+  let easeOut = "easeOut";
+
+  [@bs.inline]
+  let linear = "linear";
+
+  [@bs.inline]
+  let keyboard = "keyboard";
 };
 
 type screenRect = {

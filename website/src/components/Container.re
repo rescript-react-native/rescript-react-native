@@ -4,21 +4,9 @@ let styles =
   StyleSheet.create(
     Style.{
       "wrapper":
-        style(
-          ~flex=1.,
-          ~width=Size.pct(100.),
-          ~overflow=`hidden,
-          ~alignItems=`center,
-          (),
-        ),
+        style(~flex=1., ~alignItems=`center, ~width=Size.pct(100.), ()),
       "container":
-        style(
-          ~justifyContent=`center,
-          ~flex=1.,
-          ~width=Size.pct(100.),
-          ~paddingHorizontal=Size.pt(Spacer.space /. 4.),
-          (),
-        ),
+        style(~flex=1., ~justifyContent=`center, ~width=Size.pct(100.), ()),
     },
   );
 
@@ -45,7 +33,9 @@ let make =
         wrapperStyle,
       |])
     )>
-    <View
+    <SpacedView
+      vertical=SpacedView.None
+      horizontal=SpacedView.XXS
       style=Style.(
         arrayOption([|
           Some(styles##container),
@@ -54,5 +44,5 @@ let make =
         |])
       )>
       ...children
-    </View>
+    </SpacedView>
   </SpacedView>;

@@ -25,17 +25,8 @@ var Transform = /* module */[
   /* rad */rad
 ];
 
-var FontVariant = /* module */[
-  /* smallCaps */"small-caps",
-  /* oldstyleNums */"oldstyle-nums",
-  /* liningNums */"lining-nums",
-  /* tabularNums */"tabular-nums",
-  /* proportionalNums */"proportional-nums"
-];
-
 exports.pct = pct;
 exports.Margin = Margin;
 exports.Size = Size;
 exports.Transform = Transform;
-exports.FontVariant = FontVariant;
 /* No side effect */

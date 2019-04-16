@@ -42,7 +42,7 @@
     "bs-react-native",
     "bs-react-native-next",
     "bs-react-native-example",
-    "react-native-template-bs",
+    "react-native-template-reason",
     "website"
   ]
 }

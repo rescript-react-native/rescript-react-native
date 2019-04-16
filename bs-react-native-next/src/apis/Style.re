@@ -45,18 +45,6 @@ module Transform = {
   [@bs.obj] external skewY: (~skewY: angle) => t = "";
 };
 
-module FontVariant = {
-  type t;
-
-  external fromString: string => t = "%identity";
-
-  let smallCaps = "small-caps"->fromString;
-  let oldstyleNums = "oldstyle-nums"->fromString;
-  let liningNums = "lining-nums"->fromString;
-  let tabularNums = "tabular-nums"->fromString;
-  let proportionalNums = "proportional-nums"->fromString;
-};
-
 type offset;
 [@bs.obj] external offset: (~height: float, ~width: float) => offset = "";
 
