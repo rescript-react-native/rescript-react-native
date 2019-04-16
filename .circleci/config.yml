@@ -2,12 +2,12 @@ aliases:
   # Cache Management
   - &yarn-cache-restore
     keys:
-      - yarn-cache-{{ checksum "package.json" }}
+      - yarn-cache-{{ checksum "yarn.lock" }}
   - &yarn-cache-save
     paths:
       - ~/.cache/yarn
       - ./node_modules
-    key: yarn-cache-{{ checksum "package.json" }}
+    key: yarn-cache-{{ checksum "yarn.lock" }}
 
   - &opam-cache-restore
     keys:
