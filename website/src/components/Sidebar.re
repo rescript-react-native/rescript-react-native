@@ -126,16 +126,16 @@ let make = (~modulesIndex) => {
                  )
                  && modulesIndex->Array.some(path =>
                       link == "docs/" ++ path ++ "/"
-                    ) ?
-                   <TextLink
-                     key=title
-                     href={Consts.baseUrl ++ "/en/" ++ link}
-                     style=styles##link>
-                     title->React.string
-                   </TextLink> :
-                   <Text key=title style=styles##notlink>
-                     title->React.string
-                   </Text>
+                    )
+                   ? <TextLink
+                       key=title
+                       href={Consts.baseUrl ++ "/en/" ++ link}
+                       style=styles##link>
+                       title->React.string
+                     </TextLink>
+                   : <Text key=title style=styles##notlink>
+                       title->React.string
+                     </Text>
                )}
             ->List.toArray
             ->React.array}

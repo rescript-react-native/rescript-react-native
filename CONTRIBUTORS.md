@@ -1,6 +1,7 @@
 ## Contributors
 
-This project has been brought to you thanks to great contributions from the following developers:
+This project has been brought to you thanks to great contributions from the
+following developers:
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
@@ -8,4 +9,6 @@ This project has been brought to you thanks to great contributions from the foll
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
+This project follows the
+[all-contributors](https://github.com/kentcdodds/all-contributors)
+specification. Contributions of any kind welcome!
