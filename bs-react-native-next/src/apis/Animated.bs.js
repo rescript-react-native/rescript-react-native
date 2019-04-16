@@ -1,8 +1,5 @@
 'use strict';
 
-var $$Array = require("bs-platform/lib/js/array.js");
-var Belt_Option = require("bs-platform/lib/js/belt_Option.js");
-var Caml_option = require("bs-platform/lib/js/caml_option.js");
 var Js_undefined = require("bs-platform/lib/js/js_undefined.js");
 var ReactNative = require("react-native");
 
@@ -14,108 +11,9 @@ function start(t, callback, param) {
 var Animation = /* module */[/* start */start];
 
 function ValueAnimations(Val) {
-  var animate = function (value, velocity, deceleration, isInteraction, useNativeDriver, onComplete, iterations, param) {
-    var tmp = {
-      velocity: velocity
-    };
-    if (deceleration !== undefined) {
-      tmp.deceleration = Caml_option.valFromOption(deceleration);
-    }
-    if (isInteraction !== undefined) {
-      tmp.isInteraction = Caml_option.valFromOption(isInteraction);
-    }
-    if (useNativeDriver !== undefined) {
-      tmp.useNativeDriver = Caml_option.valFromOption(useNativeDriver);
-    }
-    if (onComplete !== undefined) {
-      tmp.onComplete = Caml_option.valFromOption(onComplete);
-    }
-    if (iterations !== undefined) {
-      tmp.iterations = Caml_option.valFromOption(iterations);
-    }
-    return ReactNative.Animated.decay(value, tmp);
-  };
-  var Decay = /* module */[/* animate */animate];
-  var animate$1 = function (value, toValue, restDisplacementThreshold, overshootClamping, restSpeedThreshold, velocity, bounciness, speed, tension, friction, stiffness, mass, damping, isInteraction, useNativeDriver, onComplete, iterations, param) {
-    var tmp = {
-      toValue: toValue[1]
-    };
-    if (restDisplacementThreshold !== undefined) {
-      tmp.restDisplacementThreshold = Caml_option.valFromOption(restDisplacementThreshold);
-    }
-    if (overshootClamping !== undefined) {
-      tmp.overshootClamping = Caml_option.valFromOption(overshootClamping);
-    }
-    if (restSpeedThreshold !== undefined) {
-      tmp.restSpeedThreshold = Caml_option.valFromOption(restSpeedThreshold);
-    }
-    if (velocity !== undefined) {
-      tmp.velocity = Caml_option.valFromOption(velocity);
-    }
-    if (bounciness !== undefined) {
-      tmp.bounciness = Caml_option.valFromOption(bounciness);
-    }
-    if (speed !== undefined) {
-      tmp.speed = Caml_option.valFromOption(speed);
-    }
-    if (tension !== undefined) {
-      tmp.tension = Caml_option.valFromOption(tension);
-    }
-    if (friction !== undefined) {
-      tmp.friction = Caml_option.valFromOption(friction);
-    }
-    if (stiffness !== undefined) {
-      tmp.stiffness = Caml_option.valFromOption(stiffness);
-    }
-    if (mass !== undefined) {
-      tmp.mass = Caml_option.valFromOption(mass);
-    }
-    if (damping !== undefined) {
-      tmp.damping = Caml_option.valFromOption(damping);
-    }
-    if (isInteraction !== undefined) {
-      tmp.isInteraction = Caml_option.valFromOption(isInteraction);
-    }
-    if (useNativeDriver !== undefined) {
-      tmp.useNativeDriver = Caml_option.valFromOption(useNativeDriver);
-    }
-    if (onComplete !== undefined) {
-      tmp.onComplete = Caml_option.valFromOption(onComplete);
-    }
-    if (iterations !== undefined) {
-      tmp.iterations = Caml_option.valFromOption(iterations);
-    }
-    return ReactNative.Animated.spring(value, tmp);
-  };
-  var Spring = /* module */[/* animate */animate$1];
-  var animate$2 = function (value, toValue, easing, duration, delay, isInteraction, useNativeDriver, onComplete, iterations, param) {
-    var tmp = {
-      toValue: toValue[1]
-    };
-    if (easing !== undefined) {
-      tmp.easing = Caml_option.valFromOption(easing);
-    }
-    if (duration !== undefined) {
-      tmp.duration = Caml_option.valFromOption(duration);
-    }
-    if (delay !== undefined) {
-      tmp.delay = Caml_option.valFromOption(delay);
-    }
-    if (isInteraction !== undefined) {
-      tmp.isInteraction = Caml_option.valFromOption(isInteraction);
-    }
-    if (useNativeDriver !== undefined) {
-      tmp.useNativeDriver = Caml_option.valFromOption(useNativeDriver);
-    }
-    if (onComplete !== undefined) {
-      tmp.onComplete = Caml_option.valFromOption(onComplete);
-    }
-    if (iterations !== undefined) {
-      tmp.iterations = Caml_option.valFromOption(iterations);
-    }
-    return ReactNative.Animated.timing(value, tmp);
-  };
-  var Timing = /* module */[/* animate */animate$2];
+  var Decay = /* module */[];
+  var Spring = /* module */[];
+  var Timing = /* module */[];
   return /* module */[
           /* Decay */Decay,
           /* Spring */Spring,
@@ -123,45 +21,11 @@ function ValueAnimations(Val) {
         ];
 }
 
-function extrapolateString(param) {
-  switch (param) {
-    case 0 : 
-        return "extend";
-    case 1 : 
-        return "clamp";
-    case 2 : 
-        return "identity";
-    
-  }
-}
+var Interpolation = /* module */[];
 
-function interpolate(value, inputRange, outputRange, easing, extrapolate, extrapolateLeft, extrapolateRight, param) {
-  var tmp = {
-    inputRange: $$Array.of_list(inputRange),
-    outputRange: $$Array.of_list(outputRange[1])
-  };
-  if (easing !== undefined) {
-    tmp.easing = Caml_option.valFromOption(easing);
-  }
-  var tmp$1 = Belt_Option.map(extrapolate, extrapolateString);
-  if (tmp$1 !== undefined) {
-    tmp.extrapolate = Caml_option.valFromOption(tmp$1);
-  }
-  var tmp$2 = Belt_Option.map(extrapolateLeft, extrapolateString);
-  if (tmp$2 !== undefined) {
-    tmp.extrapolateLeft = Caml_option.valFromOption(tmp$2);
-  }
-  var tmp$3 = Belt_Option.map(extrapolateRight, extrapolateString);
-  if (tmp$3 !== undefined) {
-    tmp.extrapolateRight = Caml_option.valFromOption(tmp$3);
-  }
-  return value.interpolate(tmp);
+function interpolate(prim, prim$1) {
+  return prim.interpolate(prim$1);
 }
-
-var Interpolation = /* module */[
-  /* extrapolateString */extrapolateString,
-  /* interpolate */interpolate
-];
 
 var ValueOperations = /* module */[/* interpolate */interpolate];
 
@@ -175,113 +39,11 @@ function stopAnimation(value, callback, param) {
   return /* () */0;
 }
 
-function animate(value, velocity, deceleration, isInteraction, useNativeDriver, onComplete, iterations, param) {
-  var tmp = {
-    velocity: velocity
-  };
-  if (deceleration !== undefined) {
-    tmp.deceleration = Caml_option.valFromOption(deceleration);
-  }
-  if (isInteraction !== undefined) {
-    tmp.isInteraction = Caml_option.valFromOption(isInteraction);
-  }
-  if (useNativeDriver !== undefined) {
-    tmp.useNativeDriver = Caml_option.valFromOption(useNativeDriver);
-  }
-  if (onComplete !== undefined) {
-    tmp.onComplete = Caml_option.valFromOption(onComplete);
-  }
-  if (iterations !== undefined) {
-    tmp.iterations = Caml_option.valFromOption(iterations);
-  }
-  return ReactNative.Animated.decay(value, tmp);
-}
+var Decay = /* module */[];
 
-var Decay = /* module */[/* animate */animate];
+var Spring = /* module */[];
 
-function animate$1(value, toValue, restDisplacementThreshold, overshootClamping, restSpeedThreshold, velocity, bounciness, speed, tension, friction, stiffness, mass, damping, isInteraction, useNativeDriver, onComplete, iterations, param) {
-  var tmp = {
-    toValue: toValue[1]
-  };
-  if (restDisplacementThreshold !== undefined) {
-    tmp.restDisplacementThreshold = Caml_option.valFromOption(restDisplacementThreshold);
-  }
-  if (overshootClamping !== undefined) {
-    tmp.overshootClamping = Caml_option.valFromOption(overshootClamping);
-  }
-  if (restSpeedThreshold !== undefined) {
-    tmp.restSpeedThreshold = Caml_option.valFromOption(restSpeedThreshold);
-  }
-  if (velocity !== undefined) {
-    tmp.velocity = Caml_option.valFromOption(velocity);
-  }
-  if (bounciness !== undefined) {
-    tmp.bounciness = Caml_option.valFromOption(bounciness);
-  }
-  if (speed !== undefined) {
-    tmp.speed = Caml_option.valFromOption(speed);
-  }
-  if (tension !== undefined) {
-    tmp.tension = Caml_option.valFromOption(tension);
-  }
-  if (friction !== undefined) {
-    tmp.friction = Caml_option.valFromOption(friction);
-  }
-  if (stiffness !== undefined) {
-    tmp.stiffness = Caml_option.valFromOption(stiffness);
-  }
-  if (mass !== undefined) {
-    tmp.mass = Caml_option.valFromOption(mass);
-  }
-  if (damping !== undefined) {
-    tmp.damping = Caml_option.valFromOption(damping);
-  }
-  if (isInteraction !== undefined) {
-    tmp.isInteraction = Caml_option.valFromOption(isInteraction);
-  }
-  if (useNativeDriver !== undefined) {
-    tmp.useNativeDriver = Caml_option.valFromOption(useNativeDriver);
-  }
-  if (onComplete !== undefined) {
-    tmp.onComplete = Caml_option.valFromOption(onComplete);
-  }
-  if (iterations !== undefined) {
-    tmp.iterations = Caml_option.valFromOption(iterations);
-  }
-  return ReactNative.Animated.spring(value, tmp);
-}
-
-var Spring = /* module */[/* animate */animate$1];
-
-function animate$2(value, toValue, easing, duration, delay, isInteraction, useNativeDriver, onComplete, iterations, param) {
-  var tmp = {
-    toValue: toValue[1]
-  };
-  if (easing !== undefined) {
-    tmp.easing = Caml_option.valFromOption(easing);
-  }
-  if (duration !== undefined) {
-    tmp.duration = Caml_option.valFromOption(duration);
-  }
-  if (delay !== undefined) {
-    tmp.delay = Caml_option.valFromOption(delay);
-  }
-  if (isInteraction !== undefined) {
-    tmp.isInteraction = Caml_option.valFromOption(isInteraction);
-  }
-  if (useNativeDriver !== undefined) {
-    tmp.useNativeDriver = Caml_option.valFromOption(useNativeDriver);
-  }
-  if (onComplete !== undefined) {
-    tmp.onComplete = Caml_option.valFromOption(onComplete);
-  }
-  if (iterations !== undefined) {
-    tmp.iterations = Caml_option.valFromOption(iterations);
-  }
-  return ReactNative.Animated.timing(value, tmp);
-}
-
-var Timing = /* module */[/* animate */animate$2];
+var Timing = /* module */[];
 
 var Value = /* module */[
   /* resetAnimation */resetAnimation,
@@ -315,113 +77,11 @@ function setOffset(t, x, y) {
   return /* () */0;
 }
 
-function animate$3(value, velocity, deceleration, isInteraction, useNativeDriver, onComplete, iterations, param) {
-  var tmp = {
-    velocity: velocity
-  };
-  if (deceleration !== undefined) {
-    tmp.deceleration = Caml_option.valFromOption(deceleration);
-  }
-  if (isInteraction !== undefined) {
-    tmp.isInteraction = Caml_option.valFromOption(isInteraction);
-  }
-  if (useNativeDriver !== undefined) {
-    tmp.useNativeDriver = Caml_option.valFromOption(useNativeDriver);
-  }
-  if (onComplete !== undefined) {
-    tmp.onComplete = Caml_option.valFromOption(onComplete);
-  }
-  if (iterations !== undefined) {
-    tmp.iterations = Caml_option.valFromOption(iterations);
-  }
-  return ReactNative.Animated.decay(value, tmp);
-}
+var Decay$1 = /* module */[];
 
-var Decay$1 = /* module */[/* animate */animate$3];
+var Spring$1 = /* module */[];
 
-function animate$4(value, toValue, restDisplacementThreshold, overshootClamping, restSpeedThreshold, velocity, bounciness, speed, tension, friction, stiffness, mass, damping, isInteraction, useNativeDriver, onComplete, iterations, param) {
-  var tmp = {
-    toValue: toValue[1]
-  };
-  if (restDisplacementThreshold !== undefined) {
-    tmp.restDisplacementThreshold = Caml_option.valFromOption(restDisplacementThreshold);
-  }
-  if (overshootClamping !== undefined) {
-    tmp.overshootClamping = Caml_option.valFromOption(overshootClamping);
-  }
-  if (restSpeedThreshold !== undefined) {
-    tmp.restSpeedThreshold = Caml_option.valFromOption(restSpeedThreshold);
-  }
-  if (velocity !== undefined) {
-    tmp.velocity = Caml_option.valFromOption(velocity);
-  }
-  if (bounciness !== undefined) {
-    tmp.bounciness = Caml_option.valFromOption(bounciness);
-  }
-  if (speed !== undefined) {
-    tmp.speed = Caml_option.valFromOption(speed);
-  }
-  if (tension !== undefined) {
-    tmp.tension = Caml_option.valFromOption(tension);
-  }
-  if (friction !== undefined) {
-    tmp.friction = Caml_option.valFromOption(friction);
-  }
-  if (stiffness !== undefined) {
-    tmp.stiffness = Caml_option.valFromOption(stiffness);
-  }
-  if (mass !== undefined) {
-    tmp.mass = Caml_option.valFromOption(mass);
-  }
-  if (damping !== undefined) {
-    tmp.damping = Caml_option.valFromOption(damping);
-  }
-  if (isInteraction !== undefined) {
-    tmp.isInteraction = Caml_option.valFromOption(isInteraction);
-  }
-  if (useNativeDriver !== undefined) {
-    tmp.useNativeDriver = Caml_option.valFromOption(useNativeDriver);
-  }
-  if (onComplete !== undefined) {
-    tmp.onComplete = Caml_option.valFromOption(onComplete);
-  }
-  if (iterations !== undefined) {
-    tmp.iterations = Caml_option.valFromOption(iterations);
-  }
-  return ReactNative.Animated.spring(value, tmp);
-}
-
-var Spring$1 = /* module */[/* animate */animate$4];
-
-function animate$5(value, toValue, easing, duration, delay, isInteraction, useNativeDriver, onComplete, iterations, param) {
-  var tmp = {
-    toValue: toValue[1]
-  };
-  if (easing !== undefined) {
-    tmp.easing = Caml_option.valFromOption(easing);
-  }
-  if (duration !== undefined) {
-    tmp.duration = Caml_option.valFromOption(duration);
-  }
-  if (delay !== undefined) {
-    tmp.delay = Caml_option.valFromOption(delay);
-  }
-  if (isInteraction !== undefined) {
-    tmp.isInteraction = Caml_option.valFromOption(isInteraction);
-  }
-  if (useNativeDriver !== undefined) {
-    tmp.useNativeDriver = Caml_option.valFromOption(useNativeDriver);
-  }
-  if (onComplete !== undefined) {
-    tmp.onComplete = Caml_option.valFromOption(onComplete);
-  }
-  if (iterations !== undefined) {
-    tmp.iterations = Caml_option.valFromOption(iterations);
-  }
-  return ReactNative.Animated.timing(value, tmp);
-}
-
-var Timing$1 = /* module */[/* animate */animate$5];
+var Timing$1 = /* module */[];
 
 var ValueXY = /* module */[
   /* create */create,
@@ -439,6 +99,18 @@ function loop($staropt$star, animation, param) {
             });
 }
 
+function timing(prim, prim$1) {
+  return ReactNative.Animated.timing(prim, prim$1);
+}
+
+function spring(prim, prim$1) {
+  return ReactNative.Animated.spring(prim, prim$1);
+}
+
+function decay(prim, prim$1) {
+  return ReactNative.Animated.decay(prim, prim$1);
+}
+
 function stop(prim) {
   prim.stop();
   return /* () */0;
@@ -448,12 +120,6 @@ function reset(prim) {
   prim.reset();
   return /* () */0;
 }
-
-var timing = animate$2;
-
-var spring = animate$1;
-
-var decay = animate;
 
 exports.Animation = Animation;
 exports.ValueAnimations = ValueAnimations;

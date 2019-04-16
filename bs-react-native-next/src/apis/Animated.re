@@ -26,6 +26,7 @@ type valueXY;
 module ValueAnimations = (Val: Value) => {
   module Decay = {
     type config;
+
     [@bs.obj]
     external makeConfig:
       (
@@ -34,38 +35,23 @@ module ValueAnimations = (Val: Value) => {
         ~isInteraction: bool=?,
         ~useNativeDriver: bool=?,
         ~onComplete: Animation.endCallback=?,
-        ~iterations: int=?
+        ~iterations: int=?,
+        unit
       ) =>
       config =
       "";
+
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external _decay: (Val.t, config) => Animation.t = "decay";
-    let animate =
-        (
-          ~value,
-          ~velocity,
-          ~deceleration=?,
-          ~isInteraction=?,
-          ~useNativeDriver=?,
-          ~onComplete=?,
-          ~iterations=?,
-          (),
-        ) =>
-      _decay(
-        value,
-        makeConfig(
-          ~velocity,
-          ~deceleration?,
-          ~isInteraction?,
-          ~useNativeDriver?,
-          ~onComplete?,
-          ~iterations?,
-        ),
-      );
+    external decay: (~value: Val.t, ~config: config) => Animation.t = "";
   };
+
   module Spring = {
     type toValue;
+    external fromRawValue: Val.rawJsType => toValue = "%identity";
+    external fromAnimatedValue: Val.t => toValue = "%identity";
+
     type config;
+
     [@bs.obj]
     external makeConfig:
       (
@@ -84,64 +70,24 @@ module ValueAnimations = (Val: Value) => {
         ~isInteraction: bool=?,
         ~useNativeDriver: bool=?,
         ~onComplete: Animation.endCallback=?,
-        ~iterations: int=?
+        ~iterations: int=?,
+        unit
       ) =>
       config =
       "";
-    external toValueRaw: Val.rawJsType => toValue = "%identity";
-    external toValueAnimated: Val.t => toValue = "%identity";
+
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external _spring: (Val.t, config) => Animation.t = "spring";
-    let animate =
-        (
-          ~value,
-          ~toValue,
-          ~restDisplacementThreshold=?,
-          ~overshootClamping=?,
-          ~restSpeedThreshold=?,
-          ~velocity=?,
-          ~bounciness=?,
-          ~speed=?,
-          ~tension=?,
-          ~friction=?,
-          ~stiffness=?,
-          ~mass=?,
-          ~damping=?,
-          ~isInteraction=?,
-          ~useNativeDriver=?,
-          ~onComplete=?,
-          ~iterations=?,
-          (),
-        ) =>
-      _spring(
-        value,
-        makeConfig(
-          ~toValue=
-            switch (toValue) {
-            | `raw(x) => toValueRaw(x)
-            | `animated(x) => toValueAnimated(x)
-            },
-          ~restDisplacementThreshold?,
-          ~overshootClamping?,
-          ~restSpeedThreshold?,
-          ~velocity?,
-          ~bounciness?,
-          ~speed?,
-          ~tension?,
-          ~friction?,
-          ~stiffness?,
-          ~mass?,
-          ~damping?,
-          ~isInteraction?,
-          ~useNativeDriver?,
-          ~onComplete?,
-          ~iterations?,
-        ),
-      );
+    external spring: (~value: Val.t, ~config: config) => Animation.t = "";
   };
+
   module Timing = {
     type toValue;
+
+    external fromRawValue: Val.rawJsType => toValue = "%identity";
+    external fromAnimatedValue: Val.t => toValue = "%identity";
+
     type config;
+
     [@bs.obj]
     external makeConfig:
       (
@@ -152,60 +98,22 @@ module ValueAnimations = (Val: Value) => {
         ~isInteraction: bool=?,
         ~useNativeDriver: bool=?,
         ~onComplete: Animation.endCallback=?,
-        ~iterations: int=?
+        ~iterations: int=?,
+        unit
       ) =>
       config =
       "";
-    external toValueRaw: Val.rawJsType => toValue = "%identity";
-    external toValueAnimated: Val.t => toValue = "%identity";
+
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external _timing: (Val.t, config) => Animation.t = "timing";
-    let animate =
-        (
-          ~value,
-          ~toValue,
-          ~easing=?,
-          ~duration=?,
-          ~delay=?,
-          ~isInteraction=?,
-          ~useNativeDriver=?,
-          ~onComplete=?,
-          ~iterations=?,
-          (),
-        ) =>
-      _timing(
-        value,
-        makeConfig(
-          ~toValue=
-            switch (toValue) {
-            | `raw(x) => toValueRaw(x)
-            | `animated(x) => toValueAnimated(x)
-            },
-          ~easing?,
-          ~duration?,
-          ~delay?,
-          ~isInteraction?,
-          ~useNativeDriver?,
-          ~onComplete?,
-          ~iterations?,
-        ),
-      );
+    external timing: (~value: Val.t, ~config: config) => Animation.t = "";
   };
 };
 
 module Interpolation = {
   type t = value(calculated);
   type outputRange;
-  external outputRangeCreate: 'a => outputRange = "%identity";
-  type extrapolate =
-    | Extend
-    | Clamp
-    | Identity;
-  let extrapolateString =
-    fun
-    | Extend => "extend"
-    | Clamp => "clamp"
-    | Identity => "identity";
+  external fromStringArray: array(string) => outputRange = "%identity";
+  external fromFloatArray: array(float) => outputRange = "%identity";
 
   type config;
   [@bs.obj]
@@ -214,41 +122,15 @@ module Interpolation = {
       ~inputRange: array(float),
       ~outputRange: outputRange,
       ~easing: Easing.t=?,
-      ~extrapolate: string=?,
-      ~extrapolateLeft: string=?,
-      ~extrapolateRight: string=?
+      ~extrapolate: [@bs.string] [ | `extend | `clamp | `identity]=?,
+      ~extrapolateLeft: [@bs.string] [ | `extend | `clamp | `identity]=?,
+      ~extrapolateRight: [@bs.string] [ | `extend | `clamp | `identity]=?
     ) =>
     config =
     "";
-  [@bs.send] external _interpolate: (value('a), config) => t = "interpolate";
-  let interpolate =
-      (
-        value,
-        ~inputRange,
-        ~outputRange,
-        ~easing=?,
-        ~extrapolate=?,
-        ~extrapolateLeft=?,
-        ~extrapolateRight=?,
-        (),
-      ) =>
-    _interpolate(
-      value,
-      makeConfig(
-        ~inputRange=Array.of_list(inputRange),
-        ~outputRange=
-          switch (outputRange) {
-          | `string((x: list(string))) =>
-            outputRangeCreate(Array.of_list(x))
-          | `float((x: list(float))) => outputRangeCreate(Array.of_list(x))
-          },
-        ~easing?,
-        ~extrapolate=?extrapolate->Belt.Option.map(extrapolateString),
-        ~extrapolateRight=?
-          extrapolateRight->Belt.Option.map(extrapolateString),
-        ~extrapolateLeft=?extrapolateLeft->Belt.Option.map(extrapolateString),
-      ),
-    );
+  [@bs.send]
+  external interpolate: (~value: value('a), ~config: config) => t =
+    "interpolate";
 };
 
 module ValueOperations = {
@@ -373,11 +255,11 @@ external createAnimatedComponent:
   React.component('props) => React.component('props) =
   "";
 
-let timing = Value.Timing.animate;
+let timing = Value.Timing.timing;
 
-let spring = Value.Spring.animate;
+let spring = Value.Spring.spring;
 
-let decay = Value.Decay.animate;
+let decay = Value.Decay.decay;
 
 let start = Animation.start;
 
