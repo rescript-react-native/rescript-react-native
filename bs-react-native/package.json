@@ -18,11 +18,11 @@
     "test": "yarn re:clean-build"
   },
   "devDependencies": {
-    "bs-platform": "^4.0.18",
-    "reason-react": "^0.6.0"
+    "bs-platform": "^5.0.1",
+    "reason-react": "^0.7.0"
   },
   "peerDependencies": {
     "react-native": "^0.53.3",
-    "reason-react": "^0.6.0"
+    "reason-react": "^0.7.0"
   }
 }
