@@ -6,7 +6,6 @@ aliases:
   - &yarn-cache-save
     paths:
       - ~/.cache/yarn
-      - ./node_modules
     key: yarn-cache-{{ checksum "yarn.lock" }}
 
   - &opam-cache-restore
