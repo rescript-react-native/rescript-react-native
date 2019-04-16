@@ -18,7 +18,7 @@
     "test": "yarn re:clean-build"
   },
   "devDependencies": {
-    "bs-platform": "^4.0.18",
+    "bs-platform": "^5.0.1",
     "reason-react": "^0.6.0"
   },
   "peerDependencies": {

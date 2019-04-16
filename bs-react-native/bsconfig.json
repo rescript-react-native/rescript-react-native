@@ -2,7 +2,9 @@
   "name": "bs-react-native",
   "namespace": true,
   "refmt": 3,
-  "reason": { "react-jsx": 2 },
+  "reason": {
+    "react-jsx": 2
+  },
   "package-specs": {
     "module": "es6",
     "in-source": true
@@ -14,6 +16,6 @@
       "subdirs": true
     }
   ],
-  "bsc-flags": ["-warn-error @a", "-w -41-42-102"],
+  "bsc-flags": ["-bs-no-version-header", "-warn-error @a", "-w -41-42-102"],
   "bs-dependencies": ["reason-react"]
 }
