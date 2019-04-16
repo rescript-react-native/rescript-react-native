@@ -103,6 +103,12 @@ external abortPrefetch: requestId => unit = "abortPrefetch";
 [@bs.module "react-native"] [@bs.scope "Image"]
 external queryCache: (~uris: array(string)) => unit = "queryCache";
 
+type asset = {
+  .
+  "uri": string,
+  "width": float,
+  "height": float,
+};
+
 [@bs.module "react-native"] [@bs.scope "Image"]
-external resolveAssetSource: Packager.required => uriSource =
-  "resolveAssetSource";
+external resolveAssetSource: Source.t => asset = "resolveAssetSource";
