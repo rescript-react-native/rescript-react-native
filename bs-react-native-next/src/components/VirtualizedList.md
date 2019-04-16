@@ -213,16 +213,16 @@ external make:
     ~onLayout: Event.NativeLayoutEvent.t => unit=?,
     ~onMagicTap: unit => unit=?,
     // Gesture Responder props
-    ~onMoveShouldSetResponder: Event.t => bool=?,
-    ~onMoveShouldSetResponderCapture: Event.t => bool=?,
-    ~onResponderGrant: Event.t => unit=?,
-    ~onResponderMove: Event.t => unit=?,
-    ~onResponderReject: Event.t => unit=?,
-    ~onResponderRelease: Event.t => unit=?,
-    ~onResponderTerminate: Event.t => unit=?,
-    ~onResponderTerminationRequest: Event.t => unit=?,
-    ~onStartShouldSetResponder: Event.t => bool=?,
-    ~onStartShouldSetResponderCapture: Event.t => bool=?,
+    ~onMoveShouldSetResponder: Event.pressEvent => bool=?,
+    ~onMoveShouldSetResponderCapture: Event.pressEvent => bool=?,
+    ~onResponderGrant: Event.pressEvent => unit=?,
+    ~onResponderMove: Event.pressEvent => unit=?,
+    ~onResponderReject: Event.pressEvent => unit=?,
+    ~onResponderRelease: Event.pressEvent => unit=?,
+    ~onResponderTerminate: Event.pressEvent => unit=?,
+    ~onResponderTerminationRequest: Event.pressEvent => unit=?,
+    ~onStartShouldSetResponder: Event.pressEvent => bool=?,
+    ~onStartShouldSetResponderCapture: Event.pressEvent => bool=?,
     ~pointerEvents: [@bs.string] [
                       | `auto
                       | `none
