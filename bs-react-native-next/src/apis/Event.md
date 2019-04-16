@@ -5,27 +5,27 @@ wip: true
 ---
 
 ```reason
-type t;
+// see https://github.com/facebook/react-native/blob/master/Libraries/Types/CoreEventTypes.js
 
-module NativeEvent = {
-  type t;
-  [@bs.get] external changedTouches: t => array(Js.t({..})) = "";
-  [@bs.get] external identifier: t => int = "";
-  [@bs.get] external locationX: t => float = "";
-  [@bs.get] external locationY: t => float = "";
-  [@bs.get] external pageX: t => float = "";
-  [@bs.get] external pageY: t => float = "";
-  [@bs.get] external target: t => Js.t({..}) = "";
-  [@bs.get] external touches: t => array(Js.t({..})) = "";
-  [@bs.get] external timestamp: t => int = "";
-  [@bs.get] external data: t => string = "";
+type event('a) = {. "nativeEvent": 'a};
+
+type pressEventPayload = {
+  .
+  "changedTouches": array(pressEventPayload),
+  "force": float,
+  "identifier": int,
+  "locationX": float,
+  "locationY": float,
+  "pageX": float,
+  "pageY": float,
+  "target": Js.Nullable.t(float),
+  "timestamp": float,
+  "touches": array(pressEventPayload)
 };
 
-/*
- fixme rename NativeEvent to NativePressEvent when necessary
- see https://github.com/facebook/react-native/blob/master/Libraries/Types/CoreEventTypes.js
- */
-module NativePressEvent = NativeEvent;
+type pressEvent = event(pressEventPayload);
+
+type t;
 
 module NativeLayoutEvent = {
   type t;
@@ -76,8 +76,6 @@ module NativeScrollEvent = {
     {bottom: ci##bottom, top: ci##top, left: ci##left, right: ci##right};
   };
 };
-
-[@bs.get] external nativeEvent: t => NativeEvent.t = "";
 
 [@bs.get] external nativeLayoutEvent: t => NativeLayoutEvent.t = "nativeEvent";
 

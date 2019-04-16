@@ -1,8 +1,6 @@
 'use strict';
 
 
-var NativeEvent = /* module */[];
-
 function layout(t) {
   var l = t.nativeEvent.layout;
   return /* record */[
@@ -56,10 +54,6 @@ var NativeScrollEvent = /* module */[
   /* contentInset */contentInset
 ];
 
-var NativePressEvent = 0;
-
-exports.NativeEvent = NativeEvent;
-exports.NativePressEvent = NativePressEvent;
 exports.NativeLayoutEvent = NativeLayoutEvent;
 exports.NativeScrollEvent = NativeScrollEvent;
 /* No side effect */
