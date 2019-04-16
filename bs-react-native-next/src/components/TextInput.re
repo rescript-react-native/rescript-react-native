@@ -277,10 +277,10 @@ external make:
   React.element =
   "TextInput";
 
-[@bs.send] external isFocused: ref => bool = "";
+[@bs.send] external isFocused: element => bool = "";
 
-[@bs.send] external clear: ref => unit = "";
+[@bs.send] external clear: element => unit = "";
 
-[@bs.send] external focus: ref => unit = "";
+[@bs.send] external focus: element => unit = "";
 
-[@bs.send] external blur: ref => unit = "";
+[@bs.send] external blur: element => unit = "";

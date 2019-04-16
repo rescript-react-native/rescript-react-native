@@ -150,10 +150,10 @@ type scrollToEndOptions;
 external scrollToEndOptions:
   (~animated: bool=?, ~duration: float=?, unit) => scrollToEndOptions =
   "";
-[@bs.send] external scrollToEnd: ref => unit = "scrollToEnd";
+[@bs.send] external scrollToEnd: element => unit = "scrollToEnd";
 [@bs.send]
 external scrollToEndWithOptions: (ref, scrollToEndOptions) => unit =
   "scrollToEnd";
 
-[@bs.send] external flashScrollIndicators: ref => unit = "";
+[@bs.send] external flashScrollIndicators: element => unit = "";
 ```

@@ -5,6 +5,9 @@ wip: true
 ---
 
 ```reason
+type element;
+type ref = React.Ref.t(Js.nullable(element));
+
 type event('a) = {. "nativeEvent": 'a};
 
 type editingEvent =
@@ -50,6 +53,8 @@ type keyPressEvent = event({. "key": string});
 [@react.component] [@bs.module "react-native"]
 external make:
   (
+    ~ref: ref=?,
+    // TextInput props
     ~allowFontScaling: bool=?,
     ~autoCapitalize: [@bs.string] [
                        | `characters
@@ -279,12 +284,12 @@ external make:
   React.element =
   "TextInput";
 
-[@bs.send] external isFocused: ReasonReact.reactRef => bool = "";
+[@bs.send] external isFocused: element => bool = "";
 
-[@bs.send] external clear: ReasonReact.reactRef => unit = "";
+[@bs.send] external clear: element => unit = "";
 
-[@bs.send] external focus: ReasonReact.reactRef => unit = "";
+[@bs.send] external focus: element => unit = "";
 
-[@bs.send] external blur: ReasonReact.reactRef => unit = "";
+[@bs.send] external blur: element => unit = "";
 
 ```
