@@ -20,6 +20,33 @@ type pressEventPayload = {
 
 type pressEvent = event(pressEventPayload);
 
+type position = {
+  .
+  "y": float,
+  "x": float,
+};
+
+type dimensions = {
+  .
+  "height": float,
+  "width": float,
+};
+
+type scrollEvent =
+  event({
+    .
+    "contentInset": {
+      .
+      "bottom": float,
+      "left": float,
+      "right": float,
+      "top": float,
+    },
+    "contentOffset": position,
+    "contentSize": dimensions,
+    "layoutMeasurement": dimensions,
+  });
+
 type t;
 
 module NativeLayoutEvent = {
@@ -37,41 +64,4 @@ module NativeLayoutEvent = {
   };
 };
 
-module NativeScrollEvent = {
-  type t;
-  type point = {
-    x: float,
-    y: float,
-  };
-  type size = {
-    width: float,
-    height: float,
-  };
-  type contentInset = {
-    bottom: float,
-    top: float,
-    left: float,
-    right: float,
-  };
-  [@bs.get] external _nativeEvent: t => Js.t('a) = "nativeEvent";
-  let contentOffset = (t: t) => {
-    let co = _nativeEvent(t)##contentOffset;
-    {x: co##x, y: co##y};
-  };
-  let contentSize = (t: t) => {
-    let cs = _nativeEvent(t)##contentSize;
-    {width: cs##width, height: cs##height};
-  };
-  let layoutMeasurement = (t: t) => {
-    let lm = _nativeEvent(t)##layoutMeasurement;
-    {width: lm##width, height: lm##height};
-  };
-  let contentInset = (t: t) => {
-    let ci = _nativeEvent(t)##contentInset;
-    {bottom: ci##bottom, top: ci##top, left: ci##left, right: ci##right};
-  };
-};
-
 [@bs.get] external nativeLayoutEvent: t => NativeLayoutEvent.t = "nativeEvent";
-
-[@bs.get] external nativeScrollEvent: t => NativeScrollEvent.t = "nativeEvent";
