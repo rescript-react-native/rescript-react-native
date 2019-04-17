@@ -1,6 +1,4 @@
-/*
- see https://github.com/facebook/react-native/blob/master/Libraries/Types/CoreEventTypes.js
- */
+// see https://github.com/facebook/react-native/blob/master/Libraries/Types/CoreEventTypes.js
 
 type event('a) = {. "nativeEvent": 'a};
 
@@ -47,21 +45,14 @@ type scrollEvent =
     "layoutMeasurement": dimensions,
   });
 
-type t;
-
-module NativeLayoutEvent = {
-  type t;
-  type layout = {
-    x: float,
-    y: float,
-    width: float,
-    height: float,
-  };
-  [@bs.get] external _layout: t => Js.t('a) = "nativeEvent";
-  let layout = (t: t) => {
-    let l = _layout(t)##layout;
-    {x: l##x, y: l##y, width: l##width, height: l##height};
-  };
-};
-
-[@bs.get] external nativeLayoutEvent: t => NativeLayoutEvent.t = "nativeEvent";
+type layoutEvent =
+  event({
+    .
+    "layout": {
+      .
+      "x": float,
+      "y": float,
+      "width": float,
+      "height": float,
+    },
+  });
