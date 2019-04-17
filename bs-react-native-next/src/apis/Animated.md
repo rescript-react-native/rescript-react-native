@@ -134,9 +134,7 @@ module Interpolation = {
     ) =>
     config =
     "";
-  [@bs.send]
-  external interpolate: (~value: value('a), ~config: config) => t =
-    "interpolate";
+  [@bs.send] external interpolate: (value('a), config) => t = "interpolate";
 };
 
 module ValueOperations = {
