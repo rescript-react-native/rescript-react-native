@@ -1,10 +1,1 @@
-'use strict';
-
-var ReactNative = require("react-native");
-
-function get(name) {
-  return ReactNative.NativeModules[name];
-}
-
-exports.get = get;
-/* react-native Not a pure module */
+/* This output is empty. Its source's type definitions, externals and/or unused code got optimized away. */
