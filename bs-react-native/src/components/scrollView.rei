@@ -295,6 +295,7 @@ module type ScrollViewComponent = {
       ~minimumZoomScale: float=?,
       ~scrollEventThrottle: int=?,
       ~scrollIndicatorInsets: Types.insets=?,
+      ~scrollToOverflowEnabled: bool=?,
       ~scrollsToTop: bool=?,
       ~snapToInterval: float=?,
       ~snapToAlignment: snapToAlignment=?,

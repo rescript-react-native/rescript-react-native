@@ -68,6 +68,7 @@ module type ScrollViewComponent = {
       ~minimumZoomScale: float=?,
       ~scrollEventThrottle: int=?,
       ~scrollIndicatorInsets: Types.insets=?,
+      ~scrollToOverflowEnabled: bool=?,
       ~scrollsToTop: bool=?,
       ~snapToInterval: float=?,
       ~snapToAlignment: [ | `center | `start | `end_]=?,
@@ -166,6 +167,7 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
         ~minimumZoomScale=?,
         ~scrollEventThrottle=?,
         ~scrollIndicatorInsets=?,
+        ~scrollToOverflowEnabled=?,
         ~scrollsToTop=?,
         ~snapToInterval=?,
         ~snapToAlignment=?,
@@ -222,6 +224,7 @@ module CreateComponent = (Impl: View.Impl) : ScrollViewComponent => {
             "minimumZoomScale": minimumZoomScale,
             "scrollEventThrottle": scrollEventThrottle,
             "scrollIndicatorInsets": scrollIndicatorInsets,
+            "scrollToOverflowEnabled": scrollToOverflowEnabled,
             "scrollsToTop": scrollsToTop,
             "snapToInterval": snapToInterval,
             "snapToAlignment":
