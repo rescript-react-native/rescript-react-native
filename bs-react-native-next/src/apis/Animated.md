@@ -34,7 +34,7 @@ module ValueAnimations = (Val: Value) => {
     type config;
 
     [@bs.obj]
-    external makeConfig:
+    external config:
       (
         ~velocity: Val.rawJsType,
         ~deceleration: float=?,
@@ -48,7 +48,7 @@ module ValueAnimations = (Val: Value) => {
       "";
 
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external decay: (~value: Val.t, ~config: config) => Animation.t = "";
+    external decay: (Val.t, config) => Animation.t = "";
   };
 
   module Spring = {
@@ -59,7 +59,7 @@ module ValueAnimations = (Val: Value) => {
     type config;
 
     [@bs.obj]
-    external makeConfig:
+    external config:
       (
         ~toValue: toValue,
         ~restDisplacementThreshold: float=?,
@@ -83,7 +83,7 @@ module ValueAnimations = (Val: Value) => {
       "";
 
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external spring: (~value: Val.t, ~config: config) => Animation.t = "";
+    external spring: (Val.t, config) => Animation.t = "";
   };
 
   module Timing = {
@@ -95,7 +95,7 @@ module ValueAnimations = (Val: Value) => {
     type config;
 
     [@bs.obj]
-    external makeConfig:
+    external config:
       (
         ~toValue: toValue,
         ~easing: Easing.t=?,
@@ -111,7 +111,7 @@ module ValueAnimations = (Val: Value) => {
       "";
 
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external timing: (~value: Val.t, ~config: config) => Animation.t = "";
+    external timing: (Val.t, config) => Animation.t = "";
   };
 };
 
@@ -123,7 +123,7 @@ module Interpolation = {
 
   type config;
   [@bs.obj]
-  external makeConfig:
+  external config:
     (
       ~inputRange: array(float),
       ~outputRange: outputRange,
@@ -184,16 +184,11 @@ module Value = {
 
 module ValueXY = {
   type t = valueXY;
-
   type jsValue = {
     .
     "x": float,
     "y": float,
   };
-
-  [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
-  external create: jsValue => t = "ValueXY";
-
   type callback = jsValue => unit;
   type translateTransform = {
     .
@@ -205,6 +200,8 @@ module ValueXY = {
     "left": Value.t,
     "top": Value.t,
   };
+  [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
+  external create: jsValue => t = "ValueXY";
 
   [@bs.send] external setValue: (t, jsValue) => unit = "";
   [@bs.send] external setOffset: (t, jsValue) => unit = "";
@@ -217,7 +214,6 @@ module ValueXY = {
   [@bs.send]
   external stopAnimation: (t, ~callback: callback=?, unit) => unit =
     "stopAnimation";
-
   [@bs.send] external addListener: (t, callback) => string = "addListener";
   [@bs.send] external removeListener: (t, string) => unit = "removeListener";
   [@bs.send] external removeAllListeners: t => unit = "removeAllListeners";
@@ -274,4 +270,5 @@ let start = Animation.start;
 let stop = Animation.stop;
 
 let reset = Animation.reset;
+
 ```
