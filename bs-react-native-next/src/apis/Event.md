@@ -5,9 +5,7 @@ wip: true
 ---
 
 ```reason
-/*
- see https://github.com/facebook/react-native/blob/master/Libraries/Types/CoreEventTypes.js
- */
+// see https://github.com/facebook/react-native/blob/master/Libraries/Types/CoreEventTypes.js
 
 type event('a) = {. "nativeEvent": 'a};
 
