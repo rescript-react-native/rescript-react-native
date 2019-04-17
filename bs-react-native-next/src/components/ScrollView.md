@@ -107,7 +107,7 @@ external make:
     ~nativeID: string=?,
     ~needsOffscreenAlphaCompositing: bool=?,
     ~onAccessibilityTap: unit => unit=?,
-    ~onLayout: Event.NativeLayoutEvent.t => unit=?,
+    ~onLayout: Event.layoutEvent => unit=?,
     ~onMagicTap: unit => unit=?,
     // Gesture Responder props
     ~onMoveShouldSetResponder: Event.pressEvent => bool=?,

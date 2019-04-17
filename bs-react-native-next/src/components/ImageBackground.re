@@ -36,7 +36,7 @@ external imageStyle:
 external make:
   (
     ~imageRef: ref=?,
-    ~onLayout: Event.NativeLayoutEvent.t => unit=?,
+    ~onLayout: Event.layoutEvent => unit=?,
     ~onLoad: unit => unit=?,
     ~onLoadEnd: unit => unit=?,
     ~onLoadStart: unit => unit=?,

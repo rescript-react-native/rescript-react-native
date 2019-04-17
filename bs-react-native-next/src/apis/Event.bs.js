@@ -1,17 +1,1 @@
-'use strict';
-
-
-function layout(t) {
-  var l = t.nativeEvent.layout;
-  return /* record */[
-          /* x */l.x,
-          /* y */l.y,
-          /* width */l.width,
-          /* height */l.height
-        ];
-}
-
-var NativeLayoutEvent = /* module */[/* layout */layout];
-
-exports.NativeLayoutEvent = NativeLayoutEvent;
-/* No side effect */
+/* This output is empty. Its source's type definitions, externals and/or unused code got optimized away. */

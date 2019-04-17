@@ -59,7 +59,7 @@ type progress = {
 [@react.component] [@bs.module "react-native"]
 external make:
   (
-    ~onLayout: Event.NativeLayoutEvent.t => unit=?,
+    ~onLayout: Event.layoutEvent => unit=?,
     ~onLoad: unit => unit=?,
     ~onLoadEnd: unit => unit=?,
     ~onLoadStart: unit => unit=?,
