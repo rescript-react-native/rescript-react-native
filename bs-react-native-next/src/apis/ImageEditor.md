@@ -38,8 +38,7 @@ external cropImage:
     ~uri: source,
     ~cropData: cropData,
     ~success: string => unit,
-    ~failure: (~code: int, ~message: string) => unit,
-    unit
+    ~failure: (~code: int, ~message: string) => unit
   ) =>
   unit =
   "cropImage";
