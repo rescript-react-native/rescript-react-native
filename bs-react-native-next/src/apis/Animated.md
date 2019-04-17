@@ -10,9 +10,8 @@ module Animation = {
   type endResult = {. "finished": bool};
   type endCallback = endResult => unit;
   [@bs.send]
-  external _start: (t, Js.undefined(endCallback)) => unit = "start";
-  let start = (t, ~callback=?, ()) =>
-    _start(t, Js.Undefined.fromOption(callback));
+  external start: (t, ~endCallback: endCallback=?, unit) => unit = "start";
+
   [@bs.send] external stop: t => unit = "";
   [@bs.send] external reset: t => unit = "";
 };
@@ -49,13 +48,7 @@ module ValueAnimations = (Val: Value) => {
       "";
 
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external decay:
-      (
-        ~value: Val.t,
-        ~config: config
-      ) =>
-    Animation.t =
-    "";
+    external decay: (~value: Val.t, ~config: config) => Animation.t = "";
   };
 
   module Spring = {
@@ -88,21 +81,14 @@ module ValueAnimations = (Val: Value) => {
       ) =>
       config =
       "";
-    
-    [@bs.module "react-native"] [@bs.scope "Animated"]
-    external spring:
-      (
-        ~value: Val.t,
-        ~config: config
-      ) =>
-      Animation.t =
-      "";
-  };
 
+    [@bs.module "react-native"] [@bs.scope "Animated"]
+    external spring: (~value: Val.t, ~config: config) => Animation.t = "";
+  };
 
   module Timing = {
     type toValue;
-    
+
     external fromRawValue: Val.rawJsType => toValue = "%identity";
     external fromAnimatedValue: Val.t => toValue = "%identity";
 
@@ -125,13 +111,7 @@ module ValueAnimations = (Val: Value) => {
       "";
 
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external timing:
-      (
-        ~value: Val.t,
-        ~config: config
-      ) =>
-      Animation.t =
-      "";
+    external timing: (~value: Val.t, ~config: config) => Animation.t = "";
   };
 };
 
@@ -154,12 +134,8 @@ module Interpolation = {
     ) =>
     config =
     "";
-  [@bs.send] external interpolate:
-    (
-      ~value: value('a),
-      ~config: config
-    ) =>
-    t =
+  [@bs.send]
+  external interpolate: (~value: value('a), ~config: config) => t =
     "interpolate";
 };
 
@@ -192,16 +168,15 @@ module Value = {
   [@bs.send] external addListener: (t, callback) => string = "addListener";
   [@bs.send] external removeListener: (t, string) => unit = "removeListener";
   [@bs.send] external removeAllListeners: t => unit = "removeAllListeners";
+
   [@bs.send]
-  external _resetAnimation: (t, Js.Undefined.t(callback)) => unit =
+  external resetAnimation: (t, ~callback: callback=?, unit) => unit =
     "resetAnimation";
+
   [@bs.send]
-  external _stopAnimation: (t, Js.Undefined.t(callback)) => unit =
+  external stopAnimation: (t, ~callback: callback=?, unit) => unit =
     "stopAnimation";
-  let resetAnimation = (value, ~callback=?, ()) =>
-    _resetAnimation(value, Js.Undefined.fromOption(callback));
-  let stopAnimation = (value, ~callback=?, ()) =>
-    _stopAnimation(value, Js.Undefined.fromOption(callback));
+
   include ValueAnimations({
     type t = value(regular);
     type rawJsType = float;
@@ -211,11 +186,16 @@ module Value = {
 
 module ValueXY = {
   type t = valueXY;
+
   type jsValue = {
     .
     "x": float,
     "y": float,
   };
+
+  [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
+  external create: jsValue => t = "ValueXY";
+
   type callback = jsValue => unit;
   type translateTransform = {
     .
@@ -227,19 +207,19 @@ module ValueXY = {
     "left": Value.t,
     "top": Value.t,
   };
-  [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
-  external _create: jsValue => t = "ValueXY";
-  let create = (~x, ~y) => _create({"x": x, "y": y});
-  [@bs.send] external _setValue: (t, jsValue) => unit = "setValue";
-  let setValue = (t, ~x, ~y) => _setValue(t, {"x": x, "y": y});
-  [@bs.send] external _setOffset: (t, jsValue) => unit = "setOffset";
-  let setOffset = (t, ~x, ~y) => _setOffset(t, {"x": x, "y": y});
+
+  [@bs.send] external setValue: (t, jsValue) => unit = "";
+  [@bs.send] external setOffset: (t, jsValue) => unit = "";
   [@bs.send] external flattenOffset: t => unit = "flattenOffset";
   [@bs.send] external extractOffset: t => unit = "extractOffset";
   [@bs.send]
-  external resetAnimation: (t, option(callback)) => unit = "resetAnimation";
+  external resetAnimation: (t, ~callback: callback=?, unit) => unit =
+    "resetAnimation";
+
   [@bs.send]
-  external stopAnimation: (t, option(callback)) => unit = "stopAnimation";
+  external stopAnimation: (t, ~callback: callback=?, unit) => unit =
+    "stopAnimation";
+
   [@bs.send] external addListener: (t, callback) => string = "addListener";
   [@bs.send] external removeListener: (t, string) => unit = "removeListener";
   [@bs.send] external removeAllListeners: t => unit = "removeAllListeners";
@@ -296,5 +276,4 @@ let start = Animation.start;
 let stop = Animation.stop;
 
 let reset = Animation.reset;
-
 ```

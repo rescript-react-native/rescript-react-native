@@ -28,7 +28,7 @@ module ValueAnimations = (Val: Value) => {
     type config;
 
     [@bs.obj]
-    external makeConfig:
+    external config:
       (
         ~velocity: Val.rawJsType,
         ~deceleration: float=?,
@@ -42,7 +42,7 @@ module ValueAnimations = (Val: Value) => {
       "";
 
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external decay: (~value: Val.t, ~config: config) => Animation.t = "";
+    external decay: (Val.t, config) => Animation.t = "";
   };
 
   module Spring = {
@@ -53,7 +53,7 @@ module ValueAnimations = (Val: Value) => {
     type config;
 
     [@bs.obj]
-    external makeConfig:
+    external config:
       (
         ~toValue: toValue,
         ~restDisplacementThreshold: float=?,
@@ -77,7 +77,7 @@ module ValueAnimations = (Val: Value) => {
       "";
 
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external spring: (~value: Val.t, ~config: config) => Animation.t = "";
+    external spring: (Val.t, config) => Animation.t = "";
   };
 
   module Timing = {
@@ -89,7 +89,7 @@ module ValueAnimations = (Val: Value) => {
     type config;
 
     [@bs.obj]
-    external makeConfig:
+    external config:
       (
         ~toValue: toValue,
         ~easing: Easing.t=?,
@@ -105,7 +105,7 @@ module ValueAnimations = (Val: Value) => {
       "";
 
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external timing: (~value: Val.t, ~config: config) => Animation.t = "";
+    external timing: (Val.t, config) => Animation.t = "";
   };
 };
 
@@ -129,7 +129,7 @@ module Interpolation = {
     config =
     "";
   [@bs.send]
-  external interpolate: (~value: value('a), ~config: config) => t =
+  external interpolate: (value('a), config) => t =
     "interpolate";
 };
 
