@@ -1,14 +1,9 @@
 'use strict';
 
-var Js_undefined = require("bs-platform/lib/js/js_undefined.js");
+var Caml_option = require("bs-platform/lib/js/caml_option.js");
 var ReactNative = require("react-native");
 
-function start(t, callback, param) {
-  t.start(Js_undefined.fromOption(callback));
-  return /* () */0;
-}
-
-var Animation = /* module */[/* start */start];
+var Animation = /* module */[];
 
 function ValueAnimations(Val) {
   var Decay = /* module */[];
@@ -29,16 +24,6 @@ function interpolate(prim, prim$1) {
 
 var ValueOperations = /* module */[/* interpolate */interpolate];
 
-function resetAnimation(value, callback, param) {
-  value.resetAnimation(Js_undefined.fromOption(callback));
-  return /* () */0;
-}
-
-function stopAnimation(value, callback, param) {
-  value.stopAnimation(Js_undefined.fromOption(callback));
-  return /* () */0;
-}
-
 var Decay = /* module */[];
 
 var Spring = /* module */[];
@@ -46,36 +31,11 @@ var Spring = /* module */[];
 var Timing = /* module */[];
 
 var Value = /* module */[
-  /* resetAnimation */resetAnimation,
-  /* stopAnimation */stopAnimation,
   /* Decay */Decay,
   /* Spring */Spring,
   /* Timing */Timing,
   /* interpolate */interpolate
 ];
-
-function create(x, y) {
-  return new (ReactNative.Animated.ValueXY)({
-              x: x,
-              y: y
-            });
-}
-
-function setValue(t, x, y) {
-  t.setValue({
-        x: x,
-        y: y
-      });
-  return /* () */0;
-}
-
-function setOffset(t, x, y) {
-  t.setOffset({
-        x: x,
-        y: y
-      });
-  return /* () */0;
-}
 
 var Decay$1 = /* module */[];
 
@@ -84,9 +44,6 @@ var Spring$1 = /* module */[];
 var Timing$1 = /* module */[];
 
 var ValueXY = /* module */[
-  /* create */create,
-  /* setValue */setValue,
-  /* setOffset */setOffset,
   /* Decay */Decay$1,
   /* Spring */Spring$1,
   /* Timing */Timing$1
@@ -109,6 +66,11 @@ function spring(prim, prim$1) {
 
 function decay(prim, prim$1) {
   return ReactNative.Animated.decay(prim, prim$1);
+}
+
+function start(prim, prim$1, prim$2) {
+  prim.start(prim$1 !== undefined ? Caml_option.valFromOption(prim$1) : undefined);
+  return /* () */0;
 }
 
 function stop(prim) {

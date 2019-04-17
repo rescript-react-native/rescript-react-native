@@ -3,9 +3,8 @@ module Animation = {
   type endResult = {. "finished": bool};
   type endCallback = endResult => unit;
   [@bs.send]
-  external _start: (t, Js.undefined(endCallback)) => unit = "start";
-  let start = (t, ~callback=?, ()) =>
-    _start(t, Js.Undefined.fromOption(callback));
+  external start: (t, ~endCallback: endCallback=?, unit) => unit = "start";
+
   [@bs.send] external stop: t => unit = "";
   [@bs.send] external reset: t => unit = "";
 };
@@ -117,7 +116,7 @@ module Interpolation = {
 
   type config;
   [@bs.obj]
-  external makeConfig:
+  external config:
     (
       ~inputRange: array(float),
       ~outputRange: outputRange,
@@ -160,16 +159,15 @@ module Value = {
   [@bs.send] external addListener: (t, callback) => string = "addListener";
   [@bs.send] external removeListener: (t, string) => unit = "removeListener";
   [@bs.send] external removeAllListeners: t => unit = "removeAllListeners";
+
   [@bs.send]
-  external _resetAnimation: (t, Js.Undefined.t(callback)) => unit =
+  external resetAnimation: (t, ~callback: callback=?, unit) => unit =
     "resetAnimation";
+
   [@bs.send]
-  external _stopAnimation: (t, Js.Undefined.t(callback)) => unit =
+  external stopAnimation: (t, ~callback: callback=?, unit) => unit =
     "stopAnimation";
-  let resetAnimation = (value, ~callback=?, ()) =>
-    _resetAnimation(value, Js.Undefined.fromOption(callback));
-  let stopAnimation = (value, ~callback=?, ()) =>
-    _stopAnimation(value, Js.Undefined.fromOption(callback));
+
   include ValueAnimations({
     type t = value(regular);
     type rawJsType = float;
@@ -196,18 +194,19 @@ module ValueXY = {
     "top": Value.t,
   };
   [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
-  external _create: jsValue => t = "ValueXY";
-  let create = (~x, ~y) => _create({"x": x, "y": y});
-  [@bs.send] external _setValue: (t, jsValue) => unit = "setValue";
-  let setValue = (t, ~x, ~y) => _setValue(t, {"x": x, "y": y});
-  [@bs.send] external _setOffset: (t, jsValue) => unit = "setOffset";
-  let setOffset = (t, ~x, ~y) => _setOffset(t, {"x": x, "y": y});
+  external create: jsValue => t = "ValueXY";
+
+  [@bs.send] external setValue: (t, jsValue) => unit = "";
+  [@bs.send] external setOffset: (t, jsValue) => unit = "";
   [@bs.send] external flattenOffset: t => unit = "flattenOffset";
   [@bs.send] external extractOffset: t => unit = "extractOffset";
   [@bs.send]
-  external resetAnimation: (t, option(callback)) => unit = "resetAnimation";
+  external resetAnimation: (t, ~callback: callback=?, unit) => unit =
+    "resetAnimation";
+
   [@bs.send]
-  external stopAnimation: (t, option(callback)) => unit = "stopAnimation";
+  external stopAnimation: (t, ~callback: callback=?, unit) => unit =
+    "stopAnimation";
   [@bs.send] external addListener: (t, callback) => string = "addListener";
   [@bs.send] external removeListener: (t, string) => unit = "removeListener";
   [@bs.send] external removeAllListeners: t => unit = "removeAllListeners";
