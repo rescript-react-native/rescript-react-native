@@ -85,8 +85,8 @@ external make:
     ~caretHidden: bool=?,
     ~clearButtonMode: [@bs.string] [
                         | `never
-                        | `whileEditing
-                        | `unlessEditing
+                        | [@bs.as "while-editing"] `whileEditing
+                        | [@bs.as "unless-editing"] `unlessEditing
                         | `always
                       ]
                         =?,
