@@ -43,12 +43,12 @@ module GeolocationGetCurrentPositionExample = {
             </TouchableOpacity>
             <Text>
               {ReasonReact.string(
-                 "latitude:" ++ string_of_float(state.coords.latitude),
+                 "latitude:" ++ Js.Float.toString(state.coords.latitude),
                )}
             </Text>
             <Text>
               {ReasonReact.string(
-                 "longitude:" ++ string_of_float(state.coords.longitude),
+                 "longitude:" ++ Js.Float.toString(state.coords.longitude),
                )}
             </Text>
           </View>
@@ -99,12 +99,12 @@ module GeolocationWatchPositionExample = {
           <View style={style([padding(Pt(10.))])}>
             <Text>
               {ReasonReact.string(
-                 "latitude:" ++ string_of_float(state.coords.latitude),
+                 "latitude:" ++ Js.Float.toString(state.coords.latitude),
                )}
             </Text>
             <Text>
               {ReasonReact.string(
-                 "longitude:" ++ string_of_float(state.coords.longitude),
+                 "longitude:" ++ Js.Float.toString(state.coords.longitude),
                )}
             </Text>
           </View>
