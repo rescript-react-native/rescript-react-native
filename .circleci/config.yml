@@ -7,7 +7,6 @@ aliases:
     paths:
       - ~/.cache/yarn
     key: yarn-cache-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
-
   - &opam-cache-restore
     keys:
       - opam-cache-{{ checksum ".circleci/config.yml" }}
