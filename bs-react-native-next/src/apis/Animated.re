@@ -237,10 +237,9 @@ external parallel:
 external stagger: (float, array(Animation.t)) => Animation.t = "";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external _loop: (Animation.t, {. "iterations": int}) => Animation.t = "loop";
-
-let loop = (~iterations=(-1), ~animation, ()) =>
-  _loop(animation, {"iterations": iterations});
+external loop:
+  (Animation.t, ~config: {. "iterations": int}=?, unit) => Animation.t =
+  "";
 
 type animatedEvent;
 
