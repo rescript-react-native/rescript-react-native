@@ -43,6 +43,8 @@ type selectionEvent = event(selection);
 
 type keyPressEvent = event({. "key": string});
 
+module DataDetectorTypes = TextInput_DataDetectorTypes;
+
 [@react.component] [@bs.module "react-native"]
 external make:
   (
@@ -85,17 +87,7 @@ external make:
                         =?,
     ~clearTextOnFocus: bool=?,
     ~contextMenuHidden: bool=?,
-    ~dataDetectorTypes: array(
-                          [
-                            | `phoneNumber
-                            | `link
-                            | `address
-                            | `calendarEvent
-                            | `none
-                            | `all
-                          ],
-                        )
-                          =?,
+    ~dataDetectorTypes: array(DataDetectorTypes.t)=?,
     ~defaultValue: string=?,
     ~disableFullscreenUI: bool=?,
     ~editable: bool=?,
