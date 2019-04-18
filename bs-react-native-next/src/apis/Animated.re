@@ -241,7 +241,10 @@ type loopConfig;
 [@bs.obj] external loopConfig: (~iterations: int) => loopConfig = "";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external loop: (Animation.t, loopConfig) => Animation.t = "";
+external loop: Animation.t => Animation.t = "";
+
+[@bs.module "react-native"] [@bs.scope "Animated"]
+external loopWithConfig: (Animation.t, loopConfig) => Animation.t = "";
 
 type animatedEvent;
 
