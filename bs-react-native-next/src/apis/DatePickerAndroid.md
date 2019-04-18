@@ -35,10 +35,10 @@ type response = {
 [@bs.module "react-native"] [@bs.scope "DatePickerAndroid"]
 external open_: options => Js.Promise.t(response) = "open";
 
-[@bs.module "react-native"] [@bs.scope "DatePickerAndroid"] [@bs.val]
+[@bs.module "react-native"] [@bs.scope "DatePickerAndroid"]
 external dateSetAction: string = "";
 
-[@bs.module "react-native"] [@bs.scope "DatePickerAndroid"] [@bs.val]
+[@bs.module "react-native"] [@bs.scope "DatePickerAndroid"]
 external dismissedAction: string = "";
 
 ```
