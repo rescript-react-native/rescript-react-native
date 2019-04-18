@@ -76,6 +76,16 @@ let file = (file: FsUtils.t, modulesIndex: array(string)) => {
           }
         | None => None // failwith("Expected an `wip` property")
         };
+      let autoLinkToOfficialDoc =
+        switch (Js.Dict.get(value, "autoLinkToOfficialDoc")) {
+        | Some(v) =>
+          switch (Js.Json.classify(v)) {
+          | Js.Json.JSONTrue => Some(true)
+          | Js.Json.JSONFalse => Some(false)
+          | _ => failwith("Expected a boolean for `autoLinkToOfficialDoc`")
+          }
+        | None => None // failwith("Expected an `autoLinkToOfficialDoc` property")
+        };
       let body =
         switch (Js.Dict.get(value, "body")) {
         | Some(v) =>
@@ -85,7 +95,14 @@ let file = (file: FsUtils.t, modulesIndex: array(string)) => {
           }
         | None => failwith("Expected an `body` property")
         };
-      let p: PageContent.pageData = {id, title, wip, body, modulesIndex};
+      let p: PageContent.pageData = {
+        id,
+        title,
+        wip,
+        autoLinkToOfficialDoc,
+        body,
+        modulesIndex,
+      };
       p;
     | _ => failwith("Expected an object for pageData")
     };
