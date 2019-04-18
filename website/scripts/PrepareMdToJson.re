@@ -148,6 +148,8 @@ Path.join([|sourcePath, "**/*.md"|])
               "id": front##attributes##id,
               "title": front##attributes##title,
               "wip": front##attributes##wip,
+              "autoLinkToOfficialDoc":
+                front##attributes##autoLinkToOfficialDoc,
               "body": Remarkable.render(remarkable, front##body),
             }
             ->Js.Json.stringifyAny;
