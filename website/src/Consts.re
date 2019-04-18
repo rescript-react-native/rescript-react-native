@@ -159,6 +159,7 @@ let sections = [
       ("PanResponder", api ++ "PanResponder/"),
       ("PermissionsAndroid", api ++ "PermissionsAndroid/"),
       ("PixelRatio", api ++ "PixelRatio/"),
+      ("Platform", api ++ "Platform/"),
       ("PushNotificationIOS", api ++ "PushNotificationIOS/"),
       ("Settings", api ++ "Settings/"),
       ("Shadow Props", api ++ "ShadowProps/"),

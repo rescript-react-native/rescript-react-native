@@ -7,3 +7,9 @@ let ios = "ios";
 
 [@bs.inline]
 let android = "android";
+
+// react-native-web
+[@bs.inline]
+let web = "web";
+
+external unsafe: string => os = "%identity";
