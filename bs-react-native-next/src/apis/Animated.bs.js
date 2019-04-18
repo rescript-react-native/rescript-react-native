@@ -49,13 +49,6 @@ var ValueXY = /* module */[
   /* Timing */Timing$1
 ];
 
-function loop($staropt$star, animation, param) {
-  var iterations = $staropt$star !== undefined ? $staropt$star : -1;
-  return ReactNative.Animated.loop(animation, {
-              iterations: iterations
-            });
-}
-
 function timing(prim, prim$1) {
   return ReactNative.Animated.timing(prim, prim$1);
 }
@@ -89,7 +82,6 @@ exports.Interpolation = Interpolation;
 exports.ValueOperations = ValueOperations;
 exports.Value = Value;
 exports.ValueXY = ValueXY;
-exports.loop = loop;
 exports.timing = timing;
 exports.spring = spring;
 exports.decay = decay;
