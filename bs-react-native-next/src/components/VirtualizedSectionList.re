@@ -112,6 +112,7 @@ external make:
     ~scrollIndicatorInsets: Types.insets=?,
     ~scrollPerfTag: string=?,
     ~scrollsToTop: bool=?,
+    ~scrollToOverflowEnabled: bool=?,
     ~showsHorizontalScrollIndicator: bool=?,
     ~showsVerticalScrollIndicator: bool=?,
     ~snapToAlignment: [@bs.string] [ | `start | `center | `end_]=?,

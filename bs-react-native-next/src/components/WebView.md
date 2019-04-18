@@ -1,62 +1,93 @@
+---
+id: components/WebView
+title: WebView
+wip: true
+---
+
+```reason
 type element;
 type ref = React.Ref.t(Js.nullable(element));
+
+module Source = {
+  type t;
+
+  [@bs.obj]
+  external uri:
+    (
+      ~uri: string=?,
+      ~method: string=?,
+      ~headers: Js.t('a)=?,
+      ~body: string=?,
+      unit
+    ) =>
+    t =
+    "";
+
+  [@bs.obj]
+  external html: (~html: string=?, ~baseUrl: string=?, unit) => t = "";
+};
+
+module DataDetectorTypes = WebView_DataDetectorTypes;
+module DecelerationRate = WebView_DecelerationRate;
+
+type messageEvent = Event.event({. "data": string});
+
+type webViewEvent =
+  Event.event({
+    .
+    "url": string,
+    "title": string,
+    "loading": bool,
+    "canGoBack": bool,
+    "canGoForward": bool,
+  });
+
+type request = {
+  .
+  "url": string,
+  "title": string,
+  "loading": bool,
+  "canGoBack": bool,
+  "canGoForward": bool,
+  "lockIdentifier": string,
+  "navigationType": string,
+};
 
 [@react.component] [@bs.module "react-native"]
 external make:
   (
-    ~ref: ref=?,
-    // ScrollView props
-    ~alwaysBounceHorizontal: bool=?,
-    ~alwaysBounceVertical: bool=?,
+    ~allowFileAccess: bool=?,
+    ~allowsInlineMediaPlayback: bool=?,
+    ~allowUniversalAccessFromFileURLs: bool=?,
     ~automaticallyAdjustContentInsets: bool=?,
     ~bounces: bool=?,
-    ~bouncesZoom: bool=?,
-    ~canCancelContentTouches: bool=?,
-    ~centerContent: bool=?,
-    ~contentContainerStyle: Style.t=?,
-    ~contentInset: Types.insets=?,
-    ~contentInsetAdjustmentBehavior: [@bs.string] [
-                                       | `automatic
-                                       | `scrollableAxes
-                                       | `never
-                                       | `always
-                                     ]
-                                       =?,
-    ~contentOffset: Types.point=?,
-    ~decelerationRate: [@bs.string] [ | `fast | `normal]=?,
-    ~directionalLockEnabled: bool=?,
-    ~endFillColor: Style.color=?,
-    ~horizontal: bool=?,
-    ~indicatorStyle: [@bs.string] [ | `default | `black | `white]=?,
-    ~keyboardDismissMode: [@bs.string] [ | `none | `interactive | `onDrag]=?,
-    ~keyboardShouldPersistTaps: [@bs.string] [ | `always | `never | `handled]=?,
-    ~maximumZoomScale: float=?,
-    ~minimumZoomScale: float=?,
-    ~nestedScrollEnabled: bool=?,
-    ~onContentSizeChange: ((float, float)) => unit=?,
-    ~onMomentumScrollBegin: Event.scrollEvent => unit=?,
-    ~onMomentumScrollEnd: Event.scrollEvent => unit=?,
-    ~onScroll: Event.scrollEvent => unit=?,
-    ~onScrollBeginDrag: Event.scrollEvent => unit=?,
-    ~onScrollEndDrag: Event.scrollEvent => unit=?,
-    ~overScrollMode: [@bs.string] [ | `always | `never | `auto]=?,
-    ~pagingEnabled: bool=?,
-    ~refreshControl: React.element=?,
+    ~contentInsets: Types.insets=?,
+    ~dataDetectorTypes: array(DataDetectorTypes.t)=?,
+    ~decelerationRate: DecelerationRate.t=?,
+    ~domStorageEnabled: bool=?,
+    ~geolocationEnabled: bool=?,
+    ~injectedJavaScript: string=?,
+    ~injectJavaScript: string => unit=?,
+    ~javaScriptEnabled: bool=?,
+    ~mediaPlaybackRequiresUserAction: bool=?,
+    ~mixedContentMode: [@bs.string] [ | `never | `always | `compatibility]=?,
+    ~onError: webViewEvent => unit=?,
+    ~onLoad: webViewEvent => unit=?,
+    ~onLoadEnd: webViewEvent => unit=?,
+    ~onLoadStart: webViewEvent => unit=?,
+    ~onMessage: messageEvent => unit=?,
+    ~onNavigationStateChange: webViewEvent => unit=?,
+    ~onShouldStartLoadWithRequest: request => unit=?,
+    ~originWhitelist: array(string)=?,
+    ~renderError: string => React.element=?,
+    ~renderLoading: unit => React.element=?,
+    ~scalesPageToFit: bool=?,
     ~scrollEnabled: bool=?,
-    ~scrollEventThrottle: int=?,
-    ~scrollIndicatorInsets: Types.insets=?,
-    ~scrollPerfTag: string=?,
-    ~scrollsToTop: bool=?,
-    ~scrollToOverflowEnabled: bool=?,
-    ~showsHorizontalScrollIndicator: bool=?,
-    ~showsVerticalScrollIndicator: bool=?,
-    ~snapToAlignment: [@bs.string] [ | `start | `center | `end_]=?,
-    ~snapToEnd: bool=?,
-    ~snapToInterval: float=?,
-    ~snapToOffsets: array(float)=?,
-    ~snapToStart: bool=?,
-    ~stickyHeaderIndices: list(int)=?,
-    ~zoomScale: float=?,
+    ~source: Source.t=?,
+    ~startInLoadingState: bool=?,
+    ~thirdPartyCookiesEnabled: bool=?,
+    ~userAgent: string=?,
+    ~useWebKit: bool=?,
     // View props
     ~accessibilityComponentType: [@bs.string] [
                                    | `none
@@ -125,28 +156,15 @@ external make:
     ~renderToHardwareTextureAndroid: bool=?,
     ~shouldRasterizeIOS: bool=?,
     ~style: Style.t=?,
-    ~testID: string=?,
-    ~children: React.element=?
+    ~testID: string=?
   ) =>
   React.element =
-  "ScrollView";
+  "WebView";
 
-type scrollToParams;
-[@bs.obj]
-external scrollToParams:
-  (~x: float, ~y: float, ~animated: bool=?, ~duration: float=?, unit) =>
-  scrollToParams =
-  "";
-[@bs.send] external scrollTo: scrollToParams => unit = "";
-
-type scrollToEndOptions;
-[@bs.obj]
-external scrollToEndOptions:
-  (~animated: bool=?, ~duration: float=?, unit) => scrollToEndOptions =
-  "";
-[@bs.send] external scrollToEnd: element => unit = "scrollToEnd";
-[@bs.send]
-external scrollToEndWithOptions: (ref, scrollToEndOptions) => unit =
-  "scrollToEnd";
-
-[@bs.send] external flashScrollIndicators: element => unit = "";
+// Methods
+// static extraNativeComponentConfig() ??
+[@bs.send] external goForward: element => unit = "";
+[@bs.send] external goBack: element => unit = "";
+[@bs.send] external reload: element => unit = "";
+[@bs.send] external stopLoading: element => unit = "";
+```
