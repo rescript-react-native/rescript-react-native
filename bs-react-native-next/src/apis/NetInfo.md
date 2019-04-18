@@ -5,34 +5,11 @@ wip: true
 ---
 
 ```reason
-type info;
-
-[@bs.obj]
-external info:
-  (
-    ~effectiveType: [@bs.string] [
-                      | [@bs.as "2g"] `Net2G
-                      | [@bs.as "3g"] `Net3G
-                      | [@bs.as "4g"] `Net4G
-                      | `unknown
-                    ]
-                      =?,
-    ~_type: [@bs.string] [
-              | `bluetooth
-              | `cellular
-              | `ethernet
-              | `unknown
-              | `wifi
-              | `wimax
-            ]
-              =?,
-    unit
-  ) =>
-  info =
-  "";
-
-[@bs.get] external effectiveType: info => string = "";
-[@bs.get] external _type: info => string = "type";
+type info = {
+  .
+  "_type": NetInfoType.t,
+  "effectiveType": NetInfoEffectiveType.t,
+};
 
 [@bs.module "react-native"] [@bs.scope "NetInfo"]
 external addEventListener:
