@@ -10,7 +10,6 @@ aliases:
   - &opam-cache-restore
     keys:
       - opam-cache-{{ checksum ".circleci/config.yml" }}
-      - opam-cache
   - &opam-cache-save
     key: opam-cache-{{ checksum ".circleci/config.yml" }}
     paths:
