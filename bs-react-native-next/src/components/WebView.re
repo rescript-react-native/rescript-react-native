@@ -23,10 +23,10 @@ module Source = {
 module DataDetectorTypes = WebView_DataDetectorTypes;
 module DecelerationRate = WebView_DecelerationRate;
 
-type messageEvent = Event.event({. "data": string});
+type messageEvent = Event.syntheticEvent({. "data": string});
 
 type webViewEvent =
-  Event.event({
+  Event.syntheticEvent({
     .
     "url": string,
     "title": string,
