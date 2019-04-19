@@ -23,7 +23,7 @@ if (Platform.os === Platform.ios) {
 - `Platform.web` when running on the web (via
   [`react-native-web`](https://github.com/necolas/react-native-web)).
 
-If you need unsupported platform, you can use `Platform.unsafe(string)`.
+If you need an unsupported platform, you can use `Platform.unsafe(string)`.
 
 For conditional style depending on the platform, you can do the following:
 
