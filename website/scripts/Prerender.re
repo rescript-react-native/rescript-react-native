@@ -74,7 +74,7 @@ let file = (file: FsUtils.t, modulesIndex: array(string)) => {
           | Js.Json.JSONFalse => Some(false)
           | _ => failwith("Expected a boolean for `wip`")
           }
-        | None => None // failwith("Expected an `wip` property")
+        | None => None
         };
       let autoLinkToOfficialDoc =
         switch (Js.Dict.get(value, "autoLinkToOfficialDoc")) {
@@ -84,7 +84,16 @@ let file = (file: FsUtils.t, modulesIndex: array(string)) => {
           | Js.Json.JSONFalse => Some(false)
           | _ => failwith("Expected a boolean for `autoLinkToOfficialDoc`")
           }
-        | None => None // failwith("Expected an `autoLinkToOfficialDoc` property")
+        | None => None
+        };
+      let officialDoc =
+        switch (Js.Dict.get(value, "officialDoc")) {
+        | Some(v) =>
+          switch (Js.Json.classify(v)) {
+          | Js.Json.JSONString(v) => Some(v)
+          | _ => failwith("Expected a string for `officialDoc`")
+          }
+        | None => None
         };
       let body =
         switch (Js.Dict.get(value, "body")) {
@@ -99,6 +108,7 @@ let file = (file: FsUtils.t, modulesIndex: array(string)) => {
         id,
         title,
         wip,
+        officialDoc,
         autoLinkToOfficialDoc,
         body,
         modulesIndex,

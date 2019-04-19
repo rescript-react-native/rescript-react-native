@@ -6,6 +6,7 @@ type pageData = {
   id: string,
   title: string,
   wip: option(bool),
+  officialDoc: option(string),
   autoLinkToOfficialDoc: option(bool),
   body: string,
   modulesIndex: array(string),
@@ -70,7 +71,9 @@ let make = (~pageData) => {
     Js.log3("@todo", pageData.title, "docs is still WIP");
   };
   let officialDocHref =
-    if (!pageData.autoLinkToOfficialDoc->Option.getWithDefault(true)) {
+    if (pageData.officialDoc->Option.isSome) {
+      Some(pageData.officialDoc->Option.getWithDefault(""));
+    } else if (!pageData.autoLinkToOfficialDoc->Option.getWithDefault(true)) {
       None;
     } else if (pageData.id
                |> Js.String.startsWith("apis/")

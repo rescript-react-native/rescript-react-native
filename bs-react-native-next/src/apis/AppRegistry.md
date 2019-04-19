@@ -9,7 +9,7 @@ wip: true
 external registerComponent: (string, unit => React.component('a)) => unit =
   "registerComponent";
 
-/* react-native-web */
+// react-native-web
 type app = {
   .
   "element": React.element,
