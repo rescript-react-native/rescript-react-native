@@ -22,8 +22,11 @@ type handler = {
 [@bs.module "react-native"] [@bs.scope "Dimensions"]
 external get: ([@bs.string] [ | `window | `screen]) => t = "";
 [@bs.module "react-native"] [@bs.scope "Dimensions"]
-external addEventListener: (string, handler => unit) => unit = "";
+external addEventListener: ([@bs.string] [ | `change], handler => unit) => unit =
+  "";
 [@bs.module "react-native"] [@bs.scope "Dimensions"]
-external removeEventListener: (string, handler => unit) => unit = "";
+external removeEventListener:
+  ([@bs.string] [ | `change], handler => unit) => unit =
+  "";
 
 ```
