@@ -1,52 +1,45 @@
----
-id: apis/NetInfo
-title: NetInfo
-wip: true
----
+module ConnectionType: {
+  type t;
 
-```reason
-module ConnectionType = {
-  type t = string;
+  [@bs.inline "bluetooth"]
+  let bluetooth: t;
 
-  [@bs.inline]
-  let bluetooth = "bluetooth";
+  [@bs.inline "cellular"]
+  let cellular: t;
 
-  [@bs.inline]
-  let cellular = "cellular";
+  [@bs.inline "ethernet"]
+  let ethernet: t;
 
-  [@bs.inline]
-  let ethernet = "ethernet";
+  [@bs.inline "unknown"]
+  let unknown: t;
 
-  [@bs.inline]
-  let unknown = "unknown";
+  [@bs.inline "wifi"]
+  let wifi: t;
 
-  [@bs.inline]
-  let wifi = "wifi";
-
-  [@bs.inline]
-  let wimax = "wimax";
+  [@bs.inline "wimax"]
+  let wimax: t;
 };
 
-module EffectiveConnectionType = {
-  type t = string;
+module EffectiveConnectionType: {
+  type t;
 
-  [@bs.inline]
-  let net2G = "2g";
+  [@bs.inline "2g"]
+  let net2G: t;
 
-  [@bs.inline]
-  let net3G = "3g";
+  [@bs.inline "3g"]
+  let net3G: t;
 
-  [@bs.inline]
-  let net4G = "4g";
+  [@bs.inline "4g"]
+  let net4G: t;
 
-  [@bs.inline]
-  let unknown = "unknown";
+  [@bs.inline "unknown"]
+  let unknown: t;
 };
 
 type info = {
   .
-  "_type": ConnectionType.t,
   "effectiveType": EffectiveConnectionType.t,
+  "_type": ConnectionType.t,
 };
 
 type remove = {. "remove": unit => unit};
@@ -67,7 +60,7 @@ external isConnectionExpensive: unit => Js.Promise.t(bool) = "";
 [@bs.module "react-native"] [@bs.scope "NetInfo"]
 external getConnectionInfo: unit => Js.Promise.t(info) = "";
 
-module IsConnected = {
+module IsConnected: {
   [@bs.module "react-native"] [@bs.scope ("NetInfo", "isConnected")]
   external addEventListener:
     ([@bs.string] [ | `connectionChange], bool => unit) => remove =
@@ -81,5 +74,3 @@ module IsConnected = {
   [@bs.module "react-native"] [@bs.scope ("NetInfo", "isConnected")]
   external fetch: unit => Js.Promise.t(bool) = "";
 };
-
-```
