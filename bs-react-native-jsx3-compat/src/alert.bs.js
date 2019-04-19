@@ -52,6 +52,6 @@ function alert(title, message, buttons, options, type_, param) {
 
 export {
   alert ,
-
+  
 }
 /* react-native Not a pure module */

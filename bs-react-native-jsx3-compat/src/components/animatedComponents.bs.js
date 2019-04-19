@@ -62,6 +62,6 @@ export {
   $$Text ,
   FlatList ,
   ScrollView ,
-
+  
 }
 /* View Not a pure module */

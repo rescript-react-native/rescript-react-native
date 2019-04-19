@@ -74,6 +74,6 @@ function make(onError, onLayout, onLoad, onLoadEnd, onLoadStart, resizeMode, sou
 export {
   $$Event ,
   make ,
-
+  
 }
 /* ReasonReact Not a pure module */

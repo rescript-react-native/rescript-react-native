@@ -36,6 +36,6 @@ function setPage(prim, prim$1) {
 export {
   make ,
   setPage ,
-
+  
 }
 /* ReasonReact Not a pure module */

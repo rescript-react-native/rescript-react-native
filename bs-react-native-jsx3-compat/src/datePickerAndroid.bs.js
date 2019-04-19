@@ -48,6 +48,6 @@ function open_(date, minDate, maxDate, $staropt$star, param) {
 
 export {
   open_ ,
-
+  
 }
 /* react-native Not a pure module */

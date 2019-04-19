@@ -46,6 +46,6 @@ function make$1(onValueChange, selectedValue, enabled, mode, prompt, itemStyle, 
 export {
   make$1 as make,
   Item ,
-
+  
 }
 /* ReasonReact Not a pure module */

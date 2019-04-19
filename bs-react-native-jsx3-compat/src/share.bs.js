@@ -51,6 +51,6 @@ function share(content, title, subject, tintColor, excludedActivityTypes, dialog
 
 export {
   share ,
-
+  
 }
 /* react-native Not a pure module */

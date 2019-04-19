@@ -96,6 +96,6 @@ export {
   callback ,
   create ,
   panHandlers ,
-
+  
 }
 /* react-native Not a pure module */

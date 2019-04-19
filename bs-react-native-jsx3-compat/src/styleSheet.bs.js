@@ -28,6 +28,6 @@ export {
   absoluteFillObject ,
   flatten ,
   processColor ,
-
+  
 }
 /* hairlineWidth Not a pure module */

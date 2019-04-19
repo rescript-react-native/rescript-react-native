@@ -35,6 +35,6 @@ function make(date, onDateChange, maximumDate, minimumDate, mode, minuteInterval
 
 export {
   make ,
-
+  
 }
 /* ReasonReact Not a pure module */

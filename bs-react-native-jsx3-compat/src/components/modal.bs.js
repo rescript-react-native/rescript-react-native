@@ -56,6 +56,6 @@ function make(animationType, onShow, transparent, visible, hardwareAccelerated, 
 
 export {
   make ,
-
+  
 }
 /* ReasonReact Not a pure module */

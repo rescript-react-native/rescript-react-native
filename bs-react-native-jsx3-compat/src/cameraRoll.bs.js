@@ -16,33 +16,33 @@ function mapFileType(fileType) {
 
 function mapGroupType(groupType) {
   switch (groupType) {
-    case 0 :
+    case 0 : 
         return "All";
-    case 1 :
+    case 1 : 
         return "Album";
-    case 2 :
+    case 2 : 
         return "Event";
-    case 3 :
+    case 3 : 
         return "Faces";
-    case 4 :
+    case 4 : 
         return "Library";
-    case 5 :
+    case 5 : 
         return "PhotoStream";
-    case 6 :
+    case 6 : 
         return "SavedPhotos";
-
+    
   }
 }
 
 function mapAssetType(assetType) {
   switch (assetType) {
-    case 0 :
+    case 0 : 
         return "All";
-    case 1 :
+    case 1 : 
         return "Videos";
-    case 2 :
+    case 2 : 
         return "Photos";
-
+    
   }
 }
 
@@ -80,6 +80,6 @@ function getPhotos(first, after, $staropt$star, groupName, $staropt$star$1, mime
 export {
   saveToCameraRoll ,
   getPhotos ,
-
+  
 }
 /* react-native Not a pure module */

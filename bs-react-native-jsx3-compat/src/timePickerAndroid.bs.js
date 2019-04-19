@@ -44,7 +44,7 @@ function rangeHandler(valueName, valueFrom, valueTo, value) {
       return Pervasives.failwith("" + (String(valueName) + (" must be a value between " + (String(valueFrom) + (" and " + (String(valueTo) + ""))))));
     }
   }
-
+  
 }
 
 function open_(hour, minute, is24Hour, $staropt$star, param) {
@@ -61,6 +61,6 @@ function open_(hour, minute, is24Hour, $staropt$star, param) {
 
 export {
   open_ ,
-
+  
 }
 /* react-native Not a pure module */

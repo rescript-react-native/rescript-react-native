@@ -135,6 +135,6 @@ export {
   separatorComponent ,
   renderAccessoryView ,
   make ,
-
+  
 }
 /* ReasonReact Not a pure module */

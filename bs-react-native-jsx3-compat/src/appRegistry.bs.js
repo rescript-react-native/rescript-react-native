@@ -9,6 +9,6 @@ function registerComponent(name, comp) {
 
 export {
   registerComponent ,
-
+  
 }
 /* react-native Not a pure module */

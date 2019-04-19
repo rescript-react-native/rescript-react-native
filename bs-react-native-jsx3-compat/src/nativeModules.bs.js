@@ -13,6 +13,6 @@ function requireNativeComponent(name) {
 export {
   get ,
   requireNativeComponent ,
-
+  
 }
 /* react-native Not a pure module */

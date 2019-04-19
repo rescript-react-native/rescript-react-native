@@ -72,6 +72,6 @@ export {
   inOut ,
   out ,
   bezier ,
-
+  
 }
 /* bounce Not a pure module */

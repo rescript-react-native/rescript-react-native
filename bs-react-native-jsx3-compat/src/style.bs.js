@@ -27,12 +27,12 @@ function encode_pt_pct_auto(value) {
 
 function encode_pt_pct_animated(param) {
   switch (param.tag | 0) {
-    case 1 :
+    case 1 : 
         return Internals$BsReactNative.Encoder[/* pct */0](param[0]);
-    case 0 :
-    case 2 :
+    case 0 : 
+    case 2 : 
         return param[0];
-
+    
   }
 }
 
@@ -59,25 +59,25 @@ function combine(a, b) {
 function alignContent(v) {
   var tmp;
   switch (v) {
-    case 0 :
+    case 0 : 
         tmp = "flex-start";
         break;
-    case 1 :
+    case 1 : 
         tmp = "flex-end";
         break;
-    case 2 :
+    case 2 : 
         tmp = "center";
         break;
-    case 3 :
+    case 3 : 
         tmp = "stretch";
         break;
-    case 4 :
+    case 4 : 
         tmp = "space-around";
         break;
-    case 5 :
+    case 5 : 
         tmp = "space-between";
         break;
-
+    
   }
   return /* tuple */[
           "alignContent",
@@ -88,22 +88,22 @@ function alignContent(v) {
 function alignItems(v) {
   var tmp;
   switch (v) {
-    case 0 :
+    case 0 : 
         tmp = "flex-start";
         break;
-    case 1 :
+    case 1 : 
         tmp = "flex-end";
         break;
-    case 2 :
+    case 2 : 
         tmp = "center";
         break;
-    case 3 :
+    case 3 : 
         tmp = "stretch";
         break;
-    case 4 :
+    case 4 : 
         tmp = "baseline";
         break;
-
+    
   }
   return /* tuple */[
           "alignItems",
@@ -114,22 +114,22 @@ function alignItems(v) {
 function alignSelf(v) {
   var tmp;
   switch (v) {
-    case 0 :
+    case 0 : 
         tmp = "flex-start";
         break;
-    case 1 :
+    case 1 : 
         tmp = "flex-end";
         break;
-    case 2 :
+    case 2 : 
         tmp = "center";
         break;
-    case 3 :
+    case 3 : 
         tmp = "stretch";
         break;
-    case 4 :
+    case 4 : 
         tmp = "baseline";
         break;
-
+    
   }
   return /* tuple */[
           "alignSelf",
@@ -203,19 +203,19 @@ function flexBasis(value) {
 function flexDirection(v) {
   var tmp;
   switch (v) {
-    case 0 :
+    case 0 : 
         tmp = "row";
         break;
-    case 1 :
+    case 1 : 
         tmp = "row-reverse";
         break;
-    case 2 :
+    case 2 : 
         tmp = "column";
         break;
-    case 3 :
+    case 3 : 
         tmp = "column-reverse";
         break;
-
+    
   }
   return /* tuple */[
           "flexDirection",
@@ -247,25 +247,25 @@ function flexWrap(v) {
 function justifyContent(v) {
   var tmp;
   switch (v) {
-    case 0 :
+    case 0 : 
         tmp = "flex-start";
         break;
-    case 1 :
+    case 1 : 
         tmp = "flex-end";
         break;
-    case 2 :
+    case 2 : 
         tmp = "center";
         break;
-    case 3 :
+    case 3 : 
         tmp = "space-around";
         break;
-    case 4 :
+    case 4 : 
         tmp = "space-between";
         break;
-    case 5 :
+    case 5 : 
         tmp = "space-evenly";
         break;
-
+    
   }
   return /* tuple */[
           "justifyContent",
@@ -353,16 +353,16 @@ function minWidth(value) {
 function overflow(v) {
   var tmp;
   switch (v) {
-    case 0 :
+    case 0 : 
         tmp = "visible";
         break;
-    case 1 :
+    case 1 : 
         tmp = "hidden";
         break;
-    case 2 :
+    case 2 : 
         tmp = "scroll";
         break;
-
+    
   }
   return /* tuple */[
           "overflow",
@@ -478,16 +478,16 @@ function zIndex(value) {
 function direction(v) {
   var tmp;
   switch (v) {
-    case 0 :
+    case 0 : 
         tmp = "inherit";
         break;
-    case 1 :
+    case 1 : 
         tmp = "ltr";
         break;
-    case 2 :
+    case 2 : 
         tmp = "rtl";
         break;
-
+    
   }
   return /* tuple */[
           "direction",
@@ -807,16 +807,16 @@ function borderBottomRightRadius(param) {
 function borderStyle(v) {
   var tmp;
   switch (v) {
-    case 0 :
+    case 0 : 
         tmp = "solid";
         break;
-    case 1 :
+    case 1 : 
         tmp = "dotted";
         break;
-    case 2 :
+    case 2 : 
         tmp = "dashed";
         break;
-
+    
   }
   return /* tuple */[
           "borderStyle",
@@ -901,22 +901,22 @@ function lineHeight(param) {
 function textAlign(v) {
   var tmp;
   switch (v) {
-    case 0 :
+    case 0 : 
         tmp = "auto";
         break;
-    case 1 :
+    case 1 : 
         tmp = "left";
         break;
-    case 2 :
+    case 2 : 
         tmp = "right";
         break;
-    case 3 :
+    case 3 : 
         tmp = "center";
         break;
-    case 4 :
+    case 4 : 
         tmp = "justify";
         break;
-
+    
   }
   return /* tuple */[
           "textAlign",
@@ -927,19 +927,19 @@ function textAlign(v) {
 function textDecorationLine(v) {
   var tmp;
   switch (v) {
-    case 0 :
+    case 0 : 
         tmp = "none";
         break;
-    case 1 :
+    case 1 : 
         tmp = "underline";
         break;
-    case 2 :
+    case 2 : 
         tmp = "line-through";
         break;
-    case 3 :
+    case 3 : 
         tmp = "underline line-through";
         break;
-
+    
   }
   return /* tuple */[
           "textDecorationLine",
@@ -987,19 +987,19 @@ function includeFontPadding(value) {
 function textAlignVertical(v) {
   var tmp;
   switch (v) {
-    case 0 :
+    case 0 : 
         tmp = "auto";
         break;
-    case 1 :
+    case 1 : 
         tmp = "top";
         break;
-    case 2 :
+    case 2 : 
         tmp = "bottom";
         break;
-    case 3 :
+    case 3 : 
         tmp = "center";
         break;
-
+    
   }
   return /* tuple */[
           "textAlignVertical",
@@ -1033,19 +1033,19 @@ function textDecorationColor(value) {
 function textDecorationStyle(v) {
   var tmp;
   switch (v) {
-    case 0 :
+    case 0 : 
         tmp = "solid";
         break;
-    case 1 :
+    case 1 : 
         tmp = "double";
         break;
-    case 2 :
+    case 2 : 
         tmp = "dotted";
         break;
-    case 3 :
+    case 3 : 
         tmp = "dashed";
         break;
-
+    
   }
   return /* tuple */[
           "textDecorationStyle",
@@ -1056,16 +1056,16 @@ function textDecorationStyle(v) {
 function writingDirection(v) {
   var tmp;
   switch (v) {
-    case 0 :
+    case 0 : 
         tmp = "auto";
         break;
-    case 1 :
+    case 1 : 
         tmp = "ltr";
         break;
-    case 2 :
+    case 2 : 
         tmp = "rtl";
         break;
-
+    
   }
   return /* tuple */[
           "writingDirection",
@@ -1076,22 +1076,22 @@ function writingDirection(v) {
 function resizeMode(v) {
   var tmp;
   switch (v) {
-    case 0 :
+    case 0 : 
         tmp = "cover";
         break;
-    case 1 :
+    case 1 : 
         tmp = "contain";
         break;
-    case 2 :
+    case 2 : 
         tmp = "stretch";
         break;
-    case 3 :
+    case 3 : 
         tmp = "repeat";
         break;
-    case 4 :
+    case 4 : 
         tmp = "center";
         break;
-
+    
   }
   return /* tuple */[
           "resizeMode",
@@ -1254,6 +1254,6 @@ export {
   resizeMode ,
   tintColor ,
   overlayColor ,
-
+  
 }
 /* No side effect */

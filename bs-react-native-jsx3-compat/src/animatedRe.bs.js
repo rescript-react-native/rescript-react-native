@@ -13,13 +13,13 @@ function start(t, callback, param) {
 
 function extrapolateString(param) {
   switch (param) {
-    case 0 :
+    case 0 : 
         return "extend";
-    case 1 :
+    case 1 : 
         return "clamp";
-    case 2 :
+    case 2 : 
         return "identity";
-
+    
   }
 }
 
@@ -533,6 +533,6 @@ export {
   stop ,
   start ,
   reset ,
-
+  
 }
 /* react-native Not a pure module */

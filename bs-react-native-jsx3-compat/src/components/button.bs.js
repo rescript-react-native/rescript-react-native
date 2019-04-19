@@ -20,6 +20,6 @@ function make(accessibilityLabel, color, disabled, onPress, testID, title) {
 
 export {
   make ,
-
+  
 }
 /* ReasonReact Not a pure module */

@@ -23,6 +23,6 @@ function make(values, selectedIndex, onChange, enabled, momentary, tintColor, on
 
 export {
   make ,
-
+  
 }
 /* ReasonReact Not a pure module */

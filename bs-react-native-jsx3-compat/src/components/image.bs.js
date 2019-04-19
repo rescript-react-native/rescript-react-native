@@ -32,15 +32,15 @@ function CreateComponent(Impl) {
     if (cache !== undefined) {
       tmp.cache = (function () {
             switch (Caml_option.valFromOption(cache)) {
-              case 465819841 :
+              case 465819841 : 
                   return "default";
-              case 64967513 :
+              case 64967513 : 
                   return "reload";
-              case -672562089 :
+              case -672562089 : 
                   return "force-cache";
-              case -74546901 :
+              case -74546901 : 
                   return "only-if-cached";
-
+              
             }
           })();
     }
@@ -146,15 +146,15 @@ function CreateComponent(Impl) {
               if (prim$5 !== undefined) {
                 tmp.cache = (function () {
                       switch (Caml_option.valFromOption(prim$5)) {
-                        case 465819841 :
+                        case 465819841 : 
                             return "default";
-                        case 64967513 :
+                        case 64967513 : 
                             return "reload";
-                        case -672562089 :
+                        case -672562089 : 
                             return "force-cache";
-                        case -74546901 :
+                        case -74546901 : 
                             return "only-if-cached";
-
+                        
                       }
                     })();
               }
@@ -221,15 +221,15 @@ function imageURISource(uri, bundle, method_, headers, body, cache, scale, width
   if (cache !== undefined) {
     tmp.cache = (function () {
           switch (Caml_option.valFromOption(cache)) {
-            case 465819841 :
+            case 465819841 : 
                 return "default";
-            case 64967513 :
+            case 64967513 : 
                 return "reload";
-            case -672562089 :
+            case -672562089 : 
                 return "force-cache";
-            case -74546901 :
+            case -74546901 : 
                 return "only-if-cached";
-
+            
           }
         })();
   }
@@ -342,15 +342,15 @@ function _imageURISource(prim, prim$1, prim$2, prim$3, prim$4, prim$5, prim$6, p
   if (prim$5 !== undefined) {
     tmp.cache = (function () {
           switch (Caml_option.valFromOption(prim$5)) {
-            case 465819841 :
+            case 465819841 : 
                 return "default";
-            case 64967513 :
+            case 64967513 : 
                 return "reload";
-            case -672562089 :
+            case -672562089 : 
                 return "force-cache";
-            case -74546901 :
+            case -74546901 : 
                 return "only-if-cached";
-
+            
           }
         })();
   }
@@ -395,6 +395,6 @@ export {
   $$Event ,
   make ,
   resolveAssetSource ,
-
+  
 }
 /* Impl Not a pure module */

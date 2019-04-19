@@ -24,6 +24,6 @@ function make(onRefresh, refreshing, colors, enabled, progressBackgroundColor, p
 
 export {
   make ,
-
+  
 }
 /* ReasonReact Not a pure module */

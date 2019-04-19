@@ -39,6 +39,6 @@ function make(accessibilityLabel, accessible, hitSlop, onAccessibilityTap, onLay
 
 export {
   make ,
-
+  
 }
 /* ReasonReact Not a pure module */

@@ -51,6 +51,6 @@ function showShareActionSheetWithOptions(options, subject, excludedActivityTypes
 export {
   showActionSheetWithOptions ,
   showShareActionSheetWithOptions ,
-
+  
 }
 /* react-native Not a pure module */
