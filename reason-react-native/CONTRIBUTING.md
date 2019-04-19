@@ -2,7 +2,7 @@
 
 Thanks for your help!
 
-This document describes the philosophy behind the bs-react-native-next bindings.
+This document describes the philosophy behind the reason-react-native bindings.
 
 ## Zero Cost
 

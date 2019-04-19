@@ -119,8 +119,8 @@ $code
     },
   );
 };
-let sourcePath = Path.join([|root, "..", "bs-react-native-next", "src"|]);
-let outputPath = Path.join([|root, "..", "bs-react-native-next", "src"|]);
+let sourcePath = Path.join([|root, "..", "reason-react-native", "src"|]);
+let outputPath = Path.join([|root, "..", "reason-react-native", "src"|]);
 // create from rei first
 Path.join([|sourcePath, "(apis|components)/*.rei"|])
 ->FsUtils.transform(createMissingMd(sourcePath, outputPath));
@@ -129,7 +129,7 @@ Path.join([|sourcePath, "(apis|components)/*.re"|])
 ->FsUtils.transform(createMissingMd(sourcePath, outputPath));
 
 Js.log("Modules...");
-let sourcePath = Path.join([|root, "..", "bs-react-native-next", "src"|]);
+let sourcePath = Path.join([|root, "..", "reason-react-native", "src"|]);
 let outputPath = Path.join([|root, "build", "docs-src"|]);
 Path.join([|sourcePath, "**/*.md"|])
 ->FsUtils.transform(files => {
