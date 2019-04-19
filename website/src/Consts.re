@@ -133,6 +133,7 @@ let sections = [
       ("Alert", api ++ "Alert/"),
       ("AlertIOS", api ++ "AlertIOS/"),
       ("Animated", api ++ "Animated/"),
+      ("AnimationFrame", api ++ "AnimationFrame/"),
       ("AppRegistry", api ++ "AppRegistry/"),
       ("AppState", api ++ "AppState/"),
       ("AsyncStorage", api ++ "AsyncStorage/"),
