@@ -7,7 +7,94 @@ wip: true
 ```reason
 // see https://github.com/facebook/react-native/blob/master/Libraries/Types/CoreEventTypes.js
 
-type event('a) = {. "nativeEvent": 'a};
+type syntheticEvent('a) = {
+  .
+  "bubbles": Js.Nullable.t(bool),
+  "cancelable": Js.Nullable.t(bool),
+  "currentTarget": float,
+  "defaultPrevented": Js.Nullable.t(bool),
+  "dispatchConfig": {. "registrationName": string},
+  "eventPhase": Js.Nullable.t(float),
+  "preventDefault": unit => unit,
+  "isDefaultPrevented": unit => bool,
+  "stopPropagation": unit => unit,
+  "isPropagationStopped": unit => bool,
+  "isTrusted": Js.Nullable.t(bool),
+  "nativeEvent": 'a,
+  "persist": unit => unit,
+  "target": Js.Nullable.t(float),
+  "timeStamp": float,
+  "_type": Js.Nullable.t(string),
+};
+
+type responderSyntheticEvent('a) = {
+  .
+  // synthethicEvent keys
+  "bubbles": Js.Nullable.t(bool),
+  "cancelable": Js.Nullable.t(bool),
+  "currentTarget": float,
+  "defaultPrevented": Js.Nullable.t(bool),
+  "dispatchConfig": {. "registrationName": string},
+  "eventPhase": Js.Nullable.t(float),
+  "preventDefault": unit => unit,
+  "isDefaultPrevented": unit => bool,
+  "stopPropagation": unit => unit,
+  "isPropagationStopped": unit => bool,
+  "isTrusted": Js.Nullable.t(bool),
+  "nativeEvent": 'a,
+  "persist": unit => unit,
+  "target": Js.Nullable.t(float),
+  "timeStamp": float,
+  "_type": Js.Nullable.t(string),
+  // responderSyntheticEvent additional key
+  "touchHistory": {
+    .
+    "indexOfSingleActiveTouch": float,
+    "mostRecentTimeStamp": float,
+    "numberActiveTouches": float,
+    "touchBank":
+      array({
+        .
+        "touchActive": bool,
+        "startPageX": float,
+        "startPageY": float,
+        "startTimeStamp": float,
+        "currentPageX": float,
+        "currentPageY": float,
+        "currentTimeStamp": float,
+        "previousPageX": float,
+        "previousPageY": float,
+        "previousTimeStamp": float,
+      }),
+  },
+};
+
+type textLayout = {
+  .
+  "x": float,
+  "y": float,
+  "width": float,
+  "height": float,
+  "ascender": float, // verify
+  "capHeight": float, // verify
+  "descender": float, // verify
+  "text": string,
+  "xHeight": float // verify
+};
+
+type layoutEvent =
+  syntheticEvent({
+    .
+    "layout": {
+      .
+      "x": float,
+      "y": float,
+      "width": float,
+      "height": float,
+    },
+  });
+
+type textLayoutEvent = syntheticEvent({. "lines": array(textLayout)});
 
 type pressEventPayload = {
   .
@@ -23,7 +110,7 @@ type pressEventPayload = {
   "touches": array(pressEventPayload),
 };
 
-type pressEvent = event(pressEventPayload);
+type pressEvent = responderSyntheticEvent(pressEventPayload);
 
 type position = {
   .
@@ -38,7 +125,7 @@ type dimensions = {
 };
 
 type scrollEvent =
-  event({
+  syntheticEvent({
     .
     "contentInset": {
       .
@@ -52,16 +139,6 @@ type scrollEvent =
     "layoutMeasurement": dimensions,
   });
 
-type layoutEvent =
-  event({
-    .
-    "layout": {
-      .
-      "x": float,
-      "y": float,
-      "width": float,
-      "height": float,
-    },
-  });
+type switchChangeEvent = syntheticEvent({. "value": bool});
     
 ```
