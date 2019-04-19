@@ -33,7 +33,7 @@ let styles =
     Style.{
       "wrapper":
         style(
-          ~width=(Platform.os == Platform.ios ? 100. : 200.)->Size.pct,
+          ~width=Size.pct(Platform.os == Platform.ios ? 100. : 200.),
           (),
         ),
     },
