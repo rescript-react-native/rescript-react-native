@@ -1,6 +1,6 @@
 'use strict';
 
-var Image$ReactNative = require("../Image.bs.js");
+var Image$ReactNative = require("./Image.bs.js");
 
 var Source = Image$ReactNative.Source;
 
