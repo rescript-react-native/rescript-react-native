@@ -22,6 +22,7 @@ type syntheticEvent('a) = {
 
 type responderSyntheticEvent('a) = {
   .
+  // synthethicEvent keys
   "bubbles": Js.Nullable.t(bool),
   "cancelable": Js.Nullable.t(bool),
   "currentTarget": float,
@@ -38,6 +39,7 @@ type responderSyntheticEvent('a) = {
   "target": Js.Nullable.t(float),
   "timeStamp": float,
   "_type": Js.Nullable.t(string),
+  // responderSyntheticEvent specific key
   "touchHistory": {
     .
     "indexOfSingleActiveTouch": float,
