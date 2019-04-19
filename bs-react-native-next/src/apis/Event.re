@@ -39,7 +39,7 @@ type responderSyntheticEvent('a) = {
   "target": Js.Nullable.t(float),
   "timeStamp": float,
   "_type": Js.Nullable.t(string),
-  // responderSyntheticEvent specific key
+  // responderSyntheticEvent additional key
   "touchHistory": {
     .
     "indexOfSingleActiveTouch": float,
