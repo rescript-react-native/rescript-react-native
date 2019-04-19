@@ -12,8 +12,9 @@ type ref = React.Ref.t(Js.nullable(element));
 external make:
   (
     ~ref: ref=?,
-    // SectionList props
+    // VirtualizedSectionList props
     ~sections: array(VirtualizedSectionList.section('item)),
+    ~stickySectionHeadersEnabled: bool=?,
     ~renderItem: VirtualizedSectionList.renderItemCallback('item),
     ~renderSectionHeader: VirtualizedSectionList.renderSectionHeaderCallback(
                             'item,
