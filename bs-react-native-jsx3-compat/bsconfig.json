@@ -1,0 +1,21 @@
+{
+  "name": "bs-react-native-jsx3-compat",
+  "namespace": "bs-react-native",
+  "refmt": 3,
+  "reason": {
+    "react-jsx": 2
+  },
+  "package-specs": {
+    "module": "es6",
+    "in-source": true
+  },
+  "suffix": ".bs.js",
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
+    }
+  ],
+  "bsc-flags": ["-bs-no-version-header", "-warn-error @a", "-w -41-42-102"],
+  "bs-dependencies": ["reason-react"]
+}
