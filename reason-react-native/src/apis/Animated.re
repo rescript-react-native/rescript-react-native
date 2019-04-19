@@ -267,3 +267,31 @@ let start = Animation.start;
 let stop = Animation.stop;
 
 let reset = Animation.reset;
+
+// Unsafe, unfortunately, but allows us to pass animated values everywhere.
+// May be refined later.
+external animatedStyle: value('a) => 'b = "%identity";
+
+module Image = {
+  include Image;
+
+  let make = createAnimatedComponent(make);
+};
+
+module ScrollView = {
+  include ScrollView;
+
+  let make = createAnimatedComponent(make);
+};
+
+module Text = {
+  include Text;
+
+  let make = createAnimatedComponent(make);
+};
+
+module View = {
+  include View;
+
+  let make = createAnimatedComponent(View.make);
+};

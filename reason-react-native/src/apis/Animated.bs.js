@@ -2,6 +2,7 @@
 
 var Caml_option = require("bs-platform/lib/js/caml_option.js");
 var ReactNative = require("react-native");
+var Image$ReactNative = require("../components/Image.bs.js");
 
 var Animation = /* module */[];
 
@@ -76,6 +77,26 @@ function reset(prim) {
   return /* () */0;
 }
 
+var make = ReactNative.Animated.createAnimatedComponent(ReactNative.Image);
+
+var $$Image = /* module */[
+  /* Source */Image$ReactNative.Source,
+  /* DefaultSource */Image$ReactNative.DefaultSource,
+  /* make */make
+];
+
+var make$1 = ReactNative.Animated.createAnimatedComponent(ReactNative.ScrollView);
+
+var ScrollView = /* module */[/* make */make$1];
+
+var make$2 = ReactNative.Animated.createAnimatedComponent(ReactNative.Text);
+
+var $$Text = /* module */[/* make */make$2];
+
+var make$3 = ReactNative.Animated.createAnimatedComponent(ReactNative.View);
+
+var View = /* module */[/* make */make$3];
+
 exports.Animation = Animation;
 exports.ValueAnimations = ValueAnimations;
 exports.Interpolation = Interpolation;
@@ -88,4 +109,8 @@ exports.decay = decay;
 exports.start = start;
 exports.stop = stop;
 exports.reset = reset;
-/* react-native Not a pure module */
+exports.$$Image = $$Image;
+exports.ScrollView = ScrollView;
+exports.$$Text = $$Text;
+exports.View = View;
+/* make Not a pure module */
