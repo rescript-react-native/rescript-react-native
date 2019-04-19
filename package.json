@@ -40,7 +40,7 @@
   },
   "workspaces": [
     "bs-react-native",
-    "bs-react-native-next",
+    "reason-react-native",
     "bs-react-native-example",
     "react-native-template-reason",
     "website"

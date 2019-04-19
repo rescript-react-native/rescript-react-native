@@ -9,8 +9,8 @@
 ex $1 <<EOF
 %s/require("bs-react-native\//require("bs-react-native\/bs-react-native\//g
 %s/from "bs-react-native\//from "bs-react-native\/bs-react-native\//g
-%s/require("bs-react-native-next\//require("bs-react-native\/bs-react-native-next\//g
-%s/from "bs-react-native-next\//from "bs-react-native\/bs-react-native-next\//g
+%s/require("reason-react-native\//require("bs-react-native\/reason-react-native\//g
+%s/from "reason-react-native\//from "bs-react-native\/reason-react-native\//g
 x
 EOF
 
