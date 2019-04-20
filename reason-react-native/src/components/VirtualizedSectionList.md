@@ -34,6 +34,7 @@ external make:
     ~ref: ref=?,
     // VirtualizedSectionList props
     ~sections: array(section('item)),
+    ~stickySectionHeadersEnabled: bool=?,
     ~renderItem: renderItemCallback('item),
     ~renderSectionHeader: renderSectionHeaderCallback('item)=?,
     ~renderSectionFooter: renderSectionHeaderCallback('item)=?,
