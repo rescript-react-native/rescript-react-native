@@ -1,12 +1,12 @@
 {
   "name": "bs-react-native-jsx3-compat",
-  "namespace": "bs-react-native",
+  "namespace": "bs-react-native-jsx3-compat",
   "refmt": 3,
   "reason": {
     "react-jsx": 2
   },
   "package-specs": {
-    "module": "es6",
+    "module": "commonjs",
     "in-source": true
   },
   "suffix": ".bs.js",

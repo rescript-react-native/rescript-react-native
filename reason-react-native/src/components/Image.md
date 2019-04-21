@@ -50,6 +50,8 @@ module DefaultSource = {
   external fromRequired: Packager.required => t = "%identity";
 };
 
+type imageErrorEvent = Event.syntheticEvent({. "error": string});
+
 type progress = {
   .
   "loaded": float,
@@ -59,6 +61,7 @@ type progress = {
 [@react.component] [@bs.module "react-native"]
 external make:
   (
+    ~onError: imageErrorEvent => unit=?,
     ~onLayout: Event.layoutEvent => unit=?,
     ~onLoad: unit => unit=?,
     ~onLoadEnd: unit => unit=?,
@@ -86,14 +89,14 @@ external make:
   React.element =
   "Image";
 
-type error;
+type sizeError;
 
 [@bs.module "react-native"] [@bs.scope "Image"]
 external getSize:
   (
     ~uri: string,
     ~success: (~width: float, ~height: float) => unit,
-    ~failure: error => unit=?,
+    ~failure: sizeError => unit=?,
     unit
   ) =>
   unit =
@@ -118,7 +121,6 @@ type asset = {
 };
 
 [@bs.module "react-native"] [@bs.scope "Image"]
-external resolveAssetSource: Packager.required => asset =
-  "resolveAssetSource";
+external resolveAssetSource: Source.t => asset = "resolveAssetSource";
 
 ```
