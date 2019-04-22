@@ -43,7 +43,7 @@ external make:
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
     ~collapsable: bool=?,
-    ~hitSlop: Types.insets=?,
+    ~hitSlop: Types.edgeInsets=?,
     ~importantForAccessibility: [@bs.string] [
                                   | `auto
                                   | `yes

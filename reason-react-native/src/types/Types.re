@@ -1,13 +1,10 @@
-[@bs.deriving abstract]
-type insets = {
-  left: float,
-  right: float,
-  top: float,
-  bottom: float,
-};
+type edgeInsets;
 
-[@bs.deriving abstract]
-type point = {
-  x: float,
-  y: float,
-};
+[@bs.obj]
+external edgeInsets:
+  (~left: float=?, ~right: float=?, ~top: float=?, ~bottom: float=?, unit) =>
+  edgeInsets =
+  "";
+
+type point;
+[@bs.obj] external point: (~x: float, ~y: float) => point = "";

@@ -63,7 +63,7 @@ external make:
     ~accessibilityLabel: string=?,
     ~accessible: bool=?,
     ~blurRadius: float=?,
-    ~capInsets: Types.insets=?,
+    ~capInsets: Types.edgeInsets=?,
     ~defaultSource: Image.DefaultSource.t=?,
     ~onPartialLoad: unit => unit=?,
     ~onProgress: Image.progress => unit=?,
