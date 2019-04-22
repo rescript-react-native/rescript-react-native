@@ -66,7 +66,7 @@ external make:
     ~canCancelContentTouches: bool=?,
     ~centerContent: bool=?,
     ~contentContainerStyle: Style.t=?,
-    ~contentInset: Types.insets=?,
+    ~contentInset: Types.edgeInsets=?,
     ~contentInsetAdjustmentBehavior: [@bs.string] [
                                        | `automatic
                                        | `scrollableAxes
@@ -96,7 +96,7 @@ external make:
     ~refreshControl: React.element=?,
     ~scrollEnabled: bool=?,
     ~scrollEventThrottle: int=?,
-    ~scrollIndicatorInsets: Types.insets=?,
+    ~scrollIndicatorInsets: Types.edgeInsets=?,
     ~scrollPerfTag: string=?,
     ~scrollsToTop: bool=?,
     ~scrollToOverflowEnabled: bool=?,
@@ -141,7 +141,7 @@ external make:
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
     ~collapsable: bool=?,
-    ~hitSlop: Types.insets=?,
+    ~hitSlop: Types.edgeInsets=?,
     ~importantForAccessibility: [@bs.string] [
                                   | `auto
                                   | `yes

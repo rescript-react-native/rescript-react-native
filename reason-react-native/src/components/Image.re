@@ -74,7 +74,7 @@ external make:
     ~accessibilityLabel: string=?,
     ~accessible: bool=?,
     ~blurRadius: float=?,
-    ~capInsets: Types.insets=?,
+    ~capInsets: Types.edgeInsets=?,
     ~defaultSource: DefaultSource.t=?,
     ~onPartialLoad: unit => unit=?,
     ~onProgress: progress => unit=?
