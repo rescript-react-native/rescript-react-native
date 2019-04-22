@@ -1,4 +1,3 @@
-
 ---
 id: components/DrawerLayoutAndroid
 title: DrawerLayoutAndroid
