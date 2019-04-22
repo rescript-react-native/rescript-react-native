@@ -10,7 +10,7 @@ external make:
     ~onLayout: Event.layoutEvent => unit=?,
     ~onLongPress: unit => unit=?,
     ~onPress: unit => unit=?,
-    ~pressRetentionOffset: Types.insets=?,
+    ~pressRetentionOffset: Types.edgeInsets=?,
     ~selectable: bool=?,
     ~style: Style.t=?,
     ~testID: string=?,
