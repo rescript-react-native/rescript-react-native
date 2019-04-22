@@ -5,13 +5,19 @@ wip: true
 ---
 
 ```reason
+type remove = {. "remove": unit => unit};
+
 [@bs.scope "BackHandler"] [@bs.module "react-native"]
 external exitApp: unit => unit = "";
 
 [@bs.scope "BackHandler"] [@bs.module "react-native"]
-external addEventListener: (string, unit => bool) => EventSubscription.t = "";
+external addEventListener:
+  ([@bs.string] [ | `backPress | `hardwareBackPress], unit => bool) => remove =
+  "";
 
 [@bs.scope "BackHandler"] [@bs.module "react-native"]
-external removeEventListener: (string, unit => bool) => unit = "";
+external removeEventListener:
+  ([@bs.string] [ | `backPress | `hardwareBackPress], unit => bool) => unit =
+  "";
 
 ```
