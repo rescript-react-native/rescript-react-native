@@ -14,7 +14,6 @@ external make:
     ~ref: ref=?,
     // TouchableWithoutFeedback props
     ~accessible: bool=?,
-    ~accessibilityLabel: string=?,
     ~accessibilityComponentType: [@bs.string] [
                                    | `none
                                    | `button
@@ -22,6 +21,9 @@ external make:
                                    | `radiobutton_unchecked
                                  ]
                                    =?,
+    ~accessibilityHint: string=?,
+    ~accessibilityIgnoresInvertColors: bool=?,
+    ~accessibilityLabel: string=?,
     ~accessibilityRole: [@bs.string] [
                           | `none
                           | `button
@@ -37,6 +39,7 @@ external make:
                         ]
                           =?,
     ~accessibilityStates: array(AccessibilityState.t)=?,
+    ~accessibilityTraits: array(AccessibilityTrait.t)=?,
     ~delayLongPress: int=?,
     ~delayPressIn: int=?,
     ~delayPressOut: int=?,
@@ -48,7 +51,6 @@ external make:
     ~onPressIn: Event.pressEvent => unit=?,
     ~onPressOut: Event.pressEvent => unit=?,
     ~pressRetentionOffset: Types.edgeInsets=?,
-    ~style: Style.t=?,
     ~testID: string=?,
     ~children: React.element=?
   ) =>

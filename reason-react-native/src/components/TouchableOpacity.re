@@ -5,9 +5,13 @@ type ref = React.Ref.t(Js.nullable(element));
 external make:
   (
     ~ref: ref=?,
-    // TouchableOpacity props
+    ~activeOpacity: float=?,
+    ~focusedOpacity: float=?,
+    ~hasTVPreferredFocus: bool=?,
+    ~style: Style.t=?,
+    ~tvParallaxProperties: TV.parallax=?,
+    // TouchableWithoutFeedback props
     ~accessible: bool=?,
-    ~accessibilityLabel: string=?,
     ~accessibilityComponentType: [@bs.string] [
                                    | `none
                                    | `button
@@ -15,6 +19,9 @@ external make:
                                    | `radiobutton_unchecked
                                  ]
                                    =?,
+    ~accessibilityHint: string=?,
+    ~accessibilityIgnoresInvertColors: bool=?,
+    ~accessibilityLabel: string=?,
     ~accessibilityRole: [@bs.string] [
                           | `none
                           | `button
@@ -30,23 +37,19 @@ external make:
                         ]
                           =?,
     ~accessibilityStates: array(AccessibilityState.t)=?,
+    ~accessibilityTraits: array(AccessibilityTrait.t)=?,
     ~delayLongPress: int=?,
     ~delayPressIn: int=?,
     ~delayPressOut: int=?,
     ~disabled: bool=?,
     ~hitSlop: Types.edgeInsets=?,
-    ~style: Style.t=?,
     ~onLayout: Event.layoutEvent => unit=?,
     ~onLongPress: Event.pressEvent => unit=?,
     ~onPress: Event.pressEvent => unit=?,
     ~onPressIn: Event.pressEvent => unit=?,
     ~onPressOut: Event.pressEvent => unit=?,
     ~pressRetentionOffset: Types.edgeInsets=?,
-    ~activeOpacity: float=?,
-    ~focusedOpacity: float=?,
     ~testID: string=?,
-    // FIXME
-    ~tvParallaxProperties: Js.t({.})=?,
     ~children: React.element=?
   ) =>
   React.element =
