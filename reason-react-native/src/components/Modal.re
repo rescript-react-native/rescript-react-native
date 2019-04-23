@@ -1,3 +1,6 @@
+type element;
+type ref = React.Ref.t(Js.nullable(element));
+
 module Orientation = {
   type t;
 
@@ -13,6 +16,8 @@ module Orientation = {
 [@react.component] [@bs.module "react-native"]
 external make:
   (
+    ~ref: ref=?,
+    // Modal props
     ~animationType: [@bs.string] [ | `none | `slide | `fade]=?,
     ~hardwareAccelerated: bool=?,
     ~onDismiss: unit => unit=?,

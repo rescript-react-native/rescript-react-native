@@ -42,11 +42,27 @@ external imageStyle:
 [@react.component] [@bs.module "react-native"]
 external make:
   (
-    ~imageRef: ref=?,
+    ~ref: ref=?,
+    // ImageBackground props
+    ~imageRef: Image.ref=?,
+    ~imageStyle: imageStyle=?,
+    // Image props
+    ~accessibilityLabel: string=?,
+    ~accessible: bool=?,
+    ~blurRadius: float=?,
+    ~capInsets: Types.edgeInsets=?,
+    ~defaultSource: Image.DefaultSource.t=?,
+    ~fadeDuration: float=?,
+    ~loadingIndicatorSource: array(Image.Source.t)=?,
+    ~onError: Image.errorEvent => unit=?,
     ~onLayout: Event.layoutEvent => unit=?,
     ~onLoad: unit => unit=?,
     ~onLoadEnd: unit => unit=?,
     ~onLoadStart: unit => unit=?,
+    ~onPartialLoad: unit => unit=?,
+    ~onProgress: Image.progress => unit=?,
+    ~progressiveRenderingEnabled: bool=?,
+    ~resizeMethod: [@bs.string] [ | `auto | `resize | `scale]=?,
     ~resizeMode: [@bs.string] [
                    | `center
                    | `contain
@@ -57,19 +73,7 @@ external make:
                    =?,
     ~source: Image.Source.t,
     ~style: Style.t=?,
-    ~imageStyle: imageStyle=?,
-    ~testID: string=?,
-    ~resizeMethod: [@bs.string] [ | `auto | `resize | `scale]=?,
-    ~accessibilityLabel: string=?,
-    ~accessible: bool=?,
-    ~blurRadius: float=?,
-    ~capInsets: Types.edgeInsets=?,
-    ~defaultSource: Image.DefaultSource.t=?,
-    ~onPartialLoad: unit => unit=?,
-    ~onProgress: Image.progress => unit=?,
-    ~fadeDuration: float=?,
-    ~progressiveRenderingEnabled: bool=?,
-    ~children: React.element=?
+    ~testID: string=?
   ) =>
   React.element =
   "ImageBackground";

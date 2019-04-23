@@ -1,3 +1,6 @@
+type element;
+type ref = React.Ref.t(Js.nullable(element));
+
 type size;
 
 let small: size = "small"->Obj.magic;
@@ -7,6 +10,8 @@ external exactSize: float => size = "%identity";
 [@react.component] [@bs.module "react-native"]
 external make:
   (
+    ~ref: ref=?,
+    // ActivityIndicator props
     ~animating: bool=?,
     ~color: Style.color=?,
     ~size: size=?,

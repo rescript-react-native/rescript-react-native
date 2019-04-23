@@ -1,7 +1,11 @@
+type element;
+type ref = React.Ref.t(Js.nullable(element));
+
 [@react.component] [@bs.module "react-native"]
-// View props
 external make:
   (
+    ~ref: ref=?,
+    // KeyboardAvoidingView props
     ~keyboardVerticalOffset: float=?,
     ~behavior: [@bs.string] [ | `height | `position | `padding]=?,
     ~contentContainerStyle: Style.t=?,

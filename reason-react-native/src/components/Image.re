@@ -1,3 +1,6 @@
+type element;
+type ref = React.Ref.t(Js.nullable(element));
+
 type uriSource;
 
 [@bs.obj]
@@ -43,7 +46,7 @@ module DefaultSource = {
   external fromRequired: Packager.required => t = "%identity";
 };
 
-type imageErrorEvent = Event.syntheticEvent({. "error": string});
+type errorEvent = Event.syntheticEvent({. "error": string});
 
 type progress = {
   .
@@ -54,11 +57,24 @@ type progress = {
 [@react.component] [@bs.module "react-native"]
 external make:
   (
-    ~onError: imageErrorEvent => unit=?,
+    ~ref: ref=?,
+    // Image props
+    ~accessibilityLabel: string=?,
+    ~accessible: bool=?,
+    ~blurRadius: float=?,
+    ~capInsets: Types.edgeInsets=?,
+    ~defaultSource: DefaultSource.t=?,
+    ~fadeDuration: float=?,
+    ~loadingIndicatorSource: array(Source.t)=?,
+    ~onError: errorEvent => unit=?,
     ~onLayout: Event.layoutEvent => unit=?,
     ~onLoad: unit => unit=?,
     ~onLoadEnd: unit => unit=?,
     ~onLoadStart: unit => unit=?,
+    ~onPartialLoad: unit => unit=?,
+    ~onProgress: progress => unit=?,
+    ~progressiveRenderingEnabled: bool=?,
+    ~resizeMethod: [@bs.string] [ | `auto | `resize | `scale]=?,
     ~resizeMode: [@bs.string] [
                    | `center
                    | `contain
@@ -69,15 +85,7 @@ external make:
                    =?,
     ~source: Source.t,
     ~style: Style.t=?,
-    ~testID: string=?,
-    ~resizeMethod: [@bs.string] [ | `auto | `resize | `scale]=?,
-    ~accessibilityLabel: string=?,
-    ~accessible: bool=?,
-    ~blurRadius: float=?,
-    ~capInsets: Types.edgeInsets=?,
-    ~defaultSource: DefaultSource.t=?,
-    ~onPartialLoad: unit => unit=?,
-    ~onProgress: progress => unit=?
+    ~testID: string=?
   ) =>
   React.element =
   "Image";

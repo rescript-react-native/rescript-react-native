@@ -12,6 +12,7 @@ type ref = React.Ref.t(Js.nullable(element));
 external make:
   (
     ~ref: ref=?,
+    // ProgressBarAndroid props
     ~animating: bool=?,
     ~color: Style.color=?,
     ~indeterminate: bool=?,

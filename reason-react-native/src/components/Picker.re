@@ -1,8 +1,13 @@
+type element;
+type ref = React.Ref.t(Js.nullable(element));
+
 [@react.component] [@bs.module "react-native"]
-// value == string || float
 external make:
   (
+    ~ref: ref=?,
+    // Picker props
     ~onValueChange: ('a, int) => unit=?,
+    // value == string || float
     ~selectedValue: 'a=?,
     ~enabled: bool=?,
     // Android only
