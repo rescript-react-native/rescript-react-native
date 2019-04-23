@@ -77,7 +77,12 @@ external make:
     ~endFillColor: Style.color=?,
     ~horizontal: bool=?,
     ~indicatorStyle: [@bs.string] [ | `default | `black | `white]=?,
-    ~keyboardDismissMode: [@bs.string] [ | `none | `interactive | `onDrag]=?,
+    ~keyboardDismissMode: [@bs.string] [
+                            | `none
+                            | `interactive
+                            | [@bs.as "on-drag"] `onDrag
+                          ]
+                            =?,
     ~keyboardShouldPersistTaps: [@bs.string] [ | `always | `never | `handled]=?,
     ~maximumZoomScale: float=?,
     ~minimumZoomScale: float=?,
