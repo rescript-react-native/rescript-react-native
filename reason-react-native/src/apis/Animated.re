@@ -123,7 +123,8 @@ module Interpolation = {
       ~easing: Easing.t=?,
       ~extrapolate: [@bs.string] [ | `extend | `clamp | `identity]=?,
       ~extrapolateLeft: [@bs.string] [ | `extend | `clamp | `identity]=?,
-      ~extrapolateRight: [@bs.string] [ | `extend | `clamp | `identity]=?
+      ~extrapolateRight: [@bs.string] [ | `extend | `clamp | `identity]=?,
+      unit
     ) =>
     config =
     "";
