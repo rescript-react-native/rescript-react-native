@@ -30,7 +30,7 @@ external make:
                        =?,
     ~onDrawerOpen: unit => unit=?,
     ~onDrawerSlide: drawerSlideEvent => unit=?,
-    ~onDrawerStateChanged: [ | `Idle | `Dragging | `Settling] => unit=?,
+    ~onDrawerStateChanged: AndroidInteractionState.t => unit=?,
     ~drawerBackgroundColor: Style.color=?,
     ~statusBarBackgroundColor: Style.color=?,
     // View props
