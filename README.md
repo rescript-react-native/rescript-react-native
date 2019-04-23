@@ -97,7 +97,7 @@ so that you can understand what actions will and will not be tolerated.
   https://github.com/reasonml-community/bs-react-native/blob/master/CONTRIBUTORS.md
 [chat-badge]:
   https://img.shields.io/discord/496273792503513089.svg?logo=discord&colorB=blue
-[chat]: https://discord.gg/q8GQD34
+[chat]: https://discord.gg/eaU3Z6Q
 [react-native-badge]:
   https://img.shields.io/badge/react--native-%5E0.53.3-green.svg
 [react-native]: https://github.com/facebook/react-native
