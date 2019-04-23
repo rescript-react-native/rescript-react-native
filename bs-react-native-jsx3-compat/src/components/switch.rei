@@ -23,7 +23,7 @@ As of React Native version 0.57, [tintColor], [onTintColor] and [thumbTintColor]
   ]}
   {4 iosBackgroundColor}
   {[
-    ~iosBackgroundColor: string=?
+    ~iosBackgroundColor: ReactNative.Color.t=?
   ]}
   {4 onValueChange}
   {[
@@ -31,7 +31,7 @@ As of React Native version 0.57, [tintColor], [onTintColor] and [thumbTintColor]
   ]}
   {4 thumbColor}
   {[
-    ~thumbColor: string=?
+    ~thumbColor: ReactNative.Color.t=?
   ]}
   {4 value}
   {[
@@ -39,16 +39,17 @@ As of React Native version 0.57, [tintColor], [onTintColor] and [thumbTintColor]
   ]}
  */
 
+[@react.component]
 let make:
   (
     ~disabled: bool=?,
     ~trackColorTrue: string=?,
     ~trackColorFalse: string=?,
-    ~iosBackgroundColor: string=?,
+    ~iosBackgroundColor: ReactNative.Color.t=?,
     ~onValueChange: bool => unit=?,
-    ~thumbColor: string=?,
+    ~thumbColor: ReactNative.Color.t=?,
     ~value: bool=?,
-    ~accessibilityLabel: ReasonReact.reactElement=?,
+    ~accessibilityLabel: string=?,
     ~accessible: bool=?,
     ~hitSlop: Types.insets=?,
     ~onAccessibilityTap: unit => unit=?,
@@ -71,11 +72,6 @@ let make:
     ~accessibilityHint: string=?,
     ~accessibilityIgnoresInvertColors: bool=?,
     ~accessibilityViewIsModal: bool=?,
-    ~shouldRasterizeIOS: bool=?,
-    array(ReasonReact.reactElement)
+    ~shouldRasterizeIOS: bool=?
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    unit,
-  );
+  React.element;

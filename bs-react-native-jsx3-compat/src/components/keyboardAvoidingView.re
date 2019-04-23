@@ -1,9 +1,4 @@
-[@bs.deriving jsConverter]
-type behavior = [ | `height | `position | `padding];
-
-[@bs.module "react-native"]
-external keyboardAvoidingView: ReasonReact.reactClass = "KeyboardAvoidingView";
-
+[@react.component]
 let make =
     (
       ~accessibilityLabel=?,
@@ -33,39 +28,101 @@ let make =
       ~keyboardVerticalOffset=?,
       ~behavior=?,
       ~contentContainerStyle=?,
+      ~children=?,
+      _,
     ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=keyboardAvoidingView,
-    ~props=
-      ViewProps.extend(
-        ~accessibilityLabel?,
-        ~accessible?,
-        ~hitSlop?,
-        ~onAccessibilityTap?,
-        ~onLayout?,
-        ~onMagicTap?,
-        ~responderHandlers?,
-        ~pointerEvents?,
-        ~removeClippedSubviews?,
-        ~style?,
-        ~testID?,
-        ~accessibilityComponentType?,
-        ~accessibilityLiveRegion?,
-        ~collapsable?,
-        ~importantForAccessibility?,
-        ~needsOffscreenAlphaCompositing?,
-        ~renderToHardwareTextureAndroid?,
-        ~accessibilityTraits?,
-        ~accessibilityRole?,
-        ~accessibilityStates?,
-        ~accessibilityHint?,
-        ~accessibilityIgnoresInvertColors?,
-        ~accessibilityViewIsModal?,
-        ~shouldRasterizeIOS?,
-        {
-          "keyboardVerticalOffset": keyboardVerticalOffset,
-          "behavior": behavior->Belt.Option.map(behaviorToJs),
-          "contentContainerStyle": contentContainerStyle,
-        },
-      ),
-  );
+  <ReactNative.KeyboardAvoidingView
+    ?keyboardVerticalOffset
+    ?behavior
+    ?contentContainerStyle
+    ?accessibilityLabel
+    ?accessible
+    ?hitSlop
+    ?onAccessibilityTap
+    ?onLayout
+    ?onMagicTap
+    onMoveShouldSetResponder=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onMoveShouldSetResponder->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    onMoveShouldSetResponderCapture=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onMoveShouldSetResponderCapture
+          ->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    onResponderGrant=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderGrant
+        )
+      )
+    onResponderMove=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderMove
+        )
+      )
+    onResponderReject=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderReject
+        )
+      )
+    onResponderRelease=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderRelease
+        )
+      )
+    onResponderTerminate=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderTerminate
+        )
+      )
+    onResponderTerminationRequest=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderTerminationRequest
+        )
+      )
+    onStartShouldSetResponder=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onStartShouldSetResponder->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    onStartShouldSetResponderCapture=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onStartShouldSetResponderCapture
+          ->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    ?pointerEvents
+    ?removeClippedSubviews
+    ?style
+    ?testID
+    ?accessibilityComponentType
+    ?accessibilityLiveRegion
+    ?collapsable
+    ?importantForAccessibility
+    ?needsOffscreenAlphaCompositing
+    ?renderToHardwareTextureAndroid
+    accessibilityTraits=?{
+      accessibilityTraits->Belt.Option.map(Belt.List.toArray)
+    }
+    ?accessibilityRole
+    accessibilityStates=?{
+      accessibilityStates->Belt.Option.map(Belt.List.toArray)
+    }
+    ?accessibilityHint
+    ?accessibilityIgnoresInvertColors
+    ?accessibilityViewIsModal
+    ?shouldRasterizeIOS>
+    {children->Belt.Option.getWithDefault(React.null)}
+  </ReactNative.KeyboardAvoidingView>;

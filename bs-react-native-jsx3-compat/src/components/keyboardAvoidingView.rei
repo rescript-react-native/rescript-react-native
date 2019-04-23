@@ -1,3 +1,4 @@
+[@react.component]
 let make:
   (
     ~accessibilityLabel: string=?,
@@ -27,10 +28,7 @@ let make:
     ~keyboardVerticalOffset: float=?,
     ~behavior: [ | `height | `position | `padding]=?,
     ~contentContainerStyle: Style.t=?,
-    array(ReasonReact.reactElement)
+    ~children: React.element=?,
+    unit
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    unit,
-  );
+  React.element;

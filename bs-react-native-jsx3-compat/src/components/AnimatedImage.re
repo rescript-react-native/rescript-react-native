@@ -1,3 +1,5 @@
+include Image;
+
 [@react.component]
 let make =
     (
@@ -9,7 +11,6 @@ let make =
       ~resizeMode=?,
       ~source,
       ~style=?,
-      ~imageStyle=?,
       ~testID=?,
       ~resizeMethod=?,
       ~accessibilityLabel=?,
@@ -19,17 +20,16 @@ let make =
       ~defaultSource=?,
       ~onPartialLoad=?,
       ~onProgress=?,
-      ~children=?,
+      _,
     ) =>
-  <ReactNative.ImageBackground
-    imageStyle=?{imageStyle->Belt.Option.map(Obj.magic)}
+  <ReactNative.Animated.Image
     ?onError
     ?onLayout
     ?onLoad
     ?onLoadEnd
     ?onLoadStart
     ?resizeMode
-    source={source->Image.encodeSource}
+    source={encodeSource(source)}
     ?style
     ?testID
     ?resizeMethod
@@ -37,10 +37,9 @@ let make =
     ?accessible
     ?blurRadius
     ?capInsets
-    defaultSource=?{defaultSource->Belt.Option.map(Image.encodeDefaultSource)}
+    defaultSource=?{defaultSource->Belt.Option.map(encodeDefaultSource)}
     ?onPartialLoad
     onProgress=?{
-      onProgress->Belt.Option.map((cb, e) => cb(Image.Event.progress(e)))
-    }>
-    {children->Belt.Option.getWithDefault(React.null)}
-  </ReactNative.ImageBackground>;
+      onProgress->Belt.Option.map((cb, e) => cb(Event.progress(e)))
+    }
+  />;

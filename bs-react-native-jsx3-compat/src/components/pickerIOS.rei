@@ -48,12 +48,13 @@
     selectedValue: 'value=?
   ]}
 */
+[@react.component]
 let make:
   (
     ~itemStyle: Style.t=?,
     ~onValueChange: 'value => unit=?,
     ~selectedValue: 'value=?,
-    ~accessibilityLabel: ReasonReact.reactElement=?,
+    ~accessibilityLabel: string=?,
     ~accessible: bool=?,
     ~hitSlop: Types.insets=?,
     ~onAccessibilityTap: unit => unit=?,
@@ -77,13 +78,9 @@ let make:
     ~accessibilityIgnoresInvertColors: bool=?,
     ~accessibilityViewIsModal: bool=?,
     ~shouldRasterizeIOS: bool=?,
-    array(ReasonReact.reactElement)
+    ~children: React.element=?
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    ReasonReact.actionless,
-  );
+  React.element;
 
 /**
   [PickerIOS.Item] component is used {b only} inside [<PickerIOS></PickerIOS>] component
@@ -95,7 +92,7 @@ let make:
   ]}
   {4 color}
   {[
-    color: string=?
+    color: ReactNative.Color.t=?
   ]}
   {4 value}
   {[
@@ -104,16 +101,8 @@ let make:
 */
 
 module Item: {
+  [@react.component]
   let make:
-    (
-      ~label: string,
-      ~value: 'value=?,
-      ~color: string=?,
-      array(ReasonReact.reactElement)
-    ) =>
-    ReasonReact.component(
-      ReasonReact.stateless,
-      ReasonReact.noRetainedProps,
-      unit,
-    );
+    (~label: string, ~value: 'value=?, ~color: ReactNative.Color.t=?) =>
+    React.element;
 };

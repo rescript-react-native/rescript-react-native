@@ -36,14 +36,14 @@ type renderBag('item) = {
 and section('item) = {
   data: array('item),
   key: option(string),
-  renderItem: option(renderBag('item) => ReasonReact.reactElement),
+  renderItem: option(renderBag('item) => React.element),
 };
 
 let section:
   (
     ~data: array('item),
     ~key: string=?,
-    ~renderItem: renderBag('item) => ReasonReact.reactElement=?,
+    ~renderItem: renderBag('item) => React.element=?,
     unit
   ) =>
   section('item);
@@ -73,8 +73,7 @@ type renderItem('item);
   reference:
 */
 
-let renderItem:
-  (renderBag('item) => ReasonReact.reactElement) => renderItem('item);
+let renderItem: (renderBag('item) => React.element) => renderItem('item);
 
 type separatorProps('item) = {
   highlighted: bool,
@@ -90,15 +89,15 @@ type separatorComponent('item);
 /**
   {4 listEmptyComponent}
   {[
-    ~listEmptyComponent: unit => ReasonReact.reactElement=?,
+    ~listEmptyComponent: unit => React.element=?,
   ]}
   {4 listFooterComponent}
   {[
-    ~listFooterComponent: ReasonReact.reactElement=?,
+    ~listFooterComponent: React.element=?,
   ]}
   {4 listHeaderComponent}
   {[
-    ~listHeaderComponent: ReasonReact.reactElement=?,
+    ~listHeaderComponent: React.element=?,
   ]}
   {4 sectionSeparatorComponent}
   {[
@@ -148,8 +147,7 @@ type separatorComponent('item);
    */
 
 let separatorComponent:
-  (separatorProps('item) => ReasonReact.reactElement) =>
-  separatorComponent('item);
+  (separatorProps('item) => React.element) => separatorComponent('item);
 
 type viewToken('item) = {
   .
@@ -231,51 +229,47 @@ type renderAccessoryView('item);
 */
 
 let renderAccessoryView:
-  (renderAccessory('item) => ReasonReact.reactElement) =>
-  renderAccessoryView('item);
+  (renderAccessory('item) => React.element) => renderAccessoryView('item);
 
+[@react.component]
 let make:
   (
-    ~sections: sections('item),
-    ~renderItem: renderItem('item),
+    ~sections: array(ReactNative.VirtualizedSectionList.section('item)),
+    ~renderItem: ReactNative.VirtualizedSectionList.renderItemCallback('item),
     ~keyExtractor: ('item, int) => string,
     ~itemSeparatorComponent: separatorComponent('item)=?,
-    ~listEmptyComponent: unit => ReasonReact.reactElement=?,
-    ~listFooterComponent: ReasonReact.reactElement=?,
-    ~listHeaderComponent: ReasonReact.reactElement=?,
+    ~listEmptyComponent: React.element=?,
+    ~listFooterComponent: React.element=?,
+    ~listHeaderComponent: React.element=?,
     ~sectionSeparatorComponent: separatorComponent('item)=?,
     ~inverted: bool=?,
     ~extraData: 'extraData=?,
     ~initialNumToRender: int=?,
-    ~onEndReached: {. "distanceFromEnd": float} => unit=?,
+    ~onEndReached: ReactNative.VirtualizedList.onEndReachedParams => unit=?,
     ~onEndReachedThreshold: float=?,
-    ~onViewableItemsChanged: {
-                               .
-                               "changed": array(viewToken('item)),
-                               "viewableItems": array(viewToken('item)),
-                             }
+    ~onViewableItemsChanged: ReactNative.VirtualizedList.viewableItemsChanged(
+                               'item,
+                             ) =>
+                             unit
                                =?,
     ~onRefresh: unit => unit=?,
     ~refreshing: bool=?,
-    ~renderSectionHeader: renderAccessoryView('item)=?,
-    ~renderSectionFooter: renderAccessoryView('item)=?,
+    ~renderSectionHeader: ReactNative.VirtualizedSectionList.renderSectionHeaderCallback(
+                            'item,
+                          )
+                            =?,
+    ~renderSectionFooter: ReactNative.VirtualizedSectionList.renderSectionHeaderCallback(
+                            'item,
+                          )
+                            =?,
     ~stickySectionHeadersEnabled: bool=?,
     ~keyboardDismissMode: [ | `none | `interactive | `onDrag]=?,
     ~keyboardShouldPersistTaps: [ | `always | `never | `handled]=?,
     ~showsHorizontalScrollIndicator: bool=?,
     ~showsVerticalScrollIndicator: bool=?,
-    ~getItemLayout: (option(array('item)), int) =>
-                    {
-                      .
-                      "length": int,
-                      "offset": int,
-                      "index": int,
-                    }
+    ~getItemLayout: (array('item), int) =>
+                    ReactNative.VirtualizedList.itemLayout
                       =?,
-    array(ReasonReact.reactElement)
+    unit
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    unit,
-  );
+  React.element;

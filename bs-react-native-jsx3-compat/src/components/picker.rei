@@ -235,6 +235,7 @@
     ]}
 */
 
+[@react.component]
 let make:
   (
     ~onValueChange: 'value => unit=?,
@@ -243,7 +244,7 @@ let make:
     ~mode: [ | `dialog | `dropdown]=?,
     ~prompt: string=?,
     ~itemStyle: Style.t=?,
-    ~accessibilityLabel: ReasonReact.reactElement=?,
+    ~accessibilityLabel: string=?,
     ~accessible: bool=?,
     ~hitSlop: Types.insets=?,
     ~onAccessibilityTap: unit => unit=?,
@@ -267,13 +268,10 @@ let make:
     ~accessibilityIgnoresInvertColors: bool=?,
     ~accessibilityViewIsModal: bool=?,
     ~shouldRasterizeIOS: bool=?,
-    array(ReasonReact.reactElement)
+    ~children: React.element=?,
+    unit
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    unit,
-  );
+  React.element;
 
 /**
   [Picker.Item] component is used {b only} inside [<Picker></Picker>] component
@@ -285,7 +283,7 @@ let make:
   ]}
   {4 color}
   {[
-    color: string=?
+    color: ReactNative.Color.t=?
   ]}
   {4 value}
   {[
@@ -294,17 +292,13 @@ let make:
 */
 
 module Item: {
+  [@react.component]
   let make:
     (
-      ~color: string=?,
+      ~color: ReactNative.Color.t=?,
       ~label: string,
       ~value: 'value=?,
-      ~testID: string=?,
-      array(ReasonReact.reactElement)
+      ~testID: string=?
     ) =>
-    ReasonReact.component(
-      ReasonReact.stateless,
-      ReasonReact.noRetainedProps,
-      unit,
-    );
+    React.element;
 };

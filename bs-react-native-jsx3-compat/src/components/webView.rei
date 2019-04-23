@@ -1,20 +1,6 @@
-type source;
+type source = ReactNative.WebView.Source.t;
 
-module EventTypes: {
-  [@bs.deriving abstract]
-  type t = {
-    [@bs.optional]
-    url: string,
-    [@bs.optional]
-    title: string,
-    [@bs.optional]
-    loading: bool,
-    [@bs.optional]
-    canGoBack: bool,
-    [@bs.optional]
-    canGoForward: bool,
-  };
-};
+module EventTypes: {type t = ReactNative.WebView.webViewEvent;};
 
 let sourceUri:
   (
@@ -39,17 +25,7 @@ let source:
   ) =>
   source;
 
-type iOSLoadRequestEvent = {
-  .
-  "target": int,
-  "canGoBack": bool,
-  "lockIdentifier": int,
-  "loading": bool,
-  "title": string,
-  "canGoForward": bool,
-  "navigationType": string,
-  "url": string,
-};
+type iOSLoadRequestEvent = ReactNative.WebView.request;
 
 let goForward: ReasonReact.reactRef => unit;
 
@@ -59,6 +35,7 @@ let reload: ReasonReact.reactRef => unit;
 
 let stopLoading: ReasonReact.reactRef => unit;
 
+[@react.component]
 let make:
   (
     ~source: source=?,
@@ -71,7 +48,7 @@ let make:
     ~onLoadStart: EventTypes.t => unit=?,
     ~automaticallyAdjustContentInsets: bool=?,
     ~contentInsets: Types.insets=?,
-    ~accessibilityLabel: ReasonReact.reactElement=?,
+    ~accessibilityLabel: string=?,
     ~accessible: bool=?,
     ~hitSlop: Types.insets=?,
     ~onAccessibilityTap: unit => unit=?,
@@ -97,7 +74,7 @@ let make:
     ~injectJavaScript: string => unit=?,
     ~injectedJavaScript: string=?,
     ~mediaPlaybackRequiresUserAction: bool=?,
-    ~onMessage: RNEvent.t => unit=?,
+    ~onMessage: ReactNative.WebView.messageEvent => unit=?,
     ~onNavigationStateChange: EventTypes.t => unit=?,
     ~scalesPageToFit: bool=?,
     ~startInLoadingState: bool=?,
@@ -121,11 +98,6 @@ let make:
                           =?,
     ~decelerationRate: list([ | `normal | `fast | `value(float)])=?,
     ~onShouldStartLoadWithRequest: iOSLoadRequestEvent => bool=?,
-    ~scrollEnabled: bool=?,
-    array(ReasonReact.reactElement)
+    ~scrollEnabled: bool=?
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    unit,
-  );
+  React.element;

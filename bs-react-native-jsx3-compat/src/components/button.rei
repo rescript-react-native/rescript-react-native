@@ -91,7 +91,7 @@
   {3 color}
 
   {[
-    ~color: string=?
+    ~color: ReactNative.Color.t=?
   ]}
 
   {3 disabled}
@@ -119,18 +119,15 @@
   ]}
 
  */
+[@react.component]
 let make:
   (
     ~accessibilityLabel: string=?,
-    ~color: string=?,
+    ~color: ReactNative.Color.t=?,
     ~disabled: bool=?,
     ~onPress: unit => unit,
     ~testID: string=?,
     ~title: string,
-    array(ReasonReact.reactElement)
+    unit
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    unit,
-  );
+  React.element;

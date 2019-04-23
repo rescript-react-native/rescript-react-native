@@ -1,4 +1,4 @@
-type t;
+type t = ReactNative.Style.t;
 type styleElement;
 type styleTransformElement = (string, Js.Json.t);
 type pt_only =
@@ -364,3 +364,5 @@ let tintColor: string_interpolated => styleElement;
 let overlayColor: string_interpolated => styleElement;
 type color =
   | String(string);
+
+let toReasonReactNativeColor: color => ReactNative.Color.t;

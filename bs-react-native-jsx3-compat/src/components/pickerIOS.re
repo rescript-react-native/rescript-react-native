@@ -1,29 +1,18 @@
-[@bs.module "react-native"]
-external pickerIOS: ReasonReact.reactClass = "PickerIOS";
-
-module Item = {
-  [@bs.scope "PickerIOS"] [@bs.module "react-native"]
-  external item: ReasonReact.reactClass = "Item";
-  let make = (~label, ~value=?, ~color=?) =>
-    ReasonReact.wrapJsForReason(
-      ~reactClass=item,
-      ~props={"label": label, "value": value, "color": color},
-    );
-};
-
+[@react.component]
 let make =
+    // PickerIOS props
     (
       ~itemStyle=?,
       ~onValueChange=?,
       ~selectedValue=?,
-      /* view props */
+      // View props
       ~accessibilityLabel=?,
       ~accessible=?,
       ~hitSlop=?,
       ~onAccessibilityTap=?,
       ~onLayout=?,
       ~onMagicTap=?,
-      ~responderHandlers=?,
+      ~responderHandlers: option(Types.touchResponderHandlers)=?,
       ~pointerEvents=?,
       ~removeClippedSubviews=?,
       ~style=?,
@@ -41,39 +30,108 @@ let make =
       ~accessibilityIgnoresInvertColors=?,
       ~accessibilityViewIsModal=?,
       ~shouldRasterizeIOS=?,
+      ~children: option(React.element)=?,
     ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=pickerIOS,
-    ~props=
-      ViewProps.extend(
-        {
-          "itemStyle": itemStyle,
-          "onValueChange": onValueChange,
-          "selectedValue": selectedValue,
-        },
-        ~accessibilityLabel?,
-        ~accessible?,
-        ~hitSlop?,
-        ~onAccessibilityTap?,
-        ~onLayout?,
-        ~onMagicTap?,
-        ~responderHandlers?,
-        ~pointerEvents?,
-        ~removeClippedSubviews?,
-        ~style?,
-        ~testID?,
-        ~accessibilityComponentType?,
-        ~accessibilityLiveRegion?,
-        ~collapsable?,
-        ~importantForAccessibility?,
-        ~needsOffscreenAlphaCompositing?,
-        ~renderToHardwareTextureAndroid?,
-        ~accessibilityTraits?,
-        ~accessibilityRole?,
-        ~accessibilityStates?,
-        ~accessibilityHint?,
-        ~accessibilityIgnoresInvertColors?,
-        ~accessibilityViewIsModal?,
-        ~shouldRasterizeIOS?,
-      ),
-  );
+  <ReactNative.PickerIOS
+    ?itemStyle
+    onValueChange=?{onValueChange->Belt.Option.map((o, a, _) => o(a))}
+    ?selectedValue
+    ?accessibilityLabel
+    ?accessible
+    ?hitSlop
+    ?onAccessibilityTap
+    ?onLayout
+    ?onMagicTap
+    onMoveShouldSetResponder=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onMoveShouldSetResponder->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    onMoveShouldSetResponderCapture=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onMoveShouldSetResponderCapture
+          ->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    onResponderGrant=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderGrant
+        )
+      )
+    onResponderMove=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderMove
+        )
+      )
+    onResponderReject=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderReject
+        )
+      )
+    onResponderRelease=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderRelease
+        )
+      )
+    onResponderTerminate=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderTerminate
+        )
+      )
+    onResponderTerminationRequest=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderTerminationRequest
+        )
+      )
+    onStartShouldSetResponder=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onStartShouldSetResponder->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    onStartShouldSetResponderCapture=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onStartShouldSetResponderCapture
+          ->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    ?pointerEvents
+    ?removeClippedSubviews
+    ?style
+    ?testID
+    ?accessibilityComponentType
+    ?accessibilityLiveRegion
+    ?collapsable
+    ?importantForAccessibility
+    ?needsOffscreenAlphaCompositing
+    ?renderToHardwareTextureAndroid
+    accessibilityTraits=?{
+      accessibilityTraits->Belt.Option.map(Belt.List.toArray)
+    }
+    ?accessibilityRole
+    accessibilityStates=?{
+      accessibilityStates->Belt.Option.map(Belt.List.toArray)
+    }
+    ?accessibilityHint
+    ?accessibilityIgnoresInvertColors
+    ?accessibilityViewIsModal
+    ?shouldRasterizeIOS>
+    {children->Belt.Option.getWithDefault(React.null)}
+  </ReactNative.PickerIOS>;
+
+module Item = {
+  [@react.component]
+  let make =
+      // PickerIOS item props
+      (~label, ~value=?, ~color=?) =>
+    <ReactNative.PickerIOS.Item label ?value ?color />;
+};

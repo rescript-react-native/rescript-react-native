@@ -1,16 +1,11 @@
-[@bs.module "react-native"] external view: ReasonReact.reactClass = "Slider";
-
-type rawImageSourceJS;
-
-external rawImageSourceJS: 'a => rawImageSourceJS = "%identity";
-
-let convertImageSource = src =>
-  switch (src) {
-  | `Multiple(x) => rawImageSourceJS(Array.of_list(x))
-  | `URI(x) => rawImageSourceJS(x)
-  | `Required(x) => rawImageSourceJS(x)
+let encodeSource = (x: Image.imageSource) =>
+  switch (x) {
+  | `URI(x) => ReactNative.Image.Source.fromUriSource(x)
+  | `Required(x) => ReactNative.Image.Source.fromRequired(x)
+  | `Multiple(x) => ReactNative.Image.Source.fromUriSources(Array.of_list(x))
   };
 
+[@react.component]
 let make =
     (
       ~disabled: option(bool)=?,
@@ -51,52 +46,110 @@ let make =
       ~accessibilityIgnoresInvertColors=?,
       ~accessibilityViewIsModal=?,
       ~shouldRasterizeIOS=?,
+      _,
     ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=view,
-    ~props=
-      ViewProps.extend(
-        {
-          "disabled": disabled,
-          "maximumTrackTintColor": maximumTrackTintColor,
-          "maximumValue": maximumValue,
-          "minimumTrackTintColor": minimumTrackTintColor,
-          "minimumValue": minimumValue,
-          "onSlidingComplete": onSlidingComplete,
-          "onValueChange": onValueChange,
-          "step": step,
-          "value": value,
-          "thumbTintColor": thumbTintColor,
-          "maximumTrackImage":
-            maximumTrackImage->Belt.Option.map(convertImageSource),
-          "minimumTrackImage":
-            minimumTrackImage->Belt.Option.map(convertImageSource),
-          "thumbImage": thumbImage->Belt.Option.map(convertImageSource),
-          "trackImage": trackImage->Belt.Option.map(convertImageSource),
-        },
-        ~accessibilityLabel?,
-        ~accessible?,
-        ~hitSlop?,
-        ~onAccessibilityTap?,
-        ~onLayout?,
-        ~onMagicTap?,
-        ~responderHandlers?,
-        ~pointerEvents?,
-        ~removeClippedSubviews?,
-        ~style?,
-        ~testID?,
-        ~accessibilityComponentType?,
-        ~accessibilityLiveRegion?,
-        ~collapsable?,
-        ~importantForAccessibility?,
-        ~needsOffscreenAlphaCompositing?,
-        ~renderToHardwareTextureAndroid?,
-        ~accessibilityTraits?,
-        ~accessibilityRole?,
-        ~accessibilityStates?,
-        ~accessibilityHint?,
-        ~accessibilityIgnoresInvertColors?,
-        ~accessibilityViewIsModal?,
-        ~shouldRasterizeIOS?,
-      ),
-  );
+  <ReactNative.Slider
+    ?disabled
+    ?maximumTrackTintColor
+    ?maximumValue
+    ?minimumTrackTintColor
+    ?minimumValue
+    ?onSlidingComplete
+    ?onValueChange
+    ?step
+    ?value
+    ?thumbTintColor
+    maximumTrackImage=?{maximumTrackImage->Belt.Option.map(encodeSource)}
+    minimumTrackImage=?{minimumTrackImage->Belt.Option.map(encodeSource)}
+    thumbImage=?{thumbImage->Belt.Option.map(encodeSource)}
+    trackImage=?{trackImage->Belt.Option.map(encodeSource)}
+    ?accessibilityLabel
+    ?accessible
+    ?hitSlop
+    ?onAccessibilityTap
+    ?onLayout
+    ?onMagicTap
+    onMoveShouldSetResponder=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onMoveShouldSetResponder->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    onMoveShouldSetResponderCapture=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onMoveShouldSetResponderCapture
+          ->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    onResponderGrant=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderGrant
+        )
+      )
+    onResponderMove=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderMove
+        )
+      )
+    onResponderReject=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderReject
+        )
+      )
+    onResponderRelease=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderRelease
+        )
+      )
+    onResponderTerminate=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderTerminate
+        )
+      )
+    onResponderTerminationRequest=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderTerminationRequest
+        )
+      )
+    onStartShouldSetResponder=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onStartShouldSetResponder->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    onStartShouldSetResponderCapture=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onStartShouldSetResponderCapture
+          ->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    ?pointerEvents
+    ?removeClippedSubviews
+    ?style
+    ?testID
+    ?accessibilityComponentType
+    ?accessibilityLiveRegion
+    ?collapsable
+    ?importantForAccessibility
+    ?needsOffscreenAlphaCompositing
+    ?renderToHardwareTextureAndroid
+    accessibilityTraits=?{
+      accessibilityTraits->Belt.Option.map(Belt.List.toArray)
+    }
+    ?accessibilityRole
+    accessibilityStates=?{
+      accessibilityStates->Belt.Option.map(Belt.List.toArray)
+    }
+    ?accessibilityHint
+    ?accessibilityIgnoresInvertColors
+    ?accessibilityViewIsModal
+    ?shouldRasterizeIOS
+  />;

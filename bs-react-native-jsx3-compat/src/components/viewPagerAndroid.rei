@@ -116,22 +116,14 @@ You can read more on [ViewPagerAndroid] component usage in official docs: {{:htt
   You can use this method to manually set page at given index.
  */
 
+[@react.component]
 let make:
   (
     ~initialPage: int=?,
     ~keyboardDismissMode: [ | `none | `onDrag]=?,
-    ~onPageScroll: {
-                     .
-                     "nativeEvent": {
-                       .
-                       "position": int,
-                       "offset": int,
-                     },
-                   } =>
-                   unit
-                     =?,
+    ~onPageScroll: ReactNative.ViewPagerAndroid.pageScrollEvent => unit=?,
     ~onPageScrollStateChanged: string => unit=?,
-    ~onPageSelected: {. "nativeEvent": {. "position": int}} => unit=?,
+    ~onPageSelected: ReactNative.ViewPagerAndroid.pageSelectedEvent => unit=?,
     ~pageMargin: int=?,
     ~peekEnabled: bool=?,
     ~scrollEnabled: bool=?,
@@ -160,13 +152,10 @@ let make:
     ~accessibilityIgnoresInvertColors: bool=?,
     ~accessibilityViewIsModal: bool=?,
     ~shouldRasterizeIOS: bool=?,
-    array(ReasonReact.reactElement)
+    ~children: React.element=?,
+    unit
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    unit,
-  );
+  React.element;
 
 /**
   {4 Example with methods}

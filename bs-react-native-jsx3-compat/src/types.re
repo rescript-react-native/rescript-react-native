@@ -1,10 +1,4 @@
-type insets = {
-  .
-  "left": int,
-  "right": int,
-  "top": int,
-  "bottom": int,
-};
+type insets = ReactNative.Types.edgeInsets;
 
 type touchResponderHandlers = {
   onMoveShouldSetResponder: option(RNEvent.NativeEvent.t => bool),
@@ -37,26 +31,7 @@ type accessibilityComponentType = [
 ];
 
 /* deprecated : Please use accessibilityRole and accessibilityState instead */
-[@bs.deriving {jsConverter: newType}]
-type accessibilityTrait = [
-  | `none
-  | `button
-  | `link
-  | `header
-  | `search
-  | `image
-  | `selected
-  | `plays
-  | `key
-  | `text
-  | `summary
-  | `disabled
-  | `frequentUpdates
-  | `startsMedia
-  | `adjustable
-  | `allowsDirectInteraction
-  | `pageTurn
-];
+type accessibilityTrait = ReactNative.AccessibilityTrait.t;
 
 [@bs.deriving {jsConverter: newType}]
 type accessibilityLiveRegion = [ | `none | `polite | `assertive];
@@ -84,5 +59,4 @@ type accessibilityRole = [
   | `imagebutton
 ];
 
-[@bs.deriving {jsConverter: newType}]
-type accessibilityState = [ | `selected | `disabled];
+type accessibilityState = ReactNative.AccessibilityState.t;

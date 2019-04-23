@@ -1,10 +1,8 @@
-[@bs.module "react-native"]
-external view: ReasonReact.reactClass = "TouchableOpacity";
-
 [@bs.send]
 external setOpacityTo: (ReasonReact.reactRef, float, int) => unit =
   "setOpacityTo";
 
+[@react.component]
 let make =
     (
       ~accessible=?,
@@ -31,44 +29,36 @@ let make =
       ~focusedOpacity=?,
       ~testID=?,
       ~tvParallaxProperties=?,
+      ~children=?,
     ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=view,
-    ~props={
-      "accessible": accessible,
-      "accessibilityLabel": accessibilityLabel,
-      "delayLongPress": delayLongPress,
-      "delayPressIn": delayPressIn,
-      "delayPressOut": delayPressOut,
-      "disabled": disabled,
-      "hitSlop": hitSlop,
-      "style": style,
-      "onLayout": onLayout,
-      "onLongPress": onLongPress,
-      "onPress": onPress,
-      "onPressIn": onPressIn,
-      "onPressOut": onPressOut,
-      "pressRetentionOffset": pressRetentionOffset,
-      "accessibilityComponentType":
-        Belt.Option.map(
-          accessibilityComponentType,
-          Types.accessibilityComponentTypeToJs,
-        ),
-      "accessibilityTraits":
-        Belt.Option.map(accessibilityTraits, x =>
-          x |> List.map(Types.accessibilityTraitToJs) |> Array.of_list
-        ),
-      "accessibilityRole":
-        Belt.Option.map(accessibilityRole, Types.accessibilityRoleToJs),
-      "accessibilityStates":
-        Belt.Option.map(accessibilityStates, x =>
-          x |> List.map(Types.accessibilityStateToJs) |> Array.of_list
-        ),
-      "accessibilityHint": accessibilityHint,
-      "accessibilityIgnoresInvertColors": accessibilityIgnoresInvertColors,
-      "focusedOpacity": focusedOpacity,
-      "activeOpacity": activeOpacity,
-      "testID": testID,
-      "tvParallaxProperties": tvParallaxProperties,
-    },
-  );
+  <ReactNative.TouchableOpacity
+    ?activeOpacity
+    ?focusedOpacity
+    ?tvParallaxProperties
+    ?accessible
+    ?accessibilityLabel
+    ?delayLongPress
+    ?delayPressIn
+    ?delayPressOut
+    ?disabled
+    ?hitSlop
+    ?onLayout
+    ?onLongPress
+    ?onPress
+    ?onPressIn
+    ?onPressOut
+    ?pressRetentionOffset
+    ?style
+    ?accessibilityComponentType
+    accessibilityTraits=?{
+      accessibilityTraits->Belt.Option.map(Belt.List.toArray)
+    }
+    ?accessibilityRole
+    accessibilityStates=?{
+      accessibilityStates->Belt.Option.map(Belt.List.toArray)
+    }
+    ?accessibilityHint
+    ?accessibilityIgnoresInvertColors
+    ?testID>
+    {children->Belt.Option.getWithDefault(React.null)}
+  </ReactNative.TouchableOpacity>;

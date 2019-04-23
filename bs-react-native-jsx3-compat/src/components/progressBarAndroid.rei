@@ -33,7 +33,7 @@
  {{:\BsReactNative/View-BsReactNative} [View] props}
  {4 color}
  {[
-   ~color: string=?,
+   ~color: ReactNative.Color.t=?,
  ]}
  {4 animating}
  {[
@@ -67,10 +67,12 @@
    ~testID: string=?,
  ]}
 */
+
+[@react.component]
 let make:
   (
     ~animating: bool=?,
-    ~color: string=?,
+    ~color: ReactNative.Color.t=?,
     ~indeterminate: bool=?,
     ~progress: float=?,
     ~styleAttr: [
@@ -83,7 +85,7 @@ let make:
                   | `SmallInverse
                 ]
                   =?,
-    ~accessibilityLabel: ReasonReact.reactElement=?,
+    ~accessibilityLabel: string=?,
     ~accessible: bool=?,
     ~hitSlop: Types.insets=?,
     ~onAccessibilityTap: unit => unit=?,
@@ -107,10 +109,6 @@ let make:
     ~accessibilityIgnoresInvertColors: bool=?,
     ~accessibilityViewIsModal: bool=?,
     ~shouldRasterizeIOS: bool=?,
-    array(ReasonReact.reactElement)
+    unit
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    ReasonReact.actionless,
-  );
+  React.element;

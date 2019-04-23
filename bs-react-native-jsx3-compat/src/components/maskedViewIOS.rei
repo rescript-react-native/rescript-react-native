@@ -50,9 +50,10 @@
 
 */
 
+[@react.component]
 let make:
   (
-    ~maskElement: ReasonReact.reactElement,
+    ~maskElement: React.element,
     ~accessible: bool=?,
     ~accessibilityLabel: string=?,
     ~accessibilityComponentType: Types.accessibilityComponentType=?,
@@ -77,10 +78,6 @@ let make:
     ~renderToHardwareTextureAndroid: bool=?,
     ~accessibilityViewIsModal: bool=?,
     ~shouldRasterizeIOS: bool=?,
-    array(ReasonReact.reactElement)
+    ~children: React.element=?
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    ReasonReact.actionless,
-  );
+  React.element;

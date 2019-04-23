@@ -1,8 +1,5 @@
-open ScrollViewProps;
-
 /************* */
-module type FlatListComponent = {
-  /**
+/**
     {3 Example of use}
     In order to render a FlatList {{:https://facebook.github.io/react-native/docs/flatlist}} in React Native you need to provide three props:
     - [data]
@@ -67,15 +64,15 @@ module type FlatListComponent = {
   ]}
   {4 listFooterComponent}
   {[
-    listFooterComponent: ReasonReact.reactElement=?
+    listFooterComponent: React.element=?
   ]}
   {4 listHeaderComponent}
   {[
-    listHeaderComponent: ReasonReact.reactElement=?
+    listHeaderComponent: React.element=?
   ]}
   {4 listEmptyComponent}
   {[
-    listEmptyComponent: ReasonReact.reactElement=?
+    listEmptyComponent: React.element=?
   ]}
   {4 columnWrapperStyle}
   {[
@@ -168,7 +165,7 @@ module type FlatListComponent = {
   ]}
   {4 refreshControl}
   {[
-    refreshControl: ReasonReact.reactElement=?
+    refreshControl: React.element=?
   ]}
   {4 refreshing}
   {[
@@ -251,156 +248,138 @@ module type FlatListComponent = {
   ]}
 
   */
-  /**
+/**
     {3 methods }
     {4 scrollToEnd}
   */
-  let scrollToEnd: (ReasonReact.reactRef, ~animated: bool) => unit;
+let scrollToEnd: (ReasonReact.reactRef, ~animated: bool) => unit;
 
-  /**
+/**
   {4 scrollToIndex}
   */
 
-  let scrollToIndex:
-    (
-      ReasonReact.reactRef,
-      ~index: int,
-      ~animated: bool=?,
-      ~viewOffset: int=?,
-      ~viewPosition: int=?,
-      unit
-    ) =>
-    unit;
+let scrollToIndex:
+  (
+    ReasonReact.reactRef,
+    ~index: int,
+    ~animated: bool=?,
+    ~viewOffset: int=?,
+    ~viewPosition: int=?,
+    unit
+  ) =>
+  unit;
 
-  /**
+/**
   {4 scrollToItem}
   */
 
-  let scrollToItem:
-    (
-      ReasonReact.reactRef,
-      ~item: 'item,
-      ~animated: bool=?,
-      ~viewPosition: int=?,
-      unit
-    ) =>
-    unit;
+let scrollToItem:
+  (
+    ReasonReact.reactRef,
+    ~item: 'item,
+    ~animated: bool=?,
+    ~viewPosition: int=?,
+    unit
+  ) =>
+  unit;
 
-  /**
+/**
   {4 scrollToOffset}
   */
 
-  let scrollToOffset:
-    (ReasonReact.reactRef, ~offset: float=?, ~animated: bool=?, unit) => unit;
+let scrollToOffset:
+  (ReasonReact.reactRef, ~offset: float=?, ~animated: bool=?, unit) => unit;
 
-  /**
+/**
   {2 API reference}
   */
-  [@bs.send]
-  external recordInteraction: ReasonReact.reactRef => unit = "";
+[@bs.send]
+external recordInteraction: ReasonReact.reactRef => unit = "";
 
-  type renderBag('item) = {
-    item: 'item,
-    index: int,
-  };
-
-  type renderItem('item);
-
-  let renderItem:
-    (renderBag('item) => ReasonReact.reactElement) => renderItem('item);
-
-  type separatorComponent('item);
-
-  type separatorProps('item) = {
-    highlighted: bool,
-    leadingItem: option('item),
-  };
-
-  let separatorComponent:
-    (separatorProps('item) => ReasonReact.reactElement) =>
-    separatorComponent('item);
-
-  let make:
-    (
-      ~data: array('item),
-      ~renderItem: renderItem('item),
-      ~keyExtractor: ('item, int) => string,
-      ~itemSeparatorComponent: separatorComponent('item)=?,
-      ~bounces: bool=?,
-      ~listEmptyComponent: ReasonReact.reactElement=?,
-      ~listFooterComponent: ReasonReact.reactElement=?,
-      ~listFooterComponentStyle: Style.t=?,
-      ~listHeaderComponent: ReasonReact.reactElement=?,
-      ~listHeaderComponentStyle: Style.t=?,
-      ~columnWrapperStyle: Style.t=?,
-      ~extraData: 'any=?,
-      ~getItemLayout: (option(array('item)), int) =>
-                      {
-                        .
-                        "length": int,
-                        "offset": int,
-                        "index": int,
-                      }
-                        =?,
-      ~horizontal: bool=?,
-      ~initialNumToRender: int=?,
-      ~initialScrollIndex: int=?,
-      ~inverted: bool=?,
-      ~numColumns: 'int=?,
-      ~onEndReached: {. "distanceFromEnd": float} => unit=?,
-      ~onEndReachedThreshold: float=?,
-      ~onRefresh: unit => unit=?,
-      ~onViewableItemsChanged: {
-                                 .
-                                 "viewableItems":
-                                   array({
-                                     .
-                                     "item": 'item,
-                                     "key": string,
-                                     "index": Js.undefined(int),
-                                     "isViewable": bool,
-                                     "section": Js.t({.}),
-                                   }),
-                                 "changed":
-                                   array({
-                                     .
-                                     "item": 'item,
-                                     "key": string,
-                                     "index": Js.undefined(int),
-                                     "isViewable": bool,
-                                     "section": Js.t({.}),
-                                   }),
-                               }
-                                 =?,
-      ~overScrollMode: overScrollMode=?,
-      ~pagingEnabled: bool=?,
-      ~refreshControl: ReasonReact.reactElement=?,
-      ~refreshing: bool=?,
-      ~removeClippedSubviews: bool=?,
-      ~scrollEnabled: bool=?,
-      ~stickyHeaderIndices: list(int)=?,
-      ~showsHorizontalScrollIndicator: bool=?,
-      ~showsVerticalScrollIndicator: bool=?,
-      ~windowSize: int=?,
-      ~maxToRenderPerBatch: int=?,
-      ~viewabilityConfig: Js.t({.})=?,
-      ~scrollEventThrottle: int=?,
-      ~onScroll: RNEvent.NativeScrollEvent.t => unit=?,
-      ~onScrollBeginDrag: RNEvent.NativeScrollEvent.t => unit=?,
-      ~onScrollEndDrag: RNEvent.NativeScrollEvent.t => unit=?,
-      ~onMomentumScrollBegin: RNEvent.NativeScrollEvent.t => unit=?,
-      ~onMomentumScrollEnd: RNEvent.NativeScrollEvent.t => unit=?,
-      ~style: Style.t=?,
-      ~contentInsetAdjustmentBehavior: contentInsetAdjustmentBehavior=?,
-      array(ReasonReact.reactElement)
-    ) =>
-    ReasonReact.component(
-      ReasonReact.stateless,
-      ReasonReact.noRetainedProps,
-      unit,
-    );
+type renderBag('item) = {
+  item: 'item,
+  index: int,
 };
 
-module CreateComponent: (Impl: View.Impl) => FlatListComponent;
+type renderItem('item);
 
-include FlatListComponent;
+let renderItem: (renderBag('item) => React.element) => renderItem('item);
+
+type separatorComponent('item);
+
+type separatorProps('item) = {
+  highlighted: bool,
+  leadingItem: option('item),
+};
+
+let separatorComponent:
+  (separatorProps('item) => React.element) => separatorComponent('item);
+
+type overScrollMode = [ | `always | `never | `auto];
+
+type contentInsetAdjustmentBehavior = [
+  | `automatic
+  | `scrollableAxes
+  | `never
+  | `always
+];
+
+[@react.component]
+let make:
+  (
+    ~data: array('item),
+    ~renderItem: renderItem('item),
+    ~keyExtractor: ('item, int) => string,
+    ~itemSeparatorComponent: React.component(
+                               ReactNative.FlatList.separatorComponentProps(
+                                 'item,
+                               ),
+                             )
+                               =?,
+    ~bounces: bool=?,
+    ~listEmptyComponent: React.element=?,
+    ~listFooterComponent: React.element=?,
+    ~listFooterComponentStyle: Style.t=?,
+    ~listHeaderComponent: React.element=?,
+    ~listHeaderComponentStyle: Style.t=?,
+    ~columnWrapperStyle: Style.t=?,
+    ~extraData: 'any=?,
+    ~getItemLayout: (array('item), int) =>
+                    ReactNative.VirtualizedList.itemLayout
+                      =?,
+    ~horizontal: bool=?,
+    ~initialNumToRender: int=?,
+    ~initialScrollIndex: int=?,
+    ~inverted: bool=?,
+    ~numColumns: 'int=?,
+    ~onEndReached: ReactNative.VirtualizedList.onEndReachedParams => unit=?,
+    ~onEndReachedThreshold: float=?,
+    ~onRefresh: unit => unit=?,
+    ~onViewableItemsChanged: ReactNative.VirtualizedList.viewableItemsChanged(
+                               'item,
+                             ) =>
+                             unit
+                               =?,
+    ~overScrollMode: overScrollMode=?,
+    ~pagingEnabled: bool=?,
+    ~refreshControl: React.element=?,
+    ~refreshing: bool=?,
+    ~removeClippedSubviews: bool=?,
+    ~scrollEnabled: bool=?,
+    ~stickyHeaderIndices: list(int)=?,
+    ~showsHorizontalScrollIndicator: bool=?,
+    ~showsVerticalScrollIndicator: bool=?,
+    ~windowSize: int=?,
+    ~maxToRenderPerBatch: int=?,
+    ~viewabilityConfig: Js.t({.})=?,
+    ~scrollEventThrottle: int=?,
+    ~onScroll: RNEvent.NativeScrollEvent.t => unit=?,
+    ~onScrollBeginDrag: RNEvent.NativeScrollEvent.t => unit=?,
+    ~onScrollEndDrag: RNEvent.NativeScrollEvent.t => unit=?,
+    ~onMomentumScrollBegin: RNEvent.NativeScrollEvent.t => unit=?,
+    ~onMomentumScrollEnd: RNEvent.NativeScrollEvent.t => unit=?,
+    ~style: Style.t=?,
+    ~contentInsetAdjustmentBehavior: contentInsetAdjustmentBehavior=?,
+    unit
+  ) =>
+  React.element;

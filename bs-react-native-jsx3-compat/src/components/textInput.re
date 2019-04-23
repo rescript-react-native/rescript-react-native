@@ -1,6 +1,3 @@
-[@bs.module "react-native"]
-external view: ReasonReact.reactClass = "TextInput";
-
 [@bs.send] external isFocused: ReasonReact.reactRef => bool = "";
 
 [@bs.send] external clear: ReasonReact.reactRef => unit = "";
@@ -9,244 +6,281 @@ external view: ReasonReact.reactClass = "TextInput";
 
 [@bs.send] external blur: ReasonReact.reactRef => unit = "";
 
-type editingEvent = {
-  .
-  "nativeEvent": {
-    .
-    "text": string,
-    "eventCount": int,
-    "target": int,
-  },
-};
+type editingEvent = ReactNative.TextInput.editingEvent;
 
+// [@react.component]
 let make =
     (
-      ~accessibilityLabel=?,
-      ~accessible=?,
-      ~hitSlop=?,
-      ~onAccessibilityTap=?,
-      ~onLayout=?,
-      ~onMagicTap=?,
-      ~responderHandlers=?,
-      ~pointerEvents=?,
-      ~removeClippedSubviews=?,
-      ~style=?,
-      ~testID=?,
-      ~accessibilityComponentType=?,
-      ~accessibilityLiveRegion=?,
-      ~collapsable=?,
-      ~importantForAccessibility=?,
-      ~needsOffscreenAlphaCompositing=?,
-      ~renderToHardwareTextureAndroid=?,
-      ~accessibilityTraits=?,
-      ~accessibilityRole=?,
-      ~accessibilityStates=?,
-      ~accessibilityHint=?,
-      ~accessibilityIgnoresInvertColors=?,
-      ~accessibilityViewIsModal=?,
-      ~shouldRasterizeIOS=?,
-      ~autoCapitalize=?,
-      ~autoComplete=?,
-      ~autoCorrect=?,
-      ~autoFocus=?,
-      ~blurOnSubmit=?,
-      ~caretHidden=?,
-      ~defaultValue=?,
-      ~editable=?,
-      ~keyboardType=?,
-      ~maxLength=?,
-      ~multiline=?,
-      ~onBlur=?,
-      ~onChangeText=?,
-      ~onChange=?,
-      ~onEndEditing=?,
-      ~onSubmitEditing=?,
-      ~onContentSizeChange=?,
-      ~onFocus=?,
-      ~onScroll=?,
-      ~onSelectionChange=?,
-      ~placeholder=?,
-      ~placeholderTextColor=?,
-      ~returnKeyType=?,
-      ~secureTextEntry=?,
-      ~selectTextOnFocus=?,
-      ~selection=?,
-      ~selectionColor=?,
-      ~value=?,
-      ~disableFullscreenUI=?,
-      ~inlineImageLeft=?,
-      ~inlineImagePadding=?,
-      ~numberOfLines=?,
-      ~returnKeyLabel=?,
-      ~textBreakStrategy=?,
-      ~underlineColorAndroid=?,
-      ~clearButtonMode=?,
-      ~clearTextOnFocus=?,
-      ~dataDetectorTypes=?,
-      ~enablesReturnKeyAutomatically=?,
-      ~keyboardAppearance=?,
-      ~onKeyPress=?,
-      ~selectionState=?,
-      ~spellCheck=?,
-      ~inputAccessoryViewID=?,
+      ~accessibilityLabel: option(string)=?,
+      ~accessible: option(bool)=?,
+      ~hitSlop: option(Types.insets)=?,
+      ~onAccessibilityTap: option(unit => unit)=?,
+      ~onLayout: option(RNEvent.NativeLayoutEvent.t => unit)=?,
+      ~onMagicTap: option(unit => unit)=?,
+      ~responderHandlers: option(Types.touchResponderHandlers)=?,
+      ~pointerEvents: option(Types.pointerEvents)=?,
+      ~removeClippedSubviews: option(bool)=?,
+      ~style: option(Style.t)=?,
+      ~testID: option(string)=?,
+      ~accessibilityComponentType: option(Types.accessibilityComponentType)=?,
+      ~accessibilityLiveRegion: option(Types.accessibilityLiveRegion)=?,
+      ~collapsable: option(bool)=?,
+      ~importantForAccessibility: option(Types.importantForAccessibility)=?,
+      ~needsOffscreenAlphaCompositing: option(bool)=?,
+      ~renderToHardwareTextureAndroid: option(bool)=?,
+      ~accessibilityTraits: option(list(Types.accessibilityTrait))=?,
+      ~accessibilityRole: option(Types.accessibilityRole)=?,
+      ~accessibilityStates: option(list(Types.accessibilityState))=?,
+      ~accessibilityHint: option(string)=?,
+      ~accessibilityIgnoresInvertColors: option(bool)=?,
+      ~accessibilityViewIsModal: option(bool)=?,
+      ~shouldRasterizeIOS: option(bool)=?,
+      ~autoCapitalize: option([ | `characters | `none | `sentences | `words])=?,
+      ~autoComplete:
+         option(
+           [
+             | `off
+             | `username
+             | `password
+             | `email
+             | `name
+             | `tel
+             | `streetAddress
+             | `postalCode
+             | `ccNumber
+             | `ccCsc
+             | `ccExp
+             | `ccExpMonth
+             | `ccExpYear
+           ],
+         )=?,
+      ~autoCorrect: option(bool)=?,
+      ~autoFocus: option(bool)=?,
+      ~blurOnSubmit: option(bool)=?,
+      ~caretHidden: option(bool)=?,
+      ~defaultValue: option(string)=?,
+      ~editable: option(bool)=?,
+      ~keyboardType:
+         option(
+           [
+             | `asciiCapable
+             | `decimalPad
+             | `default
+             | `emailAddress
+             | `namePhonePad
+             | `numberPad
+             | `numbersAndPunctuation
+             | `numeric
+             | `phonePad
+             | `twitter
+             | `url
+             | `visiblePassword
+             | `webSearch
+           ],
+         )=?,
+      ~maxLength: option(int)=?,
+      ~multiline: option(bool)=?,
+      ~onBlur: option(unit => unit)=?,
+      ~onChangeText: option(string => unit)=?,
+      ~onChange: option(editingEvent => unit)=?,
+      ~onEndEditing: option(editingEvent => unit)=?,
+      ~onSubmitEditing: option(editingEvent => unit)=?,
+      ~onContentSizeChange:
+         option(ReactNative.TextInput.contentSizeChangeEvent => unit)=?,
+      ~onFocus: option(unit => unit)=?,
+      ~onScroll: option(ReactNative.TextInput.scrollEvent => unit)=?,
+      ~onSelectionChange:
+         option(ReactNative.TextInput.selectionChangeEvent => unit)=?,
+      ~placeholder: option(string)=?,
+      ~placeholderTextColor: option(ReactNative.Color.t)=?,
+      ~returnKeyType:
+         option(
+           [
+             | `default
+             | `done_
+             | `emergencyCall
+             | `go
+             | `google
+             | `join
+             | `next
+             | `none
+             | `previous
+             | `route
+             | `search
+             | `send
+             | `yahoo
+           ],
+         )=?,
+      ~secureTextEntry: option(bool)=?,
+      ~selectTextOnFocus: option(bool)=?,
+      ~selection: option(ReactNative.TextInput.selection)=?,
+      ~selectionColor: option(ReactNative.Color.t)=?,
+      ~value: option(string)=?,
+      ~disableFullscreenUI: option(bool)=?,
+      ~inlineImageLeft: option(string)=?,
+      ~inlineImagePadding: option(int)=?,
+      ~numberOfLines: option(int)=?,
+      ~returnKeyLabel: option(string)=?,
+      ~textBreakStrategy: option([ | `balanced | `highQuality | `simple])=?,
+      ~underlineColorAndroid: option(ReactNative.Color.t)=?,
+      ~clearButtonMode:
+         option([ | `always | `never | `unlessEditing | `whileEditing])=?,
+      ~clearTextOnFocus: option(bool)=?,
+      ~dataDetectorTypes:
+         option(
+           array([ | `all | `calendarEvent | `link | `none | `phoneNumber]),
+         )=?,
+      ~enablesReturnKeyAutomatically: option(bool)=?,
+      ~keyboardAppearance: option([ | `dark | `default | `light])=?,
+      ~onKeyPress: option(ReactNative.TextInput.keyPressEvent => unit)=?,
+      ~selectionState: option('documentSelectionState)=?,
+      ~spellCheck: option(bool)=?,
+      ~inputAccessoryViewID: option(string)=?,
+      _,
     ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=view,
-    ~props=
-      ViewProps.extend(
-        {
-          "autoCapitalize":
-            autoCapitalize->Belt.Option.map(
-              fun
-              | `none => "none"
-              | `sentences => "sentences"
-              | `words => "words"
-              | `characters => "characters",
-            ),
-          "autoComplete":
-            autoComplete->Belt.Option.map(
-              fun
-              | `off => "off"
-              | `username => "username"
-              | `password => "password"
-              | `email => "email"
-              | `name => "name"
-              | `tel => "tel"
-              | `streetAddress => "street-address"
-              | `postalCode => "postal-code"
-              | `ccNumber => "cc-number"
-              | `ccCsc => "cc-csc"
-              | `ccExp => "cc-exp"
-              | `ccExpMonth => "cc-exp-month"
-              | `ccExpYear => "cc-exp-year",
-            ),
-          "autoCorrect": autoCorrect,
-          "autoFocus": autoFocus,
-          "blurOnSubmit": blurOnSubmit,
-          "caretHidden": caretHidden,
-          "defaultValue": defaultValue,
-          "editable": editable,
-          "keyboardType":
-            keyboardType->Belt.Option.map(
-              fun
-              | `default => "default"
-              | `emailAddress => "email-address"
-              | `numeric => "numeric"
-              | `phonePad => "phone-pad"
-              | `asciiCapable => "ascii-capable"
-              | `numbersAndPunctuation => "numbers-and-punctuation"
-              | `url => "url"
-              | `numberPad => "number-pad"
-              | `namePhonePad => "name-phone-pad"
-              | `decimalPad => "decimal-pad"
-              | `twitter => "twitter"
-              | `webSearch => "web-search",
-            ),
-          "maxLength": maxLength,
-          "multiline": multiline,
-          "onBlur": onBlur,
-          "onChangeText": onChangeText,
-          "onChange": onChange,
-          "onEndEditing": onEndEditing,
-          "onSubmitEditing": onSubmitEditing,
-          "onContentSizeChange": onContentSizeChange,
-          "onFocus": onFocus,
-          "onScroll": onScroll,
-          "onSelectionChange": onSelectionChange,
-          "placeholder": placeholder,
-          "placeholderTextColor": placeholderTextColor,
-          "returnKeyType":
-            returnKeyType->Belt.Option.map(
-              fun
-              | `done_ => "done"
-              | `go => "go"
-              | `next => "next"
-              | `search => "search"
-              | `send => "send"
-              | `none => "none"
-              | `previous => "previous"
-              | `default => "default"
-              | `emergencyCall => "emergencyCall"
-              | `google => "google"
-              | `join => "join"
-              | `route => "route"
-              | `yahoo => "yahoo",
-            ),
-          "secureTextEntry": secureTextEntry,
-          "selectTextOnFocus": selectTextOnFocus,
-          "selection": selection,
-          "selectionColor": selectionColor,
-          "value": value,
-          "disableFullscreenUI": disableFullscreenUI,
-          /* TODO */
-          "inlineImageLeft": inlineImageLeft,
-          "inlineImagePadding": inlineImagePadding,
-          "numberOfLines": numberOfLines,
-          "returnKeyLabel": returnKeyLabel,
-          "textBreakStrategy":
-            textBreakStrategy->Belt.Option.map(
-              fun
-              | `simple => "simple"
-              | `highQuality => "highQuality"
-              | `balanced => "balanced",
-            ),
-          "underlineColorAndroid": underlineColorAndroid,
-          "clearButtonMode":
-            clearButtonMode->Belt.Option.map(
-              fun
-              | `never => "never"
-              | `whileEditing => "while-editing"
-              | `unlessEditing => "unless-editing"
-              | `always => "always",
-            ),
-          "clearTextOnFocus": clearTextOnFocus,
-          "dataDetectorTypes":
-            dataDetectorTypes->Belt.Option.map(
-              Array.map(
-                fun
-                | `phoneNumber => "phoneNumber"
-                | `link => "link"
-                | `calendarEvent => "calendarEvent"
-                | `none => "none"
-                | `all => "all",
-              ),
-            ),
-          "enablesReturnKeyAutomatically": enablesReturnKeyAutomatically,
-          "keyboardAppearance":
-            keyboardAppearance->Belt.Option.map(
-              fun
-              | `default => "never"
-              | `light => "light"
-              | `dark => "dark",
-            ),
-          "onKeyPress": onKeyPress,
-          "selectionState": selectionState,
-          "spellCheck": spellCheck,
-          "inputAccessoryViewID": inputAccessoryViewID,
-        },
-        ~accessibilityLabel?,
-        ~accessible?,
-        ~hitSlop?,
-        ~onAccessibilityTap?,
-        ~onLayout?,
-        ~onMagicTap?,
-        ~responderHandlers?,
-        ~pointerEvents?,
-        ~removeClippedSubviews?,
-        ~style?,
-        ~testID?,
-        ~accessibilityComponentType?,
-        ~accessibilityLiveRegion?,
-        ~collapsable?,
-        ~importantForAccessibility?,
-        ~needsOffscreenAlphaCompositing?,
-        ~renderToHardwareTextureAndroid?,
-        ~accessibilityTraits?,
-        ~accessibilityRole?,
-        ~accessibilityStates?,
-        ~accessibilityHint?,
-        ~accessibilityIgnoresInvertColors?,
-        ~accessibilityViewIsModal?,
-        ~shouldRasterizeIOS?,
-      ),
-  );
+  <ReactNative.TextInput
+    ?autoCapitalize
+    ?autoComplete
+    ?autoCorrect
+    ?autoFocus
+    ?blurOnSubmit
+    ?caretHidden
+    ?defaultValue
+    ?editable
+    ?keyboardType
+    ?maxLength
+    ?multiline
+    onBlur=?{onBlur->Belt.Option.map((cb, _) => cb())}
+    ?onChangeText
+    ?onChange
+    ?onEndEditing
+    ?onSubmitEditing
+    ?onContentSizeChange
+    onFocus=?{onFocus->Belt.Option.map((cb, _) => cb())}
+    ?onScroll
+    ?onSelectionChange
+    ?placeholder
+    ?placeholderTextColor
+    ?returnKeyType
+    ?secureTextEntry
+    ?selectTextOnFocus
+    ?selection
+    ?selectionColor
+    ?value
+    ?disableFullscreenUI
+    ?inlineImageLeft
+    inlineImagePadding=?{inlineImagePadding->Belt.Option.map(float_of_int)}
+    ?numberOfLines
+    ?returnKeyLabel
+    ?textBreakStrategy
+    ?underlineColorAndroid
+    ?clearButtonMode
+    ?clearTextOnFocus
+    dataDetectorTypes=?{
+      dataDetectorTypes->Belt.Option.map(a =>
+        a->Belt.Array.map(
+          fun
+          | `phoneNumber => ReactNative.TextInput_DataDetectorTypes.phoneNumber
+          | `link => ReactNative.TextInput_DataDetectorTypes.link
+          | `calendarEvent => ReactNative.TextInput_DataDetectorTypes.calendarEvent
+          | `none => ReactNative.TextInput_DataDetectorTypes.none
+          | `all => ReactNative.TextInput_DataDetectorTypes.all,
+        )
+      )
+    }
+    ?enablesReturnKeyAutomatically
+    ?keyboardAppearance
+    ?onKeyPress
+    ?selectionState
+    ?spellCheck
+    ?inputAccessoryViewID
+    ?accessibilityLabel
+    ?accessible
+    ?hitSlop
+    ?onAccessibilityTap
+    ?onLayout
+    ?onMagicTap
+    onMoveShouldSetResponder=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onMoveShouldSetResponder->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    onMoveShouldSetResponderCapture=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onMoveShouldSetResponderCapture
+          ->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    onResponderGrant=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderGrant
+        )
+      )
+    onResponderMove=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderMove
+        )
+      )
+    onResponderReject=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderReject
+        )
+      )
+    onResponderRelease=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderRelease
+        )
+      )
+    onResponderTerminate=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderTerminate
+        )
+      )
+    onResponderTerminationRequest=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderTerminationRequest
+        )
+      )
+    onStartShouldSetResponder=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onStartShouldSetResponder->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    onStartShouldSetResponderCapture=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onStartShouldSetResponderCapture
+          ->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    ?pointerEvents
+    ?removeClippedSubviews
+    ?style
+    ?testID
+    ?accessibilityComponentType
+    ?accessibilityLiveRegion
+    ?collapsable
+    ?importantForAccessibility
+    ?needsOffscreenAlphaCompositing
+    ?renderToHardwareTextureAndroid
+    accessibilityTraits=?{
+      accessibilityTraits->Belt.Option.map(Belt.List.toArray)
+    }
+    ?accessibilityRole
+    accessibilityStates=?{
+      accessibilityStates->Belt.Option.map(Belt.List.toArray)
+    }
+    ?accessibilityHint
+    ?accessibilityIgnoresInvertColors
+    ?accessibilityViewIsModal
+    ?shouldRasterizeIOS
+  />;

@@ -14,7 +14,7 @@
   ]}
   {4 barTintColor}
   {[
-    ~barTintColor: string=?
+    ~barTintColor: ReactNative.Color.t=?
   ]}
   {4 itemPositioning}
   {[
@@ -26,7 +26,7 @@
   ]}
   {4 tintColor}
   {[
-    ~tintColor: string=?
+    ~tintColor: ReactNative.Color.t=?
   ]}
   {4 translucent}
   {[
@@ -34,23 +34,25 @@
   ]}
   {4 unselectedItemTintColor}
   {[
-    ~unselectedItemTintColor: string=?
+    ~unselectedItemTintColor: ReactNative.Color.t=?
   ]}
   {4 unselectedTintColor}
   {[
-    ~unselectedTintColor: string=?
+    ~unselectedTintColor: ReactNative.Color.t=?
   ]}
  */
+[@react.component]
 let make:
   (
     ~barStyle: [ | `default | `black]=?,
-    ~barTintColor: string=?,
+    ~barTintColor: ReactNative.Color.t=?,
     ~itemPositioning: [ | `fill | `center | `auto]=?,
-    ~tintColor: string=?,
+    ~tintColor: ReactNative.Color.t=?,
     ~translucent: bool=?,
-    ~unselectedItemTintColor: string=?,
-    ~unselectedTintColor: string=?,
-    ~accessibilityLabel: ReasonReact.reactElement=?,
+    ~unselectedItemTintColor: ReactNative.Color.t=?,
+    ~unselectedTintColor: ReactNative.Color.t=?,
+    // view props
+    ~accessibilityLabel: string=?,
     ~accessible: bool=?,
     ~hitSlop: Types.insets=?,
     ~onAccessibilityTap: unit => unit=?,
@@ -59,8 +61,8 @@ let make:
     ~responderHandlers: Types.touchResponderHandlers=?,
     ~pointerEvents: Types.pointerEvents=?,
     ~removeClippedSubviews: bool=?,
-    ~testID: string=?,
     ~style: Style.t=?,
+    ~testID: string=?,
     ~accessibilityComponentType: Types.accessibilityComponentType=?,
     ~accessibilityLiveRegion: Types.accessibilityLiveRegion=?,
     ~collapsable: bool=?,
@@ -74,13 +76,10 @@ let make:
     ~accessibilityIgnoresInvertColors: bool=?,
     ~accessibilityViewIsModal: bool=?,
     ~shouldRasterizeIOS: bool=?,
-    array(ReasonReact.reactElement)
+    ~children: React.element=?,
+    unit
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    unit,
-  );
+  React.element;
 
 module Item: {
   /**
@@ -120,7 +119,7 @@ module Item: {
   ]}
   {4 badgeColor}
   {[
-    ~badgeColor: string=?
+    ~badgeColor: ReactNative.Color.t=?
   ]}
   {4 selectedIcon}
   {[
@@ -157,6 +156,7 @@ module Item: {
   ]}
  */
 
+  [@react.component]
   let make:
     (
       ~selected: bool=?,
@@ -164,9 +164,8 @@ module Item: {
       ~icon: Image.imageSource=?,
       ~onPress: unit => unit=?,
       ~renderAsOriginal: bool=?,
-      ~badgeColor: string=?,
+      ~badgeColor: ReactNative.Color.t=?,
       ~selectedIcon: Image.imageSource=?,
-      ~style: Style.t=?,
       ~systemIcon: [
                      | `bookmarks
                      | `contacts
@@ -184,7 +183,7 @@ module Item: {
                      =?,
       ~title: string=?,
       ~isTVSelectable: bool=?,
-      ~accessibilityLabel: ReasonReact.reactElement=?,
+      ~accessibilityLabel: string=?,
       ~accessible: bool=?,
       ~hitSlop: Types.insets=?,
       ~onAccessibilityTap: unit => unit=?,
@@ -193,6 +192,7 @@ module Item: {
       ~responderHandlers: Types.touchResponderHandlers=?,
       ~pointerEvents: Types.pointerEvents=?,
       ~removeClippedSubviews: bool=?,
+      ~style: Style.t=?,
       ~testID: string=?,
       ~accessibilityComponentType: Types.accessibilityComponentType=?,
       ~accessibilityLiveRegion: Types.accessibilityLiveRegion=?,
@@ -207,11 +207,7 @@ module Item: {
       ~accessibilityIgnoresInvertColors: bool=?,
       ~accessibilityViewIsModal: bool=?,
       ~shouldRasterizeIOS: bool=?,
-      array(ReasonReact.reactElement)
+      unit
     ) =>
-    ReasonReact.component(
-      ReasonReact.stateless,
-      ReasonReact.noRetainedProps,
-      unit,
-    );
+    React.element;
 };

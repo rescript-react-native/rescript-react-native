@@ -1,25 +1,10 @@
-[@bs.module "react-native"] external view: ReasonReact.reactClass = "Picker";
-
 module Item = {
-  [@bs.scope "Picker"] [@bs.module "react-native"]
-  external item: ReasonReact.reactClass = "Item";
+  [@react.component]
   let make = (~color=?, ~label, ~value=?, ~testID=?) =>
-    ReasonReact.wrapJsForReason(
-      ~reactClass=item,
-      ~props={
-        "label": label,
-        "value": value,
-        "color": color,
-        "testID": testID,
-      },
-    );
+    <ReactNative.Picker.Item label value ?color ?testID />;
 };
 
-let encodeMode =
-  fun
-  | `dialog => "dialog"
-  | `dropdown => "dropdown";
-
+[@react.component]
 let make =
     (
       ~onValueChange=?,
@@ -53,42 +38,104 @@ let make =
       ~accessibilityIgnoresInvertColors=?,
       ~accessibilityViewIsModal=?,
       ~shouldRasterizeIOS=?,
+      ~children=?,
+      _,
     ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=view,
-    ~props=
-      ViewProps.extend(
-        {
-          "enabled": enabled,
-          "onValueChange": onValueChange,
-          "selectedValue": selectedValue,
-          "itemStyle": itemStyle,
-          "prompt": prompt,
-          "mode": mode->Belt.Option.map(encodeMode),
-        },
-        ~accessibilityLabel?,
-        ~accessible?,
-        ~hitSlop?,
-        ~onAccessibilityTap?,
-        ~onLayout?,
-        ~onMagicTap?,
-        ~responderHandlers?,
-        ~pointerEvents?,
-        ~removeClippedSubviews?,
-        ~style?,
-        ~testID?,
-        ~accessibilityComponentType?,
-        ~accessibilityLiveRegion?,
-        ~collapsable?,
-        ~importantForAccessibility?,
-        ~needsOffscreenAlphaCompositing?,
-        ~renderToHardwareTextureAndroid?,
-        ~accessibilityTraits?,
-        ~accessibilityRole?,
-        ~accessibilityStates?,
-        ~accessibilityHint?,
-        ~accessibilityIgnoresInvertColors?,
-        ~accessibilityViewIsModal?,
-        ~shouldRasterizeIOS?,
-      ),
-  );
+  <ReactNative.Picker
+    ?enabled
+    onValueChange=?{onValueChange->Belt.Option.map((o, a, _) => o(a))}
+    ?selectedValue
+    ?itemStyle
+    ?prompt
+    ?mode
+    ?accessibilityLabel
+    ?accessible
+    ?hitSlop
+    ?onAccessibilityTap
+    ?onLayout
+    ?onMagicTap
+    onMoveShouldSetResponder=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onMoveShouldSetResponder->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    onMoveShouldSetResponderCapture=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onMoveShouldSetResponderCapture
+          ->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    onResponderGrant=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderGrant
+        )
+      )
+    onResponderMove=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderMove
+        )
+      )
+    onResponderReject=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderReject
+        )
+      )
+    onResponderRelease=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderRelease
+        )
+      )
+    onResponderTerminate=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderTerminate
+        )
+      )
+    onResponderTerminationRequest=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderTerminationRequest
+        )
+      )
+    onStartShouldSetResponder=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onStartShouldSetResponder->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    onStartShouldSetResponderCapture=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onStartShouldSetResponderCapture
+          ->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    ?pointerEvents
+    ?removeClippedSubviews
+    ?style
+    ?testID
+    ?accessibilityComponentType
+    ?accessibilityLiveRegion
+    ?collapsable
+    ?importantForAccessibility
+    ?needsOffscreenAlphaCompositing
+    ?renderToHardwareTextureAndroid
+    accessibilityTraits=?{
+      accessibilityTraits->Belt.Option.map(Belt.List.toArray)
+    }
+    ?accessibilityRole
+    accessibilityStates=?{
+      accessibilityStates->Belt.Option.map(Belt.List.toArray)
+    }
+    ?accessibilityHint
+    ?accessibilityIgnoresInvertColors
+    ?accessibilityViewIsModal
+    ?shouldRasterizeIOS>
+    {children->Belt.Option.getWithDefault(React.null)}
+  </ReactNative.Picker>;

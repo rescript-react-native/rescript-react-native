@@ -1,35 +1,13 @@
-[@bs.module "react-native"] [@bs.scope "Platform"] external _os: string = "OS";
-
-let encodeSize = size =>
-  switch (size) {
-  | `small => ReactNative.ActivityIndicator.Size.small
-  | `large => ReactNative.ActivityIndicator.Size.large
-  | `exact(x) =>
-    switch (_os) {
-    | "ios" =>
-      Js.Console.warn(
-        "Passing 'exact' to the size prop of activityIndicator is supported only on Android. Because you only provided the 'exact' size, we defaulted it to the small size on iOS",
-      );
-      ReactNative.ActivityIndicator.Size.small;
-    | _ => ReactNative.ActivityIndicator.Size.exact(x->float_of_int)
-    }
-  };
-
 [@react.component]
 let make =
     (
-      ~animating=?,
-      ~color=?,
-      ~size=?,
-      ~hidesWhenStopped=?,
-      // View props
       ~accessibilityLabel=?,
       ~accessible=?,
       ~hitSlop=?,
       ~onAccessibilityTap=?,
       ~onLayout=?,
       ~onMagicTap=?,
-      ~responderHandlers: option(Types.touchResponderHandlers)=?,
+      ~responderHandlers=?,
       ~pointerEvents=?,
       ~removeClippedSubviews=?,
       ~style=?,
@@ -47,13 +25,86 @@ let make =
       ~accessibilityIgnoresInvertColors=?,
       ~accessibilityViewIsModal=?,
       ~shouldRasterizeIOS=?,
+      ~contentInsetAdjustmentBehavior=?,
+      ~contentContainerStyle=?,
+      ~horizontal=?,
+      ~keyboardDismissMode=?,
+      ~keyboardShouldPersistTaps=?,
+      ~onContentSizeChange=?,
+      ~onScroll=?,
+      ~onScrollBeginDrag=?,
+      ~onScrollEndDrag=?,
+      ~onMomentumScrollBegin=?,
+      ~onMomentumScrollEnd=?,
+      ~pagingEnabled=?,
+      ~refreshControl=?,
+      ~scrollEnabled=?,
+      ~showsHorizontalScrollIndicator=?,
+      ~showsVerticalScrollIndicator=?,
+      ~stickyHeaderIndices=?,
+      ~overScrollMode=?,
+      ~scrollPerfTag=?,
+      ~alwaysBounceHorizontal=?,
+      ~alwaysBounceVertical=?,
+      ~automaticallyAdjustContentInsets=?,
+      ~bounces=?,
+      ~canCancelContentTouches=?,
+      ~centerContent=?,
+      ~contentInset=?,
+      ~contentOffset=?,
+      ~decelerationRate=?,
+      ~directionalLockEnabled=?,
+      ~indicatorStyle=?,
+      ~maximumZoomScale=?,
+      ~minimumZoomScale=?,
+      ~scrollEventThrottle=?,
+      ~scrollIndicatorInsets=?,
+      ~scrollsToTop=?,
+      ~snapToInterval=?,
+      ~snapToAlignment=?,
+      ~zoomScale=?,
+      ~children=?,
       _,
-    ) => {
-  <ReactNative.ActivityIndicator
-    ?animating
-    color=?{color->Belt.Option.map(Style.toReasonReactNativeColor)}
-    size=?{size->Belt.Option.map(encodeSize)}
-    ?hidesWhenStopped
+    ) =>
+  <ReactNative.Animated.ScrollView
+    ?contentInsetAdjustmentBehavior
+    ?contentContainerStyle
+    ?horizontal
+    ?keyboardDismissMode
+    ?keyboardShouldPersistTaps
+    ?onContentSizeChange
+    ?onScroll
+    ?onScrollBeginDrag
+    ?onScrollEndDrag
+    ?onMomentumScrollBegin
+    ?onMomentumScrollEnd
+    ?pagingEnabled
+    ?refreshControl
+    ?scrollEnabled
+    ?showsHorizontalScrollIndicator
+    ?showsVerticalScrollIndicator
+    stickyHeaderIndices=?{stickyHeaderIndices->Belt.Option.map(Array.of_list)}
+    ?overScrollMode
+    ?scrollPerfTag
+    ?alwaysBounceHorizontal
+    ?alwaysBounceVertical
+    ?automaticallyAdjustContentInsets
+    ?bounces
+    ?canCancelContentTouches
+    ?centerContent
+    ?contentInset
+    ?contentOffset
+    ?decelerationRate
+    ?directionalLockEnabled
+    ?indicatorStyle
+    ?maximumZoomScale
+    ?minimumZoomScale
+    ?scrollEventThrottle
+    ?scrollIndicatorInsets
+    ?scrollsToTop
+    ?snapToInterval
+    ?snapToAlignment
+    ?zoomScale
     ?accessibilityLabel
     ?accessible
     ?hitSlop
@@ -142,6 +193,6 @@ let make =
     ?accessibilityHint
     ?accessibilityIgnoresInvertColors
     ?accessibilityViewIsModal
-    ?shouldRasterizeIOS
-  />;
-};
+    ?shouldRasterizeIOS>
+    {children->Belt.Option.getWithDefault(React.null)}
+  </ReactNative.Animated.ScrollView>;

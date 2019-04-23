@@ -1,17 +1,10 @@
 [@react.component]
 let make =
     (
-      ~maskElement: React.element,
-      ~accessible: option(bool)=?,
       ~accessibilityLabel: option(string)=?,
-      ~accessibilityComponentType: option(Types.accessibilityComponentType)=?,
-      ~accessibilityTraits: option(list(Types.accessibilityTrait))=?,
-      ~accessibilityRole: option(Types.accessibilityRole)=?,
-      ~accessibilityStates: option(list(Types.accessibilityState))=?,
-      ~accessibilityHint: option(string)=?,
-      ~accessibilityIgnoresInvertColors: option(bool)=?,
-      ~onAccessibilityTap: option(unit => unit)=?,
+      ~accessible: option(bool)=?,
       ~hitSlop: option(Types.insets)=?,
+      ~onAccessibilityTap: option(unit => unit)=?,
       ~onLayout: option(RNEvent.NativeLayoutEvent.t => unit)=?,
       ~onMagicTap: option(unit => unit)=?,
       ~responderHandlers: option(Types.touchResponderHandlers)=?,
@@ -19,17 +12,22 @@ let make =
       ~removeClippedSubviews: option(bool)=?,
       ~style: option(Style.t)=?,
       ~testID: option(string)=?,
+      ~accessibilityComponentType: option(Types.accessibilityComponentType)=?,
       ~accessibilityLiveRegion: option(Types.accessibilityLiveRegion)=?,
-      ~collapsable: option(bool)=?,
       ~importantForAccessibility: option(Types.importantForAccessibility)=?,
       ~needsOffscreenAlphaCompositing: option(bool)=?,
       ~renderToHardwareTextureAndroid: option(bool)=?,
+      ~accessibilityTraits: option(list(Types.accessibilityTrait))=?,
+      ~accessibilityRole: option(Types.accessibilityRole)=?,
+      ~accessibilityStates: option(list(Types.accessibilityState))=?,
+      ~accessibilityHint: option(string)=?,
+      ~accessibilityIgnoresInvertColors: option(bool)=?,
       ~accessibilityViewIsModal: option(bool)=?,
       ~shouldRasterizeIOS: option(bool)=?,
       ~children: option(React.element)=?,
+      unit,
     ) =>
-  <ReactNative.MaskedViewIOS
-    maskElement
+  <ReactNative.Animated.View
     ?accessibilityLabel
     ?accessible
     ?hitSlop
@@ -104,7 +102,6 @@ let make =
     ?testID
     ?accessibilityComponentType
     ?accessibilityLiveRegion
-    ?collapsable
     ?importantForAccessibility
     ?needsOffscreenAlphaCompositing
     ?renderToHardwareTextureAndroid
@@ -120,4 +117,4 @@ let make =
     ?accessibilityViewIsModal
     ?shouldRasterizeIOS>
     {children->Belt.Option.getWithDefault(React.null)}
-  </ReactNative.MaskedViewIOS>;
+  </ReactNative.Animated.View>;
