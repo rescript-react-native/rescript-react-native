@@ -1,6 +1,8 @@
 type element;
 type ref = React.Ref.t(Js.nullable(element));
 
+external asComponent: element => Component.element = "%identity";
+
 type event('a) = {. "nativeEvent": 'a};
 
 type editingEvent =
@@ -272,7 +274,3 @@ external make:
 [@bs.send] external isFocused: element => bool = "";
 
 [@bs.send] external clear: element => unit = "";
-
-[@bs.send] external focus: element => unit = "";
-
-[@bs.send] external blur: element => unit = "";
