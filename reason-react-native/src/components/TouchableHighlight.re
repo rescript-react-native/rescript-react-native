@@ -6,8 +6,15 @@ external make:
   (
     ~ref: ref=?,
     // TouchableHighlight props
+    ~activeOpacity: float=?,
+    ~hasTVPreferredFocus: bool=?,
+    ~onHideUnderlay: unit => unit=?,
+    ~onShowUnderlay: unit => unit=?,
+    ~style: Style.t=?,
+    ~tvParallaxProperties: TV.parallax=?,
+    ~underlayColor: string=?,
+    // TouchableWithoutFeedback props
     ~accessible: bool=?,
-    ~accessibilityLabel: string=?,
     ~accessibilityComponentType: [@bs.string] [
                                    | `none
                                    | `button
@@ -15,6 +22,9 @@ external make:
                                    | `radiobutton_unchecked
                                  ]
                                    =?,
+    ~accessibilityHint: string=?,
+    ~accessibilityIgnoresInvertColors: bool=?,
+    ~accessibilityLabel: string=?,
     ~accessibilityRole: [@bs.string] [
                           | `none
                           | `button
@@ -30,6 +40,7 @@ external make:
                         ]
                           =?,
     ~accessibilityStates: array(AccessibilityState.t)=?,
+    ~accessibilityTraits: array(AccessibilityTrait.t)=?,
     ~delayLongPress: int=?,
     ~delayPressIn: int=?,
     ~delayPressOut: int=?,
@@ -41,13 +52,6 @@ external make:
     ~onPressIn: Event.pressEvent => unit=?,
     ~onPressOut: Event.pressEvent => unit=?,
     ~pressRetentionOffset: Types.edgeInsets=?,
-    ~activeOpacity: float=?,
-    ~onHideUnderlay: unit => unit=?,
-    ~onShowUnderlay: unit => unit=?,
-    ~style: Style.t=?,
-    ~underlayColor: string=?,
-    ~hasTVPreferredFocus: bool=?,
-    ~tvParallaxProperties: Js.t({.})=?,
     ~testID: string=?,
     ~children: React.element=?
   ) =>

@@ -30,8 +30,10 @@ external make:
   (
     ~ref: ref=?,
     // TouchableNativeFeedback props
+    ~background: Background.t=?,
+    ~useForeground: bool=?,
+    // TouchableWithoutFeedback props
     ~accessible: bool=?,
-    ~accessibilityLabel: string=?,
     ~accessibilityComponentType: [@bs.string] [
                                    | `none
                                    | `button
@@ -39,7 +41,25 @@ external make:
                                    | `radiobutton_unchecked
                                  ]
                                    =?,
-    ~accessibilityTraits: array(string)=?,
+    ~accessibilityHint: string=?,
+    ~accessibilityIgnoresInvertColors: bool=?,
+    ~accessibilityLabel: string=?,
+    ~accessibilityRole: [@bs.string] [
+                          | `none
+                          | `button
+                          | `link
+                          | `search
+                          | `image
+                          | `keyboardkey
+                          | `text
+                          | `adjustable
+                          | `header
+                          | `summary
+                          | `imagebutton
+                        ]
+                          =?,
+    ~accessibilityStates: array(AccessibilityState.t)=?,
+    ~accessibilityTraits: array(AccessibilityTrait.t)=?,
     ~delayLongPress: int=?,
     ~delayPressIn: int=?,
     ~delayPressOut: int=?,
@@ -51,11 +71,8 @@ external make:
     ~onPressIn: Event.pressEvent => unit=?,
     ~onPressOut: Event.pressEvent => unit=?,
     ~pressRetentionOffset: Types.edgeInsets=?,
-    ~style: Style.t=?,
-    ~background: Background.t=?,
-    ~useForeground: bool=?,
     ~testID: string=?,
-    ~children: React.element
+    ~children: React.element=?
   ) =>
   React.element =
   "TouchableNativeFeedback";
