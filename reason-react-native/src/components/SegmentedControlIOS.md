@@ -18,6 +18,7 @@ type change = {
 external make:
   (
     ~ref: ref=?,
+    // SegmentedControlIOS props
     ~enabled: bool=?,
     ~momentary: bool=?,
     ~onChange: Event.syntheticEvent(change) => unit=?,

@@ -5,6 +5,9 @@ wip: true
 ---
 
 ```reason
+type element;
+type ref = React.Ref.t(Js.nullable(element));
+
 module Background = {
   type t;
 
@@ -25,6 +28,8 @@ module Background = {
 [@react.component] [@bs.module "react-native"]
 external make:
   (
+    ~ref: ref=?,
+    // TouchableNativeFeedback props
     ~accessible: bool=?,
     ~accessibilityLabel: string=?,
     ~accessibilityComponentType: [@bs.string] [

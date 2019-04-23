@@ -15,6 +15,7 @@ type drawerSlideEvent = Event.syntheticEvent({. "offset": float});
 external make:
   (
     ~ref: ref=?,
+    // DrawerLayoutAndroid props
     ~renderNavigationView: unit => React.element,
     ~onDrawerClose: unit => unit=?,
     ~drawerPosition: drawerPosition=?,

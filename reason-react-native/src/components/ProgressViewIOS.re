@@ -5,6 +5,7 @@ type ref = React.Ref.t(Js.nullable(element));
 external make:
   (
     ~ref: ref=?,
+    // ProgressViewIOS props
     ~progress: float,
     ~progressImage: Image.Source.t=?,
     ~progressTintColor: Style.color=?,

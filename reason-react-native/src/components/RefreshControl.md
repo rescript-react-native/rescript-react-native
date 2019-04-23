@@ -5,9 +5,14 @@ wip: true
 ---
 
 ```reason
+type element;
+type ref = React.Ref.t(Js.nullable(element));
+
 [@react.component] [@bs.module "react-native"]
 external make:
   (
+    ~ref: ref=?,
+    // RefreshControl props
     ~colors: array(Style.color)=?,
     ~enabled: bool=?,
     ~onRefresh: unit => unit=?,

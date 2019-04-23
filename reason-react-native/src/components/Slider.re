@@ -1,6 +1,11 @@
+type element;
+type ref = React.Ref.t(Js.nullable(element));
+
 [@react.component] [@bs.module "react-native"]
 external make:
   (
+    ~ref: ref=?,
+    // Slider props
     ~disabled: bool=?,
     ~maximumTrackImage: Image.Source.t=?,
     ~maximumTrackTintColor: Style.color=?,

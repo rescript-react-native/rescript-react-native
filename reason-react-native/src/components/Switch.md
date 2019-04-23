@@ -5,6 +5,9 @@ wip: true
 ---
 
 ```reason
+type element;
+type ref = React.Ref.t(Js.nullable(element));
+
 type trackColor;
 [@bs.obj] external trackColor: (
   ~_true: Style.color=?,
@@ -15,6 +18,8 @@ type trackColor;
 [@react.component] [@bs.module "react-native"]
 external make:
   (
+    ~ref: ref=?,
+    // Switch props
     ~disabled: bool=?,
     ~trackColor: trackColor=?,
     ~ios_backgroundColor: Style.color=?,

@@ -49,6 +49,8 @@ type request = {
 [@react.component] [@bs.module "react-native"]
 external make:
   (
+    ~ref: ref=?,
+    // WebView props
     ~allowFileAccess: bool=?,
     ~allowsInlineMediaPlayback: bool=?,
     ~allowUniversalAccessFromFileURLs: bool=?,

@@ -18,6 +18,7 @@ external action:
 external make:
   (
     ~ref: ref=?,
+    // ToolbarAndroid props
     ~overflowIcon: Image.Source.t=?,
     ~actions: array(action)=?,
     ~contentInsetStart: float=?,
