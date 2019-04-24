@@ -1,7 +1,9 @@
 type element;
 type ref = React.Ref.t(Js.nullable(element));
 
-external asComponent: element => Component.element = "%identity";
+include ComponentMethods.Make({
+  type t = element;
+});
 
 type event('a) = {. "nativeEvent": 'a};
 

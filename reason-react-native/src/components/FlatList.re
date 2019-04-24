@@ -1,9 +1,17 @@
 type element;
 type ref = React.Ref.t(Js.nullable(element));
 
-external asScrollView: element => ScrollView.element = "%identity";
-external asVirtualizedList: element => VirtualizedList.element = "%identity";
-external asComponent: element => Component.element = "%identity";
+include VirtualizedListMethods.Make({
+  type t = element;
+});
+
+include ScrollViewMethods.Make({
+  type t = element;
+});
+
+include ComponentMethods.Make({
+  type t = element;
+});
 
 type separatorComponentProps('item) = {
   .

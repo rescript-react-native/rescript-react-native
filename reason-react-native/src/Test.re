@@ -4,11 +4,8 @@ let make = {
     React.useCallback(_ =>
       switch (textInputRef->React.Ref.current->Js.Nullable.toOption) {
       | Some(element) =>
-        element
-        ->TextInput.asComponent
-        ->Component.setNativeProps({"test": 42});
-
-        element->TextInput.asComponent->Component.focus;
+        element->TextInput.setNativeProps({"test": 42});
+        element->TextInput.focus;
       | None => ()
       }
     );

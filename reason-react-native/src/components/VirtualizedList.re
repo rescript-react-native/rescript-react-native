@@ -1,6 +1,18 @@
 type element;
 type ref = React.Ref.t(Js.nullable(element));
 
+include VirtualizedListMethods.Make({
+  type t = element;
+});
+
+include ScrollViewMethods.Make({
+  type t = element;
+});
+
+include ComponentMethods.Make({
+  type t = element;
+});
+
 type renderItemProps('item) = {
   .
   "item": 'item,
@@ -237,48 +249,3 @@ external make:
   ) =>
   React.element =
   "VirtualizedList";
-
-type scrollToEndOptions;
-[@bs.obj]
-external scrollToEndOptions: (~animated: bool=?, unit) => scrollToEndOptions =
-  "";
-[@bs.send] external scrollToEnd: element => unit = "scrollToEnd";
-[@bs.send]
-external scrollToEndWithOptions: (element, scrollToEndOptions) => unit =
-  "scrollToEnd";
-
-type scrollToIndexParams;
-[@bs.obj]
-external scrollToIndexParams:
-  (
-    ~viewOffset: float=?,
-    ~viewPosition: float=?,
-    ~animated: bool=?,
-    ~index: int,
-    unit
-  ) =>
-  scrollToIndexParams =
-  "";
-[@bs.send]
-external scrollToIndex: scrollToIndexParams => unit = "scrollToIndex";
-
-type scrollToItemParams('item);
-[@bs.obj]
-external scrollToItemParams:
-  (~viewPosition: float=?, ~animated: bool=?, ~item: 'item, unit) =>
-  scrollToIndexParams =
-  "";
-[@bs.send]
-external scrollToItem: scrollToItemParams('item) => unit = "scrollToItem";
-
-type scrollToOffsetParams;
-[@bs.obj]
-external scrollToOffsetParams:
-  (~animated: bool=?, ~offset: float, unit) => scrollToOffsetParams =
-  "";
-[@bs.send]
-external scrollToOffset: scrollToOffsetParams => unit = "scrollToOffset";
-
-[@bs.send] external recordInteraction: element => unit = "";
-
-[@bs.send] external flashScrollIndicators: element => unit = "";
