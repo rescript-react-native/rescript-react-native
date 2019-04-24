@@ -6,7 +6,11 @@ type renderItemProps('item) = {
   "item": 'item,
   "index": int,
   "section": section('item),
-  // "separators": TODO
+  "separators": {
+    .
+    "highlight": unit => unit,
+    "unhighlight": unit => unit,
+  },
 }
 and section('item) = {
   .
@@ -19,26 +23,36 @@ and section('item) = {
 and renderItemCallback('item) = renderItemProps('item) => React.element
 and renderSectionHeaderProps('item) = {. "section": section('item)}
 and renderSectionHeaderCallback('item) =
-  renderSectionHeaderProps('item) => React.element;
+  renderSectionHeaderProps('item) => React.element
+and separatorProps('item) = {
+  .
+  "highlighted": bool,
+  "leadingItem": option('item),
+  "leadingSection": option(section('item)),
+  "section": section('item),
+  "trailingItem": option('item),
+  "trailingSection": option(section('item)),
+};
 
 [@react.component] [@bs.module "react-native"]
 external make:
   (
     ~ref: ref=?,
     // VirtualizedSectionList props
+    ~_ItemSeparatorComponent: separatorProps('item) => React.element=?,
+    ~_SectionSeparatorComponent: separatorProps('item) => React.element=?,
+    ~renderItem: renderItemCallback('item),
+    ~renderSectionFooter: renderSectionHeaderCallback('item)=?,
+    ~renderSectionHeader: renderSectionHeaderCallback('item)=?,
     ~sections: array(section('item)),
     ~stickySectionHeadersEnabled: bool=?,
-    ~renderItem: renderItemCallback('item),
-    ~renderSectionHeader: renderSectionHeaderCallback('item)=?,
-    ~renderSectionFooter: renderSectionHeaderCallback('item)=?,
-    // @todo support components too (only?)
-    ~_SectionSeparatorComponent: React.element=?,
-    ~_ItemSeparatorComponent: React.element=?,
     // VirtualizedList props
     ~_CellRendererComponent: VirtualizedList.cellRendererComponent('item)=?,
-    ~_ListEmptyComponent: React.element=?,
-    ~_ListFooterComponent: React.element=?,
-    ~_ListHeaderComponent: React.element=?,
+    ~_ListEmptyComponent: unit => React.element=?,
+    ~_ListFooterComponent: unit => React.element=?,
+    ~_ListFooterComponentStyle: Style.t=?,
+    ~_ListHeaderComponent: unit => React.element=?,
+    ~_ListHeaderComponentStyle: Style.t=?,
     ~debug: bool=?,
     // ~enableVirtualization: bool=?, // not working, disableVirtualization?
     // ~data: 'data, // any collection of 'item
@@ -126,7 +140,7 @@ external make:
     ~snapToInterval: float=?,
     ~snapToOffsets: array(float)=?,
     ~snapToStart: bool=?,
-    ~stickyHeaderIndices: list(int)=?,
+    ~stickyHeaderIndices: array(int)=?,
     ~zoomScale: float=?,
     // View props
     ~accessibilityComponentType: [@bs.string] [

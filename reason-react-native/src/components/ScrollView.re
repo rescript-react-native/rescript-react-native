@@ -60,7 +60,7 @@ external make:
     ~snapToInterval: float=?,
     ~snapToOffsets: array(float)=?,
     ~snapToStart: bool=?,
-    ~stickyHeaderIndices: list(int)=?,
+    ~stickyHeaderIndices: array(int)=?,
     ~zoomScale: float=?,
     // View props
     ~accessibilityComponentType: [@bs.string] [
