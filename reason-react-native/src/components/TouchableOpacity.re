@@ -56,5 +56,5 @@ external make:
   "TouchableOpacity";
 
 [@bs.send]
-external setOpacityTo: (ref, ~value: float, ~duration: float) => unit =
+external setOpacityTo: (element, ~value: float, ~duration: float) => unit =
   "setOpacityTo";

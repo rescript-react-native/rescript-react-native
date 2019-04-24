@@ -149,7 +149,7 @@ external scrollToParams:
   (~x: float, ~y: float, ~animated: bool=?, ~duration: float=?, unit) =>
   scrollToParams =
   "";
-[@bs.send] external scrollTo: scrollToParams => unit = "";
+[@bs.send] external scrollTo: (element, scrollToParams) => unit = "";
 
 type scrollToEndOptions;
 [@bs.obj]
@@ -158,7 +158,7 @@ external scrollToEndOptions:
   "";
 [@bs.send] external scrollToEnd: element => unit = "scrollToEnd";
 [@bs.send]
-external scrollToEndWithOptions: (ref, scrollToEndOptions) => unit =
+external scrollToEndWithOptions: (element, scrollToEndOptions) => unit =
   "scrollToEnd";
 
 [@bs.send] external flashScrollIndicators: element => unit = "";

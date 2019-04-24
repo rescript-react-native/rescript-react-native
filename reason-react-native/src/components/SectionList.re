@@ -194,7 +194,7 @@ external scrollToEndOptions: (~animated: bool=?, unit) => scrollToEndOptions =
   "";
 [@bs.send] external scrollToEnd: element => unit = "scrollToEnd";
 [@bs.send]
-external scrollToEndWithOptions: (ref, scrollToEndOptions) => unit =
+external scrollToEndWithOptions: (element, scrollToEndOptions) => unit =
   "scrollToEnd";
 
 type scrollToIndexParams;
