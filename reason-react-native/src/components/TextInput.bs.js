@@ -1,10 +1,8 @@
 'use strict';
 
-var ComponentMethods$ReactNative = require("./ComponentMethods.bs.js");
-
-ComponentMethods$ReactNative.Make(/* module */[]);
+var TextInputElement$ReactNative = require("../elements/TextInputElement.bs.js");
 
 var DataDetectorTypes = 0;
 
 exports.DataDetectorTypes = DataDetectorTypes;
-/*  Not a pure module */
+/* TextInputElement-ReactNative Not a pure module */

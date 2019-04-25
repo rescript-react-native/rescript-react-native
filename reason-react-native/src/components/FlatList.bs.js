@@ -1,13 +1,6 @@
 'use strict';
 
-var ComponentMethods$ReactNative = require("./ComponentMethods.bs.js");
-var ScrollViewMethods$ReactNative = require("./ScrollViewMethods.bs.js");
-var VirtualizedListMethods$ReactNative = require("./VirtualizedListMethods.bs.js");
+var VirtualizedListElement$ReactNative = require("../elements/VirtualizedListElement.bs.js");
 
-VirtualizedListMethods$ReactNative.Make(/* module */[]);
 
-ScrollViewMethods$ReactNative.Make(/* module */[]);
-
-ComponentMethods$ReactNative.Make(/* module */[]);
-
-/*  Not a pure module */
+/* VirtualizedListElement-ReactNative Not a pure module */

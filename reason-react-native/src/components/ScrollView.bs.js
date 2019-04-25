@@ -1,10 +1,6 @@
 'use strict';
 
-var ComponentMethods$ReactNative = require("./ComponentMethods.bs.js");
-var ScrollViewMethods$ReactNative = require("./ScrollViewMethods.bs.js");
+var ScrollViewElement$ReactNative = require("../elements/ScrollViewElement.bs.js");
 
-ScrollViewMethods$ReactNative.Make(/* module */[]);
 
-ComponentMethods$ReactNative.Make(/* module */[]);
-
-/*  Not a pure module */
+/* ScrollViewElement-ReactNative Not a pure module */

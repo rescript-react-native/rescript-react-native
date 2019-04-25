@@ -1,9 +1,4 @@
-type element;
-type ref = React.Ref.t(Js.nullable(element));
-
-include ComponentMethods.Make({
-  type t = element;
-});
+include TextInputElement;
 
 type event('a) = {. "nativeEvent": 'a};
 
@@ -272,7 +267,3 @@ external make:
   ) =>
   React.element =
   "TextInput";
-
-[@bs.send] external isFocused: element => bool = "";
-
-[@bs.send] external clear: element => unit = "";

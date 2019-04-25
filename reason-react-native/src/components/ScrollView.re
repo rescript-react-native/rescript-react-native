@@ -1,13 +1,4 @@
-type element;
-type ref = React.Ref.t(Js.nullable(element));
-
-include ScrollViewMethods.Make({
-  type t = element;
-});
-
-include ComponentMethods.Make({
-  type t = element;
-});
+include ScrollViewElement;
 
 [@react.component] [@bs.module "react-native"]
 external make:
