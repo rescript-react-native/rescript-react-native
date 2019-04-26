@@ -6,25 +6,32 @@ external make:
   (
     ~ref: ref=?,
     // VirtualizedSectionList props
-    ~sections: array(VirtualizedSectionList.section('item)),
-    ~stickySectionHeadersEnabled: bool=?,
+    ~_ItemSeparatorComponent: VirtualizedSectionList.separatorProps('item) =>
+                              React.element
+                                =?,
+    ~_SectionSeparatorComponent: VirtualizedSectionList.separatorProps(
+                                   'item,
+                                 ) =>
+                                 React.element
+                                   =?,
     ~renderItem: VirtualizedSectionList.renderItemCallback('item),
-    ~renderSectionHeader: VirtualizedSectionList.renderSectionHeaderCallback(
-                            'item,
-                          )
-                            =?,
     ~renderSectionFooter: VirtualizedSectionList.renderSectionHeaderCallback(
                             'item,
                           )
                             =?,
-    // @todo support components too (only?)
-    ~_SectionSeparatorComponent: React.element=?,
-    ~_ItemSeparatorComponent: React.element=?,
+    ~renderSectionHeader: VirtualizedSectionList.renderSectionHeaderCallback(
+                            'item,
+                          )
+                            =?,
+    ~sections: array(VirtualizedSectionList.section('item)),
+    ~stickySectionHeadersEnabled: bool=?,
     // VirtualizedList props
     ~_CellRendererComponent: VirtualizedList.cellRendererComponent('item)=?,
-    ~_ListEmptyComponent: React.element=?,
-    ~_ListFooterComponent: React.element=?,
-    ~_ListHeaderComponent: React.element=?,
+    ~_ListEmptyComponent: unit => React.element=?,
+    ~_ListFooterComponent: unit => React.element=?,
+    ~_ListFooterComponentStyle: Style.t=?,
+    ~_ListHeaderComponent: unit => React.element=?,
+    ~_ListHeaderComponentStyle: Style.t=?,
     ~debug: bool=?,
     // ~enableVirtualization: bool=?, // not working, disableVirtualization?
     // ~data: 'data, // any collection of 'item
@@ -112,7 +119,7 @@ external make:
     ~snapToInterval: float=?,
     ~snapToOffsets: array(float)=?,
     ~snapToStart: bool=?,
-    ~stickyHeaderIndices: list(int)=?,
+    ~stickyHeaderIndices: array(int)=?,
     ~zoomScale: float=?,
     // View props
     ~accessibilityComponentType: [@bs.string] [

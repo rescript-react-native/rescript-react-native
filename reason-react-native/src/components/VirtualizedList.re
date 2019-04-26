@@ -80,9 +80,11 @@ external make:
     ~ref: ref=?,
     // VirtualizedList props
     ~_CellRendererComponent: cellRendererComponent('item)=?,
-    ~_ListEmptyComponent: React.element=?,
-    ~_ListFooterComponent: React.element=?,
-    ~_ListHeaderComponent: React.element=?,
+    ~_ListEmptyComponent: unit => React.element=?,
+    ~_ListFooterComponent: unit => React.element=?,
+    ~_ListFooterComponentStyle: Style.t=?,
+    ~_ListHeaderComponent: unit => React.element=?,
+    ~_ListHeaderComponentStyle: Style.t=?,
     ~debug: bool=?,
     ~data: 'data, // any collection of 'item
     ~disableVirtualization: bool=?, // deprecated
@@ -163,7 +165,7 @@ external make:
     ~snapToInterval: float=?,
     ~snapToOffsets: array(float)=?,
     ~snapToStart: bool=?,
-    ~stickyHeaderIndices: list(int)=?,
+    ~stickyHeaderIndices: array(int)=?,
     ~zoomScale: float=?,
     // View props
     ~accessibilityComponentType: [@bs.string] [
