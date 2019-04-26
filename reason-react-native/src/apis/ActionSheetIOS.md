@@ -14,7 +14,7 @@ external options:
     ~destructiveButtonIndex: int=?,
     ~title: string=?,
     ~message: string=?,
-    ~tintColor: Style.color=?,
+    ~tintColor: Color.t=?,
     unit
   ) =>
   options =

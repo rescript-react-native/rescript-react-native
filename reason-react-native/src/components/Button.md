@@ -14,7 +14,7 @@ external make:
     ~ref: ref=?,
     // Button props
     ~accessibilityLabel: string=?,
-    ~color: Style.color=?,
+    ~color: Color.t=?,
     ~disabled: bool=?,
     ~hasTVPreferredFocus: bool=?,
     ~onPress: unit => unit,

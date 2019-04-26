@@ -14,12 +14,12 @@ external make:
     ~ref: ref=?,
     // TabBarIOS props
     ~barStyle: [@bs.string] [ | `default | `black]=?,
-    ~barTintColor: Style.color=?,
+    ~barTintColor: Color.t=?,
     ~itemPositioning: [@bs.string] [ | `fill | `center | `auto]=?,
-    ~tintColor: Style.color=?,
+    ~tintColor: Color.t=?,
     ~translucent: bool=?,
-    ~unselectedItemTintColor: Style.color=?,
-    ~unselectedTintColor: Style.color=?,
+    ~unselectedItemTintColor: Color.t=?,
+    ~unselectedTintColor: Color.t=?,
     // View props
     ~accessibilityComponentType: [@bs.string] [
                                    | `none

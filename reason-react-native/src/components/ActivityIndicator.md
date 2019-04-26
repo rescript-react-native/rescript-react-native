@@ -20,7 +20,7 @@ external make:
     ~ref: ref=?,
     // ActivityIndicator props
     ~animating: bool=?,
-    ~color: Style.color=?,
+    ~color: Color.t=?,
     ~size: size=?,
     ~hidesWhenStopped: bool=?,
     // View props

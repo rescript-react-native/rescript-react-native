@@ -5,13 +5,12 @@ let styles =
   StyleSheet.create(
     Style.{
       "container": style(~height=100.->Size.pct, ~overflow=`scroll, ()),
-      "title":
-        style(~fontSize=16., ~fontWeight=`_600, ~color="#333"->color, ()),
+      "title": style(~fontSize=16., ~fontWeight=`_600, ~color="#333", ()),
       "link":
         style(
           ~fontSize=14.,
           ~fontWeight=`_400,
-          ~color="#555"->color,
+          ~color="#555",
           ~paddingVertical=(Spacer.space /. 4.)->Size.pt,
           (),
         ),
@@ -19,7 +18,7 @@ let styles =
         style(
           ~fontSize=14.,
           ~fontWeight=`_400,
-          ~color="#ddd"->color,
+          ~color="#ddd",
           ~paddingVertical=(Spacer.space /. 4.)->Size.pt,
           (),
         ),

@@ -13,15 +13,15 @@ external make:
   (
     ~ref: ref=?,
     // RefreshControl props
-    ~colors: array(Style.color)=?,
+    ~colors: array(Color.t)=?,
     ~enabled: bool=?,
     ~onRefresh: unit => unit=?,
-    ~progressBackgroundColor: Style.color=?,
+    ~progressBackgroundColor: Color.t=?,
     ~progressViewOffset: float=?,
     ~refreshing: bool,
-    ~tintColor: Style.color=?,
+    ~tintColor: Color.t=?,
     ~title: string=?,
-    ~titleColor: Style.color=?,
+    ~titleColor: Color.t=?,
     // View props
     ~accessibilityComponentType: [@bs.string] [
                                    | `none

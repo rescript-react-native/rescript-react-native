@@ -8,8 +8,8 @@ let styles =
           ~justifyContent=`center,
           ~alignItems=`center,
           ~borderTopWidth=8.,
-          ~borderColor=color(Consts.Colors.accent),
-          ~shadowColor=color("#000"),
+          ~borderColor=Consts.Colors.accent,
+          ~shadowColor="#000",
           ~shadowOffset=offset(~width=0., ~height=5.),
           ~shadowOpacity=0.15,
           ~shadowRadius=20.,
@@ -23,7 +23,7 @@ let styles =
           ~justifyContent=`spaceBetween,
           (),
         ),
-      "barWrapper": style(~backgroundColor=color(Consts.Colors.dark), ()),
+      "barWrapper": style(~backgroundColor=Consts.Colors.dark, ()),
       "logo":
         style(
           ~flex=1.,
@@ -38,7 +38,7 @@ let styles =
         style(
           ~fontSize=18.,
           ~fontWeight=`_700,
-          ~color=color(Consts.Colors.light),
+          ~color=Consts.Colors.light,
           (),
         ),
       "links":
@@ -55,7 +55,7 @@ let styles =
           ~fontSize=18.,
           ~lineHeight=18. *. 1.7,
           ~fontWeight=`_300,
-          ~color=color(Consts.Colors.light),
+          ~color=Consts.Colors.light,
           (),
         ),
       "linkActive":

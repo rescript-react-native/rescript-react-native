@@ -92,7 +92,7 @@ external make:
 module Item = {
   [@react.component] [@bs.module "react-native"] [@bs.scope "Picker"]
   external make:
-    (~value: 'a=?, ~label: string, ~color: Style.color=?, ~testID: string=?) =>
+    (~value: 'a=?, ~label: string, ~color: Color.t=?, ~testID: string=?) =>
     React.element =
     "Item";
 };

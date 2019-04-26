@@ -31,8 +31,8 @@ external make:
     ~onDrawerOpen: unit => unit=?,
     ~onDrawerSlide: drawerSlideEvent => unit=?,
     ~onDrawerStateChanged: AndroidInteractionState.t => unit=?,
-    ~drawerBackgroundColor: Style.color=?,
-    ~statusBarBackgroundColor: Style.color=?,
+    ~drawerBackgroundColor: Color.t=?,
+    ~statusBarBackgroundColor: Color.t=?,
     // View props
     ~accessibilityComponentType: [@bs.string] [
                                    | `none

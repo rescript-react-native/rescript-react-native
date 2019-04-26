@@ -29,9 +29,9 @@ external make:
     ~contentInsetEnd: float=?,
     ~rtl: bool=?,
     ~subtitle: string=?,
-    ~subtitleColor: Style.color=?,
+    ~subtitleColor: Color.t=?,
     ~title: string=?,
-    ~titleColor: Style.color=?,
+    ~titleColor: Color.t=?,
     // View props
     ~accessibilityComponentType: [@bs.string] [
                                    | `none

@@ -4,7 +4,7 @@ type ref = React.Ref.t(Js.nullable(element));
 type trackColor;
 [@bs.obj]
 external trackColor:
-  (~_true: Style.color=?, ~_false: Style.color=?, unit) => trackColor =
+  (~_true: Color.t=?, ~_false: Color.t=?, unit) => trackColor =
   "";
 
 [@react.component] [@bs.module "react-native"]
@@ -14,10 +14,10 @@ external make:
     // Switch props
     ~disabled: bool=?,
     ~trackColor: trackColor=?,
-    ~ios_backgroundColor: Style.color=?,
+    ~ios_backgroundColor: Color.t=?,
     ~onValueChange: bool => unit=?,
-    ~thumbColor: Style.color=?,
-    ~tintColor: Style.color=?,
+    ~thumbColor: Color.t=?,
+    ~tintColor: Color.t=?,
     ~value: bool=?,
     // View props
     ~accessibilityComponentType: [@bs.string] [

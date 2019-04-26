@@ -15,9 +15,6 @@ module Size = {
   let pct: float => t = pct->Obj.magic;
 };
 
-type color;
-external color: string => color = "%identity";
-
 module Transform = {
   type angle;
 
@@ -78,25 +75,25 @@ external style:
                   =?,
     ~aspectRatio: float=?,
     ~backfaceVisibility: [@bs.string] [ | `visible | `hidden]=?,
-    ~backgroundColor: color=?,
-    ~borderBottomColor: color=?,
+    ~backgroundColor: Color.t=?,
+    ~borderBottomColor: Color.t=?,
     ~borderBottomEndRadius: float=?,
     ~borderBottomLeftRadius: float=?,
     ~borderBottomRightRadius: float=?,
     ~borderBottomStartRadius: float=?,
     ~borderBottomWidth: float=?,
-    ~borderColor: color=?,
-    ~borderEndColor: color=?,
+    ~borderColor: Color.t=?,
+    ~borderEndColor: Color.t=?,
     ~borderEndWidth: float=?,
-    ~borderLeftColor: color=?,
+    ~borderLeftColor: Color.t=?,
     ~borderLeftWidth: float=?,
     ~borderRadius: float=?,
-    ~borderRightColor: color=?,
+    ~borderRightColor: Color.t=?,
     ~borderRightWidth: float=?,
-    ~borderStartColor: color=?,
+    ~borderStartColor: Color.t=?,
     ~borderStartWidth: float=?,
     ~borderStyle: [@bs.string] [ | `solid | `dotted | `dashed]=?,
-    ~borderTopColor: color=?,
+    ~borderTopColor: Color.t=?,
     ~borderTopEndRadius: float=?,
     ~borderTopLeftRadius: float=?,
     ~borderTopRightRadius: float=?,
@@ -162,14 +159,14 @@ external style:
     ~width: Size.t=?,
     ~zIndex: int=?,
     // Shadow Props (https://facebook.github.io/react-native/docs/shadow-props)
-    ~shadowColor: color=?,
+    ~shadowColor: Color.t=?,
     ~shadowOffset: offset=?,
     ~shadowOpacity: float=?,
     ~shadowRadius: float=?,
     // Transform Props (https://facebook.github.io/react-native/docs/transforms#props)
     ~transform: array(Transform.t)=?, // all other transform props are deprecated
     // Text Style Props (https://facebook.github.io/react-native/docs/text-style-props)
-    ~color: color=?,
+    ~color: Color.t=?,
     ~fontFamily: string=?,
     ~fontSize: float=?,
     ~fontStyle: [@bs.string] [ | `normal | `italic]=?,
@@ -193,7 +190,7 @@ external style:
     ~lineHeight: float=?,
     ~textAlign: [@bs.string] [ | `auto | `left | `right | `center | `justify]=?,
     ~textAlignVertical: [@bs.string] [ | `auto | `top | `bottom | `center]=?,
-    ~textDecorationColor: color=?,
+    ~textDecorationColor: Color.t=?,
     ~textDecorationLine: [@bs.string] [
                            | `none
                            | `underline
@@ -209,7 +206,7 @@ external style:
                             | `dashed
                           ]
                             =?,
-    ~textShadowColor: color=?,
+    ~textShadowColor: Color.t=?,
     ~textShadowOffset: offset=?,
     ~textShadowRadius: float=?,
     ~textTransform: [@bs.string] [
@@ -229,8 +226,8 @@ external style:
                    | `center
                  ]
                    =?,
-    ~overlayColor: color=?,
-    ~tintColor: color=?,
+    ~overlayColor: Color.t=?,
+    ~tintColor: Color.t=?,
     unit
   ) =>
   t =
