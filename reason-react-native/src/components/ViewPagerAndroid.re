@@ -1,6 +1,15 @@
 type element;
 type ref = React.Ref.t(Js.nullable(element));
 
+type pageScrollEvent =
+  Event.syntheticEvent({
+    .
+    "position": int,
+    "offset": float,
+  });
+
+type pageSelectedEvent = Event.syntheticEvent({. "position": int});
+
 [@react.component] [@bs.module "react-native"]
 external make:
   (
@@ -8,15 +17,9 @@ external make:
     ~initialPage: int=?,
     ~keyboardDismissMode: [@bs.string] [ | `none | [@bs.as "on-drag"] `onDrag]
                             =?,
-    ~onPageScroll: Event.syntheticEvent({
-                     .
-                     "position": int,
-                     "offset": float,
-                   }) =>
-                   unit
-                     =?,
+    ~onPageScroll: pageScrollEvent => unit=?,
     ~onPageScrollStateChanged: AndroidInteractionState.t => unit=?,
-    ~onPageSelected: Event.syntheticEvent({. "position": int}) => unit=?,
+    ~onPageSelected: pageSelectedEvent => unit=?,
     ~pageMargin: int=?,
     ~peekEnabled: bool=?,
     ~scrollEnabled: bool=?,
@@ -88,7 +91,8 @@ external make:
     ~renderToHardwareTextureAndroid: bool=?,
     ~shouldRasterizeIOS: bool=?,
     ~style: Style.t=?,
-    ~testID: string=?
+    ~testID: string=?,
+    ~children: React.element=?
   ) =>
   React.element =
   "ViewPagerAndroid";
