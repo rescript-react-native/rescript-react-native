@@ -27,19 +27,19 @@ let styles =
         style(
           ~fontSize=52.,
           ~fontWeight=`_700,
-          ~color=Consts.Colors.darkless->color,
+          ~color=Consts.Colors.darkless,
           (),
         ),
       "editLink":
         style(
           ~borderWidth=1.,
           ~borderStyle=`solid,
-          ~borderColor=color(Consts.Colors.accent),
+          ~borderColor=Consts.Colors.accent,
           ~borderRadius=4.,
           (),
         ),
       "editLinkText":
-        style(~color=color(Consts.Colors.accent), ~alignItems=`center, ()),
+        style(~color=Consts.Colors.accent, ~alignItems=`center, ()),
       "officialDocLink":
         style(
           ~display=`flex,
@@ -47,20 +47,20 @@ let styles =
           ~fontSize=14.,
           ~fontWeight=`_300,
           ~alignItems=`center,
-          ~color=color(Consts.Colors.accent),
+          ~color=Consts.Colors.accent,
           (),
         ),
       "wip":
         style(
           ~borderWidth=1.,
           ~borderStyle=`solid,
-          ~borderColor=color("#ffe58f"),
-          ~backgroundColor=color("#fffbe6"),
+          ~borderColor="#ffe58f",
+          ~backgroundColor="#fffbe6",
           ~borderRadius=4.,
           (),
         ),
       "wipText": style(~fontSize=16., ~lineHeight=16. *. 1.5, ()),
-      "wipEditLink": style(~color=color(Consts.Colors.accent), ()),
+      "wipEditLink": style(~color=Consts.Colors.accent, ()),
       "body": style(~display=`flex, ()),
     },
   );

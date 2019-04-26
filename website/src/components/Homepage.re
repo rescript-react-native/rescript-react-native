@@ -7,7 +7,7 @@ let styles =
         style(
           ~fontSize=28.,
           ~fontWeight=`_300,
-          ~color=color(Consts.Colors.lightest),
+          ~color=Consts.Colors.lightest,
           (),
         ),
     },
@@ -23,7 +23,7 @@ let make = () =>
           ~flex=1.,
           ~justifyContent=`center,
           ~alignItems=`center,
-          ~backgroundColor=color(Consts.Colors.darkless),
+          ~backgroundColor=Consts.Colors.darkless,
           (),
         )
       )>
@@ -33,7 +33,7 @@ let make = () =>
             style(
               ~fontSize=52.,
               ~fontWeight=`_700,
-              ~color=color(Consts.Colors.light),
+              ~color=Consts.Colors.light,
               (),
             )
           )>
@@ -81,11 +81,7 @@ let make = () =>
       <ViewLink
         href={Consts.baseUrl ++ "/BsReactNative/gettingstarted.html"}
         style=Style.(
-          style(
-            ~borderRadius=6.,
-            ~backgroundColor=color(Consts.Colors.accent),
-            (),
-          )
+          style(~borderRadius=6., ~backgroundColor=Consts.Colors.accent, ())
         )>
         <SpacedView horizontal=SpacedView.L>
           <Text
@@ -93,7 +89,7 @@ let make = () =>
               style(
                 ~fontSize=24.,
                 ~fontWeight=`_300,
-                ~color=color(Consts.Colors.lightest),
+                ~color=Consts.Colors.lightest,
                 (),
               )
             )>
@@ -108,7 +104,7 @@ let make = () =>
       style=Style.(
         style(
           ~fontWeight=`_300,
-          ~color=color(Consts.Colors.greyLight),
+          ~color=Consts.Colors.greyLight,
           ~alignSelf=`center,
           (),
         )

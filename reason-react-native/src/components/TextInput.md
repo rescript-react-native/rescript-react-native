@@ -143,7 +143,7 @@ external make:
     ~onSelectionChange: selectionEvent => unit=?,
     ~onSubmitEditing: editingEvent => unit=?,
     ~placeholder: string=?,
-    ~placeholderTextColor: Style.color=?,
+    ~placeholderTextColor: Color.t=?,
     ~returnKeyLabel: string=?,
     ~returnKeyType: [@bs.string] [
                       | [@bs.as "done"] `done_
@@ -165,7 +165,7 @@ external make:
     ~scrollEnabled: bool=?,
     ~secureTextEntry: bool=?,
     ~selection: selection=?,
-    ~selectionColor: Style.color=?,
+    ~selectionColor: Color.t=?,
     ~selectionState: 'documentSelectionState=?, // TODO
     ~selectTextOnFocus: bool=?,
     ~spellCheck: bool=?,
@@ -201,7 +201,7 @@ external make:
                         | `oneTimeCode
                       ]
                         =?,
-    ~underlineColorAndroid: Style.color=?,
+    ~underlineColorAndroid: Color.t=?,
     ~value: string=?,
     // View props
     ~accessibilityComponentType: [@bs.string] [

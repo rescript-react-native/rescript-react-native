@@ -14,8 +14,8 @@ type imageStyle;
 external imageStyle:
   (
     ~backfaceVisibility: [@bs.string] [ | `visible | `hidden]=?,
-    ~backgroundColor: Style.color=?,
-    ~borderColor: Style.color=?,
+    ~backgroundColor: Color.t=?,
+    ~borderColor: Color.t=?,
     ~borderRadius: float=?,
     ~borderBottomLeftRadius: float=?,
     ~borderBottomRightRadius: float=?,
@@ -32,8 +32,8 @@ external imageStyle:
                    | `center
                  ]
                    =?,
-    ~overlayColor: Style.color=?,
-    ~tintColor: Style.color=?,
+    ~overlayColor: Color.t=?,
+    ~tintColor: Color.t=?,
     unit
   ) =>
   imageStyle =

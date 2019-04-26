@@ -28,7 +28,7 @@ let make =
       arrayOption([|
         Some(styles##wrapper),
         backgroundColor->Belt.Option.map(bg =>
-          style(~backgroundColor=color(bg), ())
+          style(~backgroundColor=bg, ())
         ),
         wrapperStyle,
       |])

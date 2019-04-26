@@ -15,10 +15,10 @@ external make:
     // ProgressViewIOS props
     ~progress: float,
     ~progressImage: Image.Source.t=?,
-    ~progressTintColor: Style.color=?,
+    ~progressTintColor: Color.t=?,
     ~progressViewStyle: [@bs.string] [ | `default | `bar]=?,
     ~trackImage: Image.Source.t=?,
-    ~trackTintColor: Style.color=?,
+    ~trackTintColor: Color.t=?,
     // View props
     ~accessibilityComponentType: [@bs.string] [
                                    | `none

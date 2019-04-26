@@ -7,7 +7,7 @@ external make:
     ~ref: ref=?,
     // ProgressBarAndroid props
     ~animating: bool=?,
-    ~color: Style.color=?,
+    ~color: Color.t=?,
     ~indeterminate: bool=?,
     ~progress: float=?,
     ~styleAttr: [@bs.string] [

@@ -130,7 +130,7 @@ external make:
     ~contentOffset: Types.point=?,
     ~decelerationRate: [@bs.string] [ | `fast | `normal]=?,
     ~directionalLockEnabled: bool=?,
-    ~endFillColor: Style.color=?,
+    ~endFillColor: Color.t=?,
     ~horizontal: bool=?,
     ~indicatorStyle: [@bs.string] [ | `default | `black | `white]=?,
     ~keyboardDismissMode: [@bs.string] [
