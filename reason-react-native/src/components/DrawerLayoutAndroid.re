@@ -1,5 +1,4 @@
-type element;
-type ref = React.Ref.t(Js.nullable(element));
+include DrawerLayoutAndroidElement;
 
 type drawerPosition;
 
@@ -106,7 +105,3 @@ external make:
   ) =>
   React.element =
   "DrawerLayoutAndroid";
-
-[@bs.send] external openDrawer: (element, unit) => unit = "";
-
-[@bs.send] external closeDrawer: (element, unit) => unit = "";

@@ -1,5 +1,6 @@
 'use strict';
 
+var NativeElement$ReactNative = require("../elements/NativeElement.bs.js");
 
 var Orientation = /* module */[
   /* landscape */"landscape",
@@ -10,4 +11,4 @@ var Orientation = /* module */[
 ];
 
 exports.Orientation = Orientation;
-/* No side effect */
+/* NativeElement-ReactNative Not a pure module */

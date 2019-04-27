@@ -1,1 +1,6 @@
-/* This output is empty. Its source's type definitions, externals and/or unused code got optimized away. */
+'use strict';
+
+var VirtualizedListElement$ReactNative = require("../elements/VirtualizedListElement.bs.js");
+
+
+/* VirtualizedListElement-ReactNative Not a pure module */
