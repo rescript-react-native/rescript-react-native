@@ -13,7 +13,13 @@ let inactive = "inactive";
 external currentState: t = "currentState";
 
 [@bs.scope "AppState"] [@bs.module "react-native"]
-external addEventListener: (string, unit => unit) => EventSubscription.t = "";
+external addEventListener:
+  ([@bs.string] [ | `change(t => unit) | `memoryWarning(unit => unit)]) =>
+  EventSubscription.t =
+  "";
 
 [@bs.scope "AppState"] [@bs.module "react-native"]
-external removeEventListener: (string, unit => unit) => unit = "";
+external removeEventListener:
+  ([@bs.string] [ | `change(t => unit) | `memoryWarning(unit => unit)]) =>
+  unit =
+  "";

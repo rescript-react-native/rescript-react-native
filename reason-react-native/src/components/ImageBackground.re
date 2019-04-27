@@ -1,5 +1,4 @@
-type element;
-type ref = React.Ref.t(Js.nullable(element));
+include NativeElement;
 
 type imageStyle;
 

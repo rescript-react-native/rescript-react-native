@@ -5,8 +5,7 @@ wip: true
 ---
 
 ```reason
-type element;
-type ref = React.Ref.t(Js.nullable(element));
+include NativeElement;
 
 [@react.component] [@bs.module "react-native"]
 external make:
@@ -96,8 +95,7 @@ external make:
   "TabBarIOS";
 
 module Item = {
-  type element;
-  type ref = React.Ref.t(Js.nullable(element));
+  include NativeElement;
 
   [@react.component] [@bs.module "react-native"] [@bs.scope "TabBarIOS"]
   external make:

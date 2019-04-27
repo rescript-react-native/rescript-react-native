@@ -5,15 +5,13 @@ wip: true
 ---
 
 ```reason
-type element;
-type ref = React.Ref.t(Js.nullable(element));
+include NativeElement;
 
 type trackColor;
-[@bs.obj] external trackColor: (
-  ~_true: Color.t=?,
-  ~_false: Color.t=?,
-  unit
-) => trackColor = "";
+[@bs.obj]
+external trackColor:
+  (~_true: Color.t=?, ~_false: Color.t=?, unit) => trackColor =
+  "";
 
 [@react.component] [@bs.module "react-native"]
 external make:

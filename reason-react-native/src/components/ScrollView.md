@@ -5,8 +5,7 @@ wip: true
 ---
 
 ```reason
-type element;
-type ref = React.Ref.t(Js.nullable(element));
+include ScrollViewElement;
 
 [@react.component] [@bs.module "react-native"]
 external make:
@@ -144,23 +143,4 @@ external make:
   React.element =
   "ScrollView";
 
-type scrollToParams;
-[@bs.obj]
-external scrollToParams:
-  (~x: float, ~y: float, ~animated: bool=?, ~duration: float=?, unit) =>
-  scrollToParams =
-  "";
-[@bs.send] external scrollTo: (element, scrollToParams) => unit = "";
-
-type scrollToEndOptions;
-[@bs.obj]
-external scrollToEndOptions:
-  (~animated: bool=?, ~duration: float=?, unit) => scrollToEndOptions =
-  "";
-[@bs.send] external scrollToEnd: element => unit = "scrollToEnd";
-[@bs.send]
-external scrollToEndWithOptions: (element, scrollToEndOptions) => unit =
-  "scrollToEnd";
-
-[@bs.send] external flashScrollIndicators: element => unit = "";
 ```

@@ -5,8 +5,7 @@ wip: true
 ---
 
 ```reason
-type element;
-type ref = React.Ref.t(Js.nullable(element));
+include ViewPagerAndroidElement;
 
 type pageScrollEvent =
   Event.syntheticEvent({
@@ -104,9 +103,5 @@ external make:
   ) =>
   React.element =
   "ViewPagerAndroid";
-
-[@bs.send] external setPage: (element, int) => unit = "";
-
-[@bs.send] external setPageWithoutAnimation: (element, int) => unit = "";
 
 ```

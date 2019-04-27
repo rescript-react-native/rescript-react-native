@@ -1,20 +1,3 @@
-let pct = num => num->Js.Float.toString ++ "%";
-
-module Margin = {
-  type t;
-
-  external pt: float => t = "%identity";
-  let pct: float => t = pct->Obj.magic;
-  let auto: t = "auto"->Obj.magic;
-};
-
-module Size = {
-  type t;
-
-  external pt: float => t = "%identity";
-  let pct: float => t = pct->Obj.magic;
-};
-
 module Transform = {
   type angle;
 
