@@ -2,10 +2,7 @@
 
 var NativeElement$ReactNative = require("../elements/NativeElement.bs.js");
 
-var small = "small";
+var Size = 0;
 
-var large = "large";
-
-exports.small = small;
-exports.large = large;
-/* NativeElement-ReactNative Not a pure module */
+exports.Size = Size;
+/* No side effect */

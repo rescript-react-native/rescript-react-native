@@ -7,17 +7,7 @@ wip: true
 ```reason
 include NativeElement;
 
-module Orientation = {
-  type t;
-
-  external fromString: string => t = "%identity";
-
-  let landscape = "landscape"->fromString;
-  let landscapeLeft = "landscape-left"->fromString;
-  let landscapeRight = "landscape-right"->fromString;
-  let portrait = "portrait"->fromString;
-  let portraitUpsideDown = "portrait-upside-down"->fromString;
-};
+module Orientation = Modal_Orientation;
 
 [@react.component] [@bs.module "react-native"]
 external make:
