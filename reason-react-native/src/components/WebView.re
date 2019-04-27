@@ -1,5 +1,4 @@
-type element;
-type ref = React.Ref.t(Js.nullable(element));
+include WebViewElement;
 
 module Source = {
   type t;
@@ -155,10 +154,3 @@ external make:
   ) =>
   React.element =
   "WebView";
-
-// Methods
-// static extraNativeComponentConfig() ??
-[@bs.send] external goForward: element => unit = "";
-[@bs.send] external goBack: element => unit = "";
-[@bs.send] external reload: element => unit = "";
-[@bs.send] external stopLoading: element => unit = "";

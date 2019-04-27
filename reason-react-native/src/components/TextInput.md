@@ -5,8 +5,7 @@ wip: true
 ---
 
 ```reason
-type element;
-type ref = React.Ref.t(Js.nullable(element));
+include TextInputElement;
 
 type event('a) = {. "nativeEvent": 'a};
 
@@ -275,13 +274,5 @@ external make:
   ) =>
   React.element =
   "TextInput";
-
-[@bs.send] external isFocused: element => bool = "";
-
-[@bs.send] external clear: element => unit = "";
-
-[@bs.send] external focus: element => unit = "";
-
-[@bs.send] external blur: element => unit = "";
 
 ```

@@ -1,5 +1,6 @@
 'use strict';
 
+var WebViewElement$ReactNative = require("../elements/WebViewElement.bs.js");
 
 var Source = /* module */[];
 
@@ -10,4 +11,4 @@ var DecelerationRate = 0;
 exports.Source = Source;
 exports.DataDetectorTypes = DataDetectorTypes;
 exports.DecelerationRate = DecelerationRate;
-/* No side effect */
+/* WebViewElement-ReactNative Not a pure module */

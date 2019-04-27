@@ -1,5 +1,4 @@
-type element;
-type ref = React.Ref.t(Js.nullable(element));
+include TouchableOpacityElement;
 
 [@react.component] [@bs.module "react-native"]
 external make:
@@ -54,7 +53,3 @@ external make:
   ) =>
   React.element =
   "TouchableOpacity";
-
-[@bs.send]
-external setOpacityTo: (element, ~value: float, ~duration: float) => unit =
-  "setOpacityTo";
