@@ -1,11 +1,7 @@
 type element;
 type ref = React.Ref.t(Js.nullable(element));
 
-type size;
-
-let small: size = "small"->Obj.magic;
-let large: size = "large"->Obj.magic;
-external exactSize: float => size = "%identity";
+module Size = ActivityIndicator_Size;
 
 [@react.component] [@bs.module "react-native"]
 external make:
@@ -14,7 +10,7 @@ external make:
     // ActivityIndicator props
     ~animating: bool=?,
     ~color: Color.t=?,
-    ~size: size=?,
+    ~size: Size.t=?,
     ~hidesWhenStopped: bool=?,
     // View props
     ~accessibilityComponentType: [@bs.string] [

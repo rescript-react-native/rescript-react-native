@@ -1,10 +1,7 @@
 'use strict';
 
 
-var small = "small";
+var Size = 0;
 
-var large = "large";
-
-exports.small = small;
-exports.large = large;
+exports.Size = Size;
 /* No side effect */
