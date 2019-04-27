@@ -60,6 +60,7 @@ external make:
                                   =?,
     ~nativeID: string=?,
     ~needsOffscreenAlphaCompositing: bool=?,
+    ~onAccessibilityEscape: unit => unit=?,
     ~onAccessibilityTap: unit => unit=?,
     ~onLayout: Event.layoutEvent => unit=?,
     ~onMagicTap: unit => unit=?,
