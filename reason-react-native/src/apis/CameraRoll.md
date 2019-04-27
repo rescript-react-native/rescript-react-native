@@ -70,14 +70,15 @@ type photoIdentifiersPage = {
 };
 
 [@bs.module "react-native"] [@bs.scope "CameraRoll"]
-external saveToCameraRoll:
-  (string, ~_type: [@bs.string] [ | `photo | `video]=?, unit) =>
-  Js.Promise.t(string) =
+external saveToCameraRoll: string => Js.Promise.t(string) = "";
+
+[@bs.module "react-native"] [@bs.scope "CameraRoll"]
+external saveToCameraRollOverrideType:
+  (string, ~_type: [@bs.string] [ | `photo | `video]) => Js.Promise.t(string) =
   "";
 
 [@bs.module "react-native"] [@bs.scope "CameraRoll"]
 external getPhotos: getPhotosParams => Js.Promise.t(photoIdentifiersPage) =
   "";
-
 
 ```
