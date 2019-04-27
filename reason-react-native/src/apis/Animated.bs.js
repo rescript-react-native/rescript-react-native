@@ -2,7 +2,10 @@
 
 var Caml_option = require("bs-platform/lib/js/caml_option.js");
 var ReactNative = require("react-native");
+var Text$ReactNative = require("../components/Text.bs.js");
+var View$ReactNative = require("../components/View.bs.js");
 var Image$ReactNative = require("../components/Image.bs.js");
+var ScrollView$ReactNative = require("../components/ScrollView.bs.js");
 
 var Animation = /* module */[];
 

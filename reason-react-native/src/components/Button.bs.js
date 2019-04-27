@@ -1,1 +1,6 @@
-/* This output is empty. Its source's type definitions, externals and/or unused code got optimized away. */
+'use strict';
+
+var NativeElement$ReactNative = require("../elements/NativeElement.bs.js");
+
+
+/* NativeElement-ReactNative Not a pure module */

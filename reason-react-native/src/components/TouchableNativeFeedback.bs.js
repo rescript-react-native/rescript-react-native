@@ -1,7 +1,8 @@
 'use strict';
 
+var NativeElement$ReactNative = require("../elements/NativeElement.bs.js");
 
 var Background = /* module */[];
 
 exports.Background = Background;
-/* No side effect */
+/* NativeElement-ReactNative Not a pure module */
