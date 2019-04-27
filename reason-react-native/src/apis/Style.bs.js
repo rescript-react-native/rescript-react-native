@@ -1,17 +1,6 @@
 'use strict';
 
 
-function pct(num) {
-  return num.toString() + "%";
-}
-
-var Margin = /* module */[
-  /* pct */pct,
-  /* auto */"auto"
-];
-
-var Size = /* module */[/* pct */pct];
-
 function deg(num) {
   return num.toString() + "deg";
 }
@@ -25,8 +14,5 @@ var Transform = /* module */[
   /* rad */rad
 ];
 
-exports.pct = pct;
-exports.Margin = Margin;
-exports.Size = Size;
 exports.Transform = Transform;
 /* No side effect */
