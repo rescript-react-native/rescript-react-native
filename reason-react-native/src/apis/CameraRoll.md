@@ -75,7 +75,7 @@ external saveToCameraRoll: string => Js.Promise.t(string) = "";
 [@bs.module "react-native"] [@bs.scope "CameraRoll"]
 external saveToCameraRollOverrideType:
   (string, ~_type: [@bs.string] [ | `photo | `video]) => Js.Promise.t(string) =
-  "";
+  "saveToCameraRoll";
 
 [@bs.module "react-native"] [@bs.scope "CameraRoll"]
 external getPhotos: getPhotosParams => Js.Promise.t(photoIdentifiersPage) =
