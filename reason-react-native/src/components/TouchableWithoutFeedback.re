@@ -37,6 +37,8 @@ external make:
     ~delayPressOut: int=?,
     ~disabled: bool=?,
     ~hitSlop: Types.edgeInsets=?,
+    ~onBlur: Event.targetEvent => unit=?,
+    ~onFocus: Event.targetEvent => unit=?,
     ~onLayout: Event.layoutEvent => unit=?,
     ~onLongPress: Event.pressEvent => unit=?,
     ~onPress: Event.pressEvent => unit=?,

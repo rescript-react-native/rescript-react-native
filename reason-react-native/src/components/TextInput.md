@@ -27,8 +27,6 @@ type contentSizeChangeEvent =
     },
   });
 
-type focusEvent = event({. "target": int});
-
 type scrollEvent =
   event({
     .
@@ -136,7 +134,7 @@ external make:
     ~onChangeText: string => unit=?,
     ~onContentSizeChange: contentSizeChangeEvent => unit=?,
     ~onEndEditing: editingEvent => unit=?,
-    ~onFocus: focusEvent => unit=?,
+    ~onFocus: Event.targetEvent => unit=?,
     ~onKeyPress: keyPressEvent => unit=?,
     ~onScroll: scrollEvent => unit=?,
     ~onSelectionChange: selectionEvent => unit=?,
