@@ -45,13 +45,26 @@ module DefaultSource = {
   external fromRequired: Packager.required => t = "%identity";
 };
 
+type imageLoadEvent =
+  Event.syntheticEvent({
+    .
+    "source": {
+      .
+      "width": float,
+      "height": float,
+      "url": string,
+    },
+    "uri": Js.Nullable.t(string),
+  });
+
 type errorEvent = Event.syntheticEvent({. "error": string});
 
-type progress = {
-  .
-  "loaded": float,
-  "total": float,
-};
+type progressEvent =
+  Event.syntheticEvent({
+    .
+    "loaded": float,
+    "total": float,
+  });
 
 [@react.component] [@bs.module "react-native"]
 external make:
@@ -67,11 +80,11 @@ external make:
     ~loadingIndicatorSource: array(Source.t)=?,
     ~onError: errorEvent => unit=?,
     ~onLayout: Event.layoutEvent => unit=?,
-    ~onLoad: unit => unit=?,
+    ~onLoad: imageLoadEvent => unit=?,
     ~onLoadEnd: unit => unit=?,
     ~onLoadStart: unit => unit=?,
     ~onPartialLoad: unit => unit=?,
-    ~onProgress: progress => unit=?,
+    ~onProgress: progressEvent => unit=?,
     ~progressiveRenderingEnabled: bool=?,
     ~resizeMethod: [@bs.string] [ | `auto | `resize | `scale]=?,
     ~resizeMode: [@bs.string] [

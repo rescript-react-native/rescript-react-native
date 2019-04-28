@@ -59,7 +59,7 @@ external make:
     ~onLoadEnd: unit => unit=?,
     ~onLoadStart: unit => unit=?,
     ~onPartialLoad: unit => unit=?,
-    ~onProgress: Image.progress => unit=?,
+    ~onProgress: Image.progressEvent => unit=?,
     ~progressiveRenderingEnabled: bool=?,
     ~resizeMethod: [@bs.string] [ | `auto | `resize | `scale]=?,
     ~resizeMode: [@bs.string] [
