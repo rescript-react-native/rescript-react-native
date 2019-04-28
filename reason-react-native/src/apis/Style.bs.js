@@ -1,18 +1,1 @@
-'use strict';
-
-
-function deg(num) {
-  return num.toString() + "deg";
-}
-
-function rad(num) {
-  return num.toString() + "rad";
-}
-
-var Transform = /* module */[
-  /* deg */deg,
-  /* rad */rad
-];
-
-exports.Transform = Transform;
-/* No side effect */
+/* This output is empty. Its source's type definitions, externals and/or unused code got optimized away. */
