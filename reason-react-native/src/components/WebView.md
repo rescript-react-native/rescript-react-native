@@ -78,7 +78,7 @@ external make:
     ~onLoadStart: webViewEvent => unit=?,
     ~onMessage: messageEvent => unit=?,
     ~onNavigationStateChange: webViewEvent => unit=?,
-    ~onShouldStartLoadWithRequest: request => unit=?,
+    ~onShouldStartLoadWithRequest: request => bool=?,
     ~originWhitelist: array(string)=?,
     ~renderError: string => React.element=?,
     ~renderLoading: unit => React.element=?,
