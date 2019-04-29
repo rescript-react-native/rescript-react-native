@@ -133,3 +133,5 @@ type scrollEvent =
   });
 
 type switchChangeEvent = syntheticEvent({. "value": bool});
+
+type targetEvent = syntheticEvent({. "target": int});
