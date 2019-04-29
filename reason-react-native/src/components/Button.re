@@ -9,7 +9,12 @@ external make:
     ~color: Color.t=?,
     ~disabled: bool=?,
     ~hasTVPreferredFocus: bool=?,
-    ~onPress: unit => unit,
+    ~nextFocusDown: int=?,
+    ~nextFocusForward: int=?,
+    ~nextFocusLeft: int=?,
+    ~nextFocusRight: int=?,
+    ~nextFocusUp: int=?,
+    ~onPress: Event.pressEvent => unit,
     ~testID: string=?,
     ~title: string
   ) =>
