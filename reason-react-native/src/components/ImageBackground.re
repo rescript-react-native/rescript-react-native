@@ -65,7 +65,8 @@ external make:
                    =?,
     ~source: Image.Source.t,
     ~style: Style.t=?,
-    ~testID: string=?
+    ~testID: string=?,
+    ~children: React.element=?
   ) =>
   React.element =
   "ImageBackground";
