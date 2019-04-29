@@ -52,6 +52,7 @@ external make:
     ~onScrollEndDrag: Event.scrollEvent => unit=?,
     ~overScrollMode: [@bs.string] [ | `always | `never | `auto]=?,
     ~pagingEnabled: bool=?,
+    ~pinchGestureEnabled: bool=?,
     ~refreshControl: React.element=?,
     ~scrollEnabled: bool=?,
     ~scrollEventThrottle: int=?,
