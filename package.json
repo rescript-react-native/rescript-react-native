@@ -1,7 +1,7 @@
 {
   "private": true,
   "version": "0.0.0",
-  "name": "bs-react-native-monorepo",
+  "name": "bs-react-native",
   "license": "MIT",
   "devDependencies": {
     "bs-platform": "^5.0.1",
