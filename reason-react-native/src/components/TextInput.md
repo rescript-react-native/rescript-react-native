@@ -7,10 +7,30 @@ wip: true
 ```reason
 include TextInputElement;
 
-type event('a) = {. "nativeEvent": 'a};
+type changeEvent =
+  Event.syntheticEvent({
+    .
+    "eventCount": int,
+    "target": int,
+    "text": string,
+  });
+
+type textInputEvent =
+  Event.syntheticEvent({
+    .
+    "eventCount": int,
+    "previousText": string,
+    "range": {
+      .
+      "start": int,
+      "_end": int,
+    },
+    "target": int,
+    "text": string,
+  });
 
 type editingEvent =
-  event({
+  Event.syntheticEvent({
     .
     "text": string,
     "eventCount": int,
@@ -18,8 +38,9 @@ type editingEvent =
   });
 
 type contentSizeChangeEvent =
-  event({
+  Event.syntheticEvent({
     .
+    "target": int,
     "contentSize": {
       .
       "width": float,
@@ -28,7 +49,7 @@ type contentSizeChangeEvent =
   });
 
 type scrollEvent =
-  event({
+  Event.syntheticEvent({
     .
     "contentOffset": {
       .
@@ -43,9 +64,20 @@ type selection = {
   "_end": int,
 };
 
-type selectionEvent = event(selection);
+type selectionChangeEvent =
+  Event.syntheticEvent({
+    .
+    "selection": selection,
+    "target": int,
+  });
 
-type keyPressEvent = event({. "key": string});
+type keyPressEvent =
+  Event.syntheticEvent({
+    .
+    "key": string,
+    "target": Js.Nullable.t(int),
+    "eventCount": Js.Nullable.t(int),
+  });
 
 module DataDetectorTypes = TextInput_DataDetectorTypes;
 
@@ -129,16 +161,17 @@ external make:
     ~maxLength: int=?,
     ~multiline: bool=?,
     ~numberOfLines: int=?,
-    ~onBlur: unit => unit=?,
-    ~onChange: editingEvent => unit=?,
+    ~onBlur: Event.targetEvent => unit=?,
+    ~onChange: changeEvent => unit=?,
     ~onChangeText: string => unit=?,
     ~onContentSizeChange: contentSizeChangeEvent => unit=?,
     ~onEndEditing: editingEvent => unit=?,
     ~onFocus: Event.targetEvent => unit=?,
     ~onKeyPress: keyPressEvent => unit=?,
     ~onScroll: scrollEvent => unit=?,
-    ~onSelectionChange: selectionEvent => unit=?,
+    ~onSelectionChange: selectionChangeEvent => unit=?,
     ~onSubmitEditing: editingEvent => unit=?,
+    ~onTextInput: textInputEvent => unit=?,
     ~placeholder: string=?,
     ~placeholderTextColor: Color.t=?,
     ~returnKeyLabel: string=?,
