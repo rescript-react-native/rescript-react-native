@@ -20,9 +20,9 @@ If you use this bindings from the git repo, be sure to use
   // ...
   "bs-dependencies": [
     // BsReactNative, current "stable" bindings
-    "bs-react-native/bs-react-native",
+    "bs-react-native-monorepo/bs-react-native",
     // ReactNative, WIP on zero-cost bindings (require bs-platform 5.0.0 & and reason-react hooks branch)
-    "bs-react-native/reason-react-native"
+    "bs-react-native-monorepo/reason-react-native"
   },
   // When used from git with the following path, bs-platform will use path that won't be working
   // (because deps are pointing to folder in folder)`
@@ -32,7 +32,7 @@ If you use this bindings from the git repo, be sure to use
   // the trick below will correct path in generated JavaScript files
   // and will just need to be removed when you won't use git directly anymore
   "js-post-build": {
-    "cmd": "./node_modules/bs-react-native/git-monorepo-usage-trick"
+    "cmd": "./node_modules/bs-react-native-monorepo/git-monorepo-usage-trick"
   }
 }
 ```
