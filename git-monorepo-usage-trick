@@ -7,10 +7,10 @@
 
 # sed -i does not work in CI in a docker image on Linux, so let's use ex instead.
 ex $1 <<EOF
-%s/require("bs-react-native\//require("bs-react-native\/bs-react-native\//g
-%s/from "bs-react-native\//from "bs-react-native\/bs-react-native\//g
-%s/require("reason-react-native\//require("bs-react-native\/reason-react-native\//g
-%s/from "reason-react-native\//from "bs-react-native\/reason-react-native\//g
+%s/require("bs-react-native\//require("bs-react-native-monorepo\/bs-react-native\//g
+%s/from "bs-react-native\//from "bs-react-native-monorepo\/bs-react-native\//g
+%s/require("reason-react-native\//require("bs-react-native-monorepo\/reason-react-native\//g
+%s/from "reason-react-native\//from "bs-react-native-monorepo\/reason-react-native\//g
 x
 EOF
 
