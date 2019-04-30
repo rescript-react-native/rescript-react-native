@@ -1,6 +1,6 @@
 {
   "name": "bs-react-native-jsx3-compat",
-  "namespace": "bs-react-native-jsx3-compat",
+  "namespace": "bs-react-native",
   "refmt": 3,
   "reason": {
     "react-jsx": 3
