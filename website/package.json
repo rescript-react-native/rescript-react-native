@@ -10,6 +10,7 @@
     "re:clean": "bsb -clean-world",
     "re:start": "bsb -make-world -w",
     "re:build": "bsb -make-world",
+    "re:clean-build": "yarn re:clean && yarn re:build",
     "build:prepare:md": "trash build/md && node scripts/PrepareMdToJson.bs.js",
     "build:prepare": "yarn build:prepare:md",
     "build:prerender-legacy": "./scripts/legacy-doc.sh",
@@ -18,7 +19,8 @@
     "build": "yarn svg && yarn re:build && yarn build:prepare && yarn build:prerender && yarn build:prerender-legacy && yarn build:copy-static",
     "serve": "static-server-cli dist",
     "start": "opn http://localhost:9000/bs-react-native/ & yarn serve",
-    "test": "yarn svg && yarn re:build"
+    "clean": "yarn re:clean",
+    "test": "yarn svg && yarn re:clean-build"
   },
   "devDependencies": {
     "@moox/bs-react-helmet": "^2.0.0",
