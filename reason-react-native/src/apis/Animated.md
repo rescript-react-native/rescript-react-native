@@ -73,6 +73,7 @@ module ValueAnimations = (Val: Value) => {
         ~stiffness: float=?,
         ~mass: float=?,
         ~damping: float=?,
+        ~delay: float=?,
         ~isInteraction: bool=?,
         ~useNativeDriver: bool=?,
         ~onComplete: Animation.endCallback=?,
