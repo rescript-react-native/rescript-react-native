@@ -15,46 +15,26 @@ type size =
 let styles =
   StyleSheet.create(
     Style.{
-      "xxl":
-        style(
-          ~width=Size.pt(space *. 3.),
-          ~height=Size.pt(space *. 3.),
-          (),
-        ),
-      "xl":
-        style(
-          ~width=Size.pt(space *. 2.),
-          ~height=Size.pt(space *. 2.),
-          (),
-        ),
-      "l":
-        style(
-          ~width=Size.pt(space *. 1.5),
-          ~height=Size.pt(space *. 1.5),
-          (),
-        ),
-      "m":
-        style(
-          ~width=Size.pt(space *. 1.),
-          ~height=Size.pt(space *. 1.),
-          (),
-        ),
+      "xxl": style(~width=pt(space *. 3.), ~height=pt(space *. 3.), ()),
+      "xl": style(~width=pt(space *. 2.), ~height=pt(space *. 2.), ()),
+      "l": style(~width=pt(space *. 1.5), ~height=pt(space *. 1.5), ()),
+      "m": style(~width=pt(space *. 1.), ~height=pt(space *. 1.), ()),
       "s":
         style(
-          ~width=Size.pt(space *. 3. /. 4.),
-          ~height=Size.pt(space *. 3. /. 4.),
+          ~width=pt(space *. 3. /. 4.),
+          ~height=pt(space *. 3. /. 4.),
           (),
         ),
       "xs":
         style(
-          ~width=Size.pt(space *. 2. /. 4.),
-          ~height=Size.pt(space *. 2. /. 4.),
+          ~width=pt(space *. 2. /. 4.),
+          ~height=pt(space *. 2. /. 4.),
           (),
         ),
       "xxs":
         style(
-          ~width=Size.pt(space *. 1. /. 4.),
-          ~height=Size.pt(space *. 1. /. 4.),
+          ~width=pt(space *. 1. /. 4.),
+          ~height=pt(space *. 1. /. 4.),
           (),
         ),
     },
@@ -73,7 +53,7 @@ let make = (~size=M) =>
       | XS => styles##xs
       | XXS => styles##xxs
       | Custom(value) =>
-        Style.(style(~width=Size.pt(value), ~height=Size.pt(value), ()))
+        Style.(style(~width=pt(value), ~height=pt(value), ()))
       }
     }
   />;

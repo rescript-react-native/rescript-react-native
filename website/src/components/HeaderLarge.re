@@ -30,7 +30,7 @@ let styles =
           ~flexDirection=`row,
           ~position=`relative,
           ~zIndex=1,
-          ~paddingHorizontal=Size.pt(10.),
+          ~paddingHorizontal=pt(10.),
           ~alignItems=`center,
           (),
         ),
@@ -51,7 +51,7 @@ let styles =
         ),
       "link":
         style(
-          ~padding=Size.pt(10.),
+          ~padding=pt(10.),
           ~fontSize=18.,
           ~lineHeight=18. *. 1.7,
           ~fontWeight=`_300,
@@ -72,8 +72,8 @@ let styles =
           ~flexDirection=`row,
           ~justifyContent=`center,
           ~alignItems=`center,
-          ~paddingHorizontal=Size.pt(12.),
-          ~paddingVertical=Size.pt(6.),
+          ~paddingHorizontal=pt(12.),
+          ~paddingVertical=pt(6.),
           ~fontSize=12.,
           (),
         ),

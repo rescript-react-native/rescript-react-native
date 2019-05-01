@@ -1,10 +1,3 @@
----
-id: apis/Style
-title: Style
-wip: true
----
-
-```reason
 type size;
 
 external pt: float => size = "%identity";
@@ -84,7 +77,7 @@ external style:
     ~elevation: float=?,
     ~_end: float=?,
     ~flex: float=?,
-    ~flexBasis: size=?,
+    ~flexBasis: margin=?,
     ~flexDirection: [@bs.string] [
                       | `row
                       | [@bs.as "row-reverse"] `rowReverse
@@ -106,15 +99,15 @@ external style:
                      ]
                        =?,
     ~left: size=?,
-    ~margin: size=?,
-    ~marginBottom: size=?,
-    ~marginEnd: size=?,
-    ~marginHorizontal: size=?,
-    ~marginLeft: size=?,
-    ~marginRight: size=?,
-    ~marginStart: size=?,
-    ~marginTop: size=?,
-    ~marginVertical: size=?,
+    ~margin: margin=?,
+    ~marginBottom: margin=?,
+    ~marginEnd: margin=?,
+    ~marginHorizontal: margin=?,
+    ~marginLeft: margin=?,
+    ~marginRight: margin=?,
+    ~marginStart: margin=?,
+    ~marginTop: margin=?,
+    ~marginVertical: margin=?,
     ~maxHeight: size=?,
     ~maxWidth: size=?,
     ~minHeight: size=?,
@@ -247,5 +240,3 @@ external list: list(t) => t = "%identity";
  ])>
  */
 external listOption: list(option(t)) => t = "%identity";
-
-```

@@ -4,14 +4,14 @@ open ReactNative;
 let styles =
   StyleSheet.create(
     Style.{
-      "container": style(~height=100.->Size.pct, ~overflow=`scroll, ()),
+      "container": style(~height=100.->pct, ~overflow=`scroll, ()),
       "title": style(~fontSize=16., ~fontWeight=`_600, ~color="#333", ()),
       "link":
         style(
           ~fontSize=14.,
           ~fontWeight=`_400,
           ~color="#555",
-          ~paddingVertical=(Spacer.space /. 4.)->Size.pt,
+          ~paddingVertical=(Spacer.space /. 4.)->pt,
           (),
         ),
       "notlink":
@@ -19,7 +19,7 @@ let styles =
           ~fontSize=14.,
           ~fontWeight=`_400,
           ~color="#ddd",
-          ~paddingVertical=(Spacer.space /. 4.)->Size.pt,
+          ~paddingVertical=(Spacer.space /. 4.)->pt,
           (),
         ),
     },
