@@ -66,7 +66,7 @@ type photoIdentifiersPage = {
 external saveToCameraRoll: string => Js.Promise.t(string) = "";
 
 [@bs.module "react-native"] [@bs.scope "CameraRoll"]
-external saveToCameraRollOverrideType:
+external saveToCameraRollWithType:
   (string, ~_type: [@bs.string] [ | `photo | `video]) => Js.Promise.t(string) =
   "saveToCameraRoll";
 
