@@ -3,10 +3,9 @@ open ReactNative;
 let styles =
   StyleSheet.create(
     Style.{
-      "wrapper":
-        style(~flex=1., ~alignItems=`center, ~width=Size.pct(100.), ()),
+      "wrapper": style(~flex=1., ~alignItems=`center, ~width=pct(100.), ()),
       "container":
-        style(~flex=1., ~justifyContent=`center, ~width=Size.pct(100.), ()),
+        style(~flex=1., ~justifyContent=`center, ~width=pct(100.), ()),
     },
   );
 
@@ -39,7 +38,7 @@ let make =
       style=Style.(
         arrayOption([|
           Some(styles##container),
-          Some(style(~maxWidth=Size.pt(maxWidth), ())),
+          Some(style(~maxWidth=pt(maxWidth), ())),
           s,
         |])
       )>

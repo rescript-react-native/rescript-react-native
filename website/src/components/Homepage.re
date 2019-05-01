@@ -44,7 +44,7 @@ let make = () =>
         </Text>
       </View>
       <Spacer size=Spacer.XXL />
-      <View style=Style.(style(~width=100.->Size.pct, ()))>
+      <View style=Style.(style(~width=100.->pct, ()))>
         <View
           style=Style.(
             array([|

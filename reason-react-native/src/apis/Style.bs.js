@@ -1,1 +1,9 @@
-/* This output is empty. Its source's type definitions, externals and/or unused code got optimized away. */
+'use strict';
+
+
+function pct(num) {
+  return num.toString() + "%";
+}
+
+exports.pct = pct;
+/* No side effect */
