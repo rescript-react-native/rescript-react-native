@@ -46,6 +46,7 @@ external make:
     ~onPressOut: Event.pressEvent => unit=?,
     ~pressRetentionOffset: Types.edgeInsets=?,
     ~testID: string=?,
+    ~style: Style.t=?,
     ~children: React.element=?
   ) =>
   React.element =
