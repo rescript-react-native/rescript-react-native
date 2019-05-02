@@ -298,7 +298,7 @@ Returns [true] if the input is currently focused; [false] otherwise.
 
 type editingEvent = ReactNative.TextInput.editingEvent;
 
-//[@react.component]
+[@react.component]
 let make:
   (
     ~accessibilityLabel: string=?,

@@ -21,7 +21,11 @@ If you use this bindings from the git repo, be sure to use
   "bs-dependencies": [
     // BsReactNative, current "stable" bindings
     "bs-react-native-monorepo/bs-react-native",
-    // ReactNative, WIP on zero-cost bindings (require bs-platform 5.0.0 & and reason-react hooks branch)
+
+    // or alternatively, you probably wants (require bs-platform 5.0.1 & and reason-react 0.7)
+    // bs-react-native, but compatible with jsx3
+    "bs-react-native-monorepo/bs-react-native-jsx3-compat",
+    // new ReactNative, WIP on zero-cost bindings
     "bs-react-native-monorepo/reason-react-native"
   },
   // When used from git with the following path, bs-platform will use path that won't be working
@@ -37,10 +41,11 @@ If you use this bindings from the git repo, be sure to use
 }
 ```
 
-Did you notice that this way, you can use both bindings to slowly migrate?
+Did you notice `bs-react-native-jsx3-compat` ? See migration instructions so you
+can slowly migrate to new `reason-react-native` bindings.
 
-_Next ReactNative zero-cost bindings are still WIP, so use carefully at your own
-risk._
+_Next `reason-react-native` (`open ReactNative;`) - zero-cost bindings - are
+still WIP, so use carefully at your own risk._
 
 ## ⚠️ ReactNative zero-cost bindings setup with Reason React hooks
 

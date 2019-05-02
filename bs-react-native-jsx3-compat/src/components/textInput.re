@@ -8,7 +8,7 @@
 
 type editingEvent = ReactNative.TextInput.editingEvent;
 
-// [@react.component]
+[@react.component]
 let make =
     (
       ~accessibilityLabel: option(string)=?,

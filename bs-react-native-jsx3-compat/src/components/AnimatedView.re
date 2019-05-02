@@ -25,7 +25,7 @@ let make =
       ~accessibilityViewIsModal: option(bool)=?,
       ~shouldRasterizeIOS: option(bool)=?,
       ~children: option(React.element)=?,
-      unit,
+      _,
     ) =>
   <ReactNative.Animated.View
     ?accessibilityLabel
