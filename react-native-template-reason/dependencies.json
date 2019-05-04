@@ -1,5 +1,4 @@
 {
-  "bs-platform": "^5.0.1",
   "reason-react": "^0.7.0",
-  "bs-react-native": "^0.11.0"
+  "bs-react-native": "git+https://github.com/reasonml-community/bs-react-native"
 }
