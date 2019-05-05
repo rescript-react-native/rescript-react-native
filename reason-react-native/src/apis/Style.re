@@ -1,3 +1,14 @@
+type size = string;
+
+external pt: float => size = "%identity";
+
+let pct = num => num->Js.Float.toString ++ "%";
+
+type margin = size;
+
+[@bs.inline]
+let auto = "auto";
+
 type offset;
 [@bs.obj] external offset: (~height: float, ~width: float) => offset = "";
 
@@ -60,13 +71,13 @@ external style:
     ~borderTopStartRadius: float=?,
     ~borderTopWidth: float=?,
     ~borderWidth: float=?,
-    ~bottom: Size.t=?,
+    ~bottom: size=?,
     ~direction: [@bs.string] [ | [@bs.as "inherit"] `inherit_ | `ltr | `ltr]=?,
     ~display: [@bs.string] [ | `none | `flex]=?,
     ~elevation: float=?,
     ~_end: float=?,
     ~flex: float=?,
-    ~flexBasis: Margin.t=?,
+    ~flexBasis: margin=?,
     ~flexDirection: [@bs.string] [
                       | `row
                       | [@bs.as "row-reverse"] `rowReverse
@@ -77,7 +88,7 @@ external style:
     ~flexGrow: float=?,
     ~flexShrink: float=?,
     ~flexWrap: [@bs.string] [ | `wrap | `nowrap]=?,
-    ~height: Size.t=?,
+    ~height: size=?,
     ~justifyContent: [@bs.string] [
                        | [@bs.as "flex-start"] `flexStart
                        | [@bs.as "flex-end"] `flexEnd
@@ -87,36 +98,36 @@ external style:
                        | [@bs.as "space-evenly"] `spaceEvenly
                      ]
                        =?,
-    ~left: Size.t=?,
-    ~margin: Margin.t=?,
-    ~marginBottom: Margin.t=?,
-    ~marginEnd: Margin.t=?,
-    ~marginHorizontal: Margin.t=?,
-    ~marginLeft: Margin.t=?,
-    ~marginRight: Margin.t=?,
-    ~marginStart: Margin.t=?,
-    ~marginTop: Margin.t=?,
-    ~marginVertical: Margin.t=?,
-    ~maxHeight: Size.t=?,
-    ~maxWidth: Size.t=?,
-    ~minHeight: Size.t=?,
-    ~minWidth: Size.t=?,
+    ~left: size=?,
+    ~margin: margin=?,
+    ~marginBottom: margin=?,
+    ~marginEnd: margin=?,
+    ~marginHorizontal: margin=?,
+    ~marginLeft: margin=?,
+    ~marginRight: margin=?,
+    ~marginStart: margin=?,
+    ~marginTop: margin=?,
+    ~marginVertical: margin=?,
+    ~maxHeight: size=?,
+    ~maxWidth: size=?,
+    ~minHeight: size=?,
+    ~minWidth: size=?,
     ~opacity: float=?,
     ~overflow: [@bs.string] [ | `visible | `hidden | `scroll]=?,
-    ~padding: Size.t=?,
-    ~paddingBottom: Size.t=?,
-    ~paddingEnd: Size.t=?,
-    ~paddingHorizontal: Size.t=?,
-    ~paddingLeft: Size.t=?,
-    ~paddingRight: Size.t=?,
-    ~paddingStart: Size.t=?,
-    ~paddingTop: Size.t=?,
-    ~paddingVertical: Size.t=?,
+    ~padding: size=?,
+    ~paddingBottom: size=?,
+    ~paddingEnd: size=?,
+    ~paddingHorizontal: size=?,
+    ~paddingLeft: size=?,
+    ~paddingRight: size=?,
+    ~paddingStart: size=?,
+    ~paddingTop: size=?,
+    ~paddingVertical: size=?,
     ~position: [@bs.string] [ | `absolute | `relative]=?,
-    ~right: Size.t=?,
-    ~start: Size.t=?,
-    ~top: Size.t=?,
-    ~width: Size.t=?,
+    ~right: size=?,
+    ~start: size=?,
+    ~top: size=?,
+    ~width: size=?,
     ~zIndex: int=?,
     // Shadow Props (https://facebook.github.io/react-native/docs/shadow-props)
     ~shadowColor: Color.t=?,

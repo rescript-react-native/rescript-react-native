@@ -15,9 +15,7 @@ let make =
       {pageData
        ->Option.map(pageData =>
            <Container
-             style=Style.(
-               style(~flexDirection=`row, ~height=100.->Size.pct, ())
-             )>
+             style=Style.(style(~flexDirection=`row, ~height=100.->pct, ()))>
              <BsReactHelmet>
                <title>
                  {("BsReactNative " ++ pageData.title)->React.string}
