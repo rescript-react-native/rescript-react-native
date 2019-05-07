@@ -115,7 +115,7 @@ let make =
     ?bounces
     ?canCancelContentTouches
     ?centerContent
-    ?contentInset
+    contentInset=?{Types.toEdgeInsets(contentInset)}
     ?contentOffset
     ?decelerationRate
     ?directionalLockEnabled
@@ -123,14 +123,14 @@ let make =
     ?maximumZoomScale
     ?minimumZoomScale
     ?scrollEventThrottle
-    ?scrollIndicatorInsets
+    scrollIndicatorInsets=?{Types.toEdgeInsets(scrollIndicatorInsets)}
     ?scrollsToTop
     ?snapToInterval
     ?snapToAlignment
     ?zoomScale
     ?accessibilityLabel
     ?accessible
-    ?hitSlop
+    hitSlop=?{Types.toEdgeInsets(hitSlop)}
     ?onAccessibilityTap
     ?onLayout
     ?onMagicTap

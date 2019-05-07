@@ -100,14 +100,14 @@ let make =
     ?maximumZoomScale
     ?minimumZoomScale
     ?scrollEventThrottle
-    ?scrollIndicatorInsets
+    scrollIndicatorInsets=?{Types.toEdgeInsets(scrollIndicatorInsets)}
     ?scrollsToTop
     ?snapToInterval
     ?snapToAlignment
     ?zoomScale
     ?accessibilityLabel
     ?accessible
-    ?hitSlop
+    hitSlop=?{Types.toEdgeInsets(hitSlop)}
     ?onAccessibilityTap
     ?onLayout
     ?onMagicTap

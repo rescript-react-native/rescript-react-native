@@ -30,7 +30,7 @@ let make =
   <ReactNative.Animated.View
     ?accessibilityLabel
     ?accessible
-    ?hitSlop
+    hitSlop=?{Types.toEdgeInsets(hitSlop)}
     ?onAccessibilityTap
     ?onLayout
     ?onMagicTap

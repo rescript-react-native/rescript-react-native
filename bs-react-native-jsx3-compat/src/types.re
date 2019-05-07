@@ -1,4 +1,22 @@
-type insets = ReactNative.Types.edgeInsets;
+type insets = {
+  .
+  "left": int,
+  "right": int,
+  "top": int,
+  "bottom": int,
+};
+
+let toEdgeInsets: option(insets) => option(ReactNative.Types.edgeInsets) =
+  insets =>
+    insets->Belt.Option.map(insets =>
+      ReactNative.Types.edgeInsets(
+        ~left=insets##left->float_of_int,
+        ~right=insets##right->float_of_int,
+        ~top=insets##top->float_of_int,
+        ~bottom=insets##bottom->float_of_int,
+        (),
+      )
+    );
 
 type touchResponderHandlers = {
   onMoveShouldSetResponder: option(RNEvent.NativeEvent.t => bool),

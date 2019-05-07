@@ -65,7 +65,7 @@ let make =
     trackImage=?{trackImage->Belt.Option.map(encodeSource)}
     ?accessibilityLabel
     ?accessible
-    ?hitSlop
+    hitSlop=?{Types.toEdgeInsets(hitSlop)}
     ?onAccessibilityTap
     ?onLayout
     ?onMagicTap

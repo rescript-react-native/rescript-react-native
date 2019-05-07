@@ -42,7 +42,7 @@ let make =
     ?trackTintColor
     ?accessibilityLabel
     ?accessible
-    ?hitSlop
+    hitSlop=?{Types.toEdgeInsets(hitSlop)}
     ?onAccessibilityTap
     ?onLayout
     ?onMagicTap

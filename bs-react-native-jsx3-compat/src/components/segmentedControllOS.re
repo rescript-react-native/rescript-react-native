@@ -45,7 +45,7 @@ let make =
     onValueChange=?{onValueChange->Belt.Option.map(x => x->Obj.magic)}
     ?accessibilityLabel
     ?accessible
-    ?hitSlop
+    hitSlop=?{Types.toEdgeInsets(hitSlop)}
     ?onAccessibilityTap
     ?onLayout
     ?onMagicTap

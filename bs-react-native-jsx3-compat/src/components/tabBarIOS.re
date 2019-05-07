@@ -53,7 +53,7 @@ module Item = {
       ?isTVSelectable
       ?accessibilityLabel
       ?accessible
-      ?hitSlop
+      hitSlop=?{Types.toEdgeInsets(hitSlop)}
       ?onAccessibilityTap
       ?onLayout
       ?onMagicTap
@@ -194,7 +194,7 @@ let make =
     ?unselectedTintColor
     ?accessibilityLabel
     ?accessible
-    ?hitSlop
+    hitSlop=?{Types.toEdgeInsets(hitSlop)}
     ?onAccessibilityTap
     ?onLayout
     ?onMagicTap

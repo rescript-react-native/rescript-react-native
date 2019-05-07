@@ -43,13 +43,13 @@ let make =
     ?delayPressIn
     ?delayPressOut
     ?disabled
-    ?hitSlop
+    hitSlop=?{Types.toEdgeInsets(hitSlop)}
     ?onLayout
     ?onLongPress
     ?onPress
     ?onPressIn
     ?onPressOut
-    ?pressRetentionOffset
+    pressRetentionOffset=?{Types.toEdgeInsets(pressRetentionOffset)}
     ?style
     ?accessibilityComponentType
     accessibilityTraits=?{

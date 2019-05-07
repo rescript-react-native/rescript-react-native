@@ -102,7 +102,7 @@ let make =
   <ReactNative.WebView
     ?source
     ?automaticallyAdjustContentInsets
-    ?contentInsets
+    contentInsets=?{Types.toEdgeInsets(contentInsets)}
     ?injectJavaScript
     ?injectedJavaScript
     ?mediaPlaybackRequiresUserAction
@@ -158,7 +158,7 @@ let make =
     ?scrollEnabled
     ?accessibilityLabel
     ?accessible
-    ?hitSlop
+    hitSlop=?{Types.toEdgeInsets(hitSlop)}
     ?onAccessibilityTap
     ?onLayout
     ?onMagicTap

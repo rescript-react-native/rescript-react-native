@@ -36,7 +36,7 @@ let make =
     ?accessibilityLabel
     ?accessible
     ?blurRadius
-    ?capInsets
+    capInsets=?{Types.toEdgeInsets(capInsets)}
     defaultSource=?{defaultSource->Belt.Option.map(Image.encodeDefaultSource)}
     ?onPartialLoad
     onProgress=?{

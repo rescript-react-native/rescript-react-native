@@ -33,7 +33,7 @@ let make =
     ?onLayout
     ?onLongPress
     ?onPress
-    ?pressRetentionOffset
+    pressRetentionOffset=?{Types.toEdgeInsets(pressRetentionOffset)}
     ?selectable
     ?style
     ?testID
