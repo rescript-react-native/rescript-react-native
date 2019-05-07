@@ -3,7 +3,7 @@ module Animation = {
   type endResult = {. "finished": bool};
   type endCallback = endResult => unit;
   [@bs.send]
-  external start: (t, ~endCallback: endCallback=?, unit) => unit = "start";
+  external start: (t, ~endCallback: endCallback=?, unit) => unit = "";
 
   [@bs.send] external stop: t => unit = "";
   [@bs.send] external reset: t => unit = "";
@@ -129,7 +129,7 @@ module Interpolation = {
     ) =>
     config =
     "";
-  [@bs.send] external interpolate: (value('a), config) => t = "interpolate";
+  [@bs.send] external interpolate: (value('a), config) => t = "";
 };
 
 module ValueOperations = {
@@ -154,21 +154,19 @@ module Value = {
   type callback = jsValue => unit;
   [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
   external create: float => t = "Value";
-  [@bs.send] external setValue: (t, float) => unit = "setValue";
-  [@bs.send] external setOffset: (t, float) => unit = "setOffset";
-  [@bs.send] external flattenOffset: t => unit = "flattenOffset";
-  [@bs.send] external extractOffset: t => unit = "extractOffset";
-  [@bs.send] external addListener: (t, callback) => string = "addListener";
-  [@bs.send] external removeListener: (t, string) => unit = "removeListener";
-  [@bs.send] external removeAllListeners: t => unit = "removeAllListeners";
+  [@bs.send] external setValue: (t, float) => unit = "";
+  [@bs.send] external setOffset: (t, float) => unit = "";
+  [@bs.send] external flattenOffset: t => unit = "";
+  [@bs.send] external extractOffset: t => unit = "";
+  [@bs.send] external addListener: (t, callback) => string = "";
+  [@bs.send] external removeListener: (t, string) => unit = "";
+  [@bs.send] external removeAllListeners: t => unit = "";
 
   [@bs.send]
-  external resetAnimation: (t, ~callback: callback=?, unit) => unit =
-    "resetAnimation";
+  external resetAnimation: (t, ~callback: callback=?, unit) => unit = "";
 
   [@bs.send]
-  external stopAnimation: (t, ~callback: callback=?, unit) => unit =
-    "stopAnimation";
+  external stopAnimation: (t, ~callback: callback=?, unit) => unit = "";
 
   include ValueAnimations({
     type t = value(regular);
@@ -200,22 +198,18 @@ module ValueXY = {
 
   [@bs.send] external setValue: (t, jsValue) => unit = "";
   [@bs.send] external setOffset: (t, jsValue) => unit = "";
-  [@bs.send] external flattenOffset: t => unit = "flattenOffset";
-  [@bs.send] external extractOffset: t => unit = "extractOffset";
+  [@bs.send] external flattenOffset: t => unit = "";
+  [@bs.send] external extractOffset: t => unit = "";
   [@bs.send]
-  external resetAnimation: (t, ~callback: callback=?, unit) => unit =
-    "resetAnimation";
+  external resetAnimation: (t, ~callback: callback=?, unit) => unit = "";
 
   [@bs.send]
-  external stopAnimation: (t, ~callback: callback=?, unit) => unit =
-    "stopAnimation";
-  [@bs.send] external addListener: (t, callback) => string = "addListener";
-  [@bs.send] external removeListener: (t, string) => unit = "removeListener";
-  [@bs.send] external removeAllListeners: t => unit = "removeAllListeners";
-  [@bs.send] external getLayout: t => layout = "getLayout";
-  [@bs.send]
-  external getTranslateTransform: t => translateTransform =
-    "getTranslateTransform";
+  external stopAnimation: (t, ~callback: callback=?, unit) => unit = "";
+  [@bs.send] external addListener: (t, callback) => string = "";
+  [@bs.send] external removeListener: (t, string) => unit = "";
+  [@bs.send] external removeAllListeners: t => unit = "";
+  [@bs.send] external getLayout: t => layout = "";
+  [@bs.send] external getTranslateTransform: t => translateTransform = "";
   [@bs.get] external getX: t => Value.t = "x";
   [@bs.get] external getY: t => Value.t = "y";
   include ValueAnimations({
