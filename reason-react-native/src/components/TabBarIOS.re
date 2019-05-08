@@ -44,7 +44,7 @@ external make:
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
     ~collapsable: bool=?,
-    ~hitSlop: Types.edgeInsets=?,
+    ~hitSlop: View.edgeInsets=?,
     ~importantForAccessibility: [@bs.string] [
                                   | `auto
                                   | `yes
@@ -152,7 +152,7 @@ module Item = {
       ~accessibilityViewIsModal: bool=?,
       ~accessible: bool=?,
       ~collapsable: bool=?,
-      ~hitSlop: Types.edgeInsets=?,
+      ~hitSlop: View.edgeInsets=?,
       ~importantForAccessibility: [@bs.string] [
                                     | `auto
                                     | `yes

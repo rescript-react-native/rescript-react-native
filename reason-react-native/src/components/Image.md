@@ -81,7 +81,7 @@ external make:
     ~accessibilityLabel: string=?,
     ~accessible: bool=?,
     ~blurRadius: float=?,
-    ~capInsets: Types.edgeInsets=?,
+    ~capInsets: View.edgeInsets=?,
     ~defaultSource: DefaultSource.t=?,
     ~fadeDuration: float=?,
     ~loadingIndicatorSource: array(Source.t)=?,

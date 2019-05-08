@@ -42,7 +42,7 @@ external make:
     ~accessibilityLabel: string=?,
     ~accessible: bool=?,
     ~blurRadius: float=?,
-    ~capInsets: Types.edgeInsets=?,
+    ~capInsets: View.edgeInsets=?,
     ~defaultSource: Image.DefaultSource.t=?,
     ~fadeDuration: float=?,
     ~loadingIndicatorSource: array(Image.Source.t)=?,

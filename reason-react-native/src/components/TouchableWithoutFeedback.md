@@ -43,7 +43,7 @@ external make:
     ~delayPressIn: int=?,
     ~delayPressOut: int=?,
     ~disabled: bool=?,
-    ~hitSlop: Types.edgeInsets=?,
+    ~hitSlop: View.edgeInsets=?,
     ~onBlur: Event.targetEvent => unit=?,
     ~onFocus: Event.targetEvent => unit=?,
     ~onLayout: Event.layoutEvent => unit=?,
@@ -51,7 +51,7 @@ external make:
     ~onPress: Event.pressEvent => unit=?,
     ~onPressIn: Event.pressEvent => unit=?,
     ~onPressOut: Event.pressEvent => unit=?,
-    ~pressRetentionOffset: Types.edgeInsets=?,
+    ~pressRetentionOffset: View.edgeInsets=?,
     ~testID: string=?,
     ~children: React.element=?
   ) =>
