@@ -6,48 +6,46 @@
  */
 open ReactNative;
 
-module Styles = {
-  open Style;
+let instructions =
+  switch (Platform.os) {
+  | ios => "Press Cmd+R to reload,\n" ++ "Cmd+D or shake for dev menu"
+  | android =>
+    "Double tap R on your keyboard to reload,\n"
+    ++ "Shake or press menu button for dev menu"
+  | web => "Press Cmd+R to reload."
+  };
 
-  let container = style(
-    ~flex=1.,
-    ~justifyContent=`center,
-    ~alignItems=`center,
-    ~backgroundColor="#F5FCFF"
+let styles =
+  Style.(
+    StyleSheet.create({
+      "container":
+        style(
+          ~flex=1.,
+          ~justifyContent=`center,
+          ~alignItems=`center,
+          ~backgroundColor="#F5FCFF",
+          (),
+        ),
+      "welcome":
+        style(~fontSize=20., ~textAlign=`center, ~margin=pt(10.), ()),
+      "instructions":
+        style(
+          ~textAlign=`center,
+          ~color="#333333",
+          ~marginBottom=pt(5.),
+          (),
+        ),
+    })
   );
-
-  let welcome = style(
-    ~fontSize=20.,
-    ~textAlign=`center,
-    ~margin=pt(10.)
-  );
-
-  let instructions = style(
-    ~textAlign=`center,
-    ~color="#333333",
-    ~marginBottom=pt(5.)
-  );
-};
 
 [@react.component]
-let app = () => {
-  let instructions =
-    switch(Platform.os) {
-    | ios => "Press Cmd+R to reload,\n" ++ "Cmd+D or shake for dev menu"
-    | android =>
-      "Double tap R on your keyboard to reload,\n"
-      ++ "Shake or press menu button for dev menu"
-    };
-
-  <View style={Styles.container()}>
-    <Text style={Styles.welcome()}>
+let app = () =>
+  <View style=styles##container>
+    <Text style=styles##welcome>
       "Welcome to (Bs) React Native!"->React.string
     </Text>
-    <Text style={Styles.instructions()}>
+    <Text style=styles##instructions>
       "To get started, edit src/App.re"->React.string
     </Text>
-    <Text style={Styles.instructions()}>
-      instructions->React.string
-    </Text>
+    <Text style=styles##instructions> instructions->React.string </Text>
   </View>;
-};

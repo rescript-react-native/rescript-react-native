@@ -17,9 +17,6 @@
   ],
   "bs-dependencies": [
     "reason-react",
-    "bs-react-native/reason-react-native"
-  ],
-  "js-post-build": {
-    "cmd": "./node_modules/bs-react-native/git-monorepo-usage-trick"
-  }
+    "../reason-react-native"
+  ]
 }
