@@ -11,6 +11,7 @@ module Animation = {
 
 module type Value = {
   type t;
+  type jsValue;
   type rawJsType;
 };
 
@@ -19,8 +20,6 @@ type calculated;
 type regular;
 
 type value('a);
-
-type valueXY;
 
 module ValueAnimations = (Val: Value) => {
   module Decay = {
@@ -148,14 +147,15 @@ module ValueOperations = {
   let interpolate = Interpolation.interpolate;
 };
 
-module Value = {
-  type t = value(regular);
-  type jsValue = {. "value": float};
+module ValueMethods = (Val: Value) => {
+  type t = Val.t;
+  type jsValue = Val.jsValue;
+  type rawJsType = Val.rawJsType;
+
   type callback = jsValue => unit;
-  [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
-  external create: float => t = "Value";
-  [@bs.send] external setValue: (t, float) => unit = "";
-  [@bs.send] external setOffset: (t, float) => unit = "";
+
+  [@bs.send] external setValue: (t, rawJsType) => unit = "";
+  [@bs.send] external setOffset: (t, rawJsType) => unit = "";
   [@bs.send] external flattenOffset: t => unit = "";
   [@bs.send] external extractOffset: t => unit = "";
   [@bs.send] external addListener: (t, callback) => string = "";
@@ -168,21 +168,37 @@ module Value = {
   [@bs.send]
   external stopAnimation: (t, ~callback: callback=?, unit) => unit = "";
 
-  include ValueAnimations({
+  include ValueAnimations(Val);
+};
+
+module Value = {
+  include ValueMethods({
     type t = value(regular);
+    type jsValue = {. "value": float};
     type rawJsType = float;
   });
+
+  [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
+  external create: float => t = "Value";
+
   include ValueOperations;
 };
 
 module ValueXY = {
-  type t = valueXY;
-  type jsValue = {
-    .
-    "x": float,
-    "y": float,
-  };
-  type callback = jsValue => unit;
+  include ValueMethods({
+    type t = {
+      .
+      "x": Value.t,
+      "y": Value.t,
+    };
+    type jsValue = {
+      .
+      "x": float,
+      "y": float,
+    };
+    type rawJsType = jsValue;
+  });
+
   type translateTransform = {
     .
     "translateX": Value.t,
@@ -195,27 +211,8 @@ module ValueXY = {
   };
   [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
   external create: jsValue => t = "ValueXY";
-
-  [@bs.send] external setValue: (t, jsValue) => unit = "";
-  [@bs.send] external setOffset: (t, jsValue) => unit = "";
-  [@bs.send] external flattenOffset: t => unit = "";
-  [@bs.send] external extractOffset: t => unit = "";
-  [@bs.send]
-  external resetAnimation: (t, ~callback: callback=?, unit) => unit = "";
-
-  [@bs.send]
-  external stopAnimation: (t, ~callback: callback=?, unit) => unit = "";
-  [@bs.send] external addListener: (t, callback) => string = "";
-  [@bs.send] external removeListener: (t, string) => unit = "";
-  [@bs.send] external removeAllListeners: t => unit = "";
   [@bs.send] external getLayout: t => layout = "";
   [@bs.send] external getTranslateTransform: t => translateTransform = "";
-  [@bs.get] external getX: t => Value.t = "x";
-  [@bs.get] external getY: t => Value.t = "y";
-  include ValueAnimations({
-    type t = valueXY;
-    type rawJsType = jsValue;
-  });
 };
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
