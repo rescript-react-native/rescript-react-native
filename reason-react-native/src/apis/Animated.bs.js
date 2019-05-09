@@ -28,6 +28,17 @@ function interpolate(prim, prim$1) {
 
 var ValueOperations = /* module */[/* interpolate */interpolate];
 
+function ValueMethods(Val) {
+  var Decay = /* module */[];
+  var Spring = /* module */[];
+  var Timing = /* module */[];
+  return /* module */[
+          /* Decay */Decay,
+          /* Spring */Spring,
+          /* Timing */Timing
+        ];
+}
+
 var Decay = /* module */[];
 
 var Spring = /* module */[];
@@ -104,6 +115,7 @@ exports.Animation = Animation;
 exports.ValueAnimations = ValueAnimations;
 exports.Interpolation = Interpolation;
 exports.ValueOperations = ValueOperations;
+exports.ValueMethods = ValueMethods;
 exports.Value = Value;
 exports.ValueXY = ValueXY;
 exports.timing = timing;
