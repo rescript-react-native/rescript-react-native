@@ -6,23 +6,22 @@ wip: true
 
 ```reason
 [@bs.scope "Linking"] [@bs.module "react-native"]
-external openURL: string => Js.Promise.t(unit) = "openURL";
+external openURL: string => Js.Promise.t(unit) = "";
 
 [@bs.scope "Linking"] [@bs.module "react-native"]
-external canOpenURL: string => Js.Promise.t(bool) = "canOpenURL";
+external canOpenURL: string => Js.Promise.t(bool) = "";
 
 [@bs.scope "Linking"] [@bs.module "react-native"]
-external getInitialURL: unit => Js.Promise.t(Js.Null.t(string)) =
-  "getInitialURL";
-
-let getInitialURL = () =>
-  Js.Promise.(getInitialURL() |> then_(PromiseUtils.nullableToOption));
+external getInitialURL: unit => Js.Promise.t(Js.Null.t(string)) = "";
 
 [@bs.scope "Linking"] [@bs.module "react-native"]
-external addEventListener: (string, {. "url": string} => unit) => unit = "";
+external addEventListener:
+  ([@bs.string] [ | `url], {. "url": string} => unit) => unit =
+  "";
 
 [@bs.scope "Linking"] [@bs.module "react-native"]
-external removeEventListener: (string, {. "url": string} => unit) => unit =
+external removeEventListener:
+  ([@bs.string] [ | `url], {. "url": string} => unit) => unit =
   "";
 
 ```
