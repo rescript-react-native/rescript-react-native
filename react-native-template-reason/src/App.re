@@ -8,11 +8,12 @@ open ReactNative;
 
 let instructions =
   switch (Platform.os) {
-  | ios => "Press Cmd+R to reload,\n" ++ "Cmd+D or shake for dev menu"
-  | android =>
+  | os when os == Platform.ios =>
+    "Press Cmd+R to reload,\n" ++ "Cmd+D or shake for dev menu"
+  | os when os == Platform.android =>
     "Double tap R on your keyboard to reload,\n"
     ++ "Shake or press menu button for dev menu"
-  | web => "Press Cmd+R to reload."
+  | os when os == Platform.web => "Press Cmd+R to reload."
   };
 
 let styles =
