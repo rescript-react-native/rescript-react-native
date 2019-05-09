@@ -62,7 +62,7 @@ external make:
     ~allowUniversalAccessFromFileURLs: bool=?,
     ~automaticallyAdjustContentInsets: bool=?,
     ~bounces: bool=?,
-    ~contentInsets: Types.edgeInsets=?,
+    ~contentInsets: View.edgeInsets=?,
     ~dataDetectorTypes: array(DataDetectorTypes.t)=?,
     ~decelerationRate: DecelerationRate.t=?,
     ~domStorageEnabled: bool=?,
@@ -121,7 +121,7 @@ external make:
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
     ~collapsable: bool=?,
-    ~hitSlop: Types.edgeInsets=?,
+    ~hitSlop: View.edgeInsets=?,
     ~importantForAccessibility: [@bs.string] [
                                   | `auto
                                   | `yes

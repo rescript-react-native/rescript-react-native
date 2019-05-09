@@ -112,10 +112,10 @@ type pressEventPayload = {
 
 type pressEvent = responderSyntheticEvent(pressEventPayload);
 
-type position = {
+type contentOffset = {
   .
-  "y": float,
   "x": float,
+  "y": float,
 };
 
 type dimensions = {
@@ -134,7 +134,7 @@ type scrollEvent =
       "right": float,
       "top": float,
     },
-    "contentOffset": position,
+    "contentOffset": contentOffset,
     "contentSize": dimensions,
     "layoutMeasurement": dimensions,
   });
