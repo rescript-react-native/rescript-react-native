@@ -7,6 +7,13 @@ wip: true
 ```reason
 include NativeElement;
 
+type edgeInsets;
+[@bs.obj]
+external edgeInsets:
+  (~left: float=?, ~right: float=?, ~top: float=?, ~bottom: float=?, unit) =>
+  edgeInsets =
+  "";
+
 [@react.component] [@bs.module "react-native"]
 external make:
   (
@@ -43,7 +50,7 @@ external make:
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
     ~collapsable: bool=?,
-    ~hitSlop: Types.edgeInsets=?,
+    ~hitSlop: edgeInsets=?,
     ~importantForAccessibility: [@bs.string] [
                                   | `auto
                                   | `yes
