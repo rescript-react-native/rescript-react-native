@@ -7,6 +7,14 @@ experience.
 
 ## Setup
 
+### Command line
+
+Install bs-platform with the following command:
+
+```sh
+yarn add -D bs-platform
+```
+
 ### IDE
 
 To get the best development experience possible, we recommend you to use
