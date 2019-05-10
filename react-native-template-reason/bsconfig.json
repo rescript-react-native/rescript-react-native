@@ -2,7 +2,7 @@
   "name": "my-reason-react-native-app",
   "refmt": 3,
   "reason": {
-    "react-jsx": 2
+    "react-jsx": 3
   },
   "package-specs": {
     "module": "es6",
@@ -15,5 +15,8 @@
       "subdirs": true
     }
   ],
-  "bs-dependencies": ["bs-react-native", "reason-react"]
+  "bs-dependencies": [
+    "reason-react",
+    "reason-react-native"
+  ]
 }
