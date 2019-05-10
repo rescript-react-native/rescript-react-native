@@ -19,7 +19,6 @@ module Animation = {
 module type Value = {
   type t;
   type jsValue;
-  type rawJsType;
 };
 
 type calculated;
@@ -35,7 +34,7 @@ module ValueAnimations = (Val: Value) => {
     [@bs.obj]
     external config:
       (
-        ~velocity: Val.rawJsType,
+        ~velocity: Val.jsValue,
         ~deceleration: float=?,
         ~isInteraction: bool=?,
         ~useNativeDriver: bool=?,
@@ -52,7 +51,7 @@ module ValueAnimations = (Val: Value) => {
 
   module Spring = {
     type toValue;
-    external fromRawValue: Val.rawJsType => toValue = "%identity";
+    external fromRawValue: Val.jsValue => toValue = "%identity";
     external fromAnimatedValue: Val.t => toValue = "%identity";
 
     type config;
@@ -64,7 +63,7 @@ module ValueAnimations = (Val: Value) => {
         ~restDisplacementThreshold: float=?,
         ~overshootClamping: bool=?,
         ~restSpeedThreshold: float=?,
-        ~velocity: Val.rawJsType=?,
+        ~velocity: Val.jsValue=?,
         ~bounciness: float=?,
         ~speed: float=?,
         ~tension: float=?,
@@ -89,7 +88,7 @@ module ValueAnimations = (Val: Value) => {
   module Timing = {
     type toValue;
 
-    external fromRawValue: Val.rawJsType => toValue = "%identity";
+    external fromRawValue: Val.jsValue => toValue = "%identity";
     external fromAnimatedValue: Val.t => toValue = "%identity";
 
     type config;
@@ -157,12 +156,11 @@ module ValueOperations = {
 module ValueMethods = (Val: Value) => {
   type t = Val.t;
   type jsValue = Val.jsValue;
-  type rawJsType = Val.rawJsType;
 
   type callback = jsValue => unit;
 
-  [@bs.send] external setValue: (t, rawJsType) => unit = "";
-  [@bs.send] external setOffset: (t, rawJsType) => unit = "";
+  [@bs.send] external setValue: (t, jsValue) => unit = "";
+  [@bs.send] external setOffset: (t, jsValue) => unit = "";
   [@bs.send] external flattenOffset: t => unit = "";
   [@bs.send] external extractOffset: t => unit = "";
   [@bs.send] external addListener: (t, callback) => string = "";
@@ -181,8 +179,7 @@ module ValueMethods = (Val: Value) => {
 module Value = {
   include ValueMethods({
     type t = value(regular);
-    type jsValue = {. "value": float};
-    type rawJsType = float;
+    type jsValue = float;
   });
 
   [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
@@ -203,7 +200,6 @@ module ValueXY = {
       "x": float,
       "y": float,
     };
-    type rawJsType = jsValue;
   });
 
   type translateTransform = {
