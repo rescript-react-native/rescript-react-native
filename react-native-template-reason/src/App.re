@@ -14,6 +14,7 @@ let instructions =
     "Double tap R on your keyboard to reload,\n"
     ++ "Shake or press menu button for dev menu"
   | os when os == Platform.web => "Press Cmd+R to reload."
+  | _ => ""
   };
 
 let styles =
@@ -43,7 +44,7 @@ let styles =
 let app = () =>
   <View style=styles##container>
     <Text style=styles##welcome>
-      "Welcome to (Bs) React Native!"->React.string
+      "Welcome to (Reason) React Native!"->React.string
     </Text>
     <Text style=styles##instructions>
       "To get started, edit src/App.re"->React.string
