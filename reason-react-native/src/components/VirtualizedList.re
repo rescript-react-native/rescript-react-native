@@ -217,10 +217,12 @@ external make:
     // Gesture Responder props
     ~onMoveShouldSetResponder: Event.pressEvent => bool=?,
     ~onMoveShouldSetResponderCapture: Event.pressEvent => bool=?,
+    ~onResponderEnd: Event.pressEvent => unit=?,
     ~onResponderGrant: Event.pressEvent => unit=?,
     ~onResponderMove: Event.pressEvent => unit=?,
     ~onResponderReject: Event.pressEvent => unit=?,
     ~onResponderRelease: Event.pressEvent => unit=?,
+    ~onResponderStart: Event.pressEvent => unit=?,
     ~onResponderTerminate: Event.pressEvent => unit=?,
     ~onResponderTerminationRequest: Event.pressEvent => unit=?,
     ~onStartShouldSetResponder: Event.pressEvent => bool=?,
