@@ -1,7 +1,6 @@
 ---
 id: apis/LayoutAnimation
 title: LayoutAnimation
-wip: false
 ---
 
 `LayoutAnimation` API offers a simpler alternative to `Animated` API. Instead of directly manipulating values for various style props, it suffices to specify the animation to be run before the next render. Specification of the animation should happen in the reducer, before `state` is updated.
@@ -18,7 +17,6 @@ configureNext(layoutAnimationConfig)
 ```reason
 configureNextWithEndCallback(layoutAnimationConfig, callback)
 ```
-
 
 ## Types
 
@@ -52,7 +50,6 @@ create:
 ```
 
 
-
 `animationConfig` can in turn be created with the `animationConfig` constructor
 
 ```reason
@@ -76,8 +73,6 @@ animationConfig:
   )
 ```
 
-
-
 ## Presets
 
 There are presets for `linear`, `spring` and `easeInEaseOut` transitions which allow a very straightforward way to setup animation. Presets may either be passed as ready-made `layoutAnimationConfig` to `configureNext` and `configureNextWithEndCallback` as below
@@ -91,8 +86,6 @@ or equivalently as already passed to `configureNext` as
 LayoutAnimation.spring()
 
 ```
-
-
 
 ## Example
 
@@ -108,6 +101,14 @@ type state = {register: bool};
 
 type action =
   | ToggleRegister;
+
+let styles =
+  Style.(
+    StyleSheet.create({
+      "container": style(~flex=1., ~flexDirection=`column, ()),
+      "screen": style(~width=pt(windowWidth), ()),
+    })
+  );
 
 [@react.component]
 let make = () => {
@@ -130,28 +131,26 @@ let make = () => {
       {register: false},
     );
 
-  <View style={Style.style(~flex=1., ~flexDirection=`column, ())}>
+  <View style=styles##container>
     <View
-      style={Style.style(
-        ~flex=1.,
-        ~width=Style.pt(2.0 *. windowWidth),
-        ~left=
-          Style.pt(
-            if (state.register) {
-              0.;
-            } else {
-              0. -. windowWidth;
-            },
-          ),
-        ~flexDirection=`row,
-        (),
-      )}>
-      <View style={Style.style(~width=Style.pt(windowWidth), ())}>
-        <Register />
-      </View>
-      <View style={Style.style(~width=Style.pt(windowWidth), ())}>
-        <Login />
-      </View>
+      style=Style.(
+        {style(
+           ~flex=1.,
+           ~width=pt(2.0 *. windowWidth),
+           ~left=
+             pt(
+               if (state.register) {
+                 0.;
+               } else {
+                 0. -. windowWidth;
+               },
+             ),
+           ~flexDirection=`row,
+           (),
+         )}
+      )>
+      <View style=styles##screen> <Register /> </View>
+      <View style=styles##screen> <Login /> </View>
     </View>
     <Button onPress={_ => dispatch(ToggleRegister)} title={js|Toggle|js} />
   </View>;
