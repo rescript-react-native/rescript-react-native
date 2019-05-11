@@ -1,3 +1,7 @@
+type extra;
+
+[@bs.obj] external extra: (~key: string, ~value: 'a) => extra = "";
+
 [@bs.scope "Linking"] [@bs.module "react-native"]
 external openURL: string => Js.Promise.t(unit) = "";
 
@@ -6,6 +10,14 @@ external canOpenURL: string => Js.Promise.t(bool) = "";
 
 [@bs.scope "Linking"] [@bs.module "react-native"]
 external getInitialURL: unit => Js.Promise.t(Js.Null.t(string)) = "";
+
+// multiple externals
+[@bs.scope "Linking"] [@bs.module "react-native"]
+external sendIntent: string => unit = "";
+
+// multiple externals
+[@bs.scope "Linking"] [@bs.module "react-native"]
+external sendIntentWithExtras: (string, array(extra)) => unit = "sendIntent";
 
 [@bs.scope "Linking"] [@bs.module "react-native"]
 external addEventListener:
