@@ -22,7 +22,7 @@
   ]}
   {4 backgroundColor}
   {[
-    ~backgroundColor: string=?
+    ~backgroundColor: ReactNative.Color.t=?
   ]}
   {4 translucent}
   {[
@@ -47,50 +47,26 @@
 
  */
 
+[@react.component]
 let make:
   (
     ~animated: bool=?,
     ~barStyle: [ | `darkContent | `default | `lightContent]=?,
     ~hidden: bool=?,
-    ~backgroundColor: string=?,
+    ~backgroundColor: ReactNative.Color.t=?,
     ~translucent: bool=?,
     ~networkActivityIndicatorVisible: bool=?,
-    ~showHideTransition: [ | `fade | `none | `slide]=?,
-    array(ReasonReact.reactElement)
+    ~showHideTransition: [ | `fade | `none | `slide]=?
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    unit,
-  );
-
-/**
-  {4 setBarStyle}
-  Set the status bar style
-   */
+  React.element;
 
 let setHidden: (bool, ~animation: [ | `fade | `none | `slide]=?, unit) => unit;
-
-/**
-  {4 setNetworkActivityIndicatorVisible}
-  Control the visibility of the network activity indicator
-   */
 
 let setBarStyle:
   ([ | `darkContent | `default | `lightContent], ~animated: bool=?, unit) =>
   unit;
 
-/**
-  {4 setBackgroundColor}
-  Set the background color for the status bar
-   */
-
 let setNetworkActivityIndicatorVisible: bool => unit;
-
-/**
-  {4 setTranslucent}
-  Control the translucency of the status bar
-   */
 
 let setBackgroundColor: (string, ~animated: bool=?, unit) => unit;
 

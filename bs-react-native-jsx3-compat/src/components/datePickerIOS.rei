@@ -255,6 +255,8 @@
     ~shouldRasterizeIOS: bool=?
   ]}
  */
+
+[@react.component]
 let make:
   (
     ~date: Js.Date.t,
@@ -264,7 +266,7 @@ let make:
     ~mode: [ | `date | `datetime | `time]=?,
     ~minuteInterval: int=?,
     ~timeZoneOffsetInMinutes: int=?,
-    ~accessibilityLabel: ReasonReact.reactElement=?,
+    ~accessibilityLabel: string=?,
     ~accessible: bool=?,
     ~hitSlop: Types.insets=?,
     ~onAccessibilityTap: unit => unit=?,
@@ -287,11 +289,6 @@ let make:
     ~accessibilityHint: string=?,
     ~accessibilityIgnoresInvertColors: bool=?,
     ~accessibilityViewIsModal: bool=?,
-    ~shouldRasterizeIOS: bool=?,
-    array(ReasonReact.reactElement)
+    ~shouldRasterizeIOS: bool=?
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    unit,
-  );
+  React.element;

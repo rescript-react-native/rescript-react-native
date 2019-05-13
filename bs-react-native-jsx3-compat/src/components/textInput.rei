@@ -156,7 +156,7 @@ You can read more on [Text] component usage in official docs: {{:https://faceboo
   ]}
   {4 placeholderTextColor}
   {[
-    ~placeholderTextColor: string=?
+    ~placeholderTextColor: ReactNative.Color.t=?
   ]}
   {4 returnKeyType}
   {[
@@ -194,7 +194,7 @@ You can read more on [Text] component usage in official docs: {{:https://faceboo
   ]}
   {4 selectionColor}
   {[
-    ~selectionColor: string=?
+    ~selectionColor: ReactNative.Color.t=?
   ]}
   {4 value}
   {[
@@ -296,28 +296,14 @@ You can read more on [Text] component usage in official docs: {{:https://faceboo
 Returns [true] if the input is currently focused; [false] otherwise.
  */
 
-type editingEvent = {
-  .
-  "nativeEvent": {
-    .
-    "text": string,
-    "eventCount": int,
-    "target": int,
-  },
-};
+type editingEvent = ReactNative.TextInput.editingEvent;
 
+[@react.component]
 let make:
   (
-    ~accessibilityLabel: ReasonReact.reactElement=?,
+    ~accessibilityLabel: string=?,
     ~accessible: bool=?,
-    ~hitSlop: {
-                .
-                "left": int,
-                "right": int,
-                "top": int,
-                "bottom": int,
-              }
-                =?,
+    ~hitSlop: Types.insets=?,
     ~onAccessibilityTap: unit => unit=?,
     ~onLayout: RNEvent.NativeLayoutEvent.t => unit=?,
     ~onMagicTap: unit => unit=?,
@@ -339,8 +325,8 @@ let make:
     ~accessibilityIgnoresInvertColors: bool=?,
     ~accessibilityViewIsModal: bool=?,
     ~shouldRasterizeIOS: bool=?,
-    ~autoCapitalize: [< | `characters | `none | `sentences | `words]=?,
-    ~autoComplete: [<
+    ~autoCapitalize: [ | `characters | `none | `sentences | `words]=?,
+    ~autoComplete: [
                      | `off
                      | `username
                      | `password
@@ -374,6 +360,7 @@ let make:
                      | `phonePad
                      | `twitter
                      | `url
+                     | `visiblePassword
                      | `webSearch
                    ]
                      =?,
@@ -384,48 +371,13 @@ let make:
     ~onChange: editingEvent => unit=?,
     ~onEndEditing: editingEvent => unit=?,
     ~onSubmitEditing: editingEvent => unit=?,
-    ~onContentSizeChange: {
-                            .
-                            "nativeEvent": {
-                              .
-                              "contentSize": {
-                                .
-                                "width": float,
-                                "height": float,
-                              },
-                            },
-                          } =>
-                          unit
+    ~onContentSizeChange: ReactNative.TextInput.contentSizeChangeEvent => unit
                             =?,
     ~onFocus: unit => unit=?,
-    ~onScroll: {
-                 .
-                 "nativeEvent": {
-                   .
-                   "contentOffset": {
-                     .
-                     "x": float,
-                     "y": float,
-                   },
-                 },
-               } =>
-               unit
-                 =?,
-    ~onSelectionChange: {
-                          .
-                          "nativeEvent": {
-                            .
-                            "selection": {
-                              .
-                              "start": int,
-                              "_end": int,
-                            },
-                          },
-                        } =>
-                        unit
-                          =?,
+    ~onScroll: ReactNative.TextInput.scrollEvent => unit=?,
+    ~onSelectionChange: ReactNative.TextInput.selectionChangeEvent => unit=?,
     ~placeholder: string=?,
-    ~placeholderTextColor: string=?,
+    ~placeholderTextColor: ReactNative.Color.t=?,
     ~returnKeyType: [
                       | `default
                       | `done_
@@ -444,13 +396,8 @@ let make:
                       =?,
     ~secureTextEntry: bool=?,
     ~selectTextOnFocus: bool=?,
-    ~selection: {
-                  .
-                  "start": int,
-                  "_end": int,
-                }
-                  =?,
-    ~selectionColor: string=?,
+    ~selection: ReactNative.TextInput.selection=?,
+    ~selectionColor: ReactNative.Color.t=?,
     ~value: string=?,
     ~disableFullscreenUI: bool=?,
     ~inlineImageLeft: string=?,
@@ -458,7 +405,7 @@ let make:
     ~numberOfLines: int=?,
     ~returnKeyLabel: string=?,
     ~textBreakStrategy: [ | `balanced | `highQuality | `simple]=?,
-    ~underlineColorAndroid: string=?,
+    ~underlineColorAndroid: ReactNative.Color.t=?,
     ~clearButtonMode: [ | `always | `never | `unlessEditing | `whileEditing]=?,
     ~clearTextOnFocus: bool=?,
     ~dataDetectorTypes: array(
@@ -473,17 +420,13 @@ let make:
                           =?,
     ~enablesReturnKeyAutomatically: bool=?,
     ~keyboardAppearance: [ | `dark | `default | `light]=?,
-    ~onKeyPress: {. "nativeEvent": {. "key": string}} => unit=?,
+    ~onKeyPress: ReactNative.TextInput.keyPressEvent => unit=?,
     ~selectionState: 'documentSelectionState=?,
     ~spellCheck: bool=?,
     ~inputAccessoryViewID: string=?,
-    array(ReasonReact.reactElement)
+    unit
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    unit,
-  );
+  React.element;
 
 /**
 {4 clear()}

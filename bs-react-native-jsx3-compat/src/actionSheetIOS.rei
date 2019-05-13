@@ -67,7 +67,7 @@ type options =
 ]}
 {4 tintColor}
 {[
-  ~tintColor: string=?
+  ~tintColor: ReactNative.Color.t=?
 ]}
 {4 callback}
 {[
@@ -129,7 +129,7 @@ let showActionSheetWithOptions:
     ~destructiveButtonIndex: int=?,
     ~title: string=?,
     ~message: string=?,
-    ~tintColor: string=?,
+    ~tintColor: ReactNative.Color.t=?,
     int => unit,
     unit
   ) =>

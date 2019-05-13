@@ -23,7 +23,7 @@
  ]}
  {4 progressTintColor}
  {[
-   ~progressTintColor: string=?
+   ~progressTintColor: ReactNative.Color.t=?
  ]}
  {4 progressViewStyle}
  {[
@@ -35,19 +35,20 @@
  ]}
  {4 trackTintColor}
  {[
-   ~trackTintColor: string=?
+   ~trackTintColor: ReactNative.Color.t=?
  ]}
 */
 
+[@react.component]
 let make:
   (
     ~progress: float,
     ~progressImage: Image.imageSource=?,
-    ~progressTintColor: string=?,
-    ~progressViewStyle: Style.t=?,
+    ~progressTintColor: ReactNative.Color.t=?,
+    ~progressViewStyle: [ | `default | `bar]=?,
     ~trackImage: Image.imageSource=?,
-    ~trackTintColor: string=?,
-    ~accessibilityLabel: ReasonReact.reactElement=?,
+    ~trackTintColor: ReactNative.Color.t=?,
+    ~accessibilityLabel: string=?,
     ~accessible: bool=?,
     ~hitSlop: Types.insets=?,
     ~onAccessibilityTap: unit => unit=?,
@@ -71,10 +72,6 @@ let make:
     ~accessibilityIgnoresInvertColors: bool=?,
     ~accessibilityViewIsModal: bool=?,
     ~shouldRasterizeIOS: bool=?,
-    array(ReasonReact.reactElement)
+    unit
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    ReasonReact.actionless,
-  );
+  React.element;

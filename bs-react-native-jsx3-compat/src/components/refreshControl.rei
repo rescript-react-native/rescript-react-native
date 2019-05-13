@@ -21,7 +21,7 @@ You can read more on RefreshControl component usage in official docs: {{:https:/
 ]}
 {4 progressBackgroundColor}
 {[
-  ~progressBackgroundColor: string=?,
+  ~progressBackgroundColor: ReactNative.Color.t=?,
 ]}
 {4 progressViewOffset}
 {[
@@ -29,7 +29,7 @@ You can read more on RefreshControl component usage in official docs: {{:https:/
 ]}
 {4 tintColor}
 {[
-  ~tintColor: string=?,
+  ~tintColor: ReactNative.Color.t=?,
 ]}
 {4 title}
 {[
@@ -37,23 +37,24 @@ You can read more on RefreshControl component usage in official docs: {{:https:/
 ]}
 {4 titleColor}
 {[
-  ~titleColor: string=?,
+  ~titleColor: ReactNative.Color.t=?,
 ]}
 All other {{:\BsReactNative/View-BsReactNative} [View] props}
 */
 
+[@react.component]
 let make:
   (
     ~onRefresh: unit => unit=?,
-    ~refreshing: bool=?,
+    ~refreshing: bool,
     ~colors: array(string)=?,
     ~enabled: bool=?,
-    ~progressBackgroundColor: string=?,
+    ~progressBackgroundColor: ReactNative.Color.t=?,
     ~progressViewOffset: float=?,
-    ~tintColor: string=?,
+    ~tintColor: ReactNative.Color.t=?,
     ~title: string=?,
-    ~titleColor: string=?,
-    ~accessibilityLabel: ReasonReact.reactElement=?,
+    ~titleColor: ReactNative.Color.t=?,
+    ~accessibilityLabel: string=?,
     ~accessible: bool=?,
     ~hitSlop: Types.insets=?,
     ~onAccessibilityTap: unit => unit=?,
@@ -77,10 +78,6 @@ let make:
     ~accessibilityIgnoresInvertColors: bool=?,
     ~accessibilityViewIsModal: bool=?,
     ~shouldRasterizeIOS: bool=?,
-    array(ReasonReact.reactElement)
+    unit
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    unit,
-  );
+  React.element;

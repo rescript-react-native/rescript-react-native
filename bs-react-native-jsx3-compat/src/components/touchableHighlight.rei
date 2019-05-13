@@ -24,7 +24,7 @@ You can read more on [TouchableHighlight] component usage in official docs: {{:h
   ]}
   {4 underlayColor}
   {[
-    ~underlayColor: string=?
+    ~underlayColor: ReactNative.Color.t=?
   ]}
   {4 hasTVPreferredFocus}
   {[
@@ -40,6 +40,7 @@ You can read more on [TouchableHighlight] component usage in official docs: {{:h
   ]}
  */
 
+[@react.component]
 let make:
   (
     ~accessible: bool=?,
@@ -65,14 +66,11 @@ let make:
     ~onHideUnderlay: unit => unit=?,
     ~onShowUnderlay: unit => unit=?,
     ~style: Style.t=?,
-    ~underlayColor: string=?,
+    ~underlayColor: ReactNative.Color.t=?,
     ~hasTVPreferredFocus: bool=?,
-    ~tvParallaxProperties: Js.t({.})=?,
+    ~tvParallaxProperties: ReactNative.TV.parallax=?,
     ~testID: string=?,
-    array(ReasonReact.reactElement)
+    ~children: React.element=?,
+    unit
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    unit,
-  );
+  React.element;

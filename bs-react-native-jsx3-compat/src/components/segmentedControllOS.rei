@@ -28,7 +28,7 @@
   ]}
   {4 tintColor}
   {[
-    ~tintColor: string=?,
+    ~tintColor: ReactNative.Color.t=?,
   ]}
   {4 onValueChange}
   {[
@@ -37,16 +37,17 @@
 
 */
 
+[@react.component]
 let make:
   (
     ~values: list(string),
     ~selectedIndex: int=?,
-    ~onChange: RNEvent.t => unit=?,
+    ~onChange: RNEvent.NativeEvent.t => unit=?,
     ~enabled: bool=?,
     ~momentary: bool=?,
-    ~tintColor: string=?,
+    ~tintColor: ReactNative.Color.t=?,
     ~onValueChange: string => unit=?,
-    ~accessibilityLabel: ReasonReact.reactElement=?,
+    ~accessibilityLabel: string=?,
     ~accessible: bool=?,
     ~hitSlop: Types.insets=?,
     ~onAccessibilityTap: unit => unit=?,
@@ -70,10 +71,7 @@ let make:
     ~accessibilityIgnoresInvertColors: bool=?,
     ~accessibilityViewIsModal: bool=?,
     ~shouldRasterizeIOS: bool=?,
-    array(ReasonReact.reactElement)
+    ~children: React.element=?,
+    unit
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    unit,
-  );
+  React.element;

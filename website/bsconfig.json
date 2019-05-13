@@ -24,7 +24,7 @@
     "reason-future",
     "reason-react",
     "react-from-svg",
-    "../reason-react-native",
+    "reason-react-native",
     "@moox/bs-react-helmet"
   ]
 }

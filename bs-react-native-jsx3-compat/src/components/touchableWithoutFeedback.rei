@@ -132,6 +132,7 @@ You can read more on [TouchableWithoutFeedback] component usage in official docs
   ]}
  */
 
+[@react.component]
 let make:
   (
     ~accessible: bool=?,
@@ -153,12 +154,8 @@ let make:
     ~onPressIn: RNEvent.NativePressEvent.t => unit=?,
     ~onPressOut: RNEvent.NativePressEvent.t => unit=?,
     ~pressRetentionOffset: Types.insets=?,
-    ~style: Style.t=?,
     ~testID: string=?,
-    array(ReasonReact.reactElement)
+    ~children: React.element=?,
+    unit
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    unit,
-  );
+  React.element;

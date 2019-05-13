@@ -23,7 +23,7 @@ let make =
       ~children=?,
       _,
     ) =>
-  <ReactNative.Text
+  <ReactNative.Animated.Text
     ?accessible
     ?accessibilityHint
     ?accessibilityLabel
@@ -44,4 +44,4 @@ let make =
     ?suppressHighlighting
     ?value>
     {children->Belt.Option.getWithDefault(React.null)}
-  </ReactNative.Text>;
+  </ReactNative.Animated.Text>;

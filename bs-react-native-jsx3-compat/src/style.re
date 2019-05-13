@@ -1,4 +1,4 @@
-type t;
+type t = ReactNative.Style.t;
 
 type styleElement = (string, Js.Json.t);
 
@@ -765,3 +765,7 @@ let overlayColor = value => (
 
 type color =
   | String(string);
+
+let toReasonReactNativeColor =
+  fun
+  | String(c) => c;

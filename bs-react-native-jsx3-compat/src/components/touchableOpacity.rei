@@ -28,6 +28,7 @@ You can read more on [TouchableOpacity] component usage in official docs: {{:htt
   ]}
   */
 
+[@react.component]
 let make:
   (
     ~accessible: bool=?,
@@ -53,14 +54,11 @@ let make:
     ~activeOpacity: float=?,
     ~focusedOpacity: float=?,
     ~testID: string=?,
-    ~tvParallaxProperties: Js.t({.})=?,
-    array(ReasonReact.reactElement)
+    ~tvParallaxProperties: ReactNative.TV.parallax=?,
+    ~children: React.element=?,
+    unit
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    unit,
-  );
+  React.element;
 
 [@bs.send]
 external setOpacityTo: (ReasonReact.reactRef, float, int) => unit =

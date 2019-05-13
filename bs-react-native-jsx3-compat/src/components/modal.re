@@ -1,43 +1,50 @@
-[@bs.module "react-native"] external modal: ReasonReact.reactClass = "Modal";
+type supportedOrientation = [
+  | `landscape
+  | `landscapeLeft
+  | `landscapeRight
+  | `portrait
+  | `portraitUpsideDown
+];
 
-let encodeAnimationType =
+let encodeSuppoOr: supportedOrientation => ReactNative.Modal.Orientation.t =
   fun
-  | `none => "none"
-  | `slide => "slide"
-  | `fade => "fade";
+  | `landscape => ReactNative.Modal.Orientation.landscape
+  | `landscapeLeft => ReactNative.Modal.Orientation.landscapeLeft
+  | `landscapeRight => ReactNative.Modal.Orientation.landscapeRight
+  | `portrait => ReactNative.Modal.Orientation.portrait
+  | `portraitUpsideDown => ReactNative.Modal.Orientation.portraitUpsideDown;
 
-let encodeSupportedOrientations = xs =>
-  xs->Belt.Array.map(
-    fun
-    | `portrait => "portrait"
-    | `portraitUpsideDown => "portrait-upside-down"
-    | `landscape => "landscape"
-    | `landscapeLeft => "landscape-left"
-    | `landscapeRight => "landscape-right",
-  );
-
+[@react.component]
 let make =
     (
-      ~animationType=?,
-      ~onShow=?,
-      ~transparent=?,
-      ~visible=?,
-      ~hardwareAccelerated=?,
-      ~onRequestClose=?,
-      ~onOrientationChange=?,
-      ~supportedOrientations=?,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=modal,
-    ~props={
-      "animationType": animationType->Belt.Option.map(encodeAnimationType),
-      "onShow": onShow,
-      "transparent": transparent,
-      "visible": visible,
-      "hardwareAccelerated": hardwareAccelerated,
-      "onRequestClose": onRequestClose,
-      "onOrientationChange": onOrientationChange,
-      "supportedOrientations":
-        supportedOrientations->Belt.Option.map(encodeSupportedOrientations),
-    },
-  );
+      ~animationType: option([ | `none | `slide | `fade])=?,
+      ~onShow: option(unit => unit)=?,
+      ~transparent: option(bool)=?,
+      ~visible: option(bool)=?,
+      ~hardwareAccelerated: option(bool)=?,
+      ~onRequestClose: option(unit => unit)=?,
+      ~onOrientationChange: option(unit => unit)=?,
+      ~supportedOrientations: option(array(supportedOrientation))=?,
+      ~children: option(React.element)=?,
+      _,
+    ) => {
+  let so =
+    supportedOrientations->Belt.Option.map(a =>
+      a->Belt.Array.map(encodeSuppoOr)
+    );
+  <ReactNative.Modal
+    ?animationType
+    ?onShow
+    ?transparent
+    ?visible
+    ?hardwareAccelerated
+    ?onRequestClose
+    onOrientationChange=?{
+      onOrientationChange->Belt.Option.map((onOrientationChange, _) =>
+        onOrientationChange()
+      )
+    }
+    supportedOrientations=?so>
+    {children->Belt.Option.getWithDefault(React.null)}
+  </ReactNative.Modal>;
+};

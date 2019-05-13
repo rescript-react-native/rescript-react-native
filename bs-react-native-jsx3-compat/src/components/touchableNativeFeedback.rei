@@ -43,6 +43,7 @@ You can read more on [TouchableNativeFeedback] component usage in official docs:
   Creates an object that represents android theme's default background for selectable elements (?android:attr/selectableItemBackground).
  */
 
+[@react.component]
 let make:
   (
     ~accessible: bool=?,
@@ -64,17 +65,12 @@ let make:
     ~onPressIn: RNEvent.NativePressEvent.t => unit=?,
     ~onPressOut: RNEvent.NativePressEvent.t => unit=?,
     ~pressRetentionOffset: Types.insets=?,
-    ~style: Style.t=?,
     ~background: t=?,
     ~useForeground: bool=?,
     ~testID: string=?,
-    array(ReasonReact.reactElement)
+    ~children: React.element=?
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    unit,
-  );
+  React.element;
 
 /**
 {4 selectableBackgroundBorderless}

@@ -43,13 +43,15 @@
 
   Note: [exact] is only supported on Android. On iOS, it defaults to [`small].
  */
+[@react.component]
 let make:
   (
     ~animating: bool=?,
     ~color: Style.color=?,
     ~size: [ | `large | `small | `exact(int)]=?,
     ~hidesWhenStopped: bool=?,
-    ~accessibilityLabel: ReasonReact.reactElement=?,
+    // View props
+    ~accessibilityLabel: string=?,
     ~accessible: bool=?,
     ~hitSlop: Types.insets=?,
     ~onAccessibilityTap: unit => unit=?,
@@ -73,10 +75,6 @@ let make:
     ~accessibilityIgnoresInvertColors: bool=?,
     ~accessibilityViewIsModal: bool=?,
     ~shouldRasterizeIOS: bool=?,
-    array(ReasonReact.reactElement)
+    unit
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    unit,
-  );
+  React.element;

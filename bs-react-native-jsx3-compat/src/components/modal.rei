@@ -139,29 +139,29 @@
     ]}
 
 */
+
+type supportedOrientation = [
+  | `landscape
+  | `landscapeLeft
+  | `landscapeRight
+  | `portrait
+  | `portraitUpsideDown
+];
+
+let encodeSuppoOr: supportedOrientation => ReactNative.Modal.Orientation.t;
+
+[@react.component]
 let make:
   (
-    ~animationType: [ | `fade | `none | `slide]=?,
+    ~animationType: [ | `none | `slide | `fade]=?,
     ~onShow: unit => unit=?,
     ~transparent: bool=?,
     ~visible: bool=?,
     ~hardwareAccelerated: bool=?,
     ~onRequestClose: unit => unit=?,
     ~onOrientationChange: unit => unit=?,
-    ~supportedOrientations: array(
-                              [
-                                | `landscape
-                                | `landscapeLeft
-                                | `landscapeRight
-                                | `portrait
-                                | `portraitUpsideDown
-                              ],
-                            )
-                              =?,
-    array(ReasonReact.reactElement)
+    ~supportedOrientations: array(supportedOrientation)=?,
+    ~children: React.element=?,
+    unit
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    unit,
-  );
+  React.element;

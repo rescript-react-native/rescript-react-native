@@ -15,5 +15,5 @@
       "subdirs": true
     }
   ],
-  "bs-dependencies": ["reason-react", "../../bs-react-native"]
+  "bs-dependencies": ["reason-react", "bs-react-native"]
 }

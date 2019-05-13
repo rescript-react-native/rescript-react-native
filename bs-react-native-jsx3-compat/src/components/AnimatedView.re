@@ -1,62 +1,33 @@
 [@react.component]
 let make =
     (
-      ~date,
-      ~onDateChange,
-      ~maximumDate=?,
-      ~minimumDate=?,
-      ~mode=?,
-      ~minuteInterval=?,
-      ~timeZoneOffsetInMinutes=?,
-      ~accessibilityLabel=?,
-      ~accessible=?,
-      ~hitSlop=?,
-      ~onAccessibilityTap=?,
-      ~onLayout=?,
-      ~onMagicTap=?,
-      ~responderHandlers=?,
-      ~pointerEvents=?,
-      ~removeClippedSubviews=?,
-      ~style=?,
-      ~testID=?,
-      ~accessibilityComponentType=?,
-      ~accessibilityLiveRegion=?,
-      ~collapsable=?,
-      ~importantForAccessibility=?,
-      ~needsOffscreenAlphaCompositing=?,
-      ~renderToHardwareTextureAndroid=?,
-      ~accessibilityTraits=?,
-      ~accessibilityRole=?,
-      ~accessibilityStates=?,
-      ~accessibilityHint=?,
-      ~accessibilityIgnoresInvertColors=?,
-      ~accessibilityViewIsModal=?,
-      ~shouldRasterizeIOS=?,
+      ~accessibilityLabel: option(string)=?,
+      ~accessible: option(bool)=?,
+      ~hitSlop: option(Types.insets)=?,
+      ~onAccessibilityTap: option(unit => unit)=?,
+      ~onLayout: option(RNEvent.NativeLayoutEvent.t => unit)=?,
+      ~onMagicTap: option(unit => unit)=?,
+      ~responderHandlers: option(Types.touchResponderHandlers)=?,
+      ~pointerEvents: option(Types.pointerEvents)=?,
+      ~removeClippedSubviews: option(bool)=?,
+      ~style: option(Style.t)=?,
+      ~testID: option(string)=?,
+      ~accessibilityComponentType: option(Types.accessibilityComponentType)=?,
+      ~accessibilityLiveRegion: option(Types.accessibilityLiveRegion)=?,
+      ~importantForAccessibility: option(Types.importantForAccessibility)=?,
+      ~needsOffscreenAlphaCompositing: option(bool)=?,
+      ~renderToHardwareTextureAndroid: option(bool)=?,
+      ~accessibilityTraits: option(list(Types.accessibilityTrait))=?,
+      ~accessibilityRole: option(Types.accessibilityRole)=?,
+      ~accessibilityStates: option(list(Types.accessibilityState))=?,
+      ~accessibilityHint: option(string)=?,
+      ~accessibilityIgnoresInvertColors: option(bool)=?,
+      ~accessibilityViewIsModal: option(bool)=?,
+      ~shouldRasterizeIOS: option(bool)=?,
+      ~children: option(React.element)=?,
+      _,
     ) =>
-  <ReactNative.DatePickerIOS
-    date
-    onDateChange
-    ?maximumDate
-    ?minimumDate
-    ?mode
-    minuteInterval=?{
-      minuteInterval->Belt.Option.map(
-        fun
-        | 1 => `_1
-        | 2 => `_2
-        | 3 => `_3
-        | 4 => `_4
-        | 5 => `_5
-        | 6 => `_6
-        | 10 => `_10
-        | 12 => `_12
-        | 15 => `_15
-        | 20 => `_20
-        | 30 => `_30
-        | _ => `_1,
-      )
-    }
-    ?timeZoneOffsetInMinutes
+  <ReactNative.Animated.View
     ?accessibilityLabel
     ?accessible
     hitSlop=?{Types.toEdgeInsets(hitSlop)}
@@ -131,7 +102,6 @@ let make =
     ?testID
     ?accessibilityComponentType
     ?accessibilityLiveRegion
-    ?collapsable
     ?importantForAccessibility
     ?needsOffscreenAlphaCompositing
     ?renderToHardwareTextureAndroid
@@ -145,5 +115,6 @@ let make =
     ?accessibilityHint
     ?accessibilityIgnoresInvertColors
     ?accessibilityViewIsModal
-    ?shouldRasterizeIOS
-  />;
+    ?shouldRasterizeIOS>
+    {children->Belt.Option.getWithDefault(React.null)}
+  </ReactNative.Animated.View>;

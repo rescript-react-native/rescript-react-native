@@ -6,6 +6,18 @@ type insets = {
   "bottom": int,
 };
 
+let toEdgeInsets: option(insets) => option(ReactNative.View.edgeInsets) =
+  insets =>
+    insets->Belt.Option.map(insets =>
+      ReactNative.View.edgeInsets(
+        ~left=insets##left->float_of_int,
+        ~right=insets##right->float_of_int,
+        ~top=insets##top->float_of_int,
+        ~bottom=insets##bottom->float_of_int,
+        (),
+      )
+    );
+
 type touchResponderHandlers = {
   onMoveShouldSetResponder: option(RNEvent.NativeEvent.t => bool),
   onMoveShouldSetResponderCapture: option(RNEvent.NativeEvent.t => bool),
@@ -37,26 +49,7 @@ type accessibilityComponentType = [
 ];
 
 /* deprecated : Please use accessibilityRole and accessibilityState instead */
-[@bs.deriving {jsConverter: newType}]
-type accessibilityTrait = [
-  | `none
-  | `button
-  | `link
-  | `header
-  | `search
-  | `image
-  | `selected
-  | `plays
-  | `key
-  | `text
-  | `summary
-  | `disabled
-  | `frequentUpdates
-  | `startsMedia
-  | `adjustable
-  | `allowsDirectInteraction
-  | `pageTurn
-];
+type accessibilityTrait = ReactNative.AccessibilityTrait.t;
 
 [@bs.deriving {jsConverter: newType}]
 type accessibilityLiveRegion = [ | `none | `polite | `assertive];
@@ -84,5 +77,4 @@ type accessibilityRole = [
   | `imagebutton
 ];
 
-[@bs.deriving {jsConverter: newType}]
-type accessibilityState = [ | `selected | `disabled];
+type accessibilityState = ReactNative.AccessibilityState.t;

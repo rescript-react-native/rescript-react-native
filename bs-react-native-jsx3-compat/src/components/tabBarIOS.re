@@ -1,28 +1,29 @@
 module Item = {
-  [@bs.scope "TabBarIOS"] [@bs.module "react-native"]
-  external tabBarItemIOS: ReasonReact.reactClass = "Item";
+  [@react.component]
   let make =
+      // tabbarios item props
       (
         ~selected=?,
         ~badge=?,
         ~icon=?,
         ~onPress=?,
         ~renderAsOriginal=?,
-        ~badgeColor: option(string)=?,
+        ~badgeColor=?,
         ~selectedIcon=?,
-        ~style=?,
         ~systemIcon=?,
-        ~title: option(string)=?,
+        ~title=?,
         ~isTVSelectable=?,
+        // View props
         ~accessibilityLabel=?,
         ~accessible=?,
         ~hitSlop=?,
         ~onAccessibilityTap=?,
         ~onLayout=?,
         ~onMagicTap=?,
-        ~responderHandlers=?,
+        ~responderHandlers: option(Types.touchResponderHandlers)=?,
         ~pointerEvents=?,
         ~removeClippedSubviews=?,
+        ~style=?,
         ~testID=?,
         ~accessibilityComponentType=?,
         ~accessibilityLiveRegion=?,
@@ -37,71 +38,116 @@ module Item = {
         ~accessibilityIgnoresInvertColors=?,
         ~accessibilityViewIsModal=?,
         ~shouldRasterizeIOS=?,
+        _,
       ) =>
-    ReasonReact.wrapJsForReason(
-      ~reactClass=tabBarItemIOS,
-      ~props=
-        ViewProps.extend(
-          {
-            "selected": selected,
-            "badge": badge,
-            "icon": icon,
-            "onPress": onPress,
-            "renderAsOriginal": renderAsOriginal,
-            "badgeColor": badgeColor,
-            "selectedIcon": selectedIcon,
-            "style": style,
-            "systemIcon":
-              systemIcon->Belt.Option.map(
-                fun
-                | `bookmarks => "bookmarks"
-                | `contacts => "contacts"
-                | `downloads => "downloads"
-                | `favourites => "favourites"
-                | `featured => "featured"
-                | `history => "history"
-                | `more => "more"
-                | `mostRecent => "most-recent"
-                | `mostViewed => "most-viewed"
-                | `recents => "recents"
-                | `search => "search"
-                | `topRated => "top-rated",
-              ),
-            "title": title,
-            "isTVSelectable": isTVSelectable,
-          },
-          ~accessibilityLabel?,
-          ~accessible?,
-          ~hitSlop?,
-          ~onAccessibilityTap?,
-          ~onLayout?,
-          ~onMagicTap?,
-          ~responderHandlers?,
-          ~pointerEvents?,
-          ~removeClippedSubviews?,
-          ~style?,
-          ~testID?,
-          ~accessibilityComponentType?,
-          ~accessibilityLiveRegion?,
-          ~collapsable?,
-          ~importantForAccessibility?,
-          ~needsOffscreenAlphaCompositing?,
-          ~renderToHardwareTextureAndroid?,
-          ~accessibilityTraits?,
-          ~accessibilityRole?,
-          ~accessibilityStates?,
-          ~accessibilityHint?,
-          ~accessibilityIgnoresInvertColors?,
-          ~accessibilityViewIsModal?,
-          ~shouldRasterizeIOS?,
-        ),
-    );
+    <ReactNative.TabBarIOS.Item
+      ?selected
+      ?badge
+      icon=?{icon->Belt.Option.map(Image.encodeSource)}
+      ?onPress
+      ?renderAsOriginal
+      ?badgeColor
+      selectedIcon=?{selectedIcon->Belt.Option.map(Image.encodeSource)}
+      ?systemIcon
+      ?title
+      ?isTVSelectable
+      ?accessibilityLabel
+      ?accessible
+      hitSlop=?{Types.toEdgeInsets(hitSlop)}
+      ?onAccessibilityTap
+      ?onLayout
+      ?onMagicTap
+      onMoveShouldSetResponder=?
+        Types.(
+          responderHandlers->Belt.Option.flatMap(handlers =>
+            handlers.onMoveShouldSetResponder
+            ->Belt.Option.map((g, x) => g(x))
+          )
+        )
+      onMoveShouldSetResponderCapture=?
+        Types.(
+          responderHandlers->Belt.Option.flatMap(handlers =>
+            handlers.onMoveShouldSetResponderCapture
+            ->Belt.Option.map((g, x) => g(x))
+          )
+        )
+      onResponderGrant=?
+        Types.(
+          responderHandlers->Belt.Option.flatMap(handlers =>
+            handlers.onResponderGrant
+          )
+        )
+      onResponderMove=?
+        Types.(
+          responderHandlers->Belt.Option.flatMap(handlers =>
+            handlers.onResponderMove
+          )
+        )
+      onResponderReject=?
+        Types.(
+          responderHandlers->Belt.Option.flatMap(handlers =>
+            handlers.onResponderReject
+          )
+        )
+      onResponderRelease=?
+        Types.(
+          responderHandlers->Belt.Option.flatMap(handlers =>
+            handlers.onResponderRelease
+          )
+        )
+      onResponderTerminate=?
+        Types.(
+          responderHandlers->Belt.Option.flatMap(handlers =>
+            handlers.onResponderTerminate
+          )
+        )
+      onResponderTerminationRequest=?
+        Types.(
+          responderHandlers->Belt.Option.flatMap(handlers =>
+            handlers.onResponderTerminationRequest
+          )
+        )
+      onStartShouldSetResponder=?
+        Types.(
+          responderHandlers->Belt.Option.flatMap(handlers =>
+            handlers.onStartShouldSetResponder
+            ->Belt.Option.map((g, x) => g(x))
+          )
+        )
+      onStartShouldSetResponderCapture=?
+        Types.(
+          responderHandlers->Belt.Option.flatMap(handlers =>
+            handlers.onStartShouldSetResponderCapture
+            ->Belt.Option.map((g, x) => g(x))
+          )
+        )
+      ?pointerEvents
+      ?removeClippedSubviews
+      ?style
+      ?testID
+      ?accessibilityComponentType
+      ?accessibilityLiveRegion
+      ?collapsable
+      ?importantForAccessibility
+      ?needsOffscreenAlphaCompositing
+      ?renderToHardwareTextureAndroid
+      accessibilityTraits=?{
+        accessibilityTraits->Belt.Option.map(Belt.List.toArray)
+      }
+      ?accessibilityRole
+      accessibilityStates=?{
+        accessibilityStates->Belt.Option.map(Belt.List.toArray)
+      }
+      ?accessibilityHint
+      ?accessibilityIgnoresInvertColors
+      ?accessibilityViewIsModal
+      ?shouldRasterizeIOS
+    />;
 };
 
-[@bs.module "react-native"]
-external tabBarIOS: ReasonReact.reactClass = "TabBarIOS";
-
+[@react.component]
 let make =
+    // tabbarios props
     (
       ~barStyle=?,
       ~barTintColor=?,
@@ -110,17 +156,18 @@ let make =
       ~translucent=?,
       ~unselectedItemTintColor=?,
       ~unselectedTintColor=?,
+      // View props
       ~accessibilityLabel=?,
       ~accessible=?,
       ~hitSlop=?,
       ~onAccessibilityTap=?,
       ~onLayout=?,
       ~onMagicTap=?,
-      ~responderHandlers=?,
+      ~responderHandlers: option(Types.touchResponderHandlers)=?,
       ~pointerEvents=?,
       ~removeClippedSubviews=?,
-      ~testID=?,
       ~style=?,
+      ~testID=?,
       ~accessibilityComponentType=?,
       ~accessibilityLiveRegion=?,
       ~collapsable=?,
@@ -134,54 +181,105 @@ let make =
       ~accessibilityIgnoresInvertColors=?,
       ~accessibilityViewIsModal=?,
       ~shouldRasterizeIOS=?,
+      ~children: option(React.element)=?,
+      _,
     ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=tabBarIOS,
-    ~props=
-      ViewProps.extend(
-        {
-          "barStyle":
-            barStyle->Belt.Option.map(
-              fun
-              | `default => "default"
-              | `black => "black",
-            ),
-          "barTintColor": barTintColor,
-          "itemPositioning":
-            itemPositioning->Belt.Option.map(
-              fun
-              | `fill => "fill"
-              | `center => "center"
-              | `auto => "auto",
-            ),
-          "tintColor": tintColor,
-          "translucent": translucent,
-          "unselectedItemTintColor": unselectedItemTintColor,
-          "unselectedTintColor": unselectedTintColor,
-        },
-        ~accessibilityLabel?,
-        ~accessible?,
-        ~hitSlop?,
-        ~onAccessibilityTap?,
-        ~onLayout?,
-        ~onMagicTap?,
-        ~responderHandlers?,
-        ~pointerEvents?,
-        ~removeClippedSubviews?,
-        ~style?,
-        ~testID?,
-        ~accessibilityComponentType?,
-        ~accessibilityLiveRegion?,
-        ~collapsable?,
-        ~importantForAccessibility?,
-        ~needsOffscreenAlphaCompositing?,
-        ~renderToHardwareTextureAndroid?,
-        ~accessibilityTraits?,
-        ~accessibilityRole?,
-        ~accessibilityStates?,
-        ~accessibilityHint?,
-        ~accessibilityIgnoresInvertColors?,
-        ~accessibilityViewIsModal?,
-        ~shouldRasterizeIOS?,
-      ),
-  );
+  <ReactNative.TabBarIOS
+    ?barStyle
+    ?barTintColor
+    ?itemPositioning
+    ?tintColor
+    ?translucent
+    ?unselectedItemTintColor
+    ?unselectedTintColor
+    ?accessibilityLabel
+    ?accessible
+    hitSlop=?{Types.toEdgeInsets(hitSlop)}
+    ?onAccessibilityTap
+    ?onLayout
+    ?onMagicTap
+    onMoveShouldSetResponder=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onMoveShouldSetResponder->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    onMoveShouldSetResponderCapture=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onMoveShouldSetResponderCapture
+          ->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    onResponderGrant=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderGrant
+        )
+      )
+    onResponderMove=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderMove
+        )
+      )
+    onResponderReject=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderReject
+        )
+      )
+    onResponderRelease=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderRelease
+        )
+      )
+    onResponderTerminate=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderTerminate
+        )
+      )
+    onResponderTerminationRequest=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onResponderTerminationRequest
+        )
+      )
+    onStartShouldSetResponder=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onStartShouldSetResponder->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    onStartShouldSetResponderCapture=?
+      Types.(
+        responderHandlers->Belt.Option.flatMap(handlers =>
+          handlers.onStartShouldSetResponderCapture
+          ->Belt.Option.map((g, x) => g(x))
+        )
+      )
+    ?pointerEvents
+    ?removeClippedSubviews
+    ?style
+    ?testID
+    ?accessibilityComponentType
+    ?accessibilityLiveRegion
+    ?collapsable
+    ?importantForAccessibility
+    ?needsOffscreenAlphaCompositing
+    ?renderToHardwareTextureAndroid
+    accessibilityTraits=?{
+      accessibilityTraits->Belt.Option.map(Belt.List.toArray)
+    }
+    ?accessibilityRole
+    accessibilityStates=?{
+      accessibilityStates->Belt.Option.map(Belt.List.toArray)
+    }
+    ?accessibilityHint
+    ?accessibilityIgnoresInvertColors
+    ?accessibilityViewIsModal
+    ?shouldRasterizeIOS>
+    {children->Belt.Option.getWithDefault(React.null)}
+  </ReactNative.TabBarIOS>;

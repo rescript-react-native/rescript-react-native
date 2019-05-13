@@ -1,13 +1,6 @@
 [@react.component]
 let make =
     (
-      ~date,
-      ~onDateChange,
-      ~maximumDate=?,
-      ~minimumDate=?,
-      ~mode=?,
-      ~minuteInterval=?,
-      ~timeZoneOffsetInMinutes=?,
       ~accessibilityLabel=?,
       ~accessible=?,
       ~hitSlop=?,
@@ -32,31 +25,86 @@ let make =
       ~accessibilityIgnoresInvertColors=?,
       ~accessibilityViewIsModal=?,
       ~shouldRasterizeIOS=?,
+      ~contentInsetAdjustmentBehavior=?,
+      ~contentContainerStyle=?,
+      ~horizontal=?,
+      ~keyboardDismissMode=?,
+      ~keyboardShouldPersistTaps=?,
+      ~onContentSizeChange=?,
+      ~onScroll=?,
+      ~onScrollBeginDrag=?,
+      ~onScrollEndDrag=?,
+      ~onMomentumScrollBegin=?,
+      ~onMomentumScrollEnd=?,
+      ~pagingEnabled=?,
+      ~refreshControl=?,
+      ~scrollEnabled=?,
+      ~showsHorizontalScrollIndicator=?,
+      ~showsVerticalScrollIndicator=?,
+      ~stickyHeaderIndices=?,
+      ~overScrollMode=?,
+      ~scrollPerfTag=?,
+      ~alwaysBounceHorizontal=?,
+      ~alwaysBounceVertical=?,
+      ~automaticallyAdjustContentInsets=?,
+      ~bounces=?,
+      ~canCancelContentTouches=?,
+      ~centerContent=?,
+      ~contentInset=?,
+      ~contentOffset=?,
+      ~decelerationRate=?,
+      ~directionalLockEnabled=?,
+      ~indicatorStyle=?,
+      ~maximumZoomScale=?,
+      ~minimumZoomScale=?,
+      ~scrollEventThrottle=?,
+      ~scrollIndicatorInsets=?,
+      ~scrollsToTop=?,
+      ~snapToInterval=?,
+      ~snapToAlignment=?,
+      ~zoomScale=?,
+      ~children=?,
+      _,
     ) =>
-  <ReactNative.DatePickerIOS
-    date
-    onDateChange
-    ?maximumDate
-    ?minimumDate
-    ?mode
-    minuteInterval=?{
-      minuteInterval->Belt.Option.map(
-        fun
-        | 1 => `_1
-        | 2 => `_2
-        | 3 => `_3
-        | 4 => `_4
-        | 5 => `_5
-        | 6 => `_6
-        | 10 => `_10
-        | 12 => `_12
-        | 15 => `_15
-        | 20 => `_20
-        | 30 => `_30
-        | _ => `_1,
-      )
-    }
-    ?timeZoneOffsetInMinutes
+  <ReactNative.Animated.ScrollView
+    ?contentInsetAdjustmentBehavior
+    ?contentContainerStyle
+    ?horizontal
+    ?keyboardDismissMode
+    ?keyboardShouldPersistTaps
+    ?onContentSizeChange
+    ?onScroll
+    ?onScrollBeginDrag
+    ?onScrollEndDrag
+    ?onMomentumScrollBegin
+    ?onMomentumScrollEnd
+    ?pagingEnabled
+    ?refreshControl
+    ?scrollEnabled
+    ?showsHorizontalScrollIndicator
+    ?showsVerticalScrollIndicator
+    stickyHeaderIndices=?{stickyHeaderIndices->Belt.Option.map(Array.of_list)}
+    ?overScrollMode
+    ?scrollPerfTag
+    ?alwaysBounceHorizontal
+    ?alwaysBounceVertical
+    ?automaticallyAdjustContentInsets
+    ?bounces
+    ?canCancelContentTouches
+    ?centerContent
+    ?contentInset
+    ?contentOffset
+    ?decelerationRate
+    ?directionalLockEnabled
+    ?indicatorStyle
+    ?maximumZoomScale
+    ?minimumZoomScale
+    ?scrollEventThrottle
+    scrollIndicatorInsets=?{Types.toEdgeInsets(scrollIndicatorInsets)}
+    ?scrollsToTop
+    ?snapToInterval
+    ?snapToAlignment
+    ?zoomScale
     ?accessibilityLabel
     ?accessible
     hitSlop=?{Types.toEdgeInsets(hitSlop)}
@@ -145,5 +193,6 @@ let make =
     ?accessibilityHint
     ?accessibilityIgnoresInvertColors
     ?accessibilityViewIsModal
-    ?shouldRasterizeIOS
-  />;
+    ?shouldRasterizeIOS>
+    {children->Belt.Option.getWithDefault(React.null)}
+  </ReactNative.Animated.ScrollView>;

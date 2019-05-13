@@ -1,6 +1,3 @@
-[@bs.module "react-native"]
-external statusBar: ReasonReact.reactClass = "StatusBar";
-
 [@bs.scope "StatusBar"] [@bs.module "react-native"]
 external _setHidden: (bool, Js.Undefined.t(string)) => unit = "setHidden";
 
@@ -49,6 +46,7 @@ external _setTranslucent: bool => unit = "setTranslucent";
 
 let setTranslucent = translucent => _setTranslucent(translucent);
 
+[@react.component]
 let make =
     (
       ~animated=?,
@@ -59,27 +57,12 @@ let make =
       ~networkActivityIndicatorVisible=?,
       ~showHideTransition=?,
     ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=statusBar,
-    ~props={
-      "animated": animated,
-      "barStyle":
-        barStyle->Belt.Option.map(
-          fun
-          | `default => "default"
-          | `lightContent => "light-content"
-          | `darkContent => "dark-content",
-        ),
-      "backgroundColor": backgroundColor,
-      "hidden": hidden,
-      "translucent": translucent,
-      "networkActivityIndicatorVisible": networkActivityIndicatorVisible,
-      "showHideTransition":
-        showHideTransition->Belt.Option.map(
-          fun
-          | `none => "none"
-          | `fade => "fade"
-          | `slide => "slide",
-        ),
-    },
-  );
+  <ReactNative.StatusBar
+    ?animated
+    ?barStyle
+    ?backgroundColor
+    ?hidden
+    ?translucent
+    ?networkActivityIndicatorVisible
+    ?showHideTransition
+  />;

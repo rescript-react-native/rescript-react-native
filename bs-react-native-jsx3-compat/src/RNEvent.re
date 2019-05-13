@@ -1,7 +1,7 @@
 type t;
 
 module NativeEvent = {
-  type t;
+  type t = ReactNative.Event.pressEvent;
   [@bs.get] external changedTouches: t => array(Js.t({..})) = "";
   [@bs.get] external identifier: t => int = "";
   [@bs.get] external locationX: t => float = "";
@@ -21,7 +21,7 @@ module NativeEvent = {
 module NativePressEvent = NativeEvent;
 
 module NativeLayoutEvent = {
-  type t;
+  type t = ReactNative.Event.layoutEvent;
   type layout = {
     x: float,
     y: float,
@@ -36,7 +36,7 @@ module NativeLayoutEvent = {
 };
 
 module NativeScrollEvent = {
-  type t;
+  type t = ReactNative.Event.scrollEvent;
   type point = {
     x: float,
     y: float,

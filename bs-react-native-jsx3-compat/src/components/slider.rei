@@ -12,7 +12,7 @@
   ]}
   {4 maximumTrackTintColor}
   {[
-    ~maximumTrackTintColor: string=?,
+    ~maximumTrackTintColor: ReactNative.Color.t=?,
   ]}
   {4 maximumValue}
   {[
@@ -20,7 +20,7 @@
   ]}
   {4 minimumTrackTintColor}
   {[
-    ~minimumTrackTintColor: string=?,
+    ~minimumTrackTintColor: ReactNative.Color.t=?,
   ]}
   {4 minimumValue}
   {[
@@ -44,7 +44,7 @@
   ]}
   {4 thumbTintColor}
   {[
-    ~thumbTintColor: string=?,
+    ~thumbTintColor: ReactNative.Color.t=?,
   ]}
   {4 maximumTrackImage}
   {[
@@ -92,23 +92,24 @@
   ]}
  */
 
+[@react.component]
 let make:
   (
     ~disabled: bool=?,
-    ~maximumTrackTintColor: string=?,
+    ~maximumTrackTintColor: ReactNative.Color.t=?,
     ~maximumValue: float=?,
-    ~minimumTrackTintColor: string=?,
+    ~minimumTrackTintColor: ReactNative.Color.t=?,
     ~minimumValue: float=?,
     ~onSlidingComplete: float => unit=?,
     ~onValueChange: float => unit=?,
     ~step: float=?,
     ~value: float=?,
-    ~thumbTintColor: string=?,
+    ~thumbTintColor: ReactNative.Color.t=?,
     ~maximumTrackImage: Image.imageSource=?,
     ~minimumTrackImage: Image.imageSource=?,
     ~thumbImage: Image.imageSource=?,
     ~trackImage: Image.imageSource=?,
-    ~accessibilityLabel: ReasonReact.reactElement=?,
+    ~accessibilityLabel: string=?,
     ~accessible: bool=?,
     ~hitSlop: Types.insets=?,
     ~onAccessibilityTap: unit => unit=?,
@@ -132,10 +133,6 @@ let make:
     ~accessibilityIgnoresInvertColors: bool=?,
     ~accessibilityViewIsModal: bool=?,
     ~shouldRasterizeIOS: bool=?,
-    array(ReasonReact.reactElement)
+    unit
   ) =>
-  ReasonReact.component(
-    ReasonReact.stateless,
-    ReasonReact.noRetainedProps,
-    unit,
-  );
+  React.element;
