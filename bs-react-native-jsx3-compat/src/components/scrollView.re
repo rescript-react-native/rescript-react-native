@@ -1,4 +1,4 @@
-type point = ReactNative.Types.point;
+type point = ReactNative.ScrollView.contentOffset;
 
 [@bs.send]
 external _scrollTo:

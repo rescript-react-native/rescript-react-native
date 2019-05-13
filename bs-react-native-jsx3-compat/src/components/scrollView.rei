@@ -1,6 +1,6 @@
 open ScrollViewProps;
 
-type point = ReactNative.Types.point;
+type point = ReactNative.ScrollView.contentOffset;
 
 let scrollTo:
   (ReasonReact.reactRef, ~x: int, ~y: int, ~animated: bool) => unit;

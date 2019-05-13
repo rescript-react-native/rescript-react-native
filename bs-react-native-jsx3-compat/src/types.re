@@ -6,10 +6,10 @@ type insets = {
   "bottom": int,
 };
 
-let toEdgeInsets: option(insets) => option(ReactNative.Types.edgeInsets) =
+let toEdgeInsets: option(insets) => option(ReactNative.View.edgeInsets) =
   insets =>
     insets->Belt.Option.map(insets =>
-      ReactNative.Types.edgeInsets(
+      ReactNative.View.edgeInsets(
         ~left=insets##left->float_of_int,
         ~right=insets##right->float_of_int,
         ~top=insets##top->float_of_int,
