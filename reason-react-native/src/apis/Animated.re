@@ -195,6 +195,8 @@ module ValueXY = {
     };
   });
 
+  [@bs.obj] external jsValue: (~x: float, ~y: float) => jsValue = "";
+
   type translateTransform = {
     .
     "translateX": Value.t,
@@ -229,9 +231,11 @@ type loopConfig;
 
 [@bs.obj] external loopConfig: (~iterations: int) => loopConfig = "";
 
+// multiple externals
 [@bs.module "react-native"] [@bs.scope "Animated"]
 external loop: Animation.t => Animation.t = "";
 
+// multiple externals
 [@bs.module "react-native"] [@bs.scope "Animated"]
 external loopWithConfig: (Animation.t, loopConfig) => Animation.t = "loop";
 
