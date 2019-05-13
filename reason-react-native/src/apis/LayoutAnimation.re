@@ -34,9 +34,11 @@ external layoutAnimationConfig:
   layoutAnimationConfig =
   "";
 
+// multiple externals
 [@bs.module "react-native"] [@bs.scope "LayoutAnimation"]
 external configureNext: layoutAnimationConfig => unit = "";
 
+// multiple externals
 [@bs.module "react-native"] [@bs.scope "LayoutAnimation"]
 external configureNextWithEndCallback:
   (layoutAnimationConfig, unit => unit) => unit =

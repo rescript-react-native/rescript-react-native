@@ -10,7 +10,7 @@ let background: t;
 let inactive: t;
 
 [@bs.scope "AppState"] [@bs.module "react-native"]
-external currentState: t = "currentState";
+external currentState: t = "";
 
 [@bs.scope "AppState"] [@bs.module "react-native"]
 external addEventListener:

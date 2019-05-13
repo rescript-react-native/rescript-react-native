@@ -62,9 +62,11 @@ type photoIdentifiersPage = {
   },
 };
 
+// multiple externals
 [@bs.module "react-native"] [@bs.scope "CameraRoll"]
 external saveToCameraRoll: string => Js.Promise.t(string) = "";
 
+// multiple externals
 [@bs.module "react-native"] [@bs.scope "CameraRoll"]
 external saveToCameraRollWithType:
   (string, ~_type: [@bs.string] [ | `photo | `video]) => Js.Promise.t(string) =

@@ -92,9 +92,11 @@ external setApplicationIconBadgeNumber: int => unit = "";
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
 external getApplicationIconBadgeNumber: (int => unit) => unit = "";
 
+// multiple externals
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
 external cancelLocalNotifications: unit => unit = "";
 
+// multiple externals
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
 external cancelLocalNotificationsWithUserInfo: Js.Json.t => unit =
   "cancelLocalNotifications";
@@ -164,9 +166,11 @@ external requestPermissionsOptions:
   requestPermissionsOptions =
   "";
 
+// multiple externals
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
 external requestPermissions: unit => Js.Promise.t(permissions) = "";
 
+// multiple externals
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
 external requestPermissionsWithOptions:
   requestPermissionsOptions => Js.Promise.t(permissions) =

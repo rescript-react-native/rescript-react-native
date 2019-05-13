@@ -41,5 +41,5 @@ external cropImage:
     ~failure: (~code: int, ~message: string) => unit
   ) =>
   unit =
-  "cropImage";
+  "";
 ```
