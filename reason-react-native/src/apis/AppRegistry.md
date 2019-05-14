@@ -7,7 +7,7 @@ wip: true
 ```reason
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
 external registerComponent: (string, unit => React.component('a)) => unit =
-  "registerComponent";
+  "";
 
 // react-native-web
 type app = {
@@ -17,6 +17,6 @@ type app = {
 };
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
 external getApplication: (string, {. "initialProps": 'a}) => app =
-  "getApplication";
+  "";
 
 ```

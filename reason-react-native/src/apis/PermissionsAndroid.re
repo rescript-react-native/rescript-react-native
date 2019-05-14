@@ -91,17 +91,19 @@ external rationale:
   "";
 
 [@bs.scope "PermissionsAndroid"] [@bs.module "react-native"]
-external check: Permission.t => Js.Promise.t(Js.Null.t(bool)) = "check";
+external check: Permission.t => Js.Promise.t(Js.Null.t(bool)) = "";
 
+// multiple externals
 [@bs.scope "PermissionsAndroid"] [@bs.module "react-native"]
-external request: Permission.t => Js.Promise.t(Js.Null.t(string)) =
-  "request";
+external request: Permission.t => Js.Promise.t(Js.Null.t(string)) = "";
 
+// multiple externals
 [@bs.scope "PermissionsAndroid"] [@bs.module "react-native"]
 external requestWithRationale:
   (Permission.t, rationale) => Js.Promise.t(Js.Null.t(string)) =
   "request";
 
+// multiple externals
 [@bs.scope "PermissionsAndroid"] [@bs.module "react-native"]
 external requestMultiple:
   array(Permission.t) => Js.Promise.t(Js.Dict.t(string)) =

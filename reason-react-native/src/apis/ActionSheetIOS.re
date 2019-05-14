@@ -14,8 +14,7 @@ external options:
   "";
 
 [@bs.module "react-native"] [@bs.scope "ActionSheetIOS"]
-external showActionSheetWithOptions: (options, int => unit) => unit =
-  "showActionSheetWithOptions";
+external showActionSheetWithOptions: (options, int => unit) => unit = "";
 
 type shareOptions;
 [@bs.obj]
@@ -35,4 +34,4 @@ type error = {. "stack": option(string)};
 [@bs.module "react-native"] [@bs.scope "ActionSheetIOS"]
 external showShareActionSheetWithOptions:
   (shareOptions, error => unit, (bool, string) => unit) => unit =
-  "showShareActionSheetWithOptions";
+  "";

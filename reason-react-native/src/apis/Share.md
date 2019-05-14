@@ -39,9 +39,11 @@ type shareResult = {
   "activityType": option(string),
 };
 
+// multiple externals
 [@bs.module "react-native"] [@bs.scope "Share"]
 external share: content => Js.Promise.t(shareResult) = "";
 
+// multiple externals
 [@bs.module "react-native"] [@bs.scope "Share"]
 external shareWithOptions: (content, options) => Js.Promise.t(bool) = "share";
 

@@ -57,7 +57,7 @@ external addListener:
     listener
   ) =>
   EventSubscription.t =
-  "addListener";
+  "";
 
 [@bs.module "react-native"] [@bs.scope "Keyboard"]
 external removeAllListeners:
@@ -73,7 +73,7 @@ external removeAllListeners:
   ]
   ) =>
   unit =
-  "removeAllListeners";
+  "";
 
 [@bs.module "react-native"] [@bs.scope "Keyboard"]
 external removeListener:
@@ -89,8 +89,9 @@ external removeListener:
     listener
   ) =>
   unit =
-  "removeListener";
+  "";
 
 [@bs.module "react-native"] [@bs.scope "Keyboard"]
 external dismiss: unit => unit = "";
+
 ```
