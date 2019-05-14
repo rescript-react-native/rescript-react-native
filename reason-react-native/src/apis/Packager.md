@@ -7,6 +7,6 @@ wip: true
 ```reason
 type required;
 
-[@bs.val] external require: string => required = "require";
+[@bs.val] external require: string => required = "";
 
 ```

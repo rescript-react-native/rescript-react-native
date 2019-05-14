@@ -35,4 +35,4 @@ external alert:
     unit
   ) =>
   unit =
-  "alert";
+  "";

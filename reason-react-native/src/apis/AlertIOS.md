@@ -17,17 +17,20 @@ external button:
   button =
   "";
 
+// multiple externals
 [@bs.scope "AlertIOS"] [@bs.module "react-native"]
 external alert:
   (~title: string, ~message: string=?, ~buttons: array(button)=?, unit) =>
   unit =
-  "alert";
+  "";
 
+// multiple externals
 [@bs.scope "AlertIOS"] [@bs.module "react-native"]
 external alertWithOKButton:
   (~title: string, ~message: string=?, ~callback: unit => unit=?, unit) => unit =
   "alert";
 
+// multiple externals
 [@bs.scope "AlertIOS"] [@bs.module "react-native"]
 external prompt:
   (
@@ -62,8 +65,9 @@ external prompt:
     unit
   ) =>
   unit =
-  "prompt";
+  "";
 
+// multiple externals
 [@bs.scope "AlertIOS"] [@bs.module "react-native"]
 external promptWithOKButton:
   (

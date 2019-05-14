@@ -9,4 +9,4 @@ external nativeModules: Js.Dict.t('a) = "NativeModules";
 [@bs.module "react-native"]
 external requireNativeComponent:
   (string, [@bs.as {json|null|json}] _) => React.component('a) =
-  "requireNativeComponent";
+  "";
