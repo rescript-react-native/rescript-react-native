@@ -1,79 +1,114 @@
 module Permission = {
   type t = string;
 
-  [@bs.inline]
-  let readCalendar = "READ_CALENDAR";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external readCalendar: t = "READ_CALENDAR";
 
-  [@bs.inline]
-  let writeCalendar = "WRITE_CALENDAR";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external writeCalendar: t = "WRITE_CALENDAR";
 
-  [@bs.inline]
-  let camera = "CAMERA";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external camera: t = "CAMERA";
 
-  [@bs.inline]
-  let readContacts = "READ_CONTACTS";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external readContacts: t = "READ_CONTACTS";
 
-  [@bs.inline]
-  let writeContacts = "WRITE_CONTACTS";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external writeContacts: t = "WRITE_CONTACTS";
 
-  [@bs.inline]
-  let getAccounts = "GET_ACCOUNTS";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external getAccounts: t = "GET_ACCOUNTS";
 
-  [@bs.inline]
-  let accessFineLocation = "ACCESS_FINE_LOCATION";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external accessFineLocation: t = "ACCESS_FINE_LOCATION";
 
-  [@bs.inline]
-  let accessCoarseLocation = "ACCESS_COARSE_LOCATION";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external accessCoarseLocation: t = "ACCESS_COARSE_LOCATION";
 
-  [@bs.inline]
-  let recordAudio = "RECORD_AUDIO";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external recordAudio: t = "RECORD_AUDIO";
 
-  [@bs.inline]
-  let readPhoneState = "READ_PHONE_STATE";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external readPhoneState: t = "READ_PHONE_STATE";
 
-  [@bs.inline]
-  let callPhone = "CALL_PHONE";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external callPhone: t = "CALL_PHONE";
 
-  [@bs.inline]
-  let readCallLog = "READ_CALL_LOG";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external readCallLog: t = "READ_CALL_LOG";
 
-  [@bs.inline]
-  let writeCallLog = "WRITE_CALL_LOG";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external writeCallLog: t = "WRITE_CALL_LOG";
 
-  [@bs.inline]
-  let addVoicemail = "ADD_VOICEMAIL";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external addVoicemail: t = "ADD_VOICEMAIL";
 
-  [@bs.inline]
-  let useSip = "USE_SIP";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external useSip: t = "USE_SIP";
 
-  [@bs.inline]
-  let processOutgoingCalls = "PROCESS_OUTGOING_CALLS";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external processOutgoingCalls: t = "PROCESS_OUTGOING_CALLS";
 
-  [@bs.inline]
-  let bodySensors = "BODY_SENSORS";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external bodySensors: t = "BODY_SENSORS";
 
-  [@bs.inline]
-  let sendSms = "SEND_SMS";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external sendSms: t = "SEND_SMS";
 
-  [@bs.inline]
-  let receiveSms = "RECEIVE_SMS";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external receiveSms: t = "RECEIVE_SMS";
 
-  [@bs.inline]
-  let readSms = "READ_SMS";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external readSms: t = "READ_SMS";
 
-  [@bs.inline]
-  let receiveWapPush = "RECEIVE_WAP_PUSH";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external receiveWapPush: t = "RECEIVE_WAP_PUSH";
 
-  [@bs.inline]
-  let receiveMms = "RECEIVE_MMS";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external receiveMms: t = "RECEIVE_MMS";
 
-  [@bs.inline]
-  let readExternalStorage = "READ_EXTERNAL_STORAGE";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external readExternalStorage: t = "READ_EXTERNAL_STORAGE";
 
-  [@bs.inline]
-  let writeExternalStorage = "WRITE_EXTERNAL_STORAGE";
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external writeExternalStorage: t = "WRITE_EXTERNAL_STORAGE";
+};
 
-  external toString: t => string = "%identity";
+module Result = {
+  type t;
+
+  [@bs.module "react-native"] [@bs.scope ("PermissionsAndroid", "RESULTS")]
+  external granted: t = "GRANTED";
+
+  [@bs.module "react-native"] [@bs.scope ("PermissionsAndroid", "RESULTS")]
+  external denied: t = "DENIED";
+
+  [@bs.module "react-native"] [@bs.scope ("PermissionsAndroid", "RESULTS")]
+  external neverAskAgain: t = "NEVER_ASK_AGAIN";
 };
 
 type rationale;
@@ -90,21 +125,22 @@ external rationale:
   rationale =
   "";
 
+type dict = Js.Dict.t(Result.t);
+
 [@bs.scope "PermissionsAndroid"] [@bs.module "react-native"]
-external check: Permission.t => Js.Promise.t(Js.Null.t(bool)) = "";
+external check: Permission.t => Js.Promise.t(bool) = "check";
 
 // multiple externals
 [@bs.scope "PermissionsAndroid"] [@bs.module "react-native"]
-external request: Permission.t => Js.Promise.t(Js.Null.t(string)) = "";
+external request: Permission.t => Js.Promise.t(Result.t) = "";
 
 // multiple externals
 [@bs.scope "PermissionsAndroid"] [@bs.module "react-native"]
 external requestWithRationale:
-  (Permission.t, rationale) => Js.Promise.t(Js.Null.t(string)) =
+  (Permission.t, rationale) => Js.Promise.t(Result.t) =
   "request";
 
-// multiple externals
 [@bs.scope "PermissionsAndroid"] [@bs.module "react-native"]
-external requestMultiple:
-  array(Permission.t) => Js.Promise.t(Js.Dict.t(string)) =
-  "request";
+external requestMultiple: array(Permission.t) => Js.Promise.t(dict) = "";
+
+[@bs.get_index] external get: (dict, Permission.t) => option(Result.t) = "";
