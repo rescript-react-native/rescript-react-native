@@ -151,5 +151,5 @@ external requestWithRationale:
 external requestMultiple: array(Permission.t) => Js.Promise.t(dict) = "";
 
 [@bs.get_index] external get: (dict, Permission.t) => option(Result.t) = "";
-  
+
 ```

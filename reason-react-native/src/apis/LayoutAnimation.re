@@ -70,7 +70,6 @@ external linear: unit => unit = "";
 [@bs.module "react-native"] [@bs.scope "LayoutAnimation"]
 external spring: unit => unit = "";
 
-
 module Presets = {
   [@bs.module "react-native"] [@bs.scope ("LayoutAnimation", "Presets")]
   external easeInEaseOut: layoutAnimationConfig = "";

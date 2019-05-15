@@ -30,5 +30,5 @@ external removeEventListener:
   ([@bs.string] [ | `change(t => unit) | `memoryWarning(unit => unit)]) =>
   unit =
   "";
-  
+
 ```

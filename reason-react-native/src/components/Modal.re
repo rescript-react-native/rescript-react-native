@@ -11,7 +11,12 @@ external make:
     ~animationType: [@bs.string] [ | `none | `slide | `fade]=?,
     ~hardwareAccelerated: bool=?,
     ~onDismiss: unit => unit=?,
-    ~onOrientationChange: Event.syntheticEvent({. "orientation": OrientationChange.t}) => unit=?,
+    ~onOrientationChange: Event.syntheticEvent({
+                            .
+                            "orientation": OrientationChange.t,
+                          }) =>
+                          unit
+                            =?,
     ~onRequestClose: unit => unit=?,
     ~onShow: unit => unit=?,
     ~presentationStyle: [@bs.string] [

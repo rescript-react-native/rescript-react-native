@@ -9,5 +9,4 @@ type app = {
   [@bs.meth] "getStyleElement": unit => React.element,
 };
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
-external getApplication: (string, {. "initialProps": 'a}) => app =
-  "";
+external getApplication: (string, {. "initialProps": 'a}) => app = "";
