@@ -16,7 +16,7 @@
     "release": "lerna publish",
     "format": "yarn format:most && yarn format:re",
     "format:most": "prettier --write \"**/*.{js,json,css,md}\"",
-    "format:re": "find . -name \"*.re\" | grep -v \"node_modules\" | xargs bsrefmt --in-place",
+    "format:re": "find . -name \"*.re\" -or -name \"*.rei\" | grep -v \"node_modules\" | xargs bsrefmt --in-place",
     "clean": "lerna exec --concurrency 1 -- yarn clean",
     "test": "lerna exec --concurrency 1 -- yarn test"
   },
@@ -25,7 +25,7 @@
     "proseWrap": "always"
   },
   "lint-staged": {
-    "*.re": [
+    "*.{re,rei}": [
       "bsrefmt --in-place",
       "git add"
     ],
