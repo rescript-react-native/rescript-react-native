@@ -24,4 +24,30 @@ external make:
   React.element =
   "StatusBar";
 
+[@bs.module "react-native"] [@bs.scope "StatusBar"]
+external setHidden: (bool, [@bs.string] [ | `none | `fade | `slide]) => unit =
+  "";
+
+[@bs.module "react-native"] [@bs.scope "StatusBar"]
+external setBarStyle:
+  (
+    [@bs.string] [
+      | `default
+      | [@bs.as "light-content"] `lightContent
+      | [@bs.as "dark-content"] `darkContent
+    ],
+    bool
+  ) =>
+  unit =
+  "";
+
+[@bs.module "react-native"] [@bs.scope "StatusBar"]
+external setNetworkActivityIndicatorVisible: bool => unit = "";
+
+[@bs.module "react-native"] [@bs.scope "StatusBar"]
+external setBackgroundColor: (Color.t, bool) => unit = "";
+
+[@bs.module "react-native"] [@bs.scope "StatusBar"]
+external setTranslucent: bool => unit = "";
+
 ```
