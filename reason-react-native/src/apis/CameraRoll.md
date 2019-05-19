@@ -5,20 +5,27 @@ title: CameraRoll
 
 ## Methods
 
-- `saveToCameraRoll` allows saving photos and videos to the Camera Roll or Photo Gallery. File to be saved is specified as a tag which can be
+- `saveToCameraRoll` allows saving photos and videos to the Camera Roll or Photo
+  Gallery. File to be saved is specified as a tag which can be
 
-   - on Android, a local image or video URI, such as "file:///sdcard/img.png"
-   - on iOS, a local video URI or any image URI (local, remote asset-library, or base64 data URIs)
+  - on Android, a local image or video URI, such as "file:///sdcard/img.png"
+  - on iOS, a local video URI or any image URI (local, remote asset-library, or
+    base64 data URIs)
 
-Media type (photo or video) will be automatically inferred; any file will be inferred to be a photo, unless the file extension is `mov` or `mp4`, then it will be inferred to be a video.
+Media type (photo or video) will be automatically inferred; any file will be
+inferred to be a photo, unless the file extension is `mov` or `mp4`, then it
+will be inferred to be a video.
 
 ```reason
 saveToCameraRoll(tag)
 ```
 
-The function will return the URI for the saved file as a string wrapped in a Promise, `Js.Promise.t(string)`.
+The function will return the URI for the saved file as a string wrapped in a
+Promise, `Js.Promise.t(string)`.
 
-- `saveToCameraRollWithType` allows saving photos and videos to the Camera Roll, where the tag will be specified as above, overriding the automatically determined type.
+- `saveToCameraRollWithType` allows saving photos and videos to the Camera Roll,
+  where the tag will be specified as above, overriding the automatically
+  determined type.
 
 ```reason
 saveToCameraRollWithType(tag, _type)
@@ -26,7 +33,8 @@ saveToCameraRollWithType(tag, _type)
 
 where `_type` can be `` `photo `` or `` `video ``.
 
-The function will return the URI for the saved file as a string wrapped in a Promise, `Js.Promise.t(string)`.
+The function will return the URI for the saved file as a string wrapped in a
+Promise, `Js.Promise.t(string)`.
 
 - `getPhotos` takes as argument `getPhotosParams`
 
@@ -34,14 +42,20 @@ The function will return the URI for the saved file as a string wrapped in a Pro
 getPhotos(getPhotosParams)
 ```
 
-The function will return a `photoIdentifiersPage` object wrapped in a Promise, that is `Js.Promise.t(photoIdentifiersPage)`. Array of `photoIdentifier` will contain details of photos or videos matching parameters provided in the `getPhotosParam` object.
-
+The function will return a `photoIdentifiersPage` object wrapped in a Promise,
+that is `Js.Promise.t(photoIdentifiersPage)`. Array of `photoIdentifier` will
+contain details of photos or videos matching parameters provided in the
+`getPhotosParam` object.
 
 ## Types
 
 - `getPhotosParams` can be constructed with the constructor of the same name
-    - `first` takes an integer which specifies the number of files for which details will be returned. Files will match in reverse order (i.e. most recent first)
-    - `after` takes a string which should be obtained from `photoIdentifiersPage` returned in a previous `getPhotos` call, under the `end_cursor` key contained in turn under the `page_info` key.
+  - `first` takes an integer which specifies the number of files for which
+    details will be returned. Files will match in reverse order (i.e. most
+    recent first)
+  - `after` takes a string which should be obtained from `photoIdentifiersPage`
+    returned in a previous `getPhotos` call, under the `end_cursor` key
+    contained in turn under the `page_info` key.
 
 ```reason
 getPhotosParams:

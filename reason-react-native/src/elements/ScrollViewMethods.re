@@ -12,10 +12,10 @@ module Make = (T: {type t;}) => {
   external scrollToEndOptions:
     (~animated: bool=?, ~duration: float=?, unit) => scrollToEndOptions =
     "";
-  
+
   // multiple externals
   [@bs.send] external scrollToEnd: T.t => unit = "";
-  
+
   // multiple externals
   [@bs.send]
   external scrollToEndWithOptions: (T.t, scrollToEndOptions) => unit =
