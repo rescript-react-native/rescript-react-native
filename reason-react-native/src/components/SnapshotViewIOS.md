@@ -5,12 +5,9 @@ wip: true
 ---
 
 ```reason
-include NativeElement;
-
 [@react.component] [@bs.module "react-native"]
 external make:
   (
-    ~ref: ref=?,
     // SnapshotViewIOS props
     ~onSnapshotReady: Event.syntheticEvent({. "testIdentifier": string}) =>
                       unit
