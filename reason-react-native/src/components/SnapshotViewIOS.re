@@ -1,10 +1,7 @@
-include NativeElement;
-
 [@react.component] [@bs.module "react-native"]
+// SnapshotViewIOS props
 external make:
   (
-    ~ref: ref=?,
-    // SnapshotViewIOS props
     ~onSnapshotReady: Event.syntheticEvent({. "testIdentifier": string}) =>
                       unit
                         =?,
