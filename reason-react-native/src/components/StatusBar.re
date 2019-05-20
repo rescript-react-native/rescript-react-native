@@ -42,3 +42,6 @@ external setBackgroundColor: (Color.t, bool) => unit = "";
 
 [@bs.module "react-native"] [@bs.scope "StatusBar"]
 external setTranslucent: bool => unit = "";
+
+[@bs.module "react-native"] [@bs.scope "StatusBar"]
+external currentHeight: float = "";
