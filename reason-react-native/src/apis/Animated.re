@@ -261,9 +261,25 @@ let stop = Animation.stop;
 
 let reset = Animation.reset;
 
-// Unsafe, unfortunately, but allows us to pass animated values everywhere.
-// May be refined later.
-external animatedStyle: value('a) => 'b = "%identity";
+module StyleProp = {
+  // methods to allow use of Animated values with Style props
+  
+  // these methods should not be used to get the current value
+
+  // for angle, Color.t, and size expressed as percentage,
+  // interpolated values are needed where the outputRange is
+  // an appropriate array of strings
+
+  external float: value('a) => float = "%identity";
+  external angle: value(calculated) => Transform.angle = "%identity";
+  external size: value('a) => Style.size = "%identity";
+  external margin: value('a) => Style.margin = "%identity";
+  external color: value(calculated) => Color.t = "%identity";
+
+  // UNSAFE: allows to pass animated values everywhere,
+  // use of more precise methods above is recommended
+  external unsafeAny: value('a) => 'b = "%identity";
+};
 
 module Image = {
   include Image;
