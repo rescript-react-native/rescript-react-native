@@ -91,6 +91,8 @@ function reset(prim) {
   return /* () */0;
 }
 
+var StyleProp = /* module */[];
+
 var make = ReactNative.Animated.createAnimatedComponent(ReactNative.Image);
 
 var $$Image = /* module */[
@@ -124,6 +126,7 @@ exports.decay = decay;
 exports.start = start;
 exports.stop = stop;
 exports.reset = reset;
+exports.StyleProp = StyleProp;
 exports.$$Image = $$Image;
 exports.ScrollView = ScrollView;
 exports.$$Text = $$Text;
