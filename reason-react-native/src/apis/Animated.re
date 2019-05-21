@@ -263,7 +263,7 @@ let reset = Animation.reset;
 
 module StyleProp = {
   // methods to allow use of Animated values with Style props
-  
+
   // these methods should not be used to get the current value
 
   // for angle, Color.t, and size expressed as percentage,
@@ -271,7 +271,7 @@ module StyleProp = {
   // an appropriate array of strings
 
   external float: value('a) => float = "%identity";
-  external angle: value(calculated) => Transform.angle = "%identity";
+  external angle: value(calculated) => Style.angle = "%identity";
   external size: value('a) => Style.size = "%identity";
   external margin: value('a) => Style.margin = "%identity";
   external color: value(calculated) => Color.t = "%identity";

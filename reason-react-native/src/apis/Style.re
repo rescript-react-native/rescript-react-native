@@ -1,3 +1,5 @@
+type t;
+
 type size = string;
 
 external pt: float => size = "%identity";
@@ -12,7 +14,24 @@ let auto = "auto";
 type offset;
 [@bs.obj] external offset: (~height: float, ~width: float) => offset = "";
 
-type t;
+type angle;
+let deg: float => angle = num => (num->Js.Float.toString ++ "deg")->Obj.magic;
+let rad: float => angle = num => (num->Js.Float.toString ++ "rad")->Obj.magic;
+
+type transform;
+[@bs.obj] external perspective: (~perspective: float) => transform = "";
+[@bs.obj] external rotate: (~rotate: angle) => transform = "";
+[@bs.obj] external rotateX: (~rotateX: angle) => transform = "";
+[@bs.obj] external rotateY: (~rotateY: angle) => transform = "";
+[@bs.obj] external rotateZ: (~rotateZ: angle) => transform = "";
+[@bs.obj] external scale: (~scale: float) => transform = "";
+[@bs.obj] external scaleX: (~scaleX: float) => transform = "";
+[@bs.obj] external scaleY: (~scaleY: float) => transform = "";
+[@bs.obj] external translateX: (~translateX: float) => transform = "";
+[@bs.obj] external translateY: (~translateY: float) => transform = "";
+[@bs.obj] external skewX: (~skewX: angle) => transform = "";
+[@bs.obj] external skewY: (~skewY: angle) => transform = "";
+// @todo matrix
 
 [@bs.obj]
 // Layout Props (https://facebook.github.io/react-native/docs/layout-props#props)
@@ -135,7 +154,7 @@ external style:
     ~shadowOpacity: float=?,
     ~shadowRadius: float=?,
     // Transform Props (https://facebook.github.io/react-native/docs/transforms#props)
-    ~transform: array(Transform.t)=?, // all other transform props are deprecated
+    ~transform: array(transform)=?, // all other transform props are deprecated
     // Text Style Props (https://facebook.github.io/react-native/docs/text-style-props)
     ~color: Color.t=?,
     ~fontFamily: string=?,
