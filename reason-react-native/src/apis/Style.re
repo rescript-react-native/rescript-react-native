@@ -9,13 +9,12 @@ external listOption: list(option(t)) => t = "%identity";
 // Escape hatch, in case something is added into RN but unsupported,
 // Useful if you play with fancy platforms
 // Use with caution
-let unsafeAddProp: (t, string, string) => t =
-  (style, property, value) => {
-    let o =
-      Js.Dict.empty()->Obj.magic->Js.Obj.assign(style->Obj.magic)->Obj.magic;
-    o->Js.Dict.set(property, value);
-    o->Obj.magic;
-  };
+[@bs.val]
+external unsafeAddStyle_: (Js.Dict.t('a), t, 'b) => t = "Object.assign";
+let unsafeAddStyle: (t, Js.t('a)) => t =
+  (style, styles) => unsafeAddStyle_(Js.Dict.empty(), style, styles);
+
+external unsafeStyle: Js.t('a) => t = "%identity";
 
 type size = string;
 
@@ -50,12 +49,7 @@ type transform;
 [@bs.obj] external skewY: (~skewY: angle) => transform = "";
 // @todo matrix
 
-let unsafeTransform: (string, string) => transform =
-  (prop, value) => {
-    let tf = Js.Dict.empty();
-    tf->Js.Dict.set(prop, value);
-    tf->Obj.magic;
-  };
+external unsafeTransform: Js.t('a) => transform = "%identity";
 
 [@bs.obj]
 // Layout Props (https://facebook.github.io/react-native/docs/layout-props#props)

@@ -4,7 +4,8 @@ external array: array(t) => t = "%identity";
 external arrayOption: array(option(t)) => t = "%identity";
 external list: list(t) => t = "%identity";
 external listOption: list(option(t)) => t = "%identity";
-let unsafeAddProp: (t, string, string) => t;
+let unsafeAddStyle: (t, Js.t('a)) => t;
+external unsafeStyle: Js.t('a) => t = "%identity";
 
 type size;
 
@@ -39,7 +40,7 @@ type transform;
 [@bs.obj] external skewY: (~skewY: angle) => transform = "";
 // @todo matrix
 
-let unsafeTransform: (string, string) => transform;
+external unsafeTransform: Js.t('a) => transform = "%identity";
 
 [@bs.obj]
 // Layout Props (https://facebook.github.io/react-native/docs/layout-props#props)
