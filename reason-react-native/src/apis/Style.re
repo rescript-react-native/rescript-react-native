@@ -1,5 +1,20 @@
 type t;
 
+external array: array(t) => t = "%identity";
+external arrayOption: array(option(t)) => t = "%identity";
+/* list works too since RN accept recursive array of styles (ocaml list are recursive arrays in JS)*/
+external list: list(t) => t = "%identity";
+external listOption: list(option(t)) => t = "%identity";
+
+// Escape hatch, in case something is added into RN but unsupported,
+// Useful if you play with fancy platforms
+// Use with caution
+[@bs.val]
+external unsafeAddStyle: ([@bs.as {json|{}|json}] _, t, Js.t('a)) => t =
+  "Object.assign";
+
+external unsafeStyle: Js.t('a) => t = "%identity";
+
 type size = string;
 
 external pt: float => size = "%identity";
@@ -32,6 +47,8 @@ type transform;
 [@bs.obj] external skewX: (~skewX: angle) => transform = "";
 [@bs.obj] external skewY: (~skewY: angle) => transform = "";
 // @todo matrix
+
+external unsafeTransform: Js.t('a) => transform = "%identity";
 
 [@bs.obj]
 // Layout Props (https://facebook.github.io/react-native/docs/layout-props#props)
@@ -222,40 +239,3 @@ external style:
   ) =>
   t =
   "";
-
-/*
- <View style=array([|
-   styles##thing,
-   styles##whatever,
- |])>
-   */
-external array: array(t) => t = "%identity";
-
-/*
- <View style=arrayOption([|
-   Some(styles##thing),
-   Some(styles##whatever),
-   optionalStyle,
-   cond ? Some({something:"dynamic"}) : None
- |])>
- */
-external arrayOption: array(option(t)) => t = "%identity";
-
-/* list works too since RN accept recursive array of styles (list are just recursive arrays)*/
-/*
- <View style=list([
-   styles##thing,
-   styles##whatever,
- ])>
-   */
-external list: list(t) => t = "%identity";
-
-/*
- <View style=listOption([
-   Some(styles##thing),
-   Some(styles##whatever),
-   optionalStyle,
-   cond ? Some({something:"dynamic"}) : None
- ])>
- */
-external listOption: list(option(t)) => t = "%identity";
