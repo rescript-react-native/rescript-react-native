@@ -4,7 +4,9 @@ external array: array(t) => t = "%identity";
 external arrayOption: array(option(t)) => t = "%identity";
 external list: list(t) => t = "%identity";
 external listOption: list(option(t)) => t = "%identity";
-let unsafeAddStyle: (t, Js.t('a)) => t;
+[@bs.val]
+external unsafeAddStyle: ([@bs.as {json|{}|json}] _, t, Js.t('a)) => t =
+  "Object.assign";
 external unsafeStyle: Js.t('a) => t = "%identity";
 
 type size;

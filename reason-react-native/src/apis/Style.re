@@ -10,9 +10,8 @@ external listOption: list(option(t)) => t = "%identity";
 // Useful if you play with fancy platforms
 // Use with caution
 [@bs.val]
-external unsafeAddStyle_: (Js.Dict.t('a), t, 'b) => t = "Object.assign";
-let unsafeAddStyle: (t, Js.t('a)) => t =
-  (style, styles) => unsafeAddStyle_(Js.Dict.empty(), style, styles);
+external unsafeAddStyle: ([@bs.as {json|{}|json}] _, t, Js.t('a)) => t =
+  "Object.assign";
 
 external unsafeStyle: Js.t('a) => t = "%identity";
 
