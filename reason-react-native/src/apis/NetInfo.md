@@ -49,9 +49,11 @@ type info = {
   "effectiveType": EffectiveConnectionType.t,
 };
 
+type remove = {. "remove": unit => unit};
+
 [@bs.module "react-native"] [@bs.scope "NetInfo"]
 external addEventListener:
-  ([@bs.string] [ | `connectionChange], info => unit) => EventSubscription.t =
+  ([@bs.string] [ | `connectionChange], info => unit) => remove =
   "";
 
 [@bs.module "react-native"] [@bs.scope "NetInfo"]
@@ -68,7 +70,7 @@ external getConnectionInfo: unit => Js.Promise.t(info) = "";
 module IsConnected = {
   [@bs.module "react-native"] [@bs.scope ("NetInfo", "isConnected")]
   external addEventListener:
-    ([@bs.string] [ | `connectionChange], bool => unit) => EventSubscription.t =
+    ([@bs.string] [ | `connectionChange], bool => unit) => remove =
     "";
 
   [@bs.module "react-native"] [@bs.scope ("NetInfo", "isConnected")]

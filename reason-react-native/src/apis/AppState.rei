@@ -15,7 +15,7 @@ external currentState: t = "";
 [@bs.scope "AppState"] [@bs.module "react-native"]
 external addEventListener:
   ([@bs.string] [ | `change(t => unit) | `memoryWarning(unit => unit)]) =>
-  unit =
+  EventSubscription.t =
   "";
 
 [@bs.scope "AppState"] [@bs.module "react-native"]
