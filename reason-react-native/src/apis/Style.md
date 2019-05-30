@@ -22,7 +22,7 @@ We have made different style constructors because React Native have various
 components that accept different styles props. For example `View` doesn't accept
 `color` (only `Text` does).
 
-## Table of Content
+## Table of Contents
 
 - [Style Example](#style-example)
 - [Style Units](#style-units)
@@ -101,8 +101,8 @@ let make = (~isSomething) => {
 percentage (`pct` function) & also `auto` (inline string, edge case for
 `margin`).
 
-As soon as `Style` module is open, you make `size` in various way as you can see
-in this random examples
+As soon as `Style` module is open, you can make `size` in various way as you can
+see in these random examples
 
 - `~height=10.5->pt` (= `~height=pt(10.5)`)
 - `~width=55.->pct` (= `~width=pct(55.)`)
