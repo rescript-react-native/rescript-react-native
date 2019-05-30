@@ -14,24 +14,7 @@ handlers are extended to also depend upon the `gestureState`.
 ## Types
 
 ### `Event.pressEvent`
-`Event.pressEvent` is `Event.syntheticEvent(pressEventPayload)` where the
-`nativeEvent` key is recursively specified as:
-
-```reason
-type pressEventPayload = {
-  .
-  "changedTouches": array(pressEventPayload),
-  "force": float,
-  "identifier": int,
-  "locationX": float,
-  "locationY": float,
-  "pageX": float,
-  "pageY": float,
-  "target": Js.Nullable.t(float),
-  "timestamp": float,
-  "touches": array(pressEventPayload),
-}
-```
+see [`Event`](../Event/#pressEvent)
 
 ### `gestureState`
 `gestureState` contains additional information on the state of the \_Gesture
