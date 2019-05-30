@@ -1,12 +1,17 @@
 ---
 id: apis/Event
 title: Event
-wip: true
+officialDoc: https://github.com/facebook/react-native/blob/master/Libraries/Types/CoreEventTypes.js
 ---
 
-```reason
-// see https://github.com/facebook/react-native/blob/master/Libraries/Types/CoreEventTypes.js
+These are the types of objects returned in `Event` callbacks. Types are
+instances of `syntheticEvent('a)` and `responderSyntheticEvent('a)`.
 
+## Parametrised Types
+
+### `syntheticEvent('a)`
+
+```reason
 type syntheticEvent('a) = {
   .
   "bubbles": Js.Nullable.t(bool),
@@ -26,7 +31,13 @@ type syntheticEvent('a) = {
   "timeStamp": float,
   "_type": Js.Nullable.t(string),
 };
+```
 
+### `responderSyntheticEvent('a)`
+
+`responderSyntheticEvent('a)` adds the `touchHistory` key to `syntheticEvent('a)`
+
+```reason
 type responderSyntheticEvent('a) = {
   .
   // synthethicEvent keys
@@ -46,7 +57,6 @@ type responderSyntheticEvent('a) = {
   "target": Js.Nullable.t(float),
   "timeStamp": float,
   "_type": Js.Nullable.t(string),
-  // responderSyntheticEvent additional key
   "touchHistory": {
     .
     "indexOfSingleActiveTouch": float,
@@ -68,20 +78,13 @@ type responderSyntheticEvent('a) = {
       }),
   },
 };
+```
 
-type textLayout = {
-  .
-  "x": float,
-  "y": float,
-  "width": float,
-  "height": float,
-  "ascender": float, // verify
-  "capHeight": float, // verify
-  "descender": float, // verify
-  "text": string,
-  "xHeight": float // verify
-};
+## Types
 
+### `layoutEvent`
+
+```reason
 type layoutEvent =
   syntheticEvent({
     .
@@ -93,9 +96,17 @@ type layoutEvent =
       "height": float,
     },
   });
+```
 
-type textLayoutEvent = syntheticEvent({. "lines": array(textLayout)});
+### `pressEvent`
 
+```reason
+type pressEvent = responderSyntheticEvent(pressEventPayload);
+```
+
+where `pressEventPayload` is defined as
+
+```reason
 type pressEventPayload = {
   .
   "changedTouches": array(pressEventPayload),
@@ -109,21 +120,11 @@ type pressEventPayload = {
   "timestamp": float,
   "touches": array(pressEventPayload),
 };
+```
 
-type pressEvent = responderSyntheticEvent(pressEventPayload);
+### `scrollEvent`
 
-type contentOffset = {
-  .
-  "x": float,
-  "y": float,
-};
-
-type dimensions = {
-  .
-  "height": float,
-  "width": float,
-};
-
+```reason
 type scrollEvent =
   syntheticEvent({
     .
@@ -138,9 +139,58 @@ type scrollEvent =
     "contentSize": dimensions,
     "layoutMeasurement": dimensions,
   });
+```
 
+where `contentOffset` and `dimensions` are defined as
+
+```reason
+type contentOffset = {
+  .
+  "x": float,
+  "y": float,
+};
+```
+
+```reason
+type dimensions = {
+  .
+  "height": float,
+  "width": float,
+};
+```
+
+### `switchChangeEvent`
+
+```reason
 type switchChangeEvent = syntheticEvent({. "value": bool});
+```
 
+### `targetEvent`
+
+```reason
 type targetEvent = syntheticEvent({. "target": int});
 
+```
+
+### `textLayoutEvent`
+
+```reason
+type textLayoutEvent = syntheticEvent({. "lines": array(textLayout)});
+```
+
+where `textLayout` is defined as
+
+```reason
+type textLayout = {
+  .
+  "x": float,
+  "y": float,
+  "width": float,
+  "height": float,
+  "ascender": float, // verify
+  "capHeight": float, // verify
+  "descender": float, // verify
+  "text": string,
+  "xHeight": float // verify
+};
 ```
