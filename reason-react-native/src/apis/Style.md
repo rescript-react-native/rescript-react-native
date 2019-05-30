@@ -1227,8 +1227,8 @@ Accepts a `Color.t` (`string`).
 In case you want to use something unsupported by this binding, you can use
 `unsafeAddStyle` & `unsafeStyle`.
 
-For example, if you want to use `position: fixed` on the web, you can do
-the following
+For example, if you want to use `position: fixed` on the web, you can do the
+following
 
 ```reason
 Style.(unsafeStyle({"position": "fixed", "top": "5em", "left": 0, "right": 0}))
