@@ -1227,7 +1227,7 @@ Accepts a `Color.t` (`string`).
 In case you want to use something unsupported by this binding, you can use
 `unsafeAddStyle` & `unsafeStyle`.
 
-For example, if you want to have use `position: fixed` on the web, you can do
+For example, if you want to use `position: fixed` on the web, you can do
 the following
 
 ```reason
@@ -1277,7 +1277,7 @@ Accepts an array of optional styles as a single style.
 
 ### `Style.list`
 
-Accepts an list of styles as a single style.
+Accepts a list of styles as a single style.
 
 ```reason
 <View style=Style.(list([|
@@ -1288,7 +1288,7 @@ Accepts an list of styles as a single style.
 
 ### `Style.listOption`
 
-Accepts an list of optional styles as a single style.
+Accepts a list of optional styles as a single style.
 
 ```reason
 <View style=Style.(listOption([|
