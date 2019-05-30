@@ -69,7 +69,7 @@ external make:
     ~onResponderRelease: Event.pressEvent => unit=?,
     ~onResponderStart: Event.pressEvent => unit=?,
     ~onResponderTerminate: Event.pressEvent => unit=?,
-    ~onResponderTerminationRequest: Event.pressEvent => unit=?,
+    ~onResponderTerminationRequest: Event.pressEvent => bool=?,
     ~onStartShouldSetResponder: Event.pressEvent => bool=?,
     ~onStartShouldSetResponderCapture: Event.pressEvent => bool=?,
     ~pointerEvents: [@bs.string] [
@@ -179,7 +179,7 @@ module Item = {
       ~onResponderRelease: Event.pressEvent => unit=?,
       ~onResponderStart: Event.pressEvent => unit=?,
       ~onResponderTerminate: Event.pressEvent => unit=?,
-      ~onResponderTerminationRequest: Event.pressEvent => unit=?,
+      ~onResponderTerminationRequest: Event.pressEvent => bool=?,
       ~onStartShouldSetResponder: Event.pressEvent => bool=?,
       ~onStartShouldSetResponderCapture: Event.pressEvent => bool=?,
       ~pointerEvents: [@bs.string] [
