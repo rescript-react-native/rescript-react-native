@@ -17,14 +17,25 @@ external canOpenURL: string => Js.Promise.t(bool) = "";
 
 [@bs.scope "Linking"] [@bs.module "react-native"]
 external getInitialURL: unit => Js.Promise.t(Js.Null.t(string)) = "";
+```
 
-// multiple externals
+As of React Native 0.60
+```reason
+[@bs.scope "Linking"] [@bs.module "react-native"]
+external openSettings: unit => Js.Promise.t('a) = "";
+```
+
+As of React Native 0.59.8
+```reason
 [@bs.scope "Linking"] [@bs.module "react-native"]
 external sendIntent: string => unit = "";
+```
 
-// multiple externals
+As of React Native 0.59.8
+```reason
 [@bs.scope "Linking"] [@bs.module "react-native"]
 external sendIntentWithExtras: (string, array(extra)) => unit = "sendIntent";
+```
 
 [@bs.scope "Linking"] [@bs.module "react-native"]
 external addEventListener:
