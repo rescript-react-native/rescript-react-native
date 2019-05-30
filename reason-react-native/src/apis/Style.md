@@ -148,7 +148,7 @@ a `View` component).
 
 ### `Style.viewStyle`
 
-This function accept all React Native following styles
+This function accepts all React Native styles below:
 
 - [Layout styles](#layout-styles-props)
 - [Shadow styles](#shadow-styles-props)
@@ -157,7 +157,7 @@ This function accept all React Native following styles
 
 ### `Style.textStyle`
 
-This function accept all React Native following styles
+This function accepts all React Native styles below:
 
 - [Layout styles](#layout-styles-props)
 - [Shadow styles](#shadow-styles-props)
@@ -166,7 +166,7 @@ This function accept all React Native following styles
 
 ### `Style.imageStyle`
 
-This function accept all React Native following styles
+This function accepts all React Native styles below:
 
 - [Layout styles](#layout-styles-props)
 - [Shadow styles](#shad@ow-styles-props)
@@ -181,7 +181,7 @@ This function accept all React Native following styles
 
 #### `alignContent`
 
-Accept one of the following values:
+Accepts one of the following values:
 
 - `` `flexStart `` (default)
 - `` `flexEnd ``
@@ -198,7 +198,7 @@ the parent.
 
 #### `alignItems`
 
-Accept one of the following values:
+Accepts one of the following values:
 
 - `` `flexStart ``
 - `` `flexEnd ``
@@ -290,7 +290,7 @@ but only support `flex` and `none`.
 
 #### `_end`
 
-Accept a `size`
+Accepts a `size`
 
 When the direction is `ltr`, `end` is equivalent to `right`. When the direction
 is `rtl`, `end` is equivalent to `left`. This style takes precedence over the
