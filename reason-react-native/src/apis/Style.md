@@ -97,9 +97,9 @@ let make = (~isSomething) => {
 
 ### `size`
 
-`size` is used in various place to express logical pixels (`pt` function),
-percentage (`pct` function) & also `auto` (inline string, edge case for
-`margin`).
+`size` is required in various style props, expressed as logical pixels (`pt`
+function), percentage (`pct` function) & also `auto` (inline string, edge case
+for `margin`).
 
 As soon as `Style` module is open, you can make `size` in various way as you can
 see in these random examples
