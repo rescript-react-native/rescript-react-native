@@ -128,7 +128,7 @@ external style:
                       | `capitalize
                     ]
                       =?,
-    ~writingDirection: [@bs.string] [ | `auto | `ltr | `ltr]=?,
+    ~writingDirection: [@bs.string] [ | `auto | `ltr | `rtl]=?,
     // View styles https://facebook.github.io/react-native/docs/view-style-props
     ~backfaceVisibility: [@bs.string] [ | `visible | `hidden]=?,
     ~backgroundColor: Color.t=?,
@@ -202,7 +202,7 @@ external style:
     // ~borderTopWidth: float=?,
     // ~borderWidth: float=?,
     ~bottom: size=?,
-    ~direction: [@bs.string] [ | [@bs.as "inherit"] `inherit_ | `ltr | `ltr]=?,
+    ~direction: [@bs.string] [ | [@bs.as "inherit"] `inherit_ | `ltr | `rtl]=?,
     ~display: [@bs.string] [ | `none | `flex]=?,
     ~_end: size=?,
     ~flex: float=?,
@@ -340,7 +340,7 @@ external viewStyle:
     // ~borderTopWidth: float=?,
     // ~borderWidth: float=?,
     ~bottom: size=?,
-    ~direction: [@bs.string] [ | [@bs.as "inherit"] `inherit_ | `ltr | `ltr]=?,
+    ~direction: [@bs.string] [ | [@bs.as "inherit"] `inherit_ | `ltr | `rtl]=?,
     ~display: [@bs.string] [ | `none | `flex]=?,
     ~_end: size=?,
     ~flex: float=?,
@@ -455,7 +455,7 @@ external textStyle:
                       | `capitalize
                     ]
                       =?,
-    ~writingDirection: [@bs.string] [ | `auto | `ltr | `ltr]=?,
+    ~writingDirection: [@bs.string] [ | `auto | `ltr | `rtl]=?,
     // View styles https://facebook.github.io/react-native/docs/view-style-props
     ~backfaceVisibility: [@bs.string] [ | `visible | `hidden]=?,
     ~backgroundColor: Color.t=?,
@@ -529,7 +529,7 @@ external textStyle:
     // ~borderTopWidth: float=?,
     // ~borderWidth: float=?,
     ~bottom: size=?,
-    ~direction: [@bs.string] [ | [@bs.as "inherit"] `inherit_ | `ltr | `ltr]=?,
+    ~direction: [@bs.string] [ | [@bs.as "inherit"] `inherit_ | `ltr | `rtl]=?,
     ~display: [@bs.string] [ | `none | `flex]=?,
     ~_end: size=?,
     ~flex: float=?,
@@ -677,7 +677,7 @@ external imageStyle:
     // ~borderTopWidth: float=?,
     // ~borderWidth: float=?,
     ~bottom: size=?,
-    ~direction: [@bs.string] [ | [@bs.as "inherit"] `inherit_ | `ltr | `ltr]=?,
+    ~direction: [@bs.string] [ | [@bs.as "inherit"] `inherit_ | `ltr | `rtl]=?,
     ~display: [@bs.string] [ | `none | `flex]=?,
     ~_end: size=?,
     ~flex: float=?,
