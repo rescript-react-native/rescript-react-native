@@ -26,7 +26,7 @@ type touchResponderHandlers = {
   onResponderReject: option(RNEvent.NativeEvent.t => unit),
   onResponderRelease: option(RNEvent.NativeEvent.t => unit),
   onResponderTerminate: option(RNEvent.NativeEvent.t => unit),
-  onResponderTerminationRequest: option(RNEvent.NativeEvent.t => unit),
+  onResponderTerminationRequest: option(RNEvent.NativeEvent.t => bool),
   onStartShouldSetResponder: option(RNEvent.NativeEvent.t => bool),
   onStartShouldSetResponderCapture: option(RNEvent.NativeEvent.t => bool),
 };
