@@ -1224,8 +1224,8 @@ Accepts a `Color.t` (`string`).
 
 ⚠️ _Use only as an escape hatch. Don't overuse these functions._
 
-In case you want to something unsupported by this binding for a specific
-platform, you can use `unsafeAddStyle` & `unsafeStyle`.
+In case you want to use something unsupported by this binding, you can use
+`unsafeAddStyle` & `unsafeStyle`.
 
 For example, if you want to have use `position: fixed` on the web, you can do
 the following
