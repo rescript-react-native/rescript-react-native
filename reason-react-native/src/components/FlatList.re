@@ -1,3 +1,7 @@
+// VirtualizedList props data, getItem, getItemCount and getItemLayout
+// are not supported on FlatList
+// FlatList has its own data prop, specified as array(item)
+
 include VirtualizedListElement;
 
 type separatorComponentProps('item) = {
