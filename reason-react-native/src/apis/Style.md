@@ -9,17 +9,18 @@ style functions that prepare required object for React Native. The style names
 and values usually match how CSS works on the web, except names are written
 using camel casing, e.g `backgroundColor` rather than `background-color`.
 
-The `style` prop accept what the style functions return. That's the simplest way
-to pass styles. You can also pass an array or list of styles - the last style in
-the array has precedence, so you can use this to mix & inherit styles.
+The `style` prop accepts values returned by the `style()` constructor. That's
+the simplest way to pass styles. You can also pass an array or list of styles -
+the last style in the array has precedence, so you can use this to mix & inherit
+styles.
 
 ⚠️ _Note that when a component grows in complexity, it is often cleaner to use
 [`StyleSheet.create`](/bs-react-native/en/docs/apis/StyleSheet/) to define
 several styles in one place_.
 
-We have made different styles function because React Native have various
-components that accept different styles properties. For example `View` doesn't
-accept `color` (only `Text` does).
+We have made different style constructors because React Native have various
+components that accept different styles props. For example `View` doesn't accept
+`color` (only `Text` does).
 
 ## Table of Content
 
@@ -46,7 +47,7 @@ accept `color` (only `Text` does).
 
 ## Style Example
 
-Since an example worth a thousand words...
+Since an example is worth a thousand words...
 
 ```reason
 open ReactNative;
@@ -125,7 +126,7 @@ or in radians (`rad` function):
 
 ### `Style.style`
 
-For convenience, this function allow you to prepare a style object with all
+For convenience, this function allows you to prepare a style object with all
 styles available in React Native. The nice side of this is that you can use this
 function & not think about what component is going to use it. On the other hand,
 this function can trigger React Native error screen (eg: if you pass `color` to
@@ -182,7 +183,7 @@ This function accept all React Native following styles
 
 Accept one of the following values:
 
-- `` `flexStart ``
+- `` `flexStart `` (default)
 - `` `flexEnd ``
 - `` `center ``
 - `` `stretch ``
@@ -202,10 +203,8 @@ Accept one of the following values:
 - `` `flexStart ``
 - `` `flexEnd ``
 - `` `center ``
-- `` `stretch ``
+- `` `stretch `` (default)
 - `` `baseline ``
-
-Default ``stretch`.
 
 Aligns children in the cross direction. For example, if children are flowing
 vertically, `alignItems` controls how they align horizontally.
@@ -217,7 +216,7 @@ vertically, `alignItems` controls how they align horizontally.
 
 Accepts one of the following values:
 
-- `` `auto ``
+- `` `auto `` (default)
 - `` `flexStart ``
 - `` `flexEnd ``
 - `` `center ``
@@ -225,7 +224,7 @@ Accepts one of the following values:
 - `` `baseline ``
 
 Controls how a child aligns in the cross direction, overriding the `alignItems`
-of the parent. It works like `align-self` in CSS (default: auto).
+of the parent.
 
 - [Web reference](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self)
 - [Yoga reference](https://yogalayout.com/docs/align-items/)
@@ -262,7 +261,7 @@ Number of logical pixels to offset the bottom edge of this component.
 
 Accepts one of the following values:
 
-- `` `inherit_ ``
+- `` `inherit_ `` (default)
 - `` `ltr ``
 - `` `rtl ``
 
@@ -281,11 +280,11 @@ Only for
 
 Accepts one of the following values:
 
+- `` `flex `` (default)
 - `` `none ``
-- `` `flex ``
 
 Sets the display type of this component. It works similarly to `display` in CSS,
-but only support `flex` and `none`. `flex` is the default.
+but only support `flex` and `none`.
 
 - [Web reference](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
 
@@ -335,12 +334,12 @@ Accepts one of the following values:
 
 - `` `row ``
 - `` `rowReverse ``
-- `` `column ``
+- `` `column `` (default)
 - `` `columnReverse ``
 
 `flexDirection` controls which directions children of a container go. `row` goes
 left to right, `column` goes top to bottom, and you may be able to guess what
-the other two do. It works like `flex-direction` in CSS.
+the other two do.
 
 - [Web reference](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
 - [Yoga reference](https://yogalayout.com/docs/flex-direction)
@@ -363,11 +362,11 @@ Accepts a `float`.
 
 Accepts one of the following values:
 
-- `` `wrap ``
+- `` `wrap `` (default)
 - `` `nowrap ``
 
 `flexWrap` controls whether children can wrap around after they hit the end of a
-flex container. It works like `flex-wrap` in CSS (default: nowrap).
+flex container.
 
 - [Web reference](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap)
 - [Yoga reference](https://yogalayout.com/docs/flex-wrap)
@@ -385,7 +384,7 @@ sets the height of this component.
 
 Accepts one of the following values:
 
-- `` `flexStart ``
+- `` `flexStart `` (default)
 - `` `flexEnd ``
 - `` `center ``
 - `` `spaceAround ``
@@ -393,8 +392,7 @@ Accepts one of the following values:
 - `` `spaceEvenly ``
 
 `justifyContent` aligns children in the main direction. For example, if children
-are flowing vertically, `justifyContent` controls how they align vertically. It
-works like `justify-content` in CSS (default: flex-start).
+are flowing vertically, `justifyContent` controls how they align vertically.
 
 - [Web reference](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
 - [Yoga reference](https://yogalayout.com/docs/justify-content)
@@ -522,12 +520,13 @@ Minimum width for this component, in logical pixels.
 
 Accepts one of the following values:
 
-- `` `visible ``
+- `` `visible `` (default)
 - `` `hidden ``
+- `` `scroll ``
 
 `overflow` controls how children are measured and displayed. `` `hidden ``
-causes views to be clipped. `` `visible `` only works on iOS. On Android, all
-views will clip their children.
+causes views to be clipped while `` `scroll `` causes views to be measured
+independently of their parents main axis.
 
 - [Web reference](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow)
 
@@ -610,7 +609,7 @@ Setting `paddingVertical` is like setting both of `paddingTop` and
 Accepts one of the following values:
 
 - `` `absolute ``
-- `` `relative ``
+- `` `relative `` (default)
 
 `position` in React Native is similar to regular CSS, but everything is set to
 `relative` by default, so `absolute` positioning is always just relative to the
@@ -821,7 +820,7 @@ Style.(style(
 ))
 ```
 
-If you need something unsupported by your platform, you can use
+If you need something unsupported by this binding, you can use
 `unsafeTransform`.
 
 ```reason
@@ -962,7 +961,7 @@ When direction is `rtl`, `borderStartWidth` is equivalent to `borderRightWidth`.
 
 Accepts one of the following values:
 
-- `` `solid ``
+- `` `solid `` (default)
 - `` `dotted ``
 
 - [Web reference](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style)
@@ -1058,7 +1057,7 @@ Accepts a `float`.
 
 Accepts one of the following values:
 
-- `` `normal ``
+- `` `normal `` (default)
 - `` `italic ``
 
 - [Web reference](https://developer.mozilla.org/en-US/docs/Web/CSS/font-style)
@@ -1073,7 +1072,7 @@ Accepts an array of `FontVariant.t`.
 
 Accepts one of the following values:
 
-- `` `normal ``
+- `` `normal `` (default)
 - `` `bold ``
 - `` `_100 ``
 - `` `_200 ``
@@ -1109,7 +1108,7 @@ Only accepts logical pixels.
 
 Accepts one of the following values:
 
-- `` `auto ``
+- `` `auto `` (default)
 - `` `left ``
 - `` `right ``
 - `` `center ``
@@ -1121,7 +1120,7 @@ Accepts one of the following values:
 
 Accepts one of the following values:
 
-- `` `auto ``
+- `` `auto `` (default)
 - `` `top ``
 - `` `bottom ``
 - `` `center ``
@@ -1136,7 +1135,7 @@ Accepts a `Color.t` (`string`).
 
 Accepts one of the following values:
 
-- `` `none ``
+- `` `none `` (default)
 - `` `underline ``
 - `` `lineThrough ``
 - `` `underlineLineThrough ``
@@ -1182,7 +1181,7 @@ You can see it as CSS `text-shadow` blur radius.
 
 Accepts one of the following values:
 
-- `` `none ``
+- `` `none `` (default)
 - `` `uppercase ``
 - `` `lowercase ``
 - `` `capitalize ``
@@ -1193,7 +1192,7 @@ Accepts one of the following values:
 
 Accepts one of the following values:
 
-- `` `auto ``
+- `` `auto `` (default)
 - `` `ltr ``
 - `` `rtl ``
 
@@ -1223,10 +1222,10 @@ Accepts a `Color.t` (`string`).
 
 ### Unsafe Style Props
 
-⚠️ _Use only as an escape hatch. Don't overuse this functions._
+⚠️ _Use only as an escape hatch. Don't overuse these functions._
 
-In case you are using something unsupported by a specific platform, you can use
-`unsafeAddStyle` & `unsafeStyle`.
+In case you want to something unsupported by this binding for a specific
+platform, you can use `unsafeAddStyle` & `unsafeStyle`.
 
 For example, if you want to have use `position: fixed` on the web, you can do
 the following
