@@ -97,12 +97,12 @@ let make = (~isSomething) => {
 
 ### `size`
 
-`size` is required in various style props, expressed as logical pixels (`pt`
-function), percentage (`pct` function) & also `auto` (inline string, edge case
-for `margin`).
+`size` is required in various style props, to be specified as logical pixels
+(`pt` function), percentage (`pct` function) & also `auto` (inline string, edge
+case for `margin`).
 
-As soon as `Style` module is open, you can make `size` in various way as you can
-see in these random examples
+As soon as `Style` module is open, you can make `size` in various ways as you
+can see in these random examples
 
 - `~height=10.5->pt` (= `~height=pt(10.5)`)
 - `~width=55.->pct` (= `~width=pct(55.)`)
