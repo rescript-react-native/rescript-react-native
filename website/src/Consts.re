@@ -145,6 +145,7 @@ let sections = [
       ("DatePickerAndroid", api ++ "DatePickerAndroid/"),
       ("Dimensions", api ++ "Dimensions/"),
       ("Easing", api ++ "Easing/"),
+      ("Event", api ++ "Event/"),
       ("Geolocation", api ++ "Geolocation/"),
       ("ImageEditor", api ++ "ImageEditor/"),
       ("ImagePickerIOS", api ++ "ImagePickerIOS/"),
