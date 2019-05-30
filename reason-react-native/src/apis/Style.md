@@ -233,16 +233,16 @@ of the parent.
 
 Accepts a `float`.
 
-Aspect ratio control the size of the undefined dimension of a node. _Aspect
+Aspect ratio controls the size of the undefined dimension of a node. _Aspect
 ratio is a non-standard property only available in react native and not CSS._
 
-- On a node with a set width/height aspect ratio control the size of the unset
+- On a node with a set width/height, aspect ratio controls the size of the unset
   dimension
-- On a node with a set flex basis aspect ratio controls the size of the node in
+- On a node with a set flex basis, aspect ratio controls the size of the node in
   the cross axis if unset
-- On a node with a measure function aspect ratio works as though the measure
+- On a node with a measure function, aspect ratio works as though the measure
   function measures the flex basis
-- On a node with flex grow/shrink aspect ratio controls the size of the node in
+- On a node with flex grow/shrink, aspect ratio controls the size of the node in
   the cross axis if unset
 - Aspect ratio takes min/max dimensions into account
 
@@ -284,7 +284,7 @@ Accepts one of the following values:
 - `` `none ``
 
 Sets the display type of this component. It works similarly to `display` in CSS,
-but only support `flex` and `none`.
+but only supports `flex` and `none`.
 
 - [Web reference](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
 
