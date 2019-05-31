@@ -1,7 +1,8 @@
 open Belt;
+open ReactNative;
+open ReactMultiversal;
 
 type location = {. "pathname": string};
-open ReactNative;
 
 [@react.component]
 let make =
@@ -14,16 +15,26 @@ let make =
       <HeaderLarge currentLocation />
       {pageData
        ->Option.map(pageData =>
-           <Container
-             style=Style.(style(~flexDirection=`row, ~height=100.->pct, ()))>
-             <BsReactHelmet>
-               <title>
-                 {("BsReactNative " ++ pageData.title)->React.string}
-               </title>
-             </BsReactHelmet>
-             <Sidebar modulesIndex={pageData.modulesIndex} />
-             <PageContent pageData />
-           </Container>
+           <>
+             <Container
+               maxWidth={1000.->Style.pt}
+               style=Style.(
+                 style(
+                   ~flexDirection=`row,
+                   ~flexWrap=`wrap,
+                   ~height=100.->pct,
+                   (),
+                 )
+               )>
+               <BsReactHelmet>
+                 <title>
+                   {("BsReactNative " ++ pageData.title)->React.string}
+                 </title>
+               </BsReactHelmet>
+               <PageContent pageData />
+               <Sidebar modulesIndex={pageData.modulesIndex} />
+             </Container>
+           </>
          )
        ->Option.getWithDefault(<Text> "Error :'("->React.string </Text>)}
       <HeaderLarge currentLocation />

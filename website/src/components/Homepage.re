@@ -1,4 +1,5 @@
 open ReactNative;
+open ReactMultiversal;
 
 let styles =
   StyleSheet.create(
@@ -31,7 +32,7 @@ let make = () =>
         <Text
           style=Style.(
             style(
-              ~fontSize=52.,
+              ~fontSize=48.,
               ~fontWeight=`_700,
               ~color=Consts.Colors.light,
               (),
@@ -53,6 +54,7 @@ let make = () =>
             |])
           )>
           <SVGReact width="150%" height="150%" fill="rgba(200,200,200, 0.2)" />
+          <Spacer size=L />
           <SVGReasonOutline
             width="150%"
             height="150%"
@@ -72,6 +74,7 @@ let make = () =>
           <Text style=styles##baseline>
             "All your React Native knowledge, codified"->React.string
           </Text>
+          <Spacer size=L />
           <Text style=styles##baseline>
             "All the safeness of Reason at your disposal "->React.string
           </Text>

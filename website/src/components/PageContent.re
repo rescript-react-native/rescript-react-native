@@ -1,5 +1,6 @@
 open Belt;
 open ReactNative;
+open ReactMultiversal;
 
 // ⚠️ if you update this, also update PrepareMdToJson if needed
 type pageData = {
@@ -15,7 +16,7 @@ type pageData = {
 let styles =
   StyleSheet.create(
     Style.{
-      "container": style(~flex=1., ()),
+      "container": style(~flex=1., ~flexBasis=500.->pt, ()),
       "title":
         style(
           ~flexDirection=`row,
@@ -25,13 +26,14 @@ let styles =
         ),
       "titleText":
         style(
-          ~fontSize=52.,
+          ~fontSize=48.,
           ~fontWeight=`_700,
           ~color=Consts.Colors.darkless,
           (),
         ),
       "editLink":
         style(
+          ~alignSelf=`flexEnd,
           ~borderWidth=1.,
           ~borderStyle=`solid,
           ~borderColor=Consts.Colors.accent,
@@ -61,7 +63,6 @@ let styles =
         ),
       "wipText": style(~fontSize=16., ~lineHeight=16. *. 1.5, ()),
       "wipEditLink": style(~color=Consts.Colors.accent, ()),
-      "body": style(~display=`flex, ()),
     },
   );
 
@@ -93,29 +94,26 @@ let make = (~pageData) => {
     ++ ".md";
   <SpacedView style=styles##container vertical=SpacedView.L>
     <View style=styles##title>
-      <View>
-        <Text style=styles##titleText> pageData.title->React.string </Text>
-        {officialDocHref
-         ->Option.map(officialDocHref =>
-             <TextLink style=styles##officialDocLink href=officialDocHref>
-               <SVGExternalLink
-                 width={14.->ReactFromSvg.Size.pt}
-                 height={14.->ReactFromSvg.Size.pt}
-                 fill=Consts.Colors.accent
-               />
-               {| Official documentation |}->React.string
-             </TextLink>
-           )
-         ->Option.getWithDefault(React.null)}
-      </View>
-      <SpacedView
-        vertical=SpacedView.XS horizontal=SpacedView.XS style=styles##editLink>
-        <TextLink style=styles##editLinkText href=editHref>
-          {|Edit|}->React.string
-        </TextLink>
-      </SpacedView>
+      <Text style=styles##titleText> pageData.title->React.string </Text>
+      {officialDocHref
+       ->Option.map(officialDocHref =>
+           <TextLink style=styles##officialDocLink href=officialDocHref>
+             <SVGExternalLink
+               width={14.->ReactFromSvg.Size.pt}
+               height={14.->ReactFromSvg.Size.pt}
+               fill=Consts.Colors.accent
+             />
+             {| Official documentation |}->React.string
+           </TextLink>
+         )
+       ->Option.getWithDefault(React.null)}
     </View>
-    <Spacer size=Spacer.XL />
+    <Spacer />
+    <TextLink href=editHref style=styles##editLink>
+      <SpacedView vertical=SpacedView.XS horizontal=SpacedView.XS>
+        <Text style=styles##editLinkText> {|Edit|}->React.string </Text>
+      </SpacedView>
+    </TextLink>
     {pageData.wip
      ->Option.flatMap(wip =>
          if (wip) {
@@ -140,12 +138,17 @@ If you want you can help us to improve the situation by |}
          }
        )
      ->Option.getWithDefault(React.null)}
-    <Text style=styles##body>
-      <div
-        className="htmlContent"
-        style={ReactDOMRe.Style.make(~flex="1", ~whiteSpace="normal", ())}
-        dangerouslySetInnerHTML={"__html": pageData.body}
-      />
-    </Text>
+    <div
+      className="htmlContent"
+      style={ReactDOMRe.Style.make(
+        ~display="flex",
+        ~flexDirection="column",
+        ~flexGrow="1",
+        ~flexShrink="1",
+        ~whiteSpace="normal",
+        (),
+      )}
+      dangerouslySetInnerHTML={"__html": pageData.body}
+    />
   </SpacedView>;
 };
