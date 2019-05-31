@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@moox/bs-react-helmet": "^2.0.0",
-    "bs-platform": "^5.0.1",
+    "bs-platform": "^5.0.4",
     "cpy-cli": "^2.0.0",
     "front-matter": "^3.0.1",
     "glob": "^7.1.3",
