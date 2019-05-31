@@ -15,8 +15,8 @@ the last style in the array has precedence, so you can use this to mix & inherit
 styles.
 
 ⚠️ _Note that when a component grows in complexity, it is often cleaner to use
-[`StyleSheet.create`](/bs-react-native/en/docs/apis/StyleSheet/) to define
-several styles in one place_.
+[`StyleSheet.create`](../StyleSheet/#create) to define several styles in one
+place_.
 
 We have made different style constructors because React Native have various
 components that accept different styles props. For example `View` doesn't accept
