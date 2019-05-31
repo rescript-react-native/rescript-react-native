@@ -12,6 +12,7 @@
     "prettier": "^1.16.4"
   },
   "scripts": {
+    "prepare": "cd website && yarn prepare",
     "prerelease": "yarn prepare",
     "release": "lerna publish",
     "format": "yarn format:most && yarn format:re",

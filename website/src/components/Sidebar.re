@@ -1,5 +1,6 @@
 open Belt;
 open ReactNative;
+open ReactMultiversal;
 
 let styles =
   StyleSheet.create(

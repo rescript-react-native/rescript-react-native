@@ -1,4 +1,5 @@
 open ReactNative;
+open ReactMultiversal;
 
 let styles =
   StyleSheet.create(
@@ -24,16 +25,16 @@ let styles =
           (),
         ),
       "barWrapper": style(~backgroundColor=Consts.Colors.dark, ()),
-      "logo":
+      "logoLink":
         style(
-          ~flex=1.,
-          ~flexDirection=`row,
+          ~flexGrow=1.,
+          ~flexShrink=1.,
           ~position=`relative,
           ~zIndex=1,
-          ~paddingHorizontal=pt(10.),
-          ~alignItems=`center,
           (),
         ),
+      "logo":
+        style(~flexGrow=1., ~flexDirection=`row, ~alignItems=`center, ()),
       "logoText":
         style(
           ~fontSize=18.,
@@ -43,15 +44,16 @@ let styles =
         ),
       "links":
         style(
-          ~flex=1.,
+          ~flexGrow=1.,
+          ~flexShrink=1.,
           ~flexDirection=`row,
+          ~flexWrap=`wrap,
           ~justifyContent=`center,
           ~alignItems=`center,
           (),
         ),
       "link":
         style(
-          ~padding=pt(10.),
           ~fontSize=18.,
           ~lineHeight=18. *. 1.7,
           ~fontWeight=`_300,
@@ -65,7 +67,14 @@ let styles =
           (),
         ),
       "icons":
-        style(~flex=1., ~flexDirection=`row, ~justifyContent=`flexEnd, ()),
+        style(
+          ~flexGrow=1.,
+          ~flexShrink=1.,
+          ~flexDirection=`row,
+          ~flexWrap=`wrap,
+          ~justifyContent=`flexEnd,
+          (),
+        ),
       "icon":
         style(
           ~display=`flex,
@@ -83,23 +92,28 @@ let styles =
 [@react.component]
 let make = (~currentLocation) => {
   <View style=styles##menu>
-    <Container style=styles##bar wrapperStyle=styles##barWrapper>
-      <ViewLink style=styles##logo href={Consts.baseUrl ++ "/"}>
-        <SVGBsReactNative
-          width={36.->ReactFromSvg.Size.pt}
-          height={36.->ReactFromSvg.Size.pt}
-          fill=Consts.Colors.lightest
-        />
-        <Text style=styles##logoText>
-          {("   " ++ Consts.title)->ReasonReact.string}
-        </Text>
+    <Container
+      maxWidth={1000.->Style.pt}
+      style=styles##bar
+      wrapperStyle=styles##barWrapper>
+      <ViewLink href={Consts.baseUrl ++ "/"} style=styles##logoLink>
+        <SpacedView style=styles##logo vertical=XS>
+          <SVGBsReactNative
+            width={36.->ReactFromSvg.Size.pt}
+            height={36.->ReactFromSvg.Size.pt}
+            fill=Consts.Colors.lightest
+          />
+          <Text style=styles##logoText>
+            {("   " ++ Consts.title)->ReasonReact.string}
+          </Text>
+        </SpacedView>
       </ViewLink>
-      <View style=styles##links>
+      <SpacedView style=styles##links vertical=XS>
         {Consts.menuLinks
          ->Belt.Array.map(item => {
              let isActive =
                item.isActive(currentLocation##pathname, item.link);
-             <TextLink
+             <ViewLink
                key={item.link}
                href={item.link}
                style=Style.(
@@ -108,12 +122,14 @@ let make = (~currentLocation) => {
                    isActive ? Some(styles##linkActive) : None,
                  |])
                )>
-               item.text->React.string
-             </TextLink>;
+               <SpacedView vertical=None horizontal=S>
+                 <Text> item.text->React.string </Text>
+               </SpacedView>
+             </ViewLink>;
            })
          ->React.array}
-      </View>
-      <View style=styles##icons>
+      </SpacedView>
+      <SpacedView style=styles##icons vertical=XS>
         {Consts.socialLinks
          ->Belt.Array.map(item =>
              <ViewLink
@@ -125,11 +141,14 @@ let make = (~currentLocation) => {
                   ~iconColor=Consts.Colors.light,
                   ~iconSize=22.->Svg.Size.pt,
                 )}
-               <Text style=styles##link> item.name->React.string </Text>
+               <WindowSizeFilter.NotSmall>
+                 <Spacer size=XS />
+                 <Text style=styles##link> item.name->React.string </Text>
+               </WindowSizeFilter.NotSmall>
              </ViewLink>
            )
          ->ReasonReact.array}
-      </View>
+      </SpacedView>
     </Container>
   </View>;
 };

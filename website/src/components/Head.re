@@ -42,8 +42,39 @@ let make = () =>
       rel="stylesheet"
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"
     />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <style>
+      {j|@-ms-viewport { width: device-width } @viewport { width: device-width }|j}
+      ->React.string
+    </style>
     <style>
       {|
+html {
+  width: 100%;
+  height: 100%;
+  overflow-x:hidden;
+  background: #fff;
+}
+body {
+  min-width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+@supports(padding: max(0px)) {
+  body {
+    /* https://webkit.org/blog/7929/designing-websites-for-iphone-x/ */
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    /* padding-left: max(12px, env(safe-area-inset-left)); */
+    /* padding-right: max(12px, env(safe-area-inset-right)); */
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
 .hljs {
 font-size: 14px;
 padding: 20px;
@@ -78,6 +109,12 @@ color: #e45649
 }
 
 .stick { position: -webkit-sticky; position: sticky; }
+
+.htmlContent {
+  font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
+  font-size: 16px;
+  line-height: 25px;
+}
 
 |}
       ->React.string
