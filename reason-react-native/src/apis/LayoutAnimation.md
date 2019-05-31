@@ -28,7 +28,7 @@ switch (UIManager.setLayoutAnimationEnabledExperimental) {
   type `layoutAnimationConfig`.
 
 ```reason
-configureNext(layoutAnimationConfig)
+configureNext: layoutAnimationConfig => unit
 ```
 
 - `configureNextWithEndCallback` is a convenience function, which allows
@@ -36,7 +36,7 @@ configureNext(layoutAnimationConfig)
   the animation, in addition to `layoutAnimationConfig`.
 
 ```reason
-configureNextWithEndCallback(layoutAnimationConfig, callback)
+configureNextWithEndCallback: (layoutAnimationConfig, unit => unit) => unit
 ```
 
 ## Types
@@ -52,7 +52,7 @@ layoutAnimationConfig:
     ~update: animationConfig=?,
     ~delete: animationConfig=?,
     unit
-  )
+  ) => layoutAnimationConfig
 ```
 
 or by means of the helper function `create`
@@ -70,7 +70,7 @@ create:
               | `keyboard
             ],
     ~property: [@bs.string] [ | `opacity | `scaleX | `scaleY | `scaleXY]
-  )
+  ) => layoutAnimationConfig
 ```
 
 `animationConfig` can in turn be created with the `animationConfig` constructor
@@ -93,7 +93,7 @@ animationConfig:
               =?,
     ~property: [@bs.string] [ | `opacity | `scaleX | `scaleY | `scaleXY]=?,
     unit
-  )
+  ) => animationConfig
 ```
 
 ## Presets
@@ -123,7 +123,7 @@ below, before state is returned.
 ```reason
 open ReactNative;
 
-let windowWidth = float_of_int(Dimensions.get(`window)##width);
+let windowWidth = Dimensions.get(`window)##width;
 
 type state = {register: bool};
 
