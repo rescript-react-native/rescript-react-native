@@ -5,47 +5,52 @@ title: CameraRoll
 
 ## Methods
 
-- `saveToCameraRoll` allows saving photos and videos to the Camera Roll or Photo
-  Gallery. File to be saved is specified as a tag which can be
+### `saveToCameraRoll`
 
-  - on Android, a local image or video URI, such as "file:///sdcard/img.png"
-  - on iOS, a local video URI or any image URI (local, remote asset-library, or
-    base64 data URIs)
+Allows saving photos and videos to the Camera Roll or Photo Gallery. File to be
+saved is specified as a tag (of type `string`) which can be
+
+- on Android, a local image or video URI, such as "file:///sdcard/img.png"
+- on iOS, a local video URI or any image URI (local, remote asset-library, or
+  base64 data URIs)
 
 Media type (photo or video) will be automatically inferred; any file will be
 inferred to be a photo, unless the file extension is `mov` or `mp4`, then it
 will be inferred to be a video.
 
+The function will return the URI for the saved file as a string wrapped in a
+Promise.
+
 ```reason
-saveToCameraRoll(tag)
+saveToCameraRoll: string => Js.Promise.t(string)
 ```
+
+### `saveToCameraRollWithType`
+
+Allows saving photos and videos to the Camera Roll, where the tag will be
+specified as above, overriding the automatically determined type by specifying
+one of the polymorphic variants `` `photo `` or `` `video ``.
 
 The function will return the URI for the saved file as a string wrapped in a
-Promise, `Js.Promise.t(string)`.
-
-- `saveToCameraRollWithType` allows saving photos and videos to the Camera Roll,
-  where the tag will be specified as above, overriding the automatically
-  determined type.
+Promise.
 
 ```reason
-saveToCameraRollWithType(tag, _type)
+saveToCameraRollWithType: (string, [ | `photo | `video]) => Js.Promise.t(string)
 ```
 
-where `_type` can be `` `photo `` or `` `video ``.
+### `getPhotos`
 
-The function will return the URI for the saved file as a string wrapped in a
-Promise, `Js.Promise.t(string)`.
+Allows searching for photos or videos matching given parameters.
 
-- `getPhotos` takes as argument `getPhotosParams`
-
-```reason
-getPhotos(getPhotosParams)
-```
-
-The function will return a `photoIdentifiersPage` object wrapped in a Promise,
-that is `Js.Promise.t(photoIdentifiersPage)`. Array of `photoIdentifier` will
-contain details of photos or videos matching parameters provided in the
+Takes as argument `getPhotosParams` and returns a `photoIdentifiersPage` object
+wrapped in a Promise. `edges` key of the `photoIdentifiersPage` object would be
+of type `array(photoIdentifier)`, where each `photoIdentifier` object would
+contain details of each photo or video matching parameters provided in the
 `getPhotosParam` object.
+
+```reason
+getPhotos: getPhotosParams => Js.Promise.t(photoIdentifiersPage)
+```
 
 ## Types
 
@@ -76,7 +81,7 @@ getPhotosParams:
     ~assetType: [@bs.string] [ | `All | `Videos | `Photos]=?,
     ~mimeTypes: array(string)=?,
     unit
-  )
+  ) => getPhotosParams
 ```
 
 - `photoIdentifiersPage`
@@ -131,8 +136,8 @@ type photoIdentifier = {
 ```reason
 open ReactNative;
 
-let windowWidth = float_of_int(Dimensions.get(`window)##width);
-let windowHeight = float_of_int(Dimensions.get(`window)##height);
+let windowWidth = Dimensions.get(`window)##width;
+let windowHeight = Dimensions.get(`window)##height;
 
 type state = {
   tag: string,
