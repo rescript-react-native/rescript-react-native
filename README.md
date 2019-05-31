@@ -38,6 +38,8 @@ If you use this bindings from the git repo, be sure to use
   "js-post-build": {
     "cmd": "./node_modules/bs-react-native-monorepo/git-monorepo-usage-trick"
   }
+  // if you this tricky script doesn't work for you correctly, try
+  // "cmd": "./node_modules/bs-react-native-monorepo/git-monorepo-usage-trick-node"
 }
 ```
 
