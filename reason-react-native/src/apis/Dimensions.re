@@ -1,7 +1,7 @@
 type t = {
   .
-  "width": int,
-  "height": int,
+  "width": float,
+  "height": float,
   "scale": float,
   "fontScale": float,
 };
