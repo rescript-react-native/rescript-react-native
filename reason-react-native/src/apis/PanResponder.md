@@ -14,7 +14,7 @@ handlers are extended to also depend upon the `gestureState`.
 ## Types
 
 ### `Event.pressEvent`
-see [`Event`](../Event/#pressEvent)
+see [`Event`](../Event/#pressevent)
 
 ### `gestureState`
 `gestureState` contains additional information on the state of the \_Gesture
@@ -66,7 +66,7 @@ config:
                                          =?,
     ~onShouldBlockNativeResponder: (Event.pressEvent, gestureState) => bool=?,
     unit
-  )
+  ) => config
 ```
 
 ### `panHandlers`
@@ -89,16 +89,14 @@ where `'a` is either `bool` or `unit`
 `create` allows creation of a `PanResponder` given a `config`
 
 ```reason
-create(config)
+create: config => t
 ```
 
 ### `panHandlers`
-`panHandlers` is a getter method to access `panHandlers` within a
-
-`PanResponder`
+`panHandlers` is a getter method to access `panHandlers` within a `PanResponder`
 
 ```reason
-panHandlers(t)
+panHandlers: t => panHandlers
 ```
 
 ### `onMoveShouldSetResponder`
@@ -106,7 +104,7 @@ panHandlers(t)
 `onMoveShouldSetResponder` callback of a `panHandlers` object
 
 ```reason
-onMoveShouldSetResponder(panHandlers)
+onMoveShouldSetResponder: panHandlers => callback(bool)
 ```
 
 ### `onMoveShouldSetResponderCapture`
@@ -114,7 +112,7 @@ onMoveShouldSetResponder(panHandlers)
 `onMoveShouldSetResponderCapture` callback of a `panHandlers` object
 
 ```reason
-onMoveShouldSetResponderCapture(panHandlers)
+onMoveShouldSetResponderCapture: panHandlers => callback(bool)
 ```
 
 ### `onStartShouldSetResponder`
@@ -122,7 +120,7 @@ onMoveShouldSetResponderCapture(panHandlers)
 `onStartShouldSetResponder` callback of a `panHandlers` object
 
 ```reason
-onStartShouldSetResponder(panHandlers)
+onStartShouldSetResponder: panHandlers => callback(bool)
 ```
 
 ### `onStartShouldSetResponderCapture`
@@ -130,7 +128,7 @@ onStartShouldSetResponder(panHandlers)
 `onStartShouldSetResponderCapture` callback of a `panHandlers` object
 
 ```reason
-onStartShouldSetResponderCapture(panHandlers)
+onStartShouldSetResponderCapture: panHandlers => callback(bool)
 ```
 
 ### `onResponderReject`
@@ -138,7 +136,7 @@ onStartShouldSetResponderCapture(panHandlers)
 callback of a `panHandlers` object
 
 ```reason
-onResponderReject(panHandlers)
+onResponderReject: panHandlers => callback(unit)
 ```
 
 ### `onResponderGrant`
@@ -146,7 +144,7 @@ onResponderReject(panHandlers)
 callback of a `panHandlers` object
 
 ```reason
-onResponderGrant(panHandlers)
+onResponderGrant: panHandlers => callback(unit)
 ```
 
 ### `onResponderRelease`
@@ -154,7 +152,7 @@ onResponderGrant(panHandlers)
 callback of a `panHandlers` object
 
 ```reason
-onResponderRelease(panHandlers)
+onResponderRelease: panHandlers => callback(unit)
 ```
 
 ### `onResponderMove`
@@ -162,7 +160,7 @@ onResponderRelease(panHandlers)
 of a `panHandlers` object
 
 ```reason
-onResponderMove(panHandlers)
+onResponderMove: panHandlers => callback(unit)
 ```
 
 ### `onResponderTerminate`
@@ -170,7 +168,7 @@ onResponderMove(panHandlers)
 callback of a `panHandlers` object
 
 ```reason
-onResponderTerminate(panHandlers)
+onResponderTerminate: panHandlers => callback(unit)
 ```
 
 ### `onResponderStart`
@@ -178,7 +176,7 @@ onResponderTerminate(panHandlers)
 callback of a `panHandlers` object
 
 ```reason
-onResponderStart(panHandlers)
+onResponderStart: panHandlers => callback(unit)
 ```
 
 ### `onResponderTerminationRequest`
@@ -186,7 +184,7 @@ onResponderStart(panHandlers)
 `onResponderTerminationRequest` callback of a `panHandlers` object
 
 ```reason
-onResponderTerminationRequest(panHandlers)
+onResponderTerminationRequest: panHandlers => callback(bool)
 ```
 
 ### `onResponderEnd`
@@ -194,7 +192,7 @@ onResponderTerminationRequest(panHandlers)
 a `panHandlers` object
 
 ```reason
-onResponderEnd(panHandlers)
+onResponderEnd: panHandlers => callback(unit)
 ```
 
 ## Example
@@ -236,8 +234,8 @@ Then, the custom `PanResponder` can be used as below:
 ```reason
 open ReactNative;
 
-let windowHeight = Dimensions.get(`window)##height->float_of_int;
-let windowWidth = Dimensions.get(`window)##width->float_of_int;
+let windowHeight = Dimensions.get(`window)##height;
+let windowWidth = Dimensions.get(`window)##width;
 
 let containerStyle =
   Style.(
