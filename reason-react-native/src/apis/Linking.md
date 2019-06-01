@@ -119,8 +119,8 @@ let windowWidth = Dimensions.get(`window)##width;
 let containerStyle =
   Style.(
     style(
-      ~width=windowWidth->pt,
-      ~height=windowHeight->pt,
+      ~width=windowWidth->dp,
+      ~height=windowHeight->dp,
       ~justifyContent=`center,
       ~alignItems=`center,
       (),

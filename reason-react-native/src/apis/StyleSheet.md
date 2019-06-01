@@ -11,8 +11,9 @@ code in this manner should help readability. Named styles might also help
 differentiate between your components. Finally, allowing components to refer to
 styles by ID, it also reduces the amount of data transferred over the JS bridge.
 
-There is also a [`flatten`](#flatten) method to merge multiple styles into a single style
-and several [constants](#constants) for commonly used style definitions.
+There is also a [`flatten`](#flatten) method to merge multiple styles into a
+single style and several [constants](#constants) for commonly used style
+definitions.
 
 ## Methods
 
@@ -98,7 +99,7 @@ let styles =
     StyleSheet.create({
       // style may be defined inline
       "container": style(~flex=1., ~flexDirection=`column, ()),
-      "screen": style(~width=pt(windowWidth), ()),
+      "screen": style(~width=windowWidth->dp, ()),
       // or already defined elsewhere
       "borderStyle": borderStyle,
       "overlay": StyleSheet.absoluteFill,

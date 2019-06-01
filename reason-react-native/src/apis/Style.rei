@@ -11,7 +11,12 @@ external unsafeStyle: Js.t('a) => t = "%identity";
 
 type size;
 
+[@deprecated
+  "Style.pt has been deprecated in favor of Style.dp (density-independent pixel)."
+]
 external pt: float => size = "%identity";
+
+external dp: float => size = "%identity";
 
 let pct: float => size;
 

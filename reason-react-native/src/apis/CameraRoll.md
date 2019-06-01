@@ -162,28 +162,28 @@ let styles = Style.(
       ),
     "getPhotosExample":
       style(
-        ~height=pt(0.25 *. windowHeight),
+        ~height=(0.25 *. windowHeight)->dp,
         ~justifyContent=`spaceBetween,
         (),
       ),
     "saveToCameraRollExample":
       style(
-        ~width=pt(0.8 *. windowWidth),
-        ~height=pt(0.6 *. windowHeight),
-        ~margin=pt(0.1 *. windowWidth),
+        ~width=(0.8 *. windowWidth)->dp,
+        ~height=(0.6 *. windowHeight)->dp,
+        ~margin=(0.1 *. windowWidth)->dp,
         ~justifyContent=`spaceAround,
         (),
       ),
     "image":
       style(
-        ~width=pt(0.8 *. windowWidth),
-        ~height=pt(0.56 *. windowWidth),
+        ~width=(0.8 *. windowWidth)->dp,
+        ~height=(0.56 *. windowWidth)->dp,
         (),
       ),
     "imageContainer":
       style(
-        ~width=pt(0.8 *. windowWidth),
-        ~height=pt(0.56 *. windowWidth),
+        ~width=(0.8 *. windowWidth)->dp,
+        ~height=(0.56 *. windowWidth)->dp,
         ~borderWidth=1.,
         ~justifyContent=`center,
         (),
@@ -193,20 +193,20 @@ let styles = Style.(
       style(
         ~textAlign=`center,
         ~borderRadius=8.,
-        ~padding=pt(4.),
+        ~padding=4.->dp,
         ~borderWidth=1.,
         ~backgroundColor=Color.linen,
         (),
       ),
     "thumbnail":
       style(
-        ~width=pt(0.21 *. windowHeight),
-        ~height=pt(0.15 *. windowHeight),
+        ~width=(0.21 *. windowHeight)->dp,
+        ~height=(0.15 *. windowHeight)->dp,
         (),
       ),
     "thumbnails":
       style(
-        ~height=pt(0.15 *. windowHeight),
+        ~height=(0.15 *. windowHeight)->dp,
         (),
       ),
   })

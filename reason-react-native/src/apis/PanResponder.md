@@ -14,9 +14,11 @@ handlers are extended to also depend upon the `gestureState`.
 ## Types
 
 ### `Event.pressEvent`
+
 see [`Event`](../Event/#pressevent)
 
 ### `gestureState`
+
 `gestureState` contains additional information on the state of the \_Gesture
 Responder System\_
 
@@ -37,12 +39,14 @@ type gestureState = {
 ```
 
 ### `t`
-`t` is the abstract type for a `PanResponder`, which can be created by means
-of the `create` method, given a `config` object
+
+`t` is the abstract type for a `PanResponder`, which can be created by means of
+the `create` method, given a `config` object
 
 ### `config`
-`config` is the abstract type for a custom `PanResponder` configuration; it
-can be created by means of the `config` constructor
+
+`config` is the abstract type for a custom `PanResponder` configuration; it can
+be created by means of the `config` constructor
 
 ```reason
 config:
@@ -70,10 +74,12 @@ config:
 ```
 
 ### `panHandlers`
-`panHandlers` is the abstract type for `panHandlers` of a `PanResponder`,
-which can be accessed by means of the getter method `panHandlers`
+
+`panHandlers` is the abstract type for `panHandlers` of a `PanResponder`, which
+can be accessed by means of the getter method `panHandlers`
 
 ### `callback('a)`
+
 `callback('a)` is the type of the usual callback function specified for each
 _Gesture Responder System_ handler defined as
 
@@ -86,6 +92,7 @@ where `'a` is either `bool` or `unit`
 ## Methods
 
 ### `create`
+
 `create` allows creation of a `PanResponder` given a `config`
 
 ```reason
@@ -93,6 +100,7 @@ create: config => t
 ```
 
 ### `panHandlers`
+
 `panHandlers` is a getter method to access `panHandlers` within a `PanResponder`
 
 ```reason
@@ -100,6 +108,7 @@ panHandlers: t => panHandlers
 ```
 
 ### `onMoveShouldSetResponder`
+
 `onMoveShouldSetResponder` is a getter method to access the
 `onMoveShouldSetResponder` callback of a `panHandlers` object
 
@@ -108,6 +117,7 @@ onMoveShouldSetResponder: panHandlers => callback(bool)
 ```
 
 ### `onMoveShouldSetResponderCapture`
+
 `onMoveShouldSetResponderCapture` is a getter method to access the
 `onMoveShouldSetResponderCapture` callback of a `panHandlers` object
 
@@ -116,6 +126,7 @@ onMoveShouldSetResponderCapture: panHandlers => callback(bool)
 ```
 
 ### `onStartShouldSetResponder`
+
 `onStartShouldSetResponder` is a getter method to access the
 `onStartShouldSetResponder` callback of a `panHandlers` object
 
@@ -124,6 +135,7 @@ onStartShouldSetResponder: panHandlers => callback(bool)
 ```
 
 ### `onStartShouldSetResponderCapture`
+
 `onStartShouldSetResponderCapture` is a getter method to access the
 `onStartShouldSetResponderCapture` callback of a `panHandlers` object
 
@@ -132,6 +144,7 @@ onStartShouldSetResponderCapture: panHandlers => callback(bool)
 ```
 
 ### `onResponderReject`
+
 `onResponderReject` is a getter method to access the `onResponderReject`
 callback of a `panHandlers` object
 
@@ -140,14 +153,16 @@ onResponderReject: panHandlers => callback(unit)
 ```
 
 ### `onResponderGrant`
-`onResponderGrant` is a getter method to access the `onResponderGrant`
-callback of a `panHandlers` object
+
+`onResponderGrant` is a getter method to access the `onResponderGrant` callback
+of a `panHandlers` object
 
 ```reason
 onResponderGrant: panHandlers => callback(unit)
 ```
 
 ### `onResponderRelease`
+
 `onResponderRelease` is a getter method to access the `onResponderRelease`
 callback of a `panHandlers` object
 
@@ -156,14 +171,16 @@ onResponderRelease: panHandlers => callback(unit)
 ```
 
 ### `onResponderMove`
-`onResponderMove` is a getter method to access the `onResponderMove` callback
-of a `panHandlers` object
+
+`onResponderMove` is a getter method to access the `onResponderMove` callback of
+a `panHandlers` object
 
 ```reason
 onResponderMove: panHandlers => callback(unit)
 ```
 
 ### `onResponderTerminate`
+
 `onResponderTerminate` is a getter method to access the `onResponderTerminate`
 callback of a `panHandlers` object
 
@@ -172,14 +189,16 @@ onResponderTerminate: panHandlers => callback(unit)
 ```
 
 ### `onResponderStart`
-`onResponderStart` is a getter method to access the `onResponderStart`
-callback of a `panHandlers` object
+
+`onResponderStart` is a getter method to access the `onResponderStart` callback
+of a `panHandlers` object
 
 ```reason
 onResponderStart: panHandlers => callback(unit)
 ```
 
 ### `onResponderTerminationRequest`
+
 `onResponderTerminationRequest` is a getter method to access the
 `onResponderTerminationRequest` callback of a `panHandlers` object
 
@@ -188,8 +207,9 @@ onResponderTerminationRequest: panHandlers => callback(bool)
 ```
 
 ### `onResponderEnd`
-`onResponderEnd` is a getter method to access the `onResponderEnd` callback of
-a `panHandlers` object
+
+`onResponderEnd` is a getter method to access the `onResponderEnd` callback of a
+`panHandlers` object
 
 ```reason
 onResponderEnd: panHandlers => callback(unit)
@@ -240,8 +260,8 @@ let windowWidth = Dimensions.get(`window)##width;
 let containerStyle =
   Style.(
     style(
-      ~width=windowWidth->pt,
-      ~height=windowHeight->pt,
+      ~width=windowWidth->dp,
+      ~height=windowHeight->dp,
       ~justifyContent=`center,
       ~alignItems=`center,
       (),

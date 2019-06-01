@@ -29,14 +29,9 @@ let styles =
           (),
         ),
       "welcome":
-        style(~fontSize=20., ~textAlign=`center, ~margin=pt(10.), ()),
+        style(~fontSize=20., ~textAlign=`center, ~margin=10.->dp, ()),
       "instructions":
-        style(
-          ~textAlign=`center,
-          ~color="#333333",
-          ~marginBottom=pt(5.),
-          (),
-        ),
+        style(~textAlign=`center, ~color="#333333", ~marginBottom=5.->dp, ()),
     })
   );
 

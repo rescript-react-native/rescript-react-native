@@ -18,6 +18,7 @@ external unsafeStyle: Js.t('a) => t = "%identity";
 type size = string;
 
 external pt: float => size = "%identity";
+external dp: float => size = "%identity";
 
 let pct = num => num->Js.Float.toString ++ "%";
 

@@ -103,8 +103,8 @@ let styles =
     StyleSheet.create({
       "container":
         style(
-          ~width=windowWidth->pt,
-          ~height=windowHeight->pt,
+          ~width=windowWidth->dp,
+          ~height=windowHeight->dp,
           ~flexDirection=`column,
           ~alignItems=`center,
           ~justifyContent=`center,
@@ -112,8 +112,8 @@ let styles =
         ),
       "frame":
         style(
-          ~width=displayWidth->pt,
-          ~height=displayHeight->pt,
+          ~width=displayWidth->dp,
+          ~height=displayHeight->dp,
           ~alignItems=`center,
           ~justifyContent=`center,
           ~borderWidth=StyleSheet.hairlineWidth,

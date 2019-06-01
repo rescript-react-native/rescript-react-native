@@ -16,7 +16,7 @@ type pageData = {
 let styles =
   StyleSheet.create(
     Style.{
-      "container": style(~flex=1., ~flexBasis=500.->pt, ()),
+      "container": style(~flex=1., ~flexBasis=500.->dp, ()),
       "title":
         style(
           ~flexDirection=`row,
