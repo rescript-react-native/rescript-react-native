@@ -38,7 +38,7 @@ let make =
       style=Style.(
         arrayOption([|
           Some(styles##container),
-          Some(style(~maxWidth=pt(maxWidth), ())),
+          Some(style(~maxWidth=maxWidth->dp, ())),
           s,
         |])
       )>

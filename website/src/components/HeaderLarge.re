@@ -81,8 +81,8 @@ let styles =
           ~flexDirection=`row,
           ~justifyContent=`center,
           ~alignItems=`center,
-          ~paddingHorizontal=pt(12.),
-          ~paddingVertical=pt(6.),
+          ~paddingHorizontal=12.->dp,
+          ~paddingVertical=6.->dp,
           ~fontSize=12.,
           (),
         ),
@@ -93,7 +93,7 @@ let styles =
 let make = (~currentLocation) => {
   <View style=styles##menu>
     <Container
-      maxWidth={1000.->Style.pt}
+      maxWidth={1000.->Style.dp}
       style=styles##bar
       wrapperStyle=styles##barWrapper>
       <ViewLink href={Consts.baseUrl ++ "/"} style=styles##logoLink>
@@ -139,7 +139,7 @@ let make = (~currentLocation) => {
                accessibilityLabel={item.text}>
                {item.componentFunc(
                   ~iconColor=Consts.Colors.light,
-                  ~iconSize=22.->Svg.Size.pt,
+                  ~iconSize=22.->ReactFromSvg.Size.pt,
                 )}
                <WindowSizeFilter.NotSmall>
                  <Spacer size=XS />

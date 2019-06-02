@@ -57,7 +57,7 @@ let styles =
     StyleSheet.create({
       "container":
         viewStyle(
-          ~maxHeight=600.->pt,
+          ~maxHeight=600.->dp,
           ~width=800.->pct,
           ~justifyContent=`flexStart,
           ~alignItems=`center,
@@ -67,8 +67,8 @@ let styles =
       "cornerThing":
         viewStyle(
           ~position=`absolute,
-          ~top=100.->pt,
-          ~right=(-20.)->pt,
+          ~top=100.->dp,
+          ~right=(-20.)->dp,
           ~transform=[|rotate(~rotate=4.->deg)|],
           (),
         ),
@@ -97,14 +97,15 @@ let make = (~isSomething) => {
 
 ### `size`
 
-`size` is required in various style props, to be specified as logical pixels
-(`pt` function), percentage (`pct` function) & also `auto` (inline string, edge
-case for `margin`).
+`size` is required in various style props, to be specified as
+density-independant pixels, (`dp` function - also known as logical pixels),
+percentage (`pct` function) or also `auto` (inline string, edge case for
+`margin`).
 
 As soon as `Style` module is open, you can make `size` in various ways as you
 can see in these random examples
 
-- `~height=10.5->pt` (= `~height=pt(10.5)`)
+- `~height=10.5->dp` (= `~height=dp(10.5)`)
 - `~width=55.->pct` (= `~width=pct(55.)`)
 - `~margin=auto`
 
@@ -1239,8 +1240,8 @@ If you only want to add some properties to a safe style, you can also do
 ```reason
 Style.(
   style(
-    ~left=0.->pt,
-    ~right=0.->pt,
+    ~left=0.->dp,
+    ~right=0.->dp,
     ()
   )
   ->unsafeAddStyle({"position": "fixed", "top": "5em"})

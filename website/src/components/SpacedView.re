@@ -26,25 +26,25 @@ let make =
     style=Style.(
       arrayOption([|
         switch (vertical) {
-        | XXL => Some(style(~paddingVertical=pt(space *. 4.), ()))
-        | XL => Some(style(~paddingVertical=pt(space *. 3.), ()))
-        | L => Some(style(~paddingVertical=pt(space *. 2.), ()))
-        | M => Some(style(~paddingVertical=pt(space *. 1.), ()))
-        | S => Some(style(~paddingVertical=pt(space *. 3. /. 4.), ()))
-        | XS => Some(style(~paddingVertical=pt(space *. 2. /. 4.), ()))
-        | XXS => Some(style(~paddingVertical=pt(space *. 1. /. 4.), ()))
-        | Custom(value) => Some(style(~paddingVertical=pt(value), ()))
+        | XXL => Some(style(~paddingVertical=(space *. 4.)->dp, ()))
+        | XL => Some(style(~paddingVertical=(space *. 3.)->dp, ()))
+        | L => Some(style(~paddingVertical=(space *. 2.)->dp, ()))
+        | M => Some(style(~paddingVertical=(space *. 1.)->dp, ()))
+        | S => Some(style(~paddingVertical=(space *. 3. /. 4.)->dp, ()))
+        | XS => Some(style(~paddingVertical=(space *. 2. /. 4.)->dp, ()))
+        | XXS => Some(style(~paddingVertical=(space *. 1. /. 4.)->dp, ()))
+        | Custom(value) => Some(style(~paddingVertical=value->dp, ()))
         | None => None
         },
         switch (horizontal) {
-        | XXL => Some(style(~paddingHorizontal=pt(space *. 4.), ()))
-        | XL => Some(style(~paddingHorizontal=pt(space *. 3.), ()))
-        | L => Some(style(~paddingHorizontal=pt(space *. 2.), ()))
-        | M => Some(style(~paddingHorizontal=pt(space *. 1.), ()))
-        | S => Some(style(~paddingHorizontal=pt(space *. 3. /. 4.), ()))
-        | XS => Some(style(~paddingHorizontal=pt(space *. 2. /. 4.), ()))
-        | XXS => Some(style(~paddingHorizontal=pt(space *. 1. /. 4.), ()))
-        | Custom(value) => Some(style(~paddingHorizontal=pt(value), ()))
+        | XXL => Some(style(~paddingHorizontal=(space *. 4.)->dp, ()))
+        | XL => Some(style(~paddingHorizontal=(space *. 3.)->dp, ()))
+        | L => Some(style(~paddingHorizontal=(space *. 2.)->dp, ()))
+        | M => Some(style(~paddingHorizontal=(space *. 1.)->dp, ()))
+        | S => Some(style(~paddingHorizontal=(space *. 3. /. 4.)->dp, ()))
+        | XS => Some(style(~paddingHorizontal=(space *. 2. /. 4.)->dp, ()))
+        | XXS => Some(style(~paddingHorizontal=(space *. 1. /. 4.)->dp, ()))
+        | Custom(value) => Some(style(~paddingHorizontal=value->dp, ()))
         | None => None
         },
         s,

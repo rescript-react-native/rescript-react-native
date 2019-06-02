@@ -17,7 +17,7 @@ let make =
        ->Option.map(pageData =>
            <>
              <Container
-               maxWidth={1000.->Style.pt}
+               maxWidth={1000.->Style.dp}
                style=Style.(
                  style(
                    ~flexDirection=`row,

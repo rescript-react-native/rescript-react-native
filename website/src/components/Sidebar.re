@@ -12,7 +12,7 @@ let styles =
           ~fontSize=14.,
           ~fontWeight=`_400,
           ~color="#555",
-          ~paddingVertical=(Spacer.space /. 4.)->pt,
+          ~paddingVertical=(Spacer.space /. 4.)->dp,
           (),
         ),
       "notlink":
@@ -20,7 +20,7 @@ let styles =
           ~fontSize=14.,
           ~fontWeight=`_400,
           ~color="#ddd",
-          ~paddingVertical=(Spacer.space /. 4.)->pt,
+          ~paddingVertical=(Spacer.space /. 4.)->dp,
           (),
         ),
     },

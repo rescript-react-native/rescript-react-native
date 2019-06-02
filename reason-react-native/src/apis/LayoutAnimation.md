@@ -134,7 +134,7 @@ let styles =
   Style.(
     StyleSheet.create({
       "container": style(~flex=1., ~flexDirection=`column, ()),
-      "screen": style(~width=pt(windowWidth), ()),
+      "screen": style(~width=windowWidth->dp, ()),
     })
   );
 
@@ -164,15 +164,8 @@ let make = () => {
       style=Style.(
         {style(
            ~flex=1.,
-           ~width=pt(2.0 *. windowWidth),
-           ~left=
-             pt(
-               if (state.register) {
-                 0.;
-               } else {
-                 0. -. windowWidth;
-               },
-             ),
+           ~width=(2.0 *. windowWidth)->dp,
+           ~left= (state.register ? 0. : 0. -. windowWidth)->dp,
            ~flexDirection=`row,
            (),
          )}
