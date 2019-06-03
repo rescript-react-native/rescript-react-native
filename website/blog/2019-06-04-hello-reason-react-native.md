@@ -4,13 +4,15 @@ title: Hello Reason React Native
 ---
 
 Today is a big day for the ReasonML community as we are releasing the fruits of
-a long effort started 3 months ago. As more and more people were starting to use
-ReasonML on production apps using React Native, we wanted to make the
-BuckleScript bindings for React Native, known has `bs-react-native`, more
-accessible. This would have involve several breaking changes in order to
-simplify some APIs that have been designed with a high level of security in
-mind, but at a some costs. The cost of being harder to start with (for newcomers
-to ReasonML) as well as the cost in terms of code size and performance.
+a long effort started about 3 months ago.
+
+As more and more people were starting to use ReasonML on production apps using
+React Native, we wanted to make the BuckleScript bindings for React Native,
+known has `bs-react-native`, more accessible. This would have involved several
+breaking changes in order to simplify some APIs that have been designed with a
+high level of security in mind, but at some costs. The cost of being harder to
+start with (for newcomers to ReasonML) as well as the cost in terms of code size
+and performance.
 
 While some of us were thinking about some simplifications, some others, involved
 in Reason React incoming changes, directly started a new approach for this
@@ -18,14 +20,14 @@ bindings, following
 [the zero-cost approach offered by reason-react 0.7.0](https://reasonml.github.io/reason-react/blog/2019/04/10/react-hooks).
 
 [CCA](https://www.cca.io) started this effort on what is now know as the new
-`reason-react-native` bindings, that remove most of the additional JavaScript
-code produced by the bindings.
+`reason-react-native` bindings, that eliminates a huge part of the additional
+JavaScript code produced by the bindings.
 
 ## Zero-cost
 
-We mean almost zero additional cost. So the code you produce with the bindings
-will most of the time directly hit React Native JavaScript without an additional
-cost on top of it.
+By zero-cost, we means zero additional cost. The JavaScript code BuckleScript
+produces using this bindings will most of the time directly hit React Native
+JavaScript code without creating an unnecessary abstraction above it 🙌.
 
 Here are some random examples:
 
@@ -47,7 +49,7 @@ How cool is that?
 ## But why`reason-react-native` ?
 
 `bs-react-native` already had multiple breaking changes in the past and we
-didn't really wanted to offer a poor experience by creating a new release with
+didn't really want to offer a poor experience by creating a new release with
 tons of changes that won't be easy to codemod (or would require much more work
 from us).
 
@@ -82,7 +84,7 @@ We don't want your co-workers to hate you with a PR that comes directly from
 hell 😅.
 
 That's where we thought about offering `bs-react-native-jsx3-compat`. It's a
-package that has the same APIs has `bs-react-native` but that uses
+package that has the same APIs `bs-react-native` has but that uses
 `reason-react-native` under the hood.
 
 **This means you will have to make a migration from JSX 2 to 3**. That's the
@@ -110,7 +112,7 @@ This required effort has been keeping us busy for weeks and wouldn't have been
 possible without the following people:
 
 - CCA team and especially @cknitt for leading us to the right direction for the
-  new zero-cost bindings and all the contributions that goes with this move
+  new zero-cost bindings and all the contributions that come with this move
 - @sgny for all his contributions to the new bindings
 - @MoOx for leading the effort, the compat layer and the new website you are
   seeing here
@@ -125,5 +127,6 @@ possible without the following people:
 ## What's next?
 
 Now that `reason-react-native` is ready to be used and that our migration plan
-is usable, we will probably be focused documentation as lots of APIs and
-Components need to be documented.
+is usable, we will probably be focused on documentation as lots of APIs and
+Components need to be documented. We really want to offer the best developer
+experience possible and that's definitely part of it.
