@@ -39,7 +39,7 @@ let make = () =>
             )
           )>
           <Text style=Style.(style(~opacity=0.25, ()))>
-            "BS "->React.string
+            "Reason "->React.string
           </Text>
           "React Native"->React.string
         </Text>
@@ -82,7 +82,7 @@ let make = () =>
       </View>
       <Spacer size=Spacer.XXL />
       <ViewLink
-        href={Consts.baseUrl ++ "/BsReactNative/gettingstarted.html"}
+        href={Consts.baseUrl ++ "/en/docs/"}
         style=Style.(
           style(~borderRadius=6., ~backgroundColor=Consts.Colors.accent, ())
         )>

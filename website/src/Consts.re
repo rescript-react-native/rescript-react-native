@@ -1,6 +1,6 @@
 let baseUrl = "/reason-react-native";
-let title = {j|BS React Native|j};
-let defaultTitle = title ++ {j|, BuckleScript bindings for React Native.|j};
+let title = {j|Reason React Native|j};
+let defaultTitle = title ++ {j|, Reason bindings for React Native.|j};
 let titleTemplate = {j|%s - |j} ++ title;
 
 module Colors = {
@@ -35,15 +35,8 @@ let menuLinks = [|
    },
    */
   {
-    link: baseUrl ++ "/BsReactNative/",
-    text: {j|Legacy Docs|j},
-    icon: (~width, ~height, ~fill) => <SVGDocumentation width height fill />,
-    isActive: (current, _link) =>
-      Js.String.startsWith(baseUrl ++ "/BsReactNative/", current),
-  },
-  {
     link: baseUrl ++ "/en/docs/",
-    text: {j|Docs@next|j},
+    text: {j|Docs|j},
     icon: (~width, ~height, ~fill) => <SVGDocumentation width height fill />,
     isActive: (current, _link) =>
       Js.String.startsWith(baseUrl ++ "/en/docs/", current),
