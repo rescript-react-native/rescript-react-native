@@ -2470,6 +2470,7 @@ bs-platform@^5.0.4:
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-5.0.4.tgz#d406ef43c12d1b19d8546884d8b5b4e0fb709372"
   integrity sha512-rXM+ztN8wYXQ4ojfFGylvPOf8GRLOvM94QJsMMV9VpsLChKCjesWMNybTZvpoyNsESu2nC5q+C9soG+BPhuUFQ==
+
 bser@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/bser/-/bser-2.0.0.tgz#9ac78d3ed5d915804fd87acb158bc797147a1719"
@@ -7805,9 +7806,9 @@ react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.4.tgz#90f336a68c3a29a096a3d648ab80e87ec61482a2"
   integrity sha512-PVadd+WaUDOAciICm/J1waJaSvgq+4rHE/K70j0PFqKhkTBsPv/82UGQJNXAngz1fOQLLxI6z1sEDmJDQhCTAA==
 
-"react-multiversal@https://github.com/MoOx/react-multiversal.git#c64ee3c":
+"react-multiversal@https://github.com/MoOx/react-multiversal.git#c1d5956":
   version "0.0.0"
-  resolved "https://github.com/MoOx/react-multiversal.git#c64ee3c780da562d9656114aad0341280a517416"
+  resolved "https://github.com/MoOx/react-multiversal.git#c1d59565f5aa5e40800de0071b2a0bb169dc3ef7"
 
 react-native-branch@2.2.5:
   version "2.2.5"
