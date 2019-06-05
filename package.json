@@ -40,11 +40,11 @@
     }
   },
   "workspaces": [
-    "bs-react-native",
-    "bs-react-native-jsx3-compat",
     "reason-react-native",
-    "bs-react-native-example",
     "react-native-template-reason",
+    "bs-react-native-jsx3-compat",
+    "bs-react-native",
+    "bs-react-native-example",
     "website"
   ]
 }
