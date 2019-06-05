@@ -1,7 +1,7 @@
 {
   "name": "reason-react-native",
   "version": "0.10.0",
-  "repository": "https://github.com/reasonml-community/bs-react-native.git",
+  "repository": "https://github.com/reasonml-community/reason-react-native.git",
   "license": "MIT",
   "keywords": [
     "reason",

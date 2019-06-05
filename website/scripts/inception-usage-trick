@@ -4,7 +4,7 @@ const fs = require('fs');
 const file = process.argv[2];
 const guts = fs.readFileSync(file)
   .toString()
-  .replace(/.\/node_modules\/bs-react-native-monorepo\/git-monorepo-usage-trick/g, 'echo')
-  .replace(/bs-react-native-monorepo\//g, '');
+  .replace(/.\/node_modules\/reason-react-native-monorepo\/git-monorepo-usage-trick/g, 'echo')
+  .replace(/reason-react-native-monorepo\//g, '');
 
 fs.writeFileSync(file, guts);

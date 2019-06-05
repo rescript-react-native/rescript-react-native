@@ -1,4 +1,4 @@
-let baseUrl = "/bs-react-native";
+let baseUrl = "/reason-react-native";
 let title = {j|BS React Native|j};
 let defaultTitle = title ++ {j|, BuckleScript bindings for React Native.|j};
 let titleTemplate = {j|%s - |j} ++ title;
@@ -60,8 +60,8 @@ type socialLink = {
 let socialLinks = [|
   {
     name: "GitHub",
-    text: "bs-react-native on GitHub",
-    link: "https://github.com/reasonml-community/bs-react-native",
+    text: "reason-react-native on GitHub",
+    link: "https://github.com/reasonml-community/reason-react-native",
     componentFunc: (~iconColor, ~iconSize) =>
       <SVGSocialGithub fill=iconColor width=iconSize height=iconSize />,
   },

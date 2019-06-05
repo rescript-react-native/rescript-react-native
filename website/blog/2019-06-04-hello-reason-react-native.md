@@ -31,15 +31,15 @@ JavaScript code without creating an unnecessary abstraction above it 🙌.
 
 Here are some random examples:
 
-- [`bs-react-native` `View`](https://github.com/reasonml-community/bs-react-native/blob/958cd4e3a5ffa303304a0b2404cd53b5f49e649f/bs-react-native/src/components/ViewProps.bs.js)
+- [`bs-react-native` `View`](https://github.com/reasonml-community/reason-react-native/blob/958cd4e3a5ffa303304a0b2404cd53b5f49e649f/bs-react-native/src/components/ViewProps.bs.js)
   vs
-  [`reason-react-native` `View`](https://github.com/reasonml-community/bs-react-native/blob/958cd4e3a5ffa303304a0b2404cd53b5f49e649f/reason-react-native/src/components/View.bs.js)
-- [`bs-react-native` `Style`](https://github.com/reasonml-community/bs-react-native/blob/958cd4e3a5ffa303304a0b2404cd53b5f49e649f/bs-react-native/src/style.bs.js)
+  [`reason-react-native` `View`](https://github.com/reasonml-community/reason-react-native/blob/958cd4e3a5ffa303304a0b2404cd53b5f49e649f/reason-react-native/src/components/View.bs.js)
+- [`bs-react-native` `Style`](https://github.com/reasonml-community/reason-react-native/blob/958cd4e3a5ffa303304a0b2404cd53b5f49e649f/bs-react-native/src/style.bs.js)
   vs
-  [`reason-react-native` `Style`](https://github.com/reasonml-community/bs-react-native/blob/958cd4e3a5ffa303304a0b2404cd53b5f49e649f/reason-react-native/src/apis/Style.bs.js)
-- [`bs-react-native` `Platform`](https://github.com/reasonml-community/bs-react-native/blob/958cd4e3a5ffa303304a0b2404cd53b5f49e649f/bs-react-native/src/platform.bs.js)
+  [`reason-react-native` `Style`](https://github.com/reasonml-community/reason-react-native/blob/958cd4e3a5ffa303304a0b2404cd53b5f49e649f/reason-react-native/src/apis/Style.bs.js)
+- [`bs-react-native` `Platform`](https://github.com/reasonml-community/reason-react-native/blob/958cd4e3a5ffa303304a0b2404cd53b5f49e649f/bs-react-native/src/platform.bs.js)
   vs
-  [`reason-react-native` `Platform`](https://github.com/reasonml-community/bs-react-native/blob/958cd4e3a5ffa303304a0b2404cd53b5f49e649f/reason-react-native/src/apis/Platform.bs.js)
+  [`reason-react-native` `Platform`](https://github.com/reasonml-community/reason-react-native/blob/958cd4e3a5ffa303304a0b2404cd53b5f49e649f/reason-react-native/src/apis/Platform.bs.js)
 
 Some modules are even empty or with some minor `require()` that can be
 themselves almost empty and easily removed by some JavaScript bundlers.

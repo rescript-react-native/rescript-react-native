@@ -62,10 +62,10 @@ So first,
 
 ### Workaround for git usage
 
-- `yarn add https://github.com/reasonml-community/bs-react-native.git#jsx3-migration`
+- `yarn add https://github.com/reasonml-community/reason-react-native.git#jsx3-migration`
 - run a dirty command to get proper setup when using
   `bs-react-native-jsx3-compat`: add as a `prepare` script
-  - `"prepare": "ln -sFf ../node_modules/bs-react-native-monorepo/reason-react-native/ ./node_modules",`
+  - `"prepare": "ln -sFf ../node_modules/reason-react-native-monorepo/reason-react-native/ ./node_modules",`
 - run `yarn prepare` (this will be run each time you use yarn & will ensure that
   the trick is always around until you actually use released versions of this
   work)
@@ -78,9 +78,9 @@ So please:
 
 - Ensure your project is full jsx3 (`bsconfig.json`:
   `"reason": {"react-jsx": 3},`)
-- Replace `bs-react-native` by `bs-react-native-monorepo/bs-react-native-jsx3`
+- Replace `bs-react-native` by `reason-react-native-monorepo/bs-react-native-jsx3`
   in your `bsconfig.json` (**⚠️ check the
-  [git monorepo trick](https://github.com/reasonml-community/bs-react-native#-usage-from-git-repo)**)
+  [git monorepo trick](https://github.com/reasonml-community/reason-react-native#-usage-from-git-repo)**)
 
 Compilation time! You should still have some errors, but probably not that much.
 

@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "bs-react-native-website",
+  "name": "reason-react-native-website",
   "version": "0.0.0",
   "scripts": {
     "prepare": "./scripts/inception-usage-trick ../node_modules/react-multiversal/bsconfig.json",

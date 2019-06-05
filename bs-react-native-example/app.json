@@ -24,6 +24,6 @@
     "packagerOpts": {
       "config": "rn-cli.config.js"
     },
-    "githubUrl": "https://github.com/reasonml-community/bs-react-native"
+    "githubUrl": "https://github.com/reasonml-community/reason-react-native"
   }
 }

@@ -6,36 +6,36 @@ let make = () =>
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="/bs-react-native/apple-touch-icon.png"
+      href={Consts.baseUrl ++ "/apple-touch-icon.png"}
     />
     <link
       rel="icon"
       type_="image/png"
       sizes="32x32"
-      href="/bs-react-native/favicon-32x32.png"
+      href={Consts.baseUrl ++ "/favicon-32x32.png"}
     />
     <link
       rel="icon"
       type_="image/png"
       sizes="16x16"
-      href="/bs-react-native/favicon-16x16.png"
+      href={Consts.baseUrl ++ "/favicon-16x16.png"}
     />
-    <link rel="manifest" href="/bs-react-native/site.webmanifest" />
+    <link rel="manifest" href={Consts.baseUrl ++ "/site.webmanifest"} />
     {ReactDOMRe.createElementVariadic(
        "link",
        ~props=
          ReactDOMRe.objToDOMProps({
            "rel": "mask-icon",
-           "href": "/bs-react-native/safari-pinned-tab.svg",
+           "href": {Consts.baseUrl ++ "/safari-pinned-tab.svg"},
            "color": "#222222",
          }),
        [||],
      )}
-    <link rel="shortcut icon" href="/bs-react-native/favicon.ico" />
+    <link rel="shortcut icon" href={Consts.baseUrl ++ "/favicon.ico"} />
     <meta name="msapplication-TileColor" content="#222222" />
     <meta
       name="msapplication-config"
-      content="/bs-react-native/browserconfig.xml"
+      content={Consts.baseUrl ++ "/browserconfig.xml"}
     />
     <meta name="theme-color" content="#222222" />
     <link

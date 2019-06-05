@@ -36,8 +36,8 @@ or #bucklescript. Everybody is really welcoming and helpful!
 ## Setup Development
 
 ```sh
-git clone https://github.com/BuckleTypes/bs-react-native.git
-cd bs-react-native
+git clone https://github.com/reasonml-community/reason-react-native.git
+cd reason-react-native-monorepo
 yarn
 ```
 

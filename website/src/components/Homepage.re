@@ -103,7 +103,7 @@ let make = () =>
     </SpacedView>
     <Spacer />
     <TextLink
-      href="https://github.com/reasonml-community/bs-react-native/issues/341"
+      href="https://github.com/reasonml-community/reason-react-native/issues/341"
       style=Style.(
         style(
           ~fontWeight=`_300,

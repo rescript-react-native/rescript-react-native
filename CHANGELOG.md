@@ -15,7 +15,7 @@ This release mostly add some missing stuffs, and fixes some.
 
 > We have highlighted most significant changes below. You can see the full list
 > of commits
-> [here](https://github.com/reasonml-community/bs-react-native/compare/v0.10.0...v0.11.0).
+> [here](https://github.com/reasonml-community/reason-react-native/compare/v0.10.0...v0.11.0).
 
 ### Notable changes
 
@@ -60,7 +60,7 @@ This release mostly add some missing stuffs, and fixes some.
 
 This is the biggest release we have done in a while. It is a result of hard work
 done by
-[`bs-react-native`](https://github.com/reasonml-community/bs-react-native/graphs/contributors)
+[`bs-react-native`](https://github.com/reasonml-community/reason-react-native/graphs/contributors)
 and [`rebolt`](https://github.com/callstackincubator/rebolt/graphs/contributors)
 teams.
 
@@ -77,7 +77,7 @@ I also would like to thank all contributors that made this project possible. Due
 to the complicated nature of merging `rebolt` and `bs-react-native` together,
 some of the contribution attributions were lost in the process. Make sure to
 check the
-[full list our contributors](https://github.com/reasonml-community/bs-react-native/blob/master/CONTRIBUTORS.md)
+[full list our contributors](https://github.com/reasonml-community/reason-react-native/blob/master/CONTRIBUTORS.md)
 for details.
 
 Meanwhile, see the changelog below for a full list of new features and breaking
@@ -87,19 +87,19 @@ changes.
 
 > We have highlighted most significant changes below. You can see the full list
 > of commits
-> [here](https://github.com/reasonml-community/bs-react-native/compare/v0.9.0...v0.10.0).
+> [here](https://github.com/reasonml-community/reason-react-native/compare/v0.9.0...v0.10.0).
 
 - Added missing bindings to the following:
-  [`ToastAndroid`](https://github.com/reasonml-community/bs-react-native/commit/c00f02fe224fffc28fa7bb722a4bfcdbc262fd5f),
-  [`TimePickerAndroid`](https://github.com/reasonml-community/bs-react-native/pull/233),
-  [`PermissionsAndroid`](https://github.com/reasonml-community/bs-react-native/pull/230),
-  [`PickerIOS`](https://github.com/reasonml-community/bs-react-native/pull/215),
-  [`ViewPagerAndroid`](https://github.com/reasonml-community/bs-react-native/pull/220),
-  [`TouchableNativeFeedback`](https://github.com/reasonml-community/bs-react-native/pull/219),
-  [`SnapshotViewIOS`](https://github.com/reasonml-community/bs-react-native/pull/218),
-  [`ProgressBarAndroid`](https://github.com/reasonml-community/bs-react-native/pull/217),
-  [`MaskedView`](https://github.com/reasonml-community/bs-react-native/pull/216),
-  [`ProgressViewIOS`](https://github.com/reasonml-community/bs-react-native/pull/221),
+  [`ToastAndroid`](https://github.com/reasonml-community/reason-react-native/commit/c00f02fe224fffc28fa7bb722a4bfcdbc262fd5f),
+  [`TimePickerAndroid`](https://github.com/reasonml-community/reason-react-native/pull/233),
+  [`PermissionsAndroid`](https://github.com/reasonml-community/reason-react-native/pull/230),
+  [`PickerIOS`](https://github.com/reasonml-community/reason-react-native/pull/215),
+  [`ViewPagerAndroid`](https://github.com/reasonml-community/reason-react-native/pull/220),
+  [`TouchableNativeFeedback`](https://github.com/reasonml-community/reason-react-native/pull/219),
+  [`SnapshotViewIOS`](https://github.com/reasonml-community/reason-react-native/pull/218),
+  [`ProgressBarAndroid`](https://github.com/reasonml-community/reason-react-native/pull/217),
+  [`MaskedView`](https://github.com/reasonml-community/reason-react-native/pull/216),
+  [`ProgressViewIOS`](https://github.com/reasonml-community/reason-react-native/pull/221),
 - Added a brand new documentation, available
   [here](http://reasonml-community.github.io/bs-react-native). We are working
   hard on adding more any more examples. So far,
@@ -111,16 +111,16 @@ changes.
   development or have any questions regarding using it in production,
 - Improved typing in many modules to be more accurate with what React Native
   expects, including
-  [`focus` and `blur` method on `TextInput`](https://github.com/reasonml-community/bs-react-native/commit/fd0ffc78ccc4e86ce9278d7a457db32cb0856dbf),
-  [`FlatList`'s `scrollToOffset`](https://github.com/reasonml-community/bs-react-native/commit/875605480825630daaa4445171a156b5f6e9a84c),
-  [`WebView`'s `onMessage`](https://github.com/reasonml-community/bs-react-native/commit/f65edea9ac0b84e7c956caecc7148ab90f46a491)
+  [`focus` and `blur` method on `TextInput`](https://github.com/reasonml-community/reason-react-native/commit/fd0ffc78ccc4e86ce9278d7a457db32cb0856dbf),
+  [`FlatList`'s `scrollToOffset`](https://github.com/reasonml-community/reason-react-native/commit/875605480825630daaa4445171a156b5f6e9a84c),
+  [`WebView`'s `onMessage`](https://github.com/reasonml-community/reason-react-native/commit/f65edea9ac0b84e7c956caecc7148ab90f46a491)
   and
-  [more](https://github.com/reasonml-community/bs-react-native/commit/65af108bbcd9b8a98056e3ca4245bcfbed52b5e0),
+  [more](https://github.com/reasonml-community/reason-react-native/commit/65af108bbcd9b8a98056e3ca4245bcfbed52b5e0),
 - Created a brand new
-  [React Native generator](https://github.com/reasonml-community/bs-react-native/commit/bac87534cd78e73ae8f452414fe5fa69b4100202)
+  [React Native generator](https://github.com/reasonml-community/reason-react-native/commit/bac87534cd78e73ae8f452414fe5fa69b4100202)
   for easier experience getting started,
 - Added
-  [Code of Conduct](https://github.com/reasonml-community/bs-react-native/blob/master/CONTRIBUTORS.md)
+  [Code of Conduct](https://github.com/reasonml-community/reason-react-native/blob/master/CONTRIBUTORS.md)
 
 ## Breaking changes
 
@@ -159,7 +159,7 @@ Article releted:
 
 - [Announcing Rebolt](https://blog.callstack.io/announcing-rebolt-207a1686a242)
   (@grabbou)
-- [Merging Rebolt v1 back to bs-react-native](https://github.com/reasonml-community/bs-react-native/issues/204)
+- [Merging Rebolt v1 back to bs-react-native](https://github.com/reasonml-community/reason-react-native/issues/204)
   (@knowbody)
 
 ### Fixed 🔧

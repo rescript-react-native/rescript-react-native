@@ -232,7 +232,7 @@ module Transform: {
   let skewY: deg_animated('a) => styleTransformElement;
 
   [@deprecated
-    "Please use Style.transform instead. Read more at https://github.com/reasonml-community/bs-react-native/issues/333"
+    "Please use Style.transform instead. Read more at https://github.com/reasonml-community/reason-react-native/issues/333"
   ]
   let make:
     (
@@ -252,7 +252,7 @@ module Transform: {
     styleElement;
 
   [@deprecated
-    "Please use Style.transform instead. Read more at https://github.com/reasonml-community/bs-react-native/issues/333"
+    "Please use Style.transform instead. Read more at https://github.com/reasonml-community/reason-react-native/issues/333"
   ]
   let makeAnimated:
     (

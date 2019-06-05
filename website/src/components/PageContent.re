@@ -89,7 +89,7 @@ let make = (~pageData) => {
       None;
     };
   let editHref =
-    "https://github.com/reasonml-community/bs-react-native/blob/master/reason-react-native/src/"
+    "https://github.com/reasonml-community/reason-react-native/blob/master/reason-react-native/src/"
     ++ pageData.id
     ++ ".md";
   <SpacedView style=styles##container vertical=SpacedView.L>

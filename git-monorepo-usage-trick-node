@@ -9,26 +9,26 @@ const guts = fs
   .toString()
   .replace(
     /require\(\"bs-react-native\//g,
-    'require("bs-react-native-monorepo/bs-react-native/',
+    'require("reason-react-native-monorepo/bs-react-native/',
   )
   .replace(
     /from \"bs-react-native\//g,
-    'from "bs-react-native-monorepo/bs-react-native/',
+    'from "reason-react-native-monorepo/bs-react-native/',
   )
   .replace(
     /require\(\"bs-react-native-jsx3-compat\//g,
-    'require("bs-react-native-monorepo/bs-react-native-jsx3-compat/',
+    'require("reason-react-native-monorepo/bs-react-native-jsx3-compat/',
   )
   .replace(
     /from \"bs-react-native-jsx3-compat\//g,
-    'from "bs-react-native-monorepo/bs-react-native-jsx3-compat/',
+    'from "reason-react-native-monorepo/bs-react-native-jsx3-compat/',
   )
   .replace(
     /require\(\"reason-react-native\//g,
-    'require("bs-react-native-monorepo/reason-react-native/',
+    'require("reason-react-native-monorepo/reason-react-native/',
   )
   .replace(
     /from \"reason-react-native\//g,
-    'from "bs-react-native-monorepo/reason-react-native/',
+    'from "reason-react-native-monorepo/reason-react-native/',
   );
 fs.writeFileSync(file, guts);
