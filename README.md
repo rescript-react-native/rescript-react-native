@@ -2,7 +2,7 @@
 
 [![Build Status](https://img.shields.io/circleci/project/github/reasonml-community/reason-react-native/master.svg)](https://circleci.com/gh/reasonml-community/reason-react-native)
 [![Version](https://img.shields.io/npm/v/reason-react-native.svg)](https://www.npmjs.com/package/reason-react-native)
-[![Chat](https://img.shields.io/discord/496273792503513089.svg?logo=discord&colorb=blue)](https://discord.gg/eau3z6q)
+[![Chat](https://img.shields.io/discord/496273792503513089.svg?logo=discord&colorb=blue)](https://discord.gg/eaU3Z6Q)
 
 [BuckleScript](https://bucklescript.github.io) bindings for
 [React Native](https://github.com/facebook/react-native) allows to use

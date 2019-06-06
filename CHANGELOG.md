@@ -105,7 +105,7 @@ changes.
   hard on adding more any more examples. So far,
   [`Animated`](https://reasonml-community.github.io/bs-react-native/BsReactNative/AnimatedRe-BsReactNative/)
   module is the one that is most documented,
-- Created [Discord server](https://discord.gg/7XddYP6) dedicated to
+- Created [Discord server](https://discord.gg/eaU3Z6Q) dedicated to
   `bs-react-native` and using Reason for writing mobile apps in general. Feel
   free to join if you would like to take an active part in this project's
   development or have any questions regarding using it in production,
