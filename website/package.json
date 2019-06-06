@@ -36,7 +36,7 @@
     "react-dom": "^16.8.0",
     "react-from-svg": "^0.2.0",
     "react-helmet": "^5.2.0",
-    "react-multiversal": "https://github.com/MoOx/react-multiversal.git#c1d5956",
+    "react-multiversal": "https://github.com/MoOx/react-multiversal.git#b574544",
     "react-native-web": "^0.11.2",
     "reason-future": "^2.4.0",
     "reason-highlightjs": "^0.2.0",
