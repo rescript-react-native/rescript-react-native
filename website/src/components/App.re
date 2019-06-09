@@ -28,7 +28,7 @@ let make =
                )>
                <BsReactHelmet>
                  <title>
-                   {("BsReactNative " ++ pageData.title)->React.string}
+                   {("ReactNative." ++ pageData.title)->React.string}
                  </title>
                </BsReactHelmet>
                <PageContent pageData />
