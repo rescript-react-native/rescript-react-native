@@ -56,8 +56,8 @@ let cleanupNewlines = s =>
   s->stringMapPartial(char => char === '\n' ? Some(' ') : Some(char));
 
 let optionalCleanString = (s, keepNewlines) => {
-  let sc = keepNewlines ? s : cleanupNewlines(s)->Js.String.trim;
-  sc === "" ? None : Some(sc);
+  let sc = keepNewlines ? s : cleanupNewlines(s);
+  sc === "" || sc === " " ? None : Some(sc);
 };
 
 let keepNewlines = ref(false);
@@ -189,5 +189,5 @@ let rec renderChild = (~keepNewlines=false, parentTag, index: int, child) => {
 [@react.component]
 let make = (~body: t, ~renderChild=renderChild, ()) => {
   let tree = jsTreeToReason(body);
-  <View> {renderChild("", 0, tree)} </View>;
+  <> {renderChild("", 0, tree)} </>;
 };
