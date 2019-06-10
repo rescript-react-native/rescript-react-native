@@ -167,6 +167,7 @@ let sections = [
       ("Shadow Props", api ++ "ShadowProps/"),
       ("Share", api ++ "Share/"),
       ("StatusBarIOS", api ++ "StatusBarIOS/"),
+      ("Style", api ++ "Style/"),
       ("StyleSheet", api ++ "StyleSheet/"),
       ("Systrace", api ++ "Systrace/"),
       ("Text Style Props", api ++ "TextStyleProps/"),
