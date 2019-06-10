@@ -116,12 +116,12 @@ a `View` component).
 
 `style` accepts all the Style Props:
 
-- [Layout styles](#layout-styles-props)
-- [Shadow styles](#shadow-styles-props)
-- [Transform styles](#transform-styles-props)
-- [View styles](#view-styles-props)
-- [Text styles](#text-styles-props)
-- [Image styles](#image-styles-props)
+- [Layout style props](#layout-style-props)
+- [Shadow style props](#shadow-style-props)
+- [Transform style props](#transform-style-props)
+- [View style props](#view-style-props)
+- [Text style props](#text-style-props)
+- [Image style props](#image-style-props)
 
 ⚠️ _Internally, React Native codebase types for this function are called
 `____DangerouslyImpreciseStyle_Internal`. That's why we created new functions:
@@ -132,28 +132,28 @@ a `View` component).
 
 This function accepts all React Native styles below:
 
-- [Layout styles](#layout-styles-props)
-- [Shadow styles](#shadow-styles-props)
-- [Transform styles](#transform-styles-props)
-- [View styles](#view-styles-props)
+- [Layout style props](#layout-style-props)
+- [Shadow style props](#shadow-style-props)
+- [Transform style props](#transform-style-props)
+- [View style props](#view-style-props)
 
 ### `Style.textStyle`
 
 This function accepts all React Native styles below:
 
-- [Layout styles](#layout-styles-props)
-- [Shadow styles](#shadow-styles-props)
-- [Transform styles](#transform-styles-props)
-- [Text styles](#text-styles-props)
+- [Layout style props](#layout-style-props)
+- [Shadow style props](#shadow-style-props)
+- [Transform style props](#transform-style-props)
+- [Text style props](#text-style-props)
 
 ### `Style.imageStyle`
 
 This function accepts all React Native styles below:
 
-- [Layout styles](#layout-styles-props)
-- [Shadow styles](#shad@ow-styles-props)
-- [Transform styles](#transform-styles-props)
-- [Image styles](#image-styles-props)
+- [Layout style props](#layout-style-props)
+- [Shadow style props](#shad@ow-style-props)
+- [Transform style props](#transform-style-props)
+- [Image style props](#image-style-props)
 
 ## Style Props
 

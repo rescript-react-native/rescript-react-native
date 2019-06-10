@@ -45,8 +45,8 @@ fromUriSource: string => source
 
 ### `source`
 
-An abstract type created using the [`fromRequired`](#fromRequired) and
-[`fromUriSource`](#fromUriSource) methods.
+An abstract type created using the [`fromRequired`](#fromrequired) and
+[`fromUriSource`](#fromurisource) methods.
 
 ### `offset`
 
