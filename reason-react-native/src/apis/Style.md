@@ -24,26 +24,7 @@ components that accept different styles props. For example `View` doesn't accept
 
 ## Table of Contents
 
-- [Style Example](#style-example)
-- [Style Units](#style-units)
-- [Style Function](#style-functions)
-  - [`Style.style`](#style-style)
-  - [`Style.viewStyle`](#style-viewStyle)
-  - [`Style.textStyle`](#style-textStyle)
-  - [`Style.imageStyle`](#style-imageStyle)
-- [Style Props](#style-props)
-  - [Layout Style Props](#layout-style-props)
-  - [Shadow Style Props](#shadow-style-props)
-  - [Transform Style Props](#transform-style-props)
-  - [View Style Props](#view-style-props)
-  - [Text Style Props](#text-style-props)
-  - [Image Style Props](#image-style-props)
-  - [Unsafe Style Props](#unsafe-style-props)
-- [Style Helpers](#style-helpers)
-  - [`Style.array`](#style-array`)
-  - [`Style.arrayOption`](#style-arrayoption`)
-  - [`Style.list`](#style-list`)
-  - [`Style.listOption`](#style-listoption`)
+<!-- generated -->
 
 ## Style Example
 
