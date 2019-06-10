@@ -1,6 +1,7 @@
 ---
 id: 2019-06-04-hello-reason-react-native
 title: Hello Reason React Native
+author: MoOx
 ---
 
 Today is a big day for the ReasonML community as we are releasing the fruits of
@@ -46,7 +47,7 @@ themselves almost empty and easily removed by some JavaScript bundlers.
 
 How cool is that?
 
-## But why`reason-react-native` ?
+## But why `reason-react-native` ?
 
 `bs-react-native` already had multiple breaking changes in the past and we
 didn't really want to offer a poor experience by creating a new release with
@@ -111,18 +112,20 @@ hand, we got you covered with a script made with love to help you with that.
 This required effort has been keeping us busy for weeks and wouldn't have been
 possible without the following people:
 
-- CCA team and especially @cknitt for leading us to the right direction for the
-  new zero-cost bindings and all the contributions that come with this move
-- @sgny for all his contributions to the new bindings
-- @MoOx for leading the effort, the compat layer and the new website you are
-  seeing here
-- @bloodyowl for his magical
+- CCA team and especially [@cknitt](https://github.com/cknitt) for leading us to
+  the right direction for the new zero-cost bindings and all the contributions
+  that come with this move
+- [@sgny](https://github.com/sgny) for all his contributions to the new bindings
+- [@MoOx](https://github.com/MoOx) for leading the effort, the compat layer and
+  the new website you are seeing here
+- [@bloodyowl](https://github.com/bloodyowl) for his magical
   [reason-react-compat](https://github.com/bloodyowl/reason-react-compat) layer
   and
   [the alternate JSX 3 upgrade path](https://bloodyowl.github.io/blog/2019-04-19-an-alternative-migration-path-for-reason-react/)
   that goes with it
 - all the people that helped us on Discord and GitHub in various code reviews
-  and improvements like the react native template (thanks @dawee)
+  and improvements like the react native template (thanks
+  [@dawee](https://github.com/dawee))
 
 ## What's next?
 
