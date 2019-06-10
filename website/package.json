@@ -24,11 +24,10 @@
   },
   "devDependencies": {
     "@moox/bs-react-helmet": "^2.0.0",
+    "@phenomic/markdown-as-json": "^1.0.0",
     "bs-platform": "^5.0.4",
     "cpy-cli": "^2.0.0",
-    "front-matter": "^3.0.1",
     "glob": "^7.1.3",
-    "highlight.js": "^9.15.6",
     "mkdirp": "^0.5.1",
     "module-alias": "^2.2.0",
     "opn-cli": "^4.1.0",
@@ -41,7 +40,6 @@
     "reason-future": "^2.4.0",
     "reason-highlightjs": "^0.2.0",
     "reason-react": "^0.7.0",
-    "remarkable": "^1.7.1",
     "static-server-cli": "^1.0.2",
     "trash-cli": "^1.4.0"
   }

@@ -51,12 +51,13 @@ let make = () =>
       ->React.string
     </style>
     <style>
-      {|
+      {j|
 html {
   width: 100%;
   height: 100%;
   overflow-x:hidden;
   background: #fff;
+  font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
 }
 body {
   min-width: 100%;
@@ -75,48 +76,33 @@ body {
   }
 }
 
+code {
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  all: unset;
+}
+
 .hljs {
-font-size: 14px;
-padding: 20px;
-border: 1px solid rgba(0,0,0,0.05);
-background: rgba(0,0,0,0.01);
-border-radius: 4px;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 20px;
+  border: 1px solid rgba(0,0,0,0.05);
+  background: rgba(0,0,0,0.01);
+  border-radius: 4px;
 }
 
-.hljs.javascript {
-background-color: rgba(247, 223, 30, .03)
-}
+.hljs code { background-color: transparent !important; }
+.hljs.javascript { background-color: rgba(247, 223, 30, .03) }
 
-table .hljs {
-border: none;
-background: none
-}
-
-.hljs-operator {
-color: #a626a4
-}
-
-.hljs-character {
-color: #50a14f
-}
-
-.hljs-module-identifier {
-color: #4078f2
-}
-
-.hljs-constructor {
-color: #e45649
-}
+.hljs-operator { color: #a626a4 }
+.hljs-character { color: #50a14f }
+.hljs-module-identifier { color: #4078f2 }
+.hljs-constructor { color: #e45649 }
 
 .stick { position: -webkit-sticky; position: sticky; }
-
-.htmlContent {
-  font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
-  font-size: 16px;
-  line-height: 25px;
-}
-
-|}
+|j}
       ->React.string
     </style>
   </BsReactHelmet>;

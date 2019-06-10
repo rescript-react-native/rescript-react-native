@@ -41,6 +41,13 @@ let menuLinks = [|
     isActive: (current, _link) =>
       Js.String.startsWith(baseUrl ++ "/en/docs/", current),
   },
+  {
+    link: baseUrl ++ "/en/blog/",
+    text: {j|Blog|j},
+    icon: (~width, ~height, ~fill) => <SVGBlog width height fill />,
+    isActive: (current, _link) =>
+      Js.String.startsWith(baseUrl ++ "/en/blog/", current),
+  },
 |];
 
 type socialLink = {

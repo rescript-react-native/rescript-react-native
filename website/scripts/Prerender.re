@@ -7,7 +7,13 @@ external renderToStaticMarkup: React.element => string =
 
 open ReactNative;
 
-let make = (~url: string, ~pageData) => {
+let make =
+    (
+      ~url: string,
+      ~pageData,
+      ~docsIndex: array(string),
+      ~blogIndex: array(PrepareMdToJson.blogIndexEntry),
+    ) => {
   // @todo find a way to get rid of this Obj.magic
   AppRegistry.registerComponent("App", () => App.make->Obj.magic);
   let app =
@@ -16,6 +22,8 @@ let make = (~url: string, ~pageData) => {
       {
         "initialProps":
           {
+            "docsIndex": docsIndex,
+            "blogIndex": blogIndex,
             "pageData": pageData,
             "currentLocation": {
               "pathname": url,
@@ -40,10 +48,15 @@ let make = (~url: string, ~pageData) => {
 </html>|j};
 };
 
-let file = (file: FsUtils.t, modulesIndex: array(string)) => {
+let file =
+    (
+      ~file: FsUtils.t,
+      ~docsIndex: array(string),
+      ~blogIndex: array(PrepareMdToJson.blogIndexEntry),
+    ) => {
   let json =
     try (Js.Json.parseExn(file.content)) {
-    | _ => failwith("Error parsing JSON string")
+    | _ => failwith(file.name ++ ": Error parsing JSON string")
     };
   let pageData =
     switch (Js.Json.classify(json)) {
@@ -53,18 +66,36 @@ let file = (file: FsUtils.t, modulesIndex: array(string)) => {
         | Some(v) =>
           switch (Js.Json.classify(v)) {
           | Js.Json.JSONString(v) => v
-          | _ => failwith("Expected an string for `id`")
+          | _ => failwith(file.name ++ ": Expected an string for `id`")
           }
-        | None => failwith("Expected an `id` property")
+        | None => failwith(file.name ++ ": Expected an `id` property")
         };
       let title =
         switch (Js.Dict.get(value, "title")) {
         | Some(v) =>
           switch (Js.Json.classify(v)) {
           | Js.Json.JSONString(v) => v
-          | _ => failwith("Expected an string for the `title`")
+          | _ => failwith(file.name ++ ": Expected an string for the `title`")
           }
-        | None => failwith("Expected an `title` property")
+        | None => failwith(file.name ++ ": Expected an `title` property")
+        };
+      let date =
+        switch (Js.Dict.get(value, "date")) {
+        | Some(v) =>
+          switch (Js.Json.classify(v)) {
+          | Js.Json.JSONString(v) => Some(v)
+          | _ => failwith(file.name ++ ": Expected a string for `date`")
+          }
+        | None => None
+        };
+      let author =
+        switch (Js.Dict.get(value, "author")) {
+        | Some(v) =>
+          switch (Js.Json.classify(v)) {
+          | Js.Json.JSONString(v) => Some(v)
+          | _ => failwith(file.name ++ ": Expected a string for `author`")
+          }
+        | None => None
         };
       let wip =
         switch (Js.Dict.get(value, "wip")) {
@@ -72,7 +103,7 @@ let file = (file: FsUtils.t, modulesIndex: array(string)) => {
           switch (Js.Json.classify(v)) {
           | Js.Json.JSONTrue => Some(true)
           | Js.Json.JSONFalse => Some(false)
-          | _ => failwith("Expected a boolean for `wip`")
+          | _ => failwith(file.name ++ ": Expected a boolean for `wip`")
           }
         | None => None
         };
@@ -82,7 +113,10 @@ let file = (file: FsUtils.t, modulesIndex: array(string)) => {
           switch (Js.Json.classify(v)) {
           | Js.Json.JSONTrue => Some(true)
           | Js.Json.JSONFalse => Some(false)
-          | _ => failwith("Expected a boolean for `autoLinkToOfficialDoc`")
+          | _ =>
+            failwith(
+              file.name ++ ": Expected a boolean for `autoLinkToOfficialDoc`",
+            )
           }
         | None => None
         };
@@ -91,7 +125,8 @@ let file = (file: FsUtils.t, modulesIndex: array(string)) => {
         | Some(v) =>
           switch (Js.Json.classify(v)) {
           | Js.Json.JSONString(v) => Some(v)
-          | _ => failwith("Expected a string for `officialDoc`")
+          | _ =>
+            failwith(file.name ++ ": Expected a string for `officialDoc`")
           }
         | None => None
         };
@@ -99,23 +134,24 @@ let file = (file: FsUtils.t, modulesIndex: array(string)) => {
         switch (Js.Dict.get(value, "body")) {
         | Some(v) =>
           switch (Js.Json.classify(v)) {
-          | Js.Json.JSONString(v) => v
-          | _ => failwith("Expected an string for the `body`")
+          | Js.Json.JSONObject(v) => v
+          | _ => failwith(file.name ++ ": Expected an object for the `body`")
           }
-        | None => failwith("Expected an `body` property")
+        | None => failwith(file.name ++ ": Expected an `body` property")
         };
       let p: PageContent.pageData = {
         id,
         title,
+        date,
+        author,
         wip,
         officialDoc,
         autoLinkToOfficialDoc,
-        body,
-        modulesIndex,
+        body: body->Obj.magic,
       };
       p;
-    | _ => failwith("Expected an object for pageData")
+    | _ => failwith(file.name ++ ": Expected an object for pageData")
     };
 
-  make(~url=file.name, ~pageData=Some(pageData));
+  make(~url=file.name, ~docsIndex, ~blogIndex, ~pageData=Some(pageData));
 };

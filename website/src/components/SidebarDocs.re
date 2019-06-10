@@ -47,7 +47,7 @@ let makeSections =
 let sections = makeSections(Consts.sections);
 
 [@react.component]
-let make = (~modulesIndex) => {
+let make = (~docsIndex) => {
   <div
     className="stick"
     style={ReactDOMRe.Style.make(
@@ -124,7 +124,7 @@ let make = (~modulesIndex) => {
                    || link
                    |> Js.String.startsWith("docs/components/")
                  )
-                 && modulesIndex->Array.some(path =>
+                 && docsIndex->Array.some(path =>
                       link == "docs/" ++ path ++ "/"
                     )
                    ? <TextLink

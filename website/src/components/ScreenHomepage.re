@@ -15,8 +15,16 @@ let styles =
   );
 
 [@react.component]
-let make = () =>
+let make = (~currentLocation) =>
   <View>
+    <Head />
+    <HeaderLarge currentLocation />
+    <BsReactHelmet>
+      <title>
+        {(Consts.title ++ " " ++ ", ReasonML bindings for React Native")
+         ->React.string}
+      </title>
+    </BsReactHelmet>
     <SpacedView
       vertical=SpacedView.XL
       style=Style.(

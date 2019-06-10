@@ -6,24 +6,18 @@ open ReactMultiversal;
 type pageData = {
   id: string,
   title: string,
+  date: option(string),
+  author: option(string),
   wip: option(bool),
   officialDoc: option(string),
   autoLinkToOfficialDoc: option(bool),
-  body: string,
-  modulesIndex: array(string),
+  body: JsonBodyRenderer.t,
 };
 
 let styles =
   StyleSheet.create(
     Style.{
       "container": style(~flex=1., ~flexBasis=500.->dp, ()),
-      "title":
-        style(
-          ~flexDirection=`row,
-          ~justifyContent=`spaceBetween,
-          ~alignItems=`center,
-          (),
-        ),
       "titleText":
         style(
           ~fontSize=48.,
@@ -33,7 +27,8 @@ let styles =
         ),
       "editLink":
         style(
-          ~alignSelf=`flexEnd,
+          // ~alignSelf=`flexEnd,
+          ~marginLeft=auto,
           ~borderWidth=1.,
           ~borderStyle=`solid,
           ~borderColor=Consts.Colors.accent,
@@ -93,7 +88,7 @@ let make = (~pageData) => {
     ++ pageData.id
     ++ ".md";
   <SpacedView style=styles##container vertical=SpacedView.L>
-    <View style=styles##title>
+    <View>
       <Text style=styles##titleText> pageData.title->React.string </Text>
       {officialDocHref
        ->Option.map(officialDocHref =>
@@ -109,16 +104,30 @@ let make = (~pageData) => {
        ->Option.getWithDefault(React.null)}
     </View>
     <Spacer />
-    <TextLink href=editHref style=styles##editLink>
-      <SpacedView vertical=SpacedView.XS horizontal=SpacedView.XS>
-        <Text style=styles##editLinkText> {|Edit|}->React.string </Text>
-      </SpacedView>
-    </TextLink>
+    <Row.SpaceBetween>
+      <TextLight>
+        {pageData.date
+         ->Option.map(date => date->React.string)
+         ->Option.getWithDefault(React.null)}
+        {pageData.date->Option.isSome && pageData.author->Option.isSome
+           ? "  |  "->React.string : React.null}
+        {pageData.author
+         ->Option.map(author => ("By @" ++ author)->React.string)
+         ->Option.getWithDefault(React.null)}
+      </TextLight>
+      <TextLink href=editHref style=styles##editLink>
+        <SpacedView vertical=SpacedView.XS horizontal=SpacedView.XS>
+          <Text style=styles##editLinkText> {|Edit|}->React.string </Text>
+        </SpacedView>
+      </TextLink>
+    </Row.SpaceBetween>
+    <Spacer />
     {pageData.wip
      ->Option.flatMap(wip =>
          if (wip) {
            Some(
              <>
+               <Spacer />
                <SpacedView style=styles##wip>
                  <Text style=styles##wipText>
                    {|This module below has been implemented but not properly documented. You may find below partial documentation or just raw code to show you requirements for its usage.
@@ -138,17 +147,6 @@ If you want you can help us to improve the situation by |}
          }
        )
      ->Option.getWithDefault(React.null)}
-    <div
-      className="htmlContent"
-      style={ReactDOMRe.Style.make(
-        ~display="flex",
-        ~flexDirection="column",
-        ~flexGrow="1",
-        ~flexShrink="1",
-        ~whiteSpace="normal",
-        (),
-      )}
-      dangerouslySetInnerHTML={"__html": pageData.body}
-    />
+    <JsonBodyRenderer body={pageData.body} />
   </SpacedView>;
 };
