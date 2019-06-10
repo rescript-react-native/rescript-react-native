@@ -33,12 +33,7 @@ let styles =
       "li": textStyle(),
       "liWrapper": viewStyle(~flexDirection=`row, ()),
       "liBullet":
-        textStyle(
-          ~lineHeight=32.,
-          ~paddingHorizontal=10.->dp,
-          ~alignSelf=`flexStart,
-          (),
-        ),
+        textStyle(~paddingHorizontal=10.->dp, ~alignSelf=`flexStart, ()),
       "blockQuote":
         viewStyle(
           ~paddingTop=29.->dp,
@@ -81,8 +76,10 @@ let styles =
 
 module A = {
   [@react.component]
-  let make = (~href, ~style as styl=?, ~children) => {
-    <TextLink href style=Style.(arrayOption([|Some(styles##aText), styl|]))>
+  let make = (~props=Js.Obj.empty(), ~style as styl=?, ~children) => {
+    <TextLink
+      href=props##href
+      style=Style.(arrayOption([|Some(styles##aText), styl|]))>
       children
     </TextLink>;
   };
@@ -90,12 +87,18 @@ module A = {
 
 module H1 = {
   [@react.component]
-  let make = (~style as styl=?, ~textStyle as textStyl=?, ~children) => {
+  let make =
+      (
+        ~props=Js.Obj.empty(),
+        ~style as styl=?,
+        ~textStyle as textStyl=?,
+        ~children,
+      ) => {
     <View style=Style.(arrayOption([|Some(styles##h1), styl|]))>
       // ariaLevel=1
       // accessibilityRole=`header
 
-        <h1>
+        <h1 id=props##id>
           <Text
             style=Style.(arrayOption([|Some(styles##h1Text), textStyl|]))>
             children
@@ -107,12 +110,18 @@ module H1 = {
 
 module H2 = {
   [@react.component]
-  let make = (~style as styl=?, ~textStyle as textStyl=?, ~children) => {
+  let make =
+      (
+        ~props=Js.Obj.empty(),
+        ~style as styl=?,
+        ~textStyle as textStyl=?,
+        ~children,
+      ) => {
     <View style=Style.(arrayOption([|Some(styles##h2), styl|]))>
       // ariaLevel=2
       // accessibilityRole=`header
 
-        <h2>
+        <h2 id=props##id>
           <Text
             style=Style.(arrayOption([|Some(styles##h2Text), textStyl|]))>
             children
@@ -124,12 +133,18 @@ module H2 = {
 
 module H3 = {
   [@react.component]
-  let make = (~style as styl=?, ~textStyle as textStyl=?, ~children) => {
+  let make =
+      (
+        ~props=Js.Obj.empty(),
+        ~style as styl=?,
+        ~textStyle as textStyl=?,
+        ~children,
+      ) => {
     <View style=Style.(arrayOption([|Some(styles##h3), styl|]))>
       // ariaLevel=3
       // accessibilityRole=`header
 
-        <h3>
+        <h3 id=props##id>
           <Text
             style=Style.(arrayOption([|Some(styles##h3Text), textStyl|]))>
             children
@@ -141,12 +156,18 @@ module H3 = {
 
 module H4 = {
   [@react.component]
-  let make = (~style as styl=?, ~textStyle as textStyl=?, ~children) => {
+  let make =
+      (
+        ~props=Js.Obj.empty(),
+        ~style as styl=?,
+        ~textStyle as textStyl=?,
+        ~children,
+      ) => {
     <View style=Style.(arrayOption([|Some(styles##h4), styl|]))>
       // ariaLevel=4
       // accessibilityRole=`header
 
-        <h4>
+        <h4 id=props##id>
           <Text
             style=Style.(arrayOption([|Some(styles##h4Text), textStyl|]))>
             children
@@ -158,12 +179,18 @@ module H4 = {
 
 module H5 = {
   [@react.component]
-  let make = (~style as styl=?, ~textStyle as textStyl=?, ~children) => {
+  let make =
+      (
+        ~props=Js.Obj.empty(),
+        ~style as styl=?,
+        ~textStyle as textStyl=?,
+        ~children,
+      ) => {
     <View style=Style.(arrayOption([|Some(styles##h5), styl|]))>
       // ariaLevel=5
       // accessibilityRole=`header
 
-        <h5>
+        <h5 id=props##id>
           <Text
             style=Style.(arrayOption([|Some(styles##h5Text), textStyl|]))>
             children
@@ -175,12 +202,18 @@ module H5 = {
 
 module H6 = {
   [@react.component]
-  let make = (~style as styl=?, ~textStyle as textStyl=?, ~children) => {
+  let make =
+      (
+        ~props=Js.Obj.empty(),
+        ~style as styl=?,
+        ~textStyle as textStyl=?,
+        ~children,
+      ) => {
     <View style=Style.(arrayOption([|Some(styles##h6), styl|]))>
       // ariaLevel=6
       // accessibilityRole=`header
 
-        <h6>
+        <h6 id=props##id>
           <Text
             style=Style.(arrayOption([|Some(styles##h6Text), textStyl|]))>
             children
@@ -192,7 +225,13 @@ module H6 = {
 
 module P = {
   [@react.component]
-  let make = (~style as styl=?, ~textStyle as textStyl=?, ~children) => {
+  let make =
+      (
+        ~props=Js.Obj.empty(),
+        ~style as styl=?,
+        ~textStyle as textStyl=?,
+        ~children,
+      ) => {
     <View style=Style.(arrayOption([|Some(styles##p), styl|]))>
       <Text style=Style.(arrayOption([|Some(styles##text), textStyl|]))>
         children
@@ -201,9 +240,9 @@ module P = {
   };
 };
 
-module Text = {
+module TextNode = {
   [@react.component]
-  let make = (~style as styl=?, ~children) => {
+  let make = (~props=Js.Obj.empty(), ~style as styl=?, ~children) => {
     <Text style=Style.(arrayOption([|Some(styles##text), styl|]))>
       children
     </Text>;
@@ -212,7 +251,7 @@ module Text = {
 
 module Ul = {
   [@react.component]
-  let make = (~style as styl=?, ~children) => {
+  let make = (~props=Js.Obj.empty(), ~style as styl=?, ~children) => {
     <View style=Style.(arrayOption([|Some(styles##ul), styl|]))>
       children
     </View>;
@@ -221,10 +260,16 @@ module Ul = {
 
 module Li = {
   [@react.component]
-  let make = (~style as styl=?, ~children) => {
+  let make =
+      (~props=Js.Obj.empty(), ~style as styl=?, ~bullet={j|•|j}, ~children) => {
     <View style=styles##liWrapper>
-      <Text style=styles##liBullet> {j|•|j}->React.string </Text>
-      <Text style=Style.(arrayOption([|Some(styles##li), styl|]))>
+      <Text style={Style.array([|styles##text, styles##liBullet|])}>
+        bullet->React.string
+      </Text>
+      <Text
+        style=Style.(
+          arrayOption([|Some(styles##li), Some(styles##text), styl|])
+        )>
         children
       </Text>
     </View>;
@@ -233,7 +278,13 @@ module Li = {
 
 module BlockQuote = {
   [@react.component]
-  let make = (~style as styl=?, ~textStyle as textStyl=?, ~children) => {
+  let make =
+      (
+        ~props=Js.Obj.empty(),
+        ~style as styl=?,
+        ~textStyle as textStyl=?,
+        ~children,
+      ) => {
     <View style=Style.(arrayOption([|Some(styles##blockQuote), styl|]))>
       <Text
         style=Style.(arrayOption([|Some(styles##blockQuoteText), textStyl|]))>
@@ -245,7 +296,7 @@ module BlockQuote = {
 
 module Pre = {
   [@react.component]
-  let make = (~style as styl=?, ~props, ~children) => {
+  let make = (~props=Js.Obj.empty(), ~style as styl=?, ~children) => {
     <View style=Style.(arrayOption([|Some(styles##pre), styl|]))>
       {ReactDOMRe.createElement(
          "pre",
@@ -258,7 +309,7 @@ module Pre = {
 
 module CodeBlock = {
   [@react.component]
-  let make = (~style as styl=?, ~props, ~children) => {
+  let make = (~props=Js.Obj.empty(), ~style as styl=?, ~children) => {
     <View style=Style.(arrayOption([|Some(styles##codeBlock), styl|]))>
       {ReactDOMRe.createElement(
          "code",
@@ -271,7 +322,7 @@ module CodeBlock = {
 
 module Code = {
   [@react.component]
-  let make = (~style as styl=?, ~children) => {
+  let make = (~props=Js.Obj.empty(), ~style as styl=?, ~children) => {
     <Text style=Style.(arrayOption([|Some(styles##codeText), styl|]))>
       {ReactDOMRe.createElement("code", [|children|])}
     </Text>;
@@ -282,10 +333,10 @@ module Br = {
   /* Platform.OS */
   /* let make = _children => {...component, render: _self => <View />}; */
   [@react.component]
-  let make = () => <Text> "\n"->React.string </Text>;
+  let make = (~props=Js.Obj.empty()) => <Text> "\n"->React.string </Text>;
 };
 
 module Hr = {
   [@react.component]
-  let make = () => <View style=styles##hr />;
+  let make = (~props=Js.Obj.empty()) => <View style=styles##hr />;
 };

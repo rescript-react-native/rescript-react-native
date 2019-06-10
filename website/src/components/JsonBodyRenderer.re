@@ -1,3 +1,4 @@
+open Belt;
 open ReactNative;
 
 type htmlProps = {
@@ -30,14 +31,14 @@ let rec jsTreeToReason = (jsChild: t) =>
     let props = jsChild##p;
     let children =
       switch (Js.Undefined.toOption(jsChild##c)) {
-      | Some(c) => c->Belt.Array.map(jsTreeToReason)
+      | Some(c) => c->Array.map(jsTreeToReason)
       | None => [||]
       };
     Element(tag, props, children);
   | _ => Empty
   };
 
-let stringMapPartial = (f, s) => {
+let stringMapPartial = (s, f) => {
   let b = Buffer.create(String.length(s));
   s
   |> String.iter(c =>
@@ -49,76 +50,126 @@ let stringMapPartial = (f, s) => {
   b->Buffer.contents;
 };
 
-let lastSiblingHasLineBreaking = ref(false);
+// let cleanupNewlines = s =>
+//   s->stringMapPartial(char => char === '\n' ? None : Some(char));
+let cleanupNewlines = s =>
+  s->stringMapPartial(char => char === '\n' ? Some(' ') : Some(char));
 
-let cleanupNewlines = (string, siblingHasLineBreaking) =>
-  stringMapPartial(
-    char =>
-      char === '\n' && siblingHasLineBreaking
-        ? None : Some(char === '\n' ? ' ' : char),
-    string,
-  );
+let optionalCleanString = (s, keepNewlines) => {
+  let sc = keepNewlines ? s : cleanupNewlines(s)->Js.String.trim;
+  sc === "" ? None : Some(sc);
+};
 
-let cleanupNewlinesPre = (string, siblingHasLineBreaking) =>
-  stringMapPartial(
-    char => char === '\n' && siblingHasLineBreaking ? None : Some(char),
-    string,
-  );
+let keepNewlines = ref(false);
 
-let rec renderChild = (parentTag, index: int, child) => {
-  /* @todo we can do better */
+let inlineBreakIfParentIsInline = parentTag => {
+  switch (parentTag) {
+  | "li" => <Html.Br />
+  | _ => React.null
+  };
+};
+
+let rec renderChild = (~keepNewlines=false, parentTag, index: int, child) => {
+  /* @todo we can do better for the key */
   let key = index->string_of_int;
-  let siblingHasLineBreaking = lastSiblingHasLineBreaking^;
-  lastSiblingHasLineBreaking := false;
-  let renderChildren = (parentTag, children) =>
-    if (children->Belt.Array.length == 0) {
-      React.null;
-    } else {
-      children->Belt.Array.mapWithIndex(renderChild(parentTag))->React.array;
-    };
+
+  let renderChildren = (~keepNewlines, parentTag, children) =>
+    children->Array.length > 0
+      ? children
+        ->Array.mapWithIndex(renderChild(~keepNewlines, parentTag))
+        ->React.array
+      : React.null;
+
   switch (child) {
   | String(string) =>
     switch (parentTag) {
-    | "ul" => React.null
     | "ol" => React.null
+    | "ul" => React.null
     | "li" =>
-      <Html.Text>
-        {cleanupNewlines(string, siblingHasLineBreaking)->React.string}
-      </Html.Text>
-    | "code" =>
-      cleanupNewlinesPre(string, siblingHasLineBreaking)->React.string
-    | _ => cleanupNewlines(string, siblingHasLineBreaking)->React.string
+      string
+      ->optionalCleanString(keepNewlines)
+      ->Option.map(s => <Html.TextNode> s->React.string </Html.TextNode>)
+      ->Option.getWithDefault(React.null)
+    | _ =>
+      string
+      ->optionalCleanString(keepNewlines)
+      ->Option.map(React.string)
+      ->Option.getWithDefault(React.null)
     }
   | Element(tag, props, children) =>
     switch (tag) {
     /* html tags */
     | "a" =>
-      <Html.A key href=props##href> {renderChildren(tag, children)} </Html.A>
-    | "h1" => <Html.H1 key> {renderChildren(tag, children)} </Html.H1>
-    | "h2" => <Html.H2 key> {renderChildren(tag, children)} </Html.H2>
-    | "h3" => <Html.H3 key> {renderChildren(tag, children)} </Html.H3>
-    | "h4" => <Html.H4 key> {renderChildren(tag, children)} </Html.H4>
-    | "h5" => <Html.H5 key> {renderChildren(tag, children)} </Html.H5>
-    | "h6" => <Html.H6 key> {renderChildren(tag, children)} </Html.H6>
-    | "p" => <Html.P key> {renderChildren(tag, children)} </Html.P>
-    | "ul" => <Html.Ul key> {renderChildren(tag, children)} </Html.Ul>
-    | "li" => <Html.Li key> {renderChildren(tag, children)} </Html.Li>
+      <Html.A key props>
+        {renderChildren(~keepNewlines, tag, children)}
+      </Html.A>
+    | "h1" =>
+      <Html.H1 key props>
+        {renderChildren(~keepNewlines, tag, children)}
+      </Html.H1>
+    | "h2" =>
+      <Html.H2 key props>
+        {renderChildren(~keepNewlines, tag, children)}
+      </Html.H2>
+    | "h3" =>
+      <Html.H3 key props>
+        {renderChildren(~keepNewlines, tag, children)}
+      </Html.H3>
+    | "h4" =>
+      <Html.H4 key props>
+        {renderChildren(~keepNewlines, tag, children)}
+      </Html.H4>
+    | "h5" =>
+      <Html.H5 key props>
+        {renderChildren(~keepNewlines, tag, children)}
+      </Html.H5>
+    | "h6" =>
+      <Html.H6 key props>
+        {renderChildren(~keepNewlines, tag, children)}
+      </Html.H6>
+    | "p" =>
+      <Html.P key props>
+        {renderChildren(~keepNewlines, tag, children)}
+      </Html.P>
+    | "ol" =>
+      <>
+        {inlineBreakIfParentIsInline(parentTag)}
+        <Html.Ul key props>
+          {renderChildren(~keepNewlines, tag, children)}
+        </Html.Ul>
+      </>
+    | "ul" =>
+      <>
+        {inlineBreakIfParentIsInline(parentTag)}
+        <Html.Ul key props>
+          {renderChildren(~keepNewlines, tag, children)}
+        </Html.Ul>
+      </>
+    | "li" =>
+      <Html.Li key props>
+        {renderChildren(~keepNewlines, tag, children)}
+      </Html.Li>
     | "blockquote" =>
-      <Html.BlockQuote key> {renderChildren(tag, children)} </Html.BlockQuote>
+      <Html.BlockQuote key props>
+        {renderChildren(~keepNewlines, tag, children)}
+      </Html.BlockQuote>
     | "pre" =>
-      <Html.Pre key props> {renderChildren(tag, children)} </Html.Pre>
+      <Html.Pre key props>
+        {renderChildren(~keepNewlines=true, tag, children)}
+      </Html.Pre>
     | "code" =>
       switch (parentTag) {
       | "pre" =>
         <Html.CodeBlock key props>
-          {renderChildren(tag, children)}
+          {renderChildren(~keepNewlines, tag, children)}
         </Html.CodeBlock>
-      | _ => <Html.Code key> {renderChildren(tag, children)} </Html.Code>
+      | _ =>
+        <Html.Code key>
+          {renderChildren(~keepNewlines, tag, children)}
+        </Html.Code>
       }
-    | "br" =>
-      lastSiblingHasLineBreaking := true;
-      <Html.Br key />;
-    | "hr" => <Html.Hr key />
+    | "br" => <Html.Br key props />
+    | "hr" => <Html.Hr key props />
     | _ =>
       ReactDOMRe.createElement(
         tag,
@@ -128,7 +179,7 @@ let rec renderChild = (parentTag, index: int, child) => {
             ->Js.Obj.assign({"key": key})
             ->Js.Obj.assign(props),
           ),
-        [|renderChildren(tag, children)|],
+        [|renderChildren(~keepNewlines, tag, children)|],
       )
     }
   | Empty => React.null
