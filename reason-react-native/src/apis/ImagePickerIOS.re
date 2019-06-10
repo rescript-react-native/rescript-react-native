@@ -21,7 +21,7 @@ external selectDialogConfig:
 external openCameraDialog:
   (
     ~config: cameraDialogConfig,
-    ~onSuccess: imageUri => unit,
+    ~onSuccess: (imageUri, ~height: float, ~width: float, unit) => unit,
     ~onError: 'error => unit
   ) =>
   unit =
@@ -31,7 +31,7 @@ external openCameraDialog:
 external openSelectDialog:
   (
     ~config: selectDialogConfig,
-    ~onSuccess: imageUri => unit,
+    ~onSuccess: (imageUri, ~height: float, ~width: float, unit) => unit,
     ~onError: 'error => unit
   ) =>
   unit =
