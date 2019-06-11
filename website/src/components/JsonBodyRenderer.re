@@ -1,5 +1,4 @@
 open Belt;
-open ReactNative;
 
 type htmlProps = {
   .
