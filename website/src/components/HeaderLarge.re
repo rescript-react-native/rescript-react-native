@@ -17,6 +17,9 @@ let styles =
           ~zIndex=1,
           (),
         ),
+      "barWrapper":
+        style(~backgroundColor=Consts.Colors.dark, ~overflow=`visible, ())
+        ->unsafeAddStyle({"overflow-y": "visible", "overflow-x": "hidden"}),
       "bar":
         style(
           ~flexDirection=`row,
@@ -24,7 +27,7 @@ let styles =
           ~justifyContent=`spaceBetween,
           (),
         ),
-      "barWrapper": style(~backgroundColor=Consts.Colors.dark, ()),
+
       "logoLink":
         style(
           ~flexGrow=1.,
@@ -42,6 +45,7 @@ let styles =
           ~color=Consts.Colors.light,
           (),
         ),
+      "search": style(),
       "links":
         style(
           ~flexGrow=1.,
@@ -128,6 +132,20 @@ let make = (~currentLocation) => {
              </ViewLink>;
            })
          ->React.array}
+      </SpacedView>
+      <SpacedView style=styles##search vertical=XS>
+        <input
+          id="SearchInput"
+          placeholder="Search"
+          style={ReactDOMRe.Style.make(
+            ~fontSize="15px",
+            ~width="120px",
+            ~borderRadius="20px",
+            ~border="0",
+            ~padding="10px 20px",
+            (),
+          )}
+        />
       </SpacedView>
       <SpacedView style=styles##icons vertical=XS>
         {Consts.socialLinks

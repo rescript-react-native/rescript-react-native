@@ -43,8 +43,17 @@ let make =
   {j|
 <!DOCTYPE html>
 <html style="height:100%">
-<head>$helmetMeta $helmetLinks $helmetTitle $helmetStyle $helmetScript $css</head>
-<body style="min-height:100%">$html</body>
+<head>
+$helmetMeta
+$helmetLinks
+$helmetTitle
+$helmetStyle
+$css
+</head>
+<body style="min-height:100%">
+$html
+$helmetScript
+</body>
 </html>|j};
 };
 

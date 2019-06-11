@@ -234,7 +234,7 @@ module P = {
       ) => {
     <View style=Style.(arrayOption([|Some(styles##p), styl|]))>
       <Text style=Style.(arrayOption([|Some(styles##text), textStyl|]))>
-        children
+        <p> children </p>
       </Text>
     </View>;
   };
@@ -270,7 +270,7 @@ module Li = {
         style=Style.(
           arrayOption([|Some(styles##li), Some(styles##text), styl|])
         )>
-        children
+        <p> children </p>
       </Text>
     </View>;
   };
@@ -288,7 +288,7 @@ module BlockQuote = {
     <View style=Style.(arrayOption([|Some(styles##blockQuote), styl|]))>
       <Text
         style=Style.(arrayOption([|Some(styles##blockQuoteText), textStyl|]))>
-        children
+        <blockquote> children </blockquote>
       </Text>
     </View>;
   };

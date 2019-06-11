@@ -80,8 +80,11 @@ code {
   font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  all: unset;
+/* we use this tags for semantics/indexing only */
+h1, h2, h3, h4, h5, h6, p, blockquote {
+  font:inherit;
+  margin: 0;
+  padding: 0;
 }
 
 .hljs {
@@ -105,4 +108,23 @@ h1, h2, h3, h4, h5, h6 {
 |j}
       ->React.string
     </style>
+    // algolia
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"
+    />
+    <script>
+      {j|
+docsearch({
+  "apiKey": "2e8d1544f0698bef1243f3f7850b6483",
+  "indexName": "reason-react-native",
+  "inputSelector": "#SearchInput",
+  "debug": true
+});
+|j}
+      ->React.string
+    </script>
   </BsReactHelmet>;
