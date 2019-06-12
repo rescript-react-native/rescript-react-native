@@ -25,12 +25,9 @@ function deg(f) {
                       /* Float_f */0,
                       /* No_padding */0,
                       /* Lit_precision */[2],
-                      /* Char_literal */Block.__(12, [
-                          /* "%" */37,
-                          /* End_of_format */0
-                        ])
+                      /* End_of_format */0
                     ]),
-                  "%.2f%%"
+                  "%.2f"
                 ]), f) + "deg";
 }
 

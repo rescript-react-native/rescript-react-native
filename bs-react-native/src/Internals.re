@@ -16,5 +16,5 @@ module Encoder = {
 
   let pct = f => string(Printf.sprintf("%.2f%%", f));
 
-  let deg = f => string(Printf.sprintf("%.2f%%", f) ++ "deg");
+  let deg = f => string(Printf.sprintf("%.2f", f) ++ "deg");
 };
