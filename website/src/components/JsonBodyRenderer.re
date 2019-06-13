@@ -57,7 +57,7 @@ let cleanupNewlines = s =>
 
 let optionalCleanString = (s, keepNewlines) => {
   let sc = keepNewlines ? s : cleanupNewlines(s);
-  sc === "" || sc === " " ? None : Some(sc);
+  sc === "" || sc === " " && s != sc ? None : Some(sc);
 };
 
 let keepNewlines = ref(false);
