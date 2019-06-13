@@ -21,6 +21,8 @@ It is often said that writing ReactJS code feels like "just using JavaScript".
 The same applies to _Reason React_ with _Reason React Native_: you will feel
 like you are "just using Reason".
 
+![Introduction](/reason-react-native/schemas/introduction.svg)
+
 ## Zero-Cost
 
 What is awesome about _Reason React Native_ bindings is that they don't

@@ -1,6 +1,11 @@
 open ReactNative;
 open ReactMultiversal;
 
+// react-native-web
+[@bs.module "react-native"]
+external createWebElementFromString: (string, 'props) => React.element =
+  "createElement";
+
 let lightGrey = Predefined.Colors.lightGrey;
 let blue = Predefined.Colors.blue;
 let purple = Predefined.Colors.purple;
@@ -29,6 +34,7 @@ let styles =
           ~fontWeight=`_300,
           (),
         ),
+      "image": imageStyle(~maxWidth=100.->pct, ()),
       "ul": viewStyle(~marginBottom=29.->dp, ()),
       "li": textStyle(),
       "liWrapper": viewStyle(~flexDirection=`row, ()),
@@ -246,6 +252,24 @@ module TextNode = {
     <Text style=Style.(arrayOption([|Some(styles##text), styl|]))>
       children
     </Text>;
+  };
+};
+
+module Image = {
+  [@react.component]
+  let make = (~props=Js.Obj.empty(), ~style as styl=?) => {
+    Platform.os == Platform.web
+      ? createWebElementFromString(
+          "img",
+          {
+            "style": Style.(arrayOption([|Some(styles##image), styl|])),
+            "src": props##src,
+          },
+        )
+      : <ImageFromUri
+          style=Style.(arrayOption([|Some(styles##image), styl|]))
+          uri=props##src
+        />;
   };
 };
 

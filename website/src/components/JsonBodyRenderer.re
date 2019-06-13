@@ -7,6 +7,7 @@ type htmlProps = {
   "for": string,
   "class": string,
   "href": string,
+  "src": string,
 };
 
 type reasonChildren = array(reasonChild)
@@ -130,6 +131,7 @@ let rec renderChild = (~keepNewlines=false, parentTag, index: int, child) => {
       <Html.P key props>
         {renderChildren(~keepNewlines, tag, children)}
       </Html.P>
+    | "img" => <Html.Image key props />
     | "ol" =>
       <>
         {inlineBreakIfParentIsInline(parentTag)}
