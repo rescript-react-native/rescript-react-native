@@ -92,7 +92,7 @@ let make = (~currentLocation) =>
       <ViewLink
         href={Consts.baseUrl ++ "/en/docs/"}
         style=Style.(
-          style(~borderRadius=6., ~backgroundColor=Consts.Colors.accent, ())
+          style(~borderRadius=6., ~backgroundColor=Predefined.Colors.blue, ())
         )>
         <SpacedView horizontal=SpacedView.L>
           <Text

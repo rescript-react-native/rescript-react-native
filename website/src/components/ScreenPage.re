@@ -42,7 +42,7 @@ let make =
          )}
       {switch (mode) {
        | `blog => <SidebarBlog blogIndex />
-       | _ => <SidebarDocs docsIndex />
+       | _ => <SidebarDocs docsIndex currentLocation />
        }}
     </Container>
   </>;

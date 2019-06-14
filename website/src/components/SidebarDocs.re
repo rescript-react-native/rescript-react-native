@@ -5,24 +5,21 @@ open ReactMultiversal;
 let styles =
   StyleSheet.create(
     Style.{
-      "container": style(~height=100.->pct, ~overflow=`scroll, ()),
-      "title": style(~fontSize=16., ~fontWeight=`_600, ~color="#333", ()),
-      "link":
-        style(
-          ~fontSize=14.,
-          ~fontWeight=`_400,
-          ~color="#555",
-          ~paddingVertical=(Spacer.space /. 4.)->dp,
+      "container": viewStyle(~height=100.->pct, ~overflow=`scroll, ()),
+      "title": textStyle(~fontSize=16., ~fontWeight=`_600, ~color="#333", ()),
+      "link": viewStyle(),
+      "linkActive":
+        viewStyle(
+          ~shadowColor=Predefined.Colors.blue,
+          ~shadowOffset=offset(~width=-3., ~height=0.),
+          ~shadowOpacity=1.,
+          ~shadowRadius=0.,
           (),
         ),
-      "notlink":
-        style(
-          ~fontSize=14.,
-          ~fontWeight=`_400,
-          ~color="#ddd",
-          ~paddingVertical=(Spacer.space /. 4.)->dp,
-          (),
-        ),
+      "linkText":
+        textStyle(~fontSize=14., ~fontWeight=`_400, ~color="#555", ()),
+      "linkTextActive": textStyle(~color=Predefined.Colors.blue, ()),
+      "notlinkText": textStyle(~color="#ddd", ()),
     },
   );
 
@@ -47,7 +44,7 @@ let makeSections =
 let sections = makeSections(Consts.sections);
 
 [@react.component]
-let make = (~docsIndex) => {
+let make = (~docsIndex, ~currentLocation) => {
   <div
     className="stick"
     style={ReactDOMRe.Style.make(
@@ -108,14 +105,18 @@ let make = (~docsIndex) => {
                  ++ ")",
                (),
              )}>
-             <SpacedView vertical=SpacedView.M horizontal=SpacedView.None>
+             <SpacedView vertical=M horizontal=None>
                <Text style=styles##title>
                  {section.title->String.uppercase->React.string}
                </Text>
              </SpacedView>
            </div>
            {{section.data
-             ->List.map(((title, link)) =>
+             ->List.map(((title, link)) => {
+                 let fulllink = "en/" ++ link;
+                 let isActive =
+                   currentLocation##pathname
+                   |> Js.String.startsWith(fulllink ++ "index.html");
                  !(link |> Js.String.startsWith("docs/apis/"))
                  && !(link |> Js.String.startsWith("docs/components/"))
                  || (
@@ -127,16 +128,34 @@ let make = (~docsIndex) => {
                  && docsIndex->Array.some(path =>
                       link == "docs/" ++ path ++ "/"
                     )
-                   ? <TextLink
+                   ? <ViewLink
                        key=title
-                       href={Consts.baseUrl ++ "/en/" ++ link}
-                       style=styles##link>
-                       title->React.string
-                     </TextLink>
-                   : <Text key=title style=styles##notlink>
-                       title->React.string
-                     </Text>
-               )}
+                       href={Consts.baseUrl ++ "/" ++ fulllink}
+                       style={Style.arrayOption([|
+                         Some(styles##link),
+                         isActive ? Some(styles##linkActive) : None,
+                       |])}>
+                       <SpacedView horizontal=XS vertical=XXS>
+                         <Text
+                           style={Style.arrayOption([|
+                             Some(styles##linkText),
+                             isActive ? Some(styles##linkTextActive) : None,
+                           |])}>
+                           title->React.string
+                         </Text>
+                       </SpacedView>
+                     </ViewLink>
+                   : <SpacedView horizontal=XS vertical=XXS>
+                       <Text
+                         key=title
+                         style={Style.array([|
+                           styles##link,
+                           styles##notlinkText,
+                         |])}>
+                         title->React.string
+                       </Text>
+                     </SpacedView>;
+               })}
             ->List.toArray
             ->React.array}
            <Spacer size=Spacer.S />

@@ -31,12 +31,12 @@ let styles =
           ~marginLeft=auto,
           ~borderWidth=1.,
           ~borderStyle=`solid,
-          ~borderColor=Consts.Colors.accent,
+          ~borderColor=Predefined.Colors.tealBlue,
           ~borderRadius=4.,
           (),
         ),
       "editLinkText":
-        style(~color=Consts.Colors.accent, ~alignItems=`center, ()),
+        style(~color=Predefined.Colors.tealBlue, ~alignItems=`center, ()),
       "officialDocLink":
         style(
           ~display=`flex,
@@ -44,7 +44,7 @@ let styles =
           ~fontSize=14.,
           ~fontWeight=`_300,
           ~alignItems=`center,
-          ~color=Consts.Colors.accent,
+          ~color=Predefined.Colors.blue,
           (),
         ),
       "wip":
@@ -57,7 +57,7 @@ let styles =
           (),
         ),
       "wipText": style(~fontSize=16., ~lineHeight=16. *. 1.5, ()),
-      "wipEditLink": style(~color=Consts.Colors.accent, ()),
+      "wipEditLink": style(~color=Predefined.Colors.blue, ()),
     },
   );
 
@@ -100,7 +100,7 @@ let make = (~pageData) => {
                  <SVGExternalLink
                    width={14.->ReactFromSvg.Size.pt}
                    height={14.->ReactFromSvg.Size.pt}
-                   fill=Consts.Colors.accent
+                   fill=Predefined.Colors.blue
                  />
                  {| Official documentation |}->React.string
                </TextLink>

@@ -43,7 +43,7 @@ let make = (~docsIndex, ~blogIndex, ~currentLocation) => {
           )}
          ->React.array}
       </ContentContainer>
-      <SidebarDocs docsIndex />
+      <SidebarDocs docsIndex currentLocation />
     </Container>
   </>;
 };
