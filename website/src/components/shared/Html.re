@@ -57,7 +57,7 @@ let styles =
           ~color="#515355",
           (),
         ),
-      "pre": viewStyle(),
+      "pre": viewStyle(~marginTop=0.->dp, ~marginBottom=20.->dp, ()),
       "codeBlock": viewStyle(), // ~backgroundColor=lightGrey,
       // ~boxShadow=0 0 0 2px lightGrey;
       // ~borderRadius=2.;
@@ -71,10 +71,10 @@ let styles =
         ),
       "hr":
         viewStyle(
-          ~marginBottom=29.->dp,
-          ~marginHorizontal=29.->dp,
-          ~height=3.->dp,
-          ~backgroundColor="#ddd",
+          ~marginVertical=40.->dp,
+          ~marginHorizontal=20.->dp,
+          ~height=4.->dp,
+          ~backgroundColor="#eee",
           (),
         ),
     })
