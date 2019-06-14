@@ -29,3 +29,12 @@ What is awesome about _Reason React Native_ bindings is that they don't
 introduce an additional cost. The JavaScript code produced by BuckleScript will
 directly hit React & React Native JavaScript implementation, without any extra
 runtime & bundle cost.
+
+---
+
+## Further reading
+
+- [Installation](/reason-react-native/en/docs/install/)
+- [Example](/reason-react-native/en/docs/example/)
+- [Cheatsheet](/reason-react-native/en/docs/cheatsheet/)
+- [Migration from `bs-react-native`](/reason-react-native/en/docs/migration/jsx3/)
