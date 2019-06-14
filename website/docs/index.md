@@ -8,8 +8,10 @@ _Reason React Native_ is a safe & simple way to build
 [Reason](http://reasonml.github.io/), using
 [ReasonReact](https://reasonml.github.io/reason-react/).
 
+## Why _Reason React Native_ ?
+
 By leveraging the ReasonML great type system, expressive language features and
-smooth interoperability with JS (thanks to
+smooth interoperability with JavaScript (thanks to
 [BuckleScript](https://bucklescript.github.io)), _Reason React Native_ provide
 bindings for React Native features as components & APIs that are:
 
@@ -21,7 +23,24 @@ It is often said that writing ReactJS code feels like "just using JavaScript".
 The same applies to _Reason React_ with _Reason React Native_: you will feel
 like you are "just using Reason".
 
+## How to use _Reason React Native_ ?
+
+Like _ReasonReact_, _Reason React Native_ is a ReasonML package that exposes
+bindings for React Native.
+
+On your side, you write Reason code that use the `ReactNative` module exposed by
+`reason-react-native` package that you will find on `npm`.
+
+BuckleScript will compile this code to safe JavaScript that React Native can
+consume like standard JavaScript.
+
 ![Introduction](/reason-react-native/schemas/introduction.svg)
+
+If you are familiar with Flow or TypeScript, you can see Reason as the next
+level of strongly typed JavaScript.
+
+In short, you write safer code that will be compiled to safe JavaScript & end up
+with a safer React Native app!
 
 ## Zero-Cost
 
