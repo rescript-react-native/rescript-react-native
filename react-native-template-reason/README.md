@@ -7,12 +7,18 @@ experience.
 
 ## Setup
 
+## Start a Reason React Native project with this template
+
+```console
+react-native init MyApp --template reason
+```
+
 ### Command line
 
-Install bs-platform with the following command:
+Install BuckleScript with the following command:
 
 ```sh
-yarn add -D bs-platform
+yarn add bs-platform --dev
 ```
 
 ### IDE
