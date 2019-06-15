@@ -1,126 +1,68 @@
 ---
 id: apis/PermissionsAndroid
 title: PermissionsAndroid
-wip: true
+officialDoc: https://facebook.github.io/react-native/docs/permissionsandroid
 ---
 
+Only for projects supporting Native Code. Requires the project to have been
+created using `react-native init` or ejected afterwards if created using
+`expo init` or `create-react-native-app`.
+
+`PermissionsAndroid` provides access to the permissions model avaiable since
+`Android M`. While certain permissions are granted by default as long as they
+are listed in `AndroidManifest.xml`, _dangerous_ permissions require a dialog.
+This API will allow you to manage such permissions.
+
+## Types
+
+### `Permission.t`
+
+Type for permissions that may be granted to the app. Available permissions are:
+
 ```reason
-module Permission: {
-  type t;
+Permission.readCalendar
+Permission.writeCalendar
+Permission.camera
+Permission.readContacts
+Permission.writeContacts
+Permission.getAccounts
+Permission.accessFineLocation
+Permission.accessCoarseLocation
+Permission.recordAudio
+Permission.readPhoneState
+Permission.callPhone
+Permission.readCallLog
+Permission.writeCallLog
+Permission.addVoicemail
+Permission.useSip
+Permission.processOutgoingCalls
+Permission.bodySensors
+Permission.sendSms
+Permission.receiveSms
+Permission.readSms
+Permission.receiveWapPush
+Permission.receiveMms
+Permission.readExternalStorage
+Permission.writeExternalStorage
+```
 
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external readCalendar: t = "READ_CALENDAR";
+### `Result.t`
 
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external writeCalendar: t = "WRITE_CALENDAR";
+Type for the result of a request for some permission. Possible results are:
 
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external camera: t = "CAMERA";
+```reason
+Result.granted
+Result.denied
+Result.neverAskAgain
+```
 
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external readContacts: t = "READ_CONTACTS";
+### `rationale`
 
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external writeContacts: t = "WRITE_CONTACTS";
+To be used with the [`requestWithRationale`](#requestwithrationale) method. May
+be created by the constructor of the same name.
 
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external getAccounts: t = "GET_ACCOUNTS";
-
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external accessFineLocation: t = "ACCESS_FINE_LOCATION";
-
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external accessCoarseLocation: t = "ACCESS_COARSE_LOCATION";
-
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external recordAudio: t = "RECORD_AUDIO";
-
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external readPhoneState: t = "READ_PHONE_STATE";
-
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external callPhone: t = "CALL_PHONE";
-
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external readCallLog: t = "READ_CALL_LOG";
-
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external writeCallLog: t = "WRITE_CALL_LOG";
-
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external addVoicemail: t = "ADD_VOICEMAIL";
-
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external useSip: t = "USE_SIP";
-
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external processOutgoingCalls: t = "PROCESS_OUTGOING_CALLS";
-
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external bodySensors: t = "BODY_SENSORS";
-
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external sendSms: t = "SEND_SMS";
-
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external receiveSms: t = "RECEIVE_SMS";
-
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external readSms: t = "READ_SMS";
-
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external receiveWapPush: t = "RECEIVE_WAP_PUSH";
-
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external receiveMms: t = "RECEIVE_MMS";
-
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external readExternalStorage: t = "READ_EXTERNAL_STORAGE";
-
-  [@bs.module "react-native"]
-  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
-  external writeExternalStorage: t = "WRITE_EXTERNAL_STORAGE";
-};
-
-module Result: {
-  type t;
-
-  [@bs.module "react-native"] [@bs.scope ("PermissionsAndroid", "RESULTS")]
-  external granted: t = "GRANTED";
-
-  [@bs.module "react-native"] [@bs.scope ("PermissionsAndroid", "RESULTS")]
-  external denied: t = "DENIED";
-
-  [@bs.module "react-native"] [@bs.scope ("PermissionsAndroid", "RESULTS")]
-  external neverAskAgain: t = "NEVER_ASK_AGAIN";
-};
-
-type rationale;
-[@bs.obj]
-external rationale:
+```reason
+rationale:
   (
     ~title: string,
     ~message: string,
@@ -129,27 +71,68 @@ external rationale:
     ~buttonNeutral: string=?,
     unit
   ) =>
-  rationale =
-  "";
+  rationale
+```
 
-type dict;
+where
 
-[@bs.scope "PermissionsAndroid"] [@bs.module "react-native"]
-external check: Permission.t => Js.Promise.t(bool) = "check";
+- `title` is the title of the dialog,
+- `message` is the message of the dialog,
+- `buttonPositive` is the text of the positive button,
+- `buttonNegative` is the text of the negative button (optional), and
+- `buttonNeutral` is the text of the neutral button (optional).
 
-// multiple externals
-[@bs.scope "PermissionsAndroid"] [@bs.module "react-native"]
-external request: Permission.t => Js.Promise.t(Result.t) = "";
+### `dict`
 
-// multiple externals
-[@bs.scope "PermissionsAndroid"] [@bs.module "react-native"]
-external requestWithRationale:
-  (Permission.t, rationale) => Js.Promise.t(Result.t) =
-  "request";
+An extension of the `Js.Dict.t` type to allow keys of type `Permission.t`.
+Values of keys may be accessed by the [`get`](#get) method.
 
-[@bs.scope "PermissionsAndroid"] [@bs.module "react-native"]
-external requestMultiple: array(Permission.t) => Js.Promise.t(dict) = "";
+## Methods
 
-[@bs.get_index] external get: (dict, Permission.t) => option(Result.t) = "";
+### `check`
 
+Method to check whether the specified permission has been granted to the app,
+returns a `bool` wrapped in a promise.
+
+```reason
+check: Permission.t => Js.Promise.t(bool)
+```
+
+### `request`
+
+Method to request the specified permission, returns `Result.t` wrapped in a
+promise.
+
+```reason
+request: Permission.t => Js.Promise.t(Result.t)
+```
+
+### `requestWithRationale`
+
+Method to request the specified permission with a rationale, returns `Result.t`
+wrapped in a promise. It is advised to provide a rationale if users have
+previously turned off the permission. Rationale will be presented to the user
+only when necessary. For further information, please refer to the
+[official Android documentation](https://developer.android.com/training/permissions/requesting.html#explain).
+
+```reason
+requestWithRationale: (Permission.t, rationale) => Js.Promise.t(Result.t)
+```
+
+### `requestMultiple`
+
+Method to request multiple permissions within the same dialog prompted to the
+user, returns [`dict`](#dict) wrapped in a promise.
+
+```reason
+requestMultiple: array(Permission.t) => Js.Promise.t(dict)
+```
+
+### `get`
+
+Getter method to access value of the specified permission in the [`dict`](#dict)
+object returned by the `requestMultiple` method.
+
+```reason
+get: (dict, Permission.t) => option(Result.t)
 ```
