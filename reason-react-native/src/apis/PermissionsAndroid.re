@@ -128,7 +128,7 @@ external rationale:
 type dict = Js.Dict.t(Result.t);
 
 [@bs.scope "PermissionsAndroid"] [@bs.module "react-native"]
-external check: Permission.t => Js.Promise.t(bool) = "check";
+external check: Permission.t => Js.Promise.t(bool) = "";
 
 // multiple externals
 [@bs.scope "PermissionsAndroid"] [@bs.module "react-native"]
