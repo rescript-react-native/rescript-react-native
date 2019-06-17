@@ -6,17 +6,13 @@
  */
 open ReactNative;
 
-let instructions =
-  switch (Platform.os) {
-  | os when os == Platform.ios =>
-    "Press Cmd+R to reload,\n" ++ "Cmd+D or shake for dev menu"
-  | os when os == Platform.android =>
-    "Double tap R on your keyboard to reload,\n"
-    ++ "Shake or press menu button for dev menu"
-  | os when os == Platform.web => "Press Cmd+R to reload."
-  | _ => ""
-  };
-
+/*
+ Here is StyleSheet that is using Style module to define styles for your components
+ The main different with JavaScript components you may encounter in React Native
+ is the fact that they **must** be defined before being referenced
+ (so before actual component definitions)
+ More at https://reasonml-community.github.io/reason-react-native/en/docs/apis/Style/
+ */
 let styles =
   Style.(
     StyleSheet.create({
@@ -44,5 +40,20 @@ let app = () =>
     <Text style=styles##instructions>
       "To get started, edit src/App.re"->React.string
     </Text>
-    <Text style=styles##instructions> instructions->React.string </Text>
+    <Text style=styles##instructions>
+      {switch (Platform.os) {
+       /*
+        Instructions depends on the platform this code will run on
+        More at https://reasonml-community.github.io/reason-react-native/en/docs/apis/Platform/
+        */
+       | os when os == Platform.ios =>
+         "Press Cmd+R to reload,\n" ++ "Cmd+D or shake for dev menu"
+       | os when os == Platform.android =>
+         "Double tap R on your keyboard to reload,\n"
+         ++ "Shake or press menu button for dev menu"
+       | os when os == Platform.web => "Press Cmd+R to reload."
+       | _ => ""
+       }}
+      ->React.string
+    </Text>
   </View>;
