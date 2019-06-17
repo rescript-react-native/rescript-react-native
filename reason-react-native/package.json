@@ -9,6 +9,14 @@
     "bucklescript",
     "react-native"
   ],
+  "files": [
+    "*",
+    "!.DS_Store",
+    "!**/*.bs.js",
+    "!.merlin",
+    "!lib/bs",
+    "!lib/ocaml"
+  ],
   "scripts": {
     "re:clean": "bsb -clean-world",
     "re:start": "bsb -make-world -w",
