@@ -5,7 +5,7 @@ author: MoOx
 ---
 
 Today is a big day for the ReasonML community as we are releasing the fruits of
-a long effort started about 3 months ago.
+a long effort started about 4 months ago.
 
 As more and more people were starting to use ReasonML on production apps using
 React Native, we wanted to make the BuckleScript bindings for React Native,
@@ -61,8 +61,9 @@ breaking change with
 That's why we had this idea about offering an easy and smooth transition by
 offering 2 packages to say goodbye to `bs-react-native` without pain.
 
-- `bs-react-native-jsx3-compat`
+- `bs-react-native-jsx3-compat` (0.11.1)
 - `reason-react-native`
+  ([0.60.0](/reason-react-native/en/docs/install/#note-about-reason-react-native-version-number))
 
 ## Wait, what is `bs-react-native-jsx3-compat` ?
 

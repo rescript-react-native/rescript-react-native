@@ -33,7 +33,8 @@ react-native init MyApp --template reason
 ```
 
 💖 Now that you project is setup, you can just check
-[how to use _Reason React Native_](#using-reason-react-native) right away!
+[how to use _Reason React Native_](/reason-react-native/en/docs/usage/) right
+away!
 
 ---
 
@@ -86,30 +87,26 @@ When it's done, you are ready to use Reason React Native !
 
 ---
 
-## Using Reason React Native
 
-@todo move here
-[what's in the template readme](https://github.com/reasonml-community/reason-react-native/tree/master/react-native-template-reason#react-native-helloworld)
-
-### Using JavaScript components from Reason
-
-@todo check out
-[Reason React interop page](https://reasonml.github.io/reason-react/docs/en/components#interop).
-
-You can also browse the source of
-[reason-react-native](https://github.com/reasonml-community/reason-react-native/tree/master/reason-react-native/src)
-because that's exactly what this project is doing!
-
-### Using Reason React Native components from JavaScript
-
-@todo Meanwhile, check out
-[Reason React interop page](https://reasonml.github.io/reason-react/docs/en/components#interop)
 
 ---
 
+## Note about `reason-react-native` version number
+
+We decided to try something simple for you
+
+⚛️ `reason-react-native` `0.60.*` means it should work with `react-native`
+`^0.60.0`.
+
+We reserve patches for internal fix like react-native patches won't affect our
+bindings. This means last digit
+
+- `react-native@0.60.8` should work with `reason-react-native@0.60.0`
+- `react-native@0.60.2` should work with `reason-react-native@0.60.4`
+
 👉 At this step, you should check our in-depth
-[Example](/reason-react-native/en/docs/example/) or our
-[Cheatsheet](/reason-react-native/en/docs/cheatsheet/)
+👉 **`reason-react-native` `0.x.*` means it should work with
+`react-native@^0.x.*`**.
 
 ---
 
