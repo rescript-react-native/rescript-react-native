@@ -1,6 +1,6 @@
 {
   "name": "bs-react-native",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "repository": "https://github.com/reasonml-community/reason-react-native.git",
   "license": "MIT",
   "keywords": [
@@ -8,6 +8,14 @@
     "reasonml",
     "bucklescript",
     "react-native"
+  ],
+  "files": [
+    "*",
+    "!.DS_Store",
+    "!**/*.bs.js",
+    "!.merlin",
+    "!lib/bs",
+    "!lib/ocaml"
   ],
   "scripts": {
     "re:clean": "bsb -clean-world",
