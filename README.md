@@ -10,6 +10,33 @@
 [ReasonReact](https://reasonml.github.io/reason-react/) to make your iOS,
 Android and [Web](https://github.com/necolas/react-native-web) apps.
 
+## Getting Started
+
+Check our
+[getting started](https://reasonml-community.github.io/reason-react-native/en/docs/)
+guide for details.
+
+## Documentation
+
+See https://reasonml-community.github.io/reason-react-native.
+
+## Contribute
+
+Read the [contribution guidelines](./CONTRIBUTING.md) before contributing.
+
+## Changelog
+
+Check the [changelog](./CHANGELOG.md) for more informations about recent
+releases.
+
+## Code of Conduct
+
+We want this community to be friendly and respectful to each other. Please read
+[the full text](https://github.com/reasonml-community/reason-react-native/blob/master/CODE_OF_CONDUCT.md)
+so that you can understand what actions will and will not be tolerated.
+
+---
+
 ## 🚨 Usage from Git repo
 
 If you use this bindings from the git repo, be sure to use
@@ -36,30 +63,3 @@ If you use this bindings from the git repo, be sure to use
   }
 }
 ```
-
----
-
-## Getting Started
-
-Check our
-[getting started](https://reasonml-community.github.io/reason-react-native/en/docs/)
-guide for details.
-
-## Documentation
-
-See https://reasonml-community.github.io/reason-react-native.
-
-## Contribute
-
-Read the [contribution guidelines](./CONTRIBUTING.md) before contributing.
-
-## Changelog
-
-Check the [changelog](./CHANGELOG.md) for more informations about recent
-releases.
-
-## Code of Conduct
-
-We want this community to be friendly and respectful to each other. Please read
-[the full text](https://github.com/reasonml-community/reason-react-native/blob/master/CODE_OF_CONDUCT.md)
-so that you can understand what actions will and will not be tolerated.
