@@ -17,13 +17,16 @@ coupled with our compatibility layer `bs-react-native-jsx3-compat`
 
 So first,
 
+- Install `reason-react-native@^0.60.0` via yarn or npm,
+- Replace `bs-react-native` with `bs-react-native-jsx3-compat` (`^0.11.1`) in
+  your `package.json`,
 - be sure that you use `bs-platform@^5.0.1`
 - ⚠️ be sure to use
   `"reason-react": "https://github.com/reasonml/reason-react.git#835b90c"`
-  (until 0.7.1 or 0.8 is out)
-- use `react@^16.8.0`
-- add `reason-react-compat@^0.4.0`
-- (if needed, upgrade some deps (eg: `reason-apollo@^0.16.0`))
+  (until 0.7.1 or 0.8 is out),
+- use `react@^16.8.0`,
+- add `reason-react-compat@^0.4.0`,
+- (if needed, upgrade some deps (eg: `reason-apollo@^0.16.0`)),
 - use https://github.com/bloodyowl/upgrade-reason-react-esy
 
 ---
