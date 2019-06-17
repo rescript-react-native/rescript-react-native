@@ -1,0 +1,6 @@
+# Bucklescript artifacts
+*.bs.js
+.bsb.lock
+.merlin
+lib/bs
+lib/ocaml

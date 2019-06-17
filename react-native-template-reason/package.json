@@ -7,5 +7,13 @@
     "re:build": "bsb -clean-world -make-world",
     "clean": "yarn re:clean",
     "test": "yarn re:build"
-  }
+  },
+  "files": [
+    "*",
+    "!.DS_Store",
+    "!**/*.bs.js",
+    "!.merlin",
+    "!lib/bs",
+    "!lib/ocaml"
+  ]
 }
