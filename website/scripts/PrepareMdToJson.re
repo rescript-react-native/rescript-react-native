@@ -23,7 +23,12 @@ Path.join([|sourcePath, "**/*.md"|])
             |> Js.String.replace(".md", "");
           let mdJson = mdToJson(file.content);
           let content =
-            {"id": mdJson##id, "title": mdJson##title, "body": mdJson##body}
+            {
+              "filename": file.name |> Js.String.replace(root, "website"),
+              "id": mdJson##id,
+              "title": mdJson##title,
+              "body": mdJson##body,
+            }
             ->Js.Json.stringifyAny;
           if (content->Option.isNone) {
             Js.log2(file.name, "can't be transformed");
@@ -74,6 +79,12 @@ Path.join([|sourcePath, "**/*.md"|])
           let mdJson = mdToJson(file.content);
           let content =
             {
+              "filename":
+                file.name
+                |> Js.String.replace(
+                     Node.Path.resolve(root, "..") ++ "/",
+                     "",
+                   ),
               "id": mdJson##id,
               "title": mdJson##title,
               "wip": mdJson##wip,
@@ -139,6 +150,7 @@ Path.join([|sourcePath, "**/*.md"|])
           let mdJson = mdToJson(file.content);
           let content =
             {
+              "filename": file.name |> Js.String.replace(root, "website"),
               "id": mdJson##id,
               "title": mdJson##title,
               "author": mdJson##author,

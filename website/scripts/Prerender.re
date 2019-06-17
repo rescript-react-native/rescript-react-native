@@ -70,6 +70,15 @@ let file =
   let pageData =
     switch (Js.Json.classify(json)) {
     | Js.Json.JSONObject(value) =>
+      let filename =
+        switch (Js.Dict.get(value, "filename")) {
+        | Some(v) =>
+          switch (Js.Json.classify(v)) {
+          | Js.Json.JSONString(v) => v
+          | _ => failwith(file.name ++ ": Expected an string for `filename`")
+          }
+        | None => failwith(file.name ++ ": Expected an `filename` property")
+        };
       let id =
         switch (Js.Dict.get(value, "id")) {
         | Some(v) =>
@@ -149,6 +158,7 @@ let file =
         | None => failwith(file.name ++ ": Expected an `body` property")
         };
       let p: PageContent.pageData = {
+        filename,
         id,
         title,
         date,

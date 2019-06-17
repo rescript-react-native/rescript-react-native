@@ -4,6 +4,7 @@ open ReactMultiversal;
 
 // ⚠️ if you update this, also update PrepareMdToJson if needed
 type pageData = {
+  filename: string,
   id: string,
   title: string,
   date: option(string),
@@ -31,12 +32,17 @@ let styles =
           ~marginLeft=auto,
           ~borderWidth=1.,
           ~borderStyle=`solid,
-          ~borderColor=Predefined.Colors.tealBlue,
+          ~borderColor=Predefined.Colors.grey,
           ~borderRadius=4.,
           (),
         ),
       "editLinkText":
-        style(~color=Predefined.Colors.tealBlue, ~alignItems=`center, ()),
+        style(
+          ~fontSize=10.,
+          ~color=Predefined.Colors.grey,
+          ~alignItems=`center,
+          (),
+        ),
       "officialDocLink":
         style(
           ~display=`flex,
@@ -84,9 +90,8 @@ let make = (~pageData) => {
       None;
     };
   let editHref =
-    "https://github.com/reasonml-community/reason-react-native/blob/master/reason-react-native/src/"
-    ++ pageData.id
-    ++ ".md";
+    "https://github.com/reasonml-community/reason-react-native/blob/master/"
+    ++ pageData.filename;
   <SpacedView style=styles##container vertical=SpacedView.L>
     <main>
       <header>
@@ -120,8 +125,8 @@ let make = (~pageData) => {
              ->Option.getWithDefault(React.null)}
           </TextLight>
           <TextLink href=editHref style=styles##editLink>
-            <SpacedView vertical=SpacedView.XS horizontal=SpacedView.XS>
-              <Text style=styles##editLinkText> {|Edit|}->React.string </Text>
+            <SpacedView vertical=SpacedView.XXS horizontal=SpacedView.XS>
+              <Text style=styles##editLinkText> {|EDIT|}->React.string </Text>
             </SpacedView>
           </TextLink>
         </Row.SpaceBetween>
