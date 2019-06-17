@@ -26,7 +26,7 @@ You may also notice some compilation artifacts:
 
 You may want to gitignore all of theses:
 
-```gitignore
+```
 *.bs.js
 .bsb.lock
 .merlin
