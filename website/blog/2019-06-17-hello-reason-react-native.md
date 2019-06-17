@@ -134,3 +134,6 @@ Now that `reason-react-native` is ready to be used and that our migration plan
 is usable, we will probably be focused on documentation as lots of APIs and
 Components need to be documented. We really want to offer the best developer
 experience possible and that's definitely part of it.
+
+👉Now it's time for you to check our
+[Getting Started with Reason React Native documentation](/reason-react-native/en/docs/)
