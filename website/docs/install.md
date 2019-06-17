@@ -28,8 +28,19 @@ React Native allows to create new project from a template, so we made one. By
 choosing this option you will get an hello world project that will already have
 all the requirements included.
 
+When you have correctly
+[`react-native-cli`](http://facebook.github.io/react-native/docs/getting-started#the-react-native-cli)
+installed, you can run the following command:
+
 ```console
 react-native init MyApp --template reason
+```
+
+Final step, you need add BuckleScript (that include ReasonML toolchain):
+
+```console
+cd MyApp
+yarn add bs-platform --dev
 ```
 
 💖 Now that you project is setup, you can just check
