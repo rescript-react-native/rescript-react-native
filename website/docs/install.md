@@ -105,18 +105,18 @@ When it's done, you are ready to
 
 ## Note about `reason-react-native` version number
 
-We decided to try something simple for you
+We decided to try something simple for you:
 
 ⚛️ `reason-react-native` `0.60.*` means it should work with `react-native`
 `^0.60.0`.
 
-We reserve patches for internal fix like react-native patches won't affect our
-bindings. This means last digit
+We keep patch number for bindings fixes. `react-native` patches should not
+affect our bindings. This means last digit don't need to match each others:
 
 - `react-native@0.60.8` should work with `reason-react-native@0.60.0`
 - `react-native@0.60.2` should work with `reason-react-native@0.60.4`
 
-👉 **`reason-react-native` `0.x.*` means it should work with
+👉 In short: **`reason-react-native` `0.x.*` means it should work with
 `react-native@^0.x.*`**.
 
 ---
