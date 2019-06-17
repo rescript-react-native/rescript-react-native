@@ -80,6 +80,7 @@ let sections = [
     data: [
       ("Introduction", "docs/"),
       ("Installation", "docs/install/"),
+      ("Usage", "docs/usage/"),
       ("Example", "docs/example/"),
       ("Cheatsheet", "docs/cheatsheet/"),
       ("Migration from bs-react-native", "docs/migration/jsx3/"),

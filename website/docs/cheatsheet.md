@@ -15,4 +15,5 @@ title: Cheatsheet
 
 - [Getting Started](/reason-react-native/en/docs/)
 - [Installation](/reason-react-native/en/docs/install/)
+- [Usage](/reason-react-native/en/docs/usage/)
 - [Example](/reason-react-native/en/docs/example/)

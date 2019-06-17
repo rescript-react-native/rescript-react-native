@@ -43,12 +43,18 @@ Expo, feel free to open
 [an issue](https://github.com/reasonml-community/reason-react-native/issues/new?title=Expo+template)
 so we can discuss about that_.
 
+_If you are an Expo user, just have a look at the instructions below when your
+Expo app is ready_.
+
 ## Add _Reason React Native_ to an existing project
 
 If you already have an existing project, it's really fast to get all the thing
 you need to start using Reason React Native right away!
 
-Got into your project root & then install the requirements
+👉 **You can decide to use Reason React Native for certain components only** as
+the compilation process generate normal JavaScript.
+
+Go into your project root & then install the requirements:
 
 ```console
 yarn add bs-platform --dev
@@ -80,14 +86,20 @@ Then create a file named `bsconfig.json` at the same level at your
 }
 ```
 
+The main things you should notice here:
+
+- JavaScript generated will be using `import` & `export` (_es6_).
+- JavaScript generated files will have `.bs.js` extension (easy to find)
+- ReasonML code will be compiled from `src` folder.
+- ReasonML will use `reason-react` & `reason-react-native` packages as
+  dependencies.
+
 👀 _For details about this file, please refer to
-[BuckleScript Configuration documentation](https://bucklescript.github.io/docs/en/build-configuration)._
+[BuckleScript Configuration documentation](https://bucklescript.github.io/docs/en/build-configuration)
+if needed._
 
-When it's done, you are ready to use Reason React Native !
-
----
-
-
+When it's done, you are ready to
+[use Reason React Native](/reason-react-native/en/docs/usage/) !
 
 ---
 
@@ -104,7 +116,6 @@ bindings. This means last digit
 - `react-native@0.60.8` should work with `reason-react-native@0.60.0`
 - `react-native@0.60.2` should work with `reason-react-native@0.60.4`
 
-👉 At this step, you should check our in-depth
 👉 **`reason-react-native` `0.x.*` means it should work with
 `react-native@^0.x.*`**.
 
@@ -112,6 +123,7 @@ bindings. This means last digit
 
 ## Further reading
 
+- [Usage](/reason-react-native/en/docs/usage/)
 - [Example](/reason-react-native/en/docs/example/)
 - [Cheatsheet](/reason-react-native/en/docs/cheatsheet/)
 

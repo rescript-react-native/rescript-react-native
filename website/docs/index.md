@@ -66,6 +66,7 @@ Reason-to-JavaScript compiler.
 ## Further reading
 
 - [Installation](/reason-react-native/en/docs/install/)
+- [Usage](/reason-react-native/en/docs/usage/)
 - [Example](/reason-react-native/en/docs/example/)
 - [Cheatsheet](/reason-react-native/en/docs/cheatsheet/)
 - [Migration from `bs-react-native`](/reason-react-native/en/docs/migration/jsx3/)
