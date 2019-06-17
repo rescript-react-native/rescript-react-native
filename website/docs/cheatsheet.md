@@ -3,6 +3,12 @@ id: cheatsheet
 title: Cheatsheet
 ---
 
+If you are not familiar with ReasonML, be sure to check the official
+[ReasonML Syntax Cheatsheet](https://reasonml.github.io/docs/en/syntax-cheatsheet).
+
+If you have to work with JavaScript, you might also be interested with
+[BuckleScript Cheatsheet](https://bucklescript.github.io/docs/en/interop-cheatsheet).
+
 @todo
 
 ---
