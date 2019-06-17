@@ -13,7 +13,7 @@ files:
 - [`./src/App.re`](#srcappre): the actual React Native entry point, using Reason
 
 _If you used our template as explained in th installation guide, you should
-already have theses files._
+already have these files._
 
 No worries, you can copy paste this if needed without understanding the content
 for now. Documentation will explain everything 😇.

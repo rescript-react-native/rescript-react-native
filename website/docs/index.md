@@ -54,8 +54,8 @@ runtime & bundle cost.
 _Reason React Native_ is a package that works with
 [Reason](https://reasonml.github.io/) & use
 [Reason React](https://reasonml.github.io/reason-react/). For this reasons (!),
-if you are unfamiliar on of this two, we encourage you to have a look to their
-documentations as soon as you don't find an answer you might have here.
+if you are unfamiliar with one of these two, we encourage you to have a look to
+their documentations as soon as you don't find an answer you might have here.
 
 And one day or another, you will also have to look for answers on
 [BuckleScript](https://bucklescript.github.io/docs/en/what-why), our

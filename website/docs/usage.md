@@ -24,7 +24,7 @@ You may also notice some compilation artifacts:
 - `.merlin`
 - `lib/bs`
 
-You may want to gitignore all of theses:
+You may want to gitignore all of these:
 
 ```
 *.bs.js
