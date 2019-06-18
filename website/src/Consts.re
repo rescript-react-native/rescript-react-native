@@ -65,6 +65,13 @@ let socialLinks = [|
     componentFunc: (~iconColor, ~iconSize) =>
       <SVGSocialGithub fill=iconColor width=iconSize height=iconSize />,
   },
+  {
+    name: "Discord",
+    text: "reason-react-native on Discord",
+    link: "/reason-react-native/discord/",
+    componentFunc: (~iconColor, ~iconSize) =>
+      <SVGSocialDiscord fill=iconColor width=iconSize height=iconSize />,
+  },
 |];
 
 let api = "docs/apis/";
