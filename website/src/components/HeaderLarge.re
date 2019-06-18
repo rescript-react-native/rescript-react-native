@@ -5,7 +5,7 @@ let styles =
   StyleSheet.create(
     Style.{
       "menu":
-        style(
+        viewStyle(
           ~justifyContent=`center,
           ~alignItems=`center,
           ~borderTopWidth=8.,
@@ -18,10 +18,10 @@ let styles =
           (),
         ),
       "barWrapper":
-        style(~backgroundColor=Consts.Colors.dark, ~overflow=`visible, ())
+        viewStyle(~backgroundColor=Consts.Colors.dark, ~overflow=`visible, ())
         ->unsafeAddStyle({"overflow-y": "visible", "overflow-x": "hidden"}),
       "bar":
-        style(
+        viewStyle(
           ~flexDirection=`row,
           ~flexWrap=`wrap,
           ~justifyContent=`spaceBetween,
@@ -29,7 +29,7 @@ let styles =
         ),
 
       "logoLink":
-        style(
+        viewStyle(
           ~flexGrow=1.,
           ~flexShrink=1.,
           ~position=`relative,
@@ -37,27 +37,27 @@ let styles =
           (),
         ),
       "logo":
-        style(~flexGrow=1., ~flexDirection=`row, ~alignItems=`center, ()),
+        viewStyle(~flexGrow=1., ~flexDirection=`row, ~alignItems=`center, ()),
       "logoText":
-        style(
+        textStyle(
           ~fontSize=18.,
           ~fontWeight=`_700,
           ~color=Consts.Colors.light,
           (),
         ),
-      "search": style(),
+      "search": viewStyle(),
       "links":
-        style(
+        viewStyle(
           ~flexGrow=1.,
           ~flexShrink=1.,
           ~flexDirection=`row,
           ~flexWrap=`wrap,
-          ~justifyContent=`center,
+          ~justifyContent=`flexEnd,
           ~alignItems=`center,
           (),
         ),
       "link":
-        style(
+        textStyle(
           ~fontSize=18.,
           ~lineHeight=18. *. 1.7,
           ~fontWeight=`_300,
@@ -65,13 +65,13 @@ let styles =
           (),
         ),
       "linkActive":
-        style(
+        textStyle(
           ~textDecorationLine=`underline,
           ~textDecorationStyle=`solid,
           (),
         ),
       "icons":
-        style(
+        viewStyle(
           ~flexGrow=1.,
           ~flexShrink=1.,
           ~flexDirection=`row,
@@ -80,7 +80,7 @@ let styles =
           (),
         ),
       "icon":
-        style(
+        textStyle(
           ~display=`flex,
           ~flexDirection=`row,
           ~justifyContent=`center,
