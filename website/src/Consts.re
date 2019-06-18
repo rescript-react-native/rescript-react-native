@@ -1,5 +1,6 @@
 let baseUrl = "/reason-react-native";
 let title = {j|Reason React Native|j};
+let titleShort = {j|RRN|j};
 let defaultTitle = title ++ {j|, Reason bindings for React Native.|j};
 let titleTemplate = {j|%s - |j} ++ title;
 

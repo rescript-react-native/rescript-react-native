@@ -101,18 +101,25 @@ let make = (~currentLocation) => {
       style=styles##bar
       wrapperStyle=styles##barWrapper>
       <ViewLink href={Consts.baseUrl ++ "/"} style=styles##logoLink>
-        <SpacedView style=styles##logo vertical=XS>
+        <SpacedView style=styles##logo vertical=XS horizontal=XS>
           <SVGBsReactNative
             width={36.->ReactFromSvg.Size.pt}
             height={36.->ReactFromSvg.Size.pt}
             fill=Consts.Colors.lightest
           />
-          <Text style=styles##logoText>
-            {("   " ++ Consts.title)->ReasonReact.string}
-          </Text>
+          <WindowSizeFilter.Small>
+            <Text style=styles##logoText>
+              {("   " ++ Consts.titleShort)->ReasonReact.string}
+            </Text>
+          </WindowSizeFilter.Small>
+          <WindowSizeFilter.NotSmall>
+            <Text style=styles##logoText>
+              {("   " ++ Consts.title)->ReasonReact.string}
+            </Text>
+          </WindowSizeFilter.NotSmall>
         </SpacedView>
       </ViewLink>
-      <SpacedView style=styles##links vertical=XS>
+      <SpacedView style=styles##links vertical=XS horizontal=XS>
         {Consts.menuLinks
          ->Belt.Array.map(item => {
              let isActive =
@@ -133,7 +140,7 @@ let make = (~currentLocation) => {
            })
          ->React.array}
       </SpacedView>
-      <SpacedView style=styles##search vertical=XS>
+      <SpacedView style=styles##search vertical=XS horizontal=XS>
         <input
           id="SearchInput"
           placeholder="Search"
@@ -147,7 +154,7 @@ let make = (~currentLocation) => {
           )}
         />
       </SpacedView>
-      <SpacedView style=styles##icons vertical=XS>
+      <SpacedView style=styles##icons vertical=XS horizontal=XS>
         {Consts.socialLinks
          ->Belt.Array.map(item =>
              <ViewLink
