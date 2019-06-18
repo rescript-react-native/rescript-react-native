@@ -53,9 +53,9 @@ So please:
 
 - Ensure your project is full jsx3 (`bsconfig.json`:
   `"reason": {"react-jsx": 3},`)
-- Replace `bs-react-native` by `bs-react-native-jsx3` in your `bsconfig.json`
-  (or `reason-react-native-monorepo/bs-react-native-jsx3` for git users, check
-  the
+- Replace `bs-react-native` by `bs-react-native-jsx3-compat` in your
+  `bsconfig.json` (or `reason-react-native-monorepo/bs-react-native-jsx3-compat`
+  for git users, check the
   [git monorepo trick](https://github.com/reasonml-community/reason-react-native#-usage-from-git-repo)
   if necessary)
 
@@ -178,7 +178,7 @@ with
 
 ```
 
-At this point, you should be able to drop some
+You should also be able to drop some
 `let component = ReasonReact.statelessComponent...` too, since some won't be
 used anymore thanks to the last removal step we did.
 
@@ -188,4 +188,5 @@ Now rely on refmt to get a cleaner code and you are good to go!
 
 Do not hesitate to share more tips & tricks to ease the migration!
 
+🙏
 [Don't be shy!](https://github.com/reasonml-community/reason-react-native/issues/new?title=JSX3+migration+trick&body=Hey%20I%20have%20a%20trick%20that%20I%20can%20share%20with%20you%20to%20ease%20jsx3%20migration%3A)
