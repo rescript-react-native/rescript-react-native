@@ -255,7 +255,7 @@ Js.log(StyleSheet.flatten([|styles##container|]));
   style=Style.(arrayOption([|
     Some(styles##container),
     condition ? Some(styles##containerAdditionalStyles) : None,
-    condition2 ? Some(style(~width=40.->dp, ())) : None,
+    condition2 ? Some(viewStyle(~width=40.->dp, ())) : None,
   |]))
 />
 ```
@@ -297,7 +297,7 @@ open ReactNative;
 let make = (~name=?) => {
   <View
     style=Style.(
-      style(~flex=1., ~justifyContent=`center, ~alignItems=`center, ())
+      viewStyle(~flex=1., ~justifyContent=`center, ~alignItems=`center, ())
     )>
     <Text>
       {("Hello, " ++ name->Option.getWithDefault("world") ++ "!")
