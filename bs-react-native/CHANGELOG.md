@@ -112,10 +112,11 @@ changes.
   hard on adding more any more examples. So far,
   [`Animated`](https://reasonml-community.github.io/bs-react-native/BsReactNative/AnimatedRe-BsReactNative/)
   module is the one that is most documented,
-- Created [Discord server](https://discord.gg/eaU3Z6Q) dedicated to
-  `bs-react-native` and using Reason for writing mobile apps in general. Feel
-  free to join if you would like to take an active part in this project's
-  development or have any questions regarding using it in production,
+- Created
+  [Discord server](https://reasonml-community.github.io/reason-react-native/discord/)
+  dedicated to `bs-react-native` and using Reason for writing mobile apps in
+  general. Feel free to join if you would like to take an active part in this
+  project's development or have any questions regarding using it in production,
 - Improved typing in many modules to be more accurate with what React Native
   expects, including
   [`focus` and `blur` method on `TextInput`](https://github.com/reasonml-community/reason-react-native/commit/fd0ffc78ccc4e86ce9278d7a457db32cb0856dbf),

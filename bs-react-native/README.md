@@ -7,4 +7,4 @@ get contribution in there. If that's necessary for you to get something in
 added) in `reason-react-native`.
 
 If you are not sure, just
-[come on discord & talk with us](https://discord.gg/eaU3Z6Q)
+[come on discord & talk with us](https://reasonml-community.github.io/reason-react-native/discord/)

@@ -109,7 +109,7 @@ knowing 🤷‍
 ## Need help to migrate ?
 
 If you struggle with it & have questions,
-[reach us on our discord server](https://discord.gg/eaU3Z6Q)
+[reach us on our discord server](https://reasonml-community.github.io/reason-react-native/discord/)
 
 ---
 
