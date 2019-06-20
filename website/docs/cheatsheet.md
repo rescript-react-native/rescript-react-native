@@ -76,9 +76,9 @@ If you are not familiar with ReasonML or BuckleScript, be sure to check
 
 ```reason
 {items
-->Belt.Array.mapWithIndex((items, index) =>
+->Belt.Array.mapWithIndex((item, index) =>
   <Text
-    key=((i->Js.Int.toString)++item)>
+    key=((index->Js.Int.toString)++item)>
     item->React.string
   </Text>
   )
