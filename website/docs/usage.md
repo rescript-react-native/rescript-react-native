@@ -49,7 +49,7 @@ extension. Optionally you can add
 [Flow Language Server](https://marketplace.visualstudio.com/items?itemName=flowtype.flow-for-vscode)
 extension if you have existing JavaScript covered by Flow.
 
-⚠️ If you won't want to use VSCode, we still recommend you to
+⚠️ If you don’t want to use VSCode, we still recommend you to
 [get a ReasonML editor plugin](https://reasonml.github.io/docs/en/editor-plugins/).
 
 By having an IDE that handle ReasonML compilation, you will not have to run a
