@@ -1,0 +1,25 @@
+{
+  "name": "reason-react-navigation",
+  "version": "0.2.0",
+  "description": "Reason bindings for react-navigation",
+  "main": "index.js",
+  "scripts": {
+    "build": "bsb -clean-world -make-world",
+    "clean": "bsb -clean-world",
+    "format": "bsrefmt --in-place **/*.re"
+  },
+  "repository": "https://github.com/reasonml-community/reason-react-native.git",
+  "license": "MIT",
+  "peerDependencies": {
+    "bs-platform": ">=5.0.2",
+    "react-native": ">=0.59.0",
+    "reason-react": ">=0.7.0",
+    "reason-react-native": ">=0.60.0"
+  },
+  "devDependencies": {
+    "bs-platform": "^5.0.4",
+    "react-native": "^0.59.9",
+    "reason-react": "^0.7.0",
+    "reason-react-native": "^0.60.0"
+  }
+}

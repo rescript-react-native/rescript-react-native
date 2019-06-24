@@ -1,0 +1,25 @@
+{
+  "name": "reason-react-navigation",
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
+    }
+  ],
+  "package-specs": {
+    "module": "commonjs",
+    "in-source": true
+  },
+  "suffix": ".bs.js",
+  "bs-dependencies": [
+    "reason-react",
+    "reason-react-native"
+  ],
+  "warnings": {
+    "number": "+102"
+  },
+  "reason": {
+    "react-jsx": 3
+  },
+  "refmt": 3
+}
