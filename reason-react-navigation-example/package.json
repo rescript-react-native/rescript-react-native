@@ -10,7 +10,8 @@
     "build": "bsb -clean-world -make-world",
     "start": "expo start",
     "android": "expo start --android",
-    "ios": "expo start --ios"
+    "ios": "expo start --ios",
+    "test": "yarn build"
   },
   "dependencies": {
     "@unimodules/react-native-adapter": "^2.0.1",
