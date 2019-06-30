@@ -21,6 +21,7 @@ module NavigationState = {
   type t('params) = {
     key: string,
     index: int,
+    [@bs.optional]
     routes: array(t('params)),
     [@bs.optional]
     isDrawerOpen: bool,
@@ -1140,6 +1141,13 @@ module NavigationParams = {
        navigator => React.component(navigationContainerProps('params)) =
        "createAppContainer";
    }; */
+
+module AppContainer = {
+  type props;
+
+  [@bs.module "react-navigation"]
+  external make: navigator => React.component(props) = "createAppContainer";
+};
 
 [@bs.set]
 external setNavigationOptions:
