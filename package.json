@@ -46,6 +46,7 @@
     "bs-react-native",
     "bs-react-native-example",
     "reason-react-navigation",
+    "reason-react-navigation-example",
     "website"
   ]
 }
