@@ -1,9 +1,6 @@
 open ReactNative;
 open ReactNavigation;
 
-/* TODO: add to TextInput*/
-external elementToObj: TextInput.element => Js.t({..}) = "%identity";
-
 [@react.component]
 let make = (~countdown=3, ~navigation: navigation) => {
   open Navigation;
@@ -44,7 +41,7 @@ let make = (~countdown=3, ~navigation: navigation) => {
       style=Style.(
         style(~flex=1., ~justifyContent=`center, ~alignItems=`center, ())
       )>
-      <Text> {React.string(count |> string_of_int)} </Text>
+      <Text> {count->string_of_int->React.string} </Text>
     </View>
   </>;
 };

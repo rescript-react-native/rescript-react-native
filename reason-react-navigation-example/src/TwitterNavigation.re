@@ -96,9 +96,7 @@ module ComposeButton = {
 let placeholder = (~text, ~navigation: navigation) =>
   <>
     <Centered> <Text> {text |> React.string} </Text> </Centered>
-    <ComposeButton
-      onPress={_ => navigation->Navigation.navigate("Compose")}
-    />
+    <ComposeButton onPress={_ => navigation->ComposeRoute.navigate} />
   </>;
 
 let headerIcon = (~style as additionalStyle=Style.style(), source) =>
@@ -170,13 +168,12 @@ module Tweet = {
     let routeName = "Tweet";
   });
   [@react.component]
-  let make = (~navigation) => {
+  let make = (~navigation) =>
     <Centered>
       <Text>
         {"Tweet: " ++ navigation->getParams()##tweet.id |> React.string}
       </Text>
     </Centered>;
-  };
 
   module Header = {
     [@react.component]
@@ -586,9 +583,13 @@ module Content = {
     );
 
   navigator->setDynamicNavigationOptions(params => {
-    let navigation = params->NavigationParams.navigation;
-    let state = navigation->Navigation.state;
-    let routeName = getActiveRoute(state)->NavigationState.routeNameGet;
+    let routeName =
+      params
+      ->NavigationParams.navigation
+      ->Navigation.state
+      ->getActiveRoute
+      ->NavigationState.routeNameGet;
+
     let swipeEnabled = routeName == "TimelineList";
 
     NavigationOptions.(t(~tabBarVisible=false, ~swipeEnabled, ()));

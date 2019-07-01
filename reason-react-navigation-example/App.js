@@ -1,3 +1,3 @@
 const App = require("./src/App.bs").default;
 
-export default App;
+module.exports = App;
