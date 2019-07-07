@@ -2,10 +2,161 @@
 
 import * as React from "react";
 import * as Interop from "./Interop";
+import * as Caml_module from "bs-platform/lib/es6/caml_module.js";
+import * as ReactNavigation from "react-navigation";
 import * as FlatList$ReactNative from "reason-react-native/src/components/FlatList.bs.js";
 import * as Core from "@react-navigation/core";
 import * as ScrollView$ReactNative from "reason-react-native/src/components/ScrollView.bs.js";
 import * as SectionList$ReactNative from "reason-react-native/src/components/SectionList.bs.js";
+
+function Make(S) {
+  var NavigationState = /* module */[];
+  var NavigationBase = function (M) {
+    return /* module */[];
+  };
+  var Navigation = /* module */[];
+  var NavigationScene = /* module */[];
+  var NavigationRouter = /* module */[];
+  var NavigationScreenProp = /* module */[];
+  var TabBarIconProps = /* module */[];
+  var TabBarLabelProps = /* module */[];
+  var TabScene = /* module */[];
+  var TabBarOnPress = /* module */[];
+  var TabBarOnLongPress = /* module */[];
+  var tabBarIcon = function (prim) {
+    return Interop.identity(prim[1]);
+  };
+  var tabBarLabel = function (prim) {
+    return Interop.identity(prim[1]);
+  };
+  var DrawerIconProps = /* module */[];
+  var DrawerLabelProps = /* module */[];
+  var NavigationScreenDetails = /* module */[];
+  var NavigationLayout = /* module */[];
+  var NavigationTransitionProps = /* module */[];
+  var NavigationTransitionSpec = /* module */[];
+  var header = function (prim) {
+    return Interop.identity(prim[1]);
+  };
+  var headerRenderItem = function (prim) {
+    return Interop.identity(prim[1]);
+  };
+  var HeaderForceInset = /* module */[];
+  var t = function (prim) {
+    return Interop.identity(prim[1]);
+  };
+  var HeaderTitle = /* module */[/* t */t];
+  var NavigationOptions = /* module */[];
+  var NavigationScreenConfig = Caml_module.init_mod([
+        "ReactNavigation.re",
+        564,
+        6
+      ], [[0]]);
+  Caml_module.update_mod([[0]], NavigationScreenConfig, NavigationScreenConfig);
+  var TransitionConfig = /* module */[];
+  var ScreenOptions = /* module */[];
+  var StackNavigator = /* module */[/* ScreenOptions */ScreenOptions];
+  var SwitchNavigator = /* module */[];
+  var TabBar = /* module */[];
+  var ContentComponent = /* module */[];
+  var ContentOptions = /* module */[];
+  var drawerIcon = function (prim) {
+    return Interop.identity(prim[1]);
+  };
+  var drawerLabel = function (prim) {
+    return Interop.identity(prim[1]);
+  };
+  var ScreenOptions$1 = /* module */[
+    /* drawerIcon */drawerIcon,
+    /* drawerLabel */drawerLabel
+  ];
+  var DrawerNavigator = /* module */[
+    /* ContentComponent */ContentComponent,
+    /* ContentOptions */ContentOptions,
+    /* ScreenOptions */ScreenOptions$1
+  ];
+  var Material = /* module */[];
+  var Bottom = /* module */[];
+  var BottomTabBar = /* module */[];
+  var MaterialTopTabBar = /* module */[];
+  var ScreenOptions$2 = /* module */[];
+  var TabNavigator = /* module */[
+    /* Material */Material,
+    /* Bottom */Bottom,
+    /* BottomTabBar */BottomTabBar,
+    /* MaterialTopTabBar */MaterialTopTabBar,
+    /* ScreenOptions */ScreenOptions$2
+  ];
+  var makeAppContainer = function ($$navigator) {
+    var make = ReactNavigation.createAppContainer($$navigator);
+    return /* module */[/* make */make];
+  };
+  var Route = function (M) {
+    var navigate = function (navigation) {
+      navigation.navigate(M[/* routeName */0]);
+      return /* () */0;
+    };
+    var navigateWithParams = function (navigation, params) {
+      navigation.navigate(M[/* routeName */0], params);
+      return /* () */0;
+    };
+    var getParams = function (navigation, param) {
+      return navigation.state.params;
+    };
+    return /* module */[
+            /* navigate */navigate,
+            /* navigateWithParams */navigateWithParams,
+            /* getParams */getParams
+          ];
+  };
+  var useNavigation = function (param) {
+    return React.useContext(Core.NavigationContext);
+  };
+  return /* module */[
+          /* NavigationState */NavigationState,
+          /* NavigationBase */NavigationBase,
+          /* Navigation */Navigation,
+          /* NavigationScene */NavigationScene,
+          /* NavigationRouter */NavigationRouter,
+          /* NavigationScreenProp */NavigationScreenProp,
+          /* TabBarIconProps */TabBarIconProps,
+          /* TabBarLabelProps */TabBarLabelProps,
+          /* TabScene */TabScene,
+          /* TabBarOnPress */TabBarOnPress,
+          /* TabBarOnLongPress */TabBarOnLongPress,
+          /* tabBarIcon */tabBarIcon,
+          /* tabBarLabel */tabBarLabel,
+          /* DrawerIconProps */DrawerIconProps,
+          /* DrawerLabelProps */DrawerLabelProps,
+          /* NavigationScreenDetails */NavigationScreenDetails,
+          /* NavigationLayout */NavigationLayout,
+          /* NavigationTransitionProps */NavigationTransitionProps,
+          /* NavigationTransitionSpec */NavigationTransitionSpec,
+          /* NavigationSceneRendererProps */0,
+          /* header */header,
+          /* headerRenderItem */headerRenderItem,
+          /* HeaderForceInset */HeaderForceInset,
+          /* HeaderTitle */HeaderTitle,
+          /* NavigationOptions */NavigationOptions,
+          /* NavigationScreenProps : () */0,
+          /* NavigationScreenConfig */NavigationScreenConfig,
+          /* TransitionConfig */TransitionConfig,
+          /* StackNavigator */StackNavigator,
+          /* SwitchNavigator */SwitchNavigator,
+          /* TabBar */TabBar,
+          /* DrawerNavigator */DrawerNavigator,
+          /* TabNavigator */TabNavigator,
+          /* makeAppContainer */makeAppContainer,
+          /* Route */Route,
+          /* useNavigation */useNavigation
+        ];
+}
+
+var FlatList = /* module */[];
+
+var ScrollView = /* module */[];
+
+var SectionList = /* module */[];
 
 var NavigationState = /* module */[];
 
@@ -17,27 +168,39 @@ var Navigation = /* module */[];
 
 var NavigationScene = /* module */[];
 
-function t(prim) {
-  return Interop.identity(prim[1]);
-}
-
-var HeaderTitle = /* module */[/* t */t];
-
 var NavigationRouter = /* module */[];
 
 var NavigationScreenProp = /* module */[];
 
-var NavigationScreenProps = /* module */[];
+var TabBarIconProps = /* module */[];
+
+var TabBarLabelProps = /* module */[];
+
+var TabScene = /* module */[];
+
+var TabBarOnPress = /* module */[];
+
+var TabBarOnLongPress = /* module */[];
+
+function tabBarIcon(prim) {
+  return Interop.identity(prim[1]);
+}
+
+function tabBarLabel(prim) {
+  return Interop.identity(prim[1]);
+}
+
+var DrawerIconProps = /* module */[];
+
+var DrawerLabelProps = /* module */[];
+
+var NavigationScreenDetails = /* module */[];
 
 var NavigationLayout = /* module */[];
 
 var NavigationTransitionProps = /* module */[];
 
 var NavigationTransitionSpec = /* module */[];
-
-var TransitionConfig = /* module */[];
-
-var NavigationScreenDetails = /* module */[];
 
 function header(prim) {
   return Interop.identity(prim[1]);
@@ -49,6 +212,24 @@ function headerRenderItem(prim) {
 
 var HeaderForceInset = /* module */[];
 
+function t(prim) {
+  return Interop.identity(prim[1]);
+}
+
+var HeaderTitle = /* module */[/* t */t];
+
+var NavigationOptions = /* module */[];
+
+var NavigationScreenConfig = Caml_module.init_mod([
+      "ReactNavigation.re",
+      564,
+      6
+    ], [[0]]);
+
+Caml_module.update_mod([[0]], NavigationScreenConfig, NavigationScreenConfig);
+
+var TransitionConfig = /* module */[];
+
 var ScreenOptions = /* module */[];
 
 var StackNavigator = /* module */[/* ScreenOptions */ScreenOptions];
@@ -56,10 +237,6 @@ var StackNavigator = /* module */[/* ScreenOptions */ScreenOptions];
 var SwitchNavigator = /* module */[];
 
 var TabBar = /* module */[];
-
-var DrawerIconProps = /* module */[];
-
-var DrawerLabelProps = /* module */[];
 
 var ContentComponent = /* module */[];
 
@@ -88,72 +265,24 @@ var Material = /* module */[];
 
 var Bottom = /* module */[];
 
-var TabBarIconProps = /* module */[];
-
-var TabBarLabelProps = /* module */[];
-
-var TabScene = /* module */[];
-
-var TabBarOnPress = /* module */[];
-
-var TabBarOnLongPress = /* module */[];
-
-var TabBarTopProps = /* module */[];
-
-var BottomTabBarProps = /* module */[];
-
-var TabBarTop = /* module */[];
-
 var BottomTabBar = /* module */[];
 
-function tabBarIcon(prim) {
-  return Interop.identity(prim[1]);
-}
+var MaterialTopTabBar = /* module */[];
 
-function tabBarLabel(prim) {
-  return Interop.identity(prim[1]);
-}
-
-var ScreenOptions$2 = /* module */[
-  /* tabBarIcon */tabBarIcon,
-  /* tabBarLabel */tabBarLabel
-];
+var ScreenOptions$2 = /* module */[];
 
 var TabNavigator = /* module */[
   /* Material */Material,
   /* Bottom */Bottom,
-  /* TabBarIconProps */TabBarIconProps,
-  /* TabBarLabelProps */TabBarLabelProps,
-  /* TabScene */TabScene,
-  /* TabBarOnPress */TabBarOnPress,
-  /* TabBarOnLongPress */TabBarOnLongPress,
-  /* TabBarTopProps */TabBarTopProps,
-  /* BottomTabBarProps */BottomTabBarProps,
-  /* TabBarTop */TabBarTop,
   /* BottomTabBar */BottomTabBar,
+  /* MaterialTopTabBar */MaterialTopTabBar,
   /* ScreenOptions */ScreenOptions$2
 ];
 
-var NavigationOptions = /* module */[
-  /* Material */Material,
-  /* Bottom */Bottom,
-  /* TabBarIconProps */TabBarIconProps,
-  /* TabBarLabelProps */TabBarLabelProps,
-  /* TabScene */TabScene,
-  /* TabBarOnPress */TabBarOnPress,
-  /* TabBarOnLongPress */TabBarOnLongPress,
-  /* TabBarTopProps */TabBarTopProps,
-  /* BottomTabBarProps */BottomTabBarProps,
-  /* TabBarTop */TabBarTop,
-  /* BottomTabBar */BottomTabBar,
-  /* ScreenOptions */ScreenOptions$2,
-  /* tabBarIcon */tabBarIcon,
-  /* tabBarLabel */tabBarLabel
-];
-
-var NavigationParams = /* module */[];
-
-var AppContainer = /* module */[];
+function makeAppContainer($$navigator) {
+  var make = ReactNavigation.createAppContainer($$navigator);
+  return /* module */[/* make */make];
+}
 
 function Route(M) {
   var navigate = function (navigation) {
@@ -167,14 +296,10 @@ function Route(M) {
   var getParams = function (navigation, param) {
     return navigation.state.params;
   };
-  var NavigationActions = /* module */[];
-  var NavigationContainer = /* module */[];
   return /* module */[
           /* navigate */navigate,
           /* navigateWithParams */navigateWithParams,
-          /* getParams */getParams,
-          /* NavigationActions */NavigationActions,
-          /* NavigationContainer */NavigationContainer
+          /* getParams */getParams
         ];
 }
 
@@ -182,53 +307,51 @@ function useNavigation(param) {
   return React.useContext(Core.NavigationContext);
 }
 
-var FlatList = /* module */[];
-
-var ScrollView = /* module */[];
-
-var SectionList = /* module */[];
-
-var NavigationScreenPropsRec = /* () */0;
-
-var NavigationScreenConfig = /* () */0;
-
 var NavigationSceneRendererProps = 0;
 
+var NavigationScreenProps = /* () */0;
+
 export {
+  Make ,
+  FlatList ,
+  ScrollView ,
+  SectionList ,
   NavigationState ,
   NavigationBase ,
   Navigation ,
   NavigationScene ,
-  HeaderTitle ,
   NavigationRouter ,
   NavigationScreenProp ,
-  NavigationScreenPropsRec ,
-  NavigationScreenConfig ,
-  NavigationScreenProps ,
+  TabBarIconProps ,
+  TabBarLabelProps ,
+  TabScene ,
+  TabBarOnPress ,
+  TabBarOnLongPress ,
+  tabBarIcon ,
+  tabBarLabel ,
+  DrawerIconProps ,
+  DrawerLabelProps ,
+  NavigationScreenDetails ,
   NavigationLayout ,
   NavigationTransitionProps ,
   NavigationTransitionSpec ,
   NavigationSceneRendererProps ,
-  TransitionConfig ,
-  NavigationScreenDetails ,
   header ,
   headerRenderItem ,
   HeaderForceInset ,
+  HeaderTitle ,
+  NavigationOptions ,
+  NavigationScreenProps ,
+  NavigationScreenConfig ,
+  TransitionConfig ,
   StackNavigator ,
   SwitchNavigator ,
   TabBar ,
-  DrawerIconProps ,
-  DrawerLabelProps ,
   DrawerNavigator ,
   TabNavigator ,
-  NavigationOptions ,
-  NavigationParams ,
-  AppContainer ,
+  makeAppContainer ,
   Route ,
   useNavigation ,
-  FlatList ,
-  ScrollView ,
-  SectionList ,
   
 }
-/* react Not a pure module */
+/* NavigationScreenConfig Not a pure module */

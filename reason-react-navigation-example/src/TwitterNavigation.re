@@ -1,4 +1,4 @@
-open ReactNavigation;
+open Navigation;
 open ReactNative;
 
 module Icons = {
@@ -115,36 +115,31 @@ let headerIcon = (~style as additionalStyle=Style.style(), source) =>
   );
 
 let tabBarIcon = source =>
-  TabNavigator.(
-    ScreenOptions.tabBarIcon(
-      `Render(
-        props =>
-          Js.Nullable.return(
-            <Image
-              style=Style.(
-                style(
-                  ~tintColor=
-                    props->TabBarIconProps.focusedGet ? "#1da1f2" : "grey",
-                  ~width=24.->dp,
-                  ~margin=11.->dp,
-                  ~height=24.->dp,
-                  (),
-                )
+  tabBarIcon(
+    `Render(
+      props =>
+        Js.Nullable.return(
+          <Image
+            style=Style.(
+              style(
+                ~tintColor=props##focused ? "#1da1f2" : "grey",
+                ~width=24.->dp,
+                ~margin=11.->dp,
+                ~height=24.->dp,
+                (),
               )
-              source
-            />,
-          ),
-      ),
-    )
+            )
+            source
+          />,
+        ),
+    ),
   );
 
 let avatarIcon = params =>
   headerRenderItem(
     `Element(
       <TouchableOpacity
-        onPress={_ =>
-          params->NavigationParams.navigation->Navigation.openDrawer()
-        }>
+        onPress={_ => params##navigation->Navigation.openDrawer()}>
         <Image
           style=Style.(
             style(
@@ -197,7 +192,7 @@ module Tweet = {
   };
 
   let headerTitle =
-    HeaderTitle.(t(`Render(props => <Header> props->children </Header>)));
+    HeaderTitle.(t(`Render(props => <Header> {props##children} </Header>)));
 
   make->setDynamicNavigationOptions(params =>
     NavigationOptions.t(~title="Tweet", ~headerTitle, ())
@@ -477,15 +472,13 @@ module Messages = {
 
 let rec getActiveRoute = route =>
   NavigationState.(
-    switch (route->routesGet) {
+    switch (route##routes) {
     | Some(routes) =>
       let routeCount = routes->Array.length;
-      if (routeCount == 0 || route->indexGet >= routeCount) {
+      if (routeCount == 0 || route##index >= routeCount) {
         route;
       } else {
-        getActiveRoute(
-          routes->Belt.Array.getUnsafe(route->NavigationState.indexGet),
-        );
+        getActiveRoute(routes->Belt.Array.getUnsafe(route##index));
       };
     | None => route
     }
@@ -524,7 +517,7 @@ module Content = {
   };
 
   let contentComponent = (props: ContentComponent.props(unit)) => {
-    let navigation = props->ContentComponent.navigation;
+    let navigation = props##navigation;
     <SafeAreaView style={Style.style(~flex=1., ())}>
       <View
         style=Style.(
@@ -584,11 +577,7 @@ module Content = {
 
   navigator->setDynamicNavigationOptions(params => {
     let routeName =
-      params
-      ->NavigationParams.navigation
-      ->Navigation.state
-      ->getActiveRoute
-      ->NavigationState.routeNameGet;
+      params##navigation->Navigation.state->getActiveRoute##routeName;
 
     let swipeEnabled = routeName == "TimelineList";
 
@@ -608,22 +597,27 @@ module ContentView = {
   navigator->setNavigationOptions(NavigationOptions.t(~header, ()));
 };
 
-let app =
-  AppContainer.make(
-    SwitchNavigator.make({
-      "App":
-        StackNavigator.(
-          makeWithConfig(
-            {
-              "View": ContentView.navigator,
-              "Compose": Compose.make,
-              "Tweet": Tweet.make,
-              "Profile": Profile.make,
-            },
-            config(),
-          )
-        ),
-      "AppLoading": LoadingScreen.make,
-      /*"Auth": LoginRoute.reactClass,*/
-    }),
-  );
+module AppContainer = (
+  val makeAppContainer(
+        SwitchNavigator.make({
+          "App":
+            StackNavigator.(
+              make({
+                "View": ContentView.navigator,
+                "Compose": Compose.make,
+                "Tweet": Tweet.make,
+                "Profile": Profile.make,
+              })
+            ),
+          "AppLoading": LoadingScreen.make,
+          /*"Auth": LoginRoute.reactClass,*/
+        }),
+      )
+);
+
+[@react.component]
+let make = () => {
+  let screenProps = {"someProp": 42};
+
+  <AppContainer screenProps />;
+};

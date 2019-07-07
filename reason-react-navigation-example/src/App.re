@@ -1,1 +1,1 @@
-let default = TwitterNavigation.app;
+let default = TwitterNavigation.make;

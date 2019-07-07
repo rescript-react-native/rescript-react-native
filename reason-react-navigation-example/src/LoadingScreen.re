@@ -1,5 +1,5 @@
 open ReactNative;
-open ReactNavigation;
+open Navigation;
 
 [@react.component]
 let make = (~countdown=3, ~navigation: navigation) => {
