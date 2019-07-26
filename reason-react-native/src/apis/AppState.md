@@ -32,3 +32,54 @@ external removeEventListener:
   "";
 
 ```
+
+## Example
+
+The example below illustrates how to call the `AppState` api. It is the [react-native](https://react-native.org/doc/appstate.html) `AppState` example converted to reason. 
+
+```reason
+open ReactNative;
+
+[@react.component]
+let make = () => {
+  let (appState, setAppState) = React.useState(() => AppState.currentState);
+  Js.log(appState);
+
+  let handleAppStateChange = (nextAppState: AppState.t) => {
+    Js.log2("nextAppState: ", nextAppState);
+    Js.log2("appState: ", appState);
+    switch (appState,nextAppState) {
+    | (_background, _active) =>
+      Js.log(
+        "App has come to the foreground!",
+      );
+    | (_inactive, _active) =>
+      Js.log(
+        "App has come to the foreground!",
+      );
+    | _ => ()
+    };
+    setAppState(_ => nextAppState);
+  };
+
+  React.useEffect(() => {
+    AppState.addEventListener(`change(state => handleAppStateChange(state)))
+    |> ignore;
+    Some(
+      () =>
+        AppState.removeEventListener(
+          `change(state => handleAppStateChange(state)),
+        ),
+    );
+  });
+
+  let renderAppState =
+    switch (appState) {
+    | _active => "active"
+    | _background => "background"
+    | _inactive => "inactive"
+    };
+  <Text> {"Current state is: " ++ renderAppState |> React.string} </Text>;
+};
+```
+
