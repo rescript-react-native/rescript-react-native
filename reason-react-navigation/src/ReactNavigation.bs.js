@@ -4,27 +4,11 @@
 var ReactNavigation = require("react-navigation");
 
 function Make(S) {
-  var NavigationActions = /* module */[];
-  var NavigationContainer = /* module */[];
-  var Navigation = /* module */[];
-  var StackNavigator = /* module */[];
-  var DrawerNavigator = /* module */[];
-  var TabNavigator = /* module */[];
-  var NavigationOptions = /* module */[];
   var makeAppContainer = function ($$navigator) {
     var make = ReactNavigation.createAppContainer($$navigator);
     return /* module */[/* make */make];
   };
-  return /* module */[
-          /* NavigationActions */NavigationActions,
-          /* NavigationContainer */NavigationContainer,
-          /* Navigation */Navigation,
-          /* StackNavigator */StackNavigator,
-          /* DrawerNavigator */DrawerNavigator,
-          /* TabNavigator */TabNavigator,
-          /* NavigationOptions */NavigationOptions,
-          /* makeAppContainer */makeAppContainer
-        ];
+  return /* module */[/* makeAppContainer */makeAppContainer];
 }
 
 exports.Make = Make;

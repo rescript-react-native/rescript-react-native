@@ -1,5 +1,6 @@
 {
   "name": "reason-react-navigation",
+  "namespace": "react-navigation",
   "version": "0.2.0",
   "description": "Reason bindings for react-navigation",
   "scripts": {
