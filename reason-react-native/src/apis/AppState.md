@@ -42,28 +42,23 @@ open ReactNative;
 
 [@react.component]
 let make = () => {
-  let (appState, setAppState) = React.useState(() => AppState.currentState);
-  Js.log(appState);
+  let (appState, setAppState) = React.useState(_ => AppState.currentState);
 
-  let handleAppStateChange = (nextAppState: AppState.t) => {
-    Js.log2("nextAppState: ", nextAppState);
-    Js.log2("appState: ", appState);
-    switch (appState,nextAppState) {
-    | (_background, _active) =>
-      Js.log(
-        "App has come to the foreground!",
-      );
-    | (_inactive, _active) =>
-      Js.log(
-        "App has come to the foreground!",
-      );
+  let handleAppStateChange = nextAppState => {
+    switch (appState, nextAppState) {
+    | (_, state) when state === AppState.background =>
+      Js.log("App has come to the background!")
+    | (_, state) when state === AppState.active =>
+      Js.log("App has come to the foreground!")
     | _ => ()
     };
     setAppState(_ => nextAppState);
   };
 
   React.useEffect(() => {
-    AppState.addEventListener(`change(state => handleAppStateChange(state)))
+    AppState.addEventListener(
+      `change(state => handleAppStateChange(state)),
+    )
     |> ignore;
     Some(
       () =>
@@ -75,9 +70,10 @@ let make = () => {
 
   let renderAppState =
     switch (appState) {
-    | _active => "active"
-    | _background => "background"
-    | _inactive => "inactive"
+    | appState when appState === AppState.active => "active"
+    | appState when appState === AppState.background => "background"
+    | appState when appState === AppState.inactive => "inactive"
+    | _ => "unknown"
     };
   <Text> {"Current state is: " ++ renderAppState |> React.string} </Text>;
 };
