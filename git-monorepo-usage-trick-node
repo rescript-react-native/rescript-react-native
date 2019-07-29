@@ -30,5 +30,13 @@ const guts = fs
   .replace(
     /from \"reason-react-native\//g,
     'from "reason-react-native-monorepo/reason-react-native/',
+  )
+  .replace(
+    /require\(\"reason-react-navigation\//g,
+    'require("reason-react-native-monorepo/reason-react-navigation/',
+  )
+  .replace(
+    /from \"reason-react-navigation\//g,
+    'from "reason-react-native-monorepo/reason-react-navigation/',
   );
 fs.writeFileSync(file, guts);

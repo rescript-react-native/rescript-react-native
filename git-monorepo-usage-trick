@@ -13,6 +13,8 @@ ex $1 <<EOF
 %s/from "bs-react-native-jsx3-compat\//from "reason-react-native-monorepo\/bs-react-native-jsx3-compat\//g
 %s/require("reason-react-native\//require("reason-react-native-monorepo\/reason-react-native\//g
 %s/from "reason-react-native\//from "reason-react-native-monorepo\/reason-react-native\//g
+%s/require("reason-react-navigation\//require("reason-react-native-monorepo\/reason-react-navigation\//g
+%s/from "reason-react-navigation\//from "reason-react-native-monorepo\/reason-react-navigation\//g
 x
 EOF
 
