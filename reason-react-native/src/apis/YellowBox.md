@@ -9,3 +9,12 @@ wip: true
 external ignoreWarnings: array(string) => unit = "";
 
 ```
+
+## Example
+
+```reason
+YellowBox.ignoreWarnings([|
+  "Possible Unhandled Promise Rejection",
+  "Remote debugger",
+|]);
+```
