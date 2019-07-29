@@ -14,12 +14,28 @@ external currentState: t = "";
 
 [@bs.scope "AppState"] [@bs.module "react-native"]
 external addEventListener:
-  ([@bs.string] [ | `change(t => unit) | `memoryWarning(unit => unit)]) =>
-  EventSubscription.t =
+  (
+  [@bs.string]
+  [
+    | `change(t => unit)
+    | `focus(unit => unit)
+    | `blur(unit => unit)
+    | `memoryWarning(unit => unit)
+  ]
+  ) =>
+  unit =
   "";
 
 [@bs.scope "AppState"] [@bs.module "react-native"]
 external removeEventListener:
-  ([@bs.string] [ | `change(t => unit) | `memoryWarning(unit => unit)]) =>
+  (
+  [@bs.string]
+  [
+    | `change(t => unit)
+    | `focus(unit => unit)
+    | `blur(unit => unit)
+    | `memoryWarning(unit => unit)
+  ]
+  ) =>
   unit =
   "";
