@@ -1,5 +1,7 @@
-**🎟 [Reason Conf US](https://www.reason-conf.us) is happening October 7-8th in Chicago 🎉**  
-Buy tickets or sponsor the event by visiting [https://www.reason-conf.us](https://www.reason-conf.us)
+#### 🎟 [Reason Conf US](https://www.reason-conf.us) is happening October 7-8th in Chicago 🎉
+
+Buy tickets or sponsor the event by visiting
+[https://www.reason-conf.us](https://www.reason-conf.us)
 
 ---
 
@@ -44,27 +46,36 @@ so that you can understand what actions will and will not be tolerated.
 
 ## 🚨 Usage from Git repo
 
-If you use this bindings from the git repo, be sure to use
+If you use things unreleased from the git repo, you will need to link all
+folders (packages) that you need at the root of node_modules. The easiest way is
+to create the symlink you need in your `package.json` `prepare` step:
+
+First add this repo as a dep
+
+```console
+yarn add https://github.com/reasonml-community/reason-react-native
+```
+
+Next, add this cross-platform symlink tool
+
+```console
+yarn add --dev symlink-dir
+```
+
+Then add to you `package.json`
 
 ```js
 {
-  // ...
-  "bs-dependencies": [
-    // bs-react-native, but compatible with jsx3
-    "reason-react-native-monorepo/bs-react-native-jsx3-compat",
-    // new ReactNative, WIP on zero-cost bindings
-    "reason-react-native-monorepo/reason-react-native"
-  },
-  // When used from git with the following path, bs-platform will use path that won't be working
-  // (because deps are pointing to folder in folder)`
-  // Your bundler (metro or webpack) will say that it can find and/or `reason-react-native/whatever`
-  // which is correct because it should be `reason-react-native-monorepo/reason-react-native/whatever`
-  // the trick below will correct path in generated JavaScript files
-  // and will just need to be removed when you won't use git directly anymore
-  "js-post-build": {
-    "cmd": "./node_modules/reason-react-native-monorepo/git-monorepo-usage-trick"
-    // if this tricky script doesn't work for you correctly, try
-    // "cmd": "./node_modules/reason-react-native-monorepo/git-monorepo-usage-trick-node"
+  "scripts": {
+    "reason-react-native-monorepo-trick": "symlink-dir ./node_modules/reason-react-native-monorepo/reason-react-native node_modules/reason-react-native && symlink-dir ./node_modules/reason-react-native-monorepo/bs-react-native-jsx3-compat node_modules/bs-react-native-jsx3-compat",
+    "prepare": "yarn reason-react-native-monorepo-trick"
   }
 }
 ```
+
+⚠️ In the example above, we only linked `reason-react-native` and
+`bs-react-native-jsx3-compat`. Be sure to link all the package you have in your
+`bsconfig.json` that need to be used from git.
+
+👀 If you find a trick more easy to read/maintain (and still cross-platform),
+please share it with us via Discord, an issue, or a PR!
