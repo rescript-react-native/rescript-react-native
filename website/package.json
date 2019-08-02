@@ -3,7 +3,6 @@
   "name": "reason-react-native-website",
   "version": "0.0.0",
   "scripts": {
-    "prepare": "./scripts/inception-usage-trick ../node_modules/react-multiversal/bsconfig.json",
     "svg:cleanup": "trash src/SVGs/components",
     "svg:convert": "react-from-svg src/SVGs src/SVGs/components",
     "svg:format": "find src/SVGs/components -name \"*.re\" | grep -v \"node_modules\" | xargs bsrefmt --in-place",
@@ -35,7 +34,7 @@
     "react-dom": "^16.8.0",
     "react-from-svg": "^0.2.0",
     "react-helmet": "^5.2.0",
-    "react-multiversal": "https://github.com/MoOx/react-multiversal.git#2d1b27a",
+    "react-multiversal": "https://github.com/MoOx/react-multiversal.git#1fe6971",
     "react-native-web": "^0.11.2",
     "reason-future": "^2.4.0",
     "reason-highlightjs": "^0.2.0",
