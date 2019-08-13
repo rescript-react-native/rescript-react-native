@@ -1,6 +1,6 @@
 {
   "name": "reason-react-native-template",
-  "version": "0.1.0-beta.0",
+  "version": "0.1.0-beta.1",
   "license": "MIT",
   "scripts": {
     "clean": "cd template && yarn re:clean",
