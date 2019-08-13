@@ -33,17 +33,10 @@ When you have correctly
 installed, you can run the following command:
 
 ```console
-react-native init MyApp --template reason
+react-native init MyApp --template reason-react-native-template
 ```
 
-Final step, you need add BuckleScript (that include ReasonML toolchain):
-
-```console
-cd MyApp
-yarn add bs-platform --dev
-```
-
-💖 Now that you project is setup, you can just check
+💖 Your project is setup, you can just check
 [how to use _Reason React Native_](/reason-react-native/en/docs/usage/) right
 away!
 

@@ -40,7 +40,7 @@
   },
   "workspaces": [
     "reason-react-native",
-    "react-native-template-reason",
+    "reason-react-native-template",
     "bs-react-native-jsx3-compat",
     "bs-react-native",
     "bs-react-native-example",

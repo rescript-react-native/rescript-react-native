@@ -1,4 +1,4 @@
-# React Native HelloWorld
+# Reason React Native HelloWorld
 
 > This is a React Native application developed in Reason.
 
@@ -10,14 +10,8 @@ experience.
 ## Start a Reason React Native project with this template
 
 ```console
-react-native init MyApp --template reason
+react-native init MyApp --template reason-react-native-template
 cd MyApp
-```
-
-Add the required BuckleScript platform `bs-platform` with the following command:
-
-```sh
-yarn add bs-platform --dev
 ```
 
 Now that you are ready to go, you can check our documentation on
