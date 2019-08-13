@@ -11,6 +11,8 @@
     "!.DS_Store",
     "!template/**/*.bs.js",
     "!template/.merlin",
+    "!template/ios/build",
+    "!template/ios/Pods",
     "!template/lib/bs",
     "!template/lib/ocaml"
   ]
