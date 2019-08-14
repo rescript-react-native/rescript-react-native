@@ -33,6 +33,10 @@ export { app as default } from "./src/App.bs.js";
 
 ## `./src/App.re`
 
+👀 In place of the rudimentary example below, you can directly grab the
+[App.re](https://raw.githubusercontent.com/reasonml-community/reason-react-native/master/reason-react-native-template/template/src/App.re)
+of our template, which will match React Native default _Hello World_!
+
 ```reason
 open ReactNative;
 

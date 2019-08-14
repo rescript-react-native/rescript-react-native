@@ -89,6 +89,7 @@ let sections = [
       ("Introduction", "docs/"),
       ("Installation", "docs/install/"),
       ("Usage", "docs/usage/"),
+      // ("Style", api ++ "docs/style/"),
       ("Example", "docs/example/"),
       ("Cheatsheet", "docs/cheatsheet/"),
       ("Migration from bs-react-native", "docs/migration/jsx3/"),

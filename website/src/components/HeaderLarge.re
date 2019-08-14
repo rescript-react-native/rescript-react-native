@@ -45,7 +45,15 @@ let styles =
           ~color=Consts.Colors.light,
           (),
         ),
-      "search": viewStyle(),
+      "search": viewStyle(~justifyContent=`center, ()),
+      "searchInputWrapper":
+        viewStyle(
+          ~flexDirection=`row,
+          ~backgroundColor="#fff",
+          ~borderRadius=6.,
+          ~alignItems=`center,
+          (),
+        ),
       "links":
         viewStyle(
           ~flexGrow=1.,
@@ -140,19 +148,22 @@ let make = (~currentLocation) => {
            })
          ->React.array}
       </SpacedView>
-      <SpacedView style=styles##search vertical=XS horizontal=XS>
-        <input
-          id="SearchInput"
-          placeholder="Search"
-          style={ReactDOMRe.Style.make(
-            ~fontSize="15px",
-            ~width="120px",
-            ~borderRadius="20px",
-            ~border="0",
-            ~padding="10px 20px",
-            (),
-          )}
-        />
+      <SpacedView vertical=XS horizontal=XS style=styles##search>
+        <SpacedView
+          vertical=XXS horizontal=XS style=styles##searchInputWrapper>
+          <input
+            id="SearchInput"
+            placeholder="Search..."
+            style={ReactDOMRe.Style.make(
+              ~fontSize="16px",
+              ~width="120px",
+              ~border="0",
+              (),
+            )}
+          />
+          <Spacer size=XS />
+          <SVGSearch fill=Predefined.Colors.dark width="18" height="18" />
+        </SpacedView>
       </SpacedView>
       <SpacedView style=styles##icons vertical=XS horizontal=XS>
         {Consts.socialLinks

@@ -66,10 +66,10 @@ have to do anything. The plugin will detect `bs-platform` & will handle the
 compilation/watching process for you.
 
 In case you are facing something weird, you can always trigger a cleanup by
-doing `Cmd + Shift + P` and look for `Restart Reason Language Server`.
+doing `Cmd/Ctrl + Shift + P` and look for `Restart Reason Language Server`.
 
 ⛑ _Even if you decide to use Vscode or a smiliar IDE to ease your day to day
-development workflow, you should have a look to CLI workflow so you how it
+development workflow, you should have a look to CLI workflow so you know how it
 works._
 
 ### Compile ReasonML files via CLI
