@@ -99,7 +99,7 @@ refmt --parse ml --interface true
 
 ## Useful resources
 
-- [Bucklescript Manual](https://bucklescript.github.io/docs/en/installation)
+- [BuckleScript Manual](https://bucklescript.github.io/docs/en/installation)
 - The [React Native docs](https://facebook.github.io/react-native/)
 - The
   [TypeScript definitions](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react-native/index.d.ts)

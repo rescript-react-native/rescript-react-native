@@ -33,17 +33,25 @@ When you have correctly
 installed, you can run the following command:
 
 ```console
-react-native init MyApp --template reason
+react-native init MyApp --template reason-react-native-template
 ```
 
-Final step, you need add BuckleScript (that include ReasonML toolchain):
+### ⚠️ Requires `react-native-community/cli@2.3.0` +
+
+In case you got an error saying it's looking for
+`react-native-template-reason-react-native-template`, be sure to have
+uninstalled any previous react-native-cli version & install latest community
+version
 
 ```console
-cd MyApp
-yarn add bs-platform --dev
+npm -g uninstall react-native
+npm -g uninstall react-native-cli
+yarn global remove react-native
+yarn global remove react-native-cli
+yarn global add @react-native-community/cli
 ```
 
-💖 Now that you project is setup, you can just check
+💖 Your project is setup, you can just check
 [how to use _Reason React Native_](/reason-react-native/en/docs/usage/) right
 away!
 
