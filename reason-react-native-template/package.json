@@ -1,6 +1,6 @@
 {
   "name": "reason-react-native-template",
-  "version": "0.1.0-beta.1",
+  "version": "0.1.0-beta.2",
   "license": "MIT",
   "scripts": {
     "clean": "cd template && yarn re:clean",
@@ -8,6 +8,7 @@
   },
   "files": [
     "*",
+    "template/android/app/debug.keystore",
     "!.DS_Store",
     "!template/**/*.bs.js",
     "!template/.merlin",
