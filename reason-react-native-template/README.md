@@ -10,23 +10,19 @@ experience.
 ## Start a Reason React Native project with this template
 
 ```console
-react-native init MyApp --template reason-react-native-template
+npx react-native init MyApp --template reason-react-native-template
 cd MyApp
 ```
 
-### ⚠️ Requires `react-native-community/cli@2.3.0` +
-
-In case you got an error saying it's looking for
+⚠️ In case you got an error saying it's looking for
 `react-native-template-reason-react-native-template`, be sure to have
-uninstalled any previous react-native-cli version & install latest community
-version
+uninstalled any previous react-native-cli version & rely on `npx`
 
 ```console
 npm -g uninstall react-native
 npm -g uninstall react-native-cli
 yarn global remove react-native
 yarn global remove react-native-cli
-yarn global add @react-native-community/cli
 ```
 
 Now that you are ready to go, you can check our documentation on
