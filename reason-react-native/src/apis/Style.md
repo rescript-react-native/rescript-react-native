@@ -1262,7 +1262,7 @@ Accepts an array of optional styles as a single style.
 Accepts a list of styles as a single style.
 
 ```reason
-<View style=Style.(list([|
+<View style=Style.(list([
   styles##thing,
   styles##whatever,
 ]))>
@@ -1273,10 +1273,10 @@ Accepts a list of styles as a single style.
 Accepts a list of optional styles as a single style.
 
 ```reason
-<View style=Style.(listOption([|
+<View style=Style.(listOption([
   Some(styles##thing),
   Some(styles##whatever),
   optionalStyle,
   cond ? Some(style(~prop=value, ()) : None
-|]))>
+]))>
 ```
