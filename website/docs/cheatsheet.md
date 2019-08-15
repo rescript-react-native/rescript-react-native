@@ -194,7 +194,7 @@ let styles =
       "container":
         viewStyle(
           ~maxHeight=600.->dp,
-          ~width=800.->pct,
+          ~width=80.->pct,
           ~justifyContent=`flexStart,
           ~alignItems=`center,
           ~margin=auto,
