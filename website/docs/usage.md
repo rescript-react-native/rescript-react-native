@@ -107,9 +107,9 @@ You might want to add this two commands in your `package.json` scripts:
   "scripts": {
     "re:build": "bsb -clean-world -make-world",
     "re:watch": "bsb -clean-world -make-world -w",
-    "start": "node node_modules/react-native/local-cli/cli.js start",
-    "start:ios": "react-native run-ios",
-    "start:android": "react-native run-android",
+    "start": "react-native start",
+    "ios": "react-native run-ios",
+    "android": "react-native run-android",
   }
 ```
 

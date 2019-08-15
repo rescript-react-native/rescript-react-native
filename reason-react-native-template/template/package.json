@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
     "start": "react-native start",
+    "ios": "react-native run-ios",
+    "android": "react-native run-android",
     "re:clean": "bsb -clean-world",
     "re:watch": "bsb -clean-world -make-world -w",
     "re:build": "bsb -clean-world -make-world",
