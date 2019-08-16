@@ -1,6 +1,7 @@
 type navigationState = {
   .
   "index": int,
+  "routeName": string,
   "routes": option(array(navigationState)),
   "isDrawerOpen": bool,
 };
