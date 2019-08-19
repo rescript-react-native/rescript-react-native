@@ -33,17 +33,28 @@ external config:
     ~animationEnabled: bool=?,
     ~_lazy: bool=?,
     ~tabBarOptions: tabBarOptions=?,
+    ~initialRouteName: string=?,
     // TODO: more props
     unit
   ) =>
   config =
   "";
 
-[@bs.module "react-navigation"]
-external makeMaterialTopNavigator: Js.t('a) => Types.navigator =
-  "createMaterialTopTabNavigator";
+module MaterialTop = {
+  [@bs.module "react-navigation"]
+  external make: Js.t('a) => Types.navigator =
+    "createMaterialTopTabNavigator";
 
-[@bs.module "react-navigation"]
-external makeMaterialTopNavigatorWithConfig:
-  (Js.t('a), config) => Types.navigator =
-  "createMaterialTopTabNavigator";
+  [@bs.module "react-navigation"]
+  external makeWithConfig: (Js.t('a), config) => Types.navigator =
+    "createMaterialTopTabNavigator";
+};
+
+module Bottom = {
+  [@bs.module "react-navigation"]
+  external make: Js.t('a) => Types.navigator = "createBottomTabNavigator";
+
+  [@bs.module "react-navigation"]
+  external makeWithConfig: (Js.t('a), config) => Types.navigator =
+    "createBottomTabNavigator";
+};

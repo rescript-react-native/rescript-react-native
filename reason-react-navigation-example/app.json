@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "bs-react-native",
-    "description": "Playground of a React Native app done in Reason",
-    "slug": "bs-react-native",
+    "name": "reason-react-navigation-example",
+    "description": "Playground of a React Native app with navigation done in Reason",
+    "slug": "reason-react-navigation-example",
     "privacy": "public",
     "sdkVersion": "33.0.0",
     "platforms": ["ios", "android"],

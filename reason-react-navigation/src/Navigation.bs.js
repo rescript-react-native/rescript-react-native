@@ -1,1 +1,11 @@
-/* This output is empty. Its source's type definitions, externals and/or unused code got optimized away. */
+'use strict';
+
+var React = require("react");
+var ReactNavigation = require("react-navigation");
+
+function useNavigation(param) {
+  return React.useContext(ReactNavigation.NavigationContext);
+}
+
+exports.useNavigation = useNavigation;
+/* react Not a pure module */
