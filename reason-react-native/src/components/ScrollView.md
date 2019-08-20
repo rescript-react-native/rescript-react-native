@@ -4,6 +4,41 @@ title: ScrollView
 wip: true
 ---
 
+## Methods
+
+### `scrollTo
+
+```reason
+[@react.component]
+let make = () => {
+  let scrollViewRef = React.useRef(Js.Nullable.null);
+  <ScrollView ref=scrollViewRef>
+    <TouchableOpacity
+      onPress={_ => {
+        scrollViewRef
+        ->React.Ref.current
+        ->Js.Nullable.toOption
+        ->Option.map(scrollView =>
+          scrollView->ScrollView.scrollTo(
+            ScrollView.scrollToParams(
+            ~x=0,
+            ~y=0.,
+            ~animated=true,
+            (),
+          ),
+        )
+      )
+      ->ignore;
+    }}>
+    <Text> "ScrollTo 0, 0"->React.string </Text>
+    </TouchableOpacity>
+  </ScrollView>
+};
+```
+
+---
+
+
 ```reason
 include ScrollViewElement;
 
