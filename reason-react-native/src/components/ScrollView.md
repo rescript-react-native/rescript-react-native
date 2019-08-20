@@ -6,7 +6,7 @@ wip: true
 
 ## Methods
 
-### `scrollTo
+### `scrollTo`
 
 ```reason
 [@react.component]
