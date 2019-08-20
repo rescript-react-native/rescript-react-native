@@ -103,6 +103,7 @@ let make = (~docsIndex, ~currentLocation) => {
                  ++ " 75%, "
                  ++ Consts.Colors.light0
                  ++ ")",
+               ~zIndex="1",
                (),
              )}>
              <SpacedView vertical=M horizontal=None>
