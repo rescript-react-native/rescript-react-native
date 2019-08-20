@@ -1,12 +1,15 @@
 ---
 id: apis/Packager
 title: Packager
-wip: true
 ---
 
+## `Packager.require`
+
+`Packager.require` is the exact same `require()` you know in React Native. It
+returns a type `Packager.required`.
+
 ```reason
-type required;
-
-[@bs.val] external require: string => required = "";
-
+let asset = Packager.require("./some/asset.jpg");
 ```
+
+You can use this for component like [Image](../../components/Image/).
