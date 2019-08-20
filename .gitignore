@@ -5,9 +5,3 @@
 node_modules
 # npm unused lock file (we use yarn.lock)
 package-lock.json
-
-# ocaml/reason build artifacts
-.bsb.lock
-**/lib/bs
-**/lib/ocaml
-**/.merlin
