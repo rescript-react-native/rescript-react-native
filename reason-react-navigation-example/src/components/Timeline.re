@@ -4,22 +4,24 @@ open Helpers;
 module TimelineItem = {
   [@react.component]
   let make = (~text, ~onPress) =>
-    <>
-      <TouchableOpacity
-        onPress
-        style=Style.(
-          style(~paddingHorizontal=16.->dp, ~paddingVertical=26.->dp, ())
-        )>
-        <Text> {text |> React.string} </Text>
-      </TouchableOpacity>
-      <View
-        style=Style.(
-          style(~borderBottomColor="#ddd", ~borderBottomWidth=1., ())
-        )
-      />
-    </>;
+    <TouchableOpacity
+      onPress
+      style=Style.(
+        style(~paddingHorizontal=16.->dp, ~paddingVertical=26.->dp, ())
+      )>
+      <Text> {text |> React.string} </Text>
+    </TouchableOpacity>;
 };
 
+module ItemSeparator = {
+  [@react.component]
+  let make = () =>
+    <View
+      style=Style.(
+        style(~borderBottomColor="#ddd", ~borderBottomWidth=1., ())
+      )
+    />;
+};
 module TimelineList = {
   [@react.component]
   let make = (~navigation: Navigation.t) =>
@@ -27,6 +29,8 @@ module TimelineList = {
       <FlatList
         data=Tweet.dummyTweets
         keyExtractor={({id}, _) => id}
+        _ItemSeparatorComponent={_ => <ItemSeparator />}
+        _ListFooterComponent={_ => <ItemSeparator />}
         renderItem={props =>
           <TimelineItem
             onPress={_ =>
