@@ -23,7 +23,7 @@ let scrollTo = (scrollView, scrollParams) => unit;
 open ReactNative;
 
 [@react.component]
-let make2 = () => {
+let make = () => {
   let scrollViewRef = React.useRef(Js.Nullable.null);
   <ScrollView ref=scrollViewRef>
     <TouchableOpacity
