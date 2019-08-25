@@ -5,9 +5,8 @@ officialDoc: https://facebook.github.io/react-native/docs/debugging#warnings
 ---
 
 Warning messages are displayed in white on a yellow background; which is known
-as a YellowBox. Warnings may be trigged with the `warn` method already included
-the BuckleScript module `Js.Console`. This module relates to the `YellowBox`
-module in React Native.
+as a YellowBox. Warnings may be trigged with the `Js.Console.warn` function included
+in BuckleScript.
 
 ## Methods
 
