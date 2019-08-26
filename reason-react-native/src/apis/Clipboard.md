@@ -1,14 +1,24 @@
 ---
 id: apis/Clipboard
 title: Clipboard
-wip: true
+officialDoc: https://facebook.github.io/react-native/docs/clipboard
 ---
 
+## Methods
+
+### `getString`
+
+To attempt reading content from the Clipboard; resolves to a `string` if
+successful.
+
 ```reason
-[@bs.module "react-native"] [@bs.scope "Clipboard"]
-external getString: unit => Js.Promise.t(string) = "";
+getString: unit => Js.Promise.t(string)
+```
 
-[@bs.module "react-native"] [@bs.scope "Clipboard"]
-external setString: string => unit = "";
+### `setString`
 
+To copy a `string` to the Clipbard.
+
+```reason
+setString: string => unit
 ```
