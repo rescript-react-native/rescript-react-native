@@ -33,7 +33,7 @@ let make = () => {
           scrollView->ScrollView.scrollTo(
             ScrollView.scrollToParams(~x=0., ~y=0., ~animated=true, ()),
           )
-        | _ => ignore()
+        | _ => ()
         }
       }>
       <Text> "ScrollTo 0, 0"->React.string </Text>
