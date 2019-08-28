@@ -73,7 +73,6 @@ The example below illustrates rendering to the ui based on the value returned fr
       AppState.addEventListener(
         `change(state => handleAppStateChange(state)),
       )
-      |> ignore;
       Some(
         () =>
           AppState.removeEventListener(
