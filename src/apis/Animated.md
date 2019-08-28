@@ -262,10 +262,10 @@ external eventOptions2:
 type event('event) = 'event => unit;
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external event: (array('mapping), eventOptions) => event('event) = "";
+external event1: (array('mapping), eventOptions) => event('event) = "event";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external event2: (('mapping, 'mapping2), eventOptions2) => event('event) = "";
+external event2: (('mapping, 'mapping2), eventOptions2) => event('event) = "event";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
 external createAnimatedComponent:
