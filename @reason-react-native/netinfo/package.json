@@ -1,6 +1,9 @@
 {
   "name": "@reason-react-native/netinfo",
   "version": "4.1.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "sgny (https://github.com/sgny)",
   "repository": "https://github.com/reasonml-community/reason-react-native.git",
   "license": "MIT",
