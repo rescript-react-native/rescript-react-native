@@ -1,8 +1,9 @@
-# Changelog
+# reason-react-native CHANGELOG
 
-You can find changelog in each packages:
+## 0.60.0 - 2019-06-17
 
-- [reason-react-native CHANGELOG](./reason-react-native/CHANGELOG.md)
-- [reason-react-native-template CHANGELOG](./reason-react-native-template/CHANGELOG.md)
-- [bs-react-native CHANGELOG](./bs-react-native/CHANGELOG.md)
-- [bs-react-native-jsx3-compat CHANGELOG](./bs-react-native-jsx3-compat/CHANGELOG.md)
+✨ Initial release for this new React Native bindings!
+
+See
+https://reasonml-community.github.io/reason-react-native/en/blog/2019-06-17-hello-reason-react-native/
+for more information.

@@ -1,9 +1,0 @@
-build
-dist
-
-# Ocaml / Reason / BuckleScript artifacts
-*.bs.js
-.bsb.lock
-**/lib/bs
-**/lib/ocaml
-**/.merlin
