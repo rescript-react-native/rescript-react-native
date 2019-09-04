@@ -150,21 +150,24 @@ module ValueMethods = (Val: Value) => {
   type t = Val.t;
   type jsValue = Val.jsValue;
 
-  type callback = jsValue => unit;
+  type callback('t) = 't => unit;
 
   [@bs.send] external setValue: (t, jsValue) => unit = "";
   [@bs.send] external setOffset: (t, jsValue) => unit = "";
   [@bs.send] external flattenOffset: t => unit = "";
   [@bs.send] external extractOffset: t => unit = "";
-  [@bs.send] external addListener: (t, callback) => string = "";
+  [@bs.send]
+  external addListener: (t, callback({. "value": jsValue})) => string = "";
   [@bs.send] external removeListener: (t, string) => unit = "";
   [@bs.send] external removeAllListeners: t => unit = "";
 
   [@bs.send]
-  external resetAnimation: (t, ~callback: callback=?, unit) => unit = "";
+  external resetAnimation: (t, ~callback: callback(jsValue)=?, unit) => unit =
+    "";
 
   [@bs.send]
-  external stopAnimation: (t, ~callback: callback=?, unit) => unit = "";
+  external stopAnimation: (t, ~callback: callback(jsValue)=?, unit) => unit =
+    "";
 
   include ValueAnimations(Val);
 };
