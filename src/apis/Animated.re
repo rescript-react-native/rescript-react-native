@@ -178,7 +178,7 @@ module Value = {
   include ValueMethods({
     type t = value(regular);
     type jsValue = float;
-    type jsValueAddListener = {. "value": float};
+    type jsValueAddListener = {. "value": jsValue};
   });
 
   [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
