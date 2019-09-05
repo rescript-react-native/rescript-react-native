@@ -12,6 +12,7 @@ module Animation = {
 module type Value = {
   type t;
   type jsValue;
+  type addListenerCallback;
 };
 
 type calculated;
@@ -149,14 +150,14 @@ module ValueOperations = {
 module ValueMethods = (Val: Value) => {
   type t = Val.t;
   type jsValue = Val.jsValue;
-
+  type addListenerCallback = Val.addListenerCallback;
   type callback = jsValue => unit;
 
   [@bs.send] external setValue: (t, jsValue) => unit = "";
   [@bs.send] external setOffset: (t, jsValue) => unit = "";
   [@bs.send] external flattenOffset: t => unit = "";
   [@bs.send] external extractOffset: t => unit = "";
-  [@bs.send] external addListener: (t, callback) => string = "";
+  [@bs.send] external addListener: (t, addListenerCallback) => string = "";
   [@bs.send] external removeListener: (t, string) => unit = "";
   [@bs.send] external removeAllListeners: t => unit = "";
 
@@ -173,6 +174,7 @@ module Value = {
   include ValueMethods({
     type t = value(regular);
     type jsValue = float;
+    type addListenerCallback = {. "value": jsValue} => unit;
   });
 
   [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
@@ -193,6 +195,7 @@ module ValueXY = {
       "x": float,
       "y": float,
     };
+    type addListenerCallback = jsValue => unit;
   });
 
   [@bs.obj] external jsValue: (~x: float, ~y: float) => jsValue = "";
