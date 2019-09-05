@@ -1,0 +1,32 @@
+version: 2
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
+
+jobs:
+  test:
+    docker:
+      - image: circleci/node:10
+    steps:
+      - checkout
+      - restore_cache:
+          key:
+            yarn-cache-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+      - run:
+          name: install deps
+          command: >
+            yarn install \
+              --non-interactive \
+              --frozen-lockfile \
+              --cache-folder ~/.cache/yarn
+      - run:
+          name: tests
+          command: yarn test
+      - save_cache:
+          key:
+            yarn-cache-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
