@@ -2,7 +2,7 @@
 
 Thanks for your help!
 
-This document describes the philosophy behind the reason-react-native bindings.
+This document describes the philosophy behind this bindings.
 
 ## Zero Cost
 
@@ -20,7 +20,11 @@ variant comes with extra cost, we will stay with the inlined string constants.
 After all, any abstractions on top of our bindings may still be added in user
 code if required.
 
-## JS Objects Passed as Props
+Also, avoiding abstractions avoid us for introducing bugs.
+
+### How to make zero-cost bindings
+
+#### JS Objects Passed as Props
 
 We use `[@bs.obj]` to model JS objects passed as props to components or as
 parameters to api functions. This enables us to:
@@ -38,7 +42,7 @@ external options:
   "";
 ```
 
-## JS Objects Returned in Callbacks
+#### JS Objects Returned in Callbacks
 
 We model JS objects returned in callbacks or promises as some `Js.t` type, e.g.
 
