@@ -35,7 +35,8 @@ type syntheticEvent('a) = {
 
 ### `responderSyntheticEvent('a)`
 
-`responderSyntheticEvent('a)` adds the `touchHistory` key to `syntheticEvent('a)`
+`responderSyntheticEvent('a)` adds the `touchHistory` key to
+`syntheticEvent('a)`
 
 ```reason
 type responderSyntheticEvent('a) = {

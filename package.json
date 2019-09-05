@@ -1,52 +1,63 @@
 {
-  "private": true,
-  "version": "0.0.0",
-  "name": "reason-react-native-monorepo",
+  "name": "reason-react-native",
+  "version": "0.60.0",
+  "peerDependencies": {
+    "react-native": "^0.60.0",
+    "reason-react": "^0.7.0"
+  },
+  "repository": "https://github.com/reasonml-community/reason-react-native.git",
   "license": "MIT",
+  "keywords": [
+    "reason",
+    "reasonml",
+    "bucklescript",
+    "react-native"
+  ],
+  "files": [
+    "*",
+    "!.DS_Store",
+    "!**/*.bs.js",
+    "!.merlin",
+    "!lib/bs",
+    "!lib/ocaml"
+  ],
+  "scripts": {
+    "format:most": "prettier --write \"**/*.{md,json,js,css}\"",
+    "format:re": "find . -name \"*.re\" -or -name \"*.rei\" | grep -v \"node_modules\" | xargs bsrefmt --in-place",
+    "format": "yarn format:most && yarn format:re",
+    "re:start": "bsb -make-world -w",
+    "re:build": "bsb -make-world",
+    "re:clean-build": "bsb -clean-world -make-world",
+    "start": "yarn re:start",
+    "build": "yarn re:build",
+    "test": "yarn re:clean-build"
+  },
   "devDependencies": {
     "bs-platform": "^5.0.4",
     "husky": "^1.3.1",
     "lerna": "^3.4.0",
     "lint-staged": "^8.1.5",
     "npm-run-all": "^3.0.0",
-    "prettier": "^1.16.4"
-  },
-  "scripts": {
-    "prerelease": "yarn prepare",
-    "release": "lerna publish",
-    "format": "yarn format:most && yarn format:re",
-    "format:most": "prettier --write \"**/*.{js,json,css,md}\"",
-    "format:re": "find . -name \"*.re\" -or -name \"*.rei\" | grep -v \"node_modules\" | xargs bsrefmt --in-place",
-    "clean": "lerna exec --concurrency 1 -- yarn clean",
-    "test": "lerna exec --concurrency 1 -- yarn test"
+    "prettier": "^1.16.4",
+    "reason-react": "^0.7.0"
   },
   "prettier": {
     "trailingComma": "all",
     "proseWrap": "always"
   },
   "lint-staged": {
+    "*.{md,json,js,css}": [
+      "prettier --write",
+      "git add"
+    ],
     "*.{re,rei}": [
       "bsrefmt --in-place",
       "git add"
-    ],
-    "*.{js,json,css,md}": [
-      "prettier --write"
     ]
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  },
-  "workspaces": [
-    "reason-react-native",
-    "reason-react-native-template",
-    "bs-react-native-jsx3-compat",
-    "bs-react-native",
-    "bs-react-native-example",
-    "reason-react-navigation",
-    "reason-react-navigation-example",
-    "@reason-react-native/*",
-    "website"
-  ]
+  }
 }

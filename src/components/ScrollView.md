@@ -8,8 +8,8 @@ wip: true
 
 ### `scrollTo`
 
-Scrolls to a given `x`, `y` offset, either immediately, with a smooth animation, or,
-for Android only, a custom animation duration time.
+Scrolls to a given `x`, `y` offset, either immediately, with a smooth animation,
+or, for Android only, a custom animation duration time.
 
 ```reason
 let scrollParams = (~x: float, ~y: float, ~animated: bool=?, ~duration: float=?, unit) => unit;
@@ -44,9 +44,9 @@ let make = () => {
 
 ### `scrollToEnd`
 
-Scrolls to the end of the `ScrollView` with an animation.
-If this is a vertical `ScrollView` scrolls to the bottom.
-If this is a horizontal `ScrollView` scrolls to the right.
+Scrolls to the end of the `ScrollView` with an animation. If this is a vertical
+`ScrollView` scrolls to the bottom. If this is a horizontal `ScrollView` scrolls
+to the right.
 
 ```reason
 let scrollToEnd = (scrollView) => unit;
@@ -54,7 +54,8 @@ let scrollToEnd = (scrollView) => unit;
 
 ### `scrollToEndWithOptions`
 
-Similar to `scrollToEnd`, with options for animation or, for Android only duration.
+Similar to `scrollToEnd`, with options for animation or, for Android only
+duration.
 
 ```reason
 let scrollToEndOptions = (~animated: bool=?, ~duration: float=?, unit) => unit;
@@ -63,7 +64,6 @@ let scrollToEndWithOptions = (scrollView, scrollParams) => unit;
 ```
 
 ---
-
 
 ```reason
 include ScrollViewElement;

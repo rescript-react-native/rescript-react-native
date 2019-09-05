@@ -51,7 +51,8 @@ external removeEventListener:
 
 # Example
 
-The example below illustrates rendering to the ui based on the value returned from the `AppState` API.
+The example below illustrates rendering to the ui based on the value returned
+from the `AppState` API.
 
 ```reason
 [@react.component]

@@ -1,7 +1,17 @@
-# macos crap
+*.log
+
+# macOS crap
 .DS_Store
 
 # node
 node_modules
+
 # npm unused lock file (we use yarn.lock)
 package-lock.json
+
+# Ocaml / Reason / BuckleScript artifacts
+#*.bs.js # we do want this files to ensure zero-cost
+.bsb.lock
+**/lib/bs
+**/lib/ocaml
+**/.merlin

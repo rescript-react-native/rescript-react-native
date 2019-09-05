@@ -1,5 +1,0 @@
-# Ocaml / Reason / BuckleScript artifacts
-.bsb.lock
-**/lib/bs
-**/lib/ocaml
-**/.merlin
