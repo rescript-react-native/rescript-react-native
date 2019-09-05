@@ -12,7 +12,7 @@ module Animation = {
 module type Value = {
   type t;
   type jsValue;
-  type jsValueAddListener;
+  type addListenerCallback;
 };
 
 type calculated;
@@ -150,26 +150,22 @@ module ValueOperations = {
 module ValueMethods = (Val: Value) => {
   type t = Val.t;
   type jsValue = Val.jsValue;
-  type jsValueAddListener = Val.jsValueAddListener;
-
-  type callback('t) = 't => unit;
+  type addListenerCallback = Val.addListenerCallback;
+  type callback = jsValue => unit;
 
   [@bs.send] external setValue: (t, jsValue) => unit = "";
   [@bs.send] external setOffset: (t, jsValue) => unit = "";
   [@bs.send] external flattenOffset: t => unit = "";
   [@bs.send] external extractOffset: t => unit = "";
-  [@bs.send]
-  external addListener: (t, callback(jsValueAddListener)) => string = "";
+  [@bs.send] external addListener: (t, addListenerCallback) => string = "";
   [@bs.send] external removeListener: (t, string) => unit = "";
   [@bs.send] external removeAllListeners: t => unit = "";
 
   [@bs.send]
-  external resetAnimation: (t, ~callback: callback(jsValue)=?, unit) => unit =
-    "";
+  external resetAnimation: (t, ~callback: callback=?, unit) => unit = "";
 
   [@bs.send]
-  external stopAnimation: (t, ~callback: callback(jsValue)=?, unit) => unit =
-    "";
+  external stopAnimation: (t, ~callback: callback=?, unit) => unit = "";
 
   include ValueAnimations(Val);
 };
@@ -178,7 +174,7 @@ module Value = {
   include ValueMethods({
     type t = value(regular);
     type jsValue = float;
-    type jsValueAddListener = {. "value": jsValue};
+    type addListenerCallback = {. "value": jsValue} => unit;
   });
 
   [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
@@ -199,7 +195,7 @@ module ValueXY = {
       "x": float,
       "y": float,
     };
-    type jsValueAddListener = jsValue;
+    type addListenerCallback = jsValue => unit;
   });
 
   [@bs.obj] external jsValue: (~x: float, ~y: float) => jsValue = "";
