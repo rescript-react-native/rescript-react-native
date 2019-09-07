@@ -288,6 +288,17 @@ module StyleProp = {
   external unsafeAny: value('a) => 'b = "%identity";
 };
 
+module FlatList = {
+  include FlatList;
+
+  let make = props =>
+    React.createElementVariadic(
+      createAnimatedComponent(FlatList.make),
+      props,
+      [||],
+    );
+};
+
 module Image = {
   include Image;
 
@@ -298,6 +309,17 @@ module ScrollView = {
   include ScrollView;
 
   let make = createAnimatedComponent(make);
+};
+
+module SectionList = {
+  include SectionList;
+
+  let make = props =>
+    React.createElementVariadic(
+      createAnimatedComponent(SectionList.make),
+      props,
+      [||],
+    );
 };
 
 module Text = {

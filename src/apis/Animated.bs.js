@@ -1,11 +1,14 @@
 'use strict';
 
+var React = require("react");
 var Caml_option = require("bs-platform/lib/js/caml_option.js");
 var ReactNative = require("react-native");
 var Text$ReactNative = require("../components/Text.bs.js");
 var View$ReactNative = require("../components/View.bs.js");
 var Image$ReactNative = require("../components/Image.bs.js");
+var FlatList$ReactNative = require("../components/FlatList.bs.js");
 var ScrollView$ReactNative = require("../components/ScrollView.bs.js");
+var SectionList$ReactNative = require("../components/SectionList.bs.js");
 
 var Animation = /* module */[];
 
@@ -93,25 +96,37 @@ function reset(prim) {
 
 var StyleProp = /* module */[];
 
-var make = ReactNative.Animated.createAnimatedComponent(ReactNative.Image);
+function make(props) {
+  return React.createElement(ReactNative.Animated.createAnimatedComponent(ReactNative.FlatList), props);
+}
+
+var FlatList = /* module */[/* make */make];
+
+var make$1 = ReactNative.Animated.createAnimatedComponent(ReactNative.Image);
 
 var $$Image = /* module */[
   /* Source */Image$ReactNative.Source,
   /* DefaultSource */Image$ReactNative.DefaultSource,
-  /* make */make
+  /* make */make$1
 ];
 
-var make$1 = ReactNative.Animated.createAnimatedComponent(ReactNative.ScrollView);
+var make$2 = ReactNative.Animated.createAnimatedComponent(ReactNative.ScrollView);
 
-var ScrollView = /* module */[/* make */make$1];
+var ScrollView = /* module */[/* make */make$2];
 
-var make$2 = ReactNative.Animated.createAnimatedComponent(ReactNative.Text);
+function make$3(props) {
+  return React.createElement(ReactNative.Animated.createAnimatedComponent(ReactNative.SectionList), props);
+}
 
-var $$Text = /* module */[/* make */make$2];
+var SectionList = /* module */[/* make */make$3];
 
-var make$3 = ReactNative.Animated.createAnimatedComponent(ReactNative.View);
+var make$4 = ReactNative.Animated.createAnimatedComponent(ReactNative.Text);
 
-var View = /* module */[/* make */make$3];
+var $$Text = /* module */[/* make */make$4];
+
+var make$5 = ReactNative.Animated.createAnimatedComponent(ReactNative.View);
+
+var View = /* module */[/* make */make$5];
 
 exports.Animation = Animation;
 exports.ValueAnimations = ValueAnimations;
@@ -127,8 +142,10 @@ exports.start = start;
 exports.stop = stop;
 exports.reset = reset;
 exports.StyleProp = StyleProp;
+exports.FlatList = FlatList;
 exports.$$Image = $$Image;
 exports.ScrollView = ScrollView;
+exports.SectionList = SectionList;
 exports.$$Text = $$Text;
 exports.View = View;
 /* make Not a pure module */
