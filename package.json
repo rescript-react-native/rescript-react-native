@@ -5,7 +5,7 @@
     "react-native": "^0.60.0",
     "reason-react": "^0.7.0"
   },
-  "repository": "https://github.com/reasonml-community/reason-react-native.git",
+  "repository": "https://github.com/reason-react-native/reason-react-native.git",
   "license": "MIT",
   "keywords": [
     "reason",

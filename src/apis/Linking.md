@@ -171,7 +171,7 @@ let make = () => {
     <Button
       onPress={_ =>
         handlePromise(
-          "https://github.com/reasonml-community/reason-react-native/",
+          "https://github.com/reason-react-native/reason-react-native/",
         )
       }
       title="Open Repo"

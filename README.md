@@ -7,7 +7,7 @@ Buy tickets or sponsor the event by visiting
 
 # Reason bindings for React Native
 
-[![Build Status](https://img.shields.io/circleci/project/github/reasonml-community/reason-react-native/master.svg)](https://circleci.com/gh/reasonml-community/reason-react-native)
+[![Build Status](https://img.shields.io/circleci/project/github/reason-react-native/reason-react-native/master.svg)](https://circleci.com/gh/reason-react-native/reason-react-native)
 [![Version](https://img.shields.io/npm/v/reason-react-native.svg)](https://www.npmjs.com/package/reason-react-native)
 [![Chat](https://img.shields.io/discord/235176658175262720.svg?logo=discord&colorb=blue)](https://reasonml-community.github.io/reason-react-native/discord/)
 
@@ -39,5 +39,5 @@ releases.
 ## Code of Conduct
 
 We want this community to be friendly and respectful to each other. Please read
-[the full text](./CODE_OF_CONDUCT.md)
-so that you can understand what actions will and will not be tolerated.
+[the full text](./CODE_OF_CONDUCT.md) so that you can understand what actions
+will and will not be tolerated.
