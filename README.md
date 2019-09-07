@@ -39,5 +39,5 @@ releases.
 ## Code of Conduct
 
 We want this community to be friendly and respectful to each other. Please read
-[the full text](https://github.com/reasonml-community/reason-react-native/blob/master/CODE_OF_CONDUCT.md)
+[the full text](./CODE_OF_CONDUCT.md)
 so that you can understand what actions will and will not be tolerated.
