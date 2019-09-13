@@ -55,7 +55,7 @@ external make:
     ~allowUniversalAccessFromFileURLs: bool=?,
     ~automaticallyAdjustContentInsets: bool=?,
     ~bounces: bool=?,
-    ~contentInsets: View.edgeInsets=?,
+    ~contentInset: View.edgeInsets=?,
     ~dataDetectorTypes: array(DataDetectorTypes.t)=?,
     ~decelerationRate: DecelerationRate.t=?,
     ~domStorageEnabled: bool=?,
