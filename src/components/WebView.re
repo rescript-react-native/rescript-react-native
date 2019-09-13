@@ -22,17 +22,52 @@ module Source = {
 module DataDetectorTypes = WebView_DataDetectorTypes;
 module DecelerationRate = WebView_DecelerationRate;
 
-type messageEvent = Event.syntheticEvent({. "data": string});
+class type webViewBaseEvent = {
+  pub url: string;
+  pub title: string;
+  pub loading: bool;
+  pub canGoBack: bool;
+  pub canGoForward: bool;
+  pub lockIdentifier: int;
+};
 
-type webViewEvent =
-  Event.syntheticEvent({
-    .
-    "url": string,
-    "title": string,
-    "loading": bool,
-    "canGoBack": bool,
-    "canGoForward": bool,
-  });
+class type virtual webViewNavigation = {
+  as 'self;
+  constraint 'self = #webViewBaseEvent;
+  pub navigationType: string;
+  pub mainDocumentURL: option(string);
+};
+
+class type virtual webViewError = {
+  as 'self;
+  constraint 'self = #webViewBaseEvent;
+  pub domain: option(string);
+  pub code: int;
+  pub description: string;
+};
+
+class type virtual webViewErrorOrNavigation = {
+  as 'self;
+  constraint 'self = #webViewBaseEvent;
+  pub domain: option(string);
+  pub code: option(int);
+  pub description: string;
+  pub navigationType: string;
+  pub mainDocumentURL: option(string);
+};
+
+class type virtual webViewMessage = {
+  as 'self;
+  constraint 'self = #webViewBaseEvent;
+  pub data: string;
+};
+
+type webViewErrorEvent = Event.syntheticEvent(Js.t(webViewError));
+type webViewNavigationEvent = Event.syntheticEvent(Js.t(webViewNavigation));
+type webViewErrorOrNavigationEvent =
+  Event.syntheticEvent(Js.t(webViewErrorOrNavigation));
+type webViewMessageEvent = Event.syntheticEvent(Js.t(webViewMessage));
+type webViewEvent = Js.t(webViewBaseEvent);
 
 type request = {
   .
@@ -65,11 +100,11 @@ external make:
     ~javaScriptEnabled: bool=?,
     ~mediaPlaybackRequiresUserAction: bool=?,
     ~mixedContentMode: [@bs.string] [ | `never | `always | `compatibility]=?,
-    ~onError: webViewEvent => unit=?,
-    ~onLoad: webViewEvent => unit=?,
-    ~onLoadEnd: webViewEvent => unit=?,
-    ~onLoadStart: webViewEvent => unit=?,
-    ~onMessage: messageEvent => unit=?,
+    ~onError: webViewErrorEvent => unit=?,
+    ~onLoad: webViewNavigationEvent => unit=?,
+    ~onLoadEnd: webViewErrorOrNavigation => unit=?,
+    ~onLoadStart: webViewNavigationEvent => unit=?,
+    ~onMessage: webViewMessageEvent => unit=?,
     ~onNavigationStateChange: webViewEvent => unit=?,
     ~onShouldStartLoadWithRequest: request => bool=?,
     ~originWhitelist: array(string)=?,
