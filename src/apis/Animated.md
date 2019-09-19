@@ -246,26 +246,19 @@ external loop: Animation.t => Animation.t = "";
 [@bs.module "react-native"] [@bs.scope "Animated"]
 external loopWithConfig: (Animation.t, loopConfig) => Animation.t = "loop";
 
-type eventOptions;
+type eventOptions('a);
 [@bs.obj]
 external eventOptions:
-  (~listener: 'event => unit=?, ~useNativeDriver: bool=?, unit) => eventOptions =
+  (~listener: 'a=?, ~useNativeDriver: bool=?, unit) => eventOptions('a) =
   "";
 
-type eventOptions2;
-[@bs.obj]
-external eventOptions2:
-  (~listener: ('event, 'option2) => unit=?, ~useNativeDriver: bool=?, unit) =>
-  eventOptions2 =
-  "";
-
-type event('event) = 'event => unit;
-
+// multiple externals
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external event1: (array('mapping), eventOptions) => event('event) = "event";
+external event1: (array('mapping), eventOptions('a)) => 'a = "event";
 
+// multiple externals
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external event2: (('mapping, 'mapping2), eventOptions2) => event('event) = "event";
+external event2: (('mapping1, 'mapping2), eventOptions('a)) => 'a = "event";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
 external createAnimatedComponent:
