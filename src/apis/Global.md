@@ -17,5 +17,5 @@ This is the `HermesInternal` value known in JavaScript as
 You can use it like this:
 
 ```reason
-let isHermes = Global.hermesInternal != None
+let isHermes = () => Global.hermesInternal != None;
 ```
