@@ -1,5 +1,7 @@
 include VirtualizedListElement;
 
+type sectionData;
+
 type renderItemProps('item) = {
   .
   "item": 'item,
@@ -18,6 +20,7 @@ and section('item) = {
   "renderItem": option(renderItemCallback('item)),
   "ItemSeparatorComponent": option(unit => React.element),
   "keyExtractor": option(('item, int) => string),
+  "sectionData": option(sectionData),
 }
 and renderItemCallback('item) = renderItemProps('item) => React.element
 and renderSectionHeaderProps('item) = {. "section": section('item)}
@@ -32,6 +35,22 @@ and separatorProps('item) = {
   "trailingItem": option('item),
   "trailingSection": option(section('item)),
 };
+
+[@bs.obj]
+external section:
+  (
+    ~data: array('item),
+    ~key: string=?,
+    ~renderItem: renderItemCallback('item)=?,
+    ~_ItemSeparatorComponent: unit => React.element=?,
+    ~keyExtractor: ('item, int) => string=?,
+    ~sectionData: sectionData=?,
+    unit
+  ) =>
+  section('item) =
+  "";
+
+external sectionData: 'a => sectionData = "%identity";
 
 [@react.component] [@bs.module "react-native"]
 external make:
