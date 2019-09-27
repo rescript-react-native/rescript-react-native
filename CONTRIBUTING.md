@@ -1,4 +1,4 @@
-# Contributing Guide to `@reason-react-native/__template__`
+# Contributing Guide to `@reason-react-native/react-native`
 
 We love your input! We want to make contributing to this project as easy and
 transparent as possible, whether it's:
@@ -23,7 +23,7 @@ write bug reports or feature requests with detail, background, and sample code
 if necessary.
 
 Just try to
-[open a new issue](https://github.com/reason-react-native/__template__/issues/new/choose)
+[open a new issue](https://github.com/reason-react-native/react-native/issues/new/choose)
 & follow the instructions that should be prefilled for
 [bug](.github/ISSUE_TEMPLATE/bug.md) or
 [feature request](.github/ISSUE_TEMPLATE/feature.md).
@@ -47,8 +47,8 @@ To make a pull request, you need to:
 2. Clone it and install dependencies
 
 ```console
-git clone https://github.com/reason-react-native/__template__
-cd __template__
+git clone https://github.com/reason-react-native/react-native
+cd react-native
 yarn
 ```
 
