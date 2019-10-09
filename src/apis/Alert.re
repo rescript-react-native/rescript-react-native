@@ -25,13 +25,6 @@ external alert:
     ~message: string=?,
     ~buttons: array(button)=?,
     ~options: options=?,
-    ~type_: [@bs.string] [
-              | `default
-              | `plainText
-              | `secureText
-              | `loginPassword
-            ]
-              =?,
     unit
   ) =>
   unit =
