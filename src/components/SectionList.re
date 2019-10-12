@@ -5,24 +5,33 @@ external make:
   (
     ~ref: ref=?,
     // VirtualizedSectionList props
-    ~_ItemSeparatorComponent: VirtualizedSectionList.separatorProps('item) =>
+    ~_ItemSeparatorComponent: VirtualizedSectionList.separatorProps(
+                                'item,
+                                'sectionData,
+                              ) =>
                               React.element
                                 =?,
     ~_SectionSeparatorComponent: VirtualizedSectionList.separatorProps(
                                    'item,
+                                   'sectionData,
                                  ) =>
                                  React.element
                                    =?,
-    ~renderItem: VirtualizedSectionList.renderItemCallback('item),
+    ~renderItem: VirtualizedSectionList.renderItemCallback(
+                   'item,
+                   'sectionData,
+                 ),
     ~renderSectionFooter: VirtualizedSectionList.renderSectionHeaderCallback(
                             'item,
+                            'sectionData,
                           )
                             =?,
     ~renderSectionHeader: VirtualizedSectionList.renderSectionHeaderCallback(
                             'item,
+                            'sectionData,
                           )
                             =?,
-    ~sections: array(VirtualizedSectionList.section('item)),
+    ~sections: array(VirtualizedSectionList.section('item, 'sectionData)),
     ~stickySectionHeadersEnabled: bool=?,
     // VirtualizedList props
     ~_CellRendererComponent: VirtualizedList.cellRendererComponent('item)=?,
