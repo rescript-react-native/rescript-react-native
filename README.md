@@ -1,10 +1,3 @@
-#### 🎟 [Reason Conf US](https://www.reason-conf.us) is happening October 7-8th in Chicago 🎉
-
-Buy tickets or sponsor the event by visiting
-[https://www.reason-conf.us](https://www.reason-conf.us)
-
----
-
 # `@reason-react-native/react-native`
 
 [![Build Status](https://github.com/reason-react-native/react-native/workflows/Build/badge.svg)](https://github.com/reason-react-native/react-native/actions)
