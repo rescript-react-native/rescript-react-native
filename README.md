@@ -1,6 +1,6 @@
-# `@reason-react-native/react-native`
+# `reason-react-native`
 
-[![Build Status](https://github.com/reason-react-native/react-native/workflows/Build/badge.svg)](https://github.com/reason-react-native/react-native/actions)
+[![Build Status](https://github.com/reason-react-native/reason-react-native/workflows/Build/badge.svg)](https://github.com/reason-react-native/reason-react-native/actions)
 [![Version](https://img.shields.io/npm/v/reason-react-native.svg)](https://www.npmjs.com/package/reason-react-native)
 [![Chat](https://img.shields.io/discord/235176658175262720.svg?logo=discord&colorb=blue)](https://reasonml-community.github.io/reason-react-native/discord/)
 

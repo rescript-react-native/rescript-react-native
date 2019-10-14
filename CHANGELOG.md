@@ -1,4 +1,4 @@
-# Changelog of `@reason-react-native/react-native`
+# Changelog of `reason-react-native`
 
 ## 0.60.0 - 2019-06-17
 
