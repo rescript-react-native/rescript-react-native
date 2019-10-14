@@ -1,7 +1,5 @@
 include VirtualizedListElement;
 
-type sectionData;
-
 type renderItemProps('item, 'sectionData) = {
   .
   "item": 'item,
