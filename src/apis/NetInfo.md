@@ -49,7 +49,7 @@ type info = {
   "effectiveType": EffectiveConnectionType.t,
 };
 
-type remove = {. "remove": unit => unit};
+type remove = {. [@bs.meth] "remove": unit => unit};
 
 [@bs.module "react-native"] [@bs.scope "NetInfo"]
 external addEventListener:

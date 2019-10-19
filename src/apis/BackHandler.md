@@ -5,7 +5,7 @@ wip: true
 ---
 
 ```reason
-type remove = {. "remove": unit => unit};
+type remove = {. [@bs.meth] "remove": unit => unit};
 
 [@bs.scope "BackHandler"] [@bs.module "react-native"]
 external exitApp: unit => unit = "";
