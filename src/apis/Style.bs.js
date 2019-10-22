@@ -1,6 +1,8 @@
 'use strict';
 
 
+var GetProp = { };
+
 function pct(num) {
   return num.toString() + "%";
 }
@@ -13,6 +15,7 @@ function rad(num) {
   return num.toString() + "rad";
 }
 
+exports.GetProp = GetProp;
 exports.pct = pct;
 exports.deg = deg;
 exports.rad = rad;

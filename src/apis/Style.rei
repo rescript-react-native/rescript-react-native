@@ -9,6 +9,11 @@ external unsafeAddStyle: ([@bs.as {json|{}|json}] _, t, Js.t('a)) => t =
   "Object.assign";
 external unsafeStyle: Js.t('a) => t = "%identity";
 
+module GetProp: {
+  [@bs.get_index] external float: (t, [@bs.string] [ | `flex | `fontSize]) => option(float) = "";
+  [@bs.get_index] external string: (t, [@bs.string] [ | `fontFamily | `borderStyle]) => option(string) = "";
+};
+
 type size;
 
 [@deprecated
