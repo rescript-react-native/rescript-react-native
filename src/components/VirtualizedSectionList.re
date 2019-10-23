@@ -1,39 +1,41 @@
 include VirtualizedListElement;
 
-type sectionData;
-
-type renderItemProps('item) = {
+type renderItemProps('item, 'sectionData) = {
   .
   "item": 'item,
   "index": int,
-  "section": section('item),
+  "section": section('item, 'sectionData),
   "separators": {
     .
     "highlight": unit => unit,
     "unhighlight": unit => unit,
   },
 }
-and section('item) = {
+and section('item, 'sectionData) = {
   .
   "data": array('item),
   "key": option(string),
-  "renderItem": option(renderItemCallback('item)),
+  "renderItem": option(renderItemCallback('item, 'sectionData)),
   "ItemSeparatorComponent": option(unit => React.element),
   "keyExtractor": option(('item, int) => string),
-  "sectionData": option(sectionData),
+  "sectionData": option('sectionData),
 }
-and renderItemCallback('item) = renderItemProps('item) => React.element
-and renderSectionHeaderProps('item) = {. "section": section('item)}
-and renderSectionHeaderCallback('item) =
-  renderSectionHeaderProps('item) => React.element
-and separatorProps('item) = {
+and renderItemCallback('item, 'sectionData) =
+  renderItemProps('item, 'sectionData) => React.element
+and renderSectionHeaderProps('item, 'sectionData) = {
+  .
+  "section": section('item, 'sectionData),
+}
+and renderSectionHeaderCallback('item, 'sectionData) =
+  renderSectionHeaderProps('item, 'sectionData) => React.element
+and separatorProps('item, 'sectionData) = {
   .
   "highlighted": bool,
   "leadingItem": option('item),
-  "leadingSection": option(section('item)),
-  "section": section('item),
+  "leadingSection": option(section('item, 'sectionData)),
+  "section": section('item, 'sectionData),
   "trailingItem": option('item),
-  "trailingSection": option(section('item)),
+  "trailingSection": option(section('item, 'sectionData)),
 };
 
 [@bs.obj]
@@ -41,28 +43,30 @@ external section:
   (
     ~data: array('item),
     ~key: string=?,
-    ~renderItem: renderItemCallback('item)=?,
+    ~renderItem: renderItemCallback('item, 'sectionData)=?,
     ~_ItemSeparatorComponent: unit => React.element=?,
     ~keyExtractor: ('item, int) => string=?,
-    ~sectionData: sectionData=?,
+    ~sectionData: 'sectionData=?,
     unit
   ) =>
-  section('item) =
+  section('item, 'sectionData) =
   "";
-
-external sectionData: 'a => sectionData = "%identity";
 
 [@react.component] [@bs.module "react-native"]
 external make:
   (
     ~ref: ref=?,
     // VirtualizedSectionList props
-    ~_ItemSeparatorComponent: separatorProps('item) => React.element=?,
-    ~_SectionSeparatorComponent: separatorProps('item) => React.element=?,
-    ~renderItem: renderItemCallback('item),
-    ~renderSectionFooter: renderSectionHeaderCallback('item)=?,
-    ~renderSectionHeader: renderSectionHeaderCallback('item)=?,
-    ~sections: array(section('item)),
+    ~_ItemSeparatorComponent: separatorProps('item, 'sectionData) =>
+                              React.element
+                                =?,
+    ~_SectionSeparatorComponent: separatorProps('item, 'sectionData) =>
+                                 React.element
+                                   =?,
+    ~renderItem: renderItemCallback('item, 'sectionData),
+    ~renderSectionFooter: renderSectionHeaderCallback('item, 'sectionData)=?,
+    ~renderSectionHeader: renderSectionHeaderCallback('item, 'sectionData)=?,
+    ~sections: array(section('item, 'sectionData)),
     ~stickySectionHeadersEnabled: bool=?,
     // VirtualizedList props
     ~_CellRendererComponent: VirtualizedList.cellRendererComponent('item)=?,
