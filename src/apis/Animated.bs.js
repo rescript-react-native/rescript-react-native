@@ -1,6 +1,5 @@
 'use strict';
 
-var React = require("react");
 var Caml_option = require("bs-platform/lib/js/caml_option.js");
 var ReactNative = require("react-native");
 var Text$ReactNative = require("../components/Text.bs.js");
@@ -96,9 +95,7 @@ function reset(prim) {
 
 var StyleProp = /* module */[];
 
-function make(props) {
-  return React.createElement(ReactNative.Animated.createAnimatedComponent(ReactNative.FlatList), props);
-}
+var make = ReactNative.Animated.createAnimatedComponent(ReactNative.FlatList);
 
 var FlatList = /* module */[/* make */make];
 
@@ -114,9 +111,7 @@ var make$2 = ReactNative.Animated.createAnimatedComponent(ReactNative.ScrollView
 
 var ScrollView = /* module */[/* make */make$2];
 
-function make$3(props) {
-  return React.createElement(ReactNative.Animated.createAnimatedComponent(ReactNative.SectionList), props);
-}
+var make$3 = ReactNative.Animated.createAnimatedComponent(ReactNative.SectionList);
 
 var SectionList = /* module */[/* make */make$3];
 
