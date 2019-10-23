@@ -296,12 +296,7 @@ module StyleProp = {
 module FlatList = {
   include FlatList;
 
-  let make = props =>
-    React.createElementVariadic(
-      createAnimatedComponent(FlatList.make),
-      props,
-      [||],
-    );
+  let make = Obj.magic(createAnimatedComponent(FlatList.make));
 };
 
 module Image = {
@@ -319,12 +314,7 @@ module ScrollView = {
 module SectionList = {
   include SectionList;
 
-  let make = props =>
-    React.createElementVariadic(
-      createAnimatedComponent(SectionList.make),
-      props,
-      [||],
-    );
+  let make = Obj.magic(createAnimatedComponent(SectionList.make));
 };
 
 module Text = {
