@@ -25,14 +25,31 @@ external alert:
     ~message: string=?,
     ~buttons: array(button)=?,
     ~options: options=?,
-    ~type_: [@bs.string] [
-              | `default
-              | `plainText
-              | `secureText
-              | `loginPassword
-            ]
-              =?,
     unit
   ) =>
   unit =
-  "";
+  "alert";
+
+[@bs.scope "Alert"] [@bs.module "react-native"]
+external prompt:
+  (
+    ~title: string,
+    ~message: string=?,
+    ~callbackOrButtons: [@bs.unwrap] [
+                          | `callback(string => unit)
+                          | `buttons(array(button))
+                        ]
+                          =?,
+    ~type_: [@bs.string] [
+              | `default
+              | [@bs.as "plain-text"] `plainText
+              | [@bs.as "secure-text"] `secureText
+              | [@bs.as "login-password"] `loginPassword
+            ]
+              =?,
+    ~defaultValue: string=?,
+    ~keyboardType: string=?,
+    unit
+  ) =>
+  unit =
+  "prompt";

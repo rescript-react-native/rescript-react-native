@@ -4,44 +4,31 @@ title: Alert
 wip: true
 ---
 
+## Methods
+
+### `alert`
+
+Launches an alert dialog with the specified `title` and `message`. Optionally,
+an array of `buttons` can be provided: on Android the maximum is 3, on iOS any
+number is okay.
+
+On Android, the dialog can be dismissed by tapping outside of the alert box.
+This triggers the `onDismiss` callback available in the `options`. With the
+`cancelable` option, this behavior can be deactivated altogether.
+
+#### `alert` Example
+
 ```reason
-type options;
+  open ReactNative;
 
-[@bs.obj]
-external options:
-  (~cancelable: bool=?, ~onDismiss: unit => unit=?, unit) => options =
-  "";
-
-type button;
-
-[@bs.obj]
-external button:
-  (
-    ~text: string=?,
-    ~onPress: unit => unit=?,
-    ~style: [@bs.string] [ | `default | `cancel | `destructive]=?,
-    unit
-  ) =>
-  button =
-  "";
-
-[@bs.scope "Alert"] [@bs.module "react-native"]
-external alert:
-  (
-    ~title: string,
-    ~message: string=?,
-    ~buttons: array(button)=?,
-    ~options: options=?,
-    ~type_: [@bs.string] [
-              | `default
-              | `plainText
-              | `secureText
-              | `loginPassword
-            ]
-              =?,
-    unit
-  ) =>
-  unit =
-  "";
-
+  Alert.alert(
+    ~title="Do you really want to quit?",
+    ~message="We miss you already.",
+    ~buttons=[|
+      Alert.button(~text="OK", ~style=`destructive, ~onPress={() => Js.log("Bye!")}, ()),
+      Alert.button(~text="Cancel", ~style=`cancel, ()),
+    |],
+    ~options=Alert.options(~cancelable=true, ~onDismiss={_ => Js.log("Dismissed.")}, ()),
+    (),
+  );
 ```
