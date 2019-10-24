@@ -2,7 +2,7 @@
 
 ## 0.60.1 - 2019-10-25
 
-Probably the latest release for React Native 0.60. We will focus in 0.61.
+Probably the latest release for React Native 0.60. We will focus on 0.61.
 
 ### 💥 Breaking changes (minor)
 
