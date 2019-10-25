@@ -6,7 +6,7 @@ Probably the latest release for React Native 0.60. We will focus on 0.61.
 
 ### 💥 Breaking changes (minor)
 
-Sorry, a mix & bugfix & changes! This should be easy to handle for you.
+Sorry, a mix of bugfixes & changes! This should be easy to handle for you.
 
 - Add constructor for section type in `VirtualizedSectionList`
   [#614](https://github.com/reason-react-native/reason-react-native/pull/614) by
