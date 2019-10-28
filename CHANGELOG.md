@@ -1,6 +1,6 @@
 # Changelog of `reason-react-native`
 
-## 0.60.1 - 2019-10-25
+## 0.60.1 - 2019-10-28
 
 Probably the latest release for React Native 0.60. We will focus on 0.61.
 
