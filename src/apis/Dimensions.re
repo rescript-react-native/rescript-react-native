@@ -1,4 +1,4 @@
-type t = {
+type displayMetrics = {
   .
   "width": float,
   "height": float,
@@ -8,12 +8,12 @@ type t = {
 
 type handler = {
   .
-  "screen": t,
-  "window": t,
+  "screen": displayMetrics,
+  "window": displayMetrics,
 };
 
 [@bs.module "react-native"] [@bs.scope "Dimensions"]
-external get: ([@bs.string] [ | `window | `screen]) => t = "";
+external get: ([@bs.string] [ | `window | `screen]) => displayMetrics = "";
 [@bs.module "react-native"] [@bs.scope "Dimensions"]
 external addEventListener: ([@bs.string] [ | `change], handler => unit) => unit =
   "";
@@ -21,3 +21,6 @@ external addEventListener: ([@bs.string] [ | `change], handler => unit) => unit 
 external removeEventListener:
   ([@bs.string] [ | `change], handler => unit) => unit =
   "";
+
+[@bs.module "react-native"]
+external useWindowDimensions: unit => displayMetrics = "useWindowDimensions";
