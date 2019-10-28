@@ -30,7 +30,8 @@
     "re:clean-build": "bsb -clean-world -make-world",
     "start": "yarn re:start",
     "build": "yarn re:build",
-    "test": "yarn re:clean-build"
+    "test": "yarn re:clean-build",
+    "release": "npmpub"
   },
   "devDependencies": {
     "bs-platform": "^5.0.4",
@@ -38,6 +39,7 @@
     "lerna": "^3.4.0",
     "lint-staged": "^8.1.5",
     "npm-run-all": "^3.0.0",
+    "npmpub": "^5.0.0",
     "prettier": "^1.16.4",
     "reason-react": "^0.7.0"
   },
