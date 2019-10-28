@@ -42,6 +42,9 @@ external setJSResponder: (int, bool) => unit = "";
 external clearJSResponder: unit => unit = "";
 
 // Android-only
+[@deprecated
+  "Deprecated with RN 0.61.1, please use ReactNative.SoundManager.playTouchSound instead"
+]
 [@bs.module "react-native"] [@bs.scope "UIManager"]
 external playTouchSound: unit => unit = "";
 
