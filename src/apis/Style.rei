@@ -9,11 +9,6 @@ external unsafeAddStyle: ([@bs.as {json|{}|json}] _, t, Js.t('a)) => t =
   "Object.assign";
 external unsafeStyle: Js.t('a) => t = "%identity";
 
-module GetProp: {
-  [@bs.get_index] external float: (t, [@bs.string] [ | `flex | `fontSize]) => option(float) = "";
-  [@bs.get_index] external string: (t, [@bs.string] [ | `fontFamily | `borderStyle]) => option(string) = "";
-};
-
 type size;
 
 [@deprecated
@@ -53,6 +48,19 @@ type transform;
 // @todo matrix
 
 external unsafeTransform: Js.t('a) => transform = "%identity";
+
+module GetProp: {
+  type key;
+
+  external readKey: key => string = "%identity";
+
+  [@bs.val] external keys: t => array(key) = "Object.keys";
+
+  [@bs.get_index] external color: (t, key) => Color.t = "";
+  [@bs.get_index] external float: (t, key) => float = "";
+  [@bs.get_index] external size: (t, key) => size = "";
+  [@bs.get_index] external string: (t, key) => string = "";
+};
 
 // Styles are documented here
 // https://github.com/facebook/react-native/blob/master/Libraries/StyleSheet/StyleSheetTypes.js
