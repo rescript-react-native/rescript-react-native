@@ -1,13 +1,5 @@
 include DrawerLayoutAndroidElement;
 
-type drawerPosition;
-
-[@bs.module "react-native"] [@bs.scope ("DrawerConsts", "DrawerPosition")]
-external left: drawerPosition = "Left";
-
-[@bs.module "react-native"] [@bs.scope ("DrawerConsts", "DrawerPosition")]
-external right: drawerPosition = "Right";
-
 type drawerSlideEvent = Event.syntheticEvent({. "offset": float});
 
 [@react.component] [@bs.module "react-native"]
@@ -17,7 +9,7 @@ external make:
     // DrawerLayoutAndroid props
     ~renderNavigationView: unit => React.element,
     ~onDrawerClose: unit => unit=?,
-    ~drawerPosition: drawerPosition=?,
+    ~drawerPosition: [@bs.string] [ | `left | `right]=?,
     ~drawerWidth: float=?,
     ~keyboardDismissMode: [@bs.string] [ | `none | [@bs.as "on-drag"] `onDrag]
                             =?,
