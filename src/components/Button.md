@@ -23,7 +23,8 @@ external make:
     ~nextFocusUp: int=?,
     ~onPress: Event.pressEvent => unit,
     ~testID: string=?,
-    ~title: string
+    ~title: string,
+    ~touchSoundDisabled: bool=?
   ) =>
   React.element =
   "Button";

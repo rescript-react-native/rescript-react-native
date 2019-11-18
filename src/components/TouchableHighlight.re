@@ -52,6 +52,7 @@ external make:
     ~onPressOut: Event.pressEvent => unit=?,
     ~pressRetentionOffset: View.edgeInsets=?,
     ~testID: string=?,
+    ~touchSoundDisabled: bool=?,
     ~children: React.element=?
   ) =>
   React.element =
