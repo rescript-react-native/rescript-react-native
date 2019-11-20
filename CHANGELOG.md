@@ -1,5 +1,27 @@
 # Changelog of `reason-react-native`
 
+## 0.61.0 - 2019-11-20
+
+### 💥 Breaking change
+
+- Change type for `DrawerLayoutAndroid` `drawerPosition` prop
+  [#626](https://github.com/reason-react-native/reason-react-native/pull/626) by
+  @sgny.  
+  You need to replace `DrawerLayoutAndroid.left` & `DrawerLayoutAndroid.right`
+  by `` `left `` & `` `right ``.
+
+### 🚀 New bindings
+
+- Add `SoundManager` + deprecate `UIManager.playTouchSound`
+  [#616](https://github.com/reason-react-native/reason-react-native/pull/616) by
+  @sgny
+- Add `useWindowDimensions` hook
+  [#615](https://github.com/reason-react-native/reason-react-native/pull/615) by
+  @sgny
+- Add `touchSoundDisabled` prop to `Button` and all Touchable components
+  [#627](https://github.com/reason-react-native/reason-react-native/pull/627) by
+  @stuartkeith
+
 ## 0.60.1 - 2019-10-28
 
 Probably the latest release for React Native 0.60. We will focus on 0.61.
