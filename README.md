@@ -15,12 +15,12 @@ Android and [Web](https://github.com/necolas/react-native-web) apps.
 ## Getting Started
 
 Check our
-[getting started](https://reasonml-community.github.io/reason-react-native/en/docs/)
+[getting started](https://reason-react-native.github.io/en/docs/)
 guide for details.
 
 ## Documentation
 
-See https://reasonml-community.github.io/reason-react-native.
+See <https://reason-react-native.github.io/>.
 
 ---
 
