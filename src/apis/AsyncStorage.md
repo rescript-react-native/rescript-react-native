@@ -8,7 +8,7 @@ wip: true
 type error;
 
 [@bs.scope "AsyncStorage"] [@bs.module "react-native"]
-external getItem: string => Js.Promise.t(Js.Null.t(string)) = "";
+external getItem: string => Js.Promise.t(Js.Null.t(string)) = "getItem";
 
 [@bs.scope "AsyncStorage"] [@bs.module "react-native"]
 external setItem: (string, string) => Js.Promise.t(unit) = "";

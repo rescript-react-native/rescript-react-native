@@ -44,24 +44,39 @@ external config:
   "";
 
 [@bs.module "react-native"] [@bs.scope "PanResponder"]
-external create: config => t = "";
+external create: config => t = "create";
 
-[@bs.get] external panHandlers: t => panHandlers = "";
+[@bs.get] external panHandlers: t => panHandlers = "panHandlers";
 
 [@bs.get]
-external onMoveShouldSetResponder: panHandlers => callback(bool) = "";
+external onMoveShouldSetResponder: panHandlers => callback(bool) =
+  "onMoveShouldSetResponder";
 [@bs.get]
-external onMoveShouldSetResponderCapture: panHandlers => callback(bool) = "";
+external onMoveShouldSetResponderCapture: panHandlers => callback(bool) =
+  "onMoveShouldSetResponderCapture";
 [@bs.get]
-external onStartShouldSetResponder: panHandlers => callback(bool) = "";
+external onStartShouldSetResponder: panHandlers => callback(bool) =
+  "onStartShouldSetResponder";
 [@bs.get]
-external onStartShouldSetResponderCapture: panHandlers => callback(bool) = "";
-[@bs.get] external onResponderReject: panHandlers => callback(unit) = "";
-[@bs.get] external onResponderGrant: panHandlers => callback(unit) = "";
-[@bs.get] external onResponderRelease: panHandlers => callback(unit) = "";
-[@bs.get] external onResponderMove: panHandlers => callback(unit) = "";
-[@bs.get] external onResponderTerminate: panHandlers => callback(unit) = "";
+external onStartShouldSetResponderCapture: panHandlers => callback(bool) =
+  "onStartShouldSetResponderCapture";
 [@bs.get]
-external onResponderTerminationRequest: panHandlers => callback(bool) = "";
-[@bs.get] external onResponderStart: panHandlers => callback(unit) = "";
-[@bs.get] external onResponderEnd: panHandlers => callback(unit) = "";
+external onResponderReject: panHandlers => callback(unit) =
+  "onResponderReject";
+[@bs.get]
+external onResponderGrant: panHandlers => callback(unit) = "onResponderGrant";
+[@bs.get]
+external onResponderRelease: panHandlers => callback(unit) =
+  "onResponderRelease";
+[@bs.get]
+external onResponderMove: panHandlers => callback(unit) = "onResponderMove";
+[@bs.get]
+external onResponderTerminate: panHandlers => callback(unit) =
+  "onResponderTerminate";
+[@bs.get]
+external onResponderTerminationRequest: panHandlers => callback(bool) =
+  "onResponderTerminationRequest";
+[@bs.get]
+external onResponderStart: panHandlers => callback(unit) = "onResponderStart";
+[@bs.get]
+external onResponderEnd: panHandlers => callback(unit) = "onResponderEnd";

@@ -2,28 +2,28 @@ module Notification = {
   type t;
 
   [@bs.send] [@bs.return nullable]
-  external getAlert: t => option(Js.Json.t) = "";
+  external getAlert: t => option(Js.Json.t) = "getAlert";
 
   [@bs.send] [@bs.return nullable]
-  external getMessage: t => option(Js.Json.t) = "";
+  external getMessage: t => option(Js.Json.t) = "getMessage";
 
   [@bs.send] [@bs.return nullable]
-  external getSound: t => option(string) = "";
+  external getSound: t => option(string) = "getSound";
 
   [@bs.send] [@bs.return nullable]
-  external getCategory: t => option(string) = "";
+  external getCategory: t => option(string) = "getCategory";
 
   // Actually type ContentAvailable = 1 | null | void ...
-  [@bs.send] external getContentAvailable: t => bool = "";
+  [@bs.send] external getContentAvailable: t => bool = "getContentAvailable";
 
   [@bs.send] [@bs.return nullable]
-  external getBadgeCount: t => option(int) = "";
+  external getBadgeCount: t => option(int) = "getBadgeCount";
 
   [@bs.send] [@bs.return nullable]
-  external getData: t => option(Js.Json.t) = "";
+  external getData: t => option(Js.Json.t) = "getData";
 
   [@bs.send] [@bs.return nullable]
-  external getThreadID: t => option(string) = "";
+  external getThreadID: t => option(string) = "getThreadID";
 };
 
 type localNotification;
@@ -55,16 +55,20 @@ external localNotification:
   "";
 
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
-external presentLocalNotification: localNotification => unit = "";
+external presentLocalNotification: localNotification => unit =
+  "presentLocalNotification";
 
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
-external scheduleLocalNotification: localNotification => unit = "";
+external scheduleLocalNotification: localNotification => unit =
+  "scheduleLocalNotification";
 
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
-external cancelAllLocalNotifications: unit => unit = "";
+external cancelAllLocalNotifications: unit => unit =
+  "cancelAllLocalNotifications";
 
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
-external removeAllDeliveredNotifications: unit => unit = "";
+external removeAllDeliveredNotifications: unit => unit =
+  "removeAllDeliveredNotifications";
 
 type deliveredNotification = {
   .
@@ -80,21 +84,23 @@ type deliveredNotification = {
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
 external getDeliveredNotifications:
   (array(deliveredNotification) => unit) => unit =
-  "";
+  "getDeliveredNotifications";
 
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
 external removeDeliveredNotifications: (~identifiers: array(string)) => unit =
-  "";
+  "removeDeliveredNotifications";
 
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
-external setApplicationIconBadgeNumber: int => unit = "";
+external setApplicationIconBadgeNumber: int => unit =
+  "setApplicationIconBadgeNumber";
 
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
-external getApplicationIconBadgeNumber: (int => unit) => unit = "";
+external getApplicationIconBadgeNumber: (int => unit) => unit =
+  "getApplicationIconBadgeNumber";
 
 // multiple externals
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
-external cancelLocalNotifications: unit => unit = "";
+external cancelLocalNotifications: unit => unit = "cancelLocalNotifications";
 
 // multiple externals
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
@@ -115,7 +121,7 @@ type formattedLocalNotification = {
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
 external getScheduledLocalNotifications:
   (array(formattedLocalNotification) => unit) => unit =
-  "";
+  "getScheduledLocalNotifications";
 
 type registrationError('a) = {
   .
@@ -136,7 +142,7 @@ external addEventListener:
   ]
   ) =>
   unit =
-  "";
+  "addEventListener";
 
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
 external removeEventListener:
@@ -150,7 +156,7 @@ external removeEventListener:
   ]
   ) =>
   unit =
-  "";
+  "removeEventListener";
 
 type permissions = {
   .
@@ -168,7 +174,8 @@ external requestPermissionsOptions:
 
 // multiple externals
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
-external requestPermissions: unit => Js.Promise.t(permissions) = "";
+external requestPermissions: unit => Js.Promise.t(permissions) =
+  "requestPermissions";
 
 // multiple externals
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
@@ -177,10 +184,10 @@ external requestPermissionsWithOptions:
   "requestPermissions";
 
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
-external abandonPermissions: unit => unit = "";
+external abandonPermissions: unit => unit = "abandonPermissions";
 
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
-external checkPermissions: (unit => permissions) => unit = "";
+external checkPermissions: (unit => permissions) => unit = "checkPermissions";
 
 type fetchResult;
 [@bs.obj]
@@ -190,9 +197,9 @@ external fetchResult:
   "";
 
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
-external finish: fetchResult => unit = "";
+external finish: fetchResult => unit = "fetchResult";
 
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
 external getInitialNotification:
   unit => Js.Promise.t(Js.Nullable.t(Notification.t)) =
-  "";
+  "getInitialNotification";

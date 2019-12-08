@@ -5,28 +5,34 @@ type announcementResult = {
 };
 
 [@bs.scope "AccessibilityInfo"] [@bs.module "react-native"]
-external isBoldTextEnabled: unit => Js.Promise.t(bool) = "";
+external isBoldTextEnabled: unit => Js.Promise.t(bool) = "isBoldTextEnabled";
 
 [@bs.scope "AccessibilityInfo"] [@bs.module "react-native"]
-external isGrayscaleEnabled: unit => Js.Promise.t(bool) = "";
+external isGrayscaleEnabled: unit => Js.Promise.t(bool) =
+  "isGrayscaleEnabled";
 
 [@bs.scope "AccessibilityInfo"] [@bs.module "react-native"]
-external isInvertColorsEnabled: unit => Js.Promise.t(bool) = "";
+external isInvertColorsEnabled: unit => Js.Promise.t(bool) =
+  "isInvertColorsEnabled";
 
 [@bs.scope "AccessibilityInfo"] [@bs.module "react-native"]
-external isReduceMotionEnabled: unit => Js.Promise.t(bool) = "";
+external isReduceMotionEnabled: unit => Js.Promise.t(bool) =
+  "isReduceMotionEnabled";
 
 [@bs.scope "AccessibilityInfo"] [@bs.module "react-native"]
-external isReduceTransparencyEnabled: unit => Js.Promise.t(bool) = "";
+external isReduceTransparencyEnabled: unit => Js.Promise.t(bool) =
+  "isReduceTransparencyEnabled";
 
 [@bs.scope "AccessibilityInfo"] [@bs.module "react-native"]
-external isScreenReaderEnabled: unit => Js.Promise.t(bool) = "";
+external isScreenReaderEnabled: unit => Js.Promise.t(bool) =
+  "isScreenReaderEnabled";
 
 [@bs.scope "AccessibilityInfo"] [@bs.module "react-native"]
-external setAccessibilityFocus: NativeTypes.nodeHandle => unit = "";
+external setAccessibilityFocus: NativeTypes.nodeHandle => unit =
+  "setAccessibilityFocus";
 
 [@bs.scope "AccessibilityInfo"] [@bs.module "react-native"]
-external announceForAccessibility: string => unit = "";
+external announceForAccessibility: string => unit = "announceForAccessibility";
 
 [@bs.scope "AccessibilityInfo"] [@bs.module "react-native"]
 external addEventListener:
@@ -43,7 +49,7 @@ external addEventListener:
   ]
   ) =>
   unit =
-  "";
+  "addEventListener";
 
 [@bs.scope "AccessibilityInfo"] [@bs.module "react-native"]
 external removeEventListener:
@@ -60,4 +66,4 @@ external removeEventListener:
   ]
   ) =>
   unit =
-  "";
+  "removeEventListener";

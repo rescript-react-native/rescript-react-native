@@ -17,7 +17,7 @@ let background: t;
 let inactive: t;
 
 [@bs.scope "AppState"] [@bs.module "react-native"]
-external currentState: t = "";
+external currentState: t = "currentState";
 
 [@bs.scope "AppState"] [@bs.module "react-native"]
 external addEventListener:
@@ -31,7 +31,7 @@ external addEventListener:
   ]
   ) =>
   unit =
-  "";
+  "addEventListener";
 
 [@bs.scope "AppState"] [@bs.module "react-native"]
 external removeEventListener:
@@ -45,7 +45,7 @@ external removeEventListener:
   ]
   ) =>
   unit =
-  "";
+  "removeEventListener";
 
 ```
 

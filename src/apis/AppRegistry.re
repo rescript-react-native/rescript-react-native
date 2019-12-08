@@ -42,23 +42,24 @@ type registry('a) = {
 };
 
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
-external getAppKeys: unit => array(appKey) = "";
+external getAppKeys: unit => array(appKey) = "getAppKeys";
 
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
-external getRegistry: unit => registry('a) = "";
+external getRegistry: unit => registry('a) = "getRegistry";
 
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
-external getRunnable: appKey => option(runnable('a)) = "";
+external getRunnable: appKey => option(runnable('a)) = "getRunnable";
 
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
-external getSectionKeys: unit => array(string) = "";
+external getSectionKeys: unit => array(string) = "getSectionKeys";
 
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
-external getSections: unit => Js.Dict.t(runnable('a)) = "";
+external getSections: unit => Js.Dict.t(runnable('a)) = "getSections";
 
 // multiple externals
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
-external registerComponent: (appKey, componentProvider('a)) => unit = "";
+external registerComponent: (appKey, componentProvider('a)) => unit =
+  "registerComponent";
 
 // multiple externals
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
@@ -67,38 +68,43 @@ external registerComponentWithSection:
   "registerComponent";
 
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
-external registerConfig: array(appConfig) => unit = "";
+external registerConfig: array(appConfig) => unit = "registerConfig";
 
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
-external registerRunnable: (appKey, appParameters => unit) => string = "";
+external registerRunnable: (appKey, appParameters => unit) => string =
+  "registerRunnable";
 
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
-external registerSection: (appKey, componentProvider('a)) => unit = "";
+external registerSection: (appKey, componentProvider('a)) => unit =
+  "registerSection";
 
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
-external runApplication: (appKey, 'a) => unit = "";
+external runApplication: (appKey, 'a) => unit = "runApplication";
 
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
 external setWrapperComponentProvider: wrapperComponentProvider('a, 'b) => unit =
-  "";
+  "setWrapperComponentProvider";
 
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
-external unmountApplicationComponentAtRootTag: string => unit = "";
+external unmountApplicationComponentAtRootTag: string => unit =
+  "unmountApplicationComponentAtRootTag";
 
 // Android only
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
-external cancelHeadlessTask: (taskId, taskKey) => unit = "";
+external cancelHeadlessTask: (taskId, taskKey) => unit = "cancelHeadlessTask";
 
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
 external registerCancellableHeadlessTask:
   (taskKey, taskProvider('data), taskCancelProvider) => unit =
-  "";
+  "registerCancellableHeadlessTask";
 
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
-external registerHeadlessTask: (taskKey, taskProvider('data)) => unit = "";
+external registerHeadlessTask: (taskKey, taskProvider('data)) => unit =
+  "registerHeadlessTask";
 
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
-external startHeadlessTask: (taskId, taskKey, 'data) => unit = "";
+external startHeadlessTask: (taskId, taskKey, 'data) => unit =
+  "startHeadlessTask";
 
 // react-native-web
 type app = {
@@ -107,4 +113,5 @@ type app = {
   [@bs.meth] "getStyleElement": unit => React.element,
 };
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
-external getApplication: (string, {. "initialProps": 'a}) => app = "";
+external getApplication: (string, {. "initialProps": 'a}) => app =
+  "getApplication";

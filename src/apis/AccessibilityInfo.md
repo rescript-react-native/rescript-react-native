@@ -63,7 +63,7 @@ when reduce motion is enabled and `false` otherwise.
 
 ```reason
 [@bs.scope "AccesibilityInfo"] [@bs.module "react-native"]
-external isReduceMotionEnabled: unit => Js.Promise.t(bool) = "";
+external isReduceMotionEnabled: unit => Js.Promise.t(bool) = "isReduceMotionEnabled";
 ```
 
 ### `isReduceTransparencyEnabled`
@@ -75,7 +75,7 @@ To query whether reduce transparency is currently enabled. Promise resolves to
 
 ```reason
 [@bs.scope "AccesibilityInfo"] [@bs.module "react-native"]
-external isReduceTransparencyEnabled: unit => Js.Promise.t(bool) = "";
+external isReduceTransparencyEnabled: unit => Js.Promise.t(bool) = "isReduceTransparencyEnabled";
 ```
 
 ### `isScreenReaderEnabled`
@@ -85,7 +85,7 @@ when screen reader is enabled and `false` otherwise.
 
 ```reason
 [@bs.scope "AccesibilityInfo"] [@bs.module "react-native"]
-external isScreenReaderEnabled: unit => Js.Promise.t(bool) = "";
+external isScreenReaderEnabled: unit => Js.Promise.t(bool) = "isScreenReaderEnabled";
 ```
 
 ### `setAccessibilityFocus`

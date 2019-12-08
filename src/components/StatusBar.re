@@ -19,7 +19,7 @@ external make:
 
 [@bs.module "react-native"] [@bs.scope "StatusBar"]
 external setHidden: (bool, [@bs.string] [ | `none | `fade | `slide]) => unit =
-  "";
+  "setHidden";
 
 [@bs.module "react-native"] [@bs.scope "StatusBar"]
 external setBarStyle:
@@ -32,16 +32,17 @@ external setBarStyle:
     bool
   ) =>
   unit =
-  "";
+  "setBarStyle";
 
 [@bs.module "react-native"] [@bs.scope "StatusBar"]
-external setNetworkActivityIndicatorVisible: bool => unit = "";
+external setNetworkActivityIndicatorVisible: bool => unit =
+  "setNetworkActivityIndicatorVisible";
 
 [@bs.module "react-native"] [@bs.scope "StatusBar"]
-external setBackgroundColor: (Color.t, bool) => unit = "";
+external setBackgroundColor: (Color.t, bool) => unit = "setBackgroundColor";
 
 [@bs.module "react-native"] [@bs.scope "StatusBar"]
-external setTranslucent: bool => unit = "";
+external setTranslucent: bool => unit = "setTranslucent";
 
 [@bs.module "react-native"] [@bs.scope "StatusBar"]
-external currentHeight: float = "";
+external currentHeight: float = "currentHeight";

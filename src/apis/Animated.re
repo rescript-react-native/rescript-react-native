@@ -3,10 +3,10 @@ module Animation = {
   type endResult = {. "finished": bool};
   type endCallback = endResult => unit;
   [@bs.send]
-  external start: (t, ~endCallback: endCallback=?, unit) => unit = "";
+  external start: (t, ~endCallback: endCallback=?, unit) => unit = "start";
 
-  [@bs.send] external stop: t => unit = "";
-  [@bs.send] external reset: t => unit = "";
+  [@bs.send] external stop: t => unit = "stop";
+  [@bs.send] external reset: t => unit = "reset";
 };
 
 module type Value = {
@@ -40,7 +40,7 @@ module ValueAnimations = (Val: Value) => {
       "";
 
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external decay: (Val.t, config) => Animation.t = "";
+    external decay: (Val.t, config) => Animation.t = "decay";
   };
 
   module Spring = {
@@ -76,7 +76,7 @@ module ValueAnimations = (Val: Value) => {
       "";
 
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external spring: (Val.t, config) => Animation.t = "";
+    external spring: (Val.t, config) => Animation.t = "spring";
   };
 
   module Timing = {
@@ -104,7 +104,7 @@ module ValueAnimations = (Val: Value) => {
       "";
 
     [@bs.module "react-native"] [@bs.scope "Animated"]
-    external timing: (Val.t, config) => Animation.t = "";
+    external timing: (Val.t, config) => Animation.t = "timing";
   };
 };
 
@@ -128,22 +128,25 @@ module Interpolation = {
     ) =>
     config =
     "";
-  [@bs.send] external interpolate: (value('a), config) => t = "";
+  [@bs.send] external interpolate: (value('a), config) => t = "interpolate";
 };
 
 module ValueOperations = {
   [@bs.module "react-native"] [@bs.scope "Animated"]
-  external add: (value('a), value('b)) => value(calculated) = "";
+  external add: (value('a), value('b)) => value(calculated) = "add";
   [@bs.module "react-native"] [@bs.scope "Animated"]
-  external divide: (value('a), value('b)) => value(calculated) = "";
+  external divide: (value('a), value('b)) => value(calculated) = "divide";
   [@bs.module "react-native"] [@bs.scope "Animated"]
-  external multiply: (value('a), value('b)) => value(calculated) = "";
+  external multiply: (value('a), value('b)) => value(calculated) =
+    "multiply";
   [@bs.module "react-native"] [@bs.scope "Animated"]
-  external modulo: (value('a), float) => value(calculated) = "";
+  external modulo: (value('a), float) => value(calculated) = "modulo";
   [@bs.module "react-native"] [@bs.scope "Animated"]
-  external subtract: (value('a), value('b)) => value(calculated) = "";
+  external subtract: (value('a), value('b)) => value(calculated) =
+    "subtract";
   [@bs.module "react-native"] [@bs.scope "Animated"]
-  external diffClamp: (value('a), float, float) => value(calculated) = "";
+  external diffClamp: (value('a), float, float) => value(calculated) =
+    "diffClamp";
   let interpolate = Interpolation.interpolate;
 };
 
@@ -153,19 +156,22 @@ module ValueMethods = (Val: Value) => {
   type addListenerCallback = Val.addListenerCallback;
   type callback = jsValue => unit;
 
-  [@bs.send] external setValue: (t, jsValue) => unit = "";
-  [@bs.send] external setOffset: (t, jsValue) => unit = "";
-  [@bs.send] external flattenOffset: t => unit = "";
-  [@bs.send] external extractOffset: t => unit = "";
-  [@bs.send] external addListener: (t, addListenerCallback) => string = "";
-  [@bs.send] external removeListener: (t, string) => unit = "";
-  [@bs.send] external removeAllListeners: t => unit = "";
+  [@bs.send] external setValue: (t, jsValue) => unit = "setValue";
+  [@bs.send] external setOffset: (t, jsValue) => unit = "setOffset";
+  [@bs.send] external flattenOffset: t => unit = "flattenOffset";
+  [@bs.send] external extractOffset: t => unit = "extractOffset";
+  [@bs.send]
+  external addListener: (t, addListenerCallback) => string = "addListener";
+  [@bs.send] external removeListener: (t, string) => unit = "removeListener";
+  [@bs.send] external removeAllListeners: t => unit = "removeAllListeners";
 
   [@bs.send]
-  external resetAnimation: (t, ~callback: callback=?, unit) => unit = "";
+  external resetAnimation: (t, ~callback: callback=?, unit) => unit =
+    "resetAnimation";
 
   [@bs.send]
-  external stopAnimation: (t, ~callback: callback=?, unit) => unit = "";
+  external stopAnimation: (t, ~callback: callback=?, unit) => unit =
+    "stopAnimation";
 
   include ValueAnimations(Val);
 };
@@ -212,23 +218,25 @@ module ValueXY = {
   };
   [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
   external create: jsValue => t = "ValueXY";
-  [@bs.send] external getLayout: t => layout = "";
-  [@bs.send] external getTranslateTransform: t => translateTransform = "";
+  [@bs.send] external getLayout: t => layout = "getLayout";
+  [@bs.send]
+  external getTranslateTransform: t => translateTransform =
+    "getTranslateTransform";
 };
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external delay: float => Animation.t = "";
+external delay: float => Animation.t = "delay";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external sequence: array(Animation.t) => Animation.t = "";
+external sequence: array(Animation.t) => Animation.t = "sequence";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
 external parallel:
   (array(Animation.t), {. "stopTogether": bool}) => Animation.t =
-  "";
+  "parallel";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external stagger: (float, array(Animation.t)) => Animation.t = "";
+external stagger: (float, array(Animation.t)) => Animation.t = "stagger";
 
 type loopConfig;
 
@@ -236,7 +244,7 @@ type loopConfig;
 
 // multiple externals
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external loop: Animation.t => Animation.t = "";
+external loop: Animation.t => Animation.t = "loop";
 
 // multiple externals
 [@bs.module "react-native"] [@bs.scope "Animated"]
@@ -259,7 +267,7 @@ external event2: (('mapping1, 'mapping2), eventOptions('a)) => 'a = "event";
 [@bs.module "react-native"] [@bs.scope "Animated"]
 external createAnimatedComponent:
   React.component('props) => React.component('props) =
-  "";
+  "createAnimatedComponent";
 
 let timing = Value.Timing.timing;
 

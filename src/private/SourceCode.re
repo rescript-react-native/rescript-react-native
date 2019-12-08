@@ -1,2 +1,2 @@
 [@bs.module "react-native"] [@bs.scope ("NativeModules", "SourceCode")]
-external scriptURL: string = "";
+external scriptURL: string = "scriptURL";

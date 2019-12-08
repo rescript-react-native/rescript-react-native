@@ -64,7 +64,8 @@ type photoIdentifiersPage = {
 
 // multiple externals
 [@bs.module "react-native"] [@bs.scope "CameraRoll"]
-external saveToCameraRoll: string => Js.Promise.t(string) = "";
+external saveToCameraRoll: string => Js.Promise.t(string) =
+  "saveToCameraRoll";
 
 // multiple externals
 [@bs.module "react-native"] [@bs.scope "CameraRoll"]
@@ -74,4 +75,4 @@ external saveToCameraRollWithType:
 
 [@bs.module "react-native"] [@bs.scope "CameraRoll"]
 external getPhotos: getPhotosParams => Js.Promise.t(photoIdentifiersPage) =
-  "";
+  "getPhotos";

@@ -33,7 +33,8 @@ module Make = (T: {type t;}) => {
   external scrollToOffset: (T.t, scrollToOffsetParams) => unit =
     "scrollToOffset";
 
-  [@bs.send] external recordInteraction: T.t => unit = "";
+  [@bs.send] external recordInteraction: T.t => unit = "recordInteraction";
 
-  [@bs.send] external flashScrollIndicators: T.t => unit = "";
+  [@bs.send]
+  external flashScrollIndicators: T.t => unit = "flashScrollIndicators";
 };
