@@ -1,7 +1,7 @@
 // We recommend that you bind your own custom native modules like this:
 //
 // [@bs.module "react-native"] [@bs.scope ("NativeModules", "MyCustomModule")]
-// external myFunc: unit => unit
+// external myFunc: unit => unit = "myFunc"
 
 [@bs.module "react-native"]
 external nativeModules: Js.Dict.t('a) = "NativeModules";
