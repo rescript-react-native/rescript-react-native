@@ -92,6 +92,6 @@ external removeListener:
   "";
 
 [@bs.module "react-native"] [@bs.scope "Keyboard"]
-external dismiss: unit => unit = "";
+external dismiss: unit => unit = "dismiss";
 
 ```

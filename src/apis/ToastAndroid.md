@@ -25,10 +25,10 @@ external bottom: gravity = "BOTTOM";
 external center: gravity = "CENTER";
 
 [@bs.module "react-native"] [@bs.scope "ToastAndroid"]
-external show: (message, duration) => unit = "";
+external show: (message, duration) => unit = "show";
 
 [@bs.module "react-native"] [@bs.scope "ToastAndroid"]
-external showWithGravity: (message, duration, gravity) => unit = "";
+external showWithGravity: (message, duration, gravity) => unit = "showWithGravity";
 
 [@bs.module "react-native"] [@bs.scope "ToastAndroid"]
 external showWithGravityAndOffset:

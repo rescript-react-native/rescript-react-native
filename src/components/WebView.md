@@ -23,7 +23,7 @@ module Source = {
     "";
 
   [@bs.obj]
-  external html: (~html: string=?, ~baseUrl: string=?, unit) => t = "";
+  external html: (~html: string=?, ~baseUrl: string=?, unit) => t = "html";
 };
 
 module DataDetectorTypes = WebView_DataDetectorTypes;
