@@ -62,10 +62,10 @@ external removeEventListener:
   "";
 
 [@bs.module "react-native"] [@bs.scope "NetInfo"]
-external isConnectionExpensive: unit => Js.Promise.t(bool) = "";
+external isConnectionExpensive: unit => Js.Promise.t(bool) = "isConnectionExpensive";
 
 [@bs.module "react-native"] [@bs.scope "NetInfo"]
-external getConnectionInfo: unit => Js.Promise.t(info) = "";
+external getConnectionInfo: unit => Js.Promise.t(info) = "getConnectionInfo";
 
 module IsConnected = {
   [@bs.module "react-native"] [@bs.scope ("NetInfo", "isConnected")]
@@ -79,7 +79,7 @@ module IsConnected = {
     "";
 
   [@bs.module "react-native"] [@bs.scope ("NetInfo", "isConnected")]
-  external fetch: unit => Js.Promise.t(bool) = "";
+  external fetch: unit => Js.Promise.t(bool) = "fetch";
 };
 
 ```

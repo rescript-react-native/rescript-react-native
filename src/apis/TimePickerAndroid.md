@@ -31,9 +31,9 @@ type response = {
 external open_: options => Js.Promise.t(response) = "open";
 
 [@bs.module "react-native"] [@bs.scope "TimePickerAndroid"]
-external timeSetAction: string = "";
+external timeSetAction: string = "timeSetAction";
 
 [@bs.module "react-native"] [@bs.scope "TimePickerAndroid"]
-external dismissedAction: string = "";
+external dismissedAction: string = "dismissedAction";
 
 ```

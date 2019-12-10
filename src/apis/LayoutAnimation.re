@@ -36,7 +36,7 @@ external layoutAnimationConfig:
 
 // multiple externals
 [@bs.module "react-native"] [@bs.scope "LayoutAnimation"]
-external configureNext: layoutAnimationConfig => unit = "";
+external configureNext: layoutAnimationConfig => unit = "configureNext";
 
 // multiple externals
 [@bs.module "react-native"] [@bs.scope "LayoutAnimation"]
@@ -59,24 +59,24 @@ external create:
     ~property: [@bs.string] [ | `opacity | `scaleX | `scaleY | `scaleXY]
   ) =>
   layoutAnimationConfig =
-  "";
+  "create";
 
 [@bs.module "react-native"] [@bs.scope "LayoutAnimation"]
-external easeInEaseOut: unit => unit = "";
+external easeInEaseOut: unit => unit = "easeInEaseOut";
 
 [@bs.module "react-native"] [@bs.scope "LayoutAnimation"]
-external linear: unit => unit = "";
+external linear: unit => unit = "linear";
 
 [@bs.module "react-native"] [@bs.scope "LayoutAnimation"]
-external spring: unit => unit = "";
+external spring: unit => unit = "spring";
 
 module Presets = {
   [@bs.module "react-native"] [@bs.scope ("LayoutAnimation", "Presets")]
-  external easeInEaseOut: layoutAnimationConfig = "";
+  external easeInEaseOut: layoutAnimationConfig = "easeInEaseOut";
 
   [@bs.module "react-native"] [@bs.scope ("LayoutAnimation", "Presets")]
-  external linear: layoutAnimationConfig = "";
+  external linear: layoutAnimationConfig = "linear";
 
   [@bs.module "react-native"] [@bs.scope ("LayoutAnimation", "Presets")]
-  external spring: layoutAnimationConfig = "";
+  external spring: layoutAnimationConfig = "spring";
 };

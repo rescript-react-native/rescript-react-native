@@ -47,30 +47,31 @@ type remove = {. [@bs.meth] "remove": unit => unit};
 [@bs.module "react-native"] [@bs.scope "NetInfo"]
 external addEventListener:
   ([@bs.string] [ | `connectionChange], info => unit) => remove =
-  "";
+  "addEventListener";
 
 [@bs.module "react-native"] [@bs.scope "NetInfo"]
 external removeEventListener:
   ([@bs.string] [ | `connectionChange], info => unit) => unit =
-  "";
+  "removeEventListener";
 
 [@bs.module "react-native"] [@bs.scope "NetInfo"]
-external isConnectionExpensive: unit => Js.Promise.t(bool) = "";
+external isConnectionExpensive: unit => Js.Promise.t(bool) =
+  "isConnectionExpensive";
 
 [@bs.module "react-native"] [@bs.scope "NetInfo"]
-external getConnectionInfo: unit => Js.Promise.t(info) = "";
+external getConnectionInfo: unit => Js.Promise.t(info) = "getConnectionInfo";
 
 module IsConnected: {
   [@bs.module "react-native"] [@bs.scope ("NetInfo", "isConnected")]
   external addEventListener:
     ([@bs.string] [ | `connectionChange], bool => unit) => remove =
-    "";
+    "addEventListener";
 
   [@bs.module "react-native"] [@bs.scope ("NetInfo", "isConnected")]
   external removeEventListener:
     ([@bs.string] [ | `connectionChange], bool => unit) => unit =
-    "";
+    "removeEventListener";
 
   [@bs.module "react-native"] [@bs.scope ("NetInfo", "isConnected")]
-  external fetch: unit => Js.Promise.t(bool) = "";
+  external fetch: unit => Js.Promise.t(bool) = "fetch";
 };

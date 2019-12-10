@@ -1,10 +1,10 @@
 type imageUri = string;
 
 [@bs.module "react-native"] [@bs.scope "ImagePickerIOS"]
-external canUseCamera: (bool => unit) => unit = "";
+external canUseCamera: (bool => unit) => unit = "canUseCamera";
 
 [@bs.module "react-native"] [@bs.scope "ImagePickerIOS"]
-external canRecordVideos: (bool => unit) => unit = "";
+external canRecordVideos: (bool => unit) => unit = "canRecordVideos";
 
 type cameraDialogConfig;
 [@bs.obj]
@@ -25,7 +25,7 @@ external openCameraDialog:
     ~onError: 'error => unit
   ) =>
   unit =
-  "";
+  "openCameraDialog";
 
 [@bs.module "react-native"] [@bs.scope "ImagePickerIOS"]
 external openSelectDialog:
@@ -35,4 +35,4 @@ external openSelectDialog:
     ~onError: 'error => unit
   ) =>
   unit =
-  "";
+  "openSelectDialog";

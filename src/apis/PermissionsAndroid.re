@@ -128,11 +128,11 @@ external rationale:
 type dict = Js.Dict.t(Result.t);
 
 [@bs.scope "PermissionsAndroid"] [@bs.module "react-native"]
-external check: Permission.t => Js.Promise.t(bool) = "";
+external check: Permission.t => Js.Promise.t(bool) = "check";
 
 // multiple externals
 [@bs.scope "PermissionsAndroid"] [@bs.module "react-native"]
-external request: Permission.t => Js.Promise.t(Result.t) = "";
+external request: Permission.t => Js.Promise.t(Result.t) = "request";
 
 // multiple externals
 [@bs.scope "PermissionsAndroid"] [@bs.module "react-native"]
@@ -141,6 +141,7 @@ external requestWithRationale:
   "request";
 
 [@bs.scope "PermissionsAndroid"] [@bs.module "react-native"]
-external requestMultiple: array(Permission.t) => Js.Promise.t(dict) = "";
+external requestMultiple: array(Permission.t) => Js.Promise.t(dict) =
+  "requestMultiple";
 
 [@bs.get_index] external get: (dict, Permission.t) => option(Result.t) = "";

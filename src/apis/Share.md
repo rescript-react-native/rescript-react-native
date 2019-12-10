@@ -28,10 +28,10 @@ external options:
 type action;
 
 [@bs.module "react-native"] [@bs.scope "Share"]
-external sharedAction: action = "";
+external sharedAction: action = "sharedAction";
 
 [@bs.module "react-native"] [@bs.scope "Share"]
-external dismissedAction: action = "";
+external dismissedAction: action = "dismissedAction";
 
 type shareResult = {
   .
@@ -41,7 +41,7 @@ type shareResult = {
 
 // multiple externals
 [@bs.module "react-native"] [@bs.scope "Share"]
-external share: content => Js.Promise.t(shareResult) = "";
+external share: content => Js.Promise.t(shareResult) = "share";
 
 // multiple externals
 [@bs.module "react-native"] [@bs.scope "Share"]

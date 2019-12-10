@@ -20,7 +20,7 @@ type handler = {
 };
 
 [@bs.module "react-native"] [@bs.scope "Dimensions"]
-external get: ([@bs.string] [ | `window | `screen]) => displayMetrics = "";
+external get: ([@bs.string] [ | `window | `screen]) => displayMetrics = "get";
 [@bs.module "react-native"] [@bs.scope "Dimensions"]
 external addEventListener: ([@bs.string] [ | `change], handler => unit) => unit =
   "";

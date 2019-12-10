@@ -29,7 +29,7 @@ type response = {
 external open_: options => Js.Promise.t(response) = "open";
 
 [@bs.module "react-native"] [@bs.scope "DatePickerAndroid"]
-external dateSetAction: string = "";
+external dateSetAction: string = "dateSetAction";
 
 [@bs.module "react-native"] [@bs.scope "DatePickerAndroid"]
-external dismissedAction: string = "";
+external dismissedAction: string = "dismissedAction";

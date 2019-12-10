@@ -1,2 +1,2 @@
 [@bs.module "react-native"] [@bs.scope "YellowBox"]
-external ignoreWarnings: array(string) => unit = "";
+external ignoreWarnings: array(string) => unit = "ignoreWarnings";

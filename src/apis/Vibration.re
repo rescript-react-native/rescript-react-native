@@ -6,4 +6,4 @@ external vibrateWithPattern: (array(int), ~repeat: bool=?, unit) => unit =
   "vibrate";
 
 [@bs.scope "Vibration"] [@bs.module "react-native"]
-external cancel: unit => unit = "";
+external cancel: unit => unit = "cancel";

@@ -42,15 +42,15 @@ external setBarStyle:
   "";
 
 [@bs.module "react-native"] [@bs.scope "StatusBar"]
-external setNetworkActivityIndicatorVisible: bool => unit = "";
+external setNetworkActivityIndicatorVisible: bool => unit = "setNetworkActivityIndicatorVisible";
 
 [@bs.module "react-native"] [@bs.scope "StatusBar"]
-external setBackgroundColor: (Color.t, bool) => unit = "";
+external setBackgroundColor: (Color.t, bool) => unit = "setBackgroundColor";
 
 [@bs.module "react-native"] [@bs.scope "StatusBar"]
-external setTranslucent: bool => unit = "";
+external setTranslucent: bool => unit = "setTranslucent";
 
 [@bs.module "react-native"] [@bs.scope "StatusBar"]
-external currentHeight: float = "";
+external currentHeight: float = "currentHeight";
 
 ```
