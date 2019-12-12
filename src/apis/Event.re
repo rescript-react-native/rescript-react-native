@@ -63,74 +63,64 @@ type responderSyntheticEvent('a) = {
 };
 
 type textLayout = {
-  .
-  "x": float,
-  "y": float,
-  "width": float,
-  "height": float,
-  "ascender": float, // verify
-  "capHeight": float, // verify
-  "descender": float, // verify
-  "text": string,
-  "xHeight": float // verify
+  x: float,
+  y: float,
+  width: float,
+  height: float,
+  ascender: float, // verify
+  capHeight: float, // verify
+  descender: float, // verify
+  text: string,
+  xHeight: float // verify
 };
 
-type layoutEvent =
-  syntheticEvent({
-    .
-    "layout": {
-      .
-      "x": float,
-      "y": float,
-      "width": float,
-      "height": float,
-    },
-  });
-
+type layoutEvent = syntheticEvent(layout)
+and layout = {
+  x: float,
+  y: float,
+  width: float,
+  height: float,
+};
 type textLayoutEvent = syntheticEvent({. "lines": array(textLayout)});
 
 type pressEventPayload = {
-  .
-  "changedTouches": array(pressEventPayload),
-  "force": float,
-  "identifier": int,
-  "locationX": float,
-  "locationY": float,
-  "pageX": float,
-  "pageY": float,
-  "target": Js.Nullable.t(float),
-  "timestamp": float,
-  "touches": array(pressEventPayload),
+  changedTouches: array(pressEventPayload),
+  force: float,
+  identifier: int,
+  locationX: float,
+  locationY: float,
+  pageX: float,
+  pageY: float,
+  target: Js.Nullable.t(float),
+  timestamp: float,
+  touches: array(pressEventPayload),
 };
 
 type pressEvent = responderSyntheticEvent(pressEventPayload);
 
 type contentOffset = {
-  .
-  "x": float,
-  "y": float,
+  x: float,
+  y: float,
 };
 
 type dimensions = {
-  .
-  "height": float,
-  "width": float,
+  height: float,
+  width: float,
 };
 
-type scrollEvent =
-  syntheticEvent({
-    .
-    "contentInset": {
-      .
-      "bottom": float,
-      "left": float,
-      "right": float,
-      "top": float,
-    },
-    "contentOffset": contentOffset,
-    "contentSize": dimensions,
-    "layoutMeasurement": dimensions,
-  });
+type scrollEvent = syntheticEvent(value)
+and value = {
+  contentInset,
+  contentOffset,
+  contentSize: dimensions,
+  layoutMeasurement: dimensions,
+}
+and contentInset = {
+  bottom: float,
+  left: float,
+  right: float,
+  top: float,
+};
 
 type switchChangeEvent = syntheticEvent({. "value": bool});
 

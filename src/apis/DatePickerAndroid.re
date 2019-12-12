@@ -18,11 +18,10 @@ external options:
   "";
 
 type response = {
-  .
-  "action": string,
-  "year": int,
-  "month": int,
-  "day": int,
+  action: string,
+  year: int,
+  month: int,
+  day: int,
 };
 
 [@bs.module "react-native"] [@bs.scope "DatePickerAndroid"]

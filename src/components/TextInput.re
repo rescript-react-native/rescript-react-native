@@ -1,76 +1,79 @@
 include TextInputElement;
 
-type changeEvent =
-  Event.syntheticEvent({
-    .
-    "eventCount": int,
-    "target": int,
-    "text": string,
-  });
-
-type textInputEvent =
-  Event.syntheticEvent({
-    .
-    "eventCount": int,
-    "previousText": string,
-    "range": {
-      .
-      "start": int,
-      "_end": int,
-    },
-    "target": int,
-    "text": string,
-  });
-
-type editingEvent =
-  Event.syntheticEvent({
-    .
-    "text": string,
-    "eventCount": int,
-    "target": int,
-  });
-
-type contentSizeChangeEvent =
-  Event.syntheticEvent({
-    .
-    "target": int,
-    "contentSize": {
-      .
-      "width": float,
-      "height": float,
-    },
-  });
-
-type scrollEvent =
-  Event.syntheticEvent({
-    .
-    "contentOffset": {
-      .
-      "x": float,
-      "y": float,
-    },
-  });
-
-type selection = {
-  .
-  "start": int,
-  "_end": int,
+type changeEvent = Event.syntheticEvent(event)
+and event = {
+  eventCount: int,
+  target: int,
+  text: string,
 };
 
-type selectionChangeEvent =
-  Event.syntheticEvent({
-    .
-    "selection": selection,
-    "target": int,
-  });
+type textInputEvent = Event.syntheticEvent(textInputEventParams)
+and textInputEventParams = {
+  eventCount: int,
+  previousText: string,
+  range,
+  target: int,
+  text: string,
+}
+and range = {
+  start: int,
+  _end: int,
+};
+// type textInputEvent =
+//   Event.syntheticEvent({
+//     .
+//     "eventCount": int,
+//     "previousText": string,
+//     "range": {
+//       .
+//       "start": int,
+//       "_end": int,
+//     },
+//     "target": int,
+//     "text": string,
+//   });
 
-type keyPressEvent =
-  Event.syntheticEvent({
-    .
-    "key": string,
-    "target": Js.Nullable.t(int),
-    "eventCount": Js.Nullable.t(int),
-  });
+type editingEvent = Event.syntheticEvent(editingEventParams)
+and editingEventParams = {
+  text: string,
+  eventCount: int,
+  target: int,
+};
+
+type contentSizeChangeEvent =
+  Event.syntheticEvent(contentSizeChangeEventParams)
+and contentSizeChangeEventParams = {
+  target: int,
+  contentSize,
+}
+and contentSize = {
+  width: float,
+  height: float,
+};
+
+type scrollEvent = Event.syntheticEvent(contentOffset)
+and contentOffset = {
+  x: float,
+  y: float,
+};
+
+type selection = {
+  start: int,
+  _end: int,
+};
+
+type selectionChangeEvent = Event.syntheticEvent(selectionChangeEventParams)
+and selectionChangeEventParams = {
+  selection,
+  target: int,
+};
+
+type keyPressEvent = Event.syntheticEvent(keyPressEventParams)
+and keyPressEventParams = {
+  key: string,
+  target: Js.Nullable.t(int),
+  eventCount: Js.Nullable.t(int),
+};
 
 module DataDetectorTypes = TextInput_DataDetectorTypes;
 

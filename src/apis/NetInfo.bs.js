@@ -1,11 +1,11 @@
 'use strict';
 
 
-var ConnectionType = /* module */[];
+var ConnectionType = { };
 
-var EffectiveConnectionType = /* module */[];
+var EffectiveConnectionType = { };
 
-var IsConnected = /* module */[];
+var IsConnected = { };
 
 exports.ConnectionType = ConnectionType;
 exports.EffectiveConnectionType = EffectiveConnectionType;

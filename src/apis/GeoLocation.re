@@ -1,27 +1,24 @@
 type coords = {
-  .
-  "speed": float,
-  "longitude": float,
-  "latitude": float,
-  "accuracy": float,
-  "heading": float,
+  speed: float,
+  longitude: float,
+  latitude: float,
+  accuracy: float,
+  heading: float,
 };
 
 type position = {
-  .
-  "coords": coords,
-  "timestamp": float,
+  coords,
+  timestamp: float,
 };
 
 type error = {
-  .
-  "code": int,
-  "message": string,
+  code: int,
+  message: string,
 };
 
-type config;
-[@bs.obj]
-external config: (~skipPermissionRequests: bool=?, unit) => config = "";
+type config = {skipPermissionRequests: option(bool)};
+// [@bs.obj]
+// external config: (~skipPermissionRequests: bool=?, unit) => config = "";
 
 [@bs.val] [@bs.scope ("navigator", "geolocation")]
 external setRNConfiguration: config => unit = "setRNConfiguration";
@@ -32,17 +29,21 @@ external requestAuthorization: unit => unit = "requestAuthorization";
 [@bs.val] [@bs.scope ("navigator", "geolocation")]
 external stopObserving: unit => unit = "stopObserving";
 
-type currentPositionOptions;
-[@bs.obj]
-external currentPositionOptions:
-  (
-    ~timeout: float=?,
-    ~maximumAge: float=?,
-    ~enableHighAccuracy: bool=?,
-    unit
-  ) =>
-  currentPositionOptions =
-  "";
+type currentPositionOptions = {
+  timeout: option(float),
+  maximumAge: option(float),
+  enableHighAccuracy: option(bool),
+};
+// [@bs.obj]
+// external currentPositionOptions:
+//   (
+//     ~timeout: float=?,
+//     ~maximumAge: float=?,
+//     ~enableHighAccuracy: bool=?,
+//     unit
+//   ) =>
+//   currentPositionOptions =
+//   "";
 
 [@bs.val] [@bs.scope ("navigator", "geolocation")]
 external getCurrentPosition:
@@ -57,19 +58,25 @@ external getCurrentPosition:
 
 type watchId;
 
-type watchPositionOptions;
-[@bs.obj]
-external watchPositionOptions:
-  (
-    ~timeout: float=?,
-    ~maximumAge: float=?,
-    ~enableHighAccuracy: bool=?,
-    ~distanceFilter: float=?,
-    ~useSignificantChanges: bool=?,
-    unit
-  ) =>
-  watchPositionOptions =
-  "";
+type watchPositionOptions = {
+  timeout: option(float),
+  maximumAge: option(float),
+  enableHighAccuracy: option(bool),
+  distanceFilter: option(float),
+  useSignificantChanges: bool,
+};
+// [@bs.obj]
+// external watchPositionOptions:
+//   (
+//     ~timeout: float=?,
+//     ~maximumAge: float=?,
+//     ~enableHighAccuracy: bool=?,
+//     ~distanceFilter: float=?,
+//     ~useSignificantChanges: bool=?,
+//     unit
+//   ) =>
+//   watchPositionOptions =
+//   "";
 
 [@bs.val] [@bs.scope ("navigator", "geolocation")]
 external watchPosition:

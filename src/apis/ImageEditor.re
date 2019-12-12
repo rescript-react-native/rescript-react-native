@@ -3,13 +3,19 @@ type source;
 external fromRequired: Packager.required => source = "%identity";
 external fromUriSource: string => source = "%identity";
 
-type offset;
+type offset = {
+  x: int,
+  y: int,
+};
 
-[@bs.obj] external offset: (~x: int, ~y: int) => offset = "";
+// [@bs.obj] external offset: (~x: int, ~y: int) => offset = "";
 
-type size;
+type size = {
+  width: int,
+  height: int,
+};
 
-[@bs.obj] external size: (~width: int, ~height: int) => size = "";
+// [@bs.obj] external size: (~width: int, ~height: int) => size = "";
 
 type cropData;
 

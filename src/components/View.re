@@ -1,11 +1,11 @@
 include NativeElement;
 
-type edgeInsets;
-[@bs.obj]
-external edgeInsets:
-  (~left: float=?, ~right: float=?, ~top: float=?, ~bottom: float=?, unit) =>
-  edgeInsets =
-  "";
+type edgeInsets = {
+  left: option(float),
+  right: option(float),
+  top: option(float),
+  bottom: option(float),
+};
 
 [@react.component] [@bs.module "react-native"]
 external make:

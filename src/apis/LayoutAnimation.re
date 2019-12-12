@@ -21,18 +21,12 @@ external animationConfig:
   animationConfig =
   "";
 
-type layoutAnimationConfig;
-[@bs.obj]
-external layoutAnimationConfig:
-  (
-    ~duration: float,
-    ~create: animationConfig=?,
-    ~update: animationConfig=?,
-    ~delete: animationConfig=?,
-    unit
-  ) =>
-  layoutAnimationConfig =
-  "";
+type layoutAnimationConfig = {
+  duration: float,
+  create: option(animationConfig),
+  update: option(animationConfig),
+  delete: option(animationConfig),
+};
 
 // multiple externals
 [@bs.module "react-native"] [@bs.scope "LayoutAnimation"]

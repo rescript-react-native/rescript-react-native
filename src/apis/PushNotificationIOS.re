@@ -71,14 +71,14 @@ external removeAllDeliveredNotifications: unit => unit =
   "removeAllDeliveredNotifications";
 
 type deliveredNotification = {
-  .
-  "identifier": string,
-  "date": Js.Nullable.t(string),
-  "title": Js.Nullable.t(string),
-  "body": Js.Nullable.t(string),
-  "category": Js.Nullable.t(string),
-  "thread-id": Js.Nullable.t(string),
-  "userInfo": Js.Nullable.t(Js.Json.t),
+  identifier: string,
+  date: Js.Nullable.t(string),
+  title: Js.Nullable.t(string),
+  body: Js.Nullable.t(string),
+  category: Js.Nullable.t(string),
+  [@bs.as "thread-id"]
+  threadId: Js.Nullable.t(string),
+  userInfo: Js.Nullable.t(Js.Json.t),
 };
 
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
@@ -108,14 +108,13 @@ external cancelLocalNotificationsWithUserInfo: Js.Json.t => unit =
   "cancelLocalNotifications";
 
 type formattedLocalNotification = {
-  .
-  "fireDate": Js.Nullable.t(string),
-  "alertAction": Js.Nullable.t(string),
-  "alertBody": Js.Nullable.t(string),
-  "applicationIconBadgeNumber": Js.Nullable.t(int),
-  "category": Js.Nullable.t(string),
-  "soundName": Js.Nullable.t(string),
-  "userInfo": Js.Nullable.t(Js.Json.t),
+  fireDate: Js.Nullable.t(string),
+  alertAction: Js.Nullable.t(string),
+  alertBody: Js.Nullable.t(string),
+  applicationIconBadgeNumber: Js.Nullable.t(int),
+  category: Js.Nullable.t(string),
+  soundName: Js.Nullable.t(string),
+  userInfo: Js.Nullable.t(Js.Json.t),
 };
 
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
@@ -124,10 +123,9 @@ external getScheduledLocalNotifications:
   "getScheduledLocalNotifications";
 
 type registrationError('a) = {
-  .
-  "message": string,
-  "code": int,
-  "details": Js.t('a),
+  message: string,
+  code: int,
+  details: Js.t('a),
 };
 
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
@@ -159,18 +157,16 @@ external removeEventListener:
   "removeEventListener";
 
 type permissions = {
-  .
-  "alert": bool,
-  "badge": bool,
-  "sound": bool,
+  alert: bool,
+  badge: bool,
+  sound: bool,
 };
 
-type requestPermissionsOptions;
-[@bs.obj]
-external requestPermissionsOptions:
-  (~alert: bool=?, ~badge: bool=?, ~sound: bool=?, unit) =>
-  requestPermissionsOptions =
-  "";
+type requestPermissionsOptions = {
+  alert: option(bool),
+  badge: option(bool),
+  sound: option(bool),
+};
 
 // multiple externals
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
@@ -189,12 +185,11 @@ external abandonPermissions: unit => unit = "abandonPermissions";
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
 external checkPermissions: (unit => permissions) => unit = "checkPermissions";
 
-type fetchResult;
-[@bs.obj]
-external fetchResult:
-  (~_NewData: string=?, ~_NoData: string=?, ~_ResultFailed: string=?, unit) =>
-  fetchResult =
-  "";
+type fetchResult = {
+  _NewData: option(string),
+  _NoData: option(string),
+  _ResultFailed: option(string),
+};
 
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
 external finish: fetchResult => unit = "fetchResult";

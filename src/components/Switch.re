@@ -1,10 +1,9 @@
 include NativeElement;
 
-type trackColor;
-[@bs.obj]
-external trackColor:
-  (~_true: Color.t=?, ~_false: Color.t=?, unit) => trackColor =
-  "";
+type trackColor = {
+  _true: option(Color.t),
+  _false: option(Color.t),
+};
 
 [@react.component] [@bs.module "react-native"]
 external make:

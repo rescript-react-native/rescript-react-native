@@ -2,11 +2,11 @@
 
 var WebViewElement$ReactNative = require("../elements/WebViewElement.bs.js");
 
-var Source = /* module */[];
+var Source = { };
 
-var DataDetectorTypes = 0;
+var DataDetectorTypes = /* alias */0;
 
-var DecelerationRate = 0;
+var DecelerationRate = /* alias */0;
 
 exports.Source = Source;
 exports.DataDetectorTypes = DataDetectorTypes;

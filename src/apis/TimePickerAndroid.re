@@ -13,10 +13,9 @@ external options:
   "";
 
 type response = {
-  .
-  "action": string,
-  "hour": int,
-  "minute": int,
+  action: string,
+  hour: int,
+  minute: int,
 };
 
 [@bs.module "react-native"] [@bs.scope "TimePickerAndroid"]

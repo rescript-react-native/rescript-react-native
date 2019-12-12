@@ -1,7 +1,7 @@
 'use strict';
 
 
-var Easing = /* module */[];
+var Easing = { };
 
 exports.Easing = Easing;
 /* No side effect */

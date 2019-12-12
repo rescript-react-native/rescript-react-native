@@ -6,16 +6,19 @@ external canUseCamera: (bool => unit) => unit = "canUseCamera";
 [@bs.module "react-native"] [@bs.scope "ImagePickerIOS"]
 external canRecordVideos: (bool => unit) => unit = "canRecordVideos";
 
-type cameraDialogConfig;
-[@bs.obj]
-external cameraDialogConfig: (~videoMode: bool=?, unit) => cameraDialogConfig =
-  "";
+type cameraDialogConfig = {videoMode: option(bool)};
+// [@bs.obj]
+// external cameraDialogConfig: (~videoMode: bool=?, unit) => cameraDialogConfig =
+// "";
 
-type selectDialogConfig;
-[@bs.obj]
-external selectDialogConfig:
-  (~showImages: bool=?, ~showVideos: bool=?, unit) => selectDialogConfig =
-  "";
+type selectDialogConfig = {
+  showImages: option(bool),
+  showVideos: option(bool),
+};
+// [@bs.obj]
+// external selectDialogConfig:
+//   (~showImages: bool=?, ~showVideos: bool=?, unit) => selectDialogConfig =
+//   "";
 
 [@bs.module "react-native"] [@bs.scope "ImagePickerIOS"]
 external openCameraDialog:

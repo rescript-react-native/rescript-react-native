@@ -111,19 +111,13 @@ module Result = {
   external neverAskAgain: t = "NEVER_ASK_AGAIN";
 };
 
-type rationale;
-[@bs.obj]
-external rationale:
-  (
-    ~title: string,
-    ~message: string,
-    ~buttonPositive: string,
-    ~buttonNegative: string=?,
-    ~buttonNeutral: string=?,
-    unit
-  ) =>
-  rationale =
-  "";
+type rationale = {
+  title: string,
+  message: string,
+  buttonPositive: string,
+  buttonNegative: option(string),
+  buttonNeutral: option(string),
+};
 
 type dict = Js.Dict.t(Result.t);
 

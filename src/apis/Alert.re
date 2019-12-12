@@ -1,9 +1,7 @@
-type options;
-
-[@bs.obj]
-external options:
-  (~cancelable: bool=?, ~onDismiss: unit => unit=?, unit) => options =
-  "";
+type options = {
+  cancelable: option(bool),
+  onDismiss: option(unit => unit),
+};
 
 type button;
 

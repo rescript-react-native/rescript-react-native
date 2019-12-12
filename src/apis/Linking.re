@@ -1,6 +1,9 @@
-type extra;
+type extra('a) = {
+  key: string,
+  value: 'a,
+};
 
-[@bs.obj] external extra: (~key: string, ~value: 'a) => extra = "";
+// [@bs.obj] external extra: (~key: string, ~value: 'a) => extra = "";
 
 [@bs.scope "Linking"] [@bs.module "react-native"]
 external openURL: string => Js.Promise.t(unit) = "openURL";
@@ -21,7 +24,8 @@ external sendIntent: string => unit = "sendIntent";
 
 // multiple externals
 [@bs.scope "Linking"] [@bs.module "react-native"]
-external sendIntentWithExtras: (string, array(extra)) => unit = "sendIntent";
+external sendIntentWithExtras: (string, array(extra('a))) => unit =
+  "sendIntent";
 
 [@bs.scope "Linking"] [@bs.module "react-native"]
 external addEventListener:
