@@ -72,13 +72,13 @@ external removeAllDeliveredNotifications: unit => unit =
 
 type deliveredNotification = {
   identifier: string,
-  date: Js.Nullable.t(string),
-  title: Js.Nullable.t(string),
-  body: Js.Nullable.t(string),
-  category: Js.Nullable.t(string),
+  date: option(string),
+  title: option(string),
+  body: option(string),
+  category: option(string),
   [@bs.as "thread-id"]
-  threadId: Js.Nullable.t(string),
-  userInfo: Js.Nullable.t(Js.Json.t),
+  threadId: option(string),
+  userInfo: option(Js.Json.t),
 };
 
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
@@ -108,13 +108,13 @@ external cancelLocalNotificationsWithUserInfo: Js.Json.t => unit =
   "cancelLocalNotifications";
 
 type formattedLocalNotification = {
-  fireDate: Js.Nullable.t(string),
-  alertAction: Js.Nullable.t(string),
-  alertBody: Js.Nullable.t(string),
-  applicationIconBadgeNumber: Js.Nullable.t(int),
-  category: Js.Nullable.t(string),
-  soundName: Js.Nullable.t(string),
-  userInfo: Js.Nullable.t(Js.Json.t),
+  fireDate: option(string),
+  alertAction: option(string),
+  alertBody: option(string),
+  applicationIconBadgeNumber: option(int),
+  category: option(string),
+  soundName: option(string),
+  userInfo: option(Js.Json.t),
 };
 
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
@@ -195,6 +195,5 @@ type fetchResult = {
 external finish: fetchResult => unit = "fetchResult";
 
 [@bs.module "react-native"] [@bs.scope "PushNotificationIOS"]
-external getInitialNotification:
-  unit => Js.Promise.t(Js.Nullable.t(Notification.t)) =
+external getInitialNotification: unit => Js.Promise.t(option(Notification.t)) =
   "getInitialNotification";

@@ -51,7 +51,7 @@ external getAppKeys: unit => array(appKey) = "getAppKeys";
 external getRegistry: unit => registry('a) = "getRegistry";
 
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
-external getRunnable: appKey => option(runnable('a)) = "getRunnable";
+external getRunnable: appKey => runnable('a) = "getRunnable";
 
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]
 external getSectionKeys: unit => array(string) = "getSectionKeys";

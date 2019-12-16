@@ -2,43 +2,43 @@
 
 type syntheticEvent('a) = {
   .
-  "bubbles": Js.Nullable.t(bool),
-  "cancelable": Js.Nullable.t(bool),
+  "bubbles": option(bool),
+  "cancelable": option(bool),
   "currentTarget": float,
-  "defaultPrevented": Js.Nullable.t(bool),
+  "defaultPrevented": option(bool),
   "dispatchConfig": {. "registrationName": string},
-  "eventPhase": Js.Nullable.t(float),
+  "eventPhase": option(float),
   [@bs.meth] "preventDefault": unit => unit,
   [@bs.meth] "isDefaultPrevented": unit => bool,
   [@bs.meth] "stopPropagation": unit => unit,
   [@bs.meth] "isPropagationStopped": unit => bool,
-  "isTrusted": Js.Nullable.t(bool),
+  "isTrusted": option(bool),
   "nativeEvent": 'a,
   [@bs.meth] "persist": unit => unit,
-  "target": Js.Nullable.t(float),
+  "target": option(float),
   "timeStamp": float,
-  "_type": Js.Nullable.t(string),
+  "_type": option(string),
 };
 
 type responderSyntheticEvent('a) = {
   .
   // synthethicEvent keys
-  "bubbles": Js.Nullable.t(bool),
-  "cancelable": Js.Nullable.t(bool),
+  "bubbles": option(bool),
+  "cancelable": option(bool),
   "currentTarget": float,
-  "defaultPrevented": Js.Nullable.t(bool),
+  "defaultPrevented": option(bool),
   "dispatchConfig": {. "registrationName": string},
-  "eventPhase": Js.Nullable.t(float),
+  "eventPhase": option(float),
   [@bs.meth] "preventDefault": unit => unit,
   [@bs.meth] "isDefaultPrevented": unit => bool,
   [@bs.meth] "stopPropagation": unit => unit,
   [@bs.meth] "isPropagationStopped": unit => bool,
-  "isTrusted": Js.Nullable.t(bool),
+  "isTrusted": option(bool),
   "nativeEvent": 'a,
   [@bs.meth] "persist": unit => unit,
-  "target": Js.Nullable.t(float),
+  "target": option(float),
   "timeStamp": float,
-  "_type": Js.Nullable.t(string),
+  "_type": option(string),
   // responderSyntheticEvent additional key
   "touchHistory": {
     .
@@ -91,7 +91,7 @@ type pressEventPayload = {
   locationY: float,
   pageX: float,
   pageY: float,
-  target: Js.Nullable.t(float),
+  target: option(float),
   timestamp: float,
   touches: array(pressEventPayload),
 };

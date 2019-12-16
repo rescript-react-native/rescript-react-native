@@ -71,8 +71,8 @@ and selectionChangeEventParams = {
 type keyPressEvent = Event.syntheticEvent(keyPressEventParams)
 and keyPressEventParams = {
   key: string,
-  target: Js.Nullable.t(int),
-  eventCount: Js.Nullable.t(int),
+  target: option(int),
+  eventCount: option(int),
 };
 
 module DataDetectorTypes = TextInput_DataDetectorTypes;

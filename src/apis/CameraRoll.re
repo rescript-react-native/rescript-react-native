@@ -30,22 +30,22 @@ and node = {
   group_name: string,
   image,
   timestamp: float,
-  location: Js.Nullable.t(location),
+  location: option(location),
 }
 and image = {
   filename: string,
   uri: string,
   height: float,
   width: float,
-  isStored: Js.Nullable.t(bool),
+  isStored: option(bool),
   playableDuration: float,
 }
 and location = {
-  latitude: Js.Nullable.t(float),
-  longitude: Js.Nullable.t(float),
-  altitude: Js.Nullable.t(float),
-  heading: Js.Nullable.t(float),
-  speed: Js.Nullable.t(float),
+  latitude: option(float),
+  longitude: option(float),
+  altitude: option(float),
+  heading: option(float),
+  speed: option(float),
 };
 
 type photoIdentifiersPage = {
@@ -54,8 +54,8 @@ type photoIdentifiersPage = {
 }
 and page_info = {
   has_next_page: bool,
-  start_cursor: Js.Nullable.t(string),
-  end_cursor: Js.Nullable.t(string),
+  start_cursor: option(string),
+  end_cursor: option(string),
 };
 
 // multiple externals
