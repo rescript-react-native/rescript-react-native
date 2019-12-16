@@ -35,7 +35,7 @@ type appConfig('a) = {
 //   "";
 
 type runnable('a) = {
-  component: Js.Nullable.t(componentProvider('a)),
+  component: option(componentProvider('a)),
   run: appParameters => unit,
 };
 
