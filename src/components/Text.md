@@ -27,7 +27,6 @@ external make:
                           | `adjustable
                           | `imagebutton
                           | `header
-                          | `heading
                           | `summary
                           | `alert
                           | `checkbox
