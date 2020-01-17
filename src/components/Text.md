@@ -45,7 +45,7 @@ external make:
                           | `toolbar
                         ]
                           =?,
-    ~accessibilityLevel: int=?,
+    ~ariaLevel: int=?,
     ~ellipsizeMode: [@bs.string] [ | `clip | `head | `middle | `tail]=?,
     ~numberOfLines: int=?,
     ~onLayout: Event.layoutEvent => unit=?,

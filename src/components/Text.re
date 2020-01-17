@@ -37,7 +37,7 @@ external make:
                           | `toolbar
                         ]
                           =?,
-    ~accessibilityLevel: int=?,
+    ~ariaLevel: int=?,
     ~allowFontScaling: bool=?,
     ~ellipsizeMode: [@bs.string] [ | `clip | `head | `middle | `tail]=?,
     ~numberOfLines: int=?,
