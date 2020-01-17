@@ -8,6 +8,37 @@ external make:
     ~accessible: bool=?,
     ~accessibilityHint: string=?,
     ~accessibilityLabel: string=?,
+    ~accessibilityRole: [@bs.string] [
+                          | `none
+                          | `button
+                          | `link
+                          | `search
+                          | `image
+                          | `keyboardkey
+                          | `text
+                          | `adjustable
+                          | `imagebutton
+                          | `header
+                          | `heading
+                          | `summary
+                          | `alert
+                          | `checkbox
+                          | `combobox
+                          | `menu
+                          | `menubar
+                          | `menuitem
+                          | `progressbar
+                          | `radio
+                          | `radiogroup
+                          | `scrollbar
+                          | `spinbutton
+                          | `tab
+                          | `tablist
+                          | `timer
+                          | `toolbar
+                        ]
+                          =?,
+    ~accessibilityLevel: int=?,
     ~allowFontScaling: bool=?,
     ~ellipsizeMode: [@bs.string] [ | `clip | `head | `middle | `tail]=?,
     ~numberOfLines: int=?,

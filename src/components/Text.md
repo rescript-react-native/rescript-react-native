@@ -16,6 +16,37 @@ external make:
     ~accessibilityHint: string=?,
     ~accessibilityLabel: string=?,
     ~allowFontScaling: bool=?,
+    ~accessibilityRole: [@bs.string] [
+                          | `none
+                          | `button
+                          | `link
+                          | `search
+                          | `image
+                          | `keyboardkey
+                          | `text
+                          | `adjustable
+                          | `imagebutton
+                          | `header
+                          | `heading
+                          | `summary
+                          | `alert
+                          | `checkbox
+                          | `combobox
+                          | `menu
+                          | `menubar
+                          | `menuitem
+                          | `progressbar
+                          | `radio
+                          | `radiogroup
+                          | `scrollbar
+                          | `spinbutton
+                          | `tab
+                          | `tablist
+                          | `timer
+                          | `toolbar
+                        ]
+                          =?,
+    ~accessibilityLevel: int=?,
     ~ellipsizeMode: [@bs.string] [ | `clip | `head | `middle | `tail]=?,
     ~numberOfLines: int=?,
     ~onLayout: Event.layoutEvent => unit=?,
