@@ -43,6 +43,17 @@ external make:
                           | `tablist
                           | `timer
                           | `toolbar
+                          // below are additional roles added for react-native-web https://github.com/necolas/react-native-web/blob/36dacb2052efdab2a28655773dc76934157d9134/packages/react-native-web/src/modules/AccessibilityUtil/propsToAccessibilityComponent.js#L13-L23
+                          | `article
+                          | `banner
+                          | `complementary
+                          | `contentinfo
+                          | `form
+                          | `list
+                          | `listItem
+                          | `main
+                          | `navigation
+                          | `region
                         ]
                           =?,
     ~ariaLevel: int=?,
