@@ -8,44 +8,46 @@ external make:
     ~accessible: bool=?,
     ~accessibilityHint: string=?,
     ~accessibilityLabel: string=?,
+    // `accessibilityRole` communicates the purpose of a component to the user of an assistive technology.
+    // roles that are specific for react-native-web are also included:
+    // article, banner, complementary, contentinfo, form, list, listItem, main, navigation, region
     ~accessibilityRole: [@bs.string] [
-                          | // below are additional roles added for react-native-web https://github.com/necolas/react-native-web/blob/36dacb2052efdab2a28655773dc76934157d9134/packages/react-native-web/src/modules/AccessibilityUtil/propsToAccessibilityComponent.js#L13-L23
-                            `none
-                          | `button
-                          | `link
-                          | `search
-                          | `image
-                          | `keyboardkey
-                          | `text
+                          | `none
                           | `adjustable
-                          | `imagebutton
-                          | `header
-                          | `summary
                           | `alert
+                          | `article
+                          | `banner
+                          | `button
                           | `checkbox
                           | `combobox
+                          | `complementary
+                          | `contentinfo
+                          | `form
+                          | `header
+                          | `image
+                          | `imagebutton
+                          | `keyboardkey
+                          | `link
+                          | `list
+                          | `listItem
+                          | `search
+                          | `summary
+                          | `text
+                          | `main
                           | `menu
                           | `menubar
                           | `menuitem
+                          | `navigation
                           | `progressbar
                           | `radio
                           | `radiogroup
+                          | `region
                           | `scrollbar
                           | `spinbutton
                           | `tab
                           | `tablist
                           | `timer
                           | `toolbar
-                          | `article
-                          | `banner
-                          | `complementary
-                          | `contentinfo
-                          | `form
-                          | `list
-                          | `listItem
-                          | `main
-                          | `navigation
-                          | `region
                         ]
                           =?,
     ~ariaLevel: int=?,
