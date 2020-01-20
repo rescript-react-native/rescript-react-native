@@ -94,7 +94,7 @@ external make:
                        | `none
                      ]
                        =?,
-    ~autoComplete: [@bs.string] [
+    ~autoCompleteType: [@bs.string] [
                      | `off
                      | `username
                      | `password
