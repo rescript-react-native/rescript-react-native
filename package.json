@@ -15,6 +15,7 @@
   ],
   "files": [
     "*",
+    "!.github",
     "!.DS_Store",
     "!**/*.bs.js",
     "!.merlin",
