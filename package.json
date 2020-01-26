@@ -1,6 +1,6 @@
 {
   "name": "reason-react-native",
-  "version": "0.61.0",
+  "version": "0.61.1",
   "peerDependencies": {
     "react-native": "^0.61.0",
     "reason-react": "^0.7.0"
