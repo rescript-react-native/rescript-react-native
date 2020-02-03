@@ -73,42 +73,6 @@ type progressEvent =
     "total": float,
   });
 
-[@react.component] [@bs.module "react-native"]
-external make:
-  (
-    ~ref: ref=?,
-    // Image props
-    ~accessibilityLabel: string=?,
-    ~accessible: bool=?,
-    ~blurRadius: float=?,
-    ~capInsets: View.edgeInsets=?,
-    ~defaultSource: DefaultSource.t=?,
-    ~fadeDuration: float=?,
-    ~loadingIndicatorSource: array(Source.t)=?,
-    ~onError: errorEvent => unit=?,
-    ~onLayout: Event.layoutEvent => unit=?,
-    ~onLoad: imageLoadEvent => unit=?,
-    ~onLoadEnd: unit => unit=?,
-    ~onLoadStart: unit => unit=?,
-    ~onPartialLoad: unit => unit=?,
-    ~onProgress: progressEvent => unit=?,
-    ~progressiveRenderingEnabled: bool=?,
-    ~resizeMethod: [@bs.string] [ | `auto | `resize | `scale]=?,
-    ~resizeMode: [@bs.string] [
-                   | `center
-                   | `contain
-                   | `cover
-                   | `repeat
-                   | `stretch
-                 ]
-                   =?,
-    ~source: Source.t,
-    ~style: Style.t=?,
-    ~testID: string=?
-  ) =>
-  React.element =
-  "Image";
-
 type sizeError;
 
 [@bs.module "react-native"] [@bs.scope "Image"]
@@ -142,5 +106,47 @@ type asset = {
 
 [@bs.module "react-native"] [@bs.scope "Image"]
 external resolveAssetSource: Source.t => asset = "resolveAssetSource";
+
+module Make = (T: {type t;}) => {
+  [@react.component] [@bs.module "react-native"]
+  external make:
+    (
+      ~ref: T.t=?,
+      // Image props
+      ~accessibilityLabel: string=?,
+      ~accessible: bool=?,
+      ~blurRadius: float=?,
+      ~capInsets: View.edgeInsets=?,
+      ~defaultSource: DefaultSource.t=?,
+      ~fadeDuration: float=?,
+      ~loadingIndicatorSource: array(Source.t)=?,
+      ~onError: errorEvent => unit=?,
+      ~onLayout: Event.layoutEvent => unit=?,
+      ~onLoad: imageLoadEvent => unit=?,
+      ~onLoadEnd: unit => unit=?,
+      ~onLoadStart: unit => unit=?,
+      ~onPartialLoad: unit => unit=?,
+      ~onProgress: progressEvent => unit=?,
+      ~progressiveRenderingEnabled: bool=?,
+      ~resizeMethod: [@bs.string] [ | `auto | `resize | `scale]=?,
+      ~resizeMode: [@bs.string] [
+                     | `center
+                     | `contain
+                     | `cover
+                     | `repeat
+                     | `stretch
+                   ]
+                     =?,
+      ~source: Source.t,
+      ~style: Style.t=?,
+      ~testID: string=?
+    ) =>
+    React.element =
+    "Image";
+};
+
+include Make({
+  type t = ref;
+});
 
 ```

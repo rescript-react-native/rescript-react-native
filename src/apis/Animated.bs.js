@@ -95,29 +95,37 @@ function reset(prim) {
 
 var StyleProp = /* module */[];
 
+FlatList$ReactNative.Make(/* module */[]);
+
 var make = ReactNative.Animated.createAnimatedComponent(ReactNative.FlatList);
 
 var FlatList = /* module */[/* make */make];
 
+Image$ReactNative.Make(/* module */[]);
+
 var make$1 = ReactNative.Animated.createAnimatedComponent(ReactNative.Image);
 
-var $$Image = /* module */[
-  /* Source */Image$ReactNative.Source,
-  /* DefaultSource */Image$ReactNative.DefaultSource,
-  /* make */make$1
-];
+var $$Image = /* module */[/* make */make$1];
+
+ScrollView$ReactNative.Make(/* module */[]);
 
 var make$2 = ReactNative.Animated.createAnimatedComponent(ReactNative.ScrollView);
 
 var ScrollView = /* module */[/* make */make$2];
 
+SectionList$ReactNative.Make(/* module */[]);
+
 var make$3 = ReactNative.Animated.createAnimatedComponent(ReactNative.SectionList);
 
 var SectionList = /* module */[/* make */make$3];
 
+Text$ReactNative.Make(/* module */[]);
+
 var make$4 = ReactNative.Animated.createAnimatedComponent(ReactNative.Text);
 
 var $$Text = /* module */[/* make */make$4];
+
+View$ReactNative.Make(/* module */[]);
 
 var make$5 = ReactNative.Animated.createAnimatedComponent(ReactNative.View);
 
@@ -143,4 +151,4 @@ exports.ScrollView = ScrollView;
 exports.SectionList = SectionList;
 exports.$$Text = $$Text;
 exports.View = View;
-/* make Not a pure module */
+/*  Not a pure module */

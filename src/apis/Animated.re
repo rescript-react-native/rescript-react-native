@@ -301,38 +301,54 @@ module StyleProp = {
   external unsafeAny: value('a) => 'b = "%identity";
 };
 
-module FlatList = {
-  include FlatList;
+type animatedRef('ref);
 
-  let make = Obj.magic(createAnimatedComponent(FlatList.make));
+[@bs.send] external getNode: (animatedRef('ref), unit) => 'ref = "getNode";
+
+module FlatList = {
+  include FlatList.Make({
+    type t = animatedRef(FlatList.ref);
+  });
+
+  let make = Obj.magic(createAnimatedComponent(make));
 };
 
 module Image = {
-  include Image;
+  include Image.Make({
+    type t = animatedRef(Image.ref);
+  });
 
-  let make = createAnimatedComponent(make);
+  let make = Obj.magic(createAnimatedComponent(make));
 };
 
 module ScrollView = {
-  include ScrollView;
+  include ScrollView.Make({
+    type t = animatedRef(ScrollView.ref);
+  });
 
-  let make = createAnimatedComponent(make);
+  let make = Obj.magic(createAnimatedComponent(make));
 };
 
 module SectionList = {
-  include SectionList;
+  include SectionList.Make({
+    type t = animatedRef(SectionList.ref);
+  });
 
-  let make = Obj.magic(createAnimatedComponent(SectionList.make));
+  let make = Obj.magic(createAnimatedComponent(make));
 };
 
 module Text = {
-  include Text;
+  include Text.Make({
+    type t = animatedRef(Text.ref);
+  });
 
-  let make = createAnimatedComponent(make);
+  let make = Obj.magic(createAnimatedComponent(make));
 };
 
 module View = {
-  include View;
+  include View.Make({
+    type t = animatedRef(View.ref);
+  });
 
-  let make = createAnimatedComponent(View.make);
+  let make = Obj.magic(createAnimatedComponent(make));
 };
