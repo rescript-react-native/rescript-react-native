@@ -19,6 +19,7 @@ module Animation = {
 module type Value = {
   type t;
   type jsValue;
+  type addListenerCallback;
 };
 
 type calculated;
@@ -143,35 +144,41 @@ module ValueOperations = {
   [@bs.module "react-native"] [@bs.scope "Animated"]
   external divide: (value('a), value('b)) => value(calculated) = "divide";
   [@bs.module "react-native"] [@bs.scope "Animated"]
-  external multiply: (value('a), value('b)) => value(calculated) = "multiply";
+  external multiply: (value('a), value('b)) => value(calculated) =
+    "multiply";
   [@bs.module "react-native"] [@bs.scope "Animated"]
   external modulo: (value('a), float) => value(calculated) = "modulo";
   [@bs.module "react-native"] [@bs.scope "Animated"]
-  external subtract: (value('a), value('b)) => value(calculated) = "subtract";
+  external subtract: (value('a), value('b)) => value(calculated) =
+    "subtract";
   [@bs.module "react-native"] [@bs.scope "Animated"]
-  external diffClamp: (value('a), float, float) => value(calculated) = "diffClamp";
+  external diffClamp: (value('a), float, float) => value(calculated) =
+    "diffClamp";
   let interpolate = Interpolation.interpolate;
 };
 
 module ValueMethods = (Val: Value) => {
   type t = Val.t;
   type jsValue = Val.jsValue;
-
+  type addListenerCallback = Val.addListenerCallback;
   type callback = jsValue => unit;
 
   [@bs.send] external setValue: (t, jsValue) => unit = "setValue";
   [@bs.send] external setOffset: (t, jsValue) => unit = "setOffset";
   [@bs.send] external flattenOffset: t => unit = "flattenOffset";
   [@bs.send] external extractOffset: t => unit = "extractOffset";
-  [@bs.send] external addListener: (t, callback) => string = "addListener";
+  [@bs.send]
+  external addListener: (t, addListenerCallback) => string = "addListener";
   [@bs.send] external removeListener: (t, string) => unit = "removeListener";
   [@bs.send] external removeAllListeners: t => unit = "removeAllListeners";
 
   [@bs.send]
-  external resetAnimation: (t, ~callback: callback=?, unit) => unit = "resetAnimation";
+  external resetAnimation: (t, ~callback: callback=?, unit) => unit =
+    "resetAnimation";
 
   [@bs.send]
-  external stopAnimation: (t, ~callback: callback=?, unit) => unit = "stopAnimation";
+  external stopAnimation: (t, ~callback: callback=?, unit) => unit =
+    "stopAnimation";
 
   include ValueAnimations(Val);
 };
@@ -180,6 +187,7 @@ module Value = {
   include ValueMethods({
     type t = value(regular);
     type jsValue = float;
+    type addListenerCallback = {. "value": jsValue} => unit;
   });
 
   [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
@@ -200,6 +208,7 @@ module ValueXY = {
       "x": float,
       "y": float,
     };
+    type addListenerCallback = jsValue => unit;
   });
 
   [@bs.obj] external jsValue: (~x: float, ~y: float) => jsValue = "";
@@ -217,7 +226,9 @@ module ValueXY = {
   [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
   external create: jsValue => t = "ValueXY";
   [@bs.send] external getLayout: t => layout = "getLayout";
-  [@bs.send] external getTranslateTransform: t => translateTransform = "getTranslateTransform";
+  [@bs.send]
+  external getTranslateTransform: t => translateTransform =
+    "getTranslateTransform";
 };
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
@@ -297,50 +308,56 @@ module StyleProp = {
   external unsafeAny: value('a) => 'b = "%identity";
 };
 
-module FlatList = {
-  include FlatList;
+type animatedRef('ref);
 
-  let make = props =>
-    React.createElementVariadic(
-      createAnimatedComponent(FlatList.make),
-      props,
-      [||],
-    );
+[@bs.send] external getNode: (animatedRef('ref), unit) => 'ref = "getNode";
+
+module FlatList = {
+  include FlatList.Make({
+    type t = animatedRef(FlatList.ref);
+  });
+
+  let make = Obj.magic(createAnimatedComponent(make));
 };
 
 module Image = {
-  include Image;
+  include Image.Make({
+    type t = animatedRef(Image.ref);
+  });
 
   let make = createAnimatedComponent(make);
 };
 
 module ScrollView = {
-  include ScrollView;
+  include ScrollView.Make({
+    type t = animatedRef(ScrollView.ref);
+  });
 
   let make = createAnimatedComponent(make);
 };
 
 module SectionList = {
-  include SectionList;
+  include SectionList.Make({
+    type t = animatedRef(SectionList.ref);
+  });
 
-  let make = props =>
-    React.createElementVariadic(
-      createAnimatedComponent(SectionList.make),
-      props,
-      [||],
-    );
+  let make = Obj.magic(createAnimatedComponent(make));
 };
 
 module Text = {
-  include Text;
+  include Text.Make({
+    type t = animatedRef(Text.ref);
+  });
 
   let make = createAnimatedComponent(make);
 };
 
 module View = {
-  include View;
+  include View.Make({
+    type t = animatedRef(View.ref);
+  });
 
-  let make = createAnimatedComponent(View.make);
+  let make = createAnimatedComponent(make);
 };
 
 ```

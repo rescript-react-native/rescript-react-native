@@ -318,7 +318,7 @@ module Image = {
     type t = animatedRef(Image.ref);
   });
 
-  let make = Obj.magic(createAnimatedComponent(make));
+  let make = createAnimatedComponent(make);
 };
 
 module ScrollView = {
@@ -326,7 +326,7 @@ module ScrollView = {
     type t = animatedRef(ScrollView.ref);
   });
 
-  let make = Obj.magic(createAnimatedComponent(make));
+  let make = createAnimatedComponent(make);
 };
 
 module SectionList = {
@@ -342,7 +342,7 @@ module Text = {
     type t = animatedRef(Text.ref);
   });
 
-  let make = Obj.magic(createAnimatedComponent(make));
+  let make = createAnimatedComponent(make);
 };
 
 module View = {
@@ -350,5 +350,5 @@ module View = {
     type t = animatedRef(View.ref);
   });
 
-  let make = Obj.magic(createAnimatedComponent(make));
+  let make = createAnimatedComponent(make);
 };
