@@ -310,7 +310,8 @@ module StyleProp = {
 
 type animatedRef('ref);
 
-[@bs.send] external getNode: (animatedRef('ref), unit) => 'ref = "getNode";
+external createAnimatedRef: React.Ref.t(Js.nullable('ref)) => animatedRef(React.Ref.t(Js.nullable('ref))) = "%identity";
+[@bs.send] external getNode: (animatedRef(React.Ref.t(Js.nullable('ref))), unit) => React.Ref.t(Js.nullable('ref)) = "getNode";
 
 module FlatList = {
   include FlatList.Make({
