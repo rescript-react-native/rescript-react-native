@@ -83,7 +83,10 @@ external make:
     ~shouldRasterizeIOS: bool=?,
     ~style: Style.t=?,
     ~testID: string=?,
-    ~children: React.element=?
+    ~children: React.element=?,
+    // React Native Web props
+    ~onMouseEnter: ReactEvent.Mouse.t => unit=?,
+    ~onMouseLeave: ReactEvent.Mouse.t => unit=?
   ) =>
   React.element =
   "View";

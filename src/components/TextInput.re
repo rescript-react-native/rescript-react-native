@@ -297,7 +297,10 @@ external make:
     ~renderToHardwareTextureAndroid: bool=?,
     ~shouldRasterizeIOS: bool=?,
     ~style: Style.t=?,
-    ~testID: string=?
+    ~testID: string=?,
+    // React Native Web props
+    ~onMouseEnter: ReactEvent.Mouse.t => unit=?,
+    ~onMouseLeave: ReactEvent.Mouse.t => unit=?
   ) =>
   React.element =
   "TextInput";

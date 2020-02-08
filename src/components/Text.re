@@ -67,7 +67,10 @@ external make:
     ~minimumFontScale: float=?,
     ~suppressHighlighting: bool=?,
     ~value: string=?,
-    ~children: React.element=?
+    ~children: React.element=?,
+    // React Native Web Props
+    ~onMouseEnter: ReactEvent.Mouse.t => unit=?,
+    ~onMouseLeave: ReactEvent.Mouse.t => unit=?
   ) =>
   React.element =
   "Text";
