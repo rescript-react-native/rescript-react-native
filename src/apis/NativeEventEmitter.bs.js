@@ -1,7 +1,7 @@
 'use strict';
 
 
-var Subscription = /* module */[];
+var Subscription = { };
 
 exports.Subscription = Subscription;
 /* No side effect */
