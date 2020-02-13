@@ -90,22 +90,22 @@ external make:
                        | `none
                      ]
                        =?,
-    ~autoComplete: [@bs.string] [
-                     | `off
-                     | `username
-                     | `password
-                     | `email
-                     | `name
-                     | `tel
-                     | [@bs.as "street-address"] `streetAddress
-                     | [@bs.as "postal-code"] `postalCode
-                     | [@bs.as "cc-number"] `ccNumber
-                     | [@bs.as "cc-csc"] `ccCsc
-                     | [@bs.as "cc-exp"] `ccExp
-                     | [@bs.as "cc-exp-month"] `ccExpMonth
-                     | [@bs.as "cc-exp-year"] `ccExpYear
-                   ]
-                     =?,
+    ~autoCompleteType: [@bs.string] [
+                         | `off
+                         | `username
+                         | `password
+                         | `email
+                         | `name
+                         | `tel
+                         | [@bs.as "street-address"] `streetAddress
+                         | [@bs.as "postal-code"] `postalCode
+                         | [@bs.as "cc-number"] `ccNumber
+                         | [@bs.as "cc-csc"] `ccCsc
+                         | [@bs.as "cc-exp"] `ccExp
+                         | [@bs.as "cc-exp-month"] `ccExpMonth
+                         | [@bs.as "cc-exp-year"] `ccExpYear
+                       ]
+                         =?,
     ~autoCorrect: bool=?,
     ~autoFocus: bool=?,
     ~blurOnSubmit: bool=?,
