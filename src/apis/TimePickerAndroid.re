@@ -1,5 +1,7 @@
 type options;
 
+type action;
+
 [@bs.obj]
 external options:
   (
@@ -13,16 +15,17 @@ external options:
   "";
 
 type response = {
-  action: string,
-  hour: int,
-  minute: int,
+  .
+  "action": action,
+  "hour": int,
+  "minute": int,
 };
 
 [@bs.module "react-native"] [@bs.scope "TimePickerAndroid"]
 external open_: options => Js.Promise.t(response) = "open";
 
 [@bs.module "react-native"] [@bs.scope "TimePickerAndroid"]
-external timeSetAction: string = "timeSetAction";
+external timeSetAction: action = "timeSetAction";
 
 [@bs.module "react-native"] [@bs.scope "TimePickerAndroid"]
-external dismissedAction: string = "dismissedAction";
+external dismissedAction: action = "dismissedAction";

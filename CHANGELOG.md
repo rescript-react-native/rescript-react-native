@@ -1,5 +1,29 @@
 # Changelog of `reason-react-native`
 
+## 0.61.1 - 2020-01-26
+
+### 🚀 Additions
+
+- Add `NativeEventEmitter`
+  [#642](https://github.com/reason-react-native/reason-react-native/pull/642) by
+  @cknitt
+- New abstract type for Android Date/TimePicker `action`
+  [#640](https://github.com/reason-react-native/reason-react-native/pull/640) by
+  @cknitt
+- Add `accessibilityRole` web values and `arialLevel` web props
+  ([#639](https://github.com/reason-react-native/reason-react-native/pull/639)
+  by @Naturalclar
+
+### ⛑ Fixes
+
+- Fix `autoCompleteType` prop for `TextInput` component (previously incorrectly
+  named `autoComplete`)
+  ([#639](https://github.com/reason-react-native/reason-react-native/pull/639)
+  by @Naturalclar
+- Resolves all BuckleScript inferred name warnings
+  ([#628](https://github.com/reason-react-native/reason-react-native/pull/628)
+  by @idkjs
+
 ## 0.61.0 - 2019-11-20
 
 ### 💥 Breaking change
