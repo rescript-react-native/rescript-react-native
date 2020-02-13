@@ -20,27 +20,18 @@ external getPhotosParams:
     ~mimeTypes: array(string)=?,
     unit
   ) =>
-  getPhotosParams =
-  "";
+  getPhotosParams;
 
-type photoIdentifier = {node}
-and node = {
-  [@bs.as "type"]
-  _type: string,
-  group_name: string,
-  image,
-  timestamp: float,
-  location: option(location),
-}
-and image = {
+type image = {
   filename: string,
   uri: string,
   height: float,
   width: float,
   isStored: option(bool),
   playableDuration: float,
-}
-and location = {
+};
+
+type location = {
   latitude: option(float),
   longitude: option(float),
   altitude: option(float),
@@ -48,14 +39,26 @@ and location = {
   speed: option(float),
 };
 
-type photoIdentifiersPage = {
-  edges: array(photoIdentifier),
-  page_info,
-}
-and page_info = {
+type node = {
+  [@bs.as "type"]
+  _type: string,
+  group_name: string,
+  image,
+  timestamp: float,
+  location: option(location),
+};
+
+type photoIdentifier = {node};
+
+type page_info = {
   has_next_page: bool,
   start_cursor: option(string),
   end_cursor: option(string),
+};
+
+type photoIdentifiersPage = {
+  edges: array(photoIdentifier),
+  page_info,
 };
 
 // multiple externals
