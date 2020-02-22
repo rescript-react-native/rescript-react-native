@@ -305,10 +305,14 @@ external make:
     ~shouldRasterizeIOS: bool=?,
     ~style: Style.t=?,
     ~testID: string=?,
-    // React Native Web props
+    // React Native Web Props
+    ~onMouseDown: ReactEvent.Mouse.t => unit=?,
     ~onMouseEnter: ReactEvent.Mouse.t => unit=?,
-    ~onMouseLeave: ReactEvent.Mouse.t => unit=?
-
+    ~onMouseLeave: ReactEvent.Mouse.t => unit=?,
+    ~onMouseMove: ReactEvent.Mouse.t => unit=?,
+    ~onMouseOver: ReactEvent.Mouse.t => unit=?,
+    ~onMouseOut: ReactEvent.Mouse.t => unit=?,
+    ~onMouseUp: ReactEvent.Mouse.t => unit=?,
   ) =>
   React.element =
   "TextInput";
