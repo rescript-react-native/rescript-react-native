@@ -71,7 +71,7 @@ external unsafeTransform: Js.t('a) => transform = "%identity";
 // - layout style
 //
 // *Comment below is supposed to be after the first ( below but refmt move it here*
-// Image Style Props (https://facebook.github.io/react-native/docs/image-style-props)
+// Image Style Props (https://reactnative.dev/docs/image-style-props)
 external style:
   (
     ~resizeMode: [@bs.string] [
@@ -84,7 +84,7 @@ external style:
                    =?,
     ~overlayColor: Color.t=?,
     ~tintColor: Color.t=?,
-    // Text Style Props (https://facebook.github.io/react-native/docs/text-style-props)
+    // Text Style Props (https://reactnative.dev/docs/text-style-props)
     ~color: Color.t=?,
     ~fontFamily: string=?,
     ~fontSize: float=?,
@@ -136,7 +136,7 @@ external style:
                     ]
                       =?,
     ~writingDirection: [@bs.string] [ | `auto | `ltr | `rtl]=?,
-    // View styles https://facebook.github.io/react-native/docs/view-style-props
+    // View styles https://reactnative.dev/docs/view-style-props
     ~backfaceVisibility: [@bs.string] [ | `visible | `hidden]=?,
     ~backgroundColor: Color.t=?,
     ~borderBottomColor: Color.t=?,
@@ -165,14 +165,14 @@ external style:
     ~borderWidth: float=?,
     ~elevation: float=?,
     ~opacity: float=?,
-    // Transform Props (https://facebook.github.io/react-native/docs/transforms#props)
+    // Transform Props (https://reactnative.dev/docs/transforms#props)
     ~transform: array(transform)=?, // all other transform props are deprecated
-    // Shadow Props (https://facebook.github.io/react-native/docs/shadow-props)
+    // Shadow Props (https://reactnative.dev/docs/shadow-props)
     ~shadowColor: Color.t=?,
     ~shadowOffset: offset=?,
     ~shadowOpacity: float=?,
     ~shadowRadius: float=?,
-    // Layout Style Props (https://facebook.github.io/react-native/docs/layout-props)
+    // Layout Style Props (https://reactnative.dev/docs/layout-props)
     ~alignContent: [@bs.string] [
                      | [@bs.as "flex-start"] `flexStart
                      | [@bs.as "flex-end"] `flexEnd
@@ -272,7 +272,7 @@ external style:
 // ____ViewStyleProp_Internal
 [@bs.obj]
 // *Comment below is supposed to be after the first ( below but refmt move it here*
-// View styles https://facebook.github.io/react-native/docs/view-style-props
+// View styles https://reactnative.dev/docs/view-style-props
 external viewStyle:
   (
     ~backfaceVisibility: [@bs.string] [ | `visible | `hidden]=?,
@@ -303,14 +303,14 @@ external viewStyle:
     ~borderWidth: float=?,
     ~elevation: float=?,
     ~opacity: float=?,
-    // Transform Props (https://facebook.github.io/react-native/docs/transforms#props)
+    // Transform Props (https://reactnative.dev/docs/transforms#props)
     ~transform: array(transform)=?, // all other transform props are deprecated
-    // Shadow Props (https://facebook.github.io/react-native/docs/shadow-props)
+    // Shadow Props (https://reactnative.dev/docs/shadow-props)
     ~shadowColor: Color.t=?,
     ~shadowOffset: offset=?,
     ~shadowOpacity: float=?,
     ~shadowRadius: float=?,
-    // Layout Style Props (https://facebook.github.io/react-native/docs/layout-props)
+    // Layout Style Props (https://reactnative.dev/docs/layout-props)
     ~alignContent: [@bs.string] [
                      | [@bs.as "flex-start"] `flexStart
                      | [@bs.as "flex-end"] `flexEnd
@@ -409,7 +409,7 @@ external viewStyle:
 
 // ____TextStyleProp_Internal
 [@bs.obj]
-// Text Style Props (https://facebook.github.io/react-native/docs/text-style-props)
+// Text Style Props (https://reactnative.dev/docs/text-style-props)
 external textStyle:
   (
     ~color: Color.t=?,
@@ -463,7 +463,7 @@ external textStyle:
                     ]
                       =?,
     ~writingDirection: [@bs.string] [ | `auto | `ltr | `rtl]=?,
-    // View styles https://facebook.github.io/react-native/docs/view-style-props
+    // View styles https://reactnative.dev/docs/view-style-props
     ~backfaceVisibility: [@bs.string] [ | `visible | `hidden]=?,
     ~backgroundColor: Color.t=?,
     ~borderBottomColor: Color.t=?,
@@ -492,14 +492,14 @@ external textStyle:
     ~borderWidth: float=?,
     ~elevation: float=?,
     ~opacity: float=?,
-    // Transform Props (https://facebook.github.io/react-native/docs/transforms#props)
+    // Transform Props (https://reactnative.dev/docs/transforms#props)
     ~transform: array(transform)=?, // all other transform props are deprecated
-    // Shadow Props (https://facebook.github.io/react-native/docs/shadow-props)
+    // Shadow Props (https://reactnative.dev/docs/shadow-props)
     ~shadowColor: Color.t=?,
     ~shadowOffset: offset=?,
     ~shadowOpacity: float=?,
     ~shadowRadius: float=?,
-    // Layout Style Props (https://facebook.github.io/react-native/docs/layout-props)
+    // Layout Style Props (https://reactnative.dev/docs/layout-props)
     ~alignContent: [@bs.string] [
                      | [@bs.as "flex-start"] `flexStart
                      | [@bs.as "flex-end"] `flexEnd
@@ -598,7 +598,7 @@ external textStyle:
 
 // ____ImageStyleProp_Internal
 [@bs.obj]
-// Image Style Props (https://facebook.github.io/react-native/docs/image-style-props)
+// Image Style Props (https://reactnative.dev/docs/image-style-props)
 external imageStyle:
   (
     ~resizeMode: [@bs.string] [
@@ -611,7 +611,7 @@ external imageStyle:
                    =?,
     ~overlayColor: Color.t=?,
     ~tintColor: Color.t=?,
-    // View styles https://facebook.github.io/react-native/docs/view-style-props
+    // View styles https://reactnative.dev/docs/view-style-props
     ~backfaceVisibility: [@bs.string] [ | `visible | `hidden]=?,
     ~backgroundColor: Color.t=?,
     ~borderBottomColor: Color.t=?,
@@ -640,14 +640,14 @@ external imageStyle:
     ~borderWidth: float=?,
     ~elevation: float=?,
     ~opacity: float=?,
-    // Transform Props (https://facebook.github.io/react-native/docs/transforms#props)
+    // Transform Props (https://reactnative.dev/docs/transforms#props)
     ~transform: array(transform)=?, // all other transform props are deprecated
-    // Shadow Props (https://facebook.github.io/react-native/docs/shadow-props)
+    // Shadow Props (https://reactnative.dev/docs/shadow-props)
     ~shadowColor: Color.t=?,
     ~shadowOffset: offset=?,
     ~shadowOpacity: float=?,
     ~shadowRadius: float=?,
-    // Layout Style Props (https://facebook.github.io/react-native/docs/layout-props)
+    // Layout Style Props (https://reactnative.dev/docs/layout-props)
     ~alignContent: [@bs.string] [
                      | [@bs.as "flex-start"] `flexStart
                      | [@bs.as "flex-end"] `flexEnd

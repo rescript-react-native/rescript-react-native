@@ -1,7 +1,7 @@
 ---
 id: apis/YellowBox
 title: YellowBox
-officialDoc: https://facebook.github.io/react-native/docs/debugging#warnings
+officialDoc: https://reactnative.dev/docs/debugging#warnings
 ---
 
 Warning messages are displayed in white on a yellow background; which is known

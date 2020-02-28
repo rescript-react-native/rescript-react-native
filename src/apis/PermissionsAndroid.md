@@ -1,7 +1,7 @@
 ---
 id: apis/PermissionsAndroid
 title: PermissionsAndroid
-officialDoc: https://facebook.github.io/react-native/docs/permissionsandroid
+officialDoc: https://reactnative.dev/docs/permissionsandroid
 ---
 
 Only for projects supporting Native Code. Requires the project to have been

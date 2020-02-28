@@ -1,7 +1,7 @@
 ---
 id: apis/Style
 title: Style
-officialDoc: https://facebook.github.io/react-native/docs/style
+officialDoc: https://reactnative.dev/docs/style
 ---
 
 Styles accepted by most components (thanks to a `style` prop) are defined using
@@ -159,7 +159,7 @@ This function accepts all React Native styles below:
 
 ### Layout Style Props
 
-[Official documentation](https://facebook.github.io/react-native/docs/layout-props)
+[Official documentation](https://reactnative.dev/docs/layout-props)
 
 #### `alignContent`
 
@@ -661,7 +661,7 @@ into your eyeball.
 
 ### Shadow Style Props
 
-[Official documentation](https://facebook.github.io/react-native/docs/shadow-props)
+[Official documentation](https://reactnative.dev/docs/shadow-props)
 
 Use `elevation` style props for Android.
 
@@ -723,7 +723,7 @@ You can see it as CSS `box-shadow` blur radius
 
 ### Transform Style Props
 
-[Official documentation](https://facebook.github.io/react-native/docs/transforms)
+[Official documentation](https://reactnative.dev/docs/transforms)
 
 ⚠️ _We only included `transform` prop as other have been deprecated._
 
@@ -816,7 +816,7 @@ Style.(style(
 
 ### View Style Props
 
-[Official documentation](https://facebook.github.io/react-native/docs/view-style-props)
+[Official documentation](https://reactnative.dev/docs/view-style-props)
 
 #### `backfaceVisibility`
 
