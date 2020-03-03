@@ -55,8 +55,8 @@ external make:
     ~ellipsizeMode: [@bs.string] [ | `clip | `head | `middle | `tail]=?,
     ~numberOfLines: int=?,
     ~onLayout: Event.layoutEvent => unit=?,
-    ~onLongPress: unit => unit=?,
-    ~onPress: unit => unit=?,
+    ~onLongPress: Event.pressEvent => unit=?,
+    ~onPress: Event.pressEvent => unit=?,
     ~pressRetentionOffset: View.edgeInsets=?,
     ~selectable: bool=?,
     ~style: Style.t=?,
@@ -67,7 +67,27 @@ external make:
     ~minimumFontScale: float=?,
     ~suppressHighlighting: bool=?,
     ~value: string=?,
-    ~children: React.element=?
+    ~children: React.element=?,
+    // escape hatches for react-native web:
+    ~rel: [@bs.string] [
+            | `alternate
+            | `author
+            | `dnsPrefetch
+            | [@bs.as "dns-prefetch"] `icon
+            | `license
+            | `next
+            | `pingback
+            | `preconnect
+            | `prefetch
+            | `preload
+            | `prerender
+            | `prev
+            | `search
+            | `stylesheet
+          ]
+            =?,
+    ~href: string=?,
+    ~target: [@bs.string] [ | `_blank | `_self | `_parent | `_top]=?
   ) =>
   React.element =
   "Text";
