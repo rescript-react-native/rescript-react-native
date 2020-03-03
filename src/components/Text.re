@@ -72,8 +72,8 @@ external make:
     ~rel: [@bs.string] [
             | `alternate
             | `author
-            | `dnsPrefetch
-            | [@bs.as "dns-prefetch"] `icon
+            | [@bs.as "dns-prefetch"] `dnsPrefetch
+            | `icon
             | `license
             | `next
             | `pingback
