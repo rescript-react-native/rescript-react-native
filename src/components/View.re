@@ -36,6 +36,16 @@ external make:
                           | `header
                           | `summary
                           | `imagebutton
+                          | `article
+                          | `banner
+                          | `complementary
+                          | `contentinfo
+                          | `form
+                          | `list
+                          | `listitem
+                          | `main
+                          | `navigation
+                          | `region
                         ]
                           =?,
     ~accessibilityStates: array(AccessibilityState.t)=?,
