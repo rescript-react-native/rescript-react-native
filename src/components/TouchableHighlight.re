@@ -53,7 +53,27 @@ external make:
     ~pressRetentionOffset: View.edgeInsets=?,
     ~testID: string=?,
     ~touchSoundDisabled: bool=?,
-    ~children: React.element=?
+    ~children: React.element=?,
+    // escape hatches for react-native web:
+    ~rel: [@bs.string] [
+            | `alternate
+            | `author
+            | [@bs.as "dns-prefetch"] `dnsPrefetch
+            | `icon
+            | `license
+            | `next
+            | `pingback
+            | `preconnect
+            | `prefetch
+            | `preload
+            | `prerender
+            | `prev
+            | `search
+            | `stylesheet
+          ]
+            =?,
+    ~href: string=?,
+    ~target: [@bs.string] [ | `_blank | `_self | `_parent | `_top]=?
   ) =>
   React.element =
   "TouchableHighlight";
