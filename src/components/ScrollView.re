@@ -137,7 +137,9 @@ external make:
     ~shouldRasterizeIOS: bool=?,
     ~style: Style.t=?,
     ~testID: string=?,
-    ~children: React.element=?
+    ~children: React.element=?,
+    // temporary react-native-web-prop
+    ~useWindowScrolling: bool=?
   ) =>
   React.element =
   "ScrollView";
