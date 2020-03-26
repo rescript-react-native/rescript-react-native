@@ -87,7 +87,7 @@ external make:
           ]
             =?,
     ~href: string=?,
-    ~target: [@bs.string] [ | `_blank | `_self | `_parent | `_top]=?
+    ~target: [@bs.string] [ | `_blank | `_self | `_parent | `_top]=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
     ~onMouseEnter: ReactEvent.Mouse.t => unit=?,
     ~onMouseLeave: ReactEvent.Mouse.t => unit=?,
