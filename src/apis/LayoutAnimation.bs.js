@@ -1,7 +1,7 @@
 'use strict';
 
 
-var Presets = /* module */[];
+var Presets = { };
 
 exports.Presets = Presets;
 /* No side effect */

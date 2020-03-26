@@ -2,7 +2,7 @@
 
 
 function Make(T) {
-  return /* module */[];
+  return { };
 }
 
 exports.Make = Make;

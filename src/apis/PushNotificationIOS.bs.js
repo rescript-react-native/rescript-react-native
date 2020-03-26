@@ -1,7 +1,7 @@
 'use strict';
 
 
-var $$Notification = /* module */[];
+var $$Notification = { };
 
 exports.$$Notification = $$Notification;
 /* No side effect */

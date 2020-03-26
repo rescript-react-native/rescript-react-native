@@ -2,7 +2,7 @@
 
 var WebViewElement$ReactNative = require("../elements/WebViewElement.bs.js");
 
-var Source = /* module */[];
+var Source = { };
 
 var DataDetectorTypes = 0;
 
