@@ -68,7 +68,7 @@ external make:
     ~suppressHighlighting: bool=?,
     ~value: string=?,
     ~children: React.element=?,
-    // escape hatches for react-native web:
+    // React Native Web Props
     ~rel: [@bs.string] [
             | `alternate
             | `author
@@ -88,6 +88,13 @@ external make:
             =?,
     ~href: string=?,
     ~target: [@bs.string] [ | `_blank | `_self | `_parent | `_top]=?
+    ~onMouseDown: ReactEvent.Mouse.t => unit=?,
+    ~onMouseEnter: ReactEvent.Mouse.t => unit=?,
+    ~onMouseLeave: ReactEvent.Mouse.t => unit=?,
+    ~onMouseMove: ReactEvent.Mouse.t => unit=?,
+    ~onMouseOver: ReactEvent.Mouse.t => unit=?,
+    ~onMouseOut: ReactEvent.Mouse.t => unit=?,
+    ~onMouseUp: ReactEvent.Mouse.t => unit=?
   ) =>
   React.element =
   "Text";
