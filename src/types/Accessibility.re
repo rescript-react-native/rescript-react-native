@@ -1,10 +1,13 @@
 type state;
-type checked = string;
+type checked = bool;
 
 [@bs.inline]
-let mixed = "mixed";
+let checked = true;
 
-external setChecked: bool => checked = "%identity";
+[@bs.inline]
+let unchecked = false;
+
+let mixed: checked = "mixed"->Obj.magic;
 
 [@bs.obj]
 external state:
