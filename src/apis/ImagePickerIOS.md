@@ -1,7 +1,7 @@
 ---
 id: apis/ImagePickerIOS
 title: ImagePickerIOS
-officialDoc: https://facebook.github.io/react-native/docs/imagepickerios
+officialDoc: https://reactnative.dev/docs/imagepickerios
 ---
 
 ## Note

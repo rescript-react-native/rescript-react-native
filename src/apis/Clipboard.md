@@ -1,7 +1,7 @@
 ---
 id: apis/Clipboard
 title: Clipboard
-officialDoc: https://facebook.github.io/react-native/docs/clipboard
+officialDoc: https://reactnative.dev/docs/clipboard
 ---
 
 ## Methods

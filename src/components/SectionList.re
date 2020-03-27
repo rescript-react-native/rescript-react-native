@@ -93,6 +93,7 @@ external make:
     ~decelerationRate: [@bs.string] [ | `fast | `normal]=?,
     ~directionalLockEnabled: bool=?,
     ~endFillColor: Color.t=?,
+    ~fadingEdgeLength: float=?,
     ~horizontal: bool=?,
     ~indicatorStyle: [@bs.string] [ | `default | `black | `white]=?,
     ~keyboardDismissMode: [@bs.string] [
@@ -157,7 +158,6 @@ external make:
                           | `imagebutton
                         ]
                           =?,
-    ~accessibilityStates: array(AccessibilityState.t)=?,
     ~accessibilityTraits: array(AccessibilityTrait.t)=?,
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,

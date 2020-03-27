@@ -1,7 +1,7 @@
 ---
 id: apis/AccessibilityInfo
 title: AccessibilityInfo
-officialDoc: https://facebook.github.io/react-native/docs/accessibilityinfo
+officialDoc: https://reactnative.dev/docs/accessibilityinfo
 ---
 
 ## Types

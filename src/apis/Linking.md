@@ -1,7 +1,7 @@
 ---
 id: apis/Linking
 title: Linking
-officialDoc: https://facebook.github.io/react-native/docs/linking.html
+officialDoc: https://reactnative.dev/docs/linking.html
 ---
 
 Only for projects supporting Native Code. Requires the project to have been

@@ -31,7 +31,7 @@ module ValueAnimations = (Val: Value) => {
         ~velocity: Val.jsValue,
         ~deceleration: float=?,
         ~isInteraction: bool=?,
-        ~useNativeDriver: bool=?,
+        ~useNativeDriver: bool,
         ~onComplete: Animation.endCallback=?,
         ~iterations: int=?,
         unit
@@ -67,7 +67,7 @@ module ValueAnimations = (Val: Value) => {
         ~damping: float=?,
         ~delay: float=?,
         ~isInteraction: bool=?,
-        ~useNativeDriver: bool=?,
+        ~useNativeDriver: bool,
         ~onComplete: Animation.endCallback=?,
         ~iterations: int=?,
         unit
@@ -95,7 +95,7 @@ module ValueAnimations = (Val: Value) => {
         ~duration: float=?,
         ~delay: float=?,
         ~isInteraction: bool=?,
-        ~useNativeDriver: bool=?,
+        ~useNativeDriver: bool,
         ~onComplete: Animation.endCallback=?,
         ~iterations: int=?,
         unit
@@ -253,7 +253,7 @@ external loopWithConfig: (Animation.t, loopConfig) => Animation.t = "loop";
 type eventOptions('a);
 [@bs.obj]
 external eventOptions:
-  (~listener: 'a=?, ~useNativeDriver: bool=?, unit) => eventOptions('a) =
+  (~listener: 'a=?, ~useNativeDriver: bool, unit) => eventOptions('a) =
   "";
 
 // multiple externals

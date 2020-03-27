@@ -1,11 +1,11 @@
 ---
 id: apis/PanResponder
 title: PanResponder
-officialDoc: http://facebook.github.io/react-native/docs/panresponder
+officialDoc: https://reactnative.dev/docs/panresponder
 ---
 
 `PanResponder` allows more fine-grained control of the
-[_Gesture Responder System_](http://facebook.github.io/react-native/docs/gesture-responder-system),
+[_Gesture Responder System_](https://reactnative.dev/docs/gesture-responder-system),
 as the handlers can depend also on `gestureState`, in addition to the
 `Event.pressEvent` which are passed to the _Gesture Responder System_ handlers.
 In essence, by means of a custom `PanResponder`, _Gesture Responder System_

@@ -1,7 +1,7 @@
 ---
 id: apis/StyleSheet
 title: StyleSheet
-officialDoc: https://facebook.github.io/react-native/docs/stylesheet
+officialDoc: https://reactnative.dev/docs/stylesheet
 ---
 
 `StyleSheet` mainly has a method to [create](#create) an object containing many

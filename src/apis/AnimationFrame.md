@@ -9,7 +9,7 @@ autoLinkToOfficialDoc: false
 `AnimationFrame.request` is just the well known
 [`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame).
 
-[In React Native, `requestAnimationFrame` has been polyfilled](https://facebook.github.io/react-native/docs/timers#timers)
+[In React Native, `requestAnimationFrame` has been polyfilled](https://reactnative.dev/docs/timers#timers)
 from the browser. It accepts a function as its only argument and calls that
 function before the next repaint.
 

@@ -1,7 +1,7 @@
 ---
 id: apis/ImageEditor
 title: ImageEditor
-officialDoc: https://facebook.github.io/react-native/docs/imageeditor
+officialDoc: https://reactnative.dev/docs/imageeditor
 ---
 
 ## Methods

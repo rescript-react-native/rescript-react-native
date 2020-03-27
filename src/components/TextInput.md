@@ -15,20 +15,6 @@ type changeEvent =
     "text": string,
   });
 
-type textInputEvent =
-  Event.syntheticEvent({
-    .
-    "eventCount": int,
-    "previousText": string,
-    "range": {
-      .
-      "start": int,
-      "_end": int,
-    },
-    "target": int,
-    "text": string,
-  });
-
 type editingEvent =
   Event.syntheticEvent({
     .
@@ -171,7 +157,6 @@ external make:
     ~onScroll: scrollEvent => unit=?,
     ~onSelectionChange: selectionChangeEvent => unit=?,
     ~onSubmitEditing: editingEvent => unit=?,
-    ~onTextInput: textInputEvent => unit=?,
     ~placeholder: string=?,
     ~placeholderTextColor: Color.t=?,
     ~returnKeyLabel: string=?,
@@ -196,8 +181,8 @@ external make:
     ~secureTextEntry: bool=?,
     ~selection: selection=?,
     ~selectionColor: Color.t=?,
-    ~selectionState: 'documentSelectionState=?, // TODO
     ~selectTextOnFocus: bool=?,
+    ~showSoftInputOnFocus: bool=?,
     ~spellCheck: bool=?,
     ~textBreakStrategy: [@bs.string] [ | `balanced | `highQuality | `simple]=?,
     ~textContentType: [@bs.string] [
@@ -260,7 +245,6 @@ external make:
                           | `imagebutton
                         ]
                           =?,
-    ~accessibilityStates: array(AccessibilityState.t)=?,
     ~accessibilityTraits: array(AccessibilityTrait.t)=?,
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
@@ -304,7 +288,15 @@ external make:
     ~renderToHardwareTextureAndroid: bool=?,
     ~shouldRasterizeIOS: bool=?,
     ~style: Style.t=?,
-    ~testID: string=?
+    ~testID: string=?,
+    // React Native Web Props
+    ~onMouseDown: ReactEvent.Mouse.t => unit=?,
+    ~onMouseEnter: ReactEvent.Mouse.t => unit=?,
+    ~onMouseLeave: ReactEvent.Mouse.t => unit=?,
+    ~onMouseMove: ReactEvent.Mouse.t => unit=?,
+    ~onMouseOver: ReactEvent.Mouse.t => unit=?,
+    ~onMouseOut: ReactEvent.Mouse.t => unit=?,
+    ~onMouseUp: ReactEvent.Mouse.t => unit=?,
   ) =>
   React.element =
   "TextInput";
