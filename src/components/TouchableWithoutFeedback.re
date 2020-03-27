@@ -13,9 +13,11 @@ external make:
                                    | `radiobutton_unchecked
                                  ]
                                    =?,
+    ~accessibilityElementsHidden: bool=?,
     ~accessibilityHint: string=?,
     ~accessibilityIgnoresInvertColors: bool=?,
     ~accessibilityLabel: string=?,
+    ~accessibilityLiveRegion: [@bs.string] [ | `none | `polite | `assertive]=?,
     ~accessibilityRole: [@bs.string] [
                           | `none
                           | `button
@@ -31,11 +33,20 @@ external make:
                         ]
                           =?,
     ~accessibilityTraits: array(AccessibilityTrait.t)=?,
+    ~accessibilityViewIsModal: bool=?,
     ~delayLongPress: int=?,
     ~delayPressIn: int=?,
     ~delayPressOut: int=?,
     ~disabled: bool=?,
     ~hitSlop: View.edgeInsets=?,
+    ~importantForAccessibility: [@bs.string] [
+                                  | `auto
+                                  | `yes
+                                  | `no
+                                  | [@bs.as "no-hide-descendants"]
+                                    `noHideDescendants
+                                ]
+                                  =?,
     ~onBlur: Event.targetEvent => unit=?,
     ~onFocus: Event.targetEvent => unit=?,
     ~onLayout: Event.layoutEvent => unit=?,
