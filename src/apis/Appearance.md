@@ -1,21 +1,50 @@
 ---
-id: apis/AppState
-title: AppState
-wip: true
+id: apis/Appearance
+title: Appearance
+officialDoc: https://reactnative.dev/docs/appearance
 ---
 
+`Appearance` exposes information about the preferred color scheme (light or
+dark).
+
+## Types
+
+### `t`
+
+Returned from the `getColorScheme` method or `useColorScheme` hook, wrapped in
+`Js.Null.t` to handle the allowed value `null`, which is returned when no
+preference has been indicated. Other allowed values are `"dark"` and `"light"`,
+encapsulated as
+
 ```reason
-type t;
+Appearance.dark
+Appearance.light
+```
 
-[@bs.inline "dark"]
-let dark: t;
+These values may be compared against what is returned by the method or hook, as
+in the below example:
 
-[@bs.inline "light"]
-let light: t;
+```reason
+Appearance.getColorScheme() == Js.Null.return(Appearance.dark)
+```
 
-[@bs.scope "Appearance"] [@bs.module "react-native"]
-external getColorScheme: unit => option(t) = "getColorScheme";
+## Methods
 
-[@bs.module "react-native"]
-external useColorScheme: unit => option(t) = "useColorScheme";
+### `getColorScheme`
+
+To query the current preferred color scheme. Note that the preference may be
+updated later, either through user action or automatically (e.g. on a schedule
+based on the time of day).
+
+```reason
+getColorScheme: unit => Js.Null(t)
+```
+
+### `useColorScheme`
+
+To query the current preferred color scheme and subscribe to color scheme
+updates.
+
+```reason
+useColorScheme: unit => Js.Null(t)
 ```
