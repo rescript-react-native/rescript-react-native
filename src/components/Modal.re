@@ -26,6 +26,7 @@ external make:
                           | `overFullScreen
                         ]
                           =?,
+    ~statusBarTranslucent: bool=?,
     ~supportedOrientations: array(Orientation.t)=?,
     ~transparent: bool=?,
     ~visible: bool=?,
