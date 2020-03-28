@@ -12,11 +12,9 @@ module Source = {
       ~body: string=?,
       unit
     ) =>
-    t =
-    "";
+    t;
 
-  [@bs.obj]
-  external html: (~html: string=?, ~baseUrl: string=?, unit) => t = "";
+  [@bs.obj] external html: (~html: string=?, ~baseUrl: string=?, unit) => t;
 };
 
 module DataDetectorTypes = WebView_DataDetectorTypes;
@@ -70,14 +68,13 @@ type webViewMessageEvent = Event.syntheticEvent(Js.t(webViewMessage));
 type webViewEvent = Js.t(webViewBaseEvent);
 
 type request = {
-  .
-  "url": string,
-  "title": string,
-  "loading": bool,
-  "canGoBack": bool,
-  "canGoForward": bool,
-  "lockIdentifier": string,
-  "navigationType": string,
+  url: string,
+  title: string,
+  loading: bool,
+  canGoBack: bool,
+  canGoForward: bool,
+  lockIdentifier: string,
+  navigationType: string,
 };
 
 [@react.component] [@bs.module "react-native"]

@@ -37,9 +37,9 @@ module EffectiveConnectionType = {
 };
 
 type info = {
-  .
-  "_type": ConnectionType.t,
-  "effectiveType": EffectiveConnectionType.t,
+  [@bs.as "type"]
+  _type: ConnectionType.t,
+  effectiveType: EffectiveConnectionType.t,
 };
 
 type remove = {. [@bs.meth] "remove": unit => unit};

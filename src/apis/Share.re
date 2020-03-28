@@ -3,8 +3,7 @@ type options;
 
 [@bs.obj]
 external content:
-  (~title: string=?, ~message: string=?, ~url: string=?, unit) => content =
-  "";
+  (~title: string=?, ~message: string=?, ~url: string=?, unit) => content;
 
 [@bs.obj]
 external options:
@@ -15,8 +14,7 @@ external options:
     ~dialogTitle: string=?,
     unit
   ) =>
-  options =
-  "";
+  options;
 
 type action;
 
@@ -27,9 +25,8 @@ external sharedAction: action = "sharedAction";
 external dismissedAction: action = "dismissedAction";
 
 type shareResult = {
-  .
-  "action": action,
-  "activityType": option(string),
+  action,
+  activityType: option(string),
 };
 
 // multiple externals

@@ -8,10 +8,9 @@ wip: true
 include VirtualizedListElement;
 
 type renderItemProps('item) = {
-  .
-  "item": 'item,
-  "index": int,
-  // "separators": TODO
+  item: 'item,
+  index: int,
+  // separators: TODO
 };
 
 type renderItemCallback('item) = renderItemProps('item) => React.element;
@@ -22,37 +21,33 @@ type cellRendererComponent('item) =
   React.component(cellRendererComponentProps('item));
 
 type viewableItem('item) = {
-  .
-  "item": 'item,
-  "key": string,
-  "index": Js.undefined(int),
-  "isViewable": bool,
-  "section": Js.t({.}),
+  item: 'item,
+  key: string,
+  index: Js.undefined(int),
+  isViewable: bool,
+  section: Js.t({.}),
 };
 
 type viewableItemsChanged('item) = {
-  .
-  "viewableItems": array(viewableItem('item)),
-  "changed": array(viewableItem('item)),
+  viewableItems: array(viewableItem('item)),
+  changed: array(viewableItem('item)),
 };
 
 type itemLayout = {
-  .
-  "length": float,
-  "offset": float,
-  "index": int,
+  length: float,
+  offset: float,
+  index: int,
 };
 
-type onEndReachedParams = {. "distanceFromEnd": float};
+type onEndReachedParams = {distanceFromEnd: float};
 
 type onScrollToIndexFailedInfo = {
-  .
-  "index": int,
-  "highestMeasuredFrameIndex": int,
-  "averageItemLength": float,
+  index: int,
+  highestMeasuredFrameIndex: int,
+  averageItemLength: float,
 };
 
-type onScrollToIndexFailedParams = {. "info": onScrollToIndexFailedInfo};
+type onScrollToIndexFailedParams = {info: onScrollToIndexFailedInfo};
 
 type viewabilityConfig;
 [@bs.obj]

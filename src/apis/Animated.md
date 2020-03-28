@@ -7,7 +7,7 @@ wip: true
 ```reason
 module Animation = {
   type t;
-  type endResult = {. "finished": bool};
+  type endResult = {finished: bool};
   type endCallback = endResult => unit;
   [@bs.send]
   external start: (t, ~endCallback: endCallback=?, unit) => unit = "start";
@@ -228,7 +228,7 @@ external sequence: array(Animation.t) => Animation.t = "sequence";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
 external parallel:
-  (array(Animation.t), {. "stopTogether": bool}) => Animation.t =
+  (array(Animation.t), {stopTogether: bool}) => Animation.t =
   "parallel";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]

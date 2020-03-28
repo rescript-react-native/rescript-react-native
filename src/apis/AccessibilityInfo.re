@@ -1,7 +1,6 @@
 type announcementResult = {
-  .
-  "announcement": string,
-  "success": bool,
+  announcement: string,
+  success: bool,
 };
 
 [@bs.scope "AccessibilityInfo"] [@bs.module "react-native"]

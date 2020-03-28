@@ -54,23 +54,20 @@ module DefaultSource = {
 
 type imageLoadEvent =
   Event.syntheticEvent({
-    .
-    "source": {
-      .
-      "width": float,
-      "height": float,
-      "url": string,
+    source: {
+      width: float,
+      height: float,
+      url: string,
     },
-    "uri": Js.Nullable.t(string),
+    uri: Js.Nullable.t(string),
   });
 
-type errorEvent = Event.syntheticEvent({. "error": string});
+type errorEvent = Event.syntheticEvent(error: string);
 
 type progressEvent =
   Event.syntheticEvent({
-    .
-    "loaded": float,
-    "total": float,
+    loaded: float,
+    total: float,
   });
 
 [@react.component] [@bs.module "react-native"]
@@ -134,10 +131,9 @@ external abortPrefetch: requestId => unit = "abortPrefetch";
 external queryCache: (~uris: array(string)) => unit = "queryCache";
 
 type asset = {
-  .
-  "uri": string,
-  "width": float,
-  "height": float,
+  uri: string,
+  width: float,
+  height: float,
 };
 
 [@bs.module "react-native"] [@bs.scope "Image"]

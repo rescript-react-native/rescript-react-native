@@ -1,13 +1,13 @@
 include ViewPagerAndroidElement;
 
-type pageScrollEvent =
-  Event.syntheticEvent({
-    .
-    "position": int,
-    "offset": float,
-  });
+type pageScrollEvent = Event.syntheticEvent(pageScrollPayload)
+and pageScrollPayload = {
+  position: int,
+  offset: float,
+};
 
-type pageSelectedEvent = Event.syntheticEvent({. "position": int});
+type pageSelectedEvent = Event.syntheticEvent(pageSelectedPayload)
+and pageSelectedPayload = {position: int};
 
 [@react.component] [@bs.module "react-native"]
 external make:

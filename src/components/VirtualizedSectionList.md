@@ -8,37 +8,33 @@ wip: true
 include VirtualizedListElement;
 
 type renderItemProps('item) = {
-  .
-  "item": 'item,
-  "index": int,
-  "section": section('item),
-  "separators": {
-    .
-    "highlight": unit => unit,
-    "unhighlight": unit => unit,
+  item: 'item,
+  index: int,
+  section: section('item),
+  separators: {
+    highlight: unit => unit,
+    unhighlight: unit => unit,
   },
 }
 and section('item) = {
-  .
-  "data": array('item),
-  "key": option(string),
-  "renderItem": option(renderItemCallback('item)),
-  "ItemSeparatorComponent": option(unit => React.element),
-  "keyExtractor": option(('item, int) => string),
-  "sectionData": option(sectionData),
+  data: array('item),
+  key: option(string),
+  renderItem: option(renderItemCallback('item)),
+  ItemSeparatorComponent: option(unit => React.element),
+  keyExtractor: option(('item, int) => string),
+  sectionData: option(sectionData),
 }
 and renderItemCallback('item) = renderItemProps('item) => React.element
-and renderSectionHeaderProps('item) = {. "section": section('item)}
+and renderSectionHeaderProps('item) = {section: section('item)}
 and renderSectionHeaderCallback('item) =
   renderSectionHeaderProps('item) => React.element
 and separatorProps('item) = {
-  .
-  "highlighted": bool,
-  "leadingItem": option('item),
-  "leadingSection": option(section('item)),
-  "section": section('item),
-  "trailingItem": option('item),
-  "trailingSection": option(section('item)),
+  highlighted: bool,
+  leadingItem: option('item),
+  leadingSection: option(section('item)),
+  section: section('item),
+  trailingItem: option('item),
+  trailingSection: option(section('item)),
 };
 
 [@bs.obj]

@@ -20,46 +20,46 @@ external getPhotosParams:
     ~mimeTypes: array(string)=?,
     unit
   ) =>
-  getPhotosParams =
-  "";
+  getPhotosParams;
 
-type photoIdentifier = {
-  .
-  "node": {
-    .
-    "_type": string,
-    "group_name": string,
-    "image": {
-      .
-      "filename": string,
-      "uri": string,
-      "height": float,
-      "width": float,
-      "isStored": Js.Nullable.t(bool),
-      "playableDuration": float,
-    },
-    "timestamp": float,
-    "location":
-      Js.Nullable.t({
-        .
-        "latitude": Js.Nullable.t(float),
-        "longitude": Js.Nullable.t(float),
-        "altitude": Js.Nullable.t(float),
-        "heading": Js.Nullable.t(float),
-        "speed": Js.Nullable.t(float),
-      }),
-  },
+type photoIdentifier = {note}
+and note = {
+  [@bs.as "type"]
+  _type: string,
+  [@bs.as "group_name"]
+  groupName: string,
+  image,
+  timestamp: float,
+  location: Js.Nullable.t(location),
+}
+and image = {
+  filename: string,
+  uri: string,
+  height: float,
+  width: float,
+  isStored: Js.Nullable.t(bool),
+  playableDuration: float,
+}
+and location = {
+  latitude: Js.Nullable.t(float),
+  longitude: Js.Nullable.t(float),
+  altitude: Js.Nullable.t(float),
+  heading: Js.Nullable.t(float),
+  speed: Js.Nullable.t(float),
 };
 
 type photoIdentifiersPage = {
-  .
-  "edges": array(photoIdentifier),
-  "page_info": {
-    .
-    "has_next_page": bool,
-    "start_cursor": Js.Nullable.t(string),
-    "end_cursor": Js.Nullable.t(string),
-  },
+  edges: array(photoIdentifier),
+  [@bs.as "page_info"]
+  pageInfo,
+}
+and pageInfo = {
+  [@bs.as "has_next_page"]
+  hasNextPage: bool,
+  [@bs.as "start_cursor"]
+  startCursor: Js.Nullable.t(string),
+  [@bs.as "end_curson"]
+  endCursor: Js.Nullable.t(string),
 };
 
 // multiple externals

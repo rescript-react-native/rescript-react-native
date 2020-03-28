@@ -1,27 +1,23 @@
 type coords = {
-  .
-  "speed": float,
-  "longitude": float,
-  "latitude": float,
-  "accuracy": float,
-  "heading": float,
+  speed: float,
+  longitude: float,
+  latitude: float,
+  accuracy: float,
+  heading: float,
 };
 
 type position = {
-  .
-  "coords": coords,
-  "timestamp": float,
+  coords,
+  timestamp: float,
 };
 
 type error = {
-  .
-  "code": int,
-  "message": string,
+  code: int,
+  message: string,
 };
 
 type config;
-[@bs.obj]
-external config: (~skipPermissionRequests: bool=?, unit) => config = "";
+[@bs.obj] external config: (~skipPermissionRequests: bool=?, unit) => config;
 
 [@bs.val] [@bs.scope ("navigator", "geolocation")]
 external setRNConfiguration: config => unit = "setRNConfiguration";
@@ -41,8 +37,7 @@ external currentPositionOptions:
     ~enableHighAccuracy: bool=?,
     unit
   ) =>
-  currentPositionOptions =
-  "";
+  currentPositionOptions;
 
 [@bs.val] [@bs.scope ("navigator", "geolocation")]
 external getCurrentPosition:
@@ -68,8 +63,7 @@ external watchPositionOptions:
     ~useSignificantChanges: bool=?,
     unit
   ) =>
-  watchPositionOptions =
-  "";
+  watchPositionOptions;
 
 [@bs.val] [@bs.scope ("navigator", "geolocation")]
 external watchPosition:

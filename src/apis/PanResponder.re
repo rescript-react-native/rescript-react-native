@@ -1,15 +1,14 @@
 type gestureState = {
-  .
-  "stateID": float,
-  "moveX": float,
-  "moveY": float,
-  "x0": float,
-  "y0": float,
-  "dx": float,
-  "dy": float,
-  "vx": float,
-  "vy": float,
-  "numberActiveTouches": int,
+  stateID: float,
+  moveX: float,
+  moveY: float,
+  x0: float,
+  y0: float,
+  dx: float,
+  dy: float,
+  vx: float,
+  vy: float,
+  numberActiveTouches: int,
 };
 
 type t;
@@ -40,8 +39,7 @@ external config:
     ~onShouldBlockNativeResponder: (Event.pressEvent, gestureState) => bool=?,
     unit
   ) =>
-  config =
-  "";
+  config;
 
 [@bs.module "react-native"] [@bs.scope "PanResponder"]
 external create: config => t = "create";

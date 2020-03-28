@@ -9,7 +9,7 @@ wip: true
 external make:
   (
     // SnapshotViewIOS props
-    ~onSnapshotReady: Event.syntheticEvent({. "testIdentifier": string}) =>
+    ~onSnapshotReady: Event.syntheticEvent(testIdentifier: string) =>
                       unit
                         =?,
     ~testIdentifier: string=?,
@@ -89,6 +89,4 @@ external make:
   ) =>
   React.element =
   "SnapshotViewIOS";
-
-
 ```

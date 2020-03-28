@@ -163,35 +163,34 @@ type dimensions = {
 ### `switchChangeEvent`
 
 ```reason
-type switchChangeEvent = syntheticEvent({. "value": bool});
+type switchChangeEvent = syntheticEvent({value: bool});
 ```
 
 ### `targetEvent`
 
 ```reason
-type targetEvent = syntheticEvent({. "target": int});
+type targetEvent = syntheticEvent({target: int});
 
 ```
 
 ### `textLayoutEvent`
 
 ```reason
-type textLayoutEvent = syntheticEvent({. "lines": array(textLayout)});
+type textLayoutEvent = syntheticEvent({lines: array(textLayout)});
 ```
 
 where `textLayout` is defined as
 
 ```reason
 type textLayout = {
-  .
-  "x": float,
-  "y": float,
-  "width": float,
-  "height": float,
-  "ascender": float, // verify
-  "capHeight": float, // verify
-  "descender": float, // verify
-  "text": string,
-  "xHeight": float // verify
+  x: float,
+  y: float,
+  width: float,
+  height: float,
+  ascender: float, // verify
+  capHeight: float, // verify
+  descender: float, // verify
+  text: string,
+  xHeight: float // verify
 };
 ```

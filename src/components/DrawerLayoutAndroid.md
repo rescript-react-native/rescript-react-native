@@ -7,7 +7,7 @@ wip: true
 ```reason
 include DrawerLayoutAndroidElement;
 
-type drawerSlideEvent = Event.syntheticEvent({. "offset": float});
+type drawerSlideEvent = Event.syntheticEvent(offset: float);
 
 [@react.component] [@bs.module "react-native"]
 external make:

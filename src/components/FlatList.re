@@ -5,9 +5,8 @@
 include VirtualizedListElement;
 
 type separatorComponentProps('item) = {
-  .
-  "highlighted": bool,
-  "leadingItem": option('item),
+  highlighted: bool,
+  leadingItem: option('item),
 };
 
 [@react.component] [@bs.module "react-native"]
