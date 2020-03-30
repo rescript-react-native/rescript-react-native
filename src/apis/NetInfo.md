@@ -45,7 +45,7 @@ module EffectiveConnectionType = {
 
 type info = {
   [bs.as "type"]
-  ____type: ConnectionType.t,
+  _type: ConnectionType.t,
   effectiveType: EffectiveConnectionType.t,
 };
 

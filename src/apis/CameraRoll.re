@@ -22,8 +22,8 @@ external getPhotosParams:
   ) =>
   getPhotosParams;
 
-type photoIdentifier = {note}
-and note = {
+type photoIdentifier = {node}
+and node = {
   [@bs.as "type"]
   _type: string,
   [@bs.as "group_name"]
