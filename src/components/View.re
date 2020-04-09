@@ -4,8 +4,7 @@ type edgeInsets;
 [@bs.obj]
 external edgeInsets:
   (~left: float=?, ~right: float=?, ~top: float=?, ~bottom: float=?, unit) =>
-  edgeInsets =
-  "";
+  edgeInsets;
 
 [@react.component] [@bs.module "react-native"]
 external make:
@@ -50,6 +49,7 @@ external make:
                           =?,
     ~accessibilityState: Accessibility.state=?,
     ~accessibilityTraits: array(AccessibilityTrait.t)=?,
+    ~accessibilityValue: Accessibility.value=?,
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
     ~collapsable: bool=?,

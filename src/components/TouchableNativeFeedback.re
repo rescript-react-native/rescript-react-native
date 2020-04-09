@@ -54,6 +54,7 @@ external make:
                           =?,
     ~accessibilityState: Accessibility.state=?,
     ~accessibilityTraits: array(AccessibilityTrait.t)=?,
+    ~accessibilityValue: Accessibility.value=?,
     ~accessibilityViewIsModal: bool=?,
     ~delayLongPress: int=?,
     ~delayPressIn: int=?,

@@ -1,7 +1,7 @@
 include ScrollViewElement;
 
 type contentOffset;
-[@bs.obj] external contentOffset: (~x: float, ~y: float) => contentOffset = "";
+[@bs.obj] external contentOffset: (~x: float, ~y: float) => contentOffset;
 
 [@react.component] [@bs.module "react-native"]
 external make:
@@ -95,6 +95,7 @@ external make:
                           =?,
     ~accessibilityState: Accessibility.state=?,
     ~accessibilityTraits: array(AccessibilityTrait.t)=?,
+    ~accessibilityValue: Accessibility.value=?,
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
     ~collapsable: bool=?,
