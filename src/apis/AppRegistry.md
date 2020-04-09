@@ -39,13 +39,12 @@ external appConfig:
 type runnable('a) = {
   .
   "component": Js.Nullable.t(componentProvider('a)),
-  "run": appParameters => unit,
+  [@bs.meth] "run": appParameters => unit,
 };
 
 type registry('a) = {
-  .
-  "sections": array(section),
-  "runnables": Js.Dict.t(runnable('a)),
+  sections: array(section),
+  runnables: Js.Dict.t(runnable('a)),
 };
 
 [@bs.module "react-native"] [@bs.scope "AppRegistry"]

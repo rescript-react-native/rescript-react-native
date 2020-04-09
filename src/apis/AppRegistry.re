@@ -29,8 +29,9 @@ external appConfig:
   appConfig;
 
 type runnable('a) = {
-  component: Js.Nullable.t(componentProvider('a)),
-  run: appParameters => unit,
+  .
+  "component": Js.Nullable.t(componentProvider('a)),
+  [@bs.meth] "run": appParameters => unit,
 };
 
 type registry('a) = {
