@@ -69,7 +69,7 @@ let scrollToEndWithOptions = (scrollView, scrollParams) => unit;
 include ScrollViewElement;
 
 type contentOffset;
-[@bs.obj] external contentOffset: (~x: float, ~y: float) => contentOffset = "contentOffset";
+[@bs.obj] external contentOffset: (~x: float, ~y: float) => contentOffset;
 
 [@react.component] [@bs.module "react-native"]
 external make:

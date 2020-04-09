@@ -29,8 +29,7 @@ external uriSource:
     ~height: float=?,
     unit
   ) =>
-  uriSource =
-  "";
+  uriSource;
 
 module Source = {
   type t;
@@ -46,8 +45,7 @@ module DefaultSource = {
   [@bs.obj]
   external fromUri:
     (~uri: string, ~scale: float=?, ~width: float=?, ~height: float=?, unit) =>
-    t =
-    "";
+    t;
 
   external fromRequired: Packager.required => t = "%identity";
 };

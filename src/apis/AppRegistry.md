@@ -33,8 +33,7 @@ external appConfig:
     ~section: bool=?,
     unit
   ) =>
-  appConfig =
-  "";
+  appConfig;
 
 type runnable('a) = {
   .

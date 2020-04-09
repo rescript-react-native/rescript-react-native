@@ -33,8 +33,7 @@ external options:
     ~mode: [@bs.string] [ | `calendar | `spinner | `default]=?,
     unit
   ) =>
-  options =
-  "";
+  options;
 
 type response = {
   action: action,

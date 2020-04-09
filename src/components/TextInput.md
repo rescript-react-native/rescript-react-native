@@ -7,63 +7,55 @@ wip: true
 ```reason
 include TextInputElement;
 
-type changeEvent =
-  Event.syntheticEvent({
-    .
-    "eventCount": int,
-    "target": int,
-    "text": string,
-  });
-
-type editingEvent =
-  Event.syntheticEvent({
-    .
-    "text": string,
-    "eventCount": int,
-    "target": int,
-  });
-
-type contentSizeChangeEvent =
-  Event.syntheticEvent({
-    .
-    "target": int,
-    "contentSize": {
-      .
-      "width": float,
-      "height": float,
-    },
-  });
-
-type scrollEvent =
-  Event.syntheticEvent({
-    .
-    "contentOffset": {
-      .
-      "x": float,
-      "y": float,
-    },
-  });
-
-type selection = {
-  .
-  "start": int,
-  "_end": int,
+type changeEvent = Event.syntheticEvent(changePayload)
+and changePayload = {
+  eventCount: int,
+  target: int,
+  text: string,
 };
 
-type selectionChangeEvent =
-  Event.syntheticEvent({
-    .
-    "selection": selection,
-    "target": int,
-  });
+type editingEvent = Event.syntheticEvent(editingPayload)
+and editingPayload = {
+  text: string,
+  eventCount: int,
+  target: int,
+};
 
-type keyPressEvent =
-  Event.syntheticEvent({
-    .
-    "key": string,
-    "target": Js.Nullable.t(int),
-    "eventCount": Js.Nullable.t(int),
-  });
+type contentSizeChangeEvent = Event.syntheticEvent(contentSizeChangePayload)
+and contentSizeChangePayload = {
+  target: int,
+  contentSize,
+}
+and contentSize = {
+  width: float,
+  height: float,
+};
+
+type scrollEvent = Event.syntheticEvent(scrollPayload)
+and scrollPayload = {contentOffset}
+and contentOffset = {
+  x: float,
+  y: float,
+};
+
+type selection = {
+  start: int,
+  [@bs.as "end"]
+  _end: int,
+};
+
+type selectionChangeEvent = Event.syntheticEvent(selectionChangePayload)
+and selectionChangePayload = {
+  selection,
+  target: int,
+};
+
+type keyPressEvent = Event.syntheticEvent(keyPressPayload)
+and keyPressPayload = {
+  key: string,
+  target: Js.Nullable.t(int),
+  eventCount: Js.Nullable.t(int),
+};
 
 module DataDetectorTypes = TextInput_DataDetectorTypes;
 
@@ -81,21 +73,21 @@ external make:
                      ]
                        =?,
     ~autoCompleteType: [@bs.string] [
-                     | `off
-                     | `username
-                     | `password
-                     | `email
-                     | `name
-                     | `tel
-                     | [@bs.as "street-address"] `streetAddress
-                     | [@bs.as "postal-code"] `postalCode
-                     | [@bs.as "cc-number"] `ccNumber
-                     | [@bs.as "cc-csc"] `ccCsc
-                     | [@bs.as "cc-exp"] `ccExp
-                     | [@bs.as "cc-exp-month"] `ccExpMonth
-                     | [@bs.as "cc-exp-year"] `ccExpYear
-                   ]
-                     =?,
+                         | `off
+                         | `username
+                         | `password
+                         | `email
+                         | `name
+                         | `tel
+                         | [@bs.as "street-address"] `streetAddress
+                         | [@bs.as "postal-code"] `postalCode
+                         | [@bs.as "cc-number"] `ccNumber
+                         | [@bs.as "cc-csc"] `ccCsc
+                         | [@bs.as "cc-exp"] `ccExp
+                         | [@bs.as "cc-exp-month"] `ccExpMonth
+                         | [@bs.as "cc-exp-year"] `ccExpYear
+                       ]
+                         =?,
     ~autoCorrect: bool=?,
     ~autoFocus: bool=?,
     ~blurOnSubmit: bool=?,
@@ -298,7 +290,7 @@ external make:
     ~onMouseMove: ReactEvent.Mouse.t => unit=?,
     ~onMouseOver: ReactEvent.Mouse.t => unit=?,
     ~onMouseOut: ReactEvent.Mouse.t => unit=?,
-    ~onMouseUp: ReactEvent.Mouse.t => unit=?,
+    ~onMouseUp: ReactEvent.Mouse.t => unit=?
   ) =>
   React.element =
   "TextInput";

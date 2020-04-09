@@ -59,8 +59,7 @@ external viewabilityConfig:
     ~waitForInteraction: bool=?,
     unit
   ) =>
-  viewabilityConfig =
-  "";
+  viewabilityConfig;
 
 type viewabilityConfigCallbackPair('item);
 [@bs.obj]
@@ -69,8 +68,7 @@ external viewabilityConfigCallbackPair:
     ~viewabilityConfig: viewabilityConfig,
     ~onViewableItemsChanged: viewableItemsChanged('item) => unit
   ) =>
-  viewabilityConfigCallbackPair('item) =
-  "";
+  viewabilityConfigCallbackPair('item);
 
 type viewabilityConfigCallbackPairs('item) =
   array(viewabilityConfigCallbackPair('item));
