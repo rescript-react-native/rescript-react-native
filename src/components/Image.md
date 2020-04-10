@@ -50,23 +50,25 @@ module DefaultSource = {
   external fromRequired: Packager.required => t = "%identity";
 };
 
-type imageLoadEvent =
-  Event.syntheticEvent({
-    source: {
-      width: float,
-      height: float,
-      url: string,
-    },
-    uri: Js.Nullable.t(string),
-  });
+type imageLoadEvent = Event.syntheticEvent(imageLoadPayload)
+and imageLoadPayload = {
+  uri: Js.Nullable.t(string),
+  source,
+}
+and source = {
+  width: float,
+  height: float,
+  url: string,
+};
 
-type errorEvent = Event.syntheticEvent(error: string);
+type errorEvent = Event.syntheticEvent(errorPayload)
+and errorPayload = {error: string};
 
-type progressEvent =
-  Event.syntheticEvent({
-    loaded: float,
-    total: float,
-  });
+type progressEvent = Event.syntheticEvent(progressPayload)
+and progressPayload = {
+  loaded: float,
+  total: float,
+};
 
 [@react.component] [@bs.module "react-native"]
 external make:
