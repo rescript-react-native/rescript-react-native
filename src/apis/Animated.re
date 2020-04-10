@@ -1,6 +1,6 @@
 module Animation = {
   type t;
-  type endResult = {. "finished": bool};
+  type endResult = {finished: bool};
   type endCallback = endResult => unit;
   [@bs.send]
   external start: (t, ~endCallback: endCallback=?, unit) => unit = "start";
@@ -36,8 +36,7 @@ module ValueAnimations = (Val: Value) => {
         ~iterations: int=?,
         unit
       ) =>
-      config =
-      "";
+      config;
 
     [@bs.module "react-native"] [@bs.scope "Animated"]
     external decay: (Val.t, config) => Animation.t = "decay";
@@ -72,8 +71,7 @@ module ValueAnimations = (Val: Value) => {
         ~iterations: int=?,
         unit
       ) =>
-      config =
-      "";
+      config;
 
     [@bs.module "react-native"] [@bs.scope "Animated"]
     external spring: (Val.t, config) => Animation.t = "spring";
@@ -100,8 +98,7 @@ module ValueAnimations = (Val: Value) => {
         ~iterations: int=?,
         unit
       ) =>
-      config =
-      "";
+      config;
 
     [@bs.module "react-native"] [@bs.scope "Animated"]
     external timing: (Val.t, config) => Animation.t = "timing";
@@ -126,8 +123,7 @@ module Interpolation = {
       ~extrapolateRight: [@bs.string] [ | `extend | `clamp | `identity]=?,
       unit
     ) =>
-    config =
-    "";
+    config;
   [@bs.send] external interpolate: (value('a), config) => t = "interpolate";
 };
 
@@ -204,17 +200,15 @@ module ValueXY = {
     type addListenerCallback = jsValue => unit;
   });
 
-  [@bs.obj] external jsValue: (~x: float, ~y: float) => jsValue = "";
+  [@bs.obj] external jsValue: (~x: float, ~y: float) => jsValue;
 
   type translateTransform = {
-    .
-    "translateX": Value.t,
-    "translateY": Value.t,
+    translateX: Value.t,
+    translateY: Value.t,
   };
   type layout = {
-    .
-    "left": Value.t,
-    "top": Value.t,
+    left: Value.t,
+    top: Value.t,
   };
   [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
   external create: jsValue => t = "ValueXY";
@@ -230,9 +224,9 @@ external delay: float => Animation.t = "delay";
 [@bs.module "react-native"] [@bs.scope "Animated"]
 external sequence: array(Animation.t) => Animation.t = "sequence";
 
+type parallelPayload = {stopTogether: bool};
 [@bs.module "react-native"] [@bs.scope "Animated"]
-external parallel:
-  (array(Animation.t), {. "stopTogether": bool}) => Animation.t =
+external parallel: (array(Animation.t), parallelPayload) => Animation.t =
   "parallel";
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
@@ -240,7 +234,7 @@ external stagger: (float, array(Animation.t)) => Animation.t = "stagger";
 
 type loopConfig;
 
-[@bs.obj] external loopConfig: (~iterations: int) => loopConfig = "";
+[@bs.obj] external loopConfig: (~iterations: int) => loopConfig;
 
 // multiple externals
 [@bs.module "react-native"] [@bs.scope "Animated"]
@@ -253,8 +247,7 @@ external loopWithConfig: (Animation.t, loopConfig) => Animation.t = "loop";
 type eventOptions('a);
 [@bs.obj]
 external eventOptions:
-  (~listener: 'a=?, ~useNativeDriver: bool, unit) => eventOptions('a) =
-  "";
+  (~listener: 'a=?, ~useNativeDriver: bool, unit) => eventOptions('a);
 
 // multiple externals
 [@bs.module "react-native"] [@bs.scope "Animated"]

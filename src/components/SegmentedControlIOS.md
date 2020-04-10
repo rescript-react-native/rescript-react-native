@@ -18,9 +18,8 @@ replacement
 include NativeElement;
 
 type change = {
-  .
-  "value": string,
-  "selectedSegmentIndex": int,
+  value: string,
+  selectedSegmentIndex: int,
 };
 
 [@react.component] [@bs.module "react-native"]

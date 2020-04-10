@@ -5,13 +5,14 @@ wip: true
 ---
 
 ```reason
+type snapshotReady = Event.syntheticEvent(snapshotReadyPaylaod)
+and snapshotReadyPaylaod = {testIdentifier: string};
+
 [@react.component] [@bs.module "react-native"]
+// SnapshotViewIOS props
 external make:
   (
-    // SnapshotViewIOS props
-    ~onSnapshotReady: Event.syntheticEvent({. "testIdentifier": string}) =>
-                      unit
-                        =?,
+    ~onSnapshotReady: snapshotReady => unit=?,
     ~testIdentifier: string=?,
     // View props
     ~accessibilityComponentType: [@bs.string] [
@@ -90,6 +91,4 @@ external make:
   ) =>
   React.element =
   "SnapshotViewIOS";
-
-
 ```

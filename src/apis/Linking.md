@@ -89,23 +89,22 @@ extra: (~key: string, ~value: 'a) => extra
 
 To specify a handler for the specified event type. Only the "url" event is
 supported, which should be specified using the polymorphic variant `` `url ``.
-The handler should be of type `{. "url": string} => unit`. The URL can be
-obtained from the returned object using the `##url` accessor. This method
-returns `unit`.
+The handler should be of type `{url: string} => unit`. The URL can be obtained
+from the returned object using the `.url` property. This method returns `unit`.
 
 ```reason
-addEventListener: ([ `url], {. "url": string} => unit) => unit
+addEventListener: ([ `url], {url: string} => unit) => unit
 ```
 
 ### `removeEventListener`
 
 To remove a handler for the specified event type. Only the "url" event is
 supported, which should be specified using the polymorphic variant `` `url ``.
-The handler should be of type `{. "url": string} => unit`. This method returns
+The handler should be of type `{url: string} => unit`. This method returns
 `unit`.
 
 ```reason
-removeEventListener([ `url], {. "url": string} => unit) => unit
+removeEventListener([ `url], {url: string} => unit) => unit
 ```
 
 ### Example

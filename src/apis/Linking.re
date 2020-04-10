@@ -1,6 +1,5 @@
 type extra;
-
-[@bs.obj] external extra: (~key: string, ~value: 'a) => extra = "";
+[@bs.obj] external extra: (~key: string, ~value: 'a) => extra;
 
 [@bs.scope "Linking"] [@bs.module "react-native"]
 external openURL: string => Js.Promise.t(unit) = "openURL";
@@ -23,12 +22,12 @@ external sendIntent: string => unit = "sendIntent";
 [@bs.scope "Linking"] [@bs.module "react-native"]
 external sendIntentWithExtras: (string, array(extra)) => unit = "sendIntent";
 
+type url = {url: string};
+
 [@bs.scope "Linking"] [@bs.module "react-native"]
-external addEventListener:
-  ([@bs.string] [ | `url], {. "url": string} => unit) => unit =
+external addEventListener: ([@bs.string] [ | `url], url => unit) => unit =
   "addEventListener";
 
 [@bs.scope "Linking"] [@bs.module "react-native"]
-external removeEventListener:
-  ([@bs.string] [ | `url], {. "url": string} => unit) => unit =
+external removeEventListener: ([@bs.string] [ | `url], url => unit) => unit =
   "removeEventListener";

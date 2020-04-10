@@ -19,11 +19,10 @@ external state:
     ~expanded: bool=?,
     unit
   ) =>
-  state =
-  "";
+  state;
 
 type value;
 
-[@bs.obj] external textValue: (~text: string) => value = "";
+[@bs.obj] external textValue: (~text: string) => value;
 
-[@bs.obj] external intValue: (~min: int, ~max: int, ~now: int) => value = "";
+[@bs.obj] external intValue: (~min: int, ~max: int, ~now: int) => value;

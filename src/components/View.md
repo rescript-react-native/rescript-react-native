@@ -11,8 +11,7 @@ type edgeInsets;
 [@bs.obj]
 external edgeInsets:
   (~left: float=?, ~right: float=?, ~top: float=?, ~bottom: float=?, unit) =>
-  edgeInsets =
-  "";
+  edgeInsets;
 
 [@react.component] [@bs.module "react-native"]
 external make:

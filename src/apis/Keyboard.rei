@@ -18,20 +18,18 @@ module Easing: {
 };
 
 type screenRect = {
-  .
-  "screenX": float,
-  "screenY": float,
-  "width": float,
-  "height": float,
+  screenX: float,
+  screenY: float,
+  width: float,
+  height: float,
 };
 
 type keyboardEvent = {
-  .
-  "duration": float,
-  "easing": Easing.t,
-  "endCoordinates": screenRect,
-  "startCoordinates": screenRect,
-  "isEventFromThisApp": bool,
+  duration: float,
+  easing: Easing.t,
+  endCoordinates: screenRect,
+  startCoordinates: screenRect,
+  isEventFromThisApp: bool,
 };
 
 type listener = keyboardEvent => unit;

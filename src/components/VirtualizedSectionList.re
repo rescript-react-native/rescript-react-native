@@ -1,41 +1,40 @@
 include VirtualizedListElement;
 
 type renderItemProps('item, 'sectionData) = {
-  .
-  "item": 'item,
-  "index": int,
-  "section": section('item, 'sectionData),
-  "separators": {
-    .
-    "highlight": unit => unit,
-    "unhighlight": unit => unit,
-  },
+  item: 'item,
+  index: int,
+  section: section('item, 'sectionData),
+  separators,
 }
 and section('item, 'sectionData) = {
-  .
-  "data": array('item),
-  "key": option(string),
-  "renderItem": option(renderItemCallback('item, 'sectionData)),
-  "ItemSeparatorComponent": option(unit => React.element),
-  "keyExtractor": option(('item, int) => string),
-  "sectionData": option('sectionData),
+  data: array('item),
+  key: option(string),
+  renderItem: option(renderItemCallback('item, 'sectionData)),
+  [@bs.as "ItemSeparatorComponent"]
+  itemSeparatorComponent: option(unit => React.element),
+  keyExtractor: option(('item, int) => string),
+  sectionData: option('sectionData),
+}
+and separators = {
+  highlight: unit => unit,
+  unhighlight: unit => unit,
 }
 and renderItemCallback('item, 'sectionData) =
-  renderItemProps('item, 'sectionData) => React.element
-and renderSectionHeaderProps('item, 'sectionData) = {
-  .
-  "section": section('item, 'sectionData),
-}
-and renderSectionHeaderCallback('item, 'sectionData) =
+  renderItemProps('item, 'sectionData) => React.element;
+
+type renderSectionHeaderCallback('item, 'sectionData) =
   renderSectionHeaderProps('item, 'sectionData) => React.element
-and separatorProps('item, 'sectionData) = {
-  .
-  "highlighted": bool,
-  "leadingItem": option('item),
-  "leadingSection": option(section('item, 'sectionData)),
-  "section": section('item, 'sectionData),
-  "trailingItem": option('item),
-  "trailingSection": option(section('item, 'sectionData)),
+and renderSectionHeaderProps('item, 'sectionData) = {
+  section: section('item, 'sectionData),
+};
+
+type separatorProps('item, 'sectionData) = {
+  highlighted: bool,
+  leadingItem: option('item),
+  leadingSection: option(section('item, 'sectionData)),
+  section: section('item, 'sectionData),
+  trailingItem: option('item),
+  trailingSection: option(section('item, 'sectionData)),
 };
 
 [@bs.obj]
@@ -49,8 +48,7 @@ external section:
     ~sectionData: 'sectionData=?,
     unit
   ) =>
-  section('item, 'sectionData) =
-  "";
+  section('item, 'sectionData);
 
 [@react.component] [@bs.module "react-native"]
 external make:

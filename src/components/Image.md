@@ -29,8 +29,7 @@ external uriSource:
     ~height: float=?,
     unit
   ) =>
-  uriSource =
-  "";
+  uriSource;
 
 module Source = {
   type t;
@@ -46,32 +45,30 @@ module DefaultSource = {
   [@bs.obj]
   external fromUri:
     (~uri: string, ~scale: float=?, ~width: float=?, ~height: float=?, unit) =>
-    t =
-    "";
+    t;
 
   external fromRequired: Packager.required => t = "%identity";
 };
 
-type imageLoadEvent =
-  Event.syntheticEvent({
-    .
-    "source": {
-      .
-      "width": float,
-      "height": float,
-      "url": string,
-    },
-    "uri": Js.Nullable.t(string),
-  });
+type imageLoadEvent = Event.syntheticEvent(imageLoadPayload)
+and imageLoadPayload = {
+  uri: Js.Nullable.t(string),
+  source,
+}
+and source = {
+  width: float,
+  height: float,
+  url: string,
+};
 
-type errorEvent = Event.syntheticEvent({. "error": string});
+type errorEvent = Event.syntheticEvent(errorPayload)
+and errorPayload = {error: string};
 
-type progressEvent =
-  Event.syntheticEvent({
-    .
-    "loaded": float,
-    "total": float,
-  });
+type progressEvent = Event.syntheticEvent(progressPayload)
+and progressPayload = {
+  loaded: float,
+  total: float,
+};
 
 [@react.component] [@bs.module "react-native"]
 external make:
@@ -134,10 +131,9 @@ external abortPrefetch: requestId => unit = "abortPrefetch";
 external queryCache: (~uris: array(string)) => unit = "queryCache";
 
 type asset = {
-  .
-  "uri": string,
-  "width": float,
-  "height": float,
+  uri: string,
+  width: float,
+  height: float,
 };
 
 [@bs.module "react-native"] [@bs.scope "Image"]
