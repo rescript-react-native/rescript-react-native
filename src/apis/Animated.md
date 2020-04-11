@@ -201,10 +201,6 @@ module ValueXY = {
 
   [@bs.obj] external jsValue: (~x: float, ~y: float) => jsValue;
 
-  type translateTransform = {
-    translateX: Value.t,
-    translateY: Value.t,
-  };
   type layout = {
     left: Value.t,
     top: Value.t,
