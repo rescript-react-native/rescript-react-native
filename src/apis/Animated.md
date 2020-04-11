@@ -212,7 +212,7 @@ module ValueXY = {
   [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
   external create: jsValue => t = "ValueXY";
   [@bs.send] external getLayout: t => layout = "getLayout";
-  [@bs.send] external getTranslateTransform: t => translateTransform = "getTranslateTransform";
+  [@bs.send] external getTranslateTransform: t => array(Style.transform) = "getTranslateTransform";
 };
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
