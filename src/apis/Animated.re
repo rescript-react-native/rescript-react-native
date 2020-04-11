@@ -210,7 +210,7 @@ module ValueXY = {
   external create: jsValue => t = "ValueXY";
   [@bs.send] external getLayout: t => layout = "getLayout";
   [@bs.send]
-  external getTranslateTransform: t => array(ReactNative.Style.transform) =
+  external getTranslateTransform: t => array(Style.transform) =
     "getTranslateTransform";
 };
 
