@@ -3,15 +3,13 @@ module Make = (T: {type t;}) => {
   [@bs.obj]
   external scrollToParams:
     (~x: float, ~y: float, ~animated: bool=?, ~duration: float=?, unit) =>
-    scrollToParams =
-    "";
+    scrollToParams;
   [@bs.send] external scrollTo: (T.t, scrollToParams) => unit = "scrollTo";
 
   type scrollToEndOptions;
   [@bs.obj]
   external scrollToEndOptions:
-    (~animated: bool=?, ~duration: float=?, unit) => scrollToEndOptions =
-    "";
+    (~animated: bool=?, ~duration: float=?, unit) => scrollToEndOptions;
 
   // multiple externals
   [@bs.send] external scrollToEnd: T.t => unit = "scrollToEnd";

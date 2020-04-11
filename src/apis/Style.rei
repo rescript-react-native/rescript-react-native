@@ -26,25 +26,25 @@ type margin = size;
 let auto: margin;
 
 type offset;
-[@bs.obj] external offset: (~height: float, ~width: float) => offset = "";
+[@bs.obj] external offset: (~height: float, ~width: float) => offset;
 
 type angle;
 let deg: float => angle;
 let rad: float => angle;
 
 type transform;
-[@bs.obj] external perspective: (~perspective: float) => transform = "";
-[@bs.obj] external rotate: (~rotate: angle) => transform = "";
-[@bs.obj] external rotateX: (~rotateX: angle) => transform = "";
-[@bs.obj] external rotateY: (~rotateY: angle) => transform = "";
-[@bs.obj] external rotateZ: (~rotateZ: angle) => transform = "";
-[@bs.obj] external scale: (~scale: float) => transform = "";
-[@bs.obj] external scaleX: (~scaleX: float) => transform = "";
-[@bs.obj] external scaleY: (~scaleY: float) => transform = "";
-[@bs.obj] external translateX: (~translateX: float) => transform = "";
-[@bs.obj] external translateY: (~translateY: float) => transform = "";
-[@bs.obj] external skewX: (~skewX: angle) => transform = "";
-[@bs.obj] external skewY: (~skewY: angle) => transform = "";
+[@bs.obj] external perspective: (~perspective: float) => transform;
+[@bs.obj] external rotate: (~rotate: angle) => transform;
+[@bs.obj] external rotateX: (~rotateX: angle) => transform;
+[@bs.obj] external rotateY: (~rotateY: angle) => transform;
+[@bs.obj] external rotateZ: (~rotateZ: angle) => transform;
+[@bs.obj] external scale: (~scale: float) => transform;
+[@bs.obj] external scaleX: (~scaleX: float) => transform;
+[@bs.obj] external scaleY: (~scaleY: float) => transform;
+[@bs.obj] external translateX: (~translateX: float) => transform;
+[@bs.obj] external translateY: (~translateY: float) => transform;
+[@bs.obj] external skewX: (~skewX: angle) => transform;
+[@bs.obj] external skewY: (~skewY: angle) => transform;
 // @todo matrix
 
 external unsafeTransform: Js.t('a) => transform = "%identity";
@@ -264,8 +264,7 @@ external style:
     ~zIndex: int=?,
     unit
   ) =>
-  t =
-  "";
+  t;
 
 // ____ViewStyleProp_Internal
 [@bs.obj]
@@ -402,8 +401,7 @@ external viewStyle:
     ~zIndex: int=?,
     unit
   ) =>
-  t =
-  "";
+  t;
 
 // ____TextStyleProp_Internal
 [@bs.obj]
@@ -591,8 +589,7 @@ external textStyle:
     ~zIndex: int=?,
     unit
   ) =>
-  t =
-  "";
+  t;
 
 // ____ImageStyleProp_Internal
 [@bs.obj]
@@ -739,5 +736,4 @@ external imageStyle:
     ~zIndex: int=?,
     unit
   ) =>
-  t =
-  "";
+  t;

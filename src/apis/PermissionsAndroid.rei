@@ -122,8 +122,7 @@ external rationale:
     ~buttonNeutral: string=?,
     unit
   ) =>
-  rationale =
-  "";
+  rationale;
 
 type dict;
 
@@ -144,4 +143,4 @@ external requestWithRationale:
 external requestMultiple: array(Permission.t) => Js.Promise.t(dict) =
   "requestMultiple";
 
-[@bs.get_index] external get: (dict, Permission.t) => option(Result.t) = "";
+[@bs.get_index] external get: (dict, Permission.t) => option(Result.t);

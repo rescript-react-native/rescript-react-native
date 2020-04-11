@@ -12,7 +12,6 @@ external parallax:
     ~pressDelay: float,
     unit
   ) =>
-  parallax =
-  "";
+  parallax;
 
 let parallaxDefault: parallax = true->Obj.magic;
