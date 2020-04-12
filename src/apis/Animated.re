@@ -202,10 +202,6 @@ module ValueXY = {
 
   [@bs.obj] external jsValue: (~x: float, ~y: float) => jsValue;
 
-  type translateTransform = {
-    translateX: Value.t,
-    translateY: Value.t,
-  };
   type layout = {
     left: Value.t,
     top: Value.t,
@@ -214,7 +210,7 @@ module ValueXY = {
   external create: jsValue => t = "ValueXY";
   [@bs.send] external getLayout: t => layout = "getLayout";
   [@bs.send]
-  external getTranslateTransform: t => translateTransform =
+  external getTranslateTransform: t => array(Style.transform) =
     "getTranslateTransform";
 };
 

@@ -201,10 +201,6 @@ module ValueXY = {
 
   [@bs.obj] external jsValue: (~x: float, ~y: float) => jsValue;
 
-  type translateTransform = {
-    translateX: Value.t,
-    translateY: Value.t,
-  };
   type layout = {
     left: Value.t,
     top: Value.t,
@@ -212,7 +208,7 @@ module ValueXY = {
   [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
   external create: jsValue => t = "ValueXY";
   [@bs.send] external getLayout: t => layout = "getLayout";
-  [@bs.send] external getTranslateTransform: t => translateTransform = "getTranslateTransform";
+  [@bs.send] external getTranslateTransform: t => array(Style.transform) = "getTranslateTransform";
 };
 
 [@bs.module "react-native"] [@bs.scope "Animated"]
