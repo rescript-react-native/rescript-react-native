@@ -2,8 +2,7 @@ type options;
 
 [@bs.obj]
 external options:
-  (~cancelable: bool=?, ~onDismiss: unit => unit=?, unit) => options =
-  "";
+  (~cancelable: bool=?, ~onDismiss: unit => unit=?, unit) => options;
 
 type button;
 
@@ -15,8 +14,7 @@ external button:
     ~style: [@bs.string] [ | `default | `cancel | `destructive]=?,
     unit
   ) =>
-  button =
-  "";
+  button;
 
 [@bs.scope "Alert"] [@bs.module "react-native"]
 external alert:
