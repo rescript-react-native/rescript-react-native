@@ -253,8 +253,8 @@ Then, the custom `PanResponder` can be used as below:
 ```reason
 open ReactNative;
 
-let windowHeight = Dimensions.get(`window)##height;
-let windowWidth = Dimensions.get(`window)##width;
+let windowHeight = Dimensions.get(`window).height;
+let windowWidth = Dimensions.get(`window).width;
 
 let containerStyle =
   Style.(
