@@ -25,7 +25,7 @@ These values may be compared against what is returned by the method or hook, as
 in the below example:
 
 ```reason
-Appearance.getColorScheme() == Js.Null.return(Appearance.dark)
+Appearance.getColorScheme() === Js.Null.return(Appearance.dark)
 ```
 
 ## Methods
