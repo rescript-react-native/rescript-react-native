@@ -16,6 +16,6 @@
       "subdirs": true
     }
   ],
-  "bsc-flags": ["-bs-no-version-header", "-warn-error @a", "-w @a-105"],
+  "bsc-flags": ["-bs-no-version-header", "-warn-error @a"],
   "bs-dependencies": ["reason-react"]
 }
