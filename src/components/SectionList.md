@@ -5,7 +5,15 @@ wip: true
 ---
 
 ```reason
-include VirtualizedListElement;
+include VirtualizedSectionListElement;
+
+[@bs.send]
+external flashScrollIndicators: element => unit = "flashScrollIndicators";
+
+[@bs.send] external recordInteraction: element => unit = "recordInteraction";
+
+[@bs.send]
+external setNativeProps: (element, Js.t('a)) => unit = "setNativeProps";
 
 [@react.component] [@bs.module "react-native"]
 external make:

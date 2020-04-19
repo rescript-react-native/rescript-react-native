@@ -5,7 +5,7 @@ wip: true
 ---
 
 ```reason
-include VirtualizedListElement;
+include VirtualizedSectionListElement;
 
 type renderItemProps('item, 'sectionData) = {
   item: 'item,

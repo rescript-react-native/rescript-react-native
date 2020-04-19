@@ -8,7 +8,3 @@ include VirtualizedListMethods.Make({
 include ScrollViewMethods.Make({
   type t = element;
 });
-
-include NativeMethods.Make({
-  type t = element;
-});
