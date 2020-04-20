@@ -1,11 +1,4 @@
 module Make = (T: {type t;}) => {
-  type scrollToParams;
-  [@bs.obj]
-  external scrollToParams:
-    (~x: float, ~y: float, ~animated: bool=?, ~duration: float=?, unit) =>
-    scrollToParams;
-  [@bs.send] external scrollTo: (T.t, scrollToParams) => unit = "scrollTo";
-
   type scrollToEndOptions;
   [@bs.obj]
   external scrollToEndOptions:
@@ -21,4 +14,7 @@ module Make = (T: {type t;}) => {
 
   [@bs.send]
   external flashScrollIndicators: T.t => unit = "flashScrollIndicators";
+
+  [@bs.send]
+  external setNativeProps: (T.t, Js.t('a)) => unit = "setNativeProps";
 };

@@ -1,6 +1,6 @@
 'use strict';
 
-var VirtualizedListElement$ReactNative = require("../elements/VirtualizedListElement.bs.js");
+var VirtualizedSectionListElement$ReactNative = require("../elements/VirtualizedSectionListElement.bs.js");
 
 
-/* VirtualizedListElement-ReactNative Not a pure module */
+/* VirtualizedSectionListElement-ReactNative Not a pure module */
