@@ -62,70 +62,108 @@ type responderSyntheticEvent('a) = {
   },
 };
 
-type textLayout = {
-  x: float,
-  y: float,
-  width: float,
-  height: float,
-  ascender: float, // verify
-  capHeight: float, // verify
-  descender: float, // verify
-  text: string,
-  xHeight: float // verify
+module TextLayout = {
+  module Line = {
+    type t = {
+      x: float,
+      y: float,
+      width: float,
+      height: float,
+      ascender: float, // verify
+      capHeight: float, // verify
+      descender: float, // verify
+      text: string,
+      xHeight: float // verify
+    };
+  };
+  type t = {lines: array(Line.t)};
 };
 
-type layoutEvent = syntheticEvent(layout)
-and layout = {
-  x: float,
-  y: float,
-  width: float,
-  height: float,
+module LayoutEvent = {
+  module Layout = {
+    type t = {
+      x: float,
+      y: float,
+      width: float,
+      height: float,
+    };
+  };
+  type t = {layout: Layout.t};
 };
 
-type textLayoutEvent = syntheticEvent(textLayouts)
-and textLayouts = {lines: array(textLayout)};
+type layout = LayoutEvent.t;
+type layoutEvent = syntheticEvent(layout);
 
-type pressEventPayload = {
-  changedTouches: array(pressEventPayload),
-  force: float,
-  identifier: int,
-  locationX: float,
-  locationY: float,
-  pageX: float,
-  pageY: float,
-  target: Js.Nullable.t(float),
-  timestamp: float,
-  touches: array(pressEventPayload),
+type textLayout = TextLayout.Line.t;
+type textLayouts = TextLayout.t;
+type textLayoutEvent = syntheticEvent(textLayouts);
+
+module PressEvent = {
+  type t = {
+    changedTouches: array(t),
+    force: float,
+    identifier: int,
+    locationX: float,
+    locationY: float,
+    pageX: float,
+    pageY: float,
+    target: Js.Nullable.t(float),
+    timestamp: float,
+    touches: array(t),
+  };
 };
-
+type pressEventPayload = PressEvent.t;
 type pressEvent = responderSyntheticEvent(pressEventPayload);
 
-type contentOffset = {
-  x: float,
-  y: float,
+module Dimensions = {
+  type t = {
+    height: float,
+    width: float,
+  };
 };
 
-type dimensions = {
-  height: float,
-  width: float,
+type dimensions = Dimensions.t;
+
+module ScrollEvent = {
+  module ContentOffset = {
+    type t = {
+      x: float,
+      y: float,
+    };
+  };
+
+  module ContentInset = {
+    type t = {
+      bottom: float,
+      left: float,
+      right: float,
+      top: float,
+    };
+  };
+
+  type t = {
+    contentInset: ContentInset.t,
+    contentOffset: ContentOffset.t,
+    contentSize: dimensions,
+    layoutMeasurement: dimensions,
+  };
 };
 
-type scrollEvent = syntheticEvent(scrollEventPayload)
-and scrollEventPayload = {
-  contentInset,
-  contentOffset,
-  contentSize: dimensions,
-  layoutMeasurement: dimensions,
-}
-and contentInset = {
-  bottom: float,
-  left: float,
-  right: float,
-  top: float,
+type contentOffset = ScrollEvent.ContentOffset.t;
+type contentInset = ScrollEvent.ContentInset.t;
+type scrollEventPayload = ScrollEvent.t;
+type scrollEvent = syntheticEvent(scrollEventPayload);
+
+module SwitchChangePayload = {
+  type t = {value: bool};
 };
 
-type switchChangeEvent = syntheticEvent(switchChangePayload)
-and switchChangePayload = {value: bool};
+type switchChangePayload = SwitchChangePayload.t;
+type switchChangeEvent = syntheticEvent(switchChangePayload);
 
-type targetEvent = syntheticEvent(targetPayload)
-and targetPayload = {target: int};
+module TargetEvent = {
+  type t = {target: int};
+};
+
+type targetPayload = TargetEvent.t;
+type targetEvent = syntheticEvent(targetPayload);
