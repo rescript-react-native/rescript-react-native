@@ -2,6 +2,9 @@ type os = pri string;
 
 [@bs.module "react-native"] [@bs.scope "Platform"] external os: os = "OS";
 
+[@bs.module "react-native"] [@bs.scope "Platform"]
+external version: string = "Version";
+
 [@bs.inline "ios"]
 let ios: os;
 

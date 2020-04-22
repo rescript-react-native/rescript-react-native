@@ -40,6 +40,11 @@ let styles =
   );
 ```
 
+## `Platform.version`
+
+Detects the version of the platform in which the app is running.
+[`React Native Docs`](https://reactnative.dev/docs/platform-specific-code#detecting-the-android-version)
+
 ## `Platform.select`
 
 _⚠️ Unsupported._
