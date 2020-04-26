@@ -1,5 +1,5 @@
 type element;
-type ref = React.Ref.t(Js.nullable(element));
+type ref = Ref.t(element);
 
 include TouchableOpacityMethods.Make({
   type t = element;
