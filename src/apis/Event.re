@@ -87,7 +87,8 @@ module Layout = {
 };
 
 module LayoutEvent = {
-  type t = {layout: Layout.t};
+  type layout = Layout.t;
+  type t = {layout};
 };
 
 type layout = LayoutEvent.t;
