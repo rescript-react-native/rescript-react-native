@@ -3,10 +3,10 @@ type os = string;
 [@bs.module "react-native"] [@bs.scope "Platform"] external os: os = "OS";
 
 [@bs.module "react-native"] [@bs.scope "Platform"]
-external iosVersion: string = "Version";
+external versionIos: string = "Version";
 
 [@bs.module "react-native"] [@bs.scope "Platform"]
-external androidVersionCode: int = "Version";
+external versionAndroid: int = "Version";
 
 [@bs.inline]
 let ios = "ios";

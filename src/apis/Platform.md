@@ -45,9 +45,9 @@ let styles =
 Detects the version of the platform in which the app is running.
 [`React Native Docs`](https://reactnative.dev/docs/platform-specific-code#detecting-the-android-version)
 
-For iOS platform: `Platform.iosVersion` (string)
+For iOS platform: `Platform.versionIos` (string)
 
-For Android platform: `Platform.androidVersionCode` (int)
+For Android platform: `Platform.versionAndroid` (int)
 
 ## `Platform.select`
 
