@@ -63,38 +63,37 @@ type responderSyntheticEvent('a) = {
 };
 
 module TextLayout = {
-  module Line = {
-    type t = {
-      x: float,
-      y: float,
-      width: float,
-      height: float,
-      ascender: float, // verify
-      capHeight: float, // verify
-      descender: float, // verify
-      text: string,
-      xHeight: float // verify
-    };
+  type line = {
+    x: float,
+    y: float,
+    width: float,
+    height: float,
+    ascender: float, // verify
+    capHeight: float, // verify
+    descender: float, // verify
+    text: string,
+    xHeight: float // verify
   };
-  type t = {lines: array(Line.t)};
+  type t = {lines: array(line)};
+};
+
+module Layout = {
+  type t = {
+    x: float,
+    y: float,
+    width: float,
+    height: float,
+  };
 };
 
 module LayoutEvent = {
-  module Layout = {
-    type t = {
-      x: float,
-      y: float,
-      width: float,
-      height: float,
-    };
-  };
   type t = {layout: Layout.t};
 };
 
 type layout = LayoutEvent.t;
 type layoutEvent = syntheticEvent(layout);
 
-type textLayout = TextLayout.Line.t;
+type textLayout = TextLayout.line;
 type textLayouts = TextLayout.t;
 type textLayoutEvent = syntheticEvent(textLayouts);
 
@@ -125,32 +124,28 @@ module Dimensions = {
 type dimensions = Dimensions.t;
 
 module ScrollEvent = {
-  module ContentOffset = {
-    type t = {
-      x: float,
-      y: float,
-    };
+  type contentOffset = {
+    x: float,
+    y: float,
   };
 
-  module ContentInset = {
-    type t = {
-      bottom: float,
-      left: float,
-      right: float,
-      top: float,
-    };
+  type contentInset = {
+    bottom: float,
+    left: float,
+    right: float,
+    top: float,
   };
 
   type t = {
-    contentInset: ContentInset.t,
-    contentOffset: ContentOffset.t,
+    contentInset: contentOffset,
+    contentOffset: contentInset,
     contentSize: dimensions,
     layoutMeasurement: dimensions,
   };
 };
 
-type contentOffset = ScrollEvent.ContentOffset.t;
-type contentInset = ScrollEvent.ContentInset.t;
+type contentOffset = ScrollEvent.contentOffset;
+type contentInset = ScrollEvent.contentInset;
 type scrollEventPayload = ScrollEvent.t;
 type scrollEvent = syntheticEvent(scrollEventPayload);
 
