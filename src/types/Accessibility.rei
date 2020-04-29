@@ -1,20 +1,21 @@
 type state;
-type checked;
+type checked('a);
 
 [@bs.inline true]
-let checked: checked;
+let checked: checked(bool);
 
 [@bs.inline false]
-let unchecked: checked;
+let unchecked: checked(bool);
 
-let mixed: checked;
+[@bs.inline "mixed"]
+let mixed: checked(string);
 
 [@bs.obj]
 external state:
   (
     ~disabled: bool=?,
     ~selected: bool=?,
-    ~checked: checked=?,
+    ~checked: checked('a)=?,
     ~busy: bool=?,
     ~expanded: bool=?,
     unit
