@@ -1,5 +1,5 @@
 type state;
-type checked = bool;
+type checked('a) = 'a;
 
 [@bs.inline]
 let checked = true;
@@ -7,14 +7,15 @@ let checked = true;
 [@bs.inline]
 let unchecked = false;
 
-let mixed: checked = "mixed"->Obj.magic;
+[@bs.inline]
+let mixed = "mixed";
 
 [@bs.obj]
 external state:
   (
     ~disabled: bool=?,
     ~selected: bool=?,
-    ~checked: checked=?,
+    ~checked: checked('a)=?,
     ~busy: bool=?,
     ~expanded: bool=?,
     unit
