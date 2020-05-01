@@ -2,15 +2,15 @@
 
 
 function pct(num) {
-  return num.toString() + "%";
+  return num + "%";
 }
 
 function deg(num) {
-  return num.toString() + "deg";
+  return num + "deg";
 }
 
 function rad(num) {
-  return num.toString() + "rad";
+  return num + "rad";
 }
 
 exports.pct = pct;

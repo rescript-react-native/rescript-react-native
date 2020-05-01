@@ -20,7 +20,9 @@ type size = string;
 external pt: float => size = "%identity";
 external dp: float => size = "%identity";
 
-let pct = num => num->Js.Float.toString ++ "%";
+external _stringSuffix: (float, string) => 'a = "#string_append";
+
+let pct = (num: float): string => _stringSuffix(num, "%");
 
 type margin = size;
 
@@ -31,8 +33,8 @@ type offset;
 [@bs.obj] external offset: (~height: float, ~width: float) => offset;
 
 type angle;
-let deg: float => angle = num => (num->Js.Float.toString ++ "deg")->Obj.magic;
-let rad: float => angle = num => (num->Js.Float.toString ++ "rad")->Obj.magic;
+let deg = (num: float): angle => _stringSuffix(num, "deg");
+let rad = (num: float): angle => _stringSuffix(num, "rad");
 
 type transform;
 [@bs.obj] external perspective: (~perspective: float) => transform;
