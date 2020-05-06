@@ -1,36 +1,24 @@
 'use strict';
 
 
-var Line = { };
-
-var TextLayout = {
-  Line: Line
-};
+var TextLayout = { };
 
 var Layout = { };
 
-var LayoutEvent = {
-  Layout: Layout
-};
+var LayoutEvent = { };
 
 var PressEvent = { };
 
 var Dimensions = { };
 
-var ContentOffset = { };
-
-var ContentInset = { };
-
-var ScrollEvent = {
-  ContentOffset: ContentOffset,
-  ContentInset: ContentInset
-};
+var ScrollEvent = { };
 
 var SwitchChangePayload = { };
 
 var TargetEvent = { };
 
 exports.TextLayout = TextLayout;
+exports.Layout = Layout;
 exports.LayoutEvent = LayoutEvent;
 exports.PressEvent = PressEvent;
 exports.Dimensions = Dimensions;

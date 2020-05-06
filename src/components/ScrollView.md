@@ -28,7 +28,7 @@ let make = () => {
   <ScrollView ref=scrollViewRef>
     <TouchableOpacity
       onPress={_ =>
-        switch (scrollViewRef->React.Ref.current->Js.Nullable.toOption) {
+        switch (scrollViewRef.React.current->Js.Nullable.toOption) {
         | Some(scrollView) =>
           scrollView->ScrollView.scrollTo(
             ScrollView.scrollToParams(~x=0., ~y=0., ~animated=true, ()),
