@@ -35,7 +35,7 @@
     "release": "npmpub"
   },
   "devDependencies": {
-    "bs-platform": "^7.2.0",
+    "bs-platform": "^7.3.0",
     "husky": "^1.3.1",
     "lint-staged": "^10.1.1",
     "npm-run-all": "^3.0.0",
