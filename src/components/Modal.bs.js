@@ -2,10 +2,13 @@
 
 var NativeElement$ReactNative = require("../elements/NativeElement.bs.js");
 
-var Orientation = /* alias */0;
+var OrientationChangeEvent = { };
 
-var OrientationChange = /* alias */0;
+var Orientation;
+
+var OrientationChange;
 
 exports.Orientation = Orientation;
 exports.OrientationChange = OrientationChange;
+exports.OrientationChangeEvent = OrientationChangeEvent;
 /* NativeElement-ReactNative Not a pure module */

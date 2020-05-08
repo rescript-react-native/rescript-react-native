@@ -1,11 +1,16 @@
 include NativeElement;
 
-type checkBoxEvent =
-  Event.syntheticEvent({
-    .
-    "target": int,
-    "value": bool,
-  });
+module CheckBoxEvent = {
+  include Event.SyntheticEvent;
+
+  type t = t_(payload)
+  and payload = {
+    target: int,
+    value: bool,
+  };
+};
+
+type checkBoxEvent = CheckBoxEvent.t;
 
 [@react.component] [@bs.module "react-native"]
 external make:
@@ -13,7 +18,7 @@ external make:
     ~ref: ref=?,
     // CheckBox props
     ~disabled: bool=?,
-    ~onChange: checkBoxEvent => unit=?,
+    ~onChange: CheckBoxEvent.t => unit=?,
     ~onValueChange: bool => unit=?,
     ~value: bool=?,
     // View props

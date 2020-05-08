@@ -1,7 +1,13 @@
 include DrawerLayoutAndroidElement;
 
-type drawerSlideEvent = Event.syntheticEvent(drawerSlidePayload)
-and drawerSlidePayload = {offset: float};
+module DrawerSlideEvent = {
+  include Event.SyntheticEvent;
+
+  type t = t_(payload)
+  and payload = {offset: float};
+};
+
+type drawerSlideEvent = DrawerSlideEvent.t;
 
 [@react.component] [@bs.module "react-native"]
 external make:
@@ -21,7 +27,7 @@ external make:
                      ]
                        =?,
     ~onDrawerOpen: unit => unit=?,
-    ~onDrawerSlide: drawerSlideEvent => unit=?,
+    ~onDrawerSlide: DrawerSlideEvent.t => unit=?,
     ~onDrawerStateChanged: AndroidInteractionState.t => unit=?,
     ~drawerBackgroundColor: Color.t=?,
     ~statusBarBackgroundColor: Color.t=?,
