@@ -32,7 +32,7 @@ Enable React Native unstable
 open ReactNative;
 
 if (Global.__DEV__) {
-  unstable_enableLogBox();
+  Global.unstable_enableLogBox();
 };
 ```
 
