@@ -25,10 +25,10 @@ open ReactNative;
 [@react.component]
 let make = () => {
   let scrollViewRef = React.useRef(Js.Nullable.null);
-  <ScrollView ref=scrollViewRef>
+  <ScrollView ref={scrollViewRef->Ref.value}>
     <TouchableOpacity
       onPress={_ =>
-        switch (scrollViewRef.React.current->Js.Nullable.toOption) {
+        switch (scrollViewRef.current->Js.Nullable.toOption) {
         | Some(scrollView) =>
           scrollView->ScrollView.scrollTo(
             ScrollView.scrollToParams(~x=0., ~y=0., ~animated=true, ()),
