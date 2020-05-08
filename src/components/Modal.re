@@ -3,7 +3,7 @@ include NativeElement;
 module Orientation = Modal_Orientation;
 module OrientationChange = Modal_OrientationChange;
 
-type orientationChange = Event.syntheticEvent(orientationChangePayload)
+type orientationChange = Event.syntheticEvent(orientationChangePayload, unit)
 and orientationChangePayload = {orientation: OrientationChange.t};
 
 [@react.component] [@bs.module "react-native"]

@@ -1,4 +1,4 @@
-type snapshotReady = Event.syntheticEvent(snapshotReadyPaylaod)
+type snapshotReady = Event.syntheticEvent(snapshotReadyPaylaod, unit)
 and snapshotReadyPaylaod = {testIdentifier: string};
 
 [@react.component] [@bs.module "react-native"]

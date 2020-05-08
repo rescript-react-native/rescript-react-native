@@ -1,6 +1,6 @@
 include DrawerLayoutAndroidElement;
 
-type drawerSlideEvent = Event.syntheticEvent(drawerSlidePayload)
+type drawerSlideEvent = Event.syntheticEvent(drawerSlidePayload, unit)
 and drawerSlidePayload = {offset: float};
 
 [@react.component] [@bs.module "react-native"]

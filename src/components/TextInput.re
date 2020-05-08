@@ -1,20 +1,21 @@
 include TextInputElement;
 
-type changeEvent = Event.syntheticEvent(changePayload)
+type changeEvent = Event.syntheticEvent(changePayload, unit)
 and changePayload = {
   eventCount: int,
   target: int,
   text: string,
 };
 
-type editingEvent = Event.syntheticEvent(editingPayload)
+type editingEvent = Event.syntheticEvent(editingPayload, unit)
 and editingPayload = {
   text: string,
   eventCount: int,
   target: int,
 };
 
-type contentSizeChangeEvent = Event.syntheticEvent(contentSizeChangePayload)
+type contentSizeChangeEvent =
+  Event.syntheticEvent(contentSizeChangePayload, unit)
 and contentSizeChangePayload = {
   target: int,
   contentSize,
@@ -24,7 +25,7 @@ and contentSize = {
   height: float,
 };
 
-type scrollEvent = Event.syntheticEvent(scrollPayload)
+type scrollEvent = Event.syntheticEvent(scrollPayload, unit)
 and scrollPayload = {contentOffset}
 and contentOffset = {
   x: float,
@@ -37,13 +38,13 @@ type selection = {
   _end: int,
 };
 
-type selectionChangeEvent = Event.syntheticEvent(selectionChangePayload)
+type selectionChangeEvent = Event.syntheticEvent(selectionChangePayload, unit)
 and selectionChangePayload = {
   selection,
   target: int,
 };
 
-type keyPressEvent = Event.syntheticEvent(keyPressPayload)
+type keyPressEvent = Event.syntheticEvent(keyPressPayload, unit)
 and keyPressPayload = {
   key: string,
   target: Js.Nullable.t(int),

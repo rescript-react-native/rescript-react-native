@@ -43,7 +43,7 @@ module DefaultSource = {
   external fromRequired: Packager.required => t = "%identity";
 };
 
-type imageLoadEvent = Event.syntheticEvent(imageLoadPayload)
+type imageLoadEvent = Event.syntheticEvent(imageLoadPayload, unit)
 and imageLoadPayload = {
   uri: Js.Nullable.t(string),
   source,
@@ -54,10 +54,10 @@ and source = {
   url: string,
 };
 
-type errorEvent = Event.syntheticEvent(errorPayload)
+type errorEvent = Event.syntheticEvent(errorPayload, unit)
 and errorPayload = {error: string};
 
-type progressEvent = Event.syntheticEvent(progressPayload)
+type progressEvent = Event.syntheticEvent(progressPayload, unit)
 and progressPayload = {
   loaded: float,
   total: float,

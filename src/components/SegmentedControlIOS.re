@@ -12,7 +12,7 @@ external make:
     // SegmentedControlIOS props
     ~enabled: bool=?,
     ~momentary: bool=?,
-    ~onChange: Event.syntheticEvent(change) => unit=?,
+    ~onChange: Event.syntheticEvent(change, unit) => unit=?,
     ~onValueChange: int => unit=?,
     ~selectedIndex: int=?,
     ~tintColor: string=?,
