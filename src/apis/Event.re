@@ -1,68 +1,117 @@
 // see https://github.com/facebook/react-native/blob/master/Libraries/Types/CoreEventTypes.js
 
-type syntheticEvent('a) = {
-  .
-  "bubbles": Js.Nullable.t(bool),
-  "cancelable": Js.Nullable.t(bool),
-  "currentTarget": float,
-  "defaultPrevented": Js.Nullable.t(bool),
-  "dispatchConfig": {. "registrationName": string},
-  "eventPhase": Js.Nullable.t(float),
-  [@bs.meth] "preventDefault": unit => unit,
-  [@bs.meth] "isDefaultPrevented": unit => bool,
-  [@bs.meth] "stopPropagation": unit => unit,
-  [@bs.meth] "isPropagationStopped": unit => bool,
-  "isTrusted": Js.Nullable.t(bool),
-  "nativeEvent": 'a,
-  [@bs.meth] "persist": unit => unit,
-  "target": Js.Nullable.t(float),
-  "timeStamp": float,
-  "_type": Js.Nullable.t(string),
+type registrationName = {registrationName: string};
+
+module EventMethods = (T: {type event;}) => {
+  [@bs.get] [@bs.return nullable]
+  external bubbles: T.event => option(bool) = "bubbles";
+  [@bs.get] [@bs.return nullable]
+  external cancelable: T.event => option(bool) = "cancelable";
+  [@bs.get] external currentTarget: T.event => float = "currentTarget";
+  [@bs.get] [@bs.return nullable]
+  external defaultPrevented: T.event => option(bool) = "defaultPrevented";
+  [@bs.get]
+  external dispatchConfig: T.event => registrationName = "dispatchConfig";
+  [@bs.get] [@bs.return nullable]
+  external eventPhase: T.event => option(float) = "eventPhase";
+  [@bs.send] external preventDefault: T.event => unit = "preventDefault";
+  [@bs.send]
+  external isDefaultPrevented: T.event => bool = "isDefaultPrevented";
+  [@bs.send] external stopPropagation: T.event => unit = "stopPropagation";
+  [@bs.send]
+  external isPropagationStopped: T.event => bool = "isPropagationStopped";
+  [@bs.get] [@bs.return nullable]
+  external isTrusted: T.event => option(bool) = "isTrusted";
+  [@bs.get] external nativeEvent: T.event => 'a = "nativeEvent";
+  [@bs.send] external persist: T.event => unit = "persist";
+  [@bs.get] [@bs.return nullable]
+  external target: T.event => option(float) = "target";
+  [@bs.get] external timeStamp: T.event => float = "timeStamp";
+  [@bs.get] [@bs.return nullable]
+  external _type: T.event => option(string) = "type";
 };
 
-type responderSyntheticEvent('a) = {
-  .
-  // synthethicEvent keys
-  "bubbles": Js.Nullable.t(bool),
-  "cancelable": Js.Nullable.t(bool),
-  "currentTarget": float,
-  "defaultPrevented": Js.Nullable.t(bool),
-  "dispatchConfig": {. "registrationName": string},
-  "eventPhase": Js.Nullable.t(float),
-  [@bs.meth] "preventDefault": unit => unit,
-  [@bs.meth] "isDefaultPrevented": unit => bool,
-  [@bs.meth] "stopPropagation": unit => unit,
-  [@bs.meth] "isPropagationStopped": unit => bool,
-  "isTrusted": Js.Nullable.t(bool),
-  "nativeEvent": 'a,
-  [@bs.meth] "persist": unit => unit,
-  "target": Js.Nullable.t(float),
-  "timeStamp": float,
-  "_type": Js.Nullable.t(string),
-  // responderSyntheticEvent additional key
-  "touchHistory": {
-    .
-    "indexOfSingleActiveTouch": float,
-    "mostRecentTimeStamp": float,
-    "numberActiveTouches": float,
-    "touchBank":
-      array({
-        .
-        "touchActive": bool,
-        "startPageX": float,
-        "startPageY": float,
-        "startTimeStamp": float,
-        "currentPageX": float,
-        "currentPageY": float,
-        "currentTimeStamp": float,
-        "previousPageX": float,
-        "previousPageY": float,
-        "previousTimeStamp": float,
-      }),
-  },
+module SyntheticEvent = (T: {type _payload;}) => {
+  type t = {
+    bubbles: Js.Nullable.t(bool),
+    cancelable: Js.Nullable.t(bool),
+    currentTarget: float,
+    defaultPrevented: Js.Nullable.t(bool),
+    dispatchConfig: registrationName,
+    eventPhase: Js.Nullable.t(float),
+    isTrusted: Js.Nullable.t(bool),
+    nativeEvent: T._payload,
+    target: Js.Nullable.t(float),
+    timeStamp: float,
+    [@bs.as "type"]
+    _type: Js.Nullable.t(string),
+  };
+
+  include EventMethods({
+    type event = t;
+  });
 };
 
-module TextLayout = {
+module ResponderSyntheticEvent = (T: {type _payload;}) => {
+  type touchBank = {
+    touchActive: bool,
+    startPageX: float,
+    startPageY: float,
+    startTimeStamp: float,
+    currentPageX: float,
+    currentPageY: float,
+    currentTimeStamp: float,
+    previousPageX: float,
+    previousPageY: float,
+    previousTimeStamp: float,
+  };
+
+  type touchHistory = {
+    indexOfSingleActiveTouch: float,
+    mostRecentTimeStamp: float,
+    numberActiveTouches: float,
+    touchBank: array(touchBank),
+  };
+
+  type t = {
+    bubbles: Js.Nullable.t(bool),
+    cancelable: Js.Nullable.t(bool),
+    currentTarget: float,
+    defaultPrevented: Js.Nullable.t(bool),
+    dispatchConfig: registrationName,
+    eventPhase: Js.Nullable.t(float),
+    isTrusted: Js.Nullable.t(bool),
+    nativeEvent: T._payload,
+    target: Js.Nullable.t(float),
+    timeStamp: float,
+    [@bs.as "type"]
+    _type: Js.Nullable.t(string),
+    touchHistory,
+  };
+
+  include EventMethods({
+    type event = t;
+  });
+
+  [@bs.get] external touchHistory: t => touchHistory = "touchHistory";
+};
+
+module LayoutEvent = {
+  type layout = {
+    x: float,
+    y: float,
+    width: float,
+    height: float,
+  };
+
+  type payload = {layout};
+
+  include SyntheticEvent({
+    type _payload = payload;
+  });
+};
+
+module TextLayoutEvent = {
   type line = {
     x: float,
     y: float,
@@ -74,33 +123,17 @@ module TextLayout = {
     text: string,
     xHeight: float // verify
   };
-  type t = {lines: array(line)};
+
+  type payload = {lines: array(line)};
+
+  include SyntheticEvent({
+    type _payload = payload;
+  });
 };
-
-module Layout = {
-  type t = {
-    x: float,
-    y: float,
-    width: float,
-    height: float,
-  };
-};
-
-module LayoutEvent = {
-  type layout = Layout.t;
-  type t = {layout};
-};
-
-type layout = LayoutEvent.t;
-type layoutEvent = syntheticEvent(layout);
-
-type textLayout = TextLayout.line;
-type textLayouts = TextLayout.t;
-type textLayoutEvent = syntheticEvent(textLayouts);
 
 module PressEvent = {
-  type t = {
-    changedTouches: array(t),
+  type payload = {
+    changedTouches: array(payload),
     force: float,
     identifier: int,
     locationX: float,
@@ -109,57 +142,61 @@ module PressEvent = {
     pageY: float,
     target: Js.Nullable.t(float),
     timestamp: float,
-    touches: array(t),
+    touches: array(payload),
   };
-};
-type pressEventPayload = PressEvent.t;
-type pressEvent = responderSyntheticEvent(pressEventPayload);
 
-module Dimensions = {
-  type t = {
-    height: float,
-    width: float,
-  };
+  include ResponderSyntheticEvent({
+    type _payload = payload;
+  });
 };
-
-type dimensions = Dimensions.t;
 
 module ScrollEvent = {
   type contentOffset = {
     x: float,
     y: float,
   };
-
   type contentInset = {
     bottom: float,
     left: float,
     right: float,
     top: float,
   };
+  type dimensions = {
+    height: float,
+    width: float,
+  };
 
-  type t = {
+  type payload = {
     contentInset: contentOffset,
     contentOffset: contentInset,
     contentSize: dimensions,
     layoutMeasurement: dimensions,
   };
+
+  include SyntheticEvent({
+    type _payload = payload;
+  });
 };
 
-type contentOffset = ScrollEvent.contentOffset;
-type contentInset = ScrollEvent.contentInset;
-type scrollEventPayload = ScrollEvent.t;
-type scrollEvent = syntheticEvent(scrollEventPayload);
+module SwitchChangeEvent = {
+  type payload = {value: bool};
 
-module SwitchChangePayload = {
-  type t = {value: bool};
+  include SyntheticEvent({
+    type _payload = payload;
+  });
 };
-
-type switchChangePayload = SwitchChangePayload.t;
-type switchChangeEvent = syntheticEvent(switchChangePayload);
 
 module TargetEvent = {
-  type t = {target: int};
+  type payload = {target: int};
+
+  include SyntheticEvent({
+    type _payload = payload;
+  });
 };
 
-type targetPayload = TargetEvent.t;
-type targetEvent = syntheticEvent(targetPayload);
+type layoutEvent = LayoutEvent.t;
+type textLayoutEvent = TextLayoutEvent.t;
+type pressEvent = PressEvent.t;
+type scrollEvent = ScrollEvent.t;
+type switchChangeEvent = SwitchChangeEvent.t;
+type targetEvent = TargetEvent.t;

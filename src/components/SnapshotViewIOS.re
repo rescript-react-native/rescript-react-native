@@ -1,11 +1,18 @@
-type snapshotReady = Event.syntheticEvent(snapshotReadyPaylaod)
-and snapshotReadyPaylaod = {testIdentifier: string};
+module SnapshotReadyEvent = {
+  type payload = {testIdentifier: string};
+
+  include Event.SyntheticEvent({
+    type _payload = payload;
+  });
+};
+
+type snapshotReadyEvent = SnapshotReadyEvent.t;
 
 [@react.component] [@bs.module "react-native"]
 // SnapshotViewIOS props
 external make:
   (
-    ~onSnapshotReady: snapshotReady => unit=?,
+    ~onSnapshotReady: snapshotReadyEvent => unit=?,
     ~testIdentifier: string=?,
     // View props
     ~accessibilityComponentType: [@bs.string] [
