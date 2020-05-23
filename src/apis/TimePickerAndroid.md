@@ -1,39 +1,11 @@
 ---
-id: apis/NetInfo
-title: NetInfo
+id: apis/TimePickerAndroid
+title: TimePickerAndroid
 wip: true
 ---
 
-```reason
-type options;
+TimePickerAndroid has been removed from React Native.
 
-[@bs.obj]
-external options:
-  (
-    ~hour: int=?,
-    ~minute: int=?,
-    ~is24Hour: bool=?,
-    ~mode: [@bs.string] [ | `clock | `spinner | `default ]=?
-    unit
-  ) =>
-  options =
-  "";
-
-type response = {
-  .
-  "action": string,
-  "hour": int,
-  "minute": int
-};
-
-
-[@bs.module "react-native"] [@bs.scope "TimePickerAndroid"]
-external open_: options => Js.Promise.t(response) = "open";
-
-[@bs.module "react-native"] [@bs.scope "TimePickerAndroid"]
-external timeSetAction: string = "timeSetAction";
-
-[@bs.module "react-native"] [@bs.scope "TimePickerAndroid"]
-external dismissedAction: string = "dismissedAction";
-
-```
+Please use [bindings](https://github.com/reason-react-native/datetimepicker) to
+the replacement
+[community package](https://github.com/react-native-community/react-native-datetimepicker).

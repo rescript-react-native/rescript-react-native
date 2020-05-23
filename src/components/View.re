@@ -4,8 +4,7 @@ type edgeInsets;
 [@bs.obj]
 external edgeInsets:
   (~left: float=?, ~right: float=?, ~top: float=?, ~bottom: float=?, unit) =>
-  edgeInsets =
-  "";
+  edgeInsets;
 
 [@react.component] [@bs.module "react-native"]
 external make:
@@ -36,10 +35,21 @@ external make:
                           | `header
                           | `summary
                           | `imagebutton
+                          | `article
+                          | `banner
+                          | `complementary
+                          | `contentinfo
+                          | `form
+                          | `list
+                          | `listitem
+                          | `main
+                          | `navigation
+                          | `region
                         ]
                           =?,
-    ~accessibilityStates: array(AccessibilityState.t)=?,
+    ~accessibilityState: Accessibility.state=?,
     ~accessibilityTraits: array(AccessibilityTrait.t)=?,
+    ~accessibilityValue: Accessibility.value=?,
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
     ~collapsable: bool=?,
@@ -83,7 +93,15 @@ external make:
     ~shouldRasterizeIOS: bool=?,
     ~style: Style.t=?,
     ~testID: string=?,
-    ~children: React.element=?
+    ~children: React.element=?,
+    // React Native Web Props
+    ~onMouseDown: ReactEvent.Mouse.t => unit=?,
+    ~onMouseEnter: ReactEvent.Mouse.t => unit=?,
+    ~onMouseLeave: ReactEvent.Mouse.t => unit=?,
+    ~onMouseMove: ReactEvent.Mouse.t => unit=?,
+    ~onMouseOver: ReactEvent.Mouse.t => unit=?,
+    ~onMouseOut: ReactEvent.Mouse.t => unit=?,
+    ~onMouseUp: ReactEvent.Mouse.t => unit=?
   ) =>
   React.element =
   "View";

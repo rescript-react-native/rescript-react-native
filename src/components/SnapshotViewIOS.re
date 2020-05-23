@@ -1,10 +1,11 @@
+type snapshotReady = Event.syntheticEvent(snapshotReadyPaylaod)
+and snapshotReadyPaylaod = {testIdentifier: string};
+
 [@react.component] [@bs.module "react-native"]
 // SnapshotViewIOS props
 external make:
   (
-    ~onSnapshotReady: Event.syntheticEvent({. "testIdentifier": string}) =>
-                      unit
-                        =?,
+    ~onSnapshotReady: snapshotReady => unit=?,
     ~testIdentifier: string=?,
     // View props
     ~accessibilityComponentType: [@bs.string] [
@@ -33,8 +34,9 @@ external make:
                           | `imagebutton
                         ]
                           =?,
-    ~accessibilityStates: array(AccessibilityState.t)=?,
+    ~accessibilityState: Accessibility.state=?,
     ~accessibilityTraits: array(AccessibilityTrait.t)=?,
+    ~accessibilityValue: Accessibility.value=?,
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
     ~collapsable: bool=?,

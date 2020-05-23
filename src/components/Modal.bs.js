@@ -2,9 +2,9 @@
 
 var NativeElement$ReactNative = require("../elements/NativeElement.bs.js");
 
-var Orientation = 0;
+var Orientation;
 
-var OrientationChange = 0;
+var OrientationChange;
 
 exports.Orientation = Orientation;
 exports.OrientationChange = OrientationChange;

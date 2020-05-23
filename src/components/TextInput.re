@@ -1,76 +1,54 @@
 include TextInputElement;
 
-type changeEvent =
-  Event.syntheticEvent({
-    .
-    "eventCount": int,
-    "target": int,
-    "text": string,
-  });
-
-type textInputEvent =
-  Event.syntheticEvent({
-    .
-    "eventCount": int,
-    "previousText": string,
-    "range": {
-      .
-      "start": int,
-      "_end": int,
-    },
-    "target": int,
-    "text": string,
-  });
-
-type editingEvent =
-  Event.syntheticEvent({
-    .
-    "text": string,
-    "eventCount": int,
-    "target": int,
-  });
-
-type contentSizeChangeEvent =
-  Event.syntheticEvent({
-    .
-    "target": int,
-    "contentSize": {
-      .
-      "width": float,
-      "height": float,
-    },
-  });
-
-type scrollEvent =
-  Event.syntheticEvent({
-    .
-    "contentOffset": {
-      .
-      "x": float,
-      "y": float,
-    },
-  });
-
-type selection = {
-  .
-  "start": int,
-  "_end": int,
+type changeEvent = Event.syntheticEvent(changePayload)
+and changePayload = {
+  eventCount: int,
+  target: int,
+  text: string,
 };
 
-type selectionChangeEvent =
-  Event.syntheticEvent({
-    .
-    "selection": selection,
-    "target": int,
-  });
+type editingEvent = Event.syntheticEvent(editingPayload)
+and editingPayload = {
+  text: string,
+  eventCount: int,
+  target: int,
+};
 
-type keyPressEvent =
-  Event.syntheticEvent({
-    .
-    "key": string,
-    "target": Js.Nullable.t(int),
-    "eventCount": Js.Nullable.t(int),
-  });
+type contentSizeChangeEvent = Event.syntheticEvent(contentSizeChangePayload)
+and contentSizeChangePayload = {
+  target: int,
+  contentSize,
+}
+and contentSize = {
+  width: float,
+  height: float,
+};
+
+type scrollEvent = Event.syntheticEvent(scrollPayload)
+and scrollPayload = {contentOffset}
+and contentOffset = {
+  x: float,
+  y: float,
+};
+
+type selection = {
+  start: int,
+  [@bs.as "end"]
+  _end: int,
+};
+
+type selectionChangeEvent = Event.syntheticEvent(selectionChangePayload)
+and selectionChangePayload = {
+  selection,
+  target: int,
+};
+
+type keyPressEvent = Event.syntheticEvent(keyPressPayload)
+and keyPressPayload = {
+  key: string,
+  target: Js.Nullable.t(int),
+  eventCount: Js.Nullable.t(int),
+};
 
 module DataDetectorTypes = TextInput_DataDetectorTypes;
 
@@ -87,22 +65,22 @@ external make:
                        | `none
                      ]
                        =?,
-    ~autoComplete: [@bs.string] [
-                     | `off
-                     | `username
-                     | `password
-                     | `email
-                     | `name
-                     | `tel
-                     | [@bs.as "street-address"] `streetAddress
-                     | [@bs.as "postal-code"] `postalCode
-                     | [@bs.as "cc-number"] `ccNumber
-                     | [@bs.as "cc-csc"] `ccCsc
-                     | [@bs.as "cc-exp"] `ccExp
-                     | [@bs.as "cc-exp-month"] `ccExpMonth
-                     | [@bs.as "cc-exp-year"] `ccExpYear
-                   ]
-                     =?,
+    ~autoCompleteType: [@bs.string] [
+                         | `off
+                         | `username
+                         | `password
+                         | `email
+                         | `name
+                         | `tel
+                         | [@bs.as "street-address"] `streetAddress
+                         | [@bs.as "postal-code"] `postalCode
+                         | [@bs.as "cc-number"] `ccNumber
+                         | [@bs.as "cc-csc"] `ccCsc
+                         | [@bs.as "cc-exp"] `ccExp
+                         | [@bs.as "cc-exp-month"] `ccExpMonth
+                         | [@bs.as "cc-exp-year"] `ccExpYear
+                       ]
+                         =?,
     ~autoCorrect: bool=?,
     ~autoFocus: bool=?,
     ~blurOnSubmit: bool=?,
@@ -164,7 +142,6 @@ external make:
     ~onScroll: scrollEvent => unit=?,
     ~onSelectionChange: selectionChangeEvent => unit=?,
     ~onSubmitEditing: editingEvent => unit=?,
-    ~onTextInput: textInputEvent => unit=?,
     ~placeholder: string=?,
     ~placeholderTextColor: Color.t=?,
     ~returnKeyLabel: string=?,
@@ -189,8 +166,8 @@ external make:
     ~secureTextEntry: bool=?,
     ~selection: selection=?,
     ~selectionColor: Color.t=?,
-    ~selectionState: 'documentSelectionState=?, // TODO
     ~selectTextOnFocus: bool=?,
+    ~showSoftInputOnFocus: bool=?,
     ~spellCheck: bool=?,
     ~textBreakStrategy: [@bs.string] [ | `balanced | `highQuality | `simple]=?,
     ~textContentType: [@bs.string] [
@@ -253,8 +230,9 @@ external make:
                           | `imagebutton
                         ]
                           =?,
-    ~accessibilityStates: array(AccessibilityState.t)=?,
+    ~accessibilityState: Accessibility.state=?,
     ~accessibilityTraits: array(AccessibilityTrait.t)=?,
+    ~accessibilityValue: Accessibility.value=?,
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
     ~collapsable: bool=?,
@@ -297,7 +275,15 @@ external make:
     ~renderToHardwareTextureAndroid: bool=?,
     ~shouldRasterizeIOS: bool=?,
     ~style: Style.t=?,
-    ~testID: string=?
+    ~testID: string=?,
+    // React Native Web Props
+    ~onMouseDown: ReactEvent.Mouse.t => unit=?,
+    ~onMouseEnter: ReactEvent.Mouse.t => unit=?,
+    ~onMouseLeave: ReactEvent.Mouse.t => unit=?,
+    ~onMouseMove: ReactEvent.Mouse.t => unit=?,
+    ~onMouseOver: ReactEvent.Mouse.t => unit=?,
+    ~onMouseOut: ReactEvent.Mouse.t => unit=?,
+    ~onMouseUp: ReactEvent.Mouse.t => unit=?
   ) =>
   React.element =
   "TextInput";

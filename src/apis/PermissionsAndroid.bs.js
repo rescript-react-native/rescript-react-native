@@ -1,9 +1,9 @@
 'use strict';
 
 
-var Permission = /* module */[];
+var Permission = { };
 
-var Result = /* module */[];
+var Result = { };
 
 exports.Permission = Permission;
 exports.Result = Result;

@@ -4,6 +4,15 @@ title: CheckBox
 wip: true
 ---
 
+`CheckBox` has been deprecated and will be removed from React Native in the
+future.
+
+Please refer to [bindings](https://github.com/reason-react-native/checkbox) for
+the replacement
+[community package](https://github.com/react-native-community/react-native-checkbox).
+
+---
+
 ```reason
 include NativeElement;
 
@@ -50,8 +59,9 @@ external make:
                           | `imagebutton
                         ]
                           =?,
-    ~accessibilityStates: array(AccessibilityState.t)=?,
+    ~accessibilityState: Accessibility.state=?,
     ~accessibilityTraits: array(AccessibilityTrait.t)=?,
+    ~accessibilityValue: Accessibility.value=?,
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
     ~collapsable: bool=?,

@@ -18,8 +18,7 @@ external animationConfig:
     ~property: [@bs.string] [ | `opacity | `scaleX | `scaleY | `scaleXY]=?,
     unit
   ) =>
-  animationConfig =
-  "";
+  animationConfig;
 
 type layoutAnimationConfig;
 [@bs.obj]
@@ -31,8 +30,7 @@ external layoutAnimationConfig:
     ~delete: animationConfig=?,
     unit
   ) =>
-  layoutAnimationConfig =
-  "";
+  layoutAnimationConfig;
 
 // multiple externals
 [@bs.module "react-native"] [@bs.scope "LayoutAnimation"]

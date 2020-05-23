@@ -1,5 +1,5 @@
 type element;
-type ref = React.Ref.t(Js.nullable(element));
+type ref = React.ref(element);
 
 include NativeMethods.Make({
   type t = element;

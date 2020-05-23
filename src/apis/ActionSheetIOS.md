@@ -36,7 +36,7 @@ external shareOptions:
   shareOptions =
   "";
 
-type error = {. "stack": option(string)};
+type error = {stack: option(string)};
 
 [@bs.module "react-native"] [@bs.scope "ActionSheetIOS"]
 external showShareActionSheetWithOptions:

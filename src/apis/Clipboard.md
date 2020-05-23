@@ -1,7 +1,16 @@
 ---
 id: apis/Clipboard
 title: Clipboard
-officialDoc: https://facebook.github.io/react-native/docs/clipboard
+officialDoc: https://reactnative.dev/docs/clipboard
+---
+
+`Clipboard` has been deprecated and will be removed from React Native in the
+future.
+
+Please refer to [bindings](https://github.com/reason-react-native/clipboard) for
+the replacement
+[community package](https://github.com/react-native-community/clipboard).
+
 ---
 
 ## Methods

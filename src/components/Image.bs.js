@@ -2,9 +2,9 @@
 
 var NativeElement$ReactNative = require("../elements/NativeElement.bs.js");
 
-var Source = /* module */[];
+var Source = { };
 
-var DefaultSource = /* module */[];
+var DefaultSource = { };
 
 exports.Source = Source;
 exports.DefaultSource = DefaultSource;

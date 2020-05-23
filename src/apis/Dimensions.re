@@ -1,15 +1,13 @@
 type displayMetrics = {
-  .
-  "width": float,
-  "height": float,
-  "scale": float,
-  "fontScale": float,
+  width: float,
+  height: float,
+  scale: float,
+  fontScale: float,
 };
 
 type handler = {
-  .
-  "screen": displayMetrics,
-  "window": displayMetrics,
+  screen: displayMetrics,
+  window: displayMetrics,
 };
 
 [@bs.module "react-native"] [@bs.scope "Dimensions"]

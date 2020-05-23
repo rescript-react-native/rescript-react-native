@@ -1,7 +1,7 @@
 ---
 id: apis/Platform
 title: Platform
-officialDoc: https://facebook.github.io/react-native/docs/platform-specific-code
+officialDoc: https://reactnative.dev/docs/platform-specific-code
 ---
 
 ## `Platform.os`

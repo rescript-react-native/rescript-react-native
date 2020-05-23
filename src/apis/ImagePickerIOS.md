@@ -1,19 +1,23 @@
 ---
 id: apis/ImagePickerIOS
 title: ImagePickerIOS
-officialDoc: https://facebook.github.io/react-native/docs/imagepickerios
+officialDoc: https://reactnative.dev/docs/imagepickerios
 ---
 
 ## Note
 
 This API will be removed from React Native as part of the
 [_Lean Core_](https://github.com/facebook/react-native/issues/23313) effort.
-While it has already been moved to a community
-[repo](https://github.com/react-native-community/react-native-image-picker-ios),
-more current packages such as
+Please refer to the
+[community package](https://github.com/react-native-community/react-native-image-picker-ios)
+if you wish to use this component.
+
+However note that more current packages such as •
 [`react-native-image-picker`](https://github.com/react-native-community/react-native-image-picker)
-and [`expo-image-picker`](https://docs.expo.io/versions/latest/sdk/imagepicker/)
-are recommended instead.
+for which [bindings](https://github.com/reason-react-native/image-picker) are
+available, or •
+[`expo-image-picker`](https://docs.expo.io/versions/latest/sdk/imagepicker/) are
+recommended instead.
 
 ---
 

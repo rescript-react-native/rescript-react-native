@@ -21,9 +21,11 @@ external make:
                                    | `radiobutton_unchecked
                                  ]
                                    =?,
+    ~accessibilityElementsHidden: bool=?,
     ~accessibilityHint: string=?,
     ~accessibilityIgnoresInvertColors: bool=?,
     ~accessibilityLabel: string=?,
+    ~accessibilityLiveRegion: [@bs.string] [ | `none | `polite | `assertive]=?,
     ~accessibilityRole: [@bs.string] [
                           | `none
                           | `button
@@ -38,13 +40,23 @@ external make:
                           | `imagebutton
                         ]
                           =?,
-    ~accessibilityStates: array(AccessibilityState.t)=?,
+    ~accessibilityState: Accessibility.state=?,
     ~accessibilityTraits: array(AccessibilityTrait.t)=?,
+    ~accessibilityValue: Accessibility.value=?,
+    ~accessibilityViewIsModal: bool=?,
     ~delayLongPress: int=?,
     ~delayPressIn: int=?,
     ~delayPressOut: int=?,
     ~disabled: bool=?,
     ~hitSlop: View.edgeInsets=?,
+    ~importantForAccessibility: [@bs.string] [
+                                  | `auto
+                                  | `yes
+                                  | `no
+                                  | [@bs.as "no-hide-descendants"]
+                                    `noHideDescendants
+                                ]
+                                  =?,
     ~onLayout: Event.layoutEvent => unit=?,
     ~onLongPress: Event.pressEvent => unit=?,
     ~onPress: Event.pressEvent => unit=?,
@@ -53,7 +65,27 @@ external make:
     ~pressRetentionOffset: View.edgeInsets=?,
     ~testID: string=?,
     ~touchSoundDisabled: bool=?,
-    ~children: React.element=?
+    ~children: React.element=?,
+    // React Native Web Props
+    ~rel: [@bs.string] [
+            | `alternate
+            | `author
+            | [@bs.as "dns-prefetch"] `dnsPrefetch
+            | `icon
+            | `license
+            | `next
+            | `pingback
+            | `preconnect
+            | `prefetch
+            | `preload
+            | `prerender
+            | `prev
+            | `search
+            | `stylesheet
+          ]
+            =?,
+    ~href: string=?,
+    ~target: [@bs.string] [ | `_blank | `_self | `_parent | `_top]=?
   ) =>
   React.element =
   "TouchableHighlight";

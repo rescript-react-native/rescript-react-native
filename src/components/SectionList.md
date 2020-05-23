@@ -5,7 +5,15 @@ wip: true
 ---
 
 ```reason
-include VirtualizedListElement;
+include VirtualizedSectionListElement;
+
+[@bs.send]
+external flashScrollIndicators: element => unit = "flashScrollIndicators";
+
+[@bs.send] external recordInteraction: element => unit = "recordInteraction";
+
+[@bs.send]
+external setNativeProps: (element, Js.t('a)) => unit = "setNativeProps";
 
 [@react.component] [@bs.module "react-native"]
 external make:
@@ -91,6 +99,7 @@ external make:
     ~decelerationRate: [@bs.string] [ | `fast | `normal]=?,
     ~directionalLockEnabled: bool=?,
     ~endFillColor: Color.t=?,
+    ~fadingEdgeLength: float=?,
     ~horizontal: bool=?,
     ~indicatorStyle: [@bs.string] [ | `default | `black | `white]=?,
     ~keyboardDismissMode: [@bs.string] [
@@ -155,8 +164,9 @@ external make:
                           | `imagebutton
                         ]
                           =?,
-    ~accessibilityStates: array(AccessibilityState.t)=?,
+    ~accessibilityState: Accessibility.state=?,
     ~accessibilityTraits: array(AccessibilityTrait.t)=?,
+    ~accessibilityValue: Accessibility.value=?,
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
     ~collapsable: bool=?,

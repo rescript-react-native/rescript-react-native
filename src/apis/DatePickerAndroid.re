@@ -2,6 +2,8 @@ type options;
 
 type date;
 
+type action;
+
 external calendarDate: Js.Date.t => date = "%identity";
 external timestamp: float => date = "%identity";
 
@@ -14,22 +16,20 @@ external options:
     ~mode: [@bs.string] [ | `calendar | `spinner | `default]=?,
     unit
   ) =>
-  options =
-  "";
+  options;
 
 type response = {
-  .
-  "action": string,
-  "year": int,
-  "month": int,
-  "day": int,
+  action,
+  year: int,
+  month: int,
+  day: int,
 };
 
 [@bs.module "react-native"] [@bs.scope "DatePickerAndroid"]
 external open_: options => Js.Promise.t(response) = "open";
 
 [@bs.module "react-native"] [@bs.scope "DatePickerAndroid"]
-external dateSetAction: string = "dateSetAction";
+external dateSetAction: action = "dateSetAction";
 
 [@bs.module "react-native"] [@bs.scope "DatePickerAndroid"]
-external dismissedAction: string = "dismissedAction";
+external dismissedAction: action = "dismissedAction";

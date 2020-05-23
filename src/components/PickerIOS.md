@@ -4,6 +4,15 @@ title: Picker
 wip: true
 ---
 
+`PickerIOS` has been deprecated and will be removed from React Native in the
+future.
+
+Please refer to [bindings](https://github.com/reason-react-native/picker) for
+the replacement
+[community package](https://github.com/react-native-community/react-native-picker).
+
+---
+
 ```reason
 include NativeElement;
 
@@ -42,8 +51,9 @@ external make:
                           | `imagebutton
                         ]
                           =?,
-    ~accessibilityStates: array(AccessibilityState.t)=?,
+    ~accessibilityState: Accessibility.state=?,
     ~accessibilityTraits: array(AccessibilityTrait.t)=?,
+    ~accessibilityValue: Accessibility.value=?,
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
     ~collapsable: bool=?,

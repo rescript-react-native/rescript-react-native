@@ -25,20 +25,18 @@ module Easing: {
 };
 
 type screenRect = {
-  .
-  "screenX": float,
-  "screenY": float,
-  "width": float,
-  "height": float,
+  screenX: float,
+  screenY: float,
+  width: float,
+  height: float,
 };
 
 type keyboardEvent = {
-  .
-  "duration": float,
-  "easing": Easing.t,
-  "endCoordinates": screenRect,
-  "startCoordinates": screenRect,
-  "isEventFromThisApp": bool,
+  duration: float,
+  easing: Easing.t,
+  endCoordinates: screenRect,
+  startCoordinates: screenRect,
+  isEventFromThisApp: bool,
 };
 
 type listener = keyboardEvent => unit;
@@ -57,7 +55,7 @@ external addListener:
     listener
   ) =>
   EventSubscription.t =
-  "";
+  "addListener";
 
 [@bs.module "react-native"] [@bs.scope "Keyboard"]
 external removeAllListeners:
@@ -73,7 +71,7 @@ external removeAllListeners:
   ]
   ) =>
   unit =
-  "";
+  "removeAllListeners";
 
 [@bs.module "react-native"] [@bs.scope "Keyboard"]
 external removeListener:
@@ -89,7 +87,7 @@ external removeListener:
     listener
   ) =>
   unit =
-  "";
+  "removeListener";
 
 [@bs.module "react-native"] [@bs.scope "Keyboard"]
 external dismiss: unit => unit = "dismiss";

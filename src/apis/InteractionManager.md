@@ -6,7 +6,7 @@ wip: true
 
 ```reason
 /*
- https://facebook.github.io/react-native/docs/interactionmanager
+ https://reactnative.dev/docs/interactionmanager
  */
 
 type interactionHandle;

@@ -9,8 +9,7 @@ module Make = (T: {type t;}) => {
       ~index: int,
       unit
     ) =>
-    scrollToIndexParams =
-    "";
+    scrollToIndexParams;
   [@bs.send]
   external scrollToIndex: (T.t, scrollToIndexParams) => unit = "scrollToIndex";
 
@@ -18,8 +17,7 @@ module Make = (T: {type t;}) => {
   [@bs.obj]
   external scrollToItemParams:
     (~viewPosition: float=?, ~animated: bool=?, ~item: 'item, unit) =>
-    scrollToIndexParams =
-    "";
+    scrollToIndexParams;
   [@bs.send]
   external scrollToItem: (T.t, scrollToItemParams('item)) => unit =
     "scrollToItem";
@@ -27,14 +25,10 @@ module Make = (T: {type t;}) => {
   type scrollToOffsetParams;
   [@bs.obj]
   external scrollToOffsetParams:
-    (~animated: bool=?, ~offset: float, unit) => scrollToOffsetParams =
-    "";
+    (~animated: bool=?, ~offset: float, unit) => scrollToOffsetParams;
   [@bs.send]
   external scrollToOffset: (T.t, scrollToOffsetParams) => unit =
     "scrollToOffset";
 
   [@bs.send] external recordInteraction: T.t => unit = "recordInteraction";
-
-  [@bs.send]
-  external flashScrollIndicators: T.t => unit = "flashScrollIndicators";
 };

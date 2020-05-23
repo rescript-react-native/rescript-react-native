@@ -8,10 +8,9 @@ wip: true
 include VirtualizedListElement;
 
 type renderItemProps('item) = {
-  .
-  "item": 'item,
-  "index": int,
-  // "separators": TODO
+  item: 'item,
+  index: int,
+  // separators: TODO
 };
 
 type renderItemCallback('item) = renderItemProps('item) => React.element;
@@ -22,37 +21,33 @@ type cellRendererComponent('item) =
   React.component(cellRendererComponentProps('item));
 
 type viewableItem('item) = {
-  .
-  "item": 'item,
-  "key": string,
-  "index": Js.undefined(int),
-  "isViewable": bool,
-  "section": Js.t({.}),
+  item: 'item,
+  key: string,
+  index: Js.undefined(int),
+  isViewable: bool,
+  section: Js.t({.}),
 };
 
 type viewableItemsChanged('item) = {
-  .
-  "viewableItems": array(viewableItem('item)),
-  "changed": array(viewableItem('item)),
+  viewableItems: array(viewableItem('item)),
+  changed: array(viewableItem('item)),
 };
 
 type itemLayout = {
-  .
-  "length": float,
-  "offset": float,
-  "index": int,
+  length: float,
+  offset: float,
+  index: int,
 };
 
-type onEndReachedParams = {. "distanceFromEnd": float};
+type onEndReachedParams = {distanceFromEnd: float};
 
 type onScrollToIndexFailedInfo = {
-  .
-  "index": int,
-  "highestMeasuredFrameIndex": int,
-  "averageItemLength": float,
+  index: int,
+  highestMeasuredFrameIndex: int,
+  averageItemLength: float,
 };
 
-type onScrollToIndexFailedParams = {. "info": onScrollToIndexFailedInfo};
+type onScrollToIndexFailedParams = {info: onScrollToIndexFailedInfo};
 
 type viewabilityConfig;
 [@bs.obj]
@@ -64,8 +59,7 @@ external viewabilityConfig:
     ~waitForInteraction: bool=?,
     unit
   ) =>
-  viewabilityConfig =
-  "";
+  viewabilityConfig;
 
 type viewabilityConfigCallbackPair('item);
 [@bs.obj]
@@ -74,8 +68,7 @@ external viewabilityConfigCallbackPair:
     ~viewabilityConfig: viewabilityConfig,
     ~onViewableItemsChanged: viewableItemsChanged('item) => unit
   ) =>
-  viewabilityConfigCallbackPair('item) =
-  "";
+  viewabilityConfigCallbackPair('item);
 
 type viewabilityConfigCallbackPairs('item) =
   array(viewabilityConfigCallbackPair('item));
@@ -137,6 +130,7 @@ external make:
     ~decelerationRate: [@bs.string] [ | `fast | `normal]=?,
     ~directionalLockEnabled: bool=?,
     ~endFillColor: Color.t=?,
+    ~fadingEdgeLength: float=?,
     ~horizontal: bool=?,
     ~indicatorStyle: [@bs.string] [ | `default | `black | `white]=?,
     ~keyboardDismissMode: [@bs.string] [
@@ -201,8 +195,9 @@ external make:
                           | `imagebutton
                         ]
                           =?,
-    ~accessibilityStates: array(AccessibilityState.t)=?,
+    ~accessibilityState: Accessibility.state=?,
     ~accessibilityTraits: array(AccessibilityTrait.t)=?,
+    ~accessibilityValue: Accessibility.value=?,
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
     ~collapsable: bool=?,

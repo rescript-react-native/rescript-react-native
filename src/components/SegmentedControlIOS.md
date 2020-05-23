@@ -4,13 +4,22 @@ title: SegmentedControlIOS
 wip: true
 ---
 
+`ProgressViewIOS` has been deprecated and will be removed from React Native in
+the future.
+
+Please refer to
+[bindings](https://github.com/reason-react-native/segmented-control) for the
+replacement
+[community package](https://github.com/react-native-community/segmented-control).
+
+---
+
 ```reason
 include NativeElement;
 
 type change = {
-  .
-  "value": string,
-  "selectedSegmentIndex": int,
+  value: string,
+  selectedSegmentIndex: int,
 };
 
 [@react.component] [@bs.module "react-native"]
@@ -52,8 +61,9 @@ external make:
                           | `imagebutton
                         ]
                           =?,
-    ~accessibilityStates: array(AccessibilityState.t)=?,
+    ~accessibilityState: Accessibility.state=?,
     ~accessibilityTraits: array(AccessibilityTrait.t)=?,
+    ~accessibilityValue: Accessibility.value=?,
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
     ~collapsable: bool=?,

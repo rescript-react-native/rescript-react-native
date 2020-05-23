@@ -123,7 +123,7 @@ below, before state is returned.
 ```reason
 open ReactNative;
 
-let windowWidth = Dimensions.get(`window)##width;
+let windowWidth = Dimensions.get(`window).width;
 
 type state = {register: bool};
 

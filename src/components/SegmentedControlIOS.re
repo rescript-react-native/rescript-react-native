@@ -1,9 +1,8 @@
 include NativeElement;
 
 type change = {
-  .
-  "value": string,
-  "selectedSegmentIndex": int,
+  value: string,
+  selectedSegmentIndex: int,
 };
 
 [@react.component] [@bs.module "react-native"]
@@ -45,8 +44,9 @@ external make:
                           | `imagebutton
                         ]
                           =?,
-    ~accessibilityStates: array(AccessibilityState.t)=?,
+    ~accessibilityState: Accessibility.state=?,
     ~accessibilityTraits: array(AccessibilityTrait.t)=?,
+    ~accessibilityValue: Accessibility.value=?,
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
     ~collapsable: bool=?,

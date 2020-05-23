@@ -1,12 +1,29 @@
 ---
 id: apis/Linking
 title: Linking
-officialDoc: https://facebook.github.io/react-native/docs/linking.html
+officialDoc: https://reactnative.dev/docs/linking.html
 ---
 
 Only for projects supporting Native Code. Requires the project to have been
 created using `react-native init` or ejected afterwards if created using
 `expo init` or `create-react-native-app`.
+
+## Types
+
+### `extra`
+
+To be used with the [`sendIntentWithExtras`](#sendIntentWithExtras) method for
+sending text and data. May be created by the constructor of the same name.
+
+```reason
+external extra: (~key: string, ~value: 'a) => extra
+```
+
+### `url`
+
+```reason
+type url = {url: string};
+```
 
 ## Methods
 
@@ -89,23 +106,22 @@ extra: (~key: string, ~value: 'a) => extra
 
 To specify a handler for the specified event type. Only the "url" event is
 supported, which should be specified using the polymorphic variant `` `url ``.
-The handler should be of type `{. "url": string} => unit`. The URL can be
-obtained from the returned object using the `##url` accessor. This method
-returns `unit`.
+The handler should be of type [`url`](#url)`=> unit`. The URL can be obtained
+from the returned object using the `.url` property. This method returns `unit`.
 
 ```reason
-addEventListener: ([ `url], {. "url": string} => unit) => unit
+addEventListener: ([ `url], url => unit) => unit
 ```
 
 ### `removeEventListener`
 
 To remove a handler for the specified event type. Only the "url" event is
 supported, which should be specified using the polymorphic variant `` `url ``.
-The handler should be of type `{. "url": string} => unit`. This method returns
+The handler should be of type [`url`](#url)`=> unit`. This method returns
 `unit`.
 
 ```reason
-removeEventListener([ `url], {. "url": string} => unit) => unit
+removeEventListener([ `url], url => unit) => unit
 ```
 
 ### Example
@@ -113,8 +129,8 @@ removeEventListener([ `url], {. "url": string} => unit) => unit
 ```reason
 open ReactNative;
 
-let windowHeight = Dimensions.get(`window)##height;
-let windowWidth = Dimensions.get(`window)##width;
+let windowHeight = Dimensions.get(`window).height;
+let windowWidth = Dimensions.get(`window).width;
 
 let containerStyle =
   Style.(
@@ -144,7 +160,7 @@ let make = () => {
     );
 
   let handler = s => {
-    s##url->Js.Console.warn;
+    s.url->Js.Console.warn;
   };
 
   let handlePromise = url =>
