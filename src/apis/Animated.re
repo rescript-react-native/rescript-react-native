@@ -11,7 +11,7 @@ module Animation = {
 
 module type Value = {
   type t;
-  type jsValue;
+  type rawValue;
   type addListenerCallback;
 };
 
@@ -28,7 +28,7 @@ module ValueAnimations = (Val: Value) => {
     [@bs.obj]
     external config:
       (
-        ~velocity: Val.jsValue,
+        ~velocity: Val.rawValue,
         ~deceleration: float=?,
         ~isInteraction: bool=?,
         ~useNativeDriver: bool,
@@ -44,7 +44,7 @@ module ValueAnimations = (Val: Value) => {
 
   module Spring = {
     type toValue;
-    external fromRawValue: Val.jsValue => toValue = "%identity";
+    external fromRawValue: Val.rawValue => toValue = "%identity";
     external fromAnimatedValue: Val.t => toValue = "%identity";
 
     type config;
@@ -56,7 +56,7 @@ module ValueAnimations = (Val: Value) => {
         ~restDisplacementThreshold: float=?,
         ~overshootClamping: bool=?,
         ~restSpeedThreshold: float=?,
-        ~velocity: Val.jsValue=?,
+        ~velocity: Val.rawValue=?,
         ~bounciness: float=?,
         ~speed: float=?,
         ~tension: float=?,
@@ -80,7 +80,7 @@ module ValueAnimations = (Val: Value) => {
   module Timing = {
     type toValue;
 
-    external fromRawValue: Val.jsValue => toValue = "%identity";
+    external fromRawValue: Val.rawValue => toValue = "%identity";
     external fromAnimatedValue: Val.t => toValue = "%identity";
 
     type config;
@@ -148,12 +148,12 @@ module ValueOperations = {
 
 module ValueMethods = (Val: Value) => {
   type t = Val.t;
-  type jsValue = Val.jsValue;
+  type rawValue = Val.rawValue;
   type addListenerCallback = Val.addListenerCallback;
-  type callback = jsValue => unit;
+  type callback = rawValue => unit;
 
-  [@bs.send] external setValue: (t, jsValue) => unit = "setValue";
-  [@bs.send] external setOffset: (t, jsValue) => unit = "setOffset";
+  [@bs.send] external setValue: (t, rawValue) => unit = "setValue";
+  [@bs.send] external setOffset: (t, rawValue) => unit = "setOffset";
   [@bs.send] external flattenOffset: t => unit = "flattenOffset";
   [@bs.send] external extractOffset: t => unit = "extractOffset";
   [@bs.send]
@@ -175,8 +175,8 @@ module ValueMethods = (Val: Value) => {
 module Value = {
   include ValueMethods({
     type t = value(regular);
-    type jsValue = float;
-    type addListenerCallback = {. "value": jsValue} => unit;
+    type rawValue = float;
+    type addListenerCallback = {. "value": rawValue} => unit;
   });
 
   [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
@@ -192,22 +192,24 @@ module ValueXY = {
       "x": Value.t,
       "y": Value.t,
     };
-    type jsValue = {
+    type rawValue = {
       .
       "x": float,
       "y": float,
     };
-    type addListenerCallback = jsValue => unit;
+    type addListenerCallback = rawValue => unit;
   });
 
-  [@bs.obj] external jsValue: (~x: float, ~y: float) => jsValue;
+  [@deprecated "Please use xyValue instead"] [@bs.obj]
+  external jsValue: (~x: float, ~y: float) => rawValue;
+  [@bs.obj] external xyValue: (~x: float, ~y: float) => rawValue;
 
   type layout = {
     left: Value.t,
     top: Value.t,
   };
   [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
-  external create: jsValue => t = "ValueXY";
+  external create: rawValue => t = "ValueXY";
   [@bs.send] external getLayout: t => layout = "getLayout";
   [@bs.send]
   external getTranslateTransform: t => array(Style.transform) =
