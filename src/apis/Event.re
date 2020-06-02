@@ -74,13 +74,16 @@ type textLayout = {
   xHeight: float // verify
 };
 
-type layoutEvent = syntheticEvent(layout)
+type layoutEvent = syntheticEvent(layoutPayload)
 and layout = {
   x: float,
   y: float,
   width: float,
   height: float,
-};
+}
+and layoutPayload = {
+  layout: layout
+} ;
 
 type textLayoutEvent = syntheticEvent(textLayouts)
 and textLayouts = {lines: array(textLayout)};
