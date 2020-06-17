@@ -2,7 +2,13 @@ type t;
 
 external array: array(t) => t = "%identity";
 external arrayOption: array(option(t)) => t = "%identity";
+[@deprecated
+  "Style.list has been deprecated in favor of Style.array (because it won't work with BuckleScript 8.0.0)."
+]
 external list: list(t) => t = "%identity";
+[@deprecated
+  "Style.listOption has been deprecated in favor of Style.arrayOption (because it won't work with BuckleScript 8.0.0)."
+]
 external listOption: list(option(t)) => t = "%identity";
 [@bs.val]
 external unsafeAddStyle: ([@bs.as {json|{}|json}] _, t, Js.t('a)) => t =
