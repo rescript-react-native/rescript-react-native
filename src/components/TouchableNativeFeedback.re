@@ -11,7 +11,7 @@ module Background = {
     "SelectableBackgroundBorderless";
 
   [@bs.module "react-native"] [@bs.scope "TouchableNativeFeedback"]
-  external canUseNativeForeground: unit => t = "CanUseNativeForeground";
+  external canUseNativeForeground: unit => bool = "canUseNativeForeground";
 
   [@bs.module "react-native"] [@bs.scope "TouchableNativeFeedback"]
   external ripple: (string, bool) => t = "Ripple";
