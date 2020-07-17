@@ -1,1 +1,10 @@
-/* This output is empty. Its source's type definitions, externals and/or unused code got optimized away. */
+'use strict';
+
+var Event$ReactNative = require("../apis/Event.bs.js");
+
+Event$ReactNative.SyntheticEvent({ });
+
+var SnapshotReadyEvent = { };
+
+exports.SnapshotReadyEvent = SnapshotReadyEvent;
+/*  Not a pure module */

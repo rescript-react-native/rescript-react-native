@@ -1,11 +1,17 @@
 include NativeElement;
 
-type checkBoxEvent =
-  Event.syntheticEvent({
-    .
-    "target": int,
-    "value": bool,
+module CheckBoxEvent = {
+  type payload = {
+    target: int,
+    value: bool,
+  };
+
+  include Event.SyntheticEvent({
+    type _payload = payload;
   });
+};
+
+type checkBoxEvent = CheckBoxEvent.t;
 
 [@react.component] [@bs.module "react-native"]
 external make:

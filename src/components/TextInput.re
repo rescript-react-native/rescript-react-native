@@ -1,35 +1,64 @@
 include TextInputElement;
 
-type changeEvent = Event.syntheticEvent(changePayload)
-and changePayload = {
-  eventCount: int,
-  target: int,
-  text: string,
+module ChangeEvent = {
+  type payload = {
+    eventCount: int,
+    target: int,
+    text: string,
+  };
+
+  include Event.SyntheticEvent({
+    type _payload = payload;
+  });
 };
 
-type editingEvent = Event.syntheticEvent(editingPayload)
-and editingPayload = {
-  text: string,
-  eventCount: int,
-  target: int,
+type changeEvent = ChangeEvent.t;
+
+module EditingEvent = {
+  type payload = {
+    text: string,
+    eventCount: int,
+    target: int,
+  };
+
+  include Event.SyntheticEvent({
+    type _payload = payload;
+  });
 };
 
-type contentSizeChangeEvent = Event.syntheticEvent(contentSizeChangePayload)
-and contentSizeChangePayload = {
-  target: int,
-  contentSize,
-}
-and contentSize = {
-  width: float,
-  height: float,
+type editingEvent = EditingEvent.t;
+
+module ContentSizeChangeEvent = {
+  type contentSize = {
+    width: float,
+    height: float,
+  };
+  type payload = {
+    target: int,
+    contentSize,
+  };
+
+  include Event.SyntheticEvent({
+    type _payload = payload;
+  });
 };
 
-type scrollEvent = Event.syntheticEvent(scrollPayload)
-and scrollPayload = {contentOffset}
-and contentOffset = {
-  x: float,
-  y: float,
+type contentSizeChangeEvent = ContentSizeChangeEvent.t;
+
+module ScrollEvent = {
+  type contentOffset = {
+    x: float,
+    y: float,
+  };
+
+  type payload = {contentOffset};
+
+  include Event.SyntheticEvent({
+    type _payload = payload;
+  });
 };
+
+type scrollEvent = ScrollEvent.t;
 
 type selection = {
   start: int,
@@ -37,18 +66,32 @@ type selection = {
   _end: int,
 };
 
-type selectionChangeEvent = Event.syntheticEvent(selectionChangePayload)
-and selectionChangePayload = {
-  selection,
-  target: int,
+module SelectionChangeEvent = {
+  type payload = {
+    selection,
+    target: int,
+  };
+
+  include Event.SyntheticEvent({
+    type _payload = payload;
+  });
 };
 
-type keyPressEvent = Event.syntheticEvent(keyPressPayload)
-and keyPressPayload = {
-  key: string,
-  target: Js.Nullable.t(int),
-  eventCount: Js.Nullable.t(int),
+type selectionChangeEvent = SelectionChangeEvent.t;
+
+module KeyPressEvent = {
+  type payload = {
+    key: string,
+    target: Js.Nullable.t(int),
+    eventCount: Js.Nullable.t(int),
+  };
+
+  include Event.SyntheticEvent({
+    type _payload = payload;
+  });
 };
+
+type keyPressEvent = KeyPressEvent.t;
 
 module DataDetectorTypes = TextInput_DataDetectorTypes;
 

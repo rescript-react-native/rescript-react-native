@@ -1,28 +1,37 @@
 'use strict';
 
 
-var TextLayout = { };
+function EventMethods(T) {
+  return { };
+}
 
-var Layout = { };
+function SyntheticEvent(T) {
+  return { };
+}
+
+function ResponderSyntheticEvent(T) {
+  return { };
+}
 
 var LayoutEvent = { };
 
-var PressEvent = { };
+var TextLayoutEvent = { };
 
-var Dimensions = { };
+var PressEvent = { };
 
 var ScrollEvent = { };
 
-var SwitchChangePayload = { };
+var SwitchChangeEvent = { };
 
 var TargetEvent = { };
 
-exports.TextLayout = TextLayout;
-exports.Layout = Layout;
+exports.EventMethods = EventMethods;
+exports.SyntheticEvent = SyntheticEvent;
+exports.ResponderSyntheticEvent = ResponderSyntheticEvent;
 exports.LayoutEvent = LayoutEvent;
+exports.TextLayoutEvent = TextLayoutEvent;
 exports.PressEvent = PressEvent;
-exports.Dimensions = Dimensions;
 exports.ScrollEvent = ScrollEvent;
-exports.SwitchChangePayload = SwitchChangePayload;
+exports.SwitchChangeEvent = SwitchChangeEvent;
 exports.TargetEvent = TargetEvent;
 /* No side effect */

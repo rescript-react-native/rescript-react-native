@@ -1,9 +1,17 @@
 include NativeElement;
 
-type change = {
-  value: string,
-  selectedSegmentIndex: int,
+module ChangeEvent = {
+  type payload = {
+    value: string,
+    selectedSegmentIndex: int,
+  };
+
+  include Event.SyntheticEvent({
+    type _payload = payload;
+  });
 };
+
+type changeEvent = ChangeEvent.t;
 
 [@react.component] [@bs.module "react-native"]
 external make:
@@ -12,7 +20,7 @@ external make:
     // SegmentedControlIOS props
     ~enabled: bool=?,
     ~momentary: bool=?,
-    ~onChange: Event.syntheticEvent(change) => unit=?,
+    ~onChange: changeEvent => unit=?,
     ~onValueChange: int => unit=?,
     ~selectedIndex: int=?,
     ~tintColor: string=?,
