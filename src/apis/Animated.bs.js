@@ -82,17 +82,17 @@ function decay(prim, prim$1) {
 
 function start(prim, prim$1, prim$2) {
   prim.start(prim$1 !== undefined ? Caml_option.valFromOption(prim$1) : undefined);
-  return /* () */0;
+  
 }
 
 function stop(prim) {
   prim.stop();
-  return /* () */0;
+  
 }
 
 function reset(prim) {
   prim.reset();
-  return /* () */0;
+  
 }
 
 var StyleProp = { };

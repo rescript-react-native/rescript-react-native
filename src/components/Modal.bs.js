@@ -7,9 +7,9 @@ Event$ReactNative.SyntheticEvent({ });
 
 var OrientationChangeEvent = { };
 
-var Orientation = /* alias */0;
+var Orientation;
 
-var OrientationChange = /* alias */0;
+var OrientationChange;
 
 exports.Orientation = Orientation;
 exports.OrientationChange = OrientationChange;

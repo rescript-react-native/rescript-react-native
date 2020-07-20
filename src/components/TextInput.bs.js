@@ -27,7 +27,7 @@ Event$ReactNative.SyntheticEvent({ });
 
 var KeyPressEvent = { };
 
-var DataDetectorTypes = /* alias */0;
+var DataDetectorTypes;
 
 exports.ChangeEvent = ChangeEvent;
 exports.EditingEvent = EditingEvent;
