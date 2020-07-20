@@ -1,8 +1,9 @@
 {
   "name": "reason-react-native",
-  "version": "0.61.1",
+  "version": "0.62.0",
   "peerDependencies": {
-    "react-native": "^0.61.0",
+    "bs-platform": "^7.3.0",
+    "react-native": "^0.62.0",
     "reason-react": "^0.8.0"
   },
   "repository": "https://github.com/reason-react-native/reason-react-native.git",

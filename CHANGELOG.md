@@ -1,5 +1,136 @@
 # Changelog of `reason-react-native`
 
+## 0.62.0 - 2020-06-20
+
+The release we all have been waiting for (thanks for you patience)!  
+Huge thanks to [@sgny](https://github.com/sgny) which handled most of the
+changes directly related to react-native 0.62.
+
+**tl;dr**: this release includes
+
+- breaking changes related to `reason-react@0.8`
+- breaking changes related to `bs-platform@7` (say bye to most `##` accessors in
+  favor of `.`)
+- breaking changes related to `react-native@0.62` (say bye to removed
+  components)
+
+So in order to upgrade to this release you need to upgrade all this dependencies
+at the same time. Be sure to respect
+[`peerDependencies`](https://github.com/reason-react-native/reason-react-native/blob/0.62.0/package.json#L4)
+before reporting issue.
+
+### 🚀 Upgrades & 💥 Breaking changes
+
+- Upgraded reason-react to 0.8.0
+  ([#689](https://github.com/reason-react-native/reason-react-native/issues/689))
+  [@jfrolich](https://github.com/jfrolich)  
+  See <https://reasonml.org/blog/reason-react-0-8-0> for more informations
+- Upgraded to bs-platform 7.3.0
+  ([#631](https://github.com/reason-react-native/reason-react-native/issues/631))
+  [@idkjs](https://github.com/idkjs)
+  ([#666](https://github.com/reason-react-native/reason-react-native/issues/666))
+  [@Arnarkari93](https://github.com/Arnarkari93)
+  ([#674](https://github.com/reason-react-native/reason-react-native/issues/674))
+  ([#693](https://github.com/reason-react-native/reason-react-native/issues/693))
+  ([#690](https://github.com/reason-react-native/reason-react-native/issues/690))
+  ([#694](https://github.com/reason-react-native/reason-react-native/issues/694))
+  [@sgny](https://github.com/sgny)
+  ([#695](https://github.com/reason-react-native/reason-react-native/issues/695))
+  [@cknitt](https://github.com/cknitt)  
+  We have converted `Js.t` objects to records where possible (we had to skipped
+  objects that rely on `[@bs.meth]`). This means you will have to change a lot
+  of `##` notation to just a dot (`.`) to access properties.  
+  See <https://reasonml.org/blog/whats-new-in-7-pt1> for more informations
+- Removed some methods for FlatList, ScrollView, SectionList, VirtualizedList
+  and VirtualizedSectionList
+  ([#680](https://github.com/reason-react-native/reason-react-native/issues/680))
+  [@sgny](https://github.com/sgny)  
+  These components are interrelated in the sense of being based on each other
+  and inheriting props, however, applicable methods are not inherited quite so
+  consistently. We removed unavailable methods from each component.
+- Removed `accessibilityStates` prop
+  ([#656](https://github.com/reason-react-native/reason-react-native/issues/656))
+  [@sgny](https://github.com/sgny)
+- Removed `TextInput` `onTextInput` and `selectionState` props
+  ([#658](https://github.com/reason-react-native/reason-react-native/issues/658))
+  [@sgny](https://github.com/sgny)
+- Animated: setting `useNativeDriver` prop is required
+  ([#655](https://github.com/reason-react-native/reason-react-native/issues/655))
+  [@sgny](https://github.com/sgny)
+- Handle deprecated or removed components and APIs
+  ([#668](https://github.com/reason-react-native/reason-react-native/issues/668))
+  [@sgny](https://github.com/sgny)
+  - Removed components: `ToolbarAndroid`, `ViewPagerAndroid`, `WebView`
+  - Removed APIs: `AlertIOS`, `CameraRoll`, `GeoLocation`, `ImageEditor`,
+    `NetInfo`, `TimePickerAndroid`
+  - Some others components that have been deprecated in RN regarding "Lean Core"
+    initiative have been documented as such and will be removed in future
+    releases.
+- Deprecated `Style.list` & `Style.listOption` for future bs-platform 8.0.0
+  compatibility
+  ([#700](https://github.com/reason-react-native/reason-react-native/issues/700))
+  [@MoOx](https://github.com/MoOx)
+
+### ⛑ Fixes
+
+- Fixed `DatePickerIOS` `minuteInterval` type (int, not string)
+  ([#648](https://github.com/reason-react-native/reason-react-native/issues/648))
+  [@idkjs](https://github.com/idkjs)
+- Fixed `Animated.ValueXY.getTranslateTransform(value)` binding
+  ([#675](https://github.com/reason-react-native/reason-react-native/issues/675))
+  [@benadamstyles](https://github.com/benadamstyles)
+- Fixed `Global.hermesInternal`
+  ([#703](https://github.com/reason-react-native/reason-react-native/issues/703))
+  [@fa7ad](https://github.com/fa7ad)
+- Fixed `TouchableNativeFeedback.Background.canUseNativeForeground` type
+  ([#704](https://github.com/reason-react-native/reason-react-native/issues/704))
+  [@phamhoaivu911](https://github.com/phamhoaivu911)
+
+### 🚀 Additions
+
+- Added support for callback refs
+  ([#684](https://github.com/reason-react-native/reason-react-native/issues/684))
+  [@cknitt](https://github.com/cknitt)
+- Added `unstable_enableLogBox`
+  ([#692](https://github.com/reason-react-native/reason-react-native/issues/692))
+  [@MoOx](https://github.com/MoOx)
+- Added `Appearance` module
+  ([#654](https://github.com/reason-react-native/reason-react-native/issues/654))
+  ([#662](https://github.com/reason-react-native/reason-react-native/issues/662))
+  ([#677](https://github.com/reason-react-native/reason-react-native/issues/677))
+  [@sgny](https://github.com/sgny)
+- Added Modal `statusBarTranslucent` prop
+  ([#660](https://github.com/reason-react-native/reason-react-native/issues/660))
+  [@sgny](https://github.com/sgny)
+- Added missing accessibility props to `Touchable*` components
+  ([#659](https://github.com/reason-react-native/reason-react-native/issues/659))
+  [@sgny](https://github.com/sgny)
+- Added `accessibilityState` prop and constructor for related object
+  ([#657](https://github.com/reason-react-native/reason-react-native/issues/657))
+  [@sgny](https://github.com/sgny)
+- Added `DevSettings` module
+  ([#661](https://github.com/reason-react-native/reason-react-native/issues/661))
+  ([#664](https://github.com/reason-react-native/reason-react-native/issues/664))
+  [@sgny](https://github.com/sgny)
+- Added `fadingEdgeLength` prop to FlatList, ScrollView, SectionList etc
+  ([#663](https://github.com/reason-react-native/reason-react-native/issues/663))
+  [@sgny](https://github.com/sgny)
+- Added `accessibilityValue` prop
+  ([#665](https://github.com/reason-react-native/reason-react-native/issues/665))
+- Added mouse event for `react-native-web`
+  ([#646](https://github.com/reason-react-native/reason-react-native/issues/646))
+  [@Naturalclar](https://github.com/Naturalclar)
+- Added `onMouseEnter`, `onMouseLeave` props for View, Text, TextInput and more
+  web props, press-event, href and target
+  ([#650](https://github.com/reason-react-native/reason-react-native/issues/650))
+  [@jfrolich](https://github.com/jfrolich)
+- Updated Linking documentation
+  ([#673](https://github.com/reason-react-native/reason-react-native/issues/673))
+  [@sgny](https://github.com/sgny)
+- Updated Event documentation
+  ([#672](https://github.com/reason-react-native/reason-react-native/issues/672))
+  [@sgny](https://github.com/sgny)
+
 ## 0.61.1 - 2020-01-26
 
 ### 🚀 Additions
