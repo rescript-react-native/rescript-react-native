@@ -1,6 +1,6 @@
 # Changelog of `reason-react-native`
 
-## 0.62.0 - 2020-06-20
+## 0.62.0 - 2020-07-20
 
 The release we all have been waiting for (thanks for you patience)!  
 Huge thanks to [@sgny](https://github.com/sgny) which handled most of the
