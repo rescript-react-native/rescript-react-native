@@ -167,8 +167,8 @@ module ScrollEvent = {
   };
 
   type payload = {
-    contentInset: contentOffset,
-    contentOffset: contentInset,
+    contentInset,
+    contentOffset,
     contentSize: dimensions,
     layoutMeasurement: dimensions,
   };
