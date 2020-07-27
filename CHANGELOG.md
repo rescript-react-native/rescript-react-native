@@ -1,5 +1,12 @@
 # Changelog of `reason-react-native`
 
+## 0.62.1 - 2020-07-27
+
+- Fixed View props for all components that use them (stay in sync)
+- Removed TabBarIOS (removed since RN 0.59)
+- Internal: removed duplicated code source in md files (website will produce the
+  same result - no manual syncing required)
+
 ## 0.62.0 - 2020-07-20
 
 The release we all have been waiting for (thanks for you patience)!  

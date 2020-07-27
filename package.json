@@ -1,6 +1,6 @@
 {
   "name": "reason-react-native",
-  "version": "0.62.0",
+  "version": "0.62.1",
   "peerDependencies": {
     "bs-platform": "^7.3.0",
     "react-native": "^0.62.0",
