@@ -1,10 +1,9 @@
 ---
 id: apis/NetInfo
 title: NetInfo
-wip: true
 ---
 
-NetInfo has been removed from React Native.
+`NetInfo` has been removed from React Native.
 
 Please use [bindings](https://github.com/reason-react-native/netinfo) to the
 replacement

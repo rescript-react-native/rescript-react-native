@@ -1,10 +1,9 @@
 ---
 id: apis/TimePickerAndroid
 title: TimePickerAndroid
-wip: true
 ---
 
-TimePickerAndroid has been removed from React Native.
+`TimePickerAndroid` has been removed from React Native.
 
 Please use [bindings](https://github.com/reason-react-native/datetimepicker) to
 the replacement

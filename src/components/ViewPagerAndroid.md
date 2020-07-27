@@ -1,7 +1,6 @@
 ---
 id: components/ViewPagerAndroid
 title: ViewPagerAndroid
-wip: true
 ---
 
 `ViewPagerAndroid` has been removed from React Native.

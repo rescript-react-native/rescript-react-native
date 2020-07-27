@@ -1,7 +1,6 @@
 ---
 id: apis/GeoLocation
 title: GeoLocation
-wip: true
 ---
 
 `GeoLocation` has been removed from React Native.

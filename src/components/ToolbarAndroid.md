@@ -1,7 +1,6 @@
 ---
 id: components/ToolbarAndroid
 title: ToolbarAndroid
-wip: true
 ---
 
 `ToolbarAndroid` has been removed from React Native.

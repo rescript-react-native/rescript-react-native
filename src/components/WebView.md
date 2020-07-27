@@ -1,7 +1,6 @@
 ---
 id: components/WebView
 title: WebView
-wip: true
 ---
 
 WebView has been removed from React Native.
