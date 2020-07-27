@@ -1,5 +1,9 @@
 # Changelog of `reason-react-native`
 
+## 0.62.2 - 2020-07-27
+
+- Fixed ScrollEvent type
+
 ## 0.62.1 - 2020-07-27
 
 - Fixed View props for all components that use them (stay in sync)
