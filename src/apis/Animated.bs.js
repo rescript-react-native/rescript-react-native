@@ -135,6 +135,7 @@ var $$Text = {
 var make$5 = ReactNative.Animated.createAnimatedComponent(ReactNative.View);
 
 var View = {
+  View: View$ReactNative.View,
   make: make$5
 };
 

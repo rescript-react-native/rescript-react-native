@@ -325,5 +325,5 @@ module Text = {
 module View = {
   include View;
 
-  let make = createAnimatedComponent(View.make);
+  let make = createAnimatedComponent(make);
 };

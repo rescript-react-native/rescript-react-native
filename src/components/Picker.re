@@ -14,7 +14,7 @@ external make:
     ~prompt: string=?,
     // iOS only
     ~itemStyle: Style.t=?,
-    // View Props
+    // View props 0.62.0
     ~accessibilityComponentType: [@bs.string] [
                                    | `none
                                    | `button
@@ -39,6 +39,16 @@ external make:
                           | `header
                           | `summary
                           | `imagebutton
+                          | `article
+                          | `banner
+                          | `complementary
+                          | `contentinfo
+                          | `form
+                          | `list
+                          | `listitem
+                          | `main
+                          | `navigation
+                          | `region
                         ]
                           =?,
     ~accessibilityState: Accessibility.state=?,
@@ -87,7 +97,15 @@ external make:
     ~shouldRasterizeIOS: bool=?,
     ~style: Style.t=?,
     ~testID: string=?,
-    ~children: React.element=?
+    ~children: React.element=?,
+    // React Native Web Props
+    ~onMouseDown: ReactEvent.Mouse.t => unit=?,
+    ~onMouseEnter: ReactEvent.Mouse.t => unit=?,
+    ~onMouseLeave: ReactEvent.Mouse.t => unit=?,
+    ~onMouseMove: ReactEvent.Mouse.t => unit=?,
+    ~onMouseOver: ReactEvent.Mouse.t => unit=?,
+    ~onMouseOut: ReactEvent.Mouse.t => unit=?,
+    ~onMouseUp: ReactEvent.Mouse.t => unit=?
   ) =>
   React.element =
   "Picker";

@@ -6,11 +6,21 @@ external edgeInsets:
   (~left: float=?, ~right: float=?, ~top: float=?, ~bottom: float=?, unit) =>
   edgeInsets;
 
+// commodity for easier copy pasting for updating other components that have
+// View props
+// in their props
+module View = {
+  type nonrec edgeInsets = edgeInsets;
+};
+
 [@react.component] [@bs.module "react-native"]
 external make:
   (
     ~ref: ref=?,
-    // View props
+    // ! \\ If you adjust props below,
+    // be sure to adjust all places that use the same comment as below
+    // ↓
+    // View props 0.62.0
     ~accessibilityComponentType: [@bs.string] [
                                    | `none
                                    | `button
@@ -53,7 +63,7 @@ external make:
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
     ~collapsable: bool=?,
-    ~hitSlop: edgeInsets=?,
+    ~hitSlop: View.edgeInsets=?,
     ~importantForAccessibility: [@bs.string] [
                                   | `auto
                                   | `yes
