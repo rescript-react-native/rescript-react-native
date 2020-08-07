@@ -45,8 +45,7 @@
     "reason-react": "^0.8.0"
   },
   "prettier": {
-    "trailingComma": "all",
-    "proseWrap": "always"
+    "trailingComma": "all"
   },
   "lint-staged": {
     "*.{md,json,js,css}": [
