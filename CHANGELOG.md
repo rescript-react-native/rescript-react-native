@@ -1,5 +1,10 @@
 # Changelog of `reason-react-native`
 
+## 0.62.3 - 2020-08-07
+
+- Stop blocking compilation because of BuckleScript warnings (emitted as errors) [#708](https://github.com/reason-react-native/reason-react-native/pull/708) by [@jfrolich](https://github.com/jfrolich)  
+  This is to ensure BuckleScript 8.2 compatibility & avoid similar problem in the future.
+
 ## 0.62.2 - 2020-07-27
 
 - Fixed ScrollEvent type [5df7fb0](https://github.com/reason-react-native/reason-react-native/commit/5df7fb0ff5f7c1be2373347bc2ca1923e69ba112) by [@MoOx](https://github.com/MoOx)
