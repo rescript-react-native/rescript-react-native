@@ -11,7 +11,12 @@ let unchecked = false;
 [@bs.inline]
 let mixed = "mixed";
 
-[@bs.obj] external actionInfo: (~name: string, ~label: string=?) => actionInfo;
+[@bs.obj] external actionInfo: 
+  (
+    ~name: string, 
+    ~label: string=?
+  ) => 
+  actionInfo;
 
 [@bs.obj]
 external state:
