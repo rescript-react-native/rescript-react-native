@@ -1,4 +1,5 @@
 type state;
+type actionInfo;
 type checked('a) = 'a;
 
 [@bs.inline]
@@ -9,6 +10,8 @@ let unchecked = false;
 
 [@bs.inline]
 let mixed = "mixed";
+
+[@bs.obj] external actionInfo: (~name: string, ~label: string=?) => actionInfo;
 
 [@bs.obj]
 external state:
