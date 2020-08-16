@@ -140,6 +140,7 @@ external make:
     ~stickyHeaderIndices: array(int)=?,
     ~zoomScale: float=?,
     // View props 0.62.0
+    ~accessibilityActions: array(Accessibility.actionInfo)=?,
     ~accessibilityComponentType: [@bs.string] [
                                    | `none
                                    | `button

@@ -20,6 +20,7 @@ external make:
     ~trackImage: Image.Source.t=?,
     ~value: float=?,
     // View props 0.62.0
+    ~accessibilityActions: array(Accessibility.actionInfo)=?,
     ~accessibilityComponentType: [@bs.string] [
                                    | `none
                                    | `button

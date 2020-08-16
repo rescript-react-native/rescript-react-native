@@ -9,6 +9,7 @@ external make:
     ~selectedValue: 'a=?,
     ~itemStyle: Style.t=?,
     // View props 0.62.0
+    ~accessibilityActions: array(Accessibility.actionInfo)=?,
     ~accessibilityComponentType: [@bs.string] [
                                    | `none
                                    | `button
