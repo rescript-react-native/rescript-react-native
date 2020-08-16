@@ -14,7 +14,7 @@ external make:
     ~prompt: string=?,
     // iOS only
     ~itemStyle: Style.t=?,
-    // View props 0.63.0
+    // View props 0.62.0
     ~accessibilityComponentType: [@bs.string] [
                                    | `none
                                    | `button

@@ -246,7 +246,7 @@ external make:
                         =?,
     ~underlineColorAndroid: Color.t=?,
     ~value: string=?,
-    // View props 0.63.0
+    // View props 0.62.0
     ~accessibilityComponentType: [@bs.string] [
                                    | `none
                                    | `button
