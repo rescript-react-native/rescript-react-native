@@ -14,7 +14,7 @@ external make:
     ~tintColor: Color.t=?,
     ~title: string=?,
     ~titleColor: Color.t=?,
-    // View props 0.62.0
+    // View props 0.63.0
     ~accessibilityActions: array(Accessibility.actionInfo)=?,
     ~accessibilityComponentType: [@bs.string] [
                                    | `none

@@ -11,7 +11,7 @@ external make:
     ~progressViewStyle: [@bs.string] [ | `default | `bar]=?,
     ~trackImage: Image.Source.t=?,
     ~trackTintColor: Color.t=?,
-    // View props 0.62.0
+    // View props 0.63.0
     ~accessibilityActions: array(Accessibility.actionInfo)=?,
     ~accessibilityComponentType: [@bs.string] [
                                    | `none

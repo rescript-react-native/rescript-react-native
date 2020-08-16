@@ -27,7 +27,7 @@ external make:
     ~mode: [@bs.string] [ | `date | `time | `datetime]=?,
     ~locale: localeId=?,
     ~timeZoneOffsetInMinutes: int=?,
-    // View props 0.62.0
+    // View props 0.63.0
     ~accessibilityActions: array(Accessibility.actionInfo)=?,
     ~accessibilityComponentType: [@bs.string] [
                                    | `none
