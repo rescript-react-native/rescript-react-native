@@ -15,7 +15,6 @@ external make:
     ~ios_backgroundColor: Color.t=?,
     ~onValueChange: bool => unit=?,
     ~thumbColor: Color.t=?,
-    ~tintColor: Color.t=?,
     ~value: bool=?,
     // View props 0.62.0
     ~accessibilityComponentType: [@bs.string] [
