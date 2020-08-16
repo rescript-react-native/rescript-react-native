@@ -44,6 +44,7 @@ external make:
                                     `noHideDescendants
                                 ]
                                   =?,
+    // Pressable props
     ~children: React.element=?,
     ~delayLongPress: int=?,
     ~disabled: bool=?,
