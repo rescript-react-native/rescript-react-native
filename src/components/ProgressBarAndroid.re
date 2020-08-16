@@ -19,7 +19,7 @@ external make:
                   | `LargeInverse
                 ]
                   =?,
-    // View props 0.62.0
+    // View props 0.63.0
     ~accessibilityComponentType: [@bs.string] [
                                    | `none
                                    | `button

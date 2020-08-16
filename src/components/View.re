@@ -20,7 +20,7 @@ external make:
     // ! \\ If you adjust props below,
     // be sure to adjust all places that use the same comment as below
     // ↓
-    // View props 0.62.0
+    // View props 0.63.0
     ~accessibilityComponentType: [@bs.string] [
                                    | `none
                                    | `button
