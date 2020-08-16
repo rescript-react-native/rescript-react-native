@@ -10,7 +10,7 @@ external rippleConfig:
 external make:
   (
     ~ref: ref=?,
-    // Pressable props
+    // Accessibility props
     ~accessibilityActions: array(Accessibility.actionInfo)=?,
     ~accessibilityElementsHidden: bool=?,
     ~accessibilityHint: string=?,
