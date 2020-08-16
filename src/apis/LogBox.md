@@ -18,9 +18,6 @@ Console errors and warnings are displayed as on-screen notifications with a red 
 
 ```reason
 ignoreLogs: array(string) => unit
-```
-> example
-```reason
 Open ReactNative;
 
 LogBox.ignoreLogs([
