@@ -4,7 +4,7 @@ type rippleConfig;
 
 [@bs.obj]
 external rippleConfig:
-  (~color: Color.t=?, ~borderless: bool=?, ~radius: float=?) => rippleConfig;
+  (~color: Color.t=?, ~borderless: bool=?, ~radius: float=?, unit) => rippleConfig;
 
 [@react.component] [@bs.module "react-native"]
 external make:
