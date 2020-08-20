@@ -15,13 +15,9 @@
     "react-native"
   ],
   "files": [
-    "*",
-    "!.github",
-    "!.DS_Store",
-    "!**/*.bs.js",
-    "!.merlin",
-    "!lib/bs",
-    "!lib/ocaml"
+    "*.md",
+    "bsconfig.json",
+    "src/*.re"
   ],
   "scripts": {
     "format:most": "prettier --write \"**/*.{md,json,js,css}\"",
