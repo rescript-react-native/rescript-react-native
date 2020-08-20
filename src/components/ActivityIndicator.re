@@ -11,7 +11,8 @@ external make:
     ~color: Color.t=?,
     ~size: Size.t=?,
     ~hidesWhenStopped: bool=?,
-    // View props 0.62.0
+    // View props 0.63.0
+    ~accessibilityActions: array(Accessibility.actionInfo)=?,
     ~accessibilityComponentType: [@bs.string] [
                                    | `none
                                    | `button
