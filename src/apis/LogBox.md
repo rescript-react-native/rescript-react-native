@@ -8,7 +8,7 @@ Errors and warnings in development builds are displayed in LogBox inside your ap
 
 > LogBox is automatically disabled in release (production) builds.
 
-### [`ignoreLogs`](https://reactnative.dev/docs/debugging#console-errors-and-warnings)
+## `ignoreLogs`
 
 
 Console errors and warnings are displayed as on-screen notifications with a red or yellow badge, and the number of errors or warning in the console respectively. To view a console error or warnings, tap the notification to view the full screen information about the log and to paginiate through all of the logs in the console.
@@ -33,7 +33,7 @@ LogBox.ignoreLogs([
 ]);
 ```
 
-### [`ignoreAllLogs`](https://reactnative.dev/docs/debugging#console-errors-and-warnings)
+## `ignoreAllLogs`
 
 These notifications can be hidden using `ReactNative.LogBox.ignoreAllLogs()`. This is useful when giving product demos, for example. Additionally, notifications can be hidden on a per-log basis via `ReactNative.LogBox.ignoreLogs([|"Require cycle:"|])`. This is useful when there's a noisy warning that cannot be fixed, like those in a third-party dependency.
 
