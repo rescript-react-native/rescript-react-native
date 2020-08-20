@@ -3,7 +3,6 @@ id: apis/LogBox
 title: LogBox
 officialDoc: https://reactnative.dev/docs/debugging#logbox
 ---
-## [LogBox](https://reactnative.dev/docs/debugging#logbox)
 
 Errors and warnings in development builds are displayed in LogBox inside your app.
 
@@ -18,7 +17,12 @@ Console errors and warnings are displayed as on-screen notifications with a red 
 
 ```reason
 ignoreLogs: array(string) => unit
-Open ReactNative;
+```
+
+> example
+
+```reason
+open ReactNative;
 
 LogBox.ignoreLogs([
   "Require cycle:",
@@ -44,7 +48,7 @@ ignoreAllLogs: unit => unit
 > example
 
 ```reason
-Open ReactNative;
+open ReactNative;
 
 LogBox.ignoreAllLogs();
 ```
