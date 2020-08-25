@@ -17,7 +17,7 @@ module Make = (T: {type t;}) => {
   [@bs.obj]
   external scrollToItemParams:
     (~viewPosition: float=?, ~animated: bool=?, ~item: 'item, unit) =>
-    scrollToIndexParams;
+    scrollToItemParams('item);
   [@bs.send]
   external scrollToItem: (T.t, scrollToItemParams('item)) => unit =
     "scrollToItem";
