@@ -86,12 +86,12 @@ module Android = {
     | `colorSecondary
   ];
 
-  type color =
+  type t =
     | Attr(attrColor)
     | Color(androidColor);
 
   [@bs.module "react-native"]
-  external unsafe_get: string => Color.t = "PlatformColor";
+  external unsafeGet: string => Color.t = "PlatformColor";
 
   let get = color => {
     let colorString =
@@ -100,6 +100,6 @@ module Android = {
       | Color(value) => "@android:color/" ++ androidColorToJs(value)
       };
 
-    unsafe_get(colorString);
+    unsafeGet(colorString);
   };
 };
