@@ -12,7 +12,7 @@ The types are polymorphic variants.
 
 ### IOS.t
 
-See: (UI Element Colors)[https://developer.apple.com/documentation/uikit/uicolor/ui_element_colors]
+See: [UI Element Colors](https://developer.apple.com/documentation/uikit/uicolor/ui_element_colors)
 
 ### Android.t
 
@@ -24,11 +24,11 @@ type t =
 
 #### Android.attrColor
 
-See: (R.attr)[https://developer.android.com/reference/android/R.attr]
+See: [R.attr](https://developer.android.com/reference/android/R.attr)
 
 #### Android.androidColor
 
-See: (R.color)[https://developer.android.com/reference/android/R.color]
+See: [R.color](https://developer.android.com/reference/android/R.color)
 
 ## Methods
 
