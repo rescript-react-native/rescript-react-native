@@ -13,7 +13,7 @@ On an element wrapped by Pressable:
 1. onPressIn is called when a press is activated.
 2. onPressOut is called when the press gesture is deactivated.
 
-You can read more about this here.
+You can read more about this [here](https://reactnative.dev/docs/pressable).
 
 ## Example
 
