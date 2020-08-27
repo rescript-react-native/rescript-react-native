@@ -23,19 +23,6 @@ else {
 }
 ```
 
-## `Global.unstable_enableLogBox``
-
-Enable React Native unstable
-[LogBox](https://reactnative.dev/blog/2020/03/26/version-0.62#other-improvements)
-
-```reason
-open ReactNative;
-
-if (Global.__DEV__) {
-  Global.unstable_enableLogBox();
-};
-```
-
 ## `Global.hermesInternal`
 
 This is the `HermesInternal` value known in JavaScript as
