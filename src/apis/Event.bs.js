@@ -2,28 +2,28 @@
 
 
 function EventMethods(T) {
-  return { };
+  return {};
 }
 
 function SyntheticEvent(T) {
-  return { };
+  return {};
 }
 
 function ResponderSyntheticEvent(T) {
-  return { };
+  return {};
 }
 
-var LayoutEvent = { };
+var LayoutEvent = {};
 
-var TextLayoutEvent = { };
+var TextLayoutEvent = {};
 
-var PressEvent = { };
+var PressEvent = {};
 
-var ScrollEvent = { };
+var ScrollEvent = {};
 
-var SwitchChangeEvent = { };
+var SwitchChangeEvent = {};
 
-var TargetEvent = { };
+var TargetEvent = {};
 
 exports.EventMethods = EventMethods;
 exports.SyntheticEvent = SyntheticEvent;

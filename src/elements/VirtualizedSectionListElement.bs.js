@@ -2,6 +2,6 @@
 
 var VirtualizedSectionListMethods$ReactNative = require("./VirtualizedSectionListMethods.bs.js");
 
-VirtualizedSectionListMethods$ReactNative.Make({ });
+VirtualizedSectionListMethods$ReactNative.Make({});
 
 /*  Not a pure module */

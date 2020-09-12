@@ -1,7 +1,7 @@
 'use strict';
 
 
-var Subscription = { };
+var Subscription = {};
 
 exports.Subscription = Subscription;
 /* No side effect */

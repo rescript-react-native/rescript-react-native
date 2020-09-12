@@ -2,7 +2,7 @@
 
 
 function Make(T) {
-  return { };
+  return {};
 }
 
 exports.Make = Make;

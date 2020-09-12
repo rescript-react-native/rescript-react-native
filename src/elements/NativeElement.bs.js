@@ -2,6 +2,6 @@
 
 var NativeMethods$ReactNative = require("./NativeMethods.bs.js");
 
-NativeMethods$ReactNative.Make({ });
+NativeMethods$ReactNative.Make({});
 
 /*  Not a pure module */

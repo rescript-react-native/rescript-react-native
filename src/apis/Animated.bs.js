@@ -9,12 +9,12 @@ var FlatList$ReactNative = require("../components/FlatList.bs.js");
 var ScrollView$ReactNative = require("../components/ScrollView.bs.js");
 var SectionList$ReactNative = require("../components/SectionList.bs.js");
 
-var Animation = { };
+var Animation = {};
 
 function ValueAnimations(Val) {
-  var Decay = { };
-  var Spring = { };
-  var Timing = { };
+  var Decay = {};
+  var Spring = {};
+  var Timing = {};
   return {
           Decay: Decay,
           Spring: Spring,
@@ -22,7 +22,7 @@ function ValueAnimations(Val) {
         };
 }
 
-var Interpolation = { };
+var Interpolation = {};
 
 function interpolate(prim, prim$1) {
   return prim.interpolate(prim$1);
@@ -33,9 +33,9 @@ var ValueOperations = {
 };
 
 function ValueMethods(Val) {
-  var Decay = { };
-  var Spring = { };
-  var Timing = { };
+  var Decay = {};
+  var Spring = {};
+  var Timing = {};
   return {
           Decay: Decay,
           Spring: Spring,
@@ -43,11 +43,11 @@ function ValueMethods(Val) {
         };
 }
 
-var Decay = { };
+var Decay = {};
 
-var Spring = { };
+var Spring = {};
 
-var Timing = { };
+var Timing = {};
 
 var Value = {
   Decay: Decay,
@@ -56,11 +56,11 @@ var Value = {
   interpolate: interpolate
 };
 
-var Decay$1 = { };
+var Decay$1 = {};
 
-var Spring$1 = { };
+var Spring$1 = {};
 
-var Timing$1 = { };
+var Timing$1 = {};
 
 var ValueXY = {
   Decay: Decay$1,
@@ -95,7 +95,7 @@ function reset(prim) {
   
 }
 
-var StyleProp = { };
+var StyleProp = {};
 
 var make = ReactNative.Animated.createAnimatedComponent(ReactNative.FlatList);
 

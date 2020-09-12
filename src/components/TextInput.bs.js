@@ -3,29 +3,29 @@
 var Event$ReactNative = require("../apis/Event.bs.js");
 var TextInputElement$ReactNative = require("../elements/TextInputElement.bs.js");
 
-Event$ReactNative.SyntheticEvent({ });
+Event$ReactNative.SyntheticEvent({});
 
-var ChangeEvent = { };
+var ChangeEvent = {};
 
-Event$ReactNative.SyntheticEvent({ });
+Event$ReactNative.SyntheticEvent({});
 
-var EditingEvent = { };
+var EditingEvent = {};
 
-Event$ReactNative.SyntheticEvent({ });
+Event$ReactNative.SyntheticEvent({});
 
-var ContentSizeChangeEvent = { };
+var ContentSizeChangeEvent = {};
 
-Event$ReactNative.SyntheticEvent({ });
+Event$ReactNative.SyntheticEvent({});
 
-var ScrollEvent = { };
+var ScrollEvent = {};
 
-Event$ReactNative.SyntheticEvent({ });
+Event$ReactNative.SyntheticEvent({});
 
-var SelectionChangeEvent = { };
+var SelectionChangeEvent = {};
 
-Event$ReactNative.SyntheticEvent({ });
+Event$ReactNative.SyntheticEvent({});
 
-var KeyPressEvent = { };
+var KeyPressEvent = {};
 
 var DataDetectorTypes;
 
