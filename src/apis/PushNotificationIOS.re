@@ -28,6 +28,8 @@ module Notification = {
 
 type localNotification;
 
+type repeatInterval = [ | `minute | `hour | `day | `week | `month | `year];
+
 [@bs.obj]
 external localNotification:
   (
@@ -40,15 +42,7 @@ external localNotification:
     ~userInfo: Js.Json.t=?,
     ~applicationIconBadgeNumber: int=?,
     ~fireDate: Js.Date.t=?,
-    ~repeatInterval: [@bs.string] [
-                       | `minute
-                       | `hour
-                       | `day
-                       | `week
-                       | `month
-                       | `year
-                     ]
-                       =?,
+    ~repeatInterval: repeatInterval=?,
     unit
   ) =>
   localNotification;

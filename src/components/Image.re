@@ -85,6 +85,8 @@ module ProgressEvent = {
 
 type progressEvent = ProgressEvent.t;
 
+type resizeMethod = [ | `auto | `resize | `scale];
+
 [@react.component] [@bs.module "react-native"]
 external make:
   (
@@ -105,15 +107,8 @@ external make:
     ~onPartialLoad: unit => unit=?,
     ~onProgress: progressEvent => unit=?,
     ~progressiveRenderingEnabled: bool=?,
-    ~resizeMethod: [@bs.string] [ | `auto | `resize | `scale]=?,
-    ~resizeMode: [@bs.string] [
-                   | `center
-                   | `contain
-                   | `cover
-                   | `repeat
-                   | `stretch
-                 ]
-                   =?,
+    ~resizeMethod: resizeMethod=?,
+    ~resizeMode: Style.resizeMode=?,
     ~source: Source.t,
     ~style: Style.t=?,
     ~testID: string=?

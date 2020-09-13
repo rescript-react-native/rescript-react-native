@@ -24,6 +24,15 @@ type screenRect = {
   height: float,
 };
 
+type eventType = [
+  | `keyboardWillShow
+  | `keyboardDidShow
+  | `keyboardWillHide
+  | `keyboardDidHide
+  | `keyboardWillChangeFrame
+  | `keyboardDidChangeFrame
+];
+
 type keyboardEvent = {
   duration: float,
   easing: Easing.t,
@@ -35,52 +44,14 @@ type keyboardEvent = {
 type listener = keyboardEvent => unit;
 
 [@bs.module "react-native"] [@bs.scope "Keyboard"]
-external addListener:
-  (
-    [@bs.string] [
-      | `keyboardWillShow
-      | `keyboardDidShow
-      | `keyboardWillHide
-      | `keyboardDidHide
-      | `keyboardWillChangeFrame
-      | `keyboardDidChangeFrame
-    ],
-    listener
-  ) =>
-  EventSubscription.t =
+external addListener: (eventType, listener) => EventSubscription.t =
   "addListener";
 
 [@bs.module "react-native"] [@bs.scope "Keyboard"]
-external removeAllListeners:
-  (
-  [@bs.string]
-  [
-    | `keyboardWillShow
-    | `keyboardDidShow
-    | `keyboardWillHide
-    | `keyboardDidHide
-    | `keyboardWillChangeFrame
-    | `keyboardDidChangeFrame
-  ]
-  ) =>
-  unit =
-  "removeAllListeners";
+external removeAllListeners: eventType => unit = "removeAllListeners";
 
 [@bs.module "react-native"] [@bs.scope "Keyboard"]
-external removeListener:
-  (
-    [@bs.string] [
-      | `keyboardWillShow
-      | `keyboardDidShow
-      | `keyboardWillHide
-      | `keyboardDidHide
-      | `keyboardWillChangeFrame
-      | `keyboardDidChangeFrame
-    ],
-    listener
-  ) =>
-  unit =
-  "removeListener";
+external removeListener: (eventType, listener) => unit = "removeListener";
 
 [@bs.module "react-native"] [@bs.scope "Keyboard"]
 external dismiss: unit => unit = "dismiss";

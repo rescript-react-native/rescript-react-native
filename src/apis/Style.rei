@@ -55,6 +55,32 @@ type transform;
 
 external unsafeTransform: Js.t('a) => transform = "%identity";
 
+type resizeMode = [ | `cover | `contain | `stretch | `repeat | `center];
+
+type fontStyle = [ | `normal | `italic];
+
+type textAlign = [ | `auto | `left | `right | `center | `justify];
+
+type textAlignVertical = [ | `auto | `top | `bottom | `center];
+
+type textDecorationStyle = [ | `solid | `double | `dotted | `dashed];
+
+type textTransform = [ | `none | `uppercase | `lowercase | `capitalize];
+
+type writingDirection = [ | `auto | `ltr | `rtl];
+
+type backfaceVisibility = [ | `visible | `hidden];
+
+type borderStyle = [ | `solid | `dotted | `dashed];
+
+type display = [ | `none | `flex];
+
+type overflow = [ | `visible | `hidden | `scroll];
+
+type flexWrap = [ | `wrap | `nowrap];
+
+type position = [ | `absolute | `relative];
+
 // Styles are documented here
 // https://github.com/facebook/react-native/blob/master/Libraries/StyleSheet/StyleSheetTypes.js
 
@@ -78,21 +104,14 @@ external unsafeTransform: Js.t('a) => transform = "%identity";
 // Image Style Props (https://reactnative.dev/docs/image-style-props)
 external style:
   (
-    ~resizeMode: [@bs.string] [
-                   | `cover
-                   | `contain
-                   | `stretch
-                   | `repeat
-                   | `center
-                 ]
-                   =?,
+    ~resizeMode: resizeMode=?,
     ~overlayColor: Color.t=?,
     ~tintColor: Color.t=?,
     // Text Style Props (https://reactnative.dev/docs/text-style-props)
     ~color: Color.t=?,
     ~fontFamily: string=?,
     ~fontSize: float=?,
-    ~fontStyle: [@bs.string] [ | `normal | `italic]=?,
+    ~fontStyle: fontStyle=?,
     ~fontVariant: array(FontVariant.t)=?,
     ~fontWeight: [@bs.string] [
                    | `normal
@@ -111,8 +130,8 @@ external style:
     ~includeFontPadding: bool=?,
     ~letterSpacing: float=?,
     ~lineHeight: float=?,
-    ~textAlign: [@bs.string] [ | `auto | `left | `right | `center | `justify]=?,
-    ~textAlignVertical: [@bs.string] [ | `auto | `top | `bottom | `center]=?,
+    ~textAlign: textAlign=?,
+    ~textAlignVertical: textAlignVertical=?,
     ~textDecorationColor: Color.t=?,
     ~textDecorationLine: [@bs.string] [
                            | `none
@@ -122,26 +141,14 @@ external style:
                              `underlineLineThrough
                          ]
                            =?,
-    ~textDecorationStyle: [@bs.string] [
-                            | `solid
-                            | `double
-                            | `dotted
-                            | `dashed
-                          ]
-                            =?,
+    ~textDecorationStyle: textDecorationStyle=?,
     ~textShadowColor: Color.t=?,
     ~textShadowOffset: offset=?,
     ~textShadowRadius: float=?,
-    ~textTransform: [@bs.string] [
-                      | `none
-                      | `uppercase
-                      | `lowercase
-                      | `capitalize
-                    ]
-                      =?,
-    ~writingDirection: [@bs.string] [ | `auto | `ltr | `rtl]=?,
+    ~textTransform: textTransform=?,
+    ~writingDirection: writingDirection=?,
     // View styles https://reactnative.dev/docs/view-style-props
-    ~backfaceVisibility: [@bs.string] [ | `visible | `hidden]=?,
+    ~backfaceVisibility: backfaceVisibility=?,
     ~backgroundColor: Color.t=?,
     ~borderBottomColor: Color.t=?,
     ~borderBottomEndRadius: float=?,
@@ -159,7 +166,7 @@ external style:
     ~borderRightWidth: float=?,
     ~borderStartColor: Color.t=?,
     ~borderStartWidth: float=?,
-    ~borderStyle: [@bs.string] [ | `solid | `dotted | `dashed]=?,
+    ~borderStyle: borderStyle=?,
     ~borderTopColor: Color.t=?,
     ~borderTopEndRadius: float=?,
     ~borderTopLeftRadius: float=?,
@@ -214,7 +221,7 @@ external style:
     // ~borderWidth: float=?,
     ~bottom: size=?,
     ~direction: [@bs.string] [ | [@bs.as "inherit"] `inherit_ | `ltr | `rtl]=?,
-    ~display: [@bs.string] [ | `none | `flex]=?,
+    ~display: display=?,
     ~_end: size=?,
     ~flex: float=?,
     ~flexBasis: margin=?,
@@ -227,7 +234,7 @@ external style:
                       =?,
     ~flexGrow: float=?,
     ~flexShrink: float=?,
-    ~flexWrap: [@bs.string] [ | `wrap | `nowrap]=?,
+    ~flexWrap: flexWrap=?,
     ~height: size=?,
     ~justifyContent: [@bs.string] [
                        | [@bs.as "flex-start"] `flexStart
@@ -252,7 +259,7 @@ external style:
     ~maxWidth: size=?,
     ~minHeight: size=?,
     ~minWidth: size=?,
-    ~overflow: [@bs.string] [ | `visible | `hidden | `scroll]=?,
+    ~overflow: overflow=?,
     ~padding: size=?,
     ~paddingBottom: size=?,
     ~paddingEnd: size=?,
@@ -262,7 +269,7 @@ external style:
     ~paddingStart: size=?,
     ~paddingTop: size=?,
     ~paddingVertical: size=?,
-    ~position: [@bs.string] [ | `absolute | `relative]=?,
+    ~position: position=?,
     ~right: size=?,
     ~start: size=?,
     ~top: size=?,
@@ -278,7 +285,7 @@ external style:
 // View styles https://reactnative.dev/docs/view-style-props
 external viewStyle:
   (
-    ~backfaceVisibility: [@bs.string] [ | `visible | `hidden]=?,
+    ~backfaceVisibility: backfaceVisibility=?,
     ~backgroundColor: Color.t=?,
     ~borderBottomColor: Color.t=?,
     ~borderBottomEndRadius: float=?,
@@ -296,7 +303,7 @@ external viewStyle:
     ~borderRightWidth: float=?,
     ~borderStartColor: Color.t=?,
     ~borderStartWidth: float=?,
-    ~borderStyle: [@bs.string] [ | `solid | `dotted | `dashed]=?,
+    ~borderStyle: borderStyle=?,
     ~borderTopColor: Color.t=?,
     ~borderTopEndRadius: float=?,
     ~borderTopLeftRadius: float=?,
@@ -351,7 +358,7 @@ external viewStyle:
     // ~borderWidth: float=?,
     ~bottom: size=?,
     ~direction: [@bs.string] [ | [@bs.as "inherit"] `inherit_ | `ltr | `rtl]=?,
-    ~display: [@bs.string] [ | `none | `flex]=?,
+    ~display: display=?,
     ~_end: size=?,
     ~flex: float=?,
     ~flexBasis: margin=?,
@@ -364,7 +371,7 @@ external viewStyle:
                       =?,
     ~flexGrow: float=?,
     ~flexShrink: float=?,
-    ~flexWrap: [@bs.string] [ | `wrap | `nowrap]=?,
+    ~flexWrap: flexWrap=?,
     ~height: size=?,
     ~justifyContent: [@bs.string] [
                        | [@bs.as "flex-start"] `flexStart
@@ -389,7 +396,7 @@ external viewStyle:
     ~maxWidth: size=?,
     ~minHeight: size=?,
     ~minWidth: size=?,
-    ~overflow: [@bs.string] [ | `visible | `hidden | `scroll]=?,
+    ~overflow: overflow=?,
     ~padding: size=?,
     ~paddingBottom: size=?,
     ~paddingEnd: size=?,
@@ -399,7 +406,7 @@ external viewStyle:
     ~paddingStart: size=?,
     ~paddingTop: size=?,
     ~paddingVertical: size=?,
-    ~position: [@bs.string] [ | `absolute | `relative]=?,
+    ~position: position=?,
     ~right: size=?,
     ~start: size=?,
     ~top: size=?,
@@ -417,7 +424,7 @@ external textStyle:
     ~color: Color.t=?,
     ~fontFamily: string=?,
     ~fontSize: float=?,
-    ~fontStyle: [@bs.string] [ | `normal | `italic]=?,
+    ~fontStyle: fontStyle=?,
     ~fontVariant: array(FontVariant.t)=?,
     ~fontWeight: [@bs.string] [
                    | `normal
@@ -436,8 +443,8 @@ external textStyle:
     ~includeFontPadding: bool=?,
     ~letterSpacing: float=?,
     ~lineHeight: float=?,
-    ~textAlign: [@bs.string] [ | `auto | `left | `right | `center | `justify]=?,
-    ~textAlignVertical: [@bs.string] [ | `auto | `top | `bottom | `center]=?,
+    ~textAlign: textAlign=?,
+    ~textAlignVertical: textAlignVertical=?,
     ~textDecorationColor: Color.t=?,
     ~textDecorationLine: [@bs.string] [
                            | `none
@@ -447,26 +454,14 @@ external textStyle:
                              `underlineLineThrough
                          ]
                            =?,
-    ~textDecorationStyle: [@bs.string] [
-                            | `solid
-                            | `double
-                            | `dotted
-                            | `dashed
-                          ]
-                            =?,
+    ~textDecorationStyle: textDecorationStyle=?,
     ~textShadowColor: Color.t=?,
     ~textShadowOffset: offset=?,
     ~textShadowRadius: float=?,
-    ~textTransform: [@bs.string] [
-                      | `none
-                      | `uppercase
-                      | `lowercase
-                      | `capitalize
-                    ]
-                      =?,
-    ~writingDirection: [@bs.string] [ | `auto | `ltr | `rtl]=?,
+    ~textTransform: textTransform=?,
+    ~writingDirection: writingDirection=?,
     // View styles https://reactnative.dev/docs/view-style-props
-    ~backfaceVisibility: [@bs.string] [ | `visible | `hidden]=?,
+    ~backfaceVisibility: backfaceVisibility=?,
     ~backgroundColor: Color.t=?,
     ~borderBottomColor: Color.t=?,
     ~borderBottomEndRadius: float=?,
@@ -484,7 +479,7 @@ external textStyle:
     ~borderRightWidth: float=?,
     ~borderStartColor: Color.t=?,
     ~borderStartWidth: float=?,
-    ~borderStyle: [@bs.string] [ | `solid | `dotted | `dashed]=?,
+    ~borderStyle: borderStyle=?,
     ~borderTopColor: Color.t=?,
     ~borderTopEndRadius: float=?,
     ~borderTopLeftRadius: float=?,
@@ -539,7 +534,7 @@ external textStyle:
     // ~borderWidth: float=?,
     ~bottom: size=?,
     ~direction: [@bs.string] [ | [@bs.as "inherit"] `inherit_ | `ltr | `rtl]=?,
-    ~display: [@bs.string] [ | `none | `flex]=?,
+    ~display: display=?,
     ~_end: size=?,
     ~flex: float=?,
     ~flexBasis: margin=?,
@@ -552,7 +547,7 @@ external textStyle:
                       =?,
     ~flexGrow: float=?,
     ~flexShrink: float=?,
-    ~flexWrap: [@bs.string] [ | `wrap | `nowrap]=?,
+    ~flexWrap: flexWrap=?,
     ~height: size=?,
     ~justifyContent: [@bs.string] [
                        | [@bs.as "flex-start"] `flexStart
@@ -577,7 +572,7 @@ external textStyle:
     ~maxWidth: size=?,
     ~minHeight: size=?,
     ~minWidth: size=?,
-    ~overflow: [@bs.string] [ | `visible | `hidden | `scroll]=?,
+    ~overflow: overflow=?,
     ~padding: size=?,
     ~paddingBottom: size=?,
     ~paddingEnd: size=?,
@@ -587,7 +582,7 @@ external textStyle:
     ~paddingStart: size=?,
     ~paddingTop: size=?,
     ~paddingVertical: size=?,
-    ~position: [@bs.string] [ | `absolute | `relative]=?,
+    ~position: position=?,
     ~right: size=?,
     ~start: size=?,
     ~top: size=?,
@@ -602,18 +597,11 @@ external textStyle:
 // Image Style Props (https://reactnative.dev/docs/image-style-props)
 external imageStyle:
   (
-    ~resizeMode: [@bs.string] [
-                   | `cover
-                   | `contain
-                   | `stretch
-                   | `repeat
-                   | `center
-                 ]
-                   =?,
+    ~resizeMode: resizeMode=?,
     ~overlayColor: Color.t=?,
     ~tintColor: Color.t=?,
     // View styles https://reactnative.dev/docs/view-style-props
-    ~backfaceVisibility: [@bs.string] [ | `visible | `hidden]=?,
+    ~backfaceVisibility: backfaceVisibility=?,
     ~backgroundColor: Color.t=?,
     ~borderBottomColor: Color.t=?,
     ~borderBottomEndRadius: float=?,
@@ -631,7 +619,7 @@ external imageStyle:
     ~borderRightWidth: float=?,
     ~borderStartColor: Color.t=?,
     ~borderStartWidth: float=?,
-    ~borderStyle: [@bs.string] [ | `solid | `dotted | `dashed]=?,
+    ~borderStyle: borderStyle=?,
     ~borderTopColor: Color.t=?,
     ~borderTopEndRadius: float=?,
     ~borderTopLeftRadius: float=?,
@@ -686,7 +674,7 @@ external imageStyle:
     // ~borderWidth: float=?,
     ~bottom: size=?,
     ~direction: [@bs.string] [ | [@bs.as "inherit"] `inherit_ | `ltr | `rtl]=?,
-    ~display: [@bs.string] [ | `none | `flex]=?,
+    ~display: display=?,
     ~_end: size=?,
     ~flex: float=?,
     ~flexBasis: margin=?,
@@ -699,7 +687,7 @@ external imageStyle:
                       =?,
     ~flexGrow: float=?,
     ~flexShrink: float=?,
-    ~flexWrap: [@bs.string] [ | `wrap | `nowrap]=?,
+    ~flexWrap: flexWrap=?,
     ~height: size=?,
     ~justifyContent: [@bs.string] [
                        | [@bs.as "flex-start"] `flexStart
@@ -724,7 +712,7 @@ external imageStyle:
     ~maxWidth: size=?,
     ~minHeight: size=?,
     ~minWidth: size=?,
-    ~overflow: [@bs.string] [ | `visible | `hidden | `scroll]=?,
+    ~overflow: overflow=?,
     ~padding: size=?,
     ~paddingBottom: size=?,
     ~paddingEnd: size=?,
@@ -734,7 +722,7 @@ external imageStyle:
     ~paddingStart: size=?,
     ~paddingTop: size=?,
     ~paddingVertical: size=?,
-    ~position: [@bs.string] [ | `absolute | `relative]=?,
+    ~position: position=?,
     ~right: size=?,
     ~start: size=?,
     ~top: size=?,

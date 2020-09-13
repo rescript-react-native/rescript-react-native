@@ -23,15 +23,8 @@ external make:
     ~onPartialLoad: unit => unit=?,
     ~onProgress: Image.progressEvent => unit=?,
     ~progressiveRenderingEnabled: bool=?,
-    ~resizeMethod: [@bs.string] [ | `auto | `resize | `scale]=?,
-    ~resizeMode: [@bs.string] [
-                   | `center
-                   | `contain
-                   | `cover
-                   | `repeat
-                   | `stretch
-                 ]
-                   =?,
+    ~resizeMethod: Image.resizeMethod=?,
+    ~resizeMode: Style.resizeMode=?,
     ~source: Image.Source.t,
     ~style: Style.t=?,
     ~testID: string=?,

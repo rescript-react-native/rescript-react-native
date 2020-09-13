@@ -1,3 +1,5 @@
+type showHideTransition = [ | `fade | `none | `slide];
+
 [@react.component] [@bs.module "react-native"]
 external make:
   (
@@ -12,14 +14,13 @@ external make:
     ~backgroundColor: string=?,
     ~translucent: bool=?,
     ~networkActivityIndicatorVisible: bool=?,
-    ~showHideTransition: [@bs.string] [ | `fade | `none | `slide]=?
+    ~showHideTransition: showHideTransition=?
   ) =>
   React.element =
   "StatusBar";
 
 [@bs.module "react-native"] [@bs.scope "StatusBar"]
-external setHidden: (bool, [@bs.string] [ | `none | `fade | `slide]) => unit =
-  "setHidden";
+external setHidden: (bool, showHideTransition) => unit = "setHidden";
 
 [@bs.module "react-native"] [@bs.scope "StatusBar"]
 external setBarStyle:

@@ -1,3 +1,14 @@
+type animationType = [
+  | `spring
+  | `linear
+  | `easeInEaseOut
+  | `easeIn
+  | `easeOut
+  | `keyboard
+];
+
+type property = [ | `opacity | `scaleX | `scaleY | `scaleXY];
+
 type animationConfig;
 [@bs.obj]
 external animationConfig:
@@ -6,16 +17,8 @@ external animationConfig:
     ~delay: float=?,
     ~springDamping: float=?,
     ~initialVelocity: float=?,
-    ~_type: [@bs.string] [
-              | `spring
-              | `linear
-              | `easeInEaseOut
-              | `easeIn
-              | `easeOut
-              | `keyboard
-            ]
-              =?,
-    ~property: [@bs.string] [ | `opacity | `scaleX | `scaleY | `scaleXY]=?,
+    ~_type: animationType=?,
+    ~property: property=?,
     unit
   ) =>
   animationConfig;
@@ -44,18 +47,7 @@ external configureNextWithEndCallback:
 
 [@bs.module "react-native"] [@bs.scope "LayoutAnimation"]
 external create:
-  (
-    ~duration: float,
-    ~_type: [@bs.string] [
-              | `spring
-              | `linear
-              | `easeInEaseOut
-              | `easeIn
-              | `easeOut
-              | `keyboard
-            ],
-    ~property: [@bs.string] [ | `opacity | `scaleX | `scaleY | `scaleXY]
-  ) =>
+  (~duration: float, ~_type: animationType, ~property: property) =>
   layoutAnimationConfig =
   "create";
 

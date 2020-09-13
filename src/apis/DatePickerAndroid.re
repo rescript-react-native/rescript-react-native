@@ -7,15 +7,11 @@ type action;
 external calendarDate: Js.Date.t => date = "%identity";
 external timestamp: float => date = "%identity";
 
+type mode = [ | `calendar | `spinner | `default];
+
 [@bs.obj]
 external options:
-  (
-    ~date: date=?,
-    ~minDate: date=?,
-    ~maxDate: date=?,
-    ~mode: [@bs.string] [ | `calendar | `spinner | `default]=?,
-    unit
-  ) =>
+  (~date: date=?, ~minDate: date=?, ~maxDate: date=?, ~mode: mode=?, unit) =>
   options;
 
 type response = {

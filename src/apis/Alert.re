@@ -6,15 +6,11 @@ external options:
 
 type button;
 
+type style = [ | `default | `cancel | `destructive];
+
 [@bs.obj]
 external button:
-  (
-    ~text: string=?,
-    ~onPress: unit => unit=?,
-    ~style: [@bs.string] [ | `default | `cancel | `destructive]=?,
-    unit
-  ) =>
-  button;
+  (~text: string=?, ~onPress: unit => unit=?, ~style: style=?, unit) => button;
 
 [@bs.scope "Alert"] [@bs.module "react-native"]
 external alert:

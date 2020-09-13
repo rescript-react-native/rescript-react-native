@@ -11,13 +11,15 @@ type handler = {
 };
 
 [@bs.module "react-native"] [@bs.scope "Dimensions"]
-external get: ([@bs.string] [ | `window | `screen]) => displayMetrics = "get";
+external get: [ | `window | `screen] => displayMetrics = "get";
+
+type eventType = [ | `change];
+
 [@bs.module "react-native"] [@bs.scope "Dimensions"]
-external addEventListener: ([@bs.string] [ | `change], handler => unit) => unit =
+external addEventListener: (eventType, handler => unit) => unit =
   "addEventListener";
 [@bs.module "react-native"] [@bs.scope "Dimensions"]
-external removeEventListener:
-  ([@bs.string] [ | `change], handler => unit) => unit =
+external removeEventListener: (eventType, handler => unit) => unit =
   "removeEventListener";
 
 [@bs.module "react-native"]

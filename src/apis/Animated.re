@@ -111,6 +111,8 @@ module Interpolation = {
   external fromStringArray: array(string) => outputRange = "%identity";
   external fromFloatArray: array(float) => outputRange = "%identity";
 
+  type extrapolate = [ | `extend | `clamp | `identity];
+
   type config;
   [@bs.obj]
   external config:
@@ -118,9 +120,9 @@ module Interpolation = {
       ~inputRange: array(float),
       ~outputRange: outputRange,
       ~easing: Easing.t=?,
-      ~extrapolate: [@bs.string] [ | `extend | `clamp | `identity]=?,
-      ~extrapolateLeft: [@bs.string] [ | `extend | `clamp | `identity]=?,
-      ~extrapolateRight: [@bs.string] [ | `extend | `clamp | `identity]=?,
+      ~extrapolate: extrapolate=?,
+      ~extrapolateLeft: extrapolate=?,
+      ~extrapolateRight: extrapolate=?,
       unit
     ) =>
     config;
