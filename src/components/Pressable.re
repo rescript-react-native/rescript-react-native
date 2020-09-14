@@ -4,7 +4,8 @@ type rippleConfig;
 
 [@bs.obj]
 external rippleConfig:
-  (~color: Color.t=?, ~borderless: bool=?, ~radius: float=?, unit) => rippleConfig;
+  (~color: Color.t=?, ~borderless: bool=?, ~radius: float=?, unit) =>
+  rippleConfig;
 
 [@react.component] [@bs.module "react-native"]
 external make:
@@ -16,21 +17,8 @@ external make:
     ~accessibilityHint: string=?,
     ~accessibilityIgnoresInvertColors: bool=?,
     ~accessibilityLabel: string=?,
-    ~accessibilityLiveRegion: [@bs.string] [ | `none | `polite | `assertive]=?,
-    ~accessibilityRole: [@bs.string] [
-                          | `none
-                          | `button
-                          | `link
-                          | `search
-                          | `image
-                          | `keyboardkey
-                          | `text
-                          | `adjustable
-                          | `header
-                          | `summary
-                          | `imagebutton
-                        ]
-                          =?,
+    ~accessibilityLiveRegion: Accessibility.liveRegion=?,
+    ~accessibilityRole: Accessibility.role=?,
     ~accessibilityState: Accessibility.state=?,
     ~accessibilityValue: Accessibility.value=?,
     ~accessibilityViewIsModal: bool=?,

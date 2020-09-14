@@ -3,6 +3,23 @@ include ScrollViewElement;
 type contentOffset;
 [@bs.obj] external contentOffset: (~x: float, ~y: float) => contentOffset;
 
+type contentInsetAdjustmentBehavior = [
+  | `automatic
+  | `scrollableAxes
+  | `never
+  | `always
+];
+
+type decelerationRate = [ | `fast | `normal];
+
+type indicatorStyle = [ | `default | `black | `white];
+
+type keyboardShouldPersistTaps = [ | `always | `never | `handled];
+
+type overScrollMode = [ | `always | `never | `auto];
+
+type snapToAlignment = [ | `start | `center | `end_];
+
 [@react.component] [@bs.module "react-native"]
 external make:
   (
@@ -17,27 +34,21 @@ external make:
     ~centerContent: bool=?,
     ~contentContainerStyle: Style.t=?,
     ~contentInset: View.edgeInsets=?,
-    ~contentInsetAdjustmentBehavior: [@bs.string] [
-                                       | `automatic
-                                       | `scrollableAxes
-                                       | `never
-                                       | `always
-                                     ]
-                                       =?,
+    ~contentInsetAdjustmentBehavior: contentInsetAdjustmentBehavior=?,
     ~contentOffset: contentOffset=?,
-    ~decelerationRate: [@bs.string] [ | `fast | `normal]=?,
+    ~decelerationRate: decelerationRate=?,
     ~directionalLockEnabled: bool=?,
     ~endFillColor: Color.t=?,
     ~fadingEdgeLength: float=?,
     ~horizontal: bool=?,
-    ~indicatorStyle: [@bs.string] [ | `default | `black | `white]=?,
+    ~indicatorStyle: indicatorStyle=?,
     ~keyboardDismissMode: [@bs.string] [
                             | `none
                             | `interactive
                             | [@bs.as "on-drag"] `onDrag
                           ]
                             =?,
-    ~keyboardShouldPersistTaps: [@bs.string] [ | `always | `never | `handled]=?,
+    ~keyboardShouldPersistTaps: keyboardShouldPersistTaps=?,
     ~maximumZoomScale: float=?,
     ~minimumZoomScale: float=?,
     ~nestedScrollEnabled: bool=?,
@@ -47,7 +58,7 @@ external make:
     ~onScroll: Event.scrollEvent => unit=?,
     ~onScrollBeginDrag: Event.scrollEvent => unit=?,
     ~onScrollEndDrag: Event.scrollEvent => unit=?,
-    ~overScrollMode: [@bs.string] [ | `always | `never | `auto]=?,
+    ~overScrollMode: overScrollMode=?,
     ~pagingEnabled: bool=?,
     ~pinchGestureEnabled: bool=?,
     ~refreshControl: React.element=?,
@@ -59,7 +70,7 @@ external make:
     ~scrollToOverflowEnabled: bool=?,
     ~showsHorizontalScrollIndicator: bool=?,
     ~showsVerticalScrollIndicator: bool=?,
-    ~snapToAlignment: [@bs.string] [ | `start | `center | `end_]=?,
+    ~snapToAlignment: snapToAlignment=?,
     ~snapToEnd: bool=?,
     ~snapToInterval: float=?,
     ~snapToOffsets: array(float)=?,
@@ -68,42 +79,13 @@ external make:
     ~zoomScale: float=?,
     // View props 0.63.0
     ~accessibilityActions: array(Accessibility.actionInfo)=?,
-    ~accessibilityComponentType: [@bs.string] [
-                                   | `none
-                                   | `button
-                                   | `radiobutton_checked
-                                   | `radiobutton_unchecked
-                                 ]
-                                   =?,
+    ~accessibilityComponentType: Accessibility.componentType=?,
     ~accessibilityElementsHidden: bool=?,
     ~accessibilityHint: string=?,
     ~accessibilityIgnoresInvertColors: bool=?,
     ~accessibilityLabel: string=?,
-    ~accessibilityLiveRegion: [@bs.string] [ | `none | `polite | `assertive]=?,
-    ~accessibilityRole: [@bs.string] [
-                          | `none
-                          | `button
-                          | `link
-                          | `search
-                          | `image
-                          | `keyboardkey
-                          | `text
-                          | `adjustable
-                          | `header
-                          | `summary
-                          | `imagebutton
-                          | `article
-                          | `banner
-                          | `complementary
-                          | `contentinfo
-                          | `form
-                          | `list
-                          | `listitem
-                          | `main
-                          | `navigation
-                          | `region
-                        ]
-                          =?,
+    ~accessibilityLiveRegion: Accessibility.liveRegion=?,
+    ~accessibilityRole: Accessibility.role=?,
     ~accessibilityState: Accessibility.state=?,
     ~accessibilityTraits: array(AccessibilityTrait.t)=?,
     ~accessibilityValue: Accessibility.value=?,

@@ -13,24 +13,27 @@ module OrientationChangeEvent = {
 
 type orientationChangeEvent = OrientationChangeEvent.t;
 
+type animationType = [ | `none | `slide | `fade];
+
+type presentationStyle = [
+  | `fullScreen
+  | `pageSheet
+  | `formSheet
+  | `overFullScreen
+];
+
 [@react.component] [@bs.module "react-native"]
 external make:
   (
     ~ref: ref=?,
     // Modal props
-    ~animationType: [@bs.string] [ | `none | `slide | `fade]=?,
+    ~animationType: animationType=?,
     ~hardwareAccelerated: bool=?,
     ~onDismiss: unit => unit=?,
     ~onOrientationChange: orientationChangeEvent => unit=?,
     ~onRequestClose: unit => unit=?,
     ~onShow: unit => unit=?,
-    ~presentationStyle: [@bs.string] [
-                          | `fullScreen
-                          | `pageSheet
-                          | `formSheet
-                          | `overFullScreen
-                        ]
-                          =?,
+    ~presentationStyle: presentationStyle=?,
     ~statusBarTranslucent: bool=?,
     ~supportedOrientations: array(Orientation.t)=?,
     ~transparent: bool=?,

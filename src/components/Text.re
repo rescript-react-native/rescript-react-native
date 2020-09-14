@@ -1,5 +1,9 @@
 include NativeElement;
 
+type ellipsizeMode = [ | `clip | `head | `middle | `tail];
+
+type textBreakStrategy = [ | `simple | `highQuality | `balanced];
+
 [@react.component] [@bs.module "react-native"]
 external make:
   (
@@ -11,48 +15,10 @@ external make:
     // `accessibilityRole` communicates the purpose of a component to the user of an assistive technology.
     // roles that are specific for react-native-web are also included:
     // article, banner, complementary, contentinfo, form, list, listItem, main, navigation, region
-    ~accessibilityRole: [@bs.string] [
-                          | `none
-                          | `adjustable
-                          | `alert
-                          | `article
-                          | `banner
-                          | `button
-                          | `checkbox
-                          | `combobox
-                          | `complementary
-                          | `contentinfo
-                          | `form
-                          | `header
-                          | `image
-                          | `imagebutton
-                          | `keyboardkey
-                          | `link
-                          | `list
-                          | `listItem
-                          | `search
-                          | `summary
-                          | `text
-                          | `main
-                          | `menu
-                          | `menubar
-                          | `menuitem
-                          | `navigation
-                          | `progressbar
-                          | `radio
-                          | `radiogroup
-                          | `region
-                          | `scrollbar
-                          | `spinbutton
-                          | `tab
-                          | `tablist
-                          | `timer
-                          | `toolbar
-                        ]
-                          =?,
+    ~accessibilityRole: Accessibility.role=?,
     ~ariaLevel: int=?,
     ~allowFontScaling: bool=?,
-    ~ellipsizeMode: [@bs.string] [ | `clip | `head | `middle | `tail]=?,
+    ~ellipsizeMode: ellipsizeMode=?,
     ~numberOfLines: int=?,
     ~onLayout: Event.layoutEvent => unit=?,
     ~onLongPress: Event.pressEvent => unit=?,
@@ -62,7 +28,7 @@ external make:
     ~style: Style.t=?,
     ~testID: string=?,
     ~selectionColor: string=?,
-    ~textBreakStrategy: [@bs.string] [ | `simple | `highQuality | `balanced]=?,
+    ~textBreakStrategy: textBreakStrategy=?,
     ~adjustsFontSizeToFit: bool=?,
     ~minimumFontScale: float=?,
     ~suppressHighlighting: bool=?,
@@ -87,7 +53,7 @@ external make:
           ]
             =?,
     ~href: string=?,
-    ~target: [@bs.string] [ | `_blank | `_self | `_parent | `_top]=?,
+    ~target: Web.target=?,
     ~onMouseDown: ReactEvent.Mouse.t => unit=?,
     ~onMouseEnter: ReactEvent.Mouse.t => unit=?,
     ~onMouseLeave: ReactEvent.Mouse.t => unit=?,

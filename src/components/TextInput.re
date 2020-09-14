@@ -95,19 +95,58 @@ type keyPressEvent = KeyPressEvent.t;
 
 module DataDetectorTypes = TextInput_DataDetectorTypes;
 
+type autoCapitalize = [ | `characters | `words | `sentences | `none];
+
+type importantForAutofill = [
+  | `auto
+  | `no
+  | `noExcludeDescendants
+  | `yes
+  | `yesExcludeDescendants
+];
+
+type keyboardAppearance = [ | `default | `light | `dark];
+
+type textBreakStrategy = [ | `balanced | `highQuality | `simple];
+
+type textContentType = [
+  | `none
+  | `URL
+  | `addressCity
+  | `addressCityAndState
+  | `addressState
+  | `countryName
+  | `creditCardNumber
+  | `emailAddress
+  | `familyName
+  | `fullStreetAddress
+  | `givenName
+  | `jobTitle
+  | `location
+  | `middleName
+  | `name
+  | `namePrefix
+  | `nameSuffix
+  | `nickname
+  | `organizationName
+  | `postalCode
+  | `streetAddressLine1
+  | `streetAddressLine2
+  | `sublocality
+  | `telephoneNumber
+  | `username
+  | `password
+  | `newPassword
+  | `oneTimeCode
+];
+
 [@react.component] [@bs.module "react-native"]
 external make:
   (
     ~ref: ref=?,
     // TextInput props
     ~allowFontScaling: bool=?,
-    ~autoCapitalize: [@bs.string] [
-                       | `characters
-                       | `words
-                       | `sentences
-                       | `none
-                     ]
-                       =?,
+    ~autoCapitalize: autoCapitalize=?,
     ~autoCompleteType: [@bs.string] [
                          | `off
                          | `username
@@ -142,18 +181,11 @@ external make:
     ~disableFullscreenUI: bool=?,
     ~editable: bool=?,
     ~enablesReturnKeyAutomatically: bool=?,
-    ~importantForAutofill: [@bs.string] [
-                             | `auto
-                             | `no
-                             | `noExcludeDescendants
-                             | `yes
-                             | `yesExcludeDescendants
-                           ]
-                             =?,
+    ~importantForAutofill: importantForAutofill=?,
     ~inlineImageLeft: string=?,
     ~inlineImagePadding: float=?,
     ~inputAccessoryViewID: string=?,
-    ~keyboardAppearance: [@bs.string] [ | `default | `light | `dark]=?,
+    ~keyboardAppearance: keyboardAppearance=?,
     ~keyboardType: [@bs.string] [
                      | `default
                      | [@bs.as "number-pad"] `numberPad
@@ -212,78 +244,19 @@ external make:
     ~selectTextOnFocus: bool=?,
     ~showSoftInputOnFocus: bool=?,
     ~spellCheck: bool=?,
-    ~textBreakStrategy: [@bs.string] [ | `balanced | `highQuality | `simple]=?,
-    ~textContentType: [@bs.string] [
-                        | `none
-                        | `URL
-                        | `addressCity
-                        | `addressCityAndState
-                        | `addressState
-                        | `countryName
-                        | `creditCardNumber
-                        | `emailAddress
-                        | `familyName
-                        | `fullStreetAddress
-                        | `givenName
-                        | `jobTitle
-                        | `location
-                        | `middleName
-                        | `name
-                        | `namePrefix
-                        | `nameSuffix
-                        | `nickname
-                        | `organizationName
-                        | `postalCode
-                        | `streetAddressLine1
-                        | `streetAddressLine2
-                        | `sublocality
-                        | `telephoneNumber
-                        | `username
-                        | `password
-                        | `newPassword
-                        | `oneTimeCode
-                      ]
-                        =?,
+    ~textBreakStrategy: textBreakStrategy=?,
+    ~textContentType: textContentType=?,
     ~underlineColorAndroid: Color.t=?,
     ~value: string=?,
     // View props 0.63.0
     ~accessibilityActions: array(Accessibility.actionInfo)=?,
-    ~accessibilityComponentType: [@bs.string] [
-                                   | `none
-                                   | `button
-                                   | `radiobutton_checked
-                                   | `radiobutton_unchecked
-                                 ]
-                                   =?,
+    ~accessibilityComponentType: Accessibility.componentType=?,
     ~accessibilityElementsHidden: bool=?,
     ~accessibilityHint: string=?,
     ~accessibilityIgnoresInvertColors: bool=?,
     ~accessibilityLabel: string=?,
-    ~accessibilityLiveRegion: [@bs.string] [ | `none | `polite | `assertive]=?,
-    ~accessibilityRole: [@bs.string] [
-                          | `none
-                          | `button
-                          | `link
-                          | `search
-                          | `image
-                          | `keyboardkey
-                          | `text
-                          | `adjustable
-                          | `header
-                          | `summary
-                          | `imagebutton
-                          | `article
-                          | `banner
-                          | `complementary
-                          | `contentinfo
-                          | `form
-                          | `list
-                          | `listitem
-                          | `main
-                          | `navigation
-                          | `region
-                        ]
-                          =?,
+    ~accessibilityLiveRegion: Accessibility.liveRegion=?,
+    ~accessibilityRole: Accessibility.role=?,
     ~accessibilityState: Accessibility.state=?,
     ~accessibilityTraits: array(AccessibilityTrait.t)=?,
     ~accessibilityValue: Accessibility.value=?,

@@ -61,7 +61,7 @@ or by means of the helper function `create`
 create:
   (
     ~duration: float,
-    ~_type: [@bs.string] [
+    ~_type: [
               | `spring
               | `linear
               | `easeInEaseOut
@@ -69,7 +69,7 @@ create:
               | `easeOut
               | `keyboard
             ],
-    ~property: [@bs.string] [ | `opacity | `scaleX | `scaleY | `scaleXY]
+    ~property: [ | `opacity | `scaleX | `scaleY | `scaleXY]
   ) => layoutAnimationConfig
 ```
 
@@ -82,7 +82,7 @@ animationConfig:
     ~delay: float=?,
     ~springDamping: float=?,
     ~initialVelocity: float=?,
-    ~_type: [@bs.string] [
+    ~_type: [
               | `spring
               | `linear
               | `easeInEaseOut
@@ -91,7 +91,7 @@ animationConfig:
               | `keyboard
             ]
               =?,
-    ~property: [@bs.string] [ | `opacity | `scaleX | `scaleY | `scaleXY]=?,
+    ~property: [ | `opacity | `scaleX | `scaleY | `scaleXY]=?,
     unit
   ) => animationConfig
 ```

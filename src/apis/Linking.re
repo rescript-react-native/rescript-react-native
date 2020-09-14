@@ -24,10 +24,12 @@ external sendIntentWithExtras: (string, array(extra)) => unit = "sendIntent";
 
 type url = {url: string};
 
+type eventType = [ | `url];
+
 [@bs.scope "Linking"] [@bs.module "react-native"]
-external addEventListener: ([@bs.string] [ | `url], url => unit) => unit =
+external addEventListener: (eventType, url => unit) => unit =
   "addEventListener";
 
 [@bs.scope "Linking"] [@bs.module "react-native"]
-external removeEventListener: ([@bs.string] [ | `url], url => unit) => unit =
+external removeEventListener: (eventType, url => unit) => unit =
   "removeEventListener";
