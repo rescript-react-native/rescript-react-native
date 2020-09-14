@@ -1,9 +1,9 @@
 'use strict';
 
 
-var Permission = { };
+var Permission = {};
 
-var Result = { };
+var Result = {};
 
 exports.Permission = Permission;
 exports.Result = Result;

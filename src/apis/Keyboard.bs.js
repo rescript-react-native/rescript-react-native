@@ -1,7 +1,7 @@
 'use strict';
 
 
-var Easing = { };
+var Easing = {};
 
 exports.Easing = Easing;
 /* No side effect */

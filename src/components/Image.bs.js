@@ -3,21 +3,21 @@
 var Event$ReactNative = require("../apis/Event.bs.js");
 var NativeElement$ReactNative = require("../elements/NativeElement.bs.js");
 
-var Source = { };
+var Source = {};
 
-var DefaultSource = { };
+var DefaultSource = {};
 
-Event$ReactNative.SyntheticEvent({ });
+Event$ReactNative.SyntheticEvent({});
 
-var ImageLoadEvent = { };
+var ImageLoadEvent = {};
 
-Event$ReactNative.SyntheticEvent({ });
+Event$ReactNative.SyntheticEvent({});
 
-var $$ErrorEvent = { };
+var $$ErrorEvent = {};
 
-Event$ReactNative.SyntheticEvent({ });
+Event$ReactNative.SyntheticEvent({});
 
-var $$ProgressEvent = { };
+var $$ProgressEvent = {};
 
 exports.Source = Source;
 exports.DefaultSource = DefaultSource;

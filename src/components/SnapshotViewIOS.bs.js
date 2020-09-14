@@ -2,9 +2,9 @@
 
 var Event$ReactNative = require("../apis/Event.bs.js");
 
-Event$ReactNative.SyntheticEvent({ });
+Event$ReactNative.SyntheticEvent({});
 
-var SnapshotReadyEvent = { };
+var SnapshotReadyEvent = {};
 
 exports.SnapshotReadyEvent = SnapshotReadyEvent;
 /*  Not a pure module */

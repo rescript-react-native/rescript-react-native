@@ -2,19 +2,19 @@
 
 
 function rgb(r, g, b) {
-  return "rgb(" + (String(r) + (", " + (String(g) + (", " + (String(b) + ")")))));
+  return "rgb(" + r + ", " + g + ", " + b + ")";
 }
 
 function rgba(r, g, b, a) {
-  return "rgba(" + (String(r) + (", " + (String(g) + (", " + (String(b) + (", " + (String(a) + ")")))))));
+  return "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
 }
 
 function hsl(h, s, l) {
-  return "hsl(" + (String(h) + (", " + (String(s) + ("%, " + (String(l) + "%)")))));
+  return "hsl(" + h + ", " + s + "%, " + l + "%)";
 }
 
 function hsla(h, s, l, a) {
-  return "hsl(" + (String(h) + (", " + (String(s) + ("%, " + (String(l) + ("%, " + (String(a) + ")")))))));
+  return "hsl(" + h + ", " + s + "%, " + l + "%, " + a + ")";
 }
 
 exports.rgb = rgb;
