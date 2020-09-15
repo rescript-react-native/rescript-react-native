@@ -9,9 +9,6 @@ var OrientationChangeEvent = {};
 
 var Orientation;
 
-var OrientationChange;
-
 exports.Orientation = Orientation;
-exports.OrientationChange = OrientationChange;
 exports.OrientationChangeEvent = OrientationChangeEvent;
 /*  Not a pure module */

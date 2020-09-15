@@ -1,10 +1,4 @@
-type t = string;
-
-[@bs.inline]
-let dark = "dark";
-
-[@bs.inline]
-let light = "light";
+type t = [ | `dark | `light];
 
 [@bs.scope "Appearance"] [@bs.module "react-native"]
 external getColorScheme: unit => Js.Null.t(t) = "getColorScheme";

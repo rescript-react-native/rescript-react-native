@@ -78,3 +78,23 @@ type role = [
   | `timer
   | `toolbar
 ];
+
+type trait = [
+  | `none
+  | `button
+  | `link
+  | `header
+  | `search
+  | `image
+  | `selected
+  | `plays
+  | `key
+  | `text
+  | `summary
+  | `disabled
+  | `frequentUpdates
+  | `startsMedia
+  | `adjustable
+  | `allowsDirectInteraction
+  | `pageTurn
+];

@@ -1,6 +1,6 @@
 include NativeElement;
 
-module Size = ActivityIndicator_Size;
+type size = [ | `small | `large];
 
 [@react.component] [@bs.module "react-native"]
 external make:
@@ -9,7 +9,7 @@ external make:
     // ActivityIndicator props
     ~animating: bool=?,
     ~color: Color.t=?,
-    ~size: Size.t=?,
+    ~size: size=?,
     ~hidesWhenStopped: bool=?,
     // View props 0.63.0
     ~accessibilityActions: array(Accessibility.actionInfo)=?,
@@ -21,7 +21,7 @@ external make:
     ~accessibilityLiveRegion: Accessibility.liveRegion=?,
     ~accessibilityRole: Accessibility.role=?,
     ~accessibilityState: Accessibility.state=?,
-    ~accessibilityTraits: array(AccessibilityTrait.t)=?,
+    ~accessibilityTraits: array(Accessibility.trait)=?,
     ~accessibilityValue: Accessibility.value=?,
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
