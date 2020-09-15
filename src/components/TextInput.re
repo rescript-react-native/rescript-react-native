@@ -93,9 +93,18 @@ module KeyPressEvent = {
 
 type keyPressEvent = KeyPressEvent.t;
 
-module DataDetectorTypes = TextInput_DataDetectorTypes;
-
 type autoCapitalize = [ | `characters | `words | `sentences | `none];
+
+type t;
+
+type dataDetectorType = [
+  | `phoneNumber
+  | `link
+  | `address
+  | `calendarEvent
+  | `none
+  | `all
+];
 
 type importantForAutofill = [
   | `auto
@@ -176,7 +185,7 @@ external make:
                         =?,
     ~clearTextOnFocus: bool=?,
     ~contextMenuHidden: bool=?,
-    ~dataDetectorTypes: array(DataDetectorTypes.t)=?,
+    ~dataDetectorTypes: array(dataDetectorType)=?,
     ~defaultValue: string=?,
     ~disableFullscreenUI: bool=?,
     ~editable: bool=?,
@@ -258,7 +267,7 @@ external make:
     ~accessibilityLiveRegion: Accessibility.liveRegion=?,
     ~accessibilityRole: Accessibility.role=?,
     ~accessibilityState: Accessibility.state=?,
-    ~accessibilityTraits: array(AccessibilityTrait.t)=?,
+    ~accessibilityTraits: array(Accessibility.trait)=?,
     ~accessibilityValue: Accessibility.value=?,
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,

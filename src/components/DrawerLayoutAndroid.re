@@ -12,6 +12,10 @@ type drawerSlideEvent = DrawerSlideEvent.t;
 
 type drawerPosition = [ | `left | `right];
 
+type t;
+
+type androidInteractionState = [ | `idle | `dragging | `settling];
+
 [@react.component] [@bs.module "react-native"]
 external make:
   (
@@ -31,7 +35,7 @@ external make:
                        =?,
     ~onDrawerOpen: unit => unit=?,
     ~onDrawerSlide: drawerSlideEvent => unit=?,
-    ~onDrawerStateChanged: AndroidInteractionState.t => unit=?,
+    ~onDrawerStateChanged: androidInteractionState => unit=?,
     ~drawerBackgroundColor: Color.t=?,
     ~statusBarBackgroundColor: Color.t=?,
     // View props 0.63.0
@@ -44,7 +48,7 @@ external make:
     ~accessibilityLiveRegion: Accessibility.liveRegion=?,
     ~accessibilityRole: Accessibility.role=?,
     ~accessibilityState: Accessibility.state=?,
-    ~accessibilityTraits: array(AccessibilityTrait.t)=?,
+    ~accessibilityTraits: array(Accessibility.trait)=?,
     ~accessibilityValue: Accessibility.value=?,
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,

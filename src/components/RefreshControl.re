@@ -24,7 +24,7 @@ external make:
     ~accessibilityLiveRegion: Accessibility.liveRegion=?,
     ~accessibilityRole: Accessibility.role=?,
     ~accessibilityState: Accessibility.state=?,
-    ~accessibilityTraits: array(AccessibilityTrait.t)=?,
+    ~accessibilityTraits: array(Accessibility.trait)=?,
     ~accessibilityValue: Accessibility.value=?,
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,

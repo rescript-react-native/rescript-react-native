@@ -1,10 +1,11 @@
 include NativeElement;
 
 module Orientation = Modal_Orientation;
-module OrientationChange = Modal_OrientationChange;
+
+type orientationChange = [ | `landscape | `portrait];
 
 module OrientationChangeEvent = {
-  type payload = {orientation: OrientationChange.t};
+  type payload = {orientation: orientationChange};
 
   include Event.SyntheticEvent({
     type _payload = payload;

@@ -1,22 +1,3 @@
-module Easing = {
-  type t = string;
-
-  [@bs.inline]
-  let easeIn = "easeIn";
-
-  [@bs.inline]
-  let easeInEaseOut = "easeInEaseOut";
-
-  [@bs.inline]
-  let easeOut = "easeOut";
-
-  [@bs.inline]
-  let linear = "linear";
-
-  [@bs.inline]
-  let keyboard = "keyboard";
-};
-
 type screenRect = {
   screenX: float,
   screenY: float,
@@ -35,7 +16,7 @@ type eventType = [
 
 type keyboardEvent = {
   duration: float,
-  easing: Easing.t,
+  easing: LayoutAnimation.animationType,
   endCoordinates: screenRect,
   startCoordinates: screenRect,
   isEventFromThisApp: bool,

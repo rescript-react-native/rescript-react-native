@@ -27,13 +27,10 @@ Event$ReactNative.SyntheticEvent({});
 
 var KeyPressEvent = {};
 
-var DataDetectorTypes;
-
 exports.ChangeEvent = ChangeEvent;
 exports.EditingEvent = EditingEvent;
 exports.ContentSizeChangeEvent = ContentSizeChangeEvent;
 exports.ScrollEvent = ScrollEvent;
 exports.SelectionChangeEvent = SelectionChangeEvent;
 exports.KeyPressEvent = KeyPressEvent;
-exports.DataDetectorTypes = DataDetectorTypes;
 /*  Not a pure module */
