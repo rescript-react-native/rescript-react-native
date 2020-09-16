@@ -1,4 +1,4 @@
-type t = [ | `active | `background | `inactive];
+type t = [ | `active | `background | `inactive | `unknown | `extension];
 
 [@bs.scope "AppState"] [@bs.module "react-native"]
 external currentState: t = "currentState";
