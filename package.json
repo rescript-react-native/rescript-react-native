@@ -17,7 +17,9 @@
   "files": [
     "*.md",
     "bsconfig.json",
-    "src/*.re"
+    "src/*.re",
+    "src/*.js",
+    "!src/*.bs.js"
   ],
   "scripts": {
     "format:most": "prettier --write \"**/*.{md,json,js,css}\"",
