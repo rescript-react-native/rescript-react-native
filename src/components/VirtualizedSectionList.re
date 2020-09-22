@@ -29,12 +29,13 @@ and renderSectionHeaderProps('item, 'sectionData) = {
 };
 
 type separatorProps('item, 'sectionData) = {
-  highlighted: bool,
-  leadingItem: option('item),
-  leadingSection: option(section('item, 'sectionData)),
-  section: section('item, 'sectionData),
-  trailingItem: option('item),
-  trailingSection: option(section('item, 'sectionData)),
+  .
+  "highlighted": bool,
+  "leadingItem": option('item),
+  "leadingSection": option(section('item, 'sectionData)),
+  "section": section('item, 'sectionData),
+  "trailingItem": option('item),
+  "trailingSection": option(section('item, 'sectionData)),
 };
 
 [@bs.obj]
@@ -55,11 +56,13 @@ external make:
   (
     ~ref: ref=?,
     // VirtualizedSectionList props
-    ~_ItemSeparatorComponent: separatorProps('item, 'sectionData) =>
-                              React.element
+    ~_ItemSeparatorComponent: React.component(
+                                separatorProps('item, 'sectionData),
+                              )
                                 =?,
-    ~_SectionSeparatorComponent: separatorProps('item, 'sectionData) =>
-                                 React.element
+    ~_SectionSeparatorComponent: React.component(
+                                   separatorProps('item, 'sectionData),
+                                 )
                                    =?,
     ~renderItem: renderItemCallback('item, 'sectionData),
     ~renderSectionFooter: renderSectionHeaderCallback('item, 'sectionData)=?,
