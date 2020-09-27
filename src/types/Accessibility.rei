@@ -13,6 +13,8 @@ let mixed: checked(string);
 
 [@bs.obj] external actionInfo: (~name: string, ~label: string=?) => actionInfo;
 
+type actionEvent = AccessibilityActionEvent.t;
+
 [@bs.obj]
 external state:
   (
