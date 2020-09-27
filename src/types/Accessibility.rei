@@ -31,13 +31,6 @@ type value;
 
 [@bs.obj] external intValue: (~min: int, ~max: int, ~now: int) => value;
 
-type componentType = [
-  | `none
-  | `button
-  | `radiobutton_checked
-  | `radiobutton_unchecked
-];
-
 type liveRegion = [ | `none | `polite | `assertive];
 
 type role = [
@@ -77,24 +70,4 @@ type role = [
   | `tablist
   | `timer
   | `toolbar
-];
-
-type trait = [
-  | `none
-  | `button
-  | `link
-  | `header
-  | `search
-  | `image
-  | `selected
-  | `plays
-  | `key
-  | `text
-  | `summary
-  | `disabled
-  | `frequentUpdates
-  | `startsMedia
-  | `adjustable
-  | `allowsDirectInteraction
-  | `pageTurn
 ];
