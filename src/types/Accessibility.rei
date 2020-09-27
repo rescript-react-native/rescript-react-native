@@ -11,7 +11,8 @@ let unchecked: checked(bool);
 [@bs.inline "mixed"]
 let mixed: checked(string);
 
-[@bs.obj] external actionInfo: (~name: string, ~label: string=?) => actionInfo;
+[@bs.obj]
+external actionInfo: (~name: string, ~label: string=?, unit) => actionInfo;
 
 type actionEvent = AccessibilityActionEvent.t;
 
