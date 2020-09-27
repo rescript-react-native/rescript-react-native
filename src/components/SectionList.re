@@ -13,17 +13,19 @@ external make:
   (
     ~ref: ref=?,
     // VirtualizedSectionList props
-    ~_ItemSeparatorComponent: VirtualizedSectionList.separatorProps(
-                                'item,
-                                'sectionData,
-                              ) =>
-                              React.element
+    ~_ItemSeparatorComponent: React.component(
+                                VirtualizedSectionList.separatorProps(
+                                  'item,
+                                  'sectionData,
+                                ),
+                              )
                                 =?,
-    ~_SectionSeparatorComponent: VirtualizedSectionList.separatorProps(
-                                   'item,
-                                   'sectionData,
-                                 ) =>
-                                 React.element
+    ~_SectionSeparatorComponent: React.component(
+                                   VirtualizedSectionList.separatorProps(
+                                     'item,
+                                     'sectionData,
+                                   ),
+                                 )
                                    =?,
     ~renderItem: VirtualizedSectionList.renderItemCallback(
                    'item,
