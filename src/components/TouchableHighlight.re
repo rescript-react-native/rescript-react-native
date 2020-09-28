@@ -14,7 +14,6 @@ external make:
     ~underlayColor: string=?,
     // TouchableWithoutFeedback props
     ~accessible: bool=?,
-    ~accessibilityComponentType: Accessibility.componentType=?,
     ~accessibilityElementsHidden: bool=?,
     ~accessibilityHint: string=?,
     ~accessibilityIgnoresInvertColors: bool=?,
@@ -22,7 +21,6 @@ external make:
     ~accessibilityLiveRegion: Accessibility.liveRegion=?,
     ~accessibilityRole: Accessibility.role=?,
     ~accessibilityState: Accessibility.state=?,
-    ~accessibilityTraits: array(Accessibility.trait)=?,
     ~accessibilityValue: Accessibility.value=?,
     ~accessibilityViewIsModal: bool=?,
     ~delayLongPress: int=?,

@@ -11,7 +11,10 @@ let unchecked = false;
 [@bs.inline]
 let mixed = "mixed";
 
-[@bs.obj] external actionInfo: (~name: string, ~label: string=?) => actionInfo;
+[@bs.obj]
+external actionInfo: (~name: string, ~label: string=?, unit) => actionInfo;
+
+type actionEvent = AccessibilityActionEvent.t;
 
 [@bs.obj]
 external state:
@@ -30,13 +33,6 @@ type value;
 [@bs.obj] external textValue: (~text: string) => value;
 
 [@bs.obj] external intValue: (~min: int, ~max: int, ~now: int) => value;
-
-type componentType = [
-  | `none
-  | `button
-  | `radiobutton_checked
-  | `radiobutton_unchecked
-];
 
 type liveRegion = [ | `none | `polite | `assertive];
 
@@ -77,24 +73,4 @@ type role = [
   | `tablist
   | `timer
   | `toolbar
-];
-
-type trait = [
-  | `none
-  | `button
-  | `link
-  | `header
-  | `search
-  | `image
-  | `selected
-  | `plays
-  | `key
-  | `text
-  | `summary
-  | `disabled
-  | `frequentUpdates
-  | `startsMedia
-  | `adjustable
-  | `allowsDirectInteraction
-  | `pageTurn
 ];

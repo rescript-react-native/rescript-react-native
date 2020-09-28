@@ -158,7 +158,6 @@ external make:
     ~zoomScale: float=?,
     // View props 0.63.0
     ~accessibilityActions: array(Accessibility.actionInfo)=?,
-    ~accessibilityComponentType: Accessibility.componentType=?,
     ~accessibilityElementsHidden: bool=?,
     ~accessibilityHint: string=?,
     ~accessibilityIgnoresInvertColors: bool=?,
@@ -166,7 +165,6 @@ external make:
     ~accessibilityLiveRegion: Accessibility.liveRegion=?,
     ~accessibilityRole: Accessibility.role=?,
     ~accessibilityState: Accessibility.state=?,
-    ~accessibilityTraits: array(Accessibility.trait)=?,
     ~accessibilityValue: Accessibility.value=?,
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
@@ -182,6 +180,7 @@ external make:
                                   =?,
     ~nativeID: string=?,
     ~needsOffscreenAlphaCompositing: bool=?,
+    ~onAccessibilityAction: Accessibility.actionEvent => unit=?,
     ~onAccessibilityEscape: unit => unit=?,
     ~onAccessibilityTap: unit => unit=?,
     ~onLayout: Event.layoutEvent => unit=?,
