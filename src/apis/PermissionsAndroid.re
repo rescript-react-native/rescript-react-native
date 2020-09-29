@@ -35,6 +35,10 @@ module Permission = {
 
   [@bs.module "react-native"]
   [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
+  external accessBackgroundLocation: t = "ACCESS_BACKGROUND_LOCATION";
+
+  [@bs.module "react-native"]
+  [@bs.scope ("PermissionsAndroid", "PERMISSIONS")]
   external recordAudio: t = "RECORD_AUDIO";
 
   [@bs.module "react-native"]
