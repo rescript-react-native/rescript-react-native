@@ -36,8 +36,9 @@ type value;
 
 type liveRegion = [ | `none | `polite | `assertive];
 
+// @todo see with ReScript how we can handle this
+// | `switch
 type role = [
-  | `none
   | `adjustable
   | `alert
   | `article
@@ -55,22 +56,23 @@ type role = [
   | `link
   | `list
   | `listitem
-  | `search
-  | `summary
-  | `text
   | `main
   | `menu
   | `menubar
   | `menuitem
   | `navigation
+  | `none
   | `progressbar
   | `radio
   | `radiogroup
   | `region
   | `scrollbar
+  | `search
   | `spinbutton
+  | `summary
   | `tab
   | `tablist
+  | `text
   | `timer
   | `toolbar
 ];

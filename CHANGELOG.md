@@ -1,5 +1,53 @@
 # Changelog of `reason-react-native`
 
+## 0.63.0 - 2020-11-06
+
+### Breaking changes
+
+- ⚠️ Changed minimal versions required [#722](https://github.com/reason-react-native/reason-react-native/pull/722) by [@cknitt](https://github.com/cknitt)
+  - ReScript / bs-platform 8.2
+  - reason-react 0.9.1
+- Switched solution to avoid warnings being throw as errors [b5038e9](https://github.com/reason-react-native/reason-react-native/commit/b5038e9) by [@MoOx](https://github.com/MoOx) with the help of [@Freddy03h](https://github.com/Freddy03h) and [@bobzhang](https://github.com/bobzhang) in [#718](https://github.com/reason-react-native/safe-area-context/pull/4)
+  This will help to avoid issue if ReScript introduce new warning that caused in the past impossibility to use our bindings (eg: ReScript 8.2 bs.string annontations).
+- Switch to polymorphic variants instead of abstract types where possible
+  [#724](https://github.com/reason-react-native/reason-react-native/pull/724) [#727](https://github.com/reason-react-native/reason-react-native/pull/727) by [@cknitt](https://github.com/cknitt)
+- Removed superfluous bs.string attributes [#723](https://github.com/reason-react-native/reason-react-native/pull/723) by [@cknitt](https://github.com/cknitt)
+  This change shouldn't impact your code if you are using ReScript 8.2 as required.
+- Accessibility changes for react-native 0.63 [#728](https://github.com/reason-react-native/reason-react-native/pull/728) by [@cknitt](https://github.com/cknitt)
+  - Removed `accessibilityComponentType`
+  - Removed `accessibilityTraits`.
+  - Added `AccessibilityActionEvent`
+  - Added `onAccessibilityAction`.
+  - Added `Accessibility.actionInfo` (already there, but broken - missing unit to terminate argument list).
+  - Note that `Accessibility.role` was actually already up to date (except for the value "switch" which we can't add because it's a keyword). Feel free to open an issue if you need `switch` value.
+- Removed `Global.unstable_enableLogBox` [#718](https://github.com/reason-react-native/reason-react-native/pull/718) by [@gedeagas](https://github.com/gedeagas)
+  This is now enabled by default in React Native 0.63. See added `LogBox` bindings for more options.
+- Removed `tintColor` prop from Switch component [#714](https://github.com/reason-react-native/reason-react-native/pull/714) by [@gedeagas](https://github.com/gedeagas)
+
+### Fixes
+
+- Fixed `VirtualizedListMethods.scrollToItemParams` [#715](https://github.com/reason-react-native/reason-react-native/pull/715) by [@cknitt](https://github.com/cknitt)
+
+### New Features
+
+- Added `DynamicColorIOS` [#717](https://github.com/reason-react-native/reason-react-native/pull/717) by [@celsobonutti](https://github.com/celsobonutti)
+  Note that there is only 2 keys (`light` and `dark`) but React Native documentation mention they might be more in the future, without saying if they will be mandatory or not. If you want to protect yourself, you might want to make your own factory. In any case, we can still deprecate the `make` binding & create a new external binding with optional keys. So don't worry too much.
+- Added `PlatformColor` binding [#730](https://github.com/reason-react-native/reason-react-native/pull/730) by [@rifaldhiaw](https://github.com/rifaldhiaw)
+- Added `PermissionsAndroid.accessBackgroundLocation` [#729](https://github.com/reason-react-native/reason-react-native/pull/729) by [@cknitt](https://github.com/cknitt) + [b8392e3](https://github.com/reason-react-native/reason-react-native/commit/b8392e3) by [@MoOx](https://github.com/MoOx)
+- Added `LogBox` [#711](https://github.com/reason-react-native/reason-react-native/pull/711) by [@idkjs](https://github.com/idkjs)
+- Added `accessibilityActions` prop [#713](https://github.com/reason-react-native/reason-react-native/pull/713) by [@gedeagas](https://github.com/gedeagas)
+- Added `Pressable` [#712](https://github.com/reason-react-native/reason-react-native/pull/712) by [@gedeagas](https://github.com/gedeagas)
+  [@MoOx](https://github.com/MoOx)
+- Added `AppState` values `unknown` and `extension` (iOS) [#726](https://github.com/reason-react-native/reason-react-native/pull/726) by [@cknitt](https://github.com/cknitt)
+
+### Misc
+
+- ReScript branding has been adopted in various places in all the repos of our organisation.
+- More futur proof "files" patterns for npm (in case of interop files)
+  [1a3b677](https://github.com/reason-react-native/reason-react-native/commit/1a3b677) by [@MoOx](https://github.com/MoOx)
+- Simplify package.json files section
+  [a9cacbd](https://github.com/reason-react-native/reason-react-native/commit/a9cacbd) by [@MoOx](https://github.com/MoOx)
+
 ## 0.62.3 - 2020-08-07
 
 - Stop blocking compilation because of ReScript warnings (emitted as errors) [#708](https://github.com/reason-react-native/reason-react-native/pull/708) by [@jfrolich](https://github.com/jfrolich)  
