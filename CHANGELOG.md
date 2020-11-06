@@ -2,8 +2,8 @@
 
 ## 0.62.3 - 2020-08-07
 
-- Stop blocking compilation because of BuckleScript warnings (emitted as errors) [#708](https://github.com/reason-react-native/reason-react-native/pull/708) by [@jfrolich](https://github.com/jfrolich)  
-  This is to ensure BuckleScript 8.2 compatibility & avoid similar problem in the future.
+- Stop blocking compilation because of ReScript warnings (emitted as errors) [#708](https://github.com/reason-react-native/reason-react-native/pull/708) by [@jfrolich](https://github.com/jfrolich)  
+  This is to ensure ReScript 8.2 compatibility & avoid similar problem in the future.
 
 ## 0.62.2 - 2020-07-27
 
@@ -90,7 +90,7 @@ before reporting issue.
 
 - Fix `autoCompleteType` prop for `TextInput` component (previously incorrectly
   named `autoComplete`) ([#639](https://github.com/reason-react-native/reason-react-native/pull/639) by [@Naturalclar](https://github.com/Naturalclar)
-- Resolves all BuckleScript inferred name warnings ([#628](https://github.com/reason-react-native/reason-react-native/pull/628) by [@idkjs](https://github.com/idkjs)
+- Resolves all ReScript / BuckleScript inferred name warnings ([#628](https://github.com/reason-react-native/reason-react-native/pull/628) by [@idkjs](https://github.com/idkjs)
 
 ## 0.61.0 - 2019-11-20
 

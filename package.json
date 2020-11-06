@@ -9,6 +9,7 @@
   "repository": "https://github.com/reason-react-native/reason-react-native.git",
   "license": "MIT",
   "keywords": [
+    "rescript",
     "reason",
     "reasonml",
     "bucklescript",
