@@ -1,5 +1,9 @@
 # Changelog of `reason-react-native`
 
+## 0.63.1 - 2020-11-17
+
+Fix npm description
+
 ## 0.63.0 - 2020-11-06
 
 ### Breaking changes
@@ -37,16 +41,13 @@
 - Added `LogBox` [#711](https://github.com/reason-react-native/reason-react-native/pull/711) by [@idkjs](https://github.com/idkjs)
 - Added `accessibilityActions` prop [#713](https://github.com/reason-react-native/reason-react-native/pull/713) by [@gedeagas](https://github.com/gedeagas)
 - Added `Pressable` [#712](https://github.com/reason-react-native/reason-react-native/pull/712) by [@gedeagas](https://github.com/gedeagas)
-  [@MoOx](https://github.com/MoOx)
 - Added `AppState` values `unknown` and `extension` (iOS) [#726](https://github.com/reason-react-native/reason-react-native/pull/726) by [@cknitt](https://github.com/cknitt)
 
 ### Misc
 
 - ReScript branding has been adopted in various places in all the repos of our organisation.
-- More futur proof "files" patterns for npm (in case of interop files)
-  [1a3b677](https://github.com/reason-react-native/reason-react-native/commit/1a3b677) by [@MoOx](https://github.com/MoOx)
-- Simplify package.json files section
-  [a9cacbd](https://github.com/reason-react-native/reason-react-native/commit/a9cacbd) by [@MoOx](https://github.com/MoOx)
+- More futur proof "files" patterns for npm (in case of interop files) [1a3b677](https://github.com/reason-react-native/reason-react-native/commit/1a3b677) by [@MoOx](https://github.com/MoOx)
+- Simplify package.json files section [a9cacbd](https://github.com/reason-react-native/reason-react-native/commit/a9cacbd) by [@MoOx](https://github.com/MoOx)
 
 ## 0.62.3 - 2020-08-07
 

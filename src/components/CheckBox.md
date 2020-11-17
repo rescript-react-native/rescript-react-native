@@ -8,4 +8,4 @@ future.
 
 Please refer to [bindings](https://github.com/reason-react-native/checkbox) for
 the replacement
-[community package](https://github.com/react-native-community/react-native-checkbox).
+[community package](https://github.com/react-native-checkbox/react-native-checkbox).
