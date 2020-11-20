@@ -1,5 +1,9 @@
 # Changelog of `reason-react-native`
 
+## 0.63.2 - 2020-11-20
+
+Breaking change, sorry: Reverting ActivityIndicator size as polymorphic variant so we can keep the exact option.
+
 ## 0.63.1 - 2020-11-17
 
 Fix npm description
