@@ -1,6 +1,11 @@
 include NativeElement;
 
-type edgeInsets;
+type edgeInsets = {
+  left: float,
+  right: float,
+  bottom: float,
+  top: float,
+};
 [@bs.obj]
 external edgeInsets:
   (~left: float=?, ~right: float=?, ~top: float=?, ~bottom: float=?, unit) =>
