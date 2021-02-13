@@ -47,7 +47,27 @@ external make:
     ~testID: string=?,
     ~android_disableSound: bool=?,
     ~android_ripple: rippleConfig=?,
-    ~testOnly_pressed: bool=?
+    ~testOnly_pressed: bool=?,
+    // React Native Web Props
+    ~rel: [@bs.string] [
+            | `alternate
+            | `author
+            | [@bs.as "dns-prefetch"] `dnsPrefetch
+            | `icon
+            | `license
+            | `next
+            | `pingback
+            | `preconnect
+            | `prefetch
+            | `preload
+            | `prerender
+            | `prev
+            | `search
+            | `stylesheet
+          ]
+            =?,
+    ~href: string=?,
+    ~target: Web.target=?
   ) =>
   React.element =
   "Pressable";
