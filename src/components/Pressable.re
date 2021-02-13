@@ -7,6 +7,13 @@ external rippleConfig:
   (~color: Color.t=?, ~borderless: bool=?, ~radius: float=?, unit) =>
   rippleConfig;
 
+type interactionState = {
+  pressed: bool,
+  // React Native Web
+  hovered: option(bool),
+  focused: option(bool),
+};
+
 [@react.component] [@bs.module "react-native"]
 external make:
   (
@@ -33,7 +40,7 @@ external make:
                                 ]
                                   =?,
     // Pressable props
-    ~children: React.element=?,
+    ~children: interactionState => React.element=?,
     ~delayLongPress: int=?,
     ~disabled: bool=?,
     ~hitSlop: View.edgeInsets=?,
@@ -43,7 +50,7 @@ external make:
     ~onPress: Event.pressEvent => unit=?,
     ~onPressIn: Event.pressEvent => unit=?,
     ~onPressOut: Event.pressEvent => unit=?,
-    ~style: Style.t=?,
+    ~style: interactionState => Style.t=?,
     ~testID: string=?,
     ~android_disableSound: bool=?,
     ~android_ripple: rippleConfig=?,

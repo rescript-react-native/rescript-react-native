@@ -22,8 +22,15 @@ open ReactNative;
 
 [@react.component]
 let make = () => {
-    <Pressable onPress={_ => Js.log("Pressed")}>
-        <Text> "Press Me"->React.string </Text>
-    </Pressable>;
+  <Pressable
+    onPress={_ => Js.log("Pressed")}
+    style={({pressed}) =>
+      Style.(
+        style(~backgroundColor=pressed ? "rgb(210, 230, 255)" : "white", ())
+      )
+    }>
+    {({pressed}) =>
+        <Text> {pressed ? "Pressed!" : "Press Me"}->React.string </Text>}
+  </Pressable>;
 };
 ```
