@@ -7,7 +7,7 @@ external rippleConfig:
   (~color: Color.t=?, ~borderless: bool=?, ~radius: float=?, unit) =>
   rippleConfig;
 
-[@deprecated "Please use Pressable_ instead"]
+[@deprecated "Please use `Pressable_` instead of `Pressable` to benefit of the full benefit of Pressable component (eg: pressed state in style props and children function). In next major release (0.64), `Pressable_` will become `Pressable`."]
 [@react.component]
 [@bs.module "react-native"]
 external make:
