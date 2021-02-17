@@ -6,7 +6,7 @@ officialDoc: https://reactnative.dev/docs/pressable
 
 Pressable is a Core Component wrapper that can detect various stages of press interactions on any of it's defined children.
 
-⚠️ Current `Pressable` is deprecated, prefer `Pressable_` with the use of interactionState
+⚠️ Current `Pressable` is deprecated, prefer `Pressable_` that offers interaction states (eg: `pressed` state).
 
 ## How it works
 
