@@ -6,6 +6,8 @@ officialDoc: https://reactnative.dev/docs/pressable
 
 Pressable is a Core Component wrapper that can detect various stages of press interactions on any of it's defined children.
 
+⚠️ Current `Pressable` is deprecated, prefer `Pressable_` with the use of interactionState
+
 ## How it works
 
 On an element wrapped by `Pressable`:
@@ -17,12 +19,27 @@ You can read more about this [on the official Pressable documentation](https://r
 
 ## Example
 
+Current Pressable (deprecated)
+
 ```reason
 open ReactNative;
 
 [@react.component]
 let make = () => {
-  <Pressable
+    <Pressable onPress={_ => Js.log("Pressed")}>
+        <Text> "Press Me"->React.string </Text>
+    </Pressable>;
+};
+```
+
+Next Pressable (with interactionState)
+
+```reason
+open ReactNative;
+
+[@react.component]
+let make = () => {
+  <Pressable_
     onPress={_ => Js.log("Pressed")}
     style={({pressed}) =>
       Style.(
@@ -31,6 +48,6 @@ let make = () => {
     }>
     {({pressed}) =>
         <Text> {pressed ? "Pressed!" : "Press Me"}->React.string </Text>}
-  </Pressable>;
+  </Pressable_>;
 };
 ```
