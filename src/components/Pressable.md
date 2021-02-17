@@ -19,7 +19,7 @@ You can read more about this [on the official Pressable documentation](https://r
 
 ## Example
 
-Current Pressable (deprecated)
+Current Pressable (deprecated because doesn't provide pressed state).
 
 ```reason
 open ReactNative;
