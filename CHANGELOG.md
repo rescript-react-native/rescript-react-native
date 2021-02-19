@@ -1,5 +1,9 @@
 # Changelog of `reason-react-native`
 
+## 0.63.3 - 2021-02-19
+
+Added Pressable with child function and interaction states (as `Pressable_`) [#735](https://github.com/reason-react-native/reason-react-native/pull/735) by [@Freddy03h](https://github.com/Freddy03h)
+
 ## 0.63.2 - 2020-11-20
 
 Breaking change, sorry: Reverting ActivityIndicator size as polymorphic variant so we can keep the exact option.
