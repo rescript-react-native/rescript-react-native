@@ -7,9 +7,14 @@ external rippleConfig:
   (~color: Color.t=?, ~borderless: bool=?, ~radius: float=?, unit) =>
   rippleConfig;
 
-[@deprecated "Please use `Pressable_` instead of `Pressable` to benefit of the full benefit of Pressable component (eg: pressed state in style props and children function). In next major release (0.64), `Pressable_` will become `Pressable`."]
-[@react.component]
-[@bs.module "react-native"]
+type interactionState = {
+  pressed: bool,
+  // React Native Web
+  hovered: option(bool),
+  focused: option(bool),
+};
+
+[@react.component] [@bs.module "react-native"]
 external make:
   (
     ~ref: ref=?,
@@ -35,7 +40,7 @@ external make:
                                 ]
                                   =?,
     // Pressable props
-    ~children: React.element=?,
+    ~children: interactionState => React.element=?,
     ~delayLongPress: int=?,
     ~disabled: bool=?,
     ~hitSlop: View.edgeInsets=?,
@@ -45,11 +50,31 @@ external make:
     ~onPress: Event.pressEvent => unit=?,
     ~onPressIn: Event.pressEvent => unit=?,
     ~onPressOut: Event.pressEvent => unit=?,
-    ~style: Style.t=?,
+    ~style: interactionState => Style.t=?,
     ~testID: string=?,
     ~android_disableSound: bool=?,
     ~android_ripple: rippleConfig=?,
-    ~testOnly_pressed: bool=?
+    ~testOnly_pressed: bool=?,
+    // React Native Web Props
+    ~rel: [@bs.string] [
+            | `alternate
+            | `author
+            | [@bs.as "dns-prefetch"] `dnsPrefetch
+            | `icon
+            | `license
+            | `next
+            | `pingback
+            | `preconnect
+            | `prefetch
+            | `preload
+            | `prerender
+            | `prev
+            | `search
+            | `stylesheet
+          ]
+            =?,
+    ~href: string=?,
+    ~target: Web.target=?
   ) =>
   React.element =
   "Pressable";
