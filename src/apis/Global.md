@@ -1,6 +1,7 @@
 ---
 id: apis/Global
 title: Global
+autoLinkToOfficialDoc: false
 ---
 
 This module contains various APIs & flags that are in JavaScript global scope.
