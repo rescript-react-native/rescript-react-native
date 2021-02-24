@@ -11,9 +11,25 @@ module Make = (T: {type t;}) => {
   [@bs.send] external blur: T.t => unit = "blur";
 
   [@bs.send]
-  external measure: (T.t, measureResult => unit) => unit = "measure";
+  external measure:
+    (
+      T.t,
+      (
+        ~x: float,
+        ~y: float,
+        ~width: float,
+        ~height: float,
+        ~pageX: float,
+        ~pageY: float
+      ) =>
+      unit
+    ) =>
+    unit =
+    "measure";
   [@bs.send]
-  external measureInWindow: (T.t, measureInWindowResult => unit) => unit =
+  external measureInWindow:
+    (T.t, (~x: float, ~y: float, ~width: float, ~height: float) => unit) =>
+    unit =
     "measureInWindow";
 
   [@bs.send]
@@ -21,8 +37,9 @@ module Make = (T: {type t;}) => {
     (
       T.t,
       ~relativeToNativeNode: nodeHandle,
-      ~onSuccess: measureResult => unit,
-      ~onFail: measureError => unit
+      ~onSuccess: (~left: float, ~top: float, ~width: float, ~height: float) =>
+                  unit,
+      ~onFail: unit => unit
     ) =>
     unit =
     "measureLayout";
