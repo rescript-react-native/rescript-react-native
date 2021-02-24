@@ -1,7 +1,7 @@
 {
   "name": "reason-react-native",
   "description": "ReScript bindings for React Native.",
-  "version": "0.63.3",
+  "version": "0.63.4",
   "peerDependencies": {
     "bs-platform": "^8.2.0",
     "react-native": "^0.63.0",

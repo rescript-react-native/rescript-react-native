@@ -1,5 +1,9 @@
 # Changelog of `reason-react-native`
 
+## 0.63.4 - 2021-02-24
+
+Fixed `measure` & `measureInWindow` functions types [#736](https://github.com/reason-react-native/reason-react-native/pull/736) by [@Freddy03h](https://github.com/Freddy03h)
+
 ## 0.63.3 - 2021-02-19
 
 Added Pressable with child function and interaction states (as `Pressable_`) [#735](https://github.com/reason-react-native/reason-react-native/pull/735) by [@Freddy03h](https://github.com/Freddy03h)
