@@ -79,24 +79,24 @@ module Android = {
     [@bs.string]
     [
       | [@bs.as "?attr/color"] `color
-      | [@bs.as "?attr/colorAccent"] `colorAccent
-      | [@bs.as "?attr/colorActivatedHighlight"] `colorActivatedHighlight
-      | [@bs.as "?attr/colorBackground"] `colorBackground
-      | [@bs.as "?attr/colorBackgroundFloating"] `colorBackgroundFloating
-      | [@bs.as "?attr/colorButtonNormal"] `colorButtonNormal
-      | [@bs.as "?attr/colorControlHighlight"] `colorControlHighlight
-      | [@bs.as "?attr/colorControlNormal"] `colorControlNormal
-      | [@bs.as "?attr/colorEdgeEffect"] `colorEdgeEffect
-      | [@bs.as "?attr/colorError"] `colorError
-      | [@bs.as "?attr/colorFocusedHighlight"] `colorFocusedHighlight
-      | [@bs.as "?attr/colorForeground"] `colorForeground
-      | [@bs.as "?attr/colorForegroundInverse"] `colorForegroundInverse
-      | [@bs.as "?attr/colorLongPressedHighlight"] `colorLongPressedHighlight
-      | [@bs.as "?attr/colorMultiSelectHighlight"] `colorMultiSelectHighlight
-      | [@bs.as "?attr/colorPressedHighlight"] `colorPressedHighlight
-      | [@bs.as "?attr/colorPrimary"] `colorPrimary
-      | [@bs.as "?attr/colorPrimaryDark"] `colorPrimaryDark
-      | [@bs.as "?attr/colorSecondary"] `colorSecondary
+      | [@bs.as "?android:attr/colorAccent"] `colorAccent
+      | [@bs.as "?android:attr/colorActivatedHighlight"] `colorActivatedHighlight
+      | [@bs.as "?android:attr/colorBackground"] `colorBackground
+      | [@bs.as "?android:attr/colorBackgroundFloating"] `colorBackgroundFloating
+      | [@bs.as "?android:attr/colorButtonNormal"] `colorButtonNormal
+      | [@bs.as "?android:attr/colorControlHighlight"] `colorControlHighlight
+      | [@bs.as "?android:attr/colorControlNormal"] `colorControlNormal
+      | [@bs.as "?android:attr/colorEdgeEffect"] `colorEdgeEffect
+      | [@bs.as "?android:attr/colorError"] `colorError
+      | [@bs.as "?android:attr/colorFocusedHighlight"] `colorFocusedHighlight
+      | [@bs.as "?android:attr/colorForeground"] `colorForeground
+      | [@bs.as "?android:attr/colorForegroundInverse"] `colorForegroundInverse
+      | [@bs.as "?android:attr/colorLongPressedHighlight"] `colorLongPressedHighlight
+      | [@bs.as "?android:attr/colorMultiSelectHighlight"] `colorMultiSelectHighlight
+      | [@bs.as "?android:attr/colorPressedHighlight"] `colorPressedHighlight
+      | [@bs.as "?android:attr/colorPrimary"] `colorPrimary
+      | [@bs.as "?android:attr/colorPrimaryDark"] `colorPrimaryDark
+      | [@bs.as "?android:attr/colorSecondary"] `colorSecondary
     ]
     ) =>
     Color.t =
