@@ -105,7 +105,6 @@ module Android = {
     (
     [@bs.string]
     [
-      | [@bs.as "?attr/color"] `color
       | [@bs.as "?android:attr/colorAccent"] `colorAccent
       | [@bs.as "?android:attr/colorActivatedHighlight"]
         `colorActivatedHighlight
