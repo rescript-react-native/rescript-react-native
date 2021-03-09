@@ -32,6 +32,33 @@ module Android = {
   external unsafeGet: string => Color.t = "PlatformColor";
 
   [@bs.module "react-native"]
+  external unsafeGet2: (string, string) => Color.t = "PlatformColor";
+
+  [@bs.module "react-native"]
+  external unsafeGet3: (string, string, string) => Color.t = "PlatformColor";
+
+  [@bs.module "react-native"]
+  external unsafeGet4: (string, string, string, string) => Color.t =
+    "PlatformColor";
+
+  [@bs.module "react-native"]
+  external unsafeGet5: (string, string, string, string, string) => Color.t =
+    "PlatformColor";
+
+  [@bs.module "react-native"]
+  external unsafeGet6:
+    (string, string, string, string, string, string) => Color.t =
+    "PlatformColor";
+
+  [@bs.module "react-native"]
+  external unsafeGet7:
+    (string, string, string, string, string, string, string) => Color.t =
+    "PlatformColor";
+
+  [@bs.module "react-native"] [@bs.variadic]
+  external unsafeGetMultiple: array(string) => Color.t = "PlatformColor";
+
+  [@bs.module "react-native"]
   external getColor:
     (
     [@bs.string]
@@ -1685,31 +1712,4 @@ module Android = {
     ) =>
     Color.t =
     "PlatformColor";
-
-  [@bs.module "react-native"]
-  external unsafeGet2: (string, string) => Color.t = "PlatformColor";
-
-  [@bs.module "react-native"]
-  external unsafeGet3: (string, string, string) => Color.t = "PlatformColor";
-
-  [@bs.module "react-native"]
-  external unsafeGet4: (string, string, string, string) => Color.t =
-    "PlatformColor";
-
-  [@bs.module "react-native"]
-  external unsafeGet5: (string, string, string, string, string) => Color.t =
-    "PlatformColor";
-
-  [@bs.module "react-native"]
-  external unsafeGet6:
-    (string, string, string, string, string, string) => Color.t =
-    "PlatformColor";
-
-  [@bs.module "react-native"]
-  external unsafeGet7:
-    (string, string, string, string, string, string, string) => Color.t =
-    "PlatformColor";
-
-  [@bs.module "react-native"] [@bs.variadic]
-  external unsafeGetMultiple: array(string) => Color.t = "PlatformColor";
 };
