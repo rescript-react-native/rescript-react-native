@@ -4,8 +4,7 @@
   "version": "0.63.5",
   "peerDependencies": {
     "bs-platform": "^8.2.0",
-    "react-native": "^0.63.0",
-    "reason-react": "^0.9.1"
+    "react-native": "^0.63.0"
   },
   "repository": "https://github.com/reason-react-native/reason-react-native.git",
   "license": "MIT",
@@ -19,13 +18,12 @@
   "files": [
     "*.md",
     "bsconfig.json",
-    "src/**/*.re",
-    "src/**/*.js",
-    "!src/**/*.bs.js"
+    "src/**/*.res",
+    "src/**/*.resi"
   ],
   "scripts": {
     "format:most": "prettier --write \"**/*.{md,json,js,css}\"",
-    "format:re": "find . -name \"*.re\" -or -name \"*.rei\" | grep -v \"node_modules\" | xargs bsrefmt --in-place",
+    "format:re": "find . -name \"*.res\" -or -name \"*.resi\" | grep -v \"node_modules\" | xargs bsrefmt --in-place",
     "format": "yarn format:most && yarn format:re",
     "re:start": "bsb -make-world -w",
     "re:build": "bsb -make-world",
@@ -36,13 +34,13 @@
     "release": "npmpub"
   },
   "devDependencies": {
-    "bs-platform": "^8.3.0",
+    "@rescript/react": "^0.10.1",
+    "bs-platform": "^9.0.1",
     "husky": "^4.0.0",
     "lint-staged": "^10.0.0",
     "npm-run-all": "^3.0.0",
     "npmpub": "^5.0.0",
-    "prettier": "^2.0.0",
-    "reason-react": "^0.9.1"
+    "prettier": "^2.0.0"
   },
   "prettier": {
     "trailingComma": "all"

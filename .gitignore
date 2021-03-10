@@ -12,6 +12,7 @@ package-lock.json
 #  ReScript / Reason / Ocaml artifacts
 #*.bs.js # we do want this files to ensure zero-cost
 .bsb.lock
+*.bs.js
+**/.merlin
 **/lib/bs
 **/lib/ocaml
-**/.merlin

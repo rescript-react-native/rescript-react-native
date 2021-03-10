@@ -20,5 +20,5 @@
   "warnings": {
     "error": true
   },
-  "bs-dependencies": ["reason-react"]
+  "bs-dependencies": ["@rescript/react"]
 }
