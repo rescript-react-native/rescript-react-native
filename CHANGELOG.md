@@ -1,5 +1,20 @@
 # Changelog of `reason-react-native`
 
+## 0.63.5 - 2021-03-10
+
+Fix & change Android PlatformColor binding to use built-in selector [#737](https://github.com/reason-react-native/reason-react-native/pull/737) by [@diaozheng999](https://github.com/diaozheng999)
+
+- Fixed `PlatformColor.Android.getAttr`: now use `"?android:attr/*` instead of `"?attr/*`
+- Added `PlatformColor.Android.get{x}` (x being an integer from 2 to 7) so you can use `@android:color` & `@?android:attr` in the same call, as `PlatformColor` accepts multiple arguments as fallbacks.
+- Added `PlatformColor.unsafeGet{x}` (x being an integer from 2 to 7) that allow you to pass unsafe values (string, which can be useful for user defined values).
+
+Also:
+
+- Added `PlatformColor.Android.get`
+- Added `PlatformColor.Ios.get{x}` like Android
+- `PlatformColor.IOS` is deprecated in favor of `PlatformColor.Ios`
+- `PlatformColor.Android.unsafeGet` is deprecated in favor of `PlatformColor.unsafeGet`
+
 ## 0.63.4 - 2021-02-24
 
 Fixed `measure` & `measureInWindow` functions types [#736](https://github.com/reason-react-native/reason-react-native/pull/736) by [@Freddy03h](https://github.com/Freddy03h)
