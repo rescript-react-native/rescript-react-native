@@ -6,35 +6,21 @@ officialDoc: https://reactnative.dev/docs/platformcolor
 
 Functions to access native colors on the target platform by supplying the native color’s corresponding value.
 
-## Types
+## Ios
 
-The types are polymorphic variants.
+### Ios.get
 
-### IOS.t
-
-See: [UI Element Colors](https://developer.apple.com/documentation/uikit/uicolor/ui_element_colors)
-
-### Android.t
-
-#### Android.attrColor
-
-See: [R.attr](https://developer.android.com/reference/android/R.attr)
-
-#### Android.androidColor
-
-See: [R.color](https://developer.android.com/reference/android/R.color)
-
-## Methods
-
-### IOS.get
-
-`IOS.get` is used to get color information from UI Element Colors.
+`Ios.get` is used to get color information from UI Element Colors.
 
 ```reason
-get: IOS.t => Color.t
+get: Ios.t => Color.t
 ```
 
-See: [UI Element Colors](https://developer.apple.com/documentation/uikit/uicolor/ui_element_colors)
+#### Ios.get{n}
+
+Methods to send fallbacks.
+
+## Android
 
 ### Android.getAttr
 
@@ -56,27 +42,31 @@ getColor: Android.t => Color.t
 
 See: [R.color](https://developer.android.com/reference/android/R.color)
 
-### Android.unsafeGet
+### Android.get
 
-As some people use user-defined attrs for colors and this seems to be supported by React Native, this function is used for getting them using strings.
+Allow to get color or attr.
+
+#### Android.get{n}
+
+You may want to get multiple platform colors in case one is not supported by the system. In this case, you can use the `get{n}` function to retrieve the values. You can mix and match Android color and attributes in this call. The first value will be treated as default and rest will be treated as fallback.
+
+Defined up to 7 arguments.
+
+## unsafeGet
+
+Depending on platform & OS version (and for Android you can have user-defined attrs for colors), this function is used for getting platform colors from strings.
 
 ```reason
 unsafeGet: string => Color.t
 ```
 
-### Android.get{n}
-
-Especially with Android, you may want to get multiple platform colors in case one is not supported by the system. In this case, you can use the `get{n}` function to retrieve the values. You can mix and match Android color and attributes in this call. The first value will be treated as default and rest will be treated as fallback.
-
-Defined up to 7 arguments.
-
-### Android.unsafeGet{n}
+### unsafeGet{n}
 
 The unsafe version of `get{n}` where a string can be passed in. This can be any Android resource query, for example: `?attr/colorPrimary` or `?android:attr/colorPrimary`, even resources defined within your Android app. The first value will be treated as default and rest will be treated as fallback.
 
 Defined up to 7 arguments.
 
-### Android.unsafeGetMultiple
+### unsafeGetMultiple
 
 The array version of `unsafeGet{n}` supporting arbitrary number of fallbacks.
 
@@ -97,7 +87,7 @@ let styles =
             switch (Platform.os) {
             | os when os == Platform.android =>
               PlatformColor.Android.get2(`primary_text_dark, `colorPrimary)
-            | os when os == Platform.ios => PlatformColor.IOS.get(`label)
+            | os when os == Platform.ios => PlatformColor.Ios.get(`label)
             | _ => "black"
             };
           },
