@@ -22,9 +22,7 @@
     "src/**/*.resi"
   ],
   "scripts": {
-    "format:most": "prettier --write \"**/*.{md,json,js,css}\"",
-    "format:re": "find . -name \"*.res\" -or -name \"*.resi\" | grep -v \"node_modules\" | xargs bsrefmt --in-place",
-    "format": "yarn format:most && yarn format:re",
+    "format": "prettier --write . --ignore-path .gitignore",
     "re:start": "bsb -make-world -w",
     "re:build": "bsb -make-world",
     "re:clean-build": "bsb -clean-world -make-world",
