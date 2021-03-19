@@ -30,7 +30,7 @@ external unsafeGetMultiple: array(string) => Color.t = "PlatformColor";
 
 module Ios = {
   type t = [
-    | `clearColor
+    | `clear
     | `darkText
     | `label
     | `lightText
