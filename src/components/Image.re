@@ -8,7 +8,7 @@ external uriSource:
     ~uri: string,
     ~bundle: string=?,
     ~method: string=?,
-    ~headers: Js.t('a)=?,
+    ~headers: Js.Dict.t(string)=?,
     ~body: string=?,
     ~cache: [@bs.string] [
               | `default
