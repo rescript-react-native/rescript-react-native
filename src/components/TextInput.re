@@ -1,5 +1,4 @@
 include TextInputElement;
-
 module ChangeEvent = {
   type payload = {
     eventCount: int,
@@ -97,15 +96,6 @@ type autoCapitalize = [ | `characters | `words | `sentences | `none];
 
 type t;
 
-type dataDetectorType = [
-  | `phoneNumber
-  | `link
-  | `address
-  | `calendarEvent
-  | `none
-  | `all
-];
-
 type importantForAutofill = [
   | `auto
   | `no
@@ -185,7 +175,6 @@ external make:
                         =?,
     ~clearTextOnFocus: bool=?,
     ~contextMenuHidden: bool=?,
-    ~dataDetectorTypes: array(dataDetectorType)=?,
     ~defaultValue: string=?,
     ~disableFullscreenUI: bool=?,
     ~editable: bool=?,

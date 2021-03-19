@@ -36,8 +36,10 @@ type value;
 
 type liveRegion = [ | `none | `polite | `assertive];
 
+// `accessibilityRole` communicates the purpose of a component to the user of an assistive technology.
+// roles that are specific for react-native-web are also included:
+// article, banner, complementary, contentinfo, form, list, listItem, main, navigation, region
 type role = [
-  | `none
   | `adjustable
   | `alert
   | `article
@@ -55,22 +57,23 @@ type role = [
   | `link
   | `list
   | `listitem
-  | `search
-  | `summary
-  | `text
   | `main
   | `menu
   | `menubar
   | `menuitem
   | `navigation
+  | `none
   | `progressbar
   | `radio
   | `radiogroup
   | `region
   | `scrollbar
+  | `search
   | `spinbutton
+  | `summary
   | `tab
   | `tablist
+  | `text
   | `timer
   | `toolbar
 ];

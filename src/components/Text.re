@@ -1,5 +1,14 @@
 include NativeElement;
 
+type dataDetectorType = [
+  | `phoneNumber
+  | `link
+  | `address
+  | `calendarEvent
+  | `none
+  | `all
+];
+
 type ellipsizeMode = [ | `clip | `head | `middle | `tail];
 
 type textBreakStrategy = [ | `simple | `highQuality | `balanced];
@@ -9,31 +18,47 @@ external make:
   (
     ~ref: ref=?,
     // Text props
-    ~accessible: bool=?,
     ~accessibilityHint: string=?,
     ~accessibilityLabel: string=?,
-    // `accessibilityRole` communicates the purpose of a component to the user of an assistive technology.
-    // roles that are specific for react-native-web are also included:
-    // article, banner, complementary, contentinfo, form, list, listItem, main, navigation, region
     ~accessibilityRole: Accessibility.role=?,
-    ~ariaLevel: int=?,
+    ~accessibilityState: Accessibility.state=?,
+    ~accessible: bool=?,
+    ~adjustsFontSizeToFit: bool=?,
     ~allowFontScaling: bool=?,
+    ~ariaLevel: int=?,
+    ~children: React.element=?,
+    ~dataDetectorTypes: array(dataDetectorType)=?,
+    ~disabled: bool=?,
     ~ellipsizeMode: ellipsizeMode=?,
+    ~maxFontSizeMultiplier: int=?,
+    ~minimumFontScale: float=?,
+    ~nativeID: string=?,
     ~numberOfLines: int=?,
     ~onLayout: Event.layoutEvent => unit=?,
     ~onLongPress: Event.pressEvent => unit=?,
     ~onPress: Event.pressEvent => unit=?,
+    ~onTextLayout: Event.textLayoutEvent => unit=?,
     ~pressRetentionOffset: View.edgeInsets=?,
     ~selectable: bool=?,
-    ~style: Style.t=?,
-    ~testID: string=?,
     ~selectionColor: string=?,
-    ~textBreakStrategy: textBreakStrategy=?,
-    ~adjustsFontSizeToFit: bool=?,
-    ~minimumFontScale: float=?,
+    ~style: Style.t=?,
     ~suppressHighlighting: bool=?,
+    ~testID: string=?,
+    ~textBreakStrategy: textBreakStrategy=?,
     ~value: string=?,
-    ~children: React.element=?,
+    // Gesture Responder props
+    ~onMoveShouldSetResponder: Event.pressEvent => bool=?,
+    ~onMoveShouldSetResponderCapture: Event.pressEvent => bool=?,
+    ~onResponderEnd: Event.pressEvent => unit=?,
+    ~onResponderGrant: Event.pressEvent => unit=?,
+    ~onResponderMove: Event.pressEvent => unit=?,
+    ~onResponderReject: Event.pressEvent => unit=?,
+    ~onResponderRelease: Event.pressEvent => unit=?,
+    ~onResponderStart: Event.pressEvent => unit=?,
+    ~onResponderTerminate: Event.pressEvent => unit=?,
+    ~onResponderTerminationRequest: Event.pressEvent => bool=?,
+    ~onStartShouldSetResponder: Event.pressEvent => bool=?,
+    ~onStartShouldSetResponderCapture: Event.pressEvent => bool=?,
     // React Native Web Props
     ~rel: [@bs.string] [
             | `alternate
