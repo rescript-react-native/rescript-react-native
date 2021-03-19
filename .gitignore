@@ -9,8 +9,8 @@ node_modules
 # npm unused lock file (we use yarn.lock)
 package-lock.json
 
-#  ReScript / Reason / Ocaml artifacts
-#*.bs.js # we do want this files to ensure zero-cost
+# ReScript artifacts
+# *.bs.js # we do want this files to ensure zero-cost
 .bsb.lock
 **/lib/bs
 **/lib/ocaml

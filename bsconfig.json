@@ -1,10 +1,7 @@
 {
-  "name": "reason-react-native",
+  "name": "rescript-react-native",
   "namespace": "react-native",
-  "refmt": 3,
-  "reason": {
-    "react-jsx": 3
-  },
+  "reason": { "react-jsx": 3 },
   "package-specs": {
     "module": "commonjs",
     "in-source": true
@@ -20,5 +17,5 @@
   "warnings": {
     "error": true
   },
-  "bs-dependencies": ["reason-react"]
+  "bs-dependencies": ["@rescript/react"]
 }

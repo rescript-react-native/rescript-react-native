@@ -1,24 +1,24 @@
-# `reason-react-native`
+# `rescript-react-native`
 
-[![Build Status](https://github.com/reason-react-native/reason-react-native/workflows/Build/badge.svg)](https://github.com/reason-react-native/reason-react-native/actions)
-[![Version](https://img.shields.io/npm/v/reason-react-native.svg)](https://www.npmjs.com/package/reason-react-native)
-[![Chat](https://img.shields.io/discord/235176658175262720.svg?logo=discord&colorb=blue)](https://reason-react-native.github.io/discord/)
+[![Build Status](https://github.com/rescript-react-native/rescript-react-native/workflows/Build/badge.svg)](https://github.com/rescript-react-native/rescript-react-native/actions)
+[![Version](https://img.shields.io/npm/v/rescript-react-native.svg)](https://www.npmjs.com/package/rescript-react-native)
+[![ReScript Forum](https://img.shields.io/discourse/posts?color=e6484f&label=ReScript%20Forum&server=https%3A%2F%2Fforum.rescript-lang.org)](https://forum.rescript-lang.org/)
 
-[ReScript](https://rescript-lang.org) / [Reason](https://reasonml.github.io) bindings for
+[ReScript](https://rescript-lang.org) bindings for
 [React Native](https://github.com/facebook/react-native).
 
-Allows to use Reason with
-[ReasonReact](https://reasonml.github.io/reason-react/) to make your iOS,
+Allows to use ReScript with
+[ReScript React](https://rescript-lang.org/docs/react/latest/introduction) to make your iOS,
 Android and [Web](https://github.com/necolas/react-native-web) apps.
 
 ## Getting Started
 
-Check our [getting started](https://reason-react-native.github.io/en/docs/)
+Check our [getting started](https://rescript-react-native.github.io/en/docs/)
 guide for details.
 
 ## Documentation
 
-See <https://reason-react-native.github.io/>.
+See <https://rescript-react-native.github.io/>.
 
 ---
 
@@ -29,10 +29,10 @@ releases.
 
 ## Contribute
 
-Read the [contribution guidelines](https://github.com/reason-react-native/.github/blob/master/CONTRIBUTING.md) before contributing.
+Read the [contribution guidelines](https://github.com/rescript-react-native/.github/blob/master/CONTRIBUTING.md) before contributing.
 
 ## Code of Conduct
 
 We want this community to be friendly and respectful to each other. Please read
-[our full code of conduct](https://github.com/reason-react-native/.github/blob/master/CODE_OF_CONDUCT.md) so that you can understand what
+[our full code of conduct](https://github.com/rescript-react-native/.github/blob/master/CODE_OF_CONDUCT.md) so that you can understand what
 actions will and will not be tolerated.
