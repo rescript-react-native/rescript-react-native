@@ -4,7 +4,7 @@ external options:
   (
     ~options: array(string),
     ~cancelButtonIndex: int=?,
-    ~destructiveButtonIndex: int=?,
+    ~destructiveButtonIndex: array(int)=?,
     ~disabledButtonIndices: int=?,
     ~title: string=?,
     ~message: string=?,
