@@ -1,5 +1,12 @@
 # Changelog of `rescript-react-native`
 
+## 0.64.1 - 2021-03-20
+
+- `reason-react-native` -> `rescript-react-native`
+- `peerDependencies` changed to
+  - `"@rescript/react": "^0.10.0"`
+  - `"bs-platform": "^9.0.0"`
+
 ## 0.64.0 - 2021-03-19
 
 ### Breaking Changes
