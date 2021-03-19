@@ -30,26 +30,27 @@ external unsafeGetMultiple: array(string) => Color.t = "PlatformColor";
 
 module Ios = {
   type t = [
-    | `label
-    | `secondaryLabel
-    | `tertiaryLabel
-    | `quaternaryLabel
-    | `systemFill
-    | `secondarySystemFill
-    | `tertiarySystemFill
-    | `quaternarySystemFill
-    | `placeholderText
-    | `systemBackground
-    | `secondarySystemBackground
-    | `tertiarySystemBackground
-    | `systemGroupedBackground
-    | `secondarySystemGroupedBackground
-    | `tertiarySystemGroupedBackground
-    | `separator
-    | `opaqueSeparator
-    | `link
+    | `clearColor
     | `darkText
+    | `label
     | `lightText
+    | `link
+    | `opaqueSeparator
+    | `placeholderText
+    | `quaternaryLabel
+    | `quaternarySystemFill
+    | `secondaryLabel
+    | `secondarySystemBackground
+    | `secondarySystemFill
+    | `secondarySystemGroupedBackground
+    | `separator
+    | `systemBackground
+    | `systemFill
+    | `systemGroupedBackground
+    | `tertiaryLabel
+    | `tertiarySystemBackground
+    | `tertiarySystemFill
+    | `tertiarySystemGroupedBackground
   ];
   [@bs.module "react-native"] external get: t => Color.t = "PlatformColor";
   [@bs.module "react-native"]
