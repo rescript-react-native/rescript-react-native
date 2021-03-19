@@ -10,11 +10,10 @@ officialDoc: https://reactnative.dev/docs/accessibilityinfo
 
 Passed to the handler of the `` `announcementFinished `` event.
 
-```reason
+```rescript
 type announcementResult = {
-  .
-  "announcement": string,
-  "success": bool,
+  announcement: string,
+  success: bool,
 }
 ```
 
@@ -30,7 +29,7 @@ _iOS only_
 To query whether bold text is currently enabled. Promise resolves to `true` when
 bold text is enabled and `false` otherwise.
 
-```reason
+```rescript
 isBoldTextEnabled: unit => Js.Promise.t(bool)
 ```
 
@@ -41,7 +40,7 @@ _iOS only_
 To query whether grayscale is currently enabled. Promise resolves to `true` when
 grayscale is enabled and `false` otherwise.
 
-```reason
+```rescript
 isGrayscaleEnabled: unit => Js.Promise.t(bool)
 ```
 
@@ -52,7 +51,7 @@ _iOS only_
 To query whether invert colors is currently enabled. Promise resolves to `true`
 when invert colors is enabled and `false` otherwise.
 
-```reason
+```rescript
 isInvertColorsEnabled: unit => Js.Promise.t(bool)
 ```
 
@@ -61,9 +60,8 @@ isInvertColorsEnabled: unit => Js.Promise.t(bool)
 To query whether reduce motion is currently enabled. Promise resolves to `true`
 when reduce motion is enabled and `false` otherwise.
 
-```reason
-[@bs.scope "AccesibilityInfo"] [@bs.module "react-native"]
-external isReduceMotionEnabled: unit => Js.Promise.t(bool) = "isReduceMotionEnabled";
+```rescript
+isReduceMotionEnabled: unit => Js.Promise.t(bool)
 ```
 
 ### `isReduceTransparencyEnabled`
@@ -73,9 +71,8 @@ _iOS only_
 To query whether reduce transparency is currently enabled. Promise resolves to
 `true` when reduce transparency is enabled and `false` otherwise.
 
-```reason
-[@bs.scope "AccesibilityInfo"] [@bs.module "react-native"]
-external isReduceTransparencyEnabled: unit => Js.Promise.t(bool) = "isReduceTransparencyEnabled";
+```rescript
+isReduceTransparencyEnabled: unit => Js.Promise.t(bool)
 ```
 
 ### `isScreenReaderEnabled`
@@ -83,9 +80,8 @@ external isReduceTransparencyEnabled: unit => Js.Promise.t(bool) = "isReduceTran
 To query whether screen reader is currently enabled. Promise resolves to `true`
 when screen reader is enabled and `false` otherwise.
 
-```reason
-[@bs.scope "AccesibilityInfo"] [@bs.module "react-native"]
-external isScreenReaderEnabled: unit => Js.Promise.t(bool) = "isScreenReaderEnabled";
+```rescript
+isScreenReaderEnabled: unit => Js.Promise.t(bool)
 ```
 
 ### `setAccessibilityFocus`
@@ -94,7 +90,7 @@ To set accessibility focus to a React component, identified by its `nodeHandle`.
 On Android, this is equivalent to
 `UIManager.sendAccessibilityEvent(reactTag, UIManager.AccessibilityEventTypes.typeViewFocused)`;
 
-```reason
+```rescript
 setAccessibilityFocus: NativeTypes.nodeHandle => unit
 ```
 
@@ -102,7 +98,7 @@ setAccessibilityFocus: NativeTypes.nodeHandle => unit
 
 To post a string to be announced by the screen reader.
 
-```reason
+```rescript
 announceForAccessibility: string => unit
 ```
 
@@ -110,15 +106,15 @@ announceForAccessibility: string => unit
 
 Add an event handler.
 
-```reason
+```rescript
 addEventListener: [
-    | `boldTextChanged(bool => unit)
-    | `grayscaleChanged(bool => unit)
-    | `invertColorsChanged(bool => unit)
-    | `reduceMotionChanged(bool => unit)
-    | `screenReaderChanged(bool => unit)
-    | `reduceTransparencyChanged(bool => unit)
-    | `announcementFinished(announcementResult => unit)
+    | #boldTextChanged(bool => unit)
+    | #grayscaleChanged(bool => unit)
+    | #invertColorsChanged(bool => unit)
+    | #reduceMotionChanged(bool => unit)
+    | #screenReaderChanged(bool => unit)
+    | #reduceTransparencyChanged(bool => unit)
+    | #announcementFinished(announcementResult => unit)
   ] => unit
 ```
 
@@ -151,18 +147,6 @@ Supported events:
 ### `removeEventListener`
 
 To remove an event handler.
-
-```reason
-addEventListener: [
-    | `boldTextChanged(bool => unit)
-    | `grayscaleChanged(bool => unit)
-    | `invertColorsChanged(bool => unit)
-    | `reduceMotionChanged(bool => unit)
-    | `screenReaderChanged(bool => unit)
-    | `reduceTransparencyChanged(bool => unit)
-    | `announcementFinished(announcementResult => unit)
-  ] => unit
-```
 
 See [`addEventListener`](#addEventListener) for more details on supported
 events.

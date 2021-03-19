@@ -18,17 +18,27 @@ This triggers the `onDismiss` callback available in the `options`. With the
 
 #### `alert` Example
 
-```reason
-  open ReactNative;
+```rescript
+open ReactNative
 
-  Alert.alert(
-    ~title="Do you really want to quit?",
-    ~message="We miss you already.",
-    ~buttons=[|
-      Alert.button(~text="OK", ~style=`destructive, ~onPress={() => Js.log("Bye!")}, ()),
-      Alert.button(~text="Cancel", ~style=`cancel, ()),
-    |],
-    ~options=Alert.options(~cancelable=true, ~onDismiss={_ => Js.log("Dismissed.")}, ()),
+Alert.alert(
+  ~title="Do you really want to quit?",
+  ~message="We miss you already.",
+  ~buttons=[
+    Alert.button(
+      ~text="OK",
+      ~style=#destructive,
+      ~onPress=() => Js.log("Bye!"),
+      (),
+    ),
+    Alert.button(~text="Cancel", ~style=#cancel, ()),
+  ],
+  ~options=Alert.options(
+    ~cancelable=true,
+    ~onDismiss=_ => Js.log("Dismissed."),
     (),
-  );
+  ),
+  (),
+)
+
 ```

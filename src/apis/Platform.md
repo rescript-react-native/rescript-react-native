@@ -10,8 +10,8 @@ React Native provides a module that detects the platform in which the app is
 running. You can use the detection logic to implement platform-specific code.
 Use this option when only small parts of a component are platform-specific.
 
-```reason
-if (Platform.os === Platform.ios) {
+```rescript
+if Platform.os === Platform.ios {
   // your code
 }
 ```
@@ -27,47 +27,36 @@ If you need an unsupported platform, you can use `Platform.unsafe(string)`.
 
 For conditional style depending on the platform, you can do the following:
 
-```reason
-let styles =
-  StyleSheet.create(
-    Style.{
-      "wrapper":
-        style(
-          ~width=pct(Platform.os == Platform.ios ? 100. : 200.),
-          (),
-        ),
-    },
-  );
+```rescript
+let styles = StyleSheet.create({
+  open Style
+  {
+    "wrapper": style(~width=pct(Platform.os == Platform.ios ? 100. : 200.), ()),
+  }
+})
 ```
 
 ## `Platform.select`
 
 _⚠️ Unsupported._
 
-This feature isn't relevant with ReasonML. Instead you can do the following:
+This feature isn't relevant with ReScript. Instead you can do the following:
 
-```reason
-let styles =
-  StyleSheet.create(
-    Style.{
-      "wrapper":
-        style(
-          ~width=
-            (
-              switch (Platform.os) {
-              | os when os == Platform.ios => 100.
-              | os when os == Platform.android => 200.
-              | os when os == Platform.web => 250.
-              | os when os == Platform.unsafe("windows") => 300.
-              | _ => 150.
-              }
-            )
-            ->pct,
-          (),
-        ),
-    },
-  );
+```rescript
+open Style
+let styles = {
+  "wrapper": style(
+    ~width=switch Platform.os {
+    | os if os == Platform.ios => 100.
+    | os if os == Platform.android => 200.
+    | os if os == Platform.web => 250.
+    | os if os == Platform.unsafe("windows") => 300.
+    | _ => 150.
+    }->pct,
+    (),
+  ),
+}->StyleSheet.create
 ```
 
-Also since spreading things in ReasonML is not supported (because of the
+Also since spreading things in ReScript is not supported (because of the
 unsafety aspect), it's even less relevant to have this binding.

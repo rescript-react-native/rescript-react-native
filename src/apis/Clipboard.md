@@ -7,7 +7,7 @@ officialDoc: https://reactnative.dev/docs/clipboard
 `Clipboard` has been deprecated and will be removed from React Native in the
 future.
 
-Please refer to [bindings](https://github.com/reason-react-native/clipboard) for
+Please refer to [bindings](https://github.com/rescript-react-native/clipboard) for
 the replacement
 [community package](https://github.com/react-native-community/clipboard).
 
@@ -20,7 +20,7 @@ the replacement
 To attempt reading content from the Clipboard; resolves to a `string` if
 successful.
 
-```reason
+```rescript
 getString: unit => Js.Promise.t(string)
 ```
 
@@ -28,6 +28,6 @@ getString: unit => Js.Promise.t(string)
 
 To copy a `string` to the Clipbard.
 
-```reason
+```rescript
 setString: string => unit
 ```

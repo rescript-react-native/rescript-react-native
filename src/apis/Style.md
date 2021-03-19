@@ -30,48 +30,46 @@ components that accept different styles props. For example `View` doesn't accept
 
 Since an example is worth a thousand words...
 
-```reason
-open ReactNative;
+```rescript
+open ReactNative
 
-let styles =
-  Style.(
-    StyleSheet.create({
-      "container":
-        viewStyle(
-          ~maxHeight=600.->dp,
-          ~width=80.->pct,
-          ~justifyContent=`flexStart,
-          ~alignItems=`center,
-          ~margin=auto,
-          (),
-        ),
-      "cornerThing":
-        viewStyle(
-          ~position=`absolute,
-          ~top=100.->dp,
-          ~right=(-20.)->dp,
-          ~transform=[|rotate(~rotate=4.->deg)|],
-          (),
-        ),
-      "text": textStyle(~textTransform=`uppercase, ()),
-    })
-  );
+let styles = {
+  open Style
+  StyleSheet.create({
+    "container": viewStyle(
+      ~maxHeight=600.->dp,
+      ~width=80.->pct,
+      ~justifyContent=#flexStart,
+      ~alignItems=#center,
+      ~margin=auto,
+      (),
+    ),
+    "cornerThing": viewStyle(
+      ~position=#absolute,
+      ~top=100.->dp,
+      ~right=-20.->dp,
+      ~transform=[rotate(~rotate=4.->deg)],
+      (),
+    ),
+    "text": textStyle(~textTransform=#uppercase, ()),
+  })
+}
 
-[@react.component]
-let make = (~isSomething) => {
-  <View style=styles##container>
-    <View style=styles##cornerThing>
+@react.component
+let make = (~isSomething) =>
+  <View style={styles["container"]}>
+    <View style={styles["cornerThing"]}>
       <Text
-        style=Style.(
-          arrayOption([|
-            Some(styles##text),
+        style={
+          open Style
+          arrayOption([
+            Some(styles["text"]),
             isSomething ? Some(style(~opacity=0.05, ())) : None,
-          |])
-        )
+          ])
+        }
       />
     </View>
-  </View>;
-};
+  </View>
 ```
 
 ## Style Units
@@ -750,68 +748,63 @@ Keep in mind that order or transformation matters.
 
 ###### Transform with multiple transform
 
-```reason
-Style.(style(
-  ~transform=[|
+```rescript
+open Style
+style(
+  ~transform=[
     perspective(~perspective=1000.),
     rotateX(~rotateX=20.->deg),
     rotateZ(~rotateZ=0.5->rad),
     scale(~scale=0.95),
-  |],
-  ()
-))
+  ],
+  (),
+)
 ```
 
 ###### Transform with an animated value
 
-```reason
-Style.(style(
-  ~transform=[|
+```rescript
+open Style
+style(
+  ~transform=[
     rotateY(
-      ~rotateY=
-        Animated.Interpolation.(
-          scrollYAnimatedValue->interpolate(
-            config(
-              ~inputRange=[|0., 200.|],
-              ~outputRange=
-                [|"-10deg", "-14deg"|]->fromStringArray,
-              ~extrapolateLeft=`clamp,
-              ~extrapolate=`identity,
-              ~extrapolateRight=`extend,
-              (),
-            ),
-          )
+      ~rotateY={
+        open Animated.Interpolation
+        scrollYAnimatedValue->interpolate(
+          config(
+            ~inputRange=[0., 200.],
+            ~outputRange=["-10deg", "-14deg"]->fromStringArray,
+            ~extrapolateLeft=#clamp,
+            ~extrapolate=#identity,
+            ~extrapolateRight=#extend,
+            (),
+          ),
         )
-        ->Animated.StyleProp.angle,
+      }->Animated.StyleProp.angle,
     ),
     scale(
-      ~scale=
-        Animated.Interpolation.(
-          scrollYAnimatedValue->interpolate(
-            config(
-              ~inputRange=[|0., 200.|],
-              ~outputRange=[|0.8, 0.75|]->fromFloatArray,
-              (),
-            ),
-          )
+      ~scale={
+        open Animated.Interpolation
+        scrollYAnimatedValue->interpolate(
+          config(
+            ~inputRange=[0., 200.],
+            ~outputRange=[0.8, 0.75]->fromFloatArray,
+            (),
+          ),
         )
-        ->Animated.StyleProp.float,
+      }->Animated.StyleProp.float,
     ),
-  |],
+  ],
   (),
-))
+)
 ```
 
 If you need something unsupported by this binding, you can use
 `unsafeTransform`.
 
-```reason
-Style.(style(
-  ~transform=[|
-    unsafeTransform({"translateZ": "0"}),
-  |],
-  (),
-))
+```rescript
+open Style
+style(~transform=[unsafeTransform({"translateZ": "0"})], ())
 ```
 
 ### View Style Props
@@ -1212,21 +1205,19 @@ In case you want to use something unsupported by this binding, you can use
 For example, if you want to use `position: fixed` on the web, you can do the
 following
 
-```reason
-Style.(unsafeStyle({"position": "fixed", "top": "5em", "left": 0, "right": 0}))
+```rescript
+open Style
+unsafeStyle({"position": "fixed", "top": "5em", "left": 0, "right": 0})
 ```
 
 If you only want to add some properties to a safe style, you can also do
 
-```reason
-Style.(
-  style(
-    ~left=0.->dp,
-    ~right=0.->dp,
-    ()
-  )
-  ->unsafeAddStyle({"position": "fixed", "top": "5em"})
-)
+```rescript
+open Style
+style(~left=0.->dp, ~right=0.->dp, ())->unsafeAddStyle({
+  "position": "fixed",
+  "top": "5em",
+})
 ```
 
 ---
@@ -1237,46 +1228,31 @@ Style.(
 
 Accepts an array of styles as a single style.
 
-```reason
-<View style=Style.(array([|
-  styles##thing,
-  styles##whatever,
-|]))>
+```rescript
+<View
+  style={
+    open Style
+    array([styles["thing"], styles["whatever"]])
+  }
+/>
+
+
 ```
 
 ### `Style.arrayOption`
 
 Accepts an array of optional styles as a single style.
 
-```reason
-<View style=Style.(arrayOption([|
-  Some(styles##thing),
-  Some(styles##whatever),
-  optionalStyle,
-  cond ? Some(style(~prop=value, ()) : None
-|]))>
-```
-
-### `Style.list`
-
-Accepts a list of styles as a single style.
-
-```reason
-<View style=Style.(list([
-  styles##thing,
-  styles##whatever,
-]))>
-```
-
-### `Style.listOption`
-
-Accepts a list of optional styles as a single style.
-
-```reason
-<View style=Style.(listOption([
-  Some(styles##thing),
-  Some(styles##whatever),
-  optionalStyle,
-  cond ? Some(style(~prop=value, ()) : None
-]))>
+```rescript
+<View
+  style={
+    open Style
+    arrayOption([
+      Some(styles["thing"]),
+      Some(styles["whatever"]),
+      optionalStyle,
+      cond ? Some(style(~prop=value, ())) : None,
+    ])
+  }
+/>
 ```

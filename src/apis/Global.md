@@ -13,10 +13,10 @@ This is the development flag known in JavaScript as just
 
 You can use it like this:
 
-```reason
-open ReactNative;
+```rescript
+open ReactNative
 
-let environmentText = if (Global.__DEV__) {
+let environmentText = if Global.__DEV__ {
   "This is development"
 }
 else {
@@ -31,8 +31,8 @@ This is the `HermesInternal` value known in JavaScript as
 
 You can use it like this:
 
-```reason
-open ReactNative;
+```rescript
+open ReactNative
 
-let isHermes = () => Global.hermesInternal != None;
+let isHermes = () => Global.hermesInternal != None
 ```

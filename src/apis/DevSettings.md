@@ -28,7 +28,7 @@ To add a custom entry to the developer menu. As arguments, takes a `title` (of
 type `string`) and a `handler` function (of type `unit => unit`) to be called
 when the menu item is pressed.
 
-```reason
+```rescript
 addMenuItem: (title, handler) => unit
 ```
 
@@ -36,7 +36,7 @@ addMenuItem: (title, handler) => unit
 
 To trigger a reload of the application.
 
-```reason
+```rescript
 reload: unit => unit
 ```
 
@@ -45,6 +45,6 @@ reload: unit => unit
 To trigger a reload of the application, with a `reason` (of type `string`) which
 may be useful for debugging.
 
-```reason
+```rescript
 reloadWithReason: reason => unit
 ```

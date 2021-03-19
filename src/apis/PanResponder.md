@@ -22,7 +22,7 @@ see [`Event`](../Event/#pressevent)
 `gestureState` contains additional information on the state of the \_Gesture
 Responder System\_
 
-```reason
+```rescript
 type gestureState = {
   stateID: float,
   moveX: float,
@@ -47,7 +47,7 @@ the `create` method, given a `config` object
 `config` is the abstract type for a custom `PanResponder` configuration; it can
 be created by means of the `config` constructor
 
-```reason
+```rescript
 config:
   (
     ~onMoveShouldSetPanResponder: (Event.pressEvent, gestureState) => bool=?,
@@ -77,13 +77,13 @@ config:
 `panHandlers` is the abstract type for `panHandlers` of a `PanResponder`, which
 can be accessed by means of the getter method `panHandlers`
 
-### `callback('a)`
+### `callback<'a>`
 
-`callback('a)` is the type of the usual callback function specified for each
+`callback<'a>` is the type of the usual callback function specified for each
 _Gesture Responder System_ handler defined as
 
-```reason
-type callback('a) = Event.pressEvent => 'a
+```rescript
+type callback<'a> = Event.pressEvent => 'a
 ```
 
 where `'a` is either `bool` or `unit`
@@ -94,7 +94,7 @@ where `'a` is either `bool` or `unit`
 
 `create` allows creation of a `PanResponder` given a `config`
 
-```reason
+```rescript
 create: config => t
 ```
 
@@ -102,7 +102,7 @@ create: config => t
 
 `panHandlers` is a getter method to access `panHandlers` within a `PanResponder`
 
-```reason
+```rescript
 panHandlers: t => panHandlers
 ```
 
@@ -111,7 +111,7 @@ panHandlers: t => panHandlers
 `onMoveShouldSetResponder` is a getter method to access the
 `onMoveShouldSetResponder` callback of a `panHandlers` object
 
-```reason
+```rescript
 onMoveShouldSetResponder: panHandlers => callback(bool)
 ```
 
@@ -120,7 +120,7 @@ onMoveShouldSetResponder: panHandlers => callback(bool)
 `onMoveShouldSetResponderCapture` is a getter method to access the
 `onMoveShouldSetResponderCapture` callback of a `panHandlers` object
 
-```reason
+```rescript
 onMoveShouldSetResponderCapture: panHandlers => callback(bool)
 ```
 
@@ -129,7 +129,7 @@ onMoveShouldSetResponderCapture: panHandlers => callback(bool)
 `onStartShouldSetResponder` is a getter method to access the
 `onStartShouldSetResponder` callback of a `panHandlers` object
 
-```reason
+```rescript
 onStartShouldSetResponder: panHandlers => callback(bool)
 ```
 
@@ -138,7 +138,7 @@ onStartShouldSetResponder: panHandlers => callback(bool)
 `onStartShouldSetResponderCapture` is a getter method to access the
 `onStartShouldSetResponderCapture` callback of a `panHandlers` object
 
-```reason
+```rescript
 onStartShouldSetResponderCapture: panHandlers => callback(bool)
 ```
 
@@ -147,7 +147,7 @@ onStartShouldSetResponderCapture: panHandlers => callback(bool)
 `onResponderReject` is a getter method to access the `onResponderReject`
 callback of a `panHandlers` object
 
-```reason
+```rescript
 onResponderReject: panHandlers => callback(unit)
 ```
 
@@ -156,7 +156,7 @@ onResponderReject: panHandlers => callback(unit)
 `onResponderGrant` is a getter method to access the `onResponderGrant` callback
 of a `panHandlers` object
 
-```reason
+```rescript
 onResponderGrant: panHandlers => callback(unit)
 ```
 
@@ -165,7 +165,7 @@ onResponderGrant: panHandlers => callback(unit)
 `onResponderRelease` is a getter method to access the `onResponderRelease`
 callback of a `panHandlers` object
 
-```reason
+```rescript
 onResponderRelease: panHandlers => callback(unit)
 ```
 
@@ -174,7 +174,7 @@ onResponderRelease: panHandlers => callback(unit)
 `onResponderMove` is a getter method to access the `onResponderMove` callback of
 a `panHandlers` object
 
-```reason
+```rescript
 onResponderMove: panHandlers => callback(unit)
 ```
 
@@ -183,7 +183,7 @@ onResponderMove: panHandlers => callback(unit)
 `onResponderTerminate` is a getter method to access the `onResponderTerminate`
 callback of a `panHandlers` object
 
-```reason
+```rescript
 onResponderTerminate: panHandlers => callback(unit)
 ```
 
@@ -192,7 +192,7 @@ onResponderTerminate: panHandlers => callback(unit)
 `onResponderStart` is a getter method to access the `onResponderStart` callback
 of a `panHandlers` object
 
-```reason
+```rescript
 onResponderStart: panHandlers => callback(unit)
 ```
 
@@ -201,7 +201,7 @@ onResponderStart: panHandlers => callback(unit)
 `onResponderTerminationRequest` is a getter method to access the
 `onResponderTerminationRequest` callback of a `panHandlers` object
 
-```reason
+```rescript
 onResponderTerminationRequest: panHandlers => callback(bool)
 ```
 
@@ -210,20 +210,20 @@ onResponderTerminationRequest: panHandlers => callback(bool)
 `onResponderEnd` is a getter method to access the `onResponderEnd` callback of a
 `panHandlers` object
 
-```reason
+```rescript
 onResponderEnd: panHandlers => callback(unit)
 ```
 
 ## Example
 
-As props spread is not possible with the ReasonML JSX 3 syntax, each _Gesture
+As props spread is not possible with the ReScript JSX 3 syntax, each _Gesture
 Responder System_ callback needs to be separately specified, with the relevant
 value obtained by means of the associated getter.
 
 While props spread may not be available, copy-paste is probably supported by
 your editor...
 
-```reason
+```rescript
 onMoveShouldSetResponder={
   panHandlers->PanResponder.onMoveShouldSetResponder
 }
@@ -250,66 +250,52 @@ onResponderEnd={panHandlers->PanResponder.onResponderEnd}
 
 Then, the custom `PanResponder` can be used as below:
 
-```reason
-open ReactNative;
+```rescript
+open ReactNative
 
-let windowHeight = Dimensions.get(`window).height;
-let windowWidth = Dimensions.get(`window).width;
+let windowHeight = Dimensions.get(#window).height
+let windowWidth = Dimensions.get(#window).width
 
-let containerStyle =
-  Style.(
-    style(
-      ~width=windowWidth->dp,
-      ~height=windowHeight->dp,
-      ~justifyContent=`center,
-      ~alignItems=`center,
-      (),
-    )
-  );
-
-let config =
-  PanResponder.config(
-    ~onMoveShouldSetPanResponder=(_e, _g) => true,
-    ~onPanResponderRelease=
-      (_e, g) =>
-        g##dx > 0.
-          ? "You swiped right"->Js.Console.warn
-          : "You swiped left"->Js.Console.warn,
+let containerStyle = {
+  open Style
+  style(
+    ~width=windowWidth->dp,
+    ~height=windowHeight->dp,
+    ~justifyContent=#center,
+    ~alignItems=#centerà
     (),
-  );
+  )
+}
 
-let panResponder = PanResponder.create(config);
+let config = PanResponder.config(
+  ~onMoveShouldSetPanResponder=(_e, _g) => true,
+  ~onPanResponderRelease=(_e, g) =>
+    g["dx"] > 0.
+      ? "You swiped right"->Js.Console.warn
+      : "You swiped left"->Js.Console.warn,
+  (),
+)
 
-let panHandlers = panResponder->PanResponder.panHandlers;
+let panResponder = PanResponder.create(config)
 
-[@react.component]
-let make = () => {
+let panHandlers = panResponder->PanResponder.panHandlers
+
+@react.component
+let make = () =>
   <View
     style=containerStyle
-    onMoveShouldSetResponder={
-      panHandlers->PanResponder.onMoveShouldSetResponder
-    }
-    onMoveShouldSetResponderCapture={
-      panHandlers->PanResponder.onMoveShouldSetResponderCapture
-    }
-    onStartShouldSetResponder={
-      panHandlers->PanResponder.onStartShouldSetResponder
-    }
-    onStartShouldSetResponderCapture={
-      panHandlers->PanResponder.onStartShouldSetResponderCapture
-    }
+    onMoveShouldSetResponder={panHandlers->PanResponder.onMoveShouldSetResponder}
+    onMoveShouldSetResponderCapture={panHandlers->PanResponder.onMoveShouldSetResponderCapture}
+    onStartShouldSetResponder={panHandlers->PanResponder.onStartShouldSetResponder}
+    onStartShouldSetResponderCapture={panHandlers->PanResponder.onStartShouldSetResponderCapture}
     onResponderReject={panHandlers->PanResponder.onResponderReject}
     onResponderGrant={panHandlers->PanResponder.onResponderGrant}
     onResponderRelease={panHandlers->PanResponder.onResponderRelease}
     onResponderMove={panHandlers->PanResponder.onResponderMove}
     onResponderTerminate={panHandlers->PanResponder.onResponderTerminate}
     onResponderStart={panHandlers->PanResponder.onResponderStart}
-    onResponderTerminationRequest={
-      panHandlers->PanResponder.onResponderTerminationRequest
-    }
+    onResponderTerminationRequest={panHandlers->PanResponder.onResponderTerminationRequest}
     onResponderEnd={panHandlers->PanResponder.onResponderEnd}>
-    <Text> "Please swipe"->React.string </Text>
-  </View>;
-};
-
+    <Text> {"Please swipe"->React.string} </Text>
+  </View>
 ```

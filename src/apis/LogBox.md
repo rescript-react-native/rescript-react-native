@@ -14,13 +14,13 @@ Console errors and warnings are displayed as on-screen notifications with a red 
 
 > type signature
 
-```reason
+```rescript
 ignoreLogs: array(string) => unit
 ```
 
 > example
 
-```reason
+```rescript
 open ReactNative;
 
 LogBox.ignoreLogs([
@@ -40,13 +40,13 @@ These notifications can be hidden using `ReactNative.LogBox.ignoreAllLogs()`. Th
 
 > type signature
 
-```reason
+```rescript
 ignoreAllLogs: unit => unit
 ```
 
 > example
 
-```reason
+```rescript
 open ReactNative;
 
 LogBox.ignoreAllLogs();

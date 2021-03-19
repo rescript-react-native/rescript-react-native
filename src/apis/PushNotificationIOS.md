@@ -7,6 +7,6 @@ title: PushNotificationIOS
 in the future.
 
 Please refer to
-[bindings](https://github.com/reason-react-native/push-notification-ios) for the
+[bindings](https://github.com/rescript-react-native/push-notification-ios) for the
 replacement
 [community package](https://github.com/react-native-community/push-notification-ios).

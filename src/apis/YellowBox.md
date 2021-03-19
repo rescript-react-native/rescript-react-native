@@ -15,15 +15,15 @@ included in ReScript.
 Allows setting an array of prefixes to be ignored; any warning message which
 begins with a string in that array will not be displayed in the YellowBox.
 
-```reason
+```rescript
 ignoreWarnings: array(string) => unit
 ```
 
 ## Example
 
-```reason
-YellowBox.ignoreWarnings([|
+```rescript
+YellowBox.ignoreWarnings([
   "Possible Unhandled Promise Rejection",
   "Remote debugger",
-|]);
+]);
 ```

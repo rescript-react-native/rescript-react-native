@@ -15,11 +15,11 @@ experimental, the external declaration for it wraps its type in `option` to
 avoid runtime errors when that happens. `LayoutAnimation` may be enabled, if it
 is not already enabled by default, by means of a statement such as:
 
-```reason
-switch (UIManager.setLayoutAnimationEnabledExperimental) {
+```rescript
+switch UIManager.setLayoutAnimationEnabledExperimental {
 | None => ()
 | Some(setEnabled) => setEnabled(true)
-};
+}
 ```
 
 ## Methods
@@ -27,7 +27,7 @@ switch (UIManager.setLayoutAnimationEnabledExperimental) {
 - `configureNext` is the method to specify the animation, takes an argument of
   type `layoutAnimationConfig`.
 
-```reason
+```rescript
 configureNext: layoutAnimationConfig => unit
 ```
 
@@ -35,7 +35,7 @@ configureNext: layoutAnimationConfig => unit
   specification of a callback function (of type `unit => unit`) to be run after
   the animation, in addition to `layoutAnimationConfig`.
 
-```reason
+```rescript
 configureNextWithEndCallback: (layoutAnimationConfig, unit => unit) => unit
 ```
 
@@ -44,7 +44,7 @@ configureNextWithEndCallback: (layoutAnimationConfig, unit => unit) => unit
 `layoutAnimationConfig` can be created with the `layoutAnimationConfig`
 constructor
 
-```reason
+```rescript
 layoutAnimationConfig:
   (
     ~duration: float,
@@ -57,25 +57,25 @@ layoutAnimationConfig:
 
 or by means of the helper function `create`
 
-```reason
+```rescript
 create:
   (
     ~duration: float,
     ~_type: [
-              | `spring
-              | `linear
-              | `easeInEaseOut
-              | `easeIn
-              | `easeOut
-              | `keyboard
-            ],
-    ~property: [ | `opacity | `scaleX | `scaleY | `scaleXY]
+      | #spring
+      | #linear
+      | #easeInEaseOut
+      | #easeIn
+      | #easeOut
+      | #keyboard
+    ],
+    ~property: [ | #opacity | #scaleX | #scaleY | #scaleXY]
   ) => layoutAnimationConfig
 ```
 
 `animationConfig` can in turn be created with the `animationConfig` constructor
 
-```reason
+```rescript
 animationConfig:
   (
     ~duration: float=?,
@@ -83,15 +83,14 @@ animationConfig:
     ~springDamping: float=?,
     ~initialVelocity: float=?,
     ~_type: [
-              | `spring
-              | `linear
-              | `easeInEaseOut
-              | `easeIn
-              | `easeOut
-              | `keyboard
-            ]
-              =?,
-    ~property: [ | `opacity | `scaleX | `scaleY | `scaleXY]=?,
+      | #spring
+      | #linear
+      | #easeInEaseOut
+      | #easeIn
+      | #easeOut
+      | #keyboard
+    ]=?,
+    ~property: [ | #opacity | #scaleX | #scaleY | #scaleXY]=?,
     unit
   ) => animationConfig
 ```
@@ -103,13 +102,13 @@ allow a very straightforward way to setup animation. Presets may either be
 passed as ready-made `layoutAnimationConfig` to `configureNext` and
 `configureNextWithEndCallback` as below
 
-```reason
+```rescript
 LayoutAnimation.configureNext(LayoutAnimation.Presets.spring)
 ```
 
 or equivalently as already passed to `configureNext` as
 
-```reason
+```rescript
 LayoutAnimation.spring()
 
 ```
@@ -120,73 +119,70 @@ The example below illustrates animated transition (`spring`) between two views,
 such as registration and login forms. Animation is specified in the reducer, as
 below, before state is returned.
 
-```reason
-open ReactNative;
+```rescript
+open ReactNative
 
-let windowWidth = Dimensions.get(`window).width;
+let windowWidth = Dimensions.get(#window).width
 
-type state = {register: bool};
+type state = {register: bool}
 
-type action =
-  | ToggleRegister;
+type action = ToggleRegister
 
-let styles =
-  Style.(
-    StyleSheet.create({
-      "container": style(~flex=1., ~flexDirection=`column, ()),
-      "screen": style(~width=windowWidth->dp, ()),
-    })
-  );
+let styles = {
+  open Style
+  StyleSheet.create({
+    "container": style(~flex=1., ~flexDirection=#column, ()),
+    "screen": style(~width=windowWidth->dp, ()),
+  })
+}
 
-[@react.component]
+@react.component
 let make = () => {
-  let (state, dispatch) =
-    React.useReducer(
-      (state, action) =>
-        switch (action) {
-        | ToggleRegister =>
-          // Animation should be specified here, before state is updated:
-          LayoutAnimation.configureNext(
-            LayoutAnimation.create(
-              ~duration=500.,
-              ~_type=`spring,
-              ~property=`opacity,
-            ),
-          );
-          // update of the state happens below:
-          {register: !state.register};
-        },
-      {register: false},
-    );
+  let (state, dispatch) = React.useReducer((state, action) =>
+    switch action {
+    | ToggleRegister =>
+      // Animation should be specified here, before state is updated:
+      LayoutAnimation.configureNext(
+        LayoutAnimation.create(
+          ~duration=500.,
+          ~_type=#spring,
+          ~property=#opacity,
+        ),
+      )
+      // update of the state happens below:
+      {register: !state.registerà
+    }
+  , {register: false})
 
-  <View style=styles##container>
+  <View style={styles["container"]}>
     <View
-      style=Style.(
-        {style(
-           ~flex=1.,
-           ~width=(2.0 *. windowWidth)->dp,
-           ~left= (state.register ? 0. : 0. -. windowWidth)->dp,
-           ~flexDirection=`row,
-           (),
-         )}
-      )>
-      <View style=styles##screen> <Register /> </View>
-      <View style=styles##screen> <Login /> </View>
+      style={
+        open Style
+        style(
+          ~flex=1.,
+          ~width=(2.0 *. windowWidth)->dp,
+          ~left=(state.register ? 0. : 0. -. windowWidth)->dp,
+          ~flexDirection=#row,
+          (),
+        )
+      }>
+      <View style={styles["screen"]}> <Register /> </View>
+      <View style={styles["screen"]}> <Login /> </View>
     </View>
-    <Button onPress={_ => dispatch(ToggleRegister)} title={js|Toggle|js} />
-  </View>;
-};
+    <Button onPress={_ => dispatch(ToggleRegister)} title=`Toggle` />
+  </View>
+}
 ```
 
 Note that above animation specification is that of the `spring` preset.
 Accordingly, the animation could have been specified as
 
-```reason
-LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+```rescript
+LayoutAnimation.configureNext(LayoutAnimation.Presets.spring)
 ```
 
 or equivalently as
 
-```reason
-LayoutAnimation.spring();
+```rescript
+LayoutAnimation.spring()
 ```

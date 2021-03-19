@@ -19,10 +19,10 @@ Note that calback doesn't receive an argument unlike the
 This method returns a `requestID` so you can cancel if needed. If you don't need
 it, you can just `ignore` the result.
 
-```reason
+```rescript
 AnimationFrame.request(() => {
   // do whatever you need on next paint
-})->ignore;
+})->ignore
 ```
 
 ## `cancel`
@@ -31,13 +31,13 @@ AnimationFrame.request(() => {
 scheduled. It's just calling
 [`cancelAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/cancelAnimationFrame).
 
-```reason
+```rescript
 let requestID = AnimationFrame.request(() => {
   // do whatever you need on next paint
-});
+})
 
 // elsewhere or later
-if (whatever) {
+if whatever {
   AnimationFrame.cancel(requestID);
-};
+}
 ```

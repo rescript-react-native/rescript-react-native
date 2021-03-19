@@ -14,7 +14,7 @@ if you wish to use this component.
 
 However note that more current packages such as •
 [`react-native-image-picker`](https://github.com/react-native-community/react-native-image-picker)
-for which [bindings](https://github.com/reason-react-native/image-picker) are
+for which [bindings](https://github.com/rescript-react-native/image-picker) are
 available, or •
 [`expo-image-picker`](https://docs.expo.io/versions/latest/sdk/imagepicker/) are
 recommended instead.
@@ -39,7 +39,7 @@ your app and provide a description for your use of the Photo Library.
 
 An alias for the `string` type
 
-```reason
+```rescript
 type imageUri = string
 ```
 
@@ -49,7 +49,7 @@ An abstract type which can be created using the constructor of the same name.
 You may call the constructor as `cameraDialogConfig()` to use the default
 values.
 
-```reason
+```rescript
 cameraDialogConfig: (~videoMode: bool=?, unit) => cameraDialogConfig
 ```
 
@@ -59,7 +59,7 @@ An abstract type which can be created using the constructor of the same name.
 You may call the constructor as `selectDialogConfig()` to use the default
 values.
 
-```reason
+```rescript
 selectDialogConfig:
   (~showImages: bool=?, ~showVideos: bool=?, unit) => selectDialogConfig
 ```
@@ -71,7 +71,7 @@ selectDialogConfig:
 Method to check whether the app has permissions to use the camera, takes a
 callback of type `bool => unit`.
 
-```reason
+```rescript
 canUseCamera: (bool => unit) => unit
 ```
 
@@ -80,7 +80,7 @@ canUseCamera: (bool => unit) => unit
 Method to check whether the app has permissions to record videos, takes a
 callback of type `bool => unit`.
 
-```reason
+```rescript
 canRecordVideos: (bool => unit) => unit
 ```
 
@@ -92,7 +92,7 @@ launched in video mode. When an image or video is captured, `onSuccess` callback
 is passed the returned `imageUri`, `height` and `width`; `onError` callback is
 applied otherwise. As`'error` is an abstract type
 
-```reason
+```rescript
 openCameraDialog:
   (
     ~config: cameraDialogConfig,
@@ -110,7 +110,7 @@ should be listed. When an image or video is selected, `onSuccess` callback is
 passed the returned `imageUri`, `height` and `width`; `onError` callback is
 executed otherwise. As`'error` is an abstract type
 
-```reason
+```rescript
 openSelectDialog:
   (
     ~config: selectDialogConfig,

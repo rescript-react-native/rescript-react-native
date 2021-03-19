@@ -19,7 +19,7 @@ This API will allow you to manage such permissions.
 
 Type for permissions that may be granted to the app. Available permissions are:
 
-```reason
+```rescript
 Permission.readCalendar
 Permission.writeCalendar
 Permission.camera
@@ -50,7 +50,7 @@ Permission.writeExternalStorage
 
 Type for the result of a request for some permission. Possible results are:
 
-```reason
+```rescript
 Result.granted
 Result.denied
 Result.neverAskAgain
@@ -61,7 +61,7 @@ Result.neverAskAgain
 To be used with the [`requestWithRationale`](#requestwithrationale) method. May
 be created by the constructor of the same name.
 
-```reason
+```rescript
 rationale:
   (
     ~title: string,
@@ -94,7 +94,7 @@ Values of keys may be accessed by the [`get`](#get) method.
 Method to check whether the specified permission has been granted to the app,
 returns a `bool` wrapped in a promise.
 
-```reason
+```rescript
 check: Permission.t => Js.Promise.t(bool)
 ```
 
@@ -103,7 +103,7 @@ check: Permission.t => Js.Promise.t(bool)
 Method to request the specified permission, returns `Result.t` wrapped in a
 promise.
 
-```reason
+```rescript
 request: Permission.t => Js.Promise.t(Result.t)
 ```
 
@@ -115,7 +115,7 @@ previously turned off the permission. Rationale will be presented to the user
 only when necessary. For further information, please refer to the
 [official Android documentation](https://developer.android.com/training/permissions/requesting.html#explain).
 
-```reason
+```rescript
 requestWithRationale: (Permission.t, rationale) => Js.Promise.t(Result.t)
 ```
 
@@ -124,7 +124,7 @@ requestWithRationale: (Permission.t, rationale) => Js.Promise.t(Result.t)
 Method to request multiple permissions within the same dialog prompted to the
 user, returns [`dict`](#dict) wrapped in a promise.
 
-```reason
+```rescript
 requestMultiple: array(Permission.t) => Js.Promise.t(dict)
 ```
 
@@ -133,6 +133,6 @@ requestMultiple: array(Permission.t) => Js.Promise.t(dict)
 Getter method to access value of the specified permission in the [`dict`](#dict)
 object returned by the `requestMultiple` method.
 
-```reason
+```rescript
 get: (dict, Permission.t) => option(Result.t)
 ```

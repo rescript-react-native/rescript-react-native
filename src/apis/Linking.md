@@ -15,13 +15,13 @@ created using `react-native init` or ejected afterwards if created using
 To be used with the [`sendIntentWithExtras`](#sendIntentWithExtras) method for
 sending text and data. May be created by the constructor of the same name.
 
-```reason
+```rescript
 external extra: (~key: string, ~value: 'a) => extra
 ```
 
 ### `url`
 
-```reason
+```rescript
 type url = {url: string};
 ```
 
@@ -36,7 +36,7 @@ the user rejects the request or there are no registered applications supporting
 the URL, the promise is rejected. It is recommended to use the `canOpenURL`
 method beforehand, to verify that the URL can indeed be opened.
 
-```reason
+```rescript
 openURL: string => Js.Promise.t(unit)
 ```
 
@@ -48,7 +48,7 @@ The promise will be rejected if it is impossible to check if the URL can be
 opened on Android or for iOS 9 and later, an appropriate entry does not exist
 for the `LSApplicationQueriesSchemes` key in `Info.plist`.
 
-```reason
+```rescript
 canOpenURL: string => Js.Promise.t(bool)
 ```
 
@@ -58,7 +58,7 @@ Returns a nullable string wrapped in a promise. If the app was launched to open
 a link, that link will be returned as a `Js.Null(string)` value, otherwise
 `Js.null` will be returned.
 
-```reason
+```rescript
 getInitialURL: unit => Js.Promise.t(Js.Null.t(string))
 ```
 
@@ -70,15 +70,15 @@ Attempts to open the Settings app and display custom settings for the app, if
 any. This method returns an unspecified object (type `any`) wrapped in a
 promise.
 
-```reason
-openSettings: unit => Js.Promise.t('a)
+```rescript
+openSettings: unit => Js.Promise.t<'a>
 ```
 
 ### `sendIntent`
 
 _As of React Native 0.59.8_
 
-```reason
+```rescript
 sendIntent: string => unit
 ```
 
@@ -92,13 +92,13 @@ _As of React Native 0.59.8_
 To use `Intent` actions on Android for sending text and data (to be provided as
 an array of type `extra` objects) to other apps. This method returns `unit`.
 
-```reason
+```rescript
 sendIntentWithExtras: (string, array(extra)) => unit
 ```
 
 where the type `extra` can be created with the `extra` constructor
 
-```reason
+```rescript
 extra: (~key: string, ~value: 'a) => extra
 ```
 
@@ -109,7 +109,7 @@ supported, which should be specified using the polymorphic variant `` `url ``.
 The handler should be of type [`url`](#url)` => unit`. The URL can be obtained
 from the returned object using the `.url` property. This method returns `unit`.
 
-```reason
+```rescript
 addEventListener: ([ `url], url => unit) => unit
 ```
 
@@ -120,86 +120,76 @@ supported, which should be specified using the polymorphic variant `` `url ``.
 The handler should be of type [`url`](#url)` => unit`. This method returns
 `unit`.
 
-```reason
+```rescript
 removeEventListener([ `url], url => unit) => unit
 ```
 
 ### Example
 
-```reason
-open ReactNative;
+```rescript
+open ReactNative
 
-let windowHeight = Dimensions.get(`window).height;
-let windowWidth = Dimensions.get(`window).width;
+let windowHeight = Dimensions.get(#window).height
+let windowWidth = Dimensions.get(#window).width
 
-let containerStyle =
-  Style.(
-    style(
-      ~width=windowWidth->dp,
-      ~height=windowHeight->dp,
-      ~justifyContent=`center,
-      ~alignItems=`center,
-      (),
-    )
-  );
+let containerStyle = {
+  open Style
+  style(
+    ~width=windowWidth->dp,
+    ~height=windowHeight->dp,
+    ~justifyContent=#center,
+    ~alignItems=#centerà
+    (),
+  )
+}
 
-type state = {url: option(string)};
+type state = {url: option<string>}
 
-type action =
-  | SetURL(option(string));
+type action = SetURL(option<string>)
 
-[@react.component]
+@react.component
 let make = () => {
-  let (state, dispatch) =
-    React.useReducer(
-      (state, action) =>
-        switch (action) {
-        | SetURL(v) => {url: v}
-        },
-      {url: None},
-    );
+  let (state, dispatch) = React.useReducer((state, action) =>
+    switch action {
+    | SetURL(v) => {url: v}
+    }
+  , {url: None})
 
-  let handler = s => {
-    s.url->Js.Console.warn;
-  };
+  let handler = s => s.url->Js.Console.warn
 
-  let handlePromise = url =>
-    Js.Promise.(
-      Linking.openURL(url)
-      |> then_(() => resolve(dispatch(SetURL(Some(url)))))
-      |> catch(err => resolve(err->Js.Console.warn))
-      |> ignore
-    );
+  let handlePromise = url => {
+    open Js.Promise
+    Linking.openURL(url)
+    |> then_(() => resolve(dispatch(SetURL(Some(url)))))
+    |> catch(err => resolve(err->Js.Console.warn))
+    |> ignore
+  }
 
   // Listener will only receive URLs which your app is
   // registered to handle
   // https:// resource below will not be captured here
   React.useEffect0(() => {
-    Linking.addEventListener(`url, handler);
-    Some(() => Linking.removeEventListener(`url, handler));
-  });
+    Linking.addEventListener(#url, handler)
+    Some(() => Linking.removeEventListener(#url, handler))
+  })
 
   <View style=containerStyle>
     <Text>
-      {{Belt.Option.getWithDefault(state.url, "No URL requested")}
-       ->React.string}
+      {Belt.Option.getWithDefault(state.url, "No URL requested")->React.string}
     </Text>
     <Button
       onPress={_ =>
         handlePromise(
-          "https://github.com/reason-react-native/reason-react-native/",
-        )
-      }
+          "https://github.com/rescript-react-native/rescript-react-native/",
+        )}
       title="Open Repo"
     />
     // This will only work if you have registered myapp:// as
     // custom URL scheme for your app
     // Otherwise this will throw an error on the Yellow Box
     <Button
-      onPress={_ => handlePromise("myapp://screen")}
-      title="Internal URL"
+      onPress={_ => handlePromise("myapp://screen")} title="Internal URL"
     />
-  </View>;
-};
-
+  </View>
+}
 ```

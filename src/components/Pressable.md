@@ -21,33 +21,30 @@ You can read more about this [on the official Pressable documentation](https://r
 
 Current Pressable (deprecated because doesn't provide pressed state).
 
-```reason
-open ReactNative;
+```rescript
+open ReactNative
 
-[@react.component]
-let make = () => {
-    <Pressable onPress={_ => Js.log("Pressed")}>
-        <Text> "Press Me"->React.string </Text>
-    </Pressable>;
-};
+@react.component
+let make = () =>
+  <Pressable onPress={_ => Js.log("Pressed")}>
+    <Text> {"Press Me"->React.string} </Text>
+  </Pressable>
 ```
 
 Next Pressable (with interactionState)
 
-```reason
-open ReactNative;
+```rescript
+open ReactNative
 
-[@react.component]
-let make = () => {
+@react.component
+let make = () =>
   <Pressable_
     onPress={_ => Js.log("Pressed")}
-    style={({pressed}) =>
-      Style.(
-        style(~backgroundColor=pressed ? "rgb(210, 230, 255)" : "white", ())
-      )
-    }>
+    style={({pressed}) => {
+      open Style
+      style(~backgroundColor=pressed ? "rgb(210, 230, 255)" : "white", ())
+    }}>
     {({pressed}) =>
-        <Text> {pressed ? "Pressed!" : "Press Me"}->React.string </Text>}
-  </Pressable_>;
-};
+      <Text> {(pressed ? "Pressed!" : "Press Me")->React.string} </Text>}
+  </Pressable_>
 ```

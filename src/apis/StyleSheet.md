@@ -19,17 +19,17 @@ definitions.
 
 ### `create`
 
-Takes and returns `Js.t('a)` objects, with `string` keys and `Style.t` values.
+Takes and returns `Js.t<'a>` objects, with `string` keys and `Style.t` values.
 Individual styles can be accessed using `##`, followed by the name specified as
 the key.
 
-Note that using `Style.array` or `Style.list` to pass `array(Style.t)` or
-`list(Style.t)` is illegal within a `StyleSheet`, even those are valid `style`
+Note that using `Style.array` or `Style.list` to pass `array<Style.t>` or
+`list<Style.t>` is illegal within a `StyleSheet`, even those are valid `style`
 props for components. You may, howevever, use the [`flatten`](#flatten) method
-to convert `array(Style.t)` into a valid `Style.t` object.
+to convert `array<Style.t>` into a valid `Style.t` object.
 
-```reason
-create: Js.t('a) => Js.t('a)
+```rescript
+create: Js.t<'a> => Js.t<'a>
 ```
 
 ### `flatten`
@@ -37,8 +37,8 @@ create: Js.t('a) => Js.t('a)
 Takes an array of styles (of type `Style.t`) and returns a single style (also of
 type `Style.t`). Creates a `Style.t` object which is valid in a `StyleSheet`.
 
-```reason
-flatten: array(Style.t) => Style.t
+```rescript
+flatten: array<Style.t> => Style.t
 ```
 
 ## Constants
@@ -49,7 +49,7 @@ To ensure the resulting line will look sharp, this specifies an integer number
 of pixels which should approximate the standard thickness of a thin line on the
 platform given the screen density.
 
-```reason
+```rescript
 hairlineWidth: float
 ```
 
@@ -68,11 +68,11 @@ This is the style
 ```
 
 which is frequently used to create overlays. A common use is to add these props
-to a style using the spread operator (`...`), but as ReasonML does not allow the
+to a style using the spread operator (`...`), but as ReScript does not allow the
 operator when fields are not explicitly set, you may use the `flatten` method
 instead.
 
-```reason
+```rescript
 absoluteFill: Style.t
 ```
 
@@ -80,7 +80,7 @@ absoluteFill: Style.t
 
 This is identical to `absoluteFill` when used with pure functions.
 
-```reason
+```rescript
 absoluteFillObject: Style.t
 ```
 
@@ -89,22 +89,25 @@ absoluteFillObject: Style.t
 Please also see the [example](../Style/#style-example) in documentation of the
 `Style` API.
 
-```reason
-open ReactNative;
+```rescript
+open ReactNative
 
-let borderStyle = Style.(style(~borderWidth=StyleSheet.hairlineWidth, ()));
+let borderStyle = {
+  open Style
+  style(~borderWidth=StyleSheet.hairlineWidth, ())
+}
 
-let styles =
-  Style.(
-    StyleSheet.create({
-      // style may be defined inline
-      "container": style(~flex=1., ~flexDirection=`column, ()),
-      "screen": style(~width=windowWidth->dp, ()),
-      // or already defined elsewhere
-      "borderStyle": borderStyle,
-      "overlay": StyleSheet.absoluteFill,
-    })
-  );
+let styles = {
+  open Style
+  StyleSheet.create({
+    // style may be defined inline
+    "container": style(~flex=1., ~flexDirection=#column, ()),
+    "screen": style(~width=windowWidth->dp, ()),
+    // or already defined elsewhere
+    "borderStyle": borderStyle,
+    "overlay": StyleSheet.absoluteFill,
+  })
+}
 
-let flatStyle = StyleSheet.flatten([|styles##container, styles##screen|]);
+let flatStyle = StyleSheet.flatten([styles["container"], styles["screen"]])
 ```

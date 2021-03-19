@@ -16,7 +16,7 @@ Returned from the `getColorScheme` method or `useColorScheme` hook, wrapped in
 preference has been indicated. Other allowed values are `"dark"` and `"light"`,
 encapsulated as
 
-```reason
+```rescript
 Appearance.dark
 Appearance.light
 ```
@@ -24,7 +24,7 @@ Appearance.light
 These values may be compared against what is returned by the method or hook, as
 in the below example:
 
-```reason
+```rescript
 Appearance.getColorScheme() === Js.Null.return(Appearance.dark)
 ```
 
@@ -36,7 +36,7 @@ To query the current preferred color scheme. Note that the preference may be
 updated later, either through user action or automatically (e.g. on a schedule
 based on the time of day).
 
-```reason
+```rescript
 getColorScheme: unit => Js.Null(t)
 ```
 
@@ -45,6 +45,6 @@ getColorScheme: unit => Js.Null(t)
 To query the current preferred color scheme and subscribe to color scheme
 updates.
 
-```reason
+```rescript
 useColorScheme: unit => Js.Null(t)
 ```

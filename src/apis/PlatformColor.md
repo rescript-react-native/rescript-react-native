@@ -12,7 +12,7 @@ Functions to access native colors on the target platform by supplying the native
 
 `Ios.get` is used to get color information from UI Element Colors.
 
-```reason
+```rescript
 get: Ios.t => Color.t
 ```
 
@@ -26,7 +26,7 @@ Methods to send fallbacks.
 
 `Android.getAttr` is used to get color information from android attributes.
 
-```reason
+```rescript
 getAttr: Android.t => Color.t
 ```
 
@@ -36,7 +36,7 @@ See: [R.attr](https://developer.android.com/reference/android/R.attr)
 
 `Android.getColor` is used to get color information from android colors.
 
-```reason
+```rescript
 getColor: Android.t => Color.t
 ```
 
@@ -56,7 +56,7 @@ Defined up to 7 arguments.
 
 Depending on platform & OS version (and for Android you can have user-defined attrs for colors), this function is used for getting platform colors from strings.
 
-```reason
+```rescript
 unsafeGet: string => Color.t
 ```
 
@@ -70,28 +70,25 @@ Defined up to 7 arguments.
 
 The array version of `unsafeGet{n}` supporting arbitrary number of fallbacks.
 
-```reason
+```rescript
 unsafeGetMultiple: array(string) => Color.t
 ```
 
 ## Example
 
-```reason
-open ReactNative;
-let styles =
-  Style.(
-    StyleSheet.create({
-      "container":
-        style(
-          ~color={
-            switch (Platform.os) {
-            | os when os == Platform.android =>
-              PlatformColor.Android.get2(`primary_text_dark, `colorPrimary)
-            | os when os == Platform.ios => PlatformColor.Ios.get(`label)
-            | _ => "black"
-            };
-          },
-        ),
-    })
-  );
+```rescript
+open ReactNative
+let styles = {
+  open Style
+  StyleSheet.create({
+    "container": style(
+      ~color=switch Platform.os {
+      | os if os == Platform.android =>
+        PlatformColor.Android.get2(#primary_text_dark, #colorPrimary)
+      | os if os == Platform.ios => PlatformColor.Ios.get(#label)
+      | _ => "black"
+      },
+    ),
+  })
+}
 ```

@@ -8,11 +8,11 @@ DynamicColorIOS takes a single argument as an record with two keys: dark and lig
 
 ## Types
 
-```reason
+```rescript
 type t = {
   dark: Color.t,
   light: Color.t
-};
+}
 ```
 
 ## Methods
@@ -21,14 +21,14 @@ type t = {
 
 `make` takes an record with `dark` and `light`, and returns a color corresponding to the user's dark mode configuration.
 
-```reason
-make: t => Color.t;
+```rescript
+make: t => Color.t
 ```
 
 ## Example
 
-```reason
-open ReactNative;
+```rescript
+open ReactNative
 
-let labelColor = DynamicColorIOS.make({ light: "black", dark: "white" });
+let labelColor = DynamicColorIOS.make({ light: "black", dark: "white" })
 ```
