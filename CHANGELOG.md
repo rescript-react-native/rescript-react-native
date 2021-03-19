@@ -1,5 +1,30 @@
 # Changelog of `reason-react-native`
 
+## 0.64.0 - 2021-03-19
+
+### Breaking Changes
+
+- Removed `CheckBox` [76ef45c](https://github.com/reason-react-native/reason-react-native/commit/76ef45c) by [@MoOx](https://github.com/MoOx)
+- `ImageLoadEvent.source.url` is now `ImageLoadEvent.source.uri` [ce21b74](https://github.com/reason-react-native/reason-react-native/commit/ce21b74) by [@MoOx](https://github.com/MoOx)
+- Remove `UIManager.playTouchSound` (use `SoundManager.playTouchSound` instead) [cd03cfb](https://github.com/reason-react-native/reason-react-native/commit/cd03cfb) by [@MoOx](https://github.com/MoOx)
+- `Pressable_` is now `Pressable` (to benefit of the full benefit of Pressable, following deprecation notice in 0.63.3) [421962f](https://github.com/reason-react-native/reason-react-native/commit/421962f) by [@MoOx](https://github.com/MoOx)
+- Changed `ActionSheetIOS` `destructiveButtonIndex` to accept array instead of just int (as RN accepts `int | array<int>`) [81f4f18](https://github.com/reason-react-native/reason-react-native/commit/81f4f18) by [@MoOx](https://github.com/MoOx)
+- Changed `Image` `uriSource` `headers` to be `Js.Dict.t(string)` [ca786f9](https://github.com/reason-react-native/reason-react-native/commit/ca786f9) by [@MoOx](https://github.com/MoOx)
+
+### Added
+
+- Added `PlatformColor` iOS `clear` color [b813ee9](https://github.com/reason-react-native/reason-react-native/commit/b813ee9) by [@MoOx](https://github.com/MoOx) + [b9e33c7](https://github.com/reason-react-native/reason-react-native/commit/b9e33c7)
+- Added `Text` `android_hyphenationFrequency` prop [1864063](https://github.com/reason-react-native/reason-react-native/commit/1864063) by [@MoOx](https://github.com/MoOx)
+- Added `Text` `dataDetectorTypes` prop [635066c](https://github.com/reason-react-native/reason-react-native/commit/635066c) by [@MoOx](https://github.com/MoOx)
+- Added `Text` `disabled` prop [635066c](https://github.com/reason-react-native/reason-react-native/commit/635066c) by [@MoOx](https://github.com/MoOx)
+- Added `Text` `maxFontSize…Multiplier` prop [635066c](https://github.com/reason-react-native/reason-react-native/commit/635066c) by [@MoOx](https://github.com/MoOx)
+- Added `Text` `nativeID` prop [635066c](https://github.com/reason-react-native/reason-react-native/commit/635066c) by [@MoOx](https://github.com/MoOx)
+- Added `Text` `onTextLayout` prop [635066c](https://github.com/reason-react-native/reason-react-native/commit/635066c) by [@MoOx](https://github.com/MoOx)
+- Added `Text` gesture responder props [635066c](https://github.com/reason-react-native/reason-react-native/commit/635066c) by [@MoOx](https://github.com/MoOx)
+- Added `TextInput` `onPressIn` & `onPressOut` [13b8e7f](https://github.com/reason-react-native/reason-react-native/commit/13b8e7f) by [@MoOx](https://github.com/MoOx)
+- Added `NativeEventEmitter.listenerCount` [e88e336](https://github.com/reason-react-native/reason-react-native/commit/e88e336) by [@MoOx](https://github.com/MoOx)
+- Added `ActionSheetIOS` `disabledButtonIndices` [74af1ab](https://github.com/reason-react-native/reason-react-native/commit/74af1ab) by [@MoOx](https://github.com/MoOx)
+
 ## 0.63.5 - 2021-03-10
 
 Fix & change Android PlatformColor binding to use built-in selector [#737](https://github.com/reason-react-native/reason-react-native/pull/737) by [@diaozheng999](https://github.com/diaozheng999)

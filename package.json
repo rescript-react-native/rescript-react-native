@@ -1,10 +1,10 @@
 {
   "name": "reason-react-native",
   "description": "ReScript bindings for React Native.",
-  "version": "0.63.5",
+  "version": "0.64.0",
   "peerDependencies": {
     "bs-platform": "^8.2.0",
-    "react-native": "^0.63.0",
+    "react-native": "^0.64.0",
     "reason-react": "^0.9.1"
   },
   "repository": "https://github.com/reason-react-native/reason-react-native.git",
