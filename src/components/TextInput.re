@@ -223,6 +223,8 @@ external make:
     ~onEndEditing: editingEvent => unit=?,
     ~onFocus: Event.targetEvent => unit=?,
     ~onKeyPress: keyPressEvent => unit=?,
+    ~onPressIn: Event.pressEvent => bool=?,
+    ~onPressOut: Event.pressEvent => bool=?,
     ~onScroll: scrollEvent => unit=?,
     ~onSelectionChange: selectionChangeEvent => unit=?,
     ~onSubmitEditing: editingEvent => unit=?,
