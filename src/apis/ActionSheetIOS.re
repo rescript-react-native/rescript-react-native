@@ -5,6 +5,7 @@ external options:
     ~options: array(string),
     ~cancelButtonIndex: int=?,
     ~destructiveButtonIndex: int=?,
+    ~disabledButtonIndices: int=?,
     ~title: string=?,
     ~message: string=?,
     ~tintColor: Color.t=?,
