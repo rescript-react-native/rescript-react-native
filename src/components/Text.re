@@ -1,5 +1,12 @@
 include NativeElement;
 
+type android_hyphenationFrequency = [
+  | `normal
+  | `none
+  | `full
+  | `high
+  | `balanced
+];
 type dataDetectorType = [
   | `phoneNumber
   | `link
@@ -19,6 +26,7 @@ external make:
     ~ref: ref=?,
     // Text props
     ~accessibilityHint: string=?,
+    ~android_hyphenationFrequency: android_hyphenationFrequency=?,
     ~accessibilityLabel: string=?,
     ~accessibilityRole: Accessibility.role=?,
     ~accessibilityState: Accessibility.state=?,
