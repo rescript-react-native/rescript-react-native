@@ -47,7 +47,7 @@ module ImageLoadEvent = {
   type source = {
     width: float,
     height: float,
-    url: string,
+    uri: string,
   };
 
   type payload = {
