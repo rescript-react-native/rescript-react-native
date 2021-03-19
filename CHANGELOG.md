@@ -1,5 +1,9 @@
 # Changelog of `rescript-react-native`
 
+## 0.64.2 - 2021-03-20
+
+Ooopsy. Actually this release as .res/.resi files.
+
 ## 0.64.1 - 2021-03-20
 
 - `reason-react-native` -> `rescript-react-native`
