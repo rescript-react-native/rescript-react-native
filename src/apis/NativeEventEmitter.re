@@ -14,6 +14,8 @@ external removeAllListeners: (t, string) => unit = "removeAllListeners";
 [@bs.send]
 external removeSubscription: (t, subscription) => unit = "removeSubscription";
 
+[@bs.send] external listenerCount: (t, string) => unit = "listenerCount";
+
 module Subscription = {
   [@bs.send] external remove: (subscription, unit) => unit = "remove";
 };
