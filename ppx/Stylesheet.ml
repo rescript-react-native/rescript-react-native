@@ -83,7 +83,8 @@ let expand ~ctxt pat records =
   let _ = typedefs := typedef :: !typedefs in
 
   [%stri
-    let ([%p pat] : [%t typename]) = Utils.Sty.createStyleSheet [%e records]]
+    let ([%p pat] : [%t typename]) =
+      ReactNative.StyleSheet.unsafeCreate [%e records]]
 
 let extension =
   Extension.V3.declare "stylesheet" Extension.Context.Structure_item
