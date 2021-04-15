@@ -1,5 +1,7 @@
 type t
 
+type typed_t<+'a>
+
 external array: array<t> => t = "%identity"
 external arrayOption: array<option<t>> => t = "%identity"
 

@@ -1,0 +1,56 @@
+opam-version: "2.0"
+synopsis: "Auto-formatter for OCaml code"
+description:
+  "OCamlFormat is a tool to automatically format OCaml code in a uniform style."
+maintainer: ["OCamlFormat Team <ocamlformat-team@fb.com>"]
+authors: ["Josh Berdine <jjb@fb.com>"]
+license: "MIT"
+homepage: "https://github.com/ocaml-ppx/ocamlformat"
+bug-reports: "https://github.com/ocaml-ppx/ocamlformat/issues"
+depends: [
+  "dune" {>= "2.7"}
+  "ocaml" {>= "4.08" & < "4.13"}
+  "ocaml-version"
+  "alcotest" {with-test}
+  "base" {>= "v0.12.0" & < "v0.15"}
+  "base-unix"
+  "cmdliner"
+  "dune-build-info"
+  "fix"
+  "fpath"
+  "menhir" {>= "20180528"}
+  "menhirLib" {>= "20200624"}
+  "menhirSdk" {>= "20200624"}
+  "ocaml-migrate-parsetree" {>= "2.1.0"}
+  "ocp-indent" {with-test}
+  "odoc" {>= "1.4.2"}
+  "ppxlib" {>= "0.22.0"}
+  "re"
+  "stdio" {< "v0.15"}
+  "uuseg" {>= "10.0.0"}
+  "uutf" {>= "1.0.1"}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/ocaml-ppx/ocamlformat.git"
+x-commit-hash: "bfd6bbe95c614d1d982244c4fd0ba494275d2245"
+url {
+  src:
+    "https://github.com/ocaml-ppx/ocamlformat/releases/download/0.17.0/ocamlformat-0.17.0.tbz"
+  checksum: [
+    "sha256=68848b12e82dc1077a29f63d2777680e692b1a565276fcd00f06fb93cced3438"
+    "sha512=168ac7dee5a78954b273972b099681a4f2a6864b81c1dfe5ee5ff2f0ba79f150aeca8128b95dce4fd30d4d830906f02975d56b804dbb513fe0bb63c95d61030b"
+  ]
+}

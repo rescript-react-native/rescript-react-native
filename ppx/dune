@@ -1,0 +1,6 @@
+(library
+ (name ppx_rescript_react_native_style)
+ (public_name ppx_rescript_react_native_style.lib)
+ (kind ppx_rewriter)
+ (libraries ppxlib)
+ (preprocess (pps ppxlib.metaquot)))

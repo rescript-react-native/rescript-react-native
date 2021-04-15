@@ -1,0 +1,20 @@
+{
+  "name": "rescript-react-native",
+  "description": "ReScript bindings for React Native.",
+  "version": "0.64.2",
+  "esy": { "build": "dune build -p ppx_rescript_react_native_style" },
+  "scripts": {
+    "install-ppx": "dune install --prefix build"
+  },
+  "dependencies": {
+    "@opam/dune": "2.8.4",
+    "@opam/merlin": "4.1-411",
+    "@opam/ocaml-lsp-server": "1.4.1",
+    "@opam/ocaml-migrate-parsetree": "2.1.0",
+    "@opam/ocamlfind-secondary": "*",
+    "@opam/ocamlformat": "0.17.0",
+    "@opam/ppxlib": "0.22.0",
+    "@opam/reason": "*",
+    "ocaml": "4.11.x"
+  }
+}

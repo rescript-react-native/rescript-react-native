@@ -31,11 +31,13 @@
     "start": "yarn re:start",
     "build": "yarn re:build",
     "test": "yarn re:clean-build",
-    "release": "npmpub"
+    "release": "npmpub",
+    "postinstall": "esy install && esy build && esy install-ppx && node scripts/copy_ppx.js"
   },
   "devDependencies": {
     "@rescript/react": "^0.10.0",
     "bs-platform": "^9.0.0",
+    "esy": "^0.6.10",
     "husky": "^4.0.0",
     "lint-staged": "^10.0.0",
     "npm-run-all": "^3.0.0",
