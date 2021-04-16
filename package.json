@@ -19,7 +19,11 @@
     "src/**/*.res",
     "src/**/*.resi",
     "src/**/*.js",
-    "!src/**/*.bs.js"
+    "!src/**/*.bs.js",
+    "dune-project",
+    "ppx",
+    "*.opam",
+    "esy.json"
   ],
   "scripts": {
     "format:most": "prettier --write \"**/*.{md,json,js,css}\"",
