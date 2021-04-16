@@ -32,7 +32,7 @@
     "build": "yarn re:build",
     "test": "yarn re:clean-build",
     "release": "npmpub",
-    "postinstall": "esy install -P ./esy.json && esy build && esy install-ppx && node scripts/copy_ppx.js"
+    "postinstall": "ls -al && esy install -P ./esy.json && esy build && esy install-ppx && node scripts/copy_ppx.js"
   },
   "devDependencies": {
     "@rescript/react": "^0.10.0",
