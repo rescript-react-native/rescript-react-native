@@ -42,7 +42,7 @@
     "ppx:build": "esy build",
     "ppx:install-ppx": "esy install-ppx",
     "ppx:copy-exe": "node scripts/copy_ppx.js",
-    "postinstall": "run-s ppx:*"
+    "postinstall": "run-s ppx:install ppx:build ppx:install-ppx ppx:copy-exe"
   },
   "devDependencies": {
     "@rescript/react": "^0.10.0",
