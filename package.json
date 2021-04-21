@@ -38,11 +38,7 @@
     "build": "yarn re:build",
     "test": "yarn re:clean-build",
     "release": "npmpub",
-    "ppx:install": "esy install",
-    "ppx:build": "esy build",
-    "ppx:install-ppx": "esy install-ppx",
-    "ppx:copy-exe": "node scripts/copy_ppx.js",
-    "postinstall": "run-s ppx:install ppx:build ppx:install-ppx ppx:copy-exe"
+    "postinstall": "node scripts/post_install.js"
   },
   "devDependencies": {
     "@rescript/react": "^0.10.0",

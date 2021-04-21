@@ -8,4 +8,5 @@ const esy_ppx_exe = [
   "lib",
   "ppx.exe",
 ];
+console.log("Copying built ppx file...");
 p.copyFileSync(path.resolve(cwd, ...esy_ppx_exe), path.resolve(cwd, "ppx.exe"));
