@@ -28,7 +28,7 @@ function elevateInWindows(f, reason) {
     if (reason) {
       console.log(reason);
     }
-    exec(`cscript.exe ${resolve(__dirname, "post_install.vbs")}`);
+    exec(`cscript.exe "${resolve(__dirname, "post_install.vbs")}"`);
   } else {
     if (ctx.platform === "win32") {
       process.chdir(resolve(ctx.cwd));

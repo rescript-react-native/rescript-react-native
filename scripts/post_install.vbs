@@ -14,5 +14,4 @@ CreateObject("Shell.Application").ShellExecute _
 
 Do Until NOT fso.FileExists("__esy_elevated_prompt.lock")
   WScript.Sleep 400
-  WScript.Echo "..."
 Loop
