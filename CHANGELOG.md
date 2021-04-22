@@ -2,7 +2,7 @@
 
 ## 0.64.2 - 2021-03-20
 
-Ooopsy. Actually this release as .res/.resi files.
+Ooopsy. Actually this release contains .res/.resi files.
 
 ## 0.64.1 - 2021-03-20
 
