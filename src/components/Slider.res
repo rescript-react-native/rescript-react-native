@@ -18,7 +18,7 @@ external make: (
   ~thumbTintColor: Color.t=?,
   ~trackImage: Image.Source.t=?,
   ~value: float=?,
-  // View props 0.63.0
+  // rescript-react-native 0.64 View props
   ~accessibilityActions: array<Accessibility.actionInfo>=?,
   ~accessibilityElementsHidden: bool=?,
   ~accessibilityHint: string=?,
@@ -72,7 +72,7 @@ external make: (
   ~style: Style.t=?,
   ~testID: string=?,
   ~children: React.element=?,
-  // React Native Web Props 0.16
+  // react-native-web 0.16 View props
   ~href: string=?,
   ~hrefAttrs: Web.hrefAttrs=?,
   ~onMouseDown: ReactEvent.Mouse.t => unit=?,

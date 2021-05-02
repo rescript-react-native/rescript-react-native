@@ -1,5 +1,12 @@
 # Changelog of `rescript-react-native`
 
+## 0.64.3 - 2021-05-02
+
+🚨 Minor Breaking changes for React Native Web users only
+
+- Remove `rel` & `target` View props
+- Add React Native Web `hrefAttrs` prop for 0.16
+
 ## 0.64.2 - 2021-03-20
 
 Ooopsy. Actually this release contains .res/.resi files.

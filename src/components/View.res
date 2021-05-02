@@ -24,7 +24,7 @@ external make: (
   ~accessibilityActions: // be sure to adjust all places that use the same comment as below
   // ↓
   // (unchanged in 0.64.0)
-  // View props 0.63.0
+  // rescript-react-native 0.64 View props
   array<Accessibility.actionInfo>=?,
   ~accessibilityElementsHidden: bool=?,
   ~accessibilityHint: string=?,
@@ -78,7 +78,7 @@ external make: (
   ~style: Style.t=?,
   ~testID: string=?,
   ~children: React.element=?,
-  // React Native Web Props 0.16
+  // react-native-web 0.16 View props
   ~href: string=?,
   ~hrefAttrs: Web.hrefAttrs=?,
   ~onMouseDown: ReactEvent.Mouse.t => unit=?,

@@ -66,7 +66,7 @@ external make: (
   ~onResponderTerminationRequest: Event.pressEvent => bool=?,
   ~onStartShouldSetResponder: Event.pressEvent => bool=?,
   ~onStartShouldSetResponderCapture: Event.pressEvent => bool=?,
-  // React Native Web Props 0.16
+  // react-native-web 0.16 View props
   ~href: string=?,
   ~hrefAttrs: Web.hrefAttrs=?,
   ~onMouseDown: ReactEvent.Mouse.t => unit=?,

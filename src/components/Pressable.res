@@ -56,7 +56,7 @@ external make: (
   ~style: interactionState => Style.t=?,
   ~testID: string=?,
   ~testOnly_pressed: bool=?,
-  // React Native Web Props 0.16
+  // react-native-web 0.16 View props
   ~href: string=?,
   ~hrefAttrs: Web.hrefAttrs=?,
 ) => React.element = "Pressable"
