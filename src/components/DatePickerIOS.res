@@ -28,8 +28,8 @@ external make: (
   ~mode: mode=?,
   ~locale: localeId=?,
   ~timeZoneOffsetInMinutes: int=?,
-  ~accessibilityActions: // View props 0.63.0
-  array<Accessibility.actionInfo>=?,
+  // View props 0.63.0
+  ~accessibilityActions: array<Accessibility.actionInfo>=?,
   ~accessibilityElementsHidden: bool=?,
   ~accessibilityHint: string=?,
   ~accessibilityIgnoresInvertColors: bool=?,
@@ -56,8 +56,8 @@ external make: (
   ~onAccessibilityTap: unit => unit=?,
   ~onLayout: Event.layoutEvent => unit=?,
   ~onMagicTap: unit => unit=?,
-  ~onMoveShouldSetResponder: // Gesture Responder props
-  Event.pressEvent => bool=?,
+  // Gesture Responder props
+  ~onMoveShouldSetResponder: Event.pressEvent => bool=?,
   ~onMoveShouldSetResponderCapture: Event.pressEvent => bool=?,
   ~onResponderEnd: Event.pressEvent => unit=?,
   ~onResponderGrant: Event.pressEvent => unit=?,
@@ -82,8 +82,10 @@ external make: (
   ~style: Style.t=?,
   ~testID: string=?,
   ~children: React.element=?,
-  ~onMouseDown: // React Native Web Props
-  ReactEvent.Mouse.t => unit=?,
+  // React Native Web Props 0.16
+  ~href: string=?,
+  ~hrefAttrs: Web.hrefAttrs=?,
+  ~onMouseDown: ReactEvent.Mouse.t => unit=?,
   ~onMouseEnter: ReactEvent.Mouse.t => unit=?,
   ~onMouseLeave: ReactEvent.Mouse.t => unit=?,
   ~onMouseMove: ReactEvent.Mouse.t => unit=?,

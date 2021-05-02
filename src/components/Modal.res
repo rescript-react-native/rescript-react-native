@@ -26,8 +26,8 @@ type presentationStyle = [
 @react.component @module("react-native")
 external make: (
   ~ref: ref=?,
-  ~animationType: // Modal props
-  animationType=?,
+  // Modal props
+  ~animationType: animationType=?,
   ~hardwareAccelerated: bool=?,
   ~onDismiss: unit => unit=?,
   ~onOrientationChange: orientationChangeEvent => unit=?,

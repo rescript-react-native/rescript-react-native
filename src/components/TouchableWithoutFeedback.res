@@ -3,8 +3,8 @@ include NativeElement
 @react.component @module("react-native")
 external make: (
   ~ref: ref=?,
-  ~accessible: // TouchableWithoutFeedback props
-  bool=?,
+  // TouchableWithoutFeedback props
+  ~accessible: bool=?,
   ~accessibilityElementsHidden: bool=?,
   ~accessibilityHint: string=?,
   ~accessibilityIgnoresInvertColors: bool=?,
@@ -37,24 +37,4 @@ external make: (
   ~testID: string=?,
   ~touchSoundDisabled: bool=?,
   ~children: React.element=?,
-  ~rel: // React Native Web Props
-  @string
-  [
-    | #alternate
-    | #author
-    | @as("dns-prefetch") #dnsPrefetch
-    | #icon
-    | #license
-    | #next
-    | #pingback
-    | #preconnect
-    | #prefetch
-    | #preload
-    | #prerender
-    | #prev
-    | #search
-    | #stylesheet
-  ]=?,
-  ~href: string=?,
-  ~target: Web.target=?,
 ) => React.element = "TouchableWithoutFeedback"

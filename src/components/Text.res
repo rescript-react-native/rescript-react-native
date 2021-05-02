@@ -23,8 +23,8 @@ type textBreakStrategy = [#simple | #highQuality | #balanced]
 @react.component @module("react-native")
 external make: (
   ~ref: ref=?,
-  ~accessibilityHint: // Text props
-  string=?,
+  // Text props
+  ~accessibilityHint: string=?,
   ~android_hyphenationFrequency: android_hyphenationFrequency=?,
   ~accessibilityLabel: string=?,
   ~accessibilityRole: Accessibility.role=?,
@@ -53,8 +53,8 @@ external make: (
   ~testID: string=?,
   ~textBreakStrategy: textBreakStrategy=?,
   ~value: string=?,
-  ~onMoveShouldSetResponder: // Gesture Responder props
-  Event.pressEvent => bool=?,
+  // Gesture Responder props
+  ~onMoveShouldSetResponder: Event.pressEvent => bool=?,
   ~onMoveShouldSetResponderCapture: Event.pressEvent => bool=?,
   ~onResponderEnd: Event.pressEvent => unit=?,
   ~onResponderGrant: Event.pressEvent => unit=?,
@@ -66,26 +66,9 @@ external make: (
   ~onResponderTerminationRequest: Event.pressEvent => bool=?,
   ~onStartShouldSetResponder: Event.pressEvent => bool=?,
   ~onStartShouldSetResponderCapture: Event.pressEvent => bool=?,
-  ~rel: // React Native Web Props
-  @string
-  [
-    | #alternate
-    | #author
-    | @as("dns-prefetch") #dnsPrefetch
-    | #icon
-    | #license
-    | #next
-    | #pingback
-    | #preconnect
-    | #prefetch
-    | #preload
-    | #prerender
-    | #prev
-    | #search
-    | #stylesheet
-  ]=?,
+  // React Native Web Props 0.16
   ~href: string=?,
-  ~target: Web.target=?,
+  ~hrefAttrs: Web.hrefAttrs=?,
   ~onMouseDown: ReactEvent.Mouse.t => unit=?,
   ~onMouseEnter: ReactEvent.Mouse.t => unit=?,
   ~onMouseLeave: ReactEvent.Mouse.t => unit=?,

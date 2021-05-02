@@ -50,24 +50,24 @@ external section: (
 @react.component @module("react-native")
 external make: (
   ~ref: ref=?,
-  ~_ItemSeparatorComponent: // VirtualizedSectionList props
-  React.component<separatorProps<'item, 'sectionData>>=?,
+  // VirtualizedSectionList props
+  ~_ItemSeparatorComponent: React.component<separatorProps<'item, 'sectionData>>=?,
   ~_SectionSeparatorComponent: React.component<separatorProps<'item, 'sectionData>>=?,
   ~renderItem: renderItemCallback<'item, 'sectionData>,
   ~renderSectionFooter: renderSectionHeaderCallback<'item, 'sectionData>=?,
   ~renderSectionHeader: renderSectionHeaderCallback<'item, 'sectionData>=?,
   ~sections: array<section<'item, 'sectionData>>,
   ~stickySectionHeadersEnabled: bool=?,
-  ~_CellRendererComponent: // VirtualizedList props
-  VirtualizedList.cellRendererComponent<'item>=?,
+  // VirtualizedList props
+  ~_CellRendererComponent: VirtualizedList.cellRendererComponent<'item>=?,
   ~_ListEmptyComponent: unit => React.element=?,
   ~_ListFooterComponent: unit => React.element=?,
   ~_ListFooterComponentStyle: Style.t=?,
   ~_ListHeaderComponent: unit => React.element=?,
   ~_ListHeaderComponentStyle: Style.t=?,
   ~debug: bool=?,
-  ~disableVirtualization: // ~enableVirtualization: bool=?, // not working, disableVirtualization?
-  // ~data: 'data, // any collection of 'item
+  // ~enableVirtualization: bool=?, // not working, disableVirtualization?
+  ~disableVirtualization: // ~data: 'data, // any collection of 'item
   bool=?, // deprecated
   ~extraData: 'extraData=?,
   ~getItem: ('data, int) => 'item=?,
@@ -85,14 +85,14 @@ external make: (
   ~onViewableItemsChanged: VirtualizedList.viewableItemsChanged<'item> => unit=?,
   ~progressViewOffset: float=?,
   ~refreshing: bool=?,
-  ~renderScrollComponent: // ~renderItem: VirtualizedList.renderItemCallback('item),
-  unit => React.element=?, // TODO: params?
+  // ~renderItem: VirtualizedList.renderItemCallback('item),
+  ~renderScrollComponent: unit => React.element=?, // TODO: params?
   ~updateCellsBatchingPeriod: float=?,
   ~viewabilityConfig: VirtualizedList.viewabilityConfig=?,
   ~viewabilityConfigCallbackPairs: VirtualizedList.viewabilityConfigCallbackPairs<'item>=?,
   ~windowSize: int=?,
-  ~alwaysBounceHorizontal: // ScrollView props
-  bool=?,
+  // ScrollView props
+  ~alwaysBounceHorizontal: bool=?,
   ~alwaysBounceVertical: bool=?,
   ~automaticallyAdjustContentInsets: bool=?,
   ~bounces: bool=?,
@@ -144,8 +144,8 @@ external make: (
   ~snapToStart: bool=?,
   ~stickyHeaderIndices: array<int>=?,
   ~zoomScale: float=?,
-  ~accessibilityActions: // View props 0.63.0
-  array<Accessibility.actionInfo>=?,
+  // View props 0.63.0
+  ~accessibilityActions: array<Accessibility.actionInfo>=?,
   ~accessibilityElementsHidden: bool=?,
   ~accessibilityHint: string=?,
   ~accessibilityIgnoresInvertColors: bool=?,
@@ -172,8 +172,8 @@ external make: (
   ~onAccessibilityTap: unit => unit=?,
   ~onLayout: Event.layoutEvent => unit=?,
   ~onMagicTap: unit => unit=?,
-  ~onMoveShouldSetResponder: // Gesture Responder props
-  Event.pressEvent => bool=?,
+  // Gesture Responder props
+  ~onMoveShouldSetResponder: Event.pressEvent => bool=?,
   ~onMoveShouldSetResponderCapture: Event.pressEvent => bool=?,
   ~onResponderEnd: Event.pressEvent => unit=?,
   ~onResponderGrant: Event.pressEvent => unit=?,
@@ -198,8 +198,10 @@ external make: (
   ~style: Style.t=?,
   ~testID: string=?,
   ~children: React.element=?,
-  ~onMouseDown: // React Native Web Props
-  ReactEvent.Mouse.t => unit=?,
+  // React Native Web Props 0.16
+  ~href: string=?,
+  ~hrefAttrs: Web.hrefAttrs=?,
+  ~onMouseDown: ReactEvent.Mouse.t => unit=?,
   ~onMouseEnter: ReactEvent.Mouse.t => unit=?,
   ~onMouseLeave: ReactEvent.Mouse.t => unit=?,
   ~onMouseMove: ReactEvent.Mouse.t => unit=?,

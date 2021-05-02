@@ -3,11 +3,11 @@ include NativeElement
 @react.component @module("react-native")
 external make: (
   ~ref: ref=?,
-  ~imageRef: // ImageBackground props
-  Image.ref=?,
+  // ImageBackground props
+  ~imageRef: Image.ref=?,
   ~imageStyle: Style.t=?,
-  ~accessibilityLabel: // Image props
-  string=?,
+  // Image props
+  ~accessibilityLabel: string=?,
   ~accessible: bool=?,
   ~blurRadius: float=?,
   ~capInsets: View.edgeInsets=?,

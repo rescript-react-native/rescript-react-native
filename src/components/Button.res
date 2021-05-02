@@ -3,8 +3,8 @@ include NativeElement
 @react.component @module("react-native")
 external make: (
   ~ref: ref=?,
-  ~accessibilityLabel: // Button props
-  string=?,
+  // Button props
+  ~accessibilityLabel: string=?,
   ~color: Color.t=?,
   ~disabled: bool=?,
   ~hasTVPreferredFocus: bool=?,

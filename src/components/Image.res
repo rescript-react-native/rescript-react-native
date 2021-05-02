@@ -87,8 +87,8 @@ type resizeMethod = [#auto | #resize | #scale]
 @react.component @module("react-native")
 external make: (
   ~ref: ref=?,
-  ~accessibilityLabel: // Image props
-  string=?,
+  // Image props
+  ~accessibilityLabel: string=?,
   ~accessible: bool=?,
   ~blurRadius: float=?,
   ~capInsets: View.edgeInsets=?,

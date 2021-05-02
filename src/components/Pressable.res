@@ -20,8 +20,8 @@ type interactionState = {
 @react.component @module("react-native")
 external make: (
   ~ref: ref=?,
-  ~accessibilityActions: // Accessibility props
-  array<Accessibility.actionInfo>=?,
+  // Accessibility props
+  ~accessibilityActions: array<Accessibility.actionInfo>=?,
   ~accessibilityElementsHidden: bool=?,
   ~accessibilityHint: string=?,
   ~accessibilityIgnoresInvertColors: bool=?,
@@ -40,8 +40,8 @@ external make: (
     | #no
     | @as("no-hide-descendants") #noHideDescendants
   ]=?,
-  ~android_disableSound: // Pressable props
-  bool=?,
+  // Pressable props
+  ~android_disableSound: bool=?,
   ~android_ripple: rippleConfig=?,
   ~children: interactionState => React.element=?,
   ~delayLongPress: int=?,
@@ -56,24 +56,7 @@ external make: (
   ~style: interactionState => Style.t=?,
   ~testID: string=?,
   ~testOnly_pressed: bool=?,
-  ~rel: // React Native Web Props
-  @string
-  [
-    | #alternate
-    | #author
-    | @as("dns-prefetch") #dnsPrefetch
-    | #icon
-    | #license
-    | #next
-    | #pingback
-    | #preconnect
-    | #prefetch
-    | #preload
-    | #prerender
-    | #prev
-    | #search
-    | #stylesheet
-  ]=?,
+  // React Native Web Props 0.16
   ~href: string=?,
-  ~target: Web.target=?,
+  ~hrefAttrs: Web.hrefAttrs=?,
 ) => React.element = "Pressable"

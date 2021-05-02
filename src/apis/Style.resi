@@ -95,8 +95,8 @@ style: (
   ~resizeMode: resizeMode=?,
   ~overlayColor: Color.t=?,
   ~tintColor: Color.t=?,
-  ~color: // Text Style Props (https://reactnative.dev/docs/text-style-props)
-  Color.t=?,
+  // Text Style Props (https://reactnative.dev/docs/text-style-props)
+  ~color: Color.t=?,
   ~fontFamily: string=?,
   ~fontSize: float=?,
   ~fontStyle: fontStyle=?,
@@ -134,8 +134,8 @@ style: (
   ~textShadowRadius: float=?,
   ~textTransform: textTransform=?,
   ~writingDirection: writingDirection=?,
-  ~backfaceVisibility: // View styles https://reactnative.dev/docs/view-style-props
-  backfaceVisibility=?,
+  // View styles https://reactnative.dev/docs/view-style-props
+  ~backfaceVisibility: backfaceVisibility=?,
   ~backgroundColor: Color.t=?,
   ~borderBottomColor: Color.t=?,
   ~borderBottomEndRadius: float=?,
@@ -163,16 +163,15 @@ style: (
   ~borderWidth: float=?,
   ~elevation: float=?,
   ~opacity: float=?,
-  ~transform: // Transform Props (https://reactnative.dev/docs/transforms#props)
-  array<transform>=?, // all other transform props are deprecated
-  ~shadowColor: // Shadow Props (https://reactnative.dev/docs/shadow-props)
-  Color.t=?,
+  // Transform Props (https://reactnative.dev/docs/transforms#props)
+  ~transform: array<transform>=?, // all other transform props are deprecated
+  // Shadow Props (https://reactnative.dev/docs/shadow-props)
+  ~shadowColor: Color.t=?,
   ~shadowOffset: offset=?,
   ~shadowOpacity: float=?,
   ~shadowRadius: float=?,
-  ~alignContent: // Layout Style Props (https://reactnative.dev/docs/layout-props)
-
-  @string
+  // Layout Style Props (https://reactnative.dev/docs/layout-props)
+  ~alignContent: @string
   [
     | @as("flex-start") #flexStart
     | @as("flex-end") #flexEnd
@@ -199,8 +198,8 @@ style: (
     | #baseline
   ]=?,
   ~aspectRatio: float=?,
-  ~bottom: // border*Width are commented because already in view styles props (see explanation at the top)
-  // ~borderBottomWidth: float=?,
+  // border*Width are commented because already in view styles props (see explanation at the top)
+  ~bottom: // ~borderBottomWidth: float=?,
   // ~borderEndWidth: float=?,
   // ~borderLeftWidth: float=?,
   // ~borderRightWidth: float=?,
@@ -299,16 +298,15 @@ viewStyle: (
   ~borderWidth: float=?,
   ~elevation: float=?,
   ~opacity: float=?,
-  ~transform: // Transform Props (https://reactnative.dev/docs/transforms#props)
-  array<transform>=?, // all other transform props are deprecated
-  ~shadowColor: // Shadow Props (https://reactnative.dev/docs/shadow-props)
-  Color.t=?,
+  // Transform Props (https://reactnative.dev/docs/transforms#props)
+  ~transform: array<transform>=?, // all other transform props are deprecated
+  // Shadow Props (https://reactnative.dev/docs/shadow-props)
+  ~shadowColor: Color.t=?,
   ~shadowOffset: offset=?,
   ~shadowOpacity: float=?,
   ~shadowRadius: float=?,
-  ~alignContent: // Layout Style Props (https://reactnative.dev/docs/layout-props)
-
-  @string
+  // Layout Style Props (https://reactnative.dev/docs/layout-props)
+  ~alignContent: @string
   [
     | @as("flex-start") #flexStart
     | @as("flex-end") #flexEnd
@@ -335,8 +333,8 @@ viewStyle: (
     | #baseline
   ]=?,
   ~aspectRatio: float=?,
-  ~bottom: // border*Width are commented because already in view styles props (see explanation at the top)
-  // ~borderBottomWidth: float=?,
+  // border*Width are commented because already in view styles props (see explanation at the top)
+  ~bottom: // ~borderBottomWidth: float=?,
   // ~borderEndWidth: float=?,
   // ~borderLeftWidth: float=?,
   // ~borderRightWidth: float=?,
@@ -444,8 +442,8 @@ textStyle: (
   ~textShadowRadius: float=?,
   ~textTransform: textTransform=?,
   ~writingDirection: writingDirection=?,
-  ~backfaceVisibility: // View styles https://reactnative.dev/docs/view-style-props
-  backfaceVisibility=?,
+  // View styles https://reactnative.dev/docs/view-style-props
+  ~backfaceVisibility: backfaceVisibility=?,
   ~backgroundColor: Color.t=?,
   ~borderBottomColor: Color.t=?,
   ~borderBottomEndRadius: float=?,
@@ -473,16 +471,15 @@ textStyle: (
   ~borderWidth: float=?,
   ~elevation: float=?,
   ~opacity: float=?,
-  ~transform: // Transform Props (https://reactnative.dev/docs/transforms#props)
-  array<transform>=?, // all other transform props are deprecated
-  ~shadowColor: // Shadow Props (https://reactnative.dev/docs/shadow-props)
-  Color.t=?,
+  // Transform Props (https://reactnative.dev/docs/transforms#props)
+  ~transform: array<transform>=?, // all other transform props are deprecated
+  // Shadow Props (https://reactnative.dev/docs/shadow-props)
+  ~shadowColor: Color.t=?,
   ~shadowOffset: offset=?,
   ~shadowOpacity: float=?,
   ~shadowRadius: float=?,
-  ~alignContent: // Layout Style Props (https://reactnative.dev/docs/layout-props)
-
-  @string
+  // Layout Style Props (https://reactnative.dev/docs/layout-props)
+  ~alignContent: @string
   [
     | @as("flex-start") #flexStart
     | @as("flex-end") #flexEnd
@@ -509,8 +506,8 @@ textStyle: (
     | #baseline
   ]=?,
   ~aspectRatio: float=?,
-  ~bottom: // border*Width are commented because already in view styles props (see explanation at the top)
-  // ~borderBottomWidth: float=?,
+  // border*Width are commented because already in view styles props (see explanation at the top)
+  ~bottom: // ~borderBottomWidth: float=?,
   // ~borderEndWidth: float=?,
   // ~borderLeftWidth: float=?,
   // ~borderRightWidth: float=?,
@@ -583,8 +580,8 @@ imageStyle: (
   ~resizeMode: resizeMode=?,
   ~overlayColor: Color.t=?,
   ~tintColor: Color.t=?,
-  ~backfaceVisibility: // View styles https://reactnative.dev/docs/view-style-props
-  backfaceVisibility=?,
+  // View styles https://reactnative.dev/docs/view-style-props
+  ~backfaceVisibility: backfaceVisibility=?,
   ~backgroundColor: Color.t=?,
   ~borderBottomColor: Color.t=?,
   ~borderBottomEndRadius: float=?,
@@ -612,16 +609,15 @@ imageStyle: (
   ~borderWidth: float=?,
   ~elevation: float=?,
   ~opacity: float=?,
-  ~transform: // Transform Props (https://reactnative.dev/docs/transforms#props)
-  array<transform>=?, // all other transform props are deprecated
-  ~shadowColor: // Shadow Props (https://reactnative.dev/docs/shadow-props)
-  Color.t=?,
+  // Transform Props (https://reactnative.dev/docs/transforms#props)
+  ~transform: array<transform>=?, // all other transform props are deprecated
+  // Shadow Props (https://reactnative.dev/docs/shadow-props)
+  ~shadowColor: Color.t=?,
   ~shadowOffset: offset=?,
   ~shadowOpacity: float=?,
   ~shadowRadius: float=?,
-  ~alignContent: // Layout Style Props (https://reactnative.dev/docs/layout-props)
-
-  @string
+  // Layout Style Props (https://reactnative.dev/docs/layout-props)
+  ~alignContent: @string
   [
     | @as("flex-start") #flexStart
     | @as("flex-end") #flexEnd
@@ -648,8 +644,8 @@ imageStyle: (
     | #baseline
   ]=?,
   ~aspectRatio: float=?,
-  ~bottom: // border*Width are commented because already in view styles props (see explanation at the top)
-  // ~borderBottomWidth: float=?,
+  // border*Width are commented because already in view styles props (see explanation at the top)
+  ~bottom: // ~borderBottomWidth: float=?,
   // ~borderEndWidth: float=?,
   // ~borderLeftWidth: float=?,
   // ~borderRightWidth: float=?,
