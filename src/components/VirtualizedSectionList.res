@@ -67,8 +67,8 @@ external make: (
   ~_ListHeaderComponentStyle: Style.t=?,
   ~debug: bool=?,
   // ~enableVirtualization: bool=?, // not working, disableVirtualization?
-  ~disableVirtualization: // ~data: 'data, // any collection of 'item
-  bool=?, // deprecated
+  // ~data: 'data, // any collection of 'item
+  ~disableVirtualization: bool=?, // deprecated
   ~extraData: 'extraData=?,
   ~getItem: ('data, int) => 'item=?,
   ~getItemCount: 'data => int=?,

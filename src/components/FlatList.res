@@ -16,8 +16,8 @@ external make: (
   ~getItemLayout: (array<'item>, int) => VirtualizedList.itemLayout=?,
   ~numColumns: 'int=?,
   // VirtualizedList props
-  ~_ListEmptyComponent: // ~_CellRendererComponent: VirtualizedList.cellRendererComponent('item)=?,
-  unit => React.element=?,
+  // ~_CellRendererComponent: VirtualizedList.cellRendererComponent('item)=?,
+  ~_ListEmptyComponent: unit => React.element=?,
   ~_ListFooterComponent: unit => React.element=?,
   ~_ListFooterComponentStyle: Style.t=?,
   ~_ListHeaderComponent: unit => React.element=?,
@@ -27,8 +27,8 @@ external make: (
   ~disableVirtualization: bool=?, // deprecated
   ~extraData: 'extraData=?,
   // ~getItem: ('data, int) => 'item=?,
-  ~initialNumToRender: // ~getItemCount: 'data => int=?,
-  // ~getItemLayout: ('data, int) => VirtualizedList.itemLayout=?,
+  // ~getItemCount: 'data => int=?,
+  ~initialNumToRender: // ~getItemLayout: ('data, int) => VirtualizedList.itemLayout=?,
   int=?,
   ~initialScrollIndex: int=?,
   ~inverted: bool=?,

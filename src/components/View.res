@@ -21,11 +21,11 @@ module View = {
 external make: (
   ~ref: ref=?,
   // ! \\ If you adjust props below,
-  ~accessibilityActions: // be sure to adjust all places that use the same comment as below
+  // be sure to adjust all places that use the same comment as below
   // ↓
   // (unchanged in 0.64.0)
   // rescript-react-native 0.64 View props
-  array<Accessibility.actionInfo>=?,
+  ~accessibilityActions: array<Accessibility.actionInfo>=?,
   ~accessibilityElementsHidden: bool=?,
   ~accessibilityHint: string=?,
   ~accessibilityIgnoresInvertColors: bool=?,
