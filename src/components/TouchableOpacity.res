@@ -40,7 +40,7 @@ external make: (
   ~testID: string=?,
   ~touchSoundDisabled: bool=?,
   ~children: React.element=?,
-  // react-native-web 0.16 View props
+  // react-native-web 0.16 Touchable (View) props
   ~href: string=?,
   ~hrefAttrs: Web.hrefAttrs=?,
   ~onMouseDown: ReactEvent.Mouse.t => unit=?,
