@@ -59,4 +59,6 @@ external make: (
   // react-native-web 0.16 View props
   ~href: string=?,
   ~hrefAttrs: Web.hrefAttrs=?,
+  ~onHoverIn: ReactEvent.Mouse.t => unit=?,
+  ~onHoverOut: ReactEvent.Mouse.t => unit=?,
 ) => React.element = "Pressable"
