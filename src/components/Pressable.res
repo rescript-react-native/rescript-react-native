@@ -56,6 +56,7 @@ external make: (
   ~style: interactionState => Style.t=?,
   ~testID: string=?,
   ~testOnly_pressed: bool=?,
+  ~unstable_pressDelay: int=?,
   // react-native-web 0.16 Pressable (View) props
   ~href: string=?,
   ~hrefAttrs: Web.hrefAttrs=?,
