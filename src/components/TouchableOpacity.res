@@ -40,4 +40,14 @@ external make: (
   ~testID: string=?,
   ~touchSoundDisabled: bool=?,
   ~children: React.element=?,
+  // react-native-web 0.16 Touchable (View) props
+  ~href: string=?,
+  ~hrefAttrs: Web.hrefAttrs=?,
+  ~onMouseDown: ReactEvent.Mouse.t => unit=?,
+  ~onMouseEnter: ReactEvent.Mouse.t => unit=?,
+  ~onMouseLeave: ReactEvent.Mouse.t => unit=?,
+  ~onMouseMove: ReactEvent.Mouse.t => unit=?,
+  ~onMouseOver: ReactEvent.Mouse.t => unit=?,
+  ~onMouseOut: ReactEvent.Mouse.t => unit=?,
+  ~onMouseUp: ReactEvent.Mouse.t => unit=?,
 ) => React.element = "TouchableOpacity"
