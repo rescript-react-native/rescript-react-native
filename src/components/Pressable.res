@@ -56,7 +56,7 @@ external make: (
   ~style: interactionState => Style.t=?,
   ~testID: string=?,
   ~testOnly_pressed: bool=?,
-  // react-native-web 0.16 View props
+  // react-native-web 0.16 Pressable (View) props
   ~href: string=?,
   ~hrefAttrs: Web.hrefAttrs=?,
   ~onHoverIn: ReactEvent.Mouse.t => unit=?,
