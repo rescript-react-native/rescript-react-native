@@ -310,4 +310,5 @@ external make: (
   ~onMouseOver: ReactEvent.Mouse.t => unit=?,
   ~onMouseOut: ReactEvent.Mouse.t => unit=?,
   ~onMouseUp: ReactEvent.Mouse.t => unit=?,
+  ~autoGrow: bool=?,
 ) => React.element = "TextInput"
