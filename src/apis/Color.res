@@ -1,5 +1,8 @@
 type t = string
 
+@module("react-native")
+external processColor: string => string = "processColor"
+
 let rgb = (~r: int, ~g: int, ~b: int) => j`rgb($r, $g, $b)`
 let rgba = (~r: int, ~g: int, ~b: int, ~a: float) => j`rgba($r, $g, $b, $a)`
 
