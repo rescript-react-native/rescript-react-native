@@ -13,7 +13,7 @@ Android and [Web](https://github.com/necolas/react-native-web) apps.
 
 ## Getting Started
 
-Check our [getting started](https://rescript-react-native.github.io/en/docs/)
+Check our [getting started](https://rescript-react-native.github.io/docs/)
 guide for details.
 
 ## Documentation
