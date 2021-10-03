@@ -4,7 +4,7 @@
   "version": "0.64.3",
   "peerDependencies": {
     "@rescript/react": "^0.10.0",
-    "bs-platform": "^9.0.0",
+    "rescript": "^9.1.4",
     "react-native": "^0.64.0"
   },
   "repository": "https://github.com/rescript-react-native/rescript-react-native.git",
@@ -23,11 +23,11 @@
   ],
   "scripts": {
     "format:most": "prettier --write \"**/*.{md,json,js,css}\"",
-    "format:re": "find . -name \"*.re\" -or -name \"*.rei\" | grep -v \"node_modules\" | xargs bsrefmt --in-place",
-    "format": "yarn format:most && yarn format:re",
-    "re:start": "bsb -make-world -w",
-    "re:build": "bsb -make-world",
-    "re:clean-build": "bsb -clean-world -make-world",
+    "format:res": "rescript format -all",
+    "format": "yarn format:most && yarn format:res",
+    "re:start": "rescript build -w",
+    "re:build": "rescript",
+    "re:clean-build": "rescript clean && rescript",
     "start": "yarn re:start",
     "build": "yarn re:build",
     "test": "yarn re:clean-build",
@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@rescript/react": "^0.10.0",
-    "bs-platform": "^9.0.0",
+    "rescript": "^9.1.4",
     "husky": "^4.0.0",
     "lint-staged": "^10.0.0",
     "npm-run-all": "^3.0.0",
@@ -46,12 +46,8 @@
     "trailingComma": "all"
   },
   "lint-staged": {
-    "*.{md,json,js,css}": [
-      "prettier --write"
-    ],
-    "*.{re,rei}": [
-      "bsrefmt --in-place"
-    ]
+    "*.{md,json,js,css}": "prettier --write",
+    "*.{res,resi}": "rescript format"
   },
   "husky": {
     "hooks": {

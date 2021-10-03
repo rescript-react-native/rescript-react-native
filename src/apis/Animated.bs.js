@@ -1,6 +1,6 @@
 'use strict';
 
-var Caml_option = require("bs-platform/lib/js/caml_option.js");
+var Caml_option = require("rescript/lib/js/caml_option.js");
 var ReactNative = require("react-native");
 var Text$ReactNative = require("../components/Text.bs.js");
 var View$ReactNative = require("../components/View.bs.js");
@@ -24,8 +24,8 @@ function ValueAnimations(Val) {
 
 var Interpolation = {};
 
-function interpolate(prim, prim$1) {
-  return prim.interpolate(prim$1);
+function interpolate(prim0, prim1) {
+  return prim0.interpolate(prim1);
 }
 
 var ValueOperations = {
@@ -68,20 +68,20 @@ var ValueXY = {
   Timing: Timing$1
 };
 
-function timing(prim, prim$1) {
-  return ReactNative.Animated.timing(prim, prim$1);
+function timing(prim0, prim1) {
+  return ReactNative.Animated.timing(prim0, prim1);
 }
 
-function spring(prim, prim$1) {
-  return ReactNative.Animated.spring(prim, prim$1);
+function spring(prim0, prim1) {
+  return ReactNative.Animated.spring(prim0, prim1);
 }
 
-function decay(prim, prim$1) {
-  return ReactNative.Animated.decay(prim, prim$1);
+function decay(prim0, prim1) {
+  return ReactNative.Animated.decay(prim0, prim1);
 }
 
-function start(prim, prim$1, prim$2) {
-  prim.start(prim$1 !== undefined ? Caml_option.valFromOption(prim$1) : undefined);
+function start(prim0, prim1, prim2) {
+  prim0.start(prim1 !== undefined ? Caml_option.valFromOption(prim1) : undefined);
   
 }
 
