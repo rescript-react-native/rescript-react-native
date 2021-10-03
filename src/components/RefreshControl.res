@@ -10,6 +10,7 @@ external make: (
   ~progressBackgroundColor: Color.t=?,
   ~progressViewOffset: float=?,
   ~refreshing: bool,
+  ~size: [#default | #large]=?,
   ~tintColor: Color.t=?,
   ~title: string=?,
   ~titleColor: Color.t=?,
