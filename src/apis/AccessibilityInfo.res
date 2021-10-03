@@ -16,6 +16,9 @@ external addEventListener: @string
 external announceForAccessibility: string => unit = "announceForAccessibility"
 
 @scope("AccessibilityInfo") @module("react-native")
+external getRecommendedTimeoutMillis: float => Js.Promise.t<float> = "getRecommendedTimeoutMillis"
+
+@scope("AccessibilityInfo") @module("react-native")
 external isBoldTextEnabled: unit => Js.Promise.t<bool> = "isBoldTextEnabled"
 
 @scope("AccessibilityInfo") @module("react-native")
