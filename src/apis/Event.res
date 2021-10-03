@@ -108,6 +108,17 @@ module ResponderSyntheticEvent = (
   @get external touchHistory: t => touchHistory = "touchHistory"
 }
 
+module BlurEvent = {
+  include SyntheticEvent({
+    type _payload = {target: float}
+  })
+}
+module FocusEvent = {
+  include SyntheticEvent({
+    type _payload = {target: float}
+  })
+}
+
 module LayoutEvent = {
   type layout = {
     x: float,
@@ -206,9 +217,11 @@ module TargetEvent = {
   })
 }
 
+type blurEvent = BlurEvent.t
+type focusEvent = FocusEvent.t
 type layoutEvent = LayoutEvent.t
-type textLayoutEvent = TextLayoutEvent.t
 type pressEvent = PressEvent.t
 type scrollEvent = ScrollEvent.t
 type switchChangeEvent = SwitchChangeEvent.t
 type targetEvent = TargetEvent.t
+type textLayoutEvent = TextLayoutEvent.t
