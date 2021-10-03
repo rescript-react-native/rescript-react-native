@@ -1,7 +1,19 @@
-type announcementResult = {
-  announcement: string,
-  success: bool,
-}
+type announcementResult = {announcement: string, success: bool}
+
+@scope("AccessibilityInfo") @module("react-native")
+external addEventListener: @string
+[
+  | #boldTextChanged(bool => unit)
+  | #grayscaleChanged(bool => unit)
+  | #invertColorsChanged(bool => unit)
+  | #reduceMotionChanged(bool => unit)
+  | #screenReaderChanged(bool => unit)
+  | #reduceTransparencyChanged(bool => unit)
+  | #announcementFinished(announcementResult => unit)
+] => unit = "addEventListener"
+
+@scope("AccessibilityInfo") @module("react-native")
+external announceForAccessibility: string => unit = "announceForAccessibility"
 
 @scope("AccessibilityInfo") @module("react-native")
 external isBoldTextEnabled: unit => Js.Promise.t<bool> = "isBoldTextEnabled"
@@ -22,24 +34,6 @@ external isReduceTransparencyEnabled: unit => Js.Promise.t<bool> = "isReduceTran
 external isScreenReaderEnabled: unit => Js.Promise.t<bool> = "isScreenReaderEnabled"
 
 @scope("AccessibilityInfo") @module("react-native")
-external setAccessibilityFocus: NativeTypes.nodeHandle => unit = "setAccessibilityFocus"
-
-@scope("AccessibilityInfo") @module("react-native")
-external announceForAccessibility: string => unit = "announceForAccessibility"
-
-@scope("AccessibilityInfo") @module("react-native")
-external addEventListener: @string
-[
-  | #boldTextChanged(bool => unit)
-  | #grayscaleChanged(bool => unit)
-  | #invertColorsChanged(bool => unit)
-  | #reduceMotionChanged(bool => unit)
-  | #screenReaderChanged(bool => unit)
-  | #reduceTransparencyChanged(bool => unit)
-  | #announcementFinished(announcementResult => unit)
-] => unit = "addEventListener"
-
-@scope("AccessibilityInfo") @module("react-native")
 external removeEventListener: @string
 [
   | #boldTextChanged(bool => unit)
@@ -50,3 +44,6 @@ external removeEventListener: @string
   | #reduceTransparencyChanged(bool => unit)
   | #announcementFinished(announcementResult => unit)
 ] => unit = "removeEventListener"
+
+@scope("AccessibilityInfo") @module("react-native")
+external setAccessibilityFocus: NativeTypes.nodeHandle => unit = "setAccessibilityFocus"
