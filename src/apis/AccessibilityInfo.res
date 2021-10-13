@@ -10,7 +10,7 @@ external addEventListener: @string
   | #screenReaderChanged(bool => unit)
   | #reduceTransparencyChanged(bool => unit)
   | #announcementFinished(announcementResult => unit)
-] => unit = "addEventListener"
+] => EventSubscription.t = "addEventListener"
 
 @scope("AccessibilityInfo") @module("react-native")
 external announceForAccessibility: string => unit = "announceForAccessibility"
@@ -36,7 +36,9 @@ external isReduceTransparencyEnabled: unit => Js.Promise.t<bool> = "isReduceTran
 @scope("AccessibilityInfo") @module("react-native")
 external isScreenReaderEnabled: unit => Js.Promise.t<bool> = "isScreenReaderEnabled"
 
-@scope("AccessibilityInfo") @module("react-native")
+@deprecated("Instead of using removeEventListener(), invoke `remove()` on the subscription itself.")
+@scope("AccessibilityInfo")
+@module("react-native")
 external removeEventListener: @string
 [
   | #boldTextChanged(bool => unit)
