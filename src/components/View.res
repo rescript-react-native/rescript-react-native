@@ -24,7 +24,7 @@ external make: (
   // be sure to adjust all places that use the same comment as below
   // ↓
   // (unchanged in 0.64.0)
-  // rescript-react-native 0.64 View props
+  // rescript-react-native 0.64 || 0.65 View props
   ~accessibilityActions: array<Accessibility.actionInfo>=?,
   ~accessibilityElementsHidden: bool=?,
   ~accessibilityHint: string=?,
