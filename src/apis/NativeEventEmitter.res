@@ -11,6 +11,7 @@ external addListener: (t, string, 'a => unit) => subscription = "addListener"
 @send
 external removeAllListeners: (t, string) => unit = "removeAllListeners"
 
+@deprecated("Instead of using removeSubscription(), invoke `remove()` on the subscription itself.")
 @send
 external removeSubscription: (t, subscription) => unit = "removeSubscription"
 
