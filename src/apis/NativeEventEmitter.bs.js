@@ -1,7 +1,1 @@
-'use strict';
-
-
-var Subscription = {};
-
-exports.Subscription = Subscription;
-/* No side effect */
+/* This output is empty. Its source's type definitions, externals and/or unused code got optimized away. */
