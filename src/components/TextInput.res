@@ -145,7 +145,7 @@ external make: (
   // TextInput props
   ~allowFontScaling: bool=?,
   ~autoCapitalize: autoCapitalize=?,
-  ~autoCompleteType: @string
+  ~autoComplete: @string
   [
     | #off
     | #username
