@@ -72,5 +72,6 @@ type role = [
   | #tablist
   | #text
   | #timer
+  | #togglebutton
   | #toolbar
 ]
