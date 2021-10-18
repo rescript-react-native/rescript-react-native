@@ -14,6 +14,9 @@ module Permission = {
   external addVoicemail: t = "ADD_VOICEMAIL"
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
+  external bluetoothAdvertise: t = "BLUETOOTH_ADVERTISE"
+
+  @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
   external bodySensors: t = "BODY_SENSORS"
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
