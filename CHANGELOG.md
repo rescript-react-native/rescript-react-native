@@ -1,14 +1,32 @@
 # Changelog of `rescript-react-native`
 
+## 0.66.0 - 2021-10-25
+
+### Breaking changes
+
+- Remove Picker & PickerIOS (Use <https://github.com/react-native-picker/picker> & <https://github.com/rescript-react-native/picker> instead) [9e45fcd](https://github.com/rescript-react-native/rescript-react-native/commit/9e45fcd) by [@MoOx](https://github.com/MoOx)
+- Update `TextInput` `autoCompleteType` prop to `autoComplete` [ee307e6](https://github.com/rescript-react-native/rescript-react-native/commit/ee307e6) by [@MoOx](https://github.com/MoOx)
+- Change `TextInput` `autoComplete` prop values (add more & change some to quoted polymorphic variants)) [21e802d](https://github.com/rescript-react-native/rescript-react-native/commit/21e802d) by [@MoOx](https://github.com/MoOx)
+
+### New features
+
+- Add `#togglebutton` to `accessibilityRole` prop [0b4688b](https://github.com/rescript-react-native/rescript-react-native/commit/0b4688b) by [@MoOx](https://github.com/MoOx)
+- Add `accessibilityRole` `#tabbar` value [7c8f283](https://github.com/rescript-react-native/rescript-react-native/commit/7c8f283) by [@MoOx](https://github.com/MoOx)
+- Add `Button` `accessible`, `accessibilityActions` & `onAccessibilityAction` props [484e344](https://github.com/rescript-react-native/rescript-react-native/commit/484e344) by [@MoOx](https://github.com/MoOx)
+- Add `PermissionsAndroid` `bluetoothAdvertise` permission [e1ca5e5](https://github.com/rescript-react-native/rescript-react-native/commit/e1ca5e5) by [@MoOx](https://github.com/MoOx)
+- Add `PlatformColor` iOS missing standard colors [92e7d77](https://github.com/rescript-react-native/rescript-react-native/commit/92e7d77) by [@MoOx](https://github.com/MoOx)
+- Add `Pressable` `foreground` option for ripple config for Android [9bd7499](https://github.com/rescript-react-native/rescript-react-native/commit/9bd7499) by [@MoOx](https://github.com/MoOx)
+- Add `Text` `accessibilityActions` & `onAccessibilityActions` props [9b52e53](https://github.com/rescript-react-native/rescript-react-native/commit/9b52e53) by [@MoOx](https://github.com/MoOx)
+
 ## 0.65.0 - 2021-10-18
 
-## Notable changes
+### Notable changes
 
 - `rescript` package is now replacing `bs-platform`.
 - Several `removeEventListener` calls were removed or deprecated in React Native 0.65.
   You might have to update your code to reflect this. Check the full list below (or just follow compilation warnings/errors).
 
-## Breaking changes
+### Breaking changes
 
 - Use `rescript@^9.1.4` instead of `bs-platform@` as a peerDependency [a2ae907](https://github.com/rescript-react-native/rescript-react-native/commit/a2ae907) by [@MoOx](https://github.com/MoOx)
 - Replace `EventSubscription.t` so you can call `.remove()` on `EventSubscription.t` instead of `->EventSubscription.remove()`[71399ce](https://github.com/rescript-react-native/rescript-react-native/commit/71399ce) by [@MoOx](https://github.com/MoOx)
@@ -18,13 +36,13 @@
 - Remove `NativeEventEmitter.Subscription` in favor of just calling `.remove()` method on listeners. [0e4bb2d](https://github.com/rescript-react-native/rescript-react-native/commit/0e4bb2d) by [@MoOx](https://github.com/MoOx)
 - Change `Dimensions.addEventListener` (now returns an `EventSubscription.t` so you can call `remove()` on listener directly ) [1131382](https://github.com/rescript-react-native/rescript-react-native/commit/1131382) by [@MoOx](https://github.com/MoOx)
 
-## Deprecations
+### Deprecations
 
 - Deprecate `AccessibilityInfo.removeEventListener` in favor of `remove` method on the listener itself [44f4465](https://github.com/rescript-react-native/rescript-react-native/commit/44f4465) by [@MoOx](https://github.com/MoOx)
 - Deprecate `EventEmitter#removeSubscription` in favor of `remove()` on subscription itself [a771dc8](https://github.com/rescript-react-native/rescript-react-native/commit/a771dc8) by [@MoOx](https://github.com/MoOx)
 - Deprecate `Linking.removeEventListener`. Instead, call `remove()` on the listener itself [4b98e2b](https://github.com/rescript-react-native/rescript-react-native/commit/4b98e2b) by [@MoOx](https://github.com/MoOx)
 
-## New features
+### New features
 
 - Add `AccessibilityInfo.getRecommendedTimeoutMillis` [a90fe94](https://github.com/rescript-react-native/rescript-react-native/commit/a90fe94) by [@MoOx](https://github.com/MoOx)
 - Add `Appearance.addChangeListener` [2cda177](https://github.com/rescript-react-native/rescript-react-native/commit/2cda177) by [@MoOx](https://github.com/MoOx)
