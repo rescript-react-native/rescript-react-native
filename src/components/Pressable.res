@@ -4,8 +4,9 @@ type rippleConfig
 
 @obj
 external rippleConfig: (
-  ~color: Color.t=?,
   ~borderless: bool=?,
+  ~color: Color.t=?,
+  ~foreground: bool=?,
   ~radius: float=?,
   unit,
 ) => rippleConfig = ""
