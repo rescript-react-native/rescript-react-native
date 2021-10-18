@@ -5,6 +5,7 @@ external make: (
   ~ref: ref=?,
   // Button props
   ~accessibilityLabel: string=?,
+  ~accessibilityState: Accessibility.state=?,
   ~color: Color.t=?,
   ~disabled: bool=?,
   ~hasTVPreferredFocus: bool=?,

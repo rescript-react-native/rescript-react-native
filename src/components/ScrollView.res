@@ -74,9 +74,10 @@ external make: (
   ~snapToInterval: float=?,
   ~snapToOffsets: array<float>=?,
   ~snapToStart: bool=?,
+  ~stickyHeaderHiddenOnScroll: bool=?,
   ~stickyHeaderIndices: array<int>=?,
   ~zoomScale: float=?,
-  // rescript-react-native 0.64 View props
+  // rescript-react-native 0.64 || 0.65 View props
   ~accessibilityActions: array<Accessibility.actionInfo>=?,
   ~accessibilityElementsHidden: bool=?,
   ~accessibilityHint: string=?,

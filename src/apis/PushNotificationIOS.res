@@ -169,3 +169,6 @@ external finish: fetchResult => unit = "fetchResult"
 @module("react-native") @scope("PushNotificationIOS")
 external getInitialNotification: unit => Js.Promise.t<Js.Nullable.t<Notification.t>> =
   "getInitialNotification"
+
+@module("react-native") @scope("PushNotificationIOS")
+external getAuthorizationStatus: (float => unit) => unit = "getAuthorizationStatus"

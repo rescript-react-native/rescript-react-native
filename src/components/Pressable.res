@@ -47,6 +47,8 @@ external make: (
   ~delayLongPress: int=?,
   ~disabled: bool=?,
   ~hitSlop: View.edgeInsets=?,
+  ~onBlur: Event.blurEvent => unit=?,
+  ~onFocus: Event.focusEvent => unit=?,
   ~onLayout: Event.layoutEvent => unit=?,
   ~onLongPress: Event.pressEvent => unit=?,
   ~onPress: Event.pressEvent => unit=?,

@@ -26,7 +26,9 @@ type url = {url: string}
 type eventType = [#url]
 
 @scope("Linking") @module("react-native")
-external addEventListener: (eventType, url => unit) => unit = "addEventListener"
+external addEventListener: (eventType, url => unit) => EventSubscription.t = "addEventListener"
 
-@scope("Linking") @module("react-native")
+@deprecated("Instead of using removeEventListener(), invoke `remove()` on the subscription itself.")
+@scope("Linking")
+@module("react-native")
 external removeEventListener: (eventType, url => unit) => unit = "removeEventListener"

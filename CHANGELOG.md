@@ -1,5 +1,45 @@
 # Changelog of `rescript-react-native`
 
+## 0.65.0 - 2021-10-18
+
+## Notable changes
+
+- `rescript` package is now replacing `bs-platform`.
+- Several `removeEventListener` calls were removed or deprecated in React Native 0.65.
+  You might have to update your code to reflect this. Check the full list below (or just follow compilation warnings/errors).
+
+## Breaking changes
+
+- Use `rescript@^9.1.4` instead of `bs-platform@` as a peerDependency [a2ae907](https://github.com/rescript-react-native/rescript-react-native/commit/a2ae907) by [@MoOx](https://github.com/MoOx)
+- Replace `EventSubscription.t` so you can call `.remove()` on `EventSubscription.t` instead of `->EventSubscription.remove()`[71399ce](https://github.com/rescript-react-native/rescript-react-native/commit/71399ce) by [@MoOx](https://github.com/MoOx)
+- Remove `NativeEventEmitter.removeSubscription` in favor of `remove()` on subscription itself [df060f9](https://github.com/rescript-react-native/rescript-react-native/commit/df060f9) by [@MoOx](https://github.com/MoOx)
+- Remove `Keyboard` `removeAllListeners` and `removeListener` (you should use `remove` on listener itself) [2091cb3](https://github.com/rescript-react-native/rescript-react-native/commit/2091cb3) by [@MoOx](https://github.com/MoOx)
+- Remove `AppState.removeEventListener`. Instead, use the `remove()` method on the listener itself [84284e8](https://github.com/rescript-react-native/rescript-react-native/commit/84284e8) by [@MoOx](https://github.com/MoOx)
+- Remove `NativeEventEmitter.Subscription` in favor of just calling `.remove()` method on listeners. [0e4bb2d](https://github.com/rescript-react-native/rescript-react-native/commit/0e4bb2d) by [@MoOx](https://github.com/MoOx)
+- Change `Dimensions.addEventListener` (now returns an `EventSubscription.t` so you can call `remove()` on listener directly ) [1131382](https://github.com/rescript-react-native/rescript-react-native/commit/1131382) by [@MoOx](https://github.com/MoOx)
+
+## Deprecations
+
+- Deprecate `AccessibilityInfo.removeEventListener` in favor of `remove` method on the listener itself [44f4465](https://github.com/rescript-react-native/rescript-react-native/commit/44f4465) by [@MoOx](https://github.com/MoOx)
+- Deprecate `EventEmitter#removeSubscription` in favor of `remove()` on subscription itself [a771dc8](https://github.com/rescript-react-native/rescript-react-native/commit/a771dc8) by [@MoOx](https://github.com/MoOx)
+- Deprecate `Linking.removeEventListener`. Instead, call `remove()` on the listener itself [4b98e2b](https://github.com/rescript-react-native/rescript-react-native/commit/4b98e2b) by [@MoOx](https://github.com/MoOx)
+
+## New features
+
+- Add `AccessibilityInfo.getRecommendedTimeoutMillis` [a90fe94](https://github.com/rescript-react-native/rescript-react-native/commit/a90fe94) by [@MoOx](https://github.com/MoOx)
+- Add `Appearance.addChangeListener` [2cda177](https://github.com/rescript-react-native/rescript-react-native/commit/2cda177) by [@MoOx](https://github.com/MoOx)
+- Add `Button` `accessibilityState` prop [7573c50](https://github.com/rescript-react-native/rescript-react-native/commit/7573c50) by [@MoOx](https://github.com/MoOx)
+- Add `Color.processColor` method [0c880f8](https://github.com/rescript-react-native/rescript-react-native/commit/0c880f8) by [@MoOx](https://github.com/MoOx)
+- Add `DynamicColorIOS` `highContrastLight` & `highContrastDark` optional values (with new `DynamicColorIOS.dynamicColor()` since they are optional) [cc4132b](https://github.com/rescript-react-native/rescript-react-native/commit/cc4132b) by [@MoOx](https://github.com/MoOx)
+- Add `Pressable` `onBlur` and `onFocus` props [575a634](https://github.com/rescript-react-native/rescript-react-native/commit/575a634) by [@MoOx](https://github.com/MoOx)
+- Add `Pressable` `onHoverIn` and `onHoverOut` react-native-web 0.16 props [e625be2](https://github.com/rescript-react-native/rescript-react-native/commit/e625be2) by [@jfrolich](https://github.com/jfrolich)
+- Add `Pressable` `unstable_pressDelay` prop [3d3bf2b](https://github.com/rescript-react-native/rescript-react-native/commit/3d3bf2b) & [0117e3e](https://github.com/rescript-react-native/rescript-react-native/commit/0117e3e) by [@jfrolich](https://github.com/jfrolich)
+- Add `PushNotificationIOS.getAuthorizationStatus` method [ffc2f0c](https://github.com/rescript-react-native/rescript-react-native/commit/ffc2f0c) by [@MoOx](https://github.com/MoOx)
+- Add `RefreshControl` `size` option [5678d16](https://github.com/rescript-react-native/rescript-react-native/commit/5678d16) by [@MoOx](https://github.com/MoOx)
+- Add `stickyHeaderHiddenOnScroll` props to `ScrollView` & friends [d981203](https://github.com/rescript-react-native/rescript-react-native/commit/d981203) by [@MoOx](https://github.com/MoOx)
+- Add `Text` `onPressIn` & `onPressOut` props [536ea0e](https://github.com/rescript-react-native/rescript-react-native/commit/536ea0e) by [@MoOx](https://github.com/MoOx)
+- Add `TouchableHighlight` & `TouchableOpacity` react-native-web 0.16 View prop [fbf9571](https://github.com/rescript-react-native/rescript-react-native/commit/fbf9571) by [@jfrolich](https://github.com/jfrolich)
+
 ## 0.64.3 - 2021-05-02
 
 🚨 Minor Breaking changes for React Native Web users only

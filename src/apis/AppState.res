@@ -10,13 +10,4 @@ external addEventListener: @string
   | #focus(unit => unit)
   | #blur(unit => unit)
   | #memoryWarning(unit => unit)
-] => unit = "addEventListener"
-
-@scope("AppState") @module("react-native")
-external removeEventListener: @string
-[
-  | #change(t => unit)
-  | #focus(unit => unit)
-  | #blur(unit => unit)
-  | #memoryWarning(unit => unit)
-] => unit = "removeEventListener"
+] => EventSubscription.t = "addEventListener"
