@@ -94,6 +94,46 @@ type keyPressEvent = KeyPressEvent.t
 
 type autoCapitalize = [#characters | #words | #sentences | #none]
 
+type autoComplete = [
+  | #"birthdate-day"
+  | #"birthdate-full"
+  | #"birthdate-month"
+  | #"birthdate-year"
+  | #"cc-csc"
+  | #"cc-exp-day"
+  | #"cc-exp-month"
+  | #"cc-exp-year"
+  | #"cc-exp"
+  | #"cc-number"
+  | #"name-family"
+  | #"name-given"
+  | #"name-middle-initial"
+  | #"name-middle"
+  | #"name-prefix"
+  | #"name-suffix"
+  | #"password-new"
+  | #"postal-address-country"
+  | #"postal-address-extended-postal-code"
+  | #"postal-address-extended"
+  | #"postal-address-locality"
+  | #"postal-address-region"
+  | #"postal-address"
+  | #"postal-code"
+  | #"sms-otp"
+  | #"street-address"
+  | #"tel-country-code"
+  | #"tel-device"
+  | #"tel-national"
+  | #"username-new"
+  | #email
+  | #gender
+  | #name
+  | #off
+  | #password
+  | #tel
+  | #username
+]
+
 type t
 
 type importantForAutofill = [
@@ -145,22 +185,7 @@ external make: (
   // TextInput props
   ~allowFontScaling: bool=?,
   ~autoCapitalize: autoCapitalize=?,
-  ~autoCompleteType: @string
-  [
-    | #off
-    | #username
-    | #password
-    | #email
-    | #name
-    | #tel
-    | @as("street-address") #streetAddress
-    | @as("postal-code") #postalCode
-    | @as("cc-number") #ccNumber
-    | @as("cc-csc") #ccCsc
-    | @as("cc-exp") #ccExp
-    | @as("cc-exp-month") #ccExpMonth
-    | @as("cc-exp-year") #ccExpYear
-  ]=?,
+  ~autoComplete: autoComplete=?,
   ~autoCorrect: bool=?,
   ~autoFocus: bool=?,
   ~blurOnSubmit: bool=?,
@@ -246,7 +271,7 @@ external make: (
   ~textContentType: textContentType=?,
   ~underlineColorAndroid: Color.t=?,
   ~value: string=?,
-  // rescript-react-native 0.64 || 0.65 View props
+  // rescript-react-native 0.64 || 0.65 || 0.66 View props
   ~accessibilityActions: array<Accessibility.actionInfo>=?,
   ~accessibilityElementsHidden: bool=?,
   ~accessibilityHint: string=?,

@@ -69,8 +69,10 @@ type role = [
   | #spinbutton
   | #summary
   | #tab
+  | #tabbar
   | #tablist
   | #text
   | #timer
+  | #togglebutton
   | #toolbar
 ]

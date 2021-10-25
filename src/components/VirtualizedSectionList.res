@@ -145,7 +145,7 @@ external make: (
   ~stickyHeaderHiddenOnScroll: bool=?,
   ~stickyHeaderIndices: array<int>=?,
   ~zoomScale: float=?,
-  // rescript-react-native 0.64 || 0.65 View props
+  // rescript-react-native 0.64 || 0.65 || 0.66 View props
   ~accessibilityActions: array<Accessibility.actionInfo>=?,
   ~accessibilityElementsHidden: bool=?,
   ~accessibilityHint: string=?,

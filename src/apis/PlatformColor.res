@@ -24,29 +24,99 @@ external unsafeGet7: (string, string, string, string, string, string, string) =>
 external unsafeGetMultiple: array<string> => Color.t = "PlatformColor"
 
 module Ios = {
-  type t = [
+  // Standard Colors <https://developer.apple.com/documentation/uikit/uicolor/standard_colors>
+  type adaptableColors = [
+    | #systemBlue
+    | #systemBrown
+    | #systemGreen
+    | #systemIndigo
+    | #systemOrange
+    | #systemPink
+    | #systemPurple
+    | #systemRed
+    | #systemTeal
+    | #systemYellow
+  ]
+  type adaptableGrayColors = [
+    | #systemGray
+    | #systemGray2
+    | #systemGray3
+    | #systemGray4
+    | #systemGray5
+    | #systemGray6
+  ]
+  type transparentColors = [
     | #clear
-    | #darkText
+  ]
+  type fixedColors = [
+    | #black
+    | #blue
+    | #brown
+    | #cyan
+    | #darkGray
+    | #gray
+    | #green
+    | #lightGray
+    | #magenta
+    | #orange
+    | #purple
+    | #red
+    | #white
+    | #yellow
+  ]
+
+  // UI Element Colors https://developer.apple.com/documentation/uikit/uicolor/ui_element_colors
+  type labelColors = [
     | #label
-    | #lightText
-    | #link
-    | #opaqueSeparator
-    | #placeholderText
-    | #quaternaryLabel
-    | #quaternarySystemFill
     | #secondaryLabel
-    | #secondarySystemBackground
-    | #secondarySystemFill
-    | #secondarySystemGroupedBackground
-    | #separator
-    | #systemBackground
-    | #systemFill
-    | #systemGroupedBackground
     | #tertiaryLabel
-    | #tertiarySystemBackground
+    | #quaternaryLabel
+  ]
+  type fillColors = [
+    | #systemFill
+    | #secondarySystemFill
     | #tertiarySystemFill
+    | #quaternarySystemFill
+  ]
+  type textColors = [
+    | #placeholderText
+  ]
+  type standardContentBackgroundColors = [
+    | #systemBackground
+    | #secondarySystemBackground
+    | #tertiarySystemBackground
+  ]
+  type groupedContentBackgroundColors = [
+    | #systemGroupedBackground
+    | #secondarySystemGroupedBackground
     | #tertiarySystemGroupedBackground
   ]
+  type separatorColors = [
+    | #separator
+    | #opaqueSeparator
+  ]
+  type linkColors = [
+    | #link
+  ]
+  type nonadaptableColors = [
+    | #darkText
+    | #lightText
+  ]
+  type t = [
+    | adaptableColors
+    | adaptableGrayColors
+    | transparentColors
+    | fixedColors
+    | labelColors
+    | fillColors
+    | textColors
+    | standardContentBackgroundColors
+    | groupedContentBackgroundColors
+    | separatorColors
+    | linkColors
+    | nonadaptableColors
+  ]
+
   @module("react-native") external get: t => Color.t = "PlatformColor"
   @module("react-native")
   external get2: (t, t) => Color.t = "PlatformColor"
