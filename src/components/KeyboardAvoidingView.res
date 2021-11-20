@@ -6,6 +6,7 @@ type behavior = [#height | #position | #padding]
 external make: (
   ~ref: ref=?,
   // KeyboardAvoidingView props
+  ~enabled: bool=?,
   ~keyboardVerticalOffset: float=?,
   ~behavior: behavior=?,
   ~contentContainerStyle: Style.t=?,
