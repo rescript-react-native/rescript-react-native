@@ -1,5 +1,9 @@
 # Changelog of `rescript-react-native`
 
+## 0.66.1 - 2021-12-06
+
+- Add missing `enabled` prop to `KeyboardAvoidingView` [dbe1bfc](https://github.com/rescript-react-native/rescript-react-native/commit/dbe1bfc) by [@barodeur](https://github.com/barodeur)
+
 ## 0.66.0 - 2021-10-25
 
 ### Breaking changes
