@@ -6,10 +6,10 @@ type behavior = [#height | #position | #padding]
 external make: (
   ~ref: ref=?,
   // KeyboardAvoidingView props
-  ~enabled: bool=?,
-  ~keyboardVerticalOffset: float=?,
   ~behavior: behavior=?,
   ~contentContainerStyle: Style.t=?,
+  ~enabled: bool=?,
+  ~keyboardVerticalOffset: float=?,
   // rescript-react-native 0.64 || 0.65 || 0.66 View props
   ~accessibilityActions: array<Accessibility.actionInfo>=?,
   ~accessibilityElementsHidden: bool=?,
