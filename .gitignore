@@ -6,9 +6,6 @@
 # node
 node_modules
 
-# npm unused lock file (we use yarn.lock)
-package-lock.json
-
 # ReScript artifacts
 # *.bs.js # we do want this files to ensure zero-cost
 .bsb.lock
