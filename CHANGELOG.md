@@ -1,5 +1,15 @@
 # Changelog of `rescript-react-native`
 
+## 0.67.0 - 2022-03-08
+
+This changes are just to follow [React Native 0.67 changes](https://github.com/facebook/react-native/blob/main/CHANGELOG.md#v0670).
+
+- Add `ACCESS_MEDIA_LOCATION` permission to PermisionsAndroid library [5338327](https://github.com/rescript-react-native/rescript-react-native/commit/5338327) by [@MoOx](https://github.com/MoOx)
+- Added `cancelButtonTintColor` prop for `ActionSheetIOS` to change only the text color of the cancel button [42dd7ee](https://github.com/rescript-react-native/rescript-react-native/commit/42dd7ee) by [@MoOx](https://github.com/MoOx)
+- Add missing `Keyboard.removeListener` [05a5656](https://github.com/rescript-react-native/rescript-react-native/commit/05a5656) by [@MoOx](https://github.com/MoOx)
+- Remove `#high` and `#balanced` as values for `android_hyphenationFrequency` on `Text` [d73c6d7](https://github.com/rescript-react-native/rescript-react-native/commit/d73c6d7) by [@MoOx](https://github.com/MoOx)
+- Remove `DatePickerAndroid` [31549b1](https://github.com/rescript-react-native/rescript-react-native/commit/31549b1) by [@MoOx](https://github.com/MoOx)
+
 ## 0.66.1 - 2021-12-06
 
 - Add missing `enabled` prop to `KeyboardAvoidingView` [dbe1bfc](https://github.com/rescript-react-native/rescript-react-native/commit/dbe1bfc) by [@barodeur](https://github.com/barodeur)

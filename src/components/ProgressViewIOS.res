@@ -12,7 +12,7 @@ external make: (
   ~progressViewStyle: progressViewStyle=?,
   ~trackImage: Image.Source.t=?,
   ~trackTintColor: Color.t=?,
-  // rescript-react-native 0.64 || 0.65 || 0.66 View props
+  // rescript-react-native 0.64 || 0.65 || 0.66 || 0.67 View props
   ~accessibilityActions: array<Accessibility.actionInfo>=?,
   ~accessibilityElementsHidden: bool=?,
   ~accessibilityHint: string=?,
