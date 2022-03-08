@@ -4,8 +4,6 @@ type android_hyphenationFrequency = [
   | #normal
   | #none
   | #full
-  | #high
-  | #balanced
 ]
 type dataDetectorType = [
   | #phoneNumber
