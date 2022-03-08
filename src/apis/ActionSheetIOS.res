@@ -8,6 +8,7 @@ external options: (
   ~title: string=?,
   ~message: string=?,
   ~tintColor: Color.t=?,
+  ~cancelButtonTintColor: Color.t=?,
   unit,
 ) => options = ""
 
