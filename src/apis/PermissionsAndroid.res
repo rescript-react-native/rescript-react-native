@@ -11,6 +11,9 @@ module Permission = {
   external accessFineLocation: t = "ACCESS_FINE_LOCATION"
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
+  external accessMediaLocation: t = "ACCESS_MEDIA_LOCATION"
+
+  @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
   external addVoicemail: t = "ADD_VOICEMAIL"
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
