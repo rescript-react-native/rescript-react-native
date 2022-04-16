@@ -239,7 +239,12 @@ external loopWithConfig: (Animation.t, loopConfig) => Animation.t = "loop"
 
 type eventOptions<'a>
 @obj
-external eventOptions: (~listener: 'a=?, ~useNativeDriver: bool, unit) => eventOptions<'a> = ""
+external eventOptions: (
+  ~listener: 'a=?,
+  ~useNativeDriver: bool,
+  ~platformConfig: 'platformConfig,
+  unit,
+) => eventOptions<'a> = ""
 
 // multiple externals
 @module("react-native") @scope("Animated")
