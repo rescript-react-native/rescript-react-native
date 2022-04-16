@@ -3,9 +3,14 @@
   "description": "ReScript bindings for React Native.",
   "version": "0.67.0",
   "peerDependencies": {
-    "@rescript/react": "^0.10.0",
-    "rescript": "^9.1.4",
-    "react-native": "^0.67.0"
+    "@rescript/react": ">=0.10.0",
+    "rescript": ">=9.1.4",
+    "react-native": ">=0.67.0"
+  },
+  "overrides": {
+    "@rescript/react": {
+      "react": "17.0.2"
+    }
   },
   "repository": "https://github.com/rescript-react-native/rescript-react-native.git",
   "license": "MIT",
