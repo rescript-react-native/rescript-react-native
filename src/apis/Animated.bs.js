@@ -68,6 +68,18 @@ var ValueXY = {
   Timing: Timing$1
 };
 
+var Decay$2 = {};
+
+var Spring$2 = {};
+
+var Timing$2 = {};
+
+var Color = {
+  Decay: Decay$2,
+  Spring: Spring$2,
+  Timing: Timing$2
+};
+
 function timing(prim0, prim1) {
   return ReactNative.Animated.timing(prim0, prim1);
 }
@@ -146,6 +158,7 @@ exports.ValueOperations = ValueOperations;
 exports.ValueMethods = ValueMethods;
 exports.Value = Value;
 exports.ValueXY = ValueXY;
+exports.Color = Color;
 exports.timing = timing;
 exports.spring = spring;
 exports.decay = decay;

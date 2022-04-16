@@ -196,6 +196,22 @@ module ValueXY = {
   external getTranslateTransform: t => array<Style.transform> = "getTranslateTransform"
 }
 
+module Color = {
+  include ValueMethods({
+    type t = {"r": Value.t, "g": Value.t, "b": Value.t, "a": Value.t}
+    type rawValue = {"r": float, "g": float, "b": float, "a": float}
+    type addListenerCallback = rawValue => unit
+  })
+
+  @obj external rgbaValue: (~r: float, ~g: float, ~b: float, ~a: float) => rawValue = ""
+
+  @new @scope("Animated") @module("react-native")
+  external create: rawValue => t = "Color"
+
+  @new @scope("Animated") @module("react-native")
+  external createFromString: Color.t => t = "Color"
+}
+
 @module("react-native") @scope("Animated")
 external delay: float => Animation.t = "delay"
 
