@@ -1,5 +1,9 @@
 # Changelog of `rescript-react-native`
 
+## 0.67.1 - 2022-04-16
+
+- Use more gentle peerDependencies range [75ecaa2](https://github.com/rescript-react-native/rescript-react-native/commit/75ecaa2) by [@MoOx](https://github.com/MoOx)
+
 ## 0.67.0 - 2022-03-08
 
 This changes are just to follow [React Native 0.67 changes](https://github.com/facebook/react-native/blob/main/CHANGELOG.md#v0670).
