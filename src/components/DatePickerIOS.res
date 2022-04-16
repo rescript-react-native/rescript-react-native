@@ -28,12 +28,13 @@ external make: (
   ~mode: mode=?,
   ~locale: localeId=?,
   ~timeZoneOffsetInMinutes: int=?,
-  // rescript-react-native 0.64 || 0.65 || 0.66 || 0.67 View props
+  // rescript-react-native 0.68 View props
   ~accessibilityActions: array<Accessibility.actionInfo>=?,
   ~accessibilityElementsHidden: bool=?,
   ~accessibilityHint: string=?,
   ~accessibilityIgnoresInvertColors: bool=?,
   ~accessibilityLabel: string=?,
+  ~accessibilityLabelledBy: array<string>=?,
   ~accessibilityLiveRegion: Accessibility.liveRegion=?,
   ~accessibilityRole: Accessibility.role=?,
   ~accessibilityState: Accessibility.state=?,
