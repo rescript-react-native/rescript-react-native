@@ -36,6 +36,9 @@ external isReduceTransparencyEnabled: unit => Js.Promise.t<bool> = "isReduceTran
 @scope("AccessibilityInfo") @module("react-native")
 external isScreenReaderEnabled: unit => Js.Promise.t<bool> = "isScreenReaderEnabled"
 
+@scope("AccessibilityInfo") @module("react-native")
+external isAccessibilityServiceEnabled: unit => Js.Promise.t<bool> = "isAccessibilityServiceEnabled"
+
 @deprecated("Instead of using removeEventListener(), invoke `remove()` on the subscription itself.")
 @scope("AccessibilityInfo")
 @module("react-native")
