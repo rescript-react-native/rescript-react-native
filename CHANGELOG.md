@@ -1,5 +1,13 @@
 # Changelog of `rescript-react-native`
 
+## 0.68.0 - 2022-04-16
+
+- Add `Animated.Color` node [a761012](https://github.com/rescript-react-native/rescript-react-native/commit/a761012) by [@MoOx](https://github.com/MoOx)
+- Add option to supply `platformConfig` to NativeAnimated [ff931ea](https://github.com/rescript-react-native/rescript-react-native/commit/ff931ea) by [@MoOx](https://github.com/MoOx)
+- Add `TextInput` `setSelection` method [32c12da](https://github.com/rescript-react-native/rescript-react-native/commit/32c12da) by [@MoOx](https://github.com/MoOx)
+- Add `accessibilityLabelledBy` Android View prop [35306c3](https://github.com/rescript-react-native/rescript-react-native/commit/35306c3) by [@MoOx](https://github.com/MoOx)
+- Add `AccessibilityInfo.isAccessibilityServiceEnabled` [4fb9319](https://github.com/rescript-react-native/rescript-react-native/commit/4fb9319) by [@MoOx](https://github.com/MoOx)
+
 ## 0.67.1 - 2022-04-16
 
 - Use more gentle peerDependencies range [75ecaa2](https://github.com/rescript-react-native/rescript-react-native/commit/75ecaa2) by [@MoOx](https://github.com/MoOx)
