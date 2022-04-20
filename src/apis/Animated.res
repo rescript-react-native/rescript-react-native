@@ -242,7 +242,7 @@ type eventOptions<'a>
 external eventOptions: (
   ~listener: 'a=?,
   ~useNativeDriver: bool,
-  ~platformConfig: 'platformConfig,
+  ~platformConfig: 'platformConfig=?,
   unit,
 ) => eventOptions<'a> = ""
 
