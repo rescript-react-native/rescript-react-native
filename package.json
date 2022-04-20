@@ -27,13 +27,13 @@
   "scripts": {
     "format:most": "prettier --write \"**/*.{md,json,js,css}\"",
     "format:res": "rescript format -all",
-    "format": "yarn format:most && yarn format:res",
+    "format": "npm run format:most && npm run format:res",
     "re:start": "rescript build -w",
     "re:build": "rescript",
     "re:clean-build": "rescript clean && rescript",
-    "start": "yarn re:start",
-    "build": "yarn re:build",
-    "test": "yarn re:clean-build",
+    "start": "npm run re:start",
+    "build": "npm run re:build",
+    "test": "npm run re:clean-build",
     "release": "npmpub"
   },
   "devDependencies": {
