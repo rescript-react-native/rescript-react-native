@@ -1,5 +1,9 @@
 # Changelog of `rescript-react-native`
 
+## 0.68.1 - 2022-04-20
+
+- Fix `Animated` `eventOptions` (`platformConfig` is optional) [8d128b9](https://github.com/rescript-react-native/rescript-react-native/commit/8d128b9) by [@MoOx](https://github.com/MoOx)
+
 ## 0.68.0 - 2022-04-16
 
 - Add `Animated.Color` node [a761012](https://github.com/rescript-react-native/rescript-react-native/commit/a761012) by [@MoOx](https://github.com/MoOx)
