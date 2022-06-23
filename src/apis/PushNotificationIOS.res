@@ -130,6 +130,16 @@ external removeEventListener: @string
 
 type permissions = {"alert": bool, "badge": bool, "sound": bool}
 
+type checkedPermissions = {
+  "alert": bool,
+  "badge": bool,
+  "sound": bool,
+  "critical": bool,
+  "lockScreen": bool,
+  "notificationCenter": bool,
+  "autorizationStatus": int,
+}
+
 type requestPermissionsOptions
 @obj
 external requestPermissionsOptions: (
@@ -152,7 +162,7 @@ external requestPermissionsWithOptions: requestPermissionsOptions => Js.Promise.
 external abandonPermissions: unit => unit = "abandonPermissions"
 
 @module("react-native") @scope("PushNotificationIOS")
-external checkPermissions: (unit => permissions) => unit = "checkPermissions"
+external checkPermissions: (unit => checkedPermissions) => unit = "checkPermissions"
 
 type fetchResult
 @obj
