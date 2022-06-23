@@ -22,12 +22,13 @@ external make: (
   // TouchableNativeFeedback props
   ~background: Background.t=?,
   ~useForeground: bool=?,
-  // TouchableWithoutFeedback props
+  // rescript-react-native 0.69 TouchableWithoutFeedback props
   ~accessible: bool=?,
   ~accessibilityElementsHidden: bool=?,
   ~accessibilityHint: string=?,
   ~accessibilityIgnoresInvertColors: bool=?,
   ~accessibilityLabel: string=?,
+  ~accessibilityLanguage: string=?,
   ~accessibilityLiveRegion: Accessibility.liveRegion=?,
   ~accessibilityRole: Accessibility.role=?,
   ~accessibilityState: Accessibility.state=?,

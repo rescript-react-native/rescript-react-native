@@ -13,13 +13,14 @@ external make: (
   // SnapshotViewIOS props
   ~onSnapshotReady: snapshotReadyEvent => unit=?,
   ~testIdentifier: string=?,
-  // rescript-react-native 0.68 View props
+  // rescript-react-native 0.69 View props
   ~accessibilityActions: array<Accessibility.actionInfo>=?,
   ~accessibilityElementsHidden: bool=?,
   ~accessibilityHint: string=?,
   ~accessibilityIgnoresInvertColors: bool=?,
   ~accessibilityLabel: string=?,
   ~accessibilityLabelledBy: array<string>=?,
+  ~accessibilityLanguage: string=?,
   ~accessibilityLiveRegion: Accessibility.liveRegion=?,
   ~accessibilityRole: Accessibility.role=?,
   ~accessibilityState: Accessibility.state=?,

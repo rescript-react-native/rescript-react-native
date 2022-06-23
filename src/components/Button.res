@@ -6,6 +6,7 @@ external make: (
   // Button props
   ~accessibilityActions: array<Accessibility.actionInfo>=?,
   ~accessibilityLabel: string=?,
+  ~accessibilityLanguage: string=?,
   ~accessibilityState: Accessibility.state=?,
   ~accessible: bool=?,
   ~color: Color.t=?,

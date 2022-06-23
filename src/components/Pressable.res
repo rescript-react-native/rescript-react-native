@@ -27,6 +27,7 @@ external make: (
   ~accessibilityHint: string=?,
   ~accessibilityIgnoresInvertColors: bool=?,
   ~accessibilityLabel: string=?,
+  ~accessibilityLanguage: string=?,
   ~accessibilityLiveRegion: Accessibility.liveRegion=?,
   ~accessibilityRole: Accessibility.role=?,
   ~accessibilityState: Accessibility.state=?,

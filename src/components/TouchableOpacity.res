@@ -8,12 +8,13 @@ external make: (
   ~hasTVPreferredFocus: bool=?,
   ~style: Style.t=?,
   ~tvParallaxProperties: TV.parallax=?,
-  // TouchableWithoutFeedback props
+  // rescript-react-native 0.69 TouchableWithoutFeedback props
   ~accessible: bool=?,
   ~accessibilityElementsHidden: bool=?,
   ~accessibilityHint: string=?,
   ~accessibilityIgnoresInvertColors: bool=?,
   ~accessibilityLabel: string=?,
+  ~accessibilityLanguage: string=?,
   ~accessibilityLiveRegion: Accessibility.liveRegion=?,
   ~accessibilityRole: Accessibility.role=?,
   ~accessibilityState: Accessibility.state=?,

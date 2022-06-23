@@ -25,6 +25,7 @@ external make: (
   ~accessibilityActions: array<Accessibility.actionInfo>=?,
   ~accessibilityHint: string=?,
   ~accessibilityLabel: string=?,
+  ~accessibilityLanguage: string=?,
   ~accessibilityRole: Accessibility.role=?,
   ~accessibilityState: Accessibility.state=?,
   ~accessible: bool=?,

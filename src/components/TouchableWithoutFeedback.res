@@ -3,12 +3,13 @@ include NativeElement
 @react.component @module("react-native")
 external make: (
   ~ref: ref=?,
-  // TouchableWithoutFeedback props
+  // rescript-react-native 0.69 TouchableWithoutFeedback props
   ~accessible: bool=?,
   ~accessibilityElementsHidden: bool=?,
   ~accessibilityHint: string=?,
   ~accessibilityIgnoresInvertColors: bool=?,
   ~accessibilityLabel: string=?,
+  ~accessibilityLanguage: string=?,
   ~accessibilityLiveRegion: Accessibility.liveRegion=?,
   ~accessibilityRole: Accessibility.role=?,
   ~accessibilityState: Accessibility.state=?,
