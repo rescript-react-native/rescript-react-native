@@ -33,3 +33,6 @@ external showShareActionSheetWithOptions: (
   error => unit,
   (bool, string) => unit,
 ) => unit = "showShareActionSheetWithOptions"
+
+@module("react-native") @scope("ActionSheetIOS")
+external dismissActionSheet: unit => unit = "dismissActionSheet"
