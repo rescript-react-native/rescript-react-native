@@ -37,6 +37,7 @@ external localNotification: (
   ~alertAction: string=?,
   ~soundName: string=?,
   ~isSilent: bool=?,
+  ~soundName: string=?,
   ~category: string=?,
   ~userInfo: Js.Json.t=?,
   ~applicationIconBadgeNumber: int=?,
