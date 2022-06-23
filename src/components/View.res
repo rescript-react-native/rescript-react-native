@@ -23,7 +23,6 @@ external make: (
   // ! \\ If you adjust props below,
   // be sure to adjust all places that use the same comment as below
   // ↓
-  // (unchanged in 0.64.0)
   // rescript-react-native 0.69 View props
   ~accessibilityActions: array<Accessibility.actionInfo>=?,
   ~accessibilityElementsHidden: bool=?,
