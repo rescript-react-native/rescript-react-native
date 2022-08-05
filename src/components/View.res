@@ -17,6 +17,20 @@ module View = {
   type edgeInsets = edgeInsets
 }
 
+type importantForAccessibility = [
+  | #auto
+  | #yes
+  | #no
+  | #"no-hide-descendants"
+]
+
+type pointerEvents = [
+  | #auto
+  | #none
+  | #"box-none"
+  | #"box-only"
+]
+
 @react.component @module("react-native")
 external make: (
   ~ref: ref=?,
@@ -39,13 +53,7 @@ external make: (
   ~accessible: bool=?,
   ~collapsable: bool=?,
   ~hitSlop: View.edgeInsets=?,
-  ~importantForAccessibility: @string
-  [
-    | #auto
-    | #yes
-    | #no
-    | @as("no-hide-descendants") #noHideDescendants
-  ]=?,
+  ~importantForAccessibility: importantForAccessibility=?,
   ~nativeID: string=?,
   ~needsOffscreenAlphaCompositing: bool=?,
   ~onAccessibilityAction: Accessibility.actionEvent => unit=?,
@@ -66,13 +74,7 @@ external make: (
   ~onResponderTerminationRequest: Event.pressEvent => bool=?,
   ~onStartShouldSetResponder: Event.pressEvent => bool=?,
   ~onStartShouldSetResponderCapture: Event.pressEvent => bool=?,
-  ~pointerEvents: @string
-  [
-    | #auto
-    | #none
-    | @as("box-none") #boxNone
-    | @as("box-only") #boxOnly
-  ]=?,
+  ~pointerEvents: pointerEvents=?,
   ~removeClippedSubviews: bool=?,
   ~renderToHardwareTextureAndroid: bool=?,
   ~shouldRasterizeIOS: bool=?,

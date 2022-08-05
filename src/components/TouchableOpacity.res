@@ -25,13 +25,7 @@ external make: (
   ~delayPressOut: int=?,
   ~disabled: bool=?,
   ~hitSlop: View.edgeInsets=?,
-  ~importantForAccessibility: @string
-  [
-    | #auto
-    | #yes
-    | #no
-    | @as("no-hide-descendants") #noHideDescendants
-  ]=?,
+  ~importantForAccessibility: View.importantForAccessibility=?,
   ~onLayout: Event.layoutEvent => unit=?,
   ~onLongPress: Event.pressEvent => unit=?,
   ~onPress: Event.pressEvent => unit=?,

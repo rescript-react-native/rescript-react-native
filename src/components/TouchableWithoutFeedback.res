@@ -20,13 +20,7 @@ external make: (
   ~delayPressOut: int=?,
   ~disabled: bool=?,
   ~hitSlop: View.edgeInsets=?,
-  ~importantForAccessibility: @string
-  [
-    | #auto
-    | #yes
-    | #no
-    | @as("no-hide-descendants") #noHideDescendants
-  ]=?,
+  ~importantForAccessibility: View.importantForAccessibility=?,
   ~onBlur: Event.targetEvent => unit=?,
   ~onFocus: Event.targetEvent => unit=?,
   ~onLayout: Event.layoutEvent => unit=?,

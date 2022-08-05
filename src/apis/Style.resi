@@ -48,9 +48,38 @@ type resizeMode = [#cover | #contain | #stretch | #repeat | #center]
 
 type fontStyle = [#normal | #italic]
 
+type fontWeight = [
+  | #normal
+  | #bold
+  | #100
+  | #200
+  | #300
+  | #400
+  | #500
+  | #600
+  | #700
+  | #800
+  | #900
+]
+
+type fontVariant = [
+  | #"small-caps"
+  | #"oldstyle-nums"
+  | #"lining-nums"
+  | #"tabular-nums"
+  | #"proportional-nums"
+]
+
 type textAlign = [#auto | #left | #right | #center | #justify]
 
 type textAlignVertical = [#auto | #top | #bottom | #center]
+
+type textDecorationLine = [
+  | #none
+  | #underline
+  | #"line-through"
+  | #"underline line-through"
+]
 
 type textDecorationStyle = [#solid | #double | #dotted | #dashed]
 
@@ -69,6 +98,50 @@ type overflow = [#visible | #hidden | #scroll]
 type flexWrap = [#wrap | #nowrap]
 
 type position = [#absolute | #relative]
+
+type alignContent = [
+  | #"flex-start"
+  | #"flex-end"
+  | #center
+  | #stretch
+  | #"space-around"
+  | #"space-between"
+]
+
+type alignItems = [
+  | #"flex-start"
+  | #"flex-end"
+  | #center
+  | #stretch
+  | #baseline
+]
+
+type alignSelf = [
+  | #auto
+  | #"flex-start"
+  | #"flex-end"
+  | #center
+  | #stretch
+  | #baseline
+]
+
+type direction = [#inherit | #ltr | #rtl]
+
+type flexDirection = [
+  | #row
+  | #"row-reverse"
+  | #column
+  | #"column-reverse"
+]
+
+type justifyContent = [
+  | #"flex-start"
+  | #"flex-end"
+  | #center
+  | #"space-around"
+  | #"space-between"
+  | #"space-evenly"
+]
 
 // Styles are documented here
 // https://github.com/facebook/react-native/blob/master/Libraries/StyleSheet/StyleSheetTypes.js
@@ -89,9 +162,8 @@ external // Dangerous Imprecise Style
 // - shadow style
 // - layout style
 
-// *Comment below is supposed to be after the first ( below but refmt move it here*
-// Image Style Props (https://reactnative.dev/docs/image-style-props)
 style: (
+  // Image Style Props (https://reactnative.dev/docs/image-style-props)
   ~resizeMode: resizeMode=?,
   ~overlayColor: Color.t=?,
   ~tintColor: Color.t=?,
@@ -100,34 +172,15 @@ style: (
   ~fontFamily: string=?,
   ~fontSize: float=?,
   ~fontStyle: fontStyle=?,
-  ~fontVariant: array<FontVariant.t>=?,
-  ~fontWeight: @string
-  [
-    | #normal
-    | #bold
-    | @as("100") #_100
-    | @as("200") #_200
-    | @as("300") #_300
-    | @as("400") #_400
-    | @as("500") #_500
-    | @as("600") #_600
-    | @as("700") #_700
-    | @as("800") #_800
-    | @as("900") #_900
-  ]=?,
+  ~fontVariant: array<fontVariant>=?,
+  ~fontWeight: fontWeight=?,
   ~includeFontPadding: bool=?,
   ~letterSpacing: float=?,
   ~lineHeight: float=?,
   ~textAlign: textAlign=?,
   ~textAlignVertical: textAlignVertical=?,
   ~textDecorationColor: Color.t=?,
-  ~textDecorationLine: @string
-  [
-    | #none
-    | #underline
-    | @as("line-through") #lineThrough
-    | @as("underline line-through") #underlineLineThrough
-  ]=?,
+  ~textDecorationLine: textDecorationLine=?,
   ~textDecorationStyle: textDecorationStyle=?,
   ~textShadowColor: Color.t=?,
   ~textShadowOffset: offset=?,
@@ -171,67 +224,30 @@ style: (
   ~shadowOpacity: float=?,
   ~shadowRadius: float=?,
   // Layout Style Props (https://reactnative.dev/docs/layout-props)
-  ~alignContent: @string
-  [
-    | @as("flex-start") #flexStart
-    | @as("flex-end") #flexEnd
-    | #center
-    | #stretch
-    | @as("space-around") #spaceAround
-    | @as("space-between") #spaceBetween
-  ]=?,
-  ~alignItems: @string
-  [
-    | @as("flex-start") #flexStart
-    | @as("flex-end") #flexEnd
-    | #center
-    | #stretch
-    | #baseline
-  ]=?,
-  ~alignSelf: @string
-  [
-    | #auto
-    | @as("flex-start") #flexStart
-    | @as("flex-end") #flexEnd
-    | #center
-    | #stretch
-    | #baseline
-  ]=?,
+  ~alignContent: alignContent=?,
+  ~alignItems: alignItems=?,
+  ~alignSelf: alignSelf=?,
   ~aspectRatio: float=?,
   // border*Width are commented because already in view styles props (see explanation at the top)
-  ~bottom: // ~borderBottomWidth: float=?,
+  // ~borderBottomWidth: float=?,
   // ~borderEndWidth: float=?,
   // ~borderLeftWidth: float=?,
   // ~borderRightWidth: float=?,
   // ~borderStartWidth: float=?,
   // ~borderTopWidth: float=?,
   // ~borderWidth: float=?,
-  size=?,
-  ~direction: @string [@as("inherit") #inherit_ | #ltr | #rtl]=?,
+  ~bottom: size=?,
+  ~direction: direction=?,
   ~display: display=?,
   ~_end: size=?,
   ~flex: float=?,
   ~flexBasis: margin=?,
-  ~flexDirection: @string
-  [
-    | #row
-    | @as("row-reverse") #rowReverse
-    | #column
-    | @as("column-reverse") #columnReverse
-  ]=?,
+  ~flexDirection: flexDirection=?,
   ~flexGrow: float=?,
   ~flexShrink: float=?,
   ~flexWrap: flexWrap=?,
   ~height: size=?,
-  ~justifyContent: @string
-  [
-    | @as("flex-start") #flexStart
-    | @as("flex-end") #flexEnd
-    | #center
-    | @as("space-around") #spaceAround
-    | @as("space-between") #spaceBetween
-    | @as("space-evenly") #spaceEvenly
-  ]=?,
+  ~justifyContent: justifyContent=?,
   ~left: size=?,
   ~margin: margin=?,
   ~marginBottom: margin=?,
@@ -267,9 +283,8 @@ style: (
 
 // ____ViewStyleProp_Internal
 @obj
-external // *Comment below is supposed to be after the first ( below but refmt move it here*
-// View styles https://reactnative.dev/docs/view-style-props
-viewStyle: (
+external viewStyle: (
+  // View styles https://reactnative.dev/docs/view-style-props
   ~backfaceVisibility: backfaceVisibility=?,
   ~backgroundColor: Color.t=?,
   ~borderBottomColor: Color.t=?,
@@ -306,67 +321,30 @@ viewStyle: (
   ~shadowOpacity: float=?,
   ~shadowRadius: float=?,
   // Layout Style Props (https://reactnative.dev/docs/layout-props)
-  ~alignContent: @string
-  [
-    | @as("flex-start") #flexStart
-    | @as("flex-end") #flexEnd
-    | #center
-    | #stretch
-    | @as("space-around") #spaceAround
-    | @as("space-between") #spaceBetween
-  ]=?,
-  ~alignItems: @string
-  [
-    | @as("flex-start") #flexStart
-    | @as("flex-end") #flexEnd
-    | #center
-    | #stretch
-    | #baseline
-  ]=?,
-  ~alignSelf: @string
-  [
-    | #auto
-    | @as("flex-start") #flexStart
-    | @as("flex-end") #flexEnd
-    | #center
-    | #stretch
-    | #baseline
-  ]=?,
+  ~alignContent: alignContent=?,
+  ~alignItems: alignItems=?,
+  ~alignSelf: alignSelf=?,
   ~aspectRatio: float=?,
   // border*Width are commented because already in view styles props (see explanation at the top)
-  ~bottom: // ~borderBottomWidth: float=?,
+  // ~borderBottomWidth: float=?,
   // ~borderEndWidth: float=?,
   // ~borderLeftWidth: float=?,
   // ~borderRightWidth: float=?,
   // ~borderStartWidth: float=?,
   // ~borderTopWidth: float=?,
   // ~borderWidth: float=?,
-  size=?,
-  ~direction: @string [@as("inherit") #inherit_ | #ltr | #rtl]=?,
+  ~bottom: size=?,
+  ~direction: direction=?,
   ~display: display=?,
   ~_end: size=?,
   ~flex: float=?,
   ~flexBasis: margin=?,
-  ~flexDirection: @string
-  [
-    | #row
-    | @as("row-reverse") #rowReverse
-    | #column
-    | @as("column-reverse") #columnReverse
-  ]=?,
+  ~flexDirection: flexDirection=?,
   ~flexGrow: float=?,
   ~flexShrink: float=?,
   ~flexWrap: flexWrap=?,
   ~height: size=?,
-  ~justifyContent: @string
-  [
-    | @as("flex-start") #flexStart
-    | @as("flex-end") #flexEnd
-    | #center
-    | @as("space-around") #spaceAround
-    | @as("space-between") #spaceBetween
-    | @as("space-evenly") #spaceEvenly
-  ]=?,
+  ~justifyContent: justifyContent=?,
   ~left: size=?,
   ~margin: margin=?,
   ~marginBottom: margin=?,
@@ -402,40 +380,21 @@ viewStyle: (
 
 // ____TextStyleProp_Internal
 @obj
-external // Text Style Props (https://reactnative.dev/docs/text-style-props)
-textStyle: (
+external textStyle: (
+  // Text Style Props (https://reactnative.dev/docs/text-style-props)
   ~color: Color.t=?,
   ~fontFamily: string=?,
   ~fontSize: float=?,
   ~fontStyle: fontStyle=?,
-  ~fontVariant: array<FontVariant.t>=?,
-  ~fontWeight: @string
-  [
-    | #normal
-    | #bold
-    | @as("100") #_100
-    | @as("200") #_200
-    | @as("300") #_300
-    | @as("400") #_400
-    | @as("500") #_500
-    | @as("600") #_600
-    | @as("700") #_700
-    | @as("800") #_800
-    | @as("900") #_900
-  ]=?,
+  ~fontVariant: array<fontVariant>=?,
+  ~fontWeight: fontWeight=?,
   ~includeFontPadding: bool=?,
   ~letterSpacing: float=?,
   ~lineHeight: float=?,
   ~textAlign: textAlign=?,
   ~textAlignVertical: textAlignVertical=?,
   ~textDecorationColor: Color.t=?,
-  ~textDecorationLine: @string
-  [
-    | #none
-    | #underline
-    | @as("line-through") #lineThrough
-    | @as("underline line-through") #underlineLineThrough
-  ]=?,
+  ~textDecorationLine: textDecorationLine=?,
   ~textDecorationStyle: textDecorationStyle=?,
   ~textShadowColor: Color.t=?,
   ~textShadowOffset: offset=?,
@@ -479,67 +438,30 @@ textStyle: (
   ~shadowOpacity: float=?,
   ~shadowRadius: float=?,
   // Layout Style Props (https://reactnative.dev/docs/layout-props)
-  ~alignContent: @string
-  [
-    | @as("flex-start") #flexStart
-    | @as("flex-end") #flexEnd
-    | #center
-    | #stretch
-    | @as("space-around") #spaceAround
-    | @as("space-between") #spaceBetween
-  ]=?,
-  ~alignItems: @string
-  [
-    | @as("flex-start") #flexStart
-    | @as("flex-end") #flexEnd
-    | #center
-    | #stretch
-    | #baseline
-  ]=?,
-  ~alignSelf: @string
-  [
-    | #auto
-    | @as("flex-start") #flexStart
-    | @as("flex-end") #flexEnd
-    | #center
-    | #stretch
-    | #baseline
-  ]=?,
+  ~alignContent: alignContent=?,
+  ~alignItems: alignItems=?,
+  ~alignSelf: alignSelf=?,
   ~aspectRatio: float=?,
   // border*Width are commented because already in view styles props (see explanation at the top)
-  ~bottom: // ~borderBottomWidth: float=?,
+  // ~borderBottomWidth: float=?,
   // ~borderEndWidth: float=?,
   // ~borderLeftWidth: float=?,
   // ~borderRightWidth: float=?,
   // ~borderStartWidth: float=?,
   // ~borderTopWidth: float=?,
   // ~borderWidth: float=?,
-  size=?,
-  ~direction: @string [@as("inherit") #inherit_ | #ltr | #rtl]=?,
+  ~bottom: size=?,
+  ~direction: direction=?,
   ~display: display=?,
   ~_end: size=?,
   ~flex: float=?,
   ~flexBasis: margin=?,
-  ~flexDirection: @string
-  [
-    | #row
-    | @as("row-reverse") #rowReverse
-    | #column
-    | @as("column-reverse") #columnReverse
-  ]=?,
+  ~flexDirection: flexDirection=?,
   ~flexGrow: float=?,
   ~flexShrink: float=?,
   ~flexWrap: flexWrap=?,
   ~height: size=?,
-  ~justifyContent: @string
-  [
-    | @as("flex-start") #flexStart
-    | @as("flex-end") #flexEnd
-    | #center
-    | @as("space-around") #spaceAround
-    | @as("space-between") #spaceBetween
-    | @as("space-evenly") #spaceEvenly
-  ]=?,
+  ~justifyContent: justifyContent=?,
   ~left: size=?,
   ~margin: margin=?,
   ~marginBottom: margin=?,
@@ -617,67 +539,30 @@ imageStyle: (
   ~shadowOpacity: float=?,
   ~shadowRadius: float=?,
   // Layout Style Props (https://reactnative.dev/docs/layout-props)
-  ~alignContent: @string
-  [
-    | @as("flex-start") #flexStart
-    | @as("flex-end") #flexEnd
-    | #center
-    | #stretch
-    | @as("space-around") #spaceAround
-    | @as("space-between") #spaceBetween
-  ]=?,
-  ~alignItems: @string
-  [
-    | @as("flex-start") #flexStart
-    | @as("flex-end") #flexEnd
-    | #center
-    | #stretch
-    | #baseline
-  ]=?,
-  ~alignSelf: @string
-  [
-    | #auto
-    | @as("flex-start") #flexStart
-    | @as("flex-end") #flexEnd
-    | #center
-    | #stretch
-    | #baseline
-  ]=?,
+  ~alignContent: alignContent=?,
+  ~alignItems: alignItems=?,
+  ~alignSelf: alignSelf=?,
   ~aspectRatio: float=?,
   // border*Width are commented because already in view styles props (see explanation at the top)
-  ~bottom: // ~borderBottomWidth: float=?,
+  // ~borderBottomWidth: float=?,
   // ~borderEndWidth: float=?,
   // ~borderLeftWidth: float=?,
   // ~borderRightWidth: float=?,
   // ~borderStartWidth: float=?,
   // ~borderTopWidth: float=?,
   // ~borderWidth: float=?,
-  size=?,
-  ~direction: @string [@as("inherit") #inherit_ | #ltr | #rtl]=?,
+  ~bottom: size=?,
+  ~direction: direction=?,
   ~display: display=?,
   ~_end: size=?,
   ~flex: float=?,
   ~flexBasis: margin=?,
-  ~flexDirection: @string
-  [
-    | #row
-    | @as("row-reverse") #rowReverse
-    | #column
-    | @as("column-reverse") #columnReverse
-  ]=?,
+  ~flexDirection: flexDirection=?,
   ~flexGrow: float=?,
   ~flexShrink: float=?,
   ~flexWrap: flexWrap=?,
   ~height: size=?,
-  ~justifyContent: @string
-  [
-    | @as("flex-start") #flexStart
-    | @as("flex-end") #flexEnd
-    | #center
-    | @as("space-around") #spaceAround
-    | @as("space-between") #spaceBetween
-    | @as("space-evenly") #spaceEvenly
-  ]=?,
+  ~justifyContent: justifyContent=?,
   ~left: size=?,
   ~margin: margin=?,
   ~marginBottom: margin=?,

@@ -3,6 +3,20 @@
 
 type localeId = string
 
+type minuteInterval = [
+  | #1
+  | #2
+  | #3
+  | #4
+  | #5
+  | #6
+  | #10
+  | #12
+  | #15
+  | #20
+  | #30
+]
+
 type mode = [#date | #time | #datetime]
 
 @react.component @module("react-native")
@@ -11,20 +25,7 @@ external make: (
   ~onDateChange: Js.Date.t => unit,
   ~maximumDate: Js.Date.t=?,
   ~minimumDate: Js.Date.t=?,
-  ~minuteInterval: @int
-  [
-    | @as(1) #_1
-    | @as(2) #_2
-    | @as(3) #_3
-    | @as(4) #_4
-    | @as(5) #_5
-    | @as(6) #_6
-    | @as(10) #_10
-    | @as(12) #_12
-    | @as(15) #_15
-    | @as(20) #_20
-    | @as(30) #_30
-  ]=?,
+  ~minuteInterval: minuteInterval=?,
   ~mode: mode=?,
   ~locale: localeId=?,
   ~timeZoneOffsetInMinutes: int=?,
@@ -44,13 +45,7 @@ external make: (
   ~accessible: bool=?,
   ~collapsable: bool=?,
   ~hitSlop: View.edgeInsets=?,
-  ~importantForAccessibility: @string
-  [
-    | #auto
-    | #yes
-    | #no
-    | @as("no-hide-descendants") #noHideDescendants
-  ]=?,
+  ~importantForAccessibility: View.importantForAccessibility=?,
   ~nativeID: string=?,
   ~needsOffscreenAlphaCompositing: bool=?,
   ~onAccessibilityAction: Accessibility.actionEvent => unit=?,
@@ -71,13 +66,7 @@ external make: (
   ~onResponderTerminationRequest: Event.pressEvent => bool=?,
   ~onStartShouldSetResponder: Event.pressEvent => bool=?,
   ~onStartShouldSetResponderCapture: Event.pressEvent => bool=?,
-  ~pointerEvents: @string
-  [
-    | #auto
-    | #none
-    | @as("box-none") #boxNone
-    | @as("box-only") #boxOnly
-  ]=?,
+  ~pointerEvents: View.pointerEvents=?,
   ~removeClippedSubviews: bool=?,
   ~renderToHardwareTextureAndroid: bool=?,
   ~shouldRasterizeIOS: bool=?,
