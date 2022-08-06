@@ -1,5 +1,15 @@
-type options
-@obj
+type options = {
+  options: array<string>,
+  cancelButtonIndex?: int,
+  destructiveButtonIndex?: array<int>,
+  disabledButtonIndices?: int,
+  title?: string,
+  message?: string,
+  tintColor?: Color.t,
+  cancelButtonTintColor?: Color.t,
+}
+
+@obj @deprecated("Directly create record instead")
 external options: (
   ~options: array<string>,
   ~cancelButtonIndex: int=?,
@@ -15,8 +25,14 @@ external options: (
 @module("react-native") @scope("ActionSheetIOS")
 external showActionSheetWithOptions: (options, int => unit) => unit = "showActionSheetWithOptions"
 
-type shareOptions
-@obj
+type shareOptions = {
+  url?: string,
+  message?: string,
+  subject?: string,
+  excludedActivityTypes?: array<string>,
+}
+
+@obj @deprecated("Directly create record instead")
 external shareOptions: (
   ~url: string=?,
   ~message: string=?,

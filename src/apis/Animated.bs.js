@@ -94,17 +94,14 @@ function decay(prim0, prim1) {
 
 function start(prim0, prim1, prim2) {
   prim0.start(prim1 !== undefined ? Caml_option.valFromOption(prim1) : undefined);
-  
 }
 
 function stop(prim) {
   prim.stop();
-  
 }
 
 function reset(prim) {
   prim.reset();
-  
 }
 
 var StyleProp = {};
@@ -119,7 +116,6 @@ var make$1 = ReactNative.Animated.createAnimatedComponent(ReactNative.Image);
 
 var $$Image = {
   Source: Image$ReactNative.Source,
-  DefaultSource: Image$ReactNative.DefaultSource,
   ImageLoadEvent: Image$ReactNative.ImageLoadEvent,
   $$ErrorEvent: Image$ReactNative.$$ErrorEvent,
   $$ProgressEvent: Image$ReactNative.$$ProgressEvent,

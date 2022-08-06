@@ -11,7 +11,7 @@ external make: (
   ~accessible: bool=?,
   ~blurRadius: float=?,
   ~capInsets: View.edgeInsets=?,
-  ~defaultSource: Image.DefaultSource.t=?,
+  ~defaultSource: Image.Source.t=?,
   ~fadeDuration: float=?,
   ~loadingIndicatorSource: array<Image.Source.t>=?,
   ~onError: Image.errorEvent => unit=?,

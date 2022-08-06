@@ -1,7 +1,13 @@
 include NativeElement
 
-type edgeInsets
-@obj
+type edgeInsets = {
+  left?: float,
+  right?: float,
+  top?: float,
+  bottom?: float,
+}
+
+@obj @deprecated("Directly create record instead")
 external edgeInsets: (
   ~left: float=?,
   ~right: float=?,

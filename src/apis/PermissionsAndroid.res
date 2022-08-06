@@ -96,8 +96,15 @@ module Result = {
   external neverAskAgain: t = "NEVER_ASK_AGAIN"
 }
 
-type rationale
-@obj
+type rationale = {
+  title: string,
+  message: string,
+  buttonPositive: string,
+  buttonNegative?: string,
+  buttonNeutral?: string,
+}
+
+@obj @deprecated("Directly create record instead")
 external rationale: (
   ~title: string,
   ~message: string,

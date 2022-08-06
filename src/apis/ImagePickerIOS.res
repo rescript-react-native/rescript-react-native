@@ -6,12 +6,17 @@ external canUseCamera: (bool => unit) => unit = "canUseCamera"
 @module("react-native") @scope("ImagePickerIOS")
 external canRecordVideos: (bool => unit) => unit = "canRecordVideos"
 
-type cameraDialogConfig
-@obj
+type cameraDialogConfig = {videoMode?: bool}
+
+@obj @deprecated("Directly create record instead")
 external cameraDialogConfig: (~videoMode: bool=?, unit) => cameraDialogConfig = ""
 
-type selectDialogConfig
-@obj
+type selectDialogConfig = {
+  showImages?: bool,
+  showVideos?: bool,
+}
+
+@obj @deprecated("Directly create record instead")
 external selectDialogConfig: (
   ~showImages: bool=?,
   ~showVideos: bool=?,

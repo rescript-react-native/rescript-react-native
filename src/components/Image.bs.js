@@ -5,8 +5,6 @@ var NativeElement$ReactNative = require("../elements/NativeElement.bs.js");
 
 var Source = {};
 
-var DefaultSource = {};
-
 Event$ReactNative.SyntheticEvent({});
 
 var ImageLoadEvent = {};
@@ -20,7 +18,6 @@ Event$ReactNative.SyntheticEvent({});
 var $$ProgressEvent = {};
 
 exports.Source = Source;
-exports.DefaultSource = DefaultSource;
 exports.ImageLoadEvent = ImageLoadEvent;
 exports.$$ErrorEvent = $$ErrorEvent;
 exports.$$ProgressEvent = $$ProgressEvent;
