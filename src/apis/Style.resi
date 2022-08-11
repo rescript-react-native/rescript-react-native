@@ -209,7 +209,7 @@ style: (
   size=?,
   ~direction: @string [@as("inherit") #inherit_ | #ltr | #rtl]=?,
   ~display: display=?,
-  ~_end: size=?,
+  ~end: size=?,
   ~flex: float=?,
   ~flexBasis: margin=?,
   ~flexDirection: @string
@@ -344,7 +344,7 @@ viewStyle: (
   size=?,
   ~direction: @string [@as("inherit") #inherit_ | #ltr | #rtl]=?,
   ~display: display=?,
-  ~_end: size=?,
+  ~end: size=?,
   ~flex: float=?,
   ~flexBasis: margin=?,
   ~flexDirection: @string
@@ -517,7 +517,7 @@ textStyle: (
   size=?,
   ~direction: @string [@as("inherit") #inherit_ | #ltr | #rtl]=?,
   ~display: display=?,
-  ~_end: size=?,
+  ~end: size=?,
   ~flex: float=?,
   ~flexBasis: margin=?,
   ~flexDirection: @string
@@ -655,7 +655,7 @@ imageStyle: (
   size=?,
   ~direction: @string [@as("inherit") #inherit_ | #ltr | #rtl]=?,
   ~display: display=?,
-  ~_end: size=?,
+  ~end: size=?,
   ~flex: float=?,
   ~flexBasis: margin=?,
   ~flexDirection: @string

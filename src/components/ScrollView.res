@@ -18,7 +18,7 @@ type keyboardShouldPersistTaps = [#always | #never | #handled]
 
 type overScrollMode = [#always | #never | #auto]
 
-type snapToAlignment = [#start | #center | #end_]
+type snapToAlignment = [#start | #center | #end]
 
 @react.component @module("react-native")
 external make: (
