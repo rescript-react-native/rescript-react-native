@@ -19,6 +19,13 @@ external alert: (
   unit,
 ) => unit = "alert"
 
+type type_ = [
+  | #default
+  | #"plain-text"
+  | #"secure-text"
+  | #"login-password"
+]
+
 @scope("Alert") @module("react-native")
 external prompt: (
   ~title: string,
@@ -28,13 +35,7 @@ external prompt: (
     | #callback(string => unit)
     | #buttons(array<button>)
   ]=?,
-  ~type_: @string
-  [
-    | #default
-    | @as("plain-text") #plainText
-    | @as("secure-text") #secureText
-    | @as("login-password") #loginPassword
-  ]=?,
+  ~type_: type_=?,
   ~defaultValue: string=?,
   ~keyboardType: string=?,
   unit,

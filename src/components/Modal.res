@@ -1,6 +1,12 @@
 include NativeElement
 
-module Orientation = Modal_Orientation
+type orientation = [
+  | #landscape
+  | #"landscape-left"
+  | #"landscape-right"
+  | #portrait
+  | #"portrait-upside-down"
+]
 
 type orientationChange = [#landscape | #portrait]
 
@@ -35,7 +41,7 @@ external make: (
   ~onShow: unit => unit=?,
   ~presentationStyle: presentationStyle=?,
   ~statusBarTranslucent: bool=?,
-  ~supportedOrientations: array<Orientation.t>=?,
+  ~supportedOrientations: array<orientation>=?,
   ~transparent: bool=?,
   ~visible: bool=?,
   ~children: React.element=?,

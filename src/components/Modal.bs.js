@@ -7,8 +7,5 @@ Event$ReactNative.SyntheticEvent({});
 
 var OrientationChangeEvent = {};
 
-var Orientation;
-
-exports.Orientation = Orientation;
 exports.OrientationChangeEvent = OrientationChangeEvent;
 /*  Not a pure module */
