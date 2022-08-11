@@ -61,8 +61,7 @@ type scrollEvent = ScrollEvent.t
 
 type selection = {
   start: int,
-  @as("end")
-  _end: int,
+  end: int,
 }
 
 module SelectionChangeEvent = {
