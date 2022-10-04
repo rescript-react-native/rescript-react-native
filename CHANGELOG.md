@@ -1,5 +1,18 @@
 # Changelog of `rescript-react-native`
 
+## 0.69.0 - 2022-10-04
+
+### Breaking changes
+
+- Update `PushNotificationIOS.checkPermissions` to include iOS 10+ notification settings [14212c0](https://github.com/rescript-react-native/rescript-react-native/commit/14212c0) by [@MoOx](https://github.com/MoOx)
+
+### New bindings
+
+- Add `dismissActionSheet` method to `ActionSheetIOS` [7e42b63](https://github.com/rescript-react-native/rescript-react-native/commit/7e42b63) by [@MoOx](https://github.com/MoOx)
+- Add `accessibilityLanguage` prop to all the available components [a210356](https://github.com/rescript-react-native/rescript-react-native/commit/a210356) by [@MoOx](https://github.com/MoOx)
+- Add `soundName` option for local push notifications in `PushNotificationIOS` [4f04d77](https://github.com/rescript-react-native/rescript-react-native/commit/4f04d77) by [@MoOx](https://github.com/MoOx)
+- Create `HitSlop` & `Rect` module (don't use them directly yet, wait for 0.70 release...) [394bd60](https://github.com/rescript-react-native/rescript-react-native/commit/394bd60) by [@MoOx](https://github.com/MoOx)
+
 ## 0.68.1 - 2022-04-20
 
 - Fix `Animated` `eventOptions` (`platformConfig` is optional) [8d128b9](https://github.com/rescript-react-native/rescript-react-native/commit/8d128b9) by [@MoOx](https://github.com/MoOx)
