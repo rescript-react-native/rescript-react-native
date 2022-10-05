@@ -33,7 +33,7 @@ external dismissedAction: action = "dismissedAction"
 
 type shareResult = {
   action: action,
-  activityType: option<string>,
+  activityType?: string,
 }
 
 // multiple externals

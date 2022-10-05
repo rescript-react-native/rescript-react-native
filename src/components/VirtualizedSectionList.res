@@ -27,12 +27,12 @@ type rec renderSectionHeaderCallback<'item, 'sectionData> = renderSectionHeaderP
 and renderSectionHeaderProps<'item, 'sectionData> = {section: section<'item, 'sectionData>}
 
 type separatorProps<'item, 'sectionData> = {
-  "highlighted": bool,
-  "leadingItem": option<'item>,
-  "leadingSection": option<section<'item, 'sectionData>>,
-  "section": section<'item, 'sectionData>,
-  "trailingItem": option<'item>,
-  "trailingSection": option<section<'item, 'sectionData>>,
+  highlighted: bool,
+  leadingItem: 'item,
+  leadingSection?: section<'item, 'sectionData>,
+  section: section<'item, 'sectionData>,
+  trailingItem?: 'item,
+  trailingSection?: section<'item, 'sectionData>,
 }
 
 @obj @deprecated("Directly create record instead")

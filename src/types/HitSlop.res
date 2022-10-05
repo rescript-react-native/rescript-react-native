@@ -1,19 +1,12 @@
 type t = {
-  left: option<float>,
-  right: option<float>,
-  top: option<float>,
-  bottom: option<float>,
+  left?: float,
+  right?: float,
+  top?: float,
+  bottom?: float,
 }
 
 // hitSlop prop accept number and edge inset object
-@obj
+@obj @deprecated("Directly create record instead")
 external rect: (~left: float=?, ~right: float=?, ~top: float=?, ~bottom: float=?, unit) => t = ""
 
-// @todo in 0.70
-// external float: float => t = ""
-let float = (value: float) => {
-  left: Some(value),
-  right: Some(value),
-  top: Some(value),
-  bottom: Some(value),
-}
+external float: float => t = "%identity"

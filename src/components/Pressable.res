@@ -19,8 +19,8 @@ external rippleConfig: (
 type interactionState = {
   pressed: bool,
   // React Native Web
-  hovered: option<bool>,
-  focused: option<bool>,
+  hovered?: bool,
+  focused?: bool,
 }
 
 @react.component @module("react-native")
