@@ -1,5 +1,9 @@
 # Changelog of `rescript-react-native`
 
+## 0.69.1 - 2022-10-05
+
+- Fix `View.edgeInsets` & `HitSlop.rect` [e2847e7](https://github.com/rescript-react-native/rescript-react-native/commit/e2847e7) by [@cknitt](https://github.com/cknitt)
+
 ## 0.69.0 - 2022-10-04
 
 ### Breaking changes
