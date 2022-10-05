@@ -6,7 +6,9 @@ type t = {
 }
 
 // hitSlop prop accept number and edge inset object
+@obj
 external rect: (~left: float=?, ~right: float=?, ~top: float=?, ~bottom: float=?, unit) => t = ""
+
 // @todo in 0.70
 // external float: float => t = ""
 let float = (value: float) => {
