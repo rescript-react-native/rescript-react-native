@@ -1,12 +1,11 @@
 include NativeElement
 
-type edgeInsets = {
-  left?: float,
-  right?: float,
-  top?: float,
-  bottom?: float,
-}
+// @todo in 0.70
+// @deprecated("Use `Rect.t` or `HitSlop.t` type instead")
+type edgeInsets = Rect.t
 
+// @todo in 0.70
+// @deprecated("Use `Rect.t` or `HitSlop.t` type instead")
 @obj @deprecated("Directly create record instead")
 external edgeInsets: (
   ~left: float=?,
@@ -14,7 +13,7 @@ external edgeInsets: (
   ~top: float=?,
   ~bottom: float=?,
   unit,
-) => edgeInsets = ""
+) => Rect.t = ""
 
 // commodity for easier copy pasting for updating other components that have
 // View props
