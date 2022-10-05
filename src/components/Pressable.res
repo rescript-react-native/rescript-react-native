@@ -35,13 +35,7 @@ external make: (
   ~accessibilityViewIsModal: bool=?,
   ~accessible: bool=?,
   ~focusable: bool=?,
-  ~importantForAccessibility: @string
-  [
-    | #auto
-    | #yes
-    | #no
-    | @as("no-hide-descendants") #noHideDescendants
-  ]=?,
+  ~importantForAccessibility: View.importantForAccessibility=?,
   // Pressable props
   ~android_disableSound: bool=?,
   ~android_ripple: rippleConfig=?,

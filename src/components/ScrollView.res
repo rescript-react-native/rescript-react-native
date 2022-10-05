@@ -14,6 +14,12 @@ type decelerationRate = [#fast | #normal]
 
 type indicatorStyle = [#default | #black | #white]
 
+type keyboardDismissMode = [
+  | #none
+  | #interactive
+  | #"on-drag"
+]
+
 type keyboardShouldPersistTaps = [#always | #never | #handled]
 
 type overScrollMode = [#always | #never | #auto]
@@ -41,12 +47,7 @@ external make: (
   ~fadingEdgeLength: float=?,
   ~horizontal: bool=?,
   ~indicatorStyle: indicatorStyle=?,
-  ~keyboardDismissMode: @string
-  [
-    | #none
-    | #interactive
-    | @as("on-drag") #onDrag
-  ]=?,
+  ~keyboardDismissMode: keyboardDismissMode=?,
   ~keyboardShouldPersistTaps: keyboardShouldPersistTaps=?,
   ~maximumZoomScale: float=?,
   ~minimumZoomScale: float=?,
@@ -93,13 +94,7 @@ external make: (
   ~accessible: bool=?,
   ~collapsable: bool=?,
   ~hitSlop: View.edgeInsets=?,
-  ~importantForAccessibility: @string
-  [
-    | #auto
-    | #yes
-    | #no
-    | @as("no-hide-descendants") #noHideDescendants
-  ]=?,
+  ~importantForAccessibility: View.importantForAccessibility=?,
   ~nativeID: string=?,
   ~needsOffscreenAlphaCompositing: bool=?,
   ~onAccessibilityAction: Accessibility.actionEvent => unit=?,
@@ -120,13 +115,7 @@ external make: (
   ~onResponderTerminationRequest: Event.pressEvent => bool=?,
   ~onStartShouldSetResponder: Event.pressEvent => bool=?,
   ~onStartShouldSetResponderCapture: Event.pressEvent => bool=?,
-  ~pointerEvents: @string
-  [
-    | #auto
-    | #none
-    | @as("box-none") #boxNone
-    | @as("box-only") #boxOnly
-  ]=?,
+  ~pointerEvents: View.pointerEvents=?,
   ~removeClippedSubviews: bool=?,
   ~renderToHardwareTextureAndroid: bool=?,
   ~shouldRasterizeIOS: bool=?,

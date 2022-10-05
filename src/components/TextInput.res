@@ -135,6 +135,13 @@ type autoComplete = [
 
 type t
 
+type clearButtonMode = [
+  | #never
+  | #"while-editing"
+  | #"unless-editing"
+  | #always
+]
+
 type importantForAutofill = [
   | #auto
   | #no
@@ -144,6 +151,38 @@ type importantForAutofill = [
 ]
 
 type keyboardAppearance = [#default | #light | #dark]
+
+type keyboardType = [
+  | #default
+  | #"number-pad"
+  | #"decimal-pad"
+  | #numeric
+  | #"email-address"
+  | #"phone-pad"
+  | #"ascii-capable"
+  | #"numbers-and-punctuation"
+  | #url
+  | #"name-phone-pad"
+  | #twitter
+  | #"web-search"
+  | #"visible-password"
+]
+
+type returnKeyType = [
+  | #done
+  | #go
+  | #next
+  | #search
+  | #send
+  | #none
+  | #previous
+  | #default
+  | #"emergency-call"
+  | #google
+  | #join
+  | #route
+  | #yahoo
+]
 
 type textBreakStrategy = [#balanced | #highQuality | #simple]
 
@@ -189,13 +228,7 @@ external make: (
   ~autoFocus: bool=?,
   ~blurOnSubmit: bool=?,
   ~caretHidden: bool=?,
-  ~clearButtonMode: @string
-  [
-    | #never
-    | @as("while-editing") #whileEditing
-    | @as("unless-editing") #unlessEditing
-    | #always
-  ]=?,
+  ~clearButtonMode: clearButtonMode=?,
   ~clearTextOnFocus: bool=?,
   ~contextMenuHidden: bool=?,
   ~defaultValue: string=?,
@@ -207,22 +240,7 @@ external make: (
   ~inlineImagePadding: float=?,
   ~inputAccessoryViewID: string=?,
   ~keyboardAppearance: keyboardAppearance=?,
-  ~keyboardType: @string
-  [
-    | #default
-    | @as("number-pad") #numberPad
-    | @as("decimal-pad") #decimalPad
-    | #numeric
-    | @as("email-address") #emailAddress
-    | @as("phone-pad") #phonePad
-    | @as("ascii-capable") #asciiCapable
-    | @as("numbers-and-punctuation") #numbersAndPunctuation
-    | #url
-    | @as("name-phone-pad") #namePhonePad
-    | #twitter
-    | @as("web-search") #webSearch
-    | @as("visible-password") #visiblePassword
-  ]=?,
+  ~keyboardType: keyboardType=?,
   ~maxFontSizeMultiplier: float=?,
   ~maxLength: int=?,
   ~multiline: bool=?,
@@ -242,22 +260,7 @@ external make: (
   ~placeholder: string=?,
   ~placeholderTextColor: Color.t=?,
   ~returnKeyLabel: string=?,
-  ~returnKeyType: @string
-  [
-    | @as("done") #done_
-    | #go
-    | #next
-    | #search
-    | #send
-    | #none
-    | #previous
-    | #default
-    | @as("emergency-call") #emergencyCall
-    | #google
-    | #join
-    | #route
-    | #yahoo
-  ]=?,
+  ~returnKeyType: returnKeyType=?,
   ~rejectResponderTermination: bool=?,
   ~scrollEnabled: bool=?,
   ~secureTextEntry: bool=?,
@@ -286,13 +289,7 @@ external make: (
   ~accessible: bool=?,
   ~collapsable: bool=?,
   ~hitSlop: View.edgeInsets=?,
-  ~importantForAccessibility: @string
-  [
-    | #auto
-    | #yes
-    | #no
-    | @as("no-hide-descendants") #noHideDescendants
-  ]=?,
+  ~importantForAccessibility: View.importantForAccessibility=?,
   ~nativeID: string=?,
   ~needsOffscreenAlphaCompositing: bool=?,
   ~onAccessibilityAction: Accessibility.actionEvent => unit=?,
@@ -313,13 +310,7 @@ external make: (
   ~onResponderTerminationRequest: Event.pressEvent => bool=?,
   ~onStartShouldSetResponder: Event.pressEvent => bool=?,
   ~onStartShouldSetResponderCapture: Event.pressEvent => bool=?,
-  ~pointerEvents: @string
-  [
-    | #auto
-    | #none
-    | @as("box-none") #boxNone
-    | @as("box-only") #boxOnly
-  ]=?,
+  ~pointerEvents: View.pointerEvents=?,
   ~removeClippedSubviews: bool=?,
   ~renderToHardwareTextureAndroid: bool=?,
   ~shouldRasterizeIOS: bool=?,

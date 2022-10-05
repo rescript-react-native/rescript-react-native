@@ -10,11 +10,19 @@ module DrawerSlideEvent = {
 
 type drawerSlideEvent = DrawerSlideEvent.t
 
-type drawerPosition = [#left | #right]
-
 type t
 
 type androidInteractionState = [#idle | #dragging | #settling]
+
+type drawerLockMode = [
+  | #unlocked
+  | #"locked-closed"
+  | #"locked-open"
+]
+
+type drawerPosition = [#left | #right]
+
+type keyboardDismissMode = [#none | #"on-drag"]
 
 @react.component @module("react-native")
 external make: (
@@ -22,15 +30,10 @@ external make: (
   // DrawerLayoutAndroid props
   ~renderNavigationView: unit => React.element,
   ~onDrawerClose: unit => unit=?,
+  ~drawerLockMode: drawerLockMode=?,
   ~drawerPosition: drawerPosition=?,
   ~drawerWidth: float=?,
-  ~keyboardDismissMode: @string [#none | @as("on-drag") #onDrag]=?,
-  ~drawerLockMode: @string
-  [
-    | @as("unlocked") #unlocked
-    | @as("locked-closed") #lockedClosed
-    | @as("locked-open") #lockedOpen
-  ]=?,
+  ~keyboardDismissMode: keyboardDismissMode=?,
   ~onDrawerOpen: unit => unit=?,
   ~onDrawerSlide: drawerSlideEvent => unit=?,
   ~onDrawerStateChanged: androidInteractionState => unit=?,
@@ -52,13 +55,7 @@ external make: (
   ~accessible: bool=?,
   ~collapsable: bool=?,
   ~hitSlop: View.edgeInsets=?,
-  ~importantForAccessibility: @string
-  [
-    | #auto
-    | #yes
-    | #no
-    | @as("no-hide-descendants") #noHideDescendants
-  ]=?,
+  ~importantForAccessibility: View.importantForAccessibility=?,
   ~nativeID: string=?,
   ~needsOffscreenAlphaCompositing: bool=?,
   ~onAccessibilityAction: Accessibility.actionEvent => unit=?,
@@ -79,13 +76,7 @@ external make: (
   ~onResponderTerminationRequest: Event.pressEvent => bool=?,
   ~onStartShouldSetResponder: Event.pressEvent => bool=?,
   ~onStartShouldSetResponderCapture: Event.pressEvent => bool=?,
-  ~pointerEvents: @string
-  [
-    | #auto
-    | #none
-    | @as("box-none") #boxNone
-    | @as("box-only") #boxOnly
-  ]=?,
+  ~pointerEvents: View.pointerEvents=?,
   ~removeClippedSubviews: bool=?,
   ~renderToHardwareTextureAndroid: bool=?,
   ~shouldRasterizeIOS: bool=?,

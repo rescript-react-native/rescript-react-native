@@ -1,5 +1,12 @@
 include NativeElement
 
+type cache = [
+  | #default
+  | #reload
+  | #"force-cache"
+  | #"only-if-cached"
+]
+
 type uriSource
 
 @obj
@@ -9,13 +16,7 @@ external uriSource: (
   ~method: string=?,
   ~headers: Js.Dict.t<string>=?,
   ~body: string=?,
-  ~cache: @string
-  [
-    | #default
-    | #reload
-    | @as("force-cache") #forceCache
-    | @as("only-if-cached") #onlyIfCached
-  ]=?,
+  ~cache: cache=?,
   ~scale: float=?,
   ~width: float=?,
   ~height: float=?,

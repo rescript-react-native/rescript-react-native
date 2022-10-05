@@ -1,14 +1,15 @@
+type barStyle = [
+  | #default
+  | #"light-content"
+  | #"dark-content"
+]
+
 type showHideTransition = [#fade | #none | #slide]
 
 @react.component @module("react-native")
 external make: (
   ~animated: bool=?,
-  ~barStyle: @string
-  [
-    | #default
-    | @as("light-content") #lightContent
-    | @as("dark-content") #darkContent
-  ]=?,
+  ~barStyle: barStyle=?,
   ~hidden: bool=?,
   ~backgroundColor: string=?,
   ~translucent: bool=?,
@@ -20,15 +21,7 @@ external make: (
 external setHidden: (bool, showHideTransition) => unit = "setHidden"
 
 @module("react-native") @scope("StatusBar")
-external setBarStyle: (
-  @string
-  [
-    | #default
-    | @as("light-content") #lightContent
-    | @as("dark-content") #darkContent
-  ],
-  bool,
-) => unit = "setBarStyle"
+external setBarStyle: (barStyle, bool) => unit = "setBarStyle"
 
 @module("react-native") @scope("StatusBar")
 external setNetworkActivityIndicatorVisible: bool => unit = "setNetworkActivityIndicatorVisible"
