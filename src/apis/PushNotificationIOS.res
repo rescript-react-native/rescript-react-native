@@ -74,8 +74,7 @@ type deliveredNotification = {
   title: Js.Nullable.t<string>,
   body: Js.Nullable.t<string>,
   category: Js.Nullable.t<string>,
-  @as("thread-id")
-  threadId: Js.Nullable.t<string>,
+  \"thread-id": Js.Nullable.t<string>,
   userInfo: Js.Nullable.t<Js.Json.t>,
 }
 

@@ -51,8 +51,7 @@ module SyntheticEvent = (
     nativeEvent: T._payload,
     target: Js.Nullable.t<float>,
     timeStamp: float,
-    @as("type")
-    _type: Js.Nullable.t<string>,
+    \"type": Js.Nullable.t<string>,
   }
 
   include EventMethods({
@@ -96,8 +95,7 @@ module ResponderSyntheticEvent = (
     nativeEvent: T._payload,
     target: Js.Nullable.t<float>,
     timeStamp: float,
-    @as("type")
-    _type: Js.Nullable.t<string>,
+    \"type": Js.Nullable.t<string>,
     touchHistory: touchHistory,
   }
 
