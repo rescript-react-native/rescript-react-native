@@ -3,8 +3,15 @@ module Make = (
     type t
   },
 ) => {
-  type scrollToLocationParams
-  @obj
+  type scrollToLocationParams = {
+    itemIndex: int,
+    sectionIndex: int,
+    animated?: bool,
+    viewOffset?: int,
+    viewPosition?: float,
+  }
+
+  @obj @deprecated("Directly create record instead")
   external scrollToLocationParams: (
     ~animated: bool=?,
     ~itemIndex: int,

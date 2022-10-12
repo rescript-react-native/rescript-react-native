@@ -1,10 +1,20 @@
-type content
-type options
+type content = {
+  title?: string,
+  message?: string,
+  url?: string,
+}
 
-@obj
+@obj @deprecated("Directly create record instead")
 external content: (~title: string=?, ~message: string=?, ~url: string=?, unit) => content = ""
 
-@obj
+type options = {
+  subject?: string,
+  tintColor?: string,
+  excludedActivityTypes?: array<string>,
+  dialogTitle?: string,
+}
+
+@obj @deprecated("Directly create record instead")
 external options: (
   ~subject: string=?,
   ~tintColor: string=?,
@@ -23,7 +33,7 @@ external dismissedAction: action = "dismissedAction"
 
 type shareResult = {
   action: action,
-  activityType: option<string>,
+  activityType?: string,
 }
 
 // multiple externals

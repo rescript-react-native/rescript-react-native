@@ -26,18 +26,28 @@ module Notification = {
   external getThreadID: t => option<string> = "getThreadID"
 }
 
-type localNotification
-
 type repeatInterval = [#minute | #hour | #day | #week | #month | #year]
 
-@obj
+type localNotification = {
+  alertBody?: string,
+  alertTitle?: string,
+  alertAction?: string,
+  soundName?: string,
+  isSilent?: bool,
+  category?: string,
+  userInfo?: Js.Json.t,
+  applicationIconBadgeNumber?: int,
+  fireDate?: Js.Date.t,
+  repeatInterval?: repeatInterval,
+}
+
+@obj @deprecated("Directly create record instead")
 external localNotification: (
   ~alertBody: string=?,
   ~alertTitle: string=?,
   ~alertAction: string=?,
   ~soundName: string=?,
   ~isSilent: bool=?,
-  ~soundName: string=?,
   ~category: string=?,
   ~userInfo: Js.Json.t=?,
   ~applicationIconBadgeNumber: int=?,
@@ -141,8 +151,13 @@ type checkedPermissions = {
   "autorizationStatus": int,
 }
 
-type requestPermissionsOptions
-@obj
+type requestPermissionsOptions = {
+  alert?: bool,
+  badge?: bool,
+  sound?: bool,
+}
+
+@obj @deprecated("Directly create record instead")
 external requestPermissionsOptions: (
   ~alert: bool=?,
   ~badge: bool=?,
@@ -165,8 +180,13 @@ external abandonPermissions: unit => unit = "abandonPermissions"
 @module("react-native") @scope("PushNotificationIOS")
 external checkPermissions: (unit => checkedPermissions) => unit = "checkPermissions"
 
-type fetchResult
-@obj
+type fetchResult = {
+  \"NewData"?: string,
+  \"NoData"?: string,
+  \"ResultFailed"?: string,
+}
+
+@obj @deprecated("Directly create record instead")
 external fetchResult: (
   ~_NewData: string=?,
   ~_NoData: string=?,

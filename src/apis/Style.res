@@ -154,9 +154,7 @@ type justifyContent = [
 // because layout styles props don't accept animated values.
 // We don't do the distinction as ReScript is an HMTS that doesn't support implicit subtyping
 
-// ____DangerouslyImpreciseStyle_Internal
-@obj
-external // Dangerous Imprecise Style
+// Dangerous Imprecise Style
 // Contains all of
 // - image style
 // - text style
@@ -164,10 +162,138 @@ external // Dangerous Imprecise Style
 // - transform style
 // - shadow style
 // - layout style
+type style = {
+  // Image Style Props (https://reactnative.dev/docs/image-style-props)
+  resizeMode?: resizeMode,
+  overlayColor?: Color.t,
+  tintColor?: Color.t,
+  // Text Style Props (https://reactnative.dev/docs/text-style-props)
+  color?: Color.t,
+  fontFamily?: string,
+  fontSize?: float,
+  fontStyle?: fontStyle,
+  fontVariant?: array<fontVariant>,
+  fontWeight?: fontWeight,
+  includeFontPadding?: bool,
+  letterSpacing?: float,
+  lineHeight?: float,
+  textAlign?: textAlign,
+  textAlignVertical?: textAlignVertical,
+  textDecorationColor?: Color.t,
+  textDecorationLine?: textDecorationLine,
+  textDecorationStyle?: textDecorationStyle,
+  textShadowColor?: Color.t,
+  textShadowOffset?: offset,
+  textShadowRadius?: float,
+  textTransform?: textTransform,
+  writingDirection?: writingDirection,
+  // View styles https://reactnative.dev/docs/view-style-props
+  backfaceVisibility?: backfaceVisibility,
+  backgroundColor?: Color.t,
+  borderBottomColor?: Color.t,
+  borderBottomEndRadius?: float,
+  borderBottomLeftRadius?: float,
+  borderBottomRightRadius?: float,
+  borderBottomStartRadius?: float,
+  borderBottomWidth?: float,
+  borderColor?: Color.t,
+  borderEndColor?: Color.t,
+  borderEndWidth?: float,
+  borderLeftColor?: Color.t,
+  borderLeftWidth?: float,
+  borderRadius?: float,
+  borderRightColor?: Color.t,
+  borderRightWidth?: float,
+  borderStartColor?: Color.t,
+  borderStartWidth?: float,
+  borderStyle?: borderStyle,
+  borderTopColor?: Color.t,
+  borderTopEndRadius?: float,
+  borderTopLeftRadius?: float,
+  borderTopRightRadius?: float,
+  borderTopStartRadius?: float,
+  borderTopWidth?: float,
+  borderWidth?: float,
+  elevation?: float,
+  opacity?: float,
+  // Transform Props (https://reactnative.dev/docs/transforms#props)
+  transform?: array<transform>, // all other transform props are deprecated
+  // Shadow Props (https://reactnative.dev/docs/shadow-props)
+  shadowColor?: Color.t,
+  shadowOffset?: offset,
+  shadowOpacity?: float,
+  shadowRadius?: float,
+  // Layout Style Props (https://reactnative.dev/docs/layout-props)
+  alignContent?: alignContent,
+  alignItems?: alignItems,
+  alignSelf?: alignSelf,
+  aspectRatio?: float,
+  // border*Width are commented because already in view styles props (see explanation at the top)
+  // borderBottomWidth?: float,
+  // borderEndWidth?: float,
+  // borderLeftWidth?: float,
+  // borderRightWidth?: float,
+  // borderStartWidth?: float,
+  // borderTopWidth?: float,
+  // borderWidth?: float,
+  bottom?: size,
+  direction?: direction,
+  display?: display,
+  end?: size,
+  flex?: float,
+  flexBasis?: margin,
+  flexDirection?: flexDirection,
+  flexGrow?: float,
+  flexShrink?: float,
+  flexWrap?: flexWrap,
+  height?: size,
+  justifyContent?: justifyContent,
+  left?: size,
+  margin?: margin,
+  marginBottom?: margin,
+  marginEnd?: margin,
+  marginHorizontal?: margin,
+  marginLeft?: margin,
+  marginRight?: margin,
+  marginStart?: margin,
+  marginTop?: margin,
+  marginVertical?: margin,
+  maxHeight?: size,
+  maxWidth?: size,
+  minHeight?: size,
+  minWidth?: size,
+  overflow?: overflow,
+  padding?: size,
+  paddingBottom?: size,
+  paddingEnd?: size,
+  paddingHorizontal?: size,
+  paddingLeft?: size,
+  paddingRight?: size,
+  paddingStart?: size,
+  paddingTop?: size,
+  paddingVertical?: size,
+  position?: position,
+  right?: size,
+  start?: size,
+  top?: size,
+  width?: size,
+  zIndex?: int,
+}
 
-// *Comment below is supposed to be after the first ( below but refmt move it here*
-// Image Style Props (https://reactnative.dev/docs/image-style-props)
-style: (
+external s: style => t = "%identity"
+
+// ____DangerouslyImpreciseStyle_Internal
+// Dangerous Imprecise Style
+// Contains all of
+// - image style
+// - text style
+// - view style
+// - transform style
+// - shadow style
+// - layout style
+@obj
+external style: (
+  // Image Style Props (https://reactnative.dev/docs/image-style-props)
   ~resizeMode: resizeMode=?,
   ~overlayColor: Color.t=?,
   ~tintColor: Color.t=?,
@@ -287,9 +413,8 @@ style: (
 
 // ____ViewStyleProp_Internal
 @obj
-external // *Comment below is supposed to be after the first ( below but refmt move it here*
-// View styles https://reactnative.dev/docs/view-style-props
-viewStyle: (
+external viewStyle: (
+  // View styles https://reactnative.dev/docs/view-style-props
   ~backfaceVisibility: backfaceVisibility=?,
   ~backgroundColor: Color.t=?,
   ~borderBottomColor: Color.t=?,
@@ -385,8 +510,8 @@ viewStyle: (
 
 // ____TextStyleProp_Internal
 @obj
-external // Text Style Props (https://reactnative.dev/docs/text-style-props)
-textStyle: (
+external textStyle: (
+  // Text Style Props (https://reactnative.dev/docs/text-style-props)
   ~color: Color.t=?,
   ~fontFamily: string=?,
   ~fontSize: float=?,
@@ -502,8 +627,8 @@ textStyle: (
 
 // ____ImageStyleProp_Internal
 @obj
-external // Image Style Props (https://reactnative.dev/docs/image-style-props)
-imageStyle: (
+external imageStyle: (
+  // Image Style Props (https://reactnative.dev/docs/image-style-props)
   ~resizeMode: resizeMode=?,
   ~overlayColor: Color.t=?,
   ~tintColor: Color.t=?,

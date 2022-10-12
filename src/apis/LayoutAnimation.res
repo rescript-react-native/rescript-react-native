@@ -9,8 +9,16 @@ type animationType = [
 
 type property = [#opacity | #scaleX | #scaleY | #scaleXY]
 
-type animationConfig
-@obj
+type animationConfig = {
+  duration?: float,
+  delay?: float,
+  springDamping?: float,
+  initialVelocity?: float,
+  \"type"?: animationType,
+  property?: property,
+}
+
+@obj @deprecated("Directly create record instead")
 external animationConfig: (
   ~duration: float=?,
   ~delay: float=?,
@@ -21,8 +29,14 @@ external animationConfig: (
   unit,
 ) => animationConfig = ""
 
-type layoutAnimationConfig
-@obj
+type layoutAnimationConfig = {
+  duration: float,
+  create?: animationConfig,
+  update?: animationConfig,
+  delete?: animationConfig,
+}
+
+@obj @deprecated("Directly create record instead")
 external layoutAnimationConfig: (
   ~duration: float,
   ~create: animationConfig=?,

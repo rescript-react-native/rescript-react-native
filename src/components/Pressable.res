@@ -1,8 +1,13 @@
 include NativeElement
 
-type rippleConfig
+type rippleConfig = {
+  borderless?: bool,
+  color?: Color.t,
+  foreground?: bool,
+  radius?: float,
+}
 
-@obj
+@obj @deprecated("Directly create record instead")
 external rippleConfig: (
   ~borderless: bool=?,
   ~color: Color.t=?,
@@ -14,8 +19,8 @@ external rippleConfig: (
 type interactionState = {
   pressed: bool,
   // React Native Web
-  hovered: option<bool>,
-  focused: option<bool>,
+  hovered?: bool,
+  focused?: bool,
 }
 
 @react.component @module("react-native")

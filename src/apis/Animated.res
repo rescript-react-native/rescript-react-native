@@ -23,9 +23,16 @@ type value<'a>
 
 module ValueAnimations = (Val: Value) => {
   module Decay = {
-    type config
+    type config = {
+      velocity: Val.rawValue,
+      useNativeDriver: bool,
+      deceleration?: float,
+      isInteraction?: bool,
+      onComplete?: Animation.endCallback,
+      iterations?: int,
+    }
 
-    @obj
+    @obj @deprecated("Directly create record instead")
     external config: (
       ~velocity: Val.rawValue,
       ~deceleration: float=?,
@@ -45,9 +52,27 @@ module ValueAnimations = (Val: Value) => {
     external fromRawValue: Val.rawValue => toValue = "%identity"
     external fromAnimatedValue: Val.t => toValue = "%identity"
 
-    type config
+    type config = {
+      toValue: toValue,
+      useNativeDriver: bool,
+      restDisplacementThreshold?: float,
+      overshootClamping?: bool,
+      restSpeedThreshold?: float,
+      velocity?: Val.rawValue,
+      bounciness?: float,
+      speed?: float,
+      tension?: float,
+      friction?: float,
+      stiffness?: float,
+      mass?: float,
+      damping?: float,
+      delay?: float,
+      isInteraction?: bool,
+      onComplete?: Animation.endCallback,
+      iterations?: int,
+    }
 
-    @obj
+    @obj @deprecated("Directly create record instead")
     external config: (
       ~toValue: toValue,
       ~restDisplacementThreshold: float=?,
@@ -79,9 +104,18 @@ module ValueAnimations = (Val: Value) => {
     external fromRawValue: Val.rawValue => toValue = "%identity"
     external fromAnimatedValue: Val.t => toValue = "%identity"
 
-    type config
+    type config = {
+      toValue: toValue,
+      useNativeDriver: bool,
+      easing?: Easing.t,
+      duration?: float,
+      delay?: float,
+      isInteraction?: bool,
+      onComplete?: Animation.endCallback,
+      iterations?: int,
+    }
 
-    @obj
+    @obj @deprecated("Directly create record instead")
     external config: (
       ~toValue: toValue,
       ~easing: Easing.t=?,
@@ -107,8 +141,16 @@ module Interpolation = {
 
   type extrapolate = [#extend | #clamp | #identity]
 
-  type config
-  @obj
+  type config = {
+    inputRange: array<float>,
+    outputRange: outputRange,
+    easing?: Easing.t,
+    extrapolate?: extrapolate,
+    extrapolateLeft?: extrapolate,
+    extrapolateRight?: extrapolate,
+  }
+
+  @obj @deprecated("Directly create record instead")
   external config: (
     ~inputRange: array<float>,
     ~outputRange: outputRange,

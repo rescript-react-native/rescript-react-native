@@ -23,6 +23,11 @@ type rel = [
   | #ugc
 ]
 
-type hrefAttrs
-@obj
+type hrefAttrs = {
+  download?: string,
+  rel?: rel,
+  target?: target,
+}
+
+@obj @deprecated("Directly create record instead")
 external hrefAttrs: (~download: string=?, ~rel: rel=?, ~target: target=?, unit) => hrefAttrs = ""

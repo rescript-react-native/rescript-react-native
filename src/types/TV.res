@@ -1,15 +1,23 @@
-type parallax
+type parallax = {
+  enabled?: bool,
+  shiftDistanceX?: float,
+  shiftDistanceY?: float,
+  tiltAngle?: float,
+  magnification?: float,
+  pressMagnification?: float,
+  pressDuration?: float,
+  pressDelay?: float,
+}
 
-@obj
+@obj @deprecated("Directly create record instead")
 external parallax: (
-  ~shiftDistanceX: float,
-  ~shiftDistanceY: float,
-  ~tiltAngle: float,
-  ~magnification: float,
-  ~pressMagnification: float,
-  ~pressDuration: float,
-  ~pressDelay: float,
+  ~enabled: bool=?,
+  ~shiftDistanceX: float=?,
+  ~shiftDistanceY: float=?,
+  ~tiltAngle: float=?,
+  ~magnification: float=?,
+  ~pressMagnification: float=?,
+  ~pressDuration: float=?,
+  ~pressDelay: float=?,
   unit,
 ) => parallax = ""
-
-let parallaxDefault: parallax = true->Obj.magic

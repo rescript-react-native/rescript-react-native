@@ -1,5 +1,18 @@
-type extra
-@obj external extra: (~key: string, ~value: 'a) => extra = ""
+module ExtraValue = {
+  type t
+
+  external fromString: string => t = "%identity"
+  external fromInt: int => t = "%identity"
+  external fromFloat: float => t = "%identity"
+  external fromBool: bool => t = "%identity"
+}
+
+type extraValue = ExtraValue.t
+
+type extra = {key: string, value: extraValue}
+
+@obj @deprecated("Directly create record instead")
+external extra: (~key: string, ~value: extraValue) => extra = ""
 
 @scope("Linking") @module("react-native")
 external openURL: string => Js.Promise.t<unit> = "openURL"

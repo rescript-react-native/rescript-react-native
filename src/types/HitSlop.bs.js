@@ -1,14 +1,1 @@
-'use strict';
-
-
-function $$float(value) {
-  return {
-          left: value,
-          right: value,
-          top: value,
-          bottom: value
-        };
-}
-
-exports.$$float = $$float;
-/* No side effect */
+/* This output is empty. Its source's type definitions, externals and/or unused code got optimized away. */

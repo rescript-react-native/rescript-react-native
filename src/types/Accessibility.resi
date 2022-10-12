@@ -1,5 +1,4 @@
 type state
-type actionInfo
 type checked<'a>
 
 @inline(true)
@@ -11,7 +10,12 @@ let unchecked: checked<bool>
 @inline("mixed")
 let mixed: checked<string>
 
-@obj
+type actionInfo = {
+  name: string,
+  label?: string,
+}
+
+@obj @deprecated("Directly create record instead")
 external actionInfo: (~name: string, ~label: string=?, unit) => actionInfo = ""
 
 type actionEvent = AccessibilityActionEvent.t

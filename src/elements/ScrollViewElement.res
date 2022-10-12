@@ -5,8 +5,14 @@ include ScrollViewMethods.Make({
   type t = element
 })
 
-type scrollToParams
-@obj
+type scrollToParams = {
+  x: float,
+  y: float,
+  animated?: bool,
+  duration?: float,
+}
+
+@obj @deprecated("Directly create record instead")
 external scrollToParams: (
   ~x: float,
   ~y: float,

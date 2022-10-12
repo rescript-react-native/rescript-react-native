@@ -8,12 +8,11 @@ type rec renderItemProps<'item, 'sectionData> = {
 }
 and section<'item, 'sectionData> = {
   data: array<'item>,
-  key: option<string>,
-  renderItem: option<renderItemCallback<'item, 'sectionData>>,
-  @as("ItemSeparatorComponent")
-  itemSeparatorComponent: option<unit => React.element>,
-  keyExtractor: option<('item, int) => string>,
-  sectionData: option<'sectionData>,
+  key?: string,
+  renderItem?: renderItemCallback<'item, 'sectionData>,
+  \"ItemSeparatorComponent"?: unit => React.element,
+  keyExtractor?: ('item, int) => string,
+  sectionData?: 'sectionData,
 }
 and separators = {
   highlight: unit => unit,
@@ -28,15 +27,15 @@ type rec renderSectionHeaderCallback<'item, 'sectionData> = renderSectionHeaderP
 and renderSectionHeaderProps<'item, 'sectionData> = {section: section<'item, 'sectionData>}
 
 type separatorProps<'item, 'sectionData> = {
-  "highlighted": bool,
-  "leadingItem": option<'item>,
-  "leadingSection": option<section<'item, 'sectionData>>,
-  "section": section<'item, 'sectionData>,
-  "trailingItem": option<'item>,
-  "trailingSection": option<section<'item, 'sectionData>>,
+  highlighted: bool,
+  leadingItem: 'item,
+  leadingSection?: section<'item, 'sectionData>,
+  section: section<'item, 'sectionData>,
+  trailingItem?: 'item,
+  trailingSection?: section<'item, 'sectionData>,
 }
 
-@obj
+@obj @deprecated("Directly create record instead")
 external section: (
   ~data: array<'item>,
   ~key: string=?,

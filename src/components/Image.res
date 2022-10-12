@@ -7,9 +7,19 @@ type cache = [
   | #"only-if-cached"
 ]
 
-type uriSource
+type uriSource = {
+  uri: string,
+  bundle?: string,
+  method?: string,
+  headers?: Js.Dict.t<string>,
+  body?: string,
+  cache?: cache,
+  scale?: float,
+  width?: float,
+  height?: float,
+}
 
-@obj
+@obj @deprecated("Directly create record instead")
 external uriSource: (
   ~uri: string,
   ~bundle: string=?,
@@ -29,16 +39,6 @@ module Source = {
   external fromRequired: Packager.required => t = "%identity"
   external fromUriSource: uriSource => t = "%identity"
   external fromUriSources: array<uriSource> => t = "%identity"
-}
-
-module DefaultSource = {
-  type t
-
-  @obj
-  external fromUri: (~uri: string, ~scale: float=?, ~width: float=?, ~height: float=?, unit) => t =
-    ""
-
-  external fromRequired: Packager.required => t = "%identity"
 }
 
 module ImageLoadEvent = {
@@ -93,7 +93,7 @@ external make: (
   ~accessible: bool=?,
   ~blurRadius: float=?,
   ~capInsets: View.edgeInsets=?,
-  ~defaultSource: DefaultSource.t=?,
+  ~defaultSource: Source.t=?,
   ~fadeDuration: float=?,
   ~loadingIndicatorSource: array<Source.t>=?,
   ~onError: errorEvent => unit=?,
