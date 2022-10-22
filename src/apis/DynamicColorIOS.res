@@ -5,7 +5,7 @@ type t = {
   highContrastDark?: Color.t,
 }
 
-@obj @deprecated("Directly create record instead")
+@obj // @deprecated("Directly create record instead")
 external dynamicColor: (
   ~dark: Color.t,
   ~light: Color.t,

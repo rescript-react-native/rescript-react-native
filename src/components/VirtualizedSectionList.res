@@ -35,7 +35,7 @@ type separatorProps<'item, 'sectionData> = {
   trailingSection?: section<'item, 'sectionData>,
 }
 
-@obj @deprecated("Directly create record instead")
+@obj // @deprecated("Directly create record instead")
 external section: (
   ~data: array<'item>,
   ~key: string=?,

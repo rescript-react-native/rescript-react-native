@@ -11,7 +11,7 @@ type extraValue = ExtraValue.t
 
 type extra = {key: string, value: extraValue}
 
-@obj @deprecated("Directly create record instead")
+@obj // @deprecated("Directly create record instead")
 external extra: (~key: string, ~value: extraValue) => extra = ""
 
 @scope("Linking") @module("react-native")

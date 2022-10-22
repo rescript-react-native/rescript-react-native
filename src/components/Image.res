@@ -19,7 +19,7 @@ type uriSource = {
   height?: float,
 }
 
-@obj @deprecated("Directly create record instead")
+@obj // @deprecated("Directly create record instead")
 external uriSource: (
   ~uri: string,
   ~bundle: string=?,

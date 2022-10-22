@@ -5,7 +5,7 @@ module Make = (
 ) => {
   type scrollToEndOptions = {animated?: bool, duration?: float}
 
-  @obj @deprecated("Directly create record instead")
+  @obj // @deprecated("Directly create record instead")
   external scrollToEndOptions: (~animated: bool=?, ~duration: float=?, unit) => scrollToEndOptions =
     ""
 

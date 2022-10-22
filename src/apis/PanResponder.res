@@ -31,7 +31,7 @@ type config = {
   onShouldBlockNativeResponder?: (Event.pressEvent, gestureState) => bool,
 }
 
-@obj @deprecated("Directly create record instead")
+@obj // @deprecated("Directly create record instead")
 external config: (
   ~onMoveShouldSetPanResponder: (Event.pressEvent, gestureState) => bool=?,
   ~onMoveShouldSetPanResponderCapture: (Event.pressEvent, gestureState) => bool=?,

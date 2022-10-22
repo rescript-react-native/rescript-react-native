@@ -5,7 +5,7 @@ type trackColor = {
   \"false"?: Color.t,
 }
 
-@obj @deprecated("Directly create record instead")
+@obj // @deprecated("Directly create record instead")
 external trackColor: (~_true: Color.t=?, ~_false: Color.t=?, unit) => trackColor = ""
 
 @react.component @module("react-native")

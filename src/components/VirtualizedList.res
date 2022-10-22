@@ -53,7 +53,7 @@ type viewabilityConfigCallbackPair<'item> = {
   onViewableItemsChanged: viewableItemsChanged<'item> => unit,
 }
 
-@obj @deprecated("Directly create record instead")
+@obj // @deprecated("Directly create record instead")
 external viewabilityConfigCallbackPair: (
   ~viewabilityConfig: viewabilityConfig,
   ~onViewableItemsChanged: viewableItemsChanged<'item> => unit,
