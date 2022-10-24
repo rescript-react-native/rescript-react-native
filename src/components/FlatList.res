@@ -10,18 +10,18 @@ type separatorComponentProps<'item> = {"highlighted": bool, "leadingItem": optio
 external make: (
   ~ref: ref=?,
   // FlatList props
-  ~_ItemSeparatorComponent: React.component<separatorComponentProps<'item>>=?,
+  ~\"ItemSeparatorComponent": React.component<separatorComponentProps<'item>>=?,
   ~columnWrapperStyle: Style.t=?,
   ~data: array<'item>,
   ~getItemLayout: (array<'item>, int) => VirtualizedList.itemLayout=?,
   ~numColumns: 'int=?,
   // VirtualizedList props
-  // ~_CellRendererComponent: VirtualizedList.cellRendererComponent('item)=?,
-  ~_ListEmptyComponent: unit => React.element=?,
-  ~_ListFooterComponent: unit => React.element=?,
-  ~_ListFooterComponentStyle: Style.t=?,
-  ~_ListHeaderComponent: unit => React.element=?,
-  ~_ListHeaderComponentStyle: Style.t=?,
+  // ~\"CellRendererComponent": VirtualizedList.cellRendererComponent('item)=?,
+  ~\"ListEmptyComponent": unit => React.element=?,
+  ~\"ListFooterComponent": unit => React.element=?,
+  ~\"ListFooterComponentStyle": Style.t=?,
+  ~\"ListHeaderComponent": unit => React.element=?,
+  ~\"ListHeaderComponentStyle": Style.t=?,
   ~debug: bool=?,
   // ~data: 'data, // any collection of 'item
   ~disableVirtualization: bool=?, // deprecated

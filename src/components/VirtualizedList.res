@@ -65,12 +65,12 @@ type viewabilityConfigCallbackPairs<'item> = array<viewabilityConfigCallbackPair
 external make: (
   ~ref: ref=?,
   // VirtualizedList props
-  ~_CellRendererComponent: cellRendererComponent<'item>=?,
-  ~_ListEmptyComponent: unit => React.element=?,
-  ~_ListFooterComponent: unit => React.element=?,
-  ~_ListFooterComponentStyle: Style.t=?,
-  ~_ListHeaderComponent: unit => React.element=?,
-  ~_ListHeaderComponentStyle: Style.t=?,
+  ~\"CellRendererComponent": cellRendererComponent<'item>=?,
+  ~\"ListEmptyComponent": unit => React.element=?,
+  ~\"ListFooterComponent": unit => React.element=?,
+  ~\"ListFooterComponentStyle": Style.t=?,
+  ~\"ListHeaderComponent": unit => React.element=?,
+  ~\"ListHeaderComponentStyle": Style.t=?,
   ~debug: bool=?,
   ~data: 'data, // any collection of 'item
   ~disableVirtualization: bool=?, // deprecated
