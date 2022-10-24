@@ -7,7 +7,7 @@ type rippleConfig = {
   radius?: float,
 }
 
-@obj @deprecated("Directly create record instead")
+@obj // @deprecated("Directly create record instead")
 external rippleConfig: (
   ~borderless: bool=?,
   ~color: Color.t=?,

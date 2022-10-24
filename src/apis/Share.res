@@ -4,7 +4,7 @@ type content = {
   url?: string,
 }
 
-@obj @deprecated("Directly create record instead")
+@obj // @deprecated("Directly create record instead")
 external content: (~title: string=?, ~message: string=?, ~url: string=?, unit) => content = ""
 
 type options = {
@@ -14,7 +14,7 @@ type options = {
   dialogTitle?: string,
 }
 
-@obj @deprecated("Directly create record instead")
+@obj // @deprecated("Directly create record instead")
 external options: (
   ~subject: string=?,
   ~tintColor: string=?,

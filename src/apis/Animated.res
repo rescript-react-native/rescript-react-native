@@ -32,7 +32,7 @@ module ValueAnimations = (Val: Value) => {
       iterations?: int,
     }
 
-    @obj @deprecated("Directly create record instead")
+    @obj // @deprecated("Directly create record instead")
     external config: (
       ~velocity: Val.rawValue,
       ~deceleration: float=?,
@@ -72,7 +72,7 @@ module ValueAnimations = (Val: Value) => {
       iterations?: int,
     }
 
-    @obj @deprecated("Directly create record instead")
+    @obj // @deprecated("Directly create record instead")
     external config: (
       ~toValue: toValue,
       ~restDisplacementThreshold: float=?,
@@ -115,7 +115,7 @@ module ValueAnimations = (Val: Value) => {
       iterations?: int,
     }
 
-    @obj @deprecated("Directly create record instead")
+    @obj // @deprecated("Directly create record instead")
     external config: (
       ~toValue: toValue,
       ~easing: Easing.t=?,
@@ -150,7 +150,7 @@ module Interpolation = {
     extrapolateRight?: extrapolate,
   }
 
-  @obj @deprecated("Directly create record instead")
+  @obj // @deprecated("Directly create record instead")
   external config: (
     ~inputRange: array<float>,
     ~outputRange: outputRange,

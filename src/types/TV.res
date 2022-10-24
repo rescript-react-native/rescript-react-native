@@ -9,7 +9,7 @@ type parallax = {
   pressDelay?: float,
 }
 
-@obj @deprecated("Directly create record instead")
+@obj // @deprecated("Directly create record instead")
 external parallax: (
   ~enabled: bool=?,
   ~shiftDistanceX: float=?,
