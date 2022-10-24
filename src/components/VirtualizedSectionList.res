@@ -40,7 +40,7 @@ external section: (
   ~data: array<'item>,
   ~key: string=?,
   ~renderItem: renderItemCallback<'item, 'sectionData>=?,
-  ~_ItemSeparatorComponent: unit => React.element=?,
+  ~\"ItemSeparatorComponent": unit => React.element=?,
   ~keyExtractor: ('item, int) => string=?,
   ~sectionData: 'sectionData=?,
   unit,
@@ -50,20 +50,20 @@ external section: (
 external make: (
   ~ref: ref=?,
   // VirtualizedSectionList props
-  ~_ItemSeparatorComponent: React.component<separatorProps<'item, 'sectionData>>=?,
-  ~_SectionSeparatorComponent: React.component<separatorProps<'item, 'sectionData>>=?,
+  ~\"ItemSeparatorComponent": React.component<separatorProps<'item, 'sectionData>>=?,
+  ~\"SectionSeparatorComponent": React.component<separatorProps<'item, 'sectionData>>=?,
   ~renderItem: renderItemCallback<'item, 'sectionData>,
   ~renderSectionFooter: renderSectionHeaderCallback<'item, 'sectionData>=?,
   ~renderSectionHeader: renderSectionHeaderCallback<'item, 'sectionData>=?,
   ~sections: array<section<'item, 'sectionData>>,
   ~stickySectionHeadersEnabled: bool=?,
   // VirtualizedList props
-  ~_CellRendererComponent: VirtualizedList.cellRendererComponent<'item>=?,
-  ~_ListEmptyComponent: unit => React.element=?,
-  ~_ListFooterComponent: unit => React.element=?,
-  ~_ListFooterComponentStyle: Style.t=?,
-  ~_ListHeaderComponent: unit => React.element=?,
-  ~_ListHeaderComponentStyle: Style.t=?,
+  ~\"CellRendererComponent": VirtualizedList.cellRendererComponent<'item>=?,
+  ~\"ListEmptyComponent": unit => React.element=?,
+  ~\"ListFooterComponent": unit => React.element=?,
+  ~\"ListFooterComponentStyle": Style.t=?,
+  ~\"ListHeaderComponent": unit => React.element=?,
+  ~\"ListHeaderComponentStyle": Style.t=?,
   ~debug: bool=?,
   // ~enableVirtualization: bool=?, // not working, disableVirtualization?
   // ~data: 'data, // any collection of 'item

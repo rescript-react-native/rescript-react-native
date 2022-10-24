@@ -12,10 +12,10 @@ external setNativeProps: (element, Js.t<'a>) => unit = "setNativeProps"
 external make: (
   ~ref: ref=?,
   // VirtualizedSectionList props
-  ~_ItemSeparatorComponent: React.component<
+  ~\"ItemSeparatorComponent": React.component<
     VirtualizedSectionList.separatorProps<'item, 'sectionData>,
   >=?,
-  ~_SectionSeparatorComponent: React.component<
+  ~\"SectionSeparatorComponent": React.component<
     VirtualizedSectionList.separatorProps<'item, 'sectionData>,
   >=?,
   ~renderItem: VirtualizedSectionList.renderItemCallback<'item, 'sectionData>,
@@ -24,12 +24,12 @@ external make: (
   ~sections: array<VirtualizedSectionList.section<'item, 'sectionData>>,
   ~stickySectionHeadersEnabled: bool=?,
   // VirtualizedList props
-  ~_CellRendererComponent: VirtualizedList.cellRendererComponent<'item>=?,
-  ~_ListEmptyComponent: unit => React.element=?,
-  ~_ListFooterComponent: unit => React.element=?,
-  ~_ListFooterComponentStyle: Style.t=?,
-  ~_ListHeaderComponent: unit => React.element=?,
-  ~_ListHeaderComponentStyle: Style.t=?,
+  ~\"CellRendererComponent": VirtualizedList.cellRendererComponent<'item>=?,
+  ~\"ListEmptyComponent": unit => React.element=?,
+  ~\"ListFooterComponent": unit => React.element=?,
+  ~\"ListFooterComponentStyle": Style.t=?,
+  ~\"ListHeaderComponent": unit => React.element=?,
+  ~\"ListHeaderComponentStyle": Style.t=?,
   ~debug: bool=?,
   // ~enableVirtualization: bool=?, // not working, disableVirtualization?
   // ~data: 'data, // any collection of 'item

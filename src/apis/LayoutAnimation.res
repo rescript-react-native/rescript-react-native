@@ -24,7 +24,7 @@ external animationConfig: (
   ~delay: float=?,
   ~springDamping: float=?,
   ~initialVelocity: float=?,
-  ~_type: animationType=?,
+  ~\"type": animationType=?,
   ~property: property=?,
   unit,
 ) => animationConfig = ""
@@ -57,7 +57,7 @@ external configureNextWithEndCallback: (layoutAnimationConfig, unit => unit) => 
 @module("react-native") @scope("LayoutAnimation")
 external create: (
   ~duration: float,
-  ~_type: animationType,
+  ~\"type": animationType,
   ~property: property,
 ) => layoutAnimationConfig = "create"
 

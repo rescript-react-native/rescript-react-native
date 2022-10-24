@@ -187,9 +187,9 @@ type fetchResult = {
 
 @obj @deprecated("Directly create record instead")
 external fetchResult: (
-  ~_NewData: string=?,
-  ~_NoData: string=?,
-  ~_ResultFailed: string=?,
+  ~\"NewData": string=?,
+  ~\"NoData": string=?,
+  ~\"ResultFailed": string=?,
   unit,
 ) => fetchResult = ""
 
