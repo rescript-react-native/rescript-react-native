@@ -1,5 +1,27 @@
 # Changelog of `rescript-react-native`
 
+## 0.70.0 - 2022-11-01
+
+This release requires ReScript 10.0.0 or later.
+It contains various breaking changes.
+
+### Breaking Changes
+
+- `_end` is now `end` (not a reserved word anymore) [92e3c6f](https://github.com/rescript-react-native/rescript-react-native/commit/92e3c6f) by [@cknitt](https://github.com/cknitt)
+- Camel cased polymorphic variants & `_` prefixed props when possible have been changed to reflect React Native original naming convention. Things like `#plainText`, `#boxNone` etc have been changed to what they should be (`#"plain-text"`, `#"box-none"` etc) [6495093](https://github.com/rescript-react-native/rescript-react-native/commit/6495093) & [6495093](https://github.com/rescript-react-native/rescript-react-native/commit/6495093) by [@cknitt](https://github.com/cknitt) & [4360933](https://github.com/rescript-react-native/rescript-react-native/commit/4360933) by [@MoOx](https://github.com/MoOx)
+- Because a limitation with ReScript that doesn't handle correctly numeric string as polymorphic variant, `fontWeight` is now an abstract type. This means that `style(~fontWeight=#_600, ())` now becomes `style(~fontWeight=FontWeight._600, ())` [44885db](https://github.com/rescript-react-native/rescript-react-native/commit/44885db) by [@cknitt](https://github.com/cknitt)
+- `@string` usage have been removed when possible. This means types that were inlined in bindings are now common. [6495093](https://github.com/rescript-react-native/rescript-react-native/commit/6495093) by [@cknitt](https://github.com/cknitt)
+- `Platform.os` now use polymorphic variant. `if Platform.os === Platform.android` becomes `if Platform.os === #android`. Be careful: if used in a switch, you will lose metro bundler optimisation ! [b189fbc](https://github.com/rescript-react-native/rescript-react-native/commit/b189fbc) & [9964b13](https://github.com/rescript-react-native/rescript-react-native/commit/9964b13) by [@cknitt](https://github.com/cknitt)
+- `PlatformColor` have been rewritten. Lots of deprecation & polymorphic variants changes (eg: for android, instead of `#background_dark` use `#"@android:color/background_dark"`) [036566e](https://github.com/rescript-react-native/rescript-react-native/commit/036566e) by [@MoOx](https://github.com/MoOx)
+- `Appearance` now returns `option<t>` instead of `Js.Null.t<t>` thanks to `@nullable` [91f0a67](https://github.com/rescript-react-native/rescript-react-native/commit/91f0a67) by [@cknitt](https://github.com/cknitt)
+- Deprecated `Style.pt` unit as been removed (use `dp` instead (density pixel)) [3df0fcf](https://github.com/rescript-react-native/rescript-react-native/commit/3df0fcf) by [@cknitt](https://github.com/cknitt)
+
+### Others changes
+
+- Most object types created using externals can now be created using objects with optional fields. This means that things like `ActionSheetIOS.showActionSheetWithOptions(ActionSheetIOS.shareOptions(~url,(), /*...*/)` can be written `ActionSheetIOS.showActionSheetWithOptions({url}, /*...*/)`. Previous `@obj` external helpers will be deprecated in the future, and then removed. Note that `Style.style()` now have a replacement `Style.s()` that accepts an object with optional keys ! [e606a03](https://github.com/rescript-react-native/rescript-react-native/commit/e606a03) by [@cknitt](https://github.com/cknitt)
+- Lots of `react-native-web@0.17` View props have been added [bee39e5](https://github.com/rescript-react-native/rescript-react-native/commit/bee39e5) by [@MoOx](https://github.com/MoOx)
+- Added `Style.empty` to avoid `Style.arrayOption` (so you can write things like `Style.array([style1, condition ? style2 : Style.empty])`) [762049d](https://github.com/rescript-react-native/rescript-react-native/commit/762049d) by [@cknitt](https://github.com/cknitt)
+
 ## 0.69.1 - 2022-10-05
 
 - Fix `View.edgeInsets` & `HitSlop.rect` [e2847e7](https://github.com/rescript-react-native/rescript-react-native/commit/e2847e7) by [@cknitt](https://github.com/cknitt)
