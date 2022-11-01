@@ -741,3 +741,5 @@ external imageStyle: (
   ~zIndex: int=?,
   unit,
 ) => t = ""
+
+let empty: t = style()
