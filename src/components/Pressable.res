@@ -16,11 +16,13 @@ external rippleConfig: (
   unit,
 ) => rippleConfig = ""
 
+// This is usually only used as a callback param and not created by the user.
+// Therefore prefer option<...> to an optional field for easier matching.
 type interactionState = {
   pressed: bool,
   // React Native Web
-  hovered?: bool,
-  focused?: bool,
+  hovered: option<bool>,
+  focused: option<bool>,
 }
 
 @react.component @module("react-native")
