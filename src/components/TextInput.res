@@ -269,6 +269,8 @@ external make: (
   ~selectTextOnFocus: bool=?,
   ~showSoftInputOnFocus: bool=?,
   ~spellCheck: bool=?,
+  ~textAlign: [#left | #center | #right]=?,
+  ~textAlignVertical: Style.textAlignVertical=?,
   ~textBreakStrategy: textBreakStrategy=?,
   ~textContentType: textContentType=?,
   ~underlineColorAndroid: Color.t=?,
