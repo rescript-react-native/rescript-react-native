@@ -130,6 +130,7 @@ external make: (
   ~style: Style.t=?,
   ~testID: string=?,
   ~tintColor: Color.t=?,
+  ~width: float=?,
 ) => React.element = "Image"
 
 type sizeError
