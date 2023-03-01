@@ -52,8 +52,13 @@ module Permission = {
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
   external nearbyWifiDevices: t = "NEARBY_WIFI_DEVICES"
 
-  @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
+  @module("react-native")
+  @scope(("PermissionsAndroid", "PERMISSIONS"))
+  @deprecated("Use `postNotifications` instead")
   external postNotification: t = "POST_NOTIFICATION"
+
+  @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
+  external postNotifications: t = "POST_NOTIFICATIONS"
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
   external processOutgoingCalls: t = "PROCESS_OUTGOING_CALLS"
