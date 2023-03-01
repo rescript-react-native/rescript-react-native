@@ -82,6 +82,7 @@ type role = [
   | #navigation
   | #none
   | #note
+  | #option
   | #presentation
   | #progressbar
   | #radio
