@@ -114,6 +114,7 @@ external make: (
   ~crossOrigin: crossOrigin=?,
   ~defaultSource: Source.t=?,
   ~fadeDuration: float=?,
+  ~height: float=?,
   ~loadingIndicatorSource: array<Source.t>=?,
   ~onError: errorEvent => unit=?,
   ~onLayout: Event.layoutEvent => unit=?,
