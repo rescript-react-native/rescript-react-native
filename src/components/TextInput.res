@@ -228,6 +228,15 @@ type inputMode = [
   | #url
 ]
 
+type enterKeyHint = [
+  | #enter
+  | #done
+  | #next
+  | #search
+  | #send
+  | #previous
+]
+
 @react.component @module("react-native")
 external make: (
   ~ref: ref=?,
@@ -246,6 +255,8 @@ external make: (
   ~disableFullscreenUI: bool=?,
   ~editable: bool=?,
   ~enablesReturnKeyAutomatically: bool=?,
+  // `enterKeyHint` has precedence over the `returnKeyType`
+  ~enterKeyHint: enterKeyHint=?,
   ~importantForAutofill: importantForAutofill=?,
   ~inlineImageLeft: string=?,
   ~inlineImagePadding: float=?,
