@@ -147,6 +147,13 @@ type justifyContent = [
   | #"space-evenly"
 ]
 
+type objectFit = [
+  | #cover
+  | #contain
+  | #fill
+  | #"scale-down"
+]
+
 // Styles are documented here
 // https://github.com/facebook/react-native/blob/master/Libraries/StyleSheet/StyleSheetTypes.js
 
@@ -168,6 +175,7 @@ type style = {
   resizeMode?: resizeMode,
   overlayColor?: Color.t,
   tintColor?: Color.t,
+  objectFit?: objectFit,
   // Text Style Props (https://reactnative.dev/docs/text-style-props)
   color?: Color.t,
   fontFamily?: string,
@@ -645,6 +653,7 @@ external imageStyle: (
   ~resizeMode: resizeMode=?,
   ~overlayColor: Color.t=?,
   ~tintColor: Color.t=?,
+  ~objectFit: objectFit=?,
   // View styles https://reactnative.dev/docs/view-style-props
   ~backfaceVisibility: backfaceVisibility=?,
   ~backgroundColor: Color.t=?,
