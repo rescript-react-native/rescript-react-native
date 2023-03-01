@@ -97,6 +97,11 @@ type referrerPolicy = [
   | #"unsafe-url"
 ]
 
+type crossOrigin = [
+  | #anonymous
+  | #"use-credentials"
+]
+
 @react.component @module("react-native")
 external make: (
   ~ref: ref=?,
@@ -106,6 +111,7 @@ external make: (
   ~alt: string=?,
   ~blurRadius: float=?,
   ~capInsets: View.edgeInsets=?,
+  ~crossOrigin: crossOrigin=?,
   ~defaultSource: Source.t=?,
   ~fadeDuration: float=?,
   ~loadingIndicatorSource: array<Source.t>=?,
