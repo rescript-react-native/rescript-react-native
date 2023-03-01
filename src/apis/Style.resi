@@ -12,6 +12,17 @@ external dp: float => size = "%identity"
 
 let pct: float => size
 
+// Supports a number or a ratio, e.g.:
+// aspectRatio: '1 / 1'
+// aspectRatio: '1'
+// aspectRatio: '1'
+module AspectRatio: {
+  type t
+
+  external float: float => t = "%identity"
+  external string: string => t = "%identity"
+}
+
 type margin = size
 
 @inline("auto")
@@ -238,7 +249,7 @@ type style = {
   alignContent?: alignContent,
   alignItems?: alignItems,
   alignSelf?: alignSelf,
-  aspectRatio?: float,
+  aspectRatio?: AspectRatio.t,
   // border*Width are commented because already in view styles props (see explanation at the top)
   // borderBottomWidth?: float,
   // borderEndWidth?: float,
@@ -371,7 +382,7 @@ external style: (
   ~alignContent: alignContent=?,
   ~alignItems: alignItems=?,
   ~alignSelf: alignSelf=?,
-  ~aspectRatio: float=?,
+  ~aspectRatio: AspectRatio.t=?,
   // border*Width are commented because already in view styles props (see explanation at the top)
   // ~borderBottomWidth: float=?,
   // ~borderEndWidth: float=?,
@@ -471,7 +482,7 @@ external viewStyle: (
   ~alignContent: alignContent=?,
   ~alignItems: alignItems=?,
   ~alignSelf: alignSelf=?,
-  ~aspectRatio: float=?,
+  ~aspectRatio: AspectRatio.t=?,
   // border*Width are commented because already in view styles props (see explanation at the top)
   // ~borderBottomWidth: float=?,
   // ~borderEndWidth: float=?,
@@ -591,7 +602,7 @@ external textStyle: (
   ~alignContent: alignContent=?,
   ~alignItems: alignItems=?,
   ~alignSelf: alignSelf=?,
-  ~aspectRatio: float=?,
+  ~aspectRatio: AspectRatio.t=?,
   // border*Width are commented because already in view styles props (see explanation at the top)
   // ~borderBottomWidth: float=?,
   // ~borderEndWidth: float=?,
@@ -695,7 +706,7 @@ external imageStyle: (
   ~alignContent: alignContent=?,
   ~alignItems: alignItems=?,
   ~alignSelf: alignSelf=?,
-  ~aspectRatio: float=?,
+  ~aspectRatio: AspectRatio.t=?,
   // border*Width are commented because already in view styles props (see explanation at the top)
   // ~borderBottomWidth: float=?,
   // ~borderEndWidth: float=?,
