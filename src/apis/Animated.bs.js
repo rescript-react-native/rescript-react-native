@@ -147,6 +147,8 @@ var View = {
   make: make$5
 };
 
+var Hooks = {};
+
 exports.Animation = Animation;
 exports.ValueAnimations = ValueAnimations;
 exports.Interpolation = Interpolation;
@@ -168,4 +170,5 @@ exports.ScrollView = ScrollView;
 exports.SectionList = SectionList;
 exports.$$Text = $$Text;
 exports.View = View;
+exports.Hooks = Hooks;
 /* make Not a pure module */
