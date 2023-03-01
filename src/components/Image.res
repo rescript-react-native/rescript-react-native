@@ -19,8 +19,9 @@ type uriSource = {
   height?: float,
 }
 
-@obj // @deprecated("Directly create record instead")
-external uriSource: (
+@obj
+external // @deprecated("Directly create record instead")
+uriSource: (
   ~uri: string,
   ~bundle: string=?,
   ~method: string=?,
@@ -91,6 +92,7 @@ external make: (
   // Image props
   ~accessibilityLabel: string=?,
   ~accessible: bool=?,
+  ~alt: string=?,
   ~blurRadius: float=?,
   ~capInsets: View.edgeInsets=?,
   ~defaultSource: Source.t=?,
