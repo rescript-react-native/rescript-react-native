@@ -15,8 +15,9 @@ type actionInfo = {
   label?: string,
 }
 
-@obj // @deprecated("Directly create record instead")
-external actionInfo: (~name: string, ~label: string=?, unit) => actionInfo = ""
+@obj
+external // @deprecated("Directly create record instead")
+actionInfo: (~name: string, ~label: string=?, unit) => actionInfo = ""
 
 type actionEvent = AccessibilityActionEvent.t
 
@@ -38,45 +39,78 @@ type value
 
 type liveRegion = [#none | #polite | #assertive]
 
-// @todo see with ReScript how we can handle this
-// | #switch
 type role = [
   | #adjustable
   | #alert
+  | #alertdialog
+  | #application
   | #article
   | #banner
   | #button
+  | #cell
   | #checkbox
+  | #columnheader
   | #combobox
   | #complementary
   | #contentinfo
+  | #definition
+  | #dialog
+  | #directory
+  | #document
+  | #feed
+  | #figure
   | #form
+  | #grid
+  | #group
   | #header
+  | #heading
   | #image
   | #imagebutton
+  | #img
   | #keyboardkey
   | #link
   | #list
   | #listitem
+  | #log
   | #main
+  | #marquee
+  | #math
   | #menu
   | #menubar
   | #menuitem
+  | #meter
   | #navigation
   | #none
+  | #note
+  | #presentation
   | #progressbar
   | #radio
   | #radiogroup
   | #region
+  | #row
+  | #rowgroup
+  | #rowheader
   | #scrollbar
   | #search
+  | #searchbox
+  | #separator
+  | #slider
   | #spinbutton
+  | #status
   | #summary
+  | #"switch"
   | #tab
   | #tabbar
+  | #table
   | #tablist
+  | #tabpanel
+  | #term
   | #text
   | #timer
   | #togglebutton
   | #toolbar
+  | #tooltip
+  | #tree
+  | #treegrid
+  | #treeitem
 ]
