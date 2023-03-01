@@ -86,6 +86,17 @@ type progressEvent = ProgressEvent.t
 
 type resizeMethod = [#auto | #resize | #scale]
 
+type referrerPolicy = [
+  | #"no-referrer"
+  | #"no-referrer-when-downgrade"
+  | #origin
+  | #"origin-when-cross-origin"
+  | #"same-origin"
+  | #"strict-origin"
+  | #"strict-origin-when-cross-origin"
+  | #"unsafe-url"
+]
+
 @react.component @module("react-native")
 external make: (
   ~ref: ref=?,
@@ -106,6 +117,7 @@ external make: (
   ~onPartialLoad: unit => unit=?,
   ~onProgress: progressEvent => unit=?,
   ~progressiveRenderingEnabled: bool=?,
+  ~referrerPolicy: referrerPolicy=?,
   ~resizeMethod: resizeMethod=?,
   ~resizeMode: Style.resizeMode=?,
   ~source: Source.t,
