@@ -128,6 +128,7 @@ external make: (
   ~resizeMethod: resizeMethod=?,
   ~resizeMode: Style.resizeMode=?,
   ~source: Source.t,
+  ~srcSet: string=?,
   ~style: Style.t=?,
   ~testID: string=?,
   ~tintColor: Color.t=?,
