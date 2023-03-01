@@ -160,6 +160,11 @@ type verticalAlign = [
   | #middle
 ]
 
+type borderCurve = [
+  | #circular
+  | #continuous
+]
+
 // Styles are documented here
 // https://github.com/facebook/react-native/blob/master/Libraries/StyleSheet/StyleSheetTypes.js
 
@@ -213,6 +218,7 @@ type style = {
   borderBottomStartRadius?: float,
   borderBottomWidth?: float,
   borderColor?: Color.t,
+  borderCurve?: borderCurve,
   borderEndColor?: Color.t,
   borderEndWidth?: float,
   borderLeftColor?: Color.t,
@@ -347,6 +353,7 @@ external style: (
   ~borderBottomStartRadius: float=?,
   ~borderBottomWidth: float=?,
   ~borderColor: Color.t=?,
+  ~borderCurve: borderCurve=?,
   ~borderEndColor: Color.t=?,
   ~borderEndWidth: float=?,
   ~borderLeftColor: Color.t=?,
@@ -447,6 +454,7 @@ external viewStyle: (
   ~borderBottomStartRadius: float=?,
   ~borderBottomWidth: float=?,
   ~borderColor: Color.t=?,
+  ~borderCurve: borderCurve=?,
   ~borderEndColor: Color.t=?,
   ~borderEndWidth: float=?,
   ~borderLeftColor: Color.t=?,
@@ -568,6 +576,7 @@ external textStyle: (
   ~borderBottomStartRadius: float=?,
   ~borderBottomWidth: float=?,
   ~borderColor: Color.t=?,
+  ~borderCurve: borderCurve=?,
   ~borderEndColor: Color.t=?,
   ~borderEndWidth: float=?,
   ~borderLeftColor: Color.t=?,
@@ -673,6 +682,7 @@ external imageStyle: (
   ~borderBottomStartRadius: float=?,
   ~borderBottomWidth: float=?,
   ~borderColor: Color.t=?,
+  ~borderCurve: borderCurve=?,
   ~borderEndColor: Color.t=?,
   ~borderEndWidth: float=?,
   ~borderLeftColor: Color.t=?,
