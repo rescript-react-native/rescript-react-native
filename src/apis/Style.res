@@ -154,6 +154,13 @@ type objectFit = [
   | #"scale-down"
 ]
 
+type verticalAlign = [
+  | #auto
+  | #top
+  | #bottom
+  | #middle
+]
+
 // Styles are documented here
 // https://github.com/facebook/react-native/blob/master/Libraries/StyleSheet/StyleSheetTypes.js
 
@@ -195,6 +202,7 @@ type style = {
   textShadowOffset?: offset,
   textShadowRadius?: float,
   textTransform?: textTransform,
+  verticalAlign?: verticalAlign,
   writingDirection?: writingDirection,
   // View styles https://reactnative.dev/docs/view-style-props
   backfaceVisibility?: backfaceVisibility,
@@ -328,6 +336,7 @@ external style: (
   ~textShadowOffset: offset=?,
   ~textShadowRadius: float=?,
   ~textTransform: textTransform=?,
+  ~verticalAlign: verticalAlign=?,
   ~writingDirection: writingDirection=?,
   // View styles https://reactnative.dev/docs/view-style-props
   ~backfaceVisibility: backfaceVisibility=?,
@@ -548,6 +557,7 @@ external textStyle: (
   ~textShadowOffset: offset=?,
   ~textShadowRadius: float=?,
   ~textTransform: textTransform=?,
+  ~verticalAlign: verticalAlign=?,
   ~writingDirection: writingDirection=?,
   // View styles https://reactnative.dev/docs/view-style-props
   ~backfaceVisibility: backfaceVisibility=?,
