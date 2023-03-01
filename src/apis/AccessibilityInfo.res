@@ -55,3 +55,6 @@ external removeEventListener: @string
 
 @scope("AccessibilityInfo") @module("react-native")
 external setAccessibilityFocus: NativeTypes.nodeHandle => unit = "setAccessibilityFocus"
+
+@scope("AccessibilityInfo") @module("react-native")
+external prefersCrossFadeTransitions: unit => Js.Promise.t<bool> = "prefersCrossFadeTransitions"
