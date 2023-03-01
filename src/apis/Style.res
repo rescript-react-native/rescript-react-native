@@ -96,6 +96,13 @@ type fontVariant = [
   | #"proportional-nums"
 ]
 
+module FontVariant = {
+  type t
+
+  external array: array<fontVariant> => t = "%identity"
+  external string: string => t = "%identity"
+}
+
 type textAlign = [#auto | #left | #right | #center | #justify]
 
 type textAlignVertical = [#auto | #top | #bottom | #center]
@@ -195,7 +202,7 @@ type style = {
   fontFamily?: string,
   fontSize?: float,
   fontStyle?: fontStyle,
-  fontVariant?: array<fontVariant>,
+  fontVariant?: FontVariant.t,
   fontWeight?: fontWeight,
   includeFontPadding?: bool,
   letterSpacing?: float,
@@ -328,7 +335,7 @@ external style: (
   ~fontFamily: string=?,
   ~fontSize: float=?,
   ~fontStyle: fontStyle=?,
-  ~fontVariant: array<fontVariant>=?,
+  ~fontVariant: FontVariant.t=?,
   ~fontWeight: fontWeight=?,
   ~includeFontPadding: bool=?,
   ~letterSpacing: float=?,
@@ -548,7 +555,7 @@ external textStyle: (
   ~fontFamily: string=?,
   ~fontSize: float=?,
   ~fontStyle: fontStyle=?,
-  ~fontVariant: array<fontVariant>=?,
+  ~fontVariant: FontVariant.t=?,
   ~fontWeight: fontWeight=?,
   ~includeFontPadding: bool=?,
   ~letterSpacing: float=?,

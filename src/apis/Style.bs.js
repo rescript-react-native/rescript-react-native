@@ -17,6 +17,8 @@ function rad(num) {
 
 var FontWeight = {};
 
+var FontVariant = {};
+
 var empty = {};
 
 exports.pct = pct;
@@ -24,5 +26,6 @@ exports.AspectRatio = AspectRatio;
 exports.deg = deg;
 exports.rad = rad;
 exports.FontWeight = FontWeight;
+exports.FontVariant = FontVariant;
 exports.empty = empty;
 /* No side effect */
