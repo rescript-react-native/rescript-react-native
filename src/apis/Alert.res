@@ -3,8 +3,9 @@ type options = {
   onDismiss?: unit => unit,
 }
 
-@obj // @deprecated("Directly create record instead")
-external options: (~cancelable: bool=?, ~onDismiss: unit => unit=?, unit) => options = ""
+@obj
+external // @deprecated("Directly create record instead")
+options: (~cancelable: bool=?, ~onDismiss: unit => unit=?, unit) => options = ""
 
 type style = [#default | #cancel | #destructive]
 
@@ -12,10 +13,12 @@ type button = {
   text?: string,
   onPress?: unit => unit,
   style?: style,
+  isPreferred?: bool,
 }
 
-@obj // @deprecated("Directly create record instead")
-external button: (~text: string=?, ~onPress: unit => unit=?, ~style: style=?, unit) => button = ""
+@obj
+external // @deprecated("Directly create record instead")
+button: (~text: string=?, ~onPress: unit => unit=?, ~style: style=?, unit) => button = ""
 
 @scope("Alert") @module("react-native")
 external alert: (
