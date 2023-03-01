@@ -283,6 +283,8 @@ external make: (
   ~onSubmitEditing: editingEvent => unit=?,
   ~placeholder: string=?,
   ~placeholderTextColor: Color.t=?,
+  // `readOnly` has precedence over `editable`
+  ~readOnly: bool=?,
   ~returnKeyLabel: string=?,
   ~returnKeyType: returnKeyType=?,
   ~rejectResponderTermination: bool=?,
