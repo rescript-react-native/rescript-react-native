@@ -2,6 +2,9 @@ module Permission: {
   type t
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
+  external acceptHandover: t = "ACCEPT_HANDOVER"
+
+  @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
   external accessBackgroundLocation: t = "ACCESS_BACKGROUND_LOCATION"
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
@@ -14,13 +17,28 @@ module Permission: {
   external accessMediaLocation: t = "ACCESS_MEDIA_LOCATION"
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
+  external activityRecognition: t = "ACTIVITY_RECOGNITION"
+
+  @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
   external addVoicemail: t = "ADD_VOICEMAIL"
+
+  @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
+  external answerPhoneCalls: t = "ANSWER_PHONE_CALLS"
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
   external bluetoothAdvertise: t = "BLUETOOTH_ADVERTISE"
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
+  external bluetoothConnect: t = "BLUETOOTH_CONNECT"
+
+  @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
+  external bluetoothScan: t = "BLUETOOTH_SCAN"
+
+  @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
   external bodySensors: t = "BODY_SENSORS"
+
+  @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
+  external bodySensorsBackground: t = "BODY_SENSORS_BACKGROUND"
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
   external callPhone: t = "CALL_PHONE"
@@ -30,6 +48,12 @@ module Permission: {
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
   external getAccounts: t = "GET_ACCOUNTS"
+
+  @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
+  external nearbyWifiDevices: t = "NEARBY_WIFI_DEVICES"
+
+  @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
+  external postNotification: t = "POST_NOTIFICATION"
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
   external processOutgoingCalls: t = "PROCESS_OUTGOING_CALLS"
@@ -47,10 +71,25 @@ module Permission: {
   external readExternalStorage: t = "READ_EXTERNAL_STORAGE"
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
+  external readMediaAuido: t = "READ_MEDIA_AUDIO"
+
+  @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
+  external readMediaImages: t = "READ_MEDIA_IMAGES"
+
+  @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
+  external readMediaVideo: t = "READ_MEDIA_VIDEO"
+
+  @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
+  external readPhoneNumbers: t = "READ_PHONE_NUMBERS"
+
+  @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
   external readPhoneState: t = "READ_PHONE_STATE"
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
   external readSms: t = "READ_SMS"
+
+  @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
+  external readVoicemail: t = "READ_VOICEMAIL"
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
   external receiveMms: t = "RECEIVE_MMS"
@@ -71,6 +110,9 @@ module Permission: {
   external useSip: t = "USE_SIP"
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
+  external uwbRanging: t = "UWB_RANGING"
+
+  @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
   external writeCalendar: t = "WRITE_CALENDAR"
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
@@ -81,6 +123,9 @@ module Permission: {
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
   external writeExternalStorage: t = "WRITE_EXTERNAL_STORAGE"
+
+  @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
+  external writeVoicemail: t = "WRITE_VOICEMAIL"
 }
 
 module Result: {
@@ -104,8 +149,9 @@ type rationale = {
   buttonNeutral?: string,
 }
 
-@obj // @deprecated("Directly create record instead")
-external rationale: (
+@obj
+external // @deprecated("Directly create record instead")
+rationale: (
   ~title: string,
   ~message: string,
   ~buttonPositive: string,
