@@ -217,6 +217,17 @@ type textContentType = [
   | #oneTimeCode
 ]
 
+type inputMode = [
+  | #none
+  | #text
+  | #decimal
+  | #numeric
+  | #tel
+  | #search
+  | #email
+  | #url
+]
+
 @react.component @module("react-native")
 external make: (
   ~ref: ref=?,
@@ -239,6 +250,8 @@ external make: (
   ~inlineImageLeft: string=?,
   ~inlineImagePadding: float=?,
   ~inputAccessoryViewID: string=?,
+  // `inputMode` has precedence over `keyboardType`
+  ~inputMode: inputMode=?,
   ~keyboardAppearance: keyboardAppearance=?,
   ~keyboardType: keyboardType=?,
   ~maxFontSizeMultiplier: float=?,
