@@ -269,6 +269,8 @@ external make: (
   ~maxLength: int=?,
   ~multiline: bool=?,
   ~numberOfLines: int=?,
+  // `rows` has precedence over `numberOfLines`
+  ~rows: int=?,
   ~onBlur: Event.targetEvent => unit=?,
   ~onChange: changeEvent => unit=?,
   ~onChangeText: string => unit=?,
