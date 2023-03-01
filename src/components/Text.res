@@ -18,6 +18,13 @@ type ellipsizeMode = [#clip | #head | #middle | #tail]
 
 type textBreakStrategy = [#simple | #highQuality | #balanced]
 
+type lineBreakStrategyIOS = [
+  | #none
+  | #standard
+  | #"hangul-word"
+  | #"push-out"
+]
+
 @react.component @module("react-native")
 external make: (
   ~ref: ref=?,
@@ -39,6 +46,7 @@ external make: (
   ~dataDetectorTypes: array<dataDetectorType>=?,
   ~disabled: bool=?,
   ~ellipsizeMode: ellipsizeMode=?,
+  ~lineBreakStrategyIOS: lineBreakStrategyIOS=?,
   ~maxFontSizeMultiplier: int=?,
   ~minimumFontScale: float=?,
   ~nativeID: string=?,

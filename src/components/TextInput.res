@@ -237,6 +237,13 @@ type enterKeyHint = [
   | #previous
 ]
 
+type lineBreakStrategyIOS = [
+  | #none
+  | #standard
+  | #"hangul-word"
+  | #"push-out"
+]
+
 @react.component @module("react-native")
 external make: (
   ~ref: ref=?,
@@ -265,6 +272,7 @@ external make: (
   ~inputMode: inputMode=?,
   ~keyboardAppearance: keyboardAppearance=?,
   ~keyboardType: keyboardType=?,
+  ~lineBreakStrategyIOS: lineBreakStrategyIOS=?,
   ~maxFontSizeMultiplier: float=?,
   ~maxLength: int=?,
   ~multiline: bool=?,
