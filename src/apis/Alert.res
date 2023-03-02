@@ -48,5 +48,6 @@ external prompt: (
   ~type_: type_=?,
   ~defaultValue: string=?,
   ~keyboardType: string=?,
+  ~options: options=?,
   unit,
 ) => unit = "prompt"
