@@ -131,6 +131,7 @@ type autoComplete = [
   | #password
   | #tel
   | #username
+  | #"one-time-code"
 ]
 
 type t
