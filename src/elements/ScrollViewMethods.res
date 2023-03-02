@@ -5,9 +5,9 @@ module Make = (
 ) => {
   type scrollToEndOptions = {animated?: bool, duration?: float}
 
-  @obj // @deprecated("Directly create record instead")
-  external scrollToEndOptions: (~animated: bool=?, ~duration: float=?, unit) => scrollToEndOptions =
-    ""
+  @obj
+  external // @deprecated("Directly create record instead")
+  scrollToEndOptions: (~animated: bool=?, ~duration: float=?, unit) => scrollToEndOptions = ""
 
   // multiple externals
   @send external scrollToEnd: T.t => unit = "scrollToEnd"
