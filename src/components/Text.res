@@ -35,7 +35,7 @@ external make: (
   ~accessibilityLanguage: string=?,
   ~accessibilityRole: Accessibility.role=?,
   // `role` has precedence over the accessibilityRole prop
-  ~role: Accessibility.role=?,
+  ~role: Role.t=?,
   ~accessibilityState: Accessibility.state=?,
   ~accessible: bool=?,
   ~adjustsFontSizeToFit: bool=?,

@@ -51,7 +51,7 @@ external make: (
   ~accessibilityLiveRegion: Accessibility.liveRegion=?,
   ~accessibilityRole: Accessibility.role=?,
   // `role` has precedence over the accessibilityRole prop
-  ~role: Accessibility.role=?,
+  ~role: Role.t=?,
   ~accessibilityState: Accessibility.state=?,
   ~accessibilityValue: Accessibility.value=?,
   ~accessibilityViewIsModal: bool=?,
