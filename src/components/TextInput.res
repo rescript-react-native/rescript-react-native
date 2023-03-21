@@ -233,6 +233,7 @@ external make: (
   ~contextMenuHidden: bool=?,
   ~defaultValue: string=?,
   ~disableFullscreenUI: bool=?,
+  ~dataDetectorTypes: [#phoneNumber | #link | #address | #calendarEvent | #none | #all]=?,
   ~editable: bool=?,
   ~enablesReturnKeyAutomatically: bool=?,
   ~importantForAutofill: importantForAutofill=?,
