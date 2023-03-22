@@ -151,3 +151,13 @@ external make: (
   ~onMouseOut: ReactEvent.Mouse.t => unit=?,
   ~onMouseUp: ReactEvent.Mouse.t => unit=?,
 ) => React.element = "FlatList"
+
+type params = {
+  index?: int,
+  animated?: bool,
+  viewOffset?: float,
+  viewPosition?: float,
+}
+
+@send
+external scrollToIndex: (element, params) => unit = "scrollToIndex"
