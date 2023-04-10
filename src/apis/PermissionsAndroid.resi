@@ -76,7 +76,7 @@ module Permission: {
   external readExternalStorage: t = "READ_EXTERNAL_STORAGE"
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
-  external readMediaAuido: t = "READ_MEDIA_AUDIO"
+  external readMediaAudio: t = "READ_MEDIA_AUDIO"
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
   external readMediaImages: t = "READ_MEDIA_IMAGES"

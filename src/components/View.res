@@ -40,7 +40,7 @@ external make: (
   // ! \\ If you adjust props below,
   // be sure to adjust all places that use the same comment as below
   // ↓
-  // rescript-react-native 0.69 View props
+  // rescript-react-native 0.71.3 View props
   ~accessibilityActions: array<Accessibility.actionInfo>=?,
   ~accessibilityElementsHidden: bool=?,
   ~accessibilityHint: string=?,

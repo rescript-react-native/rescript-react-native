@@ -10,7 +10,7 @@ external make: (
   ~contentContainerStyle: Style.t=?,
   ~enabled: bool=?,
   ~keyboardVerticalOffset: float=?,
-  // rescript-react-native 0.69 View props
+  // rescript-react-native 0.71.3 View props
   ~accessibilityActions: array<Accessibility.actionInfo>=?,
   ~accessibilityElementsHidden: bool=?,
   ~accessibilityHint: string=?,
@@ -20,6 +20,8 @@ external make: (
   ~accessibilityLanguage: string=?,
   ~accessibilityLiveRegion: Accessibility.liveRegion=?,
   ~accessibilityRole: Accessibility.role=?,
+  // `role` has precedence over the accessibilityRole prop
+  ~role: Role.t=?,
   ~accessibilityState: Accessibility.state=?,
   ~accessibilityValue: Accessibility.value=?,
   ~accessibilityViewIsModal: bool=?,
