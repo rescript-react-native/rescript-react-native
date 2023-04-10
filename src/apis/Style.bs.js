@@ -5,8 +5,6 @@ function pct(num) {
   return num.toString() + "%";
 }
 
-var AspectRatio = {};
-
 function deg(num) {
   return num.toString() + "deg";
 }
@@ -18,7 +16,6 @@ function rad(num) {
 var empty = {};
 
 exports.pct = pct;
-exports.AspectRatio = AspectRatio;
 exports.deg = deg;
 exports.rad = rad;
 exports.empty = empty;
