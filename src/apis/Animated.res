@@ -372,10 +372,8 @@ module View = {
   let make = createAnimatedComponent(make)
 }
 
-module Hooks = {
-  type config = {useNativeDriver: bool}
+type config = {useNativeDriver: bool}
 
-  @module("react-native")
-  external useAnimatedValue: (~initialValue: float, ~config: config=?, unit) => Value.t =
-    "useAnimatedValue"
-}
+@module("react-native")
+external useAnimatedValue: (~initialValue: float, ~config: config=?, unit) => Value.t =
+  "useAnimatedValue"
