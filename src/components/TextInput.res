@@ -217,8 +217,6 @@ type textContentType = [
   | #oneTimeCode
 ]
 
-type dataDetectorTypes = [#phoneNumber | #link | #address | #calendarEvent | #none | #all]
-
 @react.component @module("react-native")
 external make: (
   ~ref: ref=?,
@@ -235,7 +233,7 @@ external make: (
   ~contextMenuHidden: bool=?,
   ~defaultValue: string=?,
   ~disableFullscreenUI: bool=?,
-  ~dataDetectorTypes: array<dataDetectorTypes>=?,
+  ~dataDetectorTypes: array<Text.dataDetectorTypes>=?,
   ~editable: bool=?,
   ~enablesReturnKeyAutomatically: bool=?,
   ~importantForAutofill: importantForAutofill=?,
