@@ -233,7 +233,7 @@ external make: (
   ~contextMenuHidden: bool=?,
   ~defaultValue: string=?,
   ~disableFullscreenUI: bool=?,
-  ~dataDetectorTypes: array<Text.dataDetectorTypes>=?,
+  ~dataDetectorTypes: array<Text.dataDetectorType>=?,
   ~editable: bool=?,
   ~enablesReturnKeyAutomatically: bool=?,
   ~importantForAutofill: importantForAutofill=?,
