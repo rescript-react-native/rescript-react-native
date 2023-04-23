@@ -3,11 +3,15 @@ type t = string
 @module("react-native")
 external processColor: string => string = "processColor"
 
-let rgb = (~r: int, ~g: int, ~b: int) => j`rgb($r, $g, $b)`
-let rgba = (~r: int, ~g: int, ~b: int, ~a: float) => j`rgba($r, $g, $b, $a)`
+let rgb = (~r: int, ~g: int, ~b: int) =>
+  `rgb(${r->Js.Int.toString}, ${g->Js.Int.toString}, ${b->Js.Int.toString})`
+let rgba = (~r: int, ~g: int, ~b: int, ~a: float) =>
+  `rgba(${r->Js.Int.toString}, ${g->Js.Int.toString}, ${b->Js.Int.toString}, ${a->Js.Float.toString})`
 
-let hsl = (~h: float, ~s: float, ~l: float) => j`hsl($h, $s%, $l%)`
-let hsla = (~h: float, ~s: float, ~l: float, ~a: float) => j`hsl($h, $s%, $l%, $a)`
+let hsl = (~h: float, ~s: float, ~l: float) =>
+  `hsl(${h->Js.Float.toString}, ${s->Js.Float.toString}%, ${l->Js.Float.toString}%)`
+let hsla = (~h: float, ~s: float, ~l: float, ~a: float) =>
+  `hsl(${h->Js.Float.toString}, ${s->Js.Float.toString}%, ${l->Js.Float.toString}%, ${a->Js.Float.toString})`
 
 @inline
 let transparent = "transparent"
