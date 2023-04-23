@@ -261,6 +261,7 @@ external make: (
   ~contextMenuHidden: bool=?,
   ~defaultValue: string=?,
   ~disableFullscreenUI: bool=?,
+  ~dataDetectorTypes: array<Text.dataDetectorType>=?,
   ~editable: bool=?,
   ~enablesReturnKeyAutomatically: bool=?,
   // `enterKeyHint` has precedence over the `returnKeyType`
