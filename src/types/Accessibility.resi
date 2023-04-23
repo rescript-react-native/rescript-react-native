@@ -15,8 +15,9 @@ type actionInfo = {
   label?: string,
 }
 
-@obj // @deprecated("Directly create record instead")
-external actionInfo: (~name: string, ~label: string=?, unit) => actionInfo = ""
+@obj
+external // @deprecated("Directly create record instead")
+actionInfo: (~name: string, ~label: string=?, unit) => actionInfo = ""
 
 type actionEvent = AccessibilityActionEvent.t
 
@@ -73,6 +74,7 @@ type role = [
   | #search
   | #spinbutton
   | #summary
+  | #"switch"
   | #tab
   | #tabbar
   | #tablist

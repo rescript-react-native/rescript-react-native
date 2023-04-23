@@ -32,8 +32,9 @@ module ValueAnimations = (Val: Value) => {
       iterations?: int,
     }
 
-    @obj // @deprecated("Directly create record instead")
-    external config: (
+    @obj
+    external // @deprecated("Directly create record instead")
+    config: (
       ~velocity: Val.rawValue,
       ~deceleration: float=?,
       ~isInteraction: bool=?,
@@ -72,8 +73,9 @@ module ValueAnimations = (Val: Value) => {
       iterations?: int,
     }
 
-    @obj // @deprecated("Directly create record instead")
-    external config: (
+    @obj
+    external // @deprecated("Directly create record instead")
+    config: (
       ~toValue: toValue,
       ~restDisplacementThreshold: float=?,
       ~overshootClamping: bool=?,
@@ -115,8 +117,9 @@ module ValueAnimations = (Val: Value) => {
       iterations?: int,
     }
 
-    @obj // @deprecated("Directly create record instead")
-    external config: (
+    @obj
+    external // @deprecated("Directly create record instead")
+    config: (
       ~toValue: toValue,
       ~easing: Easing.t=?,
       ~duration: float=?,
@@ -150,8 +153,9 @@ module Interpolation = {
     extrapolateRight?: extrapolate,
   }
 
-  @obj // @deprecated("Directly create record instead")
-  external config: (
+  @obj
+  external // @deprecated("Directly create record instead")
+  config: (
     ~inputRange: array<float>,
     ~outputRange: outputRange,
     ~easing: Easing.t=?,
@@ -367,3 +371,9 @@ module View = {
 
   let make = createAnimatedComponent(make)
 }
+
+type config = {useNativeDriver: bool}
+
+@module("react-native")
+external useAnimatedValue: (~initialValue: float, ~config: config=?, unit) => Value.t =
+  "useAnimatedValue"

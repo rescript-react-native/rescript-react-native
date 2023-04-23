@@ -19,8 +19,9 @@ type uriSource = {
   height?: float,
 }
 
-@obj // @deprecated("Directly create record instead")
-external uriSource: (
+@obj
+external // @deprecated("Directly create record instead")
+uriSource: (
   ~uri: string,
   ~bundle: string=?,
   ~method: string=?,
@@ -85,16 +86,35 @@ type progressEvent = ProgressEvent.t
 
 type resizeMethod = [#auto | #resize | #scale]
 
+type referrerPolicy = [
+  | #"no-referrer"
+  | #"no-referrer-when-downgrade"
+  | #origin
+  | #"origin-when-cross-origin"
+  | #"same-origin"
+  | #"strict-origin"
+  | #"strict-origin-when-cross-origin"
+  | #"unsafe-url"
+]
+
+type crossOrigin = [
+  | #anonymous
+  | #"use-credentials"
+]
+
 @react.component @module("react-native")
 external make: (
   ~ref: ref=?,
   // Image props
   ~accessibilityLabel: string=?,
   ~accessible: bool=?,
+  ~alt: string=?,
   ~blurRadius: float=?,
   ~capInsets: View.edgeInsets=?,
+  ~crossOrigin: crossOrigin=?,
   ~defaultSource: Source.t=?,
   ~fadeDuration: float=?,
+  ~height: float=?,
   ~loadingIndicatorSource: array<Source.t>=?,
   ~onError: errorEvent => unit=?,
   ~onLayout: Event.layoutEvent => unit=?,
@@ -104,11 +124,15 @@ external make: (
   ~onPartialLoad: unit => unit=?,
   ~onProgress: progressEvent => unit=?,
   ~progressiveRenderingEnabled: bool=?,
+  ~referrerPolicy: referrerPolicy=?,
   ~resizeMethod: resizeMethod=?,
   ~resizeMode: Style.resizeMode=?,
   ~source: Source.t,
+  ~srcSet: string=?,
   ~style: Style.t=?,
   ~testID: string=?,
+  ~tintColor: Color.t=?,
+  ~width: float=?,
 ) => React.element = "Image"
 
 type sizeError

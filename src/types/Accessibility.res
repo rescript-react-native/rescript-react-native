@@ -15,8 +15,9 @@ type actionInfo = {
   label?: string,
 }
 
-@obj // @deprecated("Directly create record instead")
-external actionInfo: (~name: string, ~label: string=?, unit) => actionInfo = ""
+@obj
+external // @deprecated("Directly create record instead")
+actionInfo: (~name: string, ~label: string=?, unit) => actionInfo = ""
 
 type actionEvent = AccessibilityActionEvent.t
 
@@ -38,8 +39,6 @@ type value
 
 type liveRegion = [#none | #polite | #assertive]
 
-// @todo see with ReScript how we can handle this
-// | #switch
 type role = [
   | #adjustable
   | #alert
@@ -72,6 +71,7 @@ type role = [
   | #search
   | #spinbutton
   | #summary
+  | #"switch"
   | #tab
   | #tabbar
   | #tablist

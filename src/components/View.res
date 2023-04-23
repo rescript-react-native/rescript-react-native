@@ -1,19 +1,17 @@
 include NativeElement
 
+// @todo in 0.71.0
+// after adding `aria-*` props, make sure `aria-checked` can be true, false or "mixed"
+
 // @todo in 0.70
 // @deprecated("Use `Rect.t` or `HitSlop.t` type instead")
 type edgeInsets = Rect.t
 
 // @todo in 0.70
 // @deprecated("Use `Rect.t` or `HitSlop.t` type instead")
-@obj // @deprecated("Directly create record instead")
-external edgeInsets: (
-  ~left: float=?,
-  ~right: float=?,
-  ~top: float=?,
-  ~bottom: float=?,
-  unit,
-) => Rect.t = ""
+@obj
+external // @deprecated("Directly create record instead")
+edgeInsets: (~left: float=?, ~right: float=?, ~top: float=?, ~bottom: float=?, unit) => Rect.t = ""
 
 // commodity for easier copy pasting for updating other components that have
 // View props
@@ -42,7 +40,7 @@ external make: (
   // ! \\ If you adjust props below,
   // be sure to adjust all places that use the same comment as below
   // ↓
-  // rescript-react-native 0.69 View props
+  // rescript-react-native 0.71.3 View props
   ~accessibilityActions: array<Accessibility.actionInfo>=?,
   ~accessibilityElementsHidden: bool=?,
   ~accessibilityHint: string=?,
@@ -52,6 +50,8 @@ external make: (
   ~accessibilityLanguage: string=?,
   ~accessibilityLiveRegion: Accessibility.liveRegion=?,
   ~accessibilityRole: Accessibility.role=?,
+  // `role` has precedence over the accessibilityRole prop
+  ~role: Role.t=?,
   ~accessibilityState: Accessibility.state=?,
   ~accessibilityValue: Accessibility.value=?,
   ~accessibilityViewIsModal: bool=?,

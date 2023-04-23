@@ -53,8 +53,9 @@ type viewabilityConfigCallbackPair<'item> = {
   onViewableItemsChanged: viewableItemsChanged<'item> => unit,
 }
 
-@obj // @deprecated("Directly create record instead")
-external viewabilityConfigCallbackPair: (
+@obj
+external // @deprecated("Directly create record instead")
+viewabilityConfigCallbackPair: (
   ~viewabilityConfig: viewabilityConfig,
   ~onViewableItemsChanged: viewableItemsChanged<'item> => unit,
 ) => viewabilityConfigCallbackPair<'item> = ""
@@ -145,7 +146,7 @@ external make: (
   ~stickyHeaderHiddenOnScroll: bool=?,
   ~stickyHeaderIndices: array<int>=?,
   ~zoomScale: float=?,
-  // rescript-react-native 0.69 View props
+  // rescript-react-native 0.71.3 View props
   ~accessibilityActions: array<Accessibility.actionInfo>=?,
   ~accessibilityElementsHidden: bool=?,
   ~accessibilityHint: string=?,
@@ -155,6 +156,8 @@ external make: (
   ~accessibilityLanguage: string=?,
   ~accessibilityLiveRegion: Accessibility.liveRegion=?,
   ~accessibilityRole: Accessibility.role=?,
+  // `role` has precedence over the accessibilityRole prop
+  ~role: Role.t=?,
   ~accessibilityState: Accessibility.state=?,
   ~accessibilityValue: Accessibility.value=?,
   ~accessibilityViewIsModal: bool=?,

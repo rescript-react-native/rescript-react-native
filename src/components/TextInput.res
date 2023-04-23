@@ -217,6 +217,33 @@ type textContentType = [
   | #oneTimeCode
 ]
 
+type inputMode = [
+  | #none
+  | #text
+  | #decimal
+  | #numeric
+  | #tel
+  | #search
+  | #email
+  | #url
+]
+
+type enterKeyHint = [
+  | #enter
+  | #done
+  | #next
+  | #search
+  | #send
+  | #previous
+]
+
+type lineBreakStrategyIOS = [
+  | #none
+  | #standard
+  | #"hangul-word"
+  | #"push-out"
+]
+
 @react.component @module("react-native")
 external make: (
   ~ref: ref=?,
@@ -235,16 +262,23 @@ external make: (
   ~disableFullscreenUI: bool=?,
   ~editable: bool=?,
   ~enablesReturnKeyAutomatically: bool=?,
+  // `enterKeyHint` has precedence over the `returnKeyType`
+  ~enterKeyHint: enterKeyHint=?,
   ~importantForAutofill: importantForAutofill=?,
   ~inlineImageLeft: string=?,
   ~inlineImagePadding: float=?,
   ~inputAccessoryViewID: string=?,
+  // `inputMode` has precedence over `keyboardType`
+  ~inputMode: inputMode=?,
   ~keyboardAppearance: keyboardAppearance=?,
   ~keyboardType: keyboardType=?,
+  ~lineBreakStrategyIOS: lineBreakStrategyIOS=?,
   ~maxFontSizeMultiplier: float=?,
   ~maxLength: int=?,
   ~multiline: bool=?,
   ~numberOfLines: int=?,
+  // `rows` has precedence over `numberOfLines`
+  ~rows: int=?,
   ~onBlur: Event.targetEvent => unit=?,
   ~onChange: changeEvent => unit=?,
   ~onChangeText: string => unit=?,
@@ -259,6 +293,8 @@ external make: (
   ~onSubmitEditing: editingEvent => unit=?,
   ~placeholder: string=?,
   ~placeholderTextColor: Color.t=?,
+  // `readOnly` has precedence over `editable`
+  ~readOnly: bool=?,
   ~returnKeyLabel: string=?,
   ~returnKeyType: returnKeyType=?,
   ~rejectResponderTermination: bool=?,
@@ -275,7 +311,7 @@ external make: (
   ~textContentType: textContentType=?,
   ~underlineColorAndroid: Color.t=?,
   ~value: string=?,
-  // rescript-react-native 0.69 View props
+  // rescript-react-native 0.71.3 View props
   ~accessibilityActions: array<Accessibility.actionInfo>=?,
   ~accessibilityElementsHidden: bool=?,
   ~accessibilityHint: string=?,
@@ -285,6 +321,8 @@ external make: (
   ~accessibilityLanguage: string=?,
   ~accessibilityLiveRegion: Accessibility.liveRegion=?,
   ~accessibilityRole: Accessibility.role=?,
+  // `role` has precedence over the accessibilityRole prop
+  ~role: Role.t=?,
   ~accessibilityState: Accessibility.state=?,
   ~accessibilityValue: Accessibility.value=?,
   ~accessibilityViewIsModal: bool=?,

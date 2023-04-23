@@ -45,36 +45,7 @@ type resizeMode = [#cover | #contain | #stretch | #repeat | #center]
 
 type fontStyle = [#normal | #italic]
 
-module FontWeight: {
-  // Note: we cannot model this as a polymorphic variant
-  // because #"100" = #100 = the number 100 in JS, but we need the string "100" here.
-  type t
-
-  @inline("normal")
-  let normal: t
-  @inline("bold")
-  let bold: t
-  @inline("100")
-  let _100: t
-  @inline("200")
-  let _200: t
-  @inline("300")
-  let _300: t
-  @inline("400")
-  let _400: t
-  @inline("500")
-  let _500: t
-  @inline("600")
-  let _600: t
-  @inline("700")
-  let _700: t
-  @inline("800")
-  let _800: t
-  @inline("900")
-  let _900: t
-}
-
-type fontWeight = FontWeight.t
+type fontWeight = [#normal | #bold | #100 | #200 | #300 | #400 | #500 | #600 | #700 | #800 | #900]
 
 type fontVariant = [
   | #"small-caps"
@@ -157,6 +128,25 @@ type justifyContent = [
   | #"space-evenly"
 ]
 
+type objectFit = [
+  | #cover
+  | #contain
+  | #fill
+  | #"scale-down"
+]
+
+type verticalAlign = [
+  | #auto
+  | #top
+  | #bottom
+  | #middle
+]
+
+type borderCurve = [
+  | #circular
+  | #continuous
+]
+
 // Styles are documented here
 // https://github.com/facebook/react-native/blob/master/Libraries/StyleSheet/StyleSheetTypes.js
 
@@ -178,6 +168,7 @@ type style = {
   resizeMode?: resizeMode,
   overlayColor?: Color.t,
   tintColor?: Color.t,
+  objectFit?: objectFit,
   // Text Style Props (https://reactnative.dev/docs/text-style-props)
   color?: Color.t,
   fontFamily?: string,
@@ -197,6 +188,7 @@ type style = {
   textShadowOffset?: offset,
   textShadowRadius?: float,
   textTransform?: textTransform,
+  verticalAlign?: verticalAlign,
   writingDirection?: writingDirection,
   // View styles https://reactnative.dev/docs/view-style-props
   backfaceVisibility?: backfaceVisibility,
@@ -208,6 +200,7 @@ type style = {
   borderBottomStartRadius?: float,
   borderBottomWidth?: float,
   borderColor?: Color.t,
+  borderCurve?: borderCurve,
   borderEndColor?: Color.t,
   borderEndWidth?: float,
   borderLeftColor?: Color.t,
@@ -248,6 +241,7 @@ type style = {
   // borderTopWidth?: float,
   // borderWidth?: float,
   bottom?: size,
+  columnGap?: float,
   direction?: direction,
   display?: display,
   end?: size,
@@ -257,6 +251,7 @@ type style = {
   flexGrow?: float,
   flexShrink?: float,
   flexWrap?: flexWrap,
+  gap?: float,
   height?: size,
   justifyContent?: justifyContent,
   left?: size,
@@ -285,6 +280,7 @@ type style = {
   paddingVertical?: size,
   position?: position,
   right?: size,
+  rowGap?: float,
   start?: size,
   top?: size,
   width?: size,
@@ -327,6 +323,7 @@ external style: (
   ~textShadowOffset: offset=?,
   ~textShadowRadius: float=?,
   ~textTransform: textTransform=?,
+  ~verticalAlign: verticalAlign=?,
   ~writingDirection: writingDirection=?,
   // View styles https://reactnative.dev/docs/view-style-props
   ~backfaceVisibility: backfaceVisibility=?,
@@ -338,6 +335,7 @@ external style: (
   ~borderBottomStartRadius: float=?,
   ~borderBottomWidth: float=?,
   ~borderColor: Color.t=?,
+  ~borderCurve: borderCurve=?,
   ~borderEndColor: Color.t=?,
   ~borderEndWidth: float=?,
   ~borderLeftColor: Color.t=?,
@@ -378,6 +376,7 @@ external style: (
   // ~borderTopWidth: float=?,
   // ~borderWidth: float=?,
   ~bottom: size=?,
+  ~columnGap: float=?,
   ~direction: direction=?,
   ~display: display=?,
   ~end: size=?,
@@ -387,6 +386,7 @@ external style: (
   ~flexGrow: float=?,
   ~flexShrink: float=?,
   ~flexWrap: flexWrap=?,
+  ~gap: float=?,
   ~height: size=?,
   ~justifyContent: justifyContent=?,
   ~left: size=?,
@@ -415,6 +415,7 @@ external style: (
   ~paddingVertical: size=?,
   ~position: position=?,
   ~right: size=?,
+  ~rowGap: float=?,
   ~start: size=?,
   ~top: size=?,
   ~width: size=?,
@@ -435,6 +436,7 @@ external viewStyle: (
   ~borderBottomStartRadius: float=?,
   ~borderBottomWidth: float=?,
   ~borderColor: Color.t=?,
+  ~borderCurve: borderCurve=?,
   ~borderEndColor: Color.t=?,
   ~borderEndWidth: float=?,
   ~borderLeftColor: Color.t=?,
@@ -475,6 +477,7 @@ external viewStyle: (
   // ~borderTopWidth: float=?,
   // ~borderWidth: float=?,
   ~bottom: size=?,
+  ~columnGap: float=?,
   ~direction: direction=?,
   ~display: display=?,
   ~end: size=?,
@@ -484,6 +487,7 @@ external viewStyle: (
   ~flexGrow: float=?,
   ~flexShrink: float=?,
   ~flexWrap: flexWrap=?,
+  ~gap: float=?,
   ~height: size=?,
   ~justifyContent: justifyContent=?,
   ~left: size=?,
@@ -512,6 +516,7 @@ external viewStyle: (
   ~paddingVertical: size=?,
   ~position: position=?,
   ~right: size=?,
+  ~rowGap: float=?,
   ~start: size=?,
   ~top: size=?,
   ~width: size=?,
@@ -541,6 +546,7 @@ external textStyle: (
   ~textShadowOffset: offset=?,
   ~textShadowRadius: float=?,
   ~textTransform: textTransform=?,
+  ~verticalAlign: verticalAlign=?,
   ~writingDirection: writingDirection=?,
   // View styles https://reactnative.dev/docs/view-style-props
   ~backfaceVisibility: backfaceVisibility=?,
@@ -552,6 +558,7 @@ external textStyle: (
   ~borderBottomStartRadius: float=?,
   ~borderBottomWidth: float=?,
   ~borderColor: Color.t=?,
+  ~borderCurve: borderCurve=?,
   ~borderEndColor: Color.t=?,
   ~borderEndWidth: float=?,
   ~borderLeftColor: Color.t=?,
@@ -592,6 +599,7 @@ external textStyle: (
   // ~borderTopWidth: float=?,
   // ~borderWidth: float=?,
   ~bottom: size=?,
+  ~columnGap: float=?,
   ~direction: direction=?,
   ~display: display=?,
   ~end: size=?,
@@ -601,6 +609,7 @@ external textStyle: (
   ~flexGrow: float=?,
   ~flexShrink: float=?,
   ~flexWrap: flexWrap=?,
+  ~gap: float=?,
   ~height: size=?,
   ~justifyContent: justifyContent=?,
   ~left: size=?,
@@ -629,6 +638,7 @@ external textStyle: (
   ~paddingVertical: size=?,
   ~position: position=?,
   ~right: size=?,
+  ~rowGap: float=?,
   ~start: size=?,
   ~top: size=?,
   ~width: size=?,
@@ -643,6 +653,7 @@ external imageStyle: (
   ~resizeMode: resizeMode=?,
   ~overlayColor: Color.t=?,
   ~tintColor: Color.t=?,
+  ~objectFit: objectFit=?,
   // View styles https://reactnative.dev/docs/view-style-props
   ~backfaceVisibility: backfaceVisibility=?,
   ~backgroundColor: Color.t=?,
@@ -653,6 +664,7 @@ external imageStyle: (
   ~borderBottomStartRadius: float=?,
   ~borderBottomWidth: float=?,
   ~borderColor: Color.t=?,
+  ~borderCurve: borderCurve=?,
   ~borderEndColor: Color.t=?,
   ~borderEndWidth: float=?,
   ~borderLeftColor: Color.t=?,
@@ -693,6 +705,7 @@ external imageStyle: (
   // ~borderTopWidth: float=?,
   // ~borderWidth: float=?,
   ~bottom: size=?,
+  ~columnGap: float=?,
   ~direction: direction=?,
   ~display: display=?,
   ~end: size=?,
@@ -702,6 +715,7 @@ external imageStyle: (
   ~flexGrow: float=?,
   ~flexShrink: float=?,
   ~flexWrap: flexWrap=?,
+  ~gap: float=?,
   ~height: size=?,
   ~justifyContent: justifyContent=?,
   ~left: size=?,
@@ -730,6 +744,7 @@ external imageStyle: (
   ~paddingVertical: size=?,
   ~position: position=?,
   ~right: size=?,
+  ~rowGap: float=?,
   ~start: size=?,
   ~top: size=?,
   ~width: size=?,
