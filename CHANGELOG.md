@@ -1,5 +1,9 @@
 # Changelog of `rescript-react-native`
 
+## 0.71.1 - 2023-04-24
+
+Remove `package.json` `engine` section to avoid Yarn installation issue.
+
 ## 0.71.0 - 2023-04-24
 
 This release requires @rescript/react 0.11.0 or later.
