@@ -1,5 +1,21 @@
 # Changelog of `rescript-react-native`
 
+## 0.71.0 - 2023-04-24
+
+This release requires @rescript/react 0.11.0 or later.
+It contains various breaking changes to match React Native 0.71.
+
+You can see [changelog by comparing 0.71 to 0.70](https://github.com/rescript-react-native/rescript-react-native/compare/v0.70.0...0.71.0)
+
+### Contributors
+
+- [@reck753](https://github.com/reck753)
+- [@MiryangJung](https://github.com/MiryangJung)
+- [@Yummy-sk](https://github.com/Yummy-sk)
+- [@cknitt](https://github.com/cknitt)
+- [@fhammerschmidt](https://github.com/fhammerschmidt)
+- [@MoOx](https://github.com/MoOx)
+
 ## 0.70.0 - 2022-11-01
 
 This release requires ReScript 10.0.0 or later.
