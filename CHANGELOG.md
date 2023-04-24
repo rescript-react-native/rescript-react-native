@@ -5,7 +5,7 @@
 This release requires @rescript/react 0.11.0 or later.
 It contains various breaking changes to match React Native 0.71.
 
-You can see [changelog by comparing 0.71 to 0.70](https://github.com/rescript-react-native/rescript-react-native/compare/v0.70.0...0.71.0)
+You can see [changelog by comparing 0.71 to 0.70](https://github.com/rescript-react-native/rescript-react-native/compare/0.70.0...0.71.0)
 
 ### Contributors
 
