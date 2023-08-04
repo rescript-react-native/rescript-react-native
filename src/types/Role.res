@@ -1,4 +1,5 @@
 type t = [
+  | #"switch"
   | #alert
   | #alertdialog
   | #application
@@ -15,12 +16,16 @@ type t = [
   | #dialog
   | #directory
   | #document
+  | #drawerlayout
+  | #dropdownlist
   | #feed
   | #figure
   | #form
   | #grid
   | #group
   | #heading
+  | #horizontalscrollview
+  | #iconmenu
   | #img
   | #link
   | #list
@@ -37,6 +42,7 @@ type t = [
   | #none
   | #note
   | #option
+  | #pager
   | #presentation
   | #progressbar
   | #radio
@@ -46,13 +52,14 @@ type t = [
   | #rowgroup
   | #rowheader
   | #scrollbar
+  | #scrollview
   | #searchbox
   | #separator
   | #slider
+  | #slidingdrawer
   | #spinbutton
   | #status
   | #summary
-  | #"switch"
   | #tab
   | #table
   | #tablist
@@ -64,4 +71,6 @@ type t = [
   | #tree
   | #treegrid
   | #treeitem
+  | #viewgroup
+  | #webview
 ]
