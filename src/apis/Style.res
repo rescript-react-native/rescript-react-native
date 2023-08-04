@@ -205,6 +205,9 @@ type style = {
   // View styles https://reactnative.dev/docs/view-style-props
   backfaceVisibility?: backfaceVisibility,
   backgroundColor?: Color.t,
+  borderBlockColor?: Color.t,
+  borderBlockEndColor?: Color.t,
+  borderBlockStartColor?: Color.t,
   borderBottomColor?: Color.t,
   borderBottomEndRadius?: float,
   borderBottomLeftRadius?: float,
@@ -340,6 +343,9 @@ external style: (
   // View styles https://reactnative.dev/docs/view-style-props
   ~backfaceVisibility: backfaceVisibility=?,
   ~backgroundColor: Color.t=?,
+  ~borderBlockColor: Color.t=?,
+  ~borderBlockEndColor: Color.t=?,
+  ~borderBlockStartColor: Color.t=?,
   ~borderBottomColor: Color.t=?,
   ~borderBottomEndRadius: float=?,
   ~borderBottomLeftRadius: float=?,
@@ -441,6 +447,9 @@ external viewStyle: (
   // View styles https://reactnative.dev/docs/view-style-props
   ~backfaceVisibility: backfaceVisibility=?,
   ~backgroundColor: Color.t=?,
+  ~borderBlockColor: Color.t=?,
+  ~borderBlockEndColor: Color.t=?,
+  ~borderBlockStartColor: Color.t=?,
   ~borderBottomColor: Color.t=?,
   ~borderBottomEndRadius: float=?,
   ~borderBottomLeftRadius: float=?,
@@ -563,6 +572,9 @@ external textStyle: (
   // View styles https://reactnative.dev/docs/view-style-props
   ~backfaceVisibility: backfaceVisibility=?,
   ~backgroundColor: Color.t=?,
+  ~borderBlockColor: Color.t=?,
+  ~borderBlockEndColor: Color.t=?,
+  ~borderBlockStartColor: Color.t=?,
   ~borderBottomColor: Color.t=?,
   ~borderBottomEndRadius: float=?,
   ~borderBottomLeftRadius: float=?,
@@ -669,6 +681,9 @@ external imageStyle: (
   // View styles https://reactnative.dev/docs/view-style-props
   ~backfaceVisibility: backfaceVisibility=?,
   ~backgroundColor: Color.t=?,
+  ~borderBlockColor: Color.t=?,
+  ~borderBlockEndColor: Color.t=?,
+  ~borderBlockStartColor: Color.t=?,
   ~borderBottomColor: Color.t=?,
   ~borderBottomEndRadius: float=?,
   ~borderBottomLeftRadius: float=?,
