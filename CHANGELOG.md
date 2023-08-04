@@ -1,5 +1,15 @@
 # Changelog of `rescript-react-native`
 
+## 0.72.0 - 2023-08-04
+
+- Remove deprecated Slider, DatePickerIOS & ProgressViewIOS [82dc6e1](https://github.com/rescript-react-native/rescript-react-native/commit/82dc6e1) by [@MoOx](https://github.com/MoOx)
+- Add VirtualizedList `onStartReached` / `onStartReachedThreshold` props [d69aa1e](https://github.com/rescript-react-native/rescript-react-native/commit/d69aa1e) by [@MoOx](https://github.com/MoOx)
+- Add Appearance `setColorScheme` method [878f426](https://github.com/rescript-react-native/rescript-react-native/commit/878f426) by [@MoOx](https://github.com/MoOx)
+- Add Style `borderBlockColor` `borderBlockEndColor` `borderBlockStartCo… [a12bade](https://github.com/rescript-react-native/rescript-react-native/commit/a12bade) by [@MoOx](https://github.com/MoOx)
+- Add Style `borderEndEndRadius``borderEndStartRadius` `borderStartEndRadi… [66b5cbd](https://github.com/rescript-react-native/rescript-react-native/commit/66b5cbd) by [@MoOx](https://github.com/MoOx)
+- Add Style margin & padding CSS logical props [c91f345](https://github.com/rescript-react-native/rescript-react-native/commit/c91f345) by [@MoOx](https://github.com/MoOx)
+- Add various Android accessibility roles values [7057d79](https://github.com/rescript-react-native/rescript-react-native/commit/7057d79) by [@MoOx](https://github.com/MoOx)
+
 ## 0.71.1 - 2023-04-24
 
 Remove `package.json` `engine` section to avoid Yarn installation issue.
