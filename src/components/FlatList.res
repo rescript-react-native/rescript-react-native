@@ -1,4 +1,4 @@
-// VirtualizedList props data, getItem, getItemCount and getItemLayout
+// VirtualizedList props 0.72 data, getItem, getItemCount and getItemLayout
 // are not supported on FlatList
 // FlatList has its own data prop, specified as array(item)
 
@@ -15,7 +15,7 @@ external make: (
   ~data: array<'item>,
   ~getItemLayout: (array<'item>, int) => VirtualizedList.itemLayout=?,
   ~numColumns: 'int=?,
-  // VirtualizedList props
+  // VirtualizedList props 0.72
   // ~\"CellRendererComponent": VirtualizedList.cellRendererComponent('item)=?,
   ~\"ListEmptyComponent": unit => React.element=?,
   ~\"ListFooterComponent": unit => React.element=?,
@@ -34,6 +34,8 @@ external make: (
   ~inverted: bool=?,
   ~keyExtractor: ('item, int) => string,
   ~maxToRenderPerBatch: int=?,
+  ~onStartReached: VirtualizedList.onStartReachedParams => unit=?,
+  ~onStartReachedThreshold: float=?,
   ~onEndReached: VirtualizedList.onEndReachedParams => unit=?,
   ~onEndReachedThreshold: float=?,
   ~onRefresh: unit => unit=?,

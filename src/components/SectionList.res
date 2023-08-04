@@ -23,7 +23,7 @@ external make: (
   ~renderSectionHeader: VirtualizedSectionList.renderSectionHeaderCallback<'item, 'sectionData>=?,
   ~sections: array<VirtualizedSectionList.section<'item, 'sectionData>>,
   ~stickySectionHeadersEnabled: bool=?,
-  // VirtualizedList props
+  // VirtualizedList props 0.72
   ~\"CellRendererComponent": VirtualizedList.cellRendererComponent<'item>=?,
   ~\"ListEmptyComponent": unit => React.element=?,
   ~\"ListFooterComponent": unit => React.element=?,
@@ -43,6 +43,8 @@ external make: (
   ~inverted: bool=?,
   ~keyExtractor: ('item, int) => string,
   ~maxToRenderPerBatch: int=?,
+  ~onStartReached: VirtualizedList.onStartReachedParams => unit=?,
+  ~onStartReachedThreshold: float=?,
   ~onEndReached: VirtualizedList.onEndReachedParams => unit=?,
   ~onEndReachedThreshold: float=?,
   ~onRefresh: unit => unit=?,

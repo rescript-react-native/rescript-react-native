@@ -31,6 +31,7 @@ type itemLayout = {
   index: int,
 }
 
+type onStartReachedParams = {distanceFromEnd: float}
 type onEndReachedParams = {distanceFromEnd: float}
 
 type onScrollToIndexFailedInfo = {
@@ -65,7 +66,7 @@ type viewabilityConfigCallbackPairs<'item> = array<viewabilityConfigCallbackPair
 @react.component @module("react-native")
 external make: (
   ~ref: ref=?,
-  // VirtualizedList props
+  // VirtualizedList props 0.72
   ~\"CellRendererComponent": cellRendererComponent<'item>=?,
   ~\"ListEmptyComponent": unit => React.element=?,
   ~\"ListFooterComponent": unit => React.element=?,
@@ -84,6 +85,8 @@ external make: (
   ~inverted: bool=?,
   ~keyExtractor: ('item, int) => string,
   ~maxToRenderPerBatch: int=?,
+  ~onStartReached: onStartReachedParams => unit=?,
+  ~onStartReachedThreshold: float=?,
   ~onEndReached: onEndReachedParams => unit=?,
   ~onEndReachedThreshold: float=?,
   ~onRefresh: unit => unit=?,
