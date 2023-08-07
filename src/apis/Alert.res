@@ -11,7 +11,7 @@ type style = [#default | #cancel | #destructive]
 
 type button = {
   text?: string,
-  onPress?: unit => unit,
+  onPress?: option<string> => unit,
   style?: style,
   isPreferred?: bool,
 }
