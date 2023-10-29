@@ -1,28 +1,3 @@
-@module("react-native") @deprecated("Use `PlatformColor.unsafe` instead")
-external unsafeGet: string => Color.t = "PlatformColor"
-
-@module("react-native") @deprecated("Use `PlatformColor.unsafe` instead")
-external unsafeGet2: (string, string) => Color.t = "PlatformColor"
-
-@module("react-native") @deprecated("Use `PlatformColor.unsafe` instead")
-external unsafeGet3: (string, string, string) => Color.t = "PlatformColor"
-
-@module("react-native") @deprecated("Use `PlatformColor.unsafe` instead")
-external unsafeGet4: (string, string, string, string) => Color.t = "PlatformColor"
-
-@module("react-native") @deprecated("Use `PlatformColor.unsafe` instead")
-external unsafeGet5: (string, string, string, string, string) => Color.t = "PlatformColor"
-
-@module("react-native") @deprecated("Use `PlatformColor.unsafe` instead")
-external unsafeGet6: (string, string, string, string, string, string) => Color.t = "PlatformColor"
-
-@module("react-native") @deprecated("Use `PlatformColor.unsafe` instead")
-external unsafeGet7: (string, string, string, string, string, string, string) => Color.t =
-  "PlatformColor"
-
-@module("react-native") @deprecated("Use `PlatformColor.unsafe` instead") @variadic
-external unsafeGetMultiple: array<string> => Color.t = "PlatformColor"
-
 module Ios = {
   // Standard Colors <https://developer.apple.com/documentation/uikit/uicolor/standard_colors>
   type adaptableColors = [
@@ -116,21 +91,6 @@ module Ios = {
     | linkColors
     | nonadaptableColors
   ]
-
-  @module("react-native") @deprecated("Use `PlatformColor.ios` instead")
-  external get: t => Color.t = "PlatformColor"
-  @module("react-native") @deprecated("Use `PlatformColor.ios` instead")
-  external get2: (t, t) => Color.t = "PlatformColor"
-  @module("react-native") @deprecated("Use `PlatformColor.ios` instead")
-  external get3: (t, t, t) => Color.t = "PlatformColor"
-  @module("react-native") @deprecated("Use `PlatformColor.ios` instead")
-  external get4: (t, t, t, t) => Color.t = "PlatformColor"
-  @module("react-native") @deprecated("Use `PlatformColor.ios` instead")
-  external get5: (t, t, t, t, t) => Color.t = "PlatformColor"
-  @module("react-native") @deprecated("Use `PlatformColor.ios` instead")
-  external get6: (t, t, t, t, t, t) => Color.t = "PlatformColor"
-  @module("react-native") @deprecated("Use `PlatformColor.ios` instead")
-  external get7: (t, t, t, t, t, t) => Color.t = "PlatformColor"
 }
 
 module Android = {
@@ -190,21 +150,6 @@ module Android = {
     | color
     | attr
   ]
-
-  @deprecated("Use `PlatformColor.android` instead") @module("react-native")
-  external get: (t, t) => Color.t = "PlatformColor"
-  @deprecated("Use `PlatformColor.android` instead") @module("react-native")
-  external get2: (t, t) => Color.t = "PlatformColor"
-  @deprecated("Use `PlatformColor.android` instead") @module("react-native")
-  external get3: (t, t, t) => Color.t = "PlatformColor"
-  @deprecated("Use `PlatformColor.android` instead") @module("react-native")
-  external get4: (t, t, t, t) => Color.t = "PlatformColor"
-  @deprecated("Use `PlatformColor.android` instead") @module("react-native")
-  external get5: (t, t, t, t, t) => Color.t = "PlatformColor"
-  @deprecated("Use `PlatformColor.android` instead") @module("react-native")
-  external get6: (t, t, t, t, t, t) => Color.t = "PlatformColor"
-  @deprecated("Use `PlatformColor.android` instead") @module("react-native")
-  external get7: (t, t, t, t, t, t, t) => Color.t = "PlatformColor"
 }
 
 @module("react-native") @variadic
