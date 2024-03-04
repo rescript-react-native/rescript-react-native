@@ -1,5 +1,9 @@
 # Changelog of `rescript-react-native`
 
+## Next
+
+- BREAKING: Fix `fontWeight` type again. https://github.com/rescript-react-native/rescript-react-native/pull/806
+
 ## 0.72.0 - 2023-08-04
 
 - Remove deprecated Slider, DatePickerIOS & ProgressViewIOS [82dc6e1](https://github.com/rescript-react-native/rescript-react-native/commit/82dc6e1) by [@MoOx](https://github.com/MoOx)
