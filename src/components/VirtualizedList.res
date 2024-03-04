@@ -121,6 +121,7 @@ external make: (
   ~keyboardDismissMode: ScrollView.keyboardDismissMode=?,
   ~keyboardShouldPersistTaps: ScrollView.keyboardShouldPersistTaps=?,
   ~maximumZoomScale: float=?,
+  ~maintainVisibleContentPosition: ScrollView.maintainVisibleContentPosition=?,
   ~minimumZoomScale: float=?,
   ~nestedScrollEnabled: bool=?,
   ~onContentSizeChange: ((float, float)) => unit=?,

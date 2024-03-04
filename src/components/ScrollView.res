@@ -26,6 +26,11 @@ type overScrollMode = [#always | #never | #auto]
 
 type snapToAlignment = [#start | #center | #end]
 
+type maintainVisibleContentPosition = {
+  autoscrollToTopThreshold?: float,
+  minIndexForVisible: int,
+}
+
 @react.component @module("react-native")
 external make: (
   ~ref: ref=?,
@@ -50,6 +55,7 @@ external make: (
   ~keyboardDismissMode: keyboardDismissMode=?,
   ~keyboardShouldPersistTaps: keyboardShouldPersistTaps=?,
   ~maximumZoomScale: float=?,
+  ~maintainVisibleContentPosition: maintainVisibleContentPosition=?,
   ~minimumZoomScale: float=?,
   ~nestedScrollEnabled: bool=?,
   ~onContentSizeChange: ((float, float)) => unit=?,
