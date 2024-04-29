@@ -19,7 +19,7 @@
   ],
   "files": [
     "*.md",
-    "bsconfig.json",
+    "rescript.json",
     "src/**/*.res",
     "src/**/*.resi",
     "src/**/*.js",
