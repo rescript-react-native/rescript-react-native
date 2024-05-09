@@ -45,7 +45,36 @@ type resizeMode = [#cover | #contain | #stretch | #repeat | #center]
 
 type fontStyle = [#normal | #italic]
 
-type fontWeight = [#normal | #bold | #100 | #200 | #300 | #400 | #500 | #600 | #700 | #800 | #900]
+module FontWeight: {
+  // Note: we cannot model this as a polymorphic variant
+  // because #"100" = #100 = the number 100 in JS, but we need the string "100" here.
+  type t
+
+  @inline("normal")
+  let normal: t
+  @inline("bold")
+  let bold: t
+  @inline("100")
+  let _100: t
+  @inline("200")
+  let _200: t
+  @inline("300")
+  let _300: t
+  @inline("400")
+  let _400: t
+  @inline("500")
+  let _500: t
+  @inline("600")
+  let _600: t
+  @inline("700")
+  let _700: t
+  @inline("800")
+  let _800: t
+  @inline("900")
+  let _900: t
+}
+
+type fontWeight = FontWeight.t
 
 type fontVariant = [
   | #"small-caps"
@@ -319,7 +348,6 @@ external s: style => t = "%identity"
 // - layout style
 @obj
 external style: (
-  // Image Style Props (https://reactnative.dev/docs/image-style-props)
   ~resizeMode: resizeMode=?,
   ~overlayColor: Color.t=?,
   ~tintColor: Color.t=?,
@@ -464,7 +492,6 @@ external style: (
 // ____ViewStyleProp_Internal
 @obj
 external viewStyle: (
-  // View styles https://reactnative.dev/docs/view-style-props
   ~backfaceVisibility: backfaceVisibility=?,
   ~backgroundColor: Color.t=?,
   ~borderBlockColor: Color.t=?,
@@ -584,7 +611,6 @@ external viewStyle: (
 // ____TextStyleProp_Internal
 @obj
 external textStyle: (
-  // Text Style Props (https://reactnative.dev/docs/text-style-props)
   ~color: Color.t=?,
   ~fontFamily: string=?,
   ~fontSize: float=?,
@@ -725,7 +751,6 @@ external textStyle: (
 // ____ImageStyleProp_Internal
 @obj
 external imageStyle: (
-  // Image Style Props (https://reactnative.dev/docs/image-style-props)
   ~resizeMode: resizeMode=?,
   ~overlayColor: Color.t=?,
   ~tintColor: Color.t=?,
