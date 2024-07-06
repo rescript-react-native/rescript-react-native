@@ -45,36 +45,8 @@ type resizeMode = [#cover | #contain | #stretch | #repeat | #center]
 
 type fontStyle = [#normal | #italic]
 
-module FontWeight: {
-  // Note: we cannot model this as a polymorphic variant
-  // because #"100" = #100 = the number 100 in JS, but we need the string "100" here.
-  type t
+type fontWeight = [#normal | #bold | #100 | #200 | #300 | #400 | #500 | #600 | #700 | #800 | #900]
 
-  @inline("normal")
-  let normal: t
-  @inline("bold")
-  let bold: t
-  @inline("100")
-  let _100: t
-  @inline("200")
-  let _200: t
-  @inline("300")
-  let _300: t
-  @inline("400")
-  let _400: t
-  @inline("500")
-  let _500: t
-  @inline("600")
-  let _600: t
-  @inline("700")
-  let _700: t
-  @inline("800")
-  let _800: t
-  @inline("900")
-  let _900: t
-}
-
-type fontWeight = FontWeight.t
 type fontVariant = [
   | #"small-caps"
   | #"oldstyle-nums"
