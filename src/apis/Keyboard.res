@@ -28,7 +28,10 @@ type listener = keyboardEvent => unit
 external addListener: (eventType, listener) => EventSubscription.t = "addListener"
 
 @module("react-native") @scope("Keyboard")
-external removeListener: (eventType, listener) => EventSubscription.t = "removeListener"
+external removeAllListeners: (eventType) => unit = "removeAllListeners"
 
 @module("react-native") @scope("Keyboard")
 external dismiss: unit => unit = "dismiss"
+
+@module("react-native") @scope("Keyboard")
+external isVisible: unit => bool = "isVisible"
