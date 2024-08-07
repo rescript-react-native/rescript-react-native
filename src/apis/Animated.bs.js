@@ -9,7 +9,7 @@ var FlatList$ReactNative = require("../components/FlatList.bs.js");
 var ScrollView$ReactNative = require("../components/ScrollView.bs.js");
 var SectionList$ReactNative = require("../components/SectionList.bs.js");
 
-var Animation = {};
+var $$Animation = {};
 
 function ValueAnimations(Val) {
   var Decay = {};
@@ -143,11 +143,10 @@ var $$Text = {
 var make$5 = ReactNative.Animated.createAnimatedComponent(ReactNative.View);
 
 var View = {
-  View: View$ReactNative.View,
   make: make$5
 };
 
-exports.Animation = Animation;
+exports.$$Animation = $$Animation;
 exports.ValueAnimations = ValueAnimations;
 exports.Interpolation = Interpolation;
 exports.ValueOperations = ValueOperations;

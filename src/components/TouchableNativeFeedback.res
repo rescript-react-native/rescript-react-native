@@ -16,37 +16,11 @@ module Background = {
   external ripple: (string, bool) => t = "Ripple"
 }
 
-@react.component @module("react-native")
-external make: (
-  ~ref: ref=?,
-  // TouchableNativeFeedback props
-  ~background: Background.t=?,
-  ~useForeground: bool=?,
-  // rescript-react-native 0.69 TouchableWithoutFeedback props
-  ~accessible: bool=?,
-  ~accessibilityElementsHidden: bool=?,
-  ~accessibilityHint: string=?,
-  ~accessibilityIgnoresInvertColors: bool=?,
-  ~accessibilityLabel: string=?,
-  ~accessibilityLanguage: string=?,
-  ~accessibilityLiveRegion: Accessibility.liveRegion=?,
-  ~accessibilityRole: Accessibility.role=?,
-  ~accessibilityState: Accessibility.state=?,
-  ~accessibilityValue: Accessibility.value=?,
-  ~accessibilityViewIsModal: bool=?,
-  ~delayLongPress: int=?,
-  ~delayPressIn: int=?,
-  ~delayPressOut: int=?,
-  ~disabled: bool=?,
-  ~hitSlop: View.edgeInsets=?,
-  ~importantForAccessibility: View.importantForAccessibility=?,
-  ~onLayout: Event.layoutEvent => unit=?,
-  ~onLongPress: Event.pressEvent => unit=?,
-  ~onPress: Event.pressEvent => unit=?,
-  ~onPressIn: Event.pressEvent => unit=?,
-  ~onPressOut: Event.pressEvent => unit=?,
-  ~pressRetentionOffset: View.edgeInsets=?,
-  ~testID: string=?,
-  ~touchSoundDisabled: bool=?,
-  ~children: React.element=?,
-) => React.element = "TouchableNativeFeedback"
+type touchableNativeFeedbackProps = {
+  ...TouchableWithoutFeedback.touchableWithoutFeedbackProps,
+  background?: Background.t,
+  useForeground?: bool,
+}
+
+@react.component(: touchableNativeFeedbackProps) @module("react-native")
+external make: touchableNativeFeedbackProps => React.element = "TouchableNativeFeedback"

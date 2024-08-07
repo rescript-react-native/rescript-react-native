@@ -102,7 +102,7 @@ type crossOrigin = [
   | #"use-credentials"
 ]
 
-@react.component @module("react-native")
+@module("react-native") @react.component
 external make: (
   ~ref: ref=?,
   // Image props
@@ -110,7 +110,7 @@ external make: (
   ~accessible: bool=?,
   ~alt: string=?,
   ~blurRadius: float=?,
-  ~capInsets: View.edgeInsets=?,
+  ~capInsets: Rect.t=?,
   ~crossOrigin: crossOrigin=?,
   ~defaultSource: Source.t=?,
   ~fadeDuration: float=?,
