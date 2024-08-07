@@ -18,34 +18,12 @@ type animationConfig = {
   property?: property,
 }
 
-@obj
-external // @deprecated("Directly create record instead")
-animationConfig: (
-  ~duration: float=?,
-  ~delay: float=?,
-  ~springDamping: float=?,
-  ~initialVelocity: float=?,
-  ~\"type": animationType=?,
-  ~property: property=?,
-  unit,
-) => animationConfig = ""
-
 type layoutAnimationConfig = {
   duration: float,
   create?: animationConfig,
   update?: animationConfig,
   delete?: animationConfig,
 }
-
-@obj
-external // @deprecated("Directly create record instead")
-layoutAnimationConfig: (
-  ~duration: float,
-  ~create: animationConfig=?,
-  ~update: animationConfig=?,
-  ~delete: animationConfig=?,
-  unit,
-) => layoutAnimationConfig = ""
 
 // multiple externals
 @module("react-native") @scope("LayoutAnimation")

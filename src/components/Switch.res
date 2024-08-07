@@ -5,10 +5,6 @@ type trackColor = {
   \"false"?: Color.t,
 }
 
-@obj
-external // @deprecated("Directly create record instead")
-trackColor: (~\"true": Color.t=?, ~\"false": Color.t=?, unit) => trackColor = ""
-
 type switchProps = {
   ...View.viewProps,
   disabled?: bool,

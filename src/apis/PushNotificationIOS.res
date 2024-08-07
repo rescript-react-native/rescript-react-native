@@ -41,22 +41,6 @@ type localNotification = {
   repeatInterval?: repeatInterval,
 }
 
-@obj
-external // @deprecated("Directly create record instead")
-localNotification: (
-  ~alertBody: string=?,
-  ~alertTitle: string=?,
-  ~alertAction: string=?,
-  ~soundName: string=?,
-  ~isSilent: bool=?,
-  ~category: string=?,
-  ~userInfo: Js.Json.t=?,
-  ~applicationIconBadgeNumber: int=?,
-  ~fireDate: Js.Date.t=?,
-  ~repeatInterval: repeatInterval=?,
-  unit,
-) => localNotification = ""
-
 @module("react-native") @scope("PushNotificationIOS")
 external presentLocalNotification: localNotification => unit = "presentLocalNotification"
 
@@ -157,15 +141,6 @@ type requestPermissionsOptions = {
   sound?: bool,
 }
 
-@obj
-external // @deprecated("Directly create record instead")
-requestPermissionsOptions: (
-  ~alert: bool=?,
-  ~badge: bool=?,
-  ~sound: bool=?,
-  unit,
-) => requestPermissionsOptions = ""
-
 // multiple externals
 @module("react-native") @scope("PushNotificationIOS")
 external requestPermissions: unit => Js.Promise.t<permissions> = "requestPermissions"
@@ -186,15 +161,6 @@ type fetchResult = {
   \"NoData"?: string,
   \"ResultFailed"?: string,
 }
-
-@obj
-external // @deprecated("Directly create record instead")
-fetchResult: (
-  ~\"NewData": string=?,
-  ~\"NoData": string=?,
-  ~\"ResultFailed": string=?,
-  unit,
-) => fetchResult = ""
 
 @module("react-native") @scope("PushNotificationIOS")
 external finish: fetchResult => unit = "fetchResult"
