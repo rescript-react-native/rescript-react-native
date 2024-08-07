@@ -1,7 +1,9 @@
 {
   "name": "rescript-react-native",
   "namespace": "react-native",
-  "reason": { "react-jsx": 3 },
+  "reason": {
+    "react-jsx": 3
+  },
   "package-specs": {
     "module": "commonjs",
     "in-source": true
@@ -13,9 +15,13 @@
       "subdirs": true
     }
   ],
-  "bsc-flags": ["-bs-no-version-header"],
+  "bsc-flags": [
+    "-bs-no-version-header"
+  ],
   "warnings": {
     "error": true
   },
-  "bs-dependencies": ["@rescript/react"]
+  "bs-dependencies": [
+    "@rescript/react"
+  ]
 }
