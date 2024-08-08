@@ -1,6 +1,7 @@
 include NativeElement
 
 type refreshControlProps = {
+  ref?: ref,
   ...View.viewProps,
   colors?: array<Color.t>,
   enabled?: bool,

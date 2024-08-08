@@ -11,6 +11,7 @@ type styleAttr = [
 ]
 
 type progressBarAndroidProps = {
+  ref?: ref,
   ...View.viewProps,
   animating?: bool,
   color?: Color.t,

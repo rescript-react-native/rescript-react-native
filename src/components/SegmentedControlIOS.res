@@ -14,6 +14,7 @@ module ChangeEvent = {
 type changeEvent = ChangeEvent.t
 
 type segmentControlIOSProps = {
+  ref?: ref,
   ...View.viewProps,
   enabled?: bool,
   momentary?: bool,

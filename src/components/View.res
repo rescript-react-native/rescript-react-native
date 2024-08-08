@@ -101,7 +101,6 @@ type viewWebProps = {
 }
 
 type viewCoreProps = {
-  ref?: ref,
   hitSlop?: Rect.t,
   nativeID?: string,
   needsOffscreenAlphaCompositing?: bool,
@@ -122,5 +121,10 @@ type viewProps = {
   ...viewCoreProps,
 }
 
-@react.component(: viewProps) @module("react-native")
-external make: viewProps => React.element = "View"
+type viewPropsWithRef = {
+  ref?: ref,
+  ...viewProps,
+}
+
+@react.component(: viewPropsWithRef) @module("react-native")
+external make: viewPropsWithRef => React.element = "View"

@@ -6,6 +6,7 @@ type trackColor = {
 }
 
 type switchProps = {
+  ref?: ref,
   ...View.viewProps,
   disabled?: bool,
   trackColor?: trackColor,

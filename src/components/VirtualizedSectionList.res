@@ -36,6 +36,7 @@ type separatorProps<'item, 'sectionData> = {
 }
 
 type virtualizedSectionListProps<'sectionData, 'item, 'extraData> = {
+  ref?: ref,
   ...VirtualizedList.virtualizedListCoreProps<'sectionData, 'item, 'extraData>,
   \"ItemSeparatorComponent"?: React.component<separatorProps<'item, 'sectionData>>,
   \"SectionSeparatorComponent"?: React.component<separatorProps<'item, 'sectionData>>,

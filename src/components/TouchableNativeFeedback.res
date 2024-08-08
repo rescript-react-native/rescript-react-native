@@ -17,6 +17,7 @@ module Background = {
 }
 
 type touchableNativeFeedbackProps = {
+  ref?: ref,
   ...TouchableWithoutFeedback.touchableWithoutFeedbackProps,
   background?: Background.t,
   useForeground?: bool,

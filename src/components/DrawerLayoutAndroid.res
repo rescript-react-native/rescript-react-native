@@ -25,6 +25,7 @@ type drawerPosition = [#left | #right]
 type keyboardDismissMode = [#none | #"on-drag"]
 
 type drawerLayoutAndroidProps = {
+  ref?: ref,
   ...View.viewProps,
   renderNavigationView?: unit => React.element,
   onDrawerClose?: unit => unit,

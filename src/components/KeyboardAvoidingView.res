@@ -3,6 +3,7 @@ include NativeElement
 type behavior = [#height | #position | #padding]
 
 type keyboardAvoidingViewProps = {
+  ref?: ref,
   ...View.viewProps,
   behavior?: behavior,
   contentContainerStyle?: Style.t,

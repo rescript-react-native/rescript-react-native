@@ -1,6 +1,7 @@
 include NativeElement
 
 type touchableHighlightProps = {
+  ref?: ref,
   ...TouchableWithoutFeedback.touchableWithoutFeedbackProps,
   activeOpacity?: float,
   hasTVPreferredFocus?: bool,

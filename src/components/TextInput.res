@@ -246,6 +246,7 @@ type lineBreakStrategyIOS = [
 ]
 
 type textInputProps = {
+  ref?: ref,
   ...View.gestureResponderHandlersProps,
   ...View.viewAccessibilityProps,
   ...View.viewIOSProps,

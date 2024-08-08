@@ -4,6 +4,7 @@ include NativeElement
 type size = | @as("small") Small | @as("large") Large | Number(float)
 
 type activityIndicatorProps = {
+  ref?: ref,
   ...View.viewProps,
   animating?: bool,
   color?: Color.t,

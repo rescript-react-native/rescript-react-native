@@ -1,4 +1,9 @@
 include NativeElement
 
-@react.component(: View.viewProps) @module("react-native")
-external make: View.viewProps => React.element = "SafeAreaView"
+type safeAreaViewProps = {
+  ref?: ref,
+  ...View.viewProps,
+}
+
+@react.component(: safeAreaViewProps) @module("react-native")
+external make: safeAreaViewProps => React.element = "SafeAreaView"

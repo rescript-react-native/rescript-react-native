@@ -94,6 +94,7 @@ type virtualizedListCoreProps<'data, 'item, 'extraData> = {
 }
 
 type virtualizedListProps<'data, 'item, 'extraData> = {
+  ref?: ref,
   ...virtualizedListCoreProps<'data, 'item, 'extraData>,
   data: 'data, // any collection of 'item
   renderItem: renderItemCallback<'item>,

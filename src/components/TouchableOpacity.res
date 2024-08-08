@@ -1,6 +1,7 @@
 include TouchableOpacityElement
 
 type touchableOpacityProps = {
+  ref?: ref,
   ...TouchableWithoutFeedback.touchableWithoutFeedbackProps,
   activeOpacity?: float,
   focusedOpacity?: float,

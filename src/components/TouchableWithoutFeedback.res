@@ -1,7 +1,6 @@
 include NativeElement
 
 type touchableWithoutFeedbackProps = {
-  ref?: ref,
   accessible?: bool,
   accessibilityElementsHidden?: bool,
   accessibilityHint?: string,
@@ -32,5 +31,10 @@ type touchableWithoutFeedbackProps = {
   children?: React.element,
 }
 
-@react.component(: touchableWithoutFeedbackProps) @module("react-native")
-external make: touchableWithoutFeedbackProps => React.element = "TouchableWithoutFeedback"
+type touchableWithoutFeedbackPropsWithRef = {
+  ref?: ref,
+  ...touchableWithoutFeedbackProps,
+}
+
+@react.component(: touchableWithoutFeedbackPropsWithRef) @module("react-native")
+external make: touchableWithoutFeedbackPropsWithRef => React.element = "TouchableWithoutFeedback"
