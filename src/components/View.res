@@ -76,7 +76,6 @@ type viewWebFocusProps = {
 }
 
 type viewWebKeyboardProps = {
-  // react-native-web 0.17 View props, KeyboardProps
   onKeyDown?: ReactEvent.Keyboard.t => unit,
   onKeyDownCapture?: ReactEvent.Keyboard.t => unit,
   onKeyUp?: ReactEvent.Keyboard.t => unit,

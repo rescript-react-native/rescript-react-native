@@ -34,13 +34,16 @@ type pressableAccessibilityProps = {
 }
 
 type pressableWebProps = {
+  ...View.viewWebLinkProps,
+  ...View.viewWebClickProps,
+  ...View.viewWebKeyboardProps,
+  ...View.viewWebMouseForwardedProps,
   onHoverIn?: ReactEvent.Mouse.t => unit,
   onHoverOut?: ReactEvent.Mouse.t => unit,
 }
 
 type pressableProps = {
   ...pressableAccessibilityProps,
-  ...View.viewWebLinkProps,
   ...pressableWebProps,
   ref?: ref,
   android_disableSound?: bool,
