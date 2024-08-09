@@ -154,9 +154,8 @@ type rationale = {
   buttonNeutral?: string,
 }
 
-@obj
-external // @deprecated("Directly create record instead")
-rationale: (
+@deprecated("Directly create record instead") @obj
+external rationale: (
   ~title: string,
   ~message: string,
   ~buttonPositive: string,

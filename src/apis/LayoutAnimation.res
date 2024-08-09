@@ -18,9 +18,8 @@ type animationConfig = {
   property?: property,
 }
 
-@obj
-external // @deprecated("Directly create record instead")
-animationConfig: (
+@deprecated("Directly create record instead") @obj
+external animationConfig: (
   ~duration: float=?,
   ~delay: float=?,
   ~springDamping: float=?,
@@ -37,9 +36,8 @@ type layoutAnimationConfig = {
   delete?: animationConfig,
 }
 
-@obj
-external // @deprecated("Directly create record instead")
-layoutAnimationConfig: (
+@deprecated("Directly create record instead") @obj
+external layoutAnimationConfig: (
   ~duration: float,
   ~create: animationConfig=?,
   ~update: animationConfig=?,

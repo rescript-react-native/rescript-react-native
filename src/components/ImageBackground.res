@@ -10,7 +10,7 @@ external make: (
   ~accessibilityLabel: string=?,
   ~accessible: bool=?,
   ~blurRadius: float=?,
-  ~capInsets: View.edgeInsets=?,
+  ~capInsets: Rect.t=?,
   ~defaultSource: Image.Source.t=?,
   ~fadeDuration: float=?,
   ~loadingIndicatorSource: array<Image.Source.t>=?,

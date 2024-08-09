@@ -32,9 +32,8 @@ module ValueAnimations = (Val: Value) => {
       iterations?: int,
     }
 
-    @obj
-    external // @deprecated("Directly create record instead")
-    config: (
+    @deprecated("Directly create record instead") @obj
+    external config: (
       ~velocity: Val.rawValue,
       ~deceleration: float=?,
       ~isInteraction: bool=?,
@@ -73,9 +72,8 @@ module ValueAnimations = (Val: Value) => {
       iterations?: int,
     }
 
-    @obj
-    external // @deprecated("Directly create record instead")
-    config: (
+    @deprecated("Directly create record instead") @obj
+    external config: (
       ~toValue: toValue,
       ~restDisplacementThreshold: float=?,
       ~overshootClamping: bool=?,
@@ -117,9 +115,8 @@ module ValueAnimations = (Val: Value) => {
       iterations?: int,
     }
 
-    @obj
-    external // @deprecated("Directly create record instead")
-    config: (
+    @deprecated("Directly create record instead") @obj
+    external config: (
       ~toValue: toValue,
       ~easing: Easing.t=?,
       ~duration: float=?,
@@ -153,9 +150,8 @@ module Interpolation = {
     extrapolateRight?: extrapolate,
   }
 
-  @obj
-  external // @deprecated("Directly create record instead")
-  config: (
+  @deprecated("Directly create record instead") @obj
+  external config: (
     ~inputRange: array<float>,
     ~outputRange: outputRange,
     ~easing: Easing.t=?,
@@ -229,7 +225,8 @@ module ValueXY = {
 
   @deprecated("Please use xyValue instead") @obj
   external jsValue: (~x: float, ~y: float) => rawValue = ""
-  @obj external xyValue: (~x: float, ~y: float) => rawValue = ""
+  @obj
+  external xyValue: (~x: float, ~y: float) => rawValue = ""
 
   type layout = {
     left: Value.t,
