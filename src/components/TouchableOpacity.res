@@ -2,7 +2,7 @@ include TouchableOpacityElement
 
 type props = {
   ref?: ref,
-  ...TouchableWithoutFeedback.touchableWithoutFeedbackProps,
+  ...TouchableWithoutFeedback.coreProps,
   activeOpacity?: float,
   focusedOpacity?: float,
   hasTVPreferredFocus?: bool,

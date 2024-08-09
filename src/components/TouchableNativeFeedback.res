@@ -18,7 +18,7 @@ module Background = {
 
 type props = {
   ref?: ref,
-  ...TouchableWithoutFeedback.touchableWithoutFeedbackProps,
+  ...TouchableWithoutFeedback.coreProps,
   background?: Background.t,
   useForeground?: bool,
 }

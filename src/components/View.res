@@ -44,7 +44,7 @@ type gestureResponderHandlersProps = {
   onStartShouldSetResponderCapture?: Event.pressEvent => bool,
 }
 
-type viewAccessibilityProps = {
+type accessibilityProps = {
   accessible?: bool,
   accessibilityActions?: array<Accessibility.actionInfo>,
   accessibilityElementsHidden?: bool,
@@ -67,34 +67,34 @@ type viewAccessibilityProps = {
   onMagicTap?: unit => unit,
 }
 
-type viewIOSProps = {shouldRasterizeIOS?: bool}
+type iosProps = {shouldRasterizeIOS?: bool}
 
-type viewAndroidProps = {collapsable?: bool, renderToHardwareTextureAndroid?: bool}
+type androidProps = {collapsable?: bool, renderToHardwareTextureAndroid?: bool}
 
-type viewWebLinkProps = {
+type webLinkProps = {
   href?: string,
   hrefAttrs?: Web.hrefAttrs,
 }
 
-type viewWebClickProps = {
+type webClickProps = {
   onClick?: ReactEvent.Mouse.t => unit,
   onClickCapture?: ReactEvent.Mouse.t => unit,
   onContextMenu?: ReactEvent.Mouse.t => unit,
 }
 
-type viewWebFocusProps = {
+type webFocusProps = {
   onFocus?: ReactEvent.Focus.t => unit,
   onBlur?: ReactEvent.Focus.t => unit,
 }
 
-type viewWebKeyboardProps = {
+type webKeyboardProps = {
   onKeyDown?: ReactEvent.Keyboard.t => unit,
   onKeyDownCapture?: ReactEvent.Keyboard.t => unit,
   onKeyUp?: ReactEvent.Keyboard.t => unit,
   onKeyUpCapture?: ReactEvent.Keyboard.t => unit,
 }
 
-type viewWebMouseForwardedProps = {
+type webMouseForwardedProps = {
   onMouseDown?: ReactEvent.Mouse.t => unit,
   onMouseEnter?: ReactEvent.Mouse.t => unit,
   onMouseLeave?: ReactEvent.Mouse.t => unit,
@@ -104,15 +104,15 @@ type viewWebMouseForwardedProps = {
   onMouseUp?: ReactEvent.Mouse.t => unit,
 }
 
-type viewWebProps = {
-  ...viewWebLinkProps,
-  ...viewWebClickProps,
-  ...viewWebFocusProps,
-  ...viewWebKeyboardProps,
-  ...viewWebMouseForwardedProps,
+type webProps = {
+  ...webLinkProps,
+  ...webClickProps,
+  ...webFocusProps,
+  ...webKeyboardProps,
+  ...webMouseForwardedProps,
 }
 
-type viewCoreProps = {
+type coreProps = {
   hitSlop?: Rect.t,
   nativeID?: string,
   needsOffscreenAlphaCompositing?: bool,
@@ -126,11 +126,11 @@ type viewCoreProps = {
 
 type viewProps = {
   ...gestureResponderHandlersProps,
-  ...viewAccessibilityProps,
-  ...viewIOSProps,
-  ...viewAndroidProps,
-  ...viewWebProps,
-  ...viewCoreProps,
+  ...accessibilityProps,
+  ...iosProps,
+  ...androidProps,
+  ...webProps,
+  ...coreProps,
 }
 
 type props = {

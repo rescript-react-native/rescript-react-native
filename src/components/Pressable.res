@@ -34,10 +34,12 @@ type accessibilityProps = {
 }
 
 type webProps = {
-  ...View.viewWebLinkProps,
-  ...View.viewWebClickProps,
-  ...View.viewWebKeyboardProps,
-  ...View.viewWebMouseForwardedProps,
+  ...View.webLinkProps,
+  ...View.webClickProps,
+  // don't use View.webFocusProps because TextInput
+  // already has a react-native onFocus ond onBlur
+  ...View.webKeyboardProps,
+  ...View.webMouseForwardedProps,
   onHoverIn?: ReactEvent.Mouse.t => unit,
   onHoverOut?: ReactEvent.Mouse.t => unit,
 }

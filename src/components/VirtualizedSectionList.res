@@ -35,9 +35,8 @@ type separatorProps<'item, 'sectionData> = {
   trailingSection?: section<'item, 'sectionData>,
 }
 
-type props<'sectionData, 'item, 'extraData> = {
-  ref?: ref,
-  ...VirtualizedList.virtualizedListCoreProps<'sectionData, 'item, 'extraData>,
+type virtualizedSectionListProps<'sectionData, 'item, 'extraData> = {
+  ...VirtualizedList.virtualizedListProps<'sectionData, 'item, 'extraData>,
   \"ItemSeparatorComponent"?: React.component<separatorProps<'item, 'sectionData>>,
   \"SectionSeparatorComponent"?: React.component<separatorProps<'item, 'sectionData>>,
   sections: array<section<'item, 'sectionData>>,
@@ -45,6 +44,11 @@ type props<'sectionData, 'item, 'extraData> = {
   renderSectionFooter?: renderSectionHeaderCallback<'item, 'sectionData>,
   renderSectionHeader?: renderSectionHeaderCallback<'item, 'sectionData>,
   stickySectionHeadersEnabled?: bool,
+}
+
+type props<'sectionData, 'item, 'extraData> = {
+  ref?: ref,
+  ...virtualizedSectionListProps<'sectionData, 'item, 'extraData>,
 }
 
 @module("react-native")

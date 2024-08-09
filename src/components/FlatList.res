@@ -7,7 +7,8 @@ include VirtualizedListElement
 type separatorComponentProps<'item> = {"highlighted": bool, "leadingItem": option<'item>}
 
 type props<'item, 'extraData> = {
-  ...VirtualizedList.props<array<'item>, 'item, 'extraData>,
+  ref?: ref,
+  ...VirtualizedList.virtualizedListProps<array<'item>, 'item, 'extraData>,
   numColumns?: int,
   columnWrapperStyle?: Style.t,
 }

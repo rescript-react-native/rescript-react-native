@@ -2,7 +2,7 @@ include NativeElement
 
 type props = {
   ref?: ref,
-  ...TouchableWithoutFeedback.touchableWithoutFeedbackProps,
+  ...TouchableWithoutFeedback.coreProps,
   activeOpacity?: float,
   hasTVPreferredFocus?: bool,
   onHideUnderlay?: unit => unit,

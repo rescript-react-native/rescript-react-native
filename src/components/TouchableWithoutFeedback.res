@@ -1,6 +1,6 @@
 include NativeElement
 
-type touchableWithoutFeedbackProps = {
+type coreProps = {
   accessible?: bool,
   accessibilityElementsHidden?: bool,
   accessibilityHint?: string,
@@ -33,7 +33,7 @@ type touchableWithoutFeedbackProps = {
 
 type props = {
   ref?: ref,
-  ...touchableWithoutFeedbackProps,
+  ...coreProps,
 }
 
 @module("react-native")

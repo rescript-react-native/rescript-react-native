@@ -56,7 +56,7 @@ type viewabilityConfigCallbackPair<'item> = {
 
 type viewabilityConfigCallbackPairs<'item> = array<viewabilityConfigCallbackPair<'item>>
 
-type virtualizedListCoreProps<'data, 'item, 'extraData> = {
+type virtualizedListProps<'data, 'item, 'extraData> = {
   ...ScrollView.scrollViewProps,
   \"CellRendererComponent"?: cellRendererComponent<'item>,
   \"ListEmptyComponent"?: unit => React.element,
@@ -93,11 +93,15 @@ type virtualizedListCoreProps<'data, 'item, 'extraData> = {
   windowSize?: int,
 }
 
-type props<'data, 'item, 'extraData> = {
-  ref?: ref,
-  ...virtualizedListCoreProps<'data, 'item, 'extraData>,
+type coreProps<'data, 'item, 'extraData> = {
+  ...virtualizedListProps<'data, 'item, 'extraData>,
   data: 'data, // any collection of 'item
   renderItem: renderItemCallback<'item>,
+}
+
+type props<'data, 'item, 'extraData> = {
+  ref?: ref,
+  ...coreProps<'data, 'item, 'extraData>,
 }
 
 @module("react-native")

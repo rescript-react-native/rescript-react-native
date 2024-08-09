@@ -248,14 +248,16 @@ type lineBreakStrategyIOS = [
 type props = {
   ref?: ref,
   ...View.gestureResponderHandlersProps,
-  ...View.viewAccessibilityProps,
-  ...View.viewIOSProps,
-  ...View.viewAndroidProps,
-  ...View.viewWebLinkProps,
-  ...View.viewWebClickProps,
-  ...View.viewWebKeyboardProps,
-  ...View.viewWebMouseForwardedProps,
-  ...View.viewCoreProps,
+  ...View.accessibilityProps,
+  ...View.iosProps,
+  ...View.androidProps,
+  ...View.webLinkProps,
+  ...View.webClickProps,
+  // don't use View.webFocusProps because TextInput
+  // already has a react-native onFocus ond onBlur
+  ...View.webKeyboardProps,
+  ...View.webMouseForwardedProps,
+  ...View.coreProps,
   //
   allowFontScaling?: bool,
   autoCapitalize?: autoCapitalize,
