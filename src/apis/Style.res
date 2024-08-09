@@ -344,7 +344,7 @@ external s: style => t = "%identity"
 // - transform style
 // - shadow style
 // - layout style
-@obj
+@deprecated("Use style record with s() function") @obj
 external style: (
   // Image Style Props (https://reactnative.dev/docs/image-style-props)
   ~resizeMode: resizeMode=?,
@@ -874,4 +874,4 @@ external imageStyle: (
   unit,
 ) => t = ""
 
-let empty: t = style()
+let empty: t = s({})
