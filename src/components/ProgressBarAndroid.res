@@ -10,7 +10,7 @@ type styleAttr = [
   | #LargeInverse
 ]
 
-type progressBarAndroidProps = {
+type props = {
   ref?: ref,
   ...View.viewProps,
   animating?: bool,
@@ -20,5 +20,5 @@ type progressBarAndroidProps = {
   styleAttr?: styleAttr,
 }
 
-@react.component(: progressBarAndroidProps) @module("react-native")
-external make: progressBarAndroidProps => React.element = "ProgressBarAndroid"
+@module("react-native")
+external make: React.component<props> = "ProgressBarAndroid"

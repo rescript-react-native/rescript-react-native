@@ -2,7 +2,7 @@ include NativeElement
 
 type behavior = [#height | #position | #padding]
 
-type keyboardAvoidingViewProps = {
+type props = {
   ref?: ref,
   ...View.viewProps,
   behavior?: behavior,
@@ -11,5 +11,5 @@ type keyboardAvoidingViewProps = {
   keyboardVerticalOffset?: float,
 }
 
-@react.component(: keyboardAvoidingViewProps) @module("react-native")
-external make: keyboardAvoidingViewProps => React.element = "KeyboardAvoidingView"
+@module("react-native")
+external make: React.component<props> = "KeyboardAvoidingView"

@@ -16,7 +16,7 @@ type interactionState = {
   focused?: bool,
 }
 
-type pressableAccessibilityProps = {
+type accessibilityProps = {
   accessibilityActions?: array<Accessibility.actionInfo>,
   accessibilityElementsHidden?: bool,
   accessibilityHint?: string,
@@ -33,7 +33,7 @@ type pressableAccessibilityProps = {
   importantForAccessibility?: View.importantForAccessibility,
 }
 
-type pressableWebProps = {
+type webProps = {
   ...View.viewWebLinkProps,
   ...View.viewWebClickProps,
   ...View.viewWebKeyboardProps,
@@ -42,9 +42,9 @@ type pressableWebProps = {
   onHoverOut?: ReactEvent.Mouse.t => unit,
 }
 
-type pressableProps = {
-  ...pressableAccessibilityProps,
-  ...pressableWebProps,
+type props = {
+  ...accessibilityProps,
+  ...webProps,
   ref?: ref,
   android_disableSound?: bool,
   android_ripple?: rippleConfig,
@@ -66,5 +66,5 @@ type pressableProps = {
   unstable_pressDelay?: int,
 }
 
-@react.component(: pressableProps) @module("react-native")
-external make: pressableProps => React.element = "Pressable"
+@module("react-native")
+external make: React.component<props> = "Pressable"

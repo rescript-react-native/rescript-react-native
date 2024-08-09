@@ -8,11 +8,11 @@ module SnapshotReadyEvent = {
 
 type snapshotReadyEvent = SnapshotReadyEvent.t
 
-type scrollViewPropsnapshotViewIOSProps = {
+type props = {
   ...View.viewProps,
   onSnapshotReady?: snapshotReadyEvent => unit,
   testIdentifier?: string,
 }
 
-@react.component(: scrollViewPropsnapshotViewIOSProps) @module("react-native")
-external make: scrollViewPropsnapshotViewIOSProps => React.element = "SnapshotViewIOS"
+@module("react-native")
+external make: React.component<props> => React.element = "SnapshotViewIOS"

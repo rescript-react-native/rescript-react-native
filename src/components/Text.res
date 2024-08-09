@@ -38,7 +38,7 @@ type textAccessibilityProps = {
   onAccessibilityAction?: Accessibility.actionEvent => unit,
 }
 
-type textProps = {
+type props = {
   ...textAccessibilityProps,
   ...View.gestureResponderHandlersProps,
   ...View.viewWebProps,
@@ -74,5 +74,5 @@ type textProps = {
   value?: string,
 }
 
-@react.component(: textProps) @module("react-native")
-external make: textProps => React.element = "Text"
+@module("react-native")
+external make: React.component<props> = "Text"

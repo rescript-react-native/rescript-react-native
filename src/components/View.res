@@ -133,10 +133,10 @@ type viewProps = {
   ...viewCoreProps,
 }
 
-type viewPropsWithRef = {
+type props = {
   ref?: ref,
   ...viewProps,
 }
 
-@react.component(: viewPropsWithRef) @module("react-native")
-external make: viewPropsWithRef => React.element = "View"
+@module("react-native")
+external make: React.component<props> = "View"

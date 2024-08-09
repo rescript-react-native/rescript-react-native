@@ -106,7 +106,9 @@ function reset(prim) {
 
 var StyleProp = {};
 
-var make = ReactNative.Animated.createAnimatedComponent(ReactNative.FlatList);
+var make = ReactNative.Animated.createAnimatedComponent(function (prim) {
+      return ReactNative.FlatList(prim);
+    });
 
 var FlatList = {
   make: make

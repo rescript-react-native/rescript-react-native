@@ -8,12 +8,6 @@ external flashScrollIndicators: element => unit = "flashScrollIndicators"
 @send
 external setNativeProps: (element, Js.t<'a>) => unit = "setNativeProps"
 
-@react.component(:
-  VirtualizedSectionList.virtualizedSectionListProps<'sectionData, 'item, 'extraData>
-)
 @module("react-native")
-external make: VirtualizedSectionList.virtualizedSectionListProps<
-  'sectionData,
-  'item,
-  'extraData,
-> => React.element = "SectionList"
+external make: React.component<VirtualizedSectionList.props<'sectionData, 'item, 'extraData>> =
+  "SectionList"

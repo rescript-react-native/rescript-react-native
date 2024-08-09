@@ -245,7 +245,7 @@ type lineBreakStrategyIOS = [
   | #"push-out"
 ]
 
-type textInputProps = {
+type props = {
   ref?: ref,
   ...View.gestureResponderHandlersProps,
   ...View.viewAccessibilityProps,
@@ -323,5 +323,5 @@ type textInputProps = {
   value?: string,
 }
 
-@react.component(: textInputProps) @module("react-native")
-external make: textInputProps => React.element = "TextInput"
+@module("react-native")
+external make: React.component<props> = "TextInput"

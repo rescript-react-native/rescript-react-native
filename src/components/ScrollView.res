@@ -78,10 +78,10 @@ type scrollViewProps = {
   zoomScale?: float,
 }
 
-type scrollViewPropsWithRef = {
+type props = {
   ref?: ref,
   ...scrollViewProps,
 }
 
-@react.component(: scrollViewPropsWithRef) @module("react-native")
-external make: scrollViewPropsWithRef => React.element = "ScrollView"
+@module("react-native")
+external make: React.component<props> = "ScrollView"

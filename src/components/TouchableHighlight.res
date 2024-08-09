@@ -1,6 +1,6 @@
 include NativeElement
 
-type touchableHighlightProps = {
+type props = {
   ref?: ref,
   ...TouchableWithoutFeedback.touchableWithoutFeedbackProps,
   activeOpacity?: float,
@@ -12,5 +12,5 @@ type touchableHighlightProps = {
   underlayColor?: string,
 }
 
-@react.component(: touchableHighlightProps) @module("react-native")
-external make: touchableHighlightProps => React.element = "TouchableHighlight"
+@module("react-native")
+external make: React.component<props> = "TouchableHighlight"

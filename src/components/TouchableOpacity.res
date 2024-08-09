@@ -1,6 +1,6 @@
 include TouchableOpacityElement
 
-type touchableOpacityProps = {
+type props = {
   ref?: ref,
   ...TouchableWithoutFeedback.touchableWithoutFeedbackProps,
   activeOpacity?: float,
@@ -10,5 +10,5 @@ type touchableOpacityProps = {
   tvParallaxProperties?: TV.parallax,
 }
 
-@react.component(: touchableOpacityProps) @module("react-native")
-external make: touchableOpacityProps => React.element = "TouchableOpacity"
+@module("react-native")
+external make: React.component<props> = "TouchableOpacity"

@@ -35,7 +35,7 @@ type separatorProps<'item, 'sectionData> = {
   trailingSection?: section<'item, 'sectionData>,
 }
 
-type virtualizedSectionListProps<'sectionData, 'item, 'extraData> = {
+type props<'sectionData, 'item, 'extraData> = {
   ref?: ref,
   ...VirtualizedList.virtualizedListCoreProps<'sectionData, 'item, 'extraData>,
   \"ItemSeparatorComponent"?: React.component<separatorProps<'item, 'sectionData>>,
@@ -47,7 +47,5 @@ type virtualizedSectionListProps<'sectionData, 'item, 'extraData> = {
   stickySectionHeadersEnabled?: bool,
 }
 
-@react.component(: virtualizedSectionListProps<'sectionData, 'item, 'extraData>)
 @module("react-native")
-external make: virtualizedSectionListProps<'sectionData, 'item, 'extraData> => React.element =
-  "VirtualizedSectionList"
+external make: React.component<props<'sectionData, 'item, 'extraData>> = "VirtualizedSectionList"

@@ -31,10 +31,10 @@ type touchableWithoutFeedbackProps = {
   children?: React.element,
 }
 
-type touchableWithoutFeedbackPropsWithRef = {
+type props = {
   ref?: ref,
   ...touchableWithoutFeedbackProps,
 }
 
-@react.component(: touchableWithoutFeedbackPropsWithRef) @module("react-native")
-external make: touchableWithoutFeedbackPropsWithRef => React.element = "TouchableWithoutFeedback"
+@module("react-native")
+external make: React.component<props> = "TouchableWithoutFeedback"

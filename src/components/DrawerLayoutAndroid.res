@@ -24,7 +24,7 @@ type drawerPosition = [#left | #right]
 
 type keyboardDismissMode = [#none | #"on-drag"]
 
-type drawerLayoutAndroidProps = {
+type props = {
   ref?: ref,
   ...View.viewProps,
   renderNavigationView?: unit => React.element,
@@ -40,5 +40,5 @@ type drawerLayoutAndroidProps = {
   statusBarBackgroundColor?: Color.t,
 }
 
-@react.component(: drawerLayoutAndroidProps) @module("react-native")
-external make: drawerLayoutAndroidProps => React.element = "DrawerLayoutAndroid"
+@module("react-native")
+external make: React.component<props> = "DrawerLayoutAndroid"

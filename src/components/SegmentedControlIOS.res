@@ -13,7 +13,7 @@ module ChangeEvent = {
 
 type changeEvent = ChangeEvent.t
 
-type segmentControlIOSProps = {
+type props = {
   ref?: ref,
   ...View.viewProps,
   enabled?: bool,
@@ -25,5 +25,5 @@ type segmentControlIOSProps = {
   values?: array<string>,
 }
 
-@react.component(: segmentControlIOSProps) @module("react-native")
-external make: segmentControlIOSProps => React.element = "SegmentedControlIOS"
+@module("react-native")
+external make: React.component<props> = "SegmentedControlIOS"

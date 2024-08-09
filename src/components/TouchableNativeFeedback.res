@@ -16,12 +16,12 @@ module Background = {
   external ripple: (string, bool) => t = "Ripple"
 }
 
-type touchableNativeFeedbackProps = {
+type props = {
   ref?: ref,
   ...TouchableWithoutFeedback.touchableWithoutFeedbackProps,
   background?: Background.t,
   useForeground?: bool,
 }
 
-@react.component(: touchableNativeFeedbackProps) @module("react-native")
-external make: touchableNativeFeedbackProps => React.element = "TouchableNativeFeedback"
+@module("react-native")
+external make: React.component<props> = "TouchableNativeFeedback"

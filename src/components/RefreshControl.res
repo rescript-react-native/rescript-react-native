@@ -1,6 +1,6 @@
 include NativeElement
 
-type refreshControlProps = {
+type props = {
   ref?: ref,
   ...View.viewProps,
   colors?: array<Color.t>,
@@ -15,5 +15,5 @@ type refreshControlProps = {
   titleColor?: Color.t,
 }
 
-@react.component(: refreshControlProps) @module("react-native")
-external make: refreshControlProps => React.element = "RefreshControl"
+@module("react-native")
+external make: React.component<props> = "RefreshControl"

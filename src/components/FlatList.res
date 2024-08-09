@@ -6,11 +6,11 @@ include VirtualizedListElement
 
 type separatorComponentProps<'item> = {"highlighted": bool, "leadingItem": option<'item>}
 
-type flatListProps<'item, 'extraData> = {
-  ...VirtualizedList.virtualizedListProps<array<'item>, 'item, 'extraData>,
+type props<'item, 'extraData> = {
+  ...VirtualizedList.props<array<'item>, 'item, 'extraData>,
   numColumns?: int,
   columnWrapperStyle?: Style.t,
 }
 
-@react.component(: flatListProps<'item, 'extraData>) @module("react-native")
-external make: flatListProps<'item, 'extraData> => React.element = "FlatList"
+@module("react-native")
+external make: React.component<props<'item, 'extraData>> => React.element = "FlatList"

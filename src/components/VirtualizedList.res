@@ -93,12 +93,12 @@ type virtualizedListCoreProps<'data, 'item, 'extraData> = {
   windowSize?: int,
 }
 
-type virtualizedListProps<'data, 'item, 'extraData> = {
+type props<'data, 'item, 'extraData> = {
   ref?: ref,
   ...virtualizedListCoreProps<'data, 'item, 'extraData>,
   data: 'data, // any collection of 'item
   renderItem: renderItemCallback<'item>,
 }
 
-@react.component(: virtualizedListProps<'data, 'item, 'extraData>) @module("react-native")
-external make: virtualizedListProps<'data, 'item, 'extraData> => React.element = "VirtualizedList"
+@module("react-native")
+external make: React.component<props<'data, 'item, 'extraData>> = "VirtualizedList"

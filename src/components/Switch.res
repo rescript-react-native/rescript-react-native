@@ -8,7 +8,7 @@ type trackColor = {
 @deprecated("Directly create record instead") @obj
 external trackColor: (~\"true": Color.t=?, ~\"false": Color.t=?, unit) => trackColor = ""
 
-type switchProps = {
+type props = {
   ref?: ref,
   ...View.viewProps,
   disabled?: bool,
@@ -19,5 +19,5 @@ type switchProps = {
   value?: bool,
 }
 
-@react.component(: switchProps) @module("react-native")
-external make: switchProps => React.element = "Switch"
+@module("react-native")
+external make: React.component<props> = "Switch"
