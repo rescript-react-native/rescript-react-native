@@ -1,8 +1,8 @@
 {
   "name": "rescript-react-native",
   "namespace": "react-native",
-  "reason": {
-    "react-jsx": 3
+  "jsx": {
+    "version": 4
   },
   "package-specs": {
     "module": "commonjs",
