@@ -32,6 +32,18 @@ module ValueAnimations = (Val: Value) => {
       iterations?: int,
     }
 
+    @obj
+    external // @deprecated("Directly create record instead")
+    config: (
+      ~velocity: Val.rawValue,
+      ~deceleration: float=?,
+      ~isInteraction: bool=?,
+      ~useNativeDriver: bool,
+      ~onComplete: Animation.endCallback=?,
+      ~iterations: int=?,
+      unit,
+    ) => config = ""
+
     @module("react-native") @scope("Animated")
     external decay: (Val.t, config) => Animation.t = "decay"
   }
@@ -61,6 +73,29 @@ module ValueAnimations = (Val: Value) => {
       iterations?: int,
     }
 
+    @obj
+    external // @deprecated("Directly create record instead")
+    config: (
+      ~toValue: toValue,
+      ~restDisplacementThreshold: float=?,
+      ~overshootClamping: bool=?,
+      ~restSpeedThreshold: float=?,
+      ~velocity: Val.rawValue=?,
+      ~bounciness: float=?,
+      ~speed: float=?,
+      ~tension: float=?,
+      ~friction: float=?,
+      ~stiffness: float=?,
+      ~mass: float=?,
+      ~damping: float=?,
+      ~delay: float=?,
+      ~isInteraction: bool=?,
+      ~useNativeDriver: bool,
+      ~onComplete: Animation.endCallback=?,
+      ~iterations: int=?,
+      unit,
+    ) => config = ""
+
     @module("react-native") @scope("Animated")
     external spring: (Val.t, config) => Animation.t = "spring"
   }
@@ -81,6 +116,20 @@ module ValueAnimations = (Val: Value) => {
       onComplete?: Animation.endCallback,
       iterations?: int,
     }
+
+    @obj
+    external // @deprecated("Directly create record instead")
+    config: (
+      ~toValue: toValue,
+      ~easing: Easing.t=?,
+      ~duration: float=?,
+      ~delay: float=?,
+      ~isInteraction: bool=?,
+      ~useNativeDriver: bool,
+      ~onComplete: Animation.endCallback=?,
+      ~iterations: int=?,
+      unit,
+    ) => config = ""
 
     @module("react-native") @scope("Animated")
     external timing: (Val.t, config) => Animation.t = "timing"
@@ -104,6 +153,17 @@ module Interpolation = {
     extrapolateRight?: extrapolate,
   }
 
+  @obj
+  external // @deprecated("Directly create record instead")
+  config: (
+    ~inputRange: array<float>,
+    ~outputRange: outputRange,
+    ~easing: Easing.t=?,
+    ~extrapolate: extrapolate=?,
+    ~extrapolateLeft: extrapolate=?,
+    ~extrapolateRight: extrapolate=?,
+    unit,
+  ) => config = ""
   @send external interpolate: (value<'a>, config) => t = "interpolate"
 }
 

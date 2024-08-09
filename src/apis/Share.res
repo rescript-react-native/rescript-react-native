@@ -4,6 +4,10 @@ type content = {
   url?: string,
 }
 
+@obj
+external // @deprecated("Directly create record instead")
+content: (~title: string=?, ~message: string=?, ~url: string=?, unit) => content = ""
+
 type options = {
   subject?: string,
   tintColor?: string,
@@ -11,6 +15,17 @@ type options = {
   dialogTitle?: string,
   anchor?: int,
 }
+
+@obj
+external // @deprecated("Directly create record instead")
+options: (
+  ~subject: string=?,
+  ~tintColor: string=?,
+  ~excludedActivityTypes: array<string>=?,
+  ~dialogTitle: string=?,
+  ~anchor: int=?,
+  unit,
+) => options = ""
 
 type action
 

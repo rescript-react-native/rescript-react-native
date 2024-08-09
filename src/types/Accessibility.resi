@@ -15,6 +15,10 @@ type actionInfo = {
   label?: string,
 }
 
+@obj
+external // @deprecated("Directly create record instead")
+actionInfo: (~name: string, ~label: string=?, unit) => actionInfo = ""
+
 type actionEvent = AccessibilityActionEvent.t
 
 @obj

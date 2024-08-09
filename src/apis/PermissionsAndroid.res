@@ -154,6 +154,17 @@ type rationale = {
   buttonNeutral?: string,
 }
 
+@obj
+external // @deprecated("Directly create record instead")
+rationale: (
+  ~title: string,
+  ~message: string,
+  ~buttonPositive: string,
+  ~buttonNegative: string=?,
+  ~buttonNeutral: string=?,
+  unit,
+) => rationale = ""
+
 type dict = Js.Dict.t<Result.t>
 
 @scope("PermissionsAndroid") @module("react-native")
