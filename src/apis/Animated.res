@@ -334,39 +334,35 @@ module StyleProp = {
 }
 
 module FlatList = {
-  include FlatList
-
-  let make = Obj.magic(createAnimatedComponent(FlatList.make))
+  @module("react-native") @scope("Animated")
+  external make: React.component<FlatList.props<'item, 'extraData>> => React.element = "FlatList"
 }
 
 module Image = {
-  include Image
-
-  let make = createAnimatedComponent(make)
+  @module("react-native") @scope("Animated")
+  external make: React.component<Image.props> => React.element = "Image"
 }
 
 module ScrollView = {
-  include ScrollView
-
-  let make = createAnimatedComponent(make)
+  @module("react-native") @scope("Animated")
+  external make: React.component<ScrollView.props> => React.element = "ScrollView"
 }
 
 module SectionList = {
-  include SectionList
-
-  let make = Obj.magic(createAnimatedComponent(SectionList.make))
+  @module("react-native") @scope("Animated")
+  external make: React.component<
+    SectionList.props<'sectionData, 'item, 'extraData>,
+  > => React.element = "SectionList"
 }
 
 module Text = {
-  include Text
-
-  let make = createAnimatedComponent(make)
+  @module("react-native") @scope("Animated")
+  external make: React.component<Text.props> => React.element = "Text"
 }
 
 module View = {
-  include View
-
-  let make = createAnimatedComponent(make)
+  @module("react-native") @scope("Animated")
+  external make: React.component<View.props> => React.element = "View"
 }
 
 type config = {useNativeDriver: bool}
