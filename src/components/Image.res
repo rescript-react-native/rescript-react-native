@@ -101,38 +101,39 @@ type crossOrigin = [
   | #"use-credentials"
 ]
 
-@module("react-native") @react.component
-external make: (
-  ~ref: ref=?,
-  // Image props
-  ~accessibilityLabel: string=?,
-  ~accessible: bool=?,
-  ~alt: string=?,
-  ~blurRadius: float=?,
-  ~capInsets: Rect.t=?,
-  ~crossOrigin: crossOrigin=?,
-  ~defaultSource: Source.t=?,
-  ~fadeDuration: float=?,
-  ~height: float=?,
-  ~loadingIndicatorSource: array<Source.t>=?,
-  ~onError: errorEvent => unit=?,
-  ~onLayout: Event.layoutEvent => unit=?,
-  ~onLoad: imageLoadEvent => unit=?,
-  ~onLoadEnd: unit => unit=?,
-  ~onLoadStart: unit => unit=?,
-  ~onPartialLoad: unit => unit=?,
-  ~onProgress: progressEvent => unit=?,
-  ~progressiveRenderingEnabled: bool=?,
-  ~referrerPolicy: referrerPolicy=?,
-  ~resizeMethod: resizeMethod=?,
-  ~resizeMode: Style.resizeMode=?,
-  ~source: Source.t,
-  ~srcSet: string=?,
-  ~style: Style.t=?,
-  ~testID: string=?,
-  ~tintColor: Color.t=?,
-  ~width: float=?,
-) => React.element = "Image"
+type props = {
+  ref?: ref,
+  accessibilityLabel?: string,
+  accessible?: bool,
+  alt?: string,
+  blurRadius?: float,
+  capInsets?: Rect.t,
+  crossOrigin?: crossOrigin,
+  defaultSource?: Source.t,
+  fadeDuration?: float,
+  height?: float,
+  loadingIndicatorSource?: array<Source.t>,
+  onError?: errorEvent => unit,
+  onLayout?: Event.layoutEvent => unit,
+  onLoad?: imageLoadEvent => unit,
+  onLoadEnd?: unit => unit,
+  onLoadStart?: unit => unit,
+  onPartialLoad?: unit => unit,
+  onProgress?: progressEvent => unit,
+  progressiveRenderingEnabled?: bool,
+  referrerPolicy?: referrerPolicy,
+  resizeMethod?: resizeMethod,
+  resizeMode?: Style.resizeMode,
+  source: Source.t,
+  srcSet?: string,
+  style?: Style.t,
+  testID?: string,
+  tintColor?: Color.t,
+  width?: float,
+}
+
+@module("react-native")
+external make: React.component<props> => React.element = "Text"
 
 type sizeError
 
