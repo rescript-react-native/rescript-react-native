@@ -4,8 +4,6 @@
 
 include VirtualizedListElement
 
-type separatorComponentProps<'item> = {"highlighted": bool, "leadingItem": option<'item>}
-
 type props<'item, 'extraData> = {
   ref?: ref,
   ...VirtualizedList.coreProps<array<'item>, 'item, 'extraData>,

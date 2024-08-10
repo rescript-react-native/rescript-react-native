@@ -42,6 +42,8 @@ type onScrollToIndexFailedInfo = {
 
 type onScrollToIndexFailedParams = {info: onScrollToIndexFailedInfo}
 
+type separatorComponentProps<'item> = {"highlighted": bool, "leadingItem": option<'item>}
+
 type viewabilityConfig = {
   minimumViewTime?: float,
   viewAreaCoveragePercentThreshold?: float,
@@ -93,6 +95,7 @@ type virtualizedListProps<'data, 'item, 'extraData> = {
 
 type coreProps<'data, 'item, 'extraData> = {
   ...virtualizedListProps<'data, 'item, 'extraData>,
+  \"ItemSeparatorComponent"?: React.component<separatorComponentProps<'item>>,
   data: 'data, // any collection of 'item
   renderItem: renderItemCallback<'item>,
 }
