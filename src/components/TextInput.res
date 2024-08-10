@@ -185,8 +185,6 @@ type returnKeyType = [
   | #yahoo
 ]
 
-type textBreakStrategy = [#balanced | #highQuality | #simple]
-
 type textContentType = [
   | #none
   | #URL
@@ -238,13 +236,6 @@ type enterKeyHint = [
   | #previous
 ]
 
-type lineBreakStrategyIOS = [
-  | #none
-  | #standard
-  | #"hangul-word"
-  | #"push-out"
-]
-
 type props = {
   ref?: ref,
   ...View.gestureResponderHandlersProps,
@@ -254,7 +245,7 @@ type props = {
   ...View.webLinkProps,
   ...View.webClickProps,
   // don't use View.webFocusProps because TextInput
-  // already has a react-native onFocus ond onBlur
+  // already has a react-native onFocus and onBlur
   ...View.webKeyboardProps,
   ...View.webMouseForwardedProps,
   ...View.coreProps,
@@ -284,7 +275,7 @@ type props = {
   inputMode?: inputMode,
   keyboardAppearance?: keyboardAppearance,
   keyboardType?: keyboardType,
-  lineBreakStrategyIOS?: lineBreakStrategyIOS,
+  lineBreakStrategyIOS?: Text.lineBreakStrategyIOS,
   maxFontSizeMultiplier?: float,
   maxLength?: int,
   multiline?: bool,
@@ -319,7 +310,7 @@ type props = {
   spellCheck?: bool,
   textAlign?: [#left | #center | #right],
   textAlignVertical?: Style.textAlignVertical,
-  textBreakStrategy?: textBreakStrategy,
+  textBreakStrategy?: Text.textBreakStrategy,
   textContentType?: textContentType,
   underlineColorAndroid?: Color.t,
   value?: string,

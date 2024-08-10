@@ -37,7 +37,7 @@ type webProps = {
   ...View.webLinkProps,
   ...View.webClickProps,
   // don't use View.webFocusProps because TextInput
-  // already has a react-native onFocus ond onBlur
+  // already has a react-native onFocus and onBlur
   ...View.webKeyboardProps,
   ...View.webMouseForwardedProps,
   onHoverIn?: ReactEvent.Mouse.t => unit,
