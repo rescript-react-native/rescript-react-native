@@ -68,8 +68,6 @@ type virtualizedListProps<'data, 'item, 'extraData> = {
   //data: 'data, // any collection of 'item
   disableVirtualization?: bool, // deprecated
   extraData?: 'extraData,
-  getItem: ('data, int) => 'item,
-  getItemCount: 'data => int,
   getItemLayout?: ('data, int) => itemLayout,
   initialNumToRender?: int,
   initialScrollIndex?: int,
@@ -102,6 +100,8 @@ type coreProps<'data, 'item, 'extraData> = {
 type props<'data, 'item, 'extraData> = {
   ref?: ref,
   ...coreProps<'data, 'item, 'extraData>,
+  getItem: ('data, int) => 'item,
+  getItemCount: 'data => int,
 }
 
 @module("react-native")

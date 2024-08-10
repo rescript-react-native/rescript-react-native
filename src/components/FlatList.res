@@ -8,7 +8,7 @@ type separatorComponentProps<'item> = {"highlighted": bool, "leadingItem": optio
 
 type props<'item, 'extraData> = {
   ref?: ref,
-  ...VirtualizedList.virtualizedListProps<array<'item>, 'item, 'extraData>,
+  ...VirtualizedList.coreProps<array<'item>, 'item, 'extraData>,
   numColumns?: int,
   columnWrapperStyle?: Style.t,
 }
