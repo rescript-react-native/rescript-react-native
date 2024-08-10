@@ -14,4 +14,4 @@ type props<'item, 'extraData> = {
 }
 
 @module("react-native")
-external make: React.component<props<'item, 'extraData>> => React.element = "FlatList"
+external make: React.component<props<'item, 'extraData>> = "FlatList"

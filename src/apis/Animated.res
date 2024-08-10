@@ -334,35 +334,35 @@ module StyleProp = {
 }
 
 module FlatList = {
-  @module("react-native") @scope("Animated")
-  external make: React.component<FlatList.props<'item, 'extraData>> => React.element = "FlatList"
+  @react.component(: FlatList.props<'item, 'extraData>) @module("react-native") @scope("Animated")
+  external make: FlatList.props<'item, 'extraData> => React.element = "FlatList"
 }
 
 module Image = {
-  @module("react-native") @scope("Animated")
-  external make: React.component<Image.props> => React.element = "Image"
+  @react.component(: Image.props) @module("react-native") @scope("Animated")
+  external make: Image.props => React.element = "Image"
 }
 
 module ScrollView = {
-  @module("react-native") @scope("Animated")
-  external make: React.component<ScrollView.props> => React.element = "ScrollView"
+  @react.component(: ScrollView.props) @module("react-native") @scope("Animated")
+  external make: ScrollView.props => React.element = "ScrollView"
 }
 
 module SectionList = {
-  @module("react-native") @scope("Animated")
-  external make: React.component<
-    SectionList.props<'sectionData, 'item, 'extraData>,
-  > => React.element = "SectionList"
+  @react.component(: SectionList.props<'sectionData, 'item, 'extraData>)
+  @module("react-native")
+  @scope("Animated")
+  external make: SectionList.props<'sectionData, 'item, 'extraData> => React.element = "SectionList"
 }
 
 module Text = {
-  @module("react-native") @scope("Animated")
-  external make: React.component<Text.props> => React.element = "Text"
+  @react.component(: Text.props) @module("react-native") @scope("Animated")
+  external make: Text.props => React.element = "Text"
 }
 
 module View = {
-  @module("react-native") @scope("Animated")
-  external make: React.component<View.props> => React.element = "View"
+  @react.component(: View.props) @module("react-native") @scope("Animated")
+  external make: View.props => React.element = "View"
 }
 
 type config = {useNativeDriver: bool}
