@@ -133,7 +133,7 @@ type props = {
 }
 
 @module("react-native")
-external make: React.component<props> => React.element = "Text"
+external make: React.component<props> = "Image"
 
 type sizeError
 
