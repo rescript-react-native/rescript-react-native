@@ -36,13 +36,13 @@ type separatorProps<'item, 'sectionData> = {
 }
 
 type virtualizedSectionListProps<'sectionData, 'item, 'extraData> = {
-  ...VirtualizedList.virtualizedListProps<'sectionData, 'item, 'extraData>,
-  \"ItemSeparatorComponent"?: React.component<separatorProps<'item, 'sectionData>>,
-  \"SectionSeparatorComponent"?: React.component<separatorProps<'item, 'sectionData>>,
   sections: array<section<'item, 'sectionData>>,
   renderItem: renderItemCallback<'item, 'sectionData>,
+  \"ItemSeparatorComponent"?: React.component<separatorProps<'item, 'sectionData>>,
+  \"SectionSeparatorComponent"?: React.component<separatorProps<'item, 'sectionData>>,
   renderSectionFooter?: renderSectionHeaderCallback<'item, 'sectionData>,
   renderSectionHeader?: renderSectionHeaderCallback<'item, 'sectionData>,
+  ...VirtualizedList.virtualizedListProps<'sectionData, 'item, 'extraData>,
   stickySectionHeadersEnabled?: bool,
 }
 

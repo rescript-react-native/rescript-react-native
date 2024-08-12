@@ -67,7 +67,6 @@ type virtualizedListProps<'data, 'item, 'extraData> = {
   \"ListHeaderComponent"?: unit => React.element,
   \"ListHeaderComponentStyle"?: Style.t,
   debug?: bool,
-  //data: 'data, // any collection of 'item
   disableVirtualization?: bool, // deprecated
   extraData?: 'extraData,
   getItemLayout?: ('data, int) => itemLayout,
@@ -85,7 +84,6 @@ type virtualizedListProps<'data, 'item, 'extraData> = {
   onViewableItemsChanged?: viewableItemsChanged<'item> => unit,
   progressViewOffset?: float,
   refreshing?: bool,
-  //renderItem: renderItemCallback<'item>,
   renderScrollComponent?: unit => React.element, // TODO?: params?
   updateCellsBatchingPeriod?: float,
   viewabilityConfig?: viewabilityConfig,
@@ -94,10 +92,10 @@ type virtualizedListProps<'data, 'item, 'extraData> = {
 }
 
 type coreProps<'data, 'item, 'extraData> = {
-  ...virtualizedListProps<'data, 'item, 'extraData>,
-  \"ItemSeparatorComponent"?: React.component<separatorComponentProps<'item>>,
   data: 'data, // any collection of 'item
   renderItem: renderItemCallback<'item>,
+  \"ItemSeparatorComponent"?: React.component<separatorComponentProps<'item>>,
+  ...virtualizedListProps<'data, 'item, 'extraData>,
 }
 
 type props<'data, 'item, 'extraData> = {
