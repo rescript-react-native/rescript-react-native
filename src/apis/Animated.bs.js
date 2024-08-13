@@ -2,14 +2,8 @@
 
 var Caml_option = require("rescript/lib/js/caml_option.js");
 var ReactNative = require("react-native");
-var Text$ReactNative = require("../components/Text.bs.js");
-var View$ReactNative = require("../components/View.bs.js");
-var Image$ReactNative = require("../components/Image.bs.js");
-var FlatList$ReactNative = require("../components/FlatList.bs.js");
-var ScrollView$ReactNative = require("../components/ScrollView.bs.js");
-var SectionList$ReactNative = require("../components/SectionList.bs.js");
 
-var Animation = {};
+var $$Animation = {};
 
 function ValueAnimations(Val) {
   var Decay = {};
@@ -106,48 +100,19 @@ function reset(prim) {
 
 var StyleProp = {};
 
-var make = ReactNative.Animated.createAnimatedComponent(ReactNative.FlatList);
+var FlatList = {};
 
-var FlatList = {
-  make: make
-};
+var $$Image = {};
 
-var make$1 = ReactNative.Animated.createAnimatedComponent(ReactNative.Image);
+var ScrollView = {};
 
-var $$Image = {
-  Source: Image$ReactNative.Source,
-  ImageLoadEvent: Image$ReactNative.ImageLoadEvent,
-  $$ErrorEvent: Image$ReactNative.$$ErrorEvent,
-  $$ProgressEvent: Image$ReactNative.$$ProgressEvent,
-  make: make$1
-};
+var SectionList = {};
 
-var make$2 = ReactNative.Animated.createAnimatedComponent(ReactNative.ScrollView);
+var $$Text = {};
 
-var ScrollView = {
-  make: make$2
-};
+var View = {};
 
-var make$3 = ReactNative.Animated.createAnimatedComponent(ReactNative.SectionList);
-
-var SectionList = {
-  make: make$3
-};
-
-var make$4 = ReactNative.Animated.createAnimatedComponent(ReactNative.Text);
-
-var $$Text = {
-  make: make$4
-};
-
-var make$5 = ReactNative.Animated.createAnimatedComponent(ReactNative.View);
-
-var View = {
-  View: View$ReactNative.View,
-  make: make$5
-};
-
-exports.Animation = Animation;
+exports.$$Animation = $$Animation;
 exports.ValueAnimations = ValueAnimations;
 exports.Interpolation = Interpolation;
 exports.ValueOperations = ValueOperations;
@@ -168,4 +133,4 @@ exports.ScrollView = ScrollView;
 exports.SectionList = SectionList;
 exports.$$Text = $$Text;
 exports.View = View;
-/* make Not a pure module */
+/* react-native Not a pure module */

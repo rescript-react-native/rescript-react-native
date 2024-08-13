@@ -32,9 +32,8 @@ module ValueAnimations = (Val: Value) => {
       iterations?: int,
     }
 
-    @obj
-    external // @deprecated("Directly create record instead")
-    config: (
+    @deprecated("Directly create record instead") @obj
+    external config: (
       ~velocity: Val.rawValue,
       ~deceleration: float=?,
       ~isInteraction: bool=?,
@@ -73,9 +72,8 @@ module ValueAnimations = (Val: Value) => {
       iterations?: int,
     }
 
-    @obj
-    external // @deprecated("Directly create record instead")
-    config: (
+    @deprecated("Directly create record instead") @obj
+    external config: (
       ~toValue: toValue,
       ~restDisplacementThreshold: float=?,
       ~overshootClamping: bool=?,
@@ -117,9 +115,8 @@ module ValueAnimations = (Val: Value) => {
       iterations?: int,
     }
 
-    @obj
-    external // @deprecated("Directly create record instead")
-    config: (
+    @deprecated("Directly create record instead") @obj
+    external config: (
       ~toValue: toValue,
       ~easing: Easing.t=?,
       ~duration: float=?,
@@ -153,9 +150,8 @@ module Interpolation = {
     extrapolateRight?: extrapolate,
   }
 
-  @obj
-  external // @deprecated("Directly create record instead")
-  config: (
+  @deprecated("Directly create record instead") @obj
+  external config: (
     ~inputRange: array<float>,
     ~outputRange: outputRange,
     ~easing: Easing.t=?,
@@ -229,7 +225,8 @@ module ValueXY = {
 
   @deprecated("Please use xyValue instead") @obj
   external jsValue: (~x: float, ~y: float) => rawValue = ""
-  @obj external xyValue: (~x: float, ~y: float) => rawValue = ""
+  @obj
+  external xyValue: (~x: float, ~y: float) => rawValue = ""
 
   type layout = {
     left: Value.t,
@@ -337,39 +334,35 @@ module StyleProp = {
 }
 
 module FlatList = {
-  include FlatList
-
-  let make = Obj.magic(createAnimatedComponent(FlatList.make))
+  @react.component(: FlatList.props<'item, 'extraData>) @module("react-native") @scope("Animated")
+  external make: FlatList.props<'item, 'extraData> => React.element = "FlatList"
 }
 
 module Image = {
-  include Image
-
-  let make = createAnimatedComponent(make)
+  @react.component(: Image.props) @module("react-native") @scope("Animated")
+  external make: Image.props => React.element = "Image"
 }
 
 module ScrollView = {
-  include ScrollView
-
-  let make = createAnimatedComponent(make)
+  @react.component(: ScrollView.props) @module("react-native") @scope("Animated")
+  external make: ScrollView.props => React.element = "ScrollView"
 }
 
 module SectionList = {
-  include SectionList
-
-  let make = Obj.magic(createAnimatedComponent(SectionList.make))
+  @react.component(: SectionList.props<'sectionData, 'item, 'extraData>)
+  @module("react-native")
+  @scope("Animated")
+  external make: SectionList.props<'sectionData, 'item, 'extraData> => React.element = "SectionList"
 }
 
 module Text = {
-  include Text
-
-  let make = createAnimatedComponent(make)
+  @react.component(: Text.props) @module("react-native") @scope("Animated")
+  external make: Text.props => React.element = "Text"
 }
 
 module View = {
-  include View
-
-  let make = createAnimatedComponent(make)
+  @react.component(: View.props) @module("react-native") @scope("Animated")
+  external make: View.props => React.element = "View"
 }
 
 type config = {useNativeDriver: bool}

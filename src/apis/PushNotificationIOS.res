@@ -41,9 +41,8 @@ type localNotification = {
   repeatInterval?: repeatInterval,
 }
 
-@obj
-external // @deprecated("Directly create record instead")
-localNotification: (
+@deprecated("Directly create record instead") @obj
+external localNotification: (
   ~alertBody: string=?,
   ~alertTitle: string=?,
   ~alertAction: string=?,
@@ -157,9 +156,8 @@ type requestPermissionsOptions = {
   sound?: bool,
 }
 
-@obj
-external // @deprecated("Directly create record instead")
-requestPermissionsOptions: (
+@deprecated("Directly create record instead") @obj
+external requestPermissionsOptions: (
   ~alert: bool=?,
   ~badge: bool=?,
   ~sound: bool=?,
@@ -187,9 +185,8 @@ type fetchResult = {
   \"ResultFailed"?: string,
 }
 
-@obj
-external // @deprecated("Directly create record instead")
-fetchResult: (
+@deprecated("Directly create record instead") @obj
+external fetchResult: (
   ~\"NewData": string=?,
   ~\"NoData": string=?,
   ~\"ResultFailed": string=?,

@@ -12,9 +12,8 @@ type scrollToParams = {
   duration?: float,
 }
 
-@obj
-external // @deprecated("Directly create record instead")
-scrollToParams: (
+@deprecated("Directly create record instead") @obj
+external scrollToParams: (
   ~x: float,
   ~y: float,
   ~animated: bool=?,

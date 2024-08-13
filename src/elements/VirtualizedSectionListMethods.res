@@ -11,9 +11,8 @@ module Make = (
     viewPosition?: float,
   }
 
-  @obj
-  external // @deprecated("Directly create record instead")
-  scrollToLocationParams: (
+  @deprecated("Directly create record instead") @obj
+  external scrollToLocationParams: (
     ~animated: bool=?,
     ~itemIndex: int,
     ~sectionIndex: int,

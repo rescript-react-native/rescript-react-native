@@ -19,9 +19,8 @@ type uriSource = {
   height?: float,
 }
 
-@obj
-external // @deprecated("Directly create record instead")
-uriSource: (
+@deprecated("Directly create record instead") @obj
+external uriSource: (
   ~uri: string,
   ~bundle: string=?,
   ~method: string=?,
@@ -102,38 +101,39 @@ type crossOrigin = [
   | #"use-credentials"
 ]
 
-@react.component @module("react-native")
-external make: (
-  ~ref: ref=?,
-  // Image props
-  ~accessibilityLabel: string=?,
-  ~accessible: bool=?,
-  ~alt: string=?,
-  ~blurRadius: float=?,
-  ~capInsets: View.edgeInsets=?,
-  ~crossOrigin: crossOrigin=?,
-  ~defaultSource: Source.t=?,
-  ~fadeDuration: float=?,
-  ~height: float=?,
-  ~loadingIndicatorSource: array<Source.t>=?,
-  ~onError: errorEvent => unit=?,
-  ~onLayout: Event.layoutEvent => unit=?,
-  ~onLoad: imageLoadEvent => unit=?,
-  ~onLoadEnd: unit => unit=?,
-  ~onLoadStart: unit => unit=?,
-  ~onPartialLoad: unit => unit=?,
-  ~onProgress: progressEvent => unit=?,
-  ~progressiveRenderingEnabled: bool=?,
-  ~referrerPolicy: referrerPolicy=?,
-  ~resizeMethod: resizeMethod=?,
-  ~resizeMode: Style.resizeMode=?,
-  ~source: Source.t,
-  ~srcSet: string=?,
-  ~style: Style.t=?,
-  ~testID: string=?,
-  ~tintColor: Color.t=?,
-  ~width: float=?,
-) => React.element = "Image"
+type props = {
+  ref?: ref,
+  accessibilityLabel?: string,
+  accessible?: bool,
+  alt?: string,
+  blurRadius?: float,
+  capInsets?: Rect.t,
+  crossOrigin?: crossOrigin,
+  defaultSource?: Source.t,
+  fadeDuration?: float,
+  height?: float,
+  loadingIndicatorSource?: array<Source.t>,
+  onError?: errorEvent => unit,
+  onLayout?: Event.layoutEvent => unit,
+  onLoad?: imageLoadEvent => unit,
+  onLoadEnd?: unit => unit,
+  onLoadStart?: unit => unit,
+  onPartialLoad?: unit => unit,
+  onProgress?: progressEvent => unit,
+  progressiveRenderingEnabled?: bool,
+  referrerPolicy?: referrerPolicy,
+  resizeMethod?: resizeMethod,
+  resizeMode?: Style.resizeMode,
+  source: Source.t,
+  srcSet?: string,
+  style?: Style.t,
+  testID?: string,
+  tintColor?: Color.t,
+  width?: float,
+}
+
+@module("react-native")
+external make: React.component<props> = "Image"
 
 type sizeError
 

@@ -9,9 +9,8 @@ type options = {
   cancelButtonTintColor?: Color.t,
 }
 
-@obj
-external // @deprecated("Directly create record instead")
-options: (
+@deprecated("Directly create record instead") @obj
+external options: (
   ~options: array<string>,
   ~cancelButtonIndex: int=?,
   ~destructiveButtonIndex: array<int>=?,
@@ -33,9 +32,8 @@ type shareOptions = {
   excludedActivityTypes?: array<string>,
 }
 
-@obj
-external // @deprecated("Directly create record instead")
-shareOptions: (
+@deprecated("Directly create record instead") @obj
+external shareOptions: (
   ~url: string=?,
   ~message: string=?,
   ~subject: string=?,

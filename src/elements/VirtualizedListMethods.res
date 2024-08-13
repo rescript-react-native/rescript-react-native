@@ -10,9 +10,8 @@ module Make = (
     viewPosition?: float,
   }
 
-  @obj
-  external // @deprecated("Directly create record instead")
-  scrollToIndexParams: (
+  @deprecated("Directly create record instead") @obj
+  external scrollToIndexParams: (
     ~viewOffset: float=?,
     ~viewPosition: float=?,
     ~animated: bool=?,
@@ -28,9 +27,8 @@ module Make = (
     animated?: bool,
   }
 
-  @obj
-  external // @deprecated("Directly create record instead")
-  scrollToItemParams: (
+  @deprecated("Directly create record instead") @obj
+  external scrollToItemParams: (
     ~viewPosition: float=?,
     ~animated: bool=?,
     ~item: 'item,
@@ -44,9 +42,9 @@ module Make = (
     animated?: bool,
   }
 
-  @obj
-  external // @deprecated("Directly create record instead")
-  scrollToOffsetParams: (~animated: bool=?, ~offset: float, unit) => scrollToOffsetParams = ""
+  @deprecated("Directly create record instead") @obj
+  external scrollToOffsetParams: (~animated: bool=?, ~offset: float, unit) => scrollToOffsetParams =
+    ""
   @send
   external scrollToOffset: (T.t, scrollToOffsetParams) => unit = "scrollToOffset"
 
