@@ -41,6 +41,15 @@ type transform
 
 external unsafeTransform: Js.t<'a> => transform = "%identity"
 
+@unboxed
+type transformOrigin =
+  | @as("top") Top
+  | @as("bottom") Bottom
+  | @as("left") Left
+  | @as("right") Right
+  | @as("center") Center
+  | Size(size)
+
 type resizeMode = [#cover | #contain | #stretch | #repeat | #center]
 
 type fontStyle = [#normal | #italic]
@@ -231,7 +240,10 @@ type shadowIOSStyle = {
 }
 
 // Transform Props (https://reactnative.dev/docs/transforms#props)
-type transformStyle = {transform?: array<transform>}
+type transformStyle = {
+  transform?: array<transform>,
+  transformOrigin?: array<transformOrigin>,
+}
 
 // View styles https://reactnative.dev/docs/view-style-props
 type viewCoreStyle = {
