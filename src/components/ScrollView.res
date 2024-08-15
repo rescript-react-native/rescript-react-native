@@ -26,6 +26,11 @@ type overScrollMode = [#always | #never | #auto]
 
 type snapToAlignment = [#start | #center | #end]
 
+type maintainVisibleContentPosition = {
+  autoscrollToTopThreshold?: float,
+  minIndexForVisible: int,
+}
+
 type scrollViewProps = {
   ...View.viewProps,
   alwaysBounceHorizontal?: bool,
@@ -47,6 +52,7 @@ type scrollViewProps = {
   indicatorStyle?: indicatorStyle,
   keyboardDismissMode?: keyboardDismissMode,
   keyboardShouldPersistTaps?: keyboardShouldPersistTaps,
+  maintainVisibleContentPosition?: maintainVisibleContentPosition,
   maximumZoomScale?: float,
   minimumZoomScale?: float,
   nestedScrollEnabled?: bool,
