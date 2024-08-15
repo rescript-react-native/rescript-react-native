@@ -1,5 +1,20 @@
 # Changelog of `rescript-react-native`
 
+## 0.73.0 - 2024-08-15
+
+- Upgrade to rescript 11 [38cc49d](https://github.com/rescript-react-native/rescript-react-native/commit/38cc49d) by [Freddy03h](https://github.com/Freddy03h)
+  - upgrade to rescript 11, @rescript/react 12 and jsx 4
+  - use record props for component to avoid repetition
+  - `@obj` functions as deprecated
+  - `edgeInsets` as deprecated
+  - convert ActivityIndicator Size type to variant
+  - binding to Animated components instead of recreating them
+- Fix Keyboard bindings [9380611](https://github.com/rescript-react-native/rescript-react-native/commit/9380611) by [ashishsingh101](https://github.com/ashishsingh101)
+- Remove deprecated stuff from PlatformColors [8daff8b](https://github.com/rescript-react-native/rescript-react-native/commit/8daff8b) by [@cknitt](https://github.com/cknitt)
+- Remove modules that were removed from React Native [1153b72](https://github.com/rescript-react-native/rescript-react-native/commit/1153b72) by [@cknitt](https://github.com/cknitt)
+- add transformOrigin [1d00148](https://github.com/rescript-react-native/rescript-react-native/commit/1d00148) by [Freddy03h](https://github.com/Freddy03h)
+- add maintainVisibleContentPosition in scrollview [ba62517](https://github.com/rescript-react-native/rescript-react-native/commit/ba62517) by [Yummy-sk](https://github.com/Yummy-sk)
+
 ## 0.72.0 - 2023-08-04
 
 - Remove deprecated Slider, DatePickerIOS & ProgressViewIOS [82dc6e1](https://github.com/rescript-react-native/rescript-react-native/commit/82dc6e1) by [@MoOx](https://github.com/MoOx)
