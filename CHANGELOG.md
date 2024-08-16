@@ -1,5 +1,9 @@
 # Changelog of `rescript-react-native`
 
+## 0.73.1 - 2024-08-16
+
+- fix : rescript.json instead of bsconfig.json for files release config [dec45bd](https://github.com/rescript-react-native/rescript-react-native/commit/dec45bd) by [Freddy03h](https://github.com/Freddy03h)
+
 ## 0.73.0 - 2024-08-15
 
 - Upgrade to rescript 11 [38cc49d](https://github.com/rescript-react-native/rescript-react-native/commit/38cc49d) by [Freddy03h](https://github.com/Freddy03h)
