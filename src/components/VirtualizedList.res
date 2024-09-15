@@ -34,13 +34,11 @@ type itemLayout = {
 type onStartReachedParams = {distanceFromEnd: float}
 type onEndReachedParams = {distanceFromEnd: float}
 
-type onScrollToIndexFailedInfo = {
+type onScrollToIndexFailedParams = {
   index: int,
   highestMeasuredFrameIndex: int,
   averageItemLength: float,
 }
-
-type onScrollToIndexFailedParams = {info: onScrollToIndexFailedInfo}
 
 type separatorComponentProps<'item> = {"highlighted": bool, "leadingItem": option<'item>}
 
