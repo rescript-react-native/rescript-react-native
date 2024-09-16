@@ -56,16 +56,32 @@ external localNotification: (
   unit,
 ) => localNotification = ""
 
-@module("react-native") @scope("PushNotificationIOS")
+@deprecated(
+  "PushNotificationIOS is deprecated, migrate to @react-native-community/push-notification-ios"
+)
+@module("react-native")
+@scope("PushNotificationIOS")
 external presentLocalNotification: localNotification => unit = "presentLocalNotification"
 
-@module("react-native") @scope("PushNotificationIOS")
+@deprecated(
+  "PushNotificationIOS is deprecated, migrate to @react-native-community/push-notification-ios"
+)
+@module("react-native")
+@scope("PushNotificationIOS")
 external scheduleLocalNotification: localNotification => unit = "scheduleLocalNotification"
 
-@module("react-native") @scope("PushNotificationIOS")
+@deprecated(
+  "PushNotificationIOS is deprecated, migrate to @react-native-community/push-notification-ios"
+)
+@module("react-native")
+@scope("PushNotificationIOS")
 external cancelAllLocalNotifications: unit => unit = "cancelAllLocalNotifications"
 
-@module("react-native") @scope("PushNotificationIOS")
+@deprecated(
+  "PushNotificationIOS is deprecated, migrate to @react-native-community/push-notification-ios"
+)
+@module("react-native")
+@scope("PushNotificationIOS")
 external removeAllDeliveredNotifications: unit => unit = "removeAllDeliveredNotifications"
 
 type deliveredNotification = {
@@ -78,26 +94,50 @@ type deliveredNotification = {
   userInfo: Js.Nullable.t<Js.Json.t>,
 }
 
-@module("react-native") @scope("PushNotificationIOS")
+@deprecated(
+  "PushNotificationIOS is deprecated, migrate to @react-native-community/push-notification-ios"
+)
+@module("react-native")
+@scope("PushNotificationIOS")
 external getDeliveredNotifications: (array<deliveredNotification> => unit) => unit =
   "getDeliveredNotifications"
 
-@module("react-native") @scope("PushNotificationIOS")
+@deprecated(
+  "PushNotificationIOS is deprecated, migrate to @react-native-community/push-notification-ios"
+)
+@module("react-native")
+@scope("PushNotificationIOS")
 external removeDeliveredNotifications: (~identifiers: array<string>) => unit =
   "removeDeliveredNotifications"
 
-@module("react-native") @scope("PushNotificationIOS")
+@deprecated(
+  "PushNotificationIOS is deprecated, migrate to @react-native-community/push-notification-ios"
+)
+@module("react-native")
+@scope("PushNotificationIOS")
 external setApplicationIconBadgeNumber: int => unit = "setApplicationIconBadgeNumber"
 
-@module("react-native") @scope("PushNotificationIOS")
+@deprecated(
+  "PushNotificationIOS is deprecated, migrate to @react-native-community/push-notification-ios"
+)
+@module("react-native")
+@scope("PushNotificationIOS")
 external getApplicationIconBadgeNumber: (int => unit) => unit = "getApplicationIconBadgeNumber"
 
 // multiple externals
-@module("react-native") @scope("PushNotificationIOS")
+@deprecated(
+  "PushNotificationIOS is deprecated, migrate to @react-native-community/push-notification-ios"
+)
+@module("react-native")
+@scope("PushNotificationIOS")
 external cancelLocalNotifications: unit => unit = "cancelLocalNotifications"
 
 // multiple externals
-@module("react-native") @scope("PushNotificationIOS")
+@deprecated(
+  "PushNotificationIOS is deprecated, migrate to @react-native-community/push-notification-ios"
+)
+@module("react-native")
+@scope("PushNotificationIOS")
 external cancelLocalNotificationsWithUserInfo: Js.Json.t => unit = "cancelLocalNotifications"
 
 type formattedLocalNotification = {
@@ -110,7 +150,11 @@ type formattedLocalNotification = {
   userInfo: Js.Nullable.t<Js.Json.t>,
 }
 
-@module("react-native") @scope("PushNotificationIOS")
+@deprecated(
+  "PushNotificationIOS is deprecated, migrate to @react-native-community/push-notification-ios"
+)
+@module("react-native")
+@scope("PushNotificationIOS")
 external getScheduledLocalNotifications: (array<formattedLocalNotification> => unit) => unit =
   "getScheduledLocalNotifications"
 
@@ -120,7 +164,11 @@ type registrationError<'a> = {
   details: Js.t<'a>,
 }
 
-@module("react-native") @scope("PushNotificationIOS")
+@deprecated(
+  "PushNotificationIOS is deprecated, migrate to @react-native-community/push-notification-ios"
+)
+@module("react-native")
+@scope("PushNotificationIOS")
 external addEventListener: @string
 [
   | #notification(Notification.t => unit)
@@ -129,7 +177,11 @@ external addEventListener: @string
   | #registrationError(registrationError<'a> => unit)
 ] => unit = "addEventListener"
 
-@module("react-native") @scope("PushNotificationIOS")
+@deprecated(
+  "PushNotificationIOS is deprecated, migrate to @react-native-community/push-notification-ios"
+)
+@module("react-native")
+@scope("PushNotificationIOS")
 external removeEventListener: @string
 [
   | #notification(Notification.t => unit)
@@ -165,18 +217,34 @@ external requestPermissionsOptions: (
 ) => requestPermissionsOptions = ""
 
 // multiple externals
-@module("react-native") @scope("PushNotificationIOS")
+@deprecated(
+  "PushNotificationIOS is deprecated, migrate to @react-native-community/push-notification-ios"
+)
+@module("react-native")
+@scope("PushNotificationIOS")
 external requestPermissions: unit => Js.Promise.t<permissions> = "requestPermissions"
 
 // multiple externals
-@module("react-native") @scope("PushNotificationIOS")
+@deprecated(
+  "PushNotificationIOS is deprecated, migrate to @react-native-community/push-notification-ios"
+)
+@module("react-native")
+@scope("PushNotificationIOS")
 external requestPermissionsWithOptions: requestPermissionsOptions => Js.Promise.t<permissions> =
   "requestPermissions"
 
-@module("react-native") @scope("PushNotificationIOS")
+@deprecated(
+  "PushNotificationIOS is deprecated, migrate to @react-native-community/push-notification-ios"
+)
+@module("react-native")
+@scope("PushNotificationIOS")
 external abandonPermissions: unit => unit = "abandonPermissions"
 
-@module("react-native") @scope("PushNotificationIOS")
+@deprecated(
+  "PushNotificationIOS is deprecated, migrate to @react-native-community/push-notification-ios"
+)
+@module("react-native")
+@scope("PushNotificationIOS")
 external checkPermissions: (unit => checkedPermissions) => unit = "checkPermissions"
 
 type fetchResult = {
@@ -193,12 +261,24 @@ external fetchResult: (
   unit,
 ) => fetchResult = ""
 
-@module("react-native") @scope("PushNotificationIOS")
+@deprecated(
+  "PushNotificationIOS is deprecated, migrate to @react-native-community/push-notification-ios"
+)
+@module("react-native")
+@scope("PushNotificationIOS")
 external finish: fetchResult => unit = "fetchResult"
 
-@module("react-native") @scope("PushNotificationIOS")
+@deprecated(
+  "PushNotificationIOS is deprecated, migrate to @react-native-community/push-notification-ios"
+)
+@module("react-native")
+@scope("PushNotificationIOS")
 external getInitialNotification: unit => Js.Promise.t<Js.Nullable.t<Notification.t>> =
   "getInitialNotification"
 
-@module("react-native") @scope("PushNotificationIOS")
+@deprecated(
+  "PushNotificationIOS is deprecated, migrate to @react-native-community/push-notification-ios"
+)
+@module("react-native")
+@scope("PushNotificationIOS")
 external getAuthorizationStatus: (float => unit) => unit = "getAuthorizationStatus"
