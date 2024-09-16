@@ -103,7 +103,7 @@ type overflow = [#visible | #hidden | #scroll]
 
 type flexWrap = [#wrap | #nowrap]
 
-type position = [#absolute | #relative]
+type position = [#absolute | #relative | #static]
 
 type alignContent = [
   | #"flex-start"
@@ -112,6 +112,7 @@ type alignContent = [
   | #stretch
   | #"space-around"
   | #"space-between"
+  | #"space-evenly"
 ]
 
 type alignItems = [
