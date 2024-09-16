@@ -100,6 +100,7 @@ type alignContent = [
   | #stretch
   | #"space-around"
   | #"space-between"
+  | #"space-evenly"
 ]
 
 type alignItems = [
