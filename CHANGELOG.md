@@ -1,5 +1,13 @@
 # Changelog of `rescript-react-native`
 
+## 0.74.0 - 2024-10-20
+
+- 0.74 changes [#815](https://github.com/rescript-react-native/rescript-react-native/pull/815) by [Freddy03h](https://github.com/Freddy03h)
+  - add `space-evenly` to `align-content`
+  - add `static` to `position`
+  - `PushNotificationIOS` is deprecated
+- Fix onScrollToIndexFailedParams [#814](https://github.com/rescript-react-native/rescript-react-native/pull/814) by [@cknitt](https://github.com/cknitt)
+
 ## 0.73.1 - 2024-08-16
 
 - fix : rescript.json instead of bsconfig.json for files release config [dec45bd](https://github.com/rescript-react-native/rescript-react-native/commit/dec45bd) by [Freddy03h](https://github.com/Freddy03h)
