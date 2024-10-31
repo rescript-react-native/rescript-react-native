@@ -1,5 +1,9 @@
 # Changelog of `rescript-react-native`
 
+## 0.74.1 - 2024-10-31
+
+- UIManager showPopupMenu and dismissPopupMenu are deprecated [6538dbb](https://github.com/rescript-react-native/rescript-react-native/commit/6538dbb) by [Freddy03h](https://github.com/Freddy03h)
+
 ## 0.74.0 - 2024-10-20
 
 - 0.74 changes [#815](https://github.com/rescript-react-native/rescript-react-native/pull/815) by [Freddy03h](https://github.com/Freddy03h)
