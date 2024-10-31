@@ -38,8 +38,8 @@ type transform
 @obj external scale: (~scale: float) => transform = ""
 @obj external scaleX: (~scaleX: float) => transform = ""
 @obj external scaleY: (~scaleY: float) => transform = ""
-@obj external translateX: (~translateX: float) => transform = ""
-@obj external translateY: (~translateY: float) => transform = ""
+@obj external translateX: (~translateX: size) => transform = ""
+@obj external translateY: (~translateY: size) => transform = ""
 @obj external skewX: (~skewX: angle) => transform = ""
 @obj external skewY: (~skewY: angle) => transform = ""
 // @todo matrix
