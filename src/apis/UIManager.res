@@ -14,7 +14,11 @@ external setLayoutAnimationEnabledExperimental: option<bool => unit> =
   "setLayoutAnimationEnabledExperimental"
 
 // Android-only
-@module("react-native") @scope("UIManager")
+@deprecated(
+  "UIManager.showPopupMenu is deprecated and will be removed in 0.75, migrate to @react-native/popup-menu-android"
+)
+@module("react-native")
+@scope("UIManager")
 external showPopupMenu: (
   int,
   array<string>,
@@ -23,7 +27,11 @@ external showPopupMenu: (
 ) => unit = "showPopupMenu"
 
 // Android-only
-@module("react-native") @scope("UIManager")
+@deprecated(
+  "UIManager.dismissPopupMenu is deprecated and will be removed in 0.75, migrate to @react-native/popup-menu-android"
+)
+@module("react-native")
+@scope("UIManager")
 external dismissPopupMenu: unit => unit = "dismissPopupMenu"
 
 @module("react-native") @scope("UIManager")
