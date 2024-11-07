@@ -222,7 +222,7 @@ external requestPermissionsOptions: (
 )
 @module("react-native")
 @scope("PushNotificationIOS")
-external requestPermissions: unit => Js.Promise.t<permissions> = "requestPermissions"
+external requestPermissions: unit => promise<permissions> = "requestPermissions"
 
 // multiple externals
 @deprecated(
@@ -230,7 +230,7 @@ external requestPermissions: unit => Js.Promise.t<permissions> = "requestPermiss
 )
 @module("react-native")
 @scope("PushNotificationIOS")
-external requestPermissionsWithOptions: requestPermissionsOptions => Js.Promise.t<permissions> =
+external requestPermissionsWithOptions: requestPermissionsOptions => promise<permissions> =
   "requestPermissions"
 
 @deprecated(
@@ -273,7 +273,7 @@ external finish: fetchResult => unit = "fetchResult"
 )
 @module("react-native")
 @scope("PushNotificationIOS")
-external getInitialNotification: unit => Js.Promise.t<Js.Nullable.t<Notification.t>> =
+external getInitialNotification: unit => promise<Js.Nullable.t<Notification.t>> =
   "getInitialNotification"
 
 @deprecated(
