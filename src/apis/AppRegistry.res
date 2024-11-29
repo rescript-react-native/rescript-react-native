@@ -3,7 +3,7 @@ type section = string
 type taskId = float
 type taskKey = string
 
-type task<'data> = 'data => Js.Promise.t<unit>
+type task<'data> = 'data => promise<unit>
 type taskProvider<'data> = unit => task<'data>
 type taskCanceller = unit => unit
 type taskCancelProvider = unit => taskCanceller

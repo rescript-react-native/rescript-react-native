@@ -16,28 +16,28 @@ external addEventListener: @string
 external announceForAccessibility: string => unit = "announceForAccessibility"
 
 @scope("AccessibilityInfo") @module("react-native")
-external getRecommendedTimeoutMillis: float => Js.Promise.t<float> = "getRecommendedTimeoutMillis"
+external getRecommendedTimeoutMillis: float => promise<float> = "getRecommendedTimeoutMillis"
 
 @scope("AccessibilityInfo") @module("react-native")
-external isBoldTextEnabled: unit => Js.Promise.t<bool> = "isBoldTextEnabled"
+external isBoldTextEnabled: unit => promise<bool> = "isBoldTextEnabled"
 
 @scope("AccessibilityInfo") @module("react-native")
-external isGrayscaleEnabled: unit => Js.Promise.t<bool> = "isGrayscaleEnabled"
+external isGrayscaleEnabled: unit => promise<bool> = "isGrayscaleEnabled"
 
 @scope("AccessibilityInfo") @module("react-native")
-external isInvertColorsEnabled: unit => Js.Promise.t<bool> = "isInvertColorsEnabled"
+external isInvertColorsEnabled: unit => promise<bool> = "isInvertColorsEnabled"
 
 @scope("AccessibilityInfo") @module("react-native")
-external isReduceMotionEnabled: unit => Js.Promise.t<bool> = "isReduceMotionEnabled"
+external isReduceMotionEnabled: unit => promise<bool> = "isReduceMotionEnabled"
 
 @scope("AccessibilityInfo") @module("react-native")
-external isReduceTransparencyEnabled: unit => Js.Promise.t<bool> = "isReduceTransparencyEnabled"
+external isReduceTransparencyEnabled: unit => promise<bool> = "isReduceTransparencyEnabled"
 
 @scope("AccessibilityInfo") @module("react-native")
-external isScreenReaderEnabled: unit => Js.Promise.t<bool> = "isScreenReaderEnabled"
+external isScreenReaderEnabled: unit => promise<bool> = "isScreenReaderEnabled"
 
 @scope("AccessibilityInfo") @module("react-native")
-external isAccessibilityServiceEnabled: unit => Js.Promise.t<bool> = "isAccessibilityServiceEnabled"
+external isAccessibilityServiceEnabled: unit => promise<bool> = "isAccessibilityServiceEnabled"
 
 @deprecated("Instead of using removeEventListener(), invoke `remove()` on the subscription itself.")
 @scope("AccessibilityInfo")
@@ -57,4 +57,4 @@ external removeEventListener: @string
 external setAccessibilityFocus: NativeTypes.nodeHandle => unit = "setAccessibilityFocus"
 
 @scope("AccessibilityInfo") @module("react-native")
-external prefersCrossFadeTransitions: unit => Js.Promise.t<bool> = "prefersCrossFadeTransitions"
+external prefersCrossFadeTransitions: unit => promise<bool> = "prefersCrossFadeTransitions"

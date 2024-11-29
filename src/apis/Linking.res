@@ -15,16 +15,16 @@ type extra = {key: string, value: extraValue}
 external extra: (~key: string, ~value: extraValue) => extra = ""
 
 @scope("Linking") @module("react-native")
-external openURL: string => Js.Promise.t<unit> = "openURL"
+external openURL: string => promise<unit> = "openURL"
 
 @scope("Linking") @module("react-native")
-external canOpenURL: string => Js.Promise.t<bool> = "canOpenURL"
+external canOpenURL: string => promise<bool> = "canOpenURL"
 
 @scope("Linking") @module("react-native")
-external getInitialURL: unit => Js.Promise.t<Js.Null.t<string>> = "getInitialURL"
+external getInitialURL: unit => promise<Js.Null.t<string>> = "getInitialURL"
 
 @scope("Linking") @module("react-native")
-external openSettings: unit => Js.Promise.t<'a> = "openSettings"
+external openSettings: unit => promise<'a> = "openSettings"
 
 // multiple externals
 @scope("Linking") @module("react-native")
