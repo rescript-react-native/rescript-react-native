@@ -43,16 +43,16 @@ external unsafeTransform: Js.t<'a> => transform = "%identity"
 
 @unboxed
 type transformOriginX =
-  | @as("left") Left
-  | @as("right") Right
-  | @as("center") Center
+  | @as("0%") Left
+  | @as("100%") Right
+  | @as("50%") Center
   | Size(size)
 
 @unboxed
 type transformOriginY =
-  | @as("top") Top
-  | @as("bottom") Bottom
-  | @as("center") Center
+  | @as("0%") Top
+  | @as("100%") Bottom
+  | @as("50%") Center
   | Size(size)
 
 type transformOrigin = (transformOriginX, transformOriginY, float)
