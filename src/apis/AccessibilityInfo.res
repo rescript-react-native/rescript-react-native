@@ -39,20 +39,6 @@ external isScreenReaderEnabled: unit => promise<bool> = "isScreenReaderEnabled"
 @scope("AccessibilityInfo") @module("react-native")
 external isAccessibilityServiceEnabled: unit => promise<bool> = "isAccessibilityServiceEnabled"
 
-@deprecated("Instead of using removeEventListener(), invoke `remove()` on the subscription itself.")
-@scope("AccessibilityInfo")
-@module("react-native")
-external removeEventListener: @string
-[
-  | #boldTextChanged(bool => unit)
-  | #grayscaleChanged(bool => unit)
-  | #invertColorsChanged(bool => unit)
-  | #reduceMotionChanged(bool => unit)
-  | #screenReaderChanged(bool => unit)
-  | #reduceTransparencyChanged(bool => unit)
-  | #announcementFinished(announcementResult => unit)
-] => unit = "removeEventListener"
-
 @scope("AccessibilityInfo") @module("react-native")
 external setAccessibilityFocus: NativeTypes.nodeHandle => unit = "setAccessibilityFocus"
 

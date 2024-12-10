@@ -5,9 +5,6 @@ type trackColor = {
   \"false"?: Color.t,
 }
 
-@deprecated("Directly create record instead") @obj
-external trackColor: (~\"true": Color.t=?, ~\"false": Color.t=?, unit) => trackColor = ""
-
 type props = {
   ref?: ref,
   ...View.viewProps,

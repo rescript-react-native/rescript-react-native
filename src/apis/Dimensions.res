@@ -18,10 +18,5 @@ type eventType = [#change]
 @module("react-native") @scope("Dimensions")
 external addEventListener: (eventType, handler => unit) => EventSubscription.t = "addEventListener"
 
-@deprecated("Use `remove` on the EventSubscription from `addEventListener`.")
-@module("react-native")
-@scope("Dimensions")
-external removeEventListener: (eventType, handler => unit) => unit = "removeEventListener"
-
 @module("react-native")
 external useWindowDimensions: unit => displayMetrics = "useWindowDimensions"

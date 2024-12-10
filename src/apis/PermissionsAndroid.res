@@ -52,11 +52,6 @@ module Permission = {
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
   external nearbyWifiDevices: t = "NEARBY_WIFI_DEVICES"
 
-  @module("react-native")
-  @scope(("PermissionsAndroid", "PERMISSIONS"))
-  @deprecated("Use `postNotifications` instead")
-  external postNotification: t = "POST_NOTIFICATION"
-
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
   external postNotifications: t = "POST_NOTIFICATIONS"
 
@@ -153,16 +148,6 @@ type rationale = {
   buttonNegative?: string,
   buttonNeutral?: string,
 }
-
-@deprecated("Directly create record instead") @obj
-external rationale: (
-  ~title: string,
-  ~message: string,
-  ~buttonPositive: string,
-  ~buttonNegative: string=?,
-  ~buttonNeutral: string=?,
-  unit,
-) => rationale = ""
 
 type dict = dict<Result.t>
 

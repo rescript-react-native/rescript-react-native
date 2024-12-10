@@ -19,20 +19,6 @@ type uriSource = {
   height?: float,
 }
 
-@deprecated("Directly create record instead") @obj
-external uriSource: (
-  ~uri: string,
-  ~bundle: string=?,
-  ~method: string=?,
-  ~headers: dict<string>=?,
-  ~body: string=?,
-  ~cache: cache=?,
-  ~scale: float=?,
-  ~width: float=?,
-  ~height: float=?,
-  unit,
-) => uriSource = ""
-
 module Source = {
   type t
 

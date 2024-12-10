@@ -28,6 +28,3 @@ type hrefAttrs = {
   rel?: rel,
   target?: target,
 }
-
-@deprecated("Directly create record instead") @obj
-external hrefAttrs: (~download: string=?, ~rel: rel=?, ~target: target=?, unit) => hrefAttrs = ""
