@@ -1,5 +1,11 @@
 # Changelog of `rescript-react-native`
 
+## 0.74.2 - 2024-12-10
+
+- Fix transformOrigin [#821](https://github.com/rescript-react-native/rescript-react-native/pull/821) by [Freddy03h](https://github.com/Freddy03h)
+  - more precise type for transformOrigin
+  - fix transformOrigin keywords not handled on array syntax
+
 ## 0.74.1 - 2024-10-31
 
 - UIManager showPopupMenu and dismissPopupMenu are deprecated [6538dbb](https://github.com/rescript-react-native/rescript-react-native/commit/6538dbb) by [Freddy03h](https://github.com/Freddy03h)
