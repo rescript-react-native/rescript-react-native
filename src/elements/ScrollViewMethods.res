@@ -20,5 +20,5 @@ module Make = (
   external flashScrollIndicators: T.t => unit = "flashScrollIndicators"
 
   @send
-  external setNativeProps: (T.t, Js.t<'a>) => unit = "setNativeProps"
+  external setNativeProps: (T.t, {..}) => unit = "setNativeProps"
 }

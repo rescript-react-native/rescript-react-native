@@ -7,9 +7,9 @@ external arrayOption: array<option<t>> => t = "%identity"
 // Useful if you play with fancy platforms
 // Use with caution
 @val
-external unsafeAddStyle: (@as(json`{}`) _, t, Js.t<'a>) => t = "Object.assign"
+external unsafeAddStyle: (@as(json`{}`) _, t, {..}) => t = "Object.assign"
 
-external unsafeStyle: Js.t<'a> => t = "%identity"
+external unsafeStyle: {..} => t = "%identity"
 
 type size = string
 
@@ -44,7 +44,7 @@ type transform
 @obj external skewY: (~skewY: angle) => transform = ""
 // @todo matrix
 
-external unsafeTransform: Js.t<'a> => transform = "%identity"
+external unsafeTransform: {..} => transform = "%identity"
 
 @unboxed
 type transformOriginX =
