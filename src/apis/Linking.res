@@ -11,9 +11,6 @@ type extraValue = ExtraValue.t
 
 type extra = {key: string, value: extraValue}
 
-@deprecated("Directly create record instead") @obj
-external extra: (~key: string, ~value: extraValue) => extra = ""
-
 @scope("Linking") @module("react-native")
 external openURL: string => promise<unit> = "openURL"
 
@@ -40,8 +37,3 @@ type eventType = [#url]
 
 @scope("Linking") @module("react-native")
 external addEventListener: (eventType, url => unit) => EventSubscription.t = "addEventListener"
-
-@deprecated("Instead of using removeEventListener(), invoke `remove()` on the subscription itself.")
-@scope("Linking")
-@module("react-native")
-external removeEventListener: (eventType, url => unit) => unit = "removeEventListener"

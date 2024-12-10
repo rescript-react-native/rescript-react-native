@@ -6,15 +6,6 @@ include NativeElement
 @deprecated("Use `Rect.t` type instead")
 type edgeInsets = Rect.t
 
-@deprecated("Directly Use `Rect.t` record instead") @obj
-external edgeInsets: (
-  ~left: float=?,
-  ~right: float=?,
-  ~top: float=?,
-  ~bottom: float=?,
-  unit,
-) => Rect.t = ""
-
 type importantForAccessibility = [
   | #auto
   | #yes
