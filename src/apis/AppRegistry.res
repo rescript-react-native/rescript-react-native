@@ -34,7 +34,7 @@ type runnable<'a> = {
 
 type registry<'a> = {
   sections: array<section>,
-  runnables: Js.Dict.t<runnable<'a>>,
+  runnables: dict<runnable<'a>>,
 }
 
 @module("react-native") @scope("AppRegistry")
@@ -50,7 +50,7 @@ external getRunnable: appKey => option<runnable<'a>> = "getRunnable"
 external getSectionKeys: unit => array<string> = "getSectionKeys"
 
 @module("react-native") @scope("AppRegistry")
-external getSections: unit => Js.Dict.t<runnable<'a>> = "getSections"
+external getSections: unit => dict<runnable<'a>> = "getSections"
 
 // multiple externals
 @module("react-native") @scope("AppRegistry")

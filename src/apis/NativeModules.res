@@ -4,7 +4,7 @@
 // external myFunc: unit => unit = "myFunc"
 
 @module("react-native")
-external nativeModules: Js.Dict.t<'a> = "NativeModules"
+external nativeModules: dict<'a> = "NativeModules"
 
 @module("react-native")
 external requireNativeComponent: (string, @as(json`null`) _) => React.component<'a> =
