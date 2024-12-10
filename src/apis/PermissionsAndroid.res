@@ -164,7 +164,7 @@ external rationale: (
   unit,
 ) => rationale = ""
 
-type dict = Js.Dict.t<Result.t>
+type dict = dict<Result.t>
 
 @scope("PermissionsAndroid") @module("react-native")
 external check: Permission.t => promise<bool> = "check"
