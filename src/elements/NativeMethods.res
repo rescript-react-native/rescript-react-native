@@ -9,7 +9,7 @@ module Make = (
   external findNodeHandle: T.t => nodeHandle = "findNodeHandle"
 
   @send
-  external setNativeProps: (T.t, Js.t<'a>) => unit = "setNativeProps"
+  external setNativeProps: (T.t, {..}) => unit = "setNativeProps"
 
   @send external focus: T.t => unit = "focus"
   @send external blur: T.t => unit = "blur"
