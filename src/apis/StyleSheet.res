@@ -6,6 +6,6 @@ external absoluteFill: Style.t = "absoluteFill"
 external absoluteFillObject: Style.t = "absoluteFillObject"
 
 @module("react-native") @scope("StyleSheet")
-external create: Js.t<'a> => Js.t<'a> = "create"
+external create: ({..} as 'a) => ({..} as 'a) = "create"
 @module("react-native") @scope("StyleSheet")
 external flatten: array<Style.t> => Style.t = "flatten"

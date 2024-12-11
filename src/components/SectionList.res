@@ -6,7 +6,7 @@ external flashScrollIndicators: element => unit = "flashScrollIndicators"
 @send external recordInteraction: element => unit = "recordInteraction"
 
 @send
-external setNativeProps: (element, Js.t<'a>) => unit = "setNativeProps"
+external setNativeProps: (element, {..}) => unit = "setNativeProps"
 
 type props<'sectionData, 'item, 'extraData> = {
   ref?: ref,
