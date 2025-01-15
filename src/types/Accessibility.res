@@ -1,14 +1,8 @@
-type state
-type checked<'a> = 'a
-
-@inline
-let checked = true
-
-@inline
-let unchecked = false
-
-@inline
-let mixed = "mixed"
+@unboxed
+type checked =
+  | @as(false) False
+  | @as(true) True
+  | @as("mixed") Mixed
 
 type actionInfo = {
   name: string,
@@ -17,11 +11,18 @@ type actionInfo = {
 
 type actionEvent = AccessibilityActionEvent.t
 
-@obj
+type state = {
+  disabled?: bool,
+  selected?: bool,
+  checked?: checked,
+  busy?: bool,
+  expanded?: bool,
+}
+@deprecated("Directly create record instead") @obj
 external state: (
   ~disabled: bool=?,
   ~selected: bool=?,
-  ~checked: checked<'a>=?,
+  ~checked: checked=?,
   ~busy: bool=?,
   ~expanded: bool=?,
   unit,
