@@ -207,9 +207,9 @@ external parallel: (array<Animation.t>, parallelPayload) => Animation.t = "paral
 @module("react-native") @scope("Animated")
 external stagger: (float, array<Animation.t>) => Animation.t = "stagger"
 
-type loopConfig
-
-@obj external loopConfig: (~iterations: int) => loopConfig = ""
+type loopConfig = {iterations?: int, resetBeforeIteration?: bool}
+@deprecated("Directly create record instead") @obj
+external loopConfig: (~iterations: int=?, ~resetBeforeIteration: bool=?) => loopConfig = ""
 
 // multiple externals
 @module("react-native") @scope("Animated")
@@ -219,22 +219,26 @@ external loop: Animation.t => Animation.t = "loop"
 @module("react-native") @scope("Animated")
 external loopWithConfig: (Animation.t, loopConfig) => Animation.t = "loop"
 
-type eventOptions<'a>
-@obj
+type eventOptions<'a, 'platformConfig> = {
+  listener?: 'a,
+  useNativeDriver: bool,
+  platformConfig?: 'platformConfig,
+}
+@deprecated("Directly create record instead") @obj
 external eventOptions: (
   ~listener: 'a=?,
   ~useNativeDriver: bool,
   ~platformConfig: 'platformConfig=?,
   unit,
-) => eventOptions<'a> = ""
+) => eventOptions<'a, 'platformConfig> = ""
 
 // multiple externals
 @module("react-native") @scope("Animated")
-external event1: (array<'mapping>, eventOptions<'a>) => 'a = "event"
+external event1: (array<'mapping>, eventOptions<'a, 'platformConfig>) => 'a = "event"
 
 // multiple externals
 @module("react-native") @scope("Animated")
-external event2: (('mapping1, 'mapping2), eventOptions<'a>) => 'a = "event"
+external event2: (('mapping1, 'mapping2), eventOptions<'a, 'platformConfig>) => 'a = "event"
 
 @module("react-native") @scope("Animated")
 external createAnimatedComponent: React.component<'props> => React.component<'props> =
