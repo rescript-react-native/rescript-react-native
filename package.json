@@ -1,10 +1,10 @@
 {
   "name": "rescript-react-native",
   "description": "ReScript bindings for React Native.",
-  "version": "0.74.2",
+  "version": "0.75.0",
   "peerDependencies": {
     "@rescript/react": ">=0.12.0",
-    "react-native": ">=0.74.0",
+    "react-native": ">=0.75.0",
     "rescript": ">=11.0.0"
   },
   "repository": "https://github.com/rescript-react-native/rescript-react-native.git",

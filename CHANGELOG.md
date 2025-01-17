@@ -1,5 +1,18 @@
 # Changelog of `rescript-react-native`
 
+## 0.75.0 - 2025-01-17
+
+- 0.75 changes [#818](https://github.com/rescript-react-native/rescript-react-native/pull/818) by [Freddy03h](https://github.com/Freddy03h)
+  - change `gap`, `columnGap` and `rowGap` type to `size`
+  - change `translateX` and `translateY` transform type to `size`
+  - remove `UIManager` `showPopupMenu` and `dismissPopupMenu`
+  - remove `PushNotificationIOS`
+- Js.Promise.t -> promise [#819](https://github.com/rescript-react-native/rescript-react-native/pull/819) by [@cknitt](https://github.com/cknitt)
+- Js.Dict.t -> dict [#822](https://github.com/rescript-react-native/rescript-react-native/pull/822) by [@cknitt](https://github.com/cknitt)
+- Get rid of Js.t [#823](https://github.com/rescript-react-native/rescript-react-native/pull/823) by [@cknitt](https://github.com/cknitt)
+- Remove deprecated functions [#824](https://github.com/rescript-react-native/rescript-react-native/pull/824) by [@cknitt](https://github.com/cknitt)
+- deprecate other @obj [#825](https://github.com/rescript-react-native/rescript-react-native/pull/825) by [Freddy03h](https://github.com/Freddy03h)
+
 ## 0.74.2 - 2024-12-10
 
 - Fix transformOrigin [#821](https://github.com/rescript-react-native/rescript-react-native/pull/821) by [Freddy03h](https://github.com/Freddy03h)
