@@ -3,7 +3,7 @@ module Animation = {
   type endResult = {finished: bool}
   type endCallback = endResult => unit
   @send
-  external start: (t, ~endCallback: endCallback=?, unit) => unit = "start"
+  external start: (t, ~endCallback: endCallback=?) => unit = "start"
 
   @send external stop: t => unit = "stop"
   @send external reset: t => unit = "reset"
@@ -139,10 +139,10 @@ module ValueMethods = (Val: Value) => {
   @send external removeAllListeners: t => unit = "removeAllListeners"
 
   @send
-  external resetAnimation: (t, ~callback: callback=?, unit) => unit = "resetAnimation"
+  external resetAnimation: (t, ~callback: callback=?) => unit = "resetAnimation"
 
   @send
-  external stopAnimation: (t, ~callback: callback=?, unit) => unit = "stopAnimation"
+  external stopAnimation: (t, ~callback: callback=?) => unit = "stopAnimation"
 
   include ValueAnimations(Val)
 }
@@ -311,5 +311,4 @@ module View = {
 type config = {useNativeDriver: bool}
 
 @module("react-native")
-external useAnimatedValue: (~initialValue: float, ~config: config=?, unit) => Value.t =
-  "useAnimatedValue"
+external useAnimatedValue: (~initialValue: float, ~config: config=?) => Value.t = "useAnimatedValue"

@@ -61,6 +61,36 @@ type transformOriginY =
 
 type transformOrigin = (transformOriginX, transformOriginY, float)
 
+type boxShadow = {
+  offsetX: float,
+  offsetY: float,
+  color?: Color.t,
+  blurRadius?: float,
+  spreadDistance?: float,
+  inset?: bool,
+}
+
+type dropShadow = {
+  offsetX: float,
+  offsetY: float,
+  standardDeviation?: float,
+  color?: Color.t,
+}
+
+type filter
+@obj external brightness: (~brightness: float) => filter = ""
+@obj external blur: (~blur: float) => filter = ""
+@obj external contrast: (~contrast: float) => filter = ""
+@obj external grayscale: (~grayscale: float) => filter = ""
+@obj external hueRotate: (~hueRotate: float) => filter = ""
+@obj external invert: (~invert: float) => filter = ""
+@obj external opacity: (~opacity: float) => filter = ""
+@obj external saturate: (~saturate: float) => filter = ""
+@obj external sepia: (~sepia: float) => filter = ""
+@obj external dropShadow: (~dropShadow: dropShadow) => filter = ""
+
+external unsafeFilter: {..} => filter = "%identity"
+
 type resizeMode = [#cover | #contain | #stretch | #repeat | #center]
 
 type fontStyle = [#normal | #italic]
@@ -286,6 +316,8 @@ type viewCoreStyle = {
   borderTopLeftRadius?: float,
   borderTopRightRadius?: float,
   borderTopStartRadius?: float,
+  boxShadow?: array<boxShadow>,
+  filter?: array<filter>,
   elevation?: float,
   opacity?: float,
 }

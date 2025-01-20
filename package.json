@@ -42,7 +42,7 @@
     "npm-run-all": "^4.0.0",
     "npmpub": "^5.0.0",
     "prettier": "^2.0.0",
-    "rescript": "^11.0.1"
+    "rescript": "^11.1.0"
   },
   "prettier": {
     "trailingComma": "all"
