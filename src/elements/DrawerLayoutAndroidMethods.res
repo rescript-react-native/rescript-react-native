@@ -3,6 +3,6 @@ module Make = (
     type t
   },
 ) => {
-  @send external openDrawer: (T.t, unit) => unit = "openDrawer"
-  @send external closeDrawer: (T.t, unit) => unit = "closeDrawer"
+  @send external openDrawer: T.t => unit = "openDrawer"
+  @send external closeDrawer: T.t => unit = "closeDrawer"
 }

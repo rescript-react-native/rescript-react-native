@@ -18,7 +18,6 @@ external alert: (
   ~message: string=?,
   ~buttons: array<button>=?,
   ~options: options=?,
-  unit,
 ) => unit = "alert"
 
 type type_ = [
@@ -41,5 +40,4 @@ external prompt: (
   ~defaultValue: string=?,
   ~keyboardType: string=?,
   ~options: options=?,
-  unit,
 ) => unit = "prompt"
