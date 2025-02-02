@@ -1,5 +1,12 @@
 # Changelog of `rescript-react-native`
 
+## 0.76.0 - 2025-02-02
+
+- 0.76 changes [#826](https://github.com/rescript-react-native/rescript-react-native/pull/826) by @Freddy03h
+  - add `boxShadow` and `filter` styles
+  - update to rescript 11.1
+  - remove unnecessary trailing unit
+
 ## 0.75.0 - 2025-01-17
 
 - 0.75 changes [#818](https://github.com/rescript-react-native/rescript-react-native/pull/818) by [Freddy03h](https://github.com/Freddy03h)
