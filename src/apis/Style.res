@@ -138,7 +138,7 @@ type backfaceVisibility = [#visible | #hidden]
 
 type borderStyle = [#solid | #dotted | #dashed]
 
-type display = [#none | #flex]
+type display = [#none | #flex | #contents]
 
 type overflow = [#visible | #hidden | #scroll]
 
