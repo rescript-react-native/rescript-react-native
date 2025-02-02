@@ -117,6 +117,8 @@ type blendMode = [
 
 type isolation = [#auto | #isolate]
 
+type outlineStyle = [#solid | #dotted | #dashed]
+
 type resizeMode = [#cover | #contain | #stretch | #repeat | #center]
 
 type fontStyle = [#normal | #italic]
@@ -358,6 +360,10 @@ type viewCoreStyle = {
   isolation?: isolation,
   elevation?: float,
   opacity?: float,
+  outlineColor?: Color.t,
+  outlineOffset?: float,
+  outlineStyle?: outlineStyle,
+  outlineWidth?: float,
 }
 
 // Text Style Props (https://reactnative.dev/docs/text-style-props)
