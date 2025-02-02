@@ -128,7 +128,6 @@ external getSize: (
   ~uri: string,
   ~success: (~width: float, ~height: float) => unit,
   ~failure: sizeError => unit=?,
-  unit,
 ) => unit = "getSize"
 
 type requestId
