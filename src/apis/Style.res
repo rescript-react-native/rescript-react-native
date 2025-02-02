@@ -140,6 +140,8 @@ type borderStyle = [#solid | #dotted | #dashed]
 
 type display = [#none | #flex | #contents]
 
+type boxSizing = [#"border-box" | #"content-box"]
+
 type overflow = [#visible | #hidden | #scroll]
 
 type flexWrap = [#wrap | #nowrap]
@@ -230,6 +232,7 @@ type flexStyle = {
   columnGap?: size,
   direction?: direction,
   display?: display,
+  boxSizing?: boxSizing,
   end?: size,
   flex?: float,
   flexBasis?: margin,
