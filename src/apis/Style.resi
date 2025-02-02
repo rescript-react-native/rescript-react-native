@@ -91,6 +91,27 @@ type filter
 
 external unsafeFilter: {..} => filter = "%identity"
 
+type blendMode = [
+  | #normal
+  | #multiply
+  | #screen
+  | #overlay
+  | #darken
+  | #lighten
+  | #"color-dodge"
+  | #"color-burn"
+  | #"hard-light"
+  | #"soft-light"
+  | #difference
+  | #exclusion
+  | #hue
+  | #saturation
+  | #color
+  | #luminosity
+]
+
+type isolation = [#auto | #isolate]
+
 type resizeMode = [#cover | #contain | #stretch | #repeat | #center]
 
 type fontStyle = [#normal | #italic]
@@ -321,6 +342,8 @@ type viewCoreStyle = {
   borderTopStartRadius?: float,
   boxShadow?: array<boxShadow>,
   filter?: array<filter>,
+  mixBlendMode?: blendMode,
+  isolation?: isolation,
   elevation?: float,
   opacity?: float,
 }
