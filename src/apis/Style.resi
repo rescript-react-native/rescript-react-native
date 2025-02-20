@@ -91,6 +91,29 @@ type filter
 
 external unsafeFilter: {..} => filter = "%identity"
 
+type blendMode = [
+  | #normal
+  | #multiply
+  | #screen
+  | #overlay
+  | #darken
+  | #lighten
+  | #"color-dodge"
+  | #"color-burn"
+  | #"hard-light"
+  | #"soft-light"
+  | #difference
+  | #exclusion
+  | #hue
+  | #saturation
+  | #color
+  | #luminosity
+]
+
+type isolation = [#auto | #isolate]
+
+type outlineStyle = [#solid | #dotted | #dashed]
+
 type resizeMode = [#cover | #contain | #stretch | #repeat | #center]
 
 type fontStyle = [#normal | #italic]
@@ -126,7 +149,9 @@ type backfaceVisibility = [#visible | #hidden]
 
 type borderStyle = [#solid | #dotted | #dashed]
 
-type display = [#none | #flex]
+type display = [#none | #flex | #contents]
+
+type boxSizing = [#"border-box" | #"content-box"]
 
 type overflow = [#visible | #hidden | #scroll]
 
@@ -218,6 +243,7 @@ type flexStyle = {
   columnGap?: size,
   direction?: direction,
   display?: display,
+  boxSizing?: boxSizing,
   end?: size,
   flex?: float,
   flexBasis?: margin,
@@ -318,8 +344,14 @@ type viewCoreStyle = {
   borderTopStartRadius?: float,
   boxShadow?: array<boxShadow>,
   filter?: array<filter>,
+  mixBlendMode?: blendMode,
+  isolation?: isolation,
   elevation?: float,
   opacity?: float,
+  outlineColor?: Color.t,
+  outlineOffset?: float,
+  outlineStyle?: outlineStyle,
+  outlineWidth?: float,
 }
 
 // Text Style Props (https://reactnative.dev/docs/text-style-props)
