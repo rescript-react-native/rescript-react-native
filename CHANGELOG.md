@@ -1,5 +1,13 @@
 # Changelog of `rescript-react-native`
 
+## 0.77.0 - 2025-02-20
+
+- 0.77 changes [#828](https://github.com/rescript-react-native/rescript-react-native/pull/828) by @Freddy03h
+  - add `display: contents` style
+  - add `mixBlendMode` and `isolation` styles
+  - add `boxSizing` style
+  - add `outlineColor`, `outlineOffset`, `outlineStyle` and `outlineWidth` styles
+
 ## 0.76.0 - 2025-02-02
 
 - 0.76 changes [#826](https://github.com/rescript-react-native/rescript-react-native/pull/826) by @Freddy03h
