@@ -40,7 +40,7 @@ type onScrollToIndexFailedParams = {
   averageItemLength: float,
 }
 
-type separatorComponentProps<'item> = {"highlighted": bool, "leadingItem": option<'item>}
+type separatorComponentProps<'item> = {highlighted: bool, leadingItem: option<'item>}
 
 type viewabilityConfig = {
   minimumViewTime?: float,
