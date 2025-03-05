@@ -1,5 +1,9 @@
 # Changelog of `rescript-react-native`
 
+## 0.77.1 - 2025-03-05
+
+- Use record for separatorComponentProps [#829](https://github.com/rescript-react-native/rescript-react-native/pull/829) by @cknitt 
+
 ## 0.77.0 - 2025-02-20
 
 - 0.77 changes [#828](https://github.com/rescript-react-native/rescript-react-native/pull/828) by @Freddy03h
