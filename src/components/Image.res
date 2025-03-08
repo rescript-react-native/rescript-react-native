@@ -110,6 +110,7 @@ type props = {
   referrerPolicy?: referrerPolicy,
   resizeMethod?: resizeMethod,
   resizeMode?: Style.resizeMode,
+  resizeMultiplier?: float,
   source: Source.t,
   srcSet?: string,
   style?: Style.t,
