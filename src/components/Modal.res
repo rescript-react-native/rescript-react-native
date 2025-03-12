@@ -34,7 +34,9 @@ external make: (
   ~ref: ref=?,
   // Modal props
   ~animationType: animationType=?,
+  ~backdropColor: Color.t=?,
   ~hardwareAccelerated: bool=?,
+  ~navigationBarTranslucent: bool=?,
   ~onDismiss: unit => unit=?,
   ~onOrientationChange: orientationChangeEvent => unit=?,
   ~onRequestClose: unit => unit=?,
