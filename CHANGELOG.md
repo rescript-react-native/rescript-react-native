@@ -1,5 +1,11 @@
 # Changelog of `rescript-react-native`
 
+## 0.77.2 - 2025-03-14
+
+- Add missing props for Image and Modal [#831](https://github.com/rescript-react-native/rescript-react-native/pull/831) by @namenu 
+  - add `resizeMultiplier` Image prop
+  - add `backdropColor` and `navigationBarTranslucent` Modal props
+
 ## 0.77.1 - 2025-03-05
 
 - Use record for separatorComponentProps [#829](https://github.com/rescript-react-native/rescript-react-native/pull/829) by @cknitt 
