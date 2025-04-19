@@ -1,8 +1,8 @@
 include ScrollViewElement
 
-type contentOffset = {x: float, y: float}
+type pointProp = {x: float, y: float}
 @deprecated("Directly create record instead") @obj
-external contentOffset: (~x: float, ~y: float) => contentOffset = ""
+external contentOffset: (~x: float, ~y: float) => pointProp = ""
 
 type contentInsetAdjustmentBehavior = [
   | #automatic
@@ -32,57 +32,74 @@ type maintainVisibleContentPosition = {
   minIndexForVisible: int,
 }
 
-type scrollViewProps = {
-  ...View.viewProps,
+type iosProps = {
   alwaysBounceHorizontal?: bool,
   alwaysBounceVertical?: bool,
   automaticallyAdjustContentInsets?: bool,
+  automaticallyAdjustKeyboardInsets?: bool,
+  automaticallyAdjustsScrollIndicatorInsets?: bool,
   bounces?: bool,
   bouncesZoom?: bool,
   canCancelContentTouches?: bool,
   centerContent?: bool,
-  contentContainerStyle?: Style.t,
   contentInset?: Rect.t,
+  contentOffset?: pointProp,
   contentInsetAdjustmentBehavior?: contentInsetAdjustmentBehavior,
-  contentOffset?: contentOffset,
-  decelerationRate?: decelerationRate,
   directionalLockEnabled?: bool,
-  endFillColor?: Color.t,
-  fadingEdgeLength?: float,
-  horizontal?: bool,
   indicatorStyle?: indicatorStyle,
-  keyboardDismissMode?: keyboardDismissMode,
-  keyboardShouldPersistTaps?: keyboardShouldPersistTaps,
   maintainVisibleContentPosition?: maintainVisibleContentPosition,
   maximumZoomScale?: float,
   minimumZoomScale?: float,
+  onScrollAnimationEnd?: unit => unit,
+  pinchGestureEnabled?: bool,
+  scrollEventThrottle?: int,
+  scrollIndicatorInsets?: Rect.t,
+  scrollToOverflowEnabled?: bool,
+  scrollsToTop?: bool,
+  snapToAlignment?: snapToAlignment,
+  onScrollToTop?: Event.scrollEvent => unit,
+  zoomScale?: float,
+}
+
+type androidProps = {
+  endFillColor?: Color.t,
+  scrollPerfTag?: string,
+  overScrollMode?: overScrollMode,
   nestedScrollEnabled?: bool,
+  fadingEdgeLength?: float,
+  persistentScrollbar?: bool,
+}
+
+type scrollViewProps = {
+  ...View.viewProps,
+  ...iosProps,
+  ...androidProps,
+  contentContainerStyle?: Style.t,
+  decelerationRate?: decelerationRate,
+  horizontal?: bool,
+  invertStickyHeaders?: bool,
+  keyboardDismissMode?: keyboardDismissMode,
+  keyboardShouldPersistTaps?: keyboardShouldPersistTaps,
   onContentSizeChange?: ((float, float)) => unit,
-  onMomentumScrollBegin?: Event.scrollEvent => unit,
-  onMomentumScrollEnd?: Event.scrollEvent => unit,
   onScroll?: Event.scrollEvent => unit,
   onScrollBeginDrag?: Event.scrollEvent => unit,
   onScrollEndDrag?: Event.scrollEvent => unit,
-  overScrollMode?: overScrollMode,
+  onMomentumScrollEnd?: Event.scrollEvent => unit,
+  onMomentumScrollBegin?: Event.scrollEvent => unit,
   pagingEnabled?: bool,
-  pinchGestureEnabled?: bool,
-  refreshControl?: React.element,
   scrollEnabled?: bool,
-  scrollEventThrottle?: int,
-  scrollIndicatorInsets?: Rect.t,
-  scrollPerfTag?: string,
-  scrollsToTop?: bool,
-  scrollToOverflowEnabled?: bool,
   showsHorizontalScrollIndicator?: bool,
   showsVerticalScrollIndicator?: bool,
-  snapToAlignment?: snapToAlignment,
-  snapToEnd?: bool,
+  stickyHeaderHiddenOnScroll?: bool,
+  refreshControl?: React.element,
   snapToInterval?: float,
   snapToOffsets?: array<float>,
   snapToStart?: bool,
-  stickyHeaderHiddenOnScroll?: bool,
+  snapToEnd?: bool,
   stickyHeaderIndices?: array<int>,
-  zoomScale?: float,
+  disableIntervalMomentum?: bool,
+  disableScrollViewPanResponder?: bool,
+  \"StickyHeaderComponent"?: React.element,
 }
 
 type props = {
