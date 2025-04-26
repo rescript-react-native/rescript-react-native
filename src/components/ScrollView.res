@@ -1,8 +1,8 @@
 include ScrollViewElement
 
-type pointProp = {x: float, y: float}
+type contentOffset = {x: float, y: float}
 @deprecated("Directly create record instead") @obj
-external contentOffset: (~x: float, ~y: float) => pointProp = ""
+external contentOffset: (~x: float, ~y: float) => contentOffset = ""
 
 type contentInsetAdjustmentBehavior = [
   | #automatic
@@ -43,7 +43,7 @@ type iosProps = {
   canCancelContentTouches?: bool,
   centerContent?: bool,
   contentInset?: Rect.t,
-  contentOffset?: pointProp,
+  contentOffset?: contentOffset,
   contentInsetAdjustmentBehavior?: contentInsetAdjustmentBehavior,
   directionalLockEnabled?: bool,
   indicatorStyle?: indicatorStyle,
