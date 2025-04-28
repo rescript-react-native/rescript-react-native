@@ -1,5 +1,18 @@
 # Changelog of `rescript-react-native`
 
+## 0.77.3 - 2025-04-28
+
+- Add missing props for ScrollView [#834](https://github.com/rescript-react-native/rescript-react-native/pull/834) by @Freddy03h 
+  - `automaticallyAdjustKeyboardInsets`
+  - `automaticallyAdjustsScrollIndicatorInsets`
+  - `onScrollAnimationEnd`
+  - `onScrollToTop`
+  - `persistentScrollbar`
+  - `invertStickyHeaders`
+  - `disableIntervalMomentum`
+  - `disableScrollViewPanResponder`
+  - `StickyHeaderComponent`
+
 ## 0.77.2 - 2025-03-14
 
 - Add missing props for Image and Modal [#831](https://github.com/rescript-react-native/rescript-react-native/pull/831) by @namenu 
