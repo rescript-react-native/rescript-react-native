@@ -1,3 +1,12 @@
+## Troubleshooting
+
+### Unable to resolve dependency tree
+
+If you encounter an `ERESOLVE unable to resolve dependency tree` error when running `npm install`, retry with the legacy peer dependencies flag:
+
+```bash
+npm install --legacy-peer-deps
+
 # `rescript-react-native`
 
 [![Build Status](https://github.com/rescript-react-native/rescript-react-native/workflows/Build/badge.svg)](https://github.com/rescript-react-native/rescript-react-native/actions)
