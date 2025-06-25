@@ -80,7 +80,7 @@ type scrollViewProps = {
   invertStickyHeaders?: bool,
   keyboardDismissMode?: keyboardDismissMode,
   keyboardShouldPersistTaps?: keyboardShouldPersistTaps,
-  onContentSizeChange?: ((float, float)) => unit,
+  onContentSizeChange?: (float, float) => unit,
   onScroll?: Event.scrollEvent => unit,
   onScrollBeginDrag?: Event.scrollEvent => unit,
   onScrollEndDrag?: Event.scrollEvent => unit,
