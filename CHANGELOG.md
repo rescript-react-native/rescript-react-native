@@ -1,5 +1,9 @@
 # Changelog of `rescript-react-native`
 
+## 0.77.4 - 2025-06-25
+
+- Fix ScrollView onContentSizeChange params [#837](https://github.com/rescript-react-native/rescript-react-native/pull/837) by @cknitt 
+
 ## 0.77.3 - 2025-04-28
 
 - Add missing props for ScrollView [#834](https://github.com/rescript-react-native/rescript-react-native/pull/834) by @Freddy03h 
