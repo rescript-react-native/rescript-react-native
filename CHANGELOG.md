@@ -1,5 +1,9 @@
 # Changelog of `rescript-react-native`
 
+## 0.78.0 - 2025-08-15
+
+- upgrade to `@rescript/react@0.14` and `react@19` for `react-native@0.78`
+
 ## 0.77.4 - 2025-06-25
 
 - Fix ScrollView onContentSizeChange params [#837](https://github.com/rescript-react-native/rescript-react-native/pull/837) by @cknitt 
