@@ -28,7 +28,7 @@ type listener = keyboardEvent => unit
 external addListener: (eventType, listener) => EventSubscription.t = "addListener"
 
 @module("react-native") @scope("Keyboard")
-external removeAllListeners: (eventType) => unit = "removeAllListeners"
+external removeAllListeners: eventType => unit = "removeAllListeners"
 
 @module("react-native") @scope("Keyboard")
 external dismiss: unit => unit = "dismiss"

@@ -3,12 +3,12 @@
   "description": "ReScript bindings for React Native.",
   "version": "0.77.4",
   "peerDependencies": {
-    "@rescript/react": ">=0.12.0",
-    "react-native": ">=0.77.0",
+    "@rescript/react": ">=0.14.0",
+    "react-native": ">=0.78.0",
     "rescript": ">=11.0.0"
   },
   "overrides": {
-    "react": "^18.0.0"
+    "react": "^19.0.0"
   },
   "repository": "https://github.com/rescript-react-native/rescript-react-native.git",
   "funding": "https://github.com/rescript-react-native/rescript-react-native?sponsor=1",
@@ -39,7 +39,7 @@
     "release": "npmpub"
   },
   "devDependencies": {
-    "@rescript/react": "^0.12.2",
+    "@rescript/react": "^0.14.0",
     "husky": "^8.0.0",
     "lint-staged": "^13.0.0",
     "npm-run-all": "^4.0.0",

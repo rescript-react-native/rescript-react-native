@@ -86,7 +86,7 @@ function decay(prim0, prim1) {
   return ReactNative.Animated.decay(prim0, prim1);
 }
 
-function start(prim0, prim1, prim2) {
+function start(prim0, prim1) {
   prim0.start(prim1 !== undefined ? Caml_option.valFromOption(prim1) : undefined);
 }
 
