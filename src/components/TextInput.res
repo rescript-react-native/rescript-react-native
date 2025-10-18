@@ -236,6 +236,12 @@ type enterKeyHint = [
   | #previous
 ]
 
+type submitBehavior = [
+  | #submit
+  | #blurAndSubmit
+  | #newline
+]
+
 type props = {
   ref?: ref,
   ...View.gestureResponderHandlersProps,
@@ -256,6 +262,7 @@ type props = {
   autoCorrect?: bool,
   autoFocus?: bool,
   blurOnSubmit?: bool,
+  submitBehavior?: submitBehavior,
   caretHidden?: bool,
   clearButtonMode?: clearButtonMode,
   clearTextOnFocus?: bool,
