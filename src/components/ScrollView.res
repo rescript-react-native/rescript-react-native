@@ -47,7 +47,6 @@ type iosProps = {
   contentInsetAdjustmentBehavior?: contentInsetAdjustmentBehavior,
   directionalLockEnabled?: bool,
   indicatorStyle?: indicatorStyle,
-  maintainVisibleContentPosition?: maintainVisibleContentPosition,
   maximumZoomScale?: float,
   minimumZoomScale?: float,
   onScrollAnimationEnd?: unit => unit,
@@ -70,7 +69,7 @@ type androidProps = {
   persistentScrollbar?: bool,
 }
 
-type scrollViewProps = {
+type scrollViewPropsWithoutListConflict = {
   ...View.viewProps,
   ...iosProps,
   ...androidProps,
@@ -96,10 +95,14 @@ type scrollViewProps = {
   snapToOffsets?: array<float>,
   snapToStart?: bool,
   snapToEnd?: bool,
-  stickyHeaderIndices?: array<int>,
   disableIntervalMomentum?: bool,
   disableScrollViewPanResponder?: bool,
   \"StickyHeaderComponent"?: React.element,
+}
+
+type scrollViewProps = {
+  ...scrollViewPropsWithoutListConflict,
+  maintainVisibleContentPosition?: maintainVisibleContentPosition,
 }
 
 type props = {
