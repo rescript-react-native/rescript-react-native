@@ -95,6 +95,7 @@ type scrollViewPropsWithoutListConflict = {
   snapToOffsets?: array<float>,
   snapToStart?: bool,
   snapToEnd?: bool,
+  stickyHeaderIndices?: array<int>,
   disableIntervalMomentum?: bool,
   disableScrollViewPanResponder?: bool,
   \"StickyHeaderComponent"?: React.element,
