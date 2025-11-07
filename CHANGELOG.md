@@ -1,5 +1,10 @@
 # Changelog of `rescript-react-native`
 
+## 0.78.1 - 2025-11-07
+
+- add `submitBehavior` prop on TextInput
+- refactor View props to avoid conflict with other libs (flash-list, legend-list)
+
 ## 0.78.0 - 2025-08-15
 
 - upgrade to `@rescript/react@0.14` and `react@19` for `react-native@0.78`
