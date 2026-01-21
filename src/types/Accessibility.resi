@@ -18,15 +18,6 @@ type state = {
   busy?: bool,
   expanded?: bool,
 }
-@deprecated("Directly create record instead") @obj
-external state: (
-  ~disabled: bool=?,
-  ~selected: bool=?,
-  ~checked: checked=?,
-  ~busy: bool=?,
-  ~expanded: bool=?,
-  unit,
-) => state = ""
 
 type value
 

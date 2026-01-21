@@ -208,8 +208,6 @@ external parallel: (array<Animation.t>, parallelPayload) => Animation.t = "paral
 external stagger: (float, array<Animation.t>) => Animation.t = "stagger"
 
 type loopConfig = {iterations?: int, resetBeforeIteration?: bool}
-@deprecated("Directly create record instead") @obj
-external loopConfig: (~iterations: int=?, ~resetBeforeIteration: bool=?) => loopConfig = ""
 
 // multiple externals
 @module("react-native") @scope("Animated")
@@ -224,13 +222,6 @@ type eventOptions<'a, 'platformConfig> = {
   useNativeDriver: bool,
   platformConfig?: 'platformConfig,
 }
-@deprecated("Directly create record instead") @obj
-external eventOptions: (
-  ~listener: 'a=?,
-  ~useNativeDriver: bool,
-  ~platformConfig: 'platformConfig=?,
-  unit,
-) => eventOptions<'a, 'platformConfig> = ""
 
 // multiple externals
 @module("react-native") @scope("Animated")

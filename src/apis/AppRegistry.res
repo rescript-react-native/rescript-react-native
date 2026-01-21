@@ -21,14 +21,6 @@ type appConfig<'a> = {
   run?: appParameters => unit,
   section?: bool,
 }
-@deprecated("Directly create record instead") @obj
-external appConfig: (
-  ~appKey: string,
-  ~component: componentProvider<'a>=?,
-  ~run: appParameters => unit=?,
-  ~section: bool=?,
-  unit,
-) => appConfig<'a> = ""
 
 type runnable<'a> = {
   "component": Js.Nullable.t<componentProvider<'a>>,
