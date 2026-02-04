@@ -1,5 +1,11 @@
 # Changelog of `rescript-react-native`
 
+## 0.81.0 - 2026-02-04
+
+- deprecate `<SafeAreView>`
+- remove many deprecated `@obj`
+- upgrade to `@rescript/react@0.14.1` and `react@19.1` for `react-native@0.80`
+
 ## 0.78.1 - 2025-11-07
 
 - add `submitBehavior` prop on TextInput
