@@ -6,6 +6,7 @@ external arrayOption: array<option<t>> => t = "%identity"
 external unsafeAddStyle: (@as(json`{}`) _, t, {..}) => t = "Object.assign"
 external unsafeStyle: {..} => t = "%identity"
 
+@notUndefined
 type size
 
 external dp: float => size = "%identity"
