@@ -6,16 +6,18 @@ type barStyle = [
 
 type showHideTransition = [#fade | #none | #slide]
 
-@react.component @module("react-native")
-external make: (
-  ~animated: bool=?,
-  ~barStyle: barStyle=?,
-  ~hidden: bool=?,
-  ~backgroundColor: string=?,
-  ~translucent: bool=?,
-  ~networkActivityIndicatorVisible: bool=?,
-  ~showHideTransition: showHideTransition=?,
-) => React.element = "StatusBar"
+type props = {
+  animated?: bool,
+  barStyle?: barStyle,
+  hidden?: bool,
+  backgroundColor?: string,
+  translucent?: bool,
+  networkActivityIndicatorVisible?: bool,
+  showHideTransition?: showHideTransition,
+}
+
+@module("react-native")
+external make: React.component<props> = "StatusBar"
 
 @module("react-native") @scope("StatusBar")
 external setHidden: (bool, showHideTransition) => unit = "setHidden"

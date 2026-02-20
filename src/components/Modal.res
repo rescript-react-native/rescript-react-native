@@ -29,22 +29,23 @@ type presentationStyle = [
   | #overFullScreen
 ]
 
-@react.component @module("react-native")
-external make: (
-  ~ref: ref=?,
-  // Modal props
-  ~animationType: animationType=?,
-  ~backdropColor: Color.t=?,
-  ~hardwareAccelerated: bool=?,
-  ~navigationBarTranslucent: bool=?,
-  ~onDismiss: unit => unit=?,
-  ~onOrientationChange: orientationChangeEvent => unit=?,
-  ~onRequestClose: unit => unit=?,
-  ~onShow: unit => unit=?,
-  ~presentationStyle: presentationStyle=?,
-  ~statusBarTranslucent: bool=?,
-  ~supportedOrientations: array<orientation>=?,
-  ~transparent: bool=?,
-  ~visible: bool=?,
-  ~children: React.element=?,
-) => React.element = "Modal"
+type props = {
+  ref?: ref,
+  animationType?: animationType,
+  backdropColor?: Color.t,
+  hardwareAccelerated?: bool,
+  navigationBarTranslucent?: bool,
+  onDismiss?: unit => unit,
+  onOrientationChange?: orientationChangeEvent => unit,
+  onRequestClose?: unit => unit,
+  onShow?: unit => unit,
+  presentationStyle?: presentationStyle,
+  statusBarTranslucent?: bool,
+  supportedOrientations?: array<orientation>,
+  transparent?: bool,
+  visible?: bool,
+  children?: React.element,
+}
+
+@module("react-native")
+external make: React.component<props> = "Modal"

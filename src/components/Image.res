@@ -87,8 +87,7 @@ type crossOrigin = [
   | #"use-credentials"
 ]
 
-type props = {
-  ref?: ref,
+type imageProps = {
   accessibilityLabel?: string,
   accessible?: bool,
   alt?: string,
@@ -117,6 +116,11 @@ type props = {
   testID?: string,
   tintColor?: Color.t,
   width?: float,
+}
+
+type props = {
+  ref?: ref,
+  ...imageProps,
 }
 
 @module("react-native")
