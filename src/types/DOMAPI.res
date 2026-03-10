@@ -115,7 +115,7 @@ module Element = {
     })
 
     @send
-    external getBoundingClientRect: T.t => ReactNative.Rect.t = "getBoundingClientRect"
+    external getBoundingClientRect: T.t => Rect.t = "getBoundingClientRect"
     @send
     external hasPointerCapture: (T.t, int) => bool = "hasPointerCapture"
     @send
