@@ -95,7 +95,7 @@ module Node = {
     @send
     external compareDocumentPosition: (T.t, node) => int = "compareDocumentPosition"
     @send external contains: (T.t, node) => bool = "contains"
-    @send external getRootNode: T.t => T.t = "getRootNode"
+    @send external getRootNode: T.t => node = "getRootNode"
     @send external hasChildNodes: T.t => bool = "hasChildNodes"
   }
 
@@ -138,7 +138,7 @@ module Document = {
     type t = document
   })
 
-  @send external getElementById: (document, string) => element = "getElementById"
+  @send external getElementById: (document, string) => Js.Null.t<element> = "getElementById"
 }
 
 module Text = {
@@ -146,7 +146,7 @@ module Text = {
     type t = text
   })
 
-  @send external substringData: (text, ~offset: int, ~count: int) => unit = "substringData"
+  @send external substringData: (text, ~offset: int, ~count: int) => string = "substringData"
 }
 
 module NodeType = {
