@@ -135,7 +135,7 @@ module Element = {
 
 module Document = {
   include Node.Impl({
-    type t = element
+    type t = document
   })
 
   @send external getElementById: (document, string) => element = "getElementById"
@@ -143,13 +143,13 @@ module Document = {
 
 module Text = {
   include Node.Impl({
-    type t = element
+    type t = text
   })
 
   @send external substringData: (text, ~offset: int, ~count: int) => unit = "substringData"
 }
 
-module NodeTypeHelper = {
+module NodeType = {
   /*
   Helper for handle NodeType
   Waiting for this issue :
@@ -170,7 +170,7 @@ module NodeTypeHelper = {
     | Document(document)
     | Unknown
 
-  let findNodeType = (node: node) =>
+  let classify = (node: node) =>
     switch node {
     | {nodeType: 1} => Element(node->Obj.magic)
     | {nodeType: 3} => Text(node->Obj.magic)

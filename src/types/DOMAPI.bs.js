@@ -25,7 +25,7 @@ var $$Document = {};
 
 var $$Text = {};
 
-function findNodeType(node) {
+function classify(node) {
   switch (node.nodeType) {
     case 1 :
         return {
@@ -47,8 +47,8 @@ function findNodeType(node) {
   }
 }
 
-var NodeTypeHelper = {
-  findNodeType: findNodeType
+var NodeType = {
+  classify: classify
 };
 
 exports.$$NodeList = $$NodeList;
@@ -57,5 +57,5 @@ exports.$$Node = $$Node;
 exports.$$Element = $$Element;
 exports.$$Document = $$Document;
 exports.$$Text = $$Text;
-exports.NodeTypeHelper = NodeTypeHelper;
+exports.NodeType = NodeType;
 /* No side effect */
