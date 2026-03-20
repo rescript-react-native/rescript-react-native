@@ -1,4 +1,4 @@
-type screenRect = {
+type keyboardMetrics = {
   screenX: float,
   screenY: float,
   width: float,
@@ -17,8 +17,8 @@ type eventType = [
 type keyboardEvent = {
   duration: float,
   easing: LayoutAnimation.animationType,
-  endCoordinates: screenRect,
-  startCoordinates: screenRect,
+  endCoordinates: keyboardMetrics,
+  startCoordinates: keyboardMetrics,
   isEventFromThisApp: bool,
 }
 
@@ -35,3 +35,9 @@ external dismiss: unit => unit = "dismiss"
 
 @module("react-native") @scope("Keyboard")
 external isVisible: unit => bool = "isVisible"
+
+@module("react-native") @scope("Keyboard")
+external scheduleLayoutAnimation: keyboardEvent => unit = "scheduleLayoutAnimation"
+
+@module("react-native") @scope("Keyboard") @return(nullable)
+external metrics: unit => option<keyboardMetrics> = "metrics"

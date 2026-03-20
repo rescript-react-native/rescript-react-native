@@ -31,7 +31,7 @@ type itemLayout = {
   index: int,
 }
 
-type onStartReachedParams = {distanceFromEnd: float}
+type onStartReachedParams = {distanceFromStart: float}
 type onEndReachedParams = {distanceFromEnd: float}
 
 type onScrollToIndexFailedParams = {

@@ -33,4 +33,4 @@ external share: content => promise<shareResult> = "share"
 
 // multiple externals
 @module("react-native") @scope("Share")
-external shareWithOptions: (content, options) => promise<bool> = "share"
+external shareWithOptions: (content, options) => promise<shareResult> = "share"

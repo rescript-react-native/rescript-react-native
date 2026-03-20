@@ -4,6 +4,9 @@ type t = [#active | #background | #inactive | #unknown | #extension]
 external currentState: t = "currentState"
 
 @scope("AppState") @module("react-native")
+external isAvailable: bool = "isAvailable"
+
+@scope("AppState") @module("react-native")
 external addEventListener: @string
 [
   | #change(t => unit)
