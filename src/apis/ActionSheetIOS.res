@@ -2,11 +2,14 @@ type options = {
   options: array<string>,
   cancelButtonIndex?: int,
   destructiveButtonIndex?: array<int>,
-  disabledButtonIndices?: int,
+  disabledButtonIndices?: array<int>,
   title?: string,
   message?: string,
+  anchor?: int,
   tintColor?: Color.t,
   cancelButtonTintColor?: Color.t,
+  userInterfaceStyle?: Appearance.t,
+  disabledButtonTintColor?: Color.t,
 }
 
 @module("react-native") @scope("ActionSheetIOS")

@@ -8,13 +8,26 @@ type android_hyphenationFrequency = [
 type dataDetectorType = [
   | #phoneNumber
   | #link
-  | #address
-  | #calendarEvent
+  | #email
   | #none
   | #all
 ]
 
 type ellipsizeMode = [#clip | #head | #middle | #tail]
+
+type dynamicTypeRamp = [
+  | #caption2
+  | #caption1
+  | #footnote
+  | #subheadline
+  | #callout
+  | #body
+  | #headline
+  | #title3
+  | #title2
+  | #title1
+  | #largeTitle
+]
 
 type textBreakStrategy = [#simple | #highQuality | #balanced]
 
@@ -54,8 +67,9 @@ type props = {
   allowFontScaling?: bool,
   android_hyphenationFrequency?: android_hyphenationFrequency,
   ariaLevel?: int,
-  dataDetectorTypes?: array<dataDetectorType>,
+  dataDetectorType?: dataDetectorType,
   disabled?: bool,
+  dynamicTypeRamp?: dynamicTypeRamp,
   ellipsizeMode?: ellipsizeMode,
   lineBreakStrategyIOS?: lineBreakStrategyIOS,
   maxFontSizeMultiplier?: int,

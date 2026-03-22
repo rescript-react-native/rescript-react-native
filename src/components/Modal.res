@@ -31,12 +31,14 @@ type presentationStyle = [
 
 type props = {
   ref?: ref,
+  ...View.viewProps,
   animationType?: animationType,
   backdropColor?: Color.t,
   hardwareAccelerated?: bool,
   navigationBarTranslucent?: bool,
   onDismiss?: unit => unit,
   onOrientationChange?: orientationChangeEvent => unit,
+  allowSwipeDismissal?: bool,
   onRequestClose?: unit => unit,
   onShow?: unit => unit,
   presentationStyle?: presentationStyle,
@@ -44,7 +46,6 @@ type props = {
   supportedOrientations?: array<orientation>,
   transparent?: bool,
   visible?: bool,
-  children?: React.element,
 }
 
 @module("react-native")

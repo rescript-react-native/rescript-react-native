@@ -214,6 +214,9 @@ type textContentType = [
   | #password
   | #newPassword
   | #oneTimeCode
+  | #creditCardExpiration
+  | #birthdate
+  | #cellularIMEI
 ]
 
 type inputMode = [
@@ -242,6 +245,27 @@ type submitBehavior = [
   | #newline
 ]
 
+type lineBreakModeIOS = [
+  | #wordWrapping
+  | #char
+  | #clip
+  | #head
+  | #middle
+  | #tail
+]
+
+type dataDetectorType = [
+  | #phoneNumber
+  | #link
+  | #address
+  | #calendarEvent
+  | #trackingNumber
+  | #flightNumber
+  | #lookupSuggestion
+  | #none
+  | #all
+]
+
 type props = {
   ref?: ref,
   ...View.gestureResponderHandlersProps,
@@ -268,6 +292,8 @@ type props = {
   clearTextOnFocus?: bool,
   contextMenuHidden?: bool,
   defaultValue?: string,
+  disableKeyboardShortcuts?: bool,
+  cursorColor?: Color.t,
   disableFullscreenUI?: bool,
   dataDetectorTypes?: array<Text.dataDetectorType>,
   editable?: bool,
@@ -283,6 +309,7 @@ type props = {
   keyboardAppearance?: keyboardAppearance,
   keyboardType?: keyboardType,
   lineBreakStrategyIOS?: Text.lineBreakStrategyIOS,
+  lineBreakModeIOS?: lineBreakModeIOS,
   maxFontSizeMultiplier?: float,
   maxLength?: int,
   multiline?: bool,
@@ -312,13 +339,16 @@ type props = {
   secureTextEntry?: bool,
   selection?: selection,
   selectionColor?: Color.t,
+  selectionHandleColor?: Color.t,
   selectTextOnFocus?: bool,
   showSoftInputOnFocus?: bool,
+  smartInsertDelete?: bool,
   spellCheck?: bool,
   textAlign?: [#left | #center | #right],
   textAlignVertical?: Style.textAlignVertical,
   textBreakStrategy?: Text.textBreakStrategy,
   textContentType?: textContentType,
+  passwordRules?: string,
   underlineColorAndroid?: Color.t,
   value?: string,
 }

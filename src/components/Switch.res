@@ -11,6 +11,7 @@ type props = {
   disabled?: bool,
   trackColor?: trackColor,
   ios_backgroundColor?: Color.t,
+  onChange?: Event.switchChangeEvent => unit,
   onValueChange?: bool => unit,
   thumbColor?: Color.t,
   value?: bool,

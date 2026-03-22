@@ -80,6 +80,9 @@ module Permission = {
   external readMediaVideo: t = "READ_MEDIA_VIDEO"
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
+  external readMediaVisualUserSelected: t = "READ_MEDIA_VISUAL_USER_SELECTED"
+
+  @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
   external readPhoneNumbers: t = "READ_PHONE_NUMBERS"
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
