@@ -1,9 +1,19 @@
 include VirtualizedListElement
 
+module Separators = {
+  type t
+
+  type select = [#leading | #trailing]
+
+  @send external highlight: t => unit = "highlight"
+  @send external unhighlight: t => unit = "unhighlight"
+  @send external updateProps: (t, select, {..}) => unit = "updateProps"
+}
+
 type renderItemProps<'item> = {
   item: 'item,
   index: int,
-  // separators: TODO
+  separators: Separators.t,
 }
 
 type renderItemCallback<'item> = renderItemProps<'item> => React.element
@@ -71,7 +81,7 @@ type virtualizedListProps<'data, 'item, 'extraData> = {
   initialNumToRender?: int,
   initialScrollIndex?: int,
   inverted?: bool,
-  keyExtractor: ('item, int) => string,
+  keyExtractor?: ('item, int) => string,
   maxToRenderPerBatch?: int,
   onStartReached?: onStartReachedParams => unit,
   onStartReachedThreshold?: float,
@@ -82,7 +92,7 @@ type virtualizedListProps<'data, 'item, 'extraData> = {
   onViewableItemsChanged?: viewableItemsChanged<'item> => unit,
   progressViewOffset?: float,
   refreshing?: bool,
-  renderScrollComponent?: unit => React.element, // TODO?: params?
+  renderScrollComponent?: ScrollView.scrollViewProps => React.element,
   updateCellsBatchingPeriod?: float,
   viewabilityConfig?: viewabilityConfig,
   viewabilityConfigCallbackPairs?: viewabilityConfigCallbackPairs<'item>,
