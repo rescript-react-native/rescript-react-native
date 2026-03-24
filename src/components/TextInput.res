@@ -295,7 +295,7 @@ type props = {
   disableKeyboardShortcuts?: bool,
   cursorColor?: Color.t,
   disableFullscreenUI?: bool,
-  dataDetectorTypes?: array<Text.dataDetectorType>,
+  dataDetectorTypes?: array<dataDetectorType>,
   editable?: bool,
   enablesReturnKeyAutomatically?: bool,
   // `enterKeyHint` has precedence over the `returnKeyType`

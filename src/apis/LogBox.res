@@ -1,5 +1,8 @@
 @module("react-native") @scope("LogBox")
-external ignoreLogs: array<Js.Re.t> => unit = "ignoreLogs"
+external ignoreLogs: array<string> => unit = "ignoreLogs"
+
+@module("react-native") @scope("LogBox")
+external ignoreLogsRegex: array<Js.Re.t> => unit = "ignoreLogs"
 
 @module("react-native") @scope("LogBox")
 external ignoreAllLogs: (~ignore: bool=?) => unit = "ignoreAllLogs"
@@ -8,4 +11,4 @@ external ignoreAllLogs: (~ignore: bool=?) => unit = "ignoreAllLogs"
 external install: unit => unit = "install"
 
 @module("react-native") @scope("LogBox")
-external uninstall: unit => unit = "install"
+external uninstall: unit => unit = "uninstall"
