@@ -4,16 +4,17 @@ module Background = {
   type t
 
   @module("react-native") @scope("TouchableNativeFeedback")
-  external selectableBackground: unit => t = "SelectableBackground"
+  external selectableBackground: (~rippleRadius: float=?) => t = "SelectableBackground"
 
   @module("react-native") @scope("TouchableNativeFeedback")
-  external selectableBackgroundBorderless: unit => t = "SelectableBackgroundBorderless"
+  external selectableBackgroundBorderless: (~rippleRadius: float=?) => t =
+    "SelectableBackgroundBorderless"
 
   @module("react-native") @scope("TouchableNativeFeedback")
   external canUseNativeForeground: unit => bool = "canUseNativeForeground"
 
   @module("react-native") @scope("TouchableNativeFeedback")
-  external ripple: (string, bool) => t = "Ripple"
+  external ripple: (string, bool, ~rippleRadius: float=?) => t = "Ripple"
 }
 
 type props = {

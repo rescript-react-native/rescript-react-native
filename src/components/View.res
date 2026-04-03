@@ -57,7 +57,14 @@ type accessibilityProps = {
 
 type iosProps = {shouldRasterizeIOS?: bool}
 
-type androidProps = {collapsable?: bool, renderToHardwareTextureAndroid?: bool}
+@unboxed
+type tabIndex = | @as(0) Focusable | @as(-1) NotFocusable
+
+type androidProps = {
+  renderToHardwareTextureAndroid?: bool,
+  focusable?: bool,
+  tabIndex?: tabIndex,
+}
 
 type webLinkProps = {
   href?: string,
@@ -103,10 +110,13 @@ type webProps = {
 type coreProps = {
   hitSlop?: Rect.t,
   nativeID?: string,
+  id?: string,
   needsOffscreenAlphaCompositing?: bool,
   onLayout?: Event.layoutEvent => unit,
   pointerEvents?: pointerEvents,
   removeClippedSubviews?: bool,
+  collapsable?: bool,
+  collapsableChildren?: bool,
   style?: Style.t,
   testID?: string,
   children?: React.element,

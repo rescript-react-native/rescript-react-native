@@ -21,15 +21,15 @@ external canOpenURL: string => promise<bool> = "canOpenURL"
 external getInitialURL: unit => promise<Js.Null.t<string>> = "getInitialURL"
 
 @scope("Linking") @module("react-native")
-external openSettings: unit => promise<'a> = "openSettings"
+external openSettings: unit => promise<unit> = "openSettings"
 
 // multiple externals
 @scope("Linking") @module("react-native")
-external sendIntent: string => unit = "sendIntent"
+external sendIntent: string => promise<unit> = "sendIntent"
 
 // multiple externals
 @scope("Linking") @module("react-native")
-external sendIntentWithExtras: (string, array<extra>) => unit = "sendIntent"
+external sendIntentWithExtras: (string, array<extra>) => promise<unit> = "sendIntent"
 
 type url = {url: string}
 

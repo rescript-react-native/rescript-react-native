@@ -12,7 +12,7 @@ type drawerSlideEvent = DrawerSlideEvent.t
 
 type t
 
-type androidInteractionState = [#idle | #dragging | #settling]
+type androidInteractionState = [#Idle | #Dragging | #Settling]
 
 type drawerLockMode = [
   | #unlocked
@@ -27,7 +27,7 @@ type keyboardDismissMode = [#none | #"on-drag"]
 type props = {
   ref?: ref,
   ...View.viewProps,
-  renderNavigationView?: unit => React.element,
+  renderNavigationView: unit => React.element,
   onDrawerClose?: unit => unit,
   drawerLockMode?: drawerLockMode,
   drawerPosition?: drawerPosition,

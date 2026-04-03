@@ -1,5 +1,6 @@
 type options = {
   cancelable?: bool,
+  userInterfaceStyle?: Appearance.t,
   onDismiss?: unit => unit,
 }
 

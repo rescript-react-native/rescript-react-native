@@ -9,11 +9,20 @@ external addEventListener: @string
   | #reduceMotionChanged(bool => unit)
   | #screenReaderChanged(bool => unit)
   | #reduceTransparencyChanged(bool => unit)
+  | #highTextContrastChanged(bool => unit)
+  | #darkerSystemColorsChanged(bool => unit)
+  | #accessibilityServiceChanged(bool => unit)
   | #announcementFinished(announcementResult => unit)
 ] => EventSubscription.t = "addEventListener"
 
 @scope("AccessibilityInfo") @module("react-native")
 external announceForAccessibility: string => unit = "announceForAccessibility"
+
+type announceForAccessibilityOptions = {queue?: bool}
+
+@scope("AccessibilityInfo") @module("react-native")
+external announceForAccessibilityWithOptions: (string, announceForAccessibilityOptions) => unit =
+  "announceForAccessibilityWithOptions"
 
 @scope("AccessibilityInfo") @module("react-native")
 external getRecommendedTimeoutMillis: float => promise<float> = "getRecommendedTimeoutMillis"
@@ -37,10 +46,29 @@ external isReduceTransparencyEnabled: unit => promise<bool> = "isReduceTranspare
 external isScreenReaderEnabled: unit => promise<bool> = "isScreenReaderEnabled"
 
 @scope("AccessibilityInfo") @module("react-native")
-external isAccessibilityServiceEnabled: unit => promise<bool> = "isAccessibilityServiceEnabled"
+external isHighTextContrastEnabled: unit => promise<bool> = "isHighTextContrastEnabled"
 
 @scope("AccessibilityInfo") @module("react-native")
+external isDarkerSystemColorsEnabled: unit => promise<bool> = "isDarkerSystemColorsEnabled"
+
+@scope("AccessibilityInfo") @module("react-native")
+external isAccessibilityServiceEnabled: unit => promise<bool> = "isAccessibilityServiceEnabled"
+
+@deprecated("Prefer using sendAccessibilityEvent with eventType focus instead.")
+@scope("AccessibilityInfo")
+@module("react-native")
 external setAccessibilityFocus: NativeTypes.nodeHandle => unit = "setAccessibilityFocus"
+
+type accessibilityEventTypes = [
+  | #click
+  | #focus
+  | #viewHoverEnter
+  | #windowStateChange
+]
+
+@scope("AccessibilityInfo") @module("react-native")
+external sendAccessibilityEvent: (NativeElement.ref, accessibilityEventTypes) => unit =
+  "sendAccessibilityEvent"
 
 @scope("AccessibilityInfo") @module("react-native")
 external prefersCrossFadeTransitions: unit => promise<bool> = "prefersCrossFadeTransitions"

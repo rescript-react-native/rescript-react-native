@@ -69,7 +69,7 @@ module ProgressEvent = {
 
 type progressEvent = ProgressEvent.t
 
-type resizeMethod = [#auto | #resize | #scale]
+type resizeMethod = [#auto | #resize | #scale | #none]
 
 type referrerPolicy = [
   | #"no-referrer"
@@ -97,7 +97,7 @@ type imageProps = {
   defaultSource?: Source.t,
   fadeDuration?: float,
   height?: float,
-  loadingIndicatorSource?: array<Source.t>,
+  loadingIndicatorSource?: Source.t,
   onError?: errorEvent => unit,
   onLayout?: Event.layoutEvent => unit,
   onLoad?: imageLoadEvent => unit,
@@ -128,17 +128,37 @@ external make: React.component<props> = "Image"
 
 type sizeError
 
+type imageSize = {
+  height: float,
+  width: float,
+}
+
 @module("react-native") @scope("Image")
-external getSize: (
+external getSize_legacy: (
   ~uri: string,
   ~success: (~width: float, ~height: float) => unit,
   ~failure: sizeError => unit=?,
 ) => unit = "getSize"
 
+@module("react-native") @scope("Image")
+external getSize: (~uri: string) => promise<imageSize> = "getSize"
+
+@module("react-native") @scope("Image")
+external getSizeWithHeaders: (~uri: string, ~header: dict<string>) => promise<imageSize> =
+  "getSizeWithHeaders"
+
 type requestId
 
 @module("react-native") @scope("Image")
-external prefetch: (~uri: string) => requestId = "prefetch"
+external prefetch: (~uri: string, ~callback: requestId => unit=?) => promise<bool> = "prefetch"
+
+@module("react-native") @scope("Image")
+external prefetchWithMetadata: (
+  ~uri: string,
+  ~queryRootName: string,
+  ~rootTag: float=?,
+  ~callback: requestId => unit=?,
+) => promise<bool> = "prefetchWithMetadata"
 
 @module("react-native") @scope("Image")
 external abortPrefetch: requestId => unit = "abortPrefetch"

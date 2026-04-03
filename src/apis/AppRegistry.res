@@ -50,7 +50,7 @@ external getSections: unit => dict<runnable<'a>> = "getSections"
 
 // multiple externals
 @module("react-native") @scope("AppRegistry")
-external registerComponent: (appKey, componentProvider<'a>) => unit = "registerComponent"
+external registerComponent: (appKey, componentProvider<'a>) => string = "registerComponent"
 
 // multiple externals
 @module("react-native") @scope("AppRegistry")
@@ -74,7 +74,7 @@ external setWrapperComponentProvider: wrapperComponentProvider<'a, 'b> => unit =
   "setWrapperComponentProvider"
 
 @module("react-native") @scope("AppRegistry")
-external unmountApplicationComponentAtRootTag: string => unit =
+external unmountApplicationComponentAtRootTag: float => unit =
   "unmountApplicationComponentAtRootTag"
 
 // Android only
