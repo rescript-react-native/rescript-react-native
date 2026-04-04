@@ -1,10 +1,11 @@
-type element
-type ref = Ref.t<element>
+type nativeElement
 
-include TouchableOpacityMethods.Make({
-  type t = element
+include NativeElement.Impl({
+  type t = nativeElement
 })
 
-include NativeMethods.Make({
+external asTouchableOpacityElement: DOMAPI.anyElement => element = "%identity"
+
+include TouchableOpacityMethods.Make({
   type t = element
 })

@@ -1,4 +1,10 @@
-include NativeElement
+type nativeElement
+
+include NativeElement.Impl({
+  type t = nativeElement
+})
+
+external asTouchableWithoutFeedbackElement: DOMAPI.anyElement => element = "%identity"
 
 type coreProps = {
   accessible?: bool,

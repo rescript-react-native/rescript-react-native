@@ -1,4 +1,10 @@
-include NativeElement
+type nativeElement
+
+include NativeElement.Impl({
+  type t = nativeElement
+})
+
+external asModalElement: DOMAPI.anyElement => element = "%identity"
 
 type orientation = [
   | #landscape

@@ -1,10 +1,10 @@
 'use strict';
 
-var NativeMethods$ReactNative = require("./NativeMethods.bs.js");
+var NativeElement$ReactNative = require("./NativeElement.bs.js");
 var TextInputMethods$ReactNative = require("./TextInputMethods.bs.js");
 
-TextInputMethods$ReactNative.Make({});
+NativeElement$ReactNative.Impl({});
 
-NativeMethods$ReactNative.Make({});
+TextInputMethods$ReactNative.Make({});
 
 /*  Not a pure module */

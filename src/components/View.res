@@ -1,4 +1,10 @@
-include NativeElement
+type nativeElement
+
+include NativeElement.Impl({
+  type t = nativeElement
+})
+
+external asViewElement: DOMAPI.anyElement => element = "%identity"
 
 // @todo in 0.71.0
 // after adding `aria-*` props, make sure `aria-checked` can be true, false or "mixed"

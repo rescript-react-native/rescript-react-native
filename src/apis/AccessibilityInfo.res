@@ -67,8 +67,10 @@ type accessibilityEventTypes = [
 ]
 
 @scope("AccessibilityInfo") @module("react-native")
-external sendAccessibilityEvent: (NativeElement.ref, accessibilityEventTypes) => unit =
-  "sendAccessibilityEvent"
+external sendAccessibilityEvent: (
+  Ref.t<DOMAPI.element<'nativeElement>>,
+  accessibilityEventTypes,
+) => unit = "sendAccessibilityEvent"
 
 @scope("AccessibilityInfo") @module("react-native")
 external prefersCrossFadeTransitions: unit => promise<bool> = "prefersCrossFadeTransitions"

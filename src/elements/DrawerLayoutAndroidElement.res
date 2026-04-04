@@ -1,10 +1,11 @@
-type element
-type ref = Ref.t<element>
+type nativeElement
 
-include DrawerLayoutAndroidMethods.Make({
-  type t = element
+include NativeElement.Impl({
+  type t = nativeElement
 })
 
-include NativeMethods.Make({
+external asDrawerLayoutAndroidElement: DOMAPI.anyElement => element = "%identity"
+
+include DrawerLayoutAndroidMethods.Make({
   type t = element
 })

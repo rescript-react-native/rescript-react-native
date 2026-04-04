@@ -3,8 +3,11 @@
 var DOMAPI$ReactNative = require("../types/DOMAPI.bs.js");
 var NativeMethods$ReactNative = require("./NativeMethods.bs.js");
 
-NativeMethods$ReactNative.Make({});
+function Impl(T) {
+  NativeMethods$ReactNative.Make({});
+  DOMAPI$ReactNative.$$Element.Impl({});
+  return {};
+}
 
-DOMAPI$ReactNative.$$Element.Impl({});
-
-/*  Not a pure module */
+exports.Impl = Impl;
+/* No side effect */

@@ -1,4 +1,10 @@
-include NativeElement
+type nativeElement
+
+include NativeElement.Impl({
+  type t = nativeElement
+})
+
+external asSwitchElement: DOMAPI.anyElement => element = "%identity"
 
 type trackColor = {
   \"true"?: Color.t,

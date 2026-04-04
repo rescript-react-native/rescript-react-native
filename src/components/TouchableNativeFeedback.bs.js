@@ -2,7 +2,9 @@
 
 var NativeElement$ReactNative = require("../elements/NativeElement.bs.js");
 
+NativeElement$ReactNative.Impl({});
+
 var Background = {};
 
 exports.Background = Background;
-/* NativeElement-ReactNative Not a pure module */
+/*  Not a pure module */

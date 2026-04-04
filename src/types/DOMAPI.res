@@ -20,25 +20,27 @@ type readOnlyNode<'node, 'document, 'element> = {
   textContent: string,
 }
 
+type unknownNativeElement
+
 type rec node = {
-  ...readOnlyNode<node, document, element>,
+  ...readOnlyNode<node, document, anyElement>,
 }
 
-and element = {
+and element<'nativeElement> = {
   // Node
-  ...readOnlyNode<node, document, element>,
+  ...readOnlyNode<node, document, anyElement>,
   // Element
   childElementCount: int,
-  children: htmlCollection<element>,
+  children: htmlCollection<anyElement>,
   clientHeight: int,
   clientLeft: int,
   clientTop: int,
   clientWidth: int,
-  firstElementChild: Js.Null.t<element>,
+  firstElementChild: Js.Null.t<anyElement>,
   id: string,
-  lastElementChild: Js.Null.t<element>,
-  nextElementSibling: Js.Null.t<element>,
-  previousElementSibling: Js.Null.t<element>,
+  lastElementChild: Js.Null.t<anyElement>,
+  nextElementSibling: Js.Null.t<anyElement>,
+  previousElementSibling: Js.Null.t<anyElement>,
   scrollHeight: int,
   scrollLeft: int,
   scrollTop: int,
@@ -49,27 +51,29 @@ and element = {
   offsetLeft: int,
   offsetTop: int,
   offsetWidth: int,
-  offsetParent: Js.Null.t<element>,
+  offsetParent: Js.Null.t<anyElement>,
 }
 
 and text = {
   // Node
-  ...readOnlyNode<node, document, element>,
+  ...readOnlyNode<node, document, anyElement>,
   // CharacterData
   data: string,
   length: int,
-  nextElementSibling: Js.Null.t<element>,
-  previousElementSibling: Js.Null.t<element>,
+  nextElementSibling: Js.Null.t<anyElement>,
+  previousElementSibling: Js.Null.t<anyElement>,
 }
 
 and document = {
-  ...readOnlyNode<node, document, element>,
+  ...readOnlyNode<node, document, anyElement>,
   childElementCount: int,
-  children: htmlCollection<element>,
-  documentElement: element,
-  firstElementChild: Js.Null.t<element>,
-  lastElementChild: Js.Null.t<element>,
+  children: htmlCollection<anyElement>,
+  documentElement: anyElement,
+  firstElementChild: Js.Null.t<anyElement>,
+  lastElementChild: Js.Null.t<anyElement>,
 }
+
+and anyElement = element<unknownNativeElement>
 
 module NodeList = {
   @send
@@ -129,7 +133,7 @@ module Element = {
   }
 
   include Impl({
-    type t = element
+    type t = anyElement
   })
 }
 
@@ -138,7 +142,8 @@ module Document = {
     type t = document
   })
 
-  @send external getElementById: (document, string) => Js.Null.t<element> = "getElementById"
+  @send
+  external getElementById: (document, string) => Js.Null.t<anyElement> = "getElementById"
 }
 
 module Text = {
@@ -165,7 +170,7 @@ module NodeType = {
   and remove this helper
  */
   type t =
-    | Element(element)
+    | Element(element<unknownNativeElement>)
     | Text(text)
     | Document(document)
     | Unknown

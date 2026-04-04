@@ -1,10 +1,10 @@
 'use strict';
 
-var NativeMethods$ReactNative = require("./NativeMethods.bs.js");
+var NativeElement$ReactNative = require("./NativeElement.bs.js");
 var TouchableOpacityMethods$ReactNative = require("./TouchableOpacityMethods.bs.js");
 
-TouchableOpacityMethods$ReactNative.Make({});
+NativeElement$ReactNative.Impl({});
 
-NativeMethods$ReactNative.Make({});
+TouchableOpacityMethods$ReactNative.Make({});
 
 /*  Not a pure module */

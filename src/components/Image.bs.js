@@ -3,6 +3,8 @@
 var Event$ReactNative = require("../apis/Event.bs.js");
 var NativeElement$ReactNative = require("../elements/NativeElement.bs.js");
 
+NativeElement$ReactNative.Impl({});
+
 var Source = {};
 
 Event$ReactNative.SyntheticEvent({});

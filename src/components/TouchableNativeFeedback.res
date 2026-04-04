@@ -1,4 +1,10 @@
-include NativeElement
+type nativeElement
+
+include NativeElement.Impl({
+  type t = nativeElement
+})
+
+external asTouchableNativeFeedbackElement: DOMAPI.anyElement => element = "%identity"
 
 module Background = {
   type t
