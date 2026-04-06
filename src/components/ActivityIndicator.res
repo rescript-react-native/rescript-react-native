@@ -4,8 +4,6 @@ include NativeElement.Impl({
   type t = nativeElement
 })
 
-external asActivityIndicatorElement: DOMAPI.anyElement => element = "%identity"
-
 @unboxed
 type size = | @as("small") Small | @as("large") Large | Number(float)
 

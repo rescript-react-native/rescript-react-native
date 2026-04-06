@@ -4,8 +4,6 @@ include NativeElement.Impl({
   type t = nativeElement
 })
 
-external asKeyboardAvoidingViewElement: DOMAPI.anyElement => element = "%identity"
-
 type behavior = [#height | #position | #padding]
 
 type props = {

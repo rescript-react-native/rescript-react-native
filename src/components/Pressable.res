@@ -4,8 +4,6 @@ include NativeElement.Impl({
   type t = nativeElement
 })
 
-external asPressableElement: DOMAPI.anyElement => element = "%identity"
-
 type rippleConfig = {
   borderless?: bool,
   color?: Color.t,

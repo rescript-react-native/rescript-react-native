@@ -4,8 +4,6 @@ include NativeElement.Impl({
   type t = nativeElement
 })
 
-external asTextElement: DOMAPI.anyElement => element = "%identity"
-
 type android_hyphenationFrequency = [
   | #normal
   | #none

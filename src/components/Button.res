@@ -4,8 +4,6 @@ include NativeElement.Impl({
   type t = nativeElement
 })
 
-external asButtonElement: DOMAPI.anyElement => element = "%identity"
-
 type props = {
   ref?: ref,
   accessibilityActions?: array<Accessibility.actionInfo>,

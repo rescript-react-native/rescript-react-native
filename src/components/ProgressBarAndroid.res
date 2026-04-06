@@ -4,8 +4,6 @@ include NativeElement.Impl({
   type t = nativeElement
 })
 
-external asProgressBarAndroidElement: DOMAPI.anyElement => element = "%identity"
-
 type styleAttr = [
   | #Horizontal
   | #Normal

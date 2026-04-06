@@ -6,6 +6,8 @@ module Impl = (
   type element = DOMAPI.element<T.t>
   type ref = Ref.t<element>
 
+  external unsafeFromAnyElement: DOMAPI.anyElement => element = "%identity"
+
   include NativeMethods.Make({
     type t = element
   })

@@ -4,8 +4,6 @@ include NativeElement.Impl({
   type t = nativeElement
 })
 
-external asVirtualizedListElement: DOMAPI.anyElement => element = "%identity"
-
 include VirtualizedListMethods.Make({
   type t = element
 })

@@ -4,8 +4,6 @@ include NativeElement.Impl({
   type t = nativeElement
 })
 
-external asTouchableHighlightElement: DOMAPI.anyElement => element = "%identity"
-
 type props = {
   ref?: ref,
   ...TouchableWithoutFeedback.coreProps,

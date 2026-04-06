@@ -4,8 +4,6 @@ include NativeElement.Impl({
   type t = nativeElement
 })
 
-external asImageElement: DOMAPI.anyElement => element = "%identity"
-
 type cache = [
   | #default
   | #reload
