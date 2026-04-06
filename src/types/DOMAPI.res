@@ -17,7 +17,7 @@ type readOnlyNode<'node, 'document, 'element> = {
   parentElement: Js.Null.t<'element>,
   parentNode: Js.Null.t<'node>,
   previousSibling: Js.Null.t<'node>,
-  textContent: string,
+  textContent: Js.Null.t<string>,
 }
 
 type unknownNativeElement
