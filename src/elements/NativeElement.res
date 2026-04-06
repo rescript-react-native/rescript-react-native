@@ -14,3 +14,10 @@ module Impl = (
     type t = element
   })
 }
+
+@deprecated(
+  "Bindings maintainers: please use NativeElement.Impl instead of accessing the types directly."
+)
+include Impl({
+  type t = DOMAPI.anyElement
+})

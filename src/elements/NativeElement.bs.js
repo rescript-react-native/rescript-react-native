@@ -9,5 +9,9 @@ function Impl(T) {
   return {};
 }
 
+NativeMethods$ReactNative.Make({});
+
+DOMAPI$ReactNative.$$Element.Impl({});
+
 exports.Impl = Impl;
-/* No side effect */
+/*  Not a pure module */
