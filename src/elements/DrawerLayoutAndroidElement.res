@@ -1,10 +1,9 @@
-type element
-type ref = Ref.t<element>
+type nativeElement
 
-include DrawerLayoutAndroidMethods.Make({
-  type t = element
+include NativeElement.Impl({
+  type t = nativeElement
 })
 
-include NativeMethods.Make({
+include DrawerLayoutAndroidMethods.Make({
   type t = element
 })

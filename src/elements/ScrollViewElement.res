@@ -1,5 +1,8 @@
-type element
-type ref = Ref.t<element>
+type nativeElement
+
+include NativeElement.Impl({
+  type t = nativeElement
+})
 
 include ScrollViewMethods.Make({
   type t = element

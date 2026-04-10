@@ -2,5 +2,6 @@
 
 var NativeElement$ReactNative = require("../elements/NativeElement.bs.js");
 
+NativeElement$ReactNative.Impl({});
 
-/* NativeElement-ReactNative Not a pure module */
+/*  Not a pure module */

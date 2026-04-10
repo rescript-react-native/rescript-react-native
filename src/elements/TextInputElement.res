@@ -1,10 +1,9 @@
-type element
-type ref = Ref.t<element>
+type nativeElement
 
-include TextInputMethods.Make({
-  type t = element
+include NativeElement.Impl({
+  type t = nativeElement
 })
 
-include NativeMethods.Make({
+include TextInputMethods.Make({
   type t = element
 })

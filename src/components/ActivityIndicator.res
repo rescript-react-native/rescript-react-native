@@ -1,4 +1,8 @@
-include NativeElement
+type nativeElement
+
+include NativeElement.Impl({
+  type t = nativeElement
+})
 
 @unboxed
 type size = | @as("small") Small | @as("large") Large | Number(float)

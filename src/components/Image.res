@@ -1,4 +1,8 @@
-include NativeElement
+type nativeElement
+
+include NativeElement.Impl({
+  type t = nativeElement
+})
 
 type cache = [
   | #default

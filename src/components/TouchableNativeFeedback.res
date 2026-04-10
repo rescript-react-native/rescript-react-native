@@ -1,4 +1,8 @@
-include NativeElement
+type nativeElement
+
+include NativeElement.Impl({
+  type t = nativeElement
+})
 
 module Background = {
   type t
