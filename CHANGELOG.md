@@ -1,5 +1,15 @@
 # Changelog of `rescript-react-native`
 
+## 0.82.0 - 2026-04-10
+
+- add `notUndefined` attribute to `Style.size` type [#843](https://github.com/rescript-react-native/rescript-react-native/pull/843) by @Bushuo
+- Fixed [#842](https://github.com/rescript-react-native/rescript-react-native/pull/842) all components with record type props
+- Many bindings changes, following codex review [#846](https://github.com/rescript-react-native/rescript-react-native/pull/846)
+- DOM Node APIs [#844](https://github.com/rescript-react-native/rescript-react-native/pull/844)
+  - new `node` types and methodes. More Info on [React Documentation](https://reactnative.dev/docs/nodes) and [React Blog Post](https://reactnative.dev/blog/2025/10/08/react-native-0.82#dom-node-apis)
+  - deprecate `NativeElement.element` use `NativeElement.Impl` instead
+- upgrade to `@rescript/react@0.14.2` and `react@19.2` for `react-native@0.82`
+
 ## 0.81.0 - 2026-02-04
 
 - deprecate `<SafeAreView>`
