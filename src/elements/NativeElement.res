@@ -18,8 +18,14 @@ module Impl = (
 }
 
 @deprecated(
-  "Bindings maintainers: please use NativeElement.Impl instead of accessing the types directly."
+  "Bindings maintainers: please use NativeElement.Impl instead of accessing element type directly."
 )
-include Impl({
-  type t = DOMAPI.anyElement
+type element
+
+@warning("-3")
+type ref = Ref.t<element>
+
+@warning("-3")
+include NativeMethods.Make({
+  type t = element
 })
