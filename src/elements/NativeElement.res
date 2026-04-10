@@ -17,9 +17,7 @@ module Impl = (
   })
 }
 
-@deprecated(
-  "Bindings maintainers: please use NativeElement.Impl instead of accessing element type directly."
-)
+@deprecated("Use NativeElement.Impl instead of accessing element type directly.")
 type element
 
 @warning("-3")
