@@ -1,7 +1,7 @@
 {
   "name": "rescript-react-native",
   "description": "ReScript bindings for React Native.",
-  "version": "0.82.0",
+  "version": "0.82.1",
   "peerDependencies": {
     "@rescript/react": ">=0.14.1",
     "react-native": ">=0.82.0",

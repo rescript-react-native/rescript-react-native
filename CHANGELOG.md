@@ -1,5 +1,9 @@
 # Changelog of `rescript-react-native`
 
+## 0.82.1 - 2026-04-10
+
+- revert to react 19.1 and rescript-react 0.14.1
+
 ## 0.82.0 - 2026-04-10
 
 - add `notUndefined` attribute to `Style.size` type [#843](https://github.com/rescript-react-native/rescript-react-native/pull/843) by @Bushuo
