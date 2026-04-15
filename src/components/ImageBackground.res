@@ -8,6 +8,7 @@ type props = {
   ref?: ref,
   imageRef?: Image.ref,
   imageStyle?: Style.t,
+  children?: React.element,
   ...Image.imageProps,
 }
 
