@@ -1,5 +1,10 @@
 # Changelog of `rescript-react-native`
 
+## 0.83.0 - 2026-04-23
+
+- upgrade to `@rescript/react@0.14.2` and `react@19.2` for `react-native@0.83`
+- ImageBackground: add missing children prop [#847](https://github.com/rescript-react-native/rescript-react-native/pull/847) by @cknitt
+
 ## 0.82.1 - 2026-04-10
 
 - revert to react 19.1 and rescript-react 0.14.1
