@@ -28,14 +28,14 @@
   "scripts": {
     "prepare": "husky install",
     "format:most": "prettier --write \"**/*.{md,json,js,css}\"",
-    "format:res": "rescript format -all",
-    "format": "npm run format:most && npm run format:res",
-    "re:start": "rescript build -w",
-    "re:build": "rescript",
-    "re:clean-build": "rescript clean && rescript",
+    "format": "npm run format:most && npm run re:format",
+    "re:start": "rescript watch",
+    "re:build": "rescript build",
+    "re:clean": "rescript clean",
+    "re:format": "rescript format",
     "start": "npm run re:start",
     "build": "npm run re:build",
-    "test": "npm run re:clean-build",
+    "test": "npm run re:clean && npm run re:build",
     "release": "npmpub"
   },
   "devDependencies": {
