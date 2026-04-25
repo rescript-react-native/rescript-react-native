@@ -1,7 +1,7 @@
-'use strict';
 
-let DOMAPI$ReactNative = require("../types/DOMAPI.bs.js");
-let NativeMethods$ReactNative = require("./NativeMethods.bs.js");
+
+import * as DOMAPI$ReactNative from "../types/DOMAPI.bs.js";
+import * as NativeMethods$ReactNative from "./NativeMethods.bs.js";
 
 function Impl(T) {
   NativeMethods$ReactNative.Make({});
@@ -11,5 +11,7 @@ function Impl(T) {
 
 NativeMethods$ReactNative.Make({});
 
-exports.Impl = Impl;
+export {
+  Impl,
+}
 /*  Not a pure module */

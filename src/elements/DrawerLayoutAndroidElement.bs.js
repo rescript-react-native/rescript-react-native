@@ -1,7 +1,7 @@
-'use strict';
 
-let NativeElement$ReactNative = require("./NativeElement.bs.js");
-let DrawerLayoutAndroidMethods$ReactNative = require("./DrawerLayoutAndroidMethods.bs.js");
+
+import * as NativeElement$ReactNative from "./NativeElement.bs.js";
+import * as DrawerLayoutAndroidMethods$ReactNative from "./DrawerLayoutAndroidMethods.bs.js";
 
 NativeElement$ReactNative.Impl({});
 

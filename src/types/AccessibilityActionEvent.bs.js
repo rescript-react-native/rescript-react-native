@@ -1,6 +1,6 @@
-'use strict';
 
-let Event$ReactNative = require("../apis/Event.bs.js");
+
+import * as Event$ReactNative from "../apis/Event.bs.js";
 
 Event$ReactNative.SyntheticEvent({});
 

@@ -1,6 +1,6 @@
-'use strict';
 
-let TouchableOpacityElement$ReactNative = require("../elements/TouchableOpacityElement.bs.js");
+
+import * as TouchableOpacityElement$ReactNative from "../elements/TouchableOpacityElement.bs.js";
 
 
 /* TouchableOpacityElement-ReactNative Not a pure module */

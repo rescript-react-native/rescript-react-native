@@ -1,10 +1,12 @@
-'use strict';
 
-let NativeElement$ReactNative = require("../elements/NativeElement.bs.js");
+
+import * as NativeElement$ReactNative from "../elements/NativeElement.bs.js";
 
 NativeElement$ReactNative.Impl({});
 
 let Background = {};
 
-exports.Background = Background;
+export {
+  Background,
+}
 /*  Not a pure module */

@@ -1,7 +1,7 @@
-'use strict';
 
-let NativeElement$ReactNative = require("./NativeElement.bs.js");
-let ScrollViewMethods$ReactNative = require("./ScrollViewMethods.bs.js");
+
+import * as NativeElement$ReactNative from "./NativeElement.bs.js";
+import * as ScrollViewMethods$ReactNative from "./ScrollViewMethods.bs.js";
 
 NativeElement$ReactNative.Impl({});
 

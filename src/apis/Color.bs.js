@@ -1,4 +1,4 @@
-'use strict';
+
 
 
 function rgb(r, g, b) {
@@ -17,8 +17,10 @@ function hsla(h, s, l, a) {
   return `hsl(` + h.toString() + `, ` + s.toString() + `%, ` + l.toString() + `%, ` + a.toString() + `)`;
 }
 
-exports.rgb = rgb;
-exports.rgba = rgba;
-exports.hsl = hsl;
-exports.hsla = hsla;
+export {
+  rgb,
+  rgba,
+  hsl,
+  hsla,
+}
 /* No side effect */

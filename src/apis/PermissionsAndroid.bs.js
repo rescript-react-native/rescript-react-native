@@ -1,10 +1,12 @@
-'use strict';
+
 
 
 let Permission = {};
 
 let Result = {};
 
-exports.Permission = Permission;
-exports.Result = Result;
+export {
+  Permission,
+  Result,
+}
 /* No side effect */

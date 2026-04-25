@@ -1,7 +1,7 @@
-'use strict';
 
-let ReactNative = require("react-native");
-let Primitive_option = require("@rescript/runtime/lib/js/Primitive_option.js");
+
+import * as ReactNative from "react-native";
+import * as Primitive_option from "@rescript/runtime/lib/es6/Primitive_option.js";
 
 let Animation = {};
 
@@ -112,25 +112,27 @@ let Text = {};
 
 let View = {};
 
-exports.Animation = Animation;
-exports.ValueAnimations = ValueAnimations;
-exports.Interpolation = Interpolation;
-exports.ValueOperations = ValueOperations;
-exports.ValueMethods = ValueMethods;
-exports.Value = Value;
-exports.ValueXY = ValueXY;
-exports.Color = Color;
-exports.timing = timing;
-exports.spring = spring;
-exports.decay = decay;
-exports.start = start;
-exports.stop = stop;
-exports.reset = reset;
-exports.StyleProp = StyleProp;
-exports.FlatList = FlatList;
-exports.Image = Image;
-exports.ScrollView = ScrollView;
-exports.SectionList = SectionList;
-exports.Text = Text;
-exports.View = View;
+export {
+  Animation,
+  ValueAnimations,
+  Interpolation,
+  ValueOperations,
+  ValueMethods,
+  Value,
+  ValueXY,
+  Color,
+  timing,
+  spring,
+  decay,
+  start,
+  stop,
+  reset,
+  StyleProp,
+  FlatList,
+  Image,
+  ScrollView,
+  SectionList,
+  Text,
+  View,
+}
 /* react-native Not a pure module */

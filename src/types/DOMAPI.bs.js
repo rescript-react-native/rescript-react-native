@@ -1,4 +1,4 @@
-'use strict';
+
 
 
 let NodeList = {};
@@ -51,11 +51,13 @@ let NodeType = {
   classify: classify
 };
 
-exports.NodeList = NodeList;
-exports.HTMLCollection = HTMLCollection;
-exports.Node = Node;
-exports.Element = Element;
-exports.Document = Document;
-exports.Text = Text;
-exports.NodeType = NodeType;
+export {
+  NodeList,
+  HTMLCollection,
+  Node,
+  Element,
+  Document,
+  Text,
+  NodeType,
+}
 /* No side effect */

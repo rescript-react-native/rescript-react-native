@@ -1,8 +1,10 @@
-'use strict';
 
-let VirtualizedListElement$ReactNative = require("../elements/VirtualizedListElement.bs.js");
+
+import * as VirtualizedListElement$ReactNative from "../elements/VirtualizedListElement.bs.js";
 
 let Separators = {};
 
-exports.Separators = Separators;
+export {
+  Separators,
+}
 /* VirtualizedListElement-ReactNative Not a pure module */

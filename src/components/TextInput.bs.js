@@ -1,7 +1,7 @@
-'use strict';
 
-let Event$ReactNative = require("../apis/Event.bs.js");
-let TextInputElement$ReactNative = require("../elements/TextInputElement.bs.js");
+
+import * as Event$ReactNative from "../apis/Event.bs.js";
+import * as TextInputElement$ReactNative from "../elements/TextInputElement.bs.js";
 
 Event$ReactNative.SyntheticEvent({});
 
@@ -27,10 +27,12 @@ Event$ReactNative.SyntheticEvent({});
 
 let KeyPressEvent = {};
 
-exports.ChangeEvent = ChangeEvent;
-exports.EditingEvent = EditingEvent;
-exports.ContentSizeChangeEvent = ContentSizeChangeEvent;
-exports.ScrollEvent = ScrollEvent;
-exports.SelectionChangeEvent = SelectionChangeEvent;
-exports.KeyPressEvent = KeyPressEvent;
+export {
+  ChangeEvent,
+  EditingEvent,
+  ContentSizeChangeEvent,
+  ScrollEvent,
+  SelectionChangeEvent,
+  KeyPressEvent,
+}
 /*  Not a pure module */

@@ -1,7 +1,7 @@
-'use strict';
 
-let NativeElement$ReactNative = require("./NativeElement.bs.js");
-let VirtualizedSectionListMethods$ReactNative = require("./VirtualizedSectionListMethods.bs.js");
+
+import * as NativeElement$ReactNative from "./NativeElement.bs.js";
+import * as VirtualizedSectionListMethods$ReactNative from "./VirtualizedSectionListMethods.bs.js";
 
 NativeElement$ReactNative.Impl({});
 

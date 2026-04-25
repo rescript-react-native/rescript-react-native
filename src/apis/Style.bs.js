@@ -1,4 +1,4 @@
-'use strict';
+
 
 
 function pct(num) {
@@ -15,8 +15,10 @@ function rad(num) {
 
 let empty = {};
 
-exports.pct = pct;
-exports.deg = deg;
-exports.rad = rad;
-exports.empty = empty;
+export {
+  pct,
+  deg,
+  rad,
+  empty,
+}
 /* No side effect */

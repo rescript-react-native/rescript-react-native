@@ -1,7 +1,9 @@
-'use strict';
+
 
 
 let Presets = {};
 
-exports.Presets = Presets;
+export {
+  Presets,
+}
 /* No side effect */

@@ -1,7 +1,7 @@
-'use strict';
 
-let NativeElement$ReactNative = require("./NativeElement.bs.js");
-let TextInputMethods$ReactNative = require("./TextInputMethods.bs.js");
+
+import * as NativeElement$ReactNative from "./NativeElement.bs.js";
+import * as TextInputMethods$ReactNative from "./TextInputMethods.bs.js";
 
 NativeElement$ReactNative.Impl({});
 
