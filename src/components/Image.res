@@ -1,8 +1,6 @@
 type nativeElement
 
-include NativeElement.Impl({
-  type t = nativeElement
-})
+include NativeElement.Impl({type t = nativeElement})
 
 type cache = [
   | #default
@@ -43,9 +41,7 @@ module ImageLoadEvent = {
     source: source,
   }
 
-  include Event.SyntheticEvent({
-    type _payload = payload
-  })
+  include Event.SyntheticEvent({type _payload = payload})
 }
 
 type imageLoadEvent = ImageLoadEvent.t
@@ -53,9 +49,7 @@ type imageLoadEvent = ImageLoadEvent.t
 module ErrorEvent = {
   type payload = {error: string}
 
-  include Event.SyntheticEvent({
-    type _payload = payload
-  })
+  include Event.SyntheticEvent({type _payload = payload})
 }
 
 type errorEvent = ErrorEvent.t
@@ -66,9 +60,7 @@ module ProgressEvent = {
     total: float,
   }
 
-  include Event.SyntheticEvent({
-    type _payload = payload
-  })
+  include Event.SyntheticEvent({type _payload = payload})
 }
 
 type progressEvent = ProgressEvent.t

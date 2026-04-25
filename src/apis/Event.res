@@ -54,9 +54,7 @@ module SyntheticEvent = (
     \"type": nullable<string>,
   }
 
-  include EventMethods({
-    type event = t
-  })
+  include EventMethods({type event = t})
 }
 
 module ResponderSyntheticEvent = (
@@ -99,9 +97,7 @@ module ResponderSyntheticEvent = (
     touchHistory: touchHistory,
   }
 
-  include EventMethods({
-    type event = t
-  })
+  include EventMethods({type event = t})
 
   @get external touchHistory: t => touchHistory = "touchHistory"
 }
@@ -127,9 +123,7 @@ module LayoutEvent = {
 
   type payload = {layout: layout}
 
-  include SyntheticEvent({
-    type _payload = payload
-  })
+  include SyntheticEvent({type _payload = payload})
 }
 
 module TextLayoutEvent = {
@@ -147,9 +141,7 @@ module TextLayoutEvent = {
 
   type payload = {lines: array<line>}
 
-  include SyntheticEvent({
-    type _payload = payload
-  })
+  include SyntheticEvent({type _payload = payload})
 }
 
 module PressEvent = {
@@ -166,9 +158,7 @@ module PressEvent = {
     touches: array<payload>,
   }
 
-  include ResponderSyntheticEvent({
-    type _payload = payload
-  })
+  include ResponderSyntheticEvent({type _payload = payload})
 }
 
 module ScrollEvent = {
@@ -194,25 +184,19 @@ module ScrollEvent = {
     layoutMeasurement: dimensions,
   }
 
-  include SyntheticEvent({
-    type _payload = payload
-  })
+  include SyntheticEvent({type _payload = payload})
 }
 
 module SwitchChangeEvent = {
   type payload = {value: bool}
 
-  include SyntheticEvent({
-    type _payload = payload
-  })
+  include SyntheticEvent({type _payload = payload})
 }
 
 module TargetEvent = {
   type payload = {target: int}
 
-  include SyntheticEvent({
-    type _payload = payload
-  })
+  include SyntheticEvent({type _payload = payload})
 }
 
 type blurEvent = BlurEvent.t

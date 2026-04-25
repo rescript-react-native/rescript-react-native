@@ -1,8 +1,6 @@
 type nativeElement
 
-include NativeElement.Impl({
-  type t = nativeElement
-})
+include NativeElement.Impl({type t = nativeElement})
 
 type rippleConfig = {
   borderless?: bool,

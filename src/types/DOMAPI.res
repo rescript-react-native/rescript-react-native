@@ -103,9 +103,7 @@ module Node = {
     @send external hasChildNodes: T.t => bool = "hasChildNodes"
   }
 
-  include Impl({
-    type t = node
-  })
+  include Impl({type t = node})
 }
 
 module Element = {
@@ -114,9 +112,7 @@ module Element = {
       type t
     },
   ) => {
-    include Node.Impl({
-      type t = T.t
-    })
+    include Node.Impl({type t = T.t})
 
     @send
     external getBoundingClientRect: T.t => Rect.t = "getBoundingClientRect"
@@ -132,24 +128,18 @@ module Element = {
     @send external setNativeProps: (T.t, {..}) => unit = "setNativeProps"
   }
 
-  include Impl({
-    type t = anyElement
-  })
+  include Impl({type t = anyElement})
 }
 
 module Document = {
-  include Node.Impl({
-    type t = document
-  })
+  include Node.Impl({type t = document})
 
   @send
   external getElementById: (document, string) => null<anyElement> = "getElementById"
 }
 
 module Text = {
-  include Node.Impl({
-    type t = text
-  })
+  include Node.Impl({type t = text})
 
   @send external substringData: (text, ~offset: int, ~count: int) => string = "substringData"
 }

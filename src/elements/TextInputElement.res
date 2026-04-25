@@ -1,9 +1,5 @@
 type nativeElement
 
-include NativeElement.Impl({
-  type t = nativeElement
-})
+include NativeElement.Impl({type t = nativeElement})
 
-include TextInputMethods.Make({
-  type t = element
-})
+include TextInputMethods.Make({type t = element})
