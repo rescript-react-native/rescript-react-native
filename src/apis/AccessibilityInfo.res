@@ -15,14 +15,11 @@ external addEventListener: @string
   | #announcementFinished(announcementResult => unit)
 ] => EventSubscription.t = "addEventListener"
 
-@scope("AccessibilityInfo") @module("react-native")
-external announceForAccessibility: string => unit = "announceForAccessibility"
-
 type announceForAccessibilityOptions = {queue?: bool}
 
 @scope("AccessibilityInfo") @module("react-native")
-external announceForAccessibilityWithOptions: (string, announceForAccessibilityOptions) => unit =
-  "announceForAccessibilityWithOptions"
+external announceForAccessibility: (string, ~options: announceForAccessibilityOptions=?) => unit =
+  "announceForAccessibility"
 
 @scope("AccessibilityInfo") @module("react-native")
 external getRecommendedTimeoutMillis: float => promise<float> = "getRecommendedTimeoutMillis"

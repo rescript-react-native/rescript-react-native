@@ -48,13 +48,8 @@ external getSectionKeys: unit => array<string> = "getSectionKeys"
 @module("react-native") @scope("AppRegistry")
 external getSections: unit => dict<runnable<'a>> = "getSections"
 
-// multiple externals
 @module("react-native") @scope("AppRegistry")
-external registerComponent: (appKey, componentProvider<'a>) => unit = "registerComponent"
-
-// multiple externals
-@module("react-native") @scope("AppRegistry")
-external registerComponentWithSection: (appKey, componentProvider<'a>, section) => unit =
+external registerComponent: (appKey, componentProvider<'a>, ~section: section=?) => unit =
   "registerComponent"
 
 @module("react-native") @scope("AppRegistry")

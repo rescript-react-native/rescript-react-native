@@ -157,13 +157,8 @@ type dict = dict<Result.t>
 @scope("PermissionsAndroid") @module("react-native")
 external check: Permission.t => promise<bool> = "check"
 
-// multiple externals
 @scope("PermissionsAndroid") @module("react-native")
-external request: Permission.t => promise<Result.t> = "request"
-
-// multiple externals
-@scope("PermissionsAndroid") @module("react-native")
-external requestWithRationale: (Permission.t, rationale) => promise<Result.t> = "request"
+external request: (Permission.t, ~rationale: rationale=?) => promise<Result.t> = "request"
 
 @scope("PermissionsAndroid") @module("react-native")
 external requestMultiple: array<Permission.t> => promise<dict> = "requestMultiple"

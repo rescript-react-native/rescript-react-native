@@ -25,14 +25,12 @@ type layoutAnimationConfig = {
   delete?: animationConfig,
 }
 
-// multiple externals
 @module("react-native") @scope("LayoutAnimation")
-external configureNext: layoutAnimationConfig => unit = "configureNext"
-
-// multiple externals
-@module("react-native") @scope("LayoutAnimation")
-external configureNextWithEndCallback: (layoutAnimationConfig, unit => unit) => unit =
-  "configureNext"
+external configureNext: (
+  layoutAnimationConfig,
+  ~onAnimationDidEnd: unit => unit=?,
+  ~onAnimationDidFail: unit => unit=?,
+) => unit = "configureNext"
 
 @module("react-native") @scope("LayoutAnimation")
 external create: (

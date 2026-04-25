@@ -27,10 +27,5 @@ type shareResult = {
   activityType: option<string>,
 }
 
-// multiple externals
 @module("react-native") @scope("Share")
-external share: content => promise<shareResult> = "share"
-
-// multiple externals
-@module("react-native") @scope("Share")
-external shareWithOptions: (content, options) => promise<shareResult> = "share"
+external share: (content, ~options: options=?) => promise<shareResult> = "share"
