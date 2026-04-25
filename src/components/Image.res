@@ -39,7 +39,7 @@ module ImageLoadEvent = {
   }
 
   type payload = {
-    uri: Js.Nullable.t<string>,
+    uri: nullable<string>,
     source: source,
   }
 

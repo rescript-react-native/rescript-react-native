@@ -13,27 +13,27 @@ function ResponderSyntheticEvent(T) {
   return {};
 }
 
-var BlurEvent = {};
+let BlurEvent = {};
 
-var $$FocusEvent = {};
+let FocusEvent = {};
 
-var LayoutEvent = {};
+let LayoutEvent = {};
 
-var TextLayoutEvent = {};
+let TextLayoutEvent = {};
 
-var PressEvent = {};
+let PressEvent = {};
 
-var ScrollEvent = {};
+let ScrollEvent = {};
 
-var SwitchChangeEvent = {};
+let SwitchChangeEvent = {};
 
-var TargetEvent = {};
+let TargetEvent = {};
 
 exports.EventMethods = EventMethods;
 exports.SyntheticEvent = SyntheticEvent;
 exports.ResponderSyntheticEvent = ResponderSyntheticEvent;
 exports.BlurEvent = BlurEvent;
-exports.$$FocusEvent = $$FocusEvent;
+exports.FocusEvent = FocusEvent;
 exports.LayoutEvent = LayoutEvent;
 exports.TextLayoutEvent = TextLayoutEvent;
 exports.PressEvent = PressEvent;

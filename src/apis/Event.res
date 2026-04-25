@@ -41,17 +41,17 @@ module SyntheticEvent = (
   },
 ) => {
   type t = {
-    bubbles: Js.Nullable.t<bool>,
-    cancelable: Js.Nullable.t<bool>,
+    bubbles: nullable<bool>,
+    cancelable: nullable<bool>,
     currentTarget: float,
-    defaultPrevented: Js.Nullable.t<bool>,
+    defaultPrevented: nullable<bool>,
     dispatchConfig: registrationName,
-    eventPhase: Js.Nullable.t<float>,
-    isTrusted: Js.Nullable.t<bool>,
+    eventPhase: nullable<float>,
+    isTrusted: nullable<bool>,
     nativeEvent: T._payload,
-    target: Js.Nullable.t<float>,
+    target: nullable<float>,
     timeStamp: float,
-    \"type": Js.Nullable.t<string>,
+    \"type": nullable<string>,
   }
 
   include EventMethods({
@@ -85,17 +85,17 @@ module ResponderSyntheticEvent = (
   }
 
   type t = {
-    bubbles: Js.Nullable.t<bool>,
-    cancelable: Js.Nullable.t<bool>,
+    bubbles: nullable<bool>,
+    cancelable: nullable<bool>,
     currentTarget: float,
-    defaultPrevented: Js.Nullable.t<bool>,
+    defaultPrevented: nullable<bool>,
     dispatchConfig: registrationName,
-    eventPhase: Js.Nullable.t<float>,
-    isTrusted: Js.Nullable.t<bool>,
+    eventPhase: nullable<float>,
+    isTrusted: nullable<bool>,
     nativeEvent: T._payload,
-    target: Js.Nullable.t<float>,
+    target: nullable<float>,
     timeStamp: float,
-    \"type": Js.Nullable.t<string>,
+    \"type": nullable<string>,
     touchHistory: touchHistory,
   }
 
@@ -161,7 +161,7 @@ module PressEvent = {
     locationY: float,
     pageX: float,
     pageY: float,
-    target: Js.Nullable.t<float>,
+    target: nullable<float>,
     timestamp: float,
     touches: array<payload>,
   }

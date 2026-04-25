@@ -1,31 +1,31 @@
 'use strict';
 
-var Event$ReactNative = require("../apis/Event.bs.js");
-var TextInputElement$ReactNative = require("../elements/TextInputElement.bs.js");
+let Event$ReactNative = require("../apis/Event.bs.js");
+let TextInputElement$ReactNative = require("../elements/TextInputElement.bs.js");
 
 Event$ReactNative.SyntheticEvent({});
 
-var ChangeEvent = {};
+let ChangeEvent = {};
 
 Event$ReactNative.SyntheticEvent({});
 
-var EditingEvent = {};
+let EditingEvent = {};
 
 Event$ReactNative.SyntheticEvent({});
 
-var ContentSizeChangeEvent = {};
+let ContentSizeChangeEvent = {};
 
 Event$ReactNative.SyntheticEvent({});
 
-var ScrollEvent = {};
+let ScrollEvent = {};
 
 Event$ReactNative.SyntheticEvent({});
 
-var SelectionChangeEvent = {};
+let SelectionChangeEvent = {};
 
 Event$ReactNative.SyntheticEvent({});
 
-var KeyPressEvent = {};
+let KeyPressEvent = {};
 
 exports.ChangeEvent = ChangeEvent;
 exports.EditingEvent = EditingEvent;

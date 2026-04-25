@@ -1,8 +1,8 @@
 'use strict';
 
-var NativeElement$ReactNative = require("./NativeElement.bs.js");
-var ScrollViewMethods$ReactNative = require("./ScrollViewMethods.bs.js");
-var VirtualizedListMethods$ReactNative = require("./VirtualizedListMethods.bs.js");
+let NativeElement$ReactNative = require("./NativeElement.bs.js");
+let ScrollViewMethods$ReactNative = require("./ScrollViewMethods.bs.js");
+let VirtualizedListMethods$ReactNative = require("./VirtualizedListMethods.bs.js");
 
 NativeElement$ReactNative.Impl({});
 

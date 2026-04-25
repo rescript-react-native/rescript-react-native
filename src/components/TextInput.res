@@ -80,8 +80,8 @@ type selectionChangeEvent = SelectionChangeEvent.t
 module KeyPressEvent = {
   type payload = {
     key: string,
-    target: Js.Nullable.t<int>,
-    eventCount: Js.Nullable.t<int>,
+    target: nullable<int>,
+    eventCount: nullable<int>,
   }
 
   include Event.SyntheticEvent({

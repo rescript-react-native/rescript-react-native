@@ -6,18 +6,18 @@ type htmlCollection<'element> = {length: int}
 type readOnlyNode<'node, 'document, 'element> = {
   // Node
   childNodes: nodeList<'node>,
-  firstChild: Js.Null.t<'node>,
+  firstChild: null<'node>,
   isConnected: bool,
-  lastChild: Js.Null.t<'node>,
-  nextSibling: Js.Null.t<'node>,
+  lastChild: null<'node>,
+  nextSibling: null<'node>,
   nodeType: int,
   nodeName: string,
-  nodeValue: Js.Null.t<string>,
-  ownerDocument: Js.Null.t<'document>,
-  parentElement: Js.Null.t<'element>,
-  parentNode: Js.Null.t<'node>,
-  previousSibling: Js.Null.t<'node>,
-  textContent: Js.Null.t<string>,
+  nodeValue: null<string>,
+  ownerDocument: null<'document>,
+  parentElement: null<'element>,
+  parentNode: null<'node>,
+  previousSibling: null<'node>,
+  textContent: null<string>,
 }
 
 type unknownNativeElement
@@ -36,11 +36,11 @@ and element<'nativeElement> = {
   clientLeft: int,
   clientTop: int,
   clientWidth: int,
-  firstElementChild: Js.Null.t<anyElement>,
+  firstElementChild: null<anyElement>,
   id: string,
-  lastElementChild: Js.Null.t<anyElement>,
-  nextElementSibling: Js.Null.t<anyElement>,
-  previousElementSibling: Js.Null.t<anyElement>,
+  lastElementChild: null<anyElement>,
+  nextElementSibling: null<anyElement>,
+  previousElementSibling: null<anyElement>,
   scrollHeight: int,
   scrollLeft: int,
   scrollTop: int,
@@ -51,7 +51,7 @@ and element<'nativeElement> = {
   offsetLeft: int,
   offsetTop: int,
   offsetWidth: int,
-  offsetParent: Js.Null.t<anyElement>,
+  offsetParent: null<anyElement>,
 }
 
 and text = {
@@ -60,8 +60,8 @@ and text = {
   // CharacterData
   data: string,
   length: int,
-  nextElementSibling: Js.Null.t<anyElement>,
-  previousElementSibling: Js.Null.t<anyElement>,
+  nextElementSibling: null<anyElement>,
+  previousElementSibling: null<anyElement>,
 }
 
 and document = {
@@ -69,23 +69,23 @@ and document = {
   childElementCount: int,
   children: htmlCollection<anyElement>,
   documentElement: anyElement,
-  firstElementChild: Js.Null.t<anyElement>,
-  lastElementChild: Js.Null.t<anyElement>,
+  firstElementChild: null<anyElement>,
+  lastElementChild: null<anyElement>,
 }
 
 and anyElement = element<unknownNativeElement>
 
 module NodeList = {
   @send
-  external item: (nodeList<'node>, int) => Js.Null.t<'node> = "item"
+  external item: (nodeList<'node>, int) => null<'node> = "item"
 }
 
 module HTMLCollection = {
   @send
-  external item: (htmlCollection<'element>, int) => Js.Null.t<'element> = "item"
+  external item: (htmlCollection<'element>, int) => null<'element> = "item"
 
   @send
-  external namedItem: (htmlCollection<'element>, string) => Js.Null.t<'element> = "namedItem"
+  external namedItem: (htmlCollection<'element>, string) => null<'element> = "namedItem"
 }
 
 module Node = {
@@ -143,7 +143,7 @@ module Document = {
   })
 
   @send
-  external getElementById: (document, string) => Js.Null.t<anyElement> = "getElementById"
+  external getElementById: (document, string) => null<anyElement> = "getElementById"
 }
 
 module Text = {

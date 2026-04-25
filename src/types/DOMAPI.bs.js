@@ -1,15 +1,15 @@
 'use strict';
 
 
-var $$NodeList = {};
+let NodeList = {};
 
-var $$HTMLCollection = {};
+let HTMLCollection = {};
 
 function Impl(T) {
   return {};
 }
 
-var $$Node = {
+let Node = {
   Impl: Impl
 };
 
@@ -17,45 +17,45 @@ function Impl$1(T) {
   return {};
 }
 
-var $$Element = {
+let Element = {
   Impl: Impl$1
 };
 
-var $$Document = {};
+let Document = {};
 
-var $$Text = {};
+let Text = {};
 
 function classify(node) {
   switch (node.nodeType) {
     case 1 :
-        return {
-                TAG: "Element",
-                _0: node
-              };
+      return {
+        TAG: "Element",
+        _0: node
+      };
     case 3 :
-        return {
-                TAG: "Text",
-                _0: node
-              };
+      return {
+        TAG: "Text",
+        _0: node
+      };
     case 9 :
-        return {
-                TAG: "Document",
-                _0: node
-              };
+      return {
+        TAG: "Document",
+        _0: node
+      };
     default:
       return "Unknown";
   }
 }
 
-var NodeType = {
+let NodeType = {
   classify: classify
 };
 
-exports.$$NodeList = $$NodeList;
-exports.$$HTMLCollection = $$HTMLCollection;
-exports.$$Node = $$Node;
-exports.$$Element = $$Element;
-exports.$$Document = $$Document;
-exports.$$Text = $$Text;
+exports.NodeList = NodeList;
+exports.HTMLCollection = HTMLCollection;
+exports.Node = Node;
+exports.Element = Element;
+exports.Document = Document;
+exports.Text = Text;
 exports.NodeType = NodeType;
 /* No side effect */

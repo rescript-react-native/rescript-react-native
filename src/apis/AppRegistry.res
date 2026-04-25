@@ -23,7 +23,7 @@ type appConfig<'a> = {
 }
 
 type runnable<'a> = {
-  "component": Js.Nullable.t<componentProvider<'a>>,
+  "component": nullable<componentProvider<'a>>,
   @meth
   "run": appParameters => unit,
 }

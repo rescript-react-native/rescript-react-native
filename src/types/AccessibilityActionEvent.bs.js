@@ -1,6 +1,6 @@
 'use strict';
 
-var Event$ReactNative = require("../apis/Event.bs.js");
+let Event$ReactNative = require("../apis/Event.bs.js");
 
 Event$ReactNative.SyntheticEvent({});
 

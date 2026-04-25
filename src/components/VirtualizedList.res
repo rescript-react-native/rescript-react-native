@@ -25,7 +25,7 @@ type cellRendererComponent<'item> = React.component<cellRendererComponentProps<'
 type viewableItem<'item> = {
   item: 'item,
   key: string,
-  index: Js.undefined<int>,
+  index: undefined<int>,
   isViewable: bool,
   section: {.},
 }

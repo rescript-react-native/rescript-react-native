@@ -1,8 +1,8 @@
 'use strict';
 
-var VirtualizedListElement$ReactNative = require("../elements/VirtualizedListElement.bs.js");
+let VirtualizedListElement$ReactNative = require("../elements/VirtualizedListElement.bs.js");
 
-var Separators = {};
+let Separators = {};
 
 exports.Separators = Separators;
 /* VirtualizedListElement-ReactNative Not a pure module */

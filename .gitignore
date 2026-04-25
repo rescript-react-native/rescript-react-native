@@ -9,6 +9,5 @@ node_modules
 # ReScript artifacts
 # *.bs.js # we do want this files to ensure zero-cost
 .bsb.lock
-**/lib/bs
-**/lib/ocaml
+lib/
 **/.merlin

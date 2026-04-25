@@ -1,74 +1,74 @@
 'use strict';
 
-var Caml_option = require("rescript/lib/js/caml_option.js");
-var ReactNative = require("react-native");
+let ReactNative = require("react-native");
+let Primitive_option = require("@rescript/runtime/lib/js/Primitive_option.js");
 
-var $$Animation = {};
+let Animation = {};
 
 function ValueAnimations(Val) {
-  var Decay = {};
-  var Spring = {};
-  var Timing = {};
+  let Decay = {};
+  let Spring = {};
+  let Timing = {};
   return {
-          Decay: Decay,
-          Spring: Spring,
-          Timing: Timing
-        };
+    Decay: Decay,
+    Spring: Spring,
+    Timing: Timing
+  };
 }
 
-var Interpolation = {};
+let Interpolation = {};
 
 function interpolate(prim0, prim1) {
   return prim0.interpolate(prim1);
 }
 
-var ValueOperations = {
+let ValueOperations = {
   interpolate: interpolate
 };
 
 function ValueMethods(Val) {
-  var Decay = {};
-  var Spring = {};
-  var Timing = {};
+  let Decay = {};
+  let Spring = {};
+  let Timing = {};
   return {
-          Decay: Decay,
-          Spring: Spring,
-          Timing: Timing
-        };
+    Decay: Decay,
+    Spring: Spring,
+    Timing: Timing
+  };
 }
 
-var Decay = {};
+let Decay = {};
 
-var Spring = {};
+let Spring = {};
 
-var Timing = {};
+let Timing = {};
 
-var Value = {
+let Value = {
   Decay: Decay,
   Spring: Spring,
   Timing: Timing,
   interpolate: interpolate
 };
 
-var Decay$1 = {};
+let Decay$1 = {};
 
-var Spring$1 = {};
+let Spring$1 = {};
 
-var Timing$1 = {};
+let Timing$1 = {};
 
-var ValueXY = {
+let ValueXY = {
   Decay: Decay$1,
   Spring: Spring$1,
   Timing: Timing$1
 };
 
-var Decay$2 = {};
+let Decay$2 = {};
 
-var Spring$2 = {};
+let Spring$2 = {};
 
-var Timing$2 = {};
+let Timing$2 = {};
 
-var Color = {
+let Color = {
   Decay: Decay$2,
   Spring: Spring$2,
   Timing: Timing$2
@@ -87,7 +87,7 @@ function decay(prim0, prim1) {
 }
 
 function start(prim0, prim1) {
-  prim0.start(prim1 !== undefined ? Caml_option.valFromOption(prim1) : undefined);
+  prim0.start(prim1 !== undefined ? Primitive_option.valFromOption(prim1) : undefined);
 }
 
 function stop(prim) {
@@ -98,21 +98,21 @@ function reset(prim) {
   prim.reset();
 }
 
-var StyleProp = {};
+let StyleProp = {};
 
-var FlatList = {};
+let FlatList = {};
 
-var $$Image = {};
+let Image = {};
 
-var ScrollView = {};
+let ScrollView = {};
 
-var SectionList = {};
+let SectionList = {};
 
-var $$Text = {};
+let Text = {};
 
-var View = {};
+let View = {};
 
-exports.$$Animation = $$Animation;
+exports.Animation = Animation;
 exports.ValueAnimations = ValueAnimations;
 exports.Interpolation = Interpolation;
 exports.ValueOperations = ValueOperations;
@@ -128,9 +128,9 @@ exports.stop = stop;
 exports.reset = reset;
 exports.StyleProp = StyleProp;
 exports.FlatList = FlatList;
-exports.$$Image = $$Image;
+exports.Image = Image;
 exports.ScrollView = ScrollView;
 exports.SectionList = SectionList;
-exports.$$Text = $$Text;
+exports.Text = Text;
 exports.View = View;
 /* react-native Not a pure module */

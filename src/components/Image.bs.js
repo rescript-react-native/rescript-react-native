@@ -1,26 +1,26 @@
 'use strict';
 
-var Event$ReactNative = require("../apis/Event.bs.js");
-var NativeElement$ReactNative = require("../elements/NativeElement.bs.js");
+let Event$ReactNative = require("../apis/Event.bs.js");
+let NativeElement$ReactNative = require("../elements/NativeElement.bs.js");
 
 NativeElement$ReactNative.Impl({});
 
-var Source = {};
+let Source = {};
 
 Event$ReactNative.SyntheticEvent({});
 
-var ImageLoadEvent = {};
+let ImageLoadEvent = {};
 
 Event$ReactNative.SyntheticEvent({});
 
-var $$ErrorEvent = {};
+let ErrorEvent = {};
 
 Event$ReactNative.SyntheticEvent({});
 
-var $$ProgressEvent = {};
+let ProgressEvent = {};
 
 exports.Source = Source;
 exports.ImageLoadEvent = ImageLoadEvent;
-exports.$$ErrorEvent = $$ErrorEvent;
-exports.$$ProgressEvent = $$ProgressEvent;
+exports.ErrorEvent = ErrorEvent;
+exports.ProgressEvent = ProgressEvent;
 /*  Not a pure module */

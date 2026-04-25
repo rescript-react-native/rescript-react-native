@@ -1,7 +1,7 @@
 'use strict';
 
-var NativeElement$ReactNative = require("./NativeElement.bs.js");
-var TouchableOpacityMethods$ReactNative = require("./TouchableOpacityMethods.bs.js");
+let NativeElement$ReactNative = require("./NativeElement.bs.js");
+let TouchableOpacityMethods$ReactNative = require("./TouchableOpacityMethods.bs.js");
 
 NativeElement$ReactNative.Impl({});
 

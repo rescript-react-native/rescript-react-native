@@ -13,7 +13,7 @@ function rad(num) {
   return num.toString() + "rad";
 }
 
-var empty = {};
+let empty = {};
 
 exports.pct = pct;
 exports.deg = deg;
