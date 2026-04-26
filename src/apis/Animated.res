@@ -218,8 +218,14 @@ type eventConfig<'a, 'platformConfig> = {
   platformConfig?: 'platformConfig,
 }
 
+// multiple externals
 @module("react-native") @scope("Animated")
-external event: (array<'mapping>, ~config: eventConfig<'a, 'platformConfig>=?) => 'a = "event"
+external event1: (array<'mapping>, ~config: eventConfig<'a, 'platformConfig>=?) => 'a = "event"
+
+// multiple externals
+@module("react-native") @scope("Animated")
+external event2: (('mapping1, 'mapping2), ~config: eventConfig<'a, 'platformConfig>=?) => 'a =
+  "event"
 
 @module("react-native") @scope("Animated")
 external createAnimatedComponent: React.component<'props> => React.component<'props> =
