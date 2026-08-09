@@ -1,10 +1,6 @@
 module ExtraValue = {
-  type t
-
-  external fromString: string => t = "%identity"
-  external fromInt: int => t = "%identity"
-  external fromFloat: float => t = "%identity"
-  external fromBool: bool => t = "%identity"
+  @unboxed
+  type t = String(string) | Number(float) | Bool(bool)
 }
 
 type extraValue = ExtraValue.t

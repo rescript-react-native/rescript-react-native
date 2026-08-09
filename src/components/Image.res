@@ -22,11 +22,11 @@ type uriSource = {
 }
 
 module Source = {
-  type t
-
-  external fromRequired: Packager.required => t = "%identity"
-  external fromUriSource: uriSource => t = "%identity"
-  external fromUriSources: array<uriSource> => t = "%identity"
+  @unboxed
+  type t =
+    | Required(Packager.required)
+    | ImageSource(uriSource)
+    | ImageSources(array<uriSource>)
 }
 
 module ImageLoadEvent = {
