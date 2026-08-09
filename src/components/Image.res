@@ -30,15 +30,12 @@ module Source = {
 }
 
 module ImageLoadEvent = {
-  type source = {
-    width: float,
-    height: float,
-    uri: string,
-  }
-
   type payload = {
-    uri: nullable<string>,
-    source: source,
+    source: {
+      width: float,
+      height: float,
+      uri: string,
+    },
   }
 
   include Event.SyntheticEvent({type _payload = payload})

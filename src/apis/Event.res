@@ -62,24 +62,22 @@ module ResponderSyntheticEvent = (
     type _payload
   },
 ) => {
-  type touchBank = {
-    touchActive: bool,
-    startPageX: float,
-    startPageY: float,
-    startTimeStamp: float,
-    currentPageX: float,
-    currentPageY: float,
-    currentTimeStamp: float,
-    previousPageX: float,
-    previousPageY: float,
-    previousTimeStamp: float,
-  }
-
   type touchHistory = {
     indexOfSingleActiveTouch: float,
     mostRecentTimeStamp: float,
     numberActiveTouches: float,
-    touchBank: array<touchBank>,
+    touchBank: array<{
+      touchActive: bool,
+      startPageX: float,
+      startPageY: float,
+      startTimeStamp: float,
+      currentPageX: float,
+      currentPageY: float,
+      currentTimeStamp: float,
+      previousPageX: float,
+      previousPageY: float,
+      previousTimeStamp: float,
+    }>,
   }
 
   type t = {
@@ -114,32 +112,32 @@ module FocusEvent = {
 }
 
 module LayoutEvent = {
-  type layout = {
-    x: float,
-    y: float,
-    width: float,
-    height: float,
+  type payload = {
+    layout: {
+      x: float,
+      y: float,
+      width: float,
+      height: float,
+    },
   }
-
-  type payload = {layout: layout}
 
   include SyntheticEvent({type _payload = payload})
 }
 
 module TextLayoutEvent = {
-  type line = {
-    x: float,
-    y: float,
-    width: float,
-    height: float,
-    ascender: float, // verify
-    capHeight: float, // verify
-    descender: float, // verify
-    text: string,
-    xHeight: float, // verify
+  type payload = {
+    lines: array<{
+      x: float,
+      y: float,
+      width: float,
+      height: float,
+      ascender: float, // verify
+      capHeight: float, // verify
+      descender: float, // verify
+      text: string,
+      xHeight: float, // verify
+    }>,
   }
-
-  type payload = {lines: array<line>}
 
   include SyntheticEvent({type _payload = payload})
 }
@@ -162,24 +160,22 @@ module PressEvent = {
 }
 
 module ScrollEvent = {
-  type contentOffset = {
-    x: float,
-    y: float,
-  }
-  type contentInset = {
-    bottom: float,
-    left: float,
-    right: float,
-    top: float,
-  }
   type dimensions = {
     height: float,
     width: float,
   }
 
   type payload = {
-    contentInset: contentInset,
-    contentOffset: contentOffset,
+    contentInset: {
+      bottom: float,
+      left: float,
+      right: float,
+      top: float,
+    },
+    contentOffset: {
+      x: float,
+      y: float,
+    },
     contentSize: dimensions,
     layoutMeasurement: dimensions,
   }

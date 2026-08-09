@@ -24,13 +24,12 @@ module EditingEvent = {
 type editingEvent = EditingEvent.t
 
 module ContentSizeChangeEvent = {
-  type contentSize = {
-    width: float,
-    height: float,
-  }
   type payload = {
     target: int,
-    contentSize: contentSize,
+    contentSize: {
+      width: float,
+      height: float,
+    },
   }
 
   include Event.SyntheticEvent({type _payload = payload})
@@ -39,12 +38,12 @@ module ContentSizeChangeEvent = {
 type contentSizeChangeEvent = ContentSizeChangeEvent.t
 
 module ScrollEvent = {
-  type contentOffset = {
-    x: float,
-    y: float,
+  type payload = {
+    contentOffset: {
+      x: float,
+      y: float,
+    },
   }
-
-  type payload = {contentOffset: contentOffset}
 
   include Event.SyntheticEvent({type _payload = payload})
 }
