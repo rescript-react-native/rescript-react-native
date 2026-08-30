@@ -22,10 +22,7 @@ type margin = size
 @inline
 let auto = "auto"
 
-type offset = {
-  height: float,
-  width: float,
-}
+type offset = Layout.size
 
 type angle
 let deg: float => angle = num => (num->Float.toString ++ "deg")->Obj.magic

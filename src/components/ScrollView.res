@@ -1,6 +1,6 @@
 include ScrollViewElement
 
-type contentOffset = {x: float, y: float}
+type contentOffset = Layout.point
 
 type contentInsetAdjustmentBehavior = [
   | #automatic

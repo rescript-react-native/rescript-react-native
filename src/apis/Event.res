@@ -112,14 +112,7 @@ module FocusEvent = {
 }
 
 module LayoutEvent = {
-  type payload = {
-    layout: {
-      x: float,
-      y: float,
-      width: float,
-      height: float,
-    },
-  }
+  type payload = {layout: Layout.rectangle}
 
   include SyntheticEvent({type _payload = payload})
 }
@@ -127,10 +120,7 @@ module LayoutEvent = {
 module TextLayoutEvent = {
   type payload = {
     lines: array<{
-      x: float,
-      y: float,
-      width: float,
-      height: float,
+      ...Layout.rectangle,
       ascender: float, // verify
       capHeight: float, // verify
       descender: float, // verify
@@ -160,24 +150,11 @@ module PressEvent = {
 }
 
 module ScrollEvent = {
-  type dimensions = {
-    height: float,
-    width: float,
-  }
-
   type payload = {
-    contentInset: {
-      bottom: float,
-      left: float,
-      right: float,
-      top: float,
-    },
-    contentOffset: {
-      x: float,
-      y: float,
-    },
-    contentSize: dimensions,
-    layoutMeasurement: dimensions,
+    contentInset: Layout.insets,
+    contentOffset: Layout.point,
+    contentSize: Layout.size,
+    layoutMeasurement: Layout.size,
   }
 
   include SyntheticEvent({type _payload = payload})

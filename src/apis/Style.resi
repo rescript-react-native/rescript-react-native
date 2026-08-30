@@ -18,10 +18,7 @@ type margin = size
 @inline("auto")
 let auto: margin
 
-type offset = {
-  height: float,
-  width: float,
-}
+type offset = Layout.size
 
 type angle
 let deg: float => angle

@@ -32,8 +32,7 @@ module Source = {
 module ImageLoadEvent = {
   type payload = {
     source: {
-      width: float,
-      height: float,
+      ...Layout.size,
       uri: string,
     },
   }
@@ -121,10 +120,7 @@ external make: React.component<props> = "Image"
 
 type sizeError
 
-type imageSize = {
-  height: float,
-  width: float,
-}
+type imageSize = Layout.size
 
 @module("react-native") @scope("Image")
 external getSize_legacy: (
@@ -160,9 +156,8 @@ external abortPrefetch: requestId => unit = "abortPrefetch"
 external queryCache: (~uris: array<string>) => unit = "queryCache"
 
 type asset = {
+  ...Layout.size,
   uri: string,
-  width: float,
-  height: float,
 }
 
 @module("react-native") @scope("Image")
