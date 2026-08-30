@@ -31,6 +31,7 @@ type webProps = {
 
 type props = {
   ...Accessibility.viewProps,
+  ...View.pointerEventProps,
   ...webProps,
   ref?: ref,
   android_disableSound?: bool,

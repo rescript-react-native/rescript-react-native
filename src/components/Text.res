@@ -44,6 +44,7 @@ type props = {
   ref?: ref,
   ...Accessibility.viewProps,
   ...View.gestureResponderHandlersProps,
+  ...View.pointerEventProps,
   ...View.webProps,
   // view props
   nativeID?: string,

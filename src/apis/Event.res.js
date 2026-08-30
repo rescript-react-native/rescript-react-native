@@ -29,6 +29,8 @@ let SwitchChangeEvent = {};
 
 let TargetEvent = {};
 
+let PointerEvent = {};
+
 export {
   EventMethods,
   SyntheticEvent,
@@ -41,5 +43,6 @@ export {
   ScrollEvent,
   SwitchChangeEvent,
   TargetEvent,
+  PointerEvent,
 }
 /* No side effect */

@@ -29,6 +29,30 @@ type gestureResponderHandlersProps = {
   onStartShouldSetResponderCapture?: Event.pressEvent => bool,
 }
 
+// W3C pointer handlers (excludes onClick — covered by webClickProps).
+type pointerEventProps = {
+  onGotPointerCapture?: Event.pointerEvent => unit,
+  onGotPointerCaptureCapture?: Event.pointerEvent => unit,
+  onLostPointerCapture?: Event.pointerEvent => unit,
+  onLostPointerCaptureCapture?: Event.pointerEvent => unit,
+  onPointerCancel?: Event.pointerEvent => unit,
+  onPointerCancelCapture?: Event.pointerEvent => unit,
+  onPointerDown?: Event.pointerEvent => unit,
+  onPointerDownCapture?: Event.pointerEvent => unit,
+  onPointerEnter?: Event.pointerEvent => unit,
+  onPointerEnterCapture?: Event.pointerEvent => unit,
+  onPointerLeave?: Event.pointerEvent => unit,
+  onPointerLeaveCapture?: Event.pointerEvent => unit,
+  onPointerMove?: Event.pointerEvent => unit,
+  onPointerMoveCapture?: Event.pointerEvent => unit,
+  onPointerOut?: Event.pointerEvent => unit,
+  onPointerOutCapture?: Event.pointerEvent => unit,
+  onPointerOver?: Event.pointerEvent => unit,
+  onPointerOverCapture?: Event.pointerEvent => unit,
+  onPointerUp?: Event.pointerEvent => unit,
+  onPointerUpCapture?: Event.pointerEvent => unit,
+}
+
 type accessibilityProps = Accessibility.viewProps
 
 
@@ -105,6 +129,7 @@ type coreProps = {
 
 type viewPropsWithoutChildren = {
   ...gestureResponderHandlersProps,
+  ...pointerEventProps,
   ...accessibilityProps,
   ...iosProps,
   ...androidProps,

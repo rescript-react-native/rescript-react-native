@@ -172,6 +172,51 @@ module TargetEvent = {
   include SyntheticEvent({type _payload = payload})
 }
 
+module PointerEvent = {
+  @unboxed
+  type pointerType =
+    | @as("mouse") Mouse
+    | @as("pen") Pen
+    | @as("touch") Touch
+    | Other(string)
+
+  type payload = {
+    // UIEvent
+    detail: float,
+    // MouseEvent
+    screenX: float,
+    screenY: float,
+    pageX: float,
+    pageY: float,
+    clientX: float,
+    clientY: float,
+    x: float,
+    y: float,
+    ctrlKey: bool,
+    shiftKey: bool,
+    altKey: bool,
+    metaKey: bool,
+    button: float,
+    buttons: float,
+    relatedTarget: nullable<float>,
+    offsetX: float,
+    offsetY: float,
+    // PointerEvent
+    pointerId: float,
+    width: float,
+    height: float,
+    pressure: float,
+    tangentialPressure: float,
+    tiltX: float,
+    tiltY: float,
+    twist: float,
+    pointerType: pointerType,
+    isPrimary: bool,
+  }
+
+  include SyntheticEvent({type _payload = payload})
+}
+
 type blurEvent = BlurEvent.t
 type focusEvent = FocusEvent.t
 type layoutEvent = LayoutEvent.t
@@ -180,3 +225,4 @@ type scrollEvent = ScrollEvent.t
 type switchChangeEvent = SwitchChangeEvent.t
 type targetEvent = TargetEvent.t
 type textLayoutEvent = TextLayoutEvent.t
+type pointerEvent = PointerEvent.t
