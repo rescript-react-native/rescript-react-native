@@ -5,12 +5,7 @@ include NativeElement.Impl({type t = nativeElement})
 // @todo in 0.71.0
 // after adding `aria-*` props, make sure `aria-checked` can be true, false or "mixed"
 
-type importantForAccessibility = [
-  | #auto
-  | #yes
-  | #no
-  | #"no-hide-descendants"
-]
+type importantForAccessibility = Accessibility.importantForAccessibility
 
 type pointerEvents = [
   | #auto
@@ -34,28 +29,8 @@ type gestureResponderHandlersProps = {
   onStartShouldSetResponderCapture?: Event.pressEvent => bool,
 }
 
-type accessibilityProps = {
-  accessible?: bool,
-  accessibilityActions?: array<Accessibility.actionInfo>,
-  accessibilityElementsHidden?: bool,
-  accessibilityHint?: string,
-  accessibilityIgnoresInvertColors?: bool,
-  accessibilityLabel?: string,
-  accessibilityLabelledBy?: array<string>,
-  accessibilityLanguage?: string,
-  accessibilityLiveRegion?: Accessibility.liveRegion,
-  accessibilityRole?: Accessibility.role,
-  // `role` has precedence over the accessibilityRole prop
-  role?: Role.t,
-  accessibilityState?: Accessibility.state,
-  accessibilityValue?: Accessibility.value,
-  accessibilityViewIsModal?: bool,
-  importantForAccessibility?: importantForAccessibility,
-  onAccessibilityAction?: Accessibility.actionEvent => unit,
-  onAccessibilityEscape?: unit => unit,
-  onAccessibilityTap?: unit => unit,
-  onMagicTap?: unit => unit,
-}
+type accessibilityProps = Accessibility.viewProps
+
 
 type iosProps = {shouldRasterizeIOS?: bool}
 

@@ -40,22 +40,9 @@ type lineBreakStrategyIOS = [
   | #"push-out"
 ]
 
-type accessibilityProps = {
-  accessible?: bool,
-  accessibilityActions?: array<Accessibility.actionInfo>,
-  accessibilityHint?: string,
-  accessibilityLabel?: string,
-  accessibilityLanguage?: string,
-  accessibilityRole?: Accessibility.role,
-  // `role` has precedence over the accessibilityRole prop
-  role?: Role.t,
-  accessibilityState?: Accessibility.state,
-  onAccessibilityAction?: Accessibility.actionEvent => unit,
-}
-
 type props = {
   ref?: ref,
-  ...accessibilityProps,
+  ...Accessibility.viewProps,
   ...View.gestureResponderHandlersProps,
   ...View.webProps,
   // view props
