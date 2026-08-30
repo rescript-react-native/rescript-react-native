@@ -84,7 +84,7 @@ type webProps = {
   ...webMouseForwardedProps,
 }
 
-type coreProps = {
+type corePropsWithoutChildren = {
   hitSlop?: Rect.t,
   nativeID?: string,
   id?: string,
@@ -96,16 +96,25 @@ type coreProps = {
   collapsableChildren?: bool,
   style?: Style.t,
   testID?: string,
+}
+
+type coreProps = {
+  ...corePropsWithoutChildren,
   children?: React.element,
 }
 
-type viewProps = {
+type viewPropsWithoutChildren = {
   ...gestureResponderHandlersProps,
   ...accessibilityProps,
   ...iosProps,
   ...androidProps,
   ...webProps,
-  ...coreProps,
+  ...corePropsWithoutChildren,
+}
+
+type viewProps = {
+  ...viewPropsWithoutChildren,
+  children?: React.element,
 }
 
 type props = {
