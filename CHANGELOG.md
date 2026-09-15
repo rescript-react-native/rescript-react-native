@@ -1,5 +1,23 @@
 # Changelog of `rescript-react-native`
 
+## 0.84.0 - 2026-09-15
+
+- Upgrade to `rescript@12` and `@rescript/react@0.15`
+  - `esmodule`
+  - Stdlib migration
+- Breaking API cleanups
+  - Collapse most multiple externals into optional labeled args (`share`, `loop`, `sendIntent`, …)
+  - `@unboxed` for `Vibration`, `Linking.ExtraValue`, `Image.Source``
+  - `Image.Source`: `Require` / `URISource` / `URISources` (replaces `from*`); drop `getSize_legacy``
+  - `Packager.required` is `float` (Metro asset id)
+- Type organization (additive / internal)
+  - Centralize `Accessibility.props` / `iosProps` / `androidProps` / `viewProps``
+  - New `Layout` module (`point`, `size`, `rectangle`, `insets`) reused in `events` / `ScrollView` / `Image``
+  - `Image` composes `View.viewPropsWithoutChildren` + ios/android image props
+  - Nested records for local event payloads
+  - W3C `PointerEvent` + `View.pointerEventProps` (also Text / Pressable / Image via View)
+
+
 ## 0.83.0 - 2026-04-23
 
 - upgrade to `@rescript/react@0.14.2` and `react@19.2` for `react-native@0.83`
