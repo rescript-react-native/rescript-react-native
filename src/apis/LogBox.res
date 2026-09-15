@@ -2,7 +2,7 @@
 external ignoreLogs: array<string> => unit = "ignoreLogs"
 
 @module("react-native") @scope("LogBox")
-external ignoreLogsRegex: array<Js.Re.t> => unit = "ignoreLogs"
+external ignoreLogsRegex: array<RegExp.t> => unit = "ignoreLogs"
 
 @module("react-native") @scope("LogBox")
 external ignoreAllLogs: (~ignore: bool=?) => unit = "ignoreAllLogs"

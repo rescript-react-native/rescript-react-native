@@ -1,9 +1,5 @@
 type nativeElement
 
-include NativeElement.Impl({
-  type t = nativeElement
-})
+include NativeElement.Impl({type t = nativeElement})
 
-include VirtualizedSectionListMethods.Make({
-  type t = element
-})
+include VirtualizedSectionListMethods.Make({type t = element})

@@ -4,14 +4,14 @@ type t = string
 external processColor: string => string = "processColor"
 
 let rgb = (~r: int, ~g: int, ~b: int) =>
-  `rgb(${r->Js.Int.toString}, ${g->Js.Int.toString}, ${b->Js.Int.toString})`
+  `rgb(${r->Int.toString}, ${g->Int.toString}, ${b->Int.toString})`
 let rgba = (~r: int, ~g: int, ~b: int, ~a: float) =>
-  `rgba(${r->Js.Int.toString}, ${g->Js.Int.toString}, ${b->Js.Int.toString}, ${a->Js.Float.toString})`
+  `rgba(${r->Int.toString}, ${g->Int.toString}, ${b->Int.toString}, ${a->Float.toString})`
 
 let hsl = (~h: float, ~s: float, ~l: float) =>
-  `hsl(${h->Js.Float.toString}, ${s->Js.Float.toString}%, ${l->Js.Float.toString}%)`
+  `hsl(${h->Float.toString}, ${s->Float.toString}%, ${l->Float.toString}%)`
 let hsla = (~h: float, ~s: float, ~l: float, ~a: float) =>
-  `hsl(${h->Js.Float.toString}, ${s->Js.Float.toString}%, ${l->Js.Float.toString}%, ${a->Js.Float.toString})`
+  `hsl(${h->Float.toString}, ${s->Float.toString}%, ${l->Float.toString}%, ${a->Float.toString})`
 
 @inline
 let transparent = "transparent"

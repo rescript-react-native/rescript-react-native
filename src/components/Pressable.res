@@ -1,8 +1,6 @@
 type nativeElement
 
-include NativeElement.Impl({
-  type t = nativeElement
-})
+include NativeElement.Impl({type t = nativeElement})
 
 type rippleConfig = {
   borderless?: bool,
@@ -20,23 +18,6 @@ type interactionState = {
   focused?: bool,
 }
 
-type accessibilityProps = {
-  accessibilityActions?: array<Accessibility.actionInfo>,
-  accessibilityElementsHidden?: bool,
-  accessibilityHint?: string,
-  accessibilityIgnoresInvertColors?: bool,
-  accessibilityLabel?: string,
-  accessibilityLanguage?: string,
-  accessibilityLiveRegion?: Accessibility.liveRegion,
-  accessibilityRole?: Accessibility.role,
-  accessibilityState?: Accessibility.state,
-  accessibilityValue?: Accessibility.value,
-  accessibilityViewIsModal?: bool,
-  accessible?: bool,
-  focusable?: bool,
-  importantForAccessibility?: View.importantForAccessibility,
-}
-
 type webProps = {
   ...View.webLinkProps,
   ...View.webClickProps,
@@ -49,7 +30,8 @@ type webProps = {
 }
 
 type props = {
-  ...accessibilityProps,
+  ...Accessibility.viewProps,
+  ...View.pointerEventProps,
   ...webProps,
   ref?: ref,
   android_disableSound?: bool,
@@ -57,6 +39,7 @@ type props = {
   children?: interactionState => React.element,
   delayLongPress?: int,
   disabled?: bool,
+  focusable?: bool,
   hitSlop?: Rect.t,
   onBlur?: Event.blurEvent => unit,
   onFocus?: Event.focusEvent => unit,

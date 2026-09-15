@@ -15,21 +15,18 @@ type size = string
 
 external dp: float => size = "%identity"
 
-let pct = num => num->Js.Float.toString ++ "%"
+let pct = num => num->Float.toString ++ "%"
 
 type margin = size
 
 @inline
 let auto = "auto"
 
-type offset = {
-  height: float,
-  width: float,
-}
+type offset = Layout.size
 
 type angle
-let deg: float => angle = num => (num->Js.Float.toString ++ "deg")->Obj.magic
-let rad: float => angle = num => (num->Js.Float.toString ++ "rad")->Obj.magic
+let deg: float => angle = num => (num->Float.toString ++ "deg")->Obj.magic
+let rad: float => angle = num => (num->Float.toString ++ "rad")->Obj.magic
 
 type transform
 @obj external perspective: (~perspective: float) => transform = ""

@@ -1,27 +1,14 @@
 type nativeElement
 
-include NativeElement.Impl({
-  type t = nativeElement
-})
+include NativeElement.Impl({type t = nativeElement})
 
 type coreProps = {
-  accessible?: bool,
-  accessibilityElementsHidden?: bool,
-  accessibilityHint?: string,
-  accessibilityIgnoresInvertColors?: bool,
-  accessibilityLabel?: string,
-  accessibilityLanguage?: string,
-  accessibilityLiveRegion?: Accessibility.liveRegion,
-  accessibilityRole?: Accessibility.role,
-  accessibilityState?: Accessibility.state,
-  accessibilityValue?: Accessibility.value,
-  accessibilityViewIsModal?: bool,
+  ...Accessibility.viewProps,
   delayLongPress?: int,
   delayPressIn?: int,
   delayPressOut?: int,
   disabled?: bool,
   hitSlop?: Rect.t,
-  importantForAccessibility?: View.importantForAccessibility,
   onBlur?: Event.targetEvent => unit,
   onFocus?: Event.targetEvent => unit,
   onLayout?: Event.layoutEvent => unit,

@@ -1,8 +1,6 @@
 type nativeElement
 
-include NativeElement.Impl({
-  type t = nativeElement
-})
+include NativeElement.Impl({type t = nativeElement})
 
 type cache = [
   | #default
@@ -11,7 +9,7 @@ type cache = [
   | #"only-if-cached"
 ]
 
-type uriSource = {
+type imageURISource = {
   uri: string,
   bundle?: string,
   method?: string,
@@ -24,28 +22,22 @@ type uriSource = {
 }
 
 module Source = {
-  type t
-
-  external fromRequired: Packager.required => t = "%identity"
-  external fromUriSource: uriSource => t = "%identity"
-  external fromUriSources: array<uriSource> => t = "%identity"
+  @unboxed
+  type t =
+    | Require(Packager.required)
+    | URISource(imageURISource)
+    | URISources(array<imageURISource>)
 }
 
 module ImageLoadEvent = {
-  type source = {
-    width: float,
-    height: float,
-    uri: string,
-  }
-
   type payload = {
-    uri: Js.Nullable.t<string>,
-    source: source,
+    source: {
+      ...Layout.size,
+      uri: string,
+    },
   }
 
-  include Event.SyntheticEvent({
-    type _payload = payload
-  })
+  include Event.SyntheticEvent({type _payload = payload})
 }
 
 type imageLoadEvent = ImageLoadEvent.t
@@ -53,9 +45,7 @@ type imageLoadEvent = ImageLoadEvent.t
 module ErrorEvent = {
   type payload = {error: string}
 
-  include Event.SyntheticEvent({
-    type _payload = payload
-  })
+  include Event.SyntheticEvent({type _payload = payload})
 }
 
 type errorEvent = ErrorEvent.t
@@ -66,9 +56,7 @@ module ProgressEvent = {
     total: float,
   }
 
-  include Event.SyntheticEvent({
-    type _payload = payload
-  })
+  include Event.SyntheticEvent({type _payload = payload})
 }
 
 type progressEvent = ProgressEvent.t
@@ -91,33 +79,37 @@ type crossOrigin = [
   | #"use-credentials"
 ]
 
+type iosProps = {
+  defaultSource?: Source.t,
+  onPartialLoad?: unit => unit,
+  onProgress?: progressEvent => unit,
+}
+
+type androidProps = {
+  fadeDuration?: float,
+  loadingIndicatorSource?: Source.t,
+  progressiveRenderingEnabled?: bool,
+  resizeMethod?: resizeMethod,
+  resizeMultiplier?: float,
+}
+
 type imageProps = {
-  accessibilityLabel?: string,
-  accessible?: bool,
+  ...View.viewPropsWithoutChildren,
+  ...iosProps,
+  ...androidProps,
   alt?: string,
   blurRadius?: float,
   capInsets?: Rect.t,
   crossOrigin?: crossOrigin,
-  defaultSource?: Source.t,
-  fadeDuration?: float,
   height?: float,
-  loadingIndicatorSource?: Source.t,
   onError?: errorEvent => unit,
-  onLayout?: Event.layoutEvent => unit,
   onLoad?: imageLoadEvent => unit,
   onLoadEnd?: unit => unit,
   onLoadStart?: unit => unit,
-  onPartialLoad?: unit => unit,
-  onProgress?: progressEvent => unit,
-  progressiveRenderingEnabled?: bool,
   referrerPolicy?: referrerPolicy,
-  resizeMethod?: resizeMethod,
   resizeMode?: Style.resizeMode,
-  resizeMultiplier?: float,
   source: Source.t,
   srcSet?: string,
-  style?: Style.t,
-  testID?: string,
   tintColor?: Color.t,
   width?: float,
 }
@@ -130,19 +122,7 @@ type props = {
 @module("react-native")
 external make: React.component<props> = "Image"
 
-type sizeError
-
-type imageSize = {
-  height: float,
-  width: float,
-}
-
-@module("react-native") @scope("Image")
-external getSize_legacy: (
-  ~uri: string,
-  ~success: (~width: float, ~height: float) => unit,
-  ~failure: sizeError => unit=?,
-) => unit = "getSize"
+type imageSize = Layout.size
 
 @module("react-native") @scope("Image")
 external getSize: (~uri: string) => promise<imageSize> = "getSize"
@@ -171,9 +151,8 @@ external abortPrefetch: requestId => unit = "abortPrefetch"
 external queryCache: (~uris: array<string>) => unit = "queryCache"
 
 type asset = {
+  ...Layout.size,
   uri: string,
-  width: float,
-  height: float,
 }
 
 @module("react-native") @scope("Image")

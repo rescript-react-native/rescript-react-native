@@ -1,18 +1,13 @@
 type nativeElement
 
-include NativeElement.Impl({
-  type t = nativeElement
-})
+include NativeElement.Impl({type t = nativeElement})
 
-include ScrollViewMethods.Make({
-  type t = element
-})
+include ScrollViewMethods.Make({type t = element})
 
-type scrollToParams = {
-  x: float,
-  y: float,
+type scrollToOptions = {
+  ...Layout.point,
   animated?: bool,
   duration?: float,
 }
 
-@send external scrollTo: (element, scrollToParams) => unit = "scrollTo"
+@send external scrollTo: (element, scrollToOptions) => unit = "scrollTo"

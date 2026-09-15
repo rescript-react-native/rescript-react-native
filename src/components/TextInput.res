@@ -6,9 +6,7 @@ module ChangeEvent = {
     text: string,
   }
 
-  include Event.SyntheticEvent({
-    type _payload = payload
-  })
+  include Event.SyntheticEvent({type _payload = payload})
 }
 
 type changeEvent = ChangeEvent.t
@@ -20,41 +18,26 @@ module EditingEvent = {
     target: int,
   }
 
-  include Event.SyntheticEvent({
-    type _payload = payload
-  })
+  include Event.SyntheticEvent({type _payload = payload})
 }
 
 type editingEvent = EditingEvent.t
 
 module ContentSizeChangeEvent = {
-  type contentSize = {
-    width: float,
-    height: float,
-  }
   type payload = {
     target: int,
-    contentSize: contentSize,
+    contentSize: Layout.size,
   }
 
-  include Event.SyntheticEvent({
-    type _payload = payload
-  })
+  include Event.SyntheticEvent({type _payload = payload})
 }
 
 type contentSizeChangeEvent = ContentSizeChangeEvent.t
 
 module ScrollEvent = {
-  type contentOffset = {
-    x: float,
-    y: float,
-  }
+  type payload = {contentOffset: Layout.point}
 
-  type payload = {contentOffset: contentOffset}
-
-  include Event.SyntheticEvent({
-    type _payload = payload
-  })
+  include Event.SyntheticEvent({type _payload = payload})
 }
 
 type scrollEvent = ScrollEvent.t
@@ -70,9 +53,7 @@ module SelectionChangeEvent = {
     target: int,
   }
 
-  include Event.SyntheticEvent({
-    type _payload = payload
-  })
+  include Event.SyntheticEvent({type _payload = payload})
 }
 
 type selectionChangeEvent = SelectionChangeEvent.t
@@ -80,13 +61,11 @@ type selectionChangeEvent = SelectionChangeEvent.t
 module KeyPressEvent = {
   type payload = {
     key: string,
-    target: Js.Nullable.t<int>,
-    eventCount: Js.Nullable.t<int>,
+    target: nullable<int>,
+    eventCount: nullable<int>,
   }
 
-  include Event.SyntheticEvent({
-    type _payload = payload
-  })
+  include Event.SyntheticEvent({type _payload = payload})
 }
 
 type keyPressEvent = KeyPressEvent.t

@@ -71,3 +71,45 @@ type role = [
   | #togglebutton
   | #toolbar
 ]
+
+type importantForAccessibility = [
+  | #auto
+  | #yes
+  | #no
+  | #"no-hide-descendants"
+]
+
+type props = {
+  accessible?: bool,
+  accessibilityActions?: array<actionInfo>,
+  accessibilityHint?: string,
+  accessibilityLabel?: string,
+  accessibilityRole?: role,
+  // `role` has precedence over the accessibilityRole prop
+  role?: Role.t,
+  accessibilityState?: state,
+  accessibilityValue?: value,
+  onAccessibilityAction?: actionEvent => unit,
+}
+
+type iosProps = {
+  accessibilityElementsHidden?: bool,
+  accessibilityIgnoresInvertColors?: bool,
+  accessibilityLanguage?: string,
+  accessibilityViewIsModal?: bool,
+  onAccessibilityEscape?: unit => unit,
+  onAccessibilityTap?: unit => unit,
+  onMagicTap?: unit => unit,
+}
+
+type androidProps = {
+  accessibilityLabelledBy?: array<string>,
+  accessibilityLiveRegion?: liveRegion,
+  importantForAccessibility?: importantForAccessibility,
+}
+
+type viewProps = {
+  ...props,
+  ...iosProps,
+  ...androidProps,
+}

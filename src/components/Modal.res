@@ -1,8 +1,6 @@
 type nativeElement
 
-include NativeElement.Impl({
-  type t = nativeElement
-})
+include NativeElement.Impl({type t = nativeElement})
 
 type orientation = [
   | #landscape
@@ -17,9 +15,7 @@ type orientationChange = [#landscape | #portrait]
 module OrientationChangeEvent = {
   type payload = {orientation: orientationChange}
 
-  include Event.SyntheticEvent({
-    type _payload = payload
-  })
+  include Event.SyntheticEvent({type _payload = payload})
 }
 
 type orientationChangeEvent = OrientationChangeEvent.t

@@ -3,9 +3,7 @@ include DrawerLayoutAndroidElement
 module DrawerSlideEvent = {
   type payload = {offset: float}
 
-  include Event.SyntheticEvent({
-    type _payload = payload
-  })
+  include Event.SyntheticEvent({type _payload = payload})
 }
 
 type drawerSlideEvent = DrawerSlideEvent.t

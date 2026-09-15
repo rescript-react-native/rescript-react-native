@@ -41,22 +41,20 @@ module SyntheticEvent = (
   },
 ) => {
   type t = {
-    bubbles: Js.Nullable.t<bool>,
-    cancelable: Js.Nullable.t<bool>,
+    bubbles: nullable<bool>,
+    cancelable: nullable<bool>,
     currentTarget: float,
-    defaultPrevented: Js.Nullable.t<bool>,
+    defaultPrevented: nullable<bool>,
     dispatchConfig: registrationName,
-    eventPhase: Js.Nullable.t<float>,
-    isTrusted: Js.Nullable.t<bool>,
+    eventPhase: nullable<float>,
+    isTrusted: nullable<bool>,
     nativeEvent: T._payload,
-    target: Js.Nullable.t<float>,
+    target: nullable<float>,
     timeStamp: float,
-    \"type": Js.Nullable.t<string>,
+    \"type": nullable<string>,
   }
 
-  include EventMethods({
-    type event = t
-  })
+  include EventMethods({type event = t})
 }
 
 module ResponderSyntheticEvent = (
@@ -64,44 +62,40 @@ module ResponderSyntheticEvent = (
     type _payload
   },
 ) => {
-  type touchBank = {
-    touchActive: bool,
-    startPageX: float,
-    startPageY: float,
-    startTimeStamp: float,
-    currentPageX: float,
-    currentPageY: float,
-    currentTimeStamp: float,
-    previousPageX: float,
-    previousPageY: float,
-    previousTimeStamp: float,
-  }
-
   type touchHistory = {
     indexOfSingleActiveTouch: float,
     mostRecentTimeStamp: float,
     numberActiveTouches: float,
-    touchBank: array<touchBank>,
+    touchBank: array<{
+      touchActive: bool,
+      startPageX: float,
+      startPageY: float,
+      startTimeStamp: float,
+      currentPageX: float,
+      currentPageY: float,
+      currentTimeStamp: float,
+      previousPageX: float,
+      previousPageY: float,
+      previousTimeStamp: float,
+    }>,
   }
 
   type t = {
-    bubbles: Js.Nullable.t<bool>,
-    cancelable: Js.Nullable.t<bool>,
+    bubbles: nullable<bool>,
+    cancelable: nullable<bool>,
     currentTarget: float,
-    defaultPrevented: Js.Nullable.t<bool>,
+    defaultPrevented: nullable<bool>,
     dispatchConfig: registrationName,
-    eventPhase: Js.Nullable.t<float>,
-    isTrusted: Js.Nullable.t<bool>,
+    eventPhase: nullable<float>,
+    isTrusted: nullable<bool>,
     nativeEvent: T._payload,
-    target: Js.Nullable.t<float>,
+    target: nullable<float>,
     timeStamp: float,
-    \"type": Js.Nullable.t<string>,
+    \"type": nullable<string>,
     touchHistory: touchHistory,
   }
 
-  include EventMethods({
-    type event = t
-  })
+  include EventMethods({type event = t})
 
   @get external touchHistory: t => touchHistory = "touchHistory"
 }
@@ -118,38 +112,24 @@ module FocusEvent = {
 }
 
 module LayoutEvent = {
-  type layout = {
-    x: float,
-    y: float,
-    width: float,
-    height: float,
-  }
+  type payload = {layout: Layout.rectangle}
 
-  type payload = {layout: layout}
-
-  include SyntheticEvent({
-    type _payload = payload
-  })
+  include SyntheticEvent({type _payload = payload})
 }
 
 module TextLayoutEvent = {
-  type line = {
-    x: float,
-    y: float,
-    width: float,
-    height: float,
-    ascender: float, // verify
-    capHeight: float, // verify
-    descender: float, // verify
-    text: string,
-    xHeight: float, // verify
+  type payload = {
+    lines: array<{
+      ...Layout.rectangle,
+      ascender: float, // verify
+      capHeight: float, // verify
+      descender: float, // verify
+      text: string,
+      xHeight: float, // verify
+    }>,
   }
 
-  type payload = {lines: array<line>}
-
-  include SyntheticEvent({
-    type _payload = payload
-  })
+  include SyntheticEvent({type _payload = payload})
 }
 
 module PressEvent = {
@@ -161,58 +141,80 @@ module PressEvent = {
     locationY: float,
     pageX: float,
     pageY: float,
-    target: Js.Nullable.t<float>,
+    target: nullable<float>,
     timestamp: float,
     touches: array<payload>,
   }
 
-  include ResponderSyntheticEvent({
-    type _payload = payload
-  })
+  include ResponderSyntheticEvent({type _payload = payload})
 }
 
 module ScrollEvent = {
-  type contentOffset = {
-    x: float,
-    y: float,
-  }
-  type contentInset = {
-    bottom: float,
-    left: float,
-    right: float,
-    top: float,
-  }
-  type dimensions = {
-    height: float,
-    width: float,
-  }
-
   type payload = {
-    contentInset: contentInset,
-    contentOffset: contentOffset,
-    contentSize: dimensions,
-    layoutMeasurement: dimensions,
+    contentInset: Layout.insets,
+    contentOffset: Layout.point,
+    contentSize: Layout.size,
+    layoutMeasurement: Layout.size,
   }
 
-  include SyntheticEvent({
-    type _payload = payload
-  })
+  include SyntheticEvent({type _payload = payload})
 }
 
 module SwitchChangeEvent = {
   type payload = {value: bool}
 
-  include SyntheticEvent({
-    type _payload = payload
-  })
+  include SyntheticEvent({type _payload = payload})
 }
 
 module TargetEvent = {
   type payload = {target: int}
 
-  include SyntheticEvent({
-    type _payload = payload
-  })
+  include SyntheticEvent({type _payload = payload})
+}
+
+module PointerEvent = {
+  @unboxed
+  type pointerType =
+    | @as("mouse") Mouse
+    | @as("pen") Pen
+    | @as("touch") Touch
+    | Other(string)
+
+  type payload = {
+    // UIEvent
+    detail: float,
+    // MouseEvent
+    screenX: float,
+    screenY: float,
+    pageX: float,
+    pageY: float,
+    clientX: float,
+    clientY: float,
+    x: float,
+    y: float,
+    ctrlKey: bool,
+    shiftKey: bool,
+    altKey: bool,
+    metaKey: bool,
+    button: float,
+    buttons: float,
+    relatedTarget: nullable<float>,
+    offsetX: float,
+    offsetY: float,
+    // PointerEvent
+    pointerId: float,
+    width: float,
+    height: float,
+    pressure: float,
+    tangentialPressure: float,
+    tiltX: float,
+    tiltY: float,
+    twist: float,
+    pointerType: pointerType,
+    isPrimary: bool,
+  }
+
+  include SyntheticEvent({type _payload = payload})
 }
 
 type blurEvent = BlurEvent.t
@@ -223,3 +225,4 @@ type scrollEvent = ScrollEvent.t
 type switchChangeEvent = SwitchChangeEvent.t
 type targetEvent = TargetEvent.t
 type textLayoutEvent = TextLayoutEvent.t
+type pointerEvent = PointerEvent.t

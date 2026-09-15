@@ -10,8 +10,7 @@ Platform.os === #ios
   : doSomethingInOtherPlatform()
 ```
 */
-@module("react-native")
-@scope("Platform")
+@module("react-native") @scope("Platform")
 external os: os = "OS"
 
 @module("react-native") @scope("Platform")

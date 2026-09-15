@@ -209,15 +209,10 @@ external stagger: (float, array<Animation.t>) => Animation.t = "stagger"
 
 type loopConfig = {iterations?: int, resetBeforeIteration?: bool}
 
-// multiple externals
 @module("react-native") @scope("Animated")
-external loop: Animation.t => Animation.t = "loop"
+external loop: (Animation.t, ~config: loopConfig=?) => Animation.t = "loop"
 
-// multiple externals
-@module("react-native") @scope("Animated")
-external loopWithConfig: (Animation.t, loopConfig) => Animation.t = "loop"
-
-type eventOptions<'a, 'platformConfig> = {
+type eventConfig<'a, 'platformConfig> = {
   listener?: 'a,
   useNativeDriver: bool,
   platformConfig?: 'platformConfig,
@@ -225,11 +220,12 @@ type eventOptions<'a, 'platformConfig> = {
 
 // multiple externals
 @module("react-native") @scope("Animated")
-external event1: (array<'mapping>, eventOptions<'a, 'platformConfig>) => 'a = "event"
+external event1: (array<'mapping>, ~config: eventConfig<'a, 'platformConfig>=?) => 'a = "event"
 
 // multiple externals
 @module("react-native") @scope("Animated")
-external event2: (('mapping1, 'mapping2), eventOptions<'a, 'platformConfig>) => 'a = "event"
+external event2: (('mapping1, 'mapping2), ~config: eventConfig<'a, 'platformConfig>=?) => 'a =
+  "event"
 
 @module("react-native") @scope("Animated")
 external createAnimatedComponent: React.component<'props> => React.component<'props> =

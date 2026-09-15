@@ -5,23 +5,23 @@
     "version": 4
   },
   "package-specs": {
-    "module": "commonjs",
+    "module": "esmodule",
     "in-source": true
   },
-  "suffix": ".bs.js",
+  "suffix": ".res.js",
   "sources": [
     {
       "dir": "src",
       "subdirs": true
     }
   ],
-  "bsc-flags": [
+  "compiler-flags": [
     "-bs-no-version-header"
   ],
   "warnings": {
     "error": true
   },
-  "bs-dependencies": [
+  "dependencies": [
     "@rescript/react"
   ]
 }

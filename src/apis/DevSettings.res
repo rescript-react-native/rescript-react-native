@@ -6,7 +6,4 @@ type title = string
 external addMenuItem: (title, handler) => unit = "addMenuItem"
 
 @scope("DevSettings") @module("react-native")
-external reload: unit => unit = "reload"
-
-@scope("DevSettings") @module("react-native")
-external reloadWithReason: reason => unit = "reload"
+external reload: (~reason: reason=?) => unit = "reload"

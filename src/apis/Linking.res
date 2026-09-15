@@ -1,10 +1,6 @@
 module ExtraValue = {
-  type t
-
-  external fromString: string => t = "%identity"
-  external fromInt: int => t = "%identity"
-  external fromFloat: float => t = "%identity"
-  external fromBool: bool => t = "%identity"
+  @unboxed
+  type t = String(string) | Number(float) | Bool(bool)
 }
 
 type extraValue = ExtraValue.t
@@ -18,18 +14,13 @@ external openURL: string => promise<unit> = "openURL"
 external canOpenURL: string => promise<bool> = "canOpenURL"
 
 @scope("Linking") @module("react-native")
-external getInitialURL: unit => promise<Js.Null.t<string>> = "getInitialURL"
+external getInitialURL: unit => promise<null<string>> = "getInitialURL"
 
 @scope("Linking") @module("react-native")
 external openSettings: unit => promise<unit> = "openSettings"
 
-// multiple externals
 @scope("Linking") @module("react-native")
-external sendIntent: string => promise<unit> = "sendIntent"
-
-// multiple externals
-@scope("Linking") @module("react-native")
-external sendIntentWithExtras: (string, array<extra>) => promise<unit> = "sendIntent"
+external sendIntent: (string, ~extras: array<extra>=?) => promise<unit> = "sendIntent"
 
 type url = {url: string}
 
