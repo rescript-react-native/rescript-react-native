@@ -192,6 +192,9 @@ module Color = {
 
   @new @scope("Animated") @module("react-native")
   external createFromString: Color.t => t = "Color"
+
+  type rgba = {r: float, g: float, b: float, a: float}
+  @unboxed type initialValue = Rgba(rgba) | String(Color.t)
 }
 
 @module("react-native") @scope("Animated")
@@ -299,3 +302,11 @@ type config = {useNativeDriver: bool}
 
 @module("react-native")
 external useAnimatedValue: (~initialValue: float, ~config: config=?) => Value.t = "useAnimatedValue"
+
+@module("react-native")
+external useAnimatedValueXY: (~initialValue: ValueXY.rawValue, ~config: config=?) => ValueXY.t =
+  "useAnimatedValueXY"
+
+@module("react-native")
+external useAnimatedColor: (~initialValue: Color.initialValue=?, ~config: config=?) => Color.t =
+  "useAnimatedColor"

@@ -1,9 +1,18 @@
 include TextInputElement
+
+type selection = {
+  start: int,
+  end: int,
+}
+
 module ChangeEvent = {
   type payload = {
     eventCount: int,
     target: int,
     text: string,
+    // This is usually only used as a callback param and not created by the user.
+    // Therefore prefer option<...> to an optional field for easier matching.
+    selection: option<selection>,
   }
 
   include Event.SyntheticEvent({type _payload = payload})
@@ -41,11 +50,6 @@ module ScrollEvent = {
 }
 
 type scrollEvent = ScrollEvent.t
-
-type selection = {
-  start: int,
-  end: int,
-}
 
 module SelectionChangeEvent = {
   type payload = {

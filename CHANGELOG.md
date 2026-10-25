@@ -1,5 +1,16 @@
 # Changelog of `rescript-react-native`
 
+## Unreleased
+
+- Upgrade to `react-native@0.85`
+  - Breaking: remove `StyleSheet.absoluteFillObject` (removed upstream, use `StyleSheet.absoluteFill`)
+  - Add `Animated.useAnimatedValueXY` and `Animated.useAnimatedColor` (with `Animated.Color.initialValue`: `Rgba` / `String`)
+  - Add `EventEmitter` module
+  - Add `selection` to `TextInput.ChangeEvent` payload
+  - Add `onPressMove` prop to `Pressable`
+  - Add `scrollsChildToFocus` Android prop to `ScrollView`
+- Bump dev dependency to `rescript@12.3.1`
+
 ## 0.84.0 - 2026-09-15
 
 - Upgrade to `rescript@12` and `@rescript/react@0.15`

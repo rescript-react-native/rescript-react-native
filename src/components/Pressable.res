@@ -47,6 +47,7 @@ type props = {
   onLongPress?: Event.pressEvent => unit,
   onPress?: Event.pressEvent => unit,
   onPressIn?: Event.pressEvent => unit,
+  onPressMove?: Event.pressEvent => unit,
   onPressOut?: Event.pressEvent => unit,
   pressRetentionOffset?: Rect.t,
   style?: interactionState => Style.t,

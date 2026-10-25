@@ -65,6 +65,7 @@ type androidProps = {
   nestedScrollEnabled?: bool,
   fadingEdgeLength?: float,
   persistentScrollbar?: bool,
+  scrollsChildToFocus?: bool,
 }
 
 type scrollViewPropsWithoutListConflict = {
