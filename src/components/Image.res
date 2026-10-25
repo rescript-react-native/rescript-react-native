@@ -108,7 +108,8 @@ type imageProps = {
   onLoadStart?: unit => unit,
   referrerPolicy?: referrerPolicy,
   resizeMode?: Style.resizeMode,
-  source: Source.t,
+  // `source`, `src` or `srcSet`
+  source?: Source.t,
   src?: string,
   srcSet?: string,
   tintColor?: Color.t,

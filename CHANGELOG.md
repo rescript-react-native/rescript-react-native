@@ -26,7 +26,7 @@
 - New globals installed by React Native: `Global.requestIdleCallback` / `cancelIdleCallback` / `setImmediate` / `clearImmediate` / `queueMicrotask`, `ErrorUtils` (`setGlobalHandler`, `getGlobalHandler`, `reportError`, `reportFatalError`)
 - New props
   - `View`: touch events (`onTouchStart`, `onTouchMove`, `onTouchEnd`, `onTouchCancel` and their `Capture` variants), `onFocusCapture`, `onBlurCapture`, `nextFocus*` (Android), `experimental_accessibilityOrder`
-  - `Pressable`: `cancelable`; `TouchableWithoutFeedback`: `rejectResponderTermination`; `TextInput`: `inputAccessoryViewButtonLabel`; `Image`: `src`
+  - `Pressable`: `cancelable`; `TouchableWithoutFeedback`: `rejectResponderTermination`; `TextInput`: `inputAccessoryViewButtonLabel`; `Image`: `src` (`source` is now optional)
   - `aria-*` accessibility props (`ariaLabel`, `ariaChecked`, `ariaHidden`, `ariaLive`, …) on all components using `Accessibility` props
 - Breaking: `ScrollView` `StickyHeaderComponent` is a `React.component<ScrollView.stickyHeaderProps>` (was wrongly typed as `React.element`), add `Animated.Value.fromStickyHeaderScrollValue`
 - Add `Style.matrix` transform
