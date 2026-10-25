@@ -23,6 +23,7 @@
   - Zero-cost `Animated.timing` / `spring` / `decay` / `start` / `stop` / `reset` and `Value.interpolate` (were compiled to JS wrapper functions)
 - Fix `Color.hsla` generating an invalid `hsl(h, s%, l%, a)` color instead of `hsla(...)`
 - New APIs: `I18nManager`, `DeviceEventEmitter`, `ReactNativeVersion`
+- New globals installed by React Native: `Global.requestIdleCallback` / `cancelIdleCallback` / `setImmediate` / `clearImmediate` / `queueMicrotask`, `ErrorUtils` (`setGlobalHandler`, `getGlobalHandler`, `reportError`, `reportFatalError`)
 - New props
   - `View`: touch events (`onTouchStart`, `onTouchMove`, `onTouchEnd`, `onTouchCancel` and their `Capture` variants), `onFocusCapture`, `onBlurCapture`, `nextFocus*` (Android), `experimental_accessibilityOrder`
   - `Pressable`: `cancelable`; `TouchableWithoutFeedback`: `rejectResponderTermination`; `TextInput`: `inputAccessoryViewButtonLabel`; `Image`: `src`
@@ -30,7 +31,7 @@
 - Breaking: `ScrollView` `StickyHeaderComponent` is a `React.component<ScrollView.stickyHeaderProps>` (was wrongly typed as `React.element`), add `Animated.Value.fromStickyHeaderScrollValue`
 - Add `Style.matrix` transform
 - Breaking: `VirtualizedList.cellRendererComponentProps` is now typed (`cellKey`, `children`, `index`, `item`, `onLayout`, …)
-- Deprecate `InteractionManager` (deprecated by React Native), `runAfterInteractions` returns a cancellable `task`
+- Deprecate `InteractionManager` (deprecated by React Native, use `Global.requestIdleCallback`), `runAfterInteractions` returns a cancellable `task`
 - Deprecate `ProgressBarAndroid` and `Clipboard` (extracted from react-native core), `StatusBar.setNetworkActivityIndicatorVisible`
 - Mark as deprecated (documentation only, ReScript does not warn on record fields): `TextInput` `blurOnSubmit` (use `submitBehavior`), `hasTVPreferredFocus` on `Button` / `TouchableHighlight` / `TouchableOpacity` (use `focusable`)
 - Add all `fontVariant` values (ligatures, `contextual`, `stylistic-*`)
