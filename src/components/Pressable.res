@@ -36,6 +36,7 @@ type props = {
   ref?: ref,
   android_disableSound?: bool,
   android_ripple?: rippleConfig,
+  cancelable?: bool,
   children?: interactionState => React.element,
   delayLongPress?: int,
   disabled?: bool,

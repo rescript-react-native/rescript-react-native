@@ -29,6 +29,17 @@ type gestureResponderHandlersProps = {
   onStartShouldSetResponderCapture?: Event.pressEvent => bool,
 }
 
+type touchEventProps = {
+  onTouchCancel?: Event.pressEvent => unit,
+  onTouchCancelCapture?: Event.pressEvent => unit,
+  onTouchEnd?: Event.pressEvent => unit,
+  onTouchEndCapture?: Event.pressEvent => unit,
+  onTouchMove?: Event.pressEvent => unit,
+  onTouchMoveCapture?: Event.pressEvent => unit,
+  onTouchStart?: Event.pressEvent => unit,
+  onTouchStartCapture?: Event.pressEvent => unit,
+}
+
 // W3C pointer handlers (excludes onClick — covered by webClickProps).
 type pointerEventProps = {
   onGotPointerCapture?: Event.pointerEvent => unit,
@@ -55,8 +66,11 @@ type pointerEventProps = {
 
 type accessibilityProps = Accessibility.viewProps
 
-
-type iosProps = {shouldRasterizeIOS?: bool}
+type iosProps = {
+  shouldRasterizeIOS?: bool,
+  // nativeID values of descendants, in accessibility focus order
+  experimental_accessibilityOrder?: array<string>,
+}
 
 @unboxed
 type tabIndex = | @as(0) Focusable | @as(-1) NotFocusable
@@ -65,6 +79,12 @@ type androidProps = {
   renderToHardwareTextureAndroid?: bool,
   focusable?: bool,
   tabIndex?: tabIndex,
+  // native view tags (see `NativeMethods`) of the next view to focus
+  nextFocusDown?: int,
+  nextFocusForward?: int,
+  nextFocusLeft?: int,
+  nextFocusRight?: int,
+  nextFocusUp?: int,
 }
 
 type webLinkProps = {
@@ -80,7 +100,9 @@ type webClickProps = {
 
 type webFocusProps = {
   onFocus?: ReactEvent.Focus.t => unit,
+  onFocusCapture?: ReactEvent.Focus.t => unit,
   onBlur?: ReactEvent.Focus.t => unit,
+  onBlurCapture?: ReactEvent.Focus.t => unit,
 }
 
 type webKeyboardProps = {
@@ -129,6 +151,7 @@ type coreProps = {
 
 type viewPropsWithoutChildren = {
   ...gestureResponderHandlersProps,
+  ...touchEventProps,
   ...pointerEventProps,
   ...accessibilityProps,
   ...iosProps,

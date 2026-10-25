@@ -25,6 +25,22 @@ type overScrollMode = [#always | #never | #auto]
 
 type snapToAlignment = [#start | #center | #end]
 
+// an `Animated.Value`, see `Animated.Value.fromStickyHeaderScrollValue`
+type stickyHeaderScrollAnimatedValue
+
+// These are only received by the component and not created by the user.
+// Therefore prefer option<...> to optional fields for easier matching.
+type stickyHeaderProps = {
+  children: option<React.element>,
+  nextHeaderLayoutY: option<float>,
+  onLayout: Event.layoutEvent => unit,
+  scrollAnimatedValue: stickyHeaderScrollAnimatedValue,
+  inverted: option<bool>,
+  scrollViewHeight: option<float>,
+  nativeID: option<string>,
+  hiddenOnScroll: option<bool>,
+}
+
 type maintainVisibleContentPosition = {
   autoscrollToTopThreshold?: float,
   minIndexForVisible: int,
@@ -97,7 +113,7 @@ type scrollViewPropsWithoutListConflict = {
   stickyHeaderIndices?: array<int>,
   disableIntervalMomentum?: bool,
   disableScrollViewPanResponder?: bool,
-  \"StickyHeaderComponent"?: React.element,
+  \"StickyHeaderComponent"?: React.component<stickyHeaderProps>,
 }
 
 type scrollViewProps = {

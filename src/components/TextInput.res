@@ -286,6 +286,7 @@ type props = {
   importantForAutofill?: importantForAutofill,
   inlineImageLeft?: string,
   inlineImagePadding?: float,
+  inputAccessoryViewButtonLabel?: string,
   inputAccessoryViewID?: string,
   // `inputMode` has precedence over `keyboardType`
   inputMode?: inputMode,

@@ -109,6 +109,7 @@ type imageProps = {
   referrerPolicy?: referrerPolicy,
   resizeMode?: Style.resizeMode,
   source: Source.t,
+  src?: string,
   srcSet?: string,
   tintColor?: Color.t,
   width?: float,

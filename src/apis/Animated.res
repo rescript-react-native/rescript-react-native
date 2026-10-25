@@ -168,6 +168,10 @@ module Value = {
   @new @scope("Animated") @module("react-native")
   external create: (float, ~config: config=?) => t = "Value"
 
+  // the scroll value received by a `ScrollView` `StickyHeaderComponent`
+  external fromStickyHeaderScrollValue: ScrollView.stickyHeaderScrollAnimatedValue => t =
+    "%identity"
+
   include ValueOperations
 }
 

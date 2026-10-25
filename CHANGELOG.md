@@ -23,6 +23,10 @@
   - Zero-cost `Animated.timing` / `spring` / `decay` / `start` / `stop` / `reset` and `Value.interpolate` (were compiled to JS wrapper functions)
 - Fix `Color.hsla` generating an invalid `hsl(h, s%, l%, a)` color instead of `hsla(...)`
 - New APIs: `I18nManager`, `DeviceEventEmitter`, `ReactNativeVersion`
+- New props
+  - `View`: touch events (`onTouchStart`, `onTouchMove`, `onTouchEnd`, `onTouchCancel` and their `Capture` variants), `onFocusCapture`, `onBlurCapture`, `nextFocus*` (Android), `experimental_accessibilityOrder`
+  - `Pressable`: `cancelable`; `TouchableWithoutFeedback`: `rejectResponderTermination`; `TextInput`: `inputAccessoryViewButtonLabel`; `Image`: `src`
+- Breaking: `ScrollView` `StickyHeaderComponent` is a `React.component<ScrollView.stickyHeaderProps>` (was wrongly typed as `React.element`), add `Animated.Value.fromStickyHeaderScrollValue`
 - Bump dev dependency to `rescript@12.3.1`
 
 ## 0.84.0 - 2026-09-15
