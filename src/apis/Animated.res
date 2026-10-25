@@ -1,3 +1,8 @@
+// alias of the global `Color.t` (a string), shadowed below by `Animated.Color`
+type colorValue = Color.t
+
+type config = {useNativeDriver: bool}
+
 module Animation = {
   type t
   type endResult = {finished: bool}
@@ -13,6 +18,7 @@ module type Value = {
   type t
   type rawValue
   type addListenerCallback
+  type callback
 }
 
 type calculated
@@ -20,6 +26,26 @@ type calculated
 type regular
 
 type value<'a>
+
+module Interpolation = {
+  type t = value<calculated>
+  type outputRange
+  external fromStringArray: array<string> => outputRange = "%identity"
+  external fromFloatArray: array<float> => outputRange = "%identity"
+
+  type extrapolate = [#extend | #clamp | #identity]
+
+  type config = {
+    inputRange: array<float>,
+    outputRange: outputRange,
+    easing?: Easing.t,
+    extrapolate?: extrapolate,
+    extrapolateLeft?: extrapolate,
+    extrapolateRight?: extrapolate,
+  }
+
+  @send external interpolate: (value<'a>, config) => t = "interpolate"
+}
 
 module ValueAnimations = (Val: Value) => {
   module Decay = {
@@ -40,6 +66,7 @@ module ValueAnimations = (Val: Value) => {
     type toValue
     external fromRawValue: Val.rawValue => toValue = "%identity"
     external fromAnimatedValue: Val.t => toValue = "%identity"
+    external fromInterpolation: Interpolation.t => toValue = "%identity"
 
     type config = {
       toValue: toValue,
@@ -70,6 +97,7 @@ module ValueAnimations = (Val: Value) => {
 
     external fromRawValue: Val.rawValue => toValue = "%identity"
     external fromAnimatedValue: Val.t => toValue = "%identity"
+    external fromInterpolation: Interpolation.t => toValue = "%identity"
 
     type config = {
       toValue: toValue,
@@ -87,26 +115,6 @@ module ValueAnimations = (Val: Value) => {
   }
 }
 
-module Interpolation = {
-  type t = value<calculated>
-  type outputRange
-  external fromStringArray: array<string> => outputRange = "%identity"
-  external fromFloatArray: array<float> => outputRange = "%identity"
-
-  type extrapolate = [#extend | #clamp | #identity]
-
-  type config = {
-    inputRange: array<float>,
-    outputRange: outputRange,
-    easing?: Easing.t,
-    extrapolate?: extrapolate,
-    extrapolateLeft?: extrapolate,
-    extrapolateRight?: extrapolate,
-  }
-
-  @send external interpolate: (value<'a>, config) => t = "interpolate"
-}
-
 module ValueOperations = {
   @module("react-native") @scope("Animated")
   external add: (value<'a>, value<'b>) => value<calculated> = "add"
@@ -120,14 +128,15 @@ module ValueOperations = {
   external subtract: (value<'a>, value<'b>) => value<calculated> = "subtract"
   @module("react-native") @scope("Animated")
   external diffClamp: (value<'a>, float, float) => value<calculated> = "diffClamp"
-  let interpolate = Interpolation.interpolate
+  // externals rather than `let` aliases, which would compile to JS wrapper functions
+  @send external interpolate: (value<'a>, Interpolation.config) => Interpolation.t = "interpolate"
 }
 
 module ValueMethods = (Val: Value) => {
   type t = Val.t
   type rawValue = Val.rawValue
   type addListenerCallback = Val.addListenerCallback
-  type callback = rawValue => unit
+  type callback = Val.callback
 
   @send external setValue: (t, rawValue) => unit = "setValue"
   @send external setOffset: (t, rawValue) => unit = "setOffset"
@@ -137,6 +146,7 @@ module ValueMethods = (Val: Value) => {
   external addListener: (t, addListenerCallback) => string = "addListener"
   @send external removeListener: (t, string) => unit = "removeListener"
   @send external removeAllListeners: t => unit = "removeAllListeners"
+  @send external hasListeners: t => bool = "hasListeners"
 
   @send
   external resetAnimation: (t, ~callback: callback=?) => unit = "resetAnimation"
@@ -152,10 +162,15 @@ module Value = {
     type t = value<regular>
     type rawValue = float
     type addListenerCallback = {"value": rawValue} => unit
+    type callback = rawValue => unit
   })
 
   @new @scope("Animated") @module("react-native")
-  external create: float => t = "Value"
+  external create: (float, ~config: config=?) => t = "Value"
+
+  // the scroll value received by a `ScrollView` `StickyHeaderComponent`
+  external fromStickyHeaderScrollValue: ScrollView.stickyHeaderScrollAnimatedValue => t =
+    "%identity"
 
   include ValueOperations
 }
@@ -165,6 +180,7 @@ module ValueXY = {
     type t = {"x": Value.t, "y": Value.t}
     type rawValue = {"x": float, "y": float}
     type addListenerCallback = rawValue => unit
+    type callback = rawValue => unit
   })
 
   type layout = {
@@ -172,26 +188,33 @@ module ValueXY = {
     top: Value.t,
   }
   @new @scope("Animated") @module("react-native")
-  external create: rawValue => t = "ValueXY"
+  external create: (rawValue, ~config: config=?) => t = "ValueXY"
+  // reuse existing `Animated.Value`s for x and y
+  @new @scope("Animated") @module("react-native")
+  external createFromValues: (t, ~config: config=?) => t = "ValueXY"
   @send external getLayout: t => layout = "getLayout"
   @send
   external getTranslateTransform: t => array<Style.transform> = "getTranslateTransform"
 }
 
 module Color = {
+  type rgba = {r: float, g: float, b: float, a: float}
+
   include ValueMethods({
     type t = {"r": Value.t, "g": Value.t, "b": Value.t, "a": Value.t}
-    type rawValue = {"r": float, "g": float, "b": float, "a": float}
-    type addListenerCallback = rawValue => unit
+    type rawValue = rgba
+    // listeners receive the current color as a string, e.g. "rgba(255, 0, 0, 1)"
+    type addListenerCallback = colorValue => unit
+    type callback = colorValue => unit
   })
 
-  @obj external rgbaValue: (~r: float, ~g: float, ~b: float, ~a: float) => rawValue = ""
+  @unboxed type input = Rgba(rgba) | String(colorValue)
 
   @new @scope("Animated") @module("react-native")
-  external create: rawValue => t = "Color"
+  external create: (~initialValue: input=?, ~config: config=?) => t = "Color"
 
-  @new @scope("Animated") @module("react-native")
-  external createFromString: Color.t => t = "Color"
+  // shadows `ValueMethods.setValue` to also accept a color string
+  @send external setValue: (t, input) => unit = "setValue"
 }
 
 @module("react-native") @scope("Animated")
@@ -200,9 +223,9 @@ external delay: float => Animation.t = "delay"
 @module("react-native") @scope("Animated")
 external sequence: array<Animation.t> => Animation.t = "sequence"
 
-type parallelPayload = {stopTogether: bool}
+type parallelConfig = {stopTogether?: bool}
 @module("react-native") @scope("Animated")
-external parallel: (array<Animation.t>, parallelPayload) => Animation.t = "parallel"
+external parallel: (array<Animation.t>, ~config: parallelConfig=?) => Animation.t = "parallel"
 
 @module("react-native") @scope("Animated")
 external stagger: (float, array<Animation.t>) => Animation.t = "stagger"
@@ -227,21 +250,44 @@ external event1: (array<'mapping>, ~config: eventConfig<'a, 'platformConfig>=?) 
 external event2: (('mapping1, 'mapping2), ~config: eventConfig<'a, 'platformConfig>=?) => 'a =
   "event"
 
+type attachedEvent = {detach: unit => unit}
+
+@module("react-native") @scope("Animated")
+external attachNativeEvent: (
+  'viewRef,
+  string,
+  array<'mapping>,
+  ~platformConfig: 'platformConfig=?,
+) => attachedEvent = "attachNativeEvent"
+
+// adds a JS listener to an event handler (e.g. one returned by `event1`)
+@module("react-native") @scope("Animated")
+external forkEvent: (option<'handler>, 'handler) => 'handler = "forkEvent"
+
+@module("react-native") @scope("Animated")
+external unforkEvent: (option<'handler>, 'handler) => unit = "unforkEvent"
+
 @module("react-native") @scope("Animated")
 external createAnimatedComponent: React.component<'props> => React.component<'props> =
   "createAnimatedComponent"
 
-let timing = Value.Timing.timing
+// shortcuts for `Value`, as externals rather than `let` aliases,
+// which would compile to JS wrapper functions
+@module("react-native") @scope("Animated")
+external timing: (Value.t, Value.Timing.config) => Animation.t = "timing"
 
-let spring = Value.Spring.spring
+@module("react-native") @scope("Animated")
+external spring: (Value.t, Value.Spring.config) => Animation.t = "spring"
 
-let decay = Value.Decay.decay
+@module("react-native") @scope("Animated")
+external decay: (Value.t, Value.Decay.config) => Animation.t = "decay"
 
-let start = Animation.start
+@send
+external start: (Animation.t, ~endCallback: Animation.endCallback=?) => unit = "start"
 
-let stop = Animation.stop
+@send external stop: Animation.t => unit = "stop"
 
-let reset = Animation.reset
+@send external reset: Animation.t => unit = "reset"
 
 module StyleProp = {
   // methods to allow use of Animated values with Style props
@@ -256,7 +302,8 @@ module StyleProp = {
   external angle: value<calculated> => Style.angle = "%identity"
   external size: value<'a> => Style.size = "%identity"
   external margin: value<'a> => Style.margin = "%identity"
-  external color: value<calculated> => Color.t = "%identity"
+  external color: value<calculated> => colorValue = "%identity"
+  external animatedColor: Color.t => colorValue = "%identity"
 
   // UNSAFE: allows to pass animated values everywhere,
   // use of more precise methods above is recommended
@@ -295,7 +342,13 @@ module View = {
   external make: View.props => React.element = "View"
 }
 
-type config = {useNativeDriver: bool}
-
 @module("react-native")
 external useAnimatedValue: (~initialValue: float, ~config: config=?) => Value.t = "useAnimatedValue"
+
+@module("react-native")
+external useAnimatedValueXY: (~initialValue: ValueXY.rawValue, ~config: config=?) => ValueXY.t =
+  "useAnimatedValueXY"
+
+@module("react-native")
+external useAnimatedColor: (~initialValue: Color.input=?, ~config: config=?) => Color.t =
+  "useAnimatedColor"

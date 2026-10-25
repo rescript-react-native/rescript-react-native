@@ -1,5 +1,42 @@
 # Changelog of `rescript-react-native`
 
+## Unreleased
+
+- Upgrade to `react-native@0.85`
+  - Breaking: remove `StyleSheet.absoluteFillObject` (removed upstream, use `StyleSheet.absoluteFill`)
+  - Add `Animated.useAnimatedValueXY` and `Animated.useAnimatedColor`
+  - Add `EventEmitter` module
+  - Add `selection` to `TextInput.ChangeEvent` payload
+  - Add `onPressMove` prop to `Pressable`
+  - Add `scrollsChildToFocus` Android prop to `ScrollView`
+- `Animated` improvements
+  - Breaking: `Animated.Color.create(~initialValue=?, ~config=?)` takes `Animated.Color.input` (`Rgba({r, g, b, a})` / `String("red")`), replaces `create(rawValue)` / `createFromString`; `rgbaValue` removed, `rawValue` is now the `Animated.Color.rgba` record
+  - Breaking: `Animated.Color.setValue` takes `Animated.Color.input`
+  - Breaking: `Animated.Color` listener / `stopAnimation` / `resetAnimation` callbacks receive a color string (was wrongly typed as an rgba object)
+  - Breaking: `Animated.parallel(anims, ~config=?)`, `stopTogether` is optional (`parallelPayload` renamed `parallelConfig`)
+  - Fix `Animated.StyleProp.color` returning `Animated.Color.t` instead of `Color.t`
+  - Add `Animated.StyleProp.animatedColor` to use an `Animated.Color` in styles
+  - Add optional `~config` to `Animated.Value.create` and `Animated.ValueXY.create`
+  - Add `Animated.ValueXY.createFromValues` (from existing `Animated.Value`s)
+  - Add `Timing.fromInterpolation` / `Spring.fromInterpolation` for `toValue`
+  - Add `hasListeners`, `Animated.attachNativeEvent`, `Animated.forkEvent`, `Animated.unforkEvent`
+  - Zero-cost `Animated.timing` / `spring` / `decay` / `start` / `stop` / `reset` and `Value.interpolate` (were compiled to JS wrapper functions)
+- Fix `Color.hsla` generating an invalid `hsl(h, s%, l%, a)` color instead of `hsla(...)`
+- New APIs: `I18nManager`, `DeviceEventEmitter`, `ReactNativeVersion`
+- New globals installed by React Native: `Global.requestIdleCallback` / `cancelIdleCallback` / `setImmediate` / `clearImmediate` / `queueMicrotask`, `ErrorUtils` (`setGlobalHandler`, `getGlobalHandler`, `reportError`, `reportFatalError`)
+- New props
+  - `View`: touch events (`onTouchStart`, `onTouchMove`, `onTouchEnd`, `onTouchCancel` and their `Capture` variants), `onFocusCapture`, `onBlurCapture`, `nextFocus*` (Android), `experimental_accessibilityOrder`
+  - `Pressable`: `cancelable`; `TouchableWithoutFeedback`: `rejectResponderTermination`; `TextInput`: `inputAccessoryViewButtonLabel`; `Image`: `src` (`source` is now optional)
+  - `aria-*` accessibility props (`ariaLabel`, `ariaChecked`, `ariaHidden`, `ariaLive`, …) on all components using `Accessibility` props
+- Breaking: `ScrollView` `StickyHeaderComponent` is a `React.component<ScrollView.stickyHeaderProps>` (was wrongly typed as `React.element`), add `Animated.Value.fromStickyHeaderScrollValue`
+- Add `Style.matrix` transform
+- Breaking: `VirtualizedList.cellRendererComponentProps` is now typed (`cellKey`, `children`, `index`, `item`, `onLayout`, …)
+- Deprecate `InteractionManager` (deprecated by React Native, use `Global.requestIdleCallback`), `runAfterInteractions` returns a cancellable `task`
+- Deprecate `ProgressBarAndroid` and `Clipboard` (extracted from react-native core), `StatusBar.setNetworkActivityIndicatorVisible`
+- Mark as deprecated (documentation only, ReScript does not warn on record fields): `TextInput` `blurOnSubmit` (use `submitBehavior`), `hasTVPreferredFocus` on `Button` / `TouchableHighlight` / `TouchableOpacity` (use `focusable`)
+- Add all `fontVariant` values (ligatures, `contextual`, `stylistic-*`)
+- Bump dev dependency to `rescript@12.3.1`
+
 ## 0.84.0 - 2026-09-15
 
 - Upgrade to `rescript@12` and `@rescript/react@0.15`

@@ -25,7 +25,7 @@ external setHidden: (bool, showHideTransition) => unit = "setHidden"
 @module("react-native") @scope("StatusBar")
 external setBarStyle: (barStyle, bool) => unit = "setBarStyle"
 
-@module("react-native") @scope("StatusBar")
+@deprecated("Deprecated by React Native.") @module("react-native") @scope("StatusBar")
 external setNetworkActivityIndicatorVisible: bool => unit = "setNetworkActivityIndicatorVisible"
 
 @module("react-native") @scope("StatusBar")

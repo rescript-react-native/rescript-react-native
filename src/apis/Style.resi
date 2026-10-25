@@ -37,7 +37,7 @@ type transform
 @obj external translateY: (~translateY: size) => transform = ""
 @obj external skewX: (~skewX: angle) => transform = ""
 @obj external skewY: (~skewY: angle) => transform = ""
-// @todo matrix
+@obj external matrix: (~matrix: array<float>) => transform = ""
 
 external unsafeTransform: {..} => transform = "%identity"
 
@@ -121,7 +121,35 @@ type fontVariant = [
   | #"oldstyle-nums"
   | #"lining-nums"
   | #"tabular-nums"
+  | #"common-ligatures"
+  | #"no-common-ligatures"
+  | #"discretionary-ligatures"
+  | #"no-discretionary-ligatures"
+  | #"historical-ligatures"
+  | #"no-historical-ligatures"
+  | #contextual
+  | #"no-contextual"
   | #"proportional-nums"
+  | #"stylistic-one"
+  | #"stylistic-two"
+  | #"stylistic-three"
+  | #"stylistic-four"
+  | #"stylistic-five"
+  | #"stylistic-six"
+  | #"stylistic-seven"
+  | #"stylistic-eight"
+  | #"stylistic-nine"
+  | #"stylistic-ten"
+  | #"stylistic-eleven"
+  | #"stylistic-twelve"
+  | #"stylistic-thirteen"
+  | #"stylistic-fourteen"
+  | #"stylistic-fifteen"
+  | #"stylistic-sixteen"
+  | #"stylistic-seventeen"
+  | #"stylistic-eighteen"
+  | #"stylistic-nineteen"
+  | #"stylistic-twenty"
 ]
 
 type textAlign = [#auto | #left | #right | #center | #justify]
