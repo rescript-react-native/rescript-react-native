@@ -27,6 +27,8 @@ type value
 
 type liveRegion = [#none | #polite | #assertive]
 
+type ariaLive = [#polite | #assertive | #off]
+
 // `accessibilityRole` communicates the purpose of a component to the user of an assistive technology.
 // roles that are specific for react-native-web are also included:
 // article, banner, complementary, contentinfo, form, list, listItem, main, navigation, region
@@ -90,6 +92,18 @@ type props = {
   accessibilityState?: state,
   accessibilityValue?: value,
   onAccessibilityAction?: actionEvent => unit,
+  // `aria-*` props have precedence over the matching `accessibility*` props
+  @as("aria-busy") ariaBusy?: bool,
+  @as("aria-checked") ariaChecked?: checked,
+  @as("aria-disabled") ariaDisabled?: bool,
+  @as("aria-expanded") ariaExpanded?: bool,
+  @as("aria-hidden") ariaHidden?: bool,
+  @as("aria-label") ariaLabel?: string,
+  @as("aria-selected") ariaSelected?: bool,
+  @as("aria-valuemax") ariaValuemax?: float,
+  @as("aria-valuemin") ariaValuemin?: float,
+  @as("aria-valuenow") ariaValuenow?: float,
+  @as("aria-valuetext") ariaValuetext?: string,
 }
 
 type iosProps = {
@@ -97,6 +111,7 @@ type iosProps = {
   accessibilityIgnoresInvertColors?: bool,
   accessibilityLanguage?: string,
   accessibilityViewIsModal?: bool,
+  @as("aria-modal") ariaModal?: bool,
   onAccessibilityEscape?: unit => unit,
   onAccessibilityTap?: unit => unit,
   onMagicTap?: unit => unit,
@@ -105,6 +120,8 @@ type iosProps = {
 type androidProps = {
   accessibilityLabelledBy?: array<string>,
   accessibilityLiveRegion?: liveRegion,
+  @as("aria-labelledby") ariaLabelledby?: string,
+  @as("aria-live") ariaLive?: ariaLive,
   importantForAccessibility?: importantForAccessibility,
 }
 

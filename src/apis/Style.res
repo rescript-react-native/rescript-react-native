@@ -120,19 +120,40 @@ type fontStyle = [#normal | #italic]
 
 type fontWeight = [#normal | #bold | #100 | #200 | #300 | #400 | #500 | #600 | #700 | #800 | #900]
 
-// @todo in 0.71.0
-// Apparently there are more `fontVariant` options IOS specific
-// (`stylistic-one` ... `stylistic-twenty`) but they are not documented.
-// Found in the 0.71.0 changelog:
-// https://github.com/facebook/react-native/blob/main/CHANGELOG.md#ios-specific-4
-// and found in code:
-// https://github.com/facebook/react-native/blob/4e117cb09d208ca02f513d2101592d0ac10d4739/Libraries/StyleSheet/StyleSheetTypes.js#L784
 type fontVariant = [
   | #"small-caps"
   | #"oldstyle-nums"
   | #"lining-nums"
   | #"tabular-nums"
+  | #"common-ligatures"
+  | #"no-common-ligatures"
+  | #"discretionary-ligatures"
+  | #"no-discretionary-ligatures"
+  | #"historical-ligatures"
+  | #"no-historical-ligatures"
+  | #contextual
+  | #"no-contextual"
   | #"proportional-nums"
+  | #"stylistic-one"
+  | #"stylistic-two"
+  | #"stylistic-three"
+  | #"stylistic-four"
+  | #"stylistic-five"
+  | #"stylistic-six"
+  | #"stylistic-seven"
+  | #"stylistic-eight"
+  | #"stylistic-nine"
+  | #"stylistic-ten"
+  | #"stylistic-eleven"
+  | #"stylistic-twelve"
+  | #"stylistic-thirteen"
+  | #"stylistic-fourteen"
+  | #"stylistic-fifteen"
+  | #"stylistic-sixteen"
+  | #"stylistic-seventeen"
+  | #"stylistic-eighteen"
+  | #"stylistic-nineteen"
+  | #"stylistic-twenty"
 ]
 
 type textAlign = [#auto | #left | #right | #center | #justify]

@@ -2,9 +2,6 @@ type nativeElement
 
 include NativeElement.Impl({type t = nativeElement})
 
-// @todo in 0.71.0
-// after adding `aria-*` props, make sure `aria-checked` can be true, false or "mixed"
-
 type importantForAccessibility = Accessibility.importantForAccessibility
 
 type pointerEvents = [

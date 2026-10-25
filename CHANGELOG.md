@@ -26,10 +26,12 @@
 - New props
   - `View`: touch events (`onTouchStart`, `onTouchMove`, `onTouchEnd`, `onTouchCancel` and their `Capture` variants), `onFocusCapture`, `onBlurCapture`, `nextFocus*` (Android), `experimental_accessibilityOrder`
   - `Pressable`: `cancelable`; `TouchableWithoutFeedback`: `rejectResponderTermination`; `TextInput`: `inputAccessoryViewButtonLabel`; `Image`: `src`
+  - `aria-*` accessibility props (`ariaLabel`, `ariaChecked`, `ariaHidden`, `ariaLive`, …) on all components using `Accessibility` props
 - Breaking: `ScrollView` `StickyHeaderComponent` is a `React.component<ScrollView.stickyHeaderProps>` (was wrongly typed as `React.element`), add `Animated.Value.fromStickyHeaderScrollValue`
 - Add `Style.matrix` transform
 - Breaking: `VirtualizedList.cellRendererComponentProps` is now typed (`cellKey`, `children`, `index`, `item`, `onLayout`, …)
 - Deprecate `InteractionManager` (deprecated by React Native), `runAfterInteractions` returns a cancellable `task`
+- Add all `fontVariant` values (ligatures, `contextual`, `stylistic-*`)
 - Bump dev dependency to `rescript@12.3.1`
 
 ## 0.84.0 - 2026-09-15
