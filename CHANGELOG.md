@@ -31,6 +31,8 @@
 - Add `Style.matrix` transform
 - Breaking: `VirtualizedList.cellRendererComponentProps` is now typed (`cellKey`, `children`, `index`, `item`, `onLayout`, …)
 - Deprecate `InteractionManager` (deprecated by React Native), `runAfterInteractions` returns a cancellable `task`
+- Deprecate `ProgressBarAndroid` and `Clipboard` (extracted from react-native core), `StatusBar.setNetworkActivityIndicatorVisible`
+- Mark as deprecated (documentation only, ReScript does not warn on record fields): `TextInput` `blurOnSubmit` (use `submitBehavior`), `hasTVPreferredFocus` on `Button` / `TouchableHighlight` / `TouchableOpacity` (use `focusable`)
 - Add all `fontVariant` values (ligatures, `contextual`, `stylistic-*`)
 - Bump dev dependency to `rescript@12.3.1`
 

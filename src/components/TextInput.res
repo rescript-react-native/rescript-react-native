@@ -268,7 +268,7 @@ type props = {
   autoComplete?: autoComplete,
   autoCorrect?: bool,
   autoFocus?: bool,
-  blurOnSubmit?: bool,
+  @deprecated("Use `submitBehavior` instead.") blurOnSubmit?: bool,
   submitBehavior?: submitBehavior,
   caretHidden?: bool,
   clearButtonMode?: clearButtonMode,
