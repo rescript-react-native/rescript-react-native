@@ -22,6 +22,7 @@
   - Add `hasListeners`, `Animated.attachNativeEvent`, `Animated.forkEvent`, `Animated.unforkEvent`
   - Zero-cost `Animated.timing` / `spring` / `decay` / `start` / `stop` / `reset` and `Value.interpolate` (were compiled to JS wrapper functions)
 - Fix `Color.hsla` generating an invalid `hsl(h, s%, l%, a)` color instead of `hsla(...)`
+- New APIs: `I18nManager`, `DeviceEventEmitter`, `ReactNativeVersion`
 - Bump dev dependency to `rescript@12.3.1`
 
 ## 0.84.0 - 2026-09-15
