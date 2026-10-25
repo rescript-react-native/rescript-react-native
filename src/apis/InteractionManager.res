@@ -4,15 +4,25 @@
 
 type interactionHandle
 
-@module("react-native") @scope("InteractionManager")
-external /* @todo this returns a cancellable "promise", we need to type return correctly */
-runAfterInteractions: (unit => unit) => {.} = "runAfterInteractions"
+// cancellable "promise" returned by `runAfterInteractions`
+type task = {cancel: unit => unit}
 
-@module("react-native") @scope("InteractionManager")
+@deprecated("InteractionManager is deprecated by React Native.")
+@module("react-native")
+@scope("InteractionManager")
+external runAfterInteractions: (unit => unit) => task = "runAfterInteractions"
+
+@deprecated("InteractionManager is deprecated by React Native.")
+@module("react-native")
+@scope("InteractionManager")
 external createInteractionHandle: unit => interactionHandle = "createInteractionHandle"
 
-@module("react-native") @scope("InteractionManager")
+@deprecated("InteractionManager is deprecated by React Native.")
+@module("react-native")
+@scope("InteractionManager")
 external clearInteractionHandle: interactionHandle => unit = "clearInteractionHandle"
 
-@module("react-native") @scope("InteractionManager")
+@deprecated("InteractionManager is deprecated by React Native.")
+@module("react-native")
+@scope("InteractionManager")
 external setDeadline: float => unit = "setDeadline"

@@ -41,7 +41,7 @@ type transform
 @obj external translateY: (~translateY: size) => transform = ""
 @obj external skewX: (~skewX: angle) => transform = ""
 @obj external skewY: (~skewY: angle) => transform = ""
-// @todo matrix
+@obj external matrix: (~matrix: array<float>) => transform = ""
 
 external unsafeTransform: {..} => transform = "%identity"
 
