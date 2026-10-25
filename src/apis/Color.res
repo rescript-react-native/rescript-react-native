@@ -11,7 +11,7 @@ let rgba = (~r: int, ~g: int, ~b: int, ~a: float) =>
 let hsl = (~h: float, ~s: float, ~l: float) =>
   `hsl(${h->Float.toString}, ${s->Float.toString}%, ${l->Float.toString}%)`
 let hsla = (~h: float, ~s: float, ~l: float, ~a: float) =>
-  `hsl(${h->Float.toString}, ${s->Float.toString}%, ${l->Float.toString}%, ${a->Float.toString})`
+  `hsla(${h->Float.toString}, ${s->Float.toString}%, ${l->Float.toString}%, ${a->Float.toString})`
 
 @inline
 let transparent = "transparent"
