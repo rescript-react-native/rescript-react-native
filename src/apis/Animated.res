@@ -128,7 +128,8 @@ module ValueOperations = {
   external subtract: (value<'a>, value<'b>) => value<calculated> = "subtract"
   @module("react-native") @scope("Animated")
   external diffClamp: (value<'a>, float, float) => value<calculated> = "diffClamp"
-  let interpolate = Interpolation.interpolate
+  // externals rather than `let` aliases, which would compile to JS wrapper functions
+  @send external interpolate: (value<'a>, Interpolation.config) => Interpolation.t = "interpolate"
 }
 
 module ValueMethods = (Val: Value) => {
@@ -266,17 +267,23 @@ external unforkEvent: (option<'handler>, 'handler) => unit = "unforkEvent"
 external createAnimatedComponent: React.component<'props> => React.component<'props> =
   "createAnimatedComponent"
 
-let timing = Value.Timing.timing
+// shortcuts for `Value`, as externals rather than `let` aliases,
+// which would compile to JS wrapper functions
+@module("react-native") @scope("Animated")
+external timing: (Value.t, Value.Timing.config) => Animation.t = "timing"
 
-let spring = Value.Spring.spring
+@module("react-native") @scope("Animated")
+external spring: (Value.t, Value.Spring.config) => Animation.t = "spring"
 
-let decay = Value.Decay.decay
+@module("react-native") @scope("Animated")
+external decay: (Value.t, Value.Decay.config) => Animation.t = "decay"
 
-let start = Animation.start
+@send
+external start: (Animation.t, ~endCallback: Animation.endCallback=?) => unit = "start"
 
-let stop = Animation.stop
+@send external stop: Animation.t => unit = "stop"
 
-let reset = Animation.reset
+@send external reset: Animation.t => unit = "reset"
 
 module StyleProp = {
   // methods to allow use of Animated values with Style props

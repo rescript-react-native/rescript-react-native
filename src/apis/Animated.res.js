@@ -1,7 +1,5 @@
 
 
-import * as ReactNative from "react-native";
-import * as Primitive_option from "@rescript/runtime/lib/es6/Primitive_option.js";
 
 let Animation = {};
 
@@ -18,13 +16,7 @@ function ValueAnimations(Val) {
   };
 }
 
-function interpolate(prim0, prim1) {
-  return prim0.interpolate(prim1);
-}
-
-let ValueOperations = {
-  interpolate: interpolate
-};
+let ValueOperations = {};
 
 function ValueMethods(Val) {
   let Decay = {};
@@ -46,8 +38,7 @@ let Timing = {};
 let Value = {
   Decay: Decay,
   Spring: Spring,
-  Timing: Timing,
-  interpolate: interpolate
+  Timing: Timing
 };
 
 let Decay$1 = {};
@@ -74,30 +65,6 @@ let Color = {
   Timing: Timing$2
 };
 
-function timing(prim0, prim1) {
-  return ReactNative.Animated.timing(prim0, prim1);
-}
-
-function spring(prim0, prim1) {
-  return ReactNative.Animated.spring(prim0, prim1);
-}
-
-function decay(prim0, prim1) {
-  return ReactNative.Animated.decay(prim0, prim1);
-}
-
-function start(prim0, prim1) {
-  prim0.start(prim1 !== undefined ? Primitive_option.valFromOption(prim1) : undefined);
-}
-
-function stop(prim) {
-  prim.stop();
-}
-
-function reset(prim) {
-  prim.reset();
-}
-
 let StyleProp = {};
 
 let FlatList = {};
@@ -121,12 +88,6 @@ export {
   Value,
   ValueXY,
   Color,
-  timing,
-  spring,
-  decay,
-  start,
-  stop,
-  reset,
   StyleProp,
   FlatList,
   Image,
@@ -135,4 +96,4 @@ export {
   Text,
   View,
 }
-/* react-native Not a pure module */
+/* No side effect */

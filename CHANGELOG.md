@@ -20,6 +20,7 @@
   - Add `Animated.ValueXY.createFromValues` (from existing `Animated.Value`s)
   - Add `Timing.fromInterpolation` / `Spring.fromInterpolation` for `toValue`
   - Add `hasListeners`, `Animated.attachNativeEvent`, `Animated.forkEvent`, `Animated.unforkEvent`
+  - Zero-cost `Animated.timing` / `spring` / `decay` / `start` / `stop` / `reset` and `Value.interpolate` (were compiled to JS wrapper functions)
 - Fix `Color.hsla` generating an invalid `hsl(h, s%, l%, a)` color instead of `hsla(...)`
 - Bump dev dependency to `rescript@12.3.1`
 
