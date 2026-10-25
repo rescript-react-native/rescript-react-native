@@ -5,6 +5,8 @@ import * as Primitive_option from "@rescript/runtime/lib/es6/Primitive_option.js
 
 let Animation = {};
 
+let Interpolation = {};
+
 function ValueAnimations(Val) {
   let Decay = {};
   let Spring = {};
@@ -15,8 +17,6 @@ function ValueAnimations(Val) {
     Timing: Timing
   };
 }
-
-let Interpolation = {};
 
 function interpolate(prim0, prim1) {
   return prim0.interpolate(prim1);
@@ -114,8 +114,8 @@ let View = {};
 
 export {
   Animation,
-  ValueAnimations,
   Interpolation,
+  ValueAnimations,
   ValueOperations,
   ValueMethods,
   Value,
