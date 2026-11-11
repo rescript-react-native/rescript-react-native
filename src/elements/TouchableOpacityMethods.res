@@ -1,8 +1,8 @@
-module Make = (
-  T: {
-    type t
-  },
-) => {
-  @send
-  external setOpacityTo: (T.t, ~value: float, ~duration: float) => unit = "setOpacityTo"
-}
+// Methods of touchable opacity elements (`[> #touchableOpacity]`)
+
+@send
+external setOpacityTo: (
+  DOMAPI.element<[> #touchableOpacity]>,
+  ~value: float,
+  ~duration: float,
+) => unit = "setOpacityTo"

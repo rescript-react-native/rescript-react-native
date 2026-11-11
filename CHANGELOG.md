@@ -13,6 +13,11 @@
   - `Event.SyntheticEvent` / `Event.ResponderSyntheticEvent` functors stay the public API to define an event module, now based on these generic records: events of third-party bindings share the same type
   - Breaking: `bubbles`, `cancelable`, `defaultPrevented`, `eventPhase`, `isTrusted` and `type` fields are `option<…>` (were `nullable<…>`)
   - Breaking: the `nativeEvent` getter returns the payload type (was `'a`)
+- Elements: methods are generic externals on `DOMAPI.element<'nativeElement>` (`NativeElement.Methods`, `DOMAPI.Element` now accepts any element)
+  - `NativeElement.Impl` stays the public API to define an element module
+  - Component-specific methods are restricted by the element kind (`ScrollViewMethods` on `[> #scrollView]`, so `FlatList` gets them and `TextInput` doesn't), and no longer applied through functors at runtime
+  - Breaking: remove the internal `NativeMethods.Make` and `*Methods.Make` functors, and the deprecated `NativeElement.element` / `NativeElement.ref` types
+  - Breaking: `DOMAPI.Node.Impl` takes a type constructor (`{type t<'a>}`), remove `DOMAPI.Element.Impl`
 
 ## 0.85.0 - 2026-11-11
 

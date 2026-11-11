@@ -1,9 +1,5 @@
-module Make = (
-  T: {
-    type t
-  },
-) => {
-  @send external isFocused: T.t => bool = "isFocused"
-  @send external clear: T.t => unit = "clear"
-  @send external setSelection: (T.t, int, int) => unit = "setSelection"
-}
+// Methods of text input elements (`[> #textInput]`)
+
+@send external isFocused: DOMAPI.element<[> #textInput]> => bool = "isFocused"
+@send external clear: DOMAPI.element<[> #textInput]> => unit = "clear"
+@send external setSelection: (DOMAPI.element<[> #textInput]>, int, int) => unit = "setSelection"

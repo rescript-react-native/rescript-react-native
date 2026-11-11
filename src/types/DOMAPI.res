@@ -89,57 +89,52 @@ module HTMLCollection = {
 }
 
 module Node = {
+  // Methods of every node-like type. `T.t` takes a type parameter so that the
+  // methods stay generic over the native element type of `element<'nativeElement>`.
   module Impl = (
     T: {
-      type t
+      type t<'a>
     },
   ) => {
-    external asNode: T.t => node = "%identity"
+    external asNode: T.t<'a> => node = "%identity"
 
     @send
-    external compareDocumentPosition: (T.t, node) => int = "compareDocumentPosition"
-    @send external contains: (T.t, node) => bool = "contains"
-    @send external getRootNode: T.t => node = "getRootNode"
-    @send external hasChildNodes: T.t => bool = "hasChildNodes"
+    external compareDocumentPosition: (T.t<'a>, node) => int = "compareDocumentPosition"
+    @send external contains: (T.t<'a>, node) => bool = "contains"
+    @send external getRootNode: T.t<'a> => node = "getRootNode"
+    @send external hasChildNodes: T.t<'a> => bool = "hasChildNodes"
   }
 
-  include Impl({type t = node})
+  include Impl({type t<'a> = node})
 }
 
+// Methods of every element, generic over the native element type
 module Element = {
-  module Impl = (
-    T: {
-      type t
-    },
-  ) => {
-    include Node.Impl({type t = T.t})
+  include Node.Impl({type t<'nativeElement> = element<'nativeElement>})
 
-    @send
-    external getBoundingClientRect: T.t => Rect.t = "getBoundingClientRect"
-    @send
-    external hasPointerCapture: (T.t, int) => bool = "hasPointerCapture"
-    @send
-    external releasePointerCapture: (T.t, int) => unit = "releasePointerCapture"
-    @send
-    external setPointerCapture: (T.t, int) => unit = "setPointerCapture"
-    @send external focus: T.t => unit = "focus"
-    @send external blur: T.t => unit = "blur"
+  @send
+  external getBoundingClientRect: element<'nativeElement> => Rect.t = "getBoundingClientRect"
+  @send
+  external hasPointerCapture: (element<'nativeElement>, int) => bool = "hasPointerCapture"
+  @send
+  external releasePointerCapture: (element<'nativeElement>, int) => unit = "releasePointerCapture"
+  @send
+  external setPointerCapture: (element<'nativeElement>, int) => unit = "setPointerCapture"
+  @send external focus: element<'nativeElement> => unit = "focus"
+  @send external blur: element<'nativeElement> => unit = "blur"
 
-    @send external setNativeProps: (T.t, {..}) => unit = "setNativeProps"
-  }
-
-  include Impl({type t = anyElement})
+  @send external setNativeProps: (element<'nativeElement>, {..}) => unit = "setNativeProps"
 }
 
 module Document = {
-  include Node.Impl({type t = document})
+  include Node.Impl({type t<'a> = document})
 
   @send
   external getElementById: (document, string) => null<anyElement> = "getElementById"
 }
 
 module Text = {
-  include Node.Impl({type t = text})
+  include Node.Impl({type t<'a> = text})
 
   @send external substringData: (text, ~offset: int, ~count: int) => string = "substringData"
 }

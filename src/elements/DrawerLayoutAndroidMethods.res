@@ -1,8 +1,4 @@
-module Make = (
-  T: {
-    type t
-  },
-) => {
-  @send external openDrawer: T.t => unit = "openDrawer"
-  @send external closeDrawer: T.t => unit = "closeDrawer"
-}
+// Methods of drawer layout elements (`[> #drawerLayoutAndroid]`)
+
+@send external openDrawer: DOMAPI.element<[> #drawerLayoutAndroid]> => unit = "openDrawer"
+@send external closeDrawer: DOMAPI.element<[> #drawerLayoutAndroid]> => unit = "closeDrawer"

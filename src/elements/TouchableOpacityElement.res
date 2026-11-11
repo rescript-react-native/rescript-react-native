@@ -1,5 +1,3 @@
-type nativeElement
-
+type nativeElement = [#touchableOpacity]
 include NativeElement.Impl({type t = nativeElement})
-
-include TouchableOpacityMethods.Make({type t = element})
+include TouchableOpacityMethods

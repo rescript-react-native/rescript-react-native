@@ -1,8 +1,6 @@
-type nativeElement
-
+type nativeElement = [#scrollView]
 include NativeElement.Impl({type t = nativeElement})
-
-include ScrollViewMethods.Make({type t = element})
+include ScrollViewMethods
 
 type scrollToOptions = {
   ...Layout.point,

@@ -1,5 +1,3 @@
-type nativeElement
-
+type nativeElement = [#drawerLayoutAndroid]
 include NativeElement.Impl({type t = nativeElement})
-
-include DrawerLayoutAndroidMethods.Make({type t = element})
+include DrawerLayoutAndroidMethods
