@@ -19,5 +19,9 @@ module Impl = (
 
   external unsafeFromAnyElement: DOMAPI.anyElement => element = "%identity"
 
+  // `React.useRef(Nullable.null)` already typed for this element
+  @module("react")
+  external useRef: (@as(json`null`) _) => Ref.valueRef<element> = "useRef"
+
   include Methods
 }
