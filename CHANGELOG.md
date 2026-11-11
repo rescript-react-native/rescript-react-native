@@ -9,6 +9,10 @@
   - `TouchableNativeFeedback.Background.ripple` takes a `Color.t` (accepts `PlatformColor`)
   - `TextInput.autoComplete`: add new Android autofill hints (`2fa-app-otp`, `email-otp`, `wifi-password`, …) and missing values (`current-password`, `new-password`, `given-name`, `family-name`, `url`, …)
 - Breaking (fix): synthetic events `target` and `currentTarget` are native elements (`DOMAPI.anyElement`), not numbers (numbers were only used by the legacy architecture)
+- Events: generic `Event.syntheticEvent<'payload>` / `Event.responderSyntheticEvent<'payload>` records, with `Event.Methods` / `Event.ResponderMethods`
+  - `Event.SyntheticEvent` / `Event.ResponderSyntheticEvent` functors stay the public API to define an event module, now based on these generic records: events of third-party bindings share the same type
+  - Breaking: `bubbles`, `cancelable`, `defaultPrevented`, `eventPhase`, `isTrusted` and `type` fields are `option<…>` (were `nullable<…>`)
+  - Breaking: the `nativeEvent` getter returns the payload type (was `'a`)
 
 ## 0.85.0 - 2026-11-11
 
