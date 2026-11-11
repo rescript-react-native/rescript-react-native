@@ -108,6 +108,7 @@ type blendMode = [
   | #saturation
   | #color
   | #luminosity
+  | #"plus-lighter"
 ]
 
 type isolation = [#auto | #isolate]

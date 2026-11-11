@@ -5,5 +5,11 @@ external exitApp: unit => unit = "exitApp"
 
 type eventType = [#hardwareBackPress]
 
+type hardwareBackPressEvent = {
+  @as("type") type_: string,
+  timeStamp: float,
+}
+
 @scope("BackHandler") @module("react-native")
-external addEventListener: (eventType, unit => nullable<bool>) => remove = "addEventListener"
+external addEventListener: (eventType, hardwareBackPressEvent => nullable<bool>) => remove =
+  "addEventListener"

@@ -77,44 +77,75 @@ type keyPressEvent = KeyPressEvent.t
 type autoCapitalize = [#characters | #words | #sentences | #none]
 
 type autoComplete = [
+  | #"2fa-app-otp"
+  | #"additional-name"
+  | #"address-line1"
+  | #"address-line2"
   | #"birthdate-day"
   | #"birthdate-full"
   | #"birthdate-month"
   | #"birthdate-year"
   | #"cc-csc"
+  | #"cc-exp"
   | #"cc-exp-day"
   | #"cc-exp-month"
   | #"cc-exp-year"
-  | #"cc-exp"
+  | #"cc-family-name"
+  | #"cc-given-name"
+  | #"cc-middle-name"
+  | #"cc-name"
   | #"cc-number"
+  | #"cc-type"
+  | #country
+  | #"current-password"
+  | #email
+  | #"email-otp"
+  | #"family-name"
+  | #"flight-confirmation-code"
+  | #"flight-number"
+  | #gender
+  | #"gift-card-number"
+  | #"gift-card-pin"
+  | #"given-name"
+  | #"honorific-prefix"
+  | #"honorific-suffix"
+  | #"loyalty-account-number"
+  | #name
   | #"name-family"
   | #"name-given"
-  | #"name-middle-initial"
   | #"name-middle"
+  | #"name-middle-initial"
   | #"name-prefix"
   | #"name-suffix"
+  | #"new-password"
+  | #nickname
+  | #off
+  | #"one-time-code"
+  | #organization
+  | #"organization-title"
+  | #password
   | #"password-new"
+  | #"postal-address"
   | #"postal-address-country"
-  | #"postal-address-extended-postal-code"
+  | #"postal-address-dependent-locality"
   | #"postal-address-extended"
+  | #"postal-address-extended-postal-code"
   | #"postal-address-locality"
   | #"postal-address-region"
-  | #"postal-address"
+  | #"postal-address-unit"
   | #"postal-code"
+  | #"promo-code"
   | #"sms-otp"
   | #"street-address"
+  | #tel
   | #"tel-country-code"
   | #"tel-device"
   | #"tel-national"
-  | #"username-new"
-  | #email
-  | #gender
-  | #name
-  | #off
-  | #password
-  | #tel
+  | #"upi-vpa"
+  | #url
   | #username
-  | #"one-time-code"
+  | #"username-new"
+  | #"wifi-password"
 ]
 
 type t

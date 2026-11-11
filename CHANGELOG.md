@@ -1,5 +1,14 @@
 # Changelog of `rescript-react-native`
 
+## Unreleased
+
+- Upgrade to `react-native@0.86`
+  - Breaking: `BackHandler.addEventListener` handler receives a `hardwareBackPressEvent` (`type_`, `timeStamp`) instead of `unit`
+  - Add `#"plus-lighter"` to `Style.blendMode`
+  - Add `alpha` to `Pressable.rippleConfig`
+  - `TouchableNativeFeedback.Background.ripple` takes a `Color.t` (accepts `PlatformColor`)
+  - `TextInput.autoComplete`: add new Android autofill hints (`2fa-app-otp`, `email-otp`, `wifi-password`, …) and missing values (`current-password`, `new-password`, `given-name`, `family-name`, `url`, …)
+
 ## 0.85.0 - 2026-11-11
 
 - Upgrade to `react-native@0.85`
