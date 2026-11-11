@@ -18,6 +18,9 @@
 - Elements: methods are generic externals on `DOMAPI.element<'nativeElement>` (`NativeElement.Methods`, `DOMAPI.Element` now accepts any element)
   - `NativeElement.Impl` stays the public API to define an element module
   - Add a typed `useRef` to every element module (`let ref = TextInput.useRef()`), compiled to `React.useRef(null)`
+- `Ref.t` is the type of an object ref (`React.ref<nullable<'element>>`): pass it directly, `ref=myRef`
+  - Add `Ref.callbackWithCleanup` for React 19 callback refs returning a cleanup function
+  - Deprecate `Ref.value` and `Ref.valueRef`, no longer needed
   - Component-specific methods are restricted by the element kind (`ScrollViewMethods` on `[> #scrollView]`, so `FlatList` gets them and `TextInput` doesn't), and no longer applied through functors at runtime
   - Breaking: remove the internal `NativeMethods.Make` and `*Methods.Make` functors, and the deprecated `NativeElement.element` / `NativeElement.ref` types
   - Breaking: `DOMAPI.Node.Impl` takes a type constructor (`{type t<'a>}`), remove `DOMAPI.Element.Impl`

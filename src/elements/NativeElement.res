@@ -21,7 +21,7 @@ module Impl = (
 
   // `React.useRef(Nullable.null)` already typed for this element
   @module("react")
-  external useRef: (@as(json`null`) _) => Ref.valueRef<element> = "useRef"
+  external useRef: @as(json`null`) _ => ref = "useRef"
 
   include Methods
 }
