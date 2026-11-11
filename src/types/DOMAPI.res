@@ -113,7 +113,8 @@ module Element = {
   include Node.Impl({type t<'nativeElement> = element<'nativeElement>})
 
   @send
-  external getBoundingClientRect: element<'nativeElement> => Rect.t = "getBoundingClientRect"
+  external getBoundingClientRect: element<'nativeElement> => Layout.domRect =
+    "getBoundingClientRect"
   @send
   external hasPointerCapture: (element<'nativeElement>, int) => bool = "hasPointerCapture"
   @send
