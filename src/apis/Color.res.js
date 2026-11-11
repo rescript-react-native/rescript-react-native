@@ -14,7 +14,7 @@ function hsl(h, s, l) {
 }
 
 function hsla(h, s, l, a) {
-  return `hsl(` + h.toString() + `, ` + s.toString() + `%, ` + l.toString() + `%, ` + a.toString() + `)`;
+  return `hsla(` + h.toString() + `, ` + s.toString() + `%, ` + l.toString() + `%, ` + a.toString() + `)`;
 }
 
 export {

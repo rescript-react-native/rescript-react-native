@@ -11,7 +11,7 @@ type props = {
   accessible?: bool,
   color?: Color.t,
   disabled?: bool,
-  hasTVPreferredFocus?: bool,
+  @deprecated("Use `focusable` instead.") hasTVPreferredFocus?: bool,
   nextFocusDown?: int,
   nextFocusForward?: int,
   nextFocusLeft?: int,

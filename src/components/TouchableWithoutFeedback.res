@@ -17,6 +17,7 @@ type coreProps = {
   onPressIn?: Event.pressEvent => unit,
   onPressOut?: Event.pressEvent => unit,
   pressRetentionOffset?: Rect.t,
+  rejectResponderTermination?: bool,
   testID?: string,
   touchSoundDisabled?: bool,
   children?: React.element,

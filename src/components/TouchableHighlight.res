@@ -6,7 +6,7 @@ type props = {
   ref?: ref,
   ...TouchableWithoutFeedback.coreProps,
   activeOpacity?: float,
-  hasTVPreferredFocus?: bool,
+  @deprecated("Use `focusable` instead.") hasTVPreferredFocus?: bool,
   onHideUnderlay?: unit => unit,
   onShowUnderlay?: unit => unit,
   style?: Style.t,

@@ -9,7 +9,7 @@ type props = {
   nextFocusLeft?: float,
   nextFocusRight?: float,
   nextFocusUp?: float,
-  hasTVPreferredFocus?: bool,
+  @deprecated("Use `focusable` instead.") hasTVPreferredFocus?: bool,
   style?: Style.t,
   tvParallaxProperties?: TV.parallax,
 }

@@ -18,8 +18,17 @@ type renderItemProps<'item> = {
 
 type renderItemCallback<'item> = renderItemProps<'item> => React.element
 
-// TODO
-type cellRendererComponentProps<'item> = {.}
+// These are only received by the component and not created by the user.
+// Therefore prefer option<...> to optional fields for easier matching.
+type cellRendererComponentProps<'item> = {
+  cellKey: string,
+  children: React.element,
+  index: int,
+  item: 'item,
+  onFocusCapture: option<Event.focusEvent => unit>,
+  onLayout: option<Event.layoutEvent => unit>,
+  style: Style.t,
+}
 type cellRendererComponent<'item> = React.component<cellRendererComponentProps<'item>>
 
 type viewableItem<'item> = {

@@ -22,5 +22,8 @@ type props = {
   styleAttr?: styleAttr,
 }
 
+@deprecated(
+  "ProgressBarAndroid has been extracted from react-native core and will be removed in a future release, use @react-native-community/progress-bar-android instead."
+)
 @module("react-native")
 external make: React.component<props> = "ProgressBarAndroid"
