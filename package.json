@@ -1,7 +1,7 @@
 {
   "name": "rescript-react-native",
   "description": "ReScript bindings for React Native.",
-  "version": "0.84.0",
+  "version": "0.85.0",
   "peerDependencies": {
     "@rescript/react": ">=0.15.0",
     "react-native": ">=0.85.0",
@@ -41,7 +41,7 @@
   "devDependencies": {
     "@rescript/react": "^0.15.0",
     "husky": "^8.0.0",
-    "lint-staged": "^13.0.0",
+    "lint-staged": "^15.5.2",
     "npm-run-all": "^4.0.0",
     "npmpub": "^6.1.0",
     "prettier": "^2.0.0",

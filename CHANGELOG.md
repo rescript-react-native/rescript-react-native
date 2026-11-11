@@ -1,6 +1,6 @@
 # Changelog of `rescript-react-native`
 
-## Unreleased
+## 0.85.0 - 2026-11-11
 
 - Upgrade to `react-native@0.85`
   - Breaking: remove `StyleSheet.absoluteFillObject` (removed upstream, use `StyleSheet.absoluteFill`)
