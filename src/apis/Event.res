@@ -11,7 +11,8 @@ module EventMethods = (
   external bubbles: T.event => option<bool> = "bubbles"
   @get @return(nullable)
   external cancelable: T.event => option<bool> = "cancelable"
-  @get external currentTarget: T.event => float = "currentTarget"
+  // the native element the handler is attached to
+  @get external currentTarget: T.event => DOMAPI.anyElement = "currentTarget"
   @get @return(nullable)
   external defaultPrevented: T.event => option<bool> = "defaultPrevented"
   @get
@@ -29,7 +30,7 @@ module EventMethods = (
   @get external nativeEvent: T.event => 'a = "nativeEvent"
   @send external persist: T.event => unit = "persist"
   @get @return(nullable)
-  external target: T.event => option<float> = "target"
+  external target: T.event => option<DOMAPI.anyElement> = "target"
   @get external timeStamp: T.event => float = "timeStamp"
   @get @return(nullable)
   external _type: T.event => option<string> = "type"
@@ -43,13 +44,13 @@ module SyntheticEvent = (
   type t = {
     bubbles: nullable<bool>,
     cancelable: nullable<bool>,
-    currentTarget: float,
+    currentTarget: DOMAPI.anyElement,
     defaultPrevented: nullable<bool>,
     dispatchConfig: registrationName,
     eventPhase: nullable<float>,
     isTrusted: nullable<bool>,
     nativeEvent: T._payload,
-    target: nullable<float>,
+    target: nullable<DOMAPI.anyElement>,
     timeStamp: float,
     \"type": nullable<string>,
   }
@@ -83,13 +84,13 @@ module ResponderSyntheticEvent = (
   type t = {
     bubbles: nullable<bool>,
     cancelable: nullable<bool>,
-    currentTarget: float,
+    currentTarget: DOMAPI.anyElement,
     defaultPrevented: nullable<bool>,
     dispatchConfig: registrationName,
     eventPhase: nullable<float>,
     isTrusted: nullable<bool>,
     nativeEvent: T._payload,
-    target: nullable<float>,
+    target: nullable<DOMAPI.anyElement>,
     timeStamp: float,
     \"type": nullable<string>,
     touchHistory: touchHistory,

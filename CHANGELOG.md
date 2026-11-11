@@ -8,6 +8,7 @@
   - Add `alpha` to `Pressable.rippleConfig`
   - `TouchableNativeFeedback.Background.ripple` takes a `Color.t` (accepts `PlatformColor`)
   - `TextInput.autoComplete`: add new Android autofill hints (`2fa-app-otp`, `email-otp`, `wifi-password`, …) and missing values (`current-password`, `new-password`, `given-name`, `family-name`, `url`, …)
+- Breaking (fix): synthetic events `target` and `currentTarget` are native elements (`DOMAPI.anyElement`), not numbers (numbers were only used by the legacy architecture)
 
 ## 0.85.0 - 2026-11-11
 
