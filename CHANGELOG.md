@@ -36,6 +36,9 @@
   - `StatusBar.pushStackEntry` / `popStackEntry` / `replaceStackEntry`
 - Add props useful for libraries: `Modal.modalRef`, `View` `nativeBackgroundAndroid` / `nativeForegroundAndroid`, `Button` `accessibilityHint` / `aria-*` / `importantForAccessibility` (and `onPress` is optional)
 - `Text.selectionColor` and `TouchableHighlight.underlayColor` are typed `Color.t` (accept `PlatformColor`), like the other color props
+- Breaking: optional arguments are optional labeled arguments, as in React Native
+  - `StatusBar.setHidden(hidden, ~animation=?)` and `StatusBar.setBarStyle(style, ~animated=?)`
+  - `Easing.elastic(~bounciness=?)` and `Easing.back(~s=?)`
 
 ## 0.86.0 - 2026-11-12
 

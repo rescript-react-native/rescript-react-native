@@ -19,10 +19,10 @@ type props = {
 external make: React.component<props> = "StatusBar"
 
 @module("react-native") @scope("StatusBar")
-external setHidden: (bool, showHideTransition) => unit = "setHidden"
+external setHidden: (bool, ~animation: showHideTransition=?) => unit = "setHidden"
 
 @module("react-native") @scope("StatusBar")
-external setBarStyle: (barStyle, bool) => unit = "setBarStyle"
+external setBarStyle: (barStyle, ~animated: bool=?) => unit = "setBarStyle"
 
 @module("react-native") @scope("StatusBar")
 external currentHeight: nullable<float> = "currentHeight"

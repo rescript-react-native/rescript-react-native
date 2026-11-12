@@ -1,7 +1,7 @@
 type t = float => float
 
 @module("react-native") @scope("Easing")
-external back: float => t = "back"
+external back: (~s: float=?) => t = "back"
 @module("react-native") @scope("Easing")
 external bezier: (float, float, float, float) => t = "bezier"
 @module("react-native") @scope("Easing") external bounce: t = "bounce"
@@ -9,7 +9,7 @@ external bezier: (float, float, float, float) => t = "bezier"
 @module("react-native") @scope("Easing") external cubic: t = "cubic"
 @module("react-native") @scope("Easing") external ease: t = "ease"
 @module("react-native") @scope("Easing")
-external elastic: float => t = "elastic"
+external elastic: (~bounciness: float=?) => t = "elastic"
 @module("react-native") @scope("Easing") external exp: t = "exp"
 @module("react-native") @scope("Easing") external in_: t => t = "in"
 @module("react-native") @scope("Easing")
