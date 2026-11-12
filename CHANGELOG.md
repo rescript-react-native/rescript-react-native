@@ -17,6 +17,10 @@
 - Add `Global.requestAnimationFrame` / `cancelAnimationFrame` (the callback receives the timestamp), deprecate `AnimationFrame`
 - `@notUndefined` on handle types (`Global.idleCallbackId`, `immediateId`, `animationFrameId`, `Settings.watchToken`, `Animated.value`, `Animated.Animation.t`, `EventEmitter.t`, `NativeEventEmitter.t`): no more `Primitive_option.some` when they are stored in an option
 - Breaking (fix): `Settings.watchKeys` takes an `array<string>` (was a `list<string>`, which is not a JS array at runtime)
+- Breaking: animated values are typed by their output (`Animated.value<'kind>`, `'kind` a polymorphic variant: `#value` / `#calculated` and `#number` / `#string`)
+  - `interpolate` returns a number or a string value depending on the output range (`Interpolation.fromFloatArray` / `fromStringArray`); `Interpolation.config` and `outputRange` take the kind as type parameter
+  - `StyleProp.color` / `StyleProp.angle` only accept string outputs, `StyleProp.float` and the operations (`add`, `multiply`, `interpolate`…) only accept number outputs
+  - New `Animated.calculatedString` kind for string interpolations
 
 ## 0.86.0 - 2026-11-12
 

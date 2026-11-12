@@ -22,31 +22,37 @@ module type Value = {
   type callback
 }
 
-type calculated
-
-type regular
+// Kind of an animated value, a polymorphic variant used as a phantom type:
+// - where it comes from: `#value` (an `Animated.Value`) or `#calculated` (interpolation, operation)
+// - what it outputs: `#number` or `#string` (an interpolation with a string output range)
+type regular = [#value | #number]
+type calculated = [#calculated | #number]
+type calculatedString = [#calculated | #string]
 
 @notUndefined
-type value<'a>
+type value<'kind>
 
 module Interpolation = {
+  // numeric interpolation
   type t = value<calculated>
-  type outputRange
-  external fromStringArray: array<string> => outputRange = "%identity"
-  external fromFloatArray: array<float> => outputRange = "%identity"
+  type outputRange<'kind>
+  external fromStringArray: array<string> => outputRange<calculatedString> = "%identity"
+  external fromFloatArray: array<float> => outputRange<calculated> = "%identity"
 
   type extrapolate = [#extend | #clamp | #identity]
 
-  type config = {
+  type config<'kind> = {
     inputRange: array<float>,
-    outputRange: outputRange,
+    outputRange: outputRange<'kind>,
     easing?: Easing.t,
     extrapolate?: extrapolate,
     extrapolateLeft?: extrapolate,
     extrapolateRight?: extrapolate,
   }
 
-  @send external interpolate: (value<'a>, config) => t = "interpolate"
+  // the output kind follows the output range (`fromFloatArray` or `fromStringArray`)
+  @send
+  external interpolate: (value<[> #number]>, config<'kind>) => value<'kind> = "interpolate"
 }
 
 module ValueAnimations = (Val: Value) => {
@@ -119,19 +125,21 @@ module ValueAnimations = (Val: Value) => {
 
 module ValueOperations = {
   @module("react-native") @scope("Animated")
-  external add: (value<'a>, value<'b>) => value<calculated> = "add"
+  external add: (value<[> #number]>, value<[> #number]>) => value<calculated> = "add"
   @module("react-native") @scope("Animated")
-  external divide: (value<'a>, value<'b>) => value<calculated> = "divide"
+  external divide: (value<[> #number]>, value<[> #number]>) => value<calculated> = "divide"
   @module("react-native") @scope("Animated")
-  external multiply: (value<'a>, value<'b>) => value<calculated> = "multiply"
+  external multiply: (value<[> #number]>, value<[> #number]>) => value<calculated> = "multiply"
   @module("react-native") @scope("Animated")
-  external modulo: (value<'a>, float) => value<calculated> = "modulo"
+  external modulo: (value<[> #number]>, float) => value<calculated> = "modulo"
   @module("react-native") @scope("Animated")
-  external subtract: (value<'a>, value<'b>) => value<calculated> = "subtract"
+  external subtract: (value<[> #number]>, value<[> #number]>) => value<calculated> = "subtract"
   @module("react-native") @scope("Animated")
-  external diffClamp: (value<'a>, float, float) => value<calculated> = "diffClamp"
+  external diffClamp: (value<[> #number]>, float, float) => value<calculated> = "diffClamp"
   // externals rather than `let` aliases, which would compile to JS wrapper functions
-  @send external interpolate: (value<'a>, Interpolation.config) => Interpolation.t = "interpolate"
+  @send
+  external interpolate: (value<[> #number]>, Interpolation.config<'kind>) => value<'kind> =
+    "interpolate"
 }
 
 module ValueMethods = (Val: Value) => {
@@ -296,15 +304,14 @@ module StyleProp = {
 
   // these methods should not be used to get the current value
 
-  // for angle, Color.t, and size expressed as percentage,
-  // interpolated values are needed where the outputRange is
-  // an appropriate array of strings
+  // angle and color need an interpolation with a string output range
+  // (`Interpolation.fromStringArray`), size accepts numbers or percentages
 
-  external float: value<'a> => float = "%identity"
-  external angle: value<calculated> => Style.angle = "%identity"
-  external size: value<'a> => Style.size = "%identity"
-  external margin: value<'a> => Style.margin = "%identity"
-  external color: value<calculated> => colorValue = "%identity"
+  external float: value<[> #number]> => float = "%identity"
+  external angle: value<[> #string]> => Style.angle = "%identity"
+  external size: value<'kind> => Style.size = "%identity"
+  external margin: value<'kind> => Style.margin = "%identity"
+  external color: value<[> #string]> => colorValue = "%identity"
   external animatedColor: Color.t => colorValue = "%identity"
 
   // UNSAFE: allows to pass animated values everywhere,
