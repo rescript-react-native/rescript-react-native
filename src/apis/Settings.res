@@ -8,7 +8,7 @@ external set: dict<string> => unit = "set"
 type watchToken
 
 @module("react-native") @scope("Settings")
-external watchKeys: (list<string>, unit => unit) => watchToken = "watchKeys"
+external watchKeys: (array<string>, unit => unit) => watchToken = "watchKeys"
 
 @module("react-native") @scope("Settings")
 external clearWatch: watchToken => unit = "clearWatch"
