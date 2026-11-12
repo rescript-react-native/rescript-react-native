@@ -189,6 +189,13 @@ module ScrollEvent = {
     contentOffset: Layout.point,
     contentSize: Layout.size,
     layoutMeasurement: Layout.size,
+    // This is only received by the handler and not created by the user.
+    // Therefore prefer option<...> to optional fields for easier matching.
+    velocity: option<Layout.point>,
+    // iOS
+    zoomScale: option<float>,
+    // when the scroll will end, in `onScrollEndDrag`
+    targetContentOffset: option<Layout.point>,
   }
 
   include SyntheticEvent({type _payload = payload})

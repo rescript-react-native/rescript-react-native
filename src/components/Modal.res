@@ -32,6 +32,8 @@ type presentationStyle = [
 type props = {
   ref?: ref,
   ...View.viewProps,
+  // the native modal element
+  modalRef?: ref,
   animationType?: animationType,
   backdropColor?: Color.t,
   hardwareAccelerated?: bool,

@@ -28,6 +28,13 @@
   - remove `ScrollView` `onScrollAnimationEnd` and `Text` `value` props (not React Native props)
   - `Linking.getInitialURL` resolves to `nullable<string>`, `Share` result `activityType` is `nullable<string>`
   - `ActionSheetIOS.showShareActionSheetWithOptions`: success method is `nullable<string>`, error is `{domain, code, userInfo, message}`
+- Add missing documented props and APIs
+  - `accessibilityLargeContentTitle` / `accessibilityShowsLargeContentViewer` (iOS)
+  - `Style`: `cursor` (iOS), `inset` / `insetBlock*` / `insetInline*`, `pointerEvents`, `userSelect`
+  - `Event.scrollEvent` payload: `velocity`, `zoomScale`, `targetContentOffset`
+  - `Platform.version` (`String` on iOS, `Number` on Android)
+  - `StatusBar.pushStackEntry` / `popStackEntry` / `replaceStackEntry`
+- Add props useful for libraries: `Modal.modalRef`, `View` `nativeBackgroundAndroid` / `nativeForegroundAndroid`, `Button` `accessibilityHint` / `aria-*` / `importantForAccessibility` (and `onPress` is optional)
 
 ## 0.86.0 - 2026-11-12
 

@@ -24,3 +24,10 @@ external isVision: bool = "isVision"
 
 @module("react-native") @scope("Platform")
 external isTesting: bool = "isTesting"
+
+// a string on iOS (e.g. "18.0"), the API level on Android (e.g. 35)
+@unboxed
+type version = String(string) | Number(float)
+
+@module("react-native") @scope("Platform")
+external version: version = "Version"

@@ -26,3 +26,16 @@ external setBarStyle: (barStyle, bool) => unit = "setBarStyle"
 
 @module("react-native") @scope("StatusBar")
 external currentHeight: nullable<float> = "currentHeight"
+
+// returned by `pushStackEntry`, to pass to `popStackEntry` / `replaceStackEntry`
+@notUndefined
+type stackEntry
+
+@module("react-native") @scope("StatusBar")
+external pushStackEntry: props => stackEntry = "pushStackEntry"
+
+@module("react-native") @scope("StatusBar")
+external popStackEntry: stackEntry => unit = "popStackEntry"
+
+@module("react-native") @scope("StatusBar")
+external replaceStackEntry: (stackEntry, props) => stackEntry = "replaceStackEntry"

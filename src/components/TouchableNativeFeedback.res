@@ -3,6 +3,7 @@ type nativeElement
 include NativeElement.Impl({type t = nativeElement})
 
 module Background = {
+  @notUndefined
   type t
 
   @module("react-native") @scope("TouchableNativeFeedback")

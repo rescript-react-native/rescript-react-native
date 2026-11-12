@@ -107,6 +107,8 @@ type iosProps = {
   accessibilityElementsHidden?: bool,
   accessibilityIgnoresInvertColors?: bool,
   accessibilityLanguage?: string,
+  accessibilityLargeContentTitle?: string,
+  accessibilityShowsLargeContentViewer?: bool,
   accessibilityViewIsModal?: bool,
   @as("aria-modal") ariaModal?: bool,
   onAccessibilityEscape?: unit => unit,

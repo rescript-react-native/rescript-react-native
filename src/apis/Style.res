@@ -338,6 +338,13 @@ type flexStyle = {
   gap?: size,
   height?: size,
   justifyContent?: justifyContent,
+  inset?: size,
+  insetBlock?: size,
+  insetBlockEnd?: size,
+  insetBlockStart?: size,
+  insetInline?: size,
+  insetInlineEnd?: size,
+  insetInlineStart?: size,
   left?: size,
   margin?: margin,
   marginBlock?: size,
@@ -399,6 +406,9 @@ type transformStyle = {
 
 // View styles https://reactnative.dev/docs/view-style-props
 type viewCoreStyle = {
+  // iOS 17+: `#pointer` enables hover effects
+  cursor?: [#auto | #pointer],
+  pointerEvents?: [#auto | #none | #"box-none" | #"box-only"],
   backfaceVisibility?: backfaceVisibility,
   backgroundColor?: Color.t,
   borderBlockColor?: Color.t,
@@ -452,6 +462,7 @@ type textAndroidStyle = {
   includeFontPadding?: bool,
 }
 type textCoreStyle = {
+  userSelect?: [#auto | #text | #none | #contain | #all],
   ...textIOSStyle,
   ...textAndroidStyle,
   color?: Color.t,
