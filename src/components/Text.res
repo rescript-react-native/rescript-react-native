@@ -73,7 +73,7 @@ type props = {
   onTextLayout?: Event.textLayoutEvent => unit,
   pressRetentionOffset?: Rect.t,
   selectable?: bool,
-  selectionColor?: string,
+  selectionColor?: Color.t,
   suppressHighlighting?: bool,
   textBreakStrategy?: textBreakStrategy,
 }

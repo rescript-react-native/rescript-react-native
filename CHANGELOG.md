@@ -35,6 +35,7 @@
   - `Platform.version` (`String` on iOS, `Number` on Android)
   - `StatusBar.pushStackEntry` / `popStackEntry` / `replaceStackEntry`
 - Add props useful for libraries: `Modal.modalRef`, `View` `nativeBackgroundAndroid` / `nativeForegroundAndroid`, `Button` `accessibilityHint` / `aria-*` / `importantForAccessibility` (and `onPress` is optional)
+- `Text.selectionColor` and `TouchableHighlight.underlayColor` are typed `Color.t` (accept `PlatformColor`), like the other color props
 
 ## 0.86.0 - 2026-11-12
 
