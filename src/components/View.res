@@ -119,6 +119,7 @@ type webMouseForwardedProps = {
   onMouseUp?: ReactEvent.Mouse.t => unit,
 }
 
+// Typed for react-native-web: these handlers receive React DOM events (`ReactEvent.*`)
 type webProps = {
   ...webLinkProps,
   ...webClickProps,

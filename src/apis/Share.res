@@ -24,7 +24,7 @@ external dismissedAction: action = "dismissedAction"
 // Therefore prefer option<...> to an optional field for easier matching.
 type shareResult = {
   action: action,
-  activityType: option<string>,
+  activityType: nullable<string>,
 }
 
 @module("react-native") @scope("Share")

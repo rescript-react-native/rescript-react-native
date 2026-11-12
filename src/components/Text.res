@@ -76,7 +76,6 @@ type props = {
   selectionColor?: string,
   suppressHighlighting?: bool,
   textBreakStrategy?: textBreakStrategy,
-  value?: string,
 }
 
 @module("react-native")

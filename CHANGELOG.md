@@ -21,6 +21,13 @@
   - `interpolate` returns a number or a string value depending on the output range (`Interpolation.fromFloatArray` / `fromStringArray`); `Interpolation.config` and `outputRange` take the kind as type parameter
   - `StyleProp.color` / `StyleProp.angle` only accept string outputs, `StyleProp.float` and the operations (`add`, `multiply`, `interpolate`…) only accept number outputs
   - New `Animated.calculatedString` kind for string interpolations
+- Breaking (fix): binding errors found in a full review against React Native 0.87 types
+  - `AccessibilityInfo.sendAccessibilityEvent` takes the element, not a ref
+  - `StatusBar.currentHeight` is `nullable<float>` (undefined on iOS)
+  - `TextInput` `onPressIn` / `onPressOut` handlers return `unit` (were forced to return `bool`)
+  - remove `ScrollView` `onScrollAnimationEnd` and `Text` `value` props (not React Native props)
+  - `Linking.getInitialURL` resolves to `nullable<string>`, `Share` result `activityType` is `nullable<string>`
+  - `ActionSheetIOS.showShareActionSheetWithOptions`: success method is `nullable<string>`, error is `{domain, code, userInfo, message}`
 
 ## 0.86.0 - 2026-11-12
 

@@ -25,4 +25,4 @@ external setHidden: (bool, showHideTransition) => unit = "setHidden"
 external setBarStyle: (barStyle, bool) => unit = "setBarStyle"
 
 @module("react-native") @scope("StatusBar")
-external currentHeight: float = "currentHeight"
+external currentHeight: nullable<float> = "currentHeight"

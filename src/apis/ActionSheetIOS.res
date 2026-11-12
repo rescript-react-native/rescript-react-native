@@ -22,13 +22,21 @@ type shareOptions = {
   excludedActivityTypes?: array<string>,
 }
 
-type error = {stack: option<string>}
+// This is only received by the failure callback and not created by the user.
+// Therefore prefer option<...> to an optional field for easier matching.
+type error = {
+  domain: string,
+  code: string,
+  userInfo: option<{.}>,
+  message: string,
+}
 
 @module("react-native") @scope("ActionSheetIOS")
 external showShareActionSheetWithOptions: (
   shareOptions,
   error => unit,
-  (bool, string) => unit,
+  // success and the sharing method, `null` when sharing was cancelled
+  (bool, nullable<string>) => unit,
 ) => unit = "showShareActionSheetWithOptions"
 
 @module("react-native") @scope("ActionSheetIOS")

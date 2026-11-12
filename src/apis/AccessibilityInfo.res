@@ -68,7 +68,7 @@ type accessibilityEventTypes = [
 
 @scope("AccessibilityInfo") @module("react-native")
 external sendAccessibilityEvent: (
-  Ref.t<DOMAPI.element<'nativeElement>>,
+  DOMAPI.element<'nativeElement>,
   accessibilityEventTypes,
 ) => unit = "sendAccessibilityEvent"
 
