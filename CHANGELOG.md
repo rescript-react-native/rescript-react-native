@@ -1,5 +1,20 @@
 # Changelog of `rescript-react-native`
 
+## Unreleased
+
+- Upgrade to `react-native@0.87`
+  - Breaking: remove `InteractionManager` (removed upstream, use `Global.requestIdleCallback`)
+  - Breaking: remove `StatusBar` `backgroundColor` / `translucent` / `networkActivityIndicatorVisible` props and `setBackgroundColor` / `setTranslucent` / `setNetworkActivityIndicatorVisible` (removed upstream)
+  - Breaking: `Appearance.addChangeListener` listener receives `Appearance.preferences` (`{colorScheme}`) instead of `unit`
+  - Deprecate `DrawerLayoutAndroid` (use react-native-drawer-layout) and `ImageBackground` (use a `View` with an absolutely positioned `Image`)
+  - Add `Style.backgroundImage`: CSS string (`String("linear-gradient(…)")`) or typed gradients (`Gradients([LinearGradient({direction: Angle(deg(45.)), colorStops: […]}), RadialGradient({…})])`), color stop `positions` in `dp` / `pct`, transition hints as stops without `color`
+  - `Style.angle` is a `private string` (still created with `deg` / `rad`)
+  - Add `#start` / `#end` to `textAlign` (style and `TextInput`), `#wavy` to `textDecorationStyle`
+  - Add `#auto` to `StatusBar.barStyle` and `Appearance.setColorScheme` (new `Appearance.override` type)
+  - Add `pointerEvents` prop to `Text`
+  - Add `PermissionsAndroid.Permission.accessLocalNetwork`
+  - Add `AssetRegistry` (`registerAsset`, `getAssetByID`)
+
 ## 0.86.0 - 2026-11-12
 
 - Upgrade to `react-native@0.86`

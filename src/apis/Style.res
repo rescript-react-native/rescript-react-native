@@ -24,9 +24,9 @@ let auto = "auto"
 
 type offset = Layout.size
 
-type angle
-let deg: float => angle = num => (num->Float.toString ++ "deg")->Obj.magic
-let rad: float => angle = num => (num->Float.toString ++ "rad")->Obj.magic
+type angle = string
+let deg: float => angle = num => num->Float.toString ++ "deg"
+let rad: float => angle = num => num->Float.toString ++ "rad"
 
 type transform
 @obj external perspective: (~perspective: float) => transform = ""
@@ -60,6 +60,61 @@ type transformOriginY =
   | Size(size)
 
 type transformOrigin = (transformOriginX, transformOriginY, float)
+
+// `positions` are pixels (`dp`) or percentages (`pct`).
+// A stop without `color` and with exactly one position is a transition hint
+// (CSS `red, 40%, blue`): `[{color: "red"}, {positions: [pct(40.)]}, {color: "blue"}]`
+type gradientColorStop = {
+  color?: Color.t,
+  positions?: array<size>,
+}
+
+@unboxed
+type linearGradientDirection =
+  | @as("to top") ToTop
+  | @as("to right") ToRight
+  | @as("to bottom") ToBottom
+  | @as("to left") ToLeft
+  | @as("to top right") ToTopRight
+  | @as("to bottom right") ToBottomRight
+  | @as("to top left") ToTopLeft
+  | @as("to bottom left") ToBottomLeft
+  | Angle(angle)
+
+@unboxed
+type radialGradientSize =
+  | @as("closest-corner") ClosestCorner
+  | @as("closest-side") ClosestSide
+  | @as("farthest-corner") FarthestCorner
+  | @as("farthest-side") FarthestSide
+  | Size({x: size, y: size})
+
+// two of the four sides, e.g. `{top: pct(50.), left: pct(50.)}`
+type radialGradientPosition = {
+  top?: size,
+  left?: size,
+  bottom?: size,
+  right?: size,
+}
+
+@tag("type")
+type gradient =
+  | @as("linear-gradient")
+  LinearGradient({
+      direction?: linearGradientDirection,
+      colorStops: array<gradientColorStop>,
+    })
+  | @as("radial-gradient")
+  RadialGradient({
+      shape: [#circle | #ellipse],
+      size: radialGradientSize,
+      position: radialGradientPosition,
+      colorStops: array<gradientColorStop>,
+    })
+
+// `String("linear-gradient(...)")` (CSS syntax) or `Gradients([LinearGradient({...})])`
+@unboxed
+type backgroundImage = String(string) | Gradients(array<gradient>)
 
 type boxShadow = {
   offsetX: float,
@@ -157,7 +212,7 @@ type fontVariant = [
   | #"stylistic-twenty"
 ]
 
-type textAlign = [#auto | #left | #right | #center | #justify]
+type textAlign = [#auto | #left | #right | #center | #justify | #start | #end]
 
 type textAlignVertical = [#auto | #top | #bottom | #center]
 
@@ -168,7 +223,7 @@ type textDecorationLine = [
   | #"underline line-through"
 ]
 
-type textDecorationStyle = [#solid | #double | #dotted | #dashed]
+type textDecorationStyle = [#solid | #double | #dotted | #dashed | #wavy]
 
 type textTransform = [#none | #uppercase | #lowercase | #capitalize]
 
@@ -371,6 +426,7 @@ type viewCoreStyle = {
   borderTopLeftRadius?: float,
   borderTopRightRadius?: float,
   borderTopStartRadius?: float,
+  backgroundImage?: backgroundImage,
   boxShadow?: array<boxShadow>,
   filter?: array<filter>,
   mixBlendMode?: blendMode,

@@ -38,5 +38,8 @@ type props = {
   statusBarBackgroundColor?: Color.t,
 }
 
+@deprecated(
+  "DrawerLayoutAndroid is deprecated and will be removed in a future release, use react-native-drawer-layout instead."
+)
 @module("react-native")
 external make: React.component<props> = "DrawerLayoutAndroid"

@@ -49,6 +49,7 @@ type props = {
   // view props
   nativeID?: string,
   onLayout?: Event.layoutEvent => unit,
+  pointerEvents?: View.pointerEvents,
   style?: Style.t,
   testID?: string,
   children?: React.element,

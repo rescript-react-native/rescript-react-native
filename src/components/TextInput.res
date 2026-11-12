@@ -359,7 +359,7 @@ type props = {
   showSoftInputOnFocus?: bool,
   smartInsertDelete?: bool,
   spellCheck?: bool,
-  textAlign?: [#left | #center | #right],
+  textAlign?: [#left | #center | #right | #start | #end],
   textAlignVertical?: Style.textAlignVertical,
   textBreakStrategy?: Text.textBreakStrategy,
   textContentType?: textContentType,
