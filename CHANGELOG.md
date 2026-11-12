@@ -1,6 +1,6 @@
 # Changelog of `rescript-react-native`
 
-## Unreleased
+## 0.86.0 - 2026-11-12
 
 - Upgrade to `react-native@0.86`
   - Breaking: `BackHandler.addEventListener` handler receives a `hardwareBackPressEvent` (`type_`, `timeStamp`) instead of `unit`
