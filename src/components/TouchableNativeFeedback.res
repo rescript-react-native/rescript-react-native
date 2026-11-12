@@ -16,7 +16,7 @@ module Background = {
   external canUseNativeForeground: unit => bool = "canUseNativeForeground"
 
   @module("react-native") @scope("TouchableNativeFeedback")
-  external ripple: (string, bool, ~rippleRadius: float=?) => t = "Ripple"
+  external ripple: (Color.t, bool, ~rippleRadius: float=?) => t = "Ripple"
 }
 
 type props = {

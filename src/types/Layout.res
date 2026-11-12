@@ -19,3 +19,9 @@ type insets = {
   bottom: float,
   right: float,
 }
+
+// returned by `getBoundingClientRect`
+type domRect = {
+  ...rectangle,
+  ...insets,
+}

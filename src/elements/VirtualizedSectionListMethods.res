@@ -1,16 +1,15 @@
-module Make = (
-  T: {
-    type t
-  },
-) => {
-  type scrollToLocationParams = {
-    itemIndex: int,
-    sectionIndex: int,
-    animated?: bool,
-    viewOffset?: int,
-    viewPosition?: float,
-  }
+// Methods of virtualized section list elements (`[> #virtualizedSectionList]`)
 
-  @send
-  external scrollToLocation: (T.t, scrollToLocationParams) => unit = "scrollToLocation"
+type scrollToLocationParams = {
+  itemIndex: int,
+  sectionIndex: int,
+  animated?: bool,
+  viewOffset?: int,
+  viewPosition?: float,
 }
+
+@send
+external scrollToLocation: (
+  DOMAPI.element<[> #virtualizedSectionList]>,
+  scrollToLocationParams,
+) => unit = "scrollToLocation"

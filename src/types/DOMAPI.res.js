@@ -13,13 +13,7 @@ let Node = {
   Impl: Impl
 };
 
-function Impl$1(T) {
-  return {};
-}
-
-let Element = {
-  Impl: Impl$1
-};
+let Element = {};
 
 let Document = {};
 

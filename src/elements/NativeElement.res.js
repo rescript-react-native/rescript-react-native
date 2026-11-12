@@ -1,17 +1,14 @@
 
 
-import * as DOMAPI$ReactNative from "../types/DOMAPI.res.js";
-import * as NativeMethods$ReactNative from "./NativeMethods.res.js";
+
+let Methods = {};
 
 function Impl(T) {
-  NativeMethods$ReactNative.Make({});
-  DOMAPI$ReactNative.Element.Impl({});
   return {};
 }
 
-NativeMethods$ReactNative.Make({});
-
 export {
+  Methods,
   Impl,
 }
-/*  Not a pure module */
+/* No side effect */

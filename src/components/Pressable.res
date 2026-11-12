@@ -3,6 +3,7 @@ type nativeElement
 include NativeElement.Impl({type t = nativeElement})
 
 type rippleConfig = {
+  alpha?: float,
   borderless?: bool,
   color?: Color.t,
   foreground?: bool,

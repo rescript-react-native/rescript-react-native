@@ -2,71 +2,30 @@
 
 type registrationName = {registrationName: string}
 
-module EventMethods = (
-  T: {
-    type event
-  },
-) => {
-  @get @return(nullable)
-  external bubbles: T.event => option<bool> = "bubbles"
-  @get @return(nullable)
-  external cancelable: T.event => option<bool> = "cancelable"
-  @get external currentTarget: T.event => float = "currentTarget"
-  @get @return(nullable)
-  external defaultPrevented: T.event => option<bool> = "defaultPrevented"
-  @get
-  external dispatchConfig: T.event => registrationName = "dispatchConfig"
-  @get @return(nullable)
-  external eventPhase: T.event => option<float> = "eventPhase"
-  @send external preventDefault: T.event => unit = "preventDefault"
-  @send
-  external isDefaultPrevented: T.event => bool = "isDefaultPrevented"
-  @send external stopPropagation: T.event => unit = "stopPropagation"
-  @send
-  external isPropagationStopped: T.event => bool = "isPropagationStopped"
-  @get @return(nullable)
-  external isTrusted: T.event => option<bool> = "isTrusted"
-  @get external nativeEvent: T.event => 'a = "nativeEvent"
-  @send external persist: T.event => unit = "persist"
-  @get @return(nullable)
-  external target: T.event => option<float> = "target"
-  @get external timeStamp: T.event => float = "timeStamp"
-  @get @return(nullable)
-  external _type: T.event => option<string> = "type"
+// Synthetic event received by event handlers, generic over its `nativeEvent` payload.
+// Fields are typed as they are while the handler runs: on the legacy event pooling path,
+// reading them later (without `persist`) is a runtime error by design.
+type syntheticEvent<'payload> = {
+  bubbles: option<bool>,
+  cancelable: option<bool>,
+  // the native element the handler is attached to
+  currentTarget: DOMAPI.anyElement,
+  defaultPrevented: option<bool>,
+  dispatchConfig: registrationName,
+  eventPhase: option<float>,
+  isTrusted: option<bool>,
+  nativeEvent: 'payload,
+  target: nullable<DOMAPI.anyElement>,
+  timeStamp: float,
+  \"type": option<string>,
 }
 
-module SyntheticEvent = (
-  T: {
-    type _payload
-  },
-) => {
-  type t = {
-    bubbles: nullable<bool>,
-    cancelable: nullable<bool>,
-    currentTarget: float,
-    defaultPrevented: nullable<bool>,
-    dispatchConfig: registrationName,
-    eventPhase: nullable<float>,
-    isTrusted: nullable<bool>,
-    nativeEvent: T._payload,
-    target: nullable<float>,
-    timeStamp: float,
-    \"type": nullable<string>,
-  }
-
-  include EventMethods({type event = t})
-}
-
-module ResponderSyntheticEvent = (
-  T: {
-    type _payload
-  },
-) => {
-  type touchHistory = {
-    indexOfSingleActiveTouch: float,
-    mostRecentTimeStamp: float,
-    numberActiveTouches: float,
-    touchBank: array<{
+type touchHistory = {
+  indexOfSingleActiveTouch: float,
+  mostRecentTimeStamp: float,
+  numberActiveTouches: float,
+  touchBank: array<
+    {
       touchActive: bool,
       startPageX: float,
       startPageY: float,
@@ -77,38 +36,111 @@ module ResponderSyntheticEvent = (
       previousPageX: float,
       previousPageY: float,
       previousTimeStamp: float,
-    }>,
-  }
+    },
+  >,
+}
 
-  type t = {
-    bubbles: nullable<bool>,
-    cancelable: nullable<bool>,
-    currentTarget: float,
-    defaultPrevented: nullable<bool>,
-    dispatchConfig: registrationName,
-    eventPhase: nullable<float>,
-    isTrusted: nullable<bool>,
-    nativeEvent: T._payload,
-    target: nullable<float>,
-    timeStamp: float,
-    \"type": nullable<string>,
-    touchHistory: touchHistory,
-  }
+// Synthetic event of the responder system (`PressEvent`, `onResponder*`, …)
+type responderSyntheticEvent<'payload> = {
+  ...syntheticEvent<'payload>,
+  touchHistory: touchHistory,
+}
 
-  include EventMethods({type event = t})
+// Methods of `syntheticEvent` (included by `SyntheticEvent`)
+module Methods = {
+  @get @return(nullable)
+  external bubbles: syntheticEvent<'payload> => option<bool> = "bubbles"
+  @get @return(nullable)
+  external cancelable: syntheticEvent<'payload> => option<bool> = "cancelable"
+  @get external currentTarget: syntheticEvent<'payload> => DOMAPI.anyElement = "currentTarget"
+  @get @return(nullable)
+  external defaultPrevented: syntheticEvent<'payload> => option<bool> = "defaultPrevented"
+  @get
+  external dispatchConfig: syntheticEvent<'payload> => registrationName = "dispatchConfig"
+  @get @return(nullable)
+  external eventPhase: syntheticEvent<'payload> => option<float> = "eventPhase"
+  @send external preventDefault: syntheticEvent<'payload> => unit = "preventDefault"
+  @send
+  external isDefaultPrevented: syntheticEvent<'payload> => bool = "isDefaultPrevented"
+  @send external stopPropagation: syntheticEvent<'payload> => unit = "stopPropagation"
+  @send
+  external isPropagationStopped: syntheticEvent<'payload> => bool = "isPropagationStopped"
+  @get @return(nullable)
+  external isTrusted: syntheticEvent<'payload> => option<bool> = "isTrusted"
+  @get external nativeEvent: syntheticEvent<'payload> => 'payload = "nativeEvent"
+  @send external persist: syntheticEvent<'payload> => unit = "persist"
+  @get @return(nullable)
+  external target: syntheticEvent<'payload> => option<DOMAPI.anyElement> = "target"
+  @get external timeStamp: syntheticEvent<'payload> => float = "timeStamp"
+  @get @return(nullable)
+  external _type: syntheticEvent<'payload> => option<string> = "type"
+}
 
-  @get external touchHistory: t => touchHistory = "touchHistory"
+// Methods of `responderSyntheticEvent` (included by `ResponderSyntheticEvent`)
+module ResponderMethods = {
+  @get @return(nullable)
+  external bubbles: responderSyntheticEvent<'payload> => option<bool> = "bubbles"
+  @get @return(nullable)
+  external cancelable: responderSyntheticEvent<'payload> => option<bool> = "cancelable"
+  @get
+  external currentTarget: responderSyntheticEvent<'payload> => DOMAPI.anyElement = "currentTarget"
+  @get @return(nullable)
+  external defaultPrevented: responderSyntheticEvent<'payload> => option<bool> = "defaultPrevented"
+  @get
+  external dispatchConfig: responderSyntheticEvent<'payload> => registrationName = "dispatchConfig"
+  @get @return(nullable)
+  external eventPhase: responderSyntheticEvent<'payload> => option<float> = "eventPhase"
+  @send external preventDefault: responderSyntheticEvent<'payload> => unit = "preventDefault"
+  @send
+  external isDefaultPrevented: responderSyntheticEvent<'payload> => bool = "isDefaultPrevented"
+  @send external stopPropagation: responderSyntheticEvent<'payload> => unit = "stopPropagation"
+  @send
+  external isPropagationStopped: responderSyntheticEvent<'payload> => bool = "isPropagationStopped"
+  @get @return(nullable)
+  external isTrusted: responderSyntheticEvent<'payload> => option<bool> = "isTrusted"
+  @get external nativeEvent: responderSyntheticEvent<'payload> => 'payload = "nativeEvent"
+  @send external persist: responderSyntheticEvent<'payload> => unit = "persist"
+  @get @return(nullable)
+  external target: responderSyntheticEvent<'payload> => option<DOMAPI.anyElement> = "target"
+  @get external timeStamp: responderSyntheticEvent<'payload> => float = "timeStamp"
+  @get @return(nullable)
+  external _type: responderSyntheticEvent<'payload> => option<string> = "type"
+  @get external touchHistory: responderSyntheticEvent<'payload> => touchHistory = "touchHistory"
+}
+
+// Defines `t` and the event methods for a payload.
+// Public API for event modules, here and in third-party bindings:
+//
+//   module MyEvent = {
+//     type payload = {...}
+//     include Event.SyntheticEvent({type _payload = payload})
+//   }
+module SyntheticEvent = (
+  T: {
+    type _payload
+  },
+) => {
+  type t = syntheticEvent<T._payload>
+  include Methods
+}
+
+// Same as `SyntheticEvent`, for events of the responder system
+module ResponderSyntheticEvent = (
+  T: {
+    type _payload
+  },
+) => {
+  type t = responderSyntheticEvent<T._payload>
+  include ResponderMethods
 }
 
 module BlurEvent = {
-  include SyntheticEvent({
-    type _payload = {target: float}
-  })
+  type payload = {target: float}
+  include SyntheticEvent({type _payload = payload})
 }
 module FocusEvent = {
-  include SyntheticEvent({
-    type _payload = {target: float}
-  })
+  type payload = {target: float}
+  include SyntheticEvent({type _payload = payload})
 }
 
 module LayoutEvent = {
@@ -119,14 +151,16 @@ module LayoutEvent = {
 
 module TextLayoutEvent = {
   type payload = {
-    lines: array<{
-      ...Layout.rectangle,
-      ascender: float, // verify
-      capHeight: float, // verify
-      descender: float, // verify
-      text: string,
-      xHeight: float, // verify
-    }>,
+    lines: array<
+      {
+        ...Layout.rectangle,
+        ascender: float, // verify
+        capHeight: float, // verify
+        descender: float, // verify
+        text: string,
+        xHeight: float, // verify
+      },
+    >,
   }
 
   include SyntheticEvent({type _payload = payload})

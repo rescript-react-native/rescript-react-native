@@ -1,15 +1,10 @@
-module Make = (
-  T: {
-    type t
-  },
-) => {
-  type scrollToEndOptions = {animated?: bool, duration?: float}
+// Methods of elements that are scroll views (`[> #scrollView]`)
 
-  @send external scrollToEnd: (T.t, ~options: scrollToEndOptions=?) => unit = "scrollToEnd"
+type scrollToEndOptions = {animated?: bool, duration?: float}
 
-  @send
-  external flashScrollIndicators: T.t => unit = "flashScrollIndicators"
+@send
+external scrollToEnd: (DOMAPI.element<[> #scrollView]>, ~options: scrollToEndOptions=?) => unit =
+  "scrollToEnd"
 
-  @send
-  external setNativeProps: (T.t, {..}) => unit = "setNativeProps"
-}
+@send
+external flashScrollIndicators: DOMAPI.element<[> #scrollView]> => unit = "flashScrollIndicators"

@@ -1,9 +1,9 @@
 
 
 
-function EventMethods(T) {
-  return {};
-}
+let Methods = {};
+
+let ResponderMethods = {};
 
 function SyntheticEvent(T) {
   return {};
@@ -32,7 +32,8 @@ let TargetEvent = {};
 let PointerEvent = {};
 
 export {
-  EventMethods,
+  Methods,
+  ResponderMethods,
   SyntheticEvent,
   ResponderSyntheticEvent,
   BlurEvent,

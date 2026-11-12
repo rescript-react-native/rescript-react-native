@@ -1,5 +1,30 @@
 # Changelog of `rescript-react-native`
 
+## Unreleased
+
+- Upgrade to `react-native@0.86`
+  - Breaking: `BackHandler.addEventListener` handler receives a `hardwareBackPressEvent` (`type_`, `timeStamp`) instead of `unit`
+  - Add `#"plus-lighter"` to `Style.blendMode`
+  - Add `alpha` to `Pressable.rippleConfig`
+  - `TouchableNativeFeedback.Background.ripple` takes a `Color.t` (accepts `PlatformColor`)
+  - `TextInput.autoComplete`: add new Android autofill hints (`2fa-app-otp`, `email-otp`, `wifi-password`, …) and missing values (`current-password`, `new-password`, `given-name`, `family-name`, `url`, …)
+- Breaking (fix): synthetic events `target` and `currentTarget` are native elements (`DOMAPI.anyElement`), not numbers (numbers were only used by the legacy architecture)
+- Breaking (fix): `getBoundingClientRect` returns a `Layout.domRect` (`x`, `y`, `width`, `height`, `top`, `right`, `bottom`, `left`), was wrongly typed as `Rect.t`
+- Add `Rect.size` to pass a single number to `hitSlop` / `pressRetentionOffset` (same value on all sides)
+- Events: generic `Event.syntheticEvent<'payload>` / `Event.responderSyntheticEvent<'payload>` records, with `Event.Methods` / `Event.ResponderMethods`
+  - `Event.SyntheticEvent` / `Event.ResponderSyntheticEvent` functors stay the public API to define an event module, now based on these generic records: events of third-party bindings share the same type
+  - Breaking: `bubbles`, `cancelable`, `defaultPrevented`, `eventPhase`, `isTrusted` and `type` fields are `option<…>` (were `nullable<…>`)
+  - Breaking: the `nativeEvent` getter returns the payload type (was `'a`)
+- Elements: methods are generic externals on `DOMAPI.element<'nativeElement>` (`NativeElement.Methods`, `DOMAPI.Element` now accepts any element)
+  - `NativeElement.Impl` stays the public API to define an element module
+  - Add a typed `useRef` to every element module (`let ref = TextInput.useRef()`), compiled to `React.useRef(null)`
+- `Ref.t` is the type of an object ref (`React.ref<nullable<'element>>`): pass it directly, `ref=myRef`
+  - Add `Ref.callbackWithCleanup` for React 19 callback refs returning a cleanup function
+  - Deprecate `Ref.value` and `Ref.valueRef`, no longer needed
+  - Component-specific methods are restricted by the element kind (`ScrollViewMethods` on `[> #scrollView]`, so `FlatList` gets them and `TextInput` doesn't), and no longer applied through functors at runtime
+  - Breaking: remove the internal `NativeMethods.Make` and `*Methods.Make` functors, and the deprecated `NativeElement.element` / `NativeElement.ref` types
+  - Breaking: `DOMAPI.Node.Impl` takes a type constructor (`{type t<'a>}`), remove `DOMAPI.Element.Impl`
+
 ## 0.85.0 - 2026-11-11
 
 - Upgrade to `react-native@0.85`

@@ -1,35 +1,31 @@
 open NativeTypes
 
-module Make = (
-  T: {
-    type t
-  },
-) => {
-  @module("react-native")
-  external findNodeHandle: T.t => nodeHandle = "findNodeHandle"
+// Methods available on every native element
 
-  @send
-  external setNativeProps: (T.t, {..}) => unit = "setNativeProps"
+@module("react-native")
+external findNodeHandle: DOMAPI.element<'nativeElement> => nodeHandle = "findNodeHandle"
 
-  @send external focus: T.t => unit = "focus"
-  @send external blur: T.t => unit = "blur"
+@send
+external setNativeProps: (DOMAPI.element<'nativeElement>, {..}) => unit = "setNativeProps"
 
-  @send
-  external measure: (
-    T.t,
-    (~x: float, ~y: float, ~width: float, ~height: float, ~pageX: float, ~pageY: float) => unit,
-  ) => unit = "measure"
-  @send
-  external measureInWindow: (
-    T.t,
-    (~x: float, ~y: float, ~width: float, ~height: float) => unit,
-  ) => unit = "measureInWindow"
+@send external focus: DOMAPI.element<'nativeElement> => unit = "focus"
+@send external blur: DOMAPI.element<'nativeElement> => unit = "blur"
 
-  @send
-  external measureLayout: (
-    T.t,
-    ~relativeToNativeNode: nodeHandle,
-    ~onSuccess: (~left: float, ~top: float, ~width: float, ~height: float) => unit,
-    ~onFail: unit => unit,
-  ) => unit = "measureLayout"
-}
+@send
+external measure: (
+  DOMAPI.element<'nativeElement>,
+  (~x: float, ~y: float, ~width: float, ~height: float, ~pageX: float, ~pageY: float) => unit,
+) => unit = "measure"
+@send
+external measureInWindow: (
+  DOMAPI.element<'nativeElement>,
+  (~x: float, ~y: float, ~width: float, ~height: float) => unit,
+) => unit = "measureInWindow"
+
+@send
+external measureLayout: (
+  DOMAPI.element<'nativeElement>,
+  ~relativeToNativeNode: nodeHandle,
+  ~onSuccess: (~left: float, ~top: float, ~width: float, ~height: float) => unit,
+  ~onFail: unit => unit,
+) => unit = "measureLayout"

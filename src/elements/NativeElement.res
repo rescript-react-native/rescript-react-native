@@ -1,3 +1,14 @@
+// Methods available on every native element
+module Methods = {
+  include NativeMethods
+  include DOMAPI.Element
+}
+
+// Defines `element`, `ref`, `unsafeFromAnyElement` and the native element methods.
+// Public API for element modules, here and in third-party bindings:
+//
+//   type nativeElement
+//   include NativeElement.Impl({type t = nativeElement})
 module Impl = (
   T: {
     type t
@@ -8,16 +19,9 @@ module Impl = (
 
   external unsafeFromAnyElement: DOMAPI.anyElement => element = "%identity"
 
-  include NativeMethods.Make({type t = element})
+  // `React.useRef(Nullable.null)` already typed for this element
+  @module("react")
+  external useRef: @as(json`null`) _ => ref = "useRef"
 
-  include DOMAPI.Element.Impl({type t = element})
+  include Methods
 }
-
-@deprecated("Use NativeElement.Impl instead of accessing element type directly.")
-type element
-
-@warning("-3")
-type ref = Ref.t<element>
-
-@warning("-3")
-include NativeMethods.Make({type t = element})
