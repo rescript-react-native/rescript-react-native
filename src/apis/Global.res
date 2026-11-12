@@ -3,6 +3,7 @@
 @scope("global") @val
 external hermesInternal: option<{..}> = "HermesInternal"
 
+@notUndefined
 type immediateId
 
 @val external setImmediate: (unit => unit) => immediateId = "setImmediate"
@@ -10,6 +11,7 @@ type immediateId
 
 @val external queueMicrotask: (unit => unit) => unit = "queueMicrotask"
 
+@notUndefined
 type idleCallbackId
 
 type idleDeadline = {
@@ -25,3 +27,11 @@ external requestIdleCallback: (
   ~options: idleRequestOptions=?,
 ) => idleCallbackId = "requestIdleCallback"
 @val external cancelIdleCallback: idleCallbackId => unit = "cancelIdleCallback"
+
+@notUndefined
+type animationFrameId
+
+// the callback receives the current time in milliseconds
+@val
+external requestAnimationFrame: (float => unit) => animationFrameId = "requestAnimationFrame"
+@val external cancelAnimationFrame: animationFrameId => unit = "cancelAnimationFrame"

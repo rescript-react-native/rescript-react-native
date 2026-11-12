@@ -14,6 +14,8 @@
   - Add `pointerEvents` prop to `Text`
   - Add `PermissionsAndroid.Permission.accessLocalNetwork`
   - Add `AssetRegistry` (`registerAsset`, `getAssetByID`)
+- Add `Global.requestAnimationFrame` / `cancelAnimationFrame` (the callback receives the timestamp), deprecate `AnimationFrame`
+- `@notUndefined` on handle types (`Global.idleCallbackId`, `immediateId`, `animationFrameId`, `Settings.watchToken`, `Animated.value`, `Animated.Animation.t`, `EventEmitter.t`, `NativeEventEmitter.t`): no more `Primitive_option.some` when they are stored in an option
 
 ## 0.86.0 - 2026-11-12
 

@@ -4,6 +4,7 @@ type colorValue = Color.t
 type config = {useNativeDriver: bool}
 
 module Animation = {
+  @notUndefined
   type t
   type endResult = {finished: bool}
   type endCallback = endResult => unit
@@ -25,6 +26,7 @@ type calculated
 
 type regular
 
+@notUndefined
 type value<'a>
 
 module Interpolation = {
