@@ -73,12 +73,16 @@ type iosProps = {
   zoomScale?: float,
 }
 
+// same length at both edges, or different lengths at the start and end
+@unboxed
+type fadingEdgeLength = Length(float) | StartEnd({start: float, end: float})
+
 type androidProps = {
   endFillColor?: Color.t,
   scrollPerfTag?: string,
   overScrollMode?: overScrollMode,
   nestedScrollEnabled?: bool,
-  fadingEdgeLength?: float,
+  fadingEdgeLength?: fadingEdgeLength,
   persistentScrollbar?: bool,
   scrollsChildToFocus?: bool,
 }

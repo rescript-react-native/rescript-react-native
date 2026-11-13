@@ -4,7 +4,7 @@ type scrollToLocationParams = {
   itemIndex: int,
   sectionIndex: int,
   animated?: bool,
-  viewOffset?: int,
+  viewOffset?: float,
   viewPosition?: float,
 }
 

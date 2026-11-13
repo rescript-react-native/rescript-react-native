@@ -1,5 +1,23 @@
 # Changelog of `rescript-react-native`
 
+## Unreleased
+
+- Upgrade to `react-native@0.88` and `react@19.3`
+  - Deprecate `InputAccessoryView` (deprecated upstream)
+  - Add `Style.backgroundSize`, `backgroundPosition` and `backgroundRepeat` (no longer experimental): CSS string or one value per background layer (`Sizes([{x, y}])`, `Positions([BackgroundPosition.topLeft(~top, ~left)])`, `Repeats([{x: #repeat, y: #"no-repeat"}])`)
+  - Add `Style.fontVariationSettings` for variable fonts: `String("'wght' 600")` or registered axes `Axes({wght: 600., wdth: 80.})`
+  - Add `PlatformColor.iosWithFallback` / `androidWithFallback`: raw color used when the platform color can't be resolved
+- Review of ref and static methods against React Native 0.88
+  - Breaking (fix): remove `TouchableOpacity.setOpacityTo` (private in React Native, the ref is the host view: calling it threw)
+  - Breaking (fix): `ScrollView.scrollTo` / `scrollToEnd` options have no `duration` (not supported by React Native); `scrollTo` `x` and `y` are optional
+  - Breaking (fix): `Image.queryCache` returns a `promise<dict<Image.cacheStatus>>` (was `unit`)
+  - `FlatList`: add `getNativeScrollRef` (its own element kind, `FlatList.element`, since `VirtualizedList` does not have it); `FlatList` / `VirtualizedList`: add `viewOffset` to `scrollToItem` params
+  - `SectionList` / `VirtualizedSectionList`: `scrollToLocation` `viewOffset` is a `float`
+- Breaking: `Style.boxShadow` and `Style.filter` accept a CSS string: `String("0 4px 8px black")` or `Shadows([…])` / `Filters([…])` (was `array<…>`)
+- Breaking: `ScrollView.fadingEdgeLength` is `Length(float)` or `StartEnd({start, end})` (was `float`)
+- Breaking (fix): `Settings.get` returns `option<JSON.t>` (the stored value can be of any type, or missing), and `Settings.set` takes a `dict<JSON.t>` for consistency (was `dict<string>`)
+- Breaking: `borderRadius` and all `border*Radius` styles are a `Style.size` (`dp(8.)` or `pct(50.)`), percentages are supported by React Native (also on `Image` since 0.88)
+
 ## 0.87.0 - 2026-11-13
 
 - Upgrade to `react-native@0.87`

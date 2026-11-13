@@ -13,6 +13,7 @@ external scrollToIndex: (DOMAPI.element<[> #virtualizedList]>, scrollToIndexPara
 
 type scrollToItemParams<'item> = {
   item: 'item,
+  viewOffset?: float,
   viewPosition?: float,
   animated?: bool,
 }
