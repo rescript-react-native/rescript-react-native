@@ -14,6 +14,9 @@ module Permission = {
   external accessFineLocation: t = "ACCESS_FINE_LOCATION"
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
+  external accessLocalNetwork: t = "ACCESS_LOCAL_NETWORK"
+
+  @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))
   external accessMediaLocation: t = "ACCESS_MEDIA_LOCATION"
 
   @module("react-native") @scope(("PermissionsAndroid", "PERMISSIONS"))

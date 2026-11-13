@@ -49,6 +49,7 @@ type props = {
   // view props
   nativeID?: string,
   onLayout?: Event.layoutEvent => unit,
+  pointerEvents?: View.pointerEvents,
   style?: Style.t,
   testID?: string,
   children?: React.element,
@@ -72,10 +73,9 @@ type props = {
   onTextLayout?: Event.textLayoutEvent => unit,
   pressRetentionOffset?: Rect.t,
   selectable?: bool,
-  selectionColor?: string,
+  selectionColor?: Color.t,
   suppressHighlighting?: bool,
   textBreakStrategy?: textBreakStrategy,
-  value?: string,
 }
 
 @module("react-native")

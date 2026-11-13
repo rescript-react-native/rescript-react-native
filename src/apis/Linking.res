@@ -14,7 +14,7 @@ external openURL: string => promise<unit> = "openURL"
 external canOpenURL: string => promise<bool> = "canOpenURL"
 
 @scope("Linking") @module("react-native")
-external getInitialURL: unit => promise<null<string>> = "getInitialURL"
+external getInitialURL: unit => promise<nullable<string>> = "getInitialURL"
 
 @scope("Linking") @module("react-native")
 external openSettings: unit => promise<unit> = "openSettings"

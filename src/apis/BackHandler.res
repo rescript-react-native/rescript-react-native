@@ -1,4 +1,4 @@
-type remove = {@meth "remove": unit => unit}
+type remove = EventSubscription.t
 
 @scope("BackHandler") @module("react-native")
 external exitApp: unit => unit = "exitApp"

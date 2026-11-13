@@ -74,6 +74,9 @@ type tabIndex = | @as(0) Focusable | @as(-1) NotFocusable
 
 type androidProps = {
   renderToHardwareTextureAndroid?: bool,
+  // native ripple / selectable background, see `TouchableNativeFeedback.Background`
+  nativeBackgroundAndroid?: TouchableNativeFeedback.Background.t,
+  nativeForegroundAndroid?: TouchableNativeFeedback.Background.t,
   focusable?: bool,
   tabIndex?: tabIndex,
   // native view tags (see `NativeMethods`) of the next view to focus
@@ -119,6 +122,7 @@ type webMouseForwardedProps = {
   onMouseUp?: ReactEvent.Mouse.t => unit,
 }
 
+// Typed for react-native-web: these handlers receive React DOM events (`ReactEvent.*`)
 type webProps = {
   ...webLinkProps,
   ...webClickProps,

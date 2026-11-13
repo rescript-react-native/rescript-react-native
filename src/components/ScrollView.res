@@ -63,7 +63,6 @@ type iosProps = {
   indicatorStyle?: indicatorStyle,
   maximumZoomScale?: float,
   minimumZoomScale?: float,
-  onScrollAnimationEnd?: unit => unit,
   pinchGestureEnabled?: bool,
   scrollEventThrottle?: int,
   scrollIndicatorInsets?: Rect.t,

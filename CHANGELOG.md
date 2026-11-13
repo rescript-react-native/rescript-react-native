@@ -1,5 +1,45 @@
 # Changelog of `rescript-react-native`
 
+## Unreleased
+
+- Upgrade to `react-native@0.87`
+  - Breaking: remove `InteractionManager` (removed upstream, use `Global.requestIdleCallback`)
+  - Breaking: remove `StatusBar` `backgroundColor` / `translucent` / `networkActivityIndicatorVisible` props and `setBackgroundColor` / `setTranslucent` / `setNetworkActivityIndicatorVisible` (removed upstream)
+  - Breaking: `Appearance.addChangeListener` listener receives `Appearance.preferences` (`{colorScheme}`) instead of `unit`
+  - Deprecate `DrawerLayoutAndroid` (use react-native-drawer-layout) and `ImageBackground` (use a `View` with an absolutely positioned `Image`)
+  - Add `Style.backgroundImage`: CSS string (`String("linear-gradient(…)")`) or typed gradients (`Gradients([LinearGradient({direction: Angle(deg(45.)), colorStops: […]}), RadialGradient({…})])`), color stop `positions` in `dp` / `pct`, transition hints as stops without `color`, radial position with `RadialGradientPosition.topLeft(~top, ~left)` / `topRight` / `bottomLeft` / `bottomRight`
+  - `Style.angle` is a `private string` (still created with `deg` / `rad`)
+  - Add `#start` / `#end` to `textAlign` (style and `TextInput`), `#wavy` to `textDecorationStyle`
+  - Add `#auto` to `StatusBar.barStyle` and `Appearance.setColorScheme` (new `Appearance.override` type)
+  - Add `pointerEvents` prop to `Text`
+  - Add `PermissionsAndroid.Permission.accessLocalNetwork`
+  - Add `AssetRegistry` (`registerAsset`, `getAssetByID`), `packagerAsset` record with the `__packager_asset` marker
+- Add `Global.requestAnimationFrame` / `cancelAnimationFrame` (the callback receives the timestamp), deprecate `AnimationFrame`
+- `@notUndefined` on handle types (`Global.idleCallbackId`, `immediateId`, `animationFrameId`, `Settings.watchToken`, `Animated.value`, `Animated.Animation.t`, `EventEmitter.t`, `NativeEventEmitter.t`): no more `Primitive_option.some` when they are stored in an option
+- Breaking (fix): `Settings.watchKeys` takes an `array<string>` (was a `list<string>`, which is not a JS array at runtime)
+- Breaking: animated values are typed by their output (`Animated.value<'kind>`, `'kind` a polymorphic variant: `#value` / `#calculated` and `#number` / `#string`)
+  - `interpolate` returns a number or a string value depending on the output range (`Interpolation.fromFloatArray` / `fromStringArray`); `Interpolation.config` and `outputRange` take the kind as type parameter
+  - `StyleProp.color` / `StyleProp.angle` only accept string outputs, `StyleProp.float` and the operations (`add`, `multiply`, `interpolate`…) only accept number outputs
+  - New `Animated.calculatedString` kind for string interpolations
+- Breaking (fix): binding errors found in a full review against React Native 0.87 types
+  - `AccessibilityInfo.sendAccessibilityEvent` takes the element, not a ref
+  - `StatusBar.currentHeight` is `nullable<float>` (undefined on iOS)
+  - `TextInput` `onPressIn` / `onPressOut` handlers return `unit` (were forced to return `bool`)
+  - remove `ScrollView` `onScrollAnimationEnd` and `Text` `value` props (not React Native props)
+  - `Linking.getInitialURL` resolves to `nullable<string>`, `Share` result `activityType` is `nullable<string>`
+  - `ActionSheetIOS.showShareActionSheetWithOptions`: success method is `nullable<string>`, error is `{domain, code, userInfo, message}`
+- Add missing documented props and APIs
+  - `accessibilityLargeContentTitle` / `accessibilityShowsLargeContentViewer` (iOS)
+  - `Style`: `cursor` (iOS), `inset` / `insetBlock*` / `insetInline*`, `pointerEvents`, `userSelect`
+  - `Event.scrollEvent` payload: `velocity`, `zoomScale`, `targetContentOffset`
+  - `Platform.version` (`String` on iOS, `Number` on Android)
+  - `StatusBar.pushStackEntry` / `popStackEntry` / `replaceStackEntry`
+- Add props useful for libraries: `Modal.modalRef`, `View` `nativeBackgroundAndroid` / `nativeForegroundAndroid`, `Button` `accessibilityHint` / `aria-*` / `importantForAccessibility` (and `onPress` is optional)
+- `Text.selectionColor` and `TouchableHighlight.underlayColor` are typed `Color.t` (accept `PlatformColor`), like the other color props
+- Breaking: optional arguments are optional labeled arguments, as in React Native
+  - `StatusBar.setHidden(hidden, ~animation=?)` and `StatusBar.setBarStyle(style, ~animated=?)`
+  - `Easing.elastic(~bounciness=?)` and `Easing.back(~s=?)`
+
 ## 0.86.0 - 2026-11-12
 
 - Upgrade to `react-native@0.86`

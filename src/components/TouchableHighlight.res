@@ -11,7 +11,7 @@ type props = {
   onShowUnderlay?: unit => unit,
   style?: Style.t,
   tvParallaxProperties?: TV.parallax,
-  underlayColor?: string,
+  underlayColor?: Color.t,
 }
 
 @module("react-native")

@@ -1,3 +1,4 @@
+@notUndefined
 type t
 
 @new @module("react-native")

@@ -10,5 +10,8 @@ type props = {
   ...Image.imageProps,
 }
 
+@deprecated(
+  "ImageBackground is deprecated and will be removed in a future release, use a View with an absolutely positioned Image instead."
+)
 @module("react-native")
 external make: React.component<props> = "ImageBackground"

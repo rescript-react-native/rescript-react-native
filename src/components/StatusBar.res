@@ -1,5 +1,7 @@
 type barStyle = [
   | #default
+  | // follows the current color scheme
+  #auto
   | #"light-content"
   | #"dark-content"
 ]
@@ -10,9 +12,6 @@ type props = {
   animated?: bool,
   barStyle?: barStyle,
   hidden?: bool,
-  backgroundColor?: string,
-  translucent?: bool,
-  networkActivityIndicatorVisible?: bool,
   showHideTransition?: showHideTransition,
 }
 
@@ -20,19 +19,23 @@ type props = {
 external make: React.component<props> = "StatusBar"
 
 @module("react-native") @scope("StatusBar")
-external setHidden: (bool, showHideTransition) => unit = "setHidden"
+external setHidden: (bool, ~animation: showHideTransition=?) => unit = "setHidden"
 
 @module("react-native") @scope("StatusBar")
-external setBarStyle: (barStyle, bool) => unit = "setBarStyle"
-
-@deprecated("Deprecated by React Native.") @module("react-native") @scope("StatusBar")
-external setNetworkActivityIndicatorVisible: bool => unit = "setNetworkActivityIndicatorVisible"
+external setBarStyle: (barStyle, ~animated: bool=?) => unit = "setBarStyle"
 
 @module("react-native") @scope("StatusBar")
-external setBackgroundColor: (Color.t, bool) => unit = "setBackgroundColor"
+external currentHeight: nullable<float> = "currentHeight"
+
+// returned by `pushStackEntry`, to pass to `popStackEntry` / `replaceStackEntry`
+@notUndefined
+type stackEntry
 
 @module("react-native") @scope("StatusBar")
-external setTranslucent: bool => unit = "setTranslucent"
+external pushStackEntry: props => stackEntry = "pushStackEntry"
 
 @module("react-native") @scope("StatusBar")
-external currentHeight: float = "currentHeight"
+external popStackEntry: stackEntry => unit = "popStackEntry"
+
+@module("react-native") @scope("StatusBar")
+external replaceStackEntry: (stackEntry, props) => stackEntry = "replaceStackEntry"
