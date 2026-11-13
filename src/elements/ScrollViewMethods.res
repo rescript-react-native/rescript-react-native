@@ -1,6 +1,6 @@
 // Methods of elements that are scroll views (`[> #scrollView]`)
 
-type scrollToEndOptions = {animated?: bool, duration?: float}
+type scrollToEndOptions = {animated?: bool}
 
 @send
 external scrollToEnd: (DOMAPI.element<[> #scrollView]>, ~options: scrollToEndOptions=?) => unit =

@@ -7,6 +7,12 @@
   - Add `Style.backgroundSize`, `backgroundPosition` and `backgroundRepeat` (no longer experimental): CSS string or one value per background layer (`Sizes([{x, y}])`, `Positions([BackgroundPosition.topLeft(~top, ~left)])`, `Repeats([{x: #repeat, y: #"no-repeat"}])`)
   - Add `Style.fontVariationSettings` for variable fonts: `String("'wght' 600")` or registered axes `Axes({wght: 600., wdth: 80.})`
   - Add `PlatformColor.iosWithFallback` / `androidWithFallback`: raw color used when the platform color can't be resolved
+- Review of ref and static methods against React Native 0.88
+  - Breaking (fix): remove `TouchableOpacity.setOpacityTo` (private in React Native, the ref is the host view: calling it threw)
+  - Breaking (fix): `ScrollView.scrollTo` / `scrollToEnd` options have no `duration` (not supported by React Native); `scrollTo` `x` and `y` are optional
+  - Breaking (fix): `Image.queryCache` returns a `promise<dict<Image.cacheStatus>>` (was `unit`)
+  - `FlatList` / `VirtualizedList`: add `getNativeScrollRef` and `viewOffset` to `scrollToItem` params
+  - `SectionList`: add `recordInteraction` and `flashScrollIndicators`, `scrollToLocation` `viewOffset` is a `float`
 
 ## 0.87.0 - 2026-11-13
 

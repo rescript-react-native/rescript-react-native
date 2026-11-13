@@ -149,8 +149,10 @@ external prefetchWithMetadata: (
 @module("react-native") @scope("Image")
 external abortPrefetch: requestId => unit = "abortPrefetch"
 
+type cacheStatus = [#memory | #disk | #"disk/memory"]
+
 @module("react-native") @scope("Image")
-external queryCache: (~uris: array<string>) => unit = "queryCache"
+external queryCache: (~uris: array<string>) => promise<dict<cacheStatus>> = "queryCache"
 
 type asset = {
   ...Layout.size,

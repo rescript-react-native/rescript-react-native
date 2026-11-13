@@ -4,7 +4,7 @@ type scrollToLocationParams = {
   itemIndex: int,
   sectionIndex: int,
   animated?: bool,
-  viewOffset?: int,
+  viewOffset?: float,
   viewPosition?: float,
 }
 
@@ -13,3 +13,11 @@ external scrollToLocation: (
   DOMAPI.element<[> #virtualizedSectionList]>,
   scrollToLocationParams,
 ) => unit = "scrollToLocation"
+
+@send
+external recordInteraction: DOMAPI.element<[> #virtualizedSectionList]> => unit =
+  "recordInteraction"
+
+@send
+external flashScrollIndicators: DOMAPI.element<[> #virtualizedSectionList]> => unit =
+  "flashScrollIndicators"
