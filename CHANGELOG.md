@@ -15,7 +15,7 @@
   - `SectionList`: add `recordInteraction` and `flashScrollIndicators`, `scrollToLocation` `viewOffset` is a `float`
 - Breaking: `Style.boxShadow` and `Style.filter` accept a CSS string: `String("0 4px 8px black")` or `Shadows([…])` / `Filters([…])` (was `array<…>`)
 - Breaking: `ScrollView.fadingEdgeLength` is `Length(float)` or `StartEnd({start, end})` (was `float`)
-- Breaking (fix): `Settings.get` returns `option<JSON.t>` (the stored value can be of any type, or missing)
+- Breaking (fix): `Settings.get` returns `option<JSON.t>` (the stored value can be of any type, or missing), and `Settings.set` takes a `dict<JSON.t>` for consistency (was `dict<string>`)
 
 ## 0.87.0 - 2026-11-13
 

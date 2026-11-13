@@ -3,7 +3,7 @@
 external get: string => option<JSON.t> = "get"
 
 @module("react-native") @scope("Settings")
-external set: dict<string> => unit = "set"
+external set: dict<JSON.t> => unit = "set"
 
 @notUndefined
 type watchToken
