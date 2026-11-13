@@ -7,7 +7,7 @@
   - Breaking: remove `StatusBar` `backgroundColor` / `translucent` / `networkActivityIndicatorVisible` props and `setBackgroundColor` / `setTranslucent` / `setNetworkActivityIndicatorVisible` (removed upstream)
   - Breaking: `Appearance.addChangeListener` listener receives `Appearance.preferences` (`{colorScheme}`) instead of `unit`
   - Deprecate `DrawerLayoutAndroid` (use react-native-drawer-layout) and `ImageBackground` (use a `View` with an absolutely positioned `Image`)
-  - Add `Style.backgroundImage`: CSS string (`String("linear-gradient(…)")`) or typed gradients (`Gradients([LinearGradient({direction: Angle(deg(45.)), colorStops: […]}), RadialGradient({…})])`), color stop `positions` in `dp` / `pct`, transition hints as stops without `color`
+  - Add `Style.backgroundImage`: CSS string (`String("linear-gradient(…)")`) or typed gradients (`Gradients([LinearGradient({direction: Angle(deg(45.)), colorStops: […]}), RadialGradient({…})])`), color stop `positions` in `dp` / `pct`, transition hints as stops without `color`, radial position with `RadialGradientPosition.topLeft(~top, ~left)` / `topRight` / `bottomLeft` / `bottomRight`
   - `Style.angle` is a `private string` (still created with `deg` / `rad`)
   - Add `#start` / `#end` to `textAlign` (style and `TextInput`), `#wavy` to `textDecorationStyle`
   - Add `#auto` to `StatusBar.barStyle` and `Appearance.setColorScheme` (new `Appearance.override` type)

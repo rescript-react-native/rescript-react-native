@@ -89,13 +89,19 @@ type radialGradientSize =
   | @as("farthest-side") FarthestSide
   | Size({x: size, y: size})
 
-// two of the four sides, e.g. `{top: pct(50.), left: pct(50.)}`
-type radialGradientPosition = {
-  top?: size,
-  left?: size,
-  bottom?: size,
-  right?: size,
+// one vertical and one horizontal side,
+// e.g. `RadialGradientPosition.topLeft(~top=pct(50.), ~left=pct(50.))`
+module RadialGradientPosition = {
+  @notUndefined
+  type t
+
+  @obj external topLeft: (~top: size, ~left: size) => t = ""
+  @obj external topRight: (~top: size, ~right: size) => t = ""
+  @obj external bottomLeft: (~bottom: size, ~left: size) => t = ""
+  @obj external bottomRight: (~bottom: size, ~right: size) => t = ""
 }
+
+type radialGradientPosition = RadialGradientPosition.t
 
 @tag("type")
 type gradient =
