@@ -1,6 +1,6 @@
 # Changelog of `rescript-react-native`
 
-## Unreleased
+## 0.87.0 - 2026-11-13
 
 - Upgrade to `react-native@0.87`
   - Breaking: remove `InteractionManager` (removed upstream, use `Global.requestIdleCallback`)
