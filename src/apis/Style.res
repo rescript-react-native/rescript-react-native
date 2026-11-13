@@ -186,6 +186,14 @@ type filter
 
 external unsafeFilter: {..} => filter = "%identity"
 
+// CSS string (`String("0 4px 8px rgba(0, 0, 0, 0.3)")`) or a list of shadows
+@unboxed
+type boxShadows = String(string) | Shadows(array<boxShadow>)
+
+// CSS string (`String("blur(4px) grayscale(50%)")`) or a list of filter functions
+@unboxed
+type filters = String(string) | Filters(array<filter>)
+
 type blendMode = [
   | #normal
   | #multiply
@@ -480,8 +488,8 @@ type viewCoreStyle = {
   backgroundPosition?: backgroundPosition,
   backgroundRepeat?: backgroundRepeat,
   backgroundSize?: backgroundSize,
-  boxShadow?: array<boxShadow>,
-  filter?: array<filter>,
+  boxShadow?: boxShadows,
+  filter?: filters,
   mixBlendMode?: blendMode,
   isolation?: isolation,
   elevation?: float,
