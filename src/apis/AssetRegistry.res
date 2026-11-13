@@ -1,6 +1,8 @@
 type resolver = [#android | #generic]
 
 type packagerAsset = {
+  // always `true` for an asset registered by the packager
+  @as("__packager_asset") packagerAsset: bool,
   fileSystemLocation: string,
   httpServerLocation: string,
   width?: float,

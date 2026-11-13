@@ -13,7 +13,7 @@
   - Add `#auto` to `StatusBar.barStyle` and `Appearance.setColorScheme` (new `Appearance.override` type)
   - Add `pointerEvents` prop to `Text`
   - Add `PermissionsAndroid.Permission.accessLocalNetwork`
-  - Add `AssetRegistry` (`registerAsset`, `getAssetByID`)
+  - Add `AssetRegistry` (`registerAsset`, `getAssetByID`), `packagerAsset` record with the `__packager_asset` marker
 - Add `Global.requestAnimationFrame` / `cancelAnimationFrame` (the callback receives the timestamp), deprecate `AnimationFrame`
 - `@notUndefined` on handle types (`Global.idleCallbackId`, `immediateId`, `animationFrameId`, `Settings.watchToken`, `Animated.value`, `Animated.Animation.t`, `EventEmitter.t`, `NativeEventEmitter.t`): no more `Primitive_option.some` when they are stored in an option
 - Breaking (fix): `Settings.watchKeys` takes an `array<string>` (was a `list<string>`, which is not a JS array at runtime)
