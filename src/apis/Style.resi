@@ -139,9 +139,19 @@ type backgroundRepeatValue = {x: backgroundRepeatKeyword, y: backgroundRepeatKey
 @unboxed
 type backgroundRepeat = String(string) | Repeats(array<backgroundRepeatValue>)
 
-// variable fonts: CSS string (`"'wght' 600"`) or axes (`Axes(dict{"wght": 600.})`)
+// variable fonts, registered OpenType axes
+// (font-specific uppercase axes like `GRAD` use the string form: `String("'GRAD' 50")`)
+type fontVariationAxes = {
+  wght?: float, // weight, 1 to 1000
+  wdth?: float, // width, in %
+  ital?: float, // italic, 0 or 1
+  slnt?: float, // slant, -90 to 90 degrees
+  opsz?: float, // optical size
+}
+
+// CSS string (`String("'wght' 600")`) or registered axes (`Axes({wght: 600.})`)
 @unboxed
-type fontVariationSettings = String(string) | Axes(dict<float>)
+type fontVariationSettings = String(string) | Axes(fontVariationAxes)
 
 type boxShadow = {
   offsetX: float,
