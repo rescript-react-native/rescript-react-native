@@ -13,11 +13,3 @@ external scrollToLocation: (
   DOMAPI.element<[> #virtualizedSectionList]>,
   scrollToLocationParams,
 ) => unit = "scrollToLocation"
-
-@send
-external recordInteraction: DOMAPI.element<[> #virtualizedSectionList]> => unit =
-  "recordInteraction"
-
-@send
-external flashScrollIndicators: DOMAPI.element<[> #virtualizedSectionList]> => unit =
-  "flashScrollIndicators"

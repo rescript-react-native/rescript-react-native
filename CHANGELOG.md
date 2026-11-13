@@ -11,8 +11,8 @@
   - Breaking (fix): remove `TouchableOpacity.setOpacityTo` (private in React Native, the ref is the host view: calling it threw)
   - Breaking (fix): `ScrollView.scrollTo` / `scrollToEnd` options have no `duration` (not supported by React Native); `scrollTo` `x` and `y` are optional
   - Breaking (fix): `Image.queryCache` returns a `promise<dict<Image.cacheStatus>>` (was `unit`)
-  - `FlatList` / `VirtualizedList`: add `getNativeScrollRef` and `viewOffset` to `scrollToItem` params
-  - `SectionList`: add `recordInteraction` and `flashScrollIndicators`, `scrollToLocation` `viewOffset` is a `float`
+  - `FlatList`: add `getNativeScrollRef` (its own element kind, `FlatList.element`, since `VirtualizedList` does not have it); `FlatList` / `VirtualizedList`: add `viewOffset` to `scrollToItem` params
+  - `SectionList` / `VirtualizedSectionList`: `scrollToLocation` `viewOffset` is a `float`
 - Breaking: `Style.boxShadow` and `Style.filter` accept a CSS string: `String("0 4px 8px black")` or `Shadows([…])` / `Filters([…])` (was `array<…>`)
 - Breaking: `ScrollView.fadingEdgeLength` is `Length(float)` or `StartEnd({start, end})` (was `float`)
 - Breaking (fix): `Settings.get` returns `option<JSON.t>` (the stored value can be of any type, or missing), and `Settings.set` takes a `dict<JSON.t>` for consistency (was `dict<string>`)

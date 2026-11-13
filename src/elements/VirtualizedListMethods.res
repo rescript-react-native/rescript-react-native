@@ -32,9 +32,3 @@ external scrollToOffset: (DOMAPI.element<[> #virtualizedList]>, scrollToOffsetPa
   "scrollToOffset"
 
 @send external recordInteraction: DOMAPI.element<[> #virtualizedList]> => unit = "recordInteraction"
-
-// the underlying scroll view element
-@send @return(nullable)
-external getNativeScrollRef: DOMAPI.element<[> #virtualizedList]> => option<
-  ScrollViewElement.element,
-> = "getNativeScrollRef"
