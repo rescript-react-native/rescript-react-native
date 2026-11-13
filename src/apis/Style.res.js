@@ -15,6 +15,8 @@ function rad(num) {
 
 let RadialGradientPosition = {};
 
+let BackgroundPosition;
+
 let empty = {};
 
 export {
@@ -22,6 +24,7 @@ export {
   deg,
   rad,
   RadialGradientPosition,
+  BackgroundPosition,
   empty,
 }
 /* No side effect */

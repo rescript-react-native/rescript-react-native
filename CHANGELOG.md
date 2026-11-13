@@ -1,5 +1,13 @@
 # Changelog of `rescript-react-native`
 
+## Unreleased
+
+- Upgrade to `react-native@0.88` and `react@19.3`
+  - Deprecate `InputAccessoryView` (deprecated upstream)
+  - Add `Style.backgroundSize`, `backgroundPosition` and `backgroundRepeat` (no longer experimental): CSS string or one value per background layer (`Sizes([{x, y}])`, `Positions([BackgroundPosition.topLeft(~top, ~left)])`, `Repeats([{x: #repeat, y: #"no-repeat"}])`)
+  - Add `Style.fontVariationSettings` for variable fonts: `String("'wght' 600")` or `Axes(dict{"wght": 600.})`
+  - Add `PlatformColor.iosWithFallback` / `androidWithFallback`: raw color used when the platform color can't be resolved
+
 ## 0.87.0 - 2026-11-13
 
 - Upgrade to `react-native@0.87`

@@ -6,5 +6,6 @@ type props = {
   children?: React.element,
 }
 
+@deprecated("InputAccessoryView is deprecated and will be removed in a future release.")
 @module("react-native")
 external make: React.component<props> = "InputAccessoryView"

@@ -122,6 +122,30 @@ type gradient =
 @unboxed
 type backgroundImage = String(string) | Gradients(array<gradient>)
 
+// one value per background image layer, or a CSS string
+
+type backgroundSizeValue = {x: size, y: size}
+
+@unboxed
+type backgroundSize = String(string) | Sizes(array<backgroundSizeValue>)
+
+// same shape as a radial gradient position
+module BackgroundPosition = RadialGradientPosition
+
+@unboxed
+type backgroundPosition = String(string) | Positions(array<BackgroundPosition.t>)
+
+type backgroundRepeatKeyword = [#repeat | #space | #round | #"no-repeat"]
+
+type backgroundRepeatValue = {x: backgroundRepeatKeyword, y: backgroundRepeatKeyword}
+
+@unboxed
+type backgroundRepeat = String(string) | Repeats(array<backgroundRepeatValue>)
+
+// variable fonts: CSS string (`"'wght' 600"`) or axes (`Axes(dict{"wght": 600.})`)
+@unboxed
+type fontVariationSettings = String(string) | Axes(dict<float>)
+
 type boxShadow = {
   offsetX: float,
   offsetY: float,
@@ -443,6 +467,9 @@ type viewCoreStyle = {
   borderTopRightRadius?: float,
   borderTopStartRadius?: float,
   backgroundImage?: backgroundImage,
+  backgroundPosition?: backgroundPosition,
+  backgroundRepeat?: backgroundRepeat,
+  backgroundSize?: backgroundSize,
   boxShadow?: array<boxShadow>,
   filter?: array<filter>,
   mixBlendMode?: blendMode,
@@ -458,6 +485,7 @@ type viewCoreStyle = {
 // Text Style Props (https://reactnative.dev/docs/text-style-props)
 type textIOSStyle = {
   fontVariant?: array<fontVariant>,
+  fontVariationSettings?: fontVariationSettings,
   textDecorationColor?: Color.t,
   textDecorationStyle?: textDecorationStyle,
   writingDirection?: writingDirection,
