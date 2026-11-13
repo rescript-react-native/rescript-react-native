@@ -14,6 +14,7 @@
   - `FlatList` / `VirtualizedList`: add `getNativeScrollRef` and `viewOffset` to `scrollToItem` params
   - `SectionList`: add `recordInteraction` and `flashScrollIndicators`, `scrollToLocation` `viewOffset` is a `float`
 - Breaking: `Style.boxShadow` and `Style.filter` accept a CSS string: `String("0 4px 8px black")` or `Shadows([…])` / `Filters([…])` (was `array<…>`)
+- Breaking: `ScrollView.fadingEdgeLength` is `Length(float)` or `StartEnd({start, end})` (was `float`)
 
 ## 0.87.0 - 2026-11-13
 
