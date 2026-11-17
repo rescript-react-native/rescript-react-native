@@ -1,6 +1,6 @@
 # Changelog of `rescript-react-native`
 
-## Unreleased
+## 0.88.0 - 2026-11-17
 
 - Upgrade to `react-native@0.88` and `react@19.3`
   - Deprecate `InputAccessoryView` (deprecated upstream)
