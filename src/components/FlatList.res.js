@@ -1,6 +1,6 @@
 
 
-import * as VirtualizedListElement$ReactNative from "../elements/VirtualizedListElement.res.js";
+import * as FlatListElement$ReactNative from "../elements/FlatListElement.res.js";
 
 
-/* VirtualizedListElement-ReactNative Not a pure module */
+/* FlatListElement-ReactNative Not a pure module */

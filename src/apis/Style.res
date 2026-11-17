@@ -122,6 +122,40 @@ type gradient =
 @unboxed
 type backgroundImage = String(string) | Gradients(array<gradient>)
 
+// one value per background image layer, or a CSS string
+
+type backgroundSizeValue = {x: size, y: size}
+
+@unboxed
+type backgroundSize = String(string) | Sizes(array<backgroundSizeValue>)
+
+// same shape as a radial gradient position
+module BackgroundPosition = RadialGradientPosition
+
+@unboxed
+type backgroundPosition = String(string) | Positions(array<BackgroundPosition.t>)
+
+type backgroundRepeatKeyword = [#repeat | #space | #round | #"no-repeat"]
+
+type backgroundRepeatValue = {x: backgroundRepeatKeyword, y: backgroundRepeatKeyword}
+
+@unboxed
+type backgroundRepeat = String(string) | Repeats(array<backgroundRepeatValue>)
+
+// variable fonts, registered OpenType axes
+// (font-specific uppercase axes like `GRAD` use the string form: `String("'GRAD' 50")`)
+type fontVariationAxes = {
+  wght?: float, // weight, 1 to 1000
+  wdth?: float, // width, in %
+  ital?: float, // italic, 0 or 1
+  slnt?: float, // slant, -90 to 90 degrees
+  opsz?: float, // optical size
+}
+
+// CSS string (`String("'wght' 600")`) or registered axes (`Axes({wght: 600.})`)
+@unboxed
+type fontVariationSettings = String(string) | Axes(fontVariationAxes)
+
 type boxShadow = {
   offsetX: float,
   offsetY: float,
@@ -151,6 +185,14 @@ type filter
 @obj external dropShadow: (~dropShadow: dropShadow) => filter = ""
 
 external unsafeFilter: {..} => filter = "%identity"
+
+// CSS string (`String("0 4px 8px rgba(0, 0, 0, 0.3)")`) or a list of shadows
+@unboxed
+type boxShadows = String(string) | Shadows(array<boxShadow>)
+
+// CSS string (`String("blur(4px) grayscale(50%)")`) or a list of filter functions
+@unboxed
+type filters = String(string) | Filters(array<filter>)
 
 type blendMode = [
   | #normal
@@ -421,30 +463,33 @@ type viewCoreStyle = {
   borderBlockEndColor?: Color.t,
   borderBlockStartColor?: Color.t,
   borderBottomColor?: Color.t,
-  borderBottomEndRadius?: float,
-  borderBottomLeftRadius?: float,
-  borderBottomRightRadius?: float,
-  borderBottomStartRadius?: float,
+  borderBottomEndRadius?: size,
+  borderBottomLeftRadius?: size,
+  borderBottomRightRadius?: size,
+  borderBottomStartRadius?: size,
   borderColor?: Color.t,
   borderCurve?: borderCurve,
   borderEndColor?: Color.t,
-  borderEndEndRadius?: float,
-  borderEndStartRadius?: float,
+  borderEndEndRadius?: size,
+  borderEndStartRadius?: size,
   borderLeftColor?: Color.t,
-  borderRadius?: float,
+  borderRadius?: size,
   borderRightColor?: Color.t,
   borderStartColor?: Color.t,
-  borderStartEndRadius?: float,
-  borderStartStartRadius?: float,
+  borderStartEndRadius?: size,
+  borderStartStartRadius?: size,
   borderStyle?: borderStyle,
   borderTopColor?: Color.t,
-  borderTopEndRadius?: float,
-  borderTopLeftRadius?: float,
-  borderTopRightRadius?: float,
-  borderTopStartRadius?: float,
+  borderTopEndRadius?: size,
+  borderTopLeftRadius?: size,
+  borderTopRightRadius?: size,
+  borderTopStartRadius?: size,
   backgroundImage?: backgroundImage,
-  boxShadow?: array<boxShadow>,
-  filter?: array<filter>,
+  backgroundPosition?: backgroundPosition,
+  backgroundRepeat?: backgroundRepeat,
+  backgroundSize?: backgroundSize,
+  boxShadow?: boxShadows,
+  filter?: filters,
   mixBlendMode?: blendMode,
   isolation?: isolation,
   elevation?: float,
@@ -458,6 +503,7 @@ type viewCoreStyle = {
 // Text Style Props (https://reactnative.dev/docs/text-style-props)
 type textIOSStyle = {
   fontVariant?: array<fontVariant>,
+  fontVariationSettings?: fontVariationSettings,
   textDecorationColor?: Color.t,
   textDecorationStyle?: textDecorationStyle,
   writingDirection?: writingDirection,

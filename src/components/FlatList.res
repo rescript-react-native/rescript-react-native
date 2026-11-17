@@ -2,7 +2,7 @@
 // are not supported on FlatList
 // FlatList has its own data prop, specified as array(item)
 
-include VirtualizedListElement
+include FlatListElement
 
 type props<'item, 'extraData> = {
   ref?: ref,

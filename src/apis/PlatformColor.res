@@ -160,3 +160,12 @@ external android: array<Android.t> => Color.t = "PlatformColor"
 
 @module("react-native") @variadic
 external unsafe: array<string> => Color.t = "PlatformColor"
+
+// raw color used when the platform color can't be resolved, e.g. `{fallback: "#0000ff"}`
+type fallback = {fallback: string}
+
+@module("react-native")
+external iosWithFallback: (Ios.t, fallback) => Color.t = "PlatformColor"
+
+@module("react-native")
+external androidWithFallback: (Android.t, fallback) => Color.t = "PlatformColor"
